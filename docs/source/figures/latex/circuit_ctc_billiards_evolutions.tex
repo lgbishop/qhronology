@@ -1,0 +1,51 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+\renewcommand{\large}{\normalsize}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+
+\begin{document}
+\begin{figure}[b!]
+\begin{center}
+\begin{center}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \lstick{$\StateCR$} &\qw& [-0.85cm] \qw & \qw & \qw\gategroup[2,steps=1,style={thin,rounded corners,fill=none, inner xsep=2pt},background]{$\Unitary_\EvolutionNoninteracting$} & [0.0cm] \qw & [-0.35cm] \qw \rstick{$\MapGeneral_\EvolutionNoninteracting[\StateCR]$} \\
+    \lstick{$\quad$} && \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = -30, scale=0.65}, label style=cyan]{} & \push{\,\StateCV\,} & \gate{\Rotation(\TimeDelta)} & \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = 30, scale=0.65}, label style=cyan]{} & \rstick{$\hspace{0.0cm}\quad$}
+\end{quantikz}
+
+\caption{Evolution $\EvolutionNoninteracting$}
+\end{subfigure}
+\end{center}
+\begin{center}
+\begin{subfigure}[b]{0.45\textwidth}
+\hspace*{-0.5cm}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \lstick{$\StateCR$} &\qw& [-0.85cm] \qw & [0.0cm] \qw & \gate[swap,style={solid,rounded corners,black!0,fill=black!0, inner xsep=2pt},background]{}\gategroup[2,steps=2,style={thin,rounded corners,fill=none, inner xsep=2pt},background]{$\Unitary_\EvolutionInteracting$} & \qw & [0.0cm] \qw & [-0.35cm] \qw \rstick{$\MapGeneral_\EvolutionInteracting[\StateCR]$} \\
+    \lstick{$\quad$} && \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = -30, scale=0.65}, label style=cyan]{} & \push{\,\StateCV\,} & \targX{} & \gate{\Rotation(\TimeDelta)} & \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = 30, scale=0.65}, label style=cyan]{} & \rstick{$\hspace{0.0cm}\quad$}
+\end{quantikz}
+
+\caption{Evolution $\EvolutionInteracting$}
+\end{subfigure}
+\end{center}
+\end{center}
+\end{figure}
+\end{document}

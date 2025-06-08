@@ -1,0 +1,33 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+%\usetikzlibrary{quantikz}
+\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \setwiretype{n} & \lstick{$\StateCR$} & \gate[wires=2][1cm]{\Unitary} \wire[l][1]{q} & \ground{} \wire[l][1]{q} & [0.5cm] \lstick{$\StateCR$} & \gate[wires=2][1cm]{\Unitary} \wire[l][1]{q} & \ground{} \wire[l][1]{q} & [0.5cm] \lstick{$\StateCR$} & \gate[wires=2][1cm]{\Unitary} \wire[l][1]{q} & \ground{} \wire[l][1]{q} \\
+    \ \ldots\ \qw & \push{\,\StateCV^{(n-2)}\,} & \qw & \qw & \push{\,\StateCV^{(n-1)}\,} & \qw & \qw & \push{\,\StateCV^{(n)}\,} & \qw & \qw & \push{\,\StateCV^{(n+1)}\,} & \ \ldots\ \qw 
+\end{quantikz}
+\iffalse
+\\
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{12},scale=1.15]
+\node[above,scale=0] at (0,0) {};
+\node[above,scale=1] at (0,-0.65) {(a)};
+\end{tikzpicture}
+\fi
+\end{document}

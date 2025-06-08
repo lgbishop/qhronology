@@ -1,0 +1,34 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\noindent\begin{minipage}{0.65\linewidth}
+\hfill
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \lstick{$\StateDensity_A$} & \gate{\Unitary_A} & \qw \rstick[2]{$\StateDensity^\prime$} \\
+    \lstick{$\StateDensity_B$} & \gate{\Unitary_B} & \qw
+\end{quantikz}
+\end{minipage}%
+\begin{minipage}{0.35\linewidth}
+\begin{align}
+\quad \iff \quad \StateDensity^\prime &= (\Unitary_A \otimes \Unitary_B) (\StateDensity_A \otimes \StateDensity_B) (\Unitary_A \otimes \Unitary_B)^\dagger \nonumber\\
+&= \Unitary_A \StateDensity_A \Unitary^{\dagger}_A \otimes \Unitary_B \StateDensity_B \Unitary^{\dagger}_B \nonumber
+\end{align}
+\end{minipage}
+\end{document}

@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Manual P-CTC &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/examples/ctcs/postselected';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Equivalent-circuit picture for D-CTCs" href="ecp.html" />
+    <link rel="prev" title="Billiard-ball paradox" href="billiards.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum algorithms and protocols</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_bell.html">Generation of a Bell state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_w.html">Generation of a W state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/cnot.html">CNOT (controlled-NOT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/toffoli.html">Toffoli decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_half.html">Half adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_full.html">Full adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_ripple.html">Ripple-carry adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_ripple_iterative.html">Ripple-carry adder (iterative)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_lookahead.html">Carry-lookahead adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_fourier.html">Fourier transform adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/teleportation.html">Quantum teleportation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/pswap.html">PSWAP (power-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/iswap.html">iSWAP (imaginary-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/tomography_strong.html">Quantum state tomography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/tomography_weak.html">Quantum state tomography via weak measurements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum closed timelike curves</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="grandfather.html">Grandfather paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unproven.html">Unproven-theorem paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="billiards.html">Billiard-ball paradox</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Manual P-CTC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecp.html">Equivalent-circuit picture for D-CTCs</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../part-examples.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Manual P-CTC</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="manual-p-ctc">
+<span id="eg-postselected"></span><h1>Manual P-CTC<a class="headerlink" href="#manual-p-ctc" title="Link to this heading">#</a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
+<p>This example merely serves as a proof of the P-CTC prescription (for qubits). This is achieved by explicitly performing the Bell state preselection and postselection, and subsequently comparing the output to the prescription’s CR map.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_pctc_postselected-dark.png"><img alt="A quantum circuit diagram of the P-CTC algorithm with explicit preselection and postselection." src="../../../_images/circuit_ctc_pctc_postselected-dark.png" style="width: 304.56px; height: 115.56px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_pctc_postselected-light.png"><img alt="A quantum circuit diagram of the P-CTC algorithm with explicit preselection and postselection." src="../../../_images/circuit_ctc_pctc_postselected-light.png" style="width: 304.56px; height: 115.56px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-circuit-ctc-pctc-postselected" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_pctc_postselected-light.png"><img alt="A quantum circuit diagram of the P-CTC algorithm with explicit preselection and postselection." src="../../../_images/circuit_ctc_pctc_postselected-light.png" style="width: 304.56px; height: 115.56px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 30 </span><span class="caption-text">The P-CTCs prescription with explicit preselection and postselection.</span><a class="headerlink" href="#fig-circuit-ctc-pctc-postselected" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<div class="literal-block-wrapper docutils container" id="code-postselected">
+<div class="code-block-caption"><span class="caption-number">Listing 28 </span><span class="caption-text">/text/examples/ctcs/postselected.py</span><a class="headerlink" href="#code-postselected" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumGate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.prescriptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">pctc_respecting</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="c1"># Input</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;ρ&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+
+<span class="n">input_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">)</span>
+<span class="n">bell_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span> <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Φ&quot;</span><span class="p">)</span>
+
+<span class="c1"># Gate</span>
+<span class="n">UI</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+
+<span class="c1"># Circuit</span>
+<span class="n">postselected_teleportation</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">input_state</span><span class="p">,</span> <span class="n">bell_state</span><span class="p">],</span> <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">UI</span><span class="p">],</span> <span class="n">postselections</span><span class="o">=</span><span class="p">[(</span><span class="n">bell_state</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])]</span>
+<span class="p">)</span>
+<span class="n">postselected_teleportation</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Output</span>
+<span class="c1"># Manual P-CTC</span>
+<span class="n">output_state</span> <span class="o">=</span> <span class="n">postselected_teleportation</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&#39;&quot;</span><span class="p">)</span>
+<span class="n">output_state</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">factor</span><span class="p">)</span>
+
+<span class="c1"># P-CTC prescription</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="n">pctc_respecting</span><span class="p">(</span>
+    <span class="n">input_respecting</span><span class="o">=</span><span class="n">input_state</span><span class="p">,</span>
+    <span class="n">gate</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span>
+    <span class="n">systems_respecting</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">systems_violating</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">pctc_output</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">spec</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ_P&quot;</span><span class="p">)</span>
+<span class="n">pctc_output</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># Manually renormalize</span>
+<span class="n">pctc_output</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">factor</span><span class="p">)</span>
+
+<span class="c1"># Results</span>
+<span class="n">input_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">output_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">pctc_output</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h2>
+<section id="diagram">
+<h3>Diagram<a class="headerlink" href="#diagram" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">postselected_teleportation</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_ctcs_postselected-dark.png"><img alt="../../../_images/text_examples_ctcs_postselected-dark.png" class="only-dark align-left" src="../../../_images/text_examples_ctcs_postselected-dark.png" style="width: 245.20000000000002px; height: 90.0px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_ctcs_postselected-light.png"><img alt="../../../_images/text_examples_ctcs_postselected-light.png" class="only-light align-left" src="../../../_images/text_examples_ctcs_postselected-light.png" style="width: 245.20000000000002px; height: 90.0px;" />
+</a>
+</div></blockquote>
+</section>
+<section id="states">
+<h3>States<a class="headerlink" href="#states" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ⟩ = a|0⟩ + b|1⟩</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ&#39;⟩ = (a*U[0, 0] + a*U[1, 1] + b*U[0, 2] + b*U[1, 3])/2|0⟩ + (a*U[2, 0] + a*U[3, 1] + b*U[2, 2] + b*U[3, 3])/2|1⟩</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pctc_output</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ_P⟩ = (a*U[0, 0] + a*U[1, 1] + b*U[0, 2] + b*U[1, 3])/2|0⟩ + (a*U[2, 0] + a*U[3, 1] + b*U[2, 2] + b*U[3, 3])/2|1⟩</span>
+</pre></div>
+</div>
+</section>
+<section id="results">
+<h3>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_state</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">pctc_output</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="billiards.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Billiard-ball paradox</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ecp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Equivalent-circuit picture for D-CTCs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagram">Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#states">States</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

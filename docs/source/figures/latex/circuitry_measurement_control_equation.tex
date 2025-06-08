@@ -1,0 +1,34 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+% \usetikzlibrary{quantikz}
+\usetikzlibrary{quantikz2}
+\begin{document}
+\noindent\begin{minipage}{0.5\linewidth}
+\hfill
+\begin{quantikz}[row sep={1.5*\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \lstick{$\ldots$} & \gate{\Unitary} & \qw \\
+    \lstick{$\ldots$} & \meter[label style={label position=below,anchor=north,yshift=-0.55cm}]{\{\StateDensity_i\}} \vcw{-1}
+\end{quantikz}
+\end{minipage}%
+\begin{minipage}{0.5\linewidth}
+\begin{align}
+\quad \iff \quad &\displaystyle\sum\limits_{i} \trace_1 \bigl[(\Unitary_i \otimes \StateDensity_i)(\ldots)(\Unitary^\dagger_i \otimes \Identity)\bigr] \nonumber\\
+&= \displaystyle\sum\limits_{i} \Unitary_i \trace_1 \bigl[(\Identity \otimes \StateDensity_i)(\ldots)\bigr] \Unitary^\dagger_i \nonumber
+\end{align}
+\end{minipage}
+\end{document}

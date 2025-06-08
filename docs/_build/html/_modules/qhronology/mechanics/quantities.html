@@ -1,0 +1,1294 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>qhronology.mechanics.quantities &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/qhronology/mechanics/quantities';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">qhronology.mechanics.quantities</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for qhronology.mechanics.quantities</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Project: Qhronology (https://github.com/lgbishop/qhronology)</span>
+<span class="c1"># Author: lgbishop &lt;lachlanbishop@protonmail.com&gt;</span>
+<span class="c1"># Copyright: Lachlan G. Bishop 2025</span>
+<span class="c1"># License: AGPLv3 (non-commercial use), proprietary (commercial use)</span>
+<span class="c1"># For more details, see the README in the project repository:</span>
+<span class="c1"># https://github.com/lgbishop/qhronology,</span>
+<span class="c1"># or visit the website:</span>
+<span class="c1"># https://qhronology.com.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions and a mixin for calculating quantum quantities.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># https://peps.python.org/pep-0649/</span>
+<span class="c1"># https://peps.python.org/pep-0749/</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum.dagger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dagger</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">mat</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">sym</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">count_systems</span><span class="p">,</span>
+    <span class="n">extract_matrix</span><span class="p">,</span>
+    <span class="n">extract_symbols</span><span class="p">,</span>
+    <span class="n">symbolize_expression</span><span class="p">,</span>
+    <span class="n">symbolize_tuples</span><span class="p">,</span>
+    <span class="n">extract_conditions</span><span class="p">,</span>
+    <span class="n">recursively_simplify</span><span class="p">,</span>
+    <span class="n">apply_function</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">densify</span><span class="p">,</span> <span class="n">partial_trace</span>
+
+
+<div class="viewcode-block" id="trace">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.trace">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the (complete) trace :math:`\\trace[\\op{\\rho}]`</span>
+<span class="sd">    of ``matrix`` (:math:`\\op{\\rho}`).</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">        The input matrix.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    num | sym</span>
+<span class="sd">        The trace of the input ``matrix``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;, &quot;b&quot;], [&quot;c&quot;, &quot;d&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; trace(matrix)</span>
+<span class="sd">    a + d</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = sp.MatrixSymbol(&quot;U&quot;, 3, 3).as_mutable()</span>
+<span class="sd">    &gt;&gt;&gt; trace(matrix)</span>
+<span class="sd">    U[0, 0] + U[1, 1] + U[2, 2]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">trace</span></div>
+
+
+
+<div class="viewcode-block" id="purity">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.purity">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">purity</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the purity (:math:`\\Purity`) of ``state`` (:math:`\\op{\\rho}`):</span>
+
+<span class="sd">    .. math:: \\Purity(\\op{\\rho}) = \\trace[\\op{\\rho}^2].</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    state : mat | QuantumObject</span>
+<span class="sd">        The matrix representation of the input state.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    num | sym</span>
+<span class="sd">        The purity of the input ``state``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;, &quot;b&quot;], [&quot;c&quot;, &quot;d&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; purity(matrix)</span>
+<span class="sd">    a**2 + 2*b*c + d**2</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix(</span>
+<span class="sd">    ...     [[&quot;a*conjugate(a)&quot;, &quot;a*conjugate(b)&quot;], [&quot;b*conjugate(a)&quot;, &quot;b*conjugate(b)&quot;]]</span>
+<span class="sd">    ... )</span>
+<span class="sd">    &gt;&gt;&gt; purity(matrix)</span>
+<span class="sd">    (a*conjugate(a) + b*conjugate(b))**2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">purity</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">purity</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">purity</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">purity</span></div>
+
+
+
+<div class="viewcode-block" id="distance">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.distance">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the trace distance (:math:`\\TraceDistance`) between two states</span>
+<span class="sd">    ``state_A`` (:math:`\\op{\\rho}`) and ``state_B`` (:math:`\\op{\\tau}`):</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       \\TraceDistance(\\op{\\rho}, \\op{\\tau})</span>
+<span class="sd">           = \\frac{1}{2}\\trace{\\abs{\\op{\\rho} - \\op{\\tau}}}.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    state_A : mat | QuantumObject</span>
+<span class="sd">        The matrix representation of the first input state.</span>
+<span class="sd">    state_B : mat | QuantumObject</span>
+<span class="sd">        The matrix representation of the second input state.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    num | sym</span>
+<span class="sd">        The trace distance between the inputs ``state_A`` and ``state_B``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix_A = sp.Matrix([[&quot;p&quot;, 0], [0, &quot;1 - p&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; matrix_B = sp.Matrix([[&quot;q&quot;, 0], [0, &quot;1 - q&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; distance(matrix_A, matrix_B)</span>
+<span class="sd">    sqrt((p - q)*(conjugate(p) - conjugate(q)))</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix_A = sp.Matrix([[&quot;1/sqrt(2)&quot;], [&quot;1/sqrt(2)&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; matrix_B = sp.Matrix([[&quot;1/sqrt(2)&quot;], [&quot;-1/sqrt(2)&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; distance(matrix_A, matrix_B)</span>
+<span class="sd">    1</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;, &quot;b&quot;], [&quot;c&quot;, &quot;d&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; distance(matrix, matrix)</span>
+<span class="sd">    0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_A</span><span class="p">))</span>
+    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_B</span><span class="p">))</span>
+
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
+    <span class="n">product</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span>
+        <span class="n">Dagger</span><span class="p">(</span><span class="n">matrix_A</span> <span class="o">-</span> <span class="n">matrix_B</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">matrix_A</span> <span class="o">-</span> <span class="n">matrix_B</span><span class="p">),</span> <span class="n">conditions</span>
+    <span class="p">)</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">product</span><span class="p">),</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">trace</span>
+
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">distance</span></div>
+
+
+
+<div class="viewcode-block" id="fidelity">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.fidelity">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fidelity</span><span class="p">(</span><span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the fidelity (:math:`\\Fidelity`) between two states</span>
+<span class="sd">    ``state_A`` (:math:`\\op{\\rho}`) and ``state_B`` (:math:`\\op{\\tau}`):</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       \\Fidelity(\\op{\\rho}, \\op{\\tau})</span>
+<span class="sd">           = \\left(\\trace{\\sqrt{\\sqrt{\\op{\\rho}}\\op{\\tau}\\sqrt{\\op{\\rho}}}}\\right)^2.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    state_A : mat | QuantumObject</span>
+<span class="sd">        The matrix representation of the first input state.</span>
+<span class="sd">    state_B : mat | QuantumObject</span>
+<span class="sd">        The matrix representation of the second input state.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    num | sym</span>
+<span class="sd">        The fidelity between the inputs ``state_A`` and ``state_B``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix_A = sp.Matrix([[&quot;a&quot;], [&quot;b&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; matrix_B = sp.Matrix([[&quot;c&quot;], [&quot;d&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; fidelity(matrix_A, matrix_A)</span>
+<span class="sd">    (a*conjugate(a) + b*conjugate(b))**2</span>
+<span class="sd">    &gt;&gt;&gt; fidelity(matrix_B, matrix_B)</span>
+<span class="sd">    (c*conjugate(c) + d*conjugate(d))**2</span>
+<span class="sd">    &gt;&gt;&gt; fidelity(matrix_A, matrix_B)</span>
+<span class="sd">    (a*conjugate(c) + b*conjugate(d))*(c*conjugate(a) + d*conjugate(b))</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix_A = sp.Matrix([[&quot;p&quot;, 0], [0, &quot;1 - p&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; matrix_B = sp.Matrix([[&quot;q&quot;, 0], [0, &quot;1 - q&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; fidelity(matrix_A, matrix_B)</span>
+<span class="sd">    (sqrt(p*q) + sqrt((1 - p)*(1 - q)))**2</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix_A = sp.Matrix([[&quot;1/sqrt(2)&quot;], [&quot;1/sqrt(2)&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; matrix_B = sp.Matrix([[&quot;1/sqrt(2)&quot;], [&quot;-1/sqrt(2)&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; fidelity(matrix_A, matrix_B)</span>
+<span class="sd">    0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_A</span><span class="p">))</span>
+    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_B</span><span class="p">))</span>
+
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
+    <span class="n">product</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span> <span class="o">*</span> <span class="n">matrix_B</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">product</span><span class="p">),</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">square</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">trace</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">fidelity</span> <span class="o">=</span> <span class="n">square</span>
+
+    <span class="n">fidelity</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">fidelity</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fidelity</span></div>
+
+
+
+<div class="viewcode-block" id="entropy">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.entropy">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">entropy</span><span class="p">(</span>
+    <span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
+    <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the relative von Neumann entropy (:math:`\\Entropy`) between two states</span>
+<span class="sd">    ``state_A`` (:math:`\\op{\\rho}`) and ``state_B`` (:math:`\\op{\\tau}`):</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       \\Entropy(\\op{\\rho} \\Vert \\op{\\tau})</span>
+<span class="sd">           = \\trace\\bigl[\\op{\\rho} (\\log_\\Base\\op{\\rho} - \\log_\\Base\\op{\\tau})\\bigr].</span>
+
+<span class="sd">    If ``state_B`` is not specified (i.e., ``None``), calculate the ordinary von Neumann entropy</span>
+<span class="sd">    of ``state_A`` (:math:`\\op{\\rho}`) instead:</span>
+
+<span class="sd">    .. math:: \\Entropy(\\op{\\rho}) = \\trace[\\op{\\rho}\\log_\\Base\\op{\\rho}].</span>
+
+<span class="sd">    Here, :math:`\\Base` represents ``base``, which is the dimensionality of the unit</span>
+<span class="sd">    of information with which the entropy is measured.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    state_A : mat | QuantumObject</span>
+<span class="sd">        The matrix representation of the first input state.</span>
+<span class="sd">    state_B : mat | QuantumObject</span>
+<span class="sd">        The matrix representation of the second input state.</span>
+<span class="sd">    base : num</span>
+<span class="sd">        The dimensionality of the unit of information with which the entropy is measured.</span>
+<span class="sd">        Defaults to ``2``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    num | sym</span>
+<span class="sd">        The von Neumann entropy of the input ``state_A`` (if ``state_B`` is ``None``) or</span>
+<span class="sd">        the relative entropy between ``state_A`` and ``state_B`` (if ``state_B`` is not ``None``).</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;], [&quot;b&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; entropy(matrix, base=&#39;d&#39;)</span>
+<span class="sd">    -(a*conjugate(a) + b*conjugate(b))**2*log(a*conjugate(a) + b*conjugate(b))/(b*log(d)*conjugate(b))</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix_A = sp.Matrix([[&quot;p&quot;, 0], [0, &quot;1 - p&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; matrix_B = sp.Matrix([[&quot;q&quot;, 0], [0, &quot;1 - q&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; entropy(matrix_A, base=&quot;d&quot;)</span>
+<span class="sd">    (-p*log(p) + (p - 1)*log(1 - p))/log(d)</span>
+<span class="sd">    &gt;&gt;&gt; entropy(matrix_B, base=&quot;d&quot;)</span>
+<span class="sd">    (-q*log(q) + (q - 1)*log(1 - q))/log(d)</span>
+<span class="sd">    &gt;&gt;&gt; entropy(matrix_A, matrix_B, base=&quot;d&quot;)</span>
+<span class="sd">    (p*(log(p) - log(q)) - (p - 1)*(log(1 - p) - log(1 - q)))/log(d)</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix_A = sp.Matrix([[&quot;1/sqrt(2)&quot;], [&quot;1/sqrt(2)&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; matrix_B = sp.eye(2) / 2</span>
+<span class="sd">    &gt;&gt;&gt; entropy(matrix_A)</span>
+<span class="sd">    0</span>
+<span class="sd">    &gt;&gt;&gt; entropy(matrix_B)</span>
+<span class="sd">    1</span>
+<span class="sd">    &gt;&gt;&gt; entropy(matrix_A, matrix_B)</span>
+<span class="sd">    1</span>
+<span class="sd">    &gt;&gt;&gt; entropy(matrix_B, matrix_A)</span>
+<span class="sd">    -1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state_A</span><span class="p">)</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_A</span><span class="p">)</span>
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_A</span><span class="p">))</span>
+
+    <span class="n">base</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">base</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">state_B</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">symbols</span> <span class="o">|=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_B</span><span class="p">)</span>
+        <span class="n">conditions</span> <span class="o">+=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">extract_conditions</span><span class="p">(</span><span class="n">state_B</span><span class="p">),</span> <span class="n">symbols</span><span class="p">)</span>
+        <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_B</span><span class="p">))</span>
+
+        <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+        <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+        <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
+        <span class="c1"># Relative entropy</span>
+        <span class="n">entropy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
+            <span class="n">matrix_A</span>
+            <span class="o">*</span> <span class="p">(</span>
+                <span class="n">apply_function</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="n">base</span><span class="p">])</span>
+                <span class="o">-</span> <span class="n">apply_function</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="n">base</span><span class="p">])</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># von Neumann entropy.</span>
+        <span class="n">entropy</span> <span class="o">=</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
+            <span class="n">matrix_A</span> <span class="o">*</span> <span class="n">apply_function</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="n">base</span><span class="p">])</span>
+        <span class="p">)</span>
+
+    <span class="n">entropy</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">entropy</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">entropy</span></div>
+
+
+
+<div class="viewcode-block" id="mutual">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.mutual">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">mutual</span><span class="p">(</span>
+    <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
+    <span class="n">systems_A</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">systems_B</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems</span>
+<span class="sd">    ``systems_A`` (:math:`A`) and ``systems_B`` (:math:`B`) of a composite quantum system</span>
+<span class="sd">    represented by ``state`` (:math:`\\rho^{A,B}`):</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       \\MutualInformation(A : B)</span>
+<span class="sd">           = \\Entropy(\\op{\\rho}^A) + \\Entropy(\\op{\\rho}^B) - \\Entropy(\\op{\\rho}^{A,B})</span>
+
+<span class="sd">    where :math:`\\Entropy(\\op{\\rho})` is the von Neumann entropy of a state :math:`\\op{\\rho}`.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    state : mat | QuantumObject</span>
+<span class="sd">        The matrix representation of the composite input state.</span>
+<span class="sd">    systems_A : int | list[int]</span>
+<span class="sd">        The indices of the first subsystem.</span>
+<span class="sd">        Defaults to ``[0]``.</span>
+<span class="sd">    systems_B : int | list[int]</span>
+<span class="sd">        The indices of the second subsystem.</span>
+<span class="sd">        Defaults to the complement of ``systems_A`` with respect to the entire composition of</span>
+<span class="sd">        subsystems of ``state``.</span>
+<span class="sd">    dim : int</span>
+<span class="sd">        The dimensionality of the composite quantum system (and its subsystems).</span>
+<span class="sd">        Must be a non-negative integer.</span>
+<span class="sd">        Defaults to ``2``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    num | sym</span>
+<span class="sd">        The mutual information between the subsystems ``systems_A`` and ``systems_B`` of</span>
+<span class="sd">        the composite input ``state``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([1, 0, 0, 1]) / sp.sqrt(2)</span>
+<span class="sd">    &gt;&gt;&gt; mutual(matrix, [0], [1])</span>
+<span class="sd">    2</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = sp.eye(4) / 4</span>
+<span class="sd">    &gt;&gt;&gt; mutual(matrix, [0], [1])</span>
+<span class="sd">    0</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">systems_A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">systems_A</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">systems_A</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="n">matrix_AB</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>
+
+    <span class="n">matrix_AB</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_AB</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">matrix_AB</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_AB</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
+    <span class="n">num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">matrix_AB</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+    <span class="n">systems_AB</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_systems</span><span class="p">)]</span>
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="o">=</span><span class="n">matrix_AB</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">systems_A</span><span class="p">,</span> <span class="n">discard</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">optimize</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">systems_B</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">systems_AB</span><span class="p">)</span> <span class="o">^</span> <span class="nb">set</span><span class="p">(</span><span class="n">systems_A</span><span class="p">))</span> <span class="k">if</span> <span class="n">systems_B</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">systems_B</span>
+    <span class="p">)</span>
+    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="o">=</span><span class="n">matrix_AB</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">systems_B</span><span class="p">,</span> <span class="n">discard</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">optimize</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+    <span class="n">mutual</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">)</span> <span class="o">+</span> <span class="n">entropy</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">)</span> <span class="o">-</span> <span class="n">entropy</span><span class="p">(</span><span class="n">matrix_AB</span><span class="p">)</span>
+
+    <span class="n">mutual</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">mutual</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mutual</span></div>
+
+
+
+<div class="viewcode-block" id="QuantitiesMixin">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.QuantitiesMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuantitiesMixin</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A mixin for endowing classes with the ability to calculate various quantum quantities.</span>
+
+<span class="sd">    Any inheriting class must possess a matrix representation that can be accessed by either</span>
+<span class="sd">    an ``output()`` method or a ``matrix`` property.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    The :py:class:`~qhronology.mechanics.quantities.QuantitiesMixin` mixin is used exclusively by</span>
+<span class="sd">    the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding</span>
+<span class="sd">    section (:ref:`sec:docs_states_quantities`) for documentation on its methods.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">trace</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the (complete) trace :math:`\\trace[\\op{\\rho}]`</span>
+<span class="sd">        of the internal state (:math:`\\op{\\rho}`).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        num | sym</span>
+<span class="sd">            The trace of the internal state.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; state = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     symbols={&quot;a&quot;: {&quot;complex&quot;: True}, &quot;b&quot;: {&quot;complex&quot;: True}},</span>
+<span class="sd">        ...     conditions=[(&quot;a*conjugate(a) + b*conjugate(b)&quot;, 1)],</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state.trace()</span>
+<span class="sd">        1</span>
+
+<span class="sd">        &gt;&gt;&gt; state = QuantumState(</span>
+<span class="sd">        ...     spec=[(1, [0]), (1, [1])],</span>
+<span class="sd">        ...     kind=&quot;mixed&quot;,</span>
+<span class="sd">        ...     symbols={&quot;d&quot;: {&quot;real&quot;: True}},</span>
+<span class="sd">        ...     norm=&quot;1/d&quot;,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state.trace()</span>
+<span class="sd">        1/d</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">purity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the purity (:math:`\\Purity`) of the internal state (:math:`\\op{\\rho}`):</span>
+
+<span class="sd">        .. math:: \\Purity(\\op{\\rho}) = \\trace[\\op{\\rho}^2].</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        num | sym</span>
+<span class="sd">            The purity of the internal state.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; state = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     symbols={&quot;a&quot;: {&quot;complex&quot;: True}, &quot;b&quot;: {&quot;complex&quot;: True}},</span>
+<span class="sd">        ...     conditions=[(&quot;a*conjugate(a) + b*conjugate(b)&quot;, 1)],</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state.purity()</span>
+<span class="sd">        1</span>
+
+<span class="sd">        &gt;&gt;&gt; state = QuantumState(spec=[(&quot;p&quot;, [0]), (&quot;1 - p&quot;, [1])], kind=&quot;mixed&quot;, norm=1)</span>
+<span class="sd">        &gt;&gt;&gt; state.purity()</span>
+<span class="sd">        p**2 + (1 - p)**2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">purity</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the trace distance (:math:`\\TraceDistance`) between</span>
+<span class="sd">        the internal state (:math:`\\op{\\rho}`) and the given ``state`` (:math:`\\op{\\tau}`):</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">           \\TraceDistance(\\op{\\rho}, \\op{\\tau})</span>
+<span class="sd">               = \\frac{1}{2}\\trace{\\abs{\\op{\\rho} - \\op{\\tau}}}.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        state : mat | QuantumObject</span>
+<span class="sd">            The given state.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        num | sym</span>
+<span class="sd">            The trace distance between the internal state and ``state``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; state_A = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     symbols={&quot;a&quot;: {&quot;complex&quot;: True}, &quot;b&quot;: {&quot;complex&quot;: True}},</span>
+<span class="sd">        ...     conditions=[(&quot;a*conjugate(a) + b*conjugate(b)&quot;, 1)],</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_B = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;c&quot;, [0]), (&quot;d&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     symbols={&quot;c&quot;: {&quot;complex&quot;: True}, &quot;d&quot;: {&quot;complex&quot;: True}},</span>
+<span class="sd">        ...     conditions=[(&quot;c*conjugate(c) + d*conjugate(d)&quot;, 1)],</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_A.distance(state_A)</span>
+<span class="sd">        0</span>
+<span class="sd">        &gt;&gt;&gt; state_B.distance(state_B)</span>
+<span class="sd">        0</span>
+<span class="sd">        &gt;&gt;&gt; state_A.distance(state_B)</span>
+<span class="sd">        sqrt((a*conjugate(b) - c*conjugate(d))*(b*conjugate(a) - d*conjugate(c)) + (b*conjugate(b) - d*conjugate(d))**2)/2 + sqrt((a*conjugate(a) - c*conjugate(c))**2 + (a*conjugate(b) - c*conjugate(d))*(b*conjugate(a) - d*conjugate(c)))/2</span>
+
+<span class="sd">        &gt;&gt;&gt; state_A = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;p&quot;, [0]), (&quot;1 - p&quot;, [1])],</span>
+<span class="sd">        ...     kind=&quot;mixed&quot;,</span>
+<span class="sd">        ...     symbols={&quot;p&quot;: {&quot;positive&quot;: True}},</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_B = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;q&quot;, [0]), (&quot;1 - q&quot;, [1])],</span>
+<span class="sd">        ...     kind=&quot;mixed&quot;,</span>
+<span class="sd">        ...     symbols={&quot;q&quot;: {&quot;positive&quot;: True}},</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_A.distance(state_B)</span>
+<span class="sd">        Abs(p - q)</span>
+
+<span class="sd">        &gt;&gt;&gt; plus_state = QuantumState(spec=[(1, [0]), (1, [1])], form=&quot;vector&quot;, norm=1)</span>
+<span class="sd">        &gt;&gt;&gt; minus_state = QuantumState(spec=[(1, [0]), (-1, [1])], form=&quot;vector&quot;, norm=1)</span>
+<span class="sd">        &gt;&gt;&gt; plus_state.distance(minus_state)</span>
+<span class="sd">        1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">distance</span><span class="p">(</span><span class="n">state_A</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_B</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fidelity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the fidelity (:math:`\\Fidelity`) between</span>
+<span class="sd">        the internal state (:math:`\\op{\\rho}`) and the given ``state`` (:math:`\\op{\\tau}`):</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">           \\Fidelity(\\op{\\rho}, \\op{\\tau})</span>
+<span class="sd">               = \\left(\\trace{\\sqrt{\\sqrt{\\op{\\rho}}\\op{\\tau}\\sqrt{\\op{\\rho}}}}\\right)^2.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        state : mat | QuantumObject</span>
+<span class="sd">            The given state.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        num | sym</span>
+<span class="sd">            The fidelity between the internal state and ``state``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; state_A = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     symbols={&quot;a&quot;: {&quot;complex&quot;: True}, &quot;b&quot;: {&quot;complex&quot;: True}},</span>
+<span class="sd">        ...     conditions=[(&quot;a*conjugate(a) + b*conjugate(b)&quot;, 1)],</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_B = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;c&quot;, [0]), (&quot;d&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     symbols={&quot;c&quot;: {&quot;complex&quot;: True}, &quot;d&quot;: {&quot;complex&quot;: True}},</span>
+<span class="sd">        ...     conditions=[(&quot;c*conjugate(c) + d*conjugate(d)&quot;, 1)],</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_A.fidelity(state_A)</span>
+<span class="sd">        1</span>
+<span class="sd">        &gt;&gt;&gt; state_B.fidelity(state_B)</span>
+<span class="sd">        1</span>
+<span class="sd">        &gt;&gt;&gt; state_A.fidelity(state_B)</span>
+<span class="sd">        (a*conjugate(c) + b*conjugate(d))*(c*conjugate(a) + d*conjugate(b))</span>
+
+<span class="sd">        &gt;&gt;&gt; state_A = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;p&quot;, [0]), (&quot;1 - p&quot;, [1])],</span>
+<span class="sd">        ...     kind=&quot;mixed&quot;,</span>
+<span class="sd">        ...     symbols={&quot;p&quot;: {&quot;positive&quot;: True}},</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_B = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;q&quot;, [0]), (&quot;1 - q&quot;, [1])],</span>
+<span class="sd">        ...     kind=&quot;mixed&quot;,</span>
+<span class="sd">        ...     symbols={&quot;q&quot;: {&quot;positive&quot;: True}},</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_A.fidelity(state_B)</span>
+<span class="sd">        (sqrt(p)*sqrt(q) + sqrt((1 - p)*(1 - q)))**2</span>
+
+<span class="sd">        &gt;&gt;&gt; plus_state = QuantumState(spec=[(1, [0]), (1, [1])], form=&quot;vector&quot;, norm=1)</span>
+<span class="sd">        &gt;&gt;&gt; minus_state = QuantumState(spec=[(1, [0]), (-1, [1])], form=&quot;vector&quot;, norm=1)</span>
+<span class="sd">        &gt;&gt;&gt; plus_state.fidelity(minus_state)</span>
+<span class="sd">        0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">fidelity</span><span class="p">(</span><span class="n">state_A</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_B</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">entropy</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the relative von Neumann entropy (:math:`\\Entropy`) between</span>
+<span class="sd">        the internal state (:math:`\\op{\\rho}`) and the given ``state`` (:math:`\\op{\\tau}`):</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">           \\Entropy(\\op{\\rho} \\Vert \\op{\\tau})</span>
+<span class="sd">               = \\trace\\bigl[\\op{\\rho} (\\log_\\Base\\op{\\rho} - \\log_\\Base\\op{\\tau})\\bigr].</span>
+
+<span class="sd">        If ``state`` is not specified (i.e., ``None``), calculate the ordinary von Neumann entropy</span>
+<span class="sd">        of the internal state (:math:`\\op{\\rho}`) instead:</span>
+
+<span class="sd">        .. math:: \\Entropy(\\op{\\rho}) = \\trace[\\op{\\rho}\\log_\\Base\\op{\\rho}].</span>
+
+<span class="sd">        Here, :math:`\\Base` represents ``base``, which is the dimensionality of the unit</span>
+<span class="sd">        of information with which the entropy is measured.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        state : mat | QuantumObject</span>
+<span class="sd">            The given state.</span>
+<span class="sd">        base : num</span>
+<span class="sd">            The dimensionality of the unit of information with which the entropy is measured.</span>
+<span class="sd">            Defaults to ``2``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        num | sym</span>
+<span class="sd">            The (relative) von Neumann entropy.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; state_A = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     symbols={&quot;a&quot;: {&quot;complex&quot;: True}, &quot;b&quot;: {&quot;complex&quot;: True}},</span>
+<span class="sd">        ...     conditions=[(&quot;a*conjugate(a) + b*conjugate(b)&quot;, 1)],</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_B = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;c&quot;, [0]), (&quot;d&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     symbols={&quot;c&quot;: {&quot;complex&quot;: True}, &quot;d&quot;: {&quot;complex&quot;: True}},</span>
+<span class="sd">        ...     conditions=[(&quot;c*conjugate(c) + d*conjugate(d)&quot;, 1)],</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_A.entropy()</span>
+<span class="sd">        0</span>
+<span class="sd">        &gt;&gt;&gt; state_B.entropy()</span>
+<span class="sd">        0</span>
+<span class="sd">        &gt;&gt;&gt; state_A.entropy(state_B)</span>
+<span class="sd">        0</span>
+
+<span class="sd">        &gt;&gt;&gt; state_A = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;p&quot;, [0]), (&quot;1 - p&quot;, [1])],</span>
+<span class="sd">        ...     kind=&quot;mixed&quot;,</span>
+<span class="sd">        ...     symbols={&quot;p&quot;: {&quot;positive&quot;: True}},</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_B = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;q&quot;, [0]), (&quot;1 - q&quot;, [1])],</span>
+<span class="sd">        ...     kind=&quot;mixed&quot;,</span>
+<span class="sd">        ...     symbols={&quot;q&quot;: {&quot;positive&quot;: True}},</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_A.entropy()</span>
+<span class="sd">        (-p*log(p) + (p - 1)*log(1 - p))/log(2)</span>
+<span class="sd">        &gt;&gt;&gt; state_B.entropy()</span>
+<span class="sd">        (-q*log(q) + (q - 1)*log(1 - q))/log(2)</span>
+<span class="sd">        &gt;&gt;&gt; state_A.entropy(state_B)</span>
+<span class="sd">        (-(p - 1)*(log(1 - p) - log(1 - q)) + log((p/q)**p))/log(2)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">entropy</span><span class="p">(</span><span class="n">state_A</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_B</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">mutual</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">systems_A</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">systems_B</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems</span>
+<span class="sd">        ``systems_A`` (:math:`A`) and ``systems_B`` (:math:`B`)</span>
+<span class="sd">        of the internal state (:math:`\\rho^{A,B}`):</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">           \\MutualInformation(A : B)</span>
+<span class="sd">               = \\Entropy(\\op{\\rho}^A) + \\Entropy(\\op{\\rho}^B) - \\Entropy(\\op{\\rho}^{A,B})</span>
+
+<span class="sd">        where :math:`\\Entropy(\\op{\\rho})` is the von Neumann entropy of</span>
+<span class="sd">        a state :math:`\\op{\\rho}`.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        systems_A : int | list[int]</span>
+<span class="sd">            The indices of the first subsystem.</span>
+<span class="sd">            Defaults to ``[0]``.</span>
+<span class="sd">        systems_B : int | list[int]</span>
+<span class="sd">            The indices of the second subsystem.</span>
+<span class="sd">            Defaults to the complement of ``systems_A`` with respect to the entire composition</span>
+<span class="sd">            of subsystems of ``state``.</span>
+<span class="sd">        dim : int</span>
+<span class="sd">            The dimensionality of the composite quantum system (and its subsystems).</span>
+<span class="sd">            Must be a non-negative integer.</span>
+<span class="sd">            Defaults to ``2``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        num | sym</span>
+<span class="sd">            The mutual information between the subsystems ``systems_A`` and ``systems_B``</span>
+<span class="sd">            of the internal state.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; state_AB = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a&quot;, [0, 0]), (&quot;b&quot;, [1, 1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     symbols={&quot;a&quot;: {&quot;complex&quot;: True}, &quot;b&quot;: {&quot;complex&quot;: True}},</span>
+<span class="sd">        ...     conditions=[(&quot;a*conjugate(a) + b*conjugate(b)&quot;, 1)],</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_AB.mutual([0], [1])</span>
+<span class="sd">        2*(-a*log(a*conjugate(a))*conjugate(a) - b*log(b*conjugate(b))*conjugate(b))/log(2)</span>
+
+<span class="sd">        &gt;&gt;&gt; state_AB = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a&quot;, [0, 0]), (&quot;b&quot;, [1, 1])],</span>
+<span class="sd">        ...     kind=&quot;mixed&quot;,</span>
+<span class="sd">        ...     symbols={&quot;a&quot;: {&quot;positive&quot;: True}, &quot;b&quot;: {&quot;positive&quot;: True}},</span>
+<span class="sd">        ...     conditions=[(&quot;a + b&quot;, 1)],</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; state_AB.mutual([0], [1])</span>
+<span class="sd">        (-a*log(a) - b*log(b))/log(2)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">mutual</span><span class="p">(</span>
+            <span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">systems_A</span><span class="o">=</span><span class="n">systems_A</span><span class="p">,</span> <span class="n">systems_B</span><span class="o">=</span><span class="n">systems_B</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span>
+        <span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

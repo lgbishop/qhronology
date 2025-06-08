@@ -1,0 +1,35 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \lstick{$\StateCR$} & \qw & \swap{2}\gategroup[3,steps=1,style={thin,rounded corners,fill=none, inner xsep=2pt},background]{$\Unitary$} & \qw \rstick{$\StateCR_\MapPCTCsCR$} \\[-0.3cm]
+    &&\gate[wires=1,nwires={1},style={circle, inner sep=0pt,draw=black,fill=white,scale=0.75}, label style=black]{p}& \\[-0.3cm]
+    \lstick[2]{$\ket{\Bell}$} \qw & \push{\,\StateCV_\MapPCTCsCR\,} & \targX{} & \qw \rstick[2]{$\bra{\Bell}$} \\
+    \qw & \qw & \qw & \qw &
+\end{quantikz}
+\iffalse
+\\
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{12},scale=1.15]
+\node[above,scale=0] at (0,0) {};
+\node[above,scale=1] at (0,-0.65) {(b)};
+\end{tikzpicture}
+\fi
+\end{document}

@@ -1,0 +1,25 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \lstick{$\StateCR$} &\qw& [-0.85cm] \qw & [0.4cm] \gate[wires=2][1cm]{\Unitary} & [0.4cm] \qw & [-0.35cm] \qw \rstick{$\hspace{0.0cm}\MapDCTCsCR_{\Unitary}\left[\StateCR,\StateCV\right]$} & \\
+    \lstick{$\StateCV$} && \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = -30, scale=0.65}, label style=cyan]{} & \qw & \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = 30, scale=0.65}, label style=cyan]{} &  \rstick{$\hspace{0.0cm}\MapDCTCsCV_{\Unitary}\left[\StateCR,\StateCV\right]$}
+\end{quantikz}
+\end{document}

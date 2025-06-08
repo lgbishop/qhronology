@@ -1,0 +1,1003 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Overview &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
+    <script src="_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="_static/icon.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Theory" href="text/theory/part-theory.html" />
+    <link rel="prev" title="Home" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Overview</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <a class="dark-light reference internal image-reference" href="_images/logo-main-50fps-3sec-animated-60compressed.webp"><img alt="Qhronology logo" class="dark-light align-center" src="_images/logo-main-50fps-3sec-animated-60compressed.webp" style="width: 720px;" />
+</a>
+<div style="display: none; visibility: hidden;"><section id="overview">
+<span id="part-overview"></span><h1>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h1>
+</div><p class="rubric"><span class="classheader0">Overview</span></p>
+<p><em>Qhronology</em> is a Python package for computing the states of the chronology-respecting (CR) and chronology-violating (CV) quantum systems according to the foremost quantum theories of time travel. It also functions as a (mostly) complete quantum circuit simulator, and contains an engine for the basic visualization of quantum circuit diagrams. Its main features include:</p>
+<ul class="simple">
+<li><p>temporal paradox resolution using quantum-mechanical prescriptions of time travel</p>
+<ul>
+<li><p>Deutsch’s model (D-CTCs)</p></li>
+<li><p>postselected teleportation (P-CTCs)</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>general quantum computation and information processing</p>
+<ul>
+<li><p>algebraic, symbolic calculations</p></li>
+<li><p>(classical) simulation of quantum experiments (limited by the finite precision of floating-point arithmetic)</p></li>
+</ul>
+</li>
+<li><p>quantum circuit visualization</p>
+<ul>
+<li><p>text-based semigraphical diagrams constructed using glyphs from monospace fonts (support for both ASCII and Unicode)</p></li>
+</ul>
+</li>
+</ul>
+<p>The primary purpose of Qhronology is to facilitate the study of quantum theories of time travel in both educational and research capacities. In addition to this, the package also functions as a quantum circuit simulator, allowing for comprehensive analysis of the general quantum operations of quantum information processing and computation. Qhronology’s underlying mathematical system accomplishes this using the standard <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional matrix mechanics of discrete-variable quantum theory in a general <span class="math notranslate nohighlight">\(\Complexes^\Dimension\)</span>-representation.</p>
+<p>The package provides a sufficiently complete and self-contained set of tools with the intention that performing transformations on quantum constructs and data with external packages and libraries need not be necessary (in most cases). Qhronology aims to make the expression of quantum states, gates, circuits, and time-travel prescriptions near-limitlessly possible with a framework that is syntactically simple, informationally dense, programmatically intuitive, mathematically powerful, extremely flexible, and easily extensible.</p>
+<p>In addition to functionality provided by Python’s standard library, Qhronology is built around features from both the canonical <a class="reference external" href="https://sympy.org">SymPy</a> (<a class="reference external" href="https://github.com/sympy/sympy">repository</a>) and <a class="reference external" href="https://numpy.org">NumPy</a> (<a class="reference external" href="https://github.com/numpy/numpy">repository</a>) projects. In particular, the package greatly leverages the symbolic and linear algebra capabilities of the former, and so aims to have a deep compatibility with SymPy and its matrix objects. It is hoped that users possessing experience with these projects should therefore find Qhronology’s interface both familiar and intuitive.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Qhronology in its current form is considered to be highly experimental. Its output may be incorrect, and some features may not work as intended. Additionally, please note that its functionality, including any and all functions, classes, methods, and modules, may be subject to change in future versions.</p>
+</div>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h2>
+<section id="quantum-computing-simulations">
+<h3>Quantum computing simulations<a class="headerlink" href="#quantum-computing-simulations" title="Link to this heading">#</a></h3>
+<p>Designed to provide a powerful set of features with a simple and intuitive syntax, Qhronology facilitates the simulation of quantum computation, information processing, and algebraic calculations.</p>
+<a class="only-dark reference internal image-reference" href="_images/circuit_algorithm_teleportation-dark.png"><img alt="_images/circuit_algorithm_teleportation-dark.png" class="only-dark align-center" src="_images/circuit_algorithm_teleportation-dark.png" style="width: 450.0px; height: 127.08px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/circuit_algorithm_teleportation-light.png"><img alt="_images/circuit_algorithm_teleportation-light.png" class="only-light align-center" src="_images/circuit_algorithm_teleportation-light.png" style="width: 450.0px; height: 127.08px;" />
+</a>
+</section>
+<section id="quantum-resolutions-to-antichronological-time-travel-paradoxes">
+<h3>Quantum resolutions to antichronological time-travel paradoxes<a class="headerlink" href="#quantum-resolutions-to-antichronological-time-travel-paradoxes" title="Link to this heading">#</a></h3>
+<p>The fundamental indeterminism of quantum mechanics can be leveraged to provide resolutions to quantum formulations of classic time-travel paradoxes (such as the infamous <em>grandfather paradox</em>). A select few prescriptions by which this may be achieved, including Deutsch’s model (D-CTCs) and the postselected teleportation prescription (P-CTCs), are implemented both as bare functions and class methods.</p>
+<a class="only-dark reference internal image-reference" href="_images/circuit_ctc-dark.png"><img alt="_images/circuit_ctc-dark.png" class="only-dark align-center" src="_images/circuit_ctc-dark.png" style="width: 249.84px; height: 81.72px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/circuit_ctc-light.png"><img alt="_images/circuit_ctc-light.png" class="only-light align-center" src="_images/circuit_ctc-light.png" style="width: 249.84px; height: 81.72px;" />
+</a>
+</section>
+<section id="quantum-circuit-visualization">
+<h3>Quantum circuit visualization<a class="headerlink" href="#quantum-circuit-visualization" title="Link to this heading">#</a></h3>
+<p>Quantum circuit diagrams provide a powerful picturalism through which any quantum process can be visualized as a network of quantum logic gates connected by wires. Qhronology provides this functionality for any quantum process constructed using its built-in classes.</p>
+<a class="only-dark reference internal image-reference" href="_images/text_examples_algorithms_generation_w-dark.png"><img alt="_images/text_examples_algorithms_generation_w-dark.png" class="only-dark align-center" src="_images/text_examples_algorithms_generation_w-dark.png" style="width: 324.72px; height: 96.8px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/text_examples_algorithms_generation_w-light.png"><img alt="_images/text_examples_algorithms_generation_w-light.png" class="only-light align-center" src="_images/text_examples_algorithms_generation_w-light.png" style="width: 324.72px; height: 96.8px;" />
+</a>
+</section>
+<section id="numerous-examples">
+<h3>Numerous examples<a class="headerlink" href="#numerous-examples" title="Link to this heading">#</a></h3>
+<p>Bundled with the project is a small collection of complete examples that showcase its capabilities and syntax. These are divided into two categories: <a class="reference internal" href="text/examples/part-examples.html#sec-examples-algorithms"><span class="std std-ref">Quantum algorithms and protocols</span></a> and <a class="reference internal" href="text/examples/part-examples.html#sec-examples-ctc"><span class="std std-ref">Quantum closed timelike curves</span></a>. The former contains implementations of canonical algorithms in quantum computing, while the latter consists of more exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.</p>
+<a class="only-dark reference internal image-reference" href="_images/circuit_ctc_grandfather-dark.png"><img alt="_images/circuit_ctc_grandfather-dark.png" class="only-dark align-center" src="_images/circuit_ctc_grandfather-dark.png" style="width: 259.92px; height: 122.03999999999999px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/circuit_ctc_grandfather-light.png"><img alt="_images/circuit_ctc_grandfather-light.png" class="only-light align-center" src="_images/circuit_ctc_grandfather-light.png" style="width: 259.92px; height: 122.03999999999999px;" />
+</a>
+</section>
+<section id="extensive-documentation">
+<h3>Extensive documentation<a class="headerlink" href="#extensive-documentation" title="Link to this heading">#</a></h3>
+<p>All of the functions, classes, and methods in each of the various submodules have been rigorously detailed in their respective sections within the documentation. This includes multiple examples of usage for each, aiding the user’s understanding of every available feature.</p>
+<a class="only-dark reference internal image-reference" href="_images/diagram_bloch_sphere-dark.png"><img alt="_images/diagram_bloch_sphere-dark.png" class="only-dark align-center" src="_images/diagram_bloch_sphere-dark.png" style="width: 250.92px; height: 243.72px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/diagram_bloch_sphere-light.png"><img alt="_images/diagram_bloch_sphere-light.png" class="only-light align-center" src="_images/diagram_bloch_sphere-light.png" style="width: 250.92px; height: 243.72px;" />
+</a>
+</section>
+<section id="foundational-theory">
+<h3>Foundational theory<a class="headerlink" href="#foundational-theory" title="Link to this heading">#</a></h3>
+<p>All of the underlying mathematics upon which Qhronology is built is presented as a series of pedagogical reference articles within the documentation. This includes sections on the mathematical foundations of quantum mechanics (Hilbert spaces, linear operators, composite systems, etc.), quantum theory on both discrete and continuous Hilbert spaces, a brief overview of the quantum circuitry picturalism, and physical theories of time travel (both classical and quantum).</p>
+<p>The aim of this theory is to serve as a comprehensive and complete reference for basic quantum mechanics and physical theories of time travel, thereby enabling the keen user to embark upon further research into these fascinating areas of study.</p>
+<a class="only-dark reference internal image-reference" href="_images/diagram_spacetime_minkowski-dark.png"><img alt="_images/diagram_spacetime_minkowski-dark.png" class="only-dark align-center" src="_images/diagram_spacetime_minkowski-dark.png" style="width: 438.84px; height: 368.64px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/diagram_spacetime_minkowski-light.png"><img alt="_images/diagram_spacetime_minkowski-light.png" class="only-light align-center" src="_images/diagram_spacetime_minkowski-light.png" style="width: 438.84px; height: 368.64px;" />
+</a>
+</section>
+</section>
+<section id="package-installation-and-structure">
+<h2>Package installation and structure<a class="headerlink" href="#package-installation-and-structure" title="Link to this heading">#</a></h2>
+<p>Local installation of Qhronology from <a class="reference external" href="https://pypi.org/project/qhronology/">PyPI</a> can be accomplished using <code class="docutils literal notranslate"><span class="pre">pip</span></code> (<a class="reference external" href="https://pip.pypa.io/">website</a>, <a class="reference external" href="https://github.com/pypa/pip">repository</a>) via your operating system’s command line, e.g.,</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>qhronology
+</pre></div>
+</div>
+<p>You may also be able to use an alternative package manager of your choice.</p>
+<p>After installation, the package can simply be imported in Python in the usual way. One suggestion is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">qhronology</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">qy</span>
+</pre></div>
+</div>
+<p>The package has the following directory structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>qhronology
+├──quantum
+│  ├──circuits.py
+│  ├──gates.py
+│  ├──prescriptions.py
+│  └──states.py
+├──mechanics
+│  ├──matrices.py
+│  ├──operations.py
+│  └──quantities.py
+└──utilities (intended for internal use only)
+   ├──classification.py
+   ├──diagrams.py
+   ├──helpers.py
+   ├──objects.py
+   └──symbolics.py
+</pre></div>
+</div>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
+<p>Within the package and documentation, SymPy and NumPy are imported in their conventional manners:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<p>Qhronology is compatible with the following package versions (from <a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/requirements.txt">requirements.txt</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sympy</span><span class="o">&gt;=</span><span class="mf">1.12</span>
+<span class="n">numpy</span><span class="o">&gt;=</span><span class="mf">1.26</span>
+</pre></div>
+</div>
+<p>These are the earliest versions with which the current release has been tested, but older versions may also be compatible. It also requires</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span><span class="o">&gt;=</span><span class="mf">3.11</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<section id="generation-of-a-bell-state">
+<h3><a class="reference internal" href="text/examples/algorithms/generation_bell.html#eg-generation-bell"><span class="std std-ref">Generation of a Bell state</span></a><a class="headerlink" href="#generation-of-a-bell-state" title="Link to this heading">#</a></h3>
+<p>Generation of the <span class="math notranslate nohighlight">\(\ket{\Bell^+}\)</span> Bell state from primitive <span class="math notranslate nohighlight">\(\ket{0}\)</span> states:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Not</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
+
+<span class="c1"># Input</span>
+<span class="n">zero_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">])],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Gates</span>
+<span class="n">HI</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">CN</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Circuit</span>
+<span class="n">generator</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">zero_state</span><span class="p">,</span> <span class="n">zero_state</span><span class="p">],</span> <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">HI</span><span class="p">,</span> <span class="n">CN</span><span class="p">])</span>
+<span class="n">generator</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+
+<span class="c1"># Output</span>
+<span class="n">phi_plus</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Φ+&quot;</span><span class="p">)</span>
+
+<span class="c1"># Results</span>
+<span class="n">phi_plus</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="_images/text_examples_algorithms_generation_bell-dark.png"><img alt="_images/text_examples_algorithms_generation_bell-dark.png" class="only-dark align-left" src="_images/text_examples_algorithms_generation_bell-dark.png" style="width: 162.0px; height: 56.400000000000006px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/text_examples_algorithms_generation_bell-light.png"><img alt="_images/text_examples_algorithms_generation_bell-light.png" class="only-light align-left" src="_images/text_examples_algorithms_generation_bell-light.png" style="width: 162.0px; height: 56.400000000000006px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phi_plus</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|Φ+⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩</span>
+</pre></div>
+</div>
+</section>
+<section id="quantum-teleportation">
+<h3><a class="reference internal" href="text/examples/algorithms/teleportation.html#eg-teleportation"><span class="std std-ref">Quantum teleportation</span></a><a class="headerlink" href="#quantum-teleportation" title="Link to this heading">#</a></h3>
+<p>Quantum teleportation of an arbitrary qubit <span class="math notranslate nohighlight">\(\ket{\psi} = a\ket{0} + b\ket{1}\)</span>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Not</span><span class="p">,</span> <span class="n">Measurement</span><span class="p">,</span> <span class="n">Pauli</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.matrices</span><span class="w"> </span><span class="kn">import</span> <span class="n">ket</span>
+
+<span class="c1"># Input</span>
+<span class="n">teleporting_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
+    <span class="n">spec</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]],</span>
+    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
+    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)],</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">zero_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;0,0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Gates</span>
+<span class="n">IHI</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ICN</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">CNI</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">HII</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">IMI</span> <span class="o">=</span> <span class="n">Measurement</span><span class="p">(</span>
+    <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+<span class="n">MII</span> <span class="o">=</span> <span class="n">Measurement</span><span class="p">(</span>
+    <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+<span class="n">ICX</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">CIZ</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Circuit</span>
+<span class="n">teleporter</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">teleporting_state</span><span class="p">,</span> <span class="n">zero_state</span><span class="p">],</span>
+    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">IHI</span><span class="p">,</span> <span class="n">ICN</span><span class="p">,</span> <span class="n">CNI</span><span class="p">,</span> <span class="n">HII</span><span class="p">,</span> <span class="n">IMI</span><span class="p">,</span> <span class="n">MII</span><span class="p">,</span> <span class="n">ICX</span><span class="p">,</span> <span class="n">CIZ</span><span class="p">],</span>
+    <span class="n">traces</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">teleporter</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Output</span>
+<span class="n">teleported_state</span> <span class="o">=</span> <span class="n">teleporter</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ&quot;</span><span class="p">)</span>
+
+<span class="c1"># Results</span>
+<span class="n">teleporting_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">teleported_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">teleporting_state</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">teleported_state</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">teleporting_state</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">teleported_state</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">teleporter</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="_images/text_examples_algorithms_teleportation-dark.png"><img alt="_images/text_examples_algorithms_teleportation-dark.png" class="only-dark align-left" src="_images/text_examples_algorithms_teleportation-dark.png" style="width: 432.8px; height: 96.80000000000001px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/text_examples_algorithms_teleportation-light.png"><img alt="_images/text_examples_algorithms_teleportation-light.png" class="only-light align-left" src="_images/text_examples_algorithms_teleportation-light.png" style="width: 432.8px; height: 96.80000000000001px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">teleporting_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ⟩ = a|0⟩ + b|1⟩</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">teleported_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">ρ = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">teleporting_state</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">teleported_state</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">teleporting_state</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">teleported_state</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</section>
+<section id="unproven-theorem-paradox">
+<h3><a class="reference internal" href="text/examples/ctcs/unproven.html#eg-unproven"><span class="std std-ref">Unproven theorem paradox</span></a><a class="headerlink" href="#unproven-theorem-paradox" title="Link to this heading">#</a></h3>
+<p>Computing resolutions to the unproven theorem paradox according to various prescriptions of quantum time travel (D-CTCs and P-CTCs):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span><span class="p">,</span> <span class="n">Swap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.prescriptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCTC</span><span class="p">,</span> <span class="n">DCTC</span><span class="p">,</span> <span class="n">PCTC</span>
+
+<span class="c1"># Input</span>
+<span class="n">mathematician_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">])],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="n">book_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">])],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Gates</span>
+<span class="n">NIC</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">CNI</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">IS</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># CTC</span>
+<span class="n">unproven</span> <span class="o">=</span> <span class="n">QuantumCTC</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">mathematician_state</span><span class="p">,</span> <span class="n">book_state</span><span class="p">],</span>
+    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">NIC</span><span class="p">,</span> <span class="n">CNI</span><span class="p">,</span> <span class="n">IS</span><span class="p">],</span>
+    <span class="n">systems_respecting</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">unproven</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+
+<span class="c1"># Output</span>
+<span class="c1"># D-CTCs</span>
+<span class="n">unproven_DCTC</span> <span class="o">=</span> <span class="n">DCTC</span><span class="p">(</span><span class="n">circuit</span><span class="o">=</span><span class="n">unproven</span><span class="p">)</span>
+<span class="n">unproven_DCTC_respecting</span> <span class="o">=</span> <span class="n">unproven_DCTC</span><span class="o">.</span><span class="n">state_respecting</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ_D&quot;</span><span class="p">)</span>
+<span class="n">unproven_DCTC_violating</span> <span class="o">=</span> <span class="n">unproven_DCTC</span><span class="o">.</span><span class="n">state_violating</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;τ_D&quot;</span><span class="p">)</span>
+
+<span class="c1"># P-CTCs</span>
+<span class="n">unproven_PCTC</span> <span class="o">=</span> <span class="n">PCTC</span><span class="p">(</span><span class="n">circuit</span><span class="o">=</span><span class="n">unproven</span><span class="p">)</span>
+<span class="n">unproven_PCTC_respecting</span> <span class="o">=</span> <span class="n">unproven_PCTC</span><span class="o">.</span><span class="n">state_respecting</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ_P&quot;</span><span class="p">)</span>
+<span class="n">unproven_PCTC_violating</span> <span class="o">=</span> <span class="n">unproven_PCTC</span><span class="o">.</span><span class="n">state_violating</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;τ_P&quot;</span><span class="p">)</span>
+
+<span class="c1"># Results</span>
+<span class="n">unproven_DCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">unproven_DCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">unproven_PCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">unproven_PCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unproven</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="_images/text_examples_ctcs_unproven-dark.png"><img alt="_images/text_examples_ctcs_unproven-dark.png" class="only-dark align-left" src="_images/text_examples_ctcs_unproven-dark.png" style="width: 175.20000000000002px; height: 80.80000000000001px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/text_examples_ctcs_unproven-light.png"><img alt="_images/text_examples_ctcs_unproven-light.png" class="only-light align-left" src="_images/text_examples_ctcs_unproven-light.png" style="width: 175.20000000000002px; height: 80.80000000000001px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unproven_DCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">ρ_D = g|0,0⟩⟨0,0| + (1 - g)|1,1⟩⟨1,1|</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unproven_DCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">τ_D = g|0⟩⟨0| + (1 - g)|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unproven_PCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ_P⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unproven_PCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h2>
+<p>The latest version of the documentation for the package is available at:</p>
+<ul class="simple">
+<li><p>The official website: <a class="reference external" href="https://qhronology.com">https://qhronology.com</a></p></li>
+<li><p>The official PDF document: <a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/docs/_build/latex/Qhronology.pdf">Qhronology.pdf</a></p></li>
+</ul>
+<p>Both of these are built using <a class="reference external" href="https://www.sphinx-doc.org">Sphinx</a> (<a class="reference external" href="https://github.com/sphinx-doc/sphinx">repository</a>), with their shared source files residing within the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory at the root of the project’s repository. This includes all project text and artwork. Please see <a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/docs/shell-sphinx.nix">shell-sphinx.nix</a> within that directory for a list of dependencies required to build both documentation targets. Note that a full LaTeX system installation from 2024 or later is required to build the project’s PDF documentation, figures, and artwork (including the logo). Also note that the documentation’s rendered circuit diagrams (generated from the package itself) were created using a custom LaTeX template (<a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/docs/source/figures/render-text.tex">render-text.tex</a>) and associated shell script (<a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/docs/source/figures/render-text.sh">render-text.sh</a>).</p>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading">#</a></h2>
+<section id="package">
+<h3>Package<a class="headerlink" href="#package" title="Link to this heading">#</a></h3>
+<p>The Qhronology package (including any distributions, both source and built, and its source code) is dual-licensed, and you may only use it under the terms of a relevant license agreement. The particular one which applies to you depends on your use of the package and can be summarized as follows:</p>
+<ul class="simple">
+<li><p><strong>Non-commercial use</strong>: You are free to copy, distribute, and transmit Qhronology for non-commercial purposes. Non-commercial use is subject to the terms of version 3 of the GNU Affero General Public License (AGPL-3.0-or-later). Redistribution of the software in accordance with this license must only be done under the same non-commercial terms. The AGPL in its entirety can be viewed online at <a class="reference external" href="https://www.gnu.org/licenses/agpl-3.0.html">https://www.gnu.org/licenses/agpl-3.0.html</a>. A copy of the license is also included with the project’s source code: <a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/licenses/AGPL-3.0-or-later.txt">AGPL-3.0-or-later.txt</a>.</p></li>
+<li><p><strong>Commercial use</strong>: Any use of Qhronology for a commercial purpose is subject to and requires a special license. If you intend to use the package in such a manner, please contact <a class="reference external" href="mailto:lachlanbishop&#37;&#52;&#48;protonmail&#46;com">lachlanbishop<span>&#64;</span>protonmail<span>&#46;</span>com</a> to arrange a license agreement.</p></li>
+</ul>
+<section id="guidelines-on-distinguishing-use">
+<h4>Guidelines on distinguishing use<a class="headerlink" href="#guidelines-on-distinguishing-use" title="Link to this heading">#</a></h4>
+<p>Whether a particular use of Qhronology is considered to be either “non-commercial” or “commercial” depends on the use, not the user, and some guidelines are set out below:</p>
+<ul class="simple">
+<li><p><em>Non-commercial</em> use is anticipated to primarily involve students and teachers who may wish to use Qhronology at home and/or an accredited academic institution (e.g., school, university, etc.) for the purpose of education, without intending to seek any commercial advantage or financial gain. This includes teachers in schools and universities where tuition fees are charged, so long as the use of Qhronology is limited to personal or individual classroom teaching or public academic research.</p></li>
+<li><p><em>Commercial</em> use is anticipated to primarily involve publishers, online schools, online universities, and other organizations (both for-profit and non-profit) who wish to use Qhronology to support activities that are intended toward securing a commercial advantage or the generation of revenue or monetary compensation. This includes, but is not limited to, any of the following:</p>
+<ul>
+<li><p>The use of Qhronology (and its source code) to generate or develop educational materials or resources which will be sold in exchange for a fee (including course or tuition fees) or (if given away for free) which are used to gain a commercial advantage for the user.</p></li>
+<li><p>The provision of training, support or editorial services that use or reference Qhronology in exchange for a fee.</p></li>
+<li><p>The use of Qhronology (and its source code) within a non-academic ebook, textbook, or journal, whether or not the publication is distributed for a fee. Please note that the use of Qhronology in publicly available academic papers and conferences is considered to be non-commercial use and so does not require a commercial license agreement.</p></li>
+<li><p>The use of Qhronology (and its source code) to assist in securing advertising or sponsorship revenues.</p></li>
+<li><p>The use of Qhronology (and its source code) for training machine learning models or artificial intelligence systems, including its incorporation into any dataset used for such purposes.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="id4">
+<h3>Documentation<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>The Qhronology project’s accompanying documentation, including its text, images, scripts, code snippets, compiled outputs (e.g., HTML and PDF), and source files, are published under the CC-BY-NC-ND-4.0 license. For more information about your rights and restrictions under this license, please visit <a class="reference external" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>. A copy of the license is provided with the project’s source code: <a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/licenses/CC-BY-NC-ND-4.0.txt">CC-BY-NC-ND-4.0.txt</a>.</p>
+</section>
+<section id="other">
+<h3>Other<a class="headerlink" href="#other" title="Link to this heading">#</a></h3>
+<p>External assets licensed for distribution with the project consist of the following:</p>
+<ul class="simple">
+<li><p>Fonts - applicable fonts are redistributed (vendored and embedded) as per the terms of the SIL Open Font License: <a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/licenses/OFL-1.1.txt">OFL-1.1.txt</a></p></li>
+<li><p>MathJax - redistributed (vendored) as per the terms of the Apache License, Version 2.0: <a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/licenses/Apache-2.0.txt">Apache-2.0.txt</a></p></li>
+<li><p>three.js - redistributed (vendored) as per the terms of the MIT License: <a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/licenses/MIT.txt">MIT.txt</a></p></li>
+</ul>
+</section>
+</section>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h2>
+<p>Contributions to Qhronology (both the package and its documentation), including any features, fixes, and suggestions, are welcome provided they are compatible with the project’s concept and vision, while also conforming to its style. Please see <a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/CONTRIBUTING">CONTRIBUTING</a> for more details about contributing to the project. Feel free to contact <a class="reference external" href="mailto:lachlanbishop&#37;&#52;&#48;protonmail&#46;com">lachlanbishop<span>&#64;</span>protonmail<span>&#46;</span>com</a> to discuss any significant additions or changes you wish to propose.</p>
+</section>
+<section id="citation">
+<h2>Citation<a class="headerlink" href="#citation" title="Link to this heading">#</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@software{bishop_qhronology_2025,
+   title = {{Qhronology: A Python package for resolving quantum time-travel paradoxes and performing general quantum information processing &amp; computation}},
+   author = {Bishop, Lachlan G.},
+   year = {2025},
+   url = {https://github.com/lgbishop/qhronology},
+}
+</pre></div>
+</div>
+</section>
+<section id="possible-future-work">
+<h2>Possible future work<a class="headerlink" href="#possible-future-work" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Package:</p>
+<ul>
+<li><p>Write proper (more formal) unit tests.</p></li>
+<li><p>Permit more intuitive usage (i.e., summation and multiplication) of quantum objects via operator overloading.</p></li>
+<li><p>Tighter integration with SymPy’s <code class="docutils literal notranslate"><span class="pre">pprint()</span></code> functionality for enhanced state and gate printing.</p></li>
+<li><p>Implement T-CTCs (the <em>transition-probabilities</em> quantum model of time travel).</p></li>
+<li><p>Create the ability for circuit visualizations to target <em>Quantikz</em> LaTeX output.</p>
+<ul>
+<li><p>Automatically rasterize using available (local) LaTeX installation.</p></li>
+</ul>
+</li>
+<li><p>Implement the permutation (PERM) gate.</p></li>
+</ul>
+</li>
+<li><p>Documentation:</p>
+<ul>
+<li><p>More examples.</p></li>
+<li><p>Website:</p>
+<ul>
+<li><p>Fix citation numbering.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Theory:</p>
+<ul>
+<li><p>Expand section on the Cauchy problem near CTCs.</p></li>
+<li><p>Add a section on the general theory of relativity and the associated geometric theories of CTCs.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Home</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="text/theory/part-theory.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Theory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-computing-simulations">Quantum computing simulations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-resolutions-to-antichronological-time-travel-paradoxes">Quantum resolutions to antichronological time-travel paradoxes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-circuit-visualization">Quantum circuit visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerous-examples">Numerous examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensive-documentation">Extensive documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-theory">Foundational theory</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-installation-and-structure">Package installation and structure</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generation-of-a-bell-state"><span class="xref std std-ref">Generation of a Bell state</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-teleportation"><span class="xref std std-ref">Quantum teleportation</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unproven-theorem-paradox"><span class="xref std std-ref">Unproven theorem paradox</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package">Package</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guidelines-on-distinguishing-use">Guidelines on distinguishing use</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other">Other</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">Citation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#possible-future-work">Possible future work</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

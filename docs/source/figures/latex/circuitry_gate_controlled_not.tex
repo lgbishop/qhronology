@@ -1,0 +1,31 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\noindent\begin{minipage}{0.35\linewidth}
+\hfill
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \qw & \ctrl{1} & \qw \\
+    \qw & \targ{} & \qw
+\end{quantikz}
+\end{minipage}%
+\begin{minipage}{0.65\linewidth}
+$\quad \iff \quad \Controlled{\NOT}[0][][1] = \ket{0}\bra{0} \otimes \Identity + \ket{1}\bra{1} \otimes \Pauli_{x}$
+\end{minipage}
+\end{document}

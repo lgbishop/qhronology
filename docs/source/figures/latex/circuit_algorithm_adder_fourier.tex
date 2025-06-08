@@ -1,0 +1,31 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+\usepackage{geometry}
+\geometry{
+paperwidth=18cm,
+paperheight=6cm,
+margin=0cm
+}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={0.75*\QuantikzSeparationRow cm, between origins}]%[transparent]
+    \lstick{$\ket{x_{N-1}}$} & \qw & \gate[8]{\text{CPHASE}} & \qw & \qw \rstick{$\ket{x_{N-1}}$} \\
+    \lstick{$\ket{x_{N-2}}$} & \qw & \qw & \qw & \qw \rstick{$\ket{x_{N-2}}$} \\
+    \lstick{$\vdots\quad$} & \qw & \qw & \qw & \qw \rstick{$\quad\vdots$} \\
+    \lstick{$\ket{x_0}$} & \qw & \qw & \qw & \qw \rstick{$\ket{x_0}$} \\[0.25*\QuantikzSeparationRow cm]
+    \lstick{$\ket{y_{N-1}}$} & \gate[4]{F} \hphantom{F^{-1}} & & \gate[4]{F^{-1}} \hphantom{F} & \qw \rstick{$\ket{s_{N-1}}$} \\
+    \lstick{$\ket{y_{N-2}}$} & \qw & \qw & \qw & \qw \rstick{$\ket{s_{N-2}}$} \\
+    \lstick{$\vdots\quad$} & \qw & \qw & \qw & \qw \rstick{$\quad\vdots$} \\
+    \lstick{$\ket{y_0}$} & \qw & \qw & \qw & \qw \rstick{$\ket{s_0}$}
+\end{quantikz}
+\end{document}

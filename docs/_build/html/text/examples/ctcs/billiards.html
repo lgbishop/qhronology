@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Billiard-ball paradox &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/examples/ctcs/billiards';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Manual P-CTC" href="postselected.html" />
+    <link rel="prev" title="Unproven-theorem paradox" href="unproven.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum algorithms and protocols</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_bell.html">Generation of a Bell state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_w.html">Generation of a W state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/cnot.html">CNOT (controlled-NOT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/toffoli.html">Toffoli decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_half.html">Half adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_full.html">Full adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_ripple.html">Ripple-carry adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_ripple_iterative.html">Ripple-carry adder (iterative)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_lookahead.html">Carry-lookahead adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_fourier.html">Fourier transform adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/teleportation.html">Quantum teleportation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/pswap.html">PSWAP (power-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/iswap.html">iSWAP (imaginary-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/tomography_strong.html">Quantum state tomography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/tomography_weak.html">Quantum state tomography via weak measurements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum closed timelike curves</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="grandfather.html">Grandfather paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unproven.html">Unproven-theorem paradox</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Billiard-ball paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postselected.html">Manual P-CTC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecp.html">Equivalent-circuit picture for D-CTCs</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../part-examples.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Billiard-ball paradox</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="billiard-ball-paradox">
+<span id="eg-billiards"></span><h1>Billiard-ball paradox<a class="headerlink" href="#billiard-ball-paradox" title="Link to this heading">#</a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
+<p>In this example, a quantum model of the billiard-ball paradox (see <a class="reference internal" href="../../theory/time-travel/classical/particles.html#sec-billiards"><span class="std std-ref">Time-travelling billiard balls</span></a>) is studied, with the analysis closely following the work in <span id="id1">[<a class="reference internal" href="../../theory/time-travel/quantum/comparison.html#cite-1-bishop-time-traveling-2021" title="L. G. Bishop, F. Costa, and T. C. Ralph, “Time-traveling billiard-ball clocks: A quantum model”, Physical Review A, 103(4):042223, April 2021. https://link.aps.org/doi/10.1103/PhysRevA.103.042223, doi:10.1103/PhysRevA.103.042223">10</a>]</span>. The basic idea is as follows:</p>
+<ol class="lowerroman simple">
+<li><p>We consider a simplified <span class="math notranslate nohighlight">\((1+1)\)</span>-dimensional version of the classical problem (see <a class="reference internal" href="../../theory/time-travel/classical/particles.html#fig-diagram-billiard-ball-paradox"><span class="std std-numref">Figure 3</span></a>) in which, by virtue of the spacetime dimensionality and geometry of the CTC-wormhole, there are <em>only</em> two possible classical paths.</p></li>
+<li><p>This problem is mapped to a quantum circuit representation and we use a vacuum state to allow the particles to be present or absent from particular paths.</p></li>
+<li><p>An internal degree of freedom that operates like a clock is included into the particle’s quantum description, meaning that a measurement of the clock’s final state can reveal its path’s proper time and therefore which of the two classical alternatives was realized.</p></li>
+</ol>
+<p>It is emphasized that the scenario presented here being effectively <span class="math notranslate nohighlight">\((1+1)\)</span>-dimensional [point (i)] is not a characteristic specified by Friedman et al. in their original study <span id="id2">[<a class="reference internal" href="../../theory/time-travel/classical/particles.html#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>]</span>, but is part of the modelling of the paradox. In addition, the model is based upon two distinct mechanisms. The first of these [point (ii)] involves the introduction of a “vacuum” state: by considering such a state to represent the absence of a billiard ball, we can use it to allow the associated clock to either travel unperturbed (if there is nothing, i.e., a vacuum, in the CTC) or otherwise be scattered into the CTC (if the billiard ball’s future self is trapped inside the CTC). The second mechanism [point (iii)] of the model consists of an internal degree of freedom which is incorporated into the billiard ball’s quantum description. Using this modification, we can measure the proper time of the model’s distinct classical evolutions, which is to say that the billiard ball effectively functions like a clock. This allows us to operationally extract which-way information, i.e., determine which history the billiard ball experienced. This is necessary to give operational meaning to the probabilities associated with the two classical paths, which are indistinguishable by position measurements alone.</p>
+<p>It is important to reiterate that it is only the functionality of the clock which makes the two evolutions of the billiard-ball paradox distinguishable. In the Friedman et al. conjecture <span id="id3">[<a class="reference internal" href="../../theory/time-travel/classical/particles.html#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>]</span>, the use of a semiclassical sum-over-histories approach is only meaningful when the evolutions <span class="math notranslate nohighlight">\(\EvolutionNoninteracting\)</span> and <span class="math notranslate nohighlight">\(\EvolutionInteracting\)</span> are treated distinctly <em>a priori</em>. This enables one to assign evolution probabilities without the need for conventional which-way information. It should be stressed that Friedman et al. do not provide an operational prescription on how to associate paths with probability, which is the reason why we employ a quantum clock.</p>
+<p>One of the open questions in the study of the quantum mechanics of time travel that can be investigated using this model is whether a quantum description does indeed address the issue of evolution indeterminism. As we shall see, a parametrization of the solutions in the D-CTCs description is observed. Although usually interpreted as solution multiplicity, this arises naturally as a choice of initial state in the CTC. Alternatively, in P-CTCs, only one quantum state is offered by the prescription as a solution to the paradox. This state takes the form of a pure superposition of the clock having evolved and not evolved on the CTC during its history through the time machine region. A focus of these P-CTC findings is how this superposition lends credence to the semiclassical billiard-ball conjecture of Friedman et al. in <span id="id4">[<a class="reference internal" href="../../theory/time-travel/classical/particles.html#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>]</span>. The well-known problem of how P-CTCs place constraints on the initial data (where such restrictions depend on the future of the time-travelling state), and how this limits the actions that one is able to perform in the billiard-ball interaction, is also discussed.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/diagram_billiard-ball_clocks-dark.png"><img alt="A spatial diagram of the simplified billiard-ball paradox." src="../../../_images/diagram_billiard-ball_clocks-dark.png" style="width: 608.04px; height: 361.44px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/diagram_billiard-ball_clocks-light.png"><img alt="A spatial diagram of the simplified billiard-ball paradox." src="../../../_images/diagram_billiard-ball_clocks-light.png" style="width: 608.04px; height: 361.44px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-diagram-billiard-ball-clocks" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/diagram_billiard-ball_clocks-light.png"><img alt="A spatial diagram of the simplified billiard-ball paradox." src="../../../_images/diagram_billiard-ball_clocks-light.png" style="width: 608.04px; height: 361.44px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 27 </span><span class="caption-text">A simplified, <span class="math notranslate nohighlight">\((1+1)\)</span>-dimensional version of the billiard-ball paradox (<a class="reference internal" href="../../theory/time-travel/classical/particles.html#fig-diagram-billiard-ball-paradox"><span class="std std-numref">Figure 3</span></a>). This diagram visualizes the basic idea of the model under study in the reference frame of the clock. (a) The history where the clock travels through the CTC-wormhole region with no interaction; (b) the history of a clock which elastically interacts with itself. The times as measured by the clock at specific points along the histories are given in brackets next to their analogue clock symbols. The clocks begin at time <span class="math notranslate nohighlight">\(\Time=0\)</span> and, due to their initial velocity, measure the proper times <span class="math notranslate nohighlight">\(\Time_\EvolutionNoninteracting=\TimeInbound+\TimeOutbound\)</span> and <span class="math notranslate nohighlight">\(\Time_\EvolutionInteracting=\TimeInbound+\TimeDelta+\TimeOutbound = \Time_\EvolutionNoninteracting + \TimeDelta\)</span> for evolutions <span class="math notranslate nohighlight">\(\EvolutionNoninteracting\)</span> and <span class="math notranslate nohighlight">\(\EvolutionInteracting\)</span>, respectively. This means that we denote the duration of the segment on the CTC in evolution <span class="math notranslate nohighlight">\(\EvolutionInteracting\)</span> to be <span class="math notranslate nohighlight">\(\TimeDelta\)</span>, while the inbound and outbound times to and from the wormhole axis (dashed line) are <span class="math notranslate nohighlight">\(\TimeInbound\)</span> and <span class="math notranslate nohighlight">\(\TimeOutbound\)</span>, respectively. It is important to note that the final position bears no information about the path the ball has taken.</span><a class="headerlink" href="#fig-diagram-billiard-ball-clocks" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="model">
+<h3>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h3>
+<p>A quantum “billiard ball” can be modelled simply as a quantum particle, described by a qudit state, that moves though a <span class="math notranslate nohighlight">\((1+1)\)</span>-dimensional spacetime. For the billiard-ball paradox, such a spacetime consists of a time-machine wormhole, the mouths of which appear and disappear in such a way as to allow only the two desired paths (see <a class="reference internal" href="#fig-diagram-billiard-ball-clocks"><span class="std std-numref">Figure 27</span></a>). We use the quantum billiard ball’s qudit degree of freedom to encode a “clock”, as described in the subsequent section. It is important to note that the particle’s position degree of freedom begins as a semiclassical wave packet, with negligible probability that it falls into the time machine by its own free evolution. This is a significant point, as it allows us to justify both dropping position from the particle’s description and the consideration of only the two trajectories <span class="math notranslate nohighlight">\(\EvolutionNoninteracting\)</span> and <span class="math notranslate nohighlight">\(\EvolutionInteracting\)</span>. It also connects with the WKB approximation mentioned by Friedman et al., who propose to apply the sum-over-histories only to the semiclassical trajectories (thus excluding trajectories which pass into the time machine without collision).</p>
+<p>For simplicity and rigour, we work in <span class="math notranslate nohighlight">\((1+1)\)</span>-dimensions, which means the only interaction that can occur between the billiard-ball clock’s future and past selves is a complete exchange of momentum. This is a useful characteristic, as a quantum SWAP gate between two qudit systems perfectly replicates this action within the quantum circuit framework. Additionally, to allow the billiard-ball paradox for the clock to function as intended, we also require the time machine to be dynamic. This means that, at least in the geometrical picture, the mouths of the wormhole appear and disappear at exactly the right points in the spacetime to allow the clock to evolve in two distinct ways within the chronology-violating region.</p>
+<p>It is also important to note that in practice, the methods discussed in <a class="reference internal" href="../../theory/time-travel/classical/CTCs.html#sec-wormholes"><span class="std std-ref">Wormhole-based time machines</span></a> are likely incapable of constructing a time machine precisely to this required specification. However, as the physical origin of this time machine is not relevant to the quantum mechanics of the problem at hand, we simply do not concern ourselves with such details. We therefore proceed under the assumption that CTCs exactly satisfying our conditions may not strictly be physically realizable, but it is nevertheless the consequences of their existence, not their existence itself, in which we are interested. In addition to this, it is important to note that, due to our abstracting the geometry of the problem away, the findings from this quantum model are independent of the specific kind of CTC (such as those in, e.g., the wormhole-based time machine, the Gödel universe, the Kerr solution, etc.) employed to facilitate the requisite time-travel mechanism. In the billiard-ball paradox’s original, motivating formulation (<a class="reference internal" href="../../theory/time-travel/classical/particles.html#sec-billiards"><span class="std std-ref">Time-travelling billiard balls</span></a>), the CTCs are generated specifically by a wormhole-based time machine, but this fact has no consequence in our abstract, quantum formulation of the paradox—the time-travel trajectories in the quantum picture are CTCs in perhaps the purest sense of the concept—and so any CTC possessing the necessary characteristics will suffice.</p>
+<p>In any case, the resulting non-collisional evolution <span class="math notranslate nohighlight">\(\EvolutionNoninteracting\)</span> from this specification of the time machine is trivial: the particle remains stationary as the past wormhole mouth appears and disappears behind it, while the future mouth later appears and disappears in front of the particle. Nothing passes in or out of the time machine. On the other hand, in the collisional evolution <span class="math notranslate nohighlight">\(\EvolutionInteracting\)</span>, a moving particle emerges from the appearing past mouth and strikes the stationary particle, transferring all of its momentum to it. The struck particle then travels into the future mouth that appears directly in front of it, while the other particle becomes stationary and remains so in place of its collision partner. While these trajectories are classical, the particle can be in superpositions of being absent or present on either path. It is stressed that the particle’s position degree of freedom factors out of the evolution because the two classical trajectories coincide in final position and velocity. Therefore, the only relevant degrees of freedom are the internal states of the clock.</p>
+<p>It is also important to note that the incoming past and outgoing future momenta of the billiard-ball clock must exactly match. Assuming a perfectly elastic collision, the combination of the dynamical time machine and the law of conservation of momentum collectively constrains the velocity of the billiard-ball clock on the CTC to a single value (determined by both the geometry of the wormhole and mass of the billiard ball). As a result, there is no need to restrict the paths of the clock (e.g., with waveguides) or its initial velocity because the two distinct, desired histories of our model arise naturally as the <em>only</em> two paths through the spacetime. With this, we can represent the two evolutions of our clock in its reference frame through the chronology-violating region as per <a class="reference internal" href="#fig-diagram-billiard-ball-clocks"><span class="std std-numref">Figure 27</span></a>, where we denote the proper travel time of the clock through the wormhole to be exactly <span class="math notranslate nohighlight">\(\TimeDelta\)</span>.</p>
+</section>
+<section id="quantum-clocks">
+<h3>Quantum clocks<a class="headerlink" href="#quantum-clocks" title="Link to this heading">#</a></h3>
+<p>For our analysis, we employ the <span class="math notranslate nohighlight">\(\Dimension\)</span>-level, pure, equiprobabilistic quantum <em>clock</em> state</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-vector">
+<span class="eqno">(387)<a class="headerlink" href="#equation-eq-clock-vector" title="Link to this equation">#</a></span>\[\ket{\qclock} = \frac{1}{\sqrt{\Dimension}}\sum_{n=1}^{\Dimension}\ket{n}.\]</div>
+<p>Here, the number states <span class="math notranslate nohighlight">\(\{\ket{n}\}_{n=1}^\Dimension\)</span>, which obey orthonormality via the condition <span class="math notranslate nohighlight">\(\braket{m}{n} = \delta_{nm}\)</span>, collectively form a basis for the <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional Hilbert space in which the clock resides. With this, let us define the clock Hamiltonian as</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-hamiltonian">
+<span class="eqno">(388)<a class="headerlink" href="#equation-eq-clock-hamiltonian" title="Link to this equation">#</a></span>\[\OperatorHamiltonian_\Clock = \sum_{n=1}^{\Dimension} \Energy_n\ket{n}\bra{n}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Energy_n\)</span> is the energy of the <span class="math notranslate nohighlight">\(n\)</span>-th eigenstate <span class="math notranslate nohighlight">\(\ket{n}\)</span>. Time evolution of a state over the times <span class="math notranslate nohighlight">\(\TimeInitial\rightarrow\TimeFinal\)</span> is then generated by the time-evolution unitary, which in its standard form may be written</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-evolution">
+<span class="eqno">(389)<a class="headerlink" href="#equation-eq-clock-evolution" title="Link to this equation">#</a></span>\[\Rotation(\TimeFinal;\TimeInitial) \equiv \Rotation(\TimeFinal-\TimeInitial) = \e^{-\eye\OperatorHamiltonian_\Clock(\TimeFinal-\TimeInitial)/\hbar}.\]</div>
+<p>This is written using the standard notation for the rotation operator <span class="math notranslate nohighlight">\(\Rotation\)</span> because the transformation of a clock state produced by “time evolution” <em>is</em> simply a standard rotation operation. Given this form, the evolution of an initial clock state <span class="math notranslate nohighlight">\(\ket{\qclock(\Time)}\)</span> (at time <span class="math notranslate nohighlight">\(\Time\)</span>) to a later state <span class="math notranslate nohighlight">\(\ket{\qclock(\Time+\TimeDelta)}\)</span> (at time <span class="math notranslate nohighlight">\(\Time+\TimeDelta\)</span>) is simply</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-ticked">
+<span class="eqno">(390)<a class="headerlink" href="#equation-eq-clock-ticked" title="Link to this equation">#</a></span>\[\ket{\qclock(\Time+\TimeDelta)} = \Rotation(\TimeDelta)\ket{\qclock(\Time)} = \e^{-\eye\OperatorHamiltonian_\Clock\TimeDelta/\hbar}\ket{\qclock(\Time)}.\]</div>
+<p>Expanding <a class="reference internal" href="#equation-eq-clock-evolution">(389)</a> via a Taylor series and subsequently using the Hamiltonian expansion <a class="reference internal" href="#equation-eq-clock-hamiltonian">(388)</a> allows us to express an evolved state <span class="math notranslate nohighlight">\(\ket{\qclock(\Time)}\)</span> in terms of its constituent basis states <span class="math notranslate nohighlight">\(\{\ket{n}\}_{n=1}^\Dimension\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-evolved">
+<span class="eqno">(391)<a class="headerlink" href="#equation-eq-clock-evolved" title="Link to this equation">#</a></span>\[\ket{\qclock(\Time)} = \frac{1}{\sqrt{\Dimension}}\sum_{n=1}^{\Dimension}\e^{-\eye \Energy_n \Time/\hbar}\ket{n}.\]</div>
+<p>The overlap between two states at different stages of time evolution is easily calculable as</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-overlap">
+<span class="eqno">(392)<a class="headerlink" href="#equation-eq-clock-overlap" title="Link to this equation">#</a></span>\[\braket{\qclock(\Time)}{\qclock(\Time+\TimeDelta)} = \frac{1}{\Dimension} \sum_{n=1}^{\Dimension} \e^{-\eye \Energy_n\TimeDelta/\hbar},\]</div>
+<p>which quantifies the distinguishability (i.e., coherence) between the two clock states. Now, given our freedom of choice in specifying the energies without losing generality or functionality of the clock, we may choose them to be equally spaced such that</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-0">
+<span class="eqno">(393)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-0" title="Link to this equation">#</a></span>\[\EnergyDelta = \Energy_n - \Energy_{n-1}.\]</div>
+<p>Accordingly, the <span class="math notranslate nohighlight">\(n\)</span>-th energy <span class="math notranslate nohighlight">\(\Energy_n\)</span> can be expressed in terms of the ground state <span class="math notranslate nohighlight">\(\Energy_1\)</span> and the spacing <span class="math notranslate nohighlight">\(\EnergyDelta\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-energies">
+<span class="eqno">(394)<a class="headerlink" href="#equation-eq-clock-energies" title="Link to this equation">#</a></span>\[\Energy_n = \Energy_1 + (n-1)\EnergyDelta.\]</div>
+<p>From this, we introduce the orthogonalization time of our <span class="math notranslate nohighlight">\(\Dimension\)</span>-level clock, defined as</p>
+<div class="math notranslate nohighlight" id="equation-eq-time-orthogonalization">
+<span class="eqno">(395)<a class="headerlink" href="#equation-eq-time-orthogonalization" title="Link to this equation">#</a></span>\[\TimeOrthogonalization = \frac{2\pi\hbar}{\Dimension\EnergyDelta},\]</div>
+<p>which represents the minimal time needed for a clock to evolve (under the equally spaced Hamiltonian <a class="reference internal" href="#equation-eq-clock-hamiltonian">(388)</a>) into an orthogonal one. A system with finite <span class="math notranslate nohighlight">\(\TimeOrthogonalization\)</span> can be thought of as a clock which “ticks” at a rate proportional to <span class="math notranslate nohighlight">\(\TimeOrthogonalization^{-1}\)</span>. Now, using the form <a class="reference internal" href="#equation-eq-time-orthogonalization">(395)</a> and the energy level relation <a class="reference internal" href="#equation-eq-clock-energies">(394)</a> allows us to write the clock overlap <a class="reference internal" href="#equation-eq-clock-overlap">(392)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-overlap-orthogonalization">
+<span class="eqno">(396)<a class="headerlink" href="#equation-eq-clock-overlap-orthogonalization" title="Link to this equation">#</a></span>\[\braket{\qclock(\Time)}{\qclock(\Time+\TimeDelta)} = \frac{\e^{-\eye \Energy_1\TimeDelta/\hbar}}{\Dimension} \sum_{n=1}^{\Dimension} \exp\left[-2\pi\eye\frac{n-1}{\Dimension}\frac{\TimeDelta}{\TimeOrthogonalization}\right].\]</div>
+<p>A point to note is that these clocks, when composed of equally spaced energy eigenstates as imposed by <a class="reference internal" href="#equation-eq-clock-energies">(394)</a>, are dependent on only two parameters: the time <span class="math notranslate nohighlight">\(\Time\)</span> of their evolution and the energy <span class="math notranslate nohighlight">\(\Energy_1\)</span> of their ground state <span class="math notranslate nohighlight">\(\ket{1}\)</span>. Mathematically, this can be shown by using <a class="reference internal" href="#equation-eq-clock-energies">(394)</a> and <a class="reference internal" href="#equation-eq-time-orthogonalization">(395)</a> to express <a class="reference internal" href="#equation-eq-clock-evolved">(391)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-evolved-orthogonalization">
+<span class="eqno">(397)<a class="headerlink" href="#equation-eq-clock-evolved-orthogonalization" title="Link to this equation">#</a></span>\[\ket{\qclock(\Time)} = \frac{\e^{-\eye \Energy_1 \Time/\hbar}}{\sqrt{\Dimension}}\sum_{n=1}^{\Dimension}\exp\left[-2\pi\eye\frac{n-1}{\Dimension}\frac{\Time}{\TimeOrthogonalization}\right]\ket{n}.\]</div>
+<p>In any case, by the series identity</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-1">
+<span class="eqno">(398)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-1" title="Link to this equation">#</a></span>\[\sum_{n=1}^{\Dimension} r^{n-1} = \frac{1-r^\Dimension}{1-r}, \qquad r\neq 1,\]</div>
+<p>we may write <a class="reference internal" href="#equation-eq-clock-overlap-orthogonalization">(396)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-evolved-orthogonalization-identity">
+<span class="eqno">(399)<a class="headerlink" href="#equation-eq-clock-evolved-orthogonalization-identity" title="Link to this equation">#</a></span>\[\braket{\qclock(\Time)}{\qclock(\Time+\TimeDelta)} = \frac{\e^{-\eye \Energy_1\TimeDelta/\hbar}}{\Dimension} \frac{1 - \exp\left[-2\pi\eye\frac{\TimeDelta}{\TimeOrthogonalization}\right]}{1 - \exp\left[-2\pi\eye\frac{1}{\Dimension}\frac{\TimeDelta}{\TimeOrthogonalization}\right]}.\]</div>
+<p>Evidently, in the case that the evolution time difference is equal to the orthogonalization time, i.e., <span class="math notranslate nohighlight">\(\TimeDelta = \TimeOrthogonalization\)</span>, then from <a class="reference internal" href="#equation-eq-clock-evolved-orthogonalization-identity">(399)</a> it is easy to see that the clock overlap vanishes, i.e.</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-2">
+<span class="eqno">(400)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-2" title="Link to this equation">#</a></span>\[\left.\braket{\qclock(\Time)}{\qclock(\Time+\TimeDelta)}\right|_{\TimeDelta = \TimeOrthogonalization} = 0.\]</div>
+<p>The case of <span class="math notranslate nohighlight">\(\TimeDelta = \TimeOrthogonalization\)</span> can thus be interpreted as when the clock’s “resolution” exactly matches the time difference between the relevant states. This is the key mechanism with which one can investigate temporal differences between the multiple trajectories (such as the two paths in the simple billiard-ball paradox) that are generated via the indeterminism present in spacetimes containing CTCs. Note that such modelling of an internal clock to track a quantum particle’s proper time was first described in <span id="id5">[<a class="reference internal" href="#cite-1-zych-quantum-2011" title="M. Zych, F. Costa, I. Pikovski, and Č. Brukner, “Quantum interferometric visibility as a witness of general relativistic proper time”, Nature Communications, 2:505, October 2011. http://www.nature.com/articles/ncomms1498, doi:10.1038/ncomms1498">6</a>]</span>.</p>
+<p>As a final point, note that the simple form of the clock state and its associated Hamiltonian are only convenient choices—the results we obtain from the model of the billiard-ball paradox are completely independent of them (provided the initial clock is not an energy eigenstate but is a superposition of different energies). In particular, given that any quantum system can be decomposed into an orthogonal energy basis, then the use of such a basis poses no restrictions on any findings. The use of uniform <span class="math notranslate nohighlight">\(1/\sqrt{\Dimension}\)</span> weights in the initial state also merely provides simplicity compared to that of general amplitudes <span class="math notranslate nohighlight">\(\{c_n\}_{n=1}^{\Dimension}\)</span>. In the same vein, the fact that the energy levels are chosen to be equally spaced means that the orthogonalization time is the same between orthogonal states. Non-equally spaced energies on the other hand would only prevent the simplification of the D-CTC solutions. Indeed, the only consequential assumption which we make of the clock system is that it is finite-dimensional, a fact that can be justified by assuming that the clock states must belong to some set of bound states.</p>
+</section>
+<section id="quantum-circuit-model-of-the-billiard-ball-paradox">
+<h3>Quantum circuit model of the billiard-ball paradox<a class="headerlink" href="#quantum-circuit-model-of-the-billiard-ball-paradox" title="Link to this heading">#</a></h3>
+<p>We now turn our attention to constructing the quantum circuit model of the simplified billiard-ball paradox.
+For simplicity, we choose the initial (unevolved) clock state,</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-density">
+<span class="eqno">(401)<a class="headerlink" href="#equation-eq-clock-density" title="Link to this equation">#</a></span>\[\StateCR = \ket{\qclock(0)}\bra{\qclock(0)},\]</div>
+<p>to be the CR input along the trajectories illustrated in <a class="reference internal" href="#fig-diagram-billiard-ball-clocks"><span class="std std-numref">Figure 27</span></a>. Given these trajectories, it is easy to construct quantum circuit formulations for the clock states, and such circuits appear in <a class="reference internal" href="#fig-circuit-ctc-billiards-evolutions"><span class="std std-numref">Figure 28</span></a>.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_billiards_evolutions-dark.png"><img alt="Quantum circuit diagrams of the individual evolutions in the billiard-ball paradox." src="../../../_images/circuit_ctc_billiards_evolutions-dark.png" style="width: 379.8px; height: 353.15999999999997px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_billiards_evolutions-light.png"><img alt="Quantum circuit diagrams of the individual evolutions in the billiard-ball paradox." src="../../../_images/circuit_ctc_billiards_evolutions-light.png" style="width: 379.8px; height: 353.15999999999997px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-circuit-ctc-billiards-evolutions" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_billiards_evolutions-light.png"><img alt="Quantum circuit diagrams of the individual evolutions in the billiard-ball paradox." src="../../../_images/circuit_ctc_billiards_evolutions-light.png" style="width: 379.8px; height: 353.15999999999997px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 28 </span><span class="caption-text">Quantum circuit models of the two trajectories of <a class="reference internal" href="#fig-diagram-billiard-ball-clocks"><span class="std std-numref">Figure 27</span></a> under study.</span><a class="headerlink" href="#fig-circuit-ctc-billiards-evolutions" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Here, the elastic self-collision of the clock between its past and future selves may be represented by the SWAP gate,</p>
+<div class="math notranslate nohighlight" id="equation-eq-swap">
+<span class="eqno">(402)<a class="headerlink" href="#equation-eq-swap" title="Link to this equation">#</a></span>\[\Swap = \sum_{j,k=1}^{\Dimension}{\ket{j}\bra{k}}_\CR\otimes{\ket{k}\bra{j}}_\CV.\]</div>
+<p>In effect, this exchange of the CV (trapped CTC) and CR (incoming system) quantum states mimics the momentum-exchange collision interaction between the billiard ball’s past and future selves [which necessarily occurs in <span class="math notranslate nohighlight">\((1+1)\)</span> dimensions]. (Note that here, the basis states correspond to those from which the particle’s wave function is constructed. This means that, in the case of a quantum clock, these basis states represent the number states of the clock’s Hilbert space.) This is because the complete transference of momentum between two particles (here, the past and future versions of the billiard ball) is necessarily an exchange of quantum clock state, provided the associated particles are otherwise identical. To clarify, in a particle’s quantum description, the clock degree of freedom is the identifying attribute, while momentum performs the same function in its classical description. As such, the two necessarily correspond such that when a pair of classically indistinguishable particles trade momentum, they exchange their clocks, i.e., <span class="math notranslate nohighlight">\(\Swap \ket{\qclock(\Time_1)} \otimes \ket{\qclock(\Time_2)} = \ket{\qclock(\Time_2)} \otimes \ket{\qclock(\Time_1)}\)</span>.</p>
+<p>Additionally, for simplicity, the rotations of the clock on the path sections outside of the CTC (on the CV system between the time machine) have been neglected. This is valid because these time evolutions (namely the inbound <span class="math notranslate nohighlight">\(\TimeInbound\)</span> and outbound <span class="math notranslate nohighlight">\(\TimeOutbound\)</span> times) are experienced by both paths, and so contribute the same to the clock’s total time evolution. This means that a clock which does not interact with the CTC will not evolve, while one which does interact will evolve (by the CTC “duration” <span class="math notranslate nohighlight">\(\TimeDelta\)</span>).</p>
+<p>Next, in order to combine the two separate subcircuits of <a class="reference internal" href="#fig-circuit-ctc-billiards-evolutions"><span class="std std-numref">Figure 28</span></a> into a single circuit, we introduce a “vacuum” state <span class="math notranslate nohighlight">\(\ket{0}\)</span> (orthonormal to the existing number states) into both the CR and CV Hilbert spaces. Of the many consequences of doing so, perhaps the most significant is that, because the clock’s subspace has <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions, the total space now has <span class="math notranslate nohighlight">\(\Dimension + 1\)</span> dimensions.</p>
+<p>In order to model the paradox faithfully, we mandate that the vacuum and clock cannot “collide” with each other. This effect will be enforced by modifying the SWAP gate to the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-swap-vacuum">
+<span class="eqno">(403)<a class="headerlink" href="#equation-eq-swap-vacuum" title="Link to this equation">#</a></span>\[\VacuumSwap = \VacuumIdentity_\CR\otimes\ket{0}\bra{0}_\CV + \ket{0}\bra{0}_\CR\otimes\VacuumIdentity_\CV - \ket{0}\bra{0}_\CR\otimes\ket{0}\bra{0}_\CV + \Swap\]</div>
+<p>where <span class="math notranslate nohighlight">\(\VacuumIdentity = \Identity + \ket{0}\bra{0}\)</span> is the identity matrix in a vacuum-inclusive Hilbert space. This altered SWAP simply excludes the vacuum from swapping with the non-vacuous states, e.g.,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-3">
+<span class="eqno">(404)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-3" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \VacuumSwap \ket{0} \otimes \ket{0} &amp;= \ket{0} \otimes \ket{0}, \\
+   \VacuumSwap \ket{\qclock} \otimes \ket{0} &amp;= \ket{\qclock} \otimes \ket{0}, \\
+   \VacuumSwap \ket{0} \otimes \ket{\qclock} &amp;= \ket{0} \otimes \ket{\qclock}, \\
+   \VacuumSwap \ket{\qclock(\Time_1)} \otimes \ket{\qclock(\Time_2)} &amp;= \ket{\qclock(\Time_2)} \otimes \ket{\qclock(\Time_1)}.
+\end{aligned}\end{split}\]</div>
+<p>In this interpretation, the state <span class="math notranslate nohighlight">\(\ket{0}\)</span> represents the physical absence of a clock <span class="math notranslate nohighlight">\(\ket{\qclock}\)</span>, hence the “vacuum” nomenclature.</p>
+<p>In the associated extended Hilbert space, we write the vacuum-inclusive time-evolution operator as</p>
+<div class="math notranslate nohighlight" id="equation-eq-rotation-vacuum">
+<span class="eqno">(405)<a class="headerlink" href="#equation-eq-rotation-vacuum" title="Link to this equation">#</a></span>\[\VacuumRotation(\TimeFinal - \TimeInitial) = \ket{0}\bra{0} + \Rotation(\TimeFinal - \TimeInitial).\]</div>
+<p>This form describes the special case where, without loss of generality in the model’s results, the vacuum has vanishing energy such that its time-evolution phase coefficient is unity, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-eq-rotation-vacuum-unity">
+<span class="eqno">(406)<a class="headerlink" href="#equation-eq-rotation-vacuum-unity" title="Link to this equation">#</a></span>\[\bra{0}\VacuumRotation\ket{0} = 1.\]</div>
+<p>With this in mind, the corresponding vacuum-modified unitary operator is</p>
+<div class="math notranslate nohighlight" id="equation-eq-unitary-vacuum">
+<span class="eqno">(407)<a class="headerlink" href="#equation-eq-unitary-vacuum" title="Link to this equation">#</a></span>\[\UnitaryVacuum = \bigl[\VacuumIdentity_\CR\otimes\VacuumRotation_\CV(\TimeDelta)\bigr]\VacuumSwap.\]</div>
+<p>Under this, the input state may either self-consistently interact with the CTC, or it may pass straight through the circuit, thus allowing it to evolve through the circuit in the two paths of <a class="reference internal" href="#fig-diagram-billiard-ball-clocks"><span class="std std-numref">Figure 27</span></a>.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_billiards-dark.png"><img alt="A quantum circuit diagram of the billiard-ball paradox." src="../../../_images/circuit_ctc_billiards-dark.png" style="width: 314.28px; height: 132.12px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_billiards-light.png"><img alt="A quantum circuit diagram of the billiard-ball paradox." src="../../../_images/circuit_ctc_billiards-light.png" style="width: 314.28px; height: 132.12px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-circuit-ctc-billiards" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_billiards-light.png"><img alt="A quantum circuit diagram of the billiard-ball paradox." src="../../../_images/circuit_ctc_billiards-light.png" style="width: 314.28px; height: 132.12px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 29 </span><span class="caption-text">A quantum model of the (simplified) billiard-ball paradox. Here, the SWAP gate is a modified <span class="math notranslate nohighlight">\(\ket{0}\)</span>-excluding variant as defined in <a class="reference internal" href="#equation-eq-swap-vacuum">(403)</a>.</span><a class="headerlink" href="#fig-circuit-ctc-billiards" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<p>The D-CTC solutions can be calculated to be</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-4">
+<span class="eqno">(408)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-4" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \StateCR_{\MapDCTCsCR} &amp;= \ParameterFree\ket{\qclock(0)}\bra{\qclock(0)} + (1 - \ParameterFree)\ket{\qclock(\TimeDelta)}\bra{\qclock(\TimeDelta)}\\
+   \StateCV_{\MapDCTCsCR} &amp;= \ParameterFree\ket{0}\bra{0} + (1 - \ParameterFree)\ket{\qclock(\TimeDelta)}\bra{\qclock(\TimeDelta)}.
+\end{aligned}\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(0 \leq \ParameterFree \leq 1\)</span> is the multiplicity parameter that assumes a value of <span class="math notranslate nohighlight">\(\ParameterFree = \frac{1}{\Dimension + 1}\)</span> in the case of Deutsch’s rule of maximal entropy.</p>
+<p>For P-CTCs on the other hand, we first compute the P-CTC operator,</p>
+<div class="math notranslate nohighlight" id="equation-eq-billiards-p-ctcs-operator">
+<span class="eqno">(409)<a class="headerlink" href="#equation-eq-billiards-p-ctcs-operator" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \OperatorPCTC &amp;\equiv \trace_\CV[\Unitary] \\
+    &amp;= \trace\bigl[\VacuumRotation(\TimeDelta)\bigr] \ket{0}\bra{0} + \Identity + \Rotation(\TimeDelta).
+\end{aligned}\end{split}\]</div>
+<p>with which the corresponding solution can be determined to be</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-5">
+<span class="eqno">(410)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-5" title="Link to this equation">#</a></span>\[\ket{\StatePure_{\MapPCTCsCR}} = \frac{1}{\sqrt{\Normalization}} \bigl[\ket{\qclock(0)} + \ket{\qclock(\TimeDelta)}\bigr],\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-6">
+<span class="eqno">(411)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-6" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \Normalization &amp;= \trace[\OperatorPCTC \StateCR \OperatorPCTC^\dagger],\\
+   &amp;= 2 + \frac{1}{\Dimension}\Bigl(\trace\bigl[\Rotation(\TimeDelta)\bigr] + \trace\bigl[\Rotation^\dagger(\TimeDelta)\bigr]\Bigr).
+\end{aligned}\end{split}\]</div>
+<p>is the normalization factor. Additionally, although it has not been proven to be valid for non-qubit systems, the generalized weak-measurement tomography expression of the P-CTC CV state yields</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-7">
+<span class="eqno">(412)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-7" title="Link to this equation">#</a></span>\[\StateCV_{\MapPCTCsCR} = \frac{1}{\Dimension + 1}\bigl[\ket{0}\bra{0} + \Dimension \ket{\qclock(0)}\bra{\qclock(0)}\bigr].\]</div>
+<p>Note how this is exactly the maximally entropic version of the D-CTC solution, as predicted by the theory.</p>
+<section id="qubit-clocks">
+<h3>Qubit clocks<a class="headerlink" href="#qubit-clocks" title="Link to this heading">#</a></h3>
+<p>A particularly eludicating special case of the model discussed so far is one in which the clock’s subspace is an ordinary qubit space with basis vectors <span class="math notranslate nohighlight">\(\{\ket{1},\ket{2}\}\)</span>. Accordingly, an initial (unevolved) clock state appears as</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-qubit">
+<span class="eqno">(413)<a class="headerlink" href="#equation-eq-clock-qubit" title="Link to this equation">#</a></span>\[\ket{\qclock(0)} = \frac{1}{\sqrt{2}}\bigl(\ket{1} + \ket{2}\bigr).\]</div>
+<p>By <a class="reference internal" href="#equation-eq-clock-energies">(394)</a> and <a class="reference internal" href="#equation-eq-time-orthogonalization">(395)</a>, the associated clock gate may be written as</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-8">
+<span class="eqno">(414)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-8" title="Link to this equation">#</a></span>\[\Rotation(\TimeDelta) = \e^{-\eye \Energy_1\Delta\Time/\hbar}\bigl(\ket{1}\bra{1} + \e^{-\eye \pi \TimeDelta/\TimeOrthogonalization}\ket{2}\bra{2}\bigr),\]</div>
+<p>so that the orthogonalization time <span class="math notranslate nohighlight">\(\TimeDelta = \TimeOrthogonalization\)</span> transforms the initial clock qubit <a class="reference internal" href="#equation-eq-clock-qubit">(413)</a> into the orthogonal state</p>
+<div class="math notranslate nohighlight" id="equation-eq-clock-qubit-orthogonal">
+<span class="eqno">(415)<a class="headerlink" href="#equation-eq-clock-qubit-orthogonal" title="Link to this equation">#</a></span>\[\ket{\qclock(\TimeOrthogonalization)} = \Rotation(\TimeOrthogonalization)\ket{\qclock(0)} = \frac{\e^{-\eye \Energy_1\TimeOrthogonalization/\hbar}}{\sqrt{2}}\bigl(\ket{1}-\ket{2}\bigr).\]</div>
+<p>Importantly, note that qubit clocks only have two mutually orthogonal states, which means that multiple loops of the CTC cannot be distinguished by such clocks.</p>
+<p>In this <span class="math notranslate nohighlight">\(3\)</span>-dimensional total Hilbert space (of both the vacuum and the clock), we compute the D-CTC solutions to be</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-9">
+<span class="eqno">(416)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-9" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \StateCR_{\MapDCTCsCR} &amp;= \frac{1}{2}\Bigl[\ket{1}\bra{1} + \bigl(\ParameterFree + (1 - \ParameterFree)\e^{\eye \pi \TimeDelta/\TimeOrthogonalization}\bigr)\ket{1}\bra{2} + \bigl(\ParameterFree + (1 - \ParameterFree)\e^{-\eye \pi \TimeDelta/\TimeOrthogonalization}\bigr)\ket{2}\bra{1} + \ket{2}\bra{2}\Bigr]\\
+   \StateCV_{\MapDCTCsCR} &amp;= \ParameterFree\ket{0}\bra{0} + (1 - \ParameterFree)\frac{1}{2}\bigl[\ket{1}\bra{1} + \e^{\eye \pi \TimeDelta/\TimeOrthogonalization}\ket{1}\bra{2} + \e^{-\eye \pi \TimeDelta/\TimeOrthogonalization}\ket{2}\bra{1} + \ket{2}\bra{2}\bigr],
+\end{aligned}\end{split}\]</div>
+<p>while the P-CTC solutions are</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-10">
+<span class="eqno">(417)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-10" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \ket{\StatePure_{\MapPCTCsCR}} &amp;= \frac{1}{\sqrt{3 + \cos\left(\frac{\TimeDelta}{\TimeOrthogonalization}\pi\right)}} \bigl[\ket{\qclock(0)} + \ket{\qclock(\TimeDelta)}\bigr] \\
+   &amp;\propto 2\ket{1} + (1 + \e^{-\eye \pi \TimeDelta/\TimeOrthogonalization})\ket{2}, \\
+   \StateCV_{\MapPCTCsCR} &amp;= \frac{1}{3}\bigl[\ket{0}\bra{0} + 2 \ket{\qclock(0)}\bra{\qclock(0)}\bigr].
+\end{aligned}\end{split}\]</div>
+</section>
+<section id="p-ctc-restrictions-on-initial-data">
+<h3>P-CTC restrictions on initial data<a class="headerlink" href="#p-ctc-restrictions-on-initial-data" title="Link to this heading">#</a></h3>
+<p>One interesting general characteristic of P-CTCs is that they can pose constraints on initial conditions. Due to the renormalization, such constraints depend on the future of the time-travelling state. Here, we explicitly demonstrate the restrictions associated with the P-CTCs description of the circuit.</p>
+<p>Given the <span class="math notranslate nohighlight">\(\Dimension\)</span>-level clock <a class="reference internal" href="#equation-eq-clock-vector">(387)</a>, there exist exactly <span class="math notranslate nohighlight">\(\Dimension\)</span> mutually orthogonal, equally spaced states <span class="math notranslate nohighlight">\(\bigl\{\ket{\qclock^{(k)}(\TimeOrthogonalization)}\bigr\}_{k=0}^{\Dimension-1}\)</span> of which it can assume. As a consequence, one may express the clock gate <a class="reference internal" href="#equation-eq-clock-evolution">(389)</a> in terms of the ground-state energy <span class="math notranslate nohighlight">\(\Energy_1\)</span> (defined via <a class="reference internal" href="#equation-eq-clock-energies">(394)</a>) as</p>
+<div class="math notranslate nohighlight" id="equation-eq-rotation-global">
+<span class="eqno">(418)<a class="headerlink" href="#equation-eq-rotation-global" title="Link to this equation">#</a></span>\[\Rotation(\TimeFinal - \TimeInitial) = \e^{-\eye \Energy_1 (\TimeFinal - \TimeInitial)/\hbar} \sum_{n=1}^{\Dimension}\exp\left[-2\pi\eye\frac{n-1}{\Dimension}\frac{\TimeFinal - \TimeInitial}{\TimeOrthogonalization}\right]\ket{n}\bra{n}.\]</div>
+<p>From this, it is easy to conclude that</p>
+<div class="math notranslate nohighlight" id="equation-eq-rotation-orthogonalization">
+<span class="eqno">(419)<a class="headerlink" href="#equation-eq-rotation-orthogonalization" title="Link to this equation">#</a></span>\[\Rotation^\Dimension(\TimeOrthogonalization) = \e^{-\eye \Dimension \Energy_1 \TimeOrthogonalization/\hbar}\Identity,\]</div>
+<p>which simply indicates that <span class="math notranslate nohighlight">\(\Dimension\)</span> orthogonal rotations of the clock return it to its initial state, up to the global phase <span class="math notranslate nohighlight">\(\e^{-\eye \Dimension \Energy_1 \TimeOrthogonalization/\hbar}\)</span>. Accordingly, a clock <span class="math notranslate nohighlight">\(\ket{\qclock}\)</span> that orthogonalizes <span class="math notranslate nohighlight">\(p\in\Integers_{&gt;0}\)</span> times accumulates <span class="math notranslate nohighlight">\(p\)</span> such phases. Therefore, judicious choice of the clock’s orthogonalization time <span class="math notranslate nohighlight">\(\TimeOrthogonalization\)</span>, such that it is related to the CTC time delay <span class="math notranslate nohighlight">\(\TimeDelta\)</span> by</p>
+<div class="math notranslate nohighlight" id="equation-eq-orthogonalization-time-multiple">
+<span class="eqno">(420)<a class="headerlink" href="#equation-eq-orthogonalization-time-multiple" title="Link to this equation">#</a></span>\[\TimeDelta = p \Dimension \TimeOrthogonalization,\]</div>
+<p>means that a clock which completes one journey on the CTC would orthogonally evolve <span class="math notranslate nohighlight">\(p\)</span> times. In such a case, the P-CTC reduced operator <a class="reference internal" href="#equation-eq-billiards-p-ctcs-operator">(409)</a> becomes</p>
+<div class="math notranslate nohighlight" id="equation-eq-billiards-p-ctcs-operator-orthogonalization">
+<span class="eqno">(421)<a class="headerlink" href="#equation-eq-billiards-p-ctcs-operator-orthogonalization" title="Link to this equation">#</a></span>\[\left.\OperatorPCTC\right|_{\TimeDelta = p \Dimension \TimeOrthogonalization} = \left(1 + \Dimension \e^{-\eye p \Dimension \Energy_1 \TimeOrthogonalization/\hbar}\right)\ket{0}\bra{0} + \left(1 + \e^{-\eye p \Dimension \Energy_1 \TimeOrthogonalization/\hbar}\right)\Identity.\]</div>
+<p>Additionally, if we construct the clock so that its ground-state energy <span class="math notranslate nohighlight">\(\Energy_1\)</span> satisfies</p>
+<div class="math notranslate nohighlight" id="equation-eq-billiards-p-ctcs-energy-vanish">
+<span class="eqno">(422)<a class="headerlink" href="#equation-eq-billiards-p-ctcs-energy-vanish" title="Link to this equation">#</a></span>\[\Energy_1 = \frac{\pi\hbar}{p \Dimension \TimeOrthogonalization}(1 + 2q),\quad q\in\Integers_{\geq 0},\]</div>
+<p>then the operator <a class="reference internal" href="#equation-eq-billiards-p-ctcs-operator-orthogonalization">(421)</a> further reduces to</p>
+<div class="math notranslate nohighlight" id="equation-eq-billiards-p-ctcs-operator-constrained">
+<span class="eqno">(423)<a class="headerlink" href="#equation-eq-billiards-p-ctcs-operator-constrained" title="Link to this equation">#</a></span>\[\begin{split}\OperatorPCTC' = \left.\OperatorPCTC\right|_{\substack{\TimeDelta = p \Dimension \TimeOrthogonalization\\ \Energy_1 = \frac{\pi\hbar}{p \Dimension \TimeOrthogonalization}(1 + 2q)}} = \left(1 - \Dimension\right)\ket{0}\bra{0}.\end{split}\]</div>
+<p>After renormalization, the corresponding P-CTC output is then, of course, simply the vacuum state, i.e., <span class="math notranslate nohighlight">\(\ket{0}\)</span>. This cannot be valid however, because the initial input state <a class="reference internal" href="#equation-eq-clock-density">(401)</a> did not include any vacuum term. So what happened to the clock?</p>
+<p>To answer this question, we can use the vacuum-including entangled state</p>
+<div class="math notranslate nohighlight" id="equation-eq-billiards-p-ctcs-entangled">
+<span class="eqno">(424)<a class="headerlink" href="#equation-eq-billiards-p-ctcs-entangled" title="Link to this equation">#</a></span>\[\ket{\StatePure}_{\text{rec},\CR} = \sqrt{\ParameterVacuum}\ket{0}_\text{rec}\otimes\ket{0}_\CR + \sqrt{1 - \ParameterVacuum}\ket{\qclock(0)}_\text{rec}\otimes\ket{\qclock(0)}_\CR, \quad 0 \leq \ParameterVacuum \leq 1,\]</div>
+<p>as input to our circuit. Here, the state existing in the first system may be interpreted as a record of what we send into the CR system. With this entanglement, we find the P-CTC unnormalized pure-state output, corresponding to our circuit’s ordinary operator <span class="math notranslate nohighlight">\(\VacuumIdentity_\text{rec}\otimes\OperatorPCTC_\CR\)</span> from <a class="reference internal" href="#equation-eq-billiards-p-ctcs-operator">(409)</a>, to be</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-11">
+<span class="eqno">(425)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-11" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \bigl(\VacuumIdentity_\text{rec}\otimes\OperatorPCTC_\CR\bigr)\ket{\StatePure}_{\text{rec},\CR} &amp;\propto \sqrt{\ParameterVacuum}\,\trace[\VacuumRotation(\TimeDelta)]\,\ket{0}_\text{rec}\otimes\ket{0}_\CR \\
+   &amp;\quad + \sqrt{1 - \ParameterVacuum}\,\ket{\qclock(0)}_\text{rec}\otimes\bigl[\ket{\qclock(0)}_\CR + \ket{\qclock(\TimeDelta)}_\CR\bigr].
+\end{aligned}\end{split}\]</div>
+<p>The persistence of the entanglement means that when the record indicates that we did not send in a clock, we will not observe a clock in the CR output. Conversely, when we definitely did send in a clock, we must observe a clock exiting the CTC region, which is exactly what one intuitively expects. However, under the conditions <a class="reference internal" href="#equation-eq-orthogonalization-time-multiple">(420)</a> and <a class="reference internal" href="#equation-eq-billiards-p-ctcs-energy-vanish">(422)</a> which yield the operator <a class="reference internal" href="#equation-eq-billiards-p-ctcs-operator-constrained">(423)</a>, the entanglement of our input state <a class="reference internal" href="#equation-eq-billiards-p-ctcs-entangled">(424)</a> breaks,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-12">
+<span class="eqno">(426)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-12" title="Link to this equation">#</a></span>\[\bigl(\VacuumIdentity_\text{rec}\otimes\OperatorPCTC'_\CR\bigr)\ket{\StatePure}_{\text{rec},\CR} \propto \ket{0}_\text{rec}\otimes\ket{0}_\CR,\]</div>
+<p>regardless of the value of <span class="math notranslate nohighlight">\(\ParameterVacuum\)</span> (provided it is non-zero). Thus, the mere presence of the interaction with the CTC in the future implies that the record subsystem will show that no clock was ever prepared, even though the initial state <a class="reference internal" href="#equation-eq-billiards-p-ctcs-entangled">(424)</a> included the possibility that a clock was there (which would show up in the record if the future interaction with the CTC was avoided).</p>
+<p>Given the path-integral correspondence of P-CTCs, the conditions <a class="reference internal" href="#equation-eq-orthogonalization-time-multiple">(420)</a> and <a class="reference internal" href="#equation-eq-billiards-p-ctcs-energy-vanish">(422)</a> collectively form a case in which <em>no</em> clocks can evolve through the circuit due to destructive interference in the path integral. This is to say that P-CTCs suppress all evolutions of non-vacuous states as a result of the particular future evolution of clock states in our model, thereby posing constraints on the initial state. This issue highlights the well-known problem of antichronological and superluminal influence with P-CTCs <span id="id6">[<a class="reference internal" href="../../theory/time-travel/quantum/comparison.html#cite-1-ralph-relativistic-2012" title="T. C. Ralph and T. G. Downes, “Relativistic quantum information and time machines”, Contemporary Physics, 53(1):1–16, January 2012. http://www.tandfonline.com/doi/abs/10.1080/00107514.2011.640146, doi:10.1080/00107514.2011.640146">2</a>, <a class="reference internal" href="../../theory/time-travel/quantum/comparison.html#cite-1-bub-quantum-2014" title="J. Bub and A. Stairs, “Quantum interactions with closed timelike curves and superluminal signaling”, Physical Review A, 89(2):022311, February 2014. https://link.aps.org/doi/10.1103/PhysRevA.89.022311, doi:10.1103/PhysRevA.89.022311">3</a>, <a class="reference internal" href="../../theory/time-travel/quantum/comparison.html#cite-1-ghosh-quantum-2018" title="S. Ghosh, A. Adhikary, and G. Paul, “Quantum signaling to the past using P-CTCS”, Quantum Information and Computation, 18(11&amp;12):965–974, September 2018. http://www.rintonpress.com/journals/doi/QIC18.11-12-5.html, doi:10.26421/QIC18.11-12-5">9</a>]</span>. In contrast, the initial data for D-CTCs are never affected by the presence (or absence) of a CTC in the future.</p>
+</section>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<p>This implementation is strictly for qubits. For simplicity, we set <span class="math notranslate nohighlight">\(\frac{\TimeDelta}{\TimeOrthogonalization} \equiv t\)</span>.</p>
+<div class="literal-block-wrapper docutils container" id="code-billiards">
+<div class="code-block-caption"><span class="caption-number">Listing 27 </span><span class="caption-text">/text/examples/ctcs/billiards.py</span><a class="headerlink" href="#code-billiards" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumGate</span><span class="p">,</span> <span class="n">Swap</span><span class="p">,</span> <span class="n">Diagonal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.prescriptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCTC</span><span class="p">,</span> <span class="n">DCTC</span><span class="p">,</span> <span class="n">PCTC</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">TensorProduct</span>
+
+<span class="c1"># Input</span>
+<span class="n">clock_state_unevolved</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">)</span>
+<span class="n">clock_state_evolved</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">)</span>
+
+<span class="c1"># Gates</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span>
+    <span class="n">spec</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+<span class="n">zero</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span>
+    <span class="n">spec</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">IR</span> <span class="o">=</span> <span class="n">Diagonal</span><span class="p">(</span>
+    <span class="n">entries</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;-pi*t&quot;</span><span class="p">},</span>
+    <span class="n">exponentiation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
+    <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Construct SWAP gate in clock subspace</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">S</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+
+<span class="c1"># Construct vacuum-excluding SWAP gate</span>
+<span class="n">S_vacuum</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span>
+    <span class="n">spec</span><span class="o">=</span><span class="p">(</span>
+        <span class="n">TensorProduct</span><span class="p">(</span><span class="n">I</span><span class="o">.</span><span class="n">matrix</span><span class="p">,</span> <span class="n">zero</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="o">+</span> <span class="n">TensorProduct</span><span class="p">(</span><span class="n">zero</span><span class="o">.</span><span class="n">matrix</span><span class="p">,</span> <span class="n">I</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="o">-</span> <span class="n">TensorProduct</span><span class="p">(</span><span class="n">zero</span><span class="o">.</span><span class="n">matrix</span><span class="p">,</span> <span class="n">zero</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="o">+</span> <span class="n">S</span>
+    <span class="p">),</span>
+    <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">family</span><span class="o">=</span><span class="s2">&quot;SWAP&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># CTC</span>
+<span class="n">billiards</span> <span class="o">=</span> <span class="n">QuantumCTC</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">clock_state_unevolved</span><span class="p">],</span> <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">S_vacuum</span><span class="p">,</span> <span class="n">IR</span><span class="p">],</span> <span class="n">systems_respecting</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">billiards</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+
+<span class="c1"># Output</span>
+<span class="c1"># D-CTCs</span>
+<span class="n">billiards_DCTC</span> <span class="o">=</span> <span class="n">DCTC</span><span class="p">(</span><span class="n">circuit</span><span class="o">=</span><span class="n">billiards</span><span class="p">)</span>
+<span class="n">billiards_DCTC_respecting</span> <span class="o">=</span> <span class="n">billiards_DCTC</span><span class="o">.</span><span class="n">state_respecting</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ_D&quot;</span><span class="p">)</span>
+<span class="n">billiards_DCTC_violating</span> <span class="o">=</span> <span class="n">billiards_DCTC</span><span class="o">.</span><span class="n">state_violating</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;τ_D&quot;</span><span class="p">)</span>
+<span class="n">billiards_DCTC_respecting</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="n">billiards_DCTC_respecting</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">factor</span><span class="p">)</span>
+
+<span class="c1"># P-CTCs</span>
+<span class="n">billiards_PCTC</span> <span class="o">=</span> <span class="n">PCTC</span><span class="p">(</span><span class="n">circuit</span><span class="o">=</span><span class="n">billiards</span><span class="p">)</span>
+<span class="n">billiards_PCTC_respecting</span> <span class="o">=</span> <span class="n">billiards_PCTC</span><span class="o">.</span><span class="n">state_respecting</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ_P&quot;</span><span class="p">)</span>
+<span class="n">billiards_PCTC_violating</span> <span class="o">=</span> <span class="n">billiards_PCTC</span><span class="o">.</span><span class="n">state_violating</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;τ_P&quot;</span><span class="p">)</span>
+<span class="n">billiards_PCTC_respecting</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Results</span>
+<span class="n">billiards_DCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">billiards_DCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">billiards_PCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">billiards_PCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h2>
+<section id="diagram">
+<h3>Diagram<a class="headerlink" href="#diagram" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">billiards</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_ctcs_billiards-dark.png"><img alt="../../../_images/text_examples_ctcs_billiards-dark.png" class="only-dark align-left" src="../../../_images/text_examples_ctcs_billiards-dark.png" style="width: 164.0px; height: 56.800000000000004px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_ctcs_billiards-light.png"><img alt="../../../_images/text_examples_ctcs_billiards-light.png" class="only-light align-left" src="../../../_images/text_examples_ctcs_billiards-light.png" style="width: 164.0px; height: 56.800000000000004px;" />
+</a>
+</div></blockquote>
+</section>
+<section id="states">
+<h3>States<a class="headerlink" href="#states" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">billiards_DCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">ρ_D = 1/2|1⟩⟨1| + -(g*exp(I*pi*t) - g - exp(I*pi*t))/2|1⟩⟨2| + (g*exp(I*pi*t) - g + 1)*exp(-I*pi*t)/2|2⟩⟨1| + 1/2|2⟩⟨2|</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">billiards_DCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">τ_D = g|0⟩⟨0| + (1/2 - g/2)|1⟩⟨1| + (1 - g)*exp(I*pi*t)/2|1⟩⟨2| + (1 - g)*exp(-I*pi*t)/2|2⟩⟨1| + (1/2 - g/2)|2⟩⟨2|</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">billiards_PCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ_P⟩ = sqrt(2)*sqrt(1/(cos(pi*t) + 3))|1⟩ + sqrt(2)*(1 + exp(-I*pi*t))*sqrt(1/(cos(pi*t) + 3))/2|2⟩</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">billiards_PCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">τ_P = 1/3|0⟩⟨0| + 1/3|1⟩⟨1| + exp(I*pi*t)/3|1⟩⟨2| + exp(-I*pi*t)/3|2⟩⟨1| + 1/3|2⟩⟨2|</span>
+</pre></div>
+</div>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-ralph-relativistic-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">1</a><span class="fn-bracket">]</span></span>
+<p>T. C. Ralph and T. G. Downes, “Relativistic quantum information and time machines”, <em>Contemporary Physics</em>, 53(1):1–16, January 2012. <a class="reference external" href="http://www.tandfonline.com/doi/abs/10.1080/00107514.2011.640146">http://www.tandfonline.com/doi/abs/10.1080/00107514.2011.640146</a>, <a class="reference external" href="https://doi.org/10.1080/00107514.2011.640146">doi:10.1080/00107514.2011.640146</a></p>
+</div>
+<div class="citation" id="cite-1-friedman-cauchy-1990" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>,<a role="doc-backlink" href="#id4">3</a>)</span>
+<p>J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, <em>Physical Review D</em>, 42(6):1915–1930, September 1990. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.42.1915">https://link.aps.org/doi/10.1103/PhysRevD.42.1915</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.42.1915">doi:10.1103/PhysRevD.42.1915</a></p>
+</div>
+<div class="citation" id="cite-1-bub-quantum-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">3</a><span class="fn-bracket">]</span></span>
+<p>J. Bub and A. Stairs, “Quantum interactions with closed timelike curves and superluminal signaling”, <em>Physical Review A</em>, 89(2):022311, February 2014. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.89.022311">https://link.aps.org/doi/10.1103/PhysRevA.89.022311</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.89.022311">doi:10.1103/PhysRevA.89.022311</a></p>
+</div>
+<div class="citation" id="cite-1-ghosh-quantum-2018" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
+<p>S. Ghosh, A. Adhikary, and G. Paul, “Quantum signaling to the past using P-CTCS”, <em>Quantum Information and Computation</em>, 18(11&amp;12):965–974, September 2018. <a class="reference external" href="http://www.rintonpress.com/journals/doi/QIC18.11-12-5.html">http://www.rintonpress.com/journals/doi/QIC18.11-12-5.html</a>, <a class="reference external" href="https://doi.org/10.26421/QIC18.11-12-5">doi:10.26421/QIC18.11-12-5</a></p>
+</div>
+<div class="citation" id="cite-1-bishop-time-traveling-2021" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">5</a><span class="fn-bracket">]</span></span>
+<p>L. G. Bishop, F. Costa, and T. C. Ralph, “Time-traveling billiard-ball clocks: A quantum model”, <em>Physical Review A</em>, 103(4):042223, April 2021. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.103.042223">https://link.aps.org/doi/10.1103/PhysRevA.103.042223</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.103.042223">doi:10.1103/PhysRevA.103.042223</a></p>
+</div>
+<div class="citation" id="cite-1-zych-quantum-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">6</a><span class="fn-bracket">]</span></span>
+<p>M. Zych, F. Costa, I. Pikovski, and Č. Brukner, “Quantum interferometric visibility as a witness of general relativistic proper time”, <em>Nature Communications</em>, 2:505, October 2011. <a class="reference external" href="http://www.nature.com/articles/ncomms1498">http://www.nature.com/articles/ncomms1498</a>, <a class="reference external" href="https://doi.org/10.1038/ncomms1498">doi:10.1038/ncomms1498</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="unproven.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unproven-theorem paradox</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="postselected.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Manual P-CTC</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-clocks">Quantum clocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-circuit-model-of-the-billiard-ball-paradox">Quantum circuit model of the billiard-ball paradox</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qubit-clocks">Qubit clocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-ctc-restrictions-on-initial-data">P-CTC restrictions on initial data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagram">Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#states">States</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

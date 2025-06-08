@@ -1,0 +1,1171 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Operations &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/documentation/mechanics/operations';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Examples" href="../../examples/part-examples.html" />
+    <link rel="prev" title="Quantities" href="quantities.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../quantum/states.html">States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum/gates.html">Gates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum/circuits.html">Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum/prescriptions.html">Prescriptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mechanics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="matrices.html">Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantities.html">Quantities</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Operations</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../part-documentation.html" class="nav-link">Documentation</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Operations</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="operations">
+<span id="sec-docs-operations"></span><h1>Operations<a class="headerlink" href="#operations" title="Link to this heading">#</a></h1>
+<p>This module provides functions and a mixin for performing quantum operations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">densify</span><span class="p">,</span> <span class="n">columnify</span><span class="p">,</span> <span class="n">dagger</span><span class="p">,</span> <span class="n">simplify</span><span class="p">,</span> <span class="n">apply</span><span class="p">,</span> <span class="n">rewrite</span><span class="p">,</span> <span class="n">normalize</span><span class="p">,</span> <span class="n">coefficient</span><span class="p">,</span> <span class="n">partial_trace</span><span class="p">,</span> <span class="n">measure</span><span class="p">,</span> <span class="n">postselect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">OperationsMixin</span>
+</pre></div>
+</div>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.densify">
+<span class="sig-name descname"><span class="pre">densify</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#densify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.densify" title="Link to this definition">#</a></dt>
+<dd><p>Convert <code class="docutils literal notranslate"><span class="pre">vector</span></code> to its corresponding matrix form via the outer product.
+If <code class="docutils literal notranslate"><span class="pre">vector</span></code> is a square matrix, it is unmodified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vector</strong> (<em>mat</em>) – The input vector.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>mat</em> – The outer product of <code class="docutils literal notranslate"><span class="pre">vector</span></code> with itself.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">densify</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a*conjugate(a), a*conjugate(b)],</span>
+<span class="go">[b*conjugate(a), b*conjugate(b)]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.columnify">
+<span class="sig-name descname"><span class="pre">columnify</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#columnify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.columnify" title="Link to this definition">#</a></dt>
+<dd><p>Convert <code class="docutils literal notranslate"><span class="pre">vector</span></code> to its corresponding column vector form via transposition.
+If <code class="docutils literal notranslate"><span class="pre">vector</span></code> is a square matrix, it is unmodified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vector</strong> (<em>mat</em>) – The input vector.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>mat</em> – The column form of <code class="docutils literal notranslate"><span class="pre">vector</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vector</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">columnify</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a],</span>
+<span class="go">[b]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.dagger">
+<span class="sig-name descname"><span class="pre">dagger</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#dagger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.dagger" title="Link to this definition">#</a></dt>
+<dd><p>Perform conjugate transposition on <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>matrix</strong> (<em>mat</em>) – The input matrix.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>mat</em> – The conjugate transpose of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dagger</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="go">Matrix([[conjugate(a), conjugate(b)]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dagger</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[conjugate(a), conjugate(c)],</span>
+<span class="go">[conjugate(b), conjugate(d)]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.simplify">
+<span class="sig-name descname"><span class="pre">simplify</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#simplify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.simplify" title="Link to this definition">#</a></dt>
+<dd><p>Simplify <code class="docutils literal notranslate"><span class="pre">matrix</span></code> using a powerful (albeit slow) algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>matrix</strong> (<em>mat</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a>) – The matrix to be simplified.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>mat</em> – The simplified version of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;(a**2 - 1)/(a - 1) - 1&quot;</span><span class="p">,</span> <span class="s2">&quot;log(cos(b) + I*sin(b))/I&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;</span><span class="p">,</span> <span class="s2">&quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">simplify</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a, b],</span>
+<span class="go">[c, d]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">arguments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.apply" title="Link to this definition">#</a></dt>
+<dd><p>Apply a Python function (<code class="docutils literal notranslate"><span class="pre">function</span></code>) to <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+<p>Useful when used with SymPy’s symbolic-manipulation functions, such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">apart()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cancel()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">collect()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">factor()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">simplify()</span></code></p></li>
+</ul>
+<p>More can be found at:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.sympy.org/latest/tutorials/intro-tutorial/simplification.html">SymPy documentation: Simplification</a></p></li>
+<li><p><a class="reference external" href="https://docs.sympy.org/latest/modules/simplify/simplify.html">SymPy documentation: Simplify</a></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>mat</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a>) – The matrix to be transformed.</p></li>
+<li><p><strong>function</strong> (<em>Callable</em>) – A Python function.
+Its first non-keyword argument must be able to take a mathematical expression or
+a matrix/array of such types.</p></li>
+<li><p><strong>arguments</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – A dictionary of keyword arguments (both keys and values as strings) to pass to
+the <code class="docutils literal notranslate"><span class="pre">function</span></code> call.
+Defaults to <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>mat</em> – The transformed version of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;(x*y**2 - 2*x*y*z + x*z**2 + y**2 - 2*y*z + z**2)/(x**2 - 1)&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">cancel</span><span class="p">)</span>
+<span class="go">Matrix([[(y**2 - 2*y*z + z**2)/(x - 1)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">collect</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;syms&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">})</span>
+<span class="go">Matrix([[(x*(y**2 - 2*y*z + z**2) + y**2 - 2*y*z + z**2)/(x**2 - 1)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">collect</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;syms&quot;</span><span class="p">:</span> <span class="s2">&quot;y&quot;</span><span class="p">})</span>
+<span class="go">Matrix([[(x*z**2 + y**2*(x + 1) + y*(-2*x*z - 2*z) + z**2)/(x**2 - 1)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">collect</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;syms&quot;</span><span class="p">:</span> <span class="s2">&quot;z&quot;</span><span class="p">})</span>
+<span class="go">Matrix([[(x*y**2 + y**2 + z**2*(x + 1) + z*(-2*x*y - 2*y))/(x**2 - 1)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">expand</span><span class="p">)</span>
+<span class="go">Matrix([[x*y**2/(x**2 - 1) - 2*x*y*z/(x**2 - 1) + x*z**2/(x**2 - 1) + y**2/(x**2 - 1) - 2*y*z/(x**2 - 1) + z**2/(x**2 - 1)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">factor</span><span class="p">)</span>
+<span class="go">Matrix([[(y - z)**2/(x - 1)]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.rewrite">
+<span class="sig-name descname"><span class="pre">rewrite</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#rewrite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.rewrite" title="Link to this definition">#</a></dt>
+<dd><p>Rewrite the elements of <code class="docutils literal notranslate"><span class="pre">matrix</span></code> using the given mathematical function (<code class="docutils literal notranslate"><span class="pre">function</span></code>).</p>
+<p>Useful when used with SymPy’s mathematical functions, such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">exp()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sin()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cos()</span></code></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>mat</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a>) – The matrix to be transformed.</p></li>
+<li><p><strong>function</strong> (<em>Callable</em>) – A SymPy mathematical function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>mat</em> – The transformed version of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;cos(x)&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rewrite</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[   exp(I*x)/2 + exp(-I*x)/2],</span>
+<span class="go">[-I*(exp(I*x) - exp(-I*x))/2]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.normalize" title="Link to this definition">#</a></dt>
+<dd><p>Normalize <code class="docutils literal notranslate"><span class="pre">matrix</span></code> to the value specified (<code class="docutils literal notranslate"><span class="pre">norm</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>mat</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a>) – The matrix to be normalized.</p></li>
+<li><p><strong>norm</strong> (<em>num</em><em> | </em><em>sym</em><em> | </em><em>str</em>) – The value to which the matrix is normalized.
+Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>mat</em> – The normalized version of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normalize</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a/sqrt(a*conjugate(a) + b*conjugate(b))],</span>
+<span class="go">[b/sqrt(a*conjugate(a) + b*conjugate(b))]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normalize</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a*n/(a + d), b*n/(a + d)],</span>
+<span class="go">[c*n/(a + d), d*n/(a + d)]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.coefficient">
+<span class="sig-name descname"><span class="pre">coefficient</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">scalar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#coefficient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.coefficient" title="Link to this definition">#</a></dt>
+<dd><p>Multiply <code class="docutils literal notranslate"><span class="pre">matrix</span></code> by a scalar value (<code class="docutils literal notranslate"><span class="pre">scalar</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>mat</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a>) – The matrix to be scaled.</p></li>
+<li><p><strong>scalar</strong> (<em>num</em><em> | </em><em>sym</em><em> | </em><em>str</em>) – The value by which the state is multiplied.
+Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>mat</em> – The scaled version of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coefficient</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">scalar</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">Matrix([</span>
+<span class="go">[sqrt(2)/2],</span>
+<span class="go">[sqrt(2)/2]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coefficient</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">scalar</span><span class="o">=</span><span class="s2">&quot;exp(I*x)&quot;</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a*exp(I*x)],</span>
+<span class="go">[b*exp(I*x)]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.partial_trace">
+<span class="sig-name descname"><span class="pre">partial_trace</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">targets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">discard</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">optimize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#partial_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.partial_trace" title="Link to this definition">#</a></dt>
+<dd><p>Compute and return the partial trace of a matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>mat</em>) – The matrix on which to perform the partial trace operation.</p></li>
+<li><p><strong>targets</strong> (<em>int</em><em> | </em><em>list</em><em>[</em><em>int</em><em>]</em>) – The numerical index/indices of the subsystem(s) to be partially traced over.
+Defaults to <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p></li>
+<li><p><strong>discard</strong> (<em>bool</em>) – Whether the systems corresponding to the indices given in <code class="docutils literal notranslate"><span class="pre">targets</span></code> are to be
+discarded (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or kept (<code class="docutils literal notranslate"><span class="pre">False</span></code>).
+Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – The dimensionality of the matrix.
+Must be a non-negative integer.
+Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p><strong>optimize</strong> (<em>bool</em>) – Whether to optimize the implementation’s algorithm.
+Can greatly increase the computational efficiency at the cost of a larger memory footprint
+during computation.
+Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>mat</em> – The reduced matrix.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;d&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">partial_trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a*conjugate(a) + c*conjugate(c), a*conjugate(b) + c*conjugate(d)],</span>
+<span class="go">[b*conjugate(a) + d*conjugate(c), b*conjugate(b) + d*conjugate(d)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">partial_trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a*conjugate(a) + b*conjugate(b), a*conjugate(c) + b*conjugate(d)],</span>
+<span class="go">[c*conjugate(a) + d*conjugate(b), c*conjugate(c) + d*conjugate(d)]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">partial_trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">discard</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a + c,     0],</span>
+<span class="go">[    0, b + d]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">partial_trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">discard</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a + b,     0],</span>
+<span class="go">[    0, c + d]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">operators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">targets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">observable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">statistics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.measure" title="Link to this definition">#</a></dt>
+<dd><p>Perform a quantum measurement on one or more systems (indicated in <code class="docutils literal notranslate"><span class="pre">targets</span></code>)
+of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+<p>This function has two main modes of operation:</p>
+<ul>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">statistics</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>,
+the (reduced) state (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) (residing on the systems indicated in <code class="docutils literal notranslate"><span class="pre">targets</span></code>)
+is measured and the set of resulting statistics is returned.
+This takes the form of an ordered list of values <span class="math notranslate nohighlight">\(\{p_i\}_i\)</span> associated with each given operator, where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p_i = \trace[\Kraus_i^\dagger \Kraus_i \op{\rho}]\)</span> (measurement probabilities)
+when <code class="docutils literal notranslate"><span class="pre">observable</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>
+(<code class="docutils literal notranslate"><span class="pre">operators</span></code> is a list of Kraus operators or projectors <span class="math notranslate nohighlight">\(\Kraus_i\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(p_i = \trace[\Observable_i \op{\rho}]\)</span> (expectation values)
+when <code class="docutils literal notranslate"><span class="pre">observable</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>
+(<code class="docutils literal notranslate"><span class="pre">operators</span></code> is a list of observables <span class="math notranslate nohighlight">\(\Observable_i\)</span>)</p></li>
+</ul>
+</li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">statistics</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>,
+the (reduced) state (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) (residing on the systems indicated in <code class="docutils literal notranslate"><span class="pre">targets</span></code>)
+is measured and mutated it according to its predicted post-measurement form
+(i.e., the sum of all possible measurement outcomes).
+This yields the transformed states:</p>
+<ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">observable</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-operations-0">
+<span class="eqno">(320)<a class="headerlink" href="#equation-text-documentation-mechanics-operations-0" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \Kraus_i \op{\rho} \Kraus_i^\dagger.\]</div>
+<ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">observable</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-operations-1">
+<span class="eqno">(321)<a class="headerlink" href="#equation-text-documentation-mechanics-operations-1" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \trace[\Observable_i \op{\rho}] \Observable_i.\]</div>
+</li>
+</ul>
+<p>In the case where <code class="docutils literal notranslate"><span class="pre">operators</span></code> contains only a single item (<span class="math notranslate nohighlight">\(\Kraus\)</span>) and the
+current state (<span class="math notranslate nohighlight">\(\ket{\psi}\)</span>) is a vector form, the transformation of the state
+is in accordance with the rule</p>
+<div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-operations-2">
+<span class="eqno">(322)<a class="headerlink" href="#equation-text-documentation-mechanics-operations-2" title="Link to this equation">#</a></span>\[\ket{\psi^\prime} = \frac{\Kraus \ket{\psi}}
+    {\sqrt{\bra{\psi} \Kraus^\dagger \Kraus \ket{\psi}}}\]</div>
+<p>when <code class="docutils literal notranslate"><span class="pre">observable</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>. In all other mutation cases, the post-measurement state
+is a matrix, even if the pre-measurement state was a vector.</p>
+<p>The items in the list <code class="docutils literal notranslate"><span class="pre">operators</span></code> can also be vectors (e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\)</span>),
+in which case each is converted into its corresponding operator matrix representation
+(e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\bra{\xi_i}\)</span>) prior to any measurements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>mat</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a>) – The matrix to be measured.</p></li>
+<li><p><strong>operators</strong> (<em>list</em><em>[</em><em>mat</em><em> | </em><em>arr</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a><em>]</em>) – The operator(s) with which to perform the measurement.
+These would typically be a (complete) set of Kraus operators forming a POVM,
+a (complete) set of (orthogonal) projectors forming a PVM,
+or a set of observables constituting a complete basis for the relevant state space.</p></li>
+<li><p><strong>targets</strong> (<em>int</em><em> | </em><em>list</em><em>[</em><em>int</em><em>]</em>) – The numerical indices of the subsystem(s) to be measured.
+They must be consecutive, and their number must match the number of systems spanned
+by all given operators.
+Indexing begins at <code class="docutils literal notranslate"><span class="pre">0</span></code>.
+All other systems are discarded (traced over) in the course of performing the measurement.</p></li>
+<li><p><strong>observable</strong> (<em>bool</em>) – Whether to treat the items in <code class="docutils literal notranslate"><span class="pre">operators</span></code> as observables instead of Kraus operators
+or projectors.
+Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>statistics</strong> (<em>bool</em>) – Whether to return a list of probabilities (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or transform <code class="docutils literal notranslate"><span class="pre">matrix</span></code> into a
+post-measurement probabilistic sum of all outcomes (<code class="docutils literal notranslate"><span class="pre">False</span></code>).
+Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – The dimensionality of <code class="docutils literal notranslate"><span class="pre">matrix</span></code> and the item(s) of <code class="docutils literal notranslate"><span class="pre">operators</span></code>.
+Must be a non-negative integer.
+Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>mat</em> – The post-measurement <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.
+Returned only if <code class="docutils literal notranslate"><span class="pre">statistics</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><em>num | sym | list[num | sym]</em> – A list of probabilities corresponding to each operator given in <code class="docutils literal notranslate"><span class="pre">operators</span></code>.
+Returned only if <code class="docutils literal notranslate"><span class="pre">statistics</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method does not check for validity of supplied POVMs or the completeness of sets of
+observables, nor does it renormalize the post-measurement state.</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plus</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">minus</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">/</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">measure</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">plus</span><span class="p">,</span> <span class="n">minus</span><span class="p">],</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">statistics</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">[a*conjugate(a)/2 + a*conjugate(b)/2 + b*conjugate(a)/2 + b*conjugate(b)/2,</span>
+<span class="go"> a*conjugate(a)/2 - a*conjugate(b)/2 - b*conjugate(a)/2 + b*conjugate(b)/2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">measure</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">plus</span><span class="p">,</span> <span class="n">minus</span><span class="p">],</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">statistics</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a*conjugate(a)/2 + b*conjugate(b)/2, a*conjugate(b)/2 + b*conjugate(a)/2],</span>
+<span class="go">[a*conjugate(b)/2 + b*conjugate(a)/2, a*conjugate(a)/2 + b*conjugate(b)/2]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="p">],</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">measure</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">I</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">],</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">statistics</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">[a*conjugate(a) + b*conjugate(b),</span>
+<span class="go"> a*conjugate(b) + b*conjugate(a),</span>
+<span class="go"> I*(a*conjugate(b) - b*conjugate(a)),</span>
+<span class="go"> a*conjugate(a) - b*conjugate(b)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">measure</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">I</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">],</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">statistics</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[2*a*conjugate(a), 2*a*conjugate(b)],</span>
+<span class="go">[2*b*conjugate(a), 2*b*conjugate(b)]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.postselect">
+<span class="sig-name descname"><span class="pre">postselect</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">postselections</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#postselect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.postselect" title="Link to this definition">#</a></dt>
+<dd><p>Perform postselection on <code class="docutils literal notranslate"><span class="pre">matrix</span></code> against the operator(s) specified in <code class="docutils literal notranslate"><span class="pre">postselections</span></code>.</p>
+<p>The postselections can be given in either vector or matrix form. For the former,
+the transformation of the vector <span class="math notranslate nohighlight">\(\ket{\Psi}\)</span> follows the standard rule</p>
+<div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-operations-3">
+<span class="eqno">(323)<a class="headerlink" href="#equation-text-documentation-mechanics-operations-3" title="Link to this equation">#</a></span>\[\ket{\Psi^\prime} = \braket{\phi}{\Psi}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\ket{\phi}\)</span> is the postselection vector.
+In the case of a matrix form <span class="math notranslate nohighlight">\(\op{\omega}\)</span>, the notion of postselection of a
+matrix <span class="math notranslate nohighlight">\(\op{\rho}\)</span> naturally generalizes to</p>
+<div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-operations-4">
+<span class="eqno">(324)<a class="headerlink" href="#equation-text-documentation-mechanics-operations-4" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \trace_{\{i\}}[\op{\omega} \op{\rho}]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\{i\}\)</span> is the set of indices corresponding to the subsystem(s) upon which
+the postselection is performed.</p>
+<p>If multiple postselections are supplied, <code class="docutils literal notranslate"><span class="pre">matrix</span></code> will be successively postselected in
+the order in which they are given. If a vector <code class="docutils literal notranslate"><span class="pre">matrix</span></code> is postselected against a matrix form,
+it will automatically be transformed into its matrix form via the outer product as necessary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>mat</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a>) – The matrix to be measured.</p></li>
+<li><p><strong>postselections</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>mat</em><em> | </em><em>arr</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a><em>, </em><em>int</em><em>]</em><em>]</em>) – A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index
+of their postselection target systems.</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – The dimensionality of <code class="docutils literal notranslate"><span class="pre">matrix</span></code> and the item(s) of <code class="docutils literal notranslate"><span class="pre">postselections</span></code>.
+Must be a non-negative integer.
+Defaults to <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>mat</em> – The postselected form of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zero</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">one</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">postselect</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">postselections</span><span class="o">=</span><span class="p">[(</span><span class="n">zero</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">])],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[a],</span>
+<span class="go">[0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">postselect</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">postselections</span><span class="o">=</span><span class="p">[(</span><span class="n">one</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">])],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">Matrix([</span>
+<span class="go">[0],</span>
+<span class="go">[b]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="mixin">
+<h2>Mixin<a class="headerlink" href="#mixin" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qhronology.mechanics.operations.OperationsMixin">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OperationsMixin</span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#OperationsMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.OperationsMixin" title="Link to this definition">#</a></dt>
+<dd><p>A mixin for endowing classes with the ability to have their <code class="docutils literal notranslate"><span class="pre">matrix</span></code> property mutated
+by various quantum operations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="#qhronology.mechanics.operations.OperationsMixin" title="qhronology.mechanics.operations.OperationsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperationsMixin</span></code></a> mixin is used exclusively by
+the <a class="reference internal" href="../quantum/states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> class—please see the corresponding
+section (<a class="reference internal" href="../quantum/states.html#sec-docs-states-operations"><span class="std std-ref">Operations</span></a>) for documentation on its methods.</p>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="quantities.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quantities</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../examples/part-examples.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.densify"><code class="docutils literal notranslate"><span class="pre">densify()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.columnify"><code class="docutils literal notranslate"><span class="pre">columnify()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.dagger"><code class="docutils literal notranslate"><span class="pre">dagger()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.simplify"><code class="docutils literal notranslate"><span class="pre">simplify()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.apply"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.rewrite"><code class="docutils literal notranslate"><span class="pre">rewrite()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.normalize"><code class="docutils literal notranslate"><span class="pre">normalize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.coefficient"><code class="docutils literal notranslate"><span class="pre">coefficient()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.partial_trace"><code class="docutils literal notranslate"><span class="pre">partial_trace()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.measure"><code class="docutils literal notranslate"><span class="pre">measure()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.postselect"><code class="docutils literal notranslate"><span class="pre">postselect()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixin">Mixin</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.mechanics.operations.OperationsMixin"><code class="docutils literal notranslate"><span class="pre">OperationsMixin</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

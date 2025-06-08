@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quantum theories of time travel &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/theory/time-travel/quantum';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="The Deutsch model (D-CTCs)" href="quantum/D-CTCs.html" />
+    <link rel="prev" title="Time-travelling billiard balls" href="classical/particles.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum mechanics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../quantum-mechanics/mathematics.html">Mathematical foundations of quantum mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum-mechanics/discrete.html">Quantum mechanics on discrete Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum-mechanics/continuous.html">Quantum mechanics on continuous Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum-mechanics/circuitry.html">Quantum circuitry</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time travel</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="classical.html">Classical theories of time travel</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Quantum theories of time travel</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="quantum/D-CTCs.html">The Deutsch model (D-CTCs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/P-CTCs.html">Postselected teleportation (P-CTCs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/comparison.html">Comparison of D-CTCs and P-CTCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/alternatives.html">Alternative formulations of quantum time travel</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../part-theory.html" class="nav-link">Theory</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quantum theories of time travel</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="quantum-theories-of-time-travel">
+<span id="sec-literature-quantum"></span><h1>Quantum theories of time travel<a class="headerlink" href="#quantum-theories-of-time-travel" title="Link to this heading">#</a></h1>
+<p>The advent of CTCs and their associated issues in the semiclassical general theory of relativity prompted study into quantum theories of time travel. In the absence of a complete quantum theory of gravity, reconciling CTCs with standard quantum mechanics forms a compelling basis for research. Indeed, exploration into the interplay between quantum mechanics and CTCs, even in only a theoretical manner, may provide insight into a yet unknown full theory of quantum gravity. Thus far, research into this area has taken several main routes, all of which have produced incredibly fascinating results.</p>
+<p>Perhaps the most immediately interesting research direction is the study of the various ways by which ordinary quantum mechanics can be extended to include antichronological time travel. Such theories, called <em>prescriptions</em>, are simply models of quantum state evolution on or near CTCs which employ self-consistency (often Novikov’s <em>principle of self-consistency</em>) in order to compute the evolved states and their histories. For so-called “paradoxical” interactions—those for which the interaction between the incoming <em>chronology-respecting</em> (CR) state and its <em>chronology-violating</em> (CV) counterpart on the CTC seemingly describes a temporal paradox—solutions for these states that satisfy the relevant prescription’s equations of motion for any given interaction are termed <em>resolutions</em>.</p>
+<p>The two main such prescriptions of quantum time travel are the <em>Deutsch model</em> (giving <em>Deutschian</em> CTCs, or D-CTCs), in which self-consistency is applied to the density matrix itself, and <em>postselected teleportation</em> (giving P-CTCs), which is equivalent to a path-integral formulation. Note that alternative prescriptions of quantum time travel do exist, but none are as mature as either D-CTCs or P-CTCs, and so a select handful are discussed only briefly in <a class="reference internal" href="quantum/alternatives.html#sec-alternatives"><span class="std std-ref">Alternative formulations of quantum time travel</span></a>. In any case, it is the exploration into these models and their consequences that is most pertinent to our concerns in this project, as this is perhaps the research direction in which the most conclusions can be reached in regards to the quantum information processing and computation abilities of CTCs.</p>
+<p>Other research directions into the quantum mechanics of time travel take distinctly different approaches. These include various efforts to formulate a self-consistent version of quantum theory near or on CTCs <span id="id1">[<a class="reference internal" href="quantum/P-CTCs.html#cite-1-politzer-path-1994" title="H. D. Politzer, “Path integrals, density matrices, and information flow with closed timelike curves”, Physical Review D, 49(8):3981–3989, April 1994. https://link.aps.org/doi/10.1103/PhysRevD.49.3981, doi:10.1103/PhysRevD.49.3981">3</a>]</span>, generalize relativistic quantum field theory to non-globally hyperbolic spacetimes (i.e., those containing CTCs) <span id="id2">[]</span>, pose and solve the Cauchy problem for quantum fields on such spacetimes <span id="id3">[]</span>, and experimentally simulate the various quantum models of closed timelike curves <span id="id4">[<a class="reference internal" href="quantum/P-CTCs.html#cite-1-lloyd-closed-2011" title="S. Lloyd, L. Maccone, R. Garcia-Patron, V. Giovannetti, Y. Shikano, S. Pirandola, L. A. Rozema, A. Darabi, Y. Soudagar, L. K. Shalm, and A. M. Steinberg, “Closed Timelike Curves via Postselection: Theory and Experimental Test of Consistency”, Physical Review Letters, 106(4):040403, January 2011. https://link.aps.org/doi/10.1103/PhysRevLett.106.040403, doi:10.1103/PhysRevLett.106.040403">4</a>]</span>. In particular, studies of <em>interacting</em> quantum systems near CTCs have concluded that, even on non-globally hyperbolic spacetimes, the interactions of quantum particles interpolate (depending on the interaction strength) between plane-wave scattering events (for weak interaction strengths) and hard-sphere collisions (for strong interaction strengths), exactly as one might expect for ordinary globally hyperbolic spacetimes. However, for large classes of fields and states, the corresponding quantum evolutions fail to be unitary <span id="id5">[<a class="reference internal" href="quantum/P-CTCs.html#cite-1-politzer-path-1994" title="H. D. Politzer, “Path integrals, density matrices, and information flow with closed timelike curves”, Physical Review D, 49(8):3981–3989, April 1994. https://link.aps.org/doi/10.1103/PhysRevD.49.3981, doi:10.1103/PhysRevD.49.3981">3</a>]</span>, which is especially true in the case of strongly interacting fields. This jeopardizes the notion of obtaining a consistent probability interpretation of quantum mechanics—a serious consequence which arises specifically as ambiguities in the assignment of probabilities for events occurring <em>before</em> (or even spacelike-separated from) the region with CTCs.</p>
+<p>On the other hand, recent studies of expressly unitary (albeit non-interacting) quantum mechanics on CTCs <span id="id6">[]</span> have yielded results which suggest that thermal fluctuations destroy causation and erase all memories of systems evolving along CTCs, even those of macroscopic observers. As a consequence, the resulting quantum theory is perfectly self-consistent, in the sense that all states undergo non-contradictory histories and all retro-causality paradoxes (i.e., time-travel paradoxes) are forbidden at the quantum level.</p>
+<p>Less direct (yet still important) approaches of studying (antichronological) time travel and causality involve exploring various associated or complimentary aspects of these notions in both quantum and relativistic capacities. Such topics include:</p>
+<ul class="simple">
+<li><p>CTC spacetimes and their stability <span id="id7">[<a class="reference internal" href="classical/CTCs.html#cite-1-lanczos-uber-1924" title="K. Lanczos, “Über eine stationäre Kosmologie im Sinne der Einsteinschen Gravitationstheorie”, Zeitschrift für Physik, 21(1):73–110, December 1924. https://doi.org/10.1007/BF01328251, doi:10.1007/BF01328251">1</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-papapetrou-static-1945" title="A. Papapetrou, “A Static Solution of the Equations of the Gravitational Field for an Arbitary Charge-Distribution”, Proceedings of the Royal Irish Academy. Section A: Mathematical and Physical Sciences, 51:191–204, 1945. http://www.jstor.org/stable/20488481">4</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-godel-example-1949" title="K. Gödel, “An Example of a New Type of Cosmological Solutions of Einstein's Field Equations of Gravitation”, Reviews of Modern Physics, 21(3):447–450, July 1949. https://link.aps.org/doi/10.1103/RevModPhys.21.447, doi:10.1103/RevModPhys.21.447">5</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-taub-empty-1951" title="A. H. Taub, “Empty Space-Times Admitting a Three Parameter Group of Motions”, Annals of Mathematics, 53(3):472–490, 1951. http://www.jstor.org/stable/1969567, doi:10.2307/1969567">6</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-kerr-gravitational-1963" title="R. P. Kerr, “Gravitational Field of a Spinning Mass as an Example of Algebraically Special Metrics”, Physical Review Letters, 11(5):237–238, September 1963. https://link.aps.org/doi/10.1103/PhysRevLett.11.237, doi:10.1103/PhysRevLett.11.237">8</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-levy-rotating-1964" title="H. Levy and W. J. Robinson, “The rotating body problem”, Mathematical Proceedings of the Cambridge Philosophical Society, 60(2):279–285, April 1964. https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/rotating-body-problem/BFCD29EC2C11E38FD0E2200B658D5456, doi:10.1017/S0305004100037750">9</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-papapetrou-champs-1966" title="A. Papapetrou, “Champs gravitationnels stationnaires à symétrie axiale”, Ann.Inst.H.Poincare Phys.Theor., 4:83–105, 1966. http://www.numdam.org/item/AIHPA_1966__4_2_83_0/">10</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-soares-inhomogeneous-1980" title="I.Damião Soares, “Inhomogeneous rotating universes with closed timelike geodesics of matter”, Journal of Mathematical Physics, 21(3):521–525, March 1980. https://aip.scitation.org/doi/10.1063/1.524437, doi:10.1063/1.524437">12</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-gott-closed-1991" title="J. R. Gott, “Closed timelike curves produced by pairs of moving cosmic strings: Exact solutions”, Physical Review Letters, 66(9):1126–1129, March 1991. https://link.aps.org/doi/10.1103/PhysRevLett.66.1126, doi:10.1103/PhysRevLett.66.1126">13</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-bonnor-exact-2002" title="W. B. Bonnor, “An exact, asymptotically flat, vacuum solution of Einstein's equations with closed timelike curves”, Classical and Quantum Gravity, 19(23):5951–5957, November 2002. https://doi.org/10.1088/0264-9381/19/23/305, doi:10.1088/0264-9381/19/23/305">14</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-bonnor-double-kerr-2004" title="W. B. Bonnor and B. R. Steadman, “The double-Kerr solution”, Classical and Quantum Gravity, 21(11):2723–2732, May 2004. https://doi.org/10.1088/0264-9381/21/11/014, doi:10.1088/0264-9381/21/11/014">15</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-ori-class-2005" title="A. Ori, “A Class of Time-Machine Solutions with a Compact Vacuum Core”, Physical Review Letters, 95(2):021101, July 2005. https://link.aps.org/doi/10.1103/PhysRevLett.95.021101, doi:10.1103/PhysRevLett.95.021101">16</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-bonnor-exact-2005" title="W. B. Bonnor and B. R. Steadman, “Exact solutions of the Einstein-Maxwell equations with closed timelike curves”, General Relativity and Gravitation, 37(11):1833–1844, November 2005. https://doi.org/10.1007/s10714-005-0163-3, doi:10.1007/s10714-005-0163-3">17</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-ori-formation-2007" title="A. Ori, “Formation of closed timelike curves in a composite vacuum/dust asymptotically flat spacetime”, Physical Review D, 76(4):044002, August 2007. https://link.aps.org/doi/10.1103/PhysRevD.76.044002, doi:10.1103/PhysRevD.76.044002">18</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-sarma-pure-2013" title="D. Sarma, M. Patgiri, and F. U. Ahmed, “Pure radiation metric with stable closed timelike curves”, General Relativity and Gravitation, 46(1):1633, December 2013. https://doi.org/10.1007/s10714-013-1633-7, doi:10.1007/s10714-013-1633-7">19</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-fermi-time-2018" title="D. Fermi and L. Pizzocchero, “A time machine for free fall into the past”, Classical and Quantum Gravity, 35(16):165003, July 2018. https://doi.org/10.1088/1361-6382/aace6e, doi:10.1088/1361-6382/aace6e">21</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-ralph-spinning-2020" title="T. C. Ralph and C. Chang, “Spinning up a time machine”, Physical Review D, 102(12):124013, December 2020. https://link.aps.org/doi/10.1103/PhysRevD.102.124013, doi:10.1103/PhysRevD.102.124013">22</a>]</span></p></li>
+<li><p>chronology protection and topological censorship <span id="id8">[]</span></p></li>
+<li><p>(non-)global hyperbolicity <span id="id9">[<a class="reference internal" href="classical/particles.html#cite-1-friedman-cauchy-2004" title="J. L. Friedman, “The Cauchy Problem on Spacetimes That Are Not Globally Hyperbolic”, The Einstein Equations and the Large Scale Behavior of Gravitational Fields, pages 331–346, Birkhäuser, Basel, 2004. https://link.springer.com/chapter/10.1007/978-3-0348-7953-8_9, doi:10.1007/978-3-0348-7953-8_9">3</a>, <a class="reference internal" href="classical/fields.html#cite-1-bachelot-global-2002" title="A. Bachelot, “Global properties of the wave equation on non-globally hyperbolic manifolds”, Journal de Mathématiques Pures et Appliquées, 81(1):35–65, January 2002. http://www.sciencedirect.com/science/article/pii/S0021782401012296, doi:10.1016/S0021-7824(01)01229-6">7</a>, <a class="reference internal" href="classical/fields.html#cite-1-arefeva-cauchy-2008" title="I. Y. Aref'eva, T. Ishiwatari, and I. V. Volovich, “Cauchy problem on non-globally hyperbolic space-times”, Theoretical and Mathematical Physics, 157(3):1646–1654, December 2008. http://link.springer.com/article/10.1007/s11232-008-0137-1, doi:10.1007/s11232-008-0137-1">8</a>, <a class="reference internal" href="classical/fields.html#cite-1-volovich-solutions-2009" title="I. V. Volovich, O. V. Groshev, N. A. Gusev, and È. A. Kuryanovich, “On solutions to the wave equation on a non-globally hyperbolic manifold”, Proceedings of the Steklov Institute of Mathematics, 265(1):262–275, July 2009. https://doi.org/10.1134/S0081543809020242, doi:10.1134/S0081543809020242">9</a>, <a class="reference internal" href="classical/fields.html#cite-1-groshev-existence-2010" title="O. V. Groshev, “Existence and uniqueness of classical solutions of the Cauchy problem on nonglobally hyperbolic manifolds”, Theoretical and Mathematical Physics, 164(3):1202–1207, September 2010. https://doi.org/10.1007/s11232-010-0101-8, doi:10.1007/s11232-010-0101-8">10</a>, <a class="reference internal" href="classical/fields.html#cite-1-bullock-klein-gordon-2012" title="D. M. A. Bullock, “Klein-Gordon solutions on non-globally hyperbolic standard static spacetimes”, Reviews in Mathematical Physics, 24(10):1250028, November 2012. https://www.worldscientific.com/doi/abs/10.1142/S0129055X12500286, doi:10.1142/S0129055X12500286">12</a>]</span></p></li>
+<li><p>thermodynamics <span id="id10">[]</span></p></li>
+<li><p>causality <span id="id11">[<a class="reference internal" href="classical/CTCs.html#cite-1-tipler-rotating-1974" title="F. J. Tipler, “Rotating cylinders and the possibility of global causality violation”, Physical Review D, 9(8):2203–2206, April 1974. https://link.aps.org/doi/10.1103/PhysRevD.9.2203, doi:10.1103/PhysRevD.9.2203">11</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-hardy-probability-2005" title="L. Hardy, “Probability Theories with Dynamic Causal Structure: A New Framework for Quantum Gravity”, arXiv:gr-qc/0509120, September 2005. http://arxiv.org/abs/gr-qc/0509120">2</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-hardy-towards-2007" title="L. Hardy, “Towards quantum gravity: a framework for probabilistic theories with non-fixed causal structure”, Journal of Physics A: Mathematical and Theoretical, 40(12):3081–3099, March 2007. https://doi.org/10.1088/1751-8113/40/12/s12, doi:10.1088/1751-8113/40/12/S12">3</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-oreshkov-quantum-2012" title="O. Oreshkov, F. Costa, and Č. Brukner, “Quantum correlations with no causal order”, Nature Communications, 3(1):1092, October 2012. http://www.nature.com/articles/ncomms2076, doi:10.1038/ncomms2076">4</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-baumeler-maximal-2014" title="Ä. Baumeler, A. Feix, and S. Wolf, “Maximal incompatibility of locally classical behavior and global causal order in multiparty scenarios”, Physical Review A, 90(4):042106, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042106, doi:10.1103/PhysRevA.90.042106">5</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-araujo-witnessing-2015" title="M. Araújo, C. Branciard, F. Costa, A. Feix, C. Giarmatzi, and Č. Brukner, “Witnessing causal nonseparability”, New Journal of Physics, 17(10):102001, October 2015. https://doi.org/10.1088/1367-2630/17/10/102001, doi:10.1088/1367-2630/17/10/102001">6</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-branciard-simplest-2015" title="C. Branciard, M. Araújo, A. Feix, F. Costa, and Č. Brukner, “The simplest causal inequalities and their violation”, New Journal of Physics, 18(1):013008, December 2015. https://doi.org/10.1088/1367-2630/18/1/013008, doi:10.1088/1367-2630/18/1/013008">7</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-baumeler-space-2016" title="Ä. Baumeler and S. Wolf, “The space of logically consistent classical processes without causal order”, New Journal of Physics, 18(1):013036, January 2016. https://doi.org/10.1088/1367-2630/18/1/013036, doi:10.1088/1367-2630/18/1/013036">8</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-baumeler-device-independent-2016" title="Ä. Baumeler and S. Wolf, “Device-independent test of causal order and relations to fixed-points”, New Journal of Physics, 18(3):035014, April 2016. https://doi.org/10.1088/1367-2630/18/3/035014, doi:10.1088/1367-2630/18/3/035014">9</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-costa-quantum-2016" title="F. Costa and S. Shrapnel, “Quantum causal modelling”, New Journal of Physics, 18(6):063032, June 2016. https://doi.org/10.1088/1367-2630/18/6/063032, doi:10.1088/1367-2630/18/6/063032">10</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-baumann-appearance-2016" title="V. Baumann and Č. Brukner, “Appearance of causality in process matrices when performing fixed-basis measurements for two parties”, Physical Review A, 93(6):062324, June 2016. https://link.aps.org/doi/10.1103/PhysRevA.93.062324, doi:10.1103/PhysRevA.93.062324">11</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-oreshkov-causal-2016" title="O. Oreshkov and C. Giarmatzi, “Causal and causally separable processes”, New Journal of Physics, 18(9):093020, September 2016. https://doi.org/10.1088/1367-2630/18/9/093020, doi:10.1088/1367-2630/18/9/093020">12</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-abbott-multipartite-2016" title="A. A. Abbott, C. Giarmatzi, F. Costa, and C. Branciard, “Multipartite causal correlations: Polytopes and inequalities”, Physical Review A, 94(3):032131, September 2016. https://link.aps.org/doi/10.1103/PhysRevA.94.032131, doi:10.1103/PhysRevA.94.032131">13</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-giacomini-indefinite-2016" title="F. Giacomini, E. Castro-Ruiz, and Č. Brukner, “Indefinite causal structures for continuous-variable systems”, New Journal of Physics, 18(11):113026, November 2016. https://doi.org/10.1088/1367-2630/18/11/113026, doi:10.1088/1367-2630/18/11/113026">14</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-perinotti-causal-2017" title="P. Perinotti, “Causal Structures and the Classification of Higher Order Quantum Computations”, R. Renner and S. Stupar (editors), Time in Physics, Tutorials, Schools, and Workshops in the Mathematical Sciences, pages 103–127, Springer International Publishing, Cham, 2017. https://link.springer.com/chapter/10.1007/978-3-319-68655-4_7, doi:10.1007/978-3-319-68655-4_7">15</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-araujo-purification-2017" title="M. Araújo, A. Feix, M. Navascués, and Č. Brukner, “A purification postulate for quantum mechanics with indefinite causal order”, Quantum, 1:10, April 2017. https://quantum-journal.org/papers/q-2017-04-26-10/, doi:10.22331/q-2017-04-26-10">16</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-abbott-genuinely-2017" title="A. A. Abbott, J. Wechs, F. Costa, and C. Branciard, “Genuinely multipartite noncausality”, Quantum, 1:39, December 2017. https://quantum-journal.org/papers/q-2017-12-14-39/, doi:10.22331/q-2017-12-14-39">17</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-jia-quantum-2018" title="D. Jia, “Quantum theories from principles without assuming a definite causal structure”, Physical Review A, 98(3):032112, September 2018. https://link.aps.org/doi/10.1103/PhysRevA.98.032112, doi:10.1103/PhysRevA.98.032112">18</a>, <a class="reference internal" href="quantum/alternatives.html#cite-1-jia-causal-2019" title="D. Jia and F. Costa, “Causal order as a resource for quantum communication”, Physical Review A, 100(5):052319, November 2019. https://link.aps.org/doi/10.1103/PhysRevA.100.052319, doi:10.1103/PhysRevA.100.052319">19</a>]</span></p></li>
+<li><p>energy conditions <span id="id12">[<a class="reference internal" href="classical/CTCs.html#cite-1-morris-wormholes-1988" title="M. S. Morris, K. S. Thorne, and U. Yurtsever, “Wormholes, Time Machines, and the Weak Energy Condition”, Physical Review Letters, 61(13):1446–1449, September 1988. https://link.aps.org/doi/10.1103/PhysRevLett.61.1446, doi:10.1103/PhysRevLett.61.1446">26</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-barcelo-scalar-2000" title="C. Barceló and M. Visser, “Scalar fields, energy conditions and traversable wormholes”, Classical and Quantum Gravity, 17(18):3843–3864, September 2000. https://doi.org/10.1088/0264-9381/17/18/318, doi:10.1088/0264-9381/17/18/318">36</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-barcelo-brane-2000" title="C. Barceló and M. Visser, “Brane surgery: energy conditions, traversable wormholes, and voids”, Nuclear Physics B, 584(1):415–435, September 2000. https://www.sciencedirect.com/science/article/pii/S0550321300003795, doi:10.1016/S0550-3213(00)00379-5">37</a>]</span></p></li>
+<li><p>wormhole traversability <span id="id13">[<a class="reference internal" href="classical/CTCs.html#cite-1-tippett-traversable-2017" title="B. K. Tippett and D. Tsang, “Traversable acausal retrograde domains in spacetime”, Classical and Quantum Gravity, 34(9):095006, March 2017. https://doi.org/10.1088/1361-6382/aa6549, doi:10.1088/1361-6382/aa6549">20</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-visser-traversable-1989-1" title="M. Visser, “Traversable wormholes: Some simple examples”, Physical Review D, 39(10):3182–3184, May 1989. https://link.aps.org/doi/10.1103/PhysRevD.39.3182, doi:10.1103/PhysRevD.39.3182">27</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-visser-van-1994" title="M. Visser, “Van Vleck determinants: Traversable wormhole spacetimes”, Physical Review D, 49(8):3963–3980, April 1994. https://link.aps.org/doi/10.1103/PhysRevD.49.3963, doi:10.1103/PhysRevD.49.3963">30</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-visser-traversable-1997" title="M. Visser, “Traversable wormholes: The Roman ring”, Physical Review D, 55(8):5212–5214, April 1997. https://link.aps.org/doi/10.1103/PhysRevD.55.5212, doi:10.1103/PhysRevD.55.5212">32</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-hochberg-geometric-1997" title="D. Hochberg and M. Visser, “Geometric structure of the generic static traversable wormhole throat”, Physical Review D, 56(8):4745–4755, October 1997. https://link.aps.org/doi/10.1103/PhysRevD.56.4745, doi:10.1103/PhysRevD.56.4745">34</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-barcelo-traversable-1999" title="C. Barceló and M. Visser, “Traversable wormholes from massless conformally coupled scalar fields”, Physics Letters B, 466(2):127–134, November 1999. https://www.sciencedirect.com/science/article/pii/S037026939901117X, doi:10.1016/S0370-2693(99)01117-X">35</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-barcelo-scalar-2000" title="C. Barceló and M. Visser, “Scalar fields, energy conditions and traversable wormholes”, Classical and Quantum Gravity, 17(18):3843–3864, September 2000. https://doi.org/10.1088/0264-9381/17/18/318, doi:10.1088/0264-9381/17/18/318">36</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-barcelo-brane-2000" title="C. Barceló and M. Visser, “Brane surgery: energy conditions, traversable wormholes, and voids”, Nuclear Physics B, 584(1):415–435, September 2000. https://www.sciencedirect.com/science/article/pii/S0550321300003795, doi:10.1016/S0550-3213(00)00379-5">37</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-visser-traversable-2003" title="M. Visser, S. Kar, and N. Dadhich, “Traversable Wormholes with Arbitrarily Small Energy Condition Violations”, Physical Review Letters, 90(20):201102, May 2003. https://link.aps.org/doi/10.1103/PhysRevLett.90.201102, doi:10.1103/PhysRevLett.90.201102">39</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-kar-quantifying-2004" title="S. Kar, N. Dadhich, and M. Visser, “Quantifying energy condition violations in traversable wormholes”, Pramana, 63(4):859–864, October 2004. https://doi.org/10.1007/BF02705207, doi:10.1007/BF02705207">40</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-garcia-generic-2012" title="N. M. Garcia, F. S. N. Lobo, and M. Visser, “Generic spherically symmetric dynamic thin-shell traversable wormholes in standard general relativity”, Physical Review D, 86(4):044026, August 2012. https://link.aps.org/doi/10.1103/PhysRevD.86.044026, doi:10.1103/PhysRevD.86.044026">42</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-butcher-traversable-2015" title="L. M. Butcher, “Traversable wormholes and classical scalar fields”, Physical Review D, 91(12):124031, June 2015. https://link.aps.org/doi/10.1103/PhysRevD.91.124031, doi:10.1103/PhysRevD.91.124031">43</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-simpson-vaidya-2019" title="A. Simpson, P. Martín-Moruno, and M. Visser, “Vaidya spacetimes, black-bounces, and traversable wormholes”, Classical and Quantum Gravity, 36(14):145007, June 2019. https://doi.org/10.1088/1361-6382/ab28a5, doi:10.1088/1361-6382/ab28a5">45</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-lobo-dynamic-2020" title="F. S. N. Lobo, A. Simpson, and M. Visser, “Dynamic thin-shell black-bounce traversable wormholes”, Physical Review D, 101(12):124035, June 2020. https://link.aps.org/doi/10.1103/PhysRevD.101.124035, doi:10.1103/PhysRevD.101.124035">47</a>, <a class="reference internal" href="classical/CTCs.html#cite-1-berry-thin-shell-2020" title="T. Berry, F. S. N. Lobo, A. Simpson, and M. Visser, “Thin-shell traversable wormhole crafted from a regular black hole with asymptotically Minkowski core”, Physical Review D, 102(6):064054, September 2020. https://link.aps.org/doi/10.1103/PhysRevD.102.064054, doi:10.1103/PhysRevD.102.064054">48</a>]</span></p></li>
+<li><p>superluminality <span id="id14">[<a class="reference internal" href="quantum/comparison.html#cite-1-bub-quantum-2014" title="J. Bub and A. Stairs, “Quantum interactions with closed timelike curves and superluminal signaling”, Physical Review A, 89(2):022311, February 2014. https://link.aps.org/doi/10.1103/PhysRevA.89.022311, doi:10.1103/PhysRevA.89.022311">3</a>]</span></p></li>
+<li><p>locality <span id="id15">[]</span></p></li>
+<li><p>holography <span id="id16">[]</span></p></li>
+</ul>
+<p>Note however that these topics are mentioned purely for the sake of completeness. Since we are primarily interested in computing state evolutions using the aforementioned quantum prescriptions of time travel, all of the concerns in these topics are out of the scope of this project.</p>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quantum/D-CTCs.html">The Deutsch model (D-CTCs)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quantum/D-CTCs.html#deutsch-s-picture-the-rule-of-maximum-entropy">Deutsch’s picture: The rule of maximum entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/D-CTCs.html#iterative-picture-the-equivalent-circuit">Iterative picture: The equivalent circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/D-CTCs.html#allen-s-picture-noise-incorporation">Allen’s picture: Noise incorporation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quantum/P-CTCs.html">Postselected teleportation (P-CTCs)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quantum/P-CTCs.html#the-path-integral-formulation-in-the-presence-of-ctcs">The path-integral formulation in the presence of CTCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/P-CTCs.html#equivalence-of-ctc-path-integrals-and-postselected-teleportation">Equivalence of CTC path integrals and postselected teleportation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/P-CTCs.html#general-form-of-p-ctc-system-evolution">General form of P-CTC system evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/P-CTCs.html#determination-of-the-p-ctc-cv-state">Determination of the P-CTC CV state</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quantum/comparison.html">Comparison of D-CTCs and P-CTCs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantum/alternatives.html">Alternative formulations of quantum time travel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quantum/alternatives.html#weighted-d-ctcs-wd-ctcs">Weighted D-CTCs (WD-CTCs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/alternatives.html#transition-probabilities-t-ctcs">Transition probabilities (T-CTCs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/alternatives.html#ctc-as-a-ring-resonator">CTC as a ring resonator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum/alternatives.html#indefinite-causal-structure-and-the-process-matrix-formalism">Indefinite causal structure and the process matrix formalism</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="classical/particles.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Time-travelling billiard balls</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="quantum/D-CTCs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Deutsch model (D-CTCs)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

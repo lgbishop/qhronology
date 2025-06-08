@@ -1,0 +1,35 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\noindent\begin{minipage}{0.65\linewidth}
+\hfill
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \qw & \qw\gategroup[2,steps=2,style={thin,rounded corners,fill=none, inner xsep=2pt},background]{$\Unitary$} &\gate{\op{A}} & \qw \\
+    \qw & \gate{\op{B}} & \qw & \qw
+\end{quantikz}
+$\quad \iff$
+\end{minipage}%
+\begin{minipage}{0.35\linewidth}
+\begin{flalign}
+\Unitary &= (\op{A} \otimes \Identity) (\Identity \otimes \op{B}) \nonumber\\
+&= \op{A} \otimes \op{B} \nonumber
+\end{flalign}
+\end{minipage}
+\end{document}

@@ -1,0 +1,26 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \lstick{$\ket{\psi}$} & \swap{2} & \qw \rstick[3]{$\Swap^{p} \ket{\psi} \otimes \ket{\phi}$} \\[-0.3cm]
+    &\gate[wires=1,nwires={1},style={circle, inner sep=0pt,draw=black,fill=white,scale=0.75}, label style=black]{p}& \\[-0.3cm]
+    \lstick{$\ket{\phi}$} & \targX{} & \qw
+\end{quantikz}
+\end{document}

@@ -1,0 +1,73 @@
+\documentclass[crop,tikz,border=0pt]{standalone}
+
+% \documentclass{article}
+% \pagenumbering{gobble}
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=50cm,
+% paperheight=50cm,
+% margin=0cm
+% }
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes}
+\usepackage{pgfplots}
+\usetikzlibrary{3d,calc,positioning}
+
+% \usepackage[sfdefault]{arimo}
+% \usepackage[sfdefault]{GoSans}
+% \usepackage[T1]{fontenc}
+
+\usepackage{fontspec}
+\setmainfont{QTEurotype}
+
+\usepackage{bidicontour}
+\usepackage{bidi}
+
+\renewcommand{\bidiarraystretch}{2.5}
+\bidicontourlength{0.15pt}
+\bidicontournumber{20}
+
+% Doesn't work with XeLaTeX. Use the above `bidi-` packages and commands instead.
+% \usepackage[outline]{contour}% http://ctan.org/pkg/contour
+% \renewcommand{\arraystretch}{20.5}
+% \contourlength{10.125pt}
+% \contournumber{200}
+
+% For the sans serif \fontfamily{qtm} typeface.
+% \newcommand{\tikzunderarrow}[2][red]{\tikz[baseline={(N.base)}]{
+%   \node[inner sep=0, outer sep=0, xshift=7cm](N) {#2};
+%   \draw[overlay, -{Triangle[length=0.9mm, width=0.4mm]}, line width=.055em, #1, opacity=1]
+%     ([yshift=0.065em, xshift=-0.159cm]N.south west) to[out=-55,in=179,out looseness=1, in looseness=1] ([yshift=-.117em, xshift=-0.03cm]N.south west) -- ([yshift=-.117em, xshift=-0.01cm]N.south east);
+%   \draw[overlay, line width=.055em, #1, opacity=1]
+%     ([yshift=0.06em, xshift=-0.1145cm]N.south west) to[out=-55,in=180,out looseness=1, in looseness=1] ([yshift=-.117em, xshift=-0.01cm]N.south west) -- ([yshift=-.117em, xshift=-0.08cm]N.south east);}}
+
+\def\letterspacing{0.05em}
+
+% For the serif \setmainfont{QTEurotype}} typeface.
+\newcommand{\tikzunderarrow}[2][red]{\tikz[baseline={(N.base)}]{
+  \node[inner sep=0, outer sep=0, xshift=7cm](N) {#2};
+  % \draw[overlay, line width=.075em, #1, opacity=1]
+  %   ([yshift=0.25em, xshift=-0.1095cm]N.south west) -- ([yshift=0.075em, xshift=-0.079cm]N.south west) to[out=-55,in=179,out looseness=1, in looseness=1] ([yshift=-.077em, xshift=0.05cm]N.south west) -- ([yshift=-.077em, xshift=0.01cm]N.south east);
+  \draw[overlay, -{Triangle[length=1.35mm, width=0.55mm]}, line width=.075em, #1, opacity=1]
+    ([yshift=0.31em, xshift=(-0.11cm - \letterspacing)]N.south west) -- ([yshift=0.075em, xshift=(-0.064cm - \letterspacing)]N.south west) to[out=-60,in=180,out looseness=1, in looseness=1] ([yshift=-.115em, xshift=(0.03cm - \letterspacing)]N.south west) -- ([yshift=-.115em, xshift=0.01cm]N.south east);}}
+  % \draw[overlay, -{Triangle[length=1.15mm, width=0.55mm]}, line width=.09em, #1, opacity=1]
+  %   ([yshift=0.31em, xshift=-0.11cm]N.south west) -- ([yshift=-.08em, xshift=-0.02cm]N.south west) -- ([yshift=-.08em, xshift=0.01cm]N.south east);}}
+
+\makeatletter
+\newcommand{\colorprovide}[3]{%
+  \@ifundefinedcolor{#1}{\definecolor{#1}{#2}{#3}}{}}
+\makeatother
+
+% \colorprovide{fontcolor}{HTML}{224499}
+\colorprovide{fontcolor}{HTML}{003989}
+% \colorprovide{fontcolor}{HTML}{002569}
+
+\begin{document}
+\begin{tikzpicture}
+    %\node[anchor=center, rotate=0, scale=15, color=fontcolor] at (0,0) {\bfseries\textcolor{fontcolor}{O\tikzunderarrow[fontcolor]{\smash{hronolo}}gy}};
+    \node[anchor=center, rotate=0, scale=15, color=fontcolor] at (0,0) {\textcolor{fontcolor}{\bidicontour{fontcolor}{O\hspace{\letterspacing}}\tikzunderarrow[fontcolor]{\smash{\bidicontour{fontcolor}{\textcolor{fontcolor}{h\hspace{0.01cm}\hspace{\letterspacing}r\hspace{\letterspacing}o\hspace{\letterspacing}n\hspace{\letterspacing}o\hspace{\letterspacing}l\hspace{\letterspacing}o\hspace{\letterspacing}}}}}\bidicontour{fontcolor}{g\hspace{\letterspacing}y}}};
+\end{tikzpicture}
+\end{document}

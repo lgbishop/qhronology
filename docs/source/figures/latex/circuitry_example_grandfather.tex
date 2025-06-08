@@ -1,0 +1,25 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \lstick{$\ket{1}$} &\qw& [-0.85cm] \qw & \targ{}\gategroup[2,steps=2,style={thin,rounded corners,fill=none, inner xsep=2pt},background]{$\Unitary$} & \swap{1} & [0.0cm] \qw & [-0.35cm] \qw \rstick{$\StateCR$} \\
+    \lstick{$\quad$} && \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = -30, scale=0.65}, label style=cyan]{} & \ctrl{-1} & \targX{} & \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = 30, scale=0.65}, label style=cyan]{} & \rstick{$\StateCV$}
+\end{quantikz}
+\end{document}

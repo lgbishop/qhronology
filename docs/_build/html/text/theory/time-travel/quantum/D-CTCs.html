@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Deutsch model (D-CTCs) &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/theory/time-travel/quantum/D-CTCs';</script>
+    <script src="../../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Postselected teleportation (P-CTCs)" href="P-CTCs.html" />
+    <link rel="prev" title="Quantum theories of time travel" href="../quantum.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum mechanics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/mathematics.html">Mathematical foundations of quantum mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/discrete.html">Quantum mechanics on discrete Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/continuous.html">Quantum mechanics on continuous Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/circuitry.html">Quantum circuitry</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time travel</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../classical.html">Classical theories of time travel</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../quantum.html">Quantum theories of time travel</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Deutsch model (D-CTCs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P-CTCs.html">Postselected teleportation (P-CTCs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comparison.html">Comparison of D-CTCs and P-CTCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alternatives.html">Alternative formulations of quantum time travel</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../part-theory.html" class="nav-link">Theory</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../quantum.html" class="nav-link">Quantum theories of time travel</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">The Deutsch model (D-CTCs)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="the-deutsch-model-d-ctcs">
+<span id="sec-d-ctcs"></span><h1>The Deutsch model (D-CTCs)<a class="headerlink" href="#the-deutsch-model-d-ctcs" title="Link to this heading">#</a></h1>
+<p>In 1991, David Deutsch introduced a method of analysing the flow of information in a chronology-violating network. This prescription, now known as the <em>Deutsch model</em> <span id="id1">[<a class="reference internal" href="#cite-1-deutsch-quantum-1991" title="D. Deutsch, “Quantum mechanics near closed timelike lines”, Physical Review D, 44(10):3197–3217, November 1991. https://link.aps.org/doi/10.1103/PhysRevD.44.3197, doi:10.1103/PhysRevD.44.3197">3</a>]</span>, consists of a quantum theory of computation applied to a CTC model where most of the geometry has been abstracted away. It is based on the requirement that time evolution of the local density operator (taken as a fundamental object) of a quantum system must be self-consistent.</p>
+<p>One of the main results of Deutsch’s work on time travel is his proposal for the time evolution of quantum states through a quantum circuit representation of a chronology-violating network (illustrated in <a class="reference internal" href="#fig-circuit-ctc-dctc"><span class="std std-numref">Figure 4</span></a>), with particular note as to how it resolves time-travel paradoxes and indeterminism.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/circuit_ctc_dctc-dark.png"><img alt="A quantum circuit diagram of Deutsch's model of quantum time travel." src="../../../../_images/circuit_ctc_dctc-dark.png" style="width: 305.28px; height: 81.72px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/circuit_ctc_dctc-light.png"><img alt="A quantum circuit diagram of Deutsch's model of quantum time travel." src="../../../../_images/circuit_ctc_dctc-light.png" style="width: 305.28px; height: 81.72px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-circuit-ctc-dctc" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/circuit_ctc_dctc-light.png"><img alt="A quantum circuit diagram of Deutsch's model of quantum time travel." src="../../../../_images/circuit_ctc_dctc-light.png" style="width: 305.28px; height: 81.72px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 4 </span><span class="caption-text">Deutsch’s model of quantum time travel.</span><a class="headerlink" href="#fig-circuit-ctc-dctc" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The mathematical formulation of his self-consistent evolution of a quantum state through a region with a time machine is provided by requiring that any given chronology-violating (CV) system enters the CTC in the state</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-cv">
+<span class="eqno">(220)<a class="headerlink" href="#equation-eq-state-cv" title="Link to this equation">#</a></span>\[\StateCV \in \SpaceMixed(\SpaceHilbert_\CV),\]</div>
+<p>and then emerges in the past in the same state despite having interacted with a chronology-respecting (CR) system in the state</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-cr">
+<span class="eqno">(221)<a class="headerlink" href="#equation-eq-state-cr" title="Link to this equation">#</a></span>\[\StateCR \in \SpaceMixed(\SpaceHilbert_\CR)\]</div>
+<p>through a unitary <span class="math notranslate nohighlight">\(\Unitary\)</span> on <span class="math notranslate nohighlight">\(\SpaceHilbert_\CR\otimes\SpaceHilbert_\CV\)</span>. The joint density operator entering the gate is simply the tensor product <span class="math notranslate nohighlight">\(\StateCR \otimes \StateCV\)</span> on <span class="math notranslate nohighlight">\(\SpaceHilbert_\CR\otimes\SpaceHilbert_\CV\)</span> so that the standard evolution through the unitary is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-d-ctcs-evolution">
+<span class="eqno">(222)<a class="headerlink" href="#equation-eq-d-ctcs-evolution" title="Link to this equation">#</a></span>\[\StateCR \otimes \StateCV \rightarrow \MapGeneral_{\Unitary}[\StateCR \otimes \StateCV] = \Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger.\]</div>
+<p>We can now trace the CV and CR subsystems out and denote the resulting maps as</p>
+<div class="math notranslate nohighlight" id="equation-eq-d-ctcs-cv">
+<span class="eqno">(223)<a class="headerlink" href="#equation-eq-d-ctcs-cv" title="Link to this equation">#</a></span>\[\begin{aligned}
+    \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV] &amp;\equiv \trace_\CR\bigl[\Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger\bigr],
+\end{aligned}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-d-ctcs-cr">
+<span class="eqno">(224)<a class="headerlink" href="#equation-eq-d-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{aligned}
+    \MapDCTCsCR_{\Unitary}[\StateCR,\StateCV] &amp;\equiv \trace_\CV\bigl[\Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger\bigr].
+\end{aligned}\]</div>
+<p>Self-consistent solutions of the CTC state may then be identified as fixed points of the CV map <a class="reference internal" href="#equation-eq-d-ctcs-cv">(223)</a>, which are expressible via</p>
+<div class="math notranslate nohighlight" id="equation-eq-d-ctcs-ctc">
+<span class="eqno">(225)<a class="headerlink" href="#equation-eq-d-ctcs-ctc" title="Link to this equation">#</a></span>\[\StateCV = \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV].\]</div>
+<p>This condition essentially codifies the requirement that the “younger” CTC state (the right-hand side) exiting the gate is the same as the “older” CTC state (the left-hand side) entering the gate. Once solutions to equation <a class="reference internal" href="#equation-eq-d-ctcs-ctc">(225)</a> are determined, the evolution of the system state <span class="math notranslate nohighlight">\(\StateCR\)</span> through the interaction <span class="math notranslate nohighlight">\(\Unitary\)</span> in this Deutsch model is then simply given by the CR map <a class="reference internal" href="#equation-eq-d-ctcs-cr">(224)</a>. Deutsch’s original construction specifically interprets D-CTCs as being portals between parallel universes—a time traveller on a D-CTC would pass in and out of such universes—and so the quantum states in this context describes a superposition of states where the time traveller does and does not exist.</p>
+<p>The fact that the imposed self-consistency constraint in <a class="reference internal" href="#equation-eq-d-ctcs-ctc">(225)</a> is a fixed-point condition means that the non-linearity introduced to the laws of quantum mechanics is distinct from that of other models. Furthermore, as the rigid matching requirement is for the density matrix as opposed to the individual states in a pure state decomposition, the Deutsch model intrinsically treats density matrices ontologically as ontic (“real”) objects rather than as epistemic knowledge representations.</p>
+<section id="deutsch-s-picture-the-rule-of-maximum-entropy">
+<h2>Deutsch’s picture: The rule of maximum entropy<a class="headerlink" href="#deutsch-s-picture-the-rule-of-maximum-entropy" title="Link to this heading">#</a></h2>
+<p>Of crucial significance is the fact that the Deutsch prescription resolves time-travel paradoxes without placing any constraints on the input system state. This is because Deutsch proved that at least one consistent solution of the (normalized) map</p>
+<div class="math notranslate nohighlight" id="equation-eq-d-ctcs-entropy">
+<span class="eqno">(226)<a class="headerlink" href="#equation-eq-d-ctcs-entropy" title="Link to this equation">#</a></span>\[\begin{aligned}
+    \normalized{\MapDCTCsCV_{\Unitary}^{\infty}}[\StateCR,\StateCV^{(0)}] \equiv \lim_{N\rightarrow\infty}\frac{1}{N+1} \sum_{k=0}^{N}\MapDCTCsCV_{\Unitary}^{k}(\StateCR,\StateCV^{(0)})
+\end{aligned}\]</div>
+<p>exists for every unitary <span class="math notranslate nohighlight">\(\Unitary\)</span> and input <span class="math notranslate nohighlight">\(\StateCR\)</span>. Here, <span class="math notranslate nohighlight">\(\StateCV^{(0)} \in \SpaceLinear(\SpaceHilbert_\CV)\)</span> represents some initial CV state, and <span class="math notranslate nohighlight">\(\MapDCTCsCV^{k}\)</span> denotes <span class="math notranslate nohighlight">\(k\)</span> compositions of the D-CTC CV map, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-eq-d-ctcs-cv-compositions">
+<span class="eqno">(227)<a class="headerlink" href="#equation-eq-d-ctcs-cv-compositions" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \MapDCTCsCV^{k}_{\Unitary}\bigl[\StateCR,\StateCV^{(0)}\bigr] &amp;= (\,\underbrace{\MapDCTCsCV_{\Unitary} \circ \MapDCTCsCV_{\Unitary} \circ \ldots \circ \MapDCTCsCV_{\Unitary}}_{k \text{ times}}\,)\bigl[\StateCR,\StateCV^{(0)}\bigr] \\
+    &amp;= \MapDCTCsCV_{\Unitary}\biggl[ \StateCR,\MapDCTCsCV_{\Unitary}\Bigl[ \StateCR,\ldots,\MapDCTCsCV_{\Unitary}\bigl[\StateCR,\StateCV^{(0)}\bigr] \Bigr] \biggr].
+\end{aligned}\end{split}\]</div>
+<p>Note however that some interactions have a multiplicity of fixed points, which leads to non-determinism in the time evolution. This characteristic, known as the <em>uniqueness ambiguity</em> in the context of D-CTCs, may be interpreted as an indication that the theory is incomplete.</p>
+<p>To overcome this problem, Deutsch argued that the “correct” solution is the one with the most von Neumann entropy <a class="reference internal" href="../../quantum-mechanics/discrete.html#equation-eq-entropy">(157)</a>. This proposition appeals to the principles of thermodynamics (the second law in particular), and asserts that the trapped CTC would naturally tend towards a maximally entropic equilibrium state. Given its lack of rigorous theoretical support however, Deutsch’s rule of maximum entropy is often considered to be an unsatisfactory approach to overcoming the problem of plurality in the CTC state solution.</p>
+</section>
+<section id="iterative-picture-the-equivalent-circuit">
+<span id="sec-ecp"></span><h2>Iterative picture: The equivalent circuit<a class="headerlink" href="#iterative-picture-the-equivalent-circuit" title="Link to this heading">#</a></h2>
+<p>In 2010, Ralph and Myers introduced their equivalent-circuit picture (ECP) <span id="id2">[<a class="reference internal" href="comparison.html#cite-1-ralph-relativistic-2012" title="T. C. Ralph and T. G. Downes, “Relativistic quantum information and time machines”, Contemporary Physics, 53(1):1–16, January 2012. http://www.tandfonline.com/doi/abs/10.1080/00107514.2011.640146, doi:10.1080/00107514.2011.640146">2</a>, <a class="reference internal" href="comparison.html#cite-1-ralph-information-2010" title="T. C. Ralph and C. R. Myers, “Information flow of quantum states interacting with closed timelike curves”, Physical Review A, 82(6):062330, December 2010. https://link.aps.org/doi/10.1103/PhysRevA.82.062330, doi:10.1103/PhysRevA.82.062330">4</a>, <a class="reference internal" href="comparison.html#cite-1-ralph-reply-2011" title="T. C. Ralph and C. R. Myers, “Reply to “Comment on ‘Information flow of quantum states interacting with closed timelike curves’””, Physical Review A, 84(5):056302, November 2011. https://link.aps.org/doi/10.1103/PhysRevA.84.056302, doi:10.1103/PhysRevA.84.056302">5</a>, <a class="reference internal" href="comparison.html#cite-1-pienaar-quantum-2011" title="J. L. Pienaar, C. R. Myers, and T. C. Ralph, “Quantum fields on closed timelike curves”, Physical Review A, 84(6):062316, December 2011. https://link.aps.org/doi/10.1103/PhysRevA.84.062316, doi:10.1103/PhysRevA.84.062316">6</a>, <a class="reference internal" href="comparison.html#cite-1-dong-ralphs-2017" title="X. Dong, H. Chen, and L. Zhou, “Ralph's equivalent circuit model, revised Deutsch's maximum entropy rule and discontinuous quantum evolutions in D-CTCs”, arXiv:1711.06814 [quant-ph], November 2017. http://arxiv.org/abs/1711.06814">7</a>]</span> of the D-CTC model. This approach was formulated as a method of deriving the maximum entropy rule and thus resolving the uniqueness ambiguity. It consists of essentially “unwrapping” the D-CTC time-loop fixed-point circuit (<a class="reference internal" href="#fig-circuit-ctc-dctc"><span class="std std-numref">Figure 4</span></a>) into an infinite sequence of interactions with perfect copies of the input state, and is illustrated in <a class="reference internal" href="#fig-circuit-ctc-dctc-ecp"><span class="std std-numref">Figure 5</span></a>.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/circuit_ctc_dctc_ecp-dark.png"><img alt="A quantum circuit diagram of the equivalent-circuit picture of a D-CTC." src="../../../../_images/circuit_ctc_dctc_ecp-dark.png" style="width: 845.64px; height: 81.72px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/circuit_ctc_dctc_ecp-light.png"><img alt="A quantum circuit diagram of the equivalent-circuit picture of a D-CTC." src="../../../../_images/circuit_ctc_dctc_ecp-light.png" style="width: 845.64px; height: 81.72px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-circuit-ctc-dctc-ecp" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/circuit_ctc_dctc_ecp-light.png"><img alt="A quantum circuit diagram of the equivalent-circuit picture of a D-CTC." src="../../../../_images/circuit_ctc_dctc_ecp-light.png" style="width: 845.64px; height: 81.72px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 5 </span><span class="caption-text">The equivalent-circuit picture of a D-CTC.</span><a class="headerlink" href="#fig-circuit-ctc-dctc-ecp" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In this model, the CTC-trapped state <span class="math notranslate nohighlight">\(\StateCV^{(n-1)}\)</span> enters the <span class="math notranslate nohighlight">\(n\)</span>th interaction <span class="math notranslate nohighlight">\(\Unitary\)</span> and exits, according to the fixed-point condition <a class="reference internal" href="#equation-eq-d-ctcs-ctc">(225)</a>, in the state</p>
+<div class="math notranslate nohighlight" id="equation-eq-ecp-single">
+<span class="eqno">(228)<a class="headerlink" href="#equation-eq-ecp-single" title="Link to this equation">#</a></span>\[\StateCV^{(n)} = \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}].\]</div>
+<p>The final output <span class="math notranslate nohighlight">\(\StateCV^{(\infty)}\)</span> is then obtained by applying this map recursively <em>ad infinitum</em> to an initial state <span class="math notranslate nohighlight">\(\StateCV^{(0)}\)</span>. Accordingly, one finds, in the limit,</p>
+<div class="math notranslate nohighlight" id="equation-eq-ecp-cv">
+<span class="eqno">(229)<a class="headerlink" href="#equation-eq-ecp-cv" title="Link to this equation">#</a></span>\[\StateCV^{(\infty)} = \lim_{N \rightarrow\infty}\MapDCTCsCV_{\Unitary}^{N}[\StateCR,\StateCV^{(0)}]\]</div>
+<p>Given this framework, the ECP then introduces an arbitrarily small decoherence interaction <span class="math notranslate nohighlight">\(\Decoherence\)</span>, parametrized by the decoherence strength <span class="math notranslate nohighlight">\(0&lt;\delta\ll1\)</span>, to each CTC iteration,</p>
+<div class="math notranslate nohighlight" id="equation-eq-ecp-decoherence">
+<span class="eqno">(230)<a class="headerlink" href="#equation-eq-ecp-decoherence" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \StateCV^{(n)} &amp;= \Decoherence\bigl[\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}]\bigr] \\
+    &amp;= (1-\delta)\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}] + \delta\normalized{\Identity}
+\end{aligned}\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-d-ctcs-0">
+<span class="eqno">(231)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-d-ctcs-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \normalized{\Identity} &amp;\equiv \frac{1}{\dim(\SpaceHilbert)}\Identity, \\
+    \Identity &amp;\equiv \sum_{i}^{\dim(\SpaceHilbert)}\ket{i}\bra{i} \in \SpaceHilbert,
+\end{aligned}\end{split}\]</div>
+<p>are the unnormalized and normalized maximally mixed (identity) states, respectively. The corresponding final output is then</p>
+<div class="math notranslate nohighlight" id="equation-eq-ecp-cv-decoherence">
+<span class="eqno">(232)<a class="headerlink" href="#equation-eq-ecp-cv-decoherence" title="Link to this equation">#</a></span>\[\StateCV^{(\infty)} = \lim_{N\rightarrow\infty}\left[(1-\delta)^{N}\MapDCTCsCV_{\Unitary}^{N}[\StateCR,\StateCV^{(0)}] + \sum_{k=0}^{N-1}\delta^{k}(1-\delta)^{k}\MapDCTCsCV_{\Unitary}^{k}[\StateCR,\normalized{\Identity}]\right].\]</div>
+<p>From this result, it can be determined that the non-uniqueness in the solutions to the CV CTC map corresponds to sensitivity to the initial condition <span class="math notranslate nohighlight">\(\StateCV^{(0)}\)</span>. Ralph and Myers then show that the result of <a class="reference internal" href="#equation-eq-ecp-cv-decoherence">(232)</a> converges to the unique solution of Deutsch’s maximum entropy rule, and that this rule and result coincides with setting the initial state to be the maximally mixed CTC state <span class="math notranslate nohighlight">\(\StateCV^{(0)}=\normalized{\Identity}\)</span> in <a class="reference internal" href="#equation-eq-ecp-cv">(229)</a>. The appealing feature of this picture is that Deutsch’s maximum entropy rule is not merely a postulate of the theory; rather, it is a direct result.</p>
+<p>Later, Allen <span id="id3">[<a class="reference internal" href="comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>]</span> noticed that the equivalent circuit does not always converge when there is decoherence interaction, and that Ralph and Myers’s proof of the derivation of the maximum entropy rule was incomplete. However, Dong <span id="id4">[<a class="reference internal" href="comparison.html#cite-1-dong-ralphs-2017" title="X. Dong, H. Chen, and L. Zhou, “Ralph's equivalent circuit model, revised Deutsch's maximum entropy rule and discontinuous quantum evolutions in D-CTCs”, arXiv:1711.06814 [quant-ph], November 2017. http://arxiv.org/abs/1711.06814">7</a>]</span> then showed that the ECP leads instead to a <em>revised</em> maximum entropy rule, one which is distinct from (and perhaps more valid than) Deutsch’s original rule. It asserts that, when multiple valid solutions of the CV map exist, the Deutsch model “chooses” the <em>stable</em> fixed-point state with the most entropy (as determined by the equivalent model with a decoherence interaction). Additionally, note that the final fixed point as given by this revised rule is in general dependent on the decoherence strength (<span class="math notranslate nohighlight">\(\delta\)</span>).</p>
+</section>
+<section id="allen-s-picture-noise-incorporation">
+<span id="sec-allen"></span><h2>Allen’s picture: Noise incorporation<a class="headerlink" href="#allen-s-picture-noise-incorporation" title="Link to this heading">#</a></h2>
+<p>In 2014, Allen <span id="id5">[<a class="reference internal" href="comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>]</span> proposed a different method of resolving the uniqueness ambiguity. It consists of the incorporation of noise into the CV channel via a noise channel <span class="math notranslate nohighlight">\(\Depolarization\)</span> with depolarization parameter <span class="math notranslate nohighlight">\(0&lt;\nu&lt;1\)</span>, which is accomplished by</p>
+<div class="math notranslate nohighlight" id="equation-eq-depolarization">
+<span class="eqno">(233)<a class="headerlink" href="#equation-eq-depolarization" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \StateCV &amp;= \Depolarization\bigl[\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV]\bigr] \\
+    &amp;= (1-\nu)\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV] + \nu\normalized{\Identity}.
+\end{aligned}\end{split}\]</div>
+<p>Allen then proves that this addition resolves the uniqueness ambiguity without requiring a maximum entropy rule, and that the unique fixed-point CTC state is <span class="math notranslate nohighlight">\(\StateCV^{(0)}\)</span>-independent and given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-allen">
+<span class="eqno">(234)<a class="headerlink" href="#equation-eq-allen" title="Link to this equation">#</a></span>\[\begin{aligned}
+    \normalized{\Depolarization[\MapDCTCsCV_{\Unitary}^{\infty}]}(\StateCR) = \lim_{N\rightarrow\infty}\frac{1}{N+1} \sum_{k=0}^{N}\Depolarization\bigl[\MapDCTCsCV_{\Unitary}^{k}[\StateCR,\StateCV^{(0)}]\bigr].
+\end{aligned}\]</div>
+<p>Given that <span class="math notranslate nohighlight">\(\Depolarization\)</span> is a noise channel, then it should be <em>strictly contractive</em> (that is, its trace distance should always decrease under its action), leaving <a class="reference internal" href="#equation-eq-allen">(234)</a> unique. Dong <span id="id6">[<a class="reference internal" href="comparison.html#cite-1-dong-ralphs-2017" title="X. Dong, H. Chen, and L. Zhou, “Ralph's equivalent circuit model, revised Deutsch's maximum entropy rule and discontinuous quantum evolutions in D-CTCs”, arXiv:1711.06814 [quant-ph], November 2017. http://arxiv.org/abs/1711.06814">7</a>]</span> then show that Allen’s picture is inequivalent to both Deutsch’s and Ralph and Myers’s pictures.</p>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-allen-treating-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id5">2</a>)</span>
+<p>J.-M. A. Allen, “Treating time travel quantum mechanically”, <em>Physical Review A</em>, 90(4):042107, October 2014. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.90.042107">https://link.aps.org/doi/10.1103/PhysRevA.90.042107</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.90.042107">doi:10.1103/PhysRevA.90.042107</a></p>
+</div>
+<div class="citation" id="cite-1-ralph-relativistic-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>T. C. Ralph and T. G. Downes, “Relativistic quantum information and time machines”, <em>Contemporary Physics</em>, 53(1):1–16, January 2012. <a class="reference external" href="http://www.tandfonline.com/doi/abs/10.1080/00107514.2011.640146">http://www.tandfonline.com/doi/abs/10.1080/00107514.2011.640146</a>, <a class="reference external" href="https://doi.org/10.1080/00107514.2011.640146">doi:10.1080/00107514.2011.640146</a></p>
+</div>
+<div class="citation" id="cite-1-deutsch-quantum-1991" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
+<p>D. Deutsch, “Quantum mechanics near closed timelike lines”, <em>Physical Review D</em>, 44(10):3197–3217, November 1991. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.44.3197">https://link.aps.org/doi/10.1103/PhysRevD.44.3197</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.44.3197">doi:10.1103/PhysRevD.44.3197</a></p>
+</div>
+<div class="citation" id="cite-1-ralph-information-2010" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">4</a><span class="fn-bracket">]</span></span>
+<p>T. C. Ralph and C. R. Myers, “Information flow of quantum states interacting with closed timelike curves”, <em>Physical Review A</em>, 82(6):062330, December 2010. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.82.062330">https://link.aps.org/doi/10.1103/PhysRevA.82.062330</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.82.062330">doi:10.1103/PhysRevA.82.062330</a></p>
+</div>
+<div class="citation" id="cite-1-ralph-reply-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">5</a><span class="fn-bracket">]</span></span>
+<p>T. C. Ralph and C. R. Myers, “Reply to “Comment on ‘Information flow of quantum states interacting with closed timelike curves’””, <em>Physical Review A</em>, 84(5):056302, November 2011. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.84.056302">https://link.aps.org/doi/10.1103/PhysRevA.84.056302</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.84.056302">doi:10.1103/PhysRevA.84.056302</a></p>
+</div>
+<div class="citation" id="cite-1-pienaar-quantum-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">6</a><span class="fn-bracket">]</span></span>
+<p>J. L. Pienaar, C. R. Myers, and T. C. Ralph, “Quantum fields on closed timelike curves”, <em>Physical Review A</em>, 84(6):062316, December 2011. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.84.062316">https://link.aps.org/doi/10.1103/PhysRevA.84.062316</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.84.062316">doi:10.1103/PhysRevA.84.062316</a></p>
+</div>
+<div class="citation" id="cite-1-dong-ralphs-2017" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id4">2</a>,<a role="doc-backlink" href="#id6">3</a>)</span>
+<p>X. Dong, H. Chen, and L. Zhou, “Ralph's equivalent circuit model, revised Deutsch's maximum entropy rule and discontinuous quantum evolutions in D-CTCs”, <em>arXiv:1711.06814 [quant-ph]</em>, November 2017. <a class="reference external" href="http://arxiv.org/abs/1711.06814">http://arxiv.org/abs/1711.06814</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../quantum.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quantum theories of time travel</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P-CTCs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Postselected teleportation (P-CTCs)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deutsch-s-picture-the-rule-of-maximum-entropy">Deutsch’s picture: The rule of maximum entropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-picture-the-equivalent-circuit">Iterative picture: The equivalent circuit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allen-s-picture-noise-incorporation">Allen’s picture: Noise incorporation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

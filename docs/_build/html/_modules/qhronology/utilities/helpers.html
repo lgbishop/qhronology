@@ -1,0 +1,1040 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>qhronology.utilities.helpers &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/qhronology/utilities/helpers';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">qhronology.utilities.helpers</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for qhronology.utilities.helpers</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Project: Qhronology (https://github.com/lgbishop/qhronology)</span>
+<span class="c1"># Author: lgbishop &lt;lachlanbishop@protonmail.com&gt;</span>
+<span class="c1"># Copyright: Lachlan G. Bishop 2025</span>
+<span class="c1"># License: AGPLv3 (non-commercial use), proprietary (commercial use)</span>
+<span class="c1"># For more details, see the README in the project repository:</span>
+<span class="c1"># https://github.com/lgbishop/qhronology,</span>
+<span class="c1"># or visit the website:</span>
+<span class="c1"># https://qhronology.com.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">General helper functions.</span>
+<span class="sd">Not intended to be used directly by the user.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># https://peps.python.org/pep-0649/</span>
+<span class="c1"># https://peps.python.org/pep-0749/</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">TensorProduct</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum.dagger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dagger</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">mat</span><span class="p">,</span> <span class="n">arr</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">Shapes</span><span class="p">,</span> <span class="n">matrix_shape</span>
+
+
+<div class="viewcode-block" id="flatten_list">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.flatten_list">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">flatten_list</span><span class="p">(</span><span class="n">nested_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Flatten a list of any nesting depth and structure, e.g.:</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; flatten_list([1, [2, [3, [4]]]])</span>
+<span class="sd">    [1, 2, 3, 4]</span>
+
+<span class="sd">    &gt;&gt;&gt; flatten_list([[1], [2], [3], [4]])</span>
+<span class="sd">    [1, 2, 3, 4]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nested_list</span><span class="p">,</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">flattened_list</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">),</span> <span class="p">[])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">flattened_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">nested_list</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">flattened_list</span></div>
+
+
+
+<div class="viewcode-block" id="list_depth">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.list_depth">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_depth</span><span class="p">(</span><span class="n">nested_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the depth of a (nested) list.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nested_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">list_depth</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span></div>
+
+
+
+<div class="viewcode-block" id="count_systems">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.count_systems">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">count_systems</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Count the number of ``dim``-dimensional subsystems which constitute the (composite) system</span>
+<span class="sd">    represented by ``matrix``.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">logn</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">to_density</span><span class="p">(</span><span class="n">matrix</span><span class="p">))[</span><span class="mi">0</span><span class="p">]))</span></div>
+
+
+
+<div class="viewcode-block" id="count_dims">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.count_dims">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">count_dims</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">,</span> <span class="n">systems</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the dimensionality of the (composite) system represented by ``matrix``.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">to_density</span><span class="p">(</span><span class="n">matrix</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">systems</span><span class="p">))))</span></div>
+
+
+
+<div class="viewcode-block" id="check_systems_conflicts">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.check_systems_conflicts">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_systems_conflicts</span><span class="p">(</span><span class="o">*</span><span class="n">subsystems</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check for conflicts (common element(s)) in the given (unpacked) tuple of lists.</span>
+<span class="sd">    Returns ``True`` if any are found, otherwise ``False``.&quot;&quot;&quot;</span>
+    <span class="n">subsystems_list</span> <span class="o">=</span> <span class="n">flatten_list</span><span class="p">([</span><span class="o">*</span><span class="n">subsystems</span><span class="p">])</span>
+    <span class="n">subsystems_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">subsystems_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">subsystems_list</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">subsystems_set</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="adjust_targets">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.adjust_targets">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">adjust_targets</span><span class="p">(</span><span class="n">targets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">removed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adjust the specified system indices (``targets``) according to those which have been</span>
+<span class="sd">    removed (``removed``) from the total set.&quot;&quot;&quot;</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">targets</span><span class="p">]))))</span>
+    <span class="n">removed</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">removed</span><span class="p">]))))</span>
+
+    <span class="n">removed_below</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove</span> <span class="k">for</span> <span class="n">remove</span> <span class="ow">in</span> <span class="n">removed</span> <span class="k">if</span> <span class="n">remove</span> <span class="o">&lt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
+
+    <span class="n">targets_adjusted</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+        <span class="n">targets_adjusted</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">removed_below</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">targets_adjusted</span></div>
+
+
+
+<div class="viewcode-block" id="arrange">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.arrange">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">arrange</span><span class="p">(</span><span class="n">positions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Arranges the elements of ``items`` the according to the respective locations</span>
+<span class="sd">    (e.g., system indices) in ``positions``.</span>
+<span class="sd">    The main use case would be to arrange gates in a multipartite system.</span>
+
+<span class="sd">    The lengths of both ``positions`` and ``items`` must be the same, and ``positions`` must not</span>
+<span class="sd">    contain any missing system indices.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; arrange([[0, 3], [1, 2]], [&quot;a&quot;, &quot;b&quot;])</span>
+<span class="sd">    [&#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;a&#39;]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;The number of items in ``positions`` and ``items`` do not match.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">arranged</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">(</span><span class="n">positions</span><span class="p">)),</span> <span class="nb">max</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">(</span><span class="n">positions</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+                <span class="n">arranged</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">arranged</span></div>
+
+
+
+<div class="viewcode-block" id="to_density">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_density">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_density</span><span class="p">(</span><span class="n">vector</span><span class="p">:</span> <span class="n">mat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the outer product of ``vector`` with itself, thereby converting any vector state</span>
+<span class="sd">    into density matrix form.</span>
+<span class="sd">    Leaves square matrices unaffected, and raises an error for non-square matrices.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">COLUMN</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">vector</span> <span class="o">*</span> <span class="n">Dagger</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">ROW</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Dagger</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="o">*</span> <span class="n">vector</span>
+    <span class="k">elif</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">SQUARE</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">vector</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;A non-square matrix cannot be converted to a density matrix form.&quot;</span>
+        <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="to_column">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_column">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_column</span><span class="p">(</span><span class="n">vector</span><span class="p">:</span> <span class="n">mat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transpose ``vector`` into its column form.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">COLUMN</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">vector</span>
+    <span class="k">elif</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">ROW</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">SQUARE</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">vector</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot convert a non-square matrix to a column vector.&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="stringify">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.stringify">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">stringify</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Render the mathematical expression (as a string) of the given ``matrix``.&quot;&quot;&quot;</span>
+    <span class="n">num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+
+    <span class="n">basis</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">([</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="p">)],</span> <span class="n">repeat</span><span class="o">=</span><span class="n">num_systems</span><span class="p">))</span>
+    <span class="n">matrix_strings</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">matrix</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">COLUMN</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                    <span class="n">term</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="s2">&quot;|&quot;</span>
+                        <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">basis</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                        <span class="o">+</span> <span class="s2">&quot;⟩&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">elif</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">ROW</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                    <span class="n">term</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="s2">&quot;⟨&quot;</span>
+                        <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">basis</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                        <span class="o">+</span> <span class="s2">&quot;|&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">elif</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">SQUARE</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                    <span class="n">term</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="s2">&quot;|&quot;</span>
+                        <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">basis</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                        <span class="o">+</span> <span class="s2">&quot;⟩&quot;</span>
+                        <span class="o">+</span> <span class="s2">&quot;⟨&quot;</span>
+                        <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">basis</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                        <span class="o">+</span> <span class="s2">&quot;|&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;The given matrix must be either a square, a column, or a row.&quot;</span>
+                    <span class="p">)</span>
+                <span class="n">coefficient</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="n">coefficient</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">Add</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                    <span class="n">coefficient</span> <span class="o">=</span> <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">coefficient</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+                <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">coefficient</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+                    <span class="n">coefficient</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="n">matrix_strings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">coefficient</span><span class="p">)</span> <span class="o">+</span> <span class="n">term</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot; + &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">matrix_strings</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="symbolize_expression">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.symbolize_expression">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">symbolize_expression</span><span class="p">(</span>
+    <span class="n">expression</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">symbols</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">sym</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sympify a numerical, symbolic, or string expression,</span>
+<span class="sd">    and replace the symbols with given counterparts.&quot;&quot;&quot;</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">symbols</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">symbols</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">symbols_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">symbols</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">symbol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="o">**</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">symbols_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+        <span class="n">symbols</span> <span class="o">=</span> <span class="n">symbols_list</span>
+
+    <span class="n">expressions</span> <span class="o">=</span> <span class="n">expression</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expressions</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">expressions</span> <span class="o">=</span> <span class="p">[</span><span class="n">expressions</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">expression</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">expressions</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">expression</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">expression</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">expression</span><span class="p">))</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s2">&quot;The given ``expression`` cannot be converted to a symbolic representation.&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">expression</span> <span class="o">=</span> <span class="n">expression</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">symbol</span><span class="p">),</span> <span class="n">symbol</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">expression</span> <span class="o">=</span> <span class="n">expression</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">symbol</span><span class="p">)),</span> <span class="n">symbol</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;One of more of the given symbols is invalid.&quot;</span><span class="p">)</span>
+        <span class="n">expressions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">expression</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expressions</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">expressions</span> <span class="o">=</span> <span class="n">expressions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">expressions</span></div>
+
+
+
+<div class="viewcode-block" id="symbolize_tuples">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.symbolize_tuples">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">symbolize_tuples</span><span class="p">(</span>
+    <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">symbols_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">sym</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sympify the numerical, symbolic, or string expression pairs within tuples of the</span>
+<span class="sd">    list ``conditions`` and replace the symbols with given counterparts.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">conditions</span><span class="p">)):</span>
+        <span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">symbols_list</span><span class="p">)</span>
+        <span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">symbols_list</span><span class="p">)</span>
+        <span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">conditions</span></div>
+
+
+
+<div class="viewcode-block" id="recursively_simplify">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.recursively_simplify">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">recursively_simplify</span><span class="p">(</span>
+    <span class="n">expression</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">,</span>
+    <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simplify ``expression`` recursively using the substitutions given in ``conditions``.</span>
+<span class="sd">    Runs until ``expression`` is unchanged from the previous iteration,</span>
+<span class="sd">    or until the ``limit`` number of iterations is reached.&quot;&quot;&quot;</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
+    <span class="n">limit</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">limit</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">limit</span>
+
+    <span class="n">expressions</span> <span class="o">=</span> <span class="n">expression</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expressions</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">expressions</span> <span class="o">=</span> <span class="p">[</span><span class="n">expressions</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">expressions</span><span class="p">):</span>
+        <span class="n">expression_previous</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">expression_after</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">expression_before</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">expression_previous</span><span class="p">)</span>
+
+            <span class="n">functions</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">,</span>
+                <span class="n">sp</span><span class="o">.</span><span class="n">factor</span><span class="p">,</span>
+                <span class="n">sp</span><span class="o">.</span><span class="n">expand</span><span class="p">,</span>
+                <span class="n">sp</span><span class="o">.</span><span class="n">cancel</span><span class="p">,</span>
+            <span class="p">]</span>  <span class="c1"># + [sp.cos, sp.exp]</span>
+            <span class="c1"># functions = [sp.simplify]</span>
+
+            <span class="c1"># Generate all (sub-)permutations of the list ``functions``</span>
+            <span class="n">permutations</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">functions</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">permutations</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">(</span><span class="n">functions</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">n</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">permutation</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">:</span>
+                <span class="n">length_before</span> <span class="o">=</span> <span class="n">expression_before</span><span class="o">.</span><span class="n">count_ops</span><span class="p">()</span>
+                <span class="n">expression_after</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">expression_before</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">permutation</span><span class="p">:</span>
+                    <span class="n">expression_after</span> <span class="o">=</span> <span class="n">expression_after</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">function</span> <span class="o">==</span> <span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">:</span>
+                        <span class="n">expression_after</span> <span class="o">=</span> <span class="n">expression_after</span><span class="o">.</span><span class="n">rewrite</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">function</span> <span class="o">==</span> <span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">:</span>
+                        <span class="n">expression_after</span> <span class="o">=</span> <span class="n">expression_after</span><span class="o">.</span><span class="n">rewrite</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">function</span> <span class="o">==</span> <span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">:</span>
+                        <span class="n">expression_after</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">expression_after</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">expression_after</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">expression_after</span><span class="p">)</span>
+                <span class="n">expression_after</span> <span class="o">=</span> <span class="n">expression_after</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span>
+
+                <span class="n">length_after</span> <span class="o">=</span> <span class="n">expression_after</span><span class="o">.</span><span class="n">count_ops</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">length_after</span> <span class="o">&lt;</span> <span class="n">length_before</span><span class="p">:</span>
+                    <span class="n">expression_before</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">expression_after</span><span class="p">)</span>
+
+            <span class="c1"># Do not try another iteration if no change</span>
+            <span class="k">if</span> <span class="n">expression_after</span> <span class="o">==</span> <span class="n">expression_previous</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">counter</span> <span class="o">&gt;=</span> <span class="n">limit</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">expression_previous</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">expression_before</span><span class="p">)</span>
+        <span class="n">expressions</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">expression_before</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expressions</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">expressions</span> <span class="o">=</span> <span class="n">expressions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">expressions</span></div>
+
+
+
+<div class="viewcode-block" id="extract_matrix">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_matrix">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_matrix</span><span class="p">(</span><span class="n">operator</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract the SymPy matrix from the ``operator`` object.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">matrix</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">matrix</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">matrix</span> <span class="o">=</span> <span class="n">operator</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;A valid SymPy matrix cannot be extracted from ``operator``.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">matrix</span></div>
+
+
+
+<div class="viewcode-block" id="extract_conditions">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_conditions">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_conditions</span><span class="p">(</span><span class="o">*</span><span class="n">states</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract any substitution conditions accessible via the ``conditions`` property</span>
+<span class="sd">    from the objects in ``states``.&quot;&quot;&quot;</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">symbols_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">conditions</span> <span class="o">+=</span> <span class="n">state</span><span class="o">.</span><span class="n">conditions</span>
+            <span class="n">symbols_list</span> <span class="o">+=</span> <span class="n">state</span><span class="o">.</span><span class="n">symbols_list</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="n">symbols_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">(</span><span class="n">symbols_list</span><span class="p">)))</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">conditions</span></div>
+
+
+
+<div class="viewcode-block" id="extract_symbols">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_symbols">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_symbols</span><span class="p">(</span><span class="o">*</span><span class="n">states</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">sym</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract any SymPy symbols accessible via the ``symbols`` property</span>
+<span class="sd">    from the objects in ``states``.&quot;&quot;&quot;</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">symbols</span> <span class="o">|=</span> <span class="n">state</span><span class="o">.</span><span class="n">symbols</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">symbols</span></div>
+
+
+
+<div class="viewcode-block" id="apply_function">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.apply_function">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_function</span><span class="p">(</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies a function to a matrix. This is accomplished using eigendecomposition,</span>
+<span class="sd">    in which the specified matrix is assumed to be normal</span>
+<span class="sd">    (i.e., ``matrix * Dagger(matrix) = Dagger(matrix) * matrix``,</span>
+<span class="sd">    which holds true for density operators).&quot;&quot;&quot;</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">arguments</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">arguments</span>
+    <span class="n">eigentriple</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">eigenvects</span><span class="p">()</span>
+    <span class="n">transformed</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eigentriple</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">eigentriple</span><span class="p">)):</span>
+        <span class="n">eigenvalue</span> <span class="o">=</span> <span class="n">eigentriple</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">multiplicity</span> <span class="o">=</span> <span class="n">eigentriple</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">eigentriple</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">function</span> <span class="o">==</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span> <span class="ow">and</span> <span class="n">eigenvalue</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">multiplicity</span><span class="p">):</span>
+                <span class="n">transformed</span> <span class="o">+=</span> <span class="n">function</span><span class="p">(</span><span class="n">eigenvalue</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">)</span> <span class="o">*</span> <span class="n">to_density</span><span class="p">(</span>
+                    <span class="n">eigenvectors</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+                <span class="p">)</span>
+    <span class="k">return</span> <span class="n">transformed</span></div>
+
+
+
+<div class="viewcode-block" id="default_arguments">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.default_arguments">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">default_arguments</span><span class="p">(</span>
+    <span class="n">arguments</span><span class="p">,</span> <span class="n">kwarguments</span><span class="p">,</span> <span class="n">class_object</span><span class="p">,</span> <span class="n">arg_pairs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the default value of an argument in a subclass&#39;s constructor.</span>
+<span class="sd">    ``class_object`` is the class whose ``__init__`` signature is to be targeted.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">arg_strs</span><span class="p">,</span> <span class="n">arg_defaults</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">arg_pairs</span><span class="p">)</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">class_object</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span>
+    <span class="n">arguments_parent</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">arg_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">arguments_parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">arg_strs</span><span class="p">]</span>
+
+    <span class="n">arg_pairs</span><span class="p">,</span> <span class="n">arg_indices</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">arg_pairs</span><span class="p">,</span> <span class="n">arg_indices</span><span class="p">)))</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg_pairs</span><span class="p">)):</span>
+        <span class="n">arg_index</span> <span class="o">=</span> <span class="n">arg_indices</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">arg_str</span> <span class="o">=</span> <span class="n">arg_pairs</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">arg_default</span> <span class="o">=</span> <span class="n">arg_pairs</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">arg_index</span><span class="p">:</span>
+            <span class="n">arguments</span><span class="p">[</span><span class="n">arg_index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">arg_default</span> <span class="k">if</span> <span class="n">arguments</span><span class="p">[</span><span class="n">arg_index</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">arguments</span><span class="p">[</span><span class="n">arg_index</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">arg_str</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwarguments</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">or</span> <span class="n">kwarguments</span><span class="p">[</span><span class="n">arg_str</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">kwarguments</span><span class="p">[</span><span class="n">arg_str</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_default</span>
+
+    <span class="k">return</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">kwarguments</span></div>
+
+
+
+<div class="viewcode-block" id="fix_arguments">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.fix_arguments">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fix_arguments</span><span class="p">(</span>
+    <span class="n">arguments</span><span class="p">,</span> <span class="n">kwarguments</span><span class="p">,</span> <span class="n">class_object</span><span class="p">,</span> <span class="n">arg_pairs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix the value of an argument in a subclass&#39;s constructor.</span>
+<span class="sd">    The argument ``class_object`` is the class whose ``__init__`` signature is to be targeted.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">arg_strs</span><span class="p">,</span> <span class="n">arg_values</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">arg_pairs</span><span class="p">)</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">class_object</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span>
+    <span class="n">arguments_parent</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">arg_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">arguments_parent</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">arg_strs</span><span class="p">]</span>
+
+    <span class="n">arg_pairs</span><span class="p">,</span> <span class="n">arg_indices</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">arg_pairs</span><span class="p">,</span> <span class="n">arg_indices</span><span class="p">)))</span>
+
+    <span class="n">shift</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg_pairs</span><span class="p">)):</span>
+        <span class="n">arg_index</span> <span class="o">=</span> <span class="n">arg_indices</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">arg_str</span> <span class="o">=</span> <span class="n">arg_pairs</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">arg_value</span> <span class="o">=</span> <span class="n">arg_pairs</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift</span> <span class="o">&gt;</span> <span class="n">arg_index</span><span class="p">:</span>
+            <span class="n">arguments</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+            <span class="n">arguments</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">arg_index</span><span class="p">,</span> <span class="n">arg_value</span><span class="p">)</span>
+            <span class="n">arguments</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+            <span class="n">shift</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">arg_str</span> <span class="ow">in</span> <span class="n">kwarguments</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">kwarguments</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">arg_str</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">arg_str</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwarguments</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">kwarguments</span><span class="p">[</span><span class="n">arg_str</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_value</span>
+
+    <span class="k">return</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">kwarguments</span></div>
+
+
+
+<div class="viewcode-block" id="assemble_composition">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.assemble_composition">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">assemble_composition</span><span class="p">(</span><span class="o">*</span><span class="n">pairs</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">mat</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assemble a composite state from constituent subsystems described by the items in ``pairs``.</span>
+<span class="sd">    For each pair:</span>
+<span class="sd">    - the first element is the subsystem&#39;s state matrix.</span>
+<span class="sd">    - the second element is the list of indices of its systems.&quot;&quot;&quot;</span>
+    <span class="n">pairs_sorted</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">state_composition</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">TensorProduct</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs_sorted</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">state_composition</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

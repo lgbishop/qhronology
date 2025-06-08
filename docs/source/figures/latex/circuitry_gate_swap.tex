@@ -1,0 +1,30 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \qw & \swap{1} & \qw \\
+    \qw & \targX{} & \qw
+\end{quantikz}
+$\quad = \quad$\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \qw & \gate[2,swap]{} & \qw \\
+    \qw & \qw & \qw
+\end{quantikz}
+$\quad \iff \quad \Swap^{0,1} = \displaystyle\sum\limits_{j,k=0}^{\Dimension - 1} \ket{j}\bra{k} \otimes \ket{k}\bra{j}$
+\end{document}

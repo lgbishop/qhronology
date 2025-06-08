@@ -1,0 +1,28 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+% \usetikzlibrary{quantikz}
+\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.0]
+    \lstick{$\ldots$} & \rstick{$\bra{\StateVector}$}
+\end{quantikz}
+$\quad = \quad$\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.0]
+    \lstick{$\ldots$} & \meterD{} \rstick{$\ket{\StateVector}$}
+\end{quantikz}
+$\quad \iff \quad \trace[\ket{\StateVector}\bra{\StateVector}(\ldots)] =  \bra{\StateVector}(\ldots)\ket{\StateVector}$
+\end{document}

@@ -1,0 +1,30 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+% \usetikzlibrary{quantikz}
+\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \lstick{$\ldots$} & \rstick[2]{$\hspace{0.75em}\StateDensity^{\dagger 0,1}$} \\
+    \lstick{$\ldots$} &
+\end{quantikz}
+$\quad = \quad$\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \lstick{$\ldots$} & \meterD{} \rstick[2]{$\hspace{0.75em}\StateDensity^{0,1}$} \\
+    \lstick{$\ldots$} & \meterD{}
+\end{quantikz}
+$\quad \iff \quad \trace[\StateDensity^{0,1}(\ldots)]$
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=2]
+    \qw & \swap{2} & \qw \\[-0.3cm]
+    &\gate[wires=1,nwires={1},style={circle, inner sep=0pt,draw=black,fill=black!0,scale=0.75}, label style=black]{p}& \\[-0.3cm]
+    \qw & \targX{} & \qw
+\end{quantikz}
+$\quad \iff \quad \Swap(p) = \displaystyle\frac{1}{2}(1 + \e^{\eye\pi p}) \Identity^{0,1} + \displaystyle\frac{1}{2}(1 - \e^{\eye\pi p}) \Swap^{0,1}$
+\end{document}

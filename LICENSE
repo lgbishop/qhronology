@@ -1,0 +1,41 @@
+Package
+-------
+
+The Qhronology package (including any distributions, both source and built, and its source code) is dual-licensed, and you may only use it under the terms of a relevant license agreement. The particular one which applies to you depends on your use of the package and can be summarized as follows:
+
+- **Non-commercial use**: You are free to copy, distribute, and transmit Qhronology for non-commercial purposes. Non-commercial use is subject to the terms of version 3 of the GNU Affero General Public License (AGPL-3.0-or-later). Redistribution of the software in accordance with this license must only be done under the same non-commercial terms. The AGPL in its entirety can be viewed online at https://www.gnu.org/licenses/agpl-3.0.html. A copy of the license is also included with the project's source code: `AGPL-3.0-or-later.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/AGPL-3.0-or-later.txt>`_.
+
+- **Commercial use**: Any use of Qhronology for a commercial purpose is subject to and requires a special license. If you intend to use the package in such a manner, please contact lachlanbishop@protonmail.com to arrange a license agreement.
+
+Guidelines on distinguishing use
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Whether a particular use of Qhronology is considered to be either "non-commercial" or "commercial" depends on the use, not the user, and some guidelines are set out below:
+
+- *Non-commercial* use is anticipated to primarily involve students and teachers who may wish to use Qhronology at home and/or an accredited academic institution (e.g., school, university, etc.) for the purpose of education, without intending to seek any commercial advantage or financial gain. This includes teachers in schools and universities where tuition fees are charged, so long as the use of Qhronology is limited to personal or individual classroom teaching or public academic research.
+
+- *Commercial* use is anticipated to primarily involve publishers, online schools, online universities, and other organizations (both for-profit and non-profit) who wish to use Qhronology to support activities that are intended toward securing a commercial advantage or the generation of revenue or monetary compensation. This includes, but is not limited to, any of the following:
+
+  - The use of Qhronology (and its source code) to generate or develop educational materials or resources which will be sold in exchange for a fee (including course or tuition fees) or (if given away for free) which are used to gain a commercial advantage for the user.
+
+  - The provision of training, support or editorial services that use or reference Qhronology in exchange for a fee.
+
+  - The use of Qhronology (and its source code) within a non-academic ebook, textbook, or journal, whether or not the publication is distributed for a fee. Please note that the use of Qhronology in publicly available academic papers and conferences is considered to be non-commercial use and so does not require a commercial license agreement.
+
+  - The use of Qhronology (and its source code) to assist in securing advertising or sponsorship revenues.
+
+  - The use of Qhronology (and its source code) for training machine learning models or artificial intelligence systems, including its incorporation into any dataset used for such purposes.
+
+Documentation
+-------------
+
+The Qhronology project's accompanying documentation, including its text, images, scripts, code snippets, compiled outputs (e.g., HTML and PDF), and source files, are published under the CC-BY-NC-ND-4.0 license. For more information about your rights and restrictions under this license, please visit https://creativecommons.org/licenses/by-nc-nd/4.0/. A copy of the license is provided with the project's source code: `CC-BY-NC-ND-4.0.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/CC-BY-NC-ND-4.0.txt>`_.
+
+Other
+-----
+
+External assets licensed for distribution with the project consist of the following:
+
+- Fonts - applicable fonts are redistributed (vendored and embedded) as per the terms of the SIL Open Font License: `OFL-1.1.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/OFL-1.1.txt>`_
+- MathJax - redistributed (vendored) as per the terms of the Apache License, Version 2.0: `Apache-2.0.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/Apache-2.0.txt>`_
+- three.js - redistributed (vendored) as per the terms of the MIT License: `MIT.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/MIT.txt>`_

@@ -1,0 +1,35 @@
+\documentclass[crop,tikz,border=0pt]{standalone}
+
+% \documentclass{article}
+% \pagenumbering{gobble}
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=50cm,
+% paperheight=50cm,
+% margin=0cm
+% }
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes}
+\usepackage{pgfplots}
+\usetikzlibrary{3d,calc,positioning}
+
+\usepackage{fontspec}
+
+\setmainfont[sfdefault]{ClearSans}
+
+\makeatletter
+\newcommand{\colorprovide}[3]{%
+  \@ifundefinedcolor{#1}{\definecolor{#1}{#2}{#3}}{}}
+\makeatother
+
+\colorprovide{fontcolor}{HTML}{FEFEFE}
+
+\begin{document}
+\begin{tikzpicture}
+    \node[anchor=west,xshift=-0.75cm,yshift=-25.15cm,rotate=0, scale=2.5, color=fontcolor] at (0,0) {\textbf{Lachlan G. Bishop}};
+\end{tikzpicture}
+
+\end{document}

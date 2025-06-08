@@ -1,0 +1,361 @@
+\newcommand{\ten}[1]{\times10^{#1}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\re}{\text{Re}}
+\newcommand{\inner}[2]{\left\langle #1 , #2 \right\rangle}
+\newcommand{\innerprod}[4]{\mbox{}_{#3}\langle #1 \vert #2 \rangle_{#4}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\trace}{\text{tr}}
+\newcommand{\Domain}{\text{dom}}
+\newcommand{\Range}{\text{ran}}
+\newcommand{\Arg}{\text{Arg}}
+\newcommand{\diag}{\text{diag}}
+\newcommand{\sn}{\text{sn}}
+% \newcommand{\eye}{\operatorname{i}}
+\newcommand{\eye}{{\mathrm{i}\mkern1mu}}
+\newcommand{\op}[1]{\hat{#1}}
+\newcommand{\conj}[2]{#1^*#2}
+\newcommand{\dual}[2]{#1^*#2}
+\newcommand{\transpose}{\text{T}}
+\newcommand{\classical}[1]{\tilde{#1}}
+\newcommand{\map}[1]{\mathbf{#1}}
+\newcommand{\textgate}[1]{\text{\textsc{#1}}}
+\newcommand{\vac}[1]{\mathbf{#1}} % \mathcal{}, \mathfrak{} or \mathbf{} or \tilde{}
+\newcommand{\normalized}[1]{\overline{#1}}
+% \newcommand{\e}{\operatorname{e}}
+\newcommand{\e}{{\mkern1mu\mathrm{e}\mkern1mu}}
+\newcommand{\aket}[1]{\big| #1 \big>} % for Dirac bras
+\newcommand{\abra}[1]{\big< #1 \big|} % for Dirac kets
+\newcommand{\ket}[1]{\left| #1 \right\rangle} % for Dirac bras
+\newcommand{\bra}[1]{\left\langle #1 \right|} % for Dirac kets
+\newcommand{\abraket}[2]{\big< #1 \vphantom{#2} \big| \big. #2 \vphantom{#1} \big>} % for Dirac brackets
+% \newcommand{\braket}[2]{\left\langle #1 \vphantom{#2} \vphantom{#2} \right| \left. #2 \vphantom{#1} \right\rangle}
+\newcommand{\braket}[2]{\left\langle #1 \vphantom{#2} \vphantom{#2} \vert #2 \vphantom{#1} \right\rangle}
+% \DeclareMathOperator{\Sample}{Sample}
+% \let\vaccent=\v % rename builtin command \v{} to \vaccent{} %doing this may break the caron accent \v{C} = Č
+\renewcommand{\vec}[1]{\mathbf{#1}} % for vectors
+\newcommand{\gv}[1]{\bm{#1}} % for vectors of Greek letters
+\newcommand{\uv}[1]{\mathbf{\hat{#1}}} % for unit vector
+\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+\newcommand{\norm}[1]{\left| \left| #1 \right| \right|} % for norm
+\newcommand{\avg}[1]{\left< #1 \right>} % for average
+\let\underdot=\d % rename builtin command \d{} to \underdot{}
+% \newcommand{\diff}[1]{\text{d}#1} % for derivatives
+\newcommand{\diff}{\text{d}}
+% \newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
+% \newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
+% \newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|
+% \left. #2 \vphantom{#1} \right>} % for Dirac brackets
+\newcommand{\matrixel}[3]{\left< #1 \vphantom{#2#3} \right|
+#2 \left| #3 \vphantom{#1#2} \right>} % for Dirac matrix elements
+\newcommand{\grad}[1]{\vec{\nabla} #1} % for gradient
+\let\divsymb=\div % rename builtin command \div to \divsymb
+\renewcommand{\div}[1]{\vec{\nabla} \cdot #1} % for divergence
+\newcommand{\curl}[1]{\vec{\nabla} \times #1} % for curl
+\let\baraccent=\= % rename builtin command \= to \baraccent
+\renewcommand{\=}[1]{\stackrel{#1}{=}} % for putting numbers above =
+\newcommand{\MapBracket}[1]{\big[ #1 \big]}
+\newcommand{\MapBrackets}[2]{\big[ #1 \vphantom{#2} , #2 \vphantom{#1} \big]}
+
+\newcommand{\RomanNumeralCaps}[1]{\MakeUppercase{\romannumeral #1}}
+
+% coordinates
+\newcommand{\Time}{t}
+\newcommand{\TimeDelta}{\Delta t}
+\newcommand{\TimeInitial}{t'}
+\newcommand{\TimeFinal}{t''}
+\newcommand{\TimeFuture}{t^+}
+\newcommand{\TimePast}{t^-}
+\newcommand{\TimeCollision}{t^*}
+\newcommand{\TimeOrthogonalization}{t_\perp}
+\newcommand{\TimeInbound}{t_\text{in}}
+\newcommand{\TimeOutbound}{t_\text{out}}
+\newcommand{\TimeDelay}{\Delta \tau}
+
+\newcommand{\Space}{x} % three-vectors
+\newcommand{\SpaceDelta}{w}
+\newcommand{\PositionInitial}{x'}
+\newcommand{\PositionFinal}{x''}
+\newcommand{\PositionFuture}{x^+}
+\newcommand{\PositionPast}{x^-}
+\newcommand{\PositionCollision}{x^*}
+\newcommand{\MouthFuture}{\mathcal{W}^+}
+\newcommand{\MouthPast}{\mathcal{W}^-}
+\newcommand{\Position}{x} % for nonrelativistic uses, like the position operator
+
+\newcommand{\Momentum}{p}
+\newcommand{\MomentumInitial}{p'}
+\newcommand{\MomentumFinal}{p''}
+
+\newcommand{\Coordinate}{x} % four-vectors and differential equations
+\newcommand{\Dimension}{d}
+\newcommand{\Base}{b}
+\newcommand{\Radial}{r}
+\newcommand{\NullPlus}{a}
+\newcommand{\NullMinus}{b}
+\newcommand{\Affine}{\lambda}
+\newcommand{\TimePenrose}{v}
+\newcommand{\SpacePenrose}{u}
+
+\newcommand{\PastTimelikeInfinity}{i^-}
+\newcommand{\FutureTimelikeInfinity}{i^+}
+\newcommand{\SpacelikeInfinity}{i^0}
+\newcommand{\PastLightlikeInfinity}{\mathcal{I}^-}
+\newcommand{\FutureLightlikeInfinity}{\mathcal{I}^+}
+
+\newcommand{\EvolutionNoninteracting}{\alpha}
+\newcommand{\EvolutionInteracting}{\beta}
+\newcommand{\EvolutionFuture}{\mu}
+\newcommand{\EvolutionPast}{\nu}
+\newcommand{\ClassNoninteracting}{\text{\RomanNumeralCaps{1}}}
+\newcommand{\ClassInteracting}{\text{\RomanNumeralCaps{2}}}
+\newcommand{\ClassFuture}{\text{\RomanNumeralCaps{3}_+}}
+\newcommand{\ClassPast}{\text{\RomanNumeralCaps{3}_-}}
+
+% quantities
+\newcommand{\Mass}{m}
+\newcommand{\Speed}{c}
+\newcommand{\Energy}{E}
+\newcommand{\EnergyScaled}{\Lambda}
+\newcommand{\EnergyDelta}{\Delta E}
+\newcommand{\Coupling}{\lambda}
+
+% mathematics
+\newcommand{\Probability}{\mathbb{P}}
+\newcommand{\Expected}{\mathbb{E}}
+\newcommand{\Action}{S}
+\newcommand{\Propagator}{K}
+\newcommand{\Green}{G}
+\newcommand{\Laplacian}{\vec{\nabla}^2}
+\newcommand{\Covariant}{\nabla}
+\newcommand{\BoxOperator}{\square}
+
+\newcommand{\Variation}{\delta}
+\newcommand{\Transition}{T}
+\newcommand{\Transformation}{\Upsilon}
+\newcommand{\Endomorphism}{\text{End}}
+
+\newcommand{\PDENonLinear}{F}
+\newcommand{\PDELinear}{P}
+\newcommand{\PDELinearAdjoint}{Q}
+\newcommand{\Derivative}{D}
+\newcommand{\PDENonHomogeneous}{J}
+
+\newcommand{\FunctionExample}{f}
+\newcommand{\FunctionExampleTwo}{g}
+\newcommand{\FunctionExampleThree}{h}
+\newcommand{\FunctionTest}{\varphi}
+\newcommand{\Functional}{J}
+\newcommand{\Distribution}{T}
+\newcommand{\FT}[1]{\tilde{#1}}
+\newcommand{\Fourier}{\mathcal{F}}
+\newcommand{\Number}{N}
+\newcommand{\Fields}{\mathbb{F}}
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\Complexes}{\mathbb{C}}
+\newcommand{\Integers}{\mathbb{Z}}
+\newcommand{\IntegersPositive}{\mathbb{Z}^+}
+\newcommand{\Natural}{\mathbb{N}}
+\newcommand{\Basis}{e}
+\newcommand{\SetField}{F}
+\newcommand{\SetSub}{X}
+\newcommand{\SetSubTwo}{V}
+\newcommand{\Chart}{\psi}
+\newcommand{\Integral}{I}
+
+\newcommand{\Differentiability}{C} % smoothness
+\newcommand{\Test}{D}
+\newcommand{\SpaceLebesgue}{L}
+\newcommand{\SpaceVector}{\mathcal{V}}
+\newcommand{\SpaceHilbert}{\mathcal{H}}
+\newcommand{\SpacePure}{\mathcal{P}}
+\newcommand{\SpaceMixed}{\mathcal{D}}
+\newcommand{\SpaceLinear}{\mathcal{L}}
+\newcommand{\SpaceBounded}{\mathcal{B}}
+\newcommand{\TestDistributions}{\mathcal{D}'}
+\newcommand{\Schwartz}{S}
+\newcommand{\SchwartzDistributions}{S'}
+\newcommand{\Sobolev}{W}
+\newcommand{\Measure}{\mu}
+\newcommand{\MeasureArea}{\sigma}
+\newcommand{\Configuration}{\mathcal{Q}}
+
+% quantum
+\newcommand{\WaveFunction}{\psi}
+\newcommand{\WaveFunctionInitial}{\psi_\text{i}}
+\newcommand{\WaveFunctionFinal}{\psi_\text{f}}
+\newcommand{\WaveFunctionCTC}{\phi}
+\newcommand{\WaveFunctionCTCInitial}{\phi_\text{i}}
+\newcommand{\WaveFunctionCTCFinal}{\phi_\text{f}}
+\newcommand{\StateVector}{\phi}
+\newcommand{\StatePure}{\psi}
+\newcommand{\StateMatrix}{\rho} % for basis expansions
+\newcommand{\StateDensity}{\op{\StateMatrix}}
+
+\newcommand{\Lagrangian}{L}
+\newcommand{\Hamiltonian}{H}
+\newcommand{\Kinetic}{T}
+\newcommand{\Potential}{V}
+\newcommand{\OperatorLagrangian}{\op{L}}
+\newcommand{\OperatorHamiltonian}{\op{H}}
+\newcommand{\OperatorKinetic}{\op{T}}
+\newcommand{\OperatorPotential}{\op{V}}
+\newcommand{\DifferentialPath}{\mathcal{D}}
+
+\newcommand{\CR}{\text{CR}}
+\newcommand{\CV}{\text{CV}}
+\newcommand{\Teleportation}{\text{T}}
+\newcommand{\Clock}{\text{c}}
+\newcommand{\StateCR}{\op{\rho}}
+\newcommand{\StateCV}{\op{\tau}}
+\newcommand{\MapGeneral}{\vec{E}}
+\newcommand{\MapDCTCsCR}{\vec{D}}
+\newcommand{\MapDCTCsMix}{\vec{d}}
+\newcommand{\MapDCTCsCV}{\vec{d}}
+\newcommand{\MapPCTCsCR}{\vec{P}}
+\newcommand{\MapPCTCsCV}{\vec{p}}
+\newcommand{\MapWDCTCsCR}{\vec{W}}
+\newcommand{\MapWDCTCsCV}{\vec{w}}
+\newcommand{\MapTCTCsCR}{\vec{T}}
+\newcommand{\MapTCTCsCV}{\vec{t}}
+\newcommand{\OperatorPCTC}{\op{\mathcal{P}}}
+\newcommand{\Decoherence}{\mathscr{D}}
+\newcommand{\Depolarization}{\mathscr{N}}
+\newcommand{\Purity}{\gamma}
+\newcommand{\Entropy}{S}
+\newcommand{\MutualInformation}{I}
+\newcommand{\TraceDistance}{D}
+\newcommand{\Fidelity}{F}
+\newcommand{\NumberLevels}{N}
+\newcommand{\NumberModes}{M}
+\newcommand{\Normalization}{\mathcal{N}}
+\newcommand{\Unitary}{\op{U}}
+\newcommand{\UnitaryVacuum}{\op{U}}
+\newcommand{\UnitaryMultimode}{\op{U}}
+\newcommand{\UnitaryTraced}{\op{P}}
+\newcommand{\UnitaryTime}{\op{U}}
+\newcommand{\Kraus}{\op{K}}
+\newcommand{\Observable}{\op{O}}
+\newcommand{\Identity}{\op{I}}
+\newcommand{\Seed}{\op{\varrho}}
+\newcommand{\Rotation}{\op{R}}
+\newcommand{\Phase}{\op{P}}
+\newcommand{\Diagonal}{\op{D}}
+\newcommand{\Swap}{\op{S}}
+\newcommand{\OperatorPartial}{\op{V}}
+\newcommand{\Control}{C}
+\newcommand{\Anticontrol}{\bar{C}}
+% \newcommand{\Controlled}[1][3]{\Control^{ #1 } \Anticontrol^{ #2 } { #4 }^{ #3 }
+
+\newcommand{\SUM}{\op{\Sigma}}
+\newcommand{\Pauli}{\op{\sigma}}
+\newcommand{\GellMann}{\op{\lambda}}
+\newcommand{\GellMannGeneralized}{\op{\lambda}}
+\newcommand{\NOT}{\op{X}}
+\newcommand{\PauliX}{\op{X}}
+\newcommand{\PauliY}{\op{Y}}
+\newcommand{\PauliZ}{\op{Z}}
+\newcommand{\QFT}{\op{F}}
+
+\newcommand{\VacuumSwap}{\op{\vac{S}}}
+\newcommand{\VacuumIdentity}{\op{\vac{I}}}
+\newcommand{\VacuumRotation}{\op{\vac{R}}}
+
+\newcommand{\qclock}{\theta}
+\newcommand{\qClock}{\Theta}
+\newcommand{\Bell}{\Phi}
+\newcommand{\CoefficientWeight}{c}
+\newcommand{\ParameterVacuum}{\Omega}
+\newcommand{\ParameterFree}{g}
+\newcommand{\ParameterScaled}{q}
+\newcommand{\ParameterIncomplete}{h}
+\newcommand{\ParameterPower}{p}
+\newcommand{\ProbabilisticFalse}{\alpha}
+\newcommand{\ProbabilisticTrue}{\beta}
+\newcommand{\ProbabilisticTrueScaled}{r}
+
+\newcommand{\EigenValue}{\xi}
+\newcommand{\Probe}{\chi}
+\newcommand{\StateProbe}{\op{\omega}}
+\newcommand{\StateIntermediate}{\op{\kappa}}
+\newcommand{\Strength}{\epsilon}
+\newcommand{\Measurement}{M}
+\newcommand{\POVM}{\Pi}
+\newcommand{\Connection}{Q}
+\newcommand{\Expectation}{r}
+\newcommand{\UnitaryTotal}{\op{W}}
+\newcommand{\Tomography}{\op{T}}
+\newcommand{\UnitaryInteraction}{\op{U}}
+\newcommand{\UnitaryExpansion}{\op{A}}
+\newcommand{\UnitaryBasis}{\op{V}}
+\newcommand{\Hadamard}{\op{H}}
+
+\newcommand{\GroupUnitary}{U}
+\newcommand{\GroupUnitarySpecial}{SU}
+\newcommand{\GroupOrthogonal}{O}
+\newcommand{\GroupOrthogonalSpecial}{SO}
+
+\newcommand{\SetProbability}{\mathbb{P}}
+\newcommand{\SetKraus}{\mathbb{K}}
+\newcommand{\SetUnitary}{\mathbb{U}}
+\newcommand{\SetObservable}{\mathbb{M}}
+
+% fields
+\newcommand{\FieldGeneral}{\Phi}
+\newcommand{\FieldGeneralData}{\chi}
+\newcommand{\FieldScalar}{\phi}
+\newcommand{\FieldSpinor}{\psi}
+\newcommand{\FieldVector}{B}
+\newcommand{\FieldDataPosition}{\chi}
+\newcommand{\FieldDataMomentum}{\dot{\chi}}
+\newcommand{\FieldTerm}{\psi}
+
+\newcommand{\HamiltonianDensity}{\mathcal{H}}
+\newcommand{\LagrangianDensity}{\mathcal{L}}
+\newcommand{\NonLinear}{\LagrangianDensity_{\text{int}}}
+
+\newcommand{\FunctionPositive}{A}
+\newcommand{\FunctionNegative}{B}
+\newcommand{\FunctionIntermediate}{J}
+
+\newcommand{\Wave}{\psi}
+\newcommand{\WaveDataPosition}{\Psi}
+\newcommand{\WaveDataMomentum}{\dot{\Psi}}
+\newcommand{\Train}{\theta}
+\newcommand{\ConstantOne}{C_1}
+\newcommand{\ConstantTwo}{C_2}
+\newcommand{\RootsPM}{R_\pm}
+\newcommand{\RootsMP}{R_\mp}
+\newcommand{\RootPositive}{R_+}
+\newcommand{\RootNegative}{R_-}
+
+% relativity and geometry
+\newcommand{\LorentzFactor}{\gamma}
+
+\newcommand{\Velocity}{u}
+\newcommand{\FourVelocity}{u}
+\newcommand{\Wavevector}{k}
+\newcommand{\FourWavevector}{k}
+\newcommand{\FrequencyAngular}{\omega}
+\newcommand{\Frequency}{\Omega}
+
+\newcommand{\MetricMinkowski}{\eta}
+\newcommand{\MetricGeneral}{g}
+\newcommand{\ManifoldGeneral}{\mathcal{M}}
+\newcommand{\ManifoldTarget}{\mathcal{T}}
+\newcommand{\ManifoldMinkowski}{\mathcal{M}}
+\newcommand{\ManifoldTimeMachine}{\mathcal{N}}
+\newcommand{\ManifoldThreeWormhole}{\mathcal{W}}
+\newcommand{\Submanifold}{\Omega}
+\newcommand{\DifferentialForm}{\omega}
+\newcommand{\Inclusion}{\iota}
+\newcommand{\Mouth}{\mathcal{W}}
+\newcommand{\Sphere}{\mathcal{S}}
+\newcommand{\Cylinder}{\mathcal{C}}
+\newcommand{\SurfaceGeneral}{\mathcal{Z}}
+\newcommand{\SurfaceCauchy}{\Sigma}
+\newcommand{\Region}{\mathcal{R}}
+\newcommand{\Horizon}{\mathcal{H}}
+\newcommand{\Development}{D}
+
+\newcommand{\TensorGeneral}{F}
+\newcommand{\TensorStressEnergy}{T}

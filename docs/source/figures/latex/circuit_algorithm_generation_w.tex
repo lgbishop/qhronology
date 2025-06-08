@@ -1,0 +1,26 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \lstick{$\ket{0}$} & \gate{\Rotation_y} & \ctrl{1} & \qw & \ctrl{1} & \gate{\op{X}} & \qw \rstick[3]{$\ket{\mathrm{W}}$} \\
+    \lstick{$\ket{0}$} & \qw & \gate{\Hadamard} & \ctrl{1} & \targ{} & \qw & \qw \\
+    \lstick{$\ket{0}$} & \qw & \qw & \targ{} & \qw & \qw & \qw
+\end{quantikz}
+\end{document}

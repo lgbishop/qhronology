@@ -1,0 +1,860 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Closed timelike curves and time machines &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/theory/time-travel/classical/CTCs';</script>
+    <script src="../../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="The Cauchy problem on spacetimes containing CTCs" href="fields.html" />
+    <link rel="prev" title="Classical theories of time travel" href="../classical.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum mechanics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/mathematics.html">Mathematical foundations of quantum mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/discrete.html">Quantum mechanics on discrete Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/continuous.html">Quantum mechanics on continuous Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/circuitry.html">Quantum circuitry</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time travel</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../classical.html">Classical theories of time travel</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Closed timelike curves and time machines</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="fields.html">The Cauchy problem on spacetimes containing CTCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particles.html">Time-travelling billiard balls</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum.html">Quantum theories of time travel</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../part-theory.html" class="nav-link">Theory</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../classical.html" class="nav-link">Classical theories of time travel</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Closed timelike curves and time machines</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="closed-timelike-curves-and-time-machines">
+<span id="sec-ctcs"></span><h1>Closed timelike curves and time machines<a class="headerlink" href="#closed-timelike-curves-and-time-machines" title="Link to this heading">#</a></h1>
+<p>Closed timelike curves (CTCs) form an interesting class of objects within the general theory of relativity as they present the possibility for an observer to travel back in time. Formally, a CTC is an entirely geometric entity, being simply a curve (a path in spacetime) that is both closed and everywhere (either future- or past-directed) timelike. As such, in a universe with CTCs, any physical system may be able to interact with its past self, and so the potential existence of CTCs within our own universe naturally evokes scientific investigation into time travel. The foremost focus of such research is on questions regarding the non-trivial causal structure of CTC spacetimes and the consistency of the standard laws of physics.</p>
+<p>In some locally unobjectionable exact solutions to the Einstein field equations, CTCs naturally occur <span id="id1">[<a class="reference internal" href="#cite-1-lanczos-uber-1924" title="K. Lanczos, “Über eine stationäre Kosmologie im Sinne der Einsteinschen Gravitationstheorie”, Zeitschrift für Physik, 21(1):73–110, December 1924. https://doi.org/10.1007/BF01328251, doi:10.1007/BF01328251">1</a>, <a class="reference internal" href="#cite-1-lewis-special-1932" title="T. Lewis, “Some special solutions of the equations of axially symmetric gravitational fields”, Proc. R. Soc. Lond. A, 136(829):176–192, May 1932. http://rspa.royalsocietypublishing.org/content/136/829/176, doi:10.1098/rspa.1932.0073">2</a>, <a class="reference internal" href="#cite-1-van-stockum-gravitational-1938" title="W. J. van Stockum, “The Gravitational Field of a Distribution of Particles Rotating about an Axis of Symmetry”, Proceedings of the Royal Society of Edinburgh, 57:135–154, 1938. https://www.cambridge.org/core/journals/proceedings-of-the-royal-society-of-edinburgh/article/ixthe-gravitational-field-of-a-distribution-of-particles-rotating-about-an-axis-of-symmetry/40E39372658C7031B0C4316A36154F46, doi:10.1017/S0370164600013699">3</a>, <a class="reference internal" href="#cite-1-papapetrou-static-1945" title="A. Papapetrou, “A Static Solution of the Equations of the Gravitational Field for an Arbitary Charge-Distribution”, Proceedings of the Royal Irish Academy. Section A: Mathematical and Physical Sciences, 51:191–204, 1945. http://www.jstor.org/stable/20488481">4</a>, <a class="reference internal" href="#cite-1-godel-example-1949" title="K. Gödel, “An Example of a New Type of Cosmological Solutions of Einstein's Field Equations of Gravitation”, Reviews of Modern Physics, 21(3):447–450, July 1949. https://link.aps.org/doi/10.1103/RevModPhys.21.447, doi:10.1103/RevModPhys.21.447">5</a>, <a class="reference internal" href="#cite-1-taub-empty-1951" title="A. H. Taub, “Empty Space-Times Admitting a Three Parameter Group of Motions”, Annals of Mathematics, 53(3):472–490, 1951. http://www.jstor.org/stable/1969567, doi:10.2307/1969567">6</a>, <a class="reference internal" href="#cite-1-newman-emptyspace-1963" title="E. T. Newman, L. A. Tamburino, and T. W. J. Unti, “Empty‐Space Generalization of the Schwarzschild Metric”, Journal of Mathematical Physics, 4(7):915–923, July 1963. http://aip.scitation.org/doi/10.1063/1.1704018, doi:10.1063/1.1704018">7</a>, <a class="reference internal" href="#cite-1-kerr-gravitational-1963" title="R. P. Kerr, “Gravitational Field of a Spinning Mass as an Example of Algebraically Special Metrics”, Physical Review Letters, 11(5):237–238, September 1963. https://link.aps.org/doi/10.1103/PhysRevLett.11.237, doi:10.1103/PhysRevLett.11.237">8</a>, <a class="reference internal" href="#cite-1-levy-rotating-1964" title="H. Levy and W. J. Robinson, “The rotating body problem”, Mathematical Proceedings of the Cambridge Philosophical Society, 60(2):279–285, April 1964. https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/rotating-body-problem/BFCD29EC2C11E38FD0E2200B658D5456, doi:10.1017/S0305004100037750">9</a>, <a class="reference internal" href="#cite-1-papapetrou-champs-1966" title="A. Papapetrou, “Champs gravitationnels stationnaires à symétrie axiale”, Ann.Inst.H.Poincare Phys.Theor., 4:83–105, 1966. http://www.numdam.org/item/AIHPA_1966__4_2_83_0/">10</a>, <a class="reference internal" href="#cite-1-tipler-rotating-1974" title="F. J. Tipler, “Rotating cylinders and the possibility of global causality violation”, Physical Review D, 9(8):2203–2206, April 1974. https://link.aps.org/doi/10.1103/PhysRevD.9.2203, doi:10.1103/PhysRevD.9.2203">11</a>, <a class="reference internal" href="#cite-1-soares-inhomogeneous-1980" title="I.Damião Soares, “Inhomogeneous rotating universes with closed timelike geodesics of matter”, Journal of Mathematical Physics, 21(3):521–525, March 1980. https://aip.scitation.org/doi/10.1063/1.524437, doi:10.1063/1.524437">12</a>, <a class="reference internal" href="#cite-1-gott-closed-1991" title="J. R. Gott, “Closed timelike curves produced by pairs of moving cosmic strings: Exact solutions”, Physical Review Letters, 66(9):1126–1129, March 1991. https://link.aps.org/doi/10.1103/PhysRevLett.66.1126, doi:10.1103/PhysRevLett.66.1126">13</a>, <a class="reference internal" href="#cite-1-bonnor-exact-2002" title="W. B. Bonnor, “An exact, asymptotically flat, vacuum solution of Einstein's equations with closed timelike curves”, Classical and Quantum Gravity, 19(23):5951–5957, November 2002. https://doi.org/10.1088/0264-9381/19/23/305, doi:10.1088/0264-9381/19/23/305">14</a>, <a class="reference internal" href="#cite-1-bonnor-double-kerr-2004" title="W. B. Bonnor and B. R. Steadman, “The double-Kerr solution”, Classical and Quantum Gravity, 21(11):2723–2732, May 2004. https://doi.org/10.1088/0264-9381/21/11/014, doi:10.1088/0264-9381/21/11/014">15</a>, <a class="reference internal" href="#cite-1-ori-class-2005" title="A. Ori, “A Class of Time-Machine Solutions with a Compact Vacuum Core”, Physical Review Letters, 95(2):021101, July 2005. https://link.aps.org/doi/10.1103/PhysRevLett.95.021101, doi:10.1103/PhysRevLett.95.021101">16</a>, <a class="reference internal" href="#cite-1-bonnor-exact-2005" title="W. B. Bonnor and B. R. Steadman, “Exact solutions of the Einstein-Maxwell equations with closed timelike curves”, General Relativity and Gravitation, 37(11):1833–1844, November 2005. https://doi.org/10.1007/s10714-005-0163-3, doi:10.1007/s10714-005-0163-3">17</a>, <a class="reference internal" href="#cite-1-ori-formation-2007" title="A. Ori, “Formation of closed timelike curves in a composite vacuum/dust asymptotically flat spacetime”, Physical Review D, 76(4):044002, August 2007. https://link.aps.org/doi/10.1103/PhysRevD.76.044002, doi:10.1103/PhysRevD.76.044002">18</a>, <a class="reference internal" href="#cite-1-sarma-pure-2013" title="D. Sarma, M. Patgiri, and F. U. Ahmed, “Pure radiation metric with stable closed timelike curves”, General Relativity and Gravitation, 46(1):1633, December 2013. https://doi.org/10.1007/s10714-013-1633-7, doi:10.1007/s10714-013-1633-7">19</a>, <a class="reference internal" href="#cite-1-tippett-traversable-2017" title="B. K. Tippett and D. Tsang, “Traversable acausal retrograde domains in spacetime”, Classical and Quantum Gravity, 34(9):095006, March 2017. https://doi.org/10.1088/1361-6382/aa6549, doi:10.1088/1361-6382/aa6549">20</a>, <a class="reference internal" href="#cite-1-fermi-time-2018" title="D. Fermi and L. Pizzocchero, “A time machine for free fall into the past”, Classical and Quantum Gravity, 35(16):165003, July 2018. https://doi.org/10.1088/1361-6382/aace6e, doi:10.1088/1361-6382/aace6e">21</a>, <a class="reference internal" href="#cite-1-ralph-spinning-2020" title="T. C. Ralph and C. Chang, “Spinning up a time machine”, Physical Review D, 102(12):124013, December 2020. https://link.aps.org/doi/10.1103/PhysRevD.102.124013, doi:10.1103/PhysRevD.102.124013">22</a>]</span>. However, many such spacetimes are often considered to be globally unphysical (like the classic swirling dust solutions of van Stockum <span id="id2">[<a class="reference internal" href="#cite-1-van-stockum-gravitational-1938" title="W. J. van Stockum, “The Gravitational Field of a Distribution of Particles Rotating about an Axis of Symmetry”, Proceedings of the Royal Society of Edinburgh, 57:135–154, 1938. https://www.cambridge.org/core/journals/proceedings-of-the-royal-society-of-edinburgh/article/ixthe-gravitational-field-of-a-distribution-of-particles-rotating-about-an-axis-of-symmetry/40E39372658C7031B0C4316A36154F46, doi:10.1017/S0370164600013699">3</a>]</span> and Gödel <span id="id3">[<a class="reference internal" href="#cite-1-godel-example-1949" title="K. Gödel, “An Example of a New Type of Cosmological Solutions of Einstein's Field Equations of Gravitation”, Reviews of Modern Physics, 21(3):447–450, July 1949. https://link.aps.org/doi/10.1103/RevModPhys.21.447, doi:10.1103/RevModPhys.21.447">5</a>]</span>), and so the presence of interior CTCs is usually considered to be an artefact of the theory. Despite this, it is believed that CTCs may be constructed (at least theoretically) through the use of a traversable <em>wormhole</em> <span id="id4">[<a class="reference internal" href="../quantum/comparison.html#cite-1-ralph-relativistic-2012" title="T. C. Ralph and T. G. Downes, “Relativistic quantum information and time machines”, Contemporary Physics, 53(1):1–16, January 2012. http://www.tandfonline.com/doi/abs/10.1080/00107514.2011.640146, doi:10.1080/00107514.2011.640146">2</a>, <a class="reference internal" href="#cite-1-ellis-ether-1973" title="H. G. Ellis, “Ether flow through a drainhole: A particle model in general relativity”, Journal of Mathematical Physics, 14(1):104–118, January 1973. http://aip.scitation.org/doi/abs/10.1063/1.1666161, doi:10.1063/1.1666161">23</a>, <a class="reference internal" href="#cite-1-hawking-wormholes-1988" title="S. W. Hawking, “Wormholes in spacetime”, Physical Review D, 37(4):904–910, February 1988. https://link.aps.org/doi/10.1103/PhysRevD.37.904, doi:10.1103/PhysRevD.37.904">24</a>, <a class="reference internal" href="#cite-1-morris-wormholes-1988-1" title="M. S. Morris and K. S. Thorne, “Wormholes in spacetime and their use for interstellar travel: A tool for teaching general relativity”, American Journal of Physics, 56(5):395–412, May 1988. https://aapt.scitation.org/doi/10.1119/1.15620, doi:10.1119/1.15620">25</a>, <a class="reference internal" href="#cite-1-morris-wormholes-1988" title="M. S. Morris, K. S. Thorne, and U. Yurtsever, “Wormholes, Time Machines, and the Weak Energy Condition”, Physical Review Letters, 61(13):1446–1449, September 1988. https://link.aps.org/doi/10.1103/PhysRevLett.61.1446, doi:10.1103/PhysRevLett.61.1446">26</a>, <a class="reference internal" href="#cite-1-visser-traversable-1989-1" title="M. Visser, “Traversable wormholes: Some simple examples”, Physical Review D, 39(10):3182–3184, May 1989. https://link.aps.org/doi/10.1103/PhysRevD.39.3182, doi:10.1103/PhysRevD.39.3182">27</a>, <a class="reference internal" href="#cite-1-visser-traversable-1989" title="M. Visser, “Traversable wormholes from surgically modified Schwarzschild spacetimes”, Nuclear Physics B, 328(1):203–212, December 1989. https://www.sciencedirect.com/science/article/pii/0550321389901004, doi:10.1016/0550-3213(89)90100-4">28</a>, <a class="reference internal" href="#cite-1-coule-wormholes-1990" title="D. H. Coule and K. I. Maeda, “Wormholes with scalar fields”, Classical and Quantum Gravity, 7(6):955–963, June 1990. https://doi.org/10.1088%2F0264-9381%2F7%2F6%2F005, doi:10.1088/0264-9381/7/6/005">29</a>, <a class="reference internal" href="#cite-1-visser-van-1994" title="M. Visser, “Van Vleck determinants: Traversable wormhole spacetimes”, Physical Review D, 49(8):3963–3980, April 1994. https://link.aps.org/doi/10.1103/PhysRevD.49.3963, doi:10.1103/PhysRevD.49.3963">30</a>, <a class="reference internal" href="#cite-1-visser-lorentzian-1995" title="M. Visser, Lorentzian Wormholes: From Einstein to Hawking, AIP Press, American Institute of Physics, 1995.">31</a>, <a class="reference internal" href="#cite-1-visser-traversable-1997" title="M. Visser, “Traversable wormholes: The Roman ring”, Physical Review D, 55(8):5212–5214, April 1997. https://link.aps.org/doi/10.1103/PhysRevD.55.5212, doi:10.1103/PhysRevD.55.5212">32</a>, <a class="reference internal" href="#cite-1-carlini-euclidean-1997" title="A. Carlini, D. H. Coule, and D. M. Solomons, “Euclidean Quantum Wormholes with Scalar Fields”, International Journal of Modern Physics A, 12(20):3517–3544, August 1997. http://www.worldscientific.com/doi/abs/10.1142/S0217751X97001821, doi:10.1142/S0217751X97001821">33</a>, <a class="reference internal" href="#cite-1-hochberg-geometric-1997" title="D. Hochberg and M. Visser, “Geometric structure of the generic static traversable wormhole throat”, Physical Review D, 56(8):4745–4755, October 1997. https://link.aps.org/doi/10.1103/PhysRevD.56.4745, doi:10.1103/PhysRevD.56.4745">34</a>, <a class="reference internal" href="#cite-1-barcelo-traversable-1999" title="C. Barceló and M. Visser, “Traversable wormholes from massless conformally coupled scalar fields”, Physics Letters B, 466(2):127–134, November 1999. https://www.sciencedirect.com/science/article/pii/S037026939901117X, doi:10.1016/S0370-2693(99)01117-X">35</a>, <a class="reference internal" href="#cite-1-barcelo-scalar-2000" title="C. Barceló and M. Visser, “Scalar fields, energy conditions and traversable wormholes”, Classical and Quantum Gravity, 17(18):3843–3864, September 2000. https://doi.org/10.1088/0264-9381/17/18/318, doi:10.1088/0264-9381/17/18/318">36</a>, <a class="reference internal" href="#cite-1-barcelo-brane-2000" title="C. Barceló and M. Visser, “Brane surgery: energy conditions, traversable wormholes, and voids”, Nuclear Physics B, 584(1):415–435, September 2000. https://www.sciencedirect.com/science/article/pii/S0550321300003795, doi:10.1016/S0550-3213(00)00379-5">37</a>, <a class="reference internal" href="#cite-1-dadhich-r0-2002" title="N. Dadhich, S. Kar, S. Mukherjee, and M. Visser, “\$R=0\$ spacetimes and self-dual Lorentzian wormholes”, Physical Review D, 65(6):064004, February 2002. https://link.aps.org/doi/10.1103/PhysRevD.65.064004, doi:10.1103/PhysRevD.65.064004">38</a>, <a class="reference internal" href="#cite-1-visser-traversable-2003" title="M. Visser, S. Kar, and N. Dadhich, “Traversable Wormholes with Arbitrarily Small Energy Condition Violations”, Physical Review Letters, 90(20):201102, May 2003. https://link.aps.org/doi/10.1103/PhysRevLett.90.201102, doi:10.1103/PhysRevLett.90.201102">39</a>, <a class="reference internal" href="#cite-1-kar-quantifying-2004" title="S. Kar, N. Dadhich, and M. Visser, “Quantifying energy condition violations in traversable wormholes”, Pramana, 63(4):859–864, October 2004. https://doi.org/10.1007/BF02705207, doi:10.1007/BF02705207">40</a>, <a class="reference internal" href="#cite-1-garcia-generic-2012" title="N. M. Garcia, F. S. N. Lobo, and M. Visser, “Generic spherically symmetric dynamic thin-shell traversable wormholes in standard general relativity”, Physical Review D, 86(4):044026, August 2012. https://link.aps.org/doi/10.1103/PhysRevD.86.044026, doi:10.1103/PhysRevD.86.044026">42</a>, <a class="reference internal" href="#cite-1-butcher-traversable-2015" title="L. M. Butcher, “Traversable wormholes and classical scalar fields”, Physical Review D, 91(12):124031, June 2015. https://link.aps.org/doi/10.1103/PhysRevD.91.124031, doi:10.1103/PhysRevD.91.124031">43</a>, <a class="reference internal" href="#cite-1-bronnikov-scalar-2018" title="K. A. Bronnikov, “Scalar fields as sources for wormholes and regular black holes”, Particles, 1(1):56–81, December 2018. https://www.mdpi.com/2571-712X/1/1/5, doi:10.3390/particles1010005">44</a>, <a class="reference internal" href="#cite-1-simpson-vaidya-2019" title="A. Simpson, P. Martín-Moruno, and M. Visser, “Vaidya spacetimes, black-bounces, and traversable wormholes”, Classical and Quantum Gravity, 36(14):145007, June 2019. https://doi.org/10.1088/1361-6382/ab28a5, doi:10.1088/1361-6382/ab28a5">45</a>, <a class="reference internal" href="#cite-1-canate-ellis-2019" title="P. Cañate, J. Sultana, and D. Kazanas, “Ellis wormhole without a phantom scalar field”, Physical Review D, 100(6):064007, September 2019. https://link.aps.org/doi/10.1103/PhysRevD.100.064007, doi:10.1103/PhysRevD.100.064007">46</a>, <a class="reference internal" href="#cite-1-lobo-dynamic-2020" title="F. S. N. Lobo, A. Simpson, and M. Visser, “Dynamic thin-shell black-bounce traversable wormholes”, Physical Review D, 101(12):124035, June 2020. https://link.aps.org/doi/10.1103/PhysRevD.101.124035, doi:10.1103/PhysRevD.101.124035">47</a>, <a class="reference internal" href="#cite-1-berry-thin-shell-2020" title="T. Berry, F. S. N. Lobo, A. Simpson, and M. Visser, “Thin-shell traversable wormhole crafted from a regular black hole with asymptotically Minkowski core”, Physical Review D, 102(6):064054, September 2020. https://link.aps.org/doi/10.1103/PhysRevD.102.064054, doi:10.1103/PhysRevD.102.064054">48</a>]</span>. It is important to stress however that the physicality of such models is often called into question in the literature. This is due mainly to the fact that these solutions to the Einstein field equations often appear to necessitate the existence of matter possessing a negative energy density, and as such they do not always correspond to stable spacetimes. Note therefore that other solutions (such as the Kerr metric <span id="id5">[<a class="reference internal" href="#cite-1-kerr-gravitational-1963" title="R. P. Kerr, “Gravitational Field of a Spinning Mass as an Example of Algebraically Special Metrics”, Physical Review Letters, 11(5):237–238, September 1963. https://link.aps.org/doi/10.1103/PhysRevLett.11.237, doi:10.1103/PhysRevLett.11.237">8</a>]</span>), being free of the requirement of negative energy density, may enable the manifestation of CTCs in a much less contentious manner.</p>
+<section id="wormhole-based-time-machines">
+<span id="sec-wormholes"></span><h2>Wormhole-based time machines<a class="headerlink" href="#wormhole-based-time-machines" title="Link to this heading">#</a></h2>
+<p>In popular culture, wormholes (either artificially constructed or naturally occurring) commonly provide a means of interstellar (or even intergalactic) transportation. They accomplish this by allowing spaceships to quickly traverse their short, tubiform interiors and emerge at distant locations far sooner than any alternative non-wormhole routes would allow. Alternatively, if two separate moments in time were to be linked by wormhole instead of two separate locations, one would possess a <em>time machine</em> <span id="id6">[<a class="reference internal" href="../quantum/comparison.html#cite-1-ralph-relativistic-2012" title="T. C. Ralph and T. G. Downes, “Relativistic quantum information and time machines”, Contemporary Physics, 53(1):1–16, January 2012. http://www.tandfonline.com/doi/abs/10.1080/00107514.2011.640146, doi:10.1080/00107514.2011.640146">2</a>, <a class="reference internal" href="#cite-1-morris-wormholes-1988" title="M. S. Morris, K. S. Thorne, and U. Yurtsever, “Wormholes, Time Machines, and the Weak Energy Condition”, Physical Review Letters, 61(13):1446–1449, September 1988. https://link.aps.org/doi/10.1103/PhysRevLett.61.1446, doi:10.1103/PhysRevLett.61.1446">26</a>, <a class="reference internal" href="#cite-1-novikov-analysis-1989" title="I. D. Novikov, “Analysis of the operation of a time machine”, Zhurnal Éksperimental'noĭ i Teoreticheskoĭ Fiziki, 95(3):769–776, March 1989. http://jetp.ras.ru/cgi-bin/e/index/r/95/3/p769?a=list">49</a>, <a class="reference internal" href="#cite-1-thorne-laws-1991" title="K. S. Thorne, “Do the laws of physics permit closed timelike curves?”, Annals of the New York Academy of Sciences, 631(1):182–193, August 1991. http://nyaspubs.onlinelibrary.wiley.com/doi/abs/10.1111/j.1749-6632.1991.tb52642.x, doi:10.1111/j.1749-6632.1991.tb52642.x">50</a>, <a class="reference internal" href="particles.html#cite-1-lossev-jinn-1992" title="A. S. Lossev and I. D. Novikov, “The jinn of the time machine: nontrivial self-consistent solutions”, Classical and Quantum Gravity, 9(10):2309, 1992. https://iopscience.iop.org/article/10.1088/0264-9381/9/10/014, doi:10.1088/0264-9381/9/10/014">1</a>]</span>, i.e., a mechanism which can produce CTCs. Thus, wormholes are theoretically able to facilitate both long-distance space travel and time travel. It is this basis on which many of the studies involving wormhole-based time machines is established.</p>
+<p>In essence, a wormhole is an exotic, theoretical object that connects two distant regions in space. The simplest version of a topological wormhole <span id="id7">[<a class="reference internal" href="particles.html#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>, <a class="reference internal" href="fields.html#cite-1-friedman-cauchy-1991" title="J. L. Friedman and M. S. Morris, “The Cauchy problem for the scalar wave equation is well defined on a class of spacetimes with closed timelike curves”, Physical Review Letters, 66(4):401–404, January 1991. https://link.aps.org/doi/10.1103/PhysRevLett.66.401, doi:10.1103/PhysRevLett.66.401">2</a>, <a class="reference internal" href="fields.html#cite-1-friedman-existence-1997" title="J. L. Friedman and M. S. Morris, “Existence and Uniqueness Theorems for Massless Fields on a Class of Spacetimes with Closed Timelike Curves”, Communications in Mathematical Physics, 186(3):495–529, July 1997. https://doi.org/10.1007/s002200050118, doi:10.1007/s002200050118">3</a>, <a class="reference internal" href="particles.html#cite-1-friedman-cauchy-2004" title="J. L. Friedman, “The Cauchy Problem on Spacetimes That Are Not Globally Hyperbolic”, The Einstein Equations and the Large Scale Behavior of Gravitational Fields, pages 331–346, Birkhäuser, Basel, 2004. https://link.springer.com/chapter/10.1007/978-3-0348-7953-8_9, doi:10.1007/978-3-0348-7953-8_9">3</a>]</span> can be constructed by “cutting out” two spatially separated balls (denoted by <span class="math notranslate nohighlight">\(\Mouth^\pm\)</span>, representing the two ends of the wormhole) in flat three-dimensional space and subsequently “gluing” (connecting) the surfaces (denoted by <span class="math notranslate nohighlight">\(\partial\Mouth^\pm\)</span>) of these holes together. The resulting <em>mouths</em> (entrances) into the wormhole are thus <em>identified</em>, which is to say that entering into one results in simultaneous emergence from the other. See <a class="reference internal" href="#fig-diagram-wormhole-mouths"><span class="std std-numref">Figure 2</span></a> for a visual depiction of such geometry. Note that the resulting spacetime is topologically and geometrically non-trivial since the space is not simply connected and the identified surfaces are not flat.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/diagram_wormhole_mouths-dark.png"><img alt="A diagram of the surfaces of a simple topological wormholes." src="../../../../_images/diagram_wormhole_mouths-dark.png" style="width: 554.4px; height: 255.6px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/diagram_wormhole_mouths-light.png"><img alt="A diagram of the surfaces of a simple topological wormholes." src="../../../../_images/diagram_wormhole_mouths-light.png" style="width: 554.4px; height: 255.6px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-diagram-wormhole-mouths" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/diagram_wormhole_mouths-light.png"><img alt="A diagram of the surfaces of a simple topological wormholes." src="../../../../_images/diagram_wormhole_mouths-light.png" style="width: 554.4px; height: 255.6px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 2 </span><span class="caption-text">The surfaces of a simple topological wormhole.</span><a class="headerlink" href="#fig-diagram-wormhole-mouths" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To turn a wormhole into a time machine (thereby manifesting CTCs), a time “delay” has to be induced between the mouths. This can be accomplished in a few different ways, resulting in either of two distinct classes of time machine. The first class consists of those of which the time machine is <em>eternal</em> (meaning that CTCs are ever-present), and is accomplished simply by imposing a identification time difference (denoted <span class="math notranslate nohighlight">\(\TimeDelta\)</span>) between the two mouths (so that the coordinate time <span class="math notranslate nohighlight">\(\Time\)</span> on the “future” mouth <span class="math notranslate nohighlight">\(\MouthFuture\)</span> corresponds to the time <span class="math notranslate nohighlight">\((\Time - \TimeDelta)\)</span> on the “past” mouth <span class="math notranslate nohighlight">\(\MouthPast\)</span>). The second class consists of those created (theoretically) in a more physically realistic manner, such as moving one mouth (the future mouth) either into a strong gravitational field or accelerating it to relativistic speeds (and decelerating it back) <span id="id8">[<a class="reference internal" href="particles.html#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>]</span>. For both classes of wormhole-based time machines, when the temporal difference between the mouths reaches a greater magnitude than their spatial separation, the mouths become causally connected, that is, CTCs manifest.</p>
+</section>
+</section>
+<section id="time-travel-paradoxes">
+<span id="sec-paradoxes"></span><h1>Time-travel paradoxes<a class="headerlink" href="#time-travel-paradoxes" title="Link to this heading">#</a></h1>
+<p>The emergence of inconsistencies due to retro-causal action in the evolution of a time-travelling physical system is an issue which is captured by the infamous <em>grandfather paradox</em> (detailed in <span id="id9">[<a class="reference internal" href="#cite-1-visser-lorentzian-1995" title="M. Visser, Lorentzian Wormholes: From Einstein to Hawking, AIP Press, American Institute of Physics, 1995.">31</a>]</span>). This problem, which is perhaps the foremost example of a time-travel paradox, takes on many forms, all of which share the common characteristic of antichronological causation. The archetype of the paradox often features an observer who travels to the past and, through their actions (usually by interfering with the relationship between their young grandparents), prevents their own birth. Consequently, the observer is unable to travel back in time to preclude their existence, thus the paradox is evident.</p>
+<section id="the-principle-of-self-consistency">
+<span id="sec-self-consistency"></span><h2>The principle of self-consistency<a class="headerlink" href="#the-principle-of-self-consistency" title="Link to this heading">#</a></h2>
+<p>Time-travel paradoxes and the concept of retro-causality lie at the foundation of the issues with CTCs. In particular, the inconsistencies associated with paradoxical causal sequences have led to uncertainty regarding the pathology of CTCs and hence their research suitability. However, there is a distinct lack of evidence suggesting that the inconsistencies of CTC paradoxes are entirely inescapable. One may simply regard these problems as ill-posed, given that the initial conditions (e.g., the observer’s very existence and intent to intervene) are influenced by the future occurrences (e.g., observer stopping their grandparents from meeting). To resolve this problem, we could suppose that there exists some fundamental characteristic of reality which forbids any future event from paradoxically altering the past.</p>
+<p>In particular, we could conjecture the existence of an innate law by which the universe operates, called the <em>principle of self-consistency</em> <span id="id10">[<a class="reference internal" href="particles.html#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>]</span>, which prohibits paradoxical causal sequences from transpiring. Under this condition, a globally consistent solution of the local physical laws must exist. This means that, while a system is allowed to propagate into its own past, it must do so in a way that is consistent with its own original history. Any interaction that occurs must be compatible with the past, and causal sequences containing events solely of this nature are characterized as being self-consistent.</p>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-lanczos-uber-1924" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>K. Lanczos, “Über eine stationäre Kosmologie im Sinne der Einsteinschen Gravitationstheorie”, <em>Zeitschrift für Physik</em>, 21(1):73–110, December 1924. <a class="reference external" href="https://doi.org/10.1007/BF01328251">https://doi.org/10.1007/BF01328251</a>, <a class="reference external" href="https://doi.org/10.1007/BF01328251">doi:10.1007/BF01328251</a></p>
+</div>
+<div class="citation" id="cite-1-lewis-special-1932" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
+<p>T. Lewis, “Some special solutions of the equations of axially symmetric gravitational fields”, <em>Proc. R. Soc. Lond. A</em>, 136(829):176–192, May 1932. <a class="reference external" href="http://rspa.royalsocietypublishing.org/content/136/829/176">http://rspa.royalsocietypublishing.org/content/136/829/176</a>, <a class="reference external" href="https://doi.org/10.1098/rspa.1932.0073">doi:10.1098/rspa.1932.0073</a></p>
+</div>
+<div class="citation" id="cite-1-van-stockum-gravitational-1938" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p>W. J. van Stockum, “The Gravitational Field of a Distribution of Particles Rotating about an Axis of Symmetry”, <em>Proceedings of the Royal Society of Edinburgh</em>, 57:135–154, 1938. <a class="reference external" href="https://www.cambridge.org/core/journals/proceedings-of-the-royal-society-of-edinburgh/article/ixthe-gravitational-field-of-a-distribution-of-particles-rotating-about-an-axis-of-symmetry/40E39372658C7031B0C4316A36154F46">https://www.cambridge.org/core/journals/proceedings-of-the-royal-society-of-edinburgh/article/ixthe-gravitational-field-of-a-distribution-of-particles-rotating-about-an-axis-of-symmetry/40E39372658C7031B0C4316A36154F46</a>, <a class="reference external" href="https://doi.org/10.1017/S0370164600013699">doi:10.1017/S0370164600013699</a></p>
+</div>
+<div class="citation" id="cite-1-papapetrou-static-1945" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">4</a><span class="fn-bracket">]</span></span>
+<p>A. Papapetrou, “A Static Solution of the Equations of the Gravitational Field for an Arbitary Charge-Distribution”, <em>Proceedings of the Royal Irish Academy. Section A: Mathematical and Physical Sciences</em>, 51:191–204, 1945. <a class="reference external" href="http://www.jstor.org/stable/20488481">http://www.jstor.org/stable/20488481</a></p>
+</div>
+<div class="citation" id="cite-1-godel-example-1949" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>K. Gödel, “An Example of a New Type of Cosmological Solutions of Einstein's Field Equations of Gravitation”, <em>Reviews of Modern Physics</em>, 21(3):447–450, July 1949. <a class="reference external" href="https://link.aps.org/doi/10.1103/RevModPhys.21.447">https://link.aps.org/doi/10.1103/RevModPhys.21.447</a>, <a class="reference external" href="https://doi.org/10.1103/RevModPhys.21.447">doi:10.1103/RevModPhys.21.447</a></p>
+</div>
+<div class="citation" id="cite-1-taub-empty-1951" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">6</a><span class="fn-bracket">]</span></span>
+<p>A. H. Taub, “Empty Space-Times Admitting a Three Parameter Group of Motions”, <em>Annals of Mathematics</em>, 53(3):472–490, 1951. <a class="reference external" href="http://www.jstor.org/stable/1969567">http://www.jstor.org/stable/1969567</a>, <a class="reference external" href="https://doi.org/10.2307/1969567">doi:10.2307/1969567</a></p>
+</div>
+<div class="citation" id="cite-1-newman-emptyspace-1963" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">7</a><span class="fn-bracket">]</span></span>
+<p>E. T. Newman, L. A. Tamburino, and T. W. J. Unti, “Empty‐Space Generalization of the Schwarzschild Metric”, <em>Journal of Mathematical Physics</em>, 4(7):915–923, July 1963. <a class="reference external" href="http://aip.scitation.org/doi/10.1063/1.1704018">http://aip.scitation.org/doi/10.1063/1.1704018</a>, <a class="reference external" href="https://doi.org/10.1063/1.1704018">doi:10.1063/1.1704018</a></p>
+</div>
+<div class="citation" id="cite-1-kerr-gravitational-1963" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id5">2</a>)</span>
+<p>R. P. Kerr, “Gravitational Field of a Spinning Mass as an Example of Algebraically Special Metrics”, <em>Physical Review Letters</em>, 11(5):237–238, September 1963. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.11.237">https://link.aps.org/doi/10.1103/PhysRevLett.11.237</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.11.237">doi:10.1103/PhysRevLett.11.237</a></p>
+</div>
+<div class="citation" id="cite-1-levy-rotating-1964" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">9</a><span class="fn-bracket">]</span></span>
+<p>H. Levy and W. J. Robinson, “The rotating body problem”, <em>Mathematical Proceedings of the Cambridge Philosophical Society</em>, 60(2):279–285, April 1964. <a class="reference external" href="https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/rotating-body-problem/BFCD29EC2C11E38FD0E2200B658D5456">https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/rotating-body-problem/BFCD29EC2C11E38FD0E2200B658D5456</a>, <a class="reference external" href="https://doi.org/10.1017/S0305004100037750">doi:10.1017/S0305004100037750</a></p>
+</div>
+<div class="citation" id="cite-1-papapetrou-champs-1966" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">10</a><span class="fn-bracket">]</span></span>
+<p>A. Papapetrou, “Champs gravitationnels stationnaires à symétrie axiale”, <em>Ann.Inst.H.Poincare Phys.Theor.</em>, 4:83–105, 1966. <a class="reference external" href="http://www.numdam.org/item/AIHPA_1966__4_2_83_0/">http://www.numdam.org/item/AIHPA_1966__4_2_83_0/</a></p>
+</div>
+<div class="citation" id="cite-1-tipler-rotating-1974" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">11</a><span class="fn-bracket">]</span></span>
+<p>F. J. Tipler, “Rotating cylinders and the possibility of global causality violation”, <em>Physical Review D</em>, 9(8):2203–2206, April 1974. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.9.2203">https://link.aps.org/doi/10.1103/PhysRevD.9.2203</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.9.2203">doi:10.1103/PhysRevD.9.2203</a></p>
+</div>
+<div class="citation" id="cite-1-soares-inhomogeneous-1980" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">12</a><span class="fn-bracket">]</span></span>
+<p>I.Damião Soares, “Inhomogeneous rotating universes with closed timelike geodesics of matter”, <em>Journal of Mathematical Physics</em>, 21(3):521–525, March 1980. <a class="reference external" href="https://aip.scitation.org/doi/10.1063/1.524437">https://aip.scitation.org/doi/10.1063/1.524437</a>, <a class="reference external" href="https://doi.org/10.1063/1.524437">doi:10.1063/1.524437</a></p>
+</div>
+<div class="citation" id="cite-1-gott-closed-1991" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">13</a><span class="fn-bracket">]</span></span>
+<p>J. R. Gott, “Closed timelike curves produced by pairs of moving cosmic strings: Exact solutions”, <em>Physical Review Letters</em>, 66(9):1126–1129, March 1991. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.66.1126">https://link.aps.org/doi/10.1103/PhysRevLett.66.1126</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.66.1126">doi:10.1103/PhysRevLett.66.1126</a></p>
+</div>
+<div class="citation" id="cite-1-bonnor-exact-2002" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">14</a><span class="fn-bracket">]</span></span>
+<p>W. B. Bonnor, “An exact, asymptotically flat, vacuum solution of Einstein's equations with closed timelike curves”, <em>Classical and Quantum Gravity</em>, 19(23):5951–5957, November 2002. <a class="reference external" href="https://doi.org/10.1088/0264-9381/19/23/305">https://doi.org/10.1088/0264-9381/19/23/305</a>, <a class="reference external" href="https://doi.org/10.1088/0264-9381/19/23/305">doi:10.1088/0264-9381/19/23/305</a></p>
+</div>
+<div class="citation" id="cite-1-bonnor-double-kerr-2004" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">15</a><span class="fn-bracket">]</span></span>
+<p>W. B. Bonnor and B. R. Steadman, “The double-Kerr solution”, <em>Classical and Quantum Gravity</em>, 21(11):2723–2732, May 2004. <a class="reference external" href="https://doi.org/10.1088/0264-9381/21/11/014">https://doi.org/10.1088/0264-9381/21/11/014</a>, <a class="reference external" href="https://doi.org/10.1088/0264-9381/21/11/014">doi:10.1088/0264-9381/21/11/014</a></p>
+</div>
+<div class="citation" id="cite-1-ori-class-2005" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">16</a><span class="fn-bracket">]</span></span>
+<p>A. Ori, “A Class of Time-Machine Solutions with a Compact Vacuum Core”, <em>Physical Review Letters</em>, 95(2):021101, July 2005. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.95.021101">https://link.aps.org/doi/10.1103/PhysRevLett.95.021101</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.95.021101">doi:10.1103/PhysRevLett.95.021101</a></p>
+</div>
+<div class="citation" id="cite-1-bonnor-exact-2005" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">17</a><span class="fn-bracket">]</span></span>
+<p>W. B. Bonnor and B. R. Steadman, “Exact solutions of the Einstein-Maxwell equations with closed timelike curves”, <em>General Relativity and Gravitation</em>, 37(11):1833–1844, November 2005. <a class="reference external" href="https://doi.org/10.1007/s10714-005-0163-3">https://doi.org/10.1007/s10714-005-0163-3</a>, <a class="reference external" href="https://doi.org/10.1007/s10714-005-0163-3">doi:10.1007/s10714-005-0163-3</a></p>
+</div>
+<div class="citation" id="cite-1-ori-formation-2007" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">18</a><span class="fn-bracket">]</span></span>
+<p>A. Ori, “Formation of closed timelike curves in a composite vacuum/dust asymptotically flat spacetime”, <em>Physical Review D</em>, 76(4):044002, August 2007. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.76.044002">https://link.aps.org/doi/10.1103/PhysRevD.76.044002</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.76.044002">doi:10.1103/PhysRevD.76.044002</a></p>
+</div>
+<div class="citation" id="cite-1-sarma-pure-2013" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">19</a><span class="fn-bracket">]</span></span>
+<p>D. Sarma, M. Patgiri, and F. U. Ahmed, “Pure radiation metric with stable closed timelike curves”, <em>General Relativity and Gravitation</em>, 46(1):1633, December 2013. <a class="reference external" href="https://doi.org/10.1007/s10714-013-1633-7">https://doi.org/10.1007/s10714-013-1633-7</a>, <a class="reference external" href="https://doi.org/10.1007/s10714-013-1633-7">doi:10.1007/s10714-013-1633-7</a></p>
+</div>
+<div class="citation" id="cite-1-tippett-traversable-2017" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">20</a><span class="fn-bracket">]</span></span>
+<p>B. K. Tippett and D. Tsang, “Traversable acausal retrograde domains in spacetime”, <em>Classical and Quantum Gravity</em>, 34(9):095006, March 2017. <a class="reference external" href="https://doi.org/10.1088/1361-6382/aa6549">https://doi.org/10.1088/1361-6382/aa6549</a>, <a class="reference external" href="https://doi.org/10.1088/1361-6382/aa6549">doi:10.1088/1361-6382/aa6549</a></p>
+</div>
+<div class="citation" id="cite-1-fermi-time-2018" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">21</a><span class="fn-bracket">]</span></span>
+<p>D. Fermi and L. Pizzocchero, “A time machine for free fall into the past”, <em>Classical and Quantum Gravity</em>, 35(16):165003, July 2018. <a class="reference external" href="https://doi.org/10.1088/1361-6382/aace6e">https://doi.org/10.1088/1361-6382/aace6e</a>, <a class="reference external" href="https://doi.org/10.1088/1361-6382/aace6e">doi:10.1088/1361-6382/aace6e</a></p>
+</div>
+<div class="citation" id="cite-1-ralph-spinning-2020" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">22</a><span class="fn-bracket">]</span></span>
+<p>T. C. Ralph and C. Chang, “Spinning up a time machine”, <em>Physical Review D</em>, 102(12):124013, December 2020. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.102.124013">https://link.aps.org/doi/10.1103/PhysRevD.102.124013</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.102.124013">doi:10.1103/PhysRevD.102.124013</a></p>
+</div>
+<div class="citation" id="cite-1-ellis-ether-1973" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">23</a><span class="fn-bracket">]</span></span>
+<p>H. G. Ellis, “Ether flow through a drainhole: A particle model in general relativity”, <em>Journal of Mathematical Physics</em>, 14(1):104–118, January 1973. <a class="reference external" href="http://aip.scitation.org/doi/abs/10.1063/1.1666161">http://aip.scitation.org/doi/abs/10.1063/1.1666161</a>, <a class="reference external" href="https://doi.org/10.1063/1.1666161">doi:10.1063/1.1666161</a></p>
+</div>
+<div class="citation" id="cite-1-hawking-wormholes-1988" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">24</a><span class="fn-bracket">]</span></span>
+<p>S. W. Hawking, “Wormholes in spacetime”, <em>Physical Review D</em>, 37(4):904–910, February 1988. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.37.904">https://link.aps.org/doi/10.1103/PhysRevD.37.904</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.37.904">doi:10.1103/PhysRevD.37.904</a></p>
+</div>
+<div class="citation" id="cite-1-morris-wormholes-1988-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">25</a><span class="fn-bracket">]</span></span>
+<p>M. S. Morris and K. S. Thorne, “Wormholes in spacetime and their use for interstellar travel: A tool for teaching general relativity”, <em>American Journal of Physics</em>, 56(5):395–412, May 1988. <a class="reference external" href="https://aapt.scitation.org/doi/10.1119/1.15620">https://aapt.scitation.org/doi/10.1119/1.15620</a>, <a class="reference external" href="https://doi.org/10.1119/1.15620">doi:10.1119/1.15620</a></p>
+</div>
+<div class="citation" id="cite-1-morris-wormholes-1988" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>26<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id6">2</a>)</span>
+<p>M. S. Morris, K. S. Thorne, and U. Yurtsever, “Wormholes, Time Machines, and the Weak Energy Condition”, <em>Physical Review Letters</em>, 61(13):1446–1449, September 1988. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.61.1446">https://link.aps.org/doi/10.1103/PhysRevLett.61.1446</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.61.1446">doi:10.1103/PhysRevLett.61.1446</a></p>
+</div>
+<div class="citation" id="cite-1-visser-traversable-1989-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">27</a><span class="fn-bracket">]</span></span>
+<p>M. Visser, “Traversable wormholes: Some simple examples”, <em>Physical Review D</em>, 39(10):3182–3184, May 1989. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.39.3182">https://link.aps.org/doi/10.1103/PhysRevD.39.3182</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.39.3182">doi:10.1103/PhysRevD.39.3182</a></p>
+</div>
+<div class="citation" id="cite-1-visser-traversable-1989" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">28</a><span class="fn-bracket">]</span></span>
+<p>M. Visser, “Traversable wormholes from surgically modified Schwarzschild spacetimes”, <em>Nuclear Physics B</em>, 328(1):203–212, December 1989. <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/0550321389901004">https://www.sciencedirect.com/science/article/pii/0550321389901004</a>, <a class="reference external" href="https://doi.org/10.1016/0550-3213(89)90100-4">doi:10.1016/0550-3213(89)90100-4</a></p>
+</div>
+<div class="citation" id="cite-1-coule-wormholes-1990" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">29</a><span class="fn-bracket">]</span></span>
+<p>D. H. Coule and K. I. Maeda, “Wormholes with scalar fields”, <em>Classical and Quantum Gravity</em>, 7(6):955–963, June 1990. <a class="reference external" href="https://doi.org/10.1088%2F0264-9381%2F7%2F6%2F005">https://doi.org/10.1088%2F0264-9381%2F7%2F6%2F005</a>, <a class="reference external" href="https://doi.org/10.1088/0264-9381/7/6/005">doi:10.1088/0264-9381/7/6/005</a></p>
+</div>
+<div class="citation" id="cite-1-visser-van-1994" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">30</a><span class="fn-bracket">]</span></span>
+<p>M. Visser, “Van Vleck determinants: Traversable wormhole spacetimes”, <em>Physical Review D</em>, 49(8):3963–3980, April 1994. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.49.3963">https://link.aps.org/doi/10.1103/PhysRevD.49.3963</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.49.3963">doi:10.1103/PhysRevD.49.3963</a></p>
+</div>
+<div class="citation" id="cite-1-visser-lorentzian-1995" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>31<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id9">2</a>)</span>
+<p>M. Visser, <em>Lorentzian Wormholes: From Einstein to Hawking</em>, AIP Press, American Institute of Physics, 1995.</p>
+</div>
+<div class="citation" id="cite-1-visser-traversable-1997" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">32</a><span class="fn-bracket">]</span></span>
+<p>M. Visser, “Traversable wormholes: The Roman ring”, <em>Physical Review D</em>, 55(8):5212–5214, April 1997. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.55.5212">https://link.aps.org/doi/10.1103/PhysRevD.55.5212</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.55.5212">doi:10.1103/PhysRevD.55.5212</a></p>
+</div>
+<div class="citation" id="cite-1-carlini-euclidean-1997" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">33</a><span class="fn-bracket">]</span></span>
+<p>A. Carlini, D. H. Coule, and D. M. Solomons, “Euclidean Quantum Wormholes with Scalar Fields”, <em>International Journal of Modern Physics A</em>, 12(20):3517–3544, August 1997. <a class="reference external" href="http://www.worldscientific.com/doi/abs/10.1142/S0217751X97001821">http://www.worldscientific.com/doi/abs/10.1142/S0217751X97001821</a>, <a class="reference external" href="https://doi.org/10.1142/S0217751X97001821">doi:10.1142/S0217751X97001821</a></p>
+</div>
+<div class="citation" id="cite-1-hochberg-geometric-1997" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">34</a><span class="fn-bracket">]</span></span>
+<p>D. Hochberg and M. Visser, “Geometric structure of the generic static traversable wormhole throat”, <em>Physical Review D</em>, 56(8):4745–4755, October 1997. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.56.4745">https://link.aps.org/doi/10.1103/PhysRevD.56.4745</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.56.4745">doi:10.1103/PhysRevD.56.4745</a></p>
+</div>
+<div class="citation" id="cite-1-barcelo-traversable-1999" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">35</a><span class="fn-bracket">]</span></span>
+<p>C. Barceló and M. Visser, “Traversable wormholes from massless conformally coupled scalar fields”, <em>Physics Letters B</em>, 466(2):127–134, November 1999. <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S037026939901117X">https://www.sciencedirect.com/science/article/pii/S037026939901117X</a>, <a class="reference external" href="https://doi.org/10.1016/S0370-2693(99)01117-X">doi:10.1016/S0370-2693(99)01117-X</a></p>
+</div>
+<div class="citation" id="cite-1-barcelo-scalar-2000" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">36</a><span class="fn-bracket">]</span></span>
+<p>C. Barceló and M. Visser, “Scalar fields, energy conditions and traversable wormholes”, <em>Classical and Quantum Gravity</em>, 17(18):3843–3864, September 2000. <a class="reference external" href="https://doi.org/10.1088/0264-9381/17/18/318">https://doi.org/10.1088/0264-9381/17/18/318</a>, <a class="reference external" href="https://doi.org/10.1088/0264-9381/17/18/318">doi:10.1088/0264-9381/17/18/318</a></p>
+</div>
+<div class="citation" id="cite-1-barcelo-brane-2000" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">37</a><span class="fn-bracket">]</span></span>
+<p>C. Barceló and M. Visser, “Brane surgery: energy conditions, traversable wormholes, and voids”, <em>Nuclear Physics B</em>, 584(1):415–435, September 2000. <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0550321300003795">https://www.sciencedirect.com/science/article/pii/S0550321300003795</a>, <a class="reference external" href="https://doi.org/10.1016/S0550-3213(00)00379-5">doi:10.1016/S0550-3213(00)00379-5</a></p>
+</div>
+<div class="citation" id="cite-1-dadhich-r0-2002" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">38</a><span class="fn-bracket">]</span></span>
+<p>N. Dadhich, S. Kar, S. Mukherjee, and M. Visser, “\$R=0\$ spacetimes and self-dual Lorentzian wormholes”, <em>Physical Review D</em>, 65(6):064004, February 2002. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.65.064004">https://link.aps.org/doi/10.1103/PhysRevD.65.064004</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.65.064004">doi:10.1103/PhysRevD.65.064004</a></p>
+</div>
+<div class="citation" id="cite-1-visser-traversable-2003" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">39</a><span class="fn-bracket">]</span></span>
+<p>M. Visser, S. Kar, and N. Dadhich, “Traversable Wormholes with Arbitrarily Small Energy Condition Violations”, <em>Physical Review Letters</em>, 90(20):201102, May 2003. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.90.201102">https://link.aps.org/doi/10.1103/PhysRevLett.90.201102</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.90.201102">doi:10.1103/PhysRevLett.90.201102</a></p>
+</div>
+<div class="citation" id="cite-1-kar-quantifying-2004" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">40</a><span class="fn-bracket">]</span></span>
+<p>S. Kar, N. Dadhich, and M. Visser, “Quantifying energy condition violations in traversable wormholes”, <em>Pramana</em>, 63(4):859–864, October 2004. <a class="reference external" href="https://doi.org/10.1007/BF02705207">https://doi.org/10.1007/BF02705207</a>, <a class="reference external" href="https://doi.org/10.1007/BF02705207">doi:10.1007/BF02705207</a></p>
+</div>
+<div class="citation" id="cite-1-ralph-relativistic-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>41<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id6">2</a>)</span>
+<p>T. C. Ralph and T. G. Downes, “Relativistic quantum information and time machines”, <em>Contemporary Physics</em>, 53(1):1–16, January 2012. <a class="reference external" href="http://www.tandfonline.com/doi/abs/10.1080/00107514.2011.640146">http://www.tandfonline.com/doi/abs/10.1080/00107514.2011.640146</a>, <a class="reference external" href="https://doi.org/10.1080/00107514.2011.640146">doi:10.1080/00107514.2011.640146</a></p>
+</div>
+<div class="citation" id="cite-1-garcia-generic-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">42</a><span class="fn-bracket">]</span></span>
+<p>N. M. Garcia, F. S. N. Lobo, and M. Visser, “Generic spherically symmetric dynamic thin-shell traversable wormholes in standard general relativity”, <em>Physical Review D</em>, 86(4):044026, August 2012. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.86.044026">https://link.aps.org/doi/10.1103/PhysRevD.86.044026</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.86.044026">doi:10.1103/PhysRevD.86.044026</a></p>
+</div>
+<div class="citation" id="cite-1-butcher-traversable-2015" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">43</a><span class="fn-bracket">]</span></span>
+<p>L. M. Butcher, “Traversable wormholes and classical scalar fields”, <em>Physical Review D</em>, 91(12):124031, June 2015. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.91.124031">https://link.aps.org/doi/10.1103/PhysRevD.91.124031</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.91.124031">doi:10.1103/PhysRevD.91.124031</a></p>
+</div>
+<div class="citation" id="cite-1-bronnikov-scalar-2018" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">44</a><span class="fn-bracket">]</span></span>
+<p>K. A. Bronnikov, “Scalar fields as sources for wormholes and regular black holes”, <em>Particles</em>, 1(1):56–81, December 2018. <a class="reference external" href="https://www.mdpi.com/2571-712X/1/1/5">https://www.mdpi.com/2571-712X/1/1/5</a>, <a class="reference external" href="https://doi.org/10.3390/particles1010005">doi:10.3390/particles1010005</a></p>
+</div>
+<div class="citation" id="cite-1-simpson-vaidya-2019" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">45</a><span class="fn-bracket">]</span></span>
+<p>A. Simpson, P. Martín-Moruno, and M. Visser, “Vaidya spacetimes, black-bounces, and traversable wormholes”, <em>Classical and Quantum Gravity</em>, 36(14):145007, June 2019. <a class="reference external" href="https://doi.org/10.1088/1361-6382/ab28a5">https://doi.org/10.1088/1361-6382/ab28a5</a>, <a class="reference external" href="https://doi.org/10.1088/1361-6382/ab28a5">doi:10.1088/1361-6382/ab28a5</a></p>
+</div>
+<div class="citation" id="cite-1-canate-ellis-2019" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">46</a><span class="fn-bracket">]</span></span>
+<p>P. Cañate, J. Sultana, and D. Kazanas, “Ellis wormhole without a phantom scalar field”, <em>Physical Review D</em>, 100(6):064007, September 2019. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.100.064007">https://link.aps.org/doi/10.1103/PhysRevD.100.064007</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.100.064007">doi:10.1103/PhysRevD.100.064007</a></p>
+</div>
+<div class="citation" id="cite-1-lobo-dynamic-2020" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">47</a><span class="fn-bracket">]</span></span>
+<p>F. S. N. Lobo, A. Simpson, and M. Visser, “Dynamic thin-shell black-bounce traversable wormholes”, <em>Physical Review D</em>, 101(12):124035, June 2020. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.101.124035">https://link.aps.org/doi/10.1103/PhysRevD.101.124035</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.101.124035">doi:10.1103/PhysRevD.101.124035</a></p>
+</div>
+<div class="citation" id="cite-1-berry-thin-shell-2020" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">48</a><span class="fn-bracket">]</span></span>
+<p>T. Berry, F. S. N. Lobo, A. Simpson, and M. Visser, “Thin-shell traversable wormhole crafted from a regular black hole with asymptotically Minkowski core”, <em>Physical Review D</em>, 102(6):064054, September 2020. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.102.064054">https://link.aps.org/doi/10.1103/PhysRevD.102.064054</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.102.064054">doi:10.1103/PhysRevD.102.064054</a></p>
+</div>
+<div class="citation" id="cite-1-novikov-analysis-1989" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">49</a><span class="fn-bracket">]</span></span>
+<p>I. D. Novikov, “Analysis of the operation of a time machine”, <em>Zhurnal Éksperimental'noĭ i Teoreticheskoĭ Fiziki</em>, 95(3):769–776, March 1989. <a class="reference external" href="http://jetp.ras.ru/cgi-bin/e/index/r/95/3/p769?a=list">http://jetp.ras.ru/cgi-bin/e/index/r/95/3/p769?a=list</a></p>
+</div>
+<div class="citation" id="cite-1-thorne-laws-1991" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">50</a><span class="fn-bracket">]</span></span>
+<p>K. S. Thorne, “Do the laws of physics permit closed timelike curves?”, <em>Annals of the New York Academy of Sciences</em>, 631(1):182–193, August 1991. <a class="reference external" href="http://nyaspubs.onlinelibrary.wiley.com/doi/abs/10.1111/j.1749-6632.1991.tb52642.x">http://nyaspubs.onlinelibrary.wiley.com/doi/abs/10.1111/j.1749-6632.1991.tb52642.x</a>, <a class="reference external" href="https://doi.org/10.1111/j.1749-6632.1991.tb52642.x">doi:10.1111/j.1749-6632.1991.tb52642.x</a></p>
+</div>
+<div class="citation" id="cite-1-lossev-jinn-1992" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">51</a><span class="fn-bracket">]</span></span>
+<p>A. S. Lossev and I. D. Novikov, “The jinn of the time machine: nontrivial self-consistent solutions”, <em>Classical and Quantum Gravity</em>, 9(10):2309, 1992. <a class="reference external" href="https://iopscience.iop.org/article/10.1088/0264-9381/9/10/014">https://iopscience.iop.org/article/10.1088/0264-9381/9/10/014</a>, <a class="reference external" href="https://doi.org/10.1088/0264-9381/9/10/014">doi:10.1088/0264-9381/9/10/014</a></p>
+</div>
+<div class="citation" id="cite-1-friedman-cauchy-1990" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>52<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id7">1</a>,<a role="doc-backlink" href="#id8">2</a>,<a role="doc-backlink" href="#id10">3</a>)</span>
+<p>J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, <em>Physical Review D</em>, 42(6):1915–1930, September 1990. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.42.1915">https://link.aps.org/doi/10.1103/PhysRevD.42.1915</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.42.1915">doi:10.1103/PhysRevD.42.1915</a></p>
+</div>
+<div class="citation" id="cite-1-friedman-cauchy-1991" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">53</a><span class="fn-bracket">]</span></span>
+<p>J. L. Friedman and M. S. Morris, “The Cauchy problem for the scalar wave equation is well defined on a class of spacetimes with closed timelike curves”, <em>Physical Review Letters</em>, 66(4):401–404, January 1991. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.66.401">https://link.aps.org/doi/10.1103/PhysRevLett.66.401</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.66.401">doi:10.1103/PhysRevLett.66.401</a></p>
+</div>
+<div class="citation" id="cite-1-friedman-existence-1997" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">54</a><span class="fn-bracket">]</span></span>
+<p>J. L. Friedman and M. S. Morris, “Existence and Uniqueness Theorems for Massless Fields on a Class of Spacetimes with Closed Timelike Curves”, <em>Communications in Mathematical Physics</em>, 186(3):495–529, July 1997. <a class="reference external" href="https://doi.org/10.1007/s002200050118">https://doi.org/10.1007/s002200050118</a>, <a class="reference external" href="https://doi.org/10.1007/s002200050118">doi:10.1007/s002200050118</a></p>
+</div>
+<div class="citation" id="cite-1-friedman-cauchy-2004" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">55</a><span class="fn-bracket">]</span></span>
+<p>J. L. Friedman, “The Cauchy Problem on Spacetimes That Are Not Globally Hyperbolic”, <em>The Einstein Equations and the Large Scale Behavior of Gravitational Fields</em>, pages 331–346, Birkhäuser, Basel, 2004. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-0348-7953-8_9">https://link.springer.com/chapter/10.1007/978-3-0348-7953-8_9</a>, <a class="reference external" href="https://doi.org/10.1007/978-3-0348-7953-8_9">doi:10.1007/978-3-0348-7953-8_9</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../classical.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Classical theories of time travel</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fields.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Cauchy problem on spacetimes containing CTCs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Closed timelike curves and time machines</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wormhole-based-time-machines">Wormhole-based time machines</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#time-travel-paradoxes">Time-travel paradoxes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-self-consistency">The principle of self-consistency</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

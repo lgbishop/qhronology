@@ -1,0 +1,86 @@
+%\documentclass[border=1mm,tikz,convert={density=4000,size=4000x4000,outext=.png}]{standalone}
+% The Standalone class ignore the preamble, so cannot be used to animate!
+\documentclass{minimal}
+\pagenumbering{gobble}
+
+\usepackage{geometry}
+\geometry{
+paperwidth=5.25cm,
+paperheight=5.25cm,
+margin=0cm
+}
+
+\usepackage{xparse}
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\eval}{m}{\fp_eval:n {#1}}
+\ExplSyntaxOff
+
+\providecommand\FPS{50} % Frame rate
+\providecommand\Period{3} % Time (seconds) of a single loop of the animation
+\providecommand\FramesTotal{\eval{\FPS*\Period}} % Total number of frames per loop
+\providecommand\FramesCurrent{0} % Current frame number, defaults to 0
+
+\providecommand\ClockHandInitialHour{4}
+\providecommand\ClockHandInitialMinute{57}
+\providecommand\ClockHandInitialSecond{38}
+\providecommand\ClockHandRevolutionsHour{-1}
+\providecommand\ClockHandRevolutionsMinute{2}
+\providecommand\ClockHandRevolutionsSecond{-3}
+
+% In \Total frames, \HourPosition: 0 -> 60*\HourRate
+\newcommand\ClockHandShiftHour{\eval{((\ClockHandRevolutionsHour*60*\FramesCurrent)/\FramesTotal)/5}}
+\newcommand\ClockHandShiftMinute{\eval{(\ClockHandRevolutionsMinute*60*\FramesCurrent)/\FramesTotal}}
+\newcommand\ClockHandShiftSecond{\eval{(\ClockHandRevolutionsSecond*60*\FramesCurrent)/\FramesTotal}}
+
+%\def\hourhand{3}
+%\def\minutehand{57}
+%\def\secondhand{7.5}
+\def\hourhand{\eval{\ClockHandInitialHour + \ClockHandShiftHour}}
+\def\minutehand{\eval{\ClockHandInitialMinute + \ClockHandShiftMinute}}
+\def\secondhand{\eval{\ClockHandInitialSecond + \ClockHandShiftSecond}}
+
+\usepackage[utf8]{inputenc}
+\usepackage{PTSansNarrow}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{3d}
+\usetikzlibrary{calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\begin{document}
+
+\begin{tikzpicture}[r/.style={font=\sffamily,inner sep=0,rotate=-30*\x,anchor=north},s/.style={even odd rule,top color=black,bottom color=black,middle color=white}]
+
+    \filldraw[fill=white] circle (21.5mm);
+    \filldraw[black] circle (21mm) circle (21.5mm);
+    \filldraw[black] circle (21.5mm) circle (22.5mm);
+    \filldraw[fill=white] circle (21.5mm);
+    \foreach\x[evaluate={\xf=int(5*\x);}] in{1,...,12}{
+        \draw ({30*(3-\x)}:19mm) node[r,anchor=south,scale=0.5,inner sep=1pt] {\xf} node[r,scale=1.5,xscale=0.85] at ({30*(3-\x)}:1.8cm) {\uppercase\expandafter{\romannumeral\x}};
+        \ifodd\x\else\draw (30*\x:18mm-2.5ex)--++(30*\x:-1mm);\fi
+    }
+
+        \foreach\x in{1,...,60}{\draw (6*\x:18mm)--++(6*\x:1mm);}
+        \draw circle(18mm) circle(19mm) circle(18mm-2.5ex) circle(17mm-2.5ex);
+
+    \begin{scope}[rotate around={-6*(\minutehand):(0,0)}] %\hourhand+
+        \fill(0.5mm,0) to[out=90,in=-100] (80:1.2cm) to[in=-80,out=120] (90:1.75cm) to[out=-100,in=60] (100:1.2cm) to[in=90,out=-80](-0.5mm,0);
+    \end{scope}
+
+    % \begin{scope}[rotate around={-30*(\hourhand+\minutehand/60):(0,0)}] % For accurate hourhand position in between hour markings.
+    \begin{scope}[rotate around={-30*(\hourhand):(0,0)}]
+        \fill(0.5mm,0) to[out=90,in=-150] (70:6mm) to[in=-80,out=120] (90:1.4cm) to[out=-100,in=60] (110:6mm) to[in=90,out=-30](-0.5mm,0);
+    \end{scope}
+        \draw[thick,-{Kite[scale=0.8]}] (0,0) -- (90-6*\secondhand:1.8cm); %Seconds
+        \filldraw[fill=white]circle (1mm);
+
+\end{tikzpicture}
+
+\end{document}
