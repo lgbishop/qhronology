@@ -1,0 +1,653 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Time-travelling billiard balls &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/theory/time-travel/classical/particles';</script>
+    <script src="../../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Quantum theories of time travel" href="../quantum.html" />
+    <link rel="prev" title="The Cauchy problem on spacetimes containing CTCs" href="fields.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum mechanics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/mathematics.html">Mathematical foundations of quantum mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/discrete.html">Quantum mechanics on discrete Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/continuous.html">Quantum mechanics on continuous Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/circuitry.html">Quantum circuitry</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time travel</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../classical.html">Classical theories of time travel</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="CTCs.html">Closed timelike curves and time machines</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="fields.html">The Cauchy problem on spacetimes containing CTCs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Time-travelling billiard balls</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum.html">Quantum theories of time travel</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../part-theory.html" class="nav-link">Theory</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../classical.html" class="nav-link">Classical theories of time travel</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Time-travelling billiard balls</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="time-travelling-billiard-balls">
+<span id="sec-billiards"></span><h1>Time-travelling billiard balls<a class="headerlink" href="#time-travelling-billiard-balls" title="Link to this heading">#</a></h1>
+<p>For a spacetime with one or more chronology-violating sets (regions containing CTCs), the past can be influenced by the future, provided that any changes which are made obey the self-consistency principle. The lack of such changes (e.g., self-interactions) in the Cauchy problem for non-interacting classical fields seems like a probable cause of its well-posedness on CTC spacetimes. Alternatively, a system that is able to self-interact (e.g., collide with its past/future self) is more likely to display unusual results—indeed, with an interacting field, uniqueness is thought to be lost as the strength of the interaction increases <span id="id1">[<a class="reference internal" href="#cite-1-friedman-cauchy-2004" title="J. L. Friedman, “The Cauchy Problem on Spacetimes That Are Not Globally Hyperbolic”, The Einstein Equations and the Large Scale Behavior of Gravitational Fields, pages 331–346, Birkhäuser, Basel, 2004. https://link.springer.com/chapter/10.1007/978-3-0348-7953-8_9, doi:10.1007/978-3-0348-7953-8_9">3</a>]</span>. Therefore, in order to study this, models of interacting systems near CTCs were developed, and perhaps the most famous of these considers the elastic self-collision(s) of a time-travelling billiard ball. In this framework, a solid, elastic, spherical mass (the <em>billiard ball</em>) enters one mouth of a wormhole-based time machine, exits the other at an earlier time (due to a time-shift having been induced between the wormhole’s two mouths), and then collides with its earlier (past) self. Depending on the initial position and velocity of the ball, drastically distinct evolutions of the ball through the CTC-wormhole region can arise.</p>
+<section id="indeterministic-dynamics-and-evolution-multiplicity">
+<span id="sec-indeterminism"></span><h2>Indeterministic dynamics and evolution multiplicity<a class="headerlink" href="#indeterministic-dynamics-and-evolution-multiplicity" title="Link to this heading">#</a></h2>
+<p>Studies <span id="id2">[<a class="reference internal" href="#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>, <a class="reference internal" href="#cite-1-lossev-jinn-1992" title="A. S. Lossev and I. D. Novikov, “The jinn of the time machine: nontrivial self-consistent solutions”, Classical and Quantum Gravity, 9(10):2309, 1992. https://iopscience.iop.org/article/10.1088/0264-9381/9/10/014, doi:10.1088/0264-9381/9/10/014">1</a>, <a class="reference internal" href="#cite-1-echeverria-billiard-1991" title="F. Echeverria, G. Klinkhammer, and K. S. Thorne, “Billiard balls in wormhole spacetimes with closed timelike curves: Classical theory”, Physical Review D, 44(4):1077–1099, August 1991. https://link.aps.org/doi/10.1103/PhysRevD.44.1077, doi:10.1103/PhysRevD.44.1077">4</a>, <a class="reference internal" href="#cite-1-novikov-time-1992" title="I. D. Novikov, “Time machine and self-consistent evolution in problems with self-interaction”, Physical Review D, 45(6):1989–1994, March 1992. https://link.aps.org/doi/10.1103/PhysRevD.45.1989, doi:10.1103/PhysRevD.45.1989">5</a>, <a class="reference internal" href="#cite-1-mikheeva-inelastic-1993" title="E. V. Mikheeva and I. D. Novikov, “Inelastic billiard ball in a spacetime with a time machine”, Physical Review D, 47(4):1432–1436, February 1993. https://link.aps.org/doi/10.1103/PhysRevD.47.1432, doi:10.1103/PhysRevD.47.1432">6</a>, <a class="reference internal" href="#cite-1-mensky-three-dimensional-1996" title="M. B. Mensky and I. D. Novikov, “Three-dimensional billiards with time machine”, International Journal of Modern Physics D, 05(02):179–192, April 1996. https://www.worldscientific.com/doi/10.1142/S0218271896000126, doi:10.1142/S0218271896000126">7</a>, <a class="reference internal" href="#cite-1-dolansky-billiard-2010" title="J. Dolanský and P. Krtouš, “Billiard ball in the space with a time machine”, Physical Review D, 82(12):124056, December 2010. https://link.aps.org/doi/10.1103/PhysRevD.82.124056, doi:10.1103/PhysRevD.82.124056">8</a>]</span> involving time-travelling billiard balls have shown that, given the same initial data posed in the presence of CTCs, there can be multiple self-consistent solutions which satisfy the equations of motion. <a class="reference internal" href="#fig-diagram-billiard-ball-paradox"><span class="std std-numref">Figure 3</span></a> illustrates a prominent example in which there are (at least) two distinct histories through which the billiard ball may evolve in a CTC-wormhole spacetime. This scenario is the foremost example of the <em>billiard-ball paradox</em>, and will hereafter be referred to as such. It is important to note that while the motivating formulation of this problem explicitly involves a wormhole-based time machine, the essence of the paradox is contingent only on the presence of CTCs that exactly facilitate the required function. In other words, while wormhole-based time machines make for perhaps the simplest conceptual model of CTCs, the physical mechanism behind the antichronological time travel in the billiard-ball paradox is irrelevant.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/diagram_billiard-ball_paradox-dark.png"><img alt="A spatial diagram of the billiard-ball paradox." src="../../../../_images/diagram_billiard-ball_paradox-dark.png" style="width: 508.68px; height: 396.0px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/diagram_billiard-ball_paradox-light.png"><img alt="A spatial diagram of the billiard-ball paradox." src="../../../../_images/diagram_billiard-ball_paradox-light.png" style="width: 508.68px; height: 396.0px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-diagram-billiard-ball-paradox" style="width: 100%">
+<a class="reference internal image-reference" href="../../../../_images/diagram_billiard-ball_paradox-light.png"><img alt="A spatial diagram of the billiard-ball paradox." src="../../../../_images/diagram_billiard-ball_paradox-light.png" style="width: 508.68px; height: 396.0px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 3 </span><span class="caption-text">The billiard-ball paradox.</span><a class="headerlink" href="#fig-diagram-billiard-ball-paradox" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Unlike in the case of the grandfather paradox, the paradoxical issue here is not of self-inconsistent trajectories but is of the indeterminism in the self-consistent ones. This is to say that solutions always exist because they self-adjust themselves (thereby providing consistency), but we now have a different issue, that of solution multiplicity. This new problem is an interesting one, as the existence of more than one solution to the equations of motion contrasts with the determinism typically associated with classical mechanics.</p>
+</section>
+<section id="quantum-resolutions-to-classical-indeterminism">
+<h2>Quantum resolutions to classical indeterminism<a class="headerlink" href="#quantum-resolutions-to-classical-indeterminism" title="Link to this heading">#</a></h2>
+<p>It is natural to question whether the characteristic of solution multiplicity is indeed merely an artefact of a classical description and vanishes in a fully self-consistent quantum mechanical treatment, or whether it remains as a pathological aspect of CTCs and time travel under any physical description. In past work <span id="id3">[<a class="reference internal" href="#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>]</span>, it has been suggested that the indeterminism problem of the billiard-ball paradox disappears in quantum theory. The reasoning behind this is that, unlike classical mechanics, a quantum treatment provides one with ways of assigning solution probabilities, thereby replacing the classical theory’s multiplicity of solutions with a set of probabilities for the outcomes of all sets of measurements.</p>
+<p>For example, a quantum prescription based on the path-integral formulation tells us that classical trajectories coexist in a probabilistic sense. In a prominent paper by Friedman et al. <span id="id4">[<a class="reference internal" href="#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>]</span>, the authors discuss such a prescription applied to the exact evolutions depicted in <a class="reference internal" href="#fig-diagram-billiard-ball-paradox"><span class="std std-numref">Figure 3</span></a>. When the ball begins in a nearly classical wave-packet, Friedman et al. postulate that a WKB (Wentzel-Kramers-Brioullin) approximation to their sum-over-histories method would find that the wave-packet emerges from the CTC-wormhole region having travelled along either evolution <span class="math notranslate nohighlight">\(\EvolutionNoninteracting\)</span> or <span class="math notranslate nohighlight">\(\EvolutionInteracting\)</span> with equal (i.e., <span class="math notranslate nohighlight">\(50\%\)</span>) probability. One interpretation of this is to say that the associated quantum billiard ball travels along <em>both</em> paths simultaneously through the time-machine region, thus ameliorating the indeterminism of classical mechanics. However, no calculation is provided in <span id="id5">[<a class="reference internal" href="#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>]</span> or any subsequent papers to support the WKB approximation conjecture. Nonetheless, the pioneering semiclassical method proposed by Friedman et al. motivates further study of this problem, as the interesting probabilistic result they postulated is simply inaccessible to classical mechanics.</p>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-lossev-jinn-1992" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>A. S. Lossev and I. D. Novikov, “The jinn of the time machine: nontrivial self-consistent solutions”, <em>Classical and Quantum Gravity</em>, 9(10):2309, 1992. <a class="reference external" href="https://iopscience.iop.org/article/10.1088/0264-9381/9/10/014">https://iopscience.iop.org/article/10.1088/0264-9381/9/10/014</a>, <a class="reference external" href="https://doi.org/10.1088/0264-9381/9/10/014">doi:10.1088/0264-9381/9/10/014</a></p>
+</div>
+<div class="citation" id="cite-1-friedman-cauchy-1990" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>,<a role="doc-backlink" href="#id4">3</a>,<a role="doc-backlink" href="#id5">4</a>)</span>
+<p>J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, <em>Physical Review D</em>, 42(6):1915–1930, September 1990. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.42.1915">https://link.aps.org/doi/10.1103/PhysRevD.42.1915</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.42.1915">doi:10.1103/PhysRevD.42.1915</a></p>
+</div>
+<div class="citation" id="cite-1-friedman-cauchy-2004" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
+<p>J. L. Friedman, “The Cauchy Problem on Spacetimes That Are Not Globally Hyperbolic”, <em>The Einstein Equations and the Large Scale Behavior of Gravitational Fields</em>, pages 331–346, Birkhäuser, Basel, 2004. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-0348-7953-8_9">https://link.springer.com/chapter/10.1007/978-3-0348-7953-8_9</a>, <a class="reference external" href="https://doi.org/10.1007/978-3-0348-7953-8_9">doi:10.1007/978-3-0348-7953-8_9</a></p>
+</div>
+<div class="citation" id="cite-1-echeverria-billiard-1991" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">4</a><span class="fn-bracket">]</span></span>
+<p>F. Echeverria, G. Klinkhammer, and K. S. Thorne, “Billiard balls in wormhole spacetimes with closed timelike curves: Classical theory”, <em>Physical Review D</em>, 44(4):1077–1099, August 1991. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.44.1077">https://link.aps.org/doi/10.1103/PhysRevD.44.1077</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.44.1077">doi:10.1103/PhysRevD.44.1077</a></p>
+</div>
+<div class="citation" id="cite-1-novikov-time-1992" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">5</a><span class="fn-bracket">]</span></span>
+<p>I. D. Novikov, “Time machine and self-consistent evolution in problems with self-interaction”, <em>Physical Review D</em>, 45(6):1989–1994, March 1992. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.45.1989">https://link.aps.org/doi/10.1103/PhysRevD.45.1989</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.45.1989">doi:10.1103/PhysRevD.45.1989</a></p>
+</div>
+<div class="citation" id="cite-1-mikheeva-inelastic-1993" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">6</a><span class="fn-bracket">]</span></span>
+<p>E. V. Mikheeva and I. D. Novikov, “Inelastic billiard ball in a spacetime with a time machine”, <em>Physical Review D</em>, 47(4):1432–1436, February 1993. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.47.1432">https://link.aps.org/doi/10.1103/PhysRevD.47.1432</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.47.1432">doi:10.1103/PhysRevD.47.1432</a></p>
+</div>
+<div class="citation" id="cite-1-mensky-three-dimensional-1996" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">7</a><span class="fn-bracket">]</span></span>
+<p>M. B. Mensky and I. D. Novikov, “Three-dimensional billiards with time machine”, <em>International Journal of Modern Physics D</em>, 05(02):179–192, April 1996. <a class="reference external" href="https://www.worldscientific.com/doi/10.1142/S0218271896000126">https://www.worldscientific.com/doi/10.1142/S0218271896000126</a>, <a class="reference external" href="https://doi.org/10.1142/S0218271896000126">doi:10.1142/S0218271896000126</a></p>
+</div>
+<div class="citation" id="cite-1-dolansky-billiard-2010" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">8</a><span class="fn-bracket">]</span></span>
+<p>J. Dolanský and P. Krtouš, “Billiard ball in the space with a time machine”, <em>Physical Review D</em>, 82(12):124056, December 2010. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.82.124056">https://link.aps.org/doi/10.1103/PhysRevD.82.124056</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.82.124056">doi:10.1103/PhysRevD.82.124056</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="fields.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Cauchy problem on spacetimes containing CTCs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../quantum.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quantum theories of time travel</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indeterministic-dynamics-and-evolution-multiplicity">Indeterministic dynamics and evolution multiplicity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-resolutions-to-classical-indeterminism">Quantum resolutions to classical indeterminism</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

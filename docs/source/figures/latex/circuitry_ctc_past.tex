@@ -1,0 +1,26 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.0]
+    \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = -30, scale=0.65}, label style=black]{} & \qw & \qw \rstick{$\ldots$}
+\end{quantikz}
+\end{document}
+
+% MAKE THIS first, second, ... nth, ... last hilbert space s with corresponding states input to a wavy? bubble gate thing labeled (operations), with the corresponding output states. Label progression of time with small arrow (with past/future?)

@@ -1,0 +1,39 @@
+Contributing
+============
+
+Copyright and licensing
+-----------------------
+
+The nature of Qhronology's dual-licensing structure means that the legal requirements of contributors (and their contributions) to the project are different, and more complex, than those of ordinary permissive, GPL, and GPL-compatible licenses. The intention of this licensing scheme is to maintain a project that is both free and open for non-commercial use (both private and public), while simultaneously placing stronger restrictions and limits on commercial use. Please note that Qhronology will *always* be free and open for non-commercial use.
+
+As a result, contributors are required to accept a contributor licensing agreement (CLA) for each contribution to the project. The CLA constitutes a legal agreement between contributors and the project that mainly exists to facilitate the transfer of copyright of the work contained in contributions to the project. This is necessary to protect the ability of the project to be distributed under non-AGPL terms. Importantly, this does not remove the credit for any contributions, and care will be taken to make proper attribution when and where it is appropriate.
+
+The acceptance of the CLA is achieved simply by reading the document itself (`CLA.txt <https://github.com/lgbishop/qhronology/blob/latest/license/CLA.txt>`_), agreeing to all of its terms and conditions, and then declaring so by reproducing the following (inside the code environment below) verbatim in the description of any merge/pull requests to the project's repository:
+
+.. code::
+
+   [ ] I declare that I have read Qhronology's Contributor License Agreement and agree to its terms and conditions.
+
+The box must be checked, which can be accomplished by inserting an asterisk ("``*``") in place of the white space within the square brackets.
+
+Failure to do so may mean that your contribution is rejected.
+
+Note that for contributions which are sufficiently small (such as minor bug fixes or typographical error fixes), you are not required to state your agreement to the CLA as these contributions are small enough to not be copyrightable.
+
+Explanation
+-----------
+
+Qhronology is committed to making contributions available as FOSS (free and open-source software) under an OSI-approved license in some form. Currently, this is achieved by offering the project as free for non-commercial use with the GNU Affero General Public License version 3 (AGPL-3.0-or-later). The main reason of the CLA therefore is that Qhronology needs to have permission from contributors to be able to redistribute their contributions under a non-AGPL license. Agreeing to the CLA is simply a way of declaring that you have the right to, and actually do, grant us the rights to use your contributions. Such contributions include adding to or changing any of the following facets of the project:
+
+- code
+- graphics (including figures, icons, and artwork)
+- documentation (including text, code examples, and equations)
+
+Simultaneously, Qhronology reserves the right to, at any time:
+
+- change the project's licensing model (including the licenses themselves)
+- reassign copyright of the project
+- modify or delete any past contributions to the project
+- change the Terms and Conditions in the CLA
+
+Performing any of these actions will not change the conditions of the agreement at the time of acceptance of the CLA.

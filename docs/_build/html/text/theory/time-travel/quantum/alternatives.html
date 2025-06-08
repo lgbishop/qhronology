@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Alternative formulations of quantum time travel &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/theory/time-travel/quantum/alternatives';</script>
+    <script src="../../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Documentation" href="../../../documentation/part-documentation.html" />
+    <link rel="prev" title="Comparison of D-CTCs and P-CTCs" href="comparison.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum mechanics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/mathematics.html">Mathematical foundations of quantum mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/discrete.html">Quantum mechanics on discrete Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/continuous.html">Quantum mechanics on continuous Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/circuitry.html">Quantum circuitry</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time travel</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../classical.html">Classical theories of time travel</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../quantum.html">Quantum theories of time travel</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="D-CTCs.html">The Deutsch model (D-CTCs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P-CTCs.html">Postselected teleportation (P-CTCs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comparison.html">Comparison of D-CTCs and P-CTCs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Alternative formulations of quantum time travel</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../part-theory.html" class="nav-link">Theory</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../quantum.html" class="nav-link">Quantum theories of time travel</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Alternative formulations of quantum time travel</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="alternative-formulations-of-quantum-time-travel">
+<span id="sec-alternatives"></span><h1>Alternative formulations of quantum time travel<a class="headerlink" href="#alternative-formulations-of-quantum-time-travel" title="Link to this heading">#</a></h1>
+<p>It is evident from the discussion in <a class="reference internal" href="comparison.html#sec-comparison"><span class="std std-ref">Comparison of D-CTCs and P-CTCs</span></a> that both D-CTCs and P-CTCs possess a myriad of undesirable traits. It is also clear that there is more than one way to extend ordinary quantum theory to include self-consistent antichronological time travel. Thus, one can hope that a quantum prescription of time travel which is an improvement over D-CTCs and P-CTCs may be able to be formulated. At the very least, constructing an alternative theory that is void of at least some of the problems discussed in prior sections should not be an impossible task. With this in mind, it is useful to specify a few of the desired characteristics (based on those in <span id="id1">[<a class="reference internal" href="comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>]</span>) of such a theory:</p>
+<ol class="arabic simple">
+<li><p><em>Compatibility with standard quantum theory</em>: The prescription should reproduce ordinary quantum mechanics both along the CTC itself and in regions outside any chronology-violating sets. Compatibility with all experimental evidence of standard quantum mechanics is also desired. This means that the theory should follow all established features of quantum mechanics, such as obeyance of the no-cloning theorem.</p></li>
+<li><p><em>Existence and uniqueness of solutions</em>: The prescription should provide exactly one solution (CR state) for each combination of possible interaction and CV state (if applicable). If multiple such solutions exist, then the probabilities for each should be specified. In other words, the theory should not possess any uniqueness ambiguities like that of D-CTCs.</p></li>
+<li><p><em>Absence of pathological traits</em>: The prescription should be consistent with other generally accepted physical theories such as special relativity (at least in a local, approximate sense) and its associated causal structure. In particular, the theory should not permit <em>antichronological action</em>. This is, in essence, the concept where the very <em>existence</em> of a time machine in the future, no matter how distant, jeopardizes the agency of an observer in the past and present. For P-CTCs, this arises as restrictions on a system’s state in the past as a function of the future, and constitutes a profoundly interesting (and undesirable) issue for the prescription.</p></li>
+</ol>
+<p>There are of course other traits which may be considered, one such being prejudice in requiring either or both of the CR and CV states to be pure. This characteristic however is often left to the opinions of the physicist, given that there is no objective, <em>a priori</em> reasoning as to prefer pure states over mixed states as fundamental objects in any given theory of quantum time travel.</p>
+<p>The search for alternatives to D-CTCs and P-CTCs that possess fewer pathological problems is a central theme of research into quantum time travel. Here, we briefly discuss several of the more prominent models (excluding some lesser-developed theories <span id="id2">[<a class="reference internal" href="#cite-1-pegg-quantum-2005" title="D. T. Pegg, “Quantum mechanics and the time travel paradox”, June 2005. http://arxiv.org/abs/quant-ph/0506141, doi:10.48550/arXiv.quant-ph/0506141">20</a>, <a class="reference internal" href="#cite-1-greenberger-quantum-2005" title="D. M. Greenberger and K. Svozil, “Quantum Theory Looks at Time Travel”, A. C. Elitzur, S. Dolev, and N. Kolenda (editors), Quo Vadis Quantum Mechanics?, The Frontiers Collection, pages 63–71, Springer, Berlin, Heidelberg, 2005. https://doi.org/10.1007/3-540-26669-0_4, doi:10.1007/3-540-26669-0_4">21</a>]</span>), some of which represent significant departures from the standard method of incorporating the principle of self-consistency into ordinary quantum mechanics.</p>
+<section id="weighted-d-ctcs-wd-ctcs">
+<span id="sec-wd-ctcs"></span><h2>Weighted D-CTCs (WD-CTCs)<a class="headerlink" href="#weighted-d-ctcs-wd-ctcs" title="Link to this heading">#</a></h2>
+<p>Perhaps the simplest “improved” prescription is that of <em>weighted D-CTCs</em> <span id="id3">[<a class="reference internal" href="comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>]</span>, which merely represents an extension of the ordinary D-CTCs model. The premise is simple: associate to each valid D-CTC fixed-point density operator <span class="math notranslate nohighlight">\(\StateCV_\alpha\)</span> a weight <span class="math notranslate nohighlight">\(w_\alpha \geq 0\)</span>, using which the unique, “correct” D-CTC CV state is then given by the integral over the space of all D-CTC fixed points, that is,</p>
+<div class="math notranslate nohighlight" id="equation-eq-wd-ctcs-cv">
+<span class="eqno">(255)<a class="headerlink" href="#equation-eq-wd-ctcs-cv" title="Link to this equation">#</a></span>\[\StateCV = \frac{\int \diff{\alpha} \, w_\alpha \StateCV_\alpha}{\int \diff{\alpha} \, w_\alpha}.\]</div>
+<p>The generic meaning of integrating over the state space is to sum over all possibilities (see <a class="reference internal" href="../../quantum-mechanics/discrete.html#sec-integrals"><span class="std std-ref">Integrals over quantum states</span></a> for a mathematical definition). The weighted mixture <a class="reference internal" href="#equation-eq-wd-ctcs-cv">(255)</a> therefore represents the combination of all elements in the (convex) subset of valid D-CTC CV states. Accordingly, the uniqueness ambiguity in the ordinary D-CTC prescription is resolved for any given set of weights.</p>
+<p>The corresponding weighted D-CTC CR output is therefore given by the usual D-CTC CR map, that is,</p>
+<div class="math notranslate nohighlight" id="equation-eq-wd-ctcs-cr">
+<span class="eqno">(256)<a class="headerlink" href="#equation-eq-wd-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \MapWDCTCsCR_{\Unitary}[\StateCR,\StateCV] &amp;\equiv \trace_\CV\bigl[\Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger\bigr] \\
+    &amp;= \frac{\int \diff{\alpha} \, w_\alpha \trace_\CV\bigl[\Unitary(\StateCR \otimes \StateCV_\alpha)\Unitary^\dagger\bigr]}{\int \diff{\alpha} \, w_\alpha}.
+\end{aligned}\end{split}\]</div>
+<p>The parametrization of the constituent states by <span class="math notranslate nohighlight">\(\alpha\)</span> evidently describes a whole class of models based on both how the corresponding weights <span class="math notranslate nohighlight">\(w_\alpha\)</span> are distributed, and the specific form of the integration measure one chooses to employ. For example, perhaps the simplest model is one in which all weights are equal, i.e., <span class="math notranslate nohighlight">\(w_\alpha = 1\)</span>. This corresponds to a <em>uniform</em> weighted D-CTC theory that is manifestly unique, which immediately is an improvement over standard D-CTCs. More sophisticated models may opt to appoint the weights to represent certain transition probabilities of the CV state through the time-machine region—see <span id="id4">[<a class="reference internal" href="comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>]</span> for more discussion.</p>
+</section>
+<section id="transition-probabilities-t-ctcs">
+<span id="sec-t-ctcs"></span><h2>Transition probabilities (T-CTCs)<a class="headerlink" href="#transition-probabilities-t-ctcs" title="Link to this heading">#</a></h2>
+<p>The idea of quantum transition probabilities can be incorporated into P-CTCs, and the resultant <em>transition probabilities</em> prescription (T-CTCs) <span id="id5">[<a class="reference internal" href="comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>]</span> of quantum time travel shares many features of P-CTCs, while also gaining a few improvements in regards to the pathological problems possessed by the latter. Where a P-CTC preselects and postselects against a maximally entangled state, a T-CTC alternatively uses just a pure state <span class="math notranslate nohighlight">\(\ket{\StateVector} \in \SpacePure(\SpaceHilbert_\CV)\)</span> in the CV system. This system is prejudicially assumed to be pure, as a postulate of the theory is that the primitive states of quantum mechanics are similarly pure. Thus, given the CR input <span class="math notranslate nohighlight">\(\ket{\StatePure} \in \SpacePure(\SpaceHilbert_\CR)\)</span>, the evolution of the bipartite input is</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-0">
+<span class="eqno">(257)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-0" title="Link to this equation">#</a></span>\[\ket{\StatePure}\bra{\StatePure} \otimes \ket{\StateVector}\bra{\StateVector} \rightarrow \Unitary \bigl(\ket{\StatePure}\bra{\StatePure} \otimes \ket{\StateVector}\bra{\StateVector}\bigr) \Unitary^\dagger\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Unitary\)</span> describes the (unitary) interaction between the CR and CV modes. Self-consistency of the time-travelling CV state is achieved by postselection on the CV subsystem against the same input state. Doing so yields</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-1">
+<span class="eqno">(258)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-1" title="Link to this equation">#</a></span>\[\bigl(\Identity \otimes \bra{\StateVector}\bigr) \Unitary \bigl(\ket{\StatePure}\bra{\StatePure} \otimes \ket{\StateVector}\bra{\StateVector}\bigr) \Unitary^\dagger \bigl(\Identity \otimes \ket{\StateVector}\bigr) = \Unitary_\StateVector \ket{\StatePure}\bra{\StatePure} \Unitary_\StateVector^\dagger\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-2">
+<span class="eqno">(259)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-2" title="Link to this equation">#</a></span>\[\Unitary_\StateVector \equiv \bigl(\Identity \otimes \bra{\StateVector}\bigr) \Unitary \bigl(\Identity \otimes \ket{\StateVector}\bigr)\]</div>
+<p>is an operator which acts on <span class="math notranslate nohighlight">\(\SpaceHilbert_\CR\)</span> and is not unitary in general. The CR output state <span class="math notranslate nohighlight">\(\MapTCTCsCR_{\Unitary}[\StatePure]\)</span> is then obtained when one integrates over all such CV states and subsequently renormalizes, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-eq-t-ctcs-cr-integral">
+<span class="eqno">(260)<a class="headerlink" href="#equation-eq-t-ctcs-cr-integral" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \MapTCTCsCR_{\Unitary}[\StatePure] &amp;= \frac{1}{\Normalization} \int_{\SpacePure(\SpaceHilbert_\CV)} \diff[\StateVector] \, \Unitary_\StateVector \ket{\StatePure}\bra{\StatePure} \Unitary_\StateVector^\dagger, \\
+    \Normalization &amp;\equiv \int_{\SpacePure(\SpaceHilbert_\CV)} \diff[\StateVector] \bra{\StatePure} \Unitary_\StateVector \Unitary_\StateVector^\dagger \ket{\StatePure}.
+\end{aligned}\end{split}\]</div>
+<p>Although the expression <a class="reference internal" href="#equation-eq-t-ctcs-cr-integral">(260)</a> is concise, it is difficult to ascertain the behaviour of the CR output state given the integral form. However, following the original work in <span id="id6">[<a class="reference internal" href="comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>]</span>, the form of <a class="reference internal" href="#equation-eq-t-ctcs-cr-integral">(260)</a> may be simplified and written in terms of only states and operators. Given an orthonormal basis <span class="math notranslate nohighlight">\(\{\ket{\mu}\}_{\mu=0}^{\Dimension - 1}\)</span> for <span class="math notranslate nohighlight">\(\SpaceHilbert_\CV\)</span>, we first expand the unitary interaction <span class="math notranslate nohighlight">\(\Unitary\)</span> in the form</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-3">
+<span class="eqno">(261)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-3" title="Link to this equation">#</a></span>\[\Unitary = \sum_{\alpha,\beta=0}^{\Dimension - 1} \OperatorPartial_{\alpha\beta} \otimes \ket{\alpha}\bra{\beta}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\OperatorPartial_{\alpha\beta}\)</span> are operators on <span class="math notranslate nohighlight">\(\SpaceHilbert_\CR\)</span>. Using this and the integrals</p>
+<div class="math notranslate nohighlight" id="equation-eq-t-ctcs-integrals">
+<span class="eqno">(262)<a class="headerlink" href="#equation-eq-t-ctcs-integrals" title="Link to this equation">#</a></span>\[\Integral_{\alpha\beta,\gamma\delta} \equiv \int_{\SpacePure(\SpaceHilbert_\CV)} \diff[\StateVector] \, \braket{\StateVector}{\alpha}  \braket{\beta}{\StateVector}  \braket{\StateVector}{\delta}  \braket{\gamma}{\StateVector}\]</div>
+<p>we may express <a class="reference internal" href="#equation-eq-t-ctcs-cr-integral">(260)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-t-ctcs-cr-expansion">
+<span class="eqno">(263)<a class="headerlink" href="#equation-eq-t-ctcs-cr-expansion" title="Link to this equation">#</a></span>\[\MapTCTCsCR_{\Unitary}[\StatePure] = \frac{1}{\Normalization} \sum_{\alpha,\beta,\gamma,\delta = 0}^{\Dimension - 1} \Integral_{\alpha\beta,\gamma\delta} \OperatorPartial_{\alpha\beta}\ket{\StatePure}\bra{\StatePure} \OperatorPartial_{\gamma\delta}^\dagger.\]</div>
+<p>In the integral <a class="reference internal" href="#equation-eq-t-ctcs-integrals">(262)</a>, we expand both the state <span class="math notranslate nohighlight">\(\ket{\StateVector}\)</span> and measure <span class="math notranslate nohighlight">\(\diff[\StateVector]\)</span> using the Hurwitz parametrization [<a class="reference internal" href="../../quantum-mechanics/discrete.html#equation-eq-hurwitz-state">(195)</a> and <a class="reference internal" href="../../quantum-mechanics/discrete.html#equation-eq-hurwitz-measure">(196)</a>, respectively]. For each <span class="math notranslate nohighlight">\(\ket{\mu}\)</span>, the <span class="math notranslate nohighlight">\(\diff\varphi_\mu\)</span> component of the corresponding measure factors out, and so any integrand whose <span class="math notranslate nohighlight">\(\varphi_\mu\)</span>-dependence is only an integer power of <span class="math notranslate nohighlight">\(\e^{\eye \varphi_\mu}\)</span> necessarily integrates to zero due to the identity</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-4">
+<span class="eqno">(264)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-4" title="Link to this equation">#</a></span>\[\int_{\varphi = 0}^{2\pi} \diff\varphi \, \e^{\eye (m - n) \varphi} = 2\pi\delta_{mn}, \quad m \neq n, \quad m,n\in\Integers.\]</div>
+<p>This means that any integral <a class="reference internal" href="#equation-eq-t-ctcs-integrals">(262)</a> vanishes unless it is of the form,</p>
+<div class="math notranslate nohighlight" id="equation-eq-t-ctcs-integrals-special">
+<span class="eqno">(265)<a class="headerlink" href="#equation-eq-t-ctcs-integrals-special" title="Link to this equation">#</a></span>\[\Integral_{\alpha\alpha,\beta\beta} = \Integral_{\alpha\beta,\alpha\beta} = \int_{\SpacePure(\SpaceHilbert_\CV)} \diff[\StateVector] \, \abs{\braket{\alpha}{\StateVector}}^2  \abs{\braket{\beta}{\StateVector}}^2,\]</div>
+<p>and so the only surviving terms in the expression <a class="reference internal" href="#equation-eq-t-ctcs-cr-expansion">(263)</a> are</p>
+<div class="math notranslate nohighlight" id="equation-eq-t-ctcs-cr-expansion-contributions">
+<span class="eqno">(266)<a class="headerlink" href="#equation-eq-t-ctcs-cr-expansion-contributions" title="Link to this equation">#</a></span>\[\begin{split}\MapTCTCsCR_{\Unitary}[\StatePure] = \frac{1}{\Normalization} \Biggl(\sum_{\substack{\alpha,\beta = 0 \\ \alpha \neq \beta}}^{\Dimension - 1} \Integral_{\alpha\beta,\alpha\beta} \OperatorPartial_{\alpha\beta} \ket{\StatePure}\bra{\StatePure} \OperatorPartial_{\alpha\beta}^\dagger + \sum_{\substack{\alpha,\beta = 0 \\ \alpha \neq \beta}}^{\Dimension - 1} \Integral_{\alpha\alpha,\beta\beta} \OperatorPartial_{\alpha\alpha}\ket{\StatePure}\bra{\StatePure} \OperatorPartial_{\beta\beta}^\dagger + \sum_{\alpha = 0}^{\Dimension - 1} \Integral_{\alpha\alpha,\alpha\alpha} \OperatorPartial_{\alpha\alpha}\ket{\StatePure}\bra{\StatePure} \OperatorPartial_{\alpha\alpha}^\dagger\Biggr).\end{split}\]</div>
+<p>The usefulness of having a parametrization for which the integration measure is invariant under unitary transformations now comes to the fore: one may rotate the state <span class="math notranslate nohighlight">\(\ket{\StateVector}\)</span> in the integrals <a class="reference internal" href="#equation-eq-t-ctcs-integrals-special">(265)</a> so that only the <span class="math notranslate nohighlight">\(\ket{\Dimension - 1}\)</span> and <span class="math notranslate nohighlight">\(\ket{\Dimension - 2}\)</span> components contribute. Therefore, under the Hurwitz parametrization, we find for <span class="math notranslate nohighlight">\(\alpha \neq \beta\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-5">
+<span class="eqno">(267)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-5" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \Integral_{\alpha\beta,\alpha\beta} = \Integral_{\alpha\alpha,\beta\beta} &amp;= \int_{\SpacePure(\SpaceHilbert_\CV)} \diff[\StateVector] \, \abs{\braket{\Dimension - 1}{\StateVector}}^2 \, \abs{\braket{\Dimension - 2}{\StateVector}}^2 \\
+    &amp;= (2\pi)^{\Dimension - 1} \prod_{\gamma = 1}^{\Dimension - 3} \int_{\vartheta_\gamma \in [0, \tfrac{\pi}{2}]} \diff\vartheta_\gamma \, \cos(\vartheta_\gamma) \, \sin^{2\gamma - 1}(\vartheta_\gamma)\\
+    &amp;\quad \times \int_{\vartheta_{\Dimension - 2} \in [0,2\pi]} \diff\vartheta_{\Dimension - 2} \, \cos^3(\vartheta_{\Dimension - 2}) \sin^{2\Dimension - 5}(\vartheta_{\Dimension - 2}) \\
+    &amp;\quad \times \int_{\vartheta_{\Dimension - 1} \in [0,2\pi]} \diff\vartheta_{\Dimension - 1} \, \cos^3(\vartheta_{\Dimension - 1}) \sin^{2\Dimension - 1}(\vartheta_{\Dimension - 1}),
+\end{aligned}\end{split}\]</div>
+<p>while for <span class="math notranslate nohighlight">\(\alpha = \beta\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-6">
+<span class="eqno">(268)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-6" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \Integral_{\alpha\alpha,\alpha\alpha} &amp;= \int_{\SpacePure(\SpaceHilbert_\CV)} \diff[\StateVector] \, \abs{\braket{\Dimension - 1}{\StateVector}}^4 \\
+    &amp;= (2\pi)^{\Dimension - 1} \prod_{\gamma = 1}^{\Dimension - 3} \int_{\vartheta_\gamma \in [0, \tfrac{\pi}{2}]} \diff\vartheta_\gamma \, \cos(\vartheta_\gamma) \, \sin^{2\gamma - 1}(\vartheta_\gamma)\\
+    &amp;\quad \times \int_{\vartheta_{\Dimension - 2} \in [0,2\pi]} \diff\vartheta_{\Dimension - 2} \, \cos(\vartheta_{\Dimension - 2}) \sin^{2\Dimension - 5}(\vartheta_{\Dimension - 2}) \\
+    &amp;\quad \times \int_{\vartheta_{\Dimension - 1} \in [0,2\pi]} \diff\vartheta_{\Dimension - 1} \, \cos^5(\vartheta_{\Dimension - 1}) \sin^{2\Dimension - 3}(\vartheta_{\Dimension - 1}).
+\end{aligned}\end{split}\]</div>
+<p>Evaluation (numerical or otherwise) of the integrals in these forms reveals that</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-7">
+<span class="eqno">(269)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-7" title="Link to this equation">#</a></span>\[\frac{\Integral_{\alpha\alpha,\alpha\alpha}}{\Integral_{\alpha\beta,\alpha\beta}} = \frac{\Integral_{\alpha\alpha,\alpha\alpha}}{\Integral_{\alpha\alpha,\beta\beta}} = 2, \quad \alpha \neq \beta,\]</div>
+<p>which allows us to combine the distinct sums in <a class="reference internal" href="#equation-eq-t-ctcs-cr-expansion-contributions">(266)</a> and bring out a common multiplicative pre-factor (which we subsequently neglect due to the foresight of having to renormalize), yielding</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-8">
+<span class="eqno">(270)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-8" title="Link to this equation">#</a></span>\[\MapTCTCsCR_{\Unitary}[\StateVector] \propto \sum_{\alpha,\beta = 0}^{\Dimension - 1} \left(\OperatorPartial_{\alpha\beta}\ket{\StatePure}\bra{\StatePure} \OperatorPartial_{\alpha\beta}^\dagger + \OperatorPartial_{\alpha\alpha}\ket{\StatePure}\bra{\StatePure} \OperatorPartial_{\beta\beta}^\dagger\right).\]</div>
+<p>Finally, with the identities</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-9">
+<span class="eqno">(271)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-9" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \sum_{\alpha = 0}^{\Dimension - 1} \OperatorPartial_{\alpha\alpha} &amp;= \trace_\CV[\Unitary], \\
+    \sum_{\alpha,\beta = 0}^{\Dimension - 1} \OperatorPartial_{\alpha\beta} \ket{\StatePure}\bra{\StatePure} \OperatorPartial_{\alpha\beta}^\dagger &amp;= \trace_\CV\bigl[\Unitary(\ket{\StatePure}\bra{\StatePure} \otimes \Identity)\Unitary^\dagger\bigr],
+\end{aligned}\end{split}\]</div>
+<p>we arrive at the result</p>
+<div class="math notranslate nohighlight" id="equation-eq-t-ctcs">
+<span class="eqno">(272)<a class="headerlink" href="#equation-eq-t-ctcs" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \MapTCTCsCR_{\Unitary}[\StatePure] &amp;= \frac{1}{\Normalization^{\prime}} \Bigl( \trace_\CV[\Unitary] \ket{\StatePure}\bra{\StatePure} \trace_\CV[\Unitary^\dagger] + \Dimension \, \trace_\CV\bigl[ \Unitary\bigl(\ket{\StatePure}\bra{\StatePure} \otimes \tfrac{1}{\Dimension}\Identity\bigr) \Unitary^\dagger\bigr] \Bigr), \\
+    \Normalization^{\prime} &amp;\equiv \trace\Bigl\{ \trace_\CV[\Unitary] \ket{\StatePure}\bra{\StatePure} \trace_\CV[\Unitary^\dagger] \Bigr\} + \Dimension.
+\end{aligned}\end{split}\]</div>
+<p>In general, the methodology of the T-CTC prescription may equally be applied to mixed CR input states, giving</p>
+<div class="math notranslate nohighlight" id="equation-eq-t-ctcs-mixed">
+<span class="eqno">(273)<a class="headerlink" href="#equation-eq-t-ctcs-mixed" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \MapTCTCsCR_{\Unitary}[\StateCR] &amp;= \frac{1}{\Normalization^{\prime}} \Bigl( \trace_\CV[\Unitary] \StateCR \, \trace_\CV[\Unitary^\dagger] + \Dimension \, \trace_\CV\bigl[ \Unitary\bigl(\StateCR \otimes \tfrac{1}{\Dimension}\Identity\bigr) \Unitary^\dagger\bigr] \Bigr), \\
+    \Normalization^{\prime} &amp;\equiv \trace\Bigl\{ \trace_\CV[\Unitary] \StateCR \, \trace_\CV[\Unitary^\dagger] \Bigr\} + \Dimension.
+\end{aligned}\end{split}\]</div>
+<p>In this form, it is immediately clear that the T-CTC equation of motion is a weighted mixture of the P-CTC equation of motion <a class="reference internal" href="P-CTCs.html#equation-eq-p-ctcs-cr">(250)</a> with an ordinary quantum channel, giving the impression that a T-CTC can be thought of as a noisy P-CTC. Therefore, T-CTCs, like P-CTCs, does not suffer from uniqueness ambiguities, while having the benefit of being consistent for any given <span class="math notranslate nohighlight">\(\Unitary\)</span> and <span class="math notranslate nohighlight">\(\StateCR\)</span>. This is because the condition</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-10">
+<span class="eqno">(274)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-alternatives-10" title="Link to this equation">#</a></span>\[\trace\bigl[\trace_\CV[\Unitary] \StateCR \, \trace_\CV[\Unitary^\dagger]\bigr] = 0,\]</div>
+<p>while rendering P-CTCs inconsistent, poses no problems for T-CTCs. The prescription thus provides unique solutions to all paradoxes with the added advantage of not requiring either an adjunct condition or the introduction of noise in order to do so.</p>
+</section>
+<section id="ctc-as-a-ring-resonator">
+<h2>CTC as a ring resonator<a class="headerlink" href="#ctc-as-a-ring-resonator" title="Link to this heading">#</a></h2>
+<p>In optics, a <em>ring resonator</em> involves a scattering process wherein a portion of the output is supplied back into the input. Czachor <span id="id7">[<a class="reference internal" href="#cite-1-czachor-time-2019" title="M. Czachor, “Time travel without paradoxes: Ring resonator as a universal paradigm for looped quantum evolutions”, Physics Letters A, 383(23):2704–2712, August 2019. http://www.sciencedirect.com/science/article/pii/S0375960119304943, doi:10.1016/j.physleta.2019.05.043">22</a>]</span> posits that the same formal structure is encountered in any looped quantum evolution, including time travel to the past (in the neighbourhood of a CTC). Given that the quantum theory of ring resonators is both well-developed and agrees closely with experiment, then it is therefore natural to treat the CTC as a ring resonator, and this provides an alternative prescription with which self-consistent solutions to quantum time travel problems can be formulated.</p>
+<p>Czachor’s scheme <span id="id8">[<a class="reference internal" href="#cite-1-czachor-time-2019" title="M. Czachor, “Time travel without paradoxes: Ring resonator as a universal paradigm for looped quantum evolutions”, Physics Letters A, 383(23):2704–2712, August 2019. http://www.sciencedirect.com/science/article/pii/S0375960119304943, doi:10.1016/j.physleta.2019.05.043">22</a>]</span> is in essence a topological one, and is thus independent of any spacetime geometry. As a theory of quantum time travel, it provides logically consistent solutions to any given time-travel paradox, with such solutions notably being inequivalent to those given by D-CTCs and P-CTCs. Indeed, while D-CTCs is characterized by an interaction between a time traveller and a copy of themselves on a singly looped CTC (meaning that at any given global time there can physically exist at most two time travellers), the ring resonator paradigm describes the time traveller as a single object that is in a state of superposition of being inside and outside the loop. Mathematically, the solutions in essence describe the ordinary quantum optical reflection of an input state off of the time machine. This is to say that the interaction with the CTC is in fact merely a self-interference effect, which is an inherently linear phenomenon. The result is a robust, linear, fully self-consistent prescription of quantum time travel that is free from many of the issues which plague D-CTCs and P-CTCs, including violation of the no-cloning theorem. It remains to be studied however whether this model possesses any advantages in the context of quantum information processing.</p>
+</section>
+<section id="indefinite-causal-structure-and-the-process-matrix-formalism">
+<h2>Indefinite causal structure and the process matrix formalism<a class="headerlink" href="#indefinite-causal-structure-and-the-process-matrix-formalism" title="Link to this heading">#</a></h2>
+<p>Under a complete theory of quantum gravity, it is expected that spacetime loses its classical properties <span id="id9">[<a class="reference internal" href="#cite-1-gibbs-small-1996" title="P. E. Gibbs, “The Small Scale Structure of Space-Time: A Bibliographical Review”, January 1996. http://arxiv.org/abs/hep-th/9506171, doi:10.48550/arXiv.hep-th/9506171">23</a>, <a class="reference internal" href="#cite-1-piazza-glimmers-2010" title="F. Piazza, “Glimmers of a Pre-geometric Perspective”, Foundations of Physics, 40(3):239–266, March 2010. https://doi.org/10.1007/s10701-009-9387-5, doi:10.1007/s10701-009-9387-5">24</a>]</span>. One of the possible consequences of this is the emergence of indefinite causal structures <span id="id10">[<a class="reference internal" href="#cite-1-hardy-probability-2005" title="L. Hardy, “Probability Theories with Dynamic Causal Structure: A New Framework for Quantum Gravity”, arXiv:gr-qc/0509120, September 2005. http://arxiv.org/abs/gr-qc/0509120">2</a>, <a class="reference internal" href="#cite-1-hardy-towards-2007" title="L. Hardy, “Towards quantum gravity: a framework for probabilistic theories with non-fixed causal structure”, Journal of Physics A: Mathematical and Theoretical, 40(12):3081–3099, March 2007. https://doi.org/10.1088/1751-8113/40/12/s12, doi:10.1088/1751-8113/40/12/S12">3</a>, <a class="reference internal" href="#cite-1-zych-bells-2019" title="M. Zych, F. Costa, I. Pikovski, and Č. Brukner, “Bell’s theorem for temporal order”, Nature Communications, 10(1):3772, August 2019. http://www.nature.com/articles/s41467-019-11579-x, doi:10.1038/s41467-019-11579-x">25</a>]</span>, where the causal order of events is no longer definite and instead is in a quantum (probabilistic) superposition of all possible orderings. However, perhaps the foremost problem that arises when one abandons classical causality is the appearance of logical inconsistencies, themselves stemming from seemingly paradoxical physical scenarios. The usual procedure to eliminate these and restore self-consistency is to extend ordinary quantum mechanics (like in P-CTCs or D-CTCs), as discussed in the preceding sections.</p>
+<p>A radically different approach involves the <em>process matrix formalism</em>. This theory provides an abstract framework for quantum mechanics on indefinite causal structures, and includes the study of which types of global processes are compatible with the assumption that the standard laws of physics are valid in a local sense <span id="id11">[<a class="reference internal" href="#cite-1-oreshkov-quantum-2012" title="O. Oreshkov, F. Costa, and Č. Brukner, “Quantum correlations with no causal order”, Nature Communications, 3(1):1092, October 2012. http://www.nature.com/articles/ncomms2076, doi:10.1038/ncomms2076">4</a>, <a class="reference internal" href="#cite-1-araujo-witnessing-2015" title="M. Araújo, C. Branciard, F. Costa, A. Feix, C. Giarmatzi, and Č. Brukner, “Witnessing causal nonseparability”, New Journal of Physics, 17(10):102001, October 2015. https://doi.org/10.1088/1367-2630/17/10/102001, doi:10.1088/1367-2630/17/10/102001">6</a>, <a class="reference internal" href="#cite-1-branciard-simplest-2015" title="C. Branciard, M. Araújo, A. Feix, F. Costa, and Č. Brukner, “The simplest causal inequalities and their violation”, New Journal of Physics, 18(1):013008, December 2015. https://doi.org/10.1088/1367-2630/18/1/013008, doi:10.1088/1367-2630/18/1/013008">7</a>, <a class="reference internal" href="#cite-1-costa-quantum-2016" title="F. Costa and S. Shrapnel, “Quantum causal modelling”, New Journal of Physics, 18(6):063032, June 2016. https://doi.org/10.1088/1367-2630/18/6/063032, doi:10.1088/1367-2630/18/6/063032">10</a>, <a class="reference internal" href="#cite-1-baumann-appearance-2016" title="V. Baumann and Č. Brukner, “Appearance of causality in process matrices when performing fixed-basis measurements for two parties”, Physical Review A, 93(6):062324, June 2016. https://link.aps.org/doi/10.1103/PhysRevA.93.062324, doi:10.1103/PhysRevA.93.062324">11</a>, <a class="reference internal" href="#cite-1-oreshkov-causal-2016" title="O. Oreshkov and C. Giarmatzi, “Causal and causally separable processes”, New Journal of Physics, 18(9):093020, September 2016. https://doi.org/10.1088/1367-2630/18/9/093020, doi:10.1088/1367-2630/18/9/093020">12</a>, <a class="reference internal" href="#cite-1-abbott-multipartite-2016" title="A. A. Abbott, C. Giarmatzi, F. Costa, and C. Branciard, “Multipartite causal correlations: Polytopes and inequalities”, Physical Review A, 94(3):032131, September 2016. https://link.aps.org/doi/10.1103/PhysRevA.94.032131, doi:10.1103/PhysRevA.94.032131">13</a>, <a class="reference internal" href="#cite-1-giacomini-indefinite-2016" title="F. Giacomini, E. Castro-Ruiz, and Č. Brukner, “Indefinite causal structures for continuous-variable systems”, New Journal of Physics, 18(11):113026, November 2016. https://doi.org/10.1088/1367-2630/18/11/113026, doi:10.1088/1367-2630/18/11/113026">14</a>, <a class="reference internal" href="#cite-1-perinotti-causal-2017" title="P. Perinotti, “Causal Structures and the Classification of Higher Order Quantum Computations”, R. Renner and S. Stupar (editors), Time in Physics, Tutorials, Schools, and Workshops in the Mathematical Sciences, pages 103–127, Springer International Publishing, Cham, 2017. https://link.springer.com/chapter/10.1007/978-3-319-68655-4_7, doi:10.1007/978-3-319-68655-4_7">15</a>, <a class="reference internal" href="#cite-1-araujo-purification-2017" title="M. Araújo, A. Feix, M. Navascués, and Č. Brukner, “A purification postulate for quantum mechanics with indefinite causal order”, Quantum, 1:10, April 2017. https://quantum-journal.org/papers/q-2017-04-26-10/, doi:10.22331/q-2017-04-26-10">16</a>, <a class="reference internal" href="#cite-1-abbott-genuinely-2017" title="A. A. Abbott, J. Wechs, F. Costa, and C. Branciard, “Genuinely multipartite noncausality”, Quantum, 1:39, December 2017. https://quantum-journal.org/papers/q-2017-12-14-39/, doi:10.22331/q-2017-12-14-39">17</a>, <a class="reference internal" href="#cite-1-jia-quantum-2018" title="D. Jia, “Quantum theories from principles without assuming a definite causal structure”, Physical Review A, 98(3):032112, September 2018. https://link.aps.org/doi/10.1103/PhysRevA.98.032112, doi:10.1103/PhysRevA.98.032112">18</a>, <a class="reference internal" href="#cite-1-jia-causal-2019" title="D. Jia and F. Costa, “Causal order as a resource for quantum communication”, Physical Review A, 100(5):052319, November 2019. https://link.aps.org/doi/10.1103/PhysRevA.100.052319, doi:10.1103/PhysRevA.100.052319">19</a>, <a class="reference internal" href="#cite-1-feix-quantum-2015" title="A. Feix, M. Araújo, and Č. Brukner, “Quantum superposition of the order of parties as a communication resource”, Physical Review A, 92(5):052326, November 2015. https://link.aps.org/doi/10.1103/PhysRevA.92.052326, doi:10.1103/PhysRevA.92.052326">26</a>, <a class="reference internal" href="#cite-1-shrapnel-updating-2018" title="S. Shrapnel, F. Costa, and G. Milburn, “Updating the Born rule”, New Journal of Physics, 20(5):053010, May 2018. https://doi.org/10.1088/1367-2630/aabe12, doi:10.1088/1367-2630/aabe12">27</a>, <a class="reference internal" href="#cite-1-bavaresco-semi-device-independent-2019" title="J. Bavaresco, M. Araújo, Č. Brukner, and M. T. Quintino, “Semi-device-independent certification of indefinite causal order”, Quantum, 3:176, August 2019. https://quantum-journal.org/papers/q-2019-08-19-176/, doi:10.22331/q-2019-08-19-176">28</a>]</span>. In other words, this formalism posits that all operations which are possible in ordinary spacetime are still allowed in local regions of any spacetime, regardless of the nature of the underlying causality. It is useful as a tool to study correlations between parties where the causal order among them is not specified <em>a priori</em>. Instead, the assumption that the probabilities of measurement outcomes are well-defined replaces the (often implicit) assumption of a definite causal order. This provides a powerful methodology—one that is in fact more general than (ordinary) quantum theory—as certain correlations that cannot be explained with a predefined causal order of the parties may arise. Interestingly, when applied to classical physics, the process matrix formalism has shown that there exist classical processes which are incompatible with any notion of causal order between events <span id="id12">[<a class="reference internal" href="#cite-1-baumeler-maximal-2014" title="Ä. Baumeler, A. Feix, and S. Wolf, “Maximal incompatibility of locally classical behavior and global causal order in multiparty scenarios”, Physical Review A, 90(4):042106, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042106, doi:10.1103/PhysRevA.90.042106">5</a>, <a class="reference internal" href="#cite-1-baumeler-space-2016" title="Ä. Baumeler and S. Wolf, “The space of logically consistent classical processes without causal order”, New Journal of Physics, 18(1):013036, January 2016. https://doi.org/10.1088/1367-2630/18/1/013036, doi:10.1088/1367-2630/18/1/013036">8</a>, <a class="reference internal" href="#cite-1-baumeler-device-independent-2016" title="Ä. Baumeler and S. Wolf, “Device-independent test of causal order and relations to fixed-points”, New Journal of Physics, 18(3):035014, April 2016. https://doi.org/10.1088/1367-2630/18/3/035014, doi:10.1088/1367-2630/18/3/035014">9</a>]</span>.</p>
+<p>In <span id="id13">[<a class="reference internal" href="#cite-1-baumeler-reversible-2019" title="Ä. Baumeler, F. Costa, T. C. Ralph, S. Wolf, and M. Zych, “Reversible time travel with freedom of choice”, Classical and Quantum Gravity, 36(22):224002, October 2019. https://doi.org/10.1088%2F1361-6382%2Fab4973, doi:10.1088/1361-6382/ab4973">29</a>]</span>, Baumeler et al. propose a classical, deterministic version of the formalism as a possible model for CTCs. They consider the most general deterministic dynamics connecting classical degrees of freedom defined on a set of bounded spacetime regions, under the requirement that such dynamics are compatible with <em>arbitrary</em> operations performed in the local regions. Baumeler et al. show that this can be realized entirely through reversible interactions, and furthermore that consistency with local operations is compatible with non-trivial time travel. In particular, they found a simple characterization for all processes involving up to three regions. In other words, it is guaranteed that at least three parties are free to perform arbitrary local operations while interacting in such a way that all are both in the future and in the past of each other.</p>
+<p>Tobar and Costa <span id="id14">[<a class="reference internal" href="#cite-1-tobar-reversible-2020" title="G. Tobar and F. Costa, “Reversible dynamics with closed time-like curves and freedom of choice”, Classical and Quantum Gravity, 37(20):205011, September 2020. https://doi.org/10.1088%2F1361-6382%2Faba4bc, doi:10.1088/1361-6382/aba4bc">30</a>]</span> extend the characterization of deterministic processes to an arbitrary number of regions. Central to their results is the conclusion that CTCs are compatible not only with both determinism and a notion of freedom of choice regarding local operations, but also with a wide variety of dynamical processes and scenarios. This means that the way in which CTCs allow multiple observers in distinct regions to communicate with each other is not overly restricted by conflicts between locality, logical consistency, and freedom of choice. Given that this conclusion was reached using an abstract framework that is independent of both particular dynamics and geometry, then this hints at a deep, robust compatibility between time travel and the laws of physics, which is contrary to the previously discussed information-theoretic models of quantum time travel.</p>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-allen-treating-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>,<a role="doc-backlink" href="#id4">3</a>,<a role="doc-backlink" href="#id5">4</a>,<a role="doc-backlink" href="#id6">5</a>)</span>
+<p>J.-M. A. Allen, “Treating time travel quantum mechanically”, <em>Physical Review A</em>, 90(4):042107, October 2014. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.90.042107">https://link.aps.org/doi/10.1103/PhysRevA.90.042107</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.90.042107">doi:10.1103/PhysRevA.90.042107</a></p>
+</div>
+<div class="citation" id="cite-1-hardy-probability-2005" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">2</a><span class="fn-bracket">]</span></span>
+<p>L. Hardy, “Probability Theories with Dynamic Causal Structure: A New Framework for Quantum Gravity”, <em>arXiv:gr-qc/0509120</em>, September 2005. <a class="reference external" href="http://arxiv.org/abs/gr-qc/0509120">http://arxiv.org/abs/gr-qc/0509120</a></p>
+</div>
+<div class="citation" id="cite-1-hardy-towards-2007" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">3</a><span class="fn-bracket">]</span></span>
+<p>L. Hardy, “Towards quantum gravity: a framework for probabilistic theories with non-fixed causal structure”, <em>Journal of Physics A: Mathematical and Theoretical</em>, 40(12):3081–3099, March 2007. <a class="reference external" href="https://doi.org/10.1088/1751-8113/40/12/s12">https://doi.org/10.1088/1751-8113/40/12/s12</a>, <a class="reference external" href="https://doi.org/10.1088/1751-8113/40/12/S12">doi:10.1088/1751-8113/40/12/S12</a></p>
+</div>
+<div class="citation" id="cite-1-oreshkov-quantum-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">4</a><span class="fn-bracket">]</span></span>
+<p>O. Oreshkov, F. Costa, and Č. Brukner, “Quantum correlations with no causal order”, <em>Nature Communications</em>, 3(1):1092, October 2012. <a class="reference external" href="http://www.nature.com/articles/ncomms2076">http://www.nature.com/articles/ncomms2076</a>, <a class="reference external" href="https://doi.org/10.1038/ncomms2076">doi:10.1038/ncomms2076</a></p>
+</div>
+<div class="citation" id="cite-1-baumeler-maximal-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">5</a><span class="fn-bracket">]</span></span>
+<p>Ä. Baumeler, A. Feix, and S. Wolf, “Maximal incompatibility of locally classical behavior and global causal order in multiparty scenarios”, <em>Physical Review A</em>, 90(4):042106, October 2014. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.90.042106">https://link.aps.org/doi/10.1103/PhysRevA.90.042106</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.90.042106">doi:10.1103/PhysRevA.90.042106</a></p>
+</div>
+<div class="citation" id="cite-1-araujo-witnessing-2015" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">6</a><span class="fn-bracket">]</span></span>
+<p>M. Araújo, C. Branciard, F. Costa, A. Feix, C. Giarmatzi, and Č. Brukner, “Witnessing causal nonseparability”, <em>New Journal of Physics</em>, 17(10):102001, October 2015. <a class="reference external" href="https://doi.org/10.1088/1367-2630/17/10/102001">https://doi.org/10.1088/1367-2630/17/10/102001</a>, <a class="reference external" href="https://doi.org/10.1088/1367-2630/17/10/102001">doi:10.1088/1367-2630/17/10/102001</a></p>
+</div>
+<div class="citation" id="cite-1-branciard-simplest-2015" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">7</a><span class="fn-bracket">]</span></span>
+<p>C. Branciard, M. Araújo, A. Feix, F. Costa, and Č. Brukner, “The simplest causal inequalities and their violation”, <em>New Journal of Physics</em>, 18(1):013008, December 2015. <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/1/013008">https://doi.org/10.1088/1367-2630/18/1/013008</a>, <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/1/013008">doi:10.1088/1367-2630/18/1/013008</a></p>
+</div>
+<div class="citation" id="cite-1-baumeler-space-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">8</a><span class="fn-bracket">]</span></span>
+<p>Ä. Baumeler and S. Wolf, “The space of logically consistent classical processes without causal order”, <em>New Journal of Physics</em>, 18(1):013036, January 2016. <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/1/013036">https://doi.org/10.1088/1367-2630/18/1/013036</a>, <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/1/013036">doi:10.1088/1367-2630/18/1/013036</a></p>
+</div>
+<div class="citation" id="cite-1-baumeler-device-independent-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">9</a><span class="fn-bracket">]</span></span>
+<p>Ä. Baumeler and S. Wolf, “Device-independent test of causal order and relations to fixed-points”, <em>New Journal of Physics</em>, 18(3):035014, April 2016. <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/3/035014">https://doi.org/10.1088/1367-2630/18/3/035014</a>, <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/3/035014">doi:10.1088/1367-2630/18/3/035014</a></p>
+</div>
+<div class="citation" id="cite-1-costa-quantum-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">10</a><span class="fn-bracket">]</span></span>
+<p>F. Costa and S. Shrapnel, “Quantum causal modelling”, <em>New Journal of Physics</em>, 18(6):063032, June 2016. <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/6/063032">https://doi.org/10.1088/1367-2630/18/6/063032</a>, <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/6/063032">doi:10.1088/1367-2630/18/6/063032</a></p>
+</div>
+<div class="citation" id="cite-1-baumann-appearance-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">11</a><span class="fn-bracket">]</span></span>
+<p>V. Baumann and Č. Brukner, “Appearance of causality in process matrices when performing fixed-basis measurements for two parties”, <em>Physical Review A</em>, 93(6):062324, June 2016. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.93.062324">https://link.aps.org/doi/10.1103/PhysRevA.93.062324</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.93.062324">doi:10.1103/PhysRevA.93.062324</a></p>
+</div>
+<div class="citation" id="cite-1-oreshkov-causal-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">12</a><span class="fn-bracket">]</span></span>
+<p>O. Oreshkov and C. Giarmatzi, “Causal and causally separable processes”, <em>New Journal of Physics</em>, 18(9):093020, September 2016. <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/9/093020">https://doi.org/10.1088/1367-2630/18/9/093020</a>, <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/9/093020">doi:10.1088/1367-2630/18/9/093020</a></p>
+</div>
+<div class="citation" id="cite-1-abbott-multipartite-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">13</a><span class="fn-bracket">]</span></span>
+<p>A. A. Abbott, C. Giarmatzi, F. Costa, and C. Branciard, “Multipartite causal correlations: Polytopes and inequalities”, <em>Physical Review A</em>, 94(3):032131, September 2016. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.94.032131">https://link.aps.org/doi/10.1103/PhysRevA.94.032131</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.94.032131">doi:10.1103/PhysRevA.94.032131</a></p>
+</div>
+<div class="citation" id="cite-1-giacomini-indefinite-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">14</a><span class="fn-bracket">]</span></span>
+<p>F. Giacomini, E. Castro-Ruiz, and Č. Brukner, “Indefinite causal structures for continuous-variable systems”, <em>New Journal of Physics</em>, 18(11):113026, November 2016. <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/11/113026">https://doi.org/10.1088/1367-2630/18/11/113026</a>, <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/11/113026">doi:10.1088/1367-2630/18/11/113026</a></p>
+</div>
+<div class="citation" id="cite-1-perinotti-causal-2017" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">15</a><span class="fn-bracket">]</span></span>
+<p>P. Perinotti, “Causal Structures and the Classification of Higher Order Quantum Computations”, R. Renner and S. Stupar (editors), <em>Time in Physics</em>, Tutorials, Schools, and Workshops in the Mathematical Sciences, pages 103–127, Springer International Publishing, Cham, 2017. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-68655-4_7">https://link.springer.com/chapter/10.1007/978-3-319-68655-4_7</a>, <a class="reference external" href="https://doi.org/10.1007/978-3-319-68655-4_7">doi:10.1007/978-3-319-68655-4_7</a></p>
+</div>
+<div class="citation" id="cite-1-araujo-purification-2017" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">16</a><span class="fn-bracket">]</span></span>
+<p>M. Araújo, A. Feix, M. Navascués, and Č. Brukner, “A purification postulate for quantum mechanics with indefinite causal order”, <em>Quantum</em>, 1:10, April 2017. <a class="reference external" href="https://quantum-journal.org/papers/q-2017-04-26-10/">https://quantum-journal.org/papers/q-2017-04-26-10/</a>, <a class="reference external" href="https://doi.org/10.22331/q-2017-04-26-10">doi:10.22331/q-2017-04-26-10</a></p>
+</div>
+<div class="citation" id="cite-1-abbott-genuinely-2017" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">17</a><span class="fn-bracket">]</span></span>
+<p>A. A. Abbott, J. Wechs, F. Costa, and C. Branciard, “Genuinely multipartite noncausality”, <em>Quantum</em>, 1:39, December 2017. <a class="reference external" href="https://quantum-journal.org/papers/q-2017-12-14-39/">https://quantum-journal.org/papers/q-2017-12-14-39/</a>, <a class="reference external" href="https://doi.org/10.22331/q-2017-12-14-39">doi:10.22331/q-2017-12-14-39</a></p>
+</div>
+<div class="citation" id="cite-1-jia-quantum-2018" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">18</a><span class="fn-bracket">]</span></span>
+<p>D. Jia, “Quantum theories from principles without assuming a definite causal structure”, <em>Physical Review A</em>, 98(3):032112, September 2018. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.98.032112">https://link.aps.org/doi/10.1103/PhysRevA.98.032112</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.98.032112">doi:10.1103/PhysRevA.98.032112</a></p>
+</div>
+<div class="citation" id="cite-1-jia-causal-2019" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">19</a><span class="fn-bracket">]</span></span>
+<p>D. Jia and F. Costa, “Causal order as a resource for quantum communication”, <em>Physical Review A</em>, 100(5):052319, November 2019. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.100.052319">https://link.aps.org/doi/10.1103/PhysRevA.100.052319</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.100.052319">doi:10.1103/PhysRevA.100.052319</a></p>
+</div>
+<div class="citation" id="cite-1-pegg-quantum-2005" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">20</a><span class="fn-bracket">]</span></span>
+<p>D. T. Pegg, “Quantum mechanics and the time travel paradox”, June 2005. <a class="reference external" href="http://arxiv.org/abs/quant-ph/0506141">http://arxiv.org/abs/quant-ph/0506141</a>, <a class="reference external" href="https://doi.org/10.48550/arXiv.quant-ph/0506141">doi:10.48550/arXiv.quant-ph/0506141</a></p>
+</div>
+<div class="citation" id="cite-1-greenberger-quantum-2005" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">21</a><span class="fn-bracket">]</span></span>
+<p>D. M. Greenberger and K. Svozil, “Quantum Theory Looks at Time Travel”, A. C. Elitzur, S. Dolev, and N. Kolenda (editors), <em>Quo Vadis Quantum Mechanics?</em>, The Frontiers Collection, pages 63–71, Springer, Berlin, Heidelberg, 2005. <a class="reference external" href="https://doi.org/10.1007/3-540-26669-0_4">https://doi.org/10.1007/3-540-26669-0_4</a>, <a class="reference external" href="https://doi.org/10.1007/3-540-26669-0_4">doi:10.1007/3-540-26669-0_4</a></p>
+</div>
+<div class="citation" id="cite-1-czachor-time-2019" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>22<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id7">1</a>,<a role="doc-backlink" href="#id8">2</a>)</span>
+<p>M. Czachor, “Time travel without paradoxes: Ring resonator as a universal paradigm for looped quantum evolutions”, <em>Physics Letters A</em>, 383(23):2704–2712, August 2019. <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0375960119304943">http://www.sciencedirect.com/science/article/pii/S0375960119304943</a>, <a class="reference external" href="https://doi.org/10.1016/j.physleta.2019.05.043">doi:10.1016/j.physleta.2019.05.043</a></p>
+</div>
+<div class="citation" id="cite-1-gibbs-small-1996" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">23</a><span class="fn-bracket">]</span></span>
+<p>P. E. Gibbs, “The Small Scale Structure of Space-Time: A Bibliographical Review”, January 1996. <a class="reference external" href="http://arxiv.org/abs/hep-th/9506171">http://arxiv.org/abs/hep-th/9506171</a>, <a class="reference external" href="https://doi.org/10.48550/arXiv.hep-th/9506171">doi:10.48550/arXiv.hep-th/9506171</a></p>
+</div>
+<div class="citation" id="cite-1-piazza-glimmers-2010" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">24</a><span class="fn-bracket">]</span></span>
+<p>F. Piazza, “Glimmers of a Pre-geometric Perspective”, <em>Foundations of Physics</em>, 40(3):239–266, March 2010. <a class="reference external" href="https://doi.org/10.1007/s10701-009-9387-5">https://doi.org/10.1007/s10701-009-9387-5</a>, <a class="reference external" href="https://doi.org/10.1007/s10701-009-9387-5">doi:10.1007/s10701-009-9387-5</a></p>
+</div>
+<div class="citation" id="cite-1-zych-bells-2019" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">25</a><span class="fn-bracket">]</span></span>
+<p>M. Zych, F. Costa, I. Pikovski, and Č. Brukner, “Bell’s theorem for temporal order”, <em>Nature Communications</em>, 10(1):3772, August 2019. <a class="reference external" href="http://www.nature.com/articles/s41467-019-11579-x">http://www.nature.com/articles/s41467-019-11579-x</a>, <a class="reference external" href="https://doi.org/10.1038/s41467-019-11579-x">doi:10.1038/s41467-019-11579-x</a></p>
+</div>
+<div class="citation" id="cite-1-feix-quantum-2015" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">26</a><span class="fn-bracket">]</span></span>
+<p>A. Feix, M. Araújo, and Č. Brukner, “Quantum superposition of the order of parties as a communication resource”, <em>Physical Review A</em>, 92(5):052326, November 2015. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.92.052326">https://link.aps.org/doi/10.1103/PhysRevA.92.052326</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.92.052326">doi:10.1103/PhysRevA.92.052326</a></p>
+</div>
+<div class="citation" id="cite-1-shrapnel-updating-2018" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">27</a><span class="fn-bracket">]</span></span>
+<p>S. Shrapnel, F. Costa, and G. Milburn, “Updating the Born rule”, <em>New Journal of Physics</em>, 20(5):053010, May 2018. <a class="reference external" href="https://doi.org/10.1088/1367-2630/aabe12">https://doi.org/10.1088/1367-2630/aabe12</a>, <a class="reference external" href="https://doi.org/10.1088/1367-2630/aabe12">doi:10.1088/1367-2630/aabe12</a></p>
+</div>
+<div class="citation" id="cite-1-bavaresco-semi-device-independent-2019" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">28</a><span class="fn-bracket">]</span></span>
+<p>J. Bavaresco, M. Araújo, Č. Brukner, and M. T. Quintino, “Semi-device-independent certification of indefinite causal order”, <em>Quantum</em>, 3:176, August 2019. <a class="reference external" href="https://quantum-journal.org/papers/q-2019-08-19-176/">https://quantum-journal.org/papers/q-2019-08-19-176/</a>, <a class="reference external" href="https://doi.org/10.22331/q-2019-08-19-176">doi:10.22331/q-2019-08-19-176</a></p>
+</div>
+<div class="citation" id="cite-1-baumeler-reversible-2019" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">29</a><span class="fn-bracket">]</span></span>
+<p>Ä. Baumeler, F. Costa, T. C. Ralph, S. Wolf, and M. Zych, “Reversible time travel with freedom of choice”, <em>Classical and Quantum Gravity</em>, 36(22):224002, October 2019. <a class="reference external" href="https://doi.org/10.1088%2F1361-6382%2Fab4973">https://doi.org/10.1088%2F1361-6382%2Fab4973</a>, <a class="reference external" href="https://doi.org/10.1088/1361-6382/ab4973">doi:10.1088/1361-6382/ab4973</a></p>
+</div>
+<div class="citation" id="cite-1-tobar-reversible-2020" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">30</a><span class="fn-bracket">]</span></span>
+<p>G. Tobar and F. Costa, “Reversible dynamics with closed time-like curves and freedom of choice”, <em>Classical and Quantum Gravity</em>, 37(20):205011, September 2020. <a class="reference external" href="https://doi.org/10.1088%2F1361-6382%2Faba4bc">https://doi.org/10.1088%2F1361-6382%2Faba4bc</a>, <a class="reference external" href="https://doi.org/10.1088/1361-6382/aba4bc">doi:10.1088/1361-6382/aba4bc</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="comparison.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Comparison of D-CTCs and P-CTCs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../../documentation/part-documentation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Documentation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-d-ctcs-wd-ctcs">Weighted D-CTCs (WD-CTCs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-probabilities-t-ctcs">Transition probabilities (T-CTCs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ctc-as-a-ring-resonator">CTC as a ring resonator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indefinite-causal-structure-and-the-process-matrix-formalism">Indefinite causal structure and the process matrix formalism</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

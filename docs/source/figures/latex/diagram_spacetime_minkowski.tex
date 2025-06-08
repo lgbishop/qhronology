@@ -1,0 +1,65 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+\renewcommand{\large}{\normalsize}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\begin{document}
+\begin{tikzpicture}[scale=0.65]
+    
+    \foreach \k in {1,...,\num}{
+        \def\spatial{\spacing*\k}
+        \def\temporal{\t}
+        \draw[black, very thin, domain=-1*\domain:\domain, variable=\t, samples=\granularity] plot[smooth, tension=\tension] (\ToUV{\spatial}{\temporal});
+        \draw[black, very thin, domain=-1*\domain:\domain, variable=\t, samples=\granularity] plot[smooth, tension=\tension] (\ToUV{-1*\spatial}{-1*\temporal});
+    };
+    \foreach \k in {1,...,\num}{
+        \def\spatial{\t}
+        \def\temporal{\spacing*\k}
+        \draw[black, very thin, domain=-1*\domain:\domain, variable=\t, samples=\granularity] plot[smooth, tension=\tension] (\ToUV{\spatial}{\temporal});
+        \draw[black, very thin, domain=-1*\domain:\domain, variable=\t, samples=\granularity] plot[smooth, tension=\tension] (\ToUV{-1*\spatial}{-1*\temporal});
+    };
+
+    \draw[opacity=1] (0,-\bound) node[below, font=\large, opacity=1, black]{$\PastTimelikeInfinity$} -- (0,\bound) node[above, font=\large, opacity=1, black]{$\FutureTimelikeInfinity$};
+    \draw[opacity=1] (-\bound,0) node[left, font=\large, opacity=1, black]{$\SpacelikeInfinity$} -- (\bound,0) node[right, font=\large, opacity=1, black]{$\SpacelikeInfinity$};
+    \draw[opacity=0] (-\bound/2,-\bound/2) node[below left, font=\large, opacity=1, black]{$\PastLightlikeInfinity$} -- (\bound/2,\bound/2) node[above right, opacity=1, font=\large, black]{$\FutureLightlikeInfinity$};
+    \draw[opacity=0] (\bound/2,-\bound/2) node[below right, opacity=1, font=\large, black]{$\PastLightlikeInfinity$} -- (-\bound/2,\bound/2) node[above left, font=\large, opacity=1, black]{$\FutureLightlikeInfinity$};
+
+    \def\spatial{\t}
+    \def\temporal{\spacing*1.5}
+    \draw[\ColB, thick, densely dashed, domain=-1*\domain:\domain, variable=\t, samples=\granularity] plot[smooth, tension=\tension] (\ToUV{-1*\spatial}{-1*\temporal});
+
+    \def\spatial{\spacing*500*sin(\t-0.025*3.14)}
+    \def\temporal{\t}
+    \draw[->-=0.3, \ColA, thick, domain=-1*\domain:\domain, variable=\t, samples=\granularity] plot[smooth, tension=\tension] (\ToUV{\spatial}{\temporal});
+    
+    \def\spatial{\spacing*200*sin(\t-1)}
+    \def\temporal{\t}
+    \draw[->-=0.65, \ColA, thick, domain=-1*\domain:\domain, variable=\t, samples=\granularity] plot[smooth, tension=\tension] (\ToUV{\spatial}{\temporal});
+    
+    \def\spatial{\spacing*150*sin(\t+1)}
+    \def\temporal{\t}
+    \draw[->-=0.7, \ColA, thick, domain=-1*\domain:\domain, variable=\t, samples=\granularity] plot[smooth, tension=\tension] (\ToUV{\spatial}{\temporal});
+    
+    %\draw[black, line width=2.5pt, opacity=1] (\bound,0) -- (0,\bound) -- (-\bound,0) -- (0,-\bound) -- (\bound,0) -- (0,\bound);
+    
+    \draw[-{Latex[black,length=2.5mm,width=1.25mm]},thick] (-0.85*\bound,0.35*\bound) node[above left, font=\large, black]{$\SurfaceCauchy_{t_0}$} -- (\ToUV{-1.5*\spacing}{-1.5*\spacing});
+    \draw[-{Latex[black,length=2.5mm,width=1.25mm]},thick] (0.35*\bound,-0.85*\bound) node[right, font=\large, black]{$\textrm{origin}$} -- (\ToUV{0}{0});
+    \draw[-{Latex[black,length=2.5mm,width=1.25mm]},thick] (0.85*\bound,0.35*\bound) node[right, font=\large, black]{$t=\textrm{constant}$} -- (\ToUV{1.5*\spacing}{1*\spacing});
+    \draw[-{Latex[black,length=2.5mm,width=1.25mm]},thick] (0.85*\bound,-0.35*\bound) node[right, font=\large, black]{$x=\textrm{constant}$} -- (\ToUV{1*\spacing}{-0.5*\spacing});
+    
+    \begin{scope}[shift={(-\bound,-\bound)}]
+    \draw[-{Latex[black,length=2.25mm,width=1.25mm]},thick] (0,0) -- (\bound/4.5,0) node[right, font=\large, black]{$x,u$};
+    \draw[-{Latex[black,length=2.25mm,width=1.25mm]},thick] (0,0) -- (0,\bound/4.5) node[above, font=\large, black]{$\Speed t,v$};
+    \end{scope}
+    
+\end{tikzpicture}
+\end{document}

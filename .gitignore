@@ -1,0 +1,10 @@
+__pycache__
+/other
+/tests
+/dist
+.vscode
+pyrightconfig.json
+*.log
+**conflicted**
+source_latex
+/qhronology-*

@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Cauchy problem on spacetimes containing CTCs &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/theory/time-travel/classical/fields';</script>
+    <script src="../../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Time-travelling billiard balls" href="particles.html" />
+    <link rel="prev" title="Closed timelike curves and time machines" href="CTCs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum mechanics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/mathematics.html">Mathematical foundations of quantum mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/discrete.html">Quantum mechanics on discrete Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/continuous.html">Quantum mechanics on continuous Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantum-mechanics/circuitry.html">Quantum circuitry</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time travel</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../classical.html">Classical theories of time travel</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="CTCs.html">Closed timelike curves and time machines</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Cauchy problem on spacetimes containing CTCs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particles.html">Time-travelling billiard balls</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum.html">Quantum theories of time travel</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../part-theory.html" class="nav-link">Theory</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../classical.html" class="nav-link">Classical theories of time travel</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">The Cauchy problem on spacetimes containing CTCs</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="the-cauchy-problem-on-spacetimes-containing-ctcs">
+<span id="sec-cauchy-problem"></span><h1>The Cauchy problem on spacetimes containing CTCs<a class="headerlink" href="#the-cauchy-problem-on-spacetimes-containing-ctcs" title="Link to this heading">#</a></h1>
+<p>One way to explore the compatibility between the semiclassical laws of physics and CTCs is to determine whether the two can be consolidated without having unacceptable causality violations manifest. A prominent method with which this can be accomplished is by looking at the <em>Cauchy problem</em> <span id="id1">[<a class="reference internal" href="#cite-1-nishitani-hyperbolic-2014" title="T. Nishitani, Hyperbolic Systems with Analytic Coefficients: Well-posedness of the Cauchy Problem, volume 2097 of Lecture Notes in Mathematics, Springer International Publishing, Cham, 2014.">5</a>, <a class="reference internal" href="#cite-1-barbu-differential-2016" title="V. Barbu, Differential Equations, Springer Undergraduate Mathematics Series, Springer Berlin Heidelberg, New York, NY, 2016.">6</a>]</span> for relativistic classical scalar fields in spacetimes containing CTCs. In this problem, one seeks to, among other things, prove or disprove the existence of the field solutions to the relevant time-evolution equations of motion given initial data. By determining the nature of these solutions, we are able to formulate conclusive remarks regarding the affinity of the union of semiclassical field theory and CTCs.</p>
+<p>Interestingly, research into the Cauchy problem in spacetimes with CTCs has yielded some perhaps unanticipated results given the seemingly restrictive requirement of self-consistency. Foremost are the findings <span id="id2">[<a class="reference internal" href="particles.html#cite-1-friedman-cauchy-1990" title="J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, Physical Review D, 42(6):1915–1930, September 1990. https://link.aps.org/doi/10.1103/PhysRevD.42.1915, doi:10.1103/PhysRevD.42.1915">2</a>, <a class="reference internal" href="#cite-1-friedman-cauchy-1991" title="J. L. Friedman and M. S. Morris, “The Cauchy problem for the scalar wave equation is well defined on a class of spacetimes with closed timelike curves”, Physical Review Letters, 66(4):401–404, January 1991. https://link.aps.org/doi/10.1103/PhysRevLett.66.401, doi:10.1103/PhysRevLett.66.401">2</a>, <a class="reference internal" href="#cite-1-friedman-existence-1997" title="J. L. Friedman and M. S. Morris, “Existence and Uniqueness Theorems for Massless Fields on a Class of Spacetimes with Closed Timelike Curves”, Communications in Mathematical Physics, 186(3):495–529, July 1997. https://doi.org/10.1007/s002200050118, doi:10.1007/s002200050118">3</a>, <a class="reference internal" href="particles.html#cite-1-friedman-cauchy-2004" title="J. L. Friedman, “The Cauchy Problem on Spacetimes That Are Not Globally Hyperbolic”, The Einstein Equations and the Large Scale Behavior of Gravitational Fields, pages 331–346, Birkhäuser, Basel, 2004. https://link.springer.com/chapter/10.1007/978-3-0348-7953-8_9, doi:10.1007/978-3-0348-7953-8_9">3</a>, <a class="reference internal" href="#cite-1-bachelot-global-2002" title="A. Bachelot, “Global properties of the wave equation on non-globally hyperbolic manifolds”, Journal de Mathématiques Pures et Appliquées, 81(1):35–65, January 2002. http://www.sciencedirect.com/science/article/pii/S0021782401012296, doi:10.1016/S0021-7824(01)01229-6">7</a>, <a class="reference internal" href="#cite-1-arefeva-cauchy-2008" title="I. Y. Aref'eva, T. Ishiwatari, and I. V. Volovich, “Cauchy problem on non-globally hyperbolic space-times”, Theoretical and Mathematical Physics, 157(3):1646–1654, December 2008. http://link.springer.com/article/10.1007/s11232-008-0137-1, doi:10.1007/s11232-008-0137-1">8</a>, <a class="reference internal" href="#cite-1-volovich-solutions-2009" title="I. V. Volovich, O. V. Groshev, N. A. Gusev, and È. A. Kuryanovich, “On solutions to the wave equation on a non-globally hyperbolic manifold”, Proceedings of the Steklov Institute of Mathematics, 265(1):262–275, July 2009. https://doi.org/10.1134/S0081543809020242, doi:10.1134/S0081543809020242">9</a>, <a class="reference internal" href="#cite-1-groshev-existence-2010" title="O. V. Groshev, “Existence and uniqueness of classical solutions of the Cauchy problem on nonglobally hyperbolic manifolds”, Theoretical and Mathematical Physics, 164(3):1202–1207, September 2010. https://doi.org/10.1007/s11232-010-0101-8, doi:10.1007/s11232-010-0101-8">10</a>, <a class="reference internal" href="#cite-1-bachelot-kleingordon-2011" title="A. Bachelot, “The Klein–Gordon equation in the Anti-de Sitter cosmology”, Journal de Mathématiques Pures et Appliquées, 96(6):527–554, December 2011. http://www.sciencedirect.com/science/article/pii/S0021782411000894, doi:10.1016/j.matpur.2011.07.004">11</a>, <a class="reference internal" href="#cite-1-bullock-klein-gordon-2012" title="D. M. A. Bullock, “Klein-Gordon solutions on non-globally hyperbolic standard static spacetimes”, Reviews in Mathematical Physics, 24(10):1250028, November 2012. https://www.worldscientific.com/doi/abs/10.1142/S0129055X12500286, doi:10.1142/S0129055X12500286">12</a>]</span>, which show that globally consistent time evolutions for free relativistic classical scalar fields with generic initial data (posed before any regions with CTCs) exist and are generally unique in certain classes of non-globally hyperbolic (including CTC) spacetimes. Consequently, at least in the context of non-interacting, classical scalar fields, CTCs appear to be robust and spacetimes containing them are not as pathological as one might have initially suspected.</p>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-friedman-cauchy-1990" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>J. Friedman, M. S. Morris, I. D. Novikov, F. Echeverria, G. Klinkhammer, K. S. Thorne, and U. Yurtsever, “Cauchy problem in spacetimes with closed timelike curves”, <em>Physical Review D</em>, 42(6):1915–1930, September 1990. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevD.42.1915">https://link.aps.org/doi/10.1103/PhysRevD.42.1915</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevD.42.1915">doi:10.1103/PhysRevD.42.1915</a></p>
+</div>
+<div class="citation" id="cite-1-friedman-cauchy-1991" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>J. L. Friedman and M. S. Morris, “The Cauchy problem for the scalar wave equation is well defined on a class of spacetimes with closed timelike curves”, <em>Physical Review Letters</em>, 66(4):401–404, January 1991. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.66.401">https://link.aps.org/doi/10.1103/PhysRevLett.66.401</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.66.401">doi:10.1103/PhysRevLett.66.401</a></p>
+</div>
+<div class="citation" id="cite-1-friedman-existence-1997" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">3</a><span class="fn-bracket">]</span></span>
+<p>J. L. Friedman and M. S. Morris, “Existence and Uniqueness Theorems for Massless Fields on a Class of Spacetimes with Closed Timelike Curves”, <em>Communications in Mathematical Physics</em>, 186(3):495–529, July 1997. <a class="reference external" href="https://doi.org/10.1007/s002200050118">https://doi.org/10.1007/s002200050118</a>, <a class="reference external" href="https://doi.org/10.1007/s002200050118">doi:10.1007/s002200050118</a></p>
+</div>
+<div class="citation" id="cite-1-friedman-cauchy-2004" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">4</a><span class="fn-bracket">]</span></span>
+<p>J. L. Friedman, “The Cauchy Problem on Spacetimes That Are Not Globally Hyperbolic”, <em>The Einstein Equations and the Large Scale Behavior of Gravitational Fields</em>, pages 331–346, Birkhäuser, Basel, 2004. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-0348-7953-8_9">https://link.springer.com/chapter/10.1007/978-3-0348-7953-8_9</a>, <a class="reference external" href="https://doi.org/10.1007/978-3-0348-7953-8_9">doi:10.1007/978-3-0348-7953-8_9</a></p>
+</div>
+<div class="citation" id="cite-1-nishitani-hyperbolic-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">5</a><span class="fn-bracket">]</span></span>
+<p>T. Nishitani, <em>Hyperbolic Systems with Analytic Coefficients: Well-posedness of the Cauchy Problem</em>, volume 2097 of Lecture Notes in Mathematics, Springer International Publishing, Cham, 2014.</p>
+</div>
+<div class="citation" id="cite-1-barbu-differential-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">6</a><span class="fn-bracket">]</span></span>
+<p>V. Barbu, <em>Differential Equations</em>, Springer Undergraduate Mathematics Series, Springer Berlin Heidelberg, New York, NY, 2016.</p>
+</div>
+<div class="citation" id="cite-1-bachelot-global-2002" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">7</a><span class="fn-bracket">]</span></span>
+<p>A. Bachelot, “Global properties of the wave equation on non-globally hyperbolic manifolds”, <em>Journal de Mathématiques Pures et Appliquées</em>, 81(1):35–65, January 2002. <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0021782401012296">http://www.sciencedirect.com/science/article/pii/S0021782401012296</a>, <a class="reference external" href="https://doi.org/10.1016/S0021-7824(01)01229-6">doi:10.1016/S0021-7824(01)01229-6</a></p>
+</div>
+<div class="citation" id="cite-1-arefeva-cauchy-2008" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">8</a><span class="fn-bracket">]</span></span>
+<p>I. Y. Aref'eva, T. Ishiwatari, and I. V. Volovich, “Cauchy problem on non-globally hyperbolic space-times”, <em>Theoretical and Mathematical Physics</em>, 157(3):1646–1654, December 2008. <a class="reference external" href="http://link.springer.com/article/10.1007/s11232-008-0137-1">http://link.springer.com/article/10.1007/s11232-008-0137-1</a>, <a class="reference external" href="https://doi.org/10.1007/s11232-008-0137-1">doi:10.1007/s11232-008-0137-1</a></p>
+</div>
+<div class="citation" id="cite-1-volovich-solutions-2009" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">9</a><span class="fn-bracket">]</span></span>
+<p>I. V. Volovich, O. V. Groshev, N. A. Gusev, and È. A. Kuryanovich, “On solutions to the wave equation on a non-globally hyperbolic manifold”, <em>Proceedings of the Steklov Institute of Mathematics</em>, 265(1):262–275, July 2009. <a class="reference external" href="https://doi.org/10.1134/S0081543809020242">https://doi.org/10.1134/S0081543809020242</a>, <a class="reference external" href="https://doi.org/10.1134/S0081543809020242">doi:10.1134/S0081543809020242</a></p>
+</div>
+<div class="citation" id="cite-1-groshev-existence-2010" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">10</a><span class="fn-bracket">]</span></span>
+<p>O. V. Groshev, “Existence and uniqueness of classical solutions of the Cauchy problem on nonglobally hyperbolic manifolds”, <em>Theoretical and Mathematical Physics</em>, 164(3):1202–1207, September 2010. <a class="reference external" href="https://doi.org/10.1007/s11232-010-0101-8">https://doi.org/10.1007/s11232-010-0101-8</a>, <a class="reference external" href="https://doi.org/10.1007/s11232-010-0101-8">doi:10.1007/s11232-010-0101-8</a></p>
+</div>
+<div class="citation" id="cite-1-bachelot-kleingordon-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">11</a><span class="fn-bracket">]</span></span>
+<p>A. Bachelot, “The Klein–Gordon equation in the Anti-de Sitter cosmology”, <em>Journal de Mathématiques Pures et Appliquées</em>, 96(6):527–554, December 2011. <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0021782411000894">http://www.sciencedirect.com/science/article/pii/S0021782411000894</a>, <a class="reference external" href="https://doi.org/10.1016/j.matpur.2011.07.004">doi:10.1016/j.matpur.2011.07.004</a></p>
+</div>
+<div class="citation" id="cite-1-bullock-klein-gordon-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">12</a><span class="fn-bracket">]</span></span>
+<p>D. M. A. Bullock, “Klein-Gordon solutions on non-globally hyperbolic standard static spacetimes”, <em>Reviews in Mathematical Physics</em>, 24(10):1250028, November 2012. <a class="reference external" href="https://www.worldscientific.com/doi/abs/10.1142/S0129055X12500286">https://www.worldscientific.com/doi/abs/10.1142/S0129055X12500286</a>, <a class="reference external" href="https://doi.org/10.1142/S0129055X12500286">doi:10.1142/S0129055X12500286</a></p>
+</div>
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="CTCs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Closed timelike curves and time machines</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="particles.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Time-travelling billiard balls</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

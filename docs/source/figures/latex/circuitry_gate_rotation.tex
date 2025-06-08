@@ -1,0 +1,36 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+% \usetikzlibrary{quantikz2}
+\begin{document}
+\noindent\begin{minipage}{0.4\linewidth}
+\hfill
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.0]
+    \qw & \gate{\Rotation_k(\theta)} & \qw
+\end{quantikz}
+$\quad \iff \quad$
+\end{minipage}%
+\begin{minipage}{0.6\linewidth}
+\begin{align}
+    \Rotation_{x}(\theta) &= \cos(\theta/2)\bigl(\ket{0}\bra{0} + \ket{1}\bra{1}\bigr) - \eye\sin(\theta/2)\bigl(\ket{1}\bra{0} + \ket{0}\bra{1}\bigr) &= \e^{-\eye\Pauli_{x}\theta/2} \nonumber\\
+    \Rotation_{y}(\theta) &= \cos(\theta/2)\bigl(\ket{0}\bra{0} + \ket{1}\bra{1}\bigr) +     \sin(\theta/2)\bigl(\ket{1}\bra{0} - \ket{0}\bra{1}\bigr) &= \e^{-\eye\Pauli_{y}\theta/2} \nonumber\\
+    \Rotation_{z}(\theta) &= \e^{-\eye\theta/2}\ket{0}\bra{0} + \e^{\eye\theta/2}\ket{1}\bra{1} &= \e^{-\eye\Pauli_{z}\theta/2} \nonumber
+\end{align}
+\vfill
+\end{minipage}
+\end{document}

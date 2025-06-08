@@ -1,0 +1,32 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\noindent\begin{minipage}{0.35\linewidth}
+\hfill
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=2]
+    \qw & \ctrl{2} & \qw \\
+    \qw & \swap{1} & \qw \\
+    \qw & \targX{} & \qw
+\end{quantikz}
+\end{minipage}%
+\begin{minipage}{0.65\linewidth}
+$\quad \iff \quad \Controlled{\Swap}[0][][1,2] = \ket{0}\bra{0}^{0} \otimes \Identity^{1,2} + \ket{1}\bra{1}^{0} \otimes \Swap^{1,2}$
+\end{minipage}
+\end{document}

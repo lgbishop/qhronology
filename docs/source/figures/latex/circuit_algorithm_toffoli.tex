@@ -1,0 +1,26 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \lstick{$\ket{x}$} & \qw & \gate{\op{T}} & \targ{} & \qw & \ctrl{2} & \qw & \ctrl{1} & \gate{\op{T}^\dagger} & \qw & \ctrl{2} & \targ{} & \qw \rstick{$\ket{x}$} \\
+    \lstick{$\ket{y}$} & \qw & \gate{\op{T}} & \ctrl{-1} & \targ{} & \qw & \gate{\op{T}^\dagger} & \targ{} & \gate{\op{T}^\dagger} & \targ{} & \qw & \ctrl{-1} & \qw \rstick{$\ket{y}$} \\
+    \lstick{$\ket{z}$} & \gate{\Hadamard} & \gate{\op{T}} & \qw & \ctrl{-1} & \targ{} & \qw & \qw & \gate{\op{T}} & \ctrl{-1} & \targ{} & \gate{\Hadamard} & \qw \rstick{$\ket{z \oplus x y}$}
+\end{quantikz}
+\end{document}

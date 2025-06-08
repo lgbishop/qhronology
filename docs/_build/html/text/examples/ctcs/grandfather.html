@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Grandfather paradox &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/examples/ctcs/grandfather';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Unproven-theorem paradox" href="unproven.html" />
+    <link rel="prev" title="Quantum state tomography via weak measurements" href="../algorithms/tomography_weak.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum algorithms and protocols</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_bell.html">Generation of a Bell state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_w.html">Generation of a W state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/cnot.html">CNOT (controlled-NOT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/toffoli.html">Toffoli decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_half.html">Half adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_full.html">Full adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_ripple.html">Ripple-carry adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_ripple_iterative.html">Ripple-carry adder (iterative)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_lookahead.html">Carry-lookahead adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/adder_fourier.html">Fourier transform adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/teleportation.html">Quantum teleportation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/pswap.html">PSWAP (power-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/iswap.html">iSWAP (imaginary-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/tomography_strong.html">Quantum state tomography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/tomography_weak.html">Quantum state tomography via weak measurements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum closed timelike curves</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Grandfather paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unproven.html">Unproven-theorem paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="billiards.html">Billiard-ball paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postselected.html">Manual P-CTC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecp.html">Equivalent-circuit picture for D-CTCs</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../part-examples.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Grandfather paradox</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="grandfather-paradox">
+<span id="eg-grandfather"></span><h1>Grandfather paradox<a class="headerlink" href="#grandfather-paradox" title="Link to this heading">#</a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
+<p>Probably the most prominent time-travel paradox is the <em>grandfather paradox</em>. Presented here is a simplified, quantum version of the paradox (based on <span id="id1">[<a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#cite-1-lloyd-closed-2011" title="S. Lloyd, L. Maccone, R. Garcia-Patron, V. Giovannetti, Y. Shikano, S. Pirandola, L. A. Rozema, A. Darabi, Y. Soudagar, L. K. Shalm, and A. M. Steinberg, “Closed Timelike Curves via Postselection: Theory and Experimental Test of Consistency”, Physical Review Letters, 106(4):040403, January 2011. https://link.aps.org/doi/10.1103/PhysRevLett.106.040403, doi:10.1103/PhysRevLett.106.040403">4</a>]</span>), in which a qubit CV state has an apparently paradoxical influence on its past self (exterior to the CTC) via a CNOT operation. This is illustrated in <a class="reference internal" href="#fig-circuit-ctc-grandfather"><span class="std std-numref">Figure 25</span></a>.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_grandfather-dark.png"><img alt="A quantum circuit diagram of the grandfather paradox." src="../../../_images/circuit_ctc_grandfather-dark.png" style="width: 259.92px; height: 122.03999999999999px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_grandfather-light.png"><img alt="A quantum circuit diagram of the grandfather paradox." src="../../../_images/circuit_ctc_grandfather-light.png" style="width: 259.92px; height: 122.03999999999999px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-circuit-ctc-grandfather" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_ctc_grandfather-light.png"><img alt="A quantum circuit diagram of the grandfather paradox." src="../../../_images/circuit_ctc_grandfather-light.png" style="width: 259.92px; height: 122.03999999999999px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 25 </span><span class="caption-text">A quantum model of the grandfather paradox.</span><a class="headerlink" href="#fig-circuit-ctc-grandfather" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>It consists of two systems: the first (upper) is the <em>chronology-respecting</em> (CR) system, while the second (lower) is the <em>chronology-violating</em> (CV) one. The Hilbert spaces of both will be ordinary qubit spaces, and using these we wish to describes the propagation of an observer (who can be either alive or dead) through the time machine and its chronology-violating region. Without loss of generality, we arbitrarily associate the level <span class="math notranslate nohighlight">\(\ket{0}\)</span> with observer’s state of being dead, while <span class="math notranslate nohighlight">\(\ket{1}\)</span> will denote their alive state. The circuit therefore describes the propagation of an observer whose state changes in accordance with their future state in the time machine (due to the CNOT gate), after which they SWAP onto the CV system and experience the interaction from the other perspective. The combined unitary gate thus has the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-grandfather-unitary">
+<span class="eqno">(370)<a class="headerlink" href="#equation-eq-grandfather-unitary" title="Link to this equation">#</a></span>\[\begin{aligned}
+    \Unitary = \Swap^{0,1} \cdot \Control^1 \NOT^0.
+\end{aligned}\]</div>
+<p>As this is a quantum temporal paradox, there are multiple <a class="reference internal" href="../../theory/time-travel/quantum.html#sec-literature-quantum"><span class="std std-ref">prescriptions</span></a> by which resolutions can be computed.</p>
+</section>
+<section id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<section id="d-ctcs">
+<h3>D-CTCs<a class="headerlink" href="#d-ctcs" title="Link to this heading">#</a></h3>
+<p>In Deutsch’s model (D-CTCs), we necessarily have to calculate fixed-point solutions <span class="math notranslate nohighlight">\(\StateCV\)</span> for the CV system. This is accomplished by first computing the standard evolution of the bipartite input state <span class="math notranslate nohighlight">\(\StateCR \otimes \StateCV\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-0">
+<span class="eqno">(371)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \MapGeneral_{\Unitary} \bigl[\StateCR \otimes \StateCV\bigr] &amp;= \Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger \\
+    &amp;= \Swap^{0,1} \cdot \Control^1 \NOT^0 \bigl(\StateCR \otimes \StateCV\bigr) \Control^1 \NOT^{\dagger 0} \cdot \Swap^{\dagger 0,1} \\
+    &amp;= \Swap^{0,1} \bigl(\StateCR \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
+    &amp; \qquad\quad\; + \StateCR\Pauli_x^\dagger \otimes \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \\
+    &amp; \qquad\quad\; + \Pauli_x\StateCR \otimes \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \\
+    &amp; \qquad\quad\; + \Pauli_x\StateCR\Pauli_x^\dagger \otimes \ket{1}\bra{1}\StateCV\ket{1}\bra{1}\bigr) \Swap^{\dagger 0,1} \\
+    &amp;= \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \otimes \StateCR \\
+    &amp; \quad + \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \otimes \StateCR\Pauli_x^\dagger \\
+    &amp; \quad + \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \otimes \Pauli_x\StateCR \\
+    &amp; \quad + \ket{1}\bra{1}\StateCV\ket{1}\bra{1} \otimes \Pauli_x\StateCR\Pauli_x^\dagger.
+\end{aligned}\end{split}\]</div>
+<p>Subsequently tracing out the CR system yields the D-CTCs CV map,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-1">
+<span class="eqno">(372)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \MapDCTCsCV_{\Unitary} \bigl[\StateCR,\StateCV\bigr] &amp;= \trace_{0} \bigl[\Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
+    &amp;= \bra{0}\StateCV\ket{0} \cdot \StateCR + \bra{1}\StateCV\ket{1} \cdot \Pauli_x\StateCR\Pauli_x^\dagger,
+\end{aligned}\end{split}\]</div>
+<p>while tracing out the CV system yields the CR map,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-2">
+<span class="eqno">(373)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \MapDCTCsCR_{\Unitary} \bigl[\StateCR,\StateCV\bigr] &amp;= \trace_{1} \bigl[\Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
+    &amp;= \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
+    &amp; \quad + \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \cdot \bigl[\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr] \\
+    &amp; \quad + \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \cdot \bigl[\bra{1}\StateCR\ket{0} + \bra{0}\StateCR\ket{1}\bigr] \\
+    &amp; \quad + \ket{1}\bra{1}\StateCV\ket{1}\bra{1}.
+\end{aligned}\end{split}\]</div>
+<p>Solutions for the CV system are then given as fixed points of the corresponding map, i.e. <span class="math notranslate nohighlight">\(\StateCV_\MapDCTCsCR = \MapDCTCsCV_{\Unitary} \bigl[\StateCR,\StateCV_\MapDCTCsCR\bigr]\)</span>, and accordingly we find the unique state</p>
+<div class="math notranslate nohighlight" id="equation-eq-grandfather-d-ctcs-cv">
+<span class="eqno">(374)<a class="headerlink" href="#equation-eq-grandfather-d-ctcs-cv" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \StateCV_\MapDCTCsCR &amp;= \frac{1}{2}\StateCR + \frac{1}{2}\Pauli_x\StateCR\Pauli_x^\dagger \\
+    &amp;= \frac{1}{2}\Bigl[\ket{0}\bra{0} + \bigl(\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr)\bigl(\ket{0}\bra{1} + \ket{1}\bra{0}\bigr) + \ket{1}\bra{1}\Bigr].
+\end{aligned}\end{split}\]</div>
+<p>With this, the solution for the CR system can be computed to be</p>
+<div class="math notranslate nohighlight" id="equation-eq-grandfather-d-ctcs-cr">
+<span class="eqno">(375)<a class="headerlink" href="#equation-eq-grandfather-d-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{aligned}
+    \StateCR_\MapDCTCsCR &amp;= \frac{1}{2}\Bigl[\ket{0}\bra{0} + \bigl(\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr)^2\bigl(\ket{0}\bra{1} + \ket{1}\bra{0}\bigr) + \ket{1}\bra{1}\Bigr]
+\end{aligned}\]</div>
+<p>which is similarly unique.</p>
+</section>
+<section id="p-ctcs">
+<h3>P-CTCs<a class="headerlink" href="#p-ctcs" title="Link to this heading">#</a></h3>
+<p>To compute the resolution to the grandfather paradox according to the postselected teleportation (P-CTCs) prescription of quantum time travel, we first calculate the reduced P-CTC operator,</p>
+<div class="math notranslate nohighlight" id="equation-eq-grandfather-p-ctcs-operator">
+<span class="eqno">(376)<a class="headerlink" href="#equation-eq-grandfather-p-ctcs-operator" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \OperatorPCTC &amp;\equiv \trace_\CV[\Unitary] \\
+    &amp;= \trace_1[\Swap^{0,1} \cdot \Control^1 \NOT^0] \\
+    &amp;= \trace_1\bigl[\Swap^{0,1} \bigl(\Identity \otimes \ket{0}\bra{0} + \Pauli_x \otimes \ket{1}\bra{1}\bigr)\bigr] \\
+    &amp;= \trace_1\bigl[\Swap^{0,1} \bigl((\ket{0}\bra{0} + \ket{1}\bra{1}) \otimes \ket{0}\bra{0} + (\ket{0}\bra{1} + \ket{1}\bra{0}) \otimes \ket{1}\bra{1}\bigr)\bigr] \\
+    &amp;= \trace_1\bigl[\ket{0}\bra{0} \otimes \ket{0}\bra{0} + \ket{0}\bra{1} \otimes \ket{1}\bra{0} + \ket{1}\bra{1} \otimes \ket{0}\bra{1} + \ket{1}\bra{0} \otimes \ket{1}\bra{1}\bigr] \\
+    &amp;= \ket{0}\bra{0} + \ket{1}\bra{0} \\
+    &amp;= \ket{+}\bra{0}.
+\end{aligned}\end{split}\]</div>
+<p>Using this, we can obtain the P-CTC CR state from its definition <a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#equation-eq-p-ctcs-cr">(250)</a>,</p>
+<div class="math notranslate nohighlight" id="equation-eq-grandfather-p-ctcs-cr">
+<span class="eqno">(377)<a class="headerlink" href="#equation-eq-grandfather-p-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \StateCR_\MapPCTCsCR &amp;= \MapPCTCsCR_{\Unitary} \bigl[\StateCR\bigr] \\
+    &amp;= \frac{\OperatorPCTC \StateCR \OperatorPCTC^\dagger}{\trace[\OperatorPCTC \StateCR \OperatorPCTC^\dagger]} \\
+    &amp;= \ket{+}\bra{+}
+\end{aligned}\end{split}\]</div>
+<p>where we have used the canonical form</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-3">
+<span class="eqno">(378)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-3" title="Link to this equation">#</a></span>\[\ket{+} \equiv \frac{1}{\sqrt{2}}\bigl[\ket{0} + \ket{1}\bigr].\]</div>
+<p>Finally, using the expression <a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#equation-eq-p-ctcs-cv">(253)</a>, we can compute the P-CTC CV state (via weak-measurement quantum state tomography) to be</p>
+<div class="math notranslate nohighlight" id="equation-eq-grandfather-p-ctcs-cv">
+<span class="eqno">(379)<a class="headerlink" href="#equation-eq-grandfather-p-ctcs-cv" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \StateCV_\MapPCTCsCR &amp;= \frac{1}{2}\StateCR + \frac{1}{2}\Pauli_x\StateCR\Pauli_x^\dagger \\
+    &amp;= \frac{1}{2}\Bigl[\ket{0}\bra{0} + \bigl(\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr)\bigl(\ket{0}\bra{1} + \ket{1}\bra{0}\bigr) + \ket{1}\bra{1}\Bigr],
+\end{aligned}\end{split}\]</div>
+<p>Note that this is identical to the D-CTC CV state <a class="reference internal" href="#equation-eq-grandfather-d-ctcs-cv">(374)</a>.</p>
+</section>
+<section id="p-ctc-restrictions-on-initial-data">
+<h3>P-CTC restrictions on initial data<a class="headerlink" href="#p-ctc-restrictions-on-initial-data" title="Link to this heading">#</a></h3>
+<p>The grandfather paradox is particularly interesting because it exhibits pathological behaviour under the P-CTC prescription. Indeed, its antichronological effect on a general qubit can be observed by analyzing the evolution of the entangled state,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-4">
+<span class="eqno">(380)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-4" title="Link to this equation">#</a></span>\[\ket{\phi}_{\mathrm{rec},\CR} = \sqrt{\Omega} \ket{0}_\mathrm{rec} \otimes \ket{0}_\CR + \sqrt{1 - \Omega} \ket{1}_\mathrm{rec} \otimes \ket{1}_\CR,\]</div>
+<p>where <span class="math notranslate nohighlight">\(0 \leq \Omega \leq 1\)</span> controls the balance of the entanglement. Here, the first subsystem is the <em>record</em> mode which, due to the entanglement, tells us (after measurement) which CR state interacted with the P-CTC. Accordingly, by using the bipartite unitary</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-5">
+<span class="eqno">(381)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-5" title="Link to this equation">#</a></span>\[\Identity_\mathrm{rec}\otimes\trace_\CV[\Unitary] = \Identity_\mathrm{rec}\otimes\ket{+}\bra{0}_\CR,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\OperatorPCTC = \trace_\CV[\Unitary]\)</span> is the P-CTC operator, we obtain the evolution</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-6">
+<span class="eqno">(382)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-6" title="Link to this equation">#</a></span>\[\bigl(\Identity_\mathrm{rec}\otimes\trace_\CV[\Unitary]\bigr)\ket{\phi} = \sqrt{2\Omega}\ket{0}_\mathrm{rec}\otimes\ket{+}_\CR.\]</div>
+<p>Renormalization vanishes the coefficient <span class="math notranslate nohighlight">\(\sqrt{2\Omega}\)</span>, leaving the record to consist of only the state <span class="math notranslate nohighlight">\(\ket{0}\)</span> regardless of the value of <span class="math notranslate nohighlight">\(\Omega\)</span>. This suggests that the CR input was likewise only <span class="math notranslate nohighlight">\(\ket{0}\)</span> even if <span class="math notranslate nohighlight">\(\Omega \neq 1\)</span>, indicating that the entanglement was broken.</p>
+<p>Prior to the renormalization, a value of <span class="math notranslate nohighlight">\(\Omega = 0\)</span> leads to a vanishing P-CTC evolution, and so the renormalization process merely serves to produce a physical output state for all <span class="math notranslate nohighlight">\(\Omega\)</span>. In doing so however, the record reveals that a CR input of <span class="math notranslate nohighlight">\(\ket{1}\)</span> was never prepared, even when <span class="math notranslate nohighlight">\(\Omega \neq 1\)</span>. An input of <span class="math notranslate nohighlight">\(\StateCR = \ket{1}\bra{1}\)</span> is thus forbidden under the P-CTC description of this simplified grandfather paradox. With the interpretation of <span class="math notranslate nohighlight">\(\ket{1}\)</span> as corresponding to “alive”, this result is curious, but is probably just an indication that this particular version of the grandfather paradox is overly simplistic. Additionally, in practice, the effects of quantum noise and decoherence would ensure that such an exact input state is not physically realizable. In any case, we conclude that although the grandfather paradox’s interaction places theoretical constraints for certain input CR states, a (unique) P-CTC CV state <span class="math notranslate nohighlight">\(\StateCV_{\MapPCTCsCR}\)</span> can <em>always</em> be determined via <a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#equation-eq-p-ctcs-cv">(253)</a>.</p>
+</section>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<div class="literal-block-wrapper docutils container" id="code-grandfather">
+<div class="code-block-caption"><span class="caption-number">Listing 25 </span><span class="caption-text">/text/examples/ctcs/grandfather.py</span><a class="headerlink" href="#code-grandfather" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">MixedState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span><span class="p">,</span> <span class="n">Swap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.prescriptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCTC</span><span class="p">,</span> <span class="n">DCTC</span><span class="p">,</span> <span class="n">PCTC</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="c1"># Input</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;ρ&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="n">input_state</span> <span class="o">=</span> <span class="n">MixedState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">rho</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="n">rho</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">rho</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ&quot;</span><span class="p">)</span>
+
+<span class="c1"># Gates</span>
+<span class="n">NC</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># CTC</span>
+<span class="n">grandfather</span> <span class="o">=</span> <span class="n">QuantumCTC</span><span class="p">([</span><span class="n">input_state</span><span class="p">],</span> <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">NC</span><span class="p">,</span> <span class="n">S</span><span class="p">],</span> <span class="n">systems_respecting</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">grandfather</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+
+<span class="c1"># Output</span>
+<span class="c1"># D-CTCs</span>
+<span class="n">grandfather_DCTC</span> <span class="o">=</span> <span class="n">DCTC</span><span class="p">(</span><span class="n">circuit</span><span class="o">=</span><span class="n">grandfather</span><span class="p">)</span>
+<span class="n">grandfather_DCTC_respecting</span> <span class="o">=</span> <span class="n">grandfather_DCTC</span><span class="o">.</span><span class="n">state_respecting</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ_D&quot;</span><span class="p">)</span>
+<span class="n">grandfather_DCTC_violating</span> <span class="o">=</span> <span class="n">grandfather_DCTC</span><span class="o">.</span><span class="n">state_violating</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;τ_D&quot;</span><span class="p">)</span>
+<span class="n">grandfather_DCTC_respecting</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">factor</span><span class="p">)</span>
+
+<span class="c1"># P-CTCs</span>
+<span class="n">grandfather_PCTC</span> <span class="o">=</span> <span class="n">PCTC</span><span class="p">(</span><span class="n">circuit</span><span class="o">=</span><span class="n">grandfather</span><span class="p">)</span>
+<span class="n">grandfather_PCTC_respecting</span> <span class="o">=</span> <span class="n">grandfather_PCTC</span><span class="o">.</span><span class="n">state_respecting</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ_P&quot;</span><span class="p">)</span>
+<span class="n">grandfather_PCTC_violating</span> <span class="o">=</span> <span class="n">grandfather_PCTC</span><span class="o">.</span><span class="n">state_violating</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;τ_P&quot;</span><span class="p">)</span>
+<span class="n">grandfather_PCTC_respecting</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="s2">&quot;1/(sqrt(2))&quot;</span><span class="p">)</span>  <span class="c1"># Manually renormalize</span>
+<span class="n">grandfather_PCTC_respecting</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="n">grandfather_PCTC_violating</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+
+<span class="c1"># Results</span>
+<span class="n">grandfather_DCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">grandfather_DCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">grandfather_PCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">grandfather_PCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h2>
+<section id="diagram">
+<h3>Diagram<a class="headerlink" href="#diagram" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">grandfather</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_ctcs_grandfather-dark.png"><img alt="../../../_images/text_examples_ctcs_grandfather-dark.png" class="only-dark align-left" src="../../../_images/text_examples_ctcs_grandfather-dark.png" style="width: 124.80000000000001px; height: 48.400000000000006px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_ctcs_grandfather-light.png"><img alt="../../../_images/text_examples_ctcs_grandfather-light.png" class="only-light align-left" src="../../../_images/text_examples_ctcs_grandfather-light.png" style="width: 124.80000000000001px; height: 48.400000000000006px;" />
+</a>
+</div></blockquote>
+</section>
+<section id="states">
+<h3>States<a class="headerlink" href="#states" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">grandfather_DCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">ρ_D = 1/2|0⟩⟨0| + (ρ[0, 1] + ρ[1, 0])**2/2|0⟩⟨1| + (ρ[0, 1] + ρ[1, 0])**2/2|1⟩⟨0| + 1/2|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">grandfather_DCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">τ_D = 1/2|0⟩⟨0| + (ρ[0, 1]/2 + ρ[1, 0]/2)|0⟩⟨1| + (ρ[0, 1]/2 + ρ[1, 0]/2)|1⟩⟨0| + 1/2|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">grandfather_PCTC_respecting</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">ρ_P = 1/2|0⟩⟨0| + 1/2|0⟩⟨1| + 1/2|1⟩⟨0| + 1/2|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">grandfather_PCTC_violating</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">τ_P = 1/2|0⟩⟨0| + (ρ[0, 1]/2 + ρ[1, 0]/2)|0⟩⟨1| + (ρ[0, 1]/2 + ρ[1, 0]/2)|1⟩⟨0| + 1/2|1⟩⟨1|</span>
+</pre></div>
+</div>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-lloyd-closed-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>S. Lloyd, L. Maccone, R. Garcia-Patron, V. Giovannetti, Y. Shikano, S. Pirandola, L. A. Rozema, A. Darabi, Y. Soudagar, L. K. Shalm, and A. M. Steinberg, “Closed Timelike Curves via Postselection: Theory and Experimental Test of Consistency”, <em>Physical Review Letters</em>, 106(4):040403, January 2011. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.106.040403">https://link.aps.org/doi/10.1103/PhysRevLett.106.040403</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.106.040403">doi:10.1103/PhysRevLett.106.040403</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../algorithms/tomography_weak.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quantum state tomography via weak measurements</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="unproven.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unproven-theorem paradox</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-ctcs">D-CTCs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-ctcs">P-CTCs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-ctc-restrictions-on-initial-data">P-CTC restrictions on initial data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagram">Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#states">States</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.0]
+    \qw & \gate{\Hadamard} & \qw
+\end{quantikz}
+$\quad \iff \quad \Hadamard = \displaystyle\frac{1}{\sqrt{\Dimension}} \sum\limits_{j,k=0}^{\Dimension - 1} \omega_{\Dimension}^{k(\Dimension - j)} \ket{j}\bra{k}, \quad \omega_{\Dimension} = \e^{\frac{2\pi\eye}{\Dimension}}$
+\end{document}

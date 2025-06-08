@@ -1,0 +1,37 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+%\usetikzlibrary{quantikz}
+\usetikzlibrary{quantikz2}
+\begin{document}
+\noindent\begin{minipage}{0.65\linewidth}
+\hfill
+\begin{quantikz}[row sep={1.75*\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \lstick{$\ldots$} & \meter{\hspace{-100cm}\{\op{\rho}_i\}\hspace{-100cm}} \\
+    \lstick{$\ldots$} & \meter{\hspace{-100cm}\{\op{\tau}_j\}\hspace{-100cm}}
+\end{quantikz}
+\end{minipage}%
+\begin{minipage}{0.35\linewidth}
+\begin{equation}
+\quad \iff \quad
+\begin{aligned}
+\Probability_0 &= \{p_{0,i}\}, \quad p_{0,i} = \trace[\op{\rho}_i \trace_{1}[(\ldots)]] \nonumber\\
+\Probability_1 &= \{p_{1,j}\}, \quad p_{1,j} = \trace[\op{\tau}_j \trace_{0}[(\ldots)]] \nonumber
+\end{aligned}
+\end{equation}
+\end{minipage}
+\end{document}

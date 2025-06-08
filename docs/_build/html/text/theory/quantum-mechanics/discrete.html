@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quantum mechanics on discrete Hilbert spaces &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/theory/quantum-mechanics/discrete';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Quantum mechanics on continuous Hilbert spaces" href="continuous.html" />
+    <link rel="prev" title="Mathematical foundations of quantum mechanics" href="mathematics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum mechanics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mathematics.html">Mathematical foundations of quantum mechanics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantum mechanics on discrete Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuous.html">Quantum mechanics on continuous Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuitry.html">Quantum circuitry</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time travel</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../time-travel/classical.html">Classical theories of time travel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time-travel/quantum.html">Quantum theories of time travel</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../part-theory.html" class="nav-link">Theory</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quantum mechanics on discrete Hilbert spaces</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="quantum-mechanics-on-discrete-hilbert-spaces">
+<span id="sec-discrete"></span><h1>Quantum mechanics on discrete Hilbert spaces<a class="headerlink" href="#quantum-mechanics-on-discrete-hilbert-spaces" title="Link to this heading">#</a></h1>
+<p>The theory of <em>quantum mechanics</em> seeks to explain the dynamics of the particles of which our universe is composed. It differs from classical physics in that certain properties (such as energy and momentum) of bound systems are restricted to being within sets of discrete values—a characteristic known as <em>quantization</em>. Additionally, objects described by quantum mechanics have properties distinctive of both waves and particles (termed <em>wave-particle duality</em>), and there are fundamental limits to the accuracy with which values of specific physical quantities can be predicted prior to their measurement (described by the <em>uncertainty principle</em>). The theory presented here is based on the treatments in <span id="id1">[<a class="reference internal" href="../time-travel/quantum/P-CTCs.html#cite-1-nielsen-quantum-2010" title="M. Nielsen and I. Chuang, Quantum Computation and Quantum Information: 10th Anniversary Edition, Cambridge University Press, Cambridge, 2010.">1</a>, <a class="reference internal" href="#cite-1-wilde-quantum-2017" title="M. M. Wilde, Quantum Information Theory, Cambridge University Press, Cambridge, 2nd edition, 2017.">5</a>, <a class="reference internal" href="#cite-1-williams-explorations-2010" title="C. P. Williams, Explorations in Quantum Computing, Springer, London, 2nd edition, December 2010.">7</a>, <a class="reference internal" href="#cite-1-moret-bonillo-adventures-2017" title="V. Moret-Bonillo, Adventures in Computer Science: From Classical Bits to Quantum Bits, Springer International Publishing, Cham, 2017.">9</a>, <a class="reference internal" href="#cite-1-serrano-quantum-2022" title="M. A. Serrano, R. Pérez-Castillo, and M. Piattini (editors), Quantum Software Engineering, Springer International Publishing, Cham, 2022.">10</a>, <a class="reference internal" href="mathematics.html#cite-1-zeidler-quantum-2006" title="E. Zeidler, Quantum Field Theory I: Basics in Mathematics and Physics, Springer, Berlin, Heidelberg, 2006.">2</a>, <a class="reference internal" href="mathematics.html#cite-1-dimock-quantum-2011" title="J. Dimock, Quantum Mechanics and Quantum Field Theory: A Mathematical Primer, Cambridge University Press, Cambridge, 2011.">4</a>, <a class="reference internal" href="mathematics.html#cite-1-dirac-principles-1982" title="P. A. M. Dirac, The Principles of Quantum Mechanics, Clarendon Press, Oxford, 4th edition, February 1982.">12</a>, <a class="reference internal" href="#cite-1-bengtsson-geometry-2017" title="I. Bengtsson and K. Życzkowski, Geometry of Quantum States: An Introduction to Quantum Entanglement, Cambridge University Press, Cambridge, 2nd edition, 2017.">6</a>, <a class="reference internal" href="#cite-1-schlosshauer-decoherence-2007" title="M. A. Schlosshauer, Decoherence and the Quantum-to-Classical Transition, The Frontiers Collection, Springer, Berlin ; London, 2007.">8</a>, <a class="reference internal" href="#cite-1-yanofsky-quantum-2008" title="N. S. Yanofsky and M. A. Mannucci, Quantum Computing for Computer Scientists, Cambridge University Press, Cambridge, 2008.">11</a>]</span>.</p>
+<section id="quantum-states">
+<h2>Quantum states<a class="headerlink" href="#quantum-states" title="Link to this heading">#</a></h2>
+<p>In a formal setup, any system in the discrete theory of quantum mechanics is a collection of identifiable physical properties at a given time. This is represented by a Hilbert space, which may be either infinite- or finite-dimensional. A usual presentation of that Hilbert space is a special function space, such as <span class="math notranslate nohighlight">\(\ell^2\)</span> or <span class="math notranslate nohighlight">\(\Complexes^\Dimension\)</span>.</p>
+<p>A <em>quantum state</em> is then simply a particular value (or, more properly, a probabilistic assignment) of these properties. It is this object which provides the probability distribution for the outcomes of each possible measurement on a system. Formally, we say that a quantum state represents (or is characterized by) a statistical ensemble <span class="math notranslate nohighlight">\(\SetProbability = \{p_i\}_i\)</span> of independent, identically prepared copies of a quantum system. This is represented in general by a positive semi-definite Hermitian operator <span class="math notranslate nohighlight">\(\StateDensity\)</span> of trace one (that is, a density operator) on the (discrete) Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>. As the space of all density operators on <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is convex, then subsequently any convex combination of such operators is also a density operator, which allows us to express any <span class="math notranslate nohighlight">\(\StateDensity\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-general">
+<span class="eqno">(115)<a class="headerlink" href="#equation-eq-state-general" title="Link to this equation">#</a></span>\[\StateDensity = \sum_{i} p_i \StateDensity_i.\]</div>
+<p>This describes a mixture of the density operators <span class="math notranslate nohighlight">\(\{\StateDensity_i\}_i\)</span> corresponding to the statistical ensemble <span class="math notranslate nohighlight">\(\SetProbability\)</span>. According to the spectral theorem <a class="reference internal" href="mathematics.html#equation-eq-spectral-theorem">(63)</a>, we are able to express any quantum state <span class="math notranslate nohighlight">\(\StateDensity\)</span> in a <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> equivalently as a convex combination of at most <span class="math notranslate nohighlight">\(\Dimension\)</span> vectors <span class="math notranslate nohighlight">\(\ket{\psi_i}\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-combination-pure">
+<span class="eqno">(116)<a class="headerlink" href="#equation-eq-state-combination-pure" title="Link to this equation">#</a></span>\[\StateDensity = \sum_{i} p_i \ket{\psi_i}\bra{\psi_i}\]</div>
+<p>where the coefficients <span class="math notranslate nohighlight">\(p_i\)</span> collectively characterize <span class="math notranslate nohighlight">\(\StateDensity\)</span>.</p>
+<section id="pure-states">
+<h3>Pure states<a class="headerlink" href="#pure-states" title="Link to this heading">#</a></h3>
+<p>An extreme point in the convex space spanned by operators <a class="reference internal" href="#equation-eq-state-general">(115)</a> is called a <em>pure state</em>, which we can denote in general as the outer product</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-pure">
+<span class="eqno">(117)<a class="headerlink" href="#equation-eq-state-pure" title="Link to this equation">#</a></span>\[\StateDensity = \ket{\psi}\bra{\psi}.\]</div>
+<p>This is necessarily a projection operator, i.e., <span class="math notranslate nohighlight">\(\StateDensity^2 = \StateDensity\)</span>. Due to this form, any given pure state can be completely (and uniquely) represented by the vector</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-superposition">
+<span class="eqno">(118)<a class="headerlink" href="#equation-eq-state-superposition" title="Link to this equation">#</a></span>\[\ket{\psi} = \sum_{i} c_i \ket{\Basis_i}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\{\ket{\Basis_i}\}_i\)</span> is an orthonormal basis for the associated Hilbert space, and <span class="math notranslate nohighlight">\(c_i \in \Complexes\)</span> are the state-characterizing probability amplitudes.</p>
+<p>The set of physical pure states <span class="math notranslate nohighlight">\(\SpacePure(\SpaceHilbert)\)</span> on a Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is the set of all normalized (unit) vectors on <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, with vectors equal up to a global phase considered to be equivalent (as such global phase differences are not observable, i.e., constitute measurable quantities). Compactly, we write</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-0">
+<span class="eqno">(119)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-0" title="Link to this equation">#</a></span>\[\SpacePure(\SpaceHilbert) \equiv \bigl\{ \ket{\psi} \in \SpaceHilbert : \norm{\ket{\psi}}_2 = 1, \, \ket{\psi} \cong \e^{\eye \theta} \ket{\psi} \, \, \forall \, \, \theta \in \Reals \bigr\}.\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The concept of vectors which differ only up to a multiplicate constant of magnitude <span class="math notranslate nohighlight">\(1\)</span> (i.e., a phase factor <span class="math notranslate nohighlight">\(\e^{\eye \theta}\)</span>) being identified is a direct consequence of the fact that such states are physically indistinguishable—that is, there is no performable experiment which is able to differentiate them. This leads to the idea that the notion of a pure “state” in quantum mechanics is perhaps better described by a more complete (and unique) object called a <em>ray</em>, residing in a projective Hilbert space. Put simply, a ray <span class="math notranslate nohighlight">\(\underline{\StatePure}\)</span> is the set of all state vectors <span class="math notranslate nohighlight">\(\StatePure\)</span> which are scalar non-zero multiples of each other, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-1">
+<span class="eqno">(120)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-1" title="Link to this equation">#</a></span>\[\underline{\StatePure} = \bigl\{\e^{\eye \theta} \StatePure : \StatePure \in \SpaceHilbert, \, \norm{\psi}_2 = 1, \, \theta \in \Reals \bigr\}.\]</div>
+<p>The vectors in this set are all physically equivalent and called <em>representants</em> of <span class="math notranslate nohighlight">\(\underline{\StatePure}\)</span>. For example, if <span class="math notranslate nohighlight">\(\psi \in \underline{\psi}\)</span>, then <span class="math notranslate nohighlight">\(\phi\)</span> is also a representant of <span class="math notranslate nohighlight">\(\underline{\psi}\)</span> if and only if <span class="math notranslate nohighlight">\(\phi = \e^{\eye \theta}\psi\)</span> for some <span class="math notranslate nohighlight">\(\theta \in \Reals\)</span>, and therefore corresponds to the same physical state. In fact, in this formalism, a (pure) “quantum state” is more properly identified as the ray itself, not just a (single) vector. Given a Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, any two <span class="math notranslate nohighlight">\(\psi_1,\psi_2 \in \SpaceHilbert\)</span> satisfy the equivalence relation <span class="math notranslate nohighlight">\(\psi_1 \sim \psi_2\)</span> if and only if <span class="math notranslate nohighlight">\(\psi_1,\psi_2 \in \underline{\psi}\)</span>. As such, the rays of <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> form the equivalence classes of this equivalence equation, which correspond physically to distinguishable quantum states. Thus, when we (imprecisely) describe a quantum state using a vector <span class="math notranslate nohighlight">\(\ket{\StatePure}\)</span> in the context of quantum mechanics, we systematically use any one element of the corresponding ray as its representant, albeit with the specific choice being completely inconsequential to any predictions of the theory.</p>
+</div>
+</section>
+<section id="mixed-states">
+<h3>Mixed states<a class="headerlink" href="#mixed-states" title="Link to this heading">#</a></h3>
+<p>States which are not pure are termed <em>mixed</em>, and cannot be expressed in the form <a class="reference internal" href="#equation-eq-state-pure">(117)</a>. A mixed state characterized by a uniform probability distribution <span class="math notranslate nohighlight">\(\SetProbability\)</span> is called <em>maximally mixed</em> and takes the form</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-2">
+<span class="eqno">(121)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-2" title="Link to this equation">#</a></span>\[\StateDensity = \frac{1}{\Dimension}\Identity_{\Dimension}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Identity_{\Dimension}\)</span> is the <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> identity operator. It is useful to think of linear combinations such as that in <a class="reference internal" href="#equation-eq-state-combination-pure">(116)</a> as “classical” superpositions in the sense that they involve the correspondingly classical mixing of otherwise fully quantum-mechanical states <span class="math notranslate nohighlight">\(\StateDensity_i = \ket{\psi_i}\bra{\psi_i}\)</span>. In other words, a mixed quantum state is a <em>statistical ensemble</em> of pure states, and is also known simply as a <em>mixed ensemble</em>. Importantly, this contrasts with the physically distinct notion of <em>quantum superposition</em>, which is encapsulated by <a class="reference internal" href="#equation-eq-state-superposition">(118)</a>.</p>
+<p>Unlike pure states, mixed states cannot be represented as a state vector (e.g., <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>). Both objects however may be described as a density operator (e.g., <span class="math notranslate nohighlight">\(\StateDensity\)</span>), which serves as a generalization of the concept of state vectors (wave functions). The set of physical density operators (including both pure and mixed states) on a Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is the set of all Hermitian trace-one (linear) operators on <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, and we denote this as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-3">
+<span class="eqno">(122)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-3" title="Link to this equation">#</a></span>\[\SpaceMixed(\SpaceHilbert) \equiv \bigl\{ \StateDensity \in \SpaceLinear(\SpaceHilbert) : \StateDensity^\dagger = \StateDensity, \, \trace[\StateDensity] = 1 \bigr\}.\]</div>
+<p>Density operators representing mixed (impure) quantum states arise in quantum mechanics in two distinct situations. The first of these is when the preparation of a system is not fully known. In this case, the (incomplete/limited) knowledge of the quantum state can be captured only by a density operator that describes a statistical (i.e., mixture) of all possible preparations. The second situation is when one wants to describe a physical system that is entangled with another. Quantum entanglement theoretically prevents the existence of complete knowledge about subsystems in an entangled state, and so it is impossible to represent the state of any such subsystems as a pure state.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A useful concept in the formalism of quantum information theory is that of <em>purification</em>. This process refers to the fact that any mixed state in a finite-dimensional Hilbert space can be viewed as the reduced state of some pure state. To see this, let <span class="math notranslate nohighlight">\(\StateDensity \in \SpaceMixed(\SpaceHilbert_A)\)</span> be a density matrix where <span class="math notranslate nohighlight">\(\dim(\SpaceHilbert_A)\)</span> is finite. Given this, it is always possible to introduce an additional Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_B\)</span>, corresponding to a fictitious system often called a <em>reference</em> system (and has no direct physical significance), alongside a pure state <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpacePure(\SpaceHilbert_A \otimes \SpaceHilbert_B)\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-eq-purification">
+<span class="eqno">(123)<a class="headerlink" href="#equation-eq-purification" title="Link to this equation">#</a></span>\[\trace_B \bigl[\ket{\psi}\bra{\psi}\bigr] = \StateDensity.\]</div>
+<p>We say that <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> <em>purifies</em> <span class="math notranslate nohighlight">\(\StateDensity\)</span>, which is a consequence that is only made possible by the fact that we have access to a larger (composite) Hilbert space.</p>
+</div>
+</section>
+<section id="qubits">
+<span id="sec-qubits"></span><h3>Qubits<a class="headerlink" href="#qubits" title="Link to this heading">#</a></h3>
+<p>Many physical applications of this theory in quantum mechanics involve Boolean (i.e., binary, or two-valued) logic, which is describable completely by a pair of orthonormal vectors that are often labelled <span class="math notranslate nohighlight">\(\ket{0}\)</span> and <span class="math notranslate nohighlight">\(\ket{1}\)</span>. The representations in <span class="math notranslate nohighlight">\(\Complexes^2\)</span> of these vectors is typically the pair</p>
+<div class="math notranslate nohighlight" id="equation-eq-basis-qubit">
+<span class="eqno">(124)<a class="headerlink" href="#equation-eq-basis-qubit" title="Link to this equation">#</a></span>\[\begin{split}\ket{0} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}.\end{split}\]</div>
+<p>Together, these form a computational basis that is canonically known as the <span class="math notranslate nohighlight">\(z\)</span>-basis (and is referred to by many simply as the <em>computational</em> basis), given that each is an eigenvector of the Pauli-<span class="math notranslate nohighlight">\(Z\)</span> operator <span class="math notranslate nohighlight">\(\Pauli_z\)</span> <a class="reference internal" href="#equation-eq-pauli">(130)</a>. Any quantum state with such binary dimensionality is called a <em>qubit</em> (though this nomenclature is often used solely in the context of <em>pure</em> binary states), and describes a two-level system that forms the basic unit of quantum information (analogous to the bit in classical computing). In the computational basis <span class="math notranslate nohighlight">\(\{\ket{0},\ket{1}\}\)</span>, the simplest qubit which we can express is the quantum superposition</p>
+<div class="math notranslate nohighlight" id="equation-eq-vector-qubit">
+<span class="eqno">(125)<a class="headerlink" href="#equation-eq-vector-qubit" title="Link to this equation">#</a></span>\[\ket{\StateVector} = \alpha\ket{0} + \beta\ket{1}, \quad \abs{\alpha}^2 + \abs{\beta}^2 = 1, \quad \alpha,\beta \in \Complexes.\]</div>
+<p>In the <span class="math notranslate nohighlight">\(\Complexes^2\)</span>-representation <a class="reference internal" href="#equation-eq-basis-qubit">(124)</a>, this state can be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-eq-vector-qubit-column">
+<span class="eqno">(126)<a class="headerlink" href="#equation-eq-vector-qubit-column" title="Link to this equation">#</a></span>\[\begin{split}\ket{\StateVector} = \alpha \begin{bmatrix} 1 \\ 0 \end{bmatrix} + \beta \begin{bmatrix} 0 \\ 1 \end{bmatrix} = \begin{bmatrix} \alpha \\ \beta \end{bmatrix}.\end{split}\]</div>
+<p>An alternative parametrisation of the qubit vector state <a class="reference internal" href="#equation-eq-vector-qubit">(125)</a> takes the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-vector-qubit-sphere">
+<span class="eqno">(127)<a class="headerlink" href="#equation-eq-vector-qubit-sphere" title="Link to this equation">#</a></span>\[\ket{\StateVector} = \e^{\eye\varsigma}\left[\cos\biggl(\frac{\vartheta}{2}\biggr)\ket{0} + \e^{\eye\varphi}\sin\biggl(\frac{\vartheta}{2}\biggr)\ket{1}\right], \quad \varsigma,\vartheta,\varphi \in \Reals.\]</div>
+<p>Given that the factor <span class="math notranslate nohighlight">\(\e^{\eye\varsigma}\)</span> represents a global phase, then all states with fixed <span class="math notranslate nohighlight">\(\vartheta,\varphi\)</span> but different <span class="math notranslate nohighlight">\(\varsigma\)</span> are physically equivalent, and so this factor can be disregarded. We are therefore left with a parametrization of a qubit wherein the numbers <span class="math notranslate nohighlight">\(\vartheta\)</span> and <span class="math notranslate nohighlight">\(\varphi\)</span> define a point on the surface of a unit sphere, known as the <em>Bloch sphere</em> (illustrated in <a class="reference internal" href="#fig-diagram-bloch-sphere"><span class="std std-numref">Figure 1</span></a>). This is essentially a unique mapping of the <span class="math notranslate nohighlight">\(2\)</span>-dimensional Hilbert space to the <span class="math notranslate nohighlight">\(3\)</span>-dimensional real space <span class="math notranslate nohighlight">\(\Reals^3\)</span> (with basis vectors <span class="math notranslate nohighlight">\(\{\uv{e}_1,\uv{e}_2,\uv{e}_3\}\)</span>), which is accomplished by choosing the antipodal points on unit sphere in <span class="math notranslate nohighlight">\(\Reals^3\)</span> to correspond to the pair of mutually orthogonal basis vectors <span class="math notranslate nohighlight">\(\ket{0}\)</span> and <span class="math notranslate nohighlight">\(\ket{1}\)</span>. In this sense, the qubit state <span class="math notranslate nohighlight">\(\vec{r}_\StateVector \in \Reals^3\)</span>, which corresponds to its Hilbert space counterpart <a class="reference internal" href="#equation-eq-vector-qubit">(125)</a>, may be written exactly as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-4">
+<span class="eqno">(128)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-4" title="Link to this equation">#</a></span>\[\vec{r}_\StateVector = \sin(\vartheta)\cos(\varphi)\uv{e}_1 + \sin(\vartheta)\sin(\varphi)\uv{e}_2 + \cos(\vartheta)\uv{e}_3.\]</div>
+<p>Similarly, a <span class="math notranslate nohighlight">\(2\)</span>-dimensional density operator <span class="math notranslate nohighlight">\(\StateDensity\)</span> in the same representation corresponds to the vector</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-5">
+<span class="eqno">(129)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-5" title="Link to this equation">#</a></span>\[\vec{r}_{\StateDensity} = \trace[\StateDensity \Pauli_1]\uv{e}_1 + \trace[\StateDensity \Pauli_2]\uv{e}_2 + \trace[\StateDensity \Pauli_3]\uv{e}_3\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-eq-pauli">
+<span class="eqno">(130)<a class="headerlink" href="#equation-eq-pauli" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \Pauli_1 &amp;= \Pauli_x \equiv \ket{0}\bra{1} + \ket{1}\bra{0} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}, \\
+    \Pauli_2 &amp;= \Pauli_y \equiv -\eye \ket{0}\bra{1} + \eye \ket{1}\bra{0} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 0 &amp; -\eye \\ \eye &amp; 0 \end{bmatrix}, \\
+    \Pauli_3 &amp;= \Pauli_z \equiv \ket{0}\bra{0} - \ket{1}\bra{1} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix},
+\end{aligned}\end{split}\]</div>
+<p>are the <em>Pauli matrices</em>.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/diagram_bloch_sphere-dark.png"><img alt="A diagram of the Bloch sphere." src="../../../_images/diagram_bloch_sphere-dark.png" style="width: 250.92px; height: 243.72px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/diagram_bloch_sphere-light.png"><img alt="A diagram of the Bloch sphere." src="../../../_images/diagram_bloch_sphere-light.png" style="width: 250.92px; height: 243.72px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-diagram-bloch-sphere" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/diagram_bloch_sphere-light.png"><img alt="A diagram of the Bloch sphere." src="../../../_images/diagram_bloch_sphere-light.png" style="width: 250.92px; height: 243.72px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 1 </span><span class="caption-text">The Bloch sphere.</span><a class="headerlink" href="#fig-diagram-bloch-sphere" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Pauli matrices <span class="math notranslate nohighlight">\(\{\Pauli_k\}_{k=1}^{3}\)</span> are Hermitian, and so represent observables in the context of quantum mechanics. Together with the identity operator (writing <span class="math notranslate nohighlight">\(\Pauli_0 = \Identity_2\)</span>), the set <span class="math notranslate nohighlight">\(\{\Pauli_\mu\}_{\mu=0}^{3}\)</span> forms a complete basis for the space of complex <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrices. Since this coincides with the space of linear operators <span class="math notranslate nohighlight">\(\SpaceLinear(\SpaceHilbert)\)</span> on a qubit Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, then any (density) operator <span class="math notranslate nohighlight">\(\StateDensity \in \SpaceLinear(\SpaceHilbert)\)</span> can be expressed as the linear combination</p>
+<div class="math notranslate nohighlight" id="equation-eq-matrix-qubit">
+<span class="eqno">(131)<a class="headerlink" href="#equation-eq-matrix-qubit" title="Link to this equation">#</a></span>\[\StateDensity = \frac{1}{2}\sum_{\mu=0}^{3} \trace[\Pauli_\mu \StateDensity]\Pauli_\mu.\]</div>
+<p>In the context of density operators, since the coefficient for <span class="math notranslate nohighlight">\(\mu = 0\)</span> in <a class="reference internal" href="#equation-eq-matrix-qubit">(131)</a> is fixed by normalization (i.e., <span class="math notranslate nohighlight">\(\trace[\Pauli_0 \StateDensity] = 1\)</span>), then the state <span class="math notranslate nohighlight">\(\StateDensity\)</span> is completely (and uniquely) determined by the <em>Bloch vector</em>, which is defined, for an <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional state, as the <span class="math notranslate nohighlight">\((\Dimension^2 - 1)\)</span>-dimensional real vector of parameters <span class="math notranslate nohighlight">\(\trace[\Pauli_k \StateDensity]\)</span> (for <span class="math notranslate nohighlight">\(k \geq 1\)</span>). Accordingly, the linear combination <a class="reference internal" href="#equation-eq-matrix-qubit">(131)</a> is said to be the <em>Bloch sphere representation</em> of the state <span class="math notranslate nohighlight">\(\StateDensity\)</span>. Note also of course that any appropriate basis, not just the Pauli basis (with identity), allows for reconstruction of any qubit state in the manner of <a class="reference internal" href="#equation-eq-matrix-qubit">(131)</a>.</p>
+<p>The Bloch vector provides a complete description of a quantum system because it represents the expectation values of specific informationally complete observables. In general, a complex <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> density matrix, which represents the state of an <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional quantum system, is geometrically equivalent to a vector in an <span class="math notranslate nohighlight">\((\Dimension^2 - 1)\)</span>-dimensional real space. This is because the space of density matrices is a (bounded) convex subset of <span class="math notranslate nohighlight">\(\Reals^{\Dimension^2}\)</span>, with its elements possessing certain properties (namely Hermiticity, positive semi-definiteness, and trace equal to <span class="math notranslate nohighlight">\(1\)</span>). Since this real space coincides with that of the (generalized) <em>Bloch ball</em>, including both the surface (the <em>Bloch sphere</em>, on which points correspond to pure states) and interior (in which points correspond to mixed states), then this is why determination of the Bloch vector is equivalent to identification of the quantum state. Therefore, as the Pauli operators form a set of informationally complete observables for qubit systems, then the inclusion of the identity operator to this set yields a <em>tomographically complete</em> basis for the space of <span class="math notranslate nohighlight">\(2 \times 2\)</span> Hermitian matrices, of which the space of <span class="math notranslate nohighlight">\(2\)</span>-dimensional density matrices is a subset.</p>
+</section>
+<section id="qutrits">
+<span id="sec-qutrits"></span><h3>Qutrits<a class="headerlink" href="#qutrits" title="Link to this heading">#</a></h3>
+<p>Quantum states realized by <span class="math notranslate nohighlight">\(3\)</span>-dimensional systems are commonly known as <em>qutrits</em>. These objects are analogous to the “trit” unit of information in classical computing and so are useful for performing calculations with ternary logic. Such systems are typically described using a set of orthonormal (basis) vectors <span class="math notranslate nohighlight">\(3\)</span>-dimensional <span class="math notranslate nohighlight">\(\{\ket{0},\ket{1},\ket{2}\}\)</span> , with which a qutrit can in general be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-eq-vector-qutrit">
+<span class="eqno">(132)<a class="headerlink" href="#equation-eq-vector-qutrit" title="Link to this equation">#</a></span>\[\ket{\StateVector} = \alpha\ket{0} + \beta\ket{1} + \gamma\ket{2}, \quad \abs{\alpha}^2 + \abs{\beta}^2 + \abs{\gamma}^2 = 1, \quad \alpha,\beta,\gamma \in \Complexes.\]</div>
+<p>In the <span class="math notranslate nohighlight">\(\Complexes^3\)</span>-representation, the basis vectors can take the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-basis-qutrit">
+<span class="eqno">(133)<a class="headerlink" href="#equation-eq-basis-qutrit" title="Link to this equation">#</a></span>\[\begin{split}\ket{0} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \qquad \ket{2} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix},\end{split}\]</div>
+<p>with which <a class="reference internal" href="#equation-eq-vector-qutrit">(132)</a> can be rewritten as</p>
+<div class="math notranslate nohighlight" id="equation-eq-vector-qutrit-column">
+<span class="eqno">(134)<a class="headerlink" href="#equation-eq-vector-qutrit-column" title="Link to this equation">#</a></span>\[\begin{split}\ket{\StateVector} = \alpha \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} + \beta \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} + \gamma \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} = \begin{bmatrix} \alpha \\ \beta \\ \gamma \end{bmatrix}.\end{split}\]</div>
+<p>Qutrits described by <span class="math notranslate nohighlight">\(3\)</span>-dimensional density operators have corresponding representations as <span class="math notranslate nohighlight">\(3 \times 3\)</span> density matrices. One way of expressing such a state is via the linear combination</p>
+<div class="math notranslate nohighlight" id="equation-eq-matrix-qutrit">
+<span class="eqno">(135)<a class="headerlink" href="#equation-eq-matrix-qutrit" title="Link to this equation">#</a></span>\[\StateDensity = \frac{1}{3}\sum_{\mu=0}^{8} \trace[\GellMann_\mu \StateDensity]\GellMann_\mu.\]</div>
+<p>where <span class="math notranslate nohighlight">\(\{\Pauli_\mu\}_{\mu=0}^{3}\)</span> is a complete basis for the space of <span class="math notranslate nohighlight">\(3 \times 3\)</span> complex matrices. Perhaps the most notable choice of matrices with which to construct a such a basis are the <em>Gell-Mann matrices</em>,</p>
+<div class="math notranslate nohighlight" id="equation-eq-gell-mann">
+<span class="eqno">(136)<a class="headerlink" href="#equation-eq-gell-mann" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \GellMann_1 &amp;\equiv \ket{0}\bra{1} + \ket{1}\bra{0} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}, \\
+    \GellMann_2 &amp;\equiv -\eye\ket{0}\bra{1} + \eye \ket{1}\bra{0} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 0 &amp; -\eye &amp; 0 \\ \eye &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}, \\
+    \GellMann_3 &amp;\equiv \ket{0}\bra{0} - \ket{1}\bra{1} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}, \\
+    \GellMann_4 &amp;\equiv \ket{0}\bra{2} + \ket{2}\bra{0} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 0 \end{bmatrix}, \\
+    \GellMann_5 &amp;\equiv -\eye\ket{0}\bra{2} + \eye\ket{2}\bra{0} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 0 &amp; 0 &amp; -\eye \\ 0 &amp; 0 &amp; 0 \\ \eye &amp; 0 &amp; 0 \end{bmatrix}, \\
+    \GellMann_6 &amp;\equiv \ket{2}\bra{3} + \ket{3}\bra{2} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \end{bmatrix}, \\
+    \GellMann_7 &amp;\equiv -\eye\ket{2}\bra{3} + \eye\ket{3}\bra{2} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; -\eye \\ 0 &amp; \eye &amp; 0 \end{bmatrix}, \\
+    \GellMann_8 &amp;\equiv \frac{1}{\sqrt{3}}\bigl(\ket{0}\bra{0} + \ket{1}\bra{1} - 2\ket{2}\bra{2}\bigr) \!\!\!\!\!\! &amp; &amp;= \frac{1}{\sqrt{3}}\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; -2 \end{bmatrix},
+\end{aligned}\end{split}\]</div>
+<p>in addition to <span class="math notranslate nohighlight">\(\GellMann_0 \equiv \Identity_3\)</span>.</p>
+</section>
+<section id="qudits">
+<span id="sec-qudits"></span><h3>Qudits<a class="headerlink" href="#qudits" title="Link to this heading">#</a></h3>
+<p>Quantum vector states in a <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_\Dimension\)</span> can in general be expressed as the superposition</p>
+<div class="math notranslate nohighlight" id="equation-eq-vector-qudit">
+<span class="eqno">(137)<a class="headerlink" href="#equation-eq-vector-qudit" title="Link to this equation">#</a></span>\[\ket{\StateVector} = \sum_{i=0}^{\Dimension - 1} c_i \ket{i}, \quad \sum_{i=0}^{\Dimension - 1} \abs{c_i}^2 = 1, \quad c_i \in \Complexes.\]</div>
+<p>which is often referred to as a <em>qudit</em>. Here, <span class="math notranslate nohighlight">\(\{\ket{i}\}_{i=0}^{\Dimension - 1}\)</span> is a vector basis for <span class="math notranslate nohighlight">\(\SpaceHilbert_\Dimension\)</span>, and may be expressed in a <span class="math notranslate nohighlight">\(\Complexes^\Dimension\)</span>-representation using the vectors in <a class="reference internal" href="mathematics.html#equation-eq-basis-qudit">(37)</a>. With this, we can write <a class="reference internal" href="#equation-eq-vector-qudit">(137)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-vector-qudit-column">
+<span class="eqno">(138)<a class="headerlink" href="#equation-eq-vector-qudit-column" title="Link to this equation">#</a></span>\[\begin{split}\ket{\StateVector} = c_0 \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix} + c_1 \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix} + \ldots + c_{\Dimension - 1} \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix} = \begin{bmatrix} c_0 \\ c_1 \\ \vdots \\ c_{\Dimension - 1} \end{bmatrix}.\end{split}\]</div>
+<p>Just like in the cases of qubits and qutrits, general <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional states described by density operators can be expressed via a linear combination of the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-matrix-qudit">
+<span class="eqno">(139)<a class="headerlink" href="#equation-eq-matrix-qudit" title="Link to this equation">#</a></span>\[\StateDensity = \frac{1}{\Dimension}\sum_{\mu=0}^{\Dimension^2 - 1} \trace[\GellMann_\mu \StateDensity]\GellMann_\mu.\]</div>
+<p>In order for this to be true, the matrices <span class="math notranslate nohighlight">\(\{\GellMann_\mu\}_{\mu=0}^{\Dimension^2 - 1}\)</span> must form a basis for the space of <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> density matrices. Though there are multiple ways to find such a basis, doing so is a non-trivial task. Our construction here closely follows the work of <span id="id2">[<a class="reference internal" href="../time-travel/quantum/P-CTCs.html#cite-1-thew-qudit-2002" title="R. T. Thew, K. Nemoto, A. G. White, and W. J. Munro, “Qudit quantum-state tomography”, Physical Review A, 66(1):012303, July 2002. https://link.aps.org/doi/10.1103/PhysRevA.66.012303, doi:10.1103/PhysRevA.66.012303">2</a>]</span>, in which a suitable generalization of the Gell-Mann (or Pauli) matrices <a class="reference internal" href="#equation-eq-gell-mann">(136)</a> is obtained.</p>
+<p>We begin by introducing the elementary matrices <span class="math notranslate nohighlight">\(\{\Basis_{i}^{j}\}_{i,j = 1}^{\Dimension}\)</span> which satisfy</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-6">
+<span class="eqno">(140)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-6" title="Link to this equation">#</a></span>\[(\Basis_{i}^{j})_{nm} = \delta_{ni} \delta_{mj}, \qquad 1 \leq n \leq d, \quad 1 \leq m \leq d.\]</div>
+<p>This defines a total of <span class="math notranslate nohighlight">\(\Dimension^2\)</span> matrices, each of which possesses one entry equal to unity and all others equal to zero. Using these, we can construct <span class="math notranslate nohighlight">\(\Dimension (\Dimension - 1)\)</span> traceless off-diagonal matrices,</p>
+<div class="math notranslate nohighlight" id="equation-eq-generators-off-diagonal">
+<span class="eqno">(141)<a class="headerlink" href="#equation-eq-generators-off-diagonal" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \alpha_{i}^{j} &amp;= \Basis_{i}^{j} + \Basis_{j}^{i} \\
+    \beta_{i}^{j} &amp;= -\eye(\Basis_{i}^{j} - \Basis_{j}^{i}), \qquad 1 \leq j &lt; i \leq d
+\end{aligned}\end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\Dimension - 1\)</span> traceless diagonal matrices,</p>
+<div class="math notranslate nohighlight" id="equation-eq-generators-on-diagonal">
+<span class="eqno">(142)<a class="headerlink" href="#equation-eq-generators-on-diagonal" title="Link to this equation">#</a></span>\[\gamma_{j}^{j} = \sqrt{\frac{2}{j(j+1)}} \left[\sum_{k=1}^{j} \Basis_{k}^{k} - j \Basis_{j+1}^{j+1}\right].\]</div>
+<p>In total, we obtain <span class="math notranslate nohighlight">\(\Dimension^2 - 1\)</span> traceless matrices. Note that these matrices are in fact the generators of <span class="math notranslate nohighlight">\(\mathrm{SU}(\Dimension)\)</span> (the group of <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> unitary matrices with determinant <span class="math notranslate nohighlight">\(1\)</span>), meaning that they form a basis for the corresponding Lie algebra <span class="math notranslate nohighlight">\(\mathfrak{su}(\Dimension)\)</span> (the space of <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> traceless Hermitian matrices). As the space of <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> Hermitian matrices has a real dimensionality of <span class="math notranslate nohighlight">\(\Dimension^2\)</span>, then the difference between this space and <span class="math notranslate nohighlight">\(\mathfrak{su}(\Dimension)\)</span> is a single degree of freedom that accounts for the ability of the matrices in the former to be non-traceless. This missing property can be incorporated into the latter by including the <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional identity matrix <span class="math notranslate nohighlight">\(\Identity_\Dimension\)</span> into any of its valid bases. In other words, the set of matrices that consists of both the generators of <span class="math notranslate nohighlight">\(\mathrm{SU}(\Dimension)\)</span> and the identity <span class="math notranslate nohighlight">\(\Identity_\Dimension\)</span> necessarily forms a basis for the entire space of <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> Hermitian matrices (both traceless and non-traceless).</p>
+<p>With this in mind, we can use <a class="reference internal" href="#equation-eq-generators-off-diagonal">(141)</a> and <a class="reference internal" href="#equation-eq-generators-on-diagonal">(142)</a> to assemble a set of matrices,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-7">
+<span class="eqno">(143)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-7" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \GellMann_{(i-1)^2 + 2(j - 1)} &amp;\equiv \alpha_{i}^{j}, \\
+    \GellMann_{(i-1)^2 + 2j - 1} &amp;\equiv \beta_{i}^{j}, \\
+    \GellMann_{i^2 - 1} &amp;\equiv \gamma_{i-1}^{i-1}.
+\end{aligned}\end{split}\]</div>
+<p>These matrices are known as the <em>generalized Gell-Mann matrices</em>. In conjunction with the identity matrix <span class="math notranslate nohighlight">\(\GellMann_0 \equiv \Identity_\Dimension\)</span>, they form a suitable basis for the space of <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional Hermitian matrices, meaning that any density matrix can indeed be expressed as the linear combination <a class="reference internal" href="#equation-eq-matrix-qudit">(139)</a> using this basis.</p>
+</section>
+</section>
+<section id="quantum-quantities">
+<h2>Quantum quantities<a class="headerlink" href="#quantum-quantities" title="Link to this heading">#</a></h2>
+<section id="purity">
+<h3>Purity<a class="headerlink" href="#purity" title="Link to this heading">#</a></h3>
+<p>The mixedness of a state may be quantified by the <em>purity</em> function,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-8">
+<span class="eqno">(144)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-8" title="Link to this equation">#</a></span>\[\Purity(\StateDensity) \equiv \trace[\StateDensity^2],\]</div>
+<p>which defines a measure on the degree by which a state deviates from being (completely) pure. The purity of normalized <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional states is bounded from above by <span class="math notranslate nohighlight">\(1\)</span> (perfect purity) and below by <span class="math notranslate nohighlight">\(\frac{1}{\Dimension}\)</span> (maximal mixing), e.g.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-9">
+<span class="eqno">(145)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-9" title="Link to this equation">#</a></span>\[\frac{1}{\Dimension} \leq \Purity(\StateDensity) \leq 1,\]</div>
+<p>and so a state <span class="math notranslate nohighlight">\(\StateDensity\)</span> is pure if and only if <span class="math notranslate nohighlight">\(\Purity(\StateDensity) = 1\)</span> (else it has some degree of mixing).</p>
+</section>
+<section id="trace-distance">
+<h3>Trace distance<a class="headerlink" href="#trace-distance" title="Link to this heading">#</a></h3>
+<p>The <em>trace distance</em> is a metric on the space of density matrices, thereby providing a measure of the “distance” (or distinguishability) between two states. It is a generalization of the <em>Kolmogorov distance</em> for classical probability distributions to quantum density operators, and is defined for any two such operators <span class="math notranslate nohighlight">\(\op{\rho}\)</span> and <span class="math notranslate nohighlight">\(\op{\tau}\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-trace-distance">
+<span class="eqno">(146)<a class="headerlink" href="#equation-eq-trace-distance" title="Link to this equation">#</a></span>\[\TraceDistance(\op{\rho},\op{\tau}) \equiv \frac{1}{2} \trace \bigl| \op{\rho} - \op{\tau} \bigr|.\]</div>
+<p>Here, we defined <span class="math notranslate nohighlight">\(\bigl| \op{A} \bigr| \equiv \sqrt{\op{A}^\dagger\op{A}}\)</span> to be the absolute value of an operator <span class="math notranslate nohighlight">\(\op{A}\)</span>. Being a metric, the trace distance between density operators is always non-negative, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-10">
+<span class="eqno">(147)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-10" title="Link to this equation">#</a></span>\[\TraceDistance(\op{\rho},\op{\tau}) \geq 0,\]</div>
+<p>with equality (with zero) if and only if <span class="math notranslate nohighlight">\(\op{\rho} = \op{\tau}\)</span>. It is also necessarily symmetric, e.g., <span class="math notranslate nohighlight">\(\TraceDistance(\op{\rho},\op{\tau}) = \TraceDistance(\op{\tau},\op{\rho})\)</span>, and satisfies the <em>triangle inequality</em>, e.g.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-11">
+<span class="eqno">(148)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-11" title="Link to this equation">#</a></span>\[\TraceDistance(\op{\rho},\op{\tau}) \leq \TraceDistance(\op{\rho},\op{\sigma})  + \TraceDistance(\op{\sigma},\op{\tau}),\]</div>
+<p>for all density operators <span class="math notranslate nohighlight">\(\op{\rho}\)</span>, <span class="math notranslate nohighlight">\(\op{\tau}\)</span>, and <span class="math notranslate nohighlight">\(\op{\sigma}\)</span>. In the case of normalized quantum states, the trace distance is bounded from above by unity, e.g.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-12">
+<span class="eqno">(149)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-12" title="Link to this equation">#</a></span>\[0 \leq \TraceDistance(\op{\rho},\op{\tau}) \leq 1.\]</div>
+</section>
+<section id="fidelity">
+<h3>Fidelity<a class="headerlink" href="#fidelity" title="Link to this heading">#</a></h3>
+<p>Another measure between two quantum states is the <em>fidelity</em>, which characterizes their similarity or “closeness”. It is defined for two density operators <span class="math notranslate nohighlight">\(\op{\rho}\)</span> and <span class="math notranslate nohighlight">\(\op{\tau}\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-fidelity">
+<span class="eqno">(150)<a class="headerlink" href="#equation-eq-fidelity" title="Link to this equation">#</a></span>\[\Fidelity(\op{\rho},\op{\tau}) \equiv \left(\trace\sqrt{\sqrt{\op{\rho}} \, \op{\tau}\sqrt{\op{\rho}}}\right)^2,\]</div>
+<p>where the square roots of <span class="math notranslate nohighlight">\(\op{\rho}\)</span> and <span class="math notranslate nohighlight">\(\sqrt{\op{\rho}}\op{\tau}\sqrt{\op{\rho}}\)</span> (both positive-semidefinite matrices) are well-defined by the spectral theorem <a class="reference internal" href="mathematics.html#equation-eq-spectral-theorem">(63)</a>. While the fidelity is not a suitable metric on the space of density matrices, it still provides many of the properties that are expected of a useful distance measure. For example, it is non-negative for any input, e.g.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-13">
+<span class="eqno">(151)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-13" title="Link to this equation">#</a></span>\[0 \leq \Fidelity(\op{\rho},\op{\tau}) \leq 1,\]</div>
+<p>with equivalence to its upper bound of unity if and only if <span class="math notranslate nohighlight">\(\op{\rho} = \op{\tau}\)</span>.</p>
+<p>The fidelity expressed in <a class="reference internal" href="#equation-eq-fidelity">(150)</a> is the original, traditional form that is often cumbersome to use and inefficient to compute. Simpler yet equivalent reformulations are therefore desired, and perhaps the most encountered of such expressions is</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-14">
+<span class="eqno">(152)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-14" title="Link to this equation">#</a></span>\[\Fidelity(\op{\rho},\op{\tau}) \equiv \left(\trace\abs{\sqrt{\op{\rho}} \, \sqrt{\op{\tau}}}\right)^2,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bigl| \op{A} \bigr| \equiv \sqrt{\op{A}^\dagger\op{A}}\)</span>. Recent work <span id="id3">[<a class="reference internal" href="#cite-1-baldwin-efficiently-2023" title="A. J. Baldwin and J. A. Jones, “Efficiently computing the Uhlmann fidelity for density matrices”, Physical Review A, 107(1):012427, January 2023. https://link.aps.org/doi/10.1103/PhysRevA.107.012427, doi:10.1103/PhysRevA.107.012427">13</a>, <a class="reference internal" href="#cite-1-muller-simplified-2023" title="A. Müller, “A Simplified Expression for Quantum Fidelity”, October 2023. http://arxiv.org/abs/2309.10565, doi:10.48550/arXiv.2309.10565">14</a>]</span> has shown that, by leveraging the fact that the trace of a diagonalizable square matrix is equal to the sum of its eigenvalues, an even simpler expression for the fidelity can be written as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-15">
+<span class="eqno">(153)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-15" title="Link to this equation">#</a></span>\[\Fidelity(\op{\rho},\op{\tau}) \equiv \left(\trace\sqrt{\op{\rho} \op{\tau}}\right)^2,\]</div>
+<p>which holds true regardless of whether <span class="math notranslate nohighlight">\(\op{\rho}\)</span> and <span class="math notranslate nohighlight">\(\op{\tau}\)</span> do or do not commute.</p>
+<p>In the case where either density matrix is pure, we can write</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-16">
+<span class="eqno">(154)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-16" title="Link to this equation">#</a></span>\[\begin{split}\Fidelity(\op{\rho},\op{\tau}) = \trace[\op{\rho}\op{\tau}] =
+    \begin{cases}
+        \bra{\psi_\rho}\op{\tau}\ket{\psi_\rho} &amp; \text{when } \op{\rho} = \ket{\psi_\rho}\bra{\psi_\rho}; \\
+        \bra{\psi_\tau}\op{\rho}\ket{\psi_\tau} &amp; \text{when } \op{\tau} = \ket{\psi_\tau}\bra{\psi_\tau}; \\
+    \end{cases}\end{split}\]</div>
+<p>which further reduces to the overlap</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-17">
+<span class="eqno">(155)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-17" title="Link to this equation">#</a></span>\[\Fidelity(\op{\rho},\op{\tau}) = \abs{\braket{\psi_\rho}{\psi_\tau}}^2\]</div>
+<p>when both states are pure.</p>
+<p>Lastly, note that an alternative definition of the fidelity exists that specifies the same expression as <a class="reference internal" href="#equation-eq-fidelity">(150)</a> except without the square, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-18">
+<span class="eqno">(156)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-18" title="Link to this equation">#</a></span>\[\Fidelity(\op{\rho},\op{\tau}) \equiv \trace\sqrt{\sqrt{\op{\rho}} \, \op{\tau}\sqrt{\op{\rho}}}.\]</div>
+<p>This form, sometimes called the <em>root fidelity</em>, shares many of the same properties as <a class="reference internal" href="#equation-eq-fidelity">(150)</a>, but is ostensibly less common in the literature.</p>
+</section>
+<section id="entropy">
+<h3>Entropy<a class="headerlink" href="#entropy" title="Link to this heading">#</a></h3>
+<p>In statistical physics, the concept of <em>entropy</em> commonly provides a quantification of how much uncertainty there is in the state of a physical system. In other words, it characterizes the “amount” of mixedness of a quantum state (that is, the degree to which the state is mixed). For quantum systems, the standard measure of entropy is the <em>von Neumann entropy</em>, defined for an arbitrary state <span class="math notranslate nohighlight">\(\StateDensity\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-entropy">
+<span class="eqno">(157)<a class="headerlink" href="#equation-eq-entropy" title="Link to this equation">#</a></span>\[\Entropy(\StateDensity) \equiv -\trace[\StateDensity \log_\Base \StateDensity].\]</div>
+<p>This definition can be equivalently expressed as</p>
+<div class="math notranslate nohighlight" id="equation-eq-entropy-eigenvalues">
+<span class="eqno">(158)<a class="headerlink" href="#equation-eq-entropy-eigenvalues" title="Link to this equation">#</a></span>\[\Entropy(\StateDensity) = -\sum_{k} \lambda_k \log_\Base \lambda_k\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda_k\)</span> denote the non-zero eigenvalues in the spectrum of <span class="math notranslate nohighlight">\(\StateDensity\)</span>. Here, the matrix logarithm is taken to base <span class="math notranslate nohighlight">\(\Base\)</span>, which is the dimensionality of the unit of information in which the entropy is measured. For example, if <span class="math notranslate nohighlight">\(\Base = 2\)</span>, then <span class="math notranslate nohighlight">\(\Entropy(\StateDensity)\)</span> will be measured in “bits”. Many definitions of the von Neumann entropy alternatively specify <span class="math notranslate nohighlight">\(\Base = \e\)</span>, for which the entropy is measured in so-called “nats”.</p>
+<p>The von Neumann entropy is the quantum counterpart of the <em>Shannon entropy</em> in classical information theory. For a pure state, it is always zero, while for a mixed state, it is strictly positive with an upper bound of <span class="math notranslate nohighlight">\(\log_\Base \Dimension\)</span> (achieved with a maximally mixed state) in a unipartite <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional Hilbert space. Mathematically, we can write</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-19">
+<span class="eqno">(159)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-19" title="Link to this equation">#</a></span>\[0 \leq \Entropy(\StateDensity) \leq \log_\Base \Dimension\]</div>
+<p>with <span class="math notranslate nohighlight">\(\Entropy(\StateDensity) = 0\)</span> if and only if <span class="math notranslate nohighlight">\(\StateDensity\)</span> is pure.</p>
+<p>The quantum <em>relative entropy</em> provides a measure of distinguishability between two quantum density matrices, and is defined as</p>
+<div class="math notranslate nohighlight" id="equation-eq-entropy-relative">
+<span class="eqno">(160)<a class="headerlink" href="#equation-eq-entropy-relative" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \Entropy(\op{\rho} \Vert \op{\tau}) &amp;\equiv -\trace[\op{\rho} \log_\Base \op{\tau}] - \Entropy(\op{\rho}) \\
+    &amp;= \trace\bigl[\op{\rho}(\log_\Base \op{\rho} - \log_\Base \op{\tau})\bigr],
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\op{\rho}\)</span> and <span class="math notranslate nohighlight">\(\op{\tau}\)</span> are arbitrary quantum states of the same dimensionality. It is analogous to the notion of relative entropy from classical information theory, wherein it characterizes the “distance” between two probability distributions. <em>Klein’s inequality</em> states that the quantum relative entropy is non-negative, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-20">
+<span class="eqno">(161)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-20" title="Link to this equation">#</a></span>\[\Entropy(\op{\rho} \Vert \op{\tau}) \geq 0,\]</div>
+<p>for any two density matrices <span class="math notranslate nohighlight">\(\op{\rho}\)</span> and <span class="math notranslate nohighlight">\(\op{\tau}\)</span>, with equality if and only if <span class="math notranslate nohighlight">\(\op{\rho} = \op{\tau}\)</span>.</p>
+</section>
+<section id="mutual-information">
+<h3>Mutual information<a class="headerlink" href="#mutual-information" title="Link to this heading">#</a></h3>
+<p>The quantum <em>mutual information</em> is a measure of correlation between the subsystems of a multipartite quantum system. Let <span class="math notranslate nohighlight">\(\op{\rho}^{A,B}\)</span> be a bipartite state for a composite system with Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_A \otimes \SpaceHilbert_B\)</span>, and let</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-21">
+<span class="eqno">(162)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-21" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \op{\rho}^{A} &amp;\equiv \trace_B[\op{\rho}^{A,B}], \\
+    \op{\rho}^{B} &amp;\equiv \trace_A[\op{\rho}^{A,B}],
+\end{aligned}\end{split}\]</div>
+<p>be the reduced states on subsystems <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, respectively. Using these, we can define the mutual information between these subsystems as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-22">
+<span class="eqno">(163)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-22" title="Link to this equation">#</a></span>\[\MutualInformation(A : B) \equiv \Entropy(\op{\rho}^{A}) + \Entropy(\op{\rho}^{B}) - \Entropy(\op{\rho}^{A,B}),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Entropy(\op{\rho})\)</span> is the von Neumann entropy of a state <span class="math notranslate nohighlight">\(\op{\rho}\)</span> as defined in <a class="reference internal" href="#equation-eq-entropy">(157)</a>. An equivalent expression uses the relative entropy <a class="reference internal" href="#equation-eq-entropy-relative">(160)</a> to write</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-23">
+<span class="eqno">(164)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-23" title="Link to this equation">#</a></span>\[\MutualInformation(A : B) = \Entropy(\op{\rho}^{A,B} \Vert \op{\rho}^{A} \otimes \op{\rho}^{B}).\]</div>
+<p>The quantum mutual information is analogous to the <em>Shannon mutual information</em> in classical information theory. It is a non-negative quantity, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-24">
+<span class="eqno">(165)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-24" title="Link to this equation">#</a></span>\[\MutualInformation(A : B) \geq 0,\]</div>
+<p>with equality if and only if the subsystems are independent (and are thus uncorrelated).</p>
+</section>
+</section>
+<section id="separability-and-entanglement">
+<h2>Separability and entanglement<a class="headerlink" href="#separability-and-entanglement" title="Link to this heading">#</a></h2>
+<p>A vector state <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpacePure(\SpaceHilbert_0 \otimes \SpaceHilbert_1 \otimes \ldots \otimes \SpaceHilbert_{N - 1})\)</span> over <span class="math notranslate nohighlight">\(N\)</span> subsystems is called <em>separable</em> or a <em>product state</em> if it can be written in the form</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-25">
+<span class="eqno">(166)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-25" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\psi} &amp;= \ket{\psi_0} \otimes \ket{\psi_1} \otimes \ldots \otimes \ket{\psi_{N - 1}} \\
+    &amp;= \bigotimes_{n=0}^{N - 1} \ket{\psi_n},
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\ket{\psi_n} \in \SpacePure(\SpaceHilbert_n)\)</span> is a vector state on the <span class="math notranslate nohighlight">\(n\)</span>-th subsystem. Similarly, a mixed state <span class="math notranslate nohighlight">\(\StateDensity \in \SpaceMixed(\SpaceHilbert_0 \otimes \SpaceHilbert_1 \otimes \ldots \otimes \SpaceHilbert_{N - 1})\)</span> over <span class="math notranslate nohighlight">\(N\)</span> subsystems is separable if it can be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-26">
+<span class="eqno">(167)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-26" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \StateDensity &amp;= \sum_{k} p_k \StateDensity_k^0 \otimes \StateDensity_k^1 \otimes \ldots \otimes \StateDensity_k^{N - 1} \\
+    &amp;= \sum_{k} p_k \bigotimes_{n=0}^{N - 1} \StateDensity_k^n,
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\StateDensity_k^n \in \SpaceMixed(\SpaceHilbert_n)\)</span> are density operators representing the <span class="math notranslate nohighlight">\(n\)</span>-th subsystem, and the coefficients <span class="math notranslate nohighlight">\(p_k\)</span> are non-negative real numbers that collectively satisfy <span class="math notranslate nohighlight">\(\sum_{k} p_k = 1\)</span>. If there exists only a single non-zero <span class="math notranslate nohighlight">\(p_k\)</span>, then the state is called <em>simply separable</em> or, similarly to the separable vector state case, a <em>product state</em>.</p>
+<p>A quantum state that is not separable (<em>non-separable</em>) is said to be <em>entangled</em>. The corresponding phenomenon, <em>quantum entanglement</em>, is one of the most fascinating features of quantum mechanics. It manifests physically as quantum correlations (of various quantum properties such as observable quantities) between the individual subsystems of a composite quantum system. For example, a group of particles is entangled when the quantum state of each individual particle cannot be described independently of the state of the other particles in a collective description. This behaviour is realized to varying degrees in many different kinds of physical situations, including most interestingly when the particles are spacelike separated.</p>
+<p>Quantum entanglement is also necessarily characterized by <em>unrealized</em> correlations, such that the outcomes of measurements on the quantum system(s) are completely undecided until the measurement occurs. This means that the very act of performing a measurement on one subsystem of an entangled composition affects the entire system as a whole (i.e., apparent and irreversible collapse of the wave function). Though any such influence occurs seemingly instantaneously, quantum entanglement however does not allow any information to propagate superluminally (i.e., faster than the speed of light), despite the possibility that the subsystems of an entangled system are spacelike separated.</p>
+<p>A quantum system is said to be <em>maximally entangled</em> if it cannot be separated into pure states on each of its subsystems. This can only occur between exactly two particles, which is to say that a single particle cannot be maximally entangled with more than one other particle at a time. This is a property called <em>monogamy</em>, and is a restriction that results in perfect quantum correlations between any two such entangled subsystems. For qubits, the maximally entangled states are the <em>Bell states</em>, of which there are four:</p>
+<div class="math notranslate nohighlight" id="equation-eq-bell-state">
+<span class="eqno">(168)<a class="headerlink" href="#equation-eq-bell-state" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\Phi^+} &amp;\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{0} + \ket{1} \otimes \ket{1} \bigr), \\
+    \ket{\Phi^-} &amp;\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{0} - \ket{1} \otimes \ket{1} \bigr), \\
+    \ket{\Psi^+} &amp;\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{1} + \ket{1} \otimes \ket{0} \bigr), \\
+    \ket{\Psi^-} &amp;\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{1} - \ket{1} \otimes \ket{0} \bigr).
+\end{aligned}\end{split}\]</div>
+<p>For systems composed of three or more subsystems (e.g., particles), any multipartite entanglement that manifests cannot be maximal as in the bipartite case (due to the monogamy), but still exists in many quantitatively different types. An example of an entangled three-qubit system is the <em>Greenberger-Horne-Zeilinger (GHZ) state</em>,</p>
+<div class="math notranslate nohighlight" id="equation-eq-ghz-state">
+<span class="eqno">(169)<a class="headerlink" href="#equation-eq-ghz-state" title="Link to this equation">#</a></span>\[\ket{\mathrm{GHZ}} = \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{0} \otimes \ket{0} + \ket{1} \otimes \ket{1} \otimes \ket{1}\bigr).\]</div>
+<p>Discarding (tracing out) any of its subsystems results in a separable state. Dissimilarly, for the three-qubit <em>W state</em>,</p>
+<div class="math notranslate nohighlight" id="equation-eq-w-state">
+<span class="eqno">(170)<a class="headerlink" href="#equation-eq-w-state" title="Link to this equation">#</a></span>\[\ket{\mathrm{W}} = \frac{1}{\sqrt{3}} \bigl(\ket{0} \otimes \ket{0} \otimes \ket{1} + \ket{0} \otimes \ket{1} \otimes \ket{0} + \ket{1} \otimes \ket{0} \otimes \ket{0}\bigr),\]</div>
+<p>discarding any single subsystem yields a bipartite state that is still entangled.</p>
+</section>
+<section id="quantum-operations">
+<h2>Quantum operations<a class="headerlink" href="#quantum-operations" title="Link to this heading">#</a></h2>
+<p>A <em>quantum operation</em> is a linear, trace-non-increasing, completely positive map</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-27">
+<span class="eqno">(171)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-27" title="Link to this equation">#</a></span>\[\MapGeneral : \StateDensity \mapsto \MapGeneral[\StateDensity] \in \SpaceMixed(\SpaceHilbert).\]</div>
+<p>It is convenient to express such maps using the general form</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-28">
+<span class="eqno">(172)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-28" title="Link to this equation">#</a></span>\[\MapGeneral[\StateDensity] = \sum_{i} \Kraus^\dagger_i \StateDensity \Kraus_i\]</div>
+<p>where <span class="math notranslate nohighlight">\(\SetKraus = \{\Kraus_i\}\)</span> is a set of linear operators, known as <em>Kraus operators</em>. The characteristic of <em>trace-non-increasing</em> is the requirement that <span class="math notranslate nohighlight">\(\trace[\StateDensity] \geq \trace\bigl[\MapGeneral[\StateDensity]\bigr]\)</span>. Since it is (almost) always assumed that the input state <span class="math notranslate nohighlight">\(\StateDensity\)</span> satisfies <span class="math notranslate nohighlight">\(\trace[\StateDensity] = 1\)</span>, then the Kraus operators of a trace-non-increasing quantum operation in turn satisfy</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-29">
+<span class="eqno">(173)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-29" title="Link to this equation">#</a></span>\[\sum_{i} \Kraus^\dagger_i \Kraus_i \leq \Identity.\]</div>
+<p>In the case of equivalence, the operation is said to be <em>complete</em> (and <em>trace-preserving</em>), otherwise it is <em>incomplete</em> (and <em>trace-decreasing</em>). An operation <span class="math notranslate nohighlight">\(\MapGeneral[\StateDensity]\)</span> is also said to be <em>physical</em> if it satisfies</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-30">
+<span class="eqno">(174)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-30" title="Link to this equation">#</a></span>\[0 \leq \trace\bigl[\MapGeneral[\StateDensity]\bigr] \leq 1.\]</div>
+<p>Quantum operations are fundamental to an information-theoretic treatment of quantum mechanics as they provide the general basic formalism by which both state evolution and measurement can be described.</p>
+</section>
+<section id="quantum-evolutions">
+<h2>Quantum evolutions<a class="headerlink" href="#quantum-evolutions" title="Link to this heading">#</a></h2>
+<p>In quantum mechanics, the term <em>evolution</em> refers to the transformation (either continuous or discrete) of quantum states over some parameter space (usually time). In general, there are two fundamentally distinct types of quantum evolution: those of which are <em>closed</em>, and those of which are <em>open</em>.</p>
+<section id="closed-quantum-systems">
+<h3>Closed quantum systems<a class="headerlink" href="#closed-quantum-systems" title="Link to this heading">#</a></h3>
+<p>In a closed quantum system, the evolution of a quantum state <span class="math notranslate nohighlight">\(\StateDensity\)</span> is described simply by a unitary transformation <span class="math notranslate nohighlight">\(\Unitary\)</span> of the state, which can be expressed as the quantum operation</p>
+<div class="math notranslate nohighlight" id="equation-eq-evolution-closed-mixed">
+<span class="eqno">(175)<a class="headerlink" href="#equation-eq-evolution-closed-mixed" title="Link to this equation">#</a></span>\[\MapGeneral[\StateDensity] = \Unitary\StateDensity\Unitary^\dagger.\]</div>
+<p>This is naturally a trace-preserving map, that is, <span class="math notranslate nohighlight">\(\trace\bigl[\MapGeneral[\StateDensity]\bigr]=\trace[\StateDensity]\)</span>, since <span class="math notranslate nohighlight">\(\Unitary\)</span> is a unitary operator. In the specific case of a state that is initially a vector, we have</p>
+<div class="math notranslate nohighlight" id="equation-eq-evolution-closed-pure">
+<span class="eqno">(176)<a class="headerlink" href="#equation-eq-evolution-closed-pure" title="Link to this equation">#</a></span>\[\MapGeneral[\psi] = \Unitary\ket{\psi}.\]</div>
+<p>Perhaps the most prevailing example is the time evolution of the state <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, which is describable by a unitary of the form</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-31">
+<span class="eqno">(177)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-31" title="Link to this equation">#</a></span>\[\Unitary(\Time) = \exp\left[-\frac{\eye}{\hbar}\OperatorHamiltonian\Time\right]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Time\)</span> is the time duration, <span class="math notranslate nohighlight">\(\OperatorHamiltonian\)</span> is a Hermitian operator corresponding to the Hamiltonian of the system, and <span class="math notranslate nohighlight">\(\hbar\)</span> is the reduced Planck constant.</p>
+</section>
+<section id="open-quantum-systems">
+<h3>Open quantum systems<a class="headerlink" href="#open-quantum-systems" title="Link to this heading">#</a></h3>
+<p>In an open quantum system, the evolution <span class="math notranslate nohighlight">\(\MapGeneral[\StateDensity]\)</span> of a quantum state <span class="math notranslate nohighlight">\(\StateDensity\)</span> is described by the trace-preserving quantum operation</p>
+<div class="math notranslate nohighlight" id="equation-eq-evolution-open">
+<span class="eqno">(178)<a class="headerlink" href="#equation-eq-evolution-open" title="Link to this equation">#</a></span>\[\MapGeneral[\StateDensity] = \sum_{i} \Kraus_i \StateDensity \Kraus^\dagger_i\]</div>
+<p>where the Kraus operators are given by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-32">
+<span class="eqno">(179)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-32" title="Link to this equation">#</a></span>\[\Kraus_i = \bra{\Basis_i}\Unitary\ket{\psi}.\]</div>
+<p>This form, which is sometimes called the <em>operator-sum representation</em>, describes the evolution of some system in the Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_\mathrm{S}\)</span> that interacts with an environment system (a separate system with Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_\mathrm{E}\)</span>) some unitary <span class="math notranslate nohighlight">\(\Unitary\)</span>. In this bipartite setup, the environment is initially in the state <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> (with <span class="math notranslate nohighlight">\(\{\ket{\Basis_i}\}\)</span> denoting an orthonormal basis). Dropping the assumption that the environment is initially pure, we may in general write</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-33">
+<span class="eqno">(180)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-33" title="Link to this equation">#</a></span>\[\MapGeneral[\StateDensity] = \trace_\mathrm{E} \bigl[\Unitary(\StateDensity_\mathrm{S} \otimes \op{\tau}_\mathrm{E})\Unitary^\dagger\bigr]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\op{\tau}\)</span> is the environment state. The output of the environment under this evolution is complementarily given by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-34">
+<span class="eqno">(181)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-34" title="Link to this equation">#</a></span>\[\tilde{\MapGeneral}[\op{\tau}] = \trace_\mathrm{S} \bigl[\Unitary(\StateDensity_\mathrm{S} \otimes \op{\tau}_\mathrm{E})\Unitary^\dagger\bigr].\]</div>
+<p>Quantum operations of this kind, i.e., those which are both completely positive (CP) and trace-preserving (TP), are known as <em>CPTP maps</em> or, more popularly, <em>quantum channels</em>. Note however that there is no loss in generality in making the assumption that the environment is in a pure state, since it can always be purified by the introduction of an additional system.</p>
+</section>
+</section>
+<section id="quantum-measurements">
+<h2>Quantum measurements<a class="headerlink" href="#quantum-measurements" title="Link to this heading">#</a></h2>
+<p>A <em>quantum measurement</em> of a quantum state is expressible in general as the map</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-35">
+<span class="eqno">(182)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-35" title="Link to this equation">#</a></span>\[\MapGeneral_i[\StateDensity] = \Kraus_i \StateDensity \Kraus^\dagger_i.\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\{\Kraus_i\}\)</span> are Kraus operators which necessarily satisfy the completeness relation</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-36">
+<span class="eqno">(183)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-36" title="Link to this equation">#</a></span>\[\sum_{i} \Kraus^\dagger_i \Kraus_i = \Identity\]</div>
+<p>since all possible measurement values together must necessarily form a complete quantum operation. Note that by writing the form</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-37">
+<span class="eqno">(184)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-37" title="Link to this equation">#</a></span>\[\Kraus_i = \Unitary_i \sqrt{\op{M}_i}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\SetUnitary = \{\Unitary_i\}\)</span> is a set of unitary operators and <span class="math notranslate nohighlight">\(\SetObservable = \{\op{M}_i\}\)</span> is a set of positive operators, we can, due to the relation <span class="math notranslate nohighlight">\(\Kraus^\dagger_i \Kraus_i = \op{M}_i\)</span> and the completeness of the Kraus operators, conclude that</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-38">
+<span class="eqno">(185)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-38" title="Link to this equation">#</a></span>\[\sum_i \op{M}_i = \Identity.\]</div>
+<p>The set <span class="math notranslate nohighlight">\(\SetObservable\)</span> is therefore called a <em>quantum observable</em>, or more formally, a <em>positive operator-valued measure</em> (POVM), and has an associated probability distribution <span class="math notranslate nohighlight">\(\SetProbability = \{p_i\}\)</span> given by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-39">
+<span class="eqno">(186)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-39" title="Link to this equation">#</a></span>\[p_i = \trace[\StateDensity\op{M}_i] = \trace[\Kraus_i \StateDensity \Kraus^\dagger_i].\]</div>
+<p>Given that preservation of the trace cannot be guaranteed under the measurement, then accordingly the post-measurement state <span class="math notranslate nohighlight">\(\StateDensity^\prime\)</span> can be normalized if required, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-40">
+<span class="eqno">(187)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-40" title="Link to this equation">#</a></span>\[\StateDensity^\prime = \frac{\MapGeneral_i[\StateDensity]}{\trace\bigl[\MapGeneral_i[\StateDensity]\bigr]}.\]</div>
+<p>This is to ensure that a physical post-measurement state is always recovered, which is to say that <span class="math notranslate nohighlight">\(\trace[\StateDensity^\prime] = 1\)</span>. Quantum measurement can therefore be thought as the extension of the concept of trace-non-preserving quantum operations to include normalization, the procedure of which makes it distinct from such ordinary quantum operations (being necessarily linear). In essence, a quantum measurement describes the probability of obtaining a particular outcome of a quantum operation on a system, in addition to the change in the state of that affected system. If however the result of the measurement is lost, then the post-measurement quantum state is (probabilistically) the sum of all possible outcomes (without renormalization) of the associated POVM,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-41">
+<span class="eqno">(188)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-41" title="Link to this equation">#</a></span>\[\StateDensity^\prime = \sum_{i} \Kraus_i \StateDensity \Kraus^\dagger_i.\]</div>
+<p>This defines a linear, trace-preserving, completely positive map.</p>
+<p>A quantum observable <span class="math notranslate nohighlight">\(\SetObservable = \{\op{\Pi}_i\}\)</span> is said to be <em>sharp</em> if, in addition to having positive operators, each operator <span class="math notranslate nohighlight">\(\op{\Pi}_i\)</span> is a projector, that is, <span class="math notranslate nohighlight">\(\op{\Pi}_i = \op{\Pi}^2_i\)</span>. According to the spectral theorem <a class="reference internal" href="mathematics.html#equation-eq-spectral-theorem">(63)</a>, every Hermitian operator <span class="math notranslate nohighlight">\(\op{H}\)</span> may be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-42">
+<span class="eqno">(189)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-42" title="Link to this equation">#</a></span>\[\op{H} = \sum_i \lambda_i \op{\Pi}_i\]</div>
+<p>with eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span>. This means that the entire observable <span class="math notranslate nohighlight">\(\SetObservable\)</span> is representable by the single Hermitian operator <span class="math notranslate nohighlight">\(\op{H}\)</span>, which is why such operators are typically referred to simply as <em>observables</em> in standard quantum theory. Given this expression, the probability of measuring an eigenvalue <span class="math notranslate nohighlight">\(\lambda_i\)</span> is given by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-43">
+<span class="eqno">(190)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-43" title="Link to this equation">#</a></span>\[p_i = \trace[\StateDensity \op{\Pi}_i],\]</div>
+<p>which is known as the <em>Born rule</em>, and is one of the key principles of quantum mechanics. Accordingly, the <em>expected value</em> of the associated observable is simply</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-44">
+<span class="eqno">(191)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-44" title="Link to this equation">#</a></span>\[\langle\op{H}\rangle = \trace[\StateDensity \op{H}].\]</div>
+</section>
+<section id="integrals-over-quantum-states">
+<span id="sec-integrals"></span><h2>Integrals over quantum states<a class="headerlink" href="#integrals-over-quantum-states" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> denote the Hilbert space for a <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional quantum system. The integral over quantum states <span class="math notranslate nohighlight">\(\StateDensity \in \SpaceMixed(\SpaceHilbert)\)</span> is defined <span id="id4">[<a class="reference internal" href="../time-travel/quantum/comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>, <a class="reference internal" href="#cite-1-bengtsson-geometry-2017" title="I. Bengtsson and K. Życzkowski, Geometry of Quantum States: An Introduction to Quantum Entanglement, Cambridge University Press, Cambridge, 2nd edition, 2017.">6</a>]</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-integral-mixed">
+<span class="eqno">(192)<a class="headerlink" href="#equation-eq-integral-mixed" title="Link to this equation">#</a></span>\[\Integral = \int_{\SpaceMixed(\SpaceHilbert)} \diff[\StateDensity] \, \FunctionIntermediate(\StateDensity)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\FunctionIntermediate : \SpaceMixed(\SpaceHilbert) \rightarrow \Complexes\)</span> is any scalar function, and <span class="math notranslate nohighlight">\(\diff[\StateDensity]\)</span> is the integration measure over <span class="math notranslate nohighlight">\(\SpaceMixed(\SpaceHilbert)\)</span>. To compute the integral, an explicit form of the measure must be defined, and we are typically free to choose any such form in accordance with what we wish to accomplish. In the case of mixed states <span class="math notranslate nohighlight">\(\StateDensity \in \SpaceMixed(\SpaceHilbert)\)</span>, there is in fact no unique natural measure on <span class="math notranslate nohighlight">\(\SpaceMixed(\SpaceHilbert)\)</span>. One must therefore be chosen (along with a way to parametrize <span class="math notranslate nohighlight">\(\StateDensity\)</span>), which means that that is no unique, natural way to define the integral <span class="math notranslate nohighlight">\(\Integral\)</span>, as it will depend on the choice of measure used.</p>
+<p>For the specific case of pure states <span class="math notranslate nohighlight">\(\ket{\StateVector} \in \SpacePure(\SpaceHilbert)\)</span> however, we are able to define both a suitable measure and parametrization. Given some <span class="math notranslate nohighlight">\(\FunctionIntermediate : \SpacePure(\SpaceHilbert) \rightarrow \Complexes\)</span>, the integral over pure states <span id="id5">[<a class="reference internal" href="../time-travel/quantum/comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>, <a class="reference internal" href="#cite-1-bengtsson-geometry-2017" title="I. Bengtsson and K. Życzkowski, Geometry of Quantum States: An Introduction to Quantum Entanglement, Cambridge University Press, Cambridge, 2nd edition, 2017.">6</a>]</span> is</p>
+<div class="math notranslate nohighlight" id="equation-eq-integral-pure">
+<span class="eqno">(193)<a class="headerlink" href="#equation-eq-integral-pure" title="Link to this equation">#</a></span>\[\Integral = \int_{\SpacePure(\SpaceHilbert)} \diff[\StateVector] \, \FunctionIntermediate(\StateVector)\]</div>
+<p>An important class of unitary transformations consists of random unitary matrices distributed according to the Haar measure on the group of <span class="math notranslate nohighlight">\(\Dimension\times\Dimension\)</span> unitary matrices <span class="math notranslate nohighlight">\(\GroupUnitary(\Dimension)\)</span>. This is significant for our purposes, as conveniently there exists a unique, natural measure over <span class="math notranslate nohighlight">\(\SpacePure(\SpaceHilbert)\)</span> that is invariant under such transformations, and perhaps the best way to write this is in the Hurwitz parametrization <span id="id6">[<a class="reference internal" href="#cite-1-bengtsson-geometry-2017" title="I. Bengtsson and K. Życzkowski, Geometry of Quantum States: An Introduction to Quantum Entanglement, Cambridge University Press, Cambridge, 2nd edition, 2017.">6</a>, <a class="reference internal" href="#cite-1-hurwitz-uber-1897" title="A. Hurwitz, “Über die Erzeugung der Invarianten durch Integration”, Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen, Mathematisch-Physikalische Klasse, 1897:71–90, 1897. https://eudml.org/doc/58378">16</a>, <a class="reference internal" href="#cite-1-zyczkowski-induced-2001" title="K. Zyczkowski and H.-J. Sommers, “Induced measures in the space of mixed quantum states”, Journal of Physics A: Mathematical and General, 34(35):7111, August 2001. https://dx.doi.org/10.1088/0305-4470/34/35/335, doi:10.1088/0305-4470/34/35/335">17</a>]</span>. Let us first introduce the Bloch sphere parametrization, often used for qubits, which involves the rotationally invariant area measure on a (unit) <span class="math notranslate nohighlight">\(2\)</span>-sphere:</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-45">
+<span class="eqno">(194)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-45" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\StateVector} &amp;= \sin(\vartheta)\ket{0} + \e^{\eye\varphi}\cos(\vartheta)\ket{1},\\
+    \diff[\StateVector] &amp;\propto \sin(2\vartheta) \, \diff(2\vartheta) \, \diff\varphi.
+\end{aligned}\end{split}\]</div>
+<p>The Hurwitz parametrization is then simply a generalization of this Bloch sphere parametrization to <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional (pure) states. Therefore, given some orthonormal basis <span class="math notranslate nohighlight">\(\{\ket{\mu}\}_{\mu=0}^{\Dimension - 1}\)</span> of <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, any pure state <span class="math notranslate nohighlight">\(\ket{\StateVector} \in \SpacePure(\SpaceHilbert)\)</span> may be expressed in this parametrization as</p>
+<div class="math notranslate nohighlight" id="equation-eq-hurwitz-state">
+<span class="eqno">(195)<a class="headerlink" href="#equation-eq-hurwitz-state" title="Link to this equation">#</a></span>\[\ket{\StateVector} = \prod_{\nu=\Dimension - 1}^{1} \sin(\vartheta_\nu) \ket{0} + \sum_{\mu = 1}^{\Dimension - 2} \e^{\eye \varphi_\mu}\cos(\vartheta_\mu) \prod_{\nu = \Dimension - 1}^{\mu + 1} \sin(\vartheta_\nu) \ket{\mu} + \e^{\eye \varphi_{\Dimension - 1}} \cos(\vartheta_{\Dimension - 1}) \ket{\Dimension - 1}\]</div>
+<p>for parameters <span class="math notranslate nohighlight">\(\vartheta_\mu \in [0,\tfrac{\pi}{2}]\)</span> and <span class="math notranslate nohighlight">\(\varphi_\mu \in [0,2\pi)\)</span>. The corresponding integration measure (unique up to a multiplicative constant) in this parametrization takes the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-hurwitz-measure">
+<span class="eqno">(196)<a class="headerlink" href="#equation-eq-hurwitz-measure" title="Link to this equation">#</a></span>\[\diff[\StateVector(\vartheta_\mu,\varphi_\mu)] = \prod_{\mu = 1}^{\Dimension - 1} \cos(\vartheta_\mu) \, \sin^{2\mu - 1}(\vartheta_\mu) \, \diff\vartheta_\mu \, \diff\varphi_\mu,\]</div>
+<p>which provides a natural measure for integrating over pure quantum states. Importantly, this is invariant under unitary operations, so that under <span class="math notranslate nohighlight">\(\ket{\StateVector} \rightarrow \Unitary\ket{\StateVector}\)</span>, the measure transforms as <span class="math notranslate nohighlight">\(\diff[\StateVector] \rightarrow \diff[\Unitary\StateVector] = \diff[\StateVector]\)</span>.</p>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-nielsen-quantum-2010" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>M. Nielsen and I. Chuang, <em>Quantum Computation and Quantum Information: 10th Anniversary Edition</em>, Cambridge University Press, Cambridge, 2010.</p>
+</div>
+<div class="citation" id="cite-1-zeidler-quantum-2006" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
+<p>E. Zeidler, <em>Quantum Field Theory I: Basics in Mathematics and Physics</em>, Springer, Berlin, Heidelberg, 2006.</p>
+</div>
+<div class="citation" id="cite-1-dimock-quantum-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
+<p>J. Dimock, <em>Quantum Mechanics and Quantum Field Theory: A Mathematical Primer</em>, Cambridge University Press, Cambridge, 2011.</p>
+</div>
+<div class="citation" id="cite-1-dirac-principles-1982" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">4</a><span class="fn-bracket">]</span></span>
+<p>P. A. M. Dirac, <em>The Principles of Quantum Mechanics</em>, Clarendon Press, Oxford, 4th edition, February 1982.</p>
+</div>
+<div class="citation" id="cite-1-wilde-quantum-2017" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">5</a><span class="fn-bracket">]</span></span>
+<p>M. M. Wilde, <em>Quantum Information Theory</em>, Cambridge University Press, Cambridge, 2nd edition, 2017.</p>
+</div>
+<div class="citation" id="cite-1-bengtsson-geometry-2017" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id4">2</a>,<a role="doc-backlink" href="#id5">3</a>,<a role="doc-backlink" href="#id6">4</a>)</span>
+<p>I. Bengtsson and K. Życzkowski, <em>Geometry of Quantum States: An Introduction to Quantum Entanglement</em>, Cambridge University Press, Cambridge, 2nd edition, 2017.</p>
+</div>
+<div class="citation" id="cite-1-williams-explorations-2010" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">7</a><span class="fn-bracket">]</span></span>
+<p>C. P. Williams, <em>Explorations in Quantum Computing</em>, Springer, London, 2nd edition, December 2010.</p>
+</div>
+<div class="citation" id="cite-1-schlosshauer-decoherence-2007" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">8</a><span class="fn-bracket">]</span></span>
+<p>M. A. Schlosshauer, <em>Decoherence and the Quantum-to-Classical Transition</em>, The Frontiers Collection, Springer, Berlin ; London, 2007.</p>
+</div>
+<div class="citation" id="cite-1-moret-bonillo-adventures-2017" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">9</a><span class="fn-bracket">]</span></span>
+<p>V. Moret-Bonillo, <em>Adventures in Computer Science: From Classical Bits to Quantum Bits</em>, Springer International Publishing, Cham, 2017.</p>
+</div>
+<div class="citation" id="cite-1-serrano-quantum-2022" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">10</a><span class="fn-bracket">]</span></span>
+<p>M. A. Serrano, R. Pérez-Castillo, and M. Piattini (editors), <em>Quantum Software Engineering</em>, Springer International Publishing, Cham, 2022.</p>
+</div>
+<div class="citation" id="cite-1-yanofsky-quantum-2008" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">11</a><span class="fn-bracket">]</span></span>
+<p>N. S. Yanofsky and M. A. Mannucci, <em>Quantum Computing for Computer Scientists</em>, Cambridge University Press, Cambridge, 2008.</p>
+</div>
+<div class="citation" id="cite-1-thew-qudit-2002" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">12</a><span class="fn-bracket">]</span></span>
+<p>R. T. Thew, K. Nemoto, A. G. White, and W. J. Munro, “Qudit quantum-state tomography”, <em>Physical Review A</em>, 66(1):012303, July 2002. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.66.012303">https://link.aps.org/doi/10.1103/PhysRevA.66.012303</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.66.012303">doi:10.1103/PhysRevA.66.012303</a></p>
+</div>
+<div class="citation" id="cite-1-baldwin-efficiently-2023" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">13</a><span class="fn-bracket">]</span></span>
+<p>A. J. Baldwin and J. A. Jones, “Efficiently computing the Uhlmann fidelity for density matrices”, <em>Physical Review A</em>, 107(1):012427, January 2023. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.107.012427">https://link.aps.org/doi/10.1103/PhysRevA.107.012427</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.107.012427">doi:10.1103/PhysRevA.107.012427</a></p>
+</div>
+<div class="citation" id="cite-1-muller-simplified-2023" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">14</a><span class="fn-bracket">]</span></span>
+<p>A. Müller, “A Simplified Expression for Quantum Fidelity”, October 2023. <a class="reference external" href="http://arxiv.org/abs/2309.10565">http://arxiv.org/abs/2309.10565</a>, <a class="reference external" href="https://doi.org/10.48550/arXiv.2309.10565">doi:10.48550/arXiv.2309.10565</a></p>
+</div>
+<div class="citation" id="cite-1-allen-treating-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>15<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id5">2</a>)</span>
+<p>J.-M. A. Allen, “Treating time travel quantum mechanically”, <em>Physical Review A</em>, 90(4):042107, October 2014. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.90.042107">https://link.aps.org/doi/10.1103/PhysRevA.90.042107</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.90.042107">doi:10.1103/PhysRevA.90.042107</a></p>
+</div>
+<div class="citation" id="cite-1-hurwitz-uber-1897" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">16</a><span class="fn-bracket">]</span></span>
+<p>A. Hurwitz, “Über die Erzeugung der Invarianten durch Integration”, <em>Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen, Mathematisch-Physikalische Klasse</em>, 1897:71–90, 1897. <a class="reference external" href="https://eudml.org/doc/58378">https://eudml.org/doc/58378</a></p>
+</div>
+<div class="citation" id="cite-1-zyczkowski-induced-2001" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">17</a><span class="fn-bracket">]</span></span>
+<p>K. Zyczkowski and H.-J. Sommers, “Induced measures in the space of mixed quantum states”, <em>Journal of Physics A: Mathematical and General</em>, 34(35):7111, August 2001. <a class="reference external" href="https://dx.doi.org/10.1088/0305-4470/34/35/335">https://dx.doi.org/10.1088/0305-4470/34/35/335</a>, <a class="reference external" href="https://doi.org/10.1088/0305-4470/34/35/335">doi:10.1088/0305-4470/34/35/335</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="mathematics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mathematical foundations of quantum mechanics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="continuous.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quantum mechanics on continuous Hilbert spaces</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-states">Quantum states</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pure-states">Pure states</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-states">Mixed states</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qubits">Qubits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qutrits">Qutrits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qudits">Qudits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-quantities">Quantum quantities</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purity">Purity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-distance">Trace distance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fidelity">Fidelity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">Entropy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information">Mutual information</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separability-and-entanglement">Separability and entanglement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-operations">Quantum operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-evolutions">Quantum evolutions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-quantum-systems">Closed quantum systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-quantum-systems">Open quantum systems</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-measurements">Quantum measurements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrals-over-quantum-states">Integrals over quantum states</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

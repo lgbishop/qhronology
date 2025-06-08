@@ -1,0 +1,37 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\hfill
+\noindent\begin{minipage}{0.15\linewidth}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=2]
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \targ{} & \qw
+\end{quantikz}
+$\quad \iff$
+\end{minipage}%
+\begin{minipage}{0.85\linewidth}
+\begin{align}
+\Controlled{\NOT}[0,1][][2] &= {\ket{0}\bra{0}}^{0} \otimes \Identity^{1,2} + {\ket{1}\bra{1}}^{0} \otimes \Controlled{\NOT}[1][][2] \nonumber \\
+&= \Identity \otimes \Identity \otimes \Identity + {\ket{1}\bra{1}} \otimes {\ket{1}\bra{1}} \otimes (\Pauli_{x} - \Identity) \nonumber
+\end{align}
+\vfill
+\end{minipage}
+\end{document}

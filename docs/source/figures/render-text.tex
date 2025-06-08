@@ -1,0 +1,380 @@
+\documentclass{article}
+\pagenumbering{gobble}
+
+\providecommand\Filename{"./text/text_examples_algorithms_teleportation.txt"}
+
+% \usepackage[utf8]{inputenc}
+% \usepackage[default]{sourcecodepro}
+% \usepackage[T1]{fontenc}
+
+% The `fontspec` package lets you use a system-installed font,
+% but only works with XeLaTeX and LuaLaTeX.
+\usepackage{fontspec}
+% \fontspec[Scale=MatchAveragecase]{Source Code Pro}
+\setmonofont[Scale=MatchAveragecase]{Fragment Mono}
+% \setmonofont[Scale=MatchAveragecase]{Iosevka}
+% \setmonofont[Scale=MatchAveragecase]{JuliaMono}
+% \setmonofont[Scale=MatchAveragecase]{Fira Mono}
+% \setmonofont[Scale=MatchAveragecase]{Hack}
+% \setmonofont[Scale=MatchAveragecase]{DejaVu Sans Mono}
+% \newfontface\greekfont{JuliaMono}
+
+% \directlua{luaotfload.add_fallback
+%    ("unicode_fallback",
+%     {
+%       "JuliaMono:mode=hard;"
+%     }
+%    )}
+% 
+% \setmonofont{Fragment Mono}[
+%   Scale          = MatchLowercase,
+%   % Extension      = .otf ,
+%   % BoldFont       = texgyretermes-bold,
+%   % ItalicFont     = texgyretermes-italic,
+%   % BoldItalicFont = texgyretermes-bolditalic,
+%   RawFeature={fallback=unicode_fallback}
+% ]
+% 
+% \newfontfamily{\defaultfont}[CharacterWidth=Full,Width=100]{Fragment Mono}
+% \newfontfamily{\latinfont}[Width=50]{DejaVu Sans Mono}
+% \newfontfamily{\greekfont}[CharacterWidth=Full,Width=50]{DejaVu Sans Mono}
+% \usepackage[Latin, Greek]{ucharclasses}
+% \setDefaultTransitions{\defaultfont}{}
+% \setTransitionsForLatin{\latinfont}{}
+% \setTransitionsForGreek{\greekfont}{}
+
+% \newcommand{\setglyphwidth}[1]{%
+%   \fontdimen2\defaultfont=#1
+%   \fontdimen2\latinfont=#1
+%   \fontdimen2\greekfont=#1
+% }
+
+% \defaultfontfeatures{Scale=1}
+% \defaultfontfeatures[\rmfamily]{Scale=1}
+
+\usepackage{graphicx}
+
+\usepackage{fancyvrb}
+ 
+\newcommand{\getmonowidth}{\the\fontdimen2\font}
+\newcommand{\getmonoheight}{\the\fontdimen1\font}
+\def\glyphwidth{\getmonowidth}
+\def\glyphheight{\getmonoheight}
+
+\usepackage[verbose]{newunicodechar}
+\newfontfamily{\greekfont}[Scale=MatchAveragecase]{JuliaMono}
+\newfontfamily{\latinfont}[Scale=MatchAveragecase]{Fragment Mono}
+\newfontfamily{\shapefont}[Scale=MatchAveragecase]{DejaVu Sans Mono}
+\newfontfamily{\linefont}[Scale=MatchAveragecase]{Fragment Mono}
+\newfontfamily{\mathfont}[Scale=MatchAveragecase]{JuliaMono}
+
+% \newfontfamily{\greekfont}[Scale=MatchAveragecase]{Source Code Pro}
+% \newfontfamily{\latinfont}[Scale=MatchAveragecase]{Source Code Pro}
+% \newfontfamily{\shapefont}[Scale=MatchAveragecase]{Source Code Pro}
+% \newfontfamily{\linefont}[Scale=MatchAveragecase]{Source Code Pro}
+% \newfontfamily{\mathfont}[Scale=MatchAveragecase]{Source Code Pro}
+
+\newcommand{\definegreekreplacement}[1]{%
+    \newunicodechar{#1}{\makebox[\glyphwidth][c]{\greekfont #1}}%
+}
+% \newcommand{\definegreekitalicisedreplacement}[1]{%
+%     \newunicodechar{#1}{\textit{\makebox[\glyphwidth][c]{\greekfont #1}}}%
+% }
+\newcommand{\definegreekitalicisedreplacement}[1]{%
+    \newunicodechar{#1}{\makebox[\glyphwidth][c]{\greekfont \textit{#1}}}%
+}
+\newcommand{\definelatinreplacement}[1]{%
+    \newunicodechar{#1}{\makebox[\glyphwidth][c]{\latinfont #1}}%
+}
+\newcommand{\definelatinitalicisedreplacement}[1]{%
+    \newunicodechar{#1}{\makebox[\glyphwidth][c]{\latinfont \textbf{#1}}}%
+}
+\newcommand{\defineshapereplacement}[1]{%
+    \newunicodechar{#1}{\makebox[\glyphwidth][c]{\shapefont #1}}%
+}
+\newcommand{\definelinereplacement}[1]{%
+    \newunicodechar{#1}{\makebox[\glyphwidth][c]{\linefont #1}}%
+}
+\newcommand{\definemathreplacement}[1]{%
+    \newunicodechar{#1}{\makebox[\glyphwidth][c]{\mathfont #1}}%
+}
+
+\newcommand{\fixedwidth}[1]{\makebox[\glyphwidth][c]{#1}}
+
+\XeTeXinterchartokenstate=1
+\newXeTeXintercharclass\latinsub
+
+% \XeTeXcharclass"0030=\latinsub % 0
+% \XeTeXcharclass"0031=\latinsub % 1
+% \XeTeXcharclass"0032=\latinsub % 2
+% \XeTeXcharclass"0033=\latinsub % 3
+% \XeTeXcharclass"0034=\latinsub % 4
+% \XeTeXcharclass"0035=\latinsub % 5
+% \XeTeXcharclass"0036=\latinsub % 6
+% \XeTeXcharclass"0037=\latinsub % 7
+% \XeTeXcharclass"0038=\latinsub % 8
+% \XeTeXcharclass"0039=\latinsub % 9
+
+\XeTeXcharclass"0041=\latinsub % A
+\XeTeXcharclass"0042=\latinsub % B
+\XeTeXcharclass"0043=\latinsub % C
+\XeTeXcharclass"0044=\latinsub % D
+\XeTeXcharclass"0045=\latinsub % E
+\XeTeXcharclass"0046=\latinsub % F
+\XeTeXcharclass"0047=\latinsub % G
+\XeTeXcharclass"0048=\latinsub % H
+\XeTeXcharclass"0049=\latinsub % I
+\XeTeXcharclass"004A=\latinsub % J
+\XeTeXcharclass"004B=\latinsub % K
+\XeTeXcharclass"004C=\latinsub % L
+\XeTeXcharclass"004D=\latinsub % M
+\XeTeXcharclass"004E=\latinsub % N
+\XeTeXcharclass"004F=\latinsub % O
+\XeTeXcharclass"0050=\latinsub % P
+\XeTeXcharclass"0051=\latinsub % Q
+\XeTeXcharclass"0052=\latinsub % R
+\XeTeXcharclass"0053=\latinsub % S
+\XeTeXcharclass"0054=\latinsub % T
+\XeTeXcharclass"0055=\latinsub % U
+\XeTeXcharclass"0056=\latinsub % V
+\XeTeXcharclass"0057=\latinsub % W
+\XeTeXcharclass"0058=\latinsub % X
+\XeTeXcharclass"0059=\latinsub % Y
+\XeTeXcharclass"005A=\latinsub % Z
+
+\XeTeXcharclass"0061=\latinsub % a
+\XeTeXcharclass"0062=\latinsub % b
+\XeTeXcharclass"0063=\latinsub % c
+\XeTeXcharclass"0064=\latinsub % d
+\XeTeXcharclass"0065=\latinsub % e
+\XeTeXcharclass"0066=\latinsub % f
+\XeTeXcharclass"0067=\latinsub % g
+\XeTeXcharclass"0068=\latinsub % h
+\XeTeXcharclass"0069=\latinsub % i
+\XeTeXcharclass"006A=\latinsub % j
+\XeTeXcharclass"006B=\latinsub % k
+\XeTeXcharclass"006C=\latinsub % l
+\XeTeXcharclass"006D=\latinsub % m
+\XeTeXcharclass"006E=\latinsub % n
+\XeTeXcharclass"006F=\latinsub % o
+\XeTeXcharclass"0070=\latinsub % p
+\XeTeXcharclass"0071=\latinsub % q
+\XeTeXcharclass"0072=\latinsub % r
+\XeTeXcharclass"0073=\latinsub % s
+\XeTeXcharclass"0074=\latinsub % t
+\XeTeXcharclass"0075=\latinsub % u
+\XeTeXcharclass"0076=\latinsub % v
+\XeTeXcharclass"0077=\latinsub % w
+\XeTeXcharclass"0078=\latinsub % x
+\XeTeXcharclass"0079=\latinsub % y
+\XeTeXcharclass"007A=\latinsub % z
+
+\XeTeXinterchartoks 0 \latinsub = {\begingroup\latinfont\itshape}
+\XeTeXinterchartoks 4095 \latinsub = {\begingroup\latinfont\itshape}
+\XeTeXinterchartoks \latinsub 0 = {\endgroup}
+\XeTeXinterchartoks \latinsub 4095 = {\endgroup}
+
+% % Lowercase Latin letters
+% \definelatinitalicisedreplacement{a}
+% \definelatinitalicisedreplacement{b}
+% \definelatinitalicisedreplacement{c}
+% \definelatinitalicisedreplacement{d}
+% \definelatinitalicisedreplacement{e}
+% \definelatinitalicisedreplacement{f}
+% \definelatinitalicisedreplacement{g}
+% \definelatinitalicisedreplacement{h}
+% \definelatinitalicisedreplacement{i}
+% \definelatinitalicisedreplacement{j}
+% \definelatinitalicisedreplacement{k}
+% \definelatinitalicisedreplacement{l}
+% \definelatinitalicisedreplacement{m}
+% \definelatinitalicisedreplacement{n}
+% \definelatinitalicisedreplacement{o}
+% \definelatinitalicisedreplacement{p}
+% \definelatinitalicisedreplacement{q}
+% \definelatinitalicisedreplacement{r}
+% \definelatinitalicisedreplacement{s}
+% \definelatinitalicisedreplacement{t}
+% \definelatinitalicisedreplacement{u}
+% \definelatinitalicisedreplacement{v}
+% \definelatinitalicisedreplacement{w}
+% \definelatinitalicisedreplacement{x}
+% \definelatinitalicisedreplacement{y}
+% \definelatinitalicisedreplacement{z}
+
+% % Uppercase Latin letters
+% \definelatinreplacement{A}
+% \definelatinreplacement{B}
+% \definelatinreplacement{C}
+% \definelatinreplacement{D}
+% \definelatinreplacement{E}
+% \definelatinreplacement{F}
+% \definelatinreplacement{G}
+% \definelatinreplacement{H}
+% \definelatinreplacement{I}
+% \definelatinreplacement{J}
+% \definelatinreplacement{K}
+% \definelatinreplacement{L}
+% \definelatinreplacement{M}
+% \definelatinreplacement{N}
+% \definelatinreplacement{O}
+% \definelatinreplacement{P}
+% \definelatinreplacement{Q}
+% \definelatinreplacement{R}
+% \definelatinreplacement{S}
+% \definelatinreplacement{T}
+% \definelatinreplacement{U}
+% \definelatinreplacement{V}
+% \definelatinreplacement{W}
+% \definelatinreplacement{X}
+% \definelatinreplacement{Y}
+% \definelatinreplacement{Z}
+
+% Lowercase Greek letters
+\definegreekitalicisedreplacement{α} % alpha
+\definegreekitalicisedreplacement{β} % beta
+\definegreekitalicisedreplacement{γ} % gamma
+\definegreekitalicisedreplacement{δ} % delta
+\definegreekitalicisedreplacement{ε} % epsilon
+\definegreekitalicisedreplacement{ζ} % zeta
+\definegreekitalicisedreplacement{η} % eta
+\definegreekitalicisedreplacement{θ} % theta
+\definegreekitalicisedreplacement{ι} % iota
+\definegreekitalicisedreplacement{κ} % kappa
+\definegreekitalicisedreplacement{λ} % lambda
+\definegreekitalicisedreplacement{μ} % mu
+\definegreekitalicisedreplacement{ν} % nu
+\definegreekitalicisedreplacement{ξ} % xi
+\definegreekitalicisedreplacement{ο} % omicron
+\definegreekitalicisedreplacement{π} % pi
+\definegreekitalicisedreplacement{ρ} % rho
+\definegreekitalicisedreplacement{σ} % sigma
+\definegreekitalicisedreplacement{ς} % final sigma
+\definegreekitalicisedreplacement{τ} % tau
+\definegreekitalicisedreplacement{υ} % upsilon
+% \definegreekitalicisedreplacement{ϕ} % phi
+\definegreekitalicisedreplacement{φ} % phi
+\definegreekitalicisedreplacement{χ} % chi
+\definegreekitalicisedreplacement{ψ} % psi
+\definegreekitalicisedreplacement{ω} % omega
+
+% Uppercase Greek letters
+\definegreekreplacement{Α} % Alpha
+\definegreekreplacement{Β} % Beta
+\definegreekreplacement{Γ} % Gamma
+\definegreekreplacement{Δ} % Delta
+\definegreekreplacement{Ε} % Epsilon
+\definegreekreplacement{Ζ} % Zeta
+\definegreekreplacement{Η} % Eta
+\definegreekreplacement{Θ} % Theta
+\definegreekreplacement{Ι} % Iota
+\definegreekreplacement{Κ} % Kappa
+\definegreekreplacement{Λ} % Lambda
+\definegreekreplacement{Μ} % Mu
+\definegreekreplacement{Ν} % Nu
+\definegreekreplacement{Ξ} % Xi
+\definegreekreplacement{Ο} % Omicron
+\definegreekreplacement{Π} % Pi
+\definegreekreplacement{Ρ} % Rho
+\definegreekreplacement{Σ} % Sigma
+\definegreekreplacement{Τ} % Tau
+\definegreekreplacement{Υ} % Upsilon
+\definegreekreplacement{Φ} % Phi
+\definegreekreplacement{Χ} % Chi
+\definegreekreplacement{Ψ} % Psi
+\definegreekreplacement{Ω} % Omega
+
+% \definelatinreplacement{H}
+\defineshapereplacement{⎧}
+\defineshapereplacement{⎪}
+\defineshapereplacement{⎩}
+
+\defineshapereplacement{⎫}
+\defineshapereplacement{⎭}
+
+\defineshapereplacement{⟩}
+\defineshapereplacement{⟨}
+\newunicodechar{⎨}{\raisebox{-0.005em}{\makebox[\glyphwidth][c]{\shapefont ⎨}}}
+\newunicodechar{⎬}{\raisebox{-0.005em}{\makebox[\glyphwidth][c]{\shapefont ⎬}}}
+\newunicodechar{⏚}{\rotatebox[origin=c]{90}{\raisebox{-0.175em}{\makebox[\glyphwidth][c]{\mathfont \large ⏚}}}}
+
+% \definelinereplacement{─} % Box Drawings Light Horizontal
+% \definelinereplacement{━} % Box Drawings Heavy Horizontal
+% \definelinereplacement{│} % Box Drawings Light Vertical
+% \definelinereplacement{┃} % Box Drawings Heavy Vertical
+% \definelinereplacement{┌} % Box Drawings Light Down and Right
+% \definelinereplacement{┐} % Box Drawings Light Down and Left
+% \definelinereplacement{└} % Box Drawings Light Up and Right
+% \definelinereplacement{┘} % Box Drawings Light Up and Left
+% \definelinereplacement{├} % Box Drawings Light Vertical and Right
+% \definelinereplacement{┤} % Box Drawings Light Vertical and Left
+% \definelinereplacement{┬} % Box Drawings Light Down and Horizontal
+% \definelinereplacement{┴} % Box Drawings Light Up and Horizontal
+% \definelinereplacement{┼} % Box Drawings Light Vertical and Horizontal
+% \definelinereplacement{╱} % Box Drawings Light Diagonal Upper Right to Lower Left
+% \definelinereplacement{╲} % Box Drawings Light Diagonal Upper Left to Lower Right
+% \definelinereplacement{╳} % Box Drawings Light Diagonal Cross
+% \definelinereplacement{╵} % Box Drawings Light Diagonal Lower Left to Upper Right
+% \definelinereplacement{╶} % Box Drawings Light Diagonal Lower Right to Upper Left
+% \definelinereplacement{╴} % Box Drawings Light Diagonal Upper Left to Lower Right
+% \definelinereplacement{╾} % Box Drawings Light Bottom and Horizontal
+% \definelinereplacement{╼} % Box Drawings Heavy Bottom and Horizontal
+% \definelinereplacement{╺} % Box Drawings Light Left and Horizontal
+% \definelinereplacement{╻} % Box Drawings Heavy Left and Horizontal
+% \definelinereplacement{╸} % Box Drawings Light Right and Horizontal
+% \definelinereplacement{╹} % Box Drawings Heavy Right and Horizontal
+% \definelinereplacement{╺} % Box Drawings Light Left and Horizontal
+% \definelinereplacement{╻} % Box Drawings Heavy Left and Horizontal
+% \definelinereplacement{╼} % Box Drawings Heavy Bottom and Horizontal
+% \definelinereplacement{╾} % Box Drawings Light Bottom and Horizontal
+
+% \newunicodechar{⟩}{\makebox[\glyphwidth][c]{\shapefont \upshape ⟩}} % ket
+% \newunicodechar{⟨}{\makebox[\glyphwidth][c]{\shapefont \upshape ⟨}} % bra
+
+% \definemathreplacement{⊗}
+% \definemathreplacement{⊕}
+% \definemathreplacement{⨁}
+\newunicodechar{⊗}{\raisebox{0.00em}{\makebox[\glyphwidth][c]{\mathfont \large ⊗}}}
+\newunicodechar{⨁}{\raisebox{-0.10em}{\makebox[\glyphwidth][c]{\mathfont \Large ⨁}}}
+\newunicodechar{●}{\raisebox{0.05em}{\makebox[\glyphwidth][c]{\linefont \scriptsize ●}}}
+\newunicodechar{○}{\raisebox{0.05em}{\makebox[\glyphwidth][c]{\linefont \scriptsize ○}}}
+% \definemathreplacement{☓}
+% \definemathreplacement{●}
+% \definemathreplacement{○}
+\newunicodechar{◀}{\raisebox{-0.235em}{\makebox[\glyphwidth][c]{\Large ◀}}}
+\newunicodechar{▶}{\raisebox{-0.235em}{\makebox[\glyphwidth][c]{\Large ▶}}}
+
+% \newunicodechar{⎧}{\makebox[\glyphwidth][c]{\replacementa ⎧}}
+% \newunicodechar{⎪}{\makebox[\glyphwidth][c]{\replacementa ⎪}}
+% \newunicodechar{⎨}{\raisebox{-0.05em}{\makebox[\glyphwidth][c]{\replacementa ⎨}}}
+% \newunicodechar{⎩}{\makebox[\glyphwidth][c]{\replacementa ⎩}}
+% \newunicodechar{⟩}{\makebox[\glyphwidth][c]{\replacementa ⟩}}
+% \newunicodechar{⊗}{\makebox[\glyphwidth][c]{\replacementb ⊗}}
+% \newunicodechar{⊕}{\makebox[\glyphwidth][c]{\replacementb ⊕}}
+% \newunicodechar{⨁}{\makebox[\glyphwidth][c]{\replacementb ⨁}}
+% \newunicodechar{☓}{\makebox[\glyphwidth][c]{\replacementa ☓}}
+% \newunicodechar{●}{\makebox[\glyphwidth][c]{\replacementb ●}}
+% \newunicodechar{○}{\makebox[\glyphwidth][c]{\replacementb ○}}
+% \newunicodechar{|}{\makebox[\glyphwidth][c]{\replacementb |}}
+
+% https://tex.stackexchange.com/questions/588648/set-fallback-font-without-having-to-declare-every-missing-character
+% https://tex.stackexchange.com/questions/487786/defining-fallback-fonts-for-entire-unicode-ranges
+
+\begin{document}
+\VerbatimInput[fontshape=n, fontsize=\small, formatcom=\setlength{\lineskiplimit}{-\maxdimen}, baselinestretch=0.65]{\Filename} % commandchars=\\\{\}
+% \begin{Verbatim}[fontshape=n, fontsize=\small, formatcom=\setlength{\lineskip}{-4pt}, baselinestretch=0.85]
+%                       ┏━━━┓
+%    ρ╶─⎧ ──────────────┨ Z ┠─────────────────●────●──
+%       ⎪      ┏━━━━━━━┓┗━┯━┛┏━━━┓            │    │
+%       ⎩ ─────┨       ┠──┼──┨ Z ┠───────●────┼────┼──
+%              ┃       ┃  │  ┗━┯━┛┏━━━┓  │    │    │
+%  |Ψ⟩╶─────⨁──┨ H⊗H⊗H ┠──┼────┼──┨ Z ┠──┼────┼────┼──
+%           │  ┃       ┃  │    │  ┃   ┃┏━┷━┓  │    │
+%       ⎧ ──┼──┨       ┠──┼────┼──┨   ┠┨ Z ┠──┼────╳──
+%       ⎪   │  ┗━━━━━━━┛  │    │  ┗━━━┛┃   ┃┏━┷━┓  │
+%    τ╶─⎨ ──●─────────────┼────●───────┨   ┠┨ Z ┠──╳──
+%       ⎪   │             │            ┗━┯━┛┃   ┃
+%       ⎩ ──○─────────────●──────────────●──┨   ┠─────
+%                                           ┗━━━┛
+% \end{Verbatim}
+\end{document}

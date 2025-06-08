@@ -1,0 +1,142 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+\usepackage{geometry}
+\geometry{
+paperwidth=12cm,
+paperheight=20cm,
+margin=0cm
+}
+
+\definecolor{darkerblue}{HTML}{003989}
+\definecolor{darkblue}{HTML}{224499}
+\definecolor{lightblue}{HTML}{E3F0FF}
+
+\colorlet{systembordercolor}{darkerblue}
+\colorlet{systemfillcolor}{lightblue}
+\colorlet{relationcolor}{black}
+
+\def\relationwidth{0.2mm}
+
+\usepackage{tikz}
+\usepackage{tikz-uml}
+\tikzumlset{
+    text=black,
+    fill usecase=white,
+    fill system=systemfillcolor,
+    font=\bfseries,
+    draw=darkerblue,
+}
+
+\usepackage{ClearSans}
+% \usepackage{mlmodern}
+\usepackage[scaled=0.75]{sourcecodepro}
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+\begin{tikzpicture}
+
+% Nodes
+\begin{umlsystem}{Diagrams}
+\umlusecase[x=0, y=7.25, name=VisualizationProperties]{\textmd{\texttt{VisualizationProperties}}}
+\umlusecase[x=-3, y=6.5, name=DiagramCell, width=7em]{\textmd{\texttt{DiagramCell}}}
+\umlusecase[x=0, y=5.75, name=DiagramColumn, width=7em]{\textmd{\texttt{DiagramColumn}}}
+\umlusecase[x=3, y=5, name=DiagramCircuit, width=7em]{\textmd{\texttt{DiagramCircuit}}}
+\umlusecase[x=0, y=4.25, name=VisualizationMixin]{\textmd{\texttt{VisualizationMixin}}}
+\end{umlsystem}
+
+\begin{umlsystem}{Mechanics}
+\umlusecase[x=-3, y=2.25, name=QuantitiesMixin, width=7em]{\textmd{\texttt{QuantitiesMixin}}}
+\umlusecase[x=-3, y=1.5, name=OperationsMixin, width=7em]{\textmd{\texttt{OperationsMixin}}}
+\end{umlsystem}
+
+\begin{umlsystem}{Algebra}
+\umlusecase[x=2.73, y=1.5, name=SymbolicsProperties]{\textmd{\texttt{SymbolicsProperties}}}
+\end{umlsystem}
+
+\umlusecase[x=-1.5, y=0, name=QuantumObject, width=7em]{\textmd{\texttt{QuantumObject}}}
+
+\begin{umlsystem}{User-Facing}
+\umlusecase[x=-3, y=-1.75, name=QuantumState, width=7em]{\textmd{\texttt{QuantumState}}}
+\umlusecase[x=0, y=-1.75, name=QuantumGate, width=7em]{\textmd{\texttt{QuantumGate}}}
+\umlusecase[x=3, y=-2.75, name=QuantumCircuit, width=7em]{\textmd{\texttt{QuantumCircuit}}}
+\umlusecase[x=3, y=-3.5, anchor=north, name=QuantumCTC, width=7em]{\textmd{\texttt{QuantumCTC}}}
+
+\umlusecase[x=-3, y=-4.5, anchor=north, name=States, width=7em, thick]{\textbf{\small subclasses} \\ \textmd{\texttt{VectorState \\ MatrixState \\ PureState \\ MixedState}}}
+
+\umlusecase[x=0, y=-4.5, anchor=north, name=Gates, width=7em]{\textbf{\small subclasses} \\ \textmd{\texttt{Pauli \\ GellMann \\ Hadamard \\ Rotation \\ Phase \\ Diagonal \\ Swap \\ Summation \\ Not \\ Fourier \\ Measurement}}}
+\umlusecase[x=3, y=-4.5, anchor=north, name=Prescriptions, width=7em]{\textbf{\small subclasses} \\ \textmd{\texttt{DCTC \\ PCTC}}}
+\end{umlsystem}
+
+% Relationships
+\umlunicompo[geometry=|-, draw=relationcolor, line width=\relationwidth]{DiagramCell}{VisualizationProperties}
+\umlunicompo[geometry=|-, draw=relationcolor, line width=\relationwidth]{DiagramColumn}{VisualizationProperties}
+\umlunicompo[geometry=|-, draw=relationcolor, line width=\relationwidth]{DiagramCircuit}{VisualizationProperties}
+
+\umldep[geometry=-|, anchor2=-30, draw=relationcolor, line width=\relationwidth]{DiagramColumn}{DiagramCell}
+\umldep[geometry=-|, anchor2=-30, draw=relationcolor, line width=\relationwidth]{DiagramCircuit}{DiagramColumn}
+
+\umldep[geometry=-|, draw=relationcolor, line width=\relationwidth]{VisualizationMixin}{DiagramCell}
+\umldep[draw=relationcolor, line width=\relationwidth]{VisualizationMixin}{DiagramColumn}
+\umldep[geometry=-|, draw=relationcolor, line width=\relationwidth]{VisualizationMixin}{DiagramCircuit}
+
+\umlHVHdep[arm1=1.0, anchor1=-5, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{DiagramColumn}
+\umlHVHdep[arm1=0.75, anchor1=5, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{DiagramCircuit}
+
+\umlunicompo[geometry=|-|, anchor1=20, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumObject}{VisualizationMixin}
+\umlunicompo[geometry=-|, anchor2=-160, draw=relationcolor, line width=\relationwidth]{QuantumObject}{SymbolicsProperties}
+
+\umlunicompo[geometry=|-|, arm1=2.5, anchor1=90, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{SymbolicsProperties}
+
+\umlreal[geometry=|-|, weight=0.35, anchor1=90, anchor2=-160, draw=relationcolor, line width=\relationwidth]{QuantumState}{QuantumObject}
+\umlreal[geometry=|-|, weight=0.35, anchor1=168.75, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumGate}{QuantumObject}
+
+\umlHVHdep[anchor1=-175, arm2=-1.0, anchor2=180, draw=relationcolor, line width=\relationwidth]{QuantumState}{QuantitiesMixin}
+\umlHVHdep[anchor1=175, arm2=-0.75, anchor2=180, draw=relationcolor, line width=\relationwidth]{QuantumState}{OperationsMixin}
+
+\umluniaggreg[geometry=-|, anchor1=-175, anchor2=-20, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{QuantumState}
+\umluniaggreg[geometry=-|, anchor1=175, anchor2=-20, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{QuantumGate}
+
+\umlinherit[draw=relationcolor, line width=\relationwidth]{States}{QuantumState}
+\umlinherit[draw=relationcolor, line width=\relationwidth]{Gates}{QuantumGate}
+
+\umlinherit[draw=relationcolor, line width=\relationwidth]{QuantumCTC}{QuantumCircuit}
+
+\umlinherit[draw=relationcolor, line width=\relationwidth]{Prescriptions}{QuantumCTC}
+
+\end{tikzpicture}
+
+% \begin{document}
+% \begin{figure}[h!]
+% \begin{tikzpicture}
+% \begin{umlsystem}{Schedule}
+% \umlusecase[x=-3]{Check Request}
+% \umlusecase[x=3]{Ask Constraints}
+% \umlusecase[x=-2,y=-2]{Deny Request}
+% \umlusecase[x=3, y=-2]{Collect Constraints}
+% \umlusecase[x=-3,y=-4]{Determine Schedule}
+% \umlusecase[x=3,y=-4]{Merge Constraints} 
+% \umlusecase[y=-6]{Resolve Conflicts}
+% \end{umlsystem}
+% 
+% \umlactor[x=-8]{Initiator}
+% \umlactor[x=-8,y=-6]{Participant A}
+% \umlactor[x=8]{Participant B}
+% \umlactor[x=8,y=-6]{Conflict Resolver} 
+% 
+% \umlassoc{Initiator}{usecase-1}
+% \umlassoc{Initiator}{usecase-3}
+% \umlassoc{Participant A}{usecase-5}
+% \umlassoc{Participant B}{usecase-2}
+% \umlassoc{Participant B}{usecase-4}
+% \umlassoc{Conflict Resolver}{usecase-7}
+% 
+% \umlextend{usecase-2}{usecase-3}
+% \umlinclude{usecase-5}{usecase-7}
+% \end{tikzpicture}
+% \caption{Example of Use case diagram using tikz-uml. Examlpe from the book Requirements Engineering by Axel van Lamsweerde.}
+% \end{figure}
+
+\end{document}

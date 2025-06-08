@@ -1,0 +1,1200 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mathematical foundations of quantum mechanics &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/theory/quantum-mechanics/mathematics';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Quantum mechanics on discrete Hilbert spaces" href="discrete.html" />
+    <link rel="prev" title="Theory" href="../part-theory.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum mechanics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mathematical foundations of quantum mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discrete.html">Quantum mechanics on discrete Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuous.html">Quantum mechanics on continuous Hilbert spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuitry.html">Quantum circuitry</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time travel</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../time-travel/classical.html">Classical theories of time travel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time-travel/quantum.html">Quantum theories of time travel</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../part-theory.html" class="nav-link">Theory</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Mathematical foundations of quantum mechanics</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="mathematical-foundations-of-quantum-mechanics">
+<span id="sec-mathematics"></span><h1>Mathematical foundations of quantum mechanics<a class="headerlink" href="#mathematical-foundations-of-quantum-mechanics" title="Link to this heading">#</a></h1>
+<p>Quantum mechanics, one of the cornerstones of our modern view of reality, is founded on the mathematical formalism of linear algebra, which itself is built upon structures known as vector spaces. The following mathematical preliminaries have been adapted from <span id="id1">[<a class="reference internal" href="../time-travel/quantum/P-CTCs.html#cite-1-nielsen-quantum-2010" title="M. Nielsen and I. Chuang, Quantum Computation and Quantum Information: 10th Anniversary Edition, Cambridge University Press, Cambridge, 2010.">1</a>, <a class="reference internal" href="#cite-1-zeidler-quantum-2006" title="E. Zeidler, Quantum Field Theory I: Basics in Mathematics and Physics, Springer, Berlin, Heidelberg, 2006.">2</a>, <a class="reference internal" href="#cite-1-dimock-quantum-2011" title="J. Dimock, Quantum Mechanics and Quantum Field Theory: A Mathematical Primer, Cambridge University Press, Cambridge, 2011.">4</a>, <a class="reference internal" href="#cite-1-dirac-principles-1982" title="P. A. M. Dirac, The Principles of Quantum Mechanics, Clarendon Press, Oxford, 4th edition, February 1982.">12</a>, <a class="reference internal" href="#cite-1-audretsch-entangled-2007" title="J. Audretsch, Entangled Systems: New Directions in Quantum Physics, WILEY‐VCH, February 2007.">3</a>, <a class="reference internal" href="#cite-1-shankar-principles-2012" title="R. Shankar, Principles of Quantum Mechanics, Springer New York, 2nd edition, December 2012.">5</a>, <a class="reference internal" href="#cite-1-ohya-mathematical-2011" title="M. Ohya and I. Volovich, Mathematical Foundations of Quantum Information and Computation and Its Applications to Nano- and Bio-systems, Theoretical and Mathematical Physics, Springer Dordrecht, January 2011.">6</a>, <a class="reference internal" href="#cite-1-ballentine-quantum-2014" title="L. E. Ballentine, Quantum Mechanics: A Modern Development, World Scientific, 2nd edition, November 2014.">7</a>, <a class="reference internal" href="#cite-1-holevo-quantum-2012" title="A. S. Holevo, Quantum Systems, Channels, Information: A Mathematical Introduction, De Gruyter, December 2012.">8</a>, <a class="reference internal" href="#cite-1-watrous-theory-2018" title="J. Watrous, The Theory of Quantum Information, Cambridge University Press, Cambridge, 2018.">9</a>, <a class="reference internal" href="#cite-1-prugovecki-quantum-1982" title="E. Prugovečki, Quantum Mechanics in Hilbert Space, volume 92 of Pure and applied mathematics, a series of monographs and textbooks, Academic Press, 2nd edition, August 1982.">10</a>, <a class="reference internal" href="#cite-1-hiai-introduction-2014" title="F. Hiai and D. Petz, Introduction to Matrix Analysis and Applications, Universitext, Springer Cham, February 2014.">11</a>]</span>.</p>
+<section id="vector-spaces">
+<h2>Vector spaces<a class="headerlink" href="#vector-spaces" title="Link to this heading">#</a></h2>
+<p>A (linear) <em>vector space</em> over a field <span class="math notranslate nohighlight">\(\Fields\)</span> is a non-empty set <span class="math notranslate nohighlight">\(\SpaceVector\)</span> which is closed under the operations of addition and scalar multiplication. This is to say that, for elements (termed <em>vectors</em>) <span class="math notranslate nohighlight">\(\psi, \phi, \chi \in \SpaceVector\)</span>, closure under addition requires the following axioms to be satisfied:</p>
+<div class="math notranslate nohighlight" id="equation-eq-vector-identities">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-vector-identities" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i) } &amp;\text{(commutativity):} &amp;\psi + \phi &amp;= \phi + \psi,\\
+    \text{(ii) } &amp;\text{(associativity):} &amp;\psi + (\phi + \chi) &amp;= (\psi + \phi) + \chi,\\
+    \text{(iii) } &amp;\text{(identity):} &amp;\exists! \ \vec{0} \in \SpaceVector \quad \text{such that} \quad \psi + \vec{0} &amp;= \psi.
+\end{aligned}\end{split}\]</div>
+<p>Similarly, <a class="reference internal" href="#equation-eq-vector-identities">(1)</a> given some scalars <span class="math notranslate nohighlight">\(a,b,c \in \Fields\)</span>, closure under multiplication with a scalar likewise requires</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-0">
+<span class="eqno">(2)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i) } &amp;\text{(distributivity over }\SpaceHilbert\text{):} &amp;c(\psi + \phi) &amp;= c\phi + c\psi,\\
+    \text{(ii) } &amp;\text{(distributivity in }\Fields\text{):} &amp;(a+b)\psi &amp;= a\psi + b\psi,\\
+    \text{(iii) } &amp;\text{(identity):} &amp;\exists! \ 1 \in \Fields \quad \text{such that} \quad 1\psi &amp;= \psi.
+\end{aligned}\end{split}\]</div>
+<p>Formally, we say that <span class="math notranslate nohighlight">\(\SpaceVector\)</span> is an <span class="math notranslate nohighlight">\(\Fields\)</span>-vector space if it is an (additive) Abelian group with a function (scalar multiplication) <span class="math notranslate nohighlight">\(\Fields \times \SpaceVector \rightarrow \SpaceVector\)</span> which satisfies the above axioms.</p>
+<p>A subset of vectors <span class="math notranslate nohighlight">\(\{\Basis_i\}_{i=1}^{\Dimension}\)</span> in <span class="math notranslate nohighlight">\(\SpaceVector\)</span> is said to be <em>linearly independent</em> if and only if the equation</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-1" title="Link to this equation">#</a></span>\[\sum_{i=1}^{\Dimension}c_i\Basis_i = 0\]</div>
+<p>has the sole solution <span class="math notranslate nohighlight">\(c_i = 0\)</span> for all <span class="math notranslate nohighlight">\(n\)</span> (where <span class="math notranslate nohighlight">\(c_i \in \Fields\)</span>). Otherwise, the set of vectors is said to be <em>linearly dependent</em>. The <em>dimension</em> of a vector space <span class="math notranslate nohighlight">\(\SpaceVector\)</span>, denoted by <span class="math notranslate nohighlight">\(\dim(\SpaceVector)\)</span>, is defined as the least upper bound of linearly independent vectors in <span class="math notranslate nohighlight">\(\SpaceVector\)</span>. Informally, this is the largest possible number of linearly independent vectors which reside in <span class="math notranslate nohighlight">\(\SpaceVector\)</span>. A vector space is said to have infinite dimension if there is no such largest number.</p>
+<p>Furthermore, a subset <span class="math notranslate nohighlight">\(\{\Basis_i\}_{i=1}^{\Dimension}\)</span> is said to <em>span</em> the vector space <span class="math notranslate nohighlight">\(\SpaceVector\)</span> if and only if every vector <span class="math notranslate nohighlight">\(\psi \in \SpaceVector\)</span> can be expressed as a (finite) linear combination of the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-linear-combination">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-linear-combination" title="Link to this equation">#</a></span>\[\psi = \sum_{i=1}^{\Dimension} \psi_i \Basis_i\]</div>
+<p>where <span class="math notranslate nohighlight">\(\psi_i \in \Fields\)</span> collectively characterize the vector <span class="math notranslate nohighlight">\(\psi\)</span>. To this end, we often write</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-2">
+<span class="eqno">(5)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-2" title="Link to this equation">#</a></span>\[\psi = (\psi_i)_{i=1}^{\Dimension} = (\psi_1,\psi_2,\ldots,\psi_\Dimension)^\transpose.\]</div>
+<p>Moreover, if <span class="math notranslate nohighlight">\(\{\Basis_i\}_{i=1}^{\Dimension}\)</span> is both linearly independent and spans <span class="math notranslate nohighlight">\(\SpaceVector\)</span>, then this subset is a (vector) <em>basis</em> for <span class="math notranslate nohighlight">\(\SpaceVector\)</span>, and its linear combinations are unique.</p>
+<section id="inner-product-space">
+<h3>Inner product space<a class="headerlink" href="#inner-product-space" title="Link to this heading">#</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(\SpaceVector\)</span> be a vector space over <span class="math notranslate nohighlight">\(\Complexes\)</span>. Such a vector space is an <em>inner product space</em> if it is equipped with an <em>inner product</em>, which is defined as the positive-definite symmetric bilinear map</p>
+<div class="math notranslate nohighlight" id="equation-eq-inner-map">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-inner-map" title="Link to this equation">#</a></span>\[\inner{{}\cdot{}}{{}\cdot{}} : \SpaceVector \times \SpaceVector \rightarrow \Complexes.\]</div>
+<p>that by definition obeys</p>
+<div class="math notranslate nohighlight" id="equation-eq-inner-axioms">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-inner-axioms" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i) } &amp;\text{(conjugate symmetry):} &amp;\inner{\phi}{\psi} &amp;= \conj{\inner{\psi}{\phi}}{}, \\
+    \text{(ii) } &amp;\text{(linearity):} &amp;\inner{\phi}{a\psi} &amp;= a\inner{\phi}{\psi},\\
+    \text{(iii) } &amp;\text{(additivity):} &amp;\inner{\phi}{\psi + \chi} &amp;= \inner{\phi}{\psi} + \inner{\phi}{\chi}, \\
+    \text{(iv) } &amp;\text{(positive-definiteness):} &amp;\inner{\psi}{\psi} &amp;&gt; 0 \quad \text{if} \quad \psi \neq \vec{0}.
+\end{aligned}\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\conj{z}{}\)</span> is the complex conjugate of <span class="math notranslate nohighlight">\(z\in\Complexes\)</span>. Note that together <a class="reference internal" href="#equation-eq-inner-axioms">(7)</a>-(i) and <a class="reference internal" href="#equation-eq-inner-axioms">(7)</a>-(ii) imply that the definition is <em>antilinear</em> in its first argument, e.g., <span class="math notranslate nohighlight">\(\inner{a\phi}{\psi} = \conj{a}{}\inner{\phi}{\psi}\)</span>, which aligns with the convention in the physics literature.</p>
+<p>A pair of vectors <span class="math notranslate nohighlight">\(\psi,\phi \in \SpaceVector\)</span> are <em>orthogonal</em> if</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-3">
+<span class="eqno">(8)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-3" title="Link to this equation">#</a></span>\[\inner{\phi}{\psi} = 0.\]</div>
+<p>Furthermore, a set of vectors <span class="math notranslate nohighlight">\(\{\phi_i\}_{i=1}^{\Dimension}\)</span> is said to be <em>orthonormal</em> with respect to the inner product <a class="reference internal" href="#equation-eq-inner-map">(6)</a> if</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-4">
+<span class="eqno">(9)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-4" title="Link to this equation">#</a></span>\[\inner{\phi_i}{\phi_j} = \delta_{ij}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-5">
+<span class="eqno">(10)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-5" title="Link to this equation">#</a></span>\[\begin{split}\delta_{ij} \equiv
+    \begin{cases}
+        0 &amp; \text{when } i \neq j; \\
+        1 &amp; \text{when } i = j.
+    \end{cases}\end{split}\]</div>
+<p>is the <em>Kronecker delta</em>. Orthonormality is a useful property: given an orthonormal basis <span class="math notranslate nohighlight">\(\{\Basis_i\}_{i=1}^{\Dimension}\)</span>, the coefficients in the linear expansion <a class="reference internal" href="#equation-eq-linear-combination">(4)</a> may be (uniquely) determined by taking the inner product, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-6">
+<span class="eqno">(11)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-6" title="Link to this equation">#</a></span>\[\inner{\Basis_i}{\psi} = \inner{\Basis_i}{\sum_{j=1}^{\Dimension} \psi_j \Basis_j } = \sum_{j=1}^{\Dimension}\psi_j\inner{\Basis_i}{\Basis_j} = \psi_i.\]</div>
+<p>Using this, we may rewrite the linear combination <a class="reference internal" href="#equation-eq-linear-combination">(4)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-7">
+<span class="eqno">(12)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-7" title="Link to this equation">#</a></span>\[\psi = \sum_{i=1}^{\Dimension} \inner{\Basis_i}{\psi} \Basis_i,\]</div>
+<p>with which we can express the inner product of two vectors as</p>
+<div class="math notranslate nohighlight" id="equation-eq-inner-expansion">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-inner-expansion" title="Link to this equation">#</a></span>\[\inner{\phi}{\psi} = \sum_{i=1}^{\Dimension} \inner{\phi}{\Basis_i} \inner{\Basis_i}{\psi} = \sum_{i=1}^{\Dimension} \conj{\phi_i}{} \psi_i.\]</div>
+</section>
+<section id="vector-norm">
+<h3>Vector norm<a class="headerlink" href="#vector-norm" title="Link to this heading">#</a></h3>
+<p>The vector <span class="math notranslate nohighlight">\(p\)</span>-<em>norm</em> is a (non-negative-valued) map</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-8">
+<span class="eqno">(14)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-8" title="Link to this equation">#</a></span>\[\norm{{}\cdot{}}_p : \SpaceVector \rightarrow \Reals\]</div>
+<p>which characterizes the notion of the “length” of a vector. With <span class="math notranslate nohighlight">\(p \geq 1\)</span>, it is defined for any <span class="math notranslate nohighlight">\(\psi \in \SpaceVector\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-9">
+<span class="eqno">(15)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-9" title="Link to this equation">#</a></span>\[\norm{\psi}_p = \left[\sum_{i=1}^{\Dimension}\abs{\psi_i}^p\right]^{\frac{1}{p}},\]</div>
+<p>and possesses the following properties:</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-10">
+<span class="eqno">(16)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-10" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i) } &amp;\text{(scalar multiplication):} &amp;\norm{c\psi}_p &amp;= \abs{c} \norm{\psi}_p,\\
+    \text{(ii) } &amp;\text{(positive-definiteness):} &amp;\norm{\psi}_p &amp;&gt; 0 \quad \text{if} \quad \psi \neq \vec{0},\\
+    \text{(iii) } &amp;\text{(triangle inequality):} &amp;\norm{\psi + \phi}_p &amp;\leq \norm{\psi}_p + \norm{\phi}_p.
+\end{aligned}\end{split}\]</div>
+<p><em>Hölder’s inequality</em> provides a useful relation between the inner product of two vectors <span class="math notranslate nohighlight">\(\psi,\phi \in \SpaceVector\)</span> and their <span class="math notranslate nohighlight">\(p\)</span>-norms,</p>
+<div class="math notranslate nohighlight" id="equation-eq-holder">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-holder" title="Link to this equation">#</a></span>\[\inner{\psi}{\phi} \leq \norm{\psi}_p \norm{\phi}_q, \quad \frac{1}{p} + \frac{1}{q} = 1.\]</div>
+<p>A vector <span class="math notranslate nohighlight">\(\psi \in \SpaceVector\)</span> is said to be <em>normalized</em> if</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-11">
+<span class="eqno">(18)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-11" title="Link to this equation">#</a></span>\[\norm{\psi}_p = 1\]</div>
+<p>for any <span class="math notranslate nohighlight">\(p\geq 0\)</span>.</p>
+<p>An inner product is an important tool because it defines a way to multiply vectors together, with the result being a scalar. A useful consequence of this is our ability to define the 2-norm as</p>
+<div class="math notranslate nohighlight" id="equation-eq-norm-2">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-norm-2" title="Link to this equation">#</a></span>\[\norm{\psi}_2 = \sqrt{\inner{\psi}{\psi}},\]</div>
+<p>which, given an orthonormal basis <span class="math notranslate nohighlight">\(\{\Basis_i\}_{i=1}^{\Dimension}\)</span> and the expansion <a class="reference internal" href="#equation-eq-inner-expansion">(13)</a>, yields <em>Parseval’s identity</em>,</p>
+<div class="math notranslate nohighlight" id="equation-eq-parseval">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-parseval" title="Link to this equation">#</a></span>\[\norm{\psi}_2 = \sqrt{\sum_{i=1}^{\Dimension} \abs{\inner{\Basis_i}{\psi}}^2}.\]</div>
+<p>Additionally, in the case if <span class="math notranslate nohighlight">\(p=2\)</span>, Hölder’s inequality <a class="reference internal" href="#equation-eq-holder">(17)</a> becomes the <em>Cauchy-Schwarz inequality</em>,</p>
+<div class="math notranslate nohighlight" id="equation-eq-cauchy-schwarz">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-cauchy-schwarz" title="Link to this equation">#</a></span>\[\inner{\psi}{\phi} \leq \norm{\psi}_2 \norm{\phi}_2 = \sqrt{\inner{\psi}{\psi}} \sqrt{\inner{\phi}{\phi}}.\]</div>
+</section>
+<section id="dual-space">
+<h3>Dual space<a class="headerlink" href="#dual-space" title="Link to this heading">#</a></h3>
+<p>Any vector space <span class="math notranslate nohighlight">\(\SpaceVector\)</span> has a corresponding <em>dual vector space</em> <span class="math notranslate nohighlight">\(\dual{\SpaceVector}{}\)</span>, which is the space of all linear forms (functionals) on <span class="math notranslate nohighlight">\(\SpaceVector\)</span>. Mathematically, this is to say that an element <span class="math notranslate nohighlight">\(\varphi \in \dual{\SpaceVector}{}\)</span> defines a map</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-12">
+<span class="eqno">(22)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-12" title="Link to this equation">#</a></span>\[\varphi : \psi \mapsto \varphi(\psi) \in \Complexes\]</div>
+<p>for every <span class="math notranslate nohighlight">\(\psi \in \SpaceVector\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-13">
+<span class="eqno">(23)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-13" title="Link to this equation">#</a></span>\[\varphi(a\psi + b\chi) = a\varphi(\psi) + b\varphi(\chi)\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\psi,\chi\)</span> and <span class="math notranslate nohighlight">\(a,b \in \Complexes\)</span>. Elements of the dual space <span class="math notranslate nohighlight">\(\dual{\SpaceVector}{}\)</span> are often termed <em>covectors</em>, and the space itself becomes a vector space when equipped with addition and scalar multiplication, that is,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-14">
+<span class="eqno">(24)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-14" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i) } &amp;\text{(additivity):} &amp;(\varphi_1 + \varphi_2)(\psi) &amp;= \varphi_1(\psi) + \varphi_2(\psi),\\
+    \text{(ii) } &amp;\text{(scalar multiplication):} &amp;(c\varphi)(\psi)&amp;= c\varphi(\psi),
+\end{aligned}\end{split}\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\varphi, \varphi_1, \varphi_2 \in \dual{\SpaceVector}{}\)</span>, <span class="math notranslate nohighlight">\(\psi \in \SpaceVector\)</span>, and <span class="math notranslate nohighlight">\(c \in \Complexes\)</span>.</p>
+<p>The most straightforward way of constructing linear maps in a dual space is to use the inner product: given some vector <span class="math notranslate nohighlight">\(\phi \in \SpaceVector\)</span>, we may define a map <span class="math notranslate nohighlight">\(\inner{\phi}{{}\cdot{}} \in \dual{\SpaceVector}{}\)</span> which has the action</p>
+<div class="math notranslate nohighlight" id="equation-eq-dual-map">
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-dual-map" title="Link to this equation">#</a></span>\[\inner{\phi}{{}\cdot{}} : \psi \mapsto \inner{\phi}{\psi}.\]</div>
+<p>Being based on the inner product, this form is guaranteed to be linear in its argument.</p>
+</section>
+<section id="hilbert-space">
+<h3>Hilbert space<a class="headerlink" href="#hilbert-space" title="Link to this heading">#</a></h3>
+<p>An inner product vector space equipped with a norm is called a <em>normed space</em>. A sequence <span class="math notranslate nohighlight">\((\psi_i)_{n=1}^{\infty}\)</span> in such a space is termed a <em>Cauchy sequence</em> if</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-15">
+<span class="eqno">(26)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-15" title="Link to this equation">#</a></span>\[\norm{\psi_i - \psi_j}_p \rightarrow 0 \quad \text{as} \quad i,j\rightarrow\infty.\]</div>
+<p>If all Cauchy sequences converge (as per the above condition) in <span class="math notranslate nohighlight">\(\SpaceVector\)</span>, then the normed space <span class="math notranslate nohighlight">\(\SpaceVector\)</span> is said to be <em>complete</em>. This is to say that there exists a vector <span class="math notranslate nohighlight">\(\psi\in\SpaceVector\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-16">
+<span class="eqno">(27)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-16" title="Link to this equation">#</a></span>\[\lim_{i\rightarrow\infty}\norm{\psi_i - \psi}_p = 0.\]</div>
+<p>A complete normed space is called a <em>Banach space</em>.</p>
+<p>The special case of a normed inner product space that is complete with respect to the 2-norm <a class="reference internal" href="#equation-eq-norm-2">(19)</a> is known as a <em>Hilbert space</em>. This construction is central to the formalism of quantum theory. The <em>Riesz representation theorem</em> establishes that any linear map <span class="math notranslate nohighlight">\(\varphi : \SpaceHilbert \rightarrow \Complexes\)</span> can be <em>uniquely</em> written as <a class="reference internal" href="#equation-eq-dual-map">(25)</a> for some fixed choice of <span class="math notranslate nohighlight">\(\phi \in \SpaceHilbert\)</span>. Consequently, the inner product provides a vector space isomorphism</p>
+<div class="math notranslate nohighlight" id="equation-eq-hilbert-isomorphism">
+<span class="eqno">(28)<a class="headerlink" href="#equation-eq-hilbert-isomorphism" title="Link to this equation">#</a></span>\[\dual{\SpaceHilbert}{} \cong \SpaceHilbert,\]</div>
+<p>regardless of the dimensionality of <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>. Importantly, this holds true for infinite-dimensional Hilbert spaces, which makes them especially easy to work with.</p>
+<p>The simplest Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is one which has a finite number of dimensions <span class="math notranslate nohighlight">\(\Dimension \in \IntegersPositive\)</span>. In this case, we have <span class="math notranslate nohighlight">\(\SpaceHilbert \cong \Complexes^\Dimension\)</span>, and such a space is always isomorphic to one with the inner product <a class="reference internal" href="#equation-eq-inner-expansion">(13)</a> and corresponding norm <a class="reference internal" href="#equation-eq-parseval">(20)</a>. In physics, finite-dimensional Hilbert spaces often arise as idealized descriptions of phenomena that would otherwise require more complex treatment. This usually appears where one is concerned with just a finite-dimensional subspace of a larger physical system.</p>
+<p>Infinite-dimensional Hilbert spaces on the other hand are slightly more nuanced. A simple generalization to such dimensionality involves the space of infinite sequences of complex numbers <span class="math notranslate nohighlight">\(\psi \equiv (\psi_i)_{i=1}^{\infty}\)</span> with converging norm, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-17">
+<span class="eqno">(29)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-17" title="Link to this equation">#</a></span>\[\norm{\psi}_2 = \sqrt{\sum_{i=1}^{\infty} \abs{\psi_i}^2} &lt; \infty.\]</div>
+<p>If this holds, then <span class="math notranslate nohighlight">\(\psi \in \ell^2\)</span> where <span class="math notranslate nohighlight">\(\ell^2\)</span> is the space of <em>square-summable sequences</em>, which heuristically can be thought of as <span class="math notranslate nohighlight">\(\SpaceHilbert = \ell^2 \cong \Complexes^\infty\)</span>. The associated inner product is then simply the generalization of <a class="reference internal" href="#equation-eq-inner-expansion">(13)</a>,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-18">
+<span class="eqno">(30)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-18" title="Link to this equation">#</a></span>\[\inner{\phi}{\psi} = \sum_{i=1}^{\infty} \conj{\phi_i}{} \psi_i,\]</div>
+<p>which, as per the Cauchy-Schwarz inequality <a class="reference internal" href="#equation-eq-cauchy-schwarz">(21)</a>, converges provided the individual vector norms do. Importantly, the notion of completeness of <span class="math notranslate nohighlight">\(\ell^2\)</span> with respect to its norm enables us to perform calculus in this space, including computing limits and derivatives of vectors <span class="math notranslate nohighlight">\(\psi \in \ell^2\)</span>. Generalizations to other sequence spaces, e.g., <span class="math notranslate nohighlight">\(\ell^p\)</span> with <span class="math notranslate nohighlight">\(p \geq 1\)</span> and the associated norm</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-19">
+<span class="eqno">(31)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-19" title="Link to this equation">#</a></span>\[\norm{\psi}_p = \left[\sum_{i=1}^{\infty} \abs{\psi_i}^p\right]^{\frac{1}{p}} &lt; \infty.\]</div>
+<p>are of course possible, but note that only in the case of <span class="math notranslate nohighlight">\(p=2\)</span> is the sequence space a Hilbert space.</p>
+</section>
+<section id="dirac-notation">
+<h3>Dirac notation<a class="headerlink" href="#dirac-notation" title="Link to this heading">#</a></h3>
+<p>Here we establish the notational convention that is used nearly universally in the formalism of quantum mechanics on Hilbert spaces. This standard system is known as <em>Dirac notation</em> or <em>bra-ket notation</em>. In this notation, a vector <span class="math notranslate nohighlight">\(\psi \in \SpaceHilbert\)</span> is represented by <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> and is called a <em>ket</em>. Similarly, a covector in the dual space <span class="math notranslate nohighlight">\(\phi \in \dual{\SpaceHilbert}{}\)</span> is denoted by <span class="math notranslate nohighlight">\(\bra{\phi}\)</span> and called a <em>bra</em>. With these constructs, the value of the dual map <a class="reference internal" href="#equation-eq-dual-map">(25)</a> is given by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-20">
+<span class="eqno">(32)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-20" title="Link to this equation">#</a></span>\[\phi(\psi) \equiv \braket{\phi}{\psi} \equiv \inner{\phi}{\psi}.\]</div>
+<p>This form is known as a <em>bra-ket</em>, and is simply a representation of the inner product in Dirac notation. Note that this implicitly uses the isomorphism <a class="reference internal" href="#equation-eq-hilbert-isomorphism">(28)</a> provided by the inner product, meaning that we have the antilinear correspondence between bras and kets,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-21">
+<span class="eqno">(33)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-21" title="Link to this equation">#</a></span>\[\conj{\lambda}{}\bra{\psi} \longleftrightarrow \lambda\ket{\psi}.\]</div>
+<p>Given an orthonormal basis <span class="math notranslate nohighlight">\(\{\ket{\Basis_i}\}\)</span> of a discrete Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, we can expand in Dirac notation a general ket <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert\)</span> in terms of the basis as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-22">
+<span class="eqno">(34)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-22" title="Link to this equation">#</a></span>\[\ket{\psi} = \sum_{i} \psi_i \ket{\Basis_i}, \quad \psi_i = \braket{\Basis_i}{\psi}.\]</div>
+<p>This notation is slightly cumbersome, and so it is conventional to simplify it by making the basis identification</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-23">
+<span class="eqno">(35)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-23" title="Link to this equation">#</a></span>\[\ket{\Basis_i} \equiv \ket{i},\]</div>
+<p>with which the above expansion appears as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-24">
+<span class="eqno">(36)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-24" title="Link to this equation">#</a></span>\[\ket{\psi} = \sum_{i} \braket{i}{\psi} \ket{i}.\]</div>
+<p>The alternative notation for the basis <span class="math notranslate nohighlight">\(\{\ket{i}\}\)</span> is known as the <em>standard basis</em> (in the nomenclature of mathematics) or the <em>computational basis</em> (in the nomenclature of quantum computing). It is always assumed to be orthonormal, and necessarily spans <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>. As these objects (kets) reside in a <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert \cong \Complexes^\Dimension\)</span>, they have corresponding representations in <span class="math notranslate nohighlight">\(\Complexes^\Dimension\)</span> as column vectors, the standard choice being explicitly</p>
+<div class="math notranslate nohighlight" id="equation-eq-basis-qudit">
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-basis-qudit" title="Link to this equation">#</a></span>\[\begin{split}\ket{0} = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix},
+\qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix},
+\qquad \ldots
+\qquad \ket{\Dimension - 1} = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}.\end{split}\]</div>
+<p>Here, the <span class="math notranslate nohighlight">\(i\)</span>-th element (indexing from zero, as customary in computer science) of the <span class="math notranslate nohighlight">\(i\)</span>-th vector contains a <span class="math notranslate nohighlight">\(1\)</span>, while all of its other entries are <span class="math notranslate nohighlight">\(0\)</span>. The corresponding covectors (bras) in the dual space <span class="math notranslate nohighlight">\(\dual{\SpaceHilbert}{} \cong \Complexes^{*\Dimension}\)</span> have similar representations as row vectors,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-25">
+<span class="eqno">(38)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-25" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \bra{0} &amp;= \begin{bmatrix} 1 &amp; 0 &amp; \ldots &amp; 0 \end{bmatrix}, \\
+    \bra{1} &amp;= \begin{bmatrix} 0 &amp; 1 &amp; \ldots &amp; 0 \end{bmatrix}, \\
+    &amp;\;\;\vdots \\
+    \bra{\Dimension - 1} &amp;= \begin{bmatrix} 0 &amp; 0 &amp; \ldots &amp; 1 \end{bmatrix}.
+\end{aligned}\end{split}\]</div>
+<p>In a finite-dimensional Hilbert space, any basis of linearly independent vectors has the same (finite) number of members, irrespective of their orthogonality.</p>
+</section>
+</section>
+<section id="linear-operators-and-operations">
+<h2>Linear operators and operations<a class="headerlink" href="#linear-operators-and-operations" title="Link to this heading">#</a></h2>
+<p>A <em>linear operator</em> <span class="math notranslate nohighlight">\(\op{A}\)</span> on a Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is a map</p>
+<div class="math notranslate nohighlight" id="equation-eq-operator-linear-map">
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-operator-linear-map" title="Link to this equation">#</a></span>\[\op{A} : \Domain(\op{A}) \rightarrow \Range(\op{A})\]</div>
+<p>which preserves linear combinations of vectors <span class="math notranslate nohighlight">\(\ket{\psi},\ket{\phi} \in \SpaceHilbert\)</span>, that is,</p>
+<div class="math notranslate nohighlight" id="equation-eq-operator-linear-preservation">
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-operator-linear-preservation" title="Link to this equation">#</a></span>\[\op{A}\bigl(\mu\ket{\psi} + \nu\ket{\phi}\bigr) = \mu\op{A}\ket{\psi} + \nu\op{A}\ket{\phi},\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\mu,\nu \in \Complexes\)</span>. Here, the space <span class="math notranslate nohighlight">\(\Domain(\op{A}) \subseteq \SpaceHilbert\)</span> denotes the domain of <span class="math notranslate nohighlight">\(\op{A}\)</span> while <span class="math notranslate nohighlight">\(\Range(\op{A}) \subseteq \SpaceHilbert\)</span> denotes its range. For an infinite-dimensional <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, operators are often not defined on the whole space, and so <span class="math notranslate nohighlight">\(\Domain(\op{A})\)</span> may be a proper subset of <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>. For finite-dimensional Hilbert spaces on the other hand, linear operators may always be defined on the entire space such that <span class="math notranslate nohighlight">\(\Domain(\op{A}) = \Range(\op{A}) = \SpaceHilbert\)</span>. The space of all linear operators on <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is denoted by <span class="math notranslate nohighlight">\(\SpaceLinear(\SpaceHilbert)\)</span>. All the operators we will discuss are linear, and so we will henceforth omit the “linear” descriptor.</p>
+<section id="bounded-operators">
+<h3>Bounded operators<a class="headerlink" href="#bounded-operators" title="Link to this heading">#</a></h3>
+<p>An operator <span class="math notranslate nohighlight">\(\op{A}\)</span> is said to be <em>bounded</em> if <span class="math notranslate nohighlight">\(\Domain(\op{A}) = \SpaceHilbert\)</span> and there exists some fixed <span class="math notranslate nohighlight">\(M&gt;0\)</span> such that for all <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-26">
+<span class="eqno">(41)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-26" title="Link to this equation">#</a></span>\[\bigl| \bigl| \op{A}\ket{\psi} \bigr| \bigr|_2 \leq M \bigl| \bigl| \ket{\psi} \bigr| \bigr|_2.\]</div>
+<p>Otherwise, the operator is said to be <em>unbounded</em>. Bounded (linear) operators preserve the normalizability of vectors, that is, they map normalizable vectors to vectors that are likewise normalizable. This means that they necessarily act on the whole Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, and the space of such bounded operators is denoted <span class="math notranslate nohighlight">\(\SpaceBounded(\SpaceHilbert)\)</span>.</p>
+</section>
+<section id="operator-algebra">
+<h3>Operator algebra<a class="headerlink" href="#operator-algebra" title="Link to this heading">#</a></h3>
+<p>Given two such operators <span class="math notranslate nohighlight">\(\op{A}\)</span> and <span class="math notranslate nohighlight">\(\op{B}\)</span>, we can define their sum to be</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-27">
+<span class="eqno">(42)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-27" title="Link to this equation">#</a></span>\[(\alpha\op{A} + \beta\op{B}) : \ket{\psi} \mapsto \alpha\op{A}\ket{\psi} + \beta\op{B}\ket{\psi}\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\alpha, \beta \in \Complexes\)</span> and <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert\)</span>. We can also define their product to be the composition</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-28">
+<span class="eqno">(43)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-28" title="Link to this equation">#</a></span>\[\op{A}\op{B} : \ket{\psi} \mapsto \op{A} \circ \op{B} \ket{\psi} = \op{A}(\op{B}\ket{\psi})\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert\)</span>. It is easy to prove that both of these definitions provide forms that are linear in the original sense <a class="reference internal" href="#equation-eq-operator-linear-map">(39)</a>, and thus operators form an algebra.</p>
+<p>In general, operators do not commute, e.g., <span class="math notranslate nohighlight">\(\op{A}\op{B} \neq \op{B}\op{A}\)</span>, and so the associated algebra is non-Abelian, or non-commutative. The difference between these orderings is captured by the <em>commutator</em>,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-29">
+<span class="eqno">(44)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-29" title="Link to this equation">#</a></span>\[[\op{A},\op{B}] = \op{A}\op{B} - \op{B}\op{A},\]</div>
+<p>which possesses the following properties:</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-30">
+<span class="eqno">(45)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-30" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i) } &amp;\text{(antisymmetry):} &amp;[\op{A},\op{B}] &amp;= -[\op{B},\op{A}],\\
+    \text{(ii) } &amp;\text{(linearity):} &amp;[\alpha_1\op{A}_1 + \alpha_2\op{A}_2,\op{B}] &amp;= \alpha_1[\op{A}_1,\op{B}] + \alpha_2[\op{A}_2,\op{B}] \quad \forall \, \alpha_1,\alpha_2 \in \Complexes,\\
+    \text{(iii) } &amp;\text{(Leibniz identity):} &amp;[\op{A},\op{B}\op{C}] &amp; = [\op{A},\op{B}]\op{C} + \op{B}[\op{A},\op{C}],\\
+    \text{(iv) } &amp;\text{(Jacobi identity):} &amp;\bigl[\op{A},[\op{B},\op{C}]\bigr] + \bigl[\op{B},[\op{C},\op{A}]\bigr] + \bigl[\op{C},[\op{A},\op{B}]\bigr] &amp;=0.
+\end{aligned}\end{split}\]</div>
+</section>
+<section id="outer-product">
+<h3>Outer product<a class="headerlink" href="#outer-product" title="Link to this heading">#</a></h3>
+<p>In addition to the inner product, we may also use the Dirac notation to easily express the <em>outer product</em> of a vector <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert_1\)</span> and a covector <span class="math notranslate nohighlight">\(\bra{\phi} \in \dual{\SpaceHilbert_2}{}\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-eq-outer-product">
+<span class="eqno">(46)<a class="headerlink" href="#equation-eq-outer-product" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\psi}\bra{\phi} &amp;\equiv \ket{\psi} \otimes \bra{\phi} \\
+    &amp;= \sum_{i,j} \braket{i}{\psi} \braket{\phi}{j} \, \ket{i}\bra{j} \\
+    &amp;= \sum_{i,j} \psi_i \conj{\phi_j}{} \ket{i}\bra{j}.
+\end{aligned}\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\phi \otimes \psi\)</span> denotes the tensor product between two vectors <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\psi\)</span> (see <a class="reference internal" href="#sec-composite"><span class="std std-ref">Composite systems</span></a>). The resulting form <span class="math notranslate nohighlight">\(\ket{\psi}\bra{\phi} \in \SpaceHilbert\)</span> is a linear operator in its own right and exists in the space</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-31">
+<span class="eqno">(47)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-31" title="Link to this equation">#</a></span>\[\SpaceHilbert = \SpaceHilbert_1 \otimes \dual{\SpaceHilbert_2}{},\]</div>
+<p>which itself is a Hilbert space.</p>
+</section>
+<section id="eigenvectors-and-eigenvalues">
+<h3>Eigenvectors and eigenvalues<a class="headerlink" href="#eigenvectors-and-eigenvalues" title="Link to this heading">#</a></h3>
+<p>A vector <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert\)</span> is said to be an <em>eigenvector</em> of an operator <span class="math notranslate nohighlight">\(\op{A}\)</span> if</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-32">
+<span class="eqno">(48)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-32" title="Link to this equation">#</a></span>\[\op{A}\ket{\psi} = a_\psi \ket{\psi}\]</div>
+<p>where the number <span class="math notranslate nohighlight">\(a_\psi \in \Complexes\)</span> is called the <em>eigenvalue</em>. Given this definition, we can single out two important operators:</p>
+<ul>
+<li><p>The <em>identity</em> operator <span class="math notranslate nohighlight">\(\Identity\)</span> is the (unique) operator that satisfies</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-33">
+<span class="eqno">(49)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-33" title="Link to this equation">#</a></span>\[\Identity\ket{\psi} = \ket{\psi}, \quad \forall \, \ket{\psi} \in \SpaceHilbert.\]</div>
+<p>Given any orthonormal basis <span class="math notranslate nohighlight">\(\{\ket{i}\}\)</span>, we may write</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-34">
+<span class="eqno">(50)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-34" title="Link to this equation">#</a></span>\[\Identity = \sum_{i} \ket{i}\bra{i}.\]</div>
+</li>
+<li><p>The <em>zero</em> operator <span class="math notranslate nohighlight">\(\op{0}\)</span> is the (unique) operator that satisfies</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-35">
+<span class="eqno">(51)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-35" title="Link to this equation">#</a></span>\[\op{0}\ket{\psi} = \vec{0}, \quad \forall \, \ket{\psi} \in \SpaceHilbert,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\vec{0}\)</span> is the zero vector (i.e., the additive identity).</p>
+</li>
+</ul>
+<p>An operator <span class="math notranslate nohighlight">\(\op{A}\)</span> is called <em>invertible</em> if an operator <span class="math notranslate nohighlight">\(\op{B}\)</span> exists such that</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-36">
+<span class="eqno">(52)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-36" title="Link to this equation">#</a></span>\[\op{A}\op{B} = \op{B}\op{A} = \Identity.\]</div>
+<p>If such a <span class="math notranslate nohighlight">\(\op{B}\)</span> exists, then it is the (unique) inverse of <span class="math notranslate nohighlight">\(\op{A}\)</span>, and we denote it by <span class="math notranslate nohighlight">\(\op{B} = \op{A}^{-1}\)</span>. The <em>spectrum</em> of <span class="math notranslate nohighlight">\(\op{A}\)</span> is the set of all complex numbers <span class="math notranslate nohighlight">\(\lambda\)</span> for which the operator <span class="math notranslate nohighlight">\(\op{A} - \lambda\Identity\)</span> fails to be invertible. In a finite-dimensional Hilbert space, the spectrum of <span class="math notranslate nohighlight">\(\op{A}\)</span> is simply the set of eigenvalues of <span class="math notranslate nohighlight">\(\op{A}\)</span>. The same is not true in general for infinite dimensions. The number of linearly independent eigenvectors possessing the same eigenvalue is called the <em>degeneracy</em> of that eigenvalue. Additionally, the <em>support</em> of an operator <span class="math notranslate nohighlight">\(\op{A}\)</span> is the vector space spanned by the eigenvectors of <span class="math notranslate nohighlight">\(\op{A}\)</span> with non-zero eigenvalues.</p>
+</section>
+<section id="transposition-and-conjugation">
+<h3>Transposition and conjugation<a class="headerlink" href="#transposition-and-conjugation" title="Link to this heading">#</a></h3>
+<p>Given a finite-dimensional Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, each operator <span class="math notranslate nohighlight">\(\op{A} \in \SpaceLinear(\SpaceHilbert)\)</span> can be expanded in an orthonormal basis as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-37">
+<span class="eqno">(53)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-37" title="Link to this equation">#</a></span>\[\op{A} = \sum_{i,j} \ket{i}\bra{i}\op{A}\ket{j}\bra{j} = \sum_{i,j} A_{ij}\ket{i}\bra{j}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-38">
+<span class="eqno">(54)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-38" title="Link to this equation">#</a></span>\[A_{ij} \equiv \bra{i}\op{A}\ket{j}\]</div>
+<p>are the elements of the corresponding matrix representation of the operator (in the given basis). Similarly, the product of two operators may be written as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-39">
+<span class="eqno">(55)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-39" title="Link to this equation">#</a></span>\[\op{A}\op{B} = \sum_{i,j,k} A_{ik}B_{kj}\ket{i}\bra{j}\]</div>
+<p>where <span class="math notranslate nohighlight">\(B_{kj} \equiv \bra{k}\op{B}\ket{j}\)</span>. These expressions make it easy to characterize the action of operations on such operators. Our primary interest lies in the <em>transpose</em> and the <em>conjugate transpose</em> (or <em>adjoint</em>), which are defined for any orthonormally expandable <span class="math notranslate nohighlight">\(\op{A}\)</span> by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-40">
+<span class="eqno">(56)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-40" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{transpose:}&amp; \quad &amp;\op{A}^\transpose &amp;= \sum_{i,j} A_{ij}\ket{j}\bra{i}, \\
+    \text{conjugate transpose:}&amp; &amp;\op{A}^\dagger &amp;= \sum_{i,j} \conj{A_{ij}}{}\ket{j}\bra{i} = \conj{(\op{A}^\transpose)}{} = (\conj{\op{A}}{})^\transpose.
+\end{aligned}\end{split}\]</div>
+<p>From these, it is easy to deduce the following properties:</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-41">
+<span class="eqno">(57)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-41" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i):}&amp; \quad &amp;(\op{A}^\transpose)^\transpose &amp;= \op{A} \qquad \qquad \quad &amp;(\op{A}^\dagger)^\dagger &amp;= \op{A},\\
+    \text{(ii):}&amp; &amp;(\op{A}\op{B})^\transpose &amp;= \op{B}^\transpose \op{A}^\transpose &amp;(\op{A}\op{B})^\dagger &amp;= \op{B}^\dagger \op{A}^\dagger,\\
+    \text{(iii):}&amp; &amp;(\alpha \op{A})^\transpose &amp;= \alpha \op{A}^\transpose &amp;(\alpha \op{A})^\dagger &amp;= \conj{\alpha}{} \op{A}^\dagger,\\
+    \text{(iv):}&amp; &amp;(\op{A} + \op{B})^\transpose &amp;= \op{A}^\transpose + \op{B}^\transpose &amp;(\op{A} + \op{B})^\dagger &amp;= \op{A}^\dagger + \op{B}^\dagger.
+\end{aligned}\end{split}\]</div>
+<p>Note also that the conjugate transpose of the eigenvalue equation <span class="math notranslate nohighlight">\(\op{A}\ket{\psi} = a_\psi \ket{\psi}\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-42">
+<span class="eqno">(58)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-42" title="Link to this equation">#</a></span>\[\bra{\psi}\op{A}^\dagger = \bra{\psi}\conj{a_\psi}{}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\op{A}^\dagger\)</span> is taken to act to the left on the covector <span class="math notranslate nohighlight">\(\bra{\psi}\)</span>.</p>
+</section>
+<section id="trace">
+<h3>Trace<a class="headerlink" href="#trace" title="Link to this heading">#</a></h3>
+<p>Another useful operation is the <em>trace</em>,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-43">
+<span class="eqno">(59)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-43" title="Link to this equation">#</a></span>\[\trace[{}\cdot{}] : \SpaceLinear(\SpaceHilbert) \rightarrow \Complexes,\]</div>
+<p>defined on an operator <span class="math notranslate nohighlight">\(\op{A} \in \SpaceLinear(\SpaceHilbert)\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-44">
+<span class="eqno">(60)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-44" title="Link to this equation">#</a></span>\[\trace[\op{A}] \equiv \sum_{i} \bra{i}\op{A}\ket{i} = \sum_{i} A_{ii}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\{\ket{i}\}\)</span> is any orthonormal basis. The trace has the following properties:</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-45">
+<span class="eqno">(61)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-45" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i):}&amp; \quad &amp;\trace[\op{A} + \op{B}] &amp;= \trace[\op{A}] + \trace[\op{B}],\\
+    \text{(ii):}&amp; &amp;\trace[\op{A}\op{B}] &amp;= \trace[\op{B}\op{A}],\\
+    \text{(iii):}&amp; &amp;\trace[\op{A}^\dagger] &amp;= \conj{\trace[\op{A}]}{},\\
+    \text{(iv):}&amp; &amp;\trace\bigl[\ket{\psi}\bra{\psi}\op{A}\bigr] &amp;= \bra{\psi}\op{A}\ket{\psi}.
+\end{aligned}\end{split}\]</div>
+<p>In a matrix representation of linear operators, the trace is simply the sum of the elements on the main diagonal of an operator’s corresponding matrix form.</p>
+</section>
+<section id="normal-operators">
+<h3>Normal operators<a class="headerlink" href="#normal-operators" title="Link to this heading">#</a></h3>
+<p>An important class of operators are the <em>normal</em> operators, which are characterized by their commutation with their own conjugate transpose, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-46">
+<span class="eqno">(62)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-46" title="Link to this equation">#</a></span>\[\op{N}^\dagger\op{N} = \op{N}\op{N}^\dagger.\]</div>
+<p>The <em>spectral theorem</em> states that any normal operator <span class="math notranslate nohighlight">\(\op{N}\)</span> admits a suitable <em>eigendecomposition</em>, that is, the eigenvectors <span class="math notranslate nohighlight">\(\{\ket{v_i}\}\)</span> of <span class="math notranslate nohighlight">\(\op{N}\)</span> form an orthonormal basis, and can be used in conjunction with the corresponding eigenvalues <span class="math notranslate nohighlight">\(\{\lambda_i\}\)</span> to allow us to write</p>
+<div class="math notranslate nohighlight" id="equation-eq-spectral-theorem">
+<span class="eqno">(63)<a class="headerlink" href="#equation-eq-spectral-theorem" title="Link to this equation">#</a></span>\[\op{N} = \sum_{i} \lambda_i \ket{v_i}\bra{v_i}, \quad \lambda_i \in \Complexes.\]</div>
+<p>The converse holds true, such that any orthogonally diagonalizable operator is normal. A useful consequence of this theorem is that it is easy to compute the function of an operator,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-47">
+<span class="eqno">(64)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-47" title="Link to this equation">#</a></span>\[f(\op{N}) = \sum_{i} f(\lambda_i) \ket{v_i}\bra{v_i}.\]</div>
+<p>Normal operators arise in many special forms, including:</p>
+<ul>
+<li><p><em>Hermitian</em> (or <em>self-adjoint</em>) operators <span class="math notranslate nohighlight">\(\op{H}\)</span>, defined by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-48">
+<span class="eqno">(65)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-48" title="Link to this equation">#</a></span>\[\op{H}^\dagger = \op{H}.\]</div>
+<p>If <span class="math notranslate nohighlight">\(\op{H}\)</span> is Hermitian, then</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-49">
+<span class="eqno">(66)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-49" title="Link to this equation">#</a></span>\[\bra{\psi}\op{H}\ket{\psi} \in \Reals,\quad \forall \, \ket{\psi} \in \SpaceHilbert,\]</div>
+<p>that is, <span class="math notranslate nohighlight">\(\op{H}\)</span> has only real eigenvalues.</p>
+</li>
+<li><p><em>skew-Hermitian</em> operators <span class="math notranslate nohighlight">\(\op{S}\)</span>, defined by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-50">
+<span class="eqno">(67)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-50" title="Link to this equation">#</a></span>\[\op{S}^\dagger = -\op{S}.\]</div>
+</li>
+<li><p><em>Unitary</em> operators <span class="math notranslate nohighlight">\(\op{U}\)</span>, defined by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-51">
+<span class="eqno">(68)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-51" title="Link to this equation">#</a></span>\[\op{U}^\dagger \op{U} = \op{U}\op{U}^\dagger = \Identity,\]</div>
+<p>or equivalently,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-52">
+<span class="eqno">(69)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-52" title="Link to this equation">#</a></span>\[\op{U}^\dagger = \op{U}^{-1}.\]</div>
+<p>The characterizing nature of unitary operators is their preservation of the inner product, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-53">
+<span class="eqno">(70)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-53" title="Link to this equation">#</a></span>\[\bra{\phi}\op{U}^\dagger \op{U}\ket{\psi} = \braket{\phi}{\psi}, \quad \forall \,\ket{\psi},\ket{\phi} \in \SpaceHilbert,\]</div>
+<p>which motivates the given definition.</p>
+</li>
+<li><p><em>Positive</em> operators <span class="math notranslate nohighlight">\(\op{P}\)</span>, defined by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-54">
+<span class="eqno">(71)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-54" title="Link to this equation">#</a></span>\[\bra{\psi}\op{P}\ket{\psi} \geq 0, \quad \forall \, \ket{\psi} \in \SpaceHilbert.\]</div>
+<p>Operators that fulfill this condition are said to be <em>positive-semidefinite</em>, and they may be constructed from any <span class="math notranslate nohighlight">\(\op{A} \in \SpaceLinear(\SpaceHilbert)\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-55">
+<span class="eqno">(72)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-55" title="Link to this equation">#</a></span>\[\op{P} = \op{A}^\dagger \op{A},\]</div>
+<p>or using the spectral theorem,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-56">
+<span class="eqno">(73)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-56" title="Link to this equation">#</a></span>\[\op{P} = \sum_{i} P_i \ket{v_i}\bra{v_i}\]</div>
+<p>given eigenvalues <span class="math notranslate nohighlight">\(P_i \geq 0\)</span> and eigenvectors <span class="math notranslate nohighlight">\(\{\ket{v_i}\}\)</span>. Note that <span class="math notranslate nohighlight">\(\op{P}\)</span> is called <em>positive-definite</em> if</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-57">
+<span class="eqno">(74)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-57" title="Link to this equation">#</a></span>\[\bra{\psi}\op{P}\ket{\psi} &gt; 0, \quad \forall \, \ket{\psi} \in \SpaceHilbert.\]</div>
+<p>In the special case where</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-58">
+<span class="eqno">(75)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-58" title="Link to this equation">#</a></span>\[\trace[\op{P}] = \sum_{i} P_i = 1,\]</div>
+<p>then <span class="math notranslate nohighlight">\(\op{P}\)</span> is called a <em>density</em> operator.</p>
+</li>
+<li><p><em>Projection</em> operators <span class="math notranslate nohighlight">\(\op{\Pi}\)</span>, defined by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-59">
+<span class="eqno">(76)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-59" title="Link to this equation">#</a></span>\[\op{\Pi}^2 = \op{\Pi} = \op{\Pi}^\dagger,\]</div>
+<p>which is to say that <span class="math notranslate nohighlight">\(\op{\Pi}\)</span> is both idempotent and Hermitian.</p>
+</li>
+<li><p><em>Involutory</em> operators <span class="math notranslate nohighlight">\(\op{Q}\)</span>, defined by</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-60">
+<span class="eqno">(77)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-60" title="Link to this equation">#</a></span>\[\op{Q}^2 = \Identity.\]</div>
+<p>Involutory operators include those which are both Hermitian and unitary.</p>
+</li>
+</ul>
+</section>
+</section>
+<section id="composite-systems">
+<span id="sec-composite"></span><h2>Composite systems<a class="headerlink" href="#composite-systems" title="Link to this heading">#</a></h2>
+<p>Hilbert spaces are vector spaces over <span class="math notranslate nohighlight">\(\Complexes\)</span>, so we can construct composite spaces and the corresponding tensor product in much the same way as we would for less equipped spaces. We will first discuss the <em>bipartite</em> case, which may be easily generalized to larger composite systems (termed <em>multipartite</em>). Let <span class="math notranslate nohighlight">\(\SpaceHilbert_1\)</span> and <span class="math notranslate nohighlight">\(\SpaceHilbert_2\)</span> be a pair of finite-dimensional Hilbert spaces, with bases <span class="math notranslate nohighlight">\(\{\ket{\mu_m}\}_{m=1}^{M}\)</span> and <span class="math notranslate nohighlight">\(\{\ket{\nu_n}\}_{n=1}^{N}\)</span>, respectively. The tensor product space <span class="math notranslate nohighlight">\(\SpaceHilbert_1 \otimes \SpaceHilbert_2\)</span> is spanned by all pairs of elements <span class="math notranslate nohighlight">\(\ket{\mu_m} \otimes \ket{\nu_n}\)</span> chosen from the two bases. Note in particular that <span class="math notranslate nohighlight">\(\{\ket{\mu_m}\otimes\ket{\nu_n}\}_{m,n}\)</span> is an orthonormal basis of the composite space. Thus, if we have the linear combinations,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-61">
+<span class="eqno">(78)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-61" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\psi} &amp;= \sum_{m=1}^{M} \psi_m \ket{\mu_m},\\
+    \ket{\phi} &amp;= \sum_{n=1}^{N} \phi_m \ket{\nu_n},\\
+\end{aligned}\end{split}\]</div>
+<p>for any <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert_1\)</span> and <span class="math notranslate nohighlight">\(\ket{\phi} \in \SpaceHilbert_2\)</span>, we can formally express their <em>tensor product</em> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-tensor-product">
+<span class="eqno">(79)<a class="headerlink" href="#equation-eq-tensor-product" title="Link to this equation">#</a></span>\[\ket{\psi} \otimes \ket{\phi} = \sum_{m,n} \psi_m \phi_n \ket{\mu_m} \otimes \ket{\nu_n}.\]</div>
+<p>This is often equivalently written as <span class="math notranslate nohighlight">\(\ket{\psi} \ket{\phi}\)</span>, <span class="math notranslate nohighlight">\(\ket{\psi, \phi}\)</span>, or even simply <span class="math notranslate nohighlight">\(\ket{\psi \phi}\)</span>. It follows that</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-62">
+<span class="eqno">(80)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-62" title="Link to this equation">#</a></span>\[\dim(\SpaceHilbert_1 \otimes \SpaceHilbert_2) = \dim(\SpaceHilbert_1) \times \dim(\SpaceHilbert_2),\]</div>
+<p>and for any elements <span class="math notranslate nohighlight">\(\ket{\psi},\ket{\phi} \in \SpaceHilbert_1\)</span> and <span class="math notranslate nohighlight">\(\ket{\psi^{\prime}},\ket{\phi^{\prime}} \in \SpaceHilbert_2\)</span> we have the rules:</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-63">
+<span class="eqno">(81)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-63" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i) } &amp;\text{(linearity in }\SpaceHilbert_1\text{):} &amp; \bigl(\ket{\psi} + \ket{\phi}\bigr) \otimes \ket{\psi^{\prime}} &amp;= \ket{\psi} \otimes \ket{\psi^{\prime}} + \ket{\phi} \otimes \ket{\psi^{\prime}},\\
+    \text{(ii) } &amp;\text{(linearity in }\SpaceHilbert_2\text{):} &amp;\ket{\psi} \otimes \bigl(\ket{\psi^{\prime}} + \ket{\phi^{\prime}}\bigr) &amp;= \ket{\psi} \otimes \ket{\psi^{\prime}} + \ket{\psi} \otimes \ket{\phi^{\prime}},\\
+    \text{(iii) } &amp;\text{(scalar multiplication):} &amp;\lambda\bigl(\ket{\psi} \otimes \ket{\psi^{\prime}}\bigr) &amp;= \bigl(\lambda\ket{\psi}\bigr) \otimes \ket{\psi^{\prime}} = \ket{\psi} \otimes \bigl(\lambda\ket{\psi^{\prime}}\bigr).
+\end{aligned}\end{split}\]</div>
+<p>Thus, the composite space <span class="math notranslate nohighlight">\(\SpaceHilbert_1 \otimes \SpaceHilbert_2\)</span> is a vector space over <span class="math notranslate nohighlight">\(\Complexes\)</span>, and becomes a Hilbert space when we endow it with an inner product. This is accomplished in the obvious way, where if <span class="math notranslate nohighlight">\(\ket{\Psi},\ket{\Phi} \in \SpaceHilbert_1 \otimes \SpaceHilbert_2\)</span> are two composite forms defined in general as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-64">
+<span class="eqno">(82)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-64" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\Psi} &amp;= \sum_{m,n} \Psi_{m,n} \ket{\mu_m} \otimes \ket{\nu_n},\\
+    \ket{\Phi} &amp;= \sum_{m,n} \Phi_{m,n} \ket{\mu_m} \otimes \ket{\nu_n},
+\end{aligned}\end{split}\]</div>
+<p>then their inner product is</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-65">
+<span class="eqno">(83)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-65" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \braket{\Psi}{\Phi} &amp;= \sum_{i,j,k,l} \conj{\Phi_{ij}}{} \Psi_{kl} \bigl(\bra{\mu_i} \otimes \bra{\nu_j}\bigr)\bigl(\ket{\mu_k} \otimes \ket{\nu_l}\bigr) \\
+    &amp;= \sum_{i,j,k,l} \conj{\Phi_{ij}}{} \Psi_{kl} {\braket{\mu_i}{\mu_k}}_1 {\braket{\nu_j}{\nu_l}}_2 \\
+    &amp;= \sum_{i,j} \conj{\Phi_{ij}}{} \Psi_{ij}
+\end{aligned}\end{split}\]</div>
+<p>by the orthonormality of the bases. Here, <span class="math notranslate nohighlight">\({\braket{{}\cdot{}}{{}\cdot{}}}_1\)</span> and <span class="math notranslate nohighlight">\({\braket{{}\cdot{}}{{}\cdot{}}}_2\)</span> denote the inner products on <span class="math notranslate nohighlight">\(\SpaceHilbert_1\)</span> and <span class="math notranslate nohighlight">\(\SpaceHilbert_2\)</span>, respectively. In the special case where the composite vectors are simple tensor products, e.g.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-66">
+<span class="eqno">(84)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-66" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\Psi} &amp;= \ket{\psi} \otimes \ket{\psi^{\prime}},\\
+    \ket{\Phi} &amp;= \ket{\phi} \otimes \ket{\phi^{\prime}},
+\end{aligned}\end{split}\]</div>
+<p>then their inner product becomes</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-67">
+<span class="eqno">(85)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-67" title="Link to this equation">#</a></span>\[\braket{\Phi}{\Psi} = \bigl(\bra{\phi} \otimes \bra{\phi^{\prime}}\bigr)\bigl(\ket{\psi} \otimes \ket{\psi^{\prime}}\bigr) = {\braket{\phi}{\psi}}_1 {\braket{\phi^{\prime}}{\psi^{\prime}}}_2.\]</div>
+<p>Systems which are to be understood as not being constructable from tensor products of Hilbert spaces (subsystems) are said to be <em>non-composite</em> and are often termed <em>unipartite</em>.</p>
+<p>As far as linear operators on composite Hilbert spaces are concerned, if <span class="math notranslate nohighlight">\(\op{A} \in \SpaceLinear(\SpaceHilbert_A)\)</span> and <span class="math notranslate nohighlight">\(\op{B} \in \SpaceLinear(\SpaceHilbert_B)\)</span> are two operators, then their tensor product</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-68">
+<span class="eqno">(86)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-68" title="Link to this equation">#</a></span>\[\op{A} \otimes \op{B} \in \SpaceLinear(\SpaceHilbert_A) \otimes \SpaceLinear(\SpaceHilbert_B) = \SpaceLinear(\SpaceHilbert_A \otimes \SpaceHilbert_B)\]</div>
+<p>is defined by the action on the product state <span class="math notranslate nohighlight">\(\ket{\psi} \otimes \ket{\phi} \in \SpaceHilbert_A \otimes \SpaceHilbert_B\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-69">
+<span class="eqno">(87)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-69" title="Link to this equation">#</a></span>\[(\op{A} \otimes \op{B})\bigl(\ket{\psi} \otimes \ket{\phi}\bigr) = \op{A}\ket{\psi} \otimes \op{B}\ket{\phi}.\]</div>
+<p>This has the following properties:</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-70">
+<span class="eqno">(88)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-70" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i):}&amp; \quad &amp;(\op{A}_1 + \op{A}_2)\otimes\op{B} &amp;= \op{A}_1\otimes\op{B} + \op{A}_2\otimes\op{B},\\
+    \text{(ii):}&amp; &amp;\op{A}\otimes(\op{B}_1 + \op{B}_2) &amp;= \op{A}\otimes\op{B}_1 + \op{A}\otimes\op{B}_2,\\
+    \text{(iii):}&amp; &amp;(\op{A}\otimes\op{B})^\dagger &amp;= \op{A}^\dagger\otimes\op{B}^\dagger,\\
+    \text{(iv):}&amp; &amp;\trace[\op{A}\otimes\op{B}] &amp;= \trace[\op{A}]\trace[\op{B}],\\
+    \text{(v):}&amp; &amp;(\lambda\op{A})\otimes\op{B} &amp;= \op{A}\otimes(\lambda\op{B}).
+\end{aligned}\end{split}\]</div>
+<p>In general, an operator <span class="math notranslate nohighlight">\(\op{Q} \in \SpaceLinear(\SpaceHilbert_A \otimes \SpaceHilbert_B)\)</span> may be expanded as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-71">
+<span class="eqno">(89)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-71" title="Link to this equation">#</a></span>\[\op{Q} = \sum_{i,j,k,l} Q_{ik}^{jl} \ket{i}\bra{j} \otimes \ket{k}\bra{l},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\{\ket{i}\},\{\ket{k}\}\)</span> are orthonormal bases in <span class="math notranslate nohighlight">\(\SpaceHilbert_A\)</span> and <span class="math notranslate nohighlight">\(\{\ket{j}\},\{\ket{l}\}\)</span> are orthonormal bases in <span class="math notranslate nohighlight">\(\SpaceHilbert_B\)</span>. The partial transposes of such an operator over each space <span class="math notranslate nohighlight">\(\SpaceHilbert_A\)</span> and <span class="math notranslate nohighlight">\(\SpaceHilbert_B\)</span> are defined respectively as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-72">
+<span class="eqno">(90)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-72" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \op{Q}^{\transpose_A} &amp;= \sum_{i,j,k,l} Q_{ik}^{jl} \bigl(\ket{i}\bra{j}\bigr)^\transpose \otimes \ket{k}\bra{l} = \sum_{i,j,k,l} Q_{ik}^{jl} \ket{j}\bra{i} \otimes \ket{k}\bra{l}, \\
+    \op{Q}^{\transpose_B} &amp;= \sum_{i,j,k,l} Q_{ik}^{jl} \ket{i}\bra{j} \otimes \bigl(\ket{k}\bra{l}\bigr)^\transpose = \sum_{i,j,k,l} Q_{ik}^{jl} \ket{i}\bra{j} \otimes \ket{l}\bra{k},
+\end{aligned}\end{split}\]</div>
+<p>Similarly, the partial traces over <span class="math notranslate nohighlight">\(\SpaceHilbert_A\)</span> and <span class="math notranslate nohighlight">\(\SpaceHilbert_B\)</span> are definable as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-73">
+<span class="eqno">(91)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-73" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \trace_{A}[\op{Q}] &amp;= \sum_{m} \bigl(\bra{m} \otimes \Identity\bigr)\op{Q}\bigl(\ket{m} \otimes \Identity\bigr) = \sum_{m,k,l} Q_{mk}^{ml} \ket{k}\bra{l}, \\
+    \trace_{B}[\op{Q}] &amp;= \sum_{n} \bigl(\Identity \otimes \bra{n}\bigr)\op{Q}\bigl(\Identity \otimes \ket{n}\bigr) = \sum_{n,i,j} Q_{in}^{jn} \ket{i}\bra{j},
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\{\ket{m}\}\)</span> and <span class="math notranslate nohighlight">\(\{\ket{n}\}\)</span> are orthonormal bases of <span class="math notranslate nohighlight">\(\SpaceHilbert_A\)</span> and <span class="math notranslate nohighlight">\(\SpaceHilbert_B\)</span>, respectively.</p>
+<section id="schmidt-decomposition">
+<h3>Schmidt decomposition<a class="headerlink" href="#schmidt-decomposition" title="Link to this heading">#</a></h3>
+<p>A useful theorem for expressing composite vectors is the <em>Schmidt decomposition</em>: given a bipartite vector <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert_A \otimes \SpaceHilbert_B\)</span>, there exists sets of orthonormal states <span class="math notranslate nohighlight">\(\{\ket{k_A}\}\)</span> and <span class="math notranslate nohighlight">\(\{\ket{k_B}\}\)</span> for systems <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, respectively, such that</p>
+<div class="math notranslate nohighlight" id="equation-eq-schmidt-decomposition">
+<span class="eqno">(92)<a class="headerlink" href="#equation-eq-schmidt-decomposition" title="Link to this equation">#</a></span>\[\ket{\psi} = \sum_k \lambda_k \ket{k_A} \otimes \ket{k_B}.\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\lambda_k\)</span> are non-negative real numbers, known as <em>Schmidt coefficients</em> that satisfy</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-74">
+<span class="eqno">(93)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-74" title="Link to this equation">#</a></span>\[\sum_k \lambda_k^2 = \braket{\psi}{\psi}.\]</div>
+<p>The number of (non-zero) Schmidt coefficients is called the <em>Schmidt number</em> of the vector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, and the bases <span class="math notranslate nohighlight">\(\{\ket{k_A}\}\)</span> and <span class="math notranslate nohighlight">\(\{\ket{k_B}\}\)</span> are called the <em>Schmidt bases</em>.</p>
+<p>The Schmidt decomposition <a class="reference internal" href="#equation-eq-schmidt-decomposition">(92)</a> is simply a way of expressing a vector in the tensor product of two inner product spaces (such as Hilbert spaces), and our ability to do so is a very powerful result. For example, given a normalized bipartite vector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> with decomposition <a class="reference internal" href="#equation-eq-schmidt-decomposition">(92)</a>, the reduced operators for each system can be calculated to be</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-75">
+<span class="eqno">(94)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-75" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \StateDensity^A &amp;\equiv \trace_B\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_A}\bra{k_A}, \\
+    \StateDensity^B &amp;\equiv \trace_A\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_B}\bra{k_B}.
+\end{aligned}\end{split}\]</div>
+<p>The fact that the eigenvalues of both of these operators are identical (simply equal to <span class="math notranslate nohighlight">\(\lambda_k^2\)</span>) is a significant result. This is because many of the important properties of operators are completely determined by their eigenvalues. Consequently, such properties of the reduced operators of a vector on a composite system will automatically be the same, regardless of the structure of the composite vector.</p>
+</section>
+<section id="multiple-systems-of-arbitrary-dimension">
+<h3>Multiple systems of arbitrary dimension<a class="headerlink" href="#multiple-systems-of-arbitrary-dimension" title="Link to this heading">#</a></h3>
+<p>We now turn our attention to <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional Hilbert spaces, which we denote as <span class="math notranslate nohighlight">\(\SpaceHilbert_\Dimension\)</span>. On such spaces, there always exists a vector basis <span class="math notranslate nohighlight">\(\{\ket{\Basis_i}\}_{i=1}^{\Dimension }\)</span> with which any <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert_\Dimension\)</span> can be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-76">
+<span class="eqno">(95)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-76" title="Link to this equation">#</a></span>\[\ket{\psi} = \sum_{i=1}^{\Dimension} \psi_i \ket{\Basis_i}.\]</div>
+<p>If we instead have <span class="math notranslate nohighlight">\(\Number\)</span> such systems <span class="math notranslate nohighlight">\(\{\ket{\psi_n}\}_{n=1}^{\Number}\)</span>, each residing in the same Hilbert space <span class="math notranslate nohighlight">\(\ket{\psi_n} \in \SpaceHilbert_{\Dimension}\)</span>, then their composition is</p>
+<div class="math notranslate nohighlight" id="equation-eq-composition-state">
+<span class="eqno">(96)<a class="headerlink" href="#equation-eq-composition-state" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\psi_1} \otimes \ket{\psi_2} \otimes \ldots \otimes \ket{\psi_\Number} &amp;\equiv \bigotimes_{n=1}^{\Number} \ket{\psi_n} \\
+    &amp;= \bigotimes_{n=1}^{\Number} \sum_{i=1}^{\Dimension} \psi_{i_n} \ket{\Basis_{i_n}} \\
+    &amp;= \sum_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension} \psi_{i_1} \psi_{i_2} \ldots \psi_{i_\Number} \ket{\Basis_{i_1}} \otimes \ket{\Basis_{i_2}} \otimes \ldots \otimes \ket{\Basis_{i_\Number}} \\
+    &amp;= \sum_{i=1}^{\Dimension} \left( \prod_{n=1}^{\Number} \psi_{i_n} \right) \bigotimes_{n=1}^{\Number} \ket{\Basis_{i_n}} \\
+    &amp;= \sum_{i=1}^{\Dimension} \psi_{i_1, i_2, \ldots, i_\Number} \ket{\Basis_{i_1, i_2, \ldots, i_\Number}} \\
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\psi_{i_n}\)</span> is the <span class="math notranslate nohighlight">\(i_n\)</span>-th component of the <span class="math notranslate nohighlight">\(n\)</span>-th state (with basis <span class="math notranslate nohighlight">\(\{\ket{\Basis_{i_n}}\}_{i_n = 1}^{\Dimension} \equiv \{\ket{\Basis_i}\}_{i = 1}^{\Dimension}\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>), i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-77">
+<span class="eqno">(97)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-77" title="Link to this equation">#</a></span>\[\ket{\psi_n} = \sum_{i_n = 1}^{\Dimension} \psi_{i_n} \ket{\Basis_{i_n}},\]</div>
+<p>the amalgamated components are</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-78">
+<span class="eqno">(98)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-78" title="Link to this equation">#</a></span>\[\psi_{i_1, i_2, \ldots, i_\Number} \equiv \prod_{n=1}^{\Number} \psi_{i_n} = \psi_{i_1} \psi_{i_2} \ldots \psi_{i_\Number},\]</div>
+<p>and we introduced the composite vector</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-79">
+<span class="eqno">(99)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-79" title="Link to this equation">#</a></span>\[\ket{\Basis_{\{i_n\}}} \equiv \ket{\Basis_{i_1, i_2, \ldots, i_\Number}} \equiv \bigotimes_{n=1}^{\Number} \ket{\Basis_{i_n}}.\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\{\ket{\Basis_{i_n}}\}_{i_n = 1}^{\Dimension}\)</span> is a basis for the Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_{\Dimension}\)</span>, then accordingly the set of states</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-80">
+<span class="eqno">(100)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-80" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \Bigl\{\ket{\Basis_{\{i_n\}}} : 1 \leq i_n \leq \Dimension, \, 1 \leq n \leq \Number \Bigr\} &amp;\equiv \left\{\bigotimes_{n=1}^{\Number} \ket{\Basis_{i_n}}\right\}_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension} \\
+   &amp;= \bigl\{\ket{\Basis_{i_1}} \otimes \ket{\Basis_{i_2}} \otimes \ldots \otimes \ket{\Basis_{i_\Number}}\bigr\}_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension},
+\end{aligned}\end{split}\]</div>
+<p>makes a basis for the composite space</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-81">
+<span class="eqno">(101)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-81" title="Link to this equation">#</a></span>\[\SpaceHilbert_{\Dimension}^{\otimes \Number} \equiv \bigotimes_{i=1}^{\Number} \SpaceHilbert_{\Dimension} \equiv \underbrace{\SpaceHilbert_{\Dimension} \otimes \SpaceHilbert_{\Dimension} \otimes \ldots \otimes \SpaceHilbert_{\Dimension}}_{\Number \text{ times}}.\]</div>
+<p>As this is <span class="math notranslate nohighlight">\(\Number\)</span> compositions of <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional systems, there are a total of <span class="math notranslate nohighlight">\(\Dimension^\Number\)</span> basis states <span class="math notranslate nohighlight">\(\ket{\Basis_{\{i_n\}}}\)</span> which span <span class="math notranslate nohighlight">\(\SpaceHilbert_{\Dimension}^{\otimes \Number}\)</span>. This <span class="math notranslate nohighlight">\(\Dimension^\Number\)</span>-dimensional composite space may therefore be written as <span class="math notranslate nohighlight">\(\SpaceHilbert_{\Dimension^\Number}\)</span>, and we have the isomorphism</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-82">
+<span class="eqno">(102)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-82" title="Link to this equation">#</a></span>\[\SpaceHilbert_{\Dimension^\Number} \cong \SpaceHilbert_{\Dimension}^{\otimes \Number}.\]</div>
+<p>In other words, a <span class="math notranslate nohighlight">\(\Dimension^\Number\)</span>-dimensional Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_{\Dimension^\Number}\)</span> is decomposable into exactly <span class="math notranslate nohighlight">\(\Number\)</span> tensor products <span class="math notranslate nohighlight">\(\SpaceHilbert_{\Dimension}^{\otimes \Number}\)</span> of a <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_\Dimension\)</span>. Importantly, this means any linear operator <span class="math notranslate nohighlight">\(\op{A} \in \SpaceHilbert_{\Dimension^\Number}\)</span> may be embedded in <span class="math notranslate nohighlight">\(\SpaceHilbert_{\Dimension}^{\otimes N}\)</span> via a decomposition into tensor products of generalized Gell-Mann matrices (with the identity <span class="math notranslate nohighlight">\(\GellMannGeneralized_{0} \equiv \Identity_{\Dimension}\)</span>) (see <a class="reference internal" href="discrete.html#sec-qudits"><span class="std std-ref">Qudits</span></a>),</p>
+<div class="math notranslate nohighlight" id="equation-eq-operator-decomposition">
+<span class="eqno">(103)<a class="headerlink" href="#equation-eq-operator-decomposition" title="Link to this equation">#</a></span>\[\op{A} = \frac{1}{\Dimension^\Number}\sum_{\{i_n\}_{n=1}^{\Number} = 0}^{\Dimension^2 - 1} A_{i_1, i_2, \ldots, i_\Number} \GellMannGeneralized_{i_1} \otimes \GellMannGeneralized_{i_2} \otimes \ldots \otimes \GellMannGeneralized_{i_\Number}\]</div>
+<p>where the coefficients</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-83">
+<span class="eqno">(104)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-83" title="Link to this equation">#</a></span>\[A_{i_1, i_2, \ldots, i_\Number} = \trace\bigl[(\GellMannGeneralized_{i_1} \otimes \GellMannGeneralized_{i_2} \otimes \ldots \otimes \GellMannGeneralized_{i_\Number})\op{A}\bigr]\]</div>
+<p>collectively characterize <span class="math notranslate nohighlight">\(\op{A}\)</span> under this decomposition. For example, a bipartite operator on <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional subsystems can be written as</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-84">
+<span class="eqno">(105)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-84" title="Link to this equation">#</a></span>\[\op{A} = \frac{1}{\Dimension^2}\sum_{i_1,i_2=0}^{\Dimension^2 - 1} A_{i_1,i_2} \GellMannGeneralized_{i_1} \otimes \GellMannGeneralized_{i_2}\]</div>
+<p>with <span class="math notranslate nohighlight">\(A_{i_1, i_2} = \trace\bigl[(\GellMannGeneralized_{i_1} \otimes \GellMannGeneralized_{i_2})\op{A}\bigr]\)</span>. Alternatively, in the case of binary (<span class="math notranslate nohighlight">\(\Dimension = 2\)</span>) systems (see <a class="reference internal" href="discrete.html#sec-qubits"><span class="std std-ref">Qubits</span></a>), this decomposition <a class="reference internal" href="#equation-eq-operator-decomposition">(103)</a> is accomplished using the Pauli matrices <a class="reference internal" href="discrete.html#equation-eq-pauli">(130)</a> (with the identity <span class="math notranslate nohighlight">\(\Pauli_{0} \equiv \Identity_{2}\)</span>),</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-85">
+<span class="eqno">(106)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-85" title="Link to this equation">#</a></span>\[\op{A} = \frac{1}{2^\Number}\sum_{\{i_n\}_{n=1}^{\Number} = 0}^{3} A_{i_1, i_2, \ldots, i_\Number} \Pauli_{i_1} \otimes \Pauli_{i_2} \otimes \ldots \otimes \Pauli_{i_\Number}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-86">
+<span class="eqno">(107)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-86" title="Link to this equation">#</a></span>\[A_{i_1, i_2, \ldots, i_\Number} = \trace\bigl[(\Pauli_{i_1} \otimes \Pauli_{i_2} \otimes \ldots \otimes \Pauli_{i_\Number})\op{A}\bigr].\]</div>
+</section>
+</section>
+<section id="superoperators">
+<h2>Superoperators<a class="headerlink" href="#superoperators" title="Link to this heading">#</a></h2>
+<p>A <em>superoperator</em> is a linear map <span class="math notranslate nohighlight">\(\MapGeneral\)</span> on the space of (linear) operators <span class="math notranslate nohighlight">\(\SpaceLinear(\SpaceHilbert)\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-87">
+<span class="eqno">(108)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-87" title="Link to this equation">#</a></span>\[\MapGeneral[{}\cdot{}] : \SpaceLinear(\SpaceHilbert) \rightarrow \SpaceLinear(\SpaceHilbert),\]</div>
+<p>which preserves linear combinations of operators, that is,</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-88">
+<span class="eqno">(109)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-88" title="Link to this equation">#</a></span>\[\MapGeneral[\mu\op{A} + \nu\op{B}] = \mu\MapGeneral[\op{A}] + \nu\MapGeneral[\op{B}]\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\op{A},\op{B} \in \SpaceLinear(\SpaceHilbert)\)</span> and <span class="math notranslate nohighlight">\(\mu,\nu \in \Complexes\)</span>. Any such superoperator may satisfy any number of additional properties:</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-89">
+<span class="eqno">(110)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-89" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \text{(i) } &amp;\text{(positivity):} &amp;\MapGeneral[\op{P}] &amp; \ \text{is positive if} \ \op{P} \ \text{is positive}, \\
+    \text{(ii) } &amp;\text{(complete positivity):} &amp;\MapGeneral[\op{P}] \otimes \Identity &amp; \ \text{is positive if} \ \op{P} \otimes \Identity \ \text{is positive}, \\
+    \text{(iii) } &amp;\text{(Hermiticity preservation):} &amp;\MapGeneral[\op{H}]^\dagger&amp;= \MapGeneral[\op{H}] \ \text{if} \ \op{H}^\dagger = \op{H}, \\
+    \text{(iv) } &amp;\text{(trace preservation):} &amp;\trace\bigl[\MapGeneral[\op{A}]\bigr] &amp;= \trace[\op{A}] \quad \forall \, \op{A} \in \SpaceLinear(\SpaceHilbert).
+\end{aligned}\end{split}\]</div>
+</section>
+<section id="concavity-and-convexity">
+<h2>Concavity and convexity<a class="headerlink" href="#concavity-and-convexity" title="Link to this heading">#</a></h2>
+<p>A Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is said to be <em>convex</em> if for any finite collection of its elements <span class="math notranslate nohighlight">\(\{\op{A}_i\}\)</span>, the linear combination satisfies</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-90">
+<span class="eqno">(111)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-90" title="Link to this equation">#</a></span>\[\sum_{i} p_i \op{A}_i \in \SpaceHilbert\]</div>
+<p>for any probability distribution <span class="math notranslate nohighlight">\(\SetProbability = \{p_i\}\)</span>. If this does not hold, then <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is said to be <em>concave</em>. An element <span class="math notranslate nohighlight">\(\op{A}_i \in \SpaceHilbert\)</span> in a convex space is called <em>extreme</em> if it cannot be represented as a non-trivial combination of other elements (that is, it can only be expressed with a single non-zero <span class="math notranslate nohighlight">\(p_i\)</span>).</p>
+<p>A (real) map</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-91">
+<span class="eqno">(112)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-91" title="Link to this equation">#</a></span>\[f({}\cdot{}) : \SpaceHilbert \rightarrow \Reals\]</div>
+<p>is said to be convex if</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-92">
+<span class="eqno">(113)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-92" title="Link to this equation">#</a></span>\[f\biggl(\sum_{i} p_i \op{A}_i\biggr) \leq \sum_{i} p_i f(\op{A}_i)\]</div>
+<p>and concave if</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-93">
+<span class="eqno">(114)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-93" title="Link to this equation">#</a></span>\[f\biggl(\sum_{i} p_i \op{A}_i\biggr) &gt; \sum_{i} p_i f(\op{A}_i).\]</div>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-nielsen-quantum-2010" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>M. Nielsen and I. Chuang, <em>Quantum Computation and Quantum Information: 10th Anniversary Edition</em>, Cambridge University Press, Cambridge, 2010.</p>
+</div>
+<div class="citation" id="cite-1-zeidler-quantum-2006" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
+<p>E. Zeidler, <em>Quantum Field Theory I: Basics in Mathematics and Physics</em>, Springer, Berlin, Heidelberg, 2006.</p>
+</div>
+<div class="citation" id="cite-1-audretsch-entangled-2007" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
+<p>J. Audretsch, <em>Entangled Systems: New Directions in Quantum Physics</em>, WILEY‐VCH, February 2007.</p>
+</div>
+<div class="citation" id="cite-1-dimock-quantum-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">4</a><span class="fn-bracket">]</span></span>
+<p>J. Dimock, <em>Quantum Mechanics and Quantum Field Theory: A Mathematical Primer</em>, Cambridge University Press, Cambridge, 2011.</p>
+</div>
+<div class="citation" id="cite-1-shankar-principles-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">5</a><span class="fn-bracket">]</span></span>
+<p>R. Shankar, <em>Principles of Quantum Mechanics</em>, Springer New York, 2nd edition, December 2012.</p>
+</div>
+<div class="citation" id="cite-1-ohya-mathematical-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">6</a><span class="fn-bracket">]</span></span>
+<p>M. Ohya and I. Volovich, <em>Mathematical Foundations of Quantum Information and Computation and Its Applications to Nano- and Bio-systems</em>, Theoretical and Mathematical Physics, Springer Dordrecht, January 2011.</p>
+</div>
+<div class="citation" id="cite-1-ballentine-quantum-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">7</a><span class="fn-bracket">]</span></span>
+<p>L. E. Ballentine, <em>Quantum Mechanics: A Modern Development</em>, World Scientific, 2nd edition, November 2014.</p>
+</div>
+<div class="citation" id="cite-1-holevo-quantum-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">8</a><span class="fn-bracket">]</span></span>
+<p>A. S. Holevo, <em>Quantum Systems, Channels, Information: A Mathematical Introduction</em>, De Gruyter, December 2012.</p>
+</div>
+<div class="citation" id="cite-1-watrous-theory-2018" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">9</a><span class="fn-bracket">]</span></span>
+<p>J. Watrous, <em>The Theory of Quantum Information</em>, Cambridge University Press, Cambridge, 2018.</p>
+</div>
+<div class="citation" id="cite-1-prugovecki-quantum-1982" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">10</a><span class="fn-bracket">]</span></span>
+<p>E. Prugovečki, <em>Quantum Mechanics in Hilbert Space</em>, volume 92 of Pure and applied mathematics, a series of monographs and textbooks, Academic Press, 2nd edition, August 1982.</p>
+</div>
+<div class="citation" id="cite-1-hiai-introduction-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">11</a><span class="fn-bracket">]</span></span>
+<p>F. Hiai and D. Petz, <em>Introduction to Matrix Analysis and Applications</em>, Universitext, Springer Cham, February 2014.</p>
+</div>
+<div class="citation" id="cite-1-dirac-principles-1982" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">12</a><span class="fn-bracket">]</span></span>
+<p>P. A. M. Dirac, <em>The Principles of Quantum Mechanics</em>, Clarendon Press, Oxford, 4th edition, February 1982.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../part-theory.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Theory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="discrete.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quantum mechanics on discrete Hilbert spaces</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-spaces">Vector spaces</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-product-space">Inner product space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norm">Vector norm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-space">Dual space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hilbert-space">Hilbert space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dirac-notation">Dirac notation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-operators-and-operations">Linear operators and operations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bounded-operators">Bounded operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operator-algebra">Operator algebra</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-product">Outer product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvectors-and-eigenvalues">Eigenvectors and eigenvalues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transposition-and-conjugation">Transposition and conjugation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trace">Trace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-operators">Normal operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-systems">Composite systems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schmidt-decomposition">Schmidt decomposition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-systems-of-arbitrary-dimension">Multiple systems of arbitrary dimension</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#superoperators">Superoperators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concavity-and-convexity">Concavity and convexity</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

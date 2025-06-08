@@ -1,0 +1,26 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \lstick{$\StateDensity_A$} & \gate[wires=2]{\Unitary} & \qw \rstick[2]{$\StateDensity^\prime$} \\
+    \lstick{$\StateDensity_B$} & \qw & \qw
+\end{quantikz}
+$\quad \iff \quad \StateDensity^\prime = \Unitary (\StateDensity_A \otimes \StateDensity_B) \Unitary^{\dagger}$
+\end{document}

@@ -1,0 +1,1047 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Home &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <script src="_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="_static/icon.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Overview" href="README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <!-- style>body .bd-header, .navbar {display: none; visibility: hidden;}</style -->
+<style>
+   .bd-main .bd-content .bd-article-container .bd-article {
+       padding-top: 0rem;
+   }
+</style><style>
+   .bd-container {
+      overflow: hidden;
+   }
+
+   .full-width {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+   /*    padding-left: 0px; */
+   /*    padding-right: 18px; */ /* For scrollbar. */
+      overflow-x: visible !important;
+      background-color: var(--pst-color-sd-bg-black) !important;
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+      padding-top: 1rem;
+   }
+
+   .bd-main .bd-content .bd-article-container .bd-article {
+      width: 100%;
+      padding: 0rem;
+      padding-top: 1.0rem;
+      /* max-width: 120%; */
+      /* overflow: visible !important; */
+   }
+
+   /* Width of the body content (including sidebars?), default is 60rem. */
+   .bd-main .bd-content .bd-article-container {
+      max-width: 120%;
+      overflow: visible !important;
+   }
+
+   /* Padding between the content and the sidebars, header, and footer. */
+   .bd-article-container {
+      padding-top: 0rem !important;
+      padding-bottom: 3rem !important;
+      padding-left: 3rem !important;
+      padding-right: 3rem !important;
+   }
+
+   .sd-bg-black {
+      padding-left: calc(50vw - (88rem / 2));
+   }
+
+   .sd-bg-white {
+      padding-right: calc(50vw - (88rem / 2)); /* + 20px); */
+   }
+</style><style>
+   html[data-theme="dark"] .sd-bg-black, .sd-bg-white, .sd-bg-transparent {
+      --pst-color-shadow: rgba(255,255,255,0.0) !important;
+   }
+
+   html[data-theme="light"] .sd-bg-black, .sd-bg-white, .sd-bg-transparent {
+      --pst-color-shadow: rgba(255,255,255,0.0) !important;
+   }
+</style><style>
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center !important;
+    font-weight: 500;
+    font-size: 3rem !important;
+    border-bottom: none;
+  }
+  a.headerlink {
+    display: none;
+    visibility: false;
+  }
+</style><style>
+   p.rubric {
+     font-weight: bold;
+     font-size: 1.5rem;
+     border-bottom: 0px solid var(--pst-color-accent);
+   }
+   p {
+     font-family: 'ClearSans', var(--pst-font-family-base);
+   }
+
+</style><style>
+   .bd-footer {
+      border: none;
+   }
+</style><!DOCTYPE html>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+<script src="./three.min.js"></script>
+<div id="animated-background">
+  <canvas id="animated-background-canvas"></canvas>
+</div>
+<style>
+  #animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    transform: translateZ(0);
+  }
+  html.light { /* Defaults, correspond to the light theme. */
+    --color-wire: #ffffff;
+    --color-surface-inner: #80bfff;
+    --color-surface-outer: #ffffff;
+    --color-shift: 0.0;
+  }
+  html.dark { /* Correspond to the dark theme. */
+    --color-wire: #000000;
+    --color-surface-inner: #80bfff;
+    --color-surface-outer: #000000;
+    --color-shift: 0.2;
+  }
+  #animated-background canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+</style>
+<script>
+
+  // Check if the data-theme attribute is already set
+  if (!document.documentElement.dataset.theme) {
+    // If not set, default to 'light'
+    document.documentElement.dataset.theme = 'light';
+  }
+
+  // Function to update the theme class based on the dataset.theme value
+  function updateThemeClass() {
+    const htmlElement = document.documentElement;
+    const theme = htmlElement.dataset.theme; // Get the current theme from the dataset
+    console.log(theme);
+
+    if (theme === 'dark') {
+      // If the theme is dark, ensure dark class is present and light class is removed
+      htmlElement.classList.add('dark');
+      htmlElement.classList.remove('light');
+    } else if (theme === 'light') {
+      // If the theme is light, ensure light class is present and dark class is removed
+      htmlElement.classList.add('light');
+      htmlElement.classList.remove('dark');
+    }
+  }
+
+  // Initial theme setup
+  updateThemeClass();
+
+  // Create the scene, camera, and renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({
+    canvas: document.getElementById('animated-background-canvas'),
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  function getColors() {
+    // Function to get the value of a CSS variable
+    function getCSSVariable(variable) {
+      const htmlElement = document.documentElement; // Get the <html> element
+      const styles = getComputedStyle(htmlElement); // Get computed styles
+      return styles.getPropertyValue(variable); // Return the value of the variable
+    }
+
+    const currentColorWire = getCSSVariable('--color-wire');
+    const currentColorSurfaceInner = getCSSVariable('--color-surface-inner');
+    const currentColorSurfaceOuter = getCSSVariable('--color-surface-outer');
+    const currentColorShift = Number(getCSSVariable('--color-shift'));
+    colorWire = currentColorWire;
+    colorSurfaceInner = currentColorSurfaceInner;
+    colorSurfaceOuter = currentColorSurfaceOuter;
+    colorShift = currentColorShift;
+    console.log('Color Wire:', colorWire);
+    console.log('Color Surface Inner:', colorSurfaceInner);
+    console.log('Color Surface Outer:', colorSurfaceOuter);
+    console.log('Color Shift:', colorShift);
+  }
+
+  // Define the wormhole parameters
+  const wormholeRadius = 100;
+  const wormholeDepth = 10;
+  const rotationSpeed = 0.0002;
+  const countSpokes = 128;
+  const countCircles = 192;
+
+  function createWormhole() {
+
+    // Create the wormhole geometry
+    const wormholeGeometry = new THREE.ParametricGeometry((u, v, target) => {
+      const r = wormholeRadius * (1 * Math.pow(v,24)) - 1;
+      const h = wormholeDepth;
+      const theta = u * Math.PI * 8;
+      const z = v * h * 10 + 2;
+      target.set(r * Math.cos(theta), r * Math.sin(theta), z);
+    }, countSpokes, countCircles);
+
+    // Rotate if necessary.
+    //wormholeGeometry.rotateX(Math.PI / 2);
+    //wormholeGeometry.rotateY(Math.PI / 2);
+    //wormholeGeometry.rotateZ(Math.PI / 2);
+
+    // Create the material for the wormhole's surface
+    const surfaceMaterial = new THREE.MeshBasicMaterial({
+      vertexColors: true,
+      wireframe: false,
+      //color: colorSurfaceInner,
+      side: THREE.DoubleSide
+    });
+
+    getColors();
+
+    // General-purpose colour gradient function
+    function gradient(u, v) {
+      const r = u * 255;
+      const g = v * 255;
+      const b = (1 - u - v) * 255;
+      return new THREE.Color(r, g, b);
+    }
+
+    // Population the geometry's position attribute with colour values
+    // that are interpolated between the colorSurfaceInner and colorSurfaceOuter
+    const positions = wormholeGeometry.attributes.position.array;
+    const colors = new Float32Array(positions.length);
+    for (let i = 0; i < wormholeGeometry.attributes.position.count; i++) {
+      const z = wormholeGeometry.attributes.position.array[i * 3 + 2];
+      const color = new THREE.Color();
+      const colorInner = new THREE.Color(colorSurfaceInner);
+      const colorOuter = new THREE.Color(colorSurfaceOuter);
+      color.lerpColors(colorInner, colorOuter, Math.pow(z,8) / (1.0 * Math.pow(10,16)) + colorShift);
+      colors[i * 3] = color.r;
+      colors[i * 3 + 1] = color.g;
+      colors[i * 3 + 2] = color.b;
+    }
+    wormholeGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+    // Create the surface mesh from the geometry and material
+    surfaceMesh = new THREE.Mesh(wormholeGeometry, surfaceMaterial);
+
+    // Update the mesh material
+    surfaceMesh.material.vertexColors = true;
+    surfaceMesh.material.needsUpdate = true;
+
+    // Create the edges from the geometry.
+    const wormholeEdges = new THREE.EdgesGeometry(wormholeGeometry);
+
+    // Create the mesh wireframe from the edge
+    wormholeWireframe = new THREE.LineSegments(wormholeEdges, new THREE.LineBasicMaterial({
+      color: colorWire,
+      linewidth: 1,
+      // transparent: false,
+      // opacity: 1,
+      // depthTest: true,
+      // depthWrite: true
+    }));
+    // Set this to render second
+    wormholeWireframe.renderOrder = 1;
+
+  }
+
+  function renderWormhole() {
+    scene.clear();
+    updateThemeClass();
+    createWormhole();
+    scene.add(surfaceMesh);
+    scene.add(wormholeWireframe);
+  }
+  // Initialisation
+  // To be re-run on future theme-change events handled by the mutation observer below
+  renderWormhole();
+
+  // Create a MutationObserver to watch for changes to the class attribute
+  const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+            renderWormhole();
+          }
+      });
+  });
+
+  // Start observing the <html> element for class changes
+  observer.observe(document.documentElement, {
+      attributes: true // Watch for changes to attributes
+  });
+
+  // Animate the wormhole rotation.
+  function animate() {
+    requestAnimationFrame(animate);
+    wormholeWireframe.rotation.z += rotationSpeed;
+    surfaceMesh.rotation.z += rotationSpeed;
+    renderer.render(scene, camera);
+  }
+
+  // Position the camera to look down into the wormhole at an angle
+  // camera.lookAt(new THREE.Vector3(0, 0, 0));
+  camera.position.set(0, -300, 400);
+  camera.rotation.x = Math.PI / 4;
+  camera.rotation.z = - Math.PI / 4;
+  camera.zoom = 30;
+  camera.updateProjectionMatrix();
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // Start the animation
+  animate();
+</script>
+<div style="display: none; visibility: hidden;"><section id="home">
+<h1>Home<a class="headerlink" href="#home" title="Link to this heading">#</a></h1>
+</div></section>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 sd-text-left docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-0 sd-g-xs-0 sd-g-sm-0 sd-g-md-0 sd-g-lg-0 docutils">
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-12 sd-col-lg-12 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-transparent docutils">
+<div class="sd-card-header docutils">
+</div>
+<div class="sd-card-body docutils">
+</div>
+<div class="sd-card-footer docutils">
+<a class="only-dark reference internal image-reference" href="_images/logo-text-bold-dark.svg"><img alt="Qhronology logo" class="only-dark align-center" src="_images/logo-text-bold-dark.svg" style="width: 500px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/logo-text-bold-light.svg"><img alt="Qhronology logo" class="only-light align-center" src="_images/logo-text-bold-light.svg" style="width: 500px;" />
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p class="centered"><strong>A Python package for resolving quantum time-travel paradoxes and</strong></p>
+<p class="centered"><strong>performing general quantum information processing &amp; computation</strong></p>
+<hr class="docutils" />
+<p class="centered"><strong>Latest Version:</strong> 1.0.0 | <strong>Date:</strong> June 2025</p>
+<hr class="docutils" />
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 sd-pt-2 sd-pb-2 sd-pl-2 sd-pr-2 sd-text-center docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-3 sd-g-md-4 sd-g-lg-4 docutils">
+<div class="sd-col sd-d-flex-row sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-muted docutils">
+<div class="sd-card-header docutils">
+<svg xmlns="http://www.w3.org/2000/svg" width="72px" height="72px" viewBox="0 0 24 24"><title>information-outline</title><path fill="var(--pst-color-text-base)" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" /></svg></div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Overview</div>
+<p class="sd-card-text">A brief overview of the features and functionality of Qhronology.</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-stretched-link reference internal" href="README.html#part-overview"><span class="std std-ref">To the overview</span></a></span></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-muted docutils">
+<div class="sd-card-header docutils">
+<svg xmlns="http://www.w3.org/2000/svg" width="72px" height="72px" viewBox="0 0 24 24"><title>atom</title><path fill="var(--pst-color-text-base)" d="M12,11A1,1 0 0,1 13,12A1,1 0 0,1 12,13A1,1 0 0,1 11,12A1,1 0 0,1 12,11M4.22,4.22C5.65,2.79 8.75,3.43 12,5.56C15.25,3.43 18.35,2.79 19.78,4.22C21.21,5.65 20.57,8.75 18.44,12C20.57,15.25 21.21,18.35 19.78,19.78C18.35,21.21 15.25,20.57 12,18.44C8.75,20.57 5.65,21.21 4.22,19.78C2.79,18.35 3.43,15.25 5.56,12C3.43,8.75 2.79,5.65 4.22,4.22M15.54,8.46C16.15,9.08 16.71,9.71 17.23,10.34C18.61,8.21 19.11,6.38 18.36,5.64C17.62,4.89 15.79,5.39 13.66,6.77C14.29,7.29 14.92,7.85 15.54,8.46M8.46,15.54C7.85,14.92 7.29,14.29 6.77,13.66C5.39,15.79 4.89,17.62 5.64,18.36C6.38,19.11 8.21,18.61 10.34,17.23C9.71,16.71 9.08,16.15 8.46,15.54M5.64,5.64C4.89,6.38 5.39,8.21 6.77,10.34C7.29,9.71 7.85,9.08 8.46,8.46C9.08,7.85 9.71,7.29 10.34,6.77C8.21,5.39 6.38,4.89 5.64,5.64M9.88,14.12C10.58,14.82 11.3,15.46 12,16.03C12.7,15.46 13.42,14.82 14.12,14.12C14.82,13.42 15.46,12.7 16.03,12C15.46,11.3 14.82,10.58 14.12,9.88C13.42,9.18 12.7,8.54 12,7.97C11.3,8.54 10.58,9.18 9.88,9.88C9.18,10.58 8.54,11.3 7.97,12C8.54,12.7 9.18,13.42 9.88,14.12M18.36,18.36C19.11,17.62 18.61,15.79 17.23,13.66C16.71,14.29 16.15,14.92 15.54,15.54C14.92,16.15 14.29,16.71 13.66,17.23C15.79,18.61 17.62,19.11 18.36,18.36Z" /></svg></div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Theory</div>
+<p class="sd-card-text">A collection of pedagogical articles discussing the mathematics behind quantum mechanics, including both its mathematical foundations and its applications to theories of antichronological time travel.</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-stretched-link reference internal" href="text/theory/part-theory.html#part-theory"><span class="std std-ref">To the theory</span></a></span></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-muted docutils">
+<div class="sd-card-header docutils">
+<svg xmlns="http://www.w3.org/2000/svg" width="72px" height="72px" viewBox="0 0 24 24"><title>book-open-variant-outline</title><path fill="var(--pst-color-text-base)" d="M12 21.5C10.65 20.65 8.2 20 6.5 20C4.85 20 3.15 20.3 1.75 21.05C1.65 21.1 1.6 21.1 1.5 21.1C1.25 21.1 1 20.85 1 20.6V6C1.6 5.55 2.25 5.25 3 5C4.11 4.65 5.33 4.5 6.5 4.5C8.45 4.5 10.55 4.9 12 6C13.45 4.9 15.55 4.5 17.5 4.5C18.67 4.5 19.89 4.65 21 5C21.75 5.25 22.4 5.55 23 6V20.6C23 20.85 22.75 21.1 22.5 21.1C22.4 21.1 22.35 21.1 22.25 21.05C20.85 20.3 19.15 20 17.5 20C15.8 20 13.35 20.65 12 21.5M11 7.5C9.64 6.9 7.84 6.5 6.5 6.5C5.3 6.5 4.1 6.65 3 7V18.5C4.1 18.15 5.3 18 6.5 18C7.84 18 9.64 18.4 11 19V7.5M13 19C14.36 18.4 16.16 18 17.5 18C18.7 18 19.9 18.15 21 18.5V7C19.9 6.65 18.7 6.5 17.5 6.5C16.16 6.5 14.36 6.9 13 7.5V19M14 16.35C14.96 16 16.12 15.83 17.5 15.83C18.54 15.83 19.38 15.91 20 16.07V14.57C19.13 14.41 18.29 14.33 17.5 14.33C16.16 14.33 15 14.5 14 14.76V16.35M14 13.69C14.96 13.34 16.12 13.16 17.5 13.16C18.54 13.16 19.38 13.24 20 13.4V11.9C19.13 11.74 18.29 11.67 17.5 11.67C16.22 11.67 15.05 11.82 14 12.12V13.69M14 11C14.96 10.67 16.12 10.5 17.5 10.5C18.41 10.5 19.26 10.59 20 10.78V9.23C19.13 9.08 18.29 9 17.5 9C16.18 9 15 9.15 14 9.46V11Z" /></svg></div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Documentation</div>
+<p class="sd-card-text">Detailed documentation of the Qhronology package including its various submodules and their respective functions, classes, and methods.</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-stretched-link reference internal" href="text/documentation/part-documentation.html#part-documentation"><span class="std std-ref">To the documentation</span></a></span></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-muted docutils">
+<div class="sd-card-header docutils">
+<svg xmlns="http://www.w3.org/2000/svg" width="72px" height="72px" viewBox="0 0 24 24"><title>flask-outline</title><path fill="var(--pst-color-text-base)" d="M5,19A1,1 0 0,0 6,20H18A1,1 0 0,0 19,19C19,18.79 18.93,18.59 18.82,18.43L13,8.35V4H11V8.35L5.18,18.43C5.07,18.59 5,18.79 5,19M6,22A3,3 0 0,1 3,19C3,18.4 3.18,17.84 3.5,17.37L9,7.81V6A1,1 0 0,1 8,5V4A2,2 0 0,1 10,2H14A2,2 0 0,1 16,4V5A1,1 0 0,1 15,6V7.81L20.5,17.37C20.82,17.84 21,18.4 21,19A3,3 0 0,1 18,22H6M13,16L14.34,14.66L16.27,18H7.73L10.39,13.39L13,16M12.5,12A0.5,0.5 0 0,1 13,12.5A0.5,0.5 0 0,1 12.5,13A0.5,0.5 0 0,1 12,12.5A0.5,0.5 0 0,1 12.5,12Z" /></svg></div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Examples</div>
+<p class="sd-card-text">A gallery of examples detailing the usage of Qhronology and its capabilities. Includes implementations of standard quantum algorithms and protocols, in addition to a selection of time-travel paradoxes.</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-stretched-link reference internal" href="text/examples/part-examples.html#part-examples"><span class="std std-ref">To the examples</span></a></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="features">
+<h1>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h1>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 sd-text-left full-width docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-left sd-bg-black docutils">
+<div class="sd-card-body docutils">
+<p class="rubric">Quantum computing simulations</p>
+<p class="sd-card-text">Designed to provide a powerful set of features with a simple and intuitive syntax, Qhronology facilitates the simulation of quantum computation, information processing, and algebraic calculations.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-white docutils">
+<div class="sd-card-header docutils">
+</div>
+<div class="sd-card-body docutils">
+<a class="only-light reference internal image-reference" href="_images/circuit_algorithm_teleportation-light.png"><img alt="full adder quantum circuit" class="only-light align-center" src="_images/circuit_algorithm_teleportation-light.png" style="width: 500.0px; height: 141.20000000000002px;" />
+</a>
+<a class="only-dark reference internal image-reference" href="_images/circuit_algorithm_teleportation-dark.png"><img alt="full adder quantum circuit" class="only-dark align-center" src="_images/circuit_algorithm_teleportation-dark.png" style="width: 500.0px; height: 141.20000000000002px;" />
+</a>
+</div>
+<div class="sd-card-footer docutils">
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-left sd-bg-black docutils">
+<div class="sd-card-body docutils">
+<p class="rubric">Quantum resolutions to antichronological time-travel paradoxes</p>
+<p class="sd-card-text">The fundamental indeterminism of quantum mechanics can be leveraged to provide resolutions to quantum formulations of classic time-travel paradoxes (such as the infamous <em>grandfather paradox</em>). A select few prescriptions by which this may be achieved, including Deutsch’s model (D-CTCs) and the postselected teleportation prescription (P-CTCs), are implemented both as bare functions and wrapped class methods.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-white docutils">
+<div class="sd-card-header docutils">
+</div>
+<div class="sd-card-body docutils">
+<a class="only-light reference internal image-reference" href="_images/circuit_ctc-light.png"><img alt="full adder quantum circuit" class="only-light align-center" src="_images/circuit_ctc-light.png" style="width: 277.6px; height: 90.80000000000001px;" />
+</a>
+<a class="only-dark reference internal image-reference" href="_images/circuit_ctc-dark.png"><img alt="full adder quantum circuit" class="only-dark align-center" src="_images/circuit_ctc-dark.png" style="width: 277.6px; height: 90.80000000000001px;" />
+</a>
+</div>
+<div class="sd-card-footer docutils">
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-left sd-bg-black docutils">
+<div class="sd-card-body docutils">
+<p class="rubric">Quantum circuit visualization</p>
+<p class="sd-card-text">Quantum circuit diagrams provide a powerful picturalism through which any quantum process can be visualized as a network of quantum logic gates connected by wires. Qhronology provides this functionality for any quantum process constructed using its built-in classes.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-white docutils">
+<div class="sd-card-header docutils">
+</div>
+<div class="sd-card-body docutils">
+<a class="only-dark reference internal image-reference" href="_images/text_examples_algorithms_generation_w-dark.png"><img alt="_images/text_examples_algorithms_generation_w-dark.png" class="only-dark align-center" src="_images/text_examples_algorithms_generation_w-dark.png" style="width: 295.2px; height: 88.0px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_images/text_examples_algorithms_generation_w-light.png"><img alt="_images/text_examples_algorithms_generation_w-light.png" class="only-light align-center" src="_images/text_examples_algorithms_generation_w-light.png" style="width: 295.2px; height: 88.0px;" />
+</a>
+</div>
+<div class="sd-card-footer docutils">
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-left sd-bg-black docutils">
+<div class="sd-card-body docutils">
+<p class="rubric">Numerous examples</p>
+<p class="sd-card-text">Bundled with the project is a small collection of complete examples that showcase its capabilities and syntax. These are divided into two categories: <em>quantum algorithms and protocols</em> and <em>quantum closed timelike curves</em>. The former contains implementations of canonical algorithms in quantum computing, while the latter consists of more exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-white docutils">
+<div class="sd-card-header docutils">
+</div>
+<div class="sd-card-body docutils">
+<a class="only-light reference internal image-reference" href="_images/circuit_algorithm_adder_full-light.png"><img alt="full adder quantum circuit" class="only-light align-center" src="_images/circuit_algorithm_adder_full-light.png" style="width: 515.2px; height: 173.60000000000002px;" />
+</a>
+<a class="only-dark reference internal image-reference" href="_images/circuit_algorithm_adder_full-dark.png"><img alt="full adder quantum circuit" class="only-dark align-center" src="_images/circuit_algorithm_adder_full-dark.png" style="width: 515.2px; height: 173.60000000000002px;" />
+</a>
+</div>
+<div class="sd-card-footer docutils">
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-left sd-bg-black docutils">
+<div class="sd-card-body docutils">
+<p class="rubric">Extensive documentation</p>
+<p class="sd-card-text">All of the functions, classes, and methods in each of the various submodules have been rigorously detailed in their respective sections within the documentation. This includes multiple examples of usage for each, aiding the user’s understanding of every available feature.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-white docutils">
+<div class="sd-card-header docutils">
+</div>
+<div class="sd-card-body docutils">
+<a class="only-light reference internal image-reference" href="_images/diagram_bloch_sphere-light.png"><img alt="full adder quantum circuit" class="only-light align-center" src="_images/diagram_bloch_sphere-light.png" style="width: 278.8px; height: 270.8px;" />
+</a>
+<a class="only-dark reference internal image-reference" href="_images/diagram_bloch_sphere-dark.png"><img alt="full adder quantum circuit" class="only-dark align-center" src="_images/diagram_bloch_sphere-dark.png" style="width: 278.8px; height: 270.8px;" />
+</a>
+</div>
+<div class="sd-card-footer docutils">
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-left sd-bg-black docutils">
+<div class="sd-card-body docutils">
+<p class="rubric">Foundational theory</p>
+<p class="sd-card-text">All of the underlying mathematics upon which Qhronology is built is presented as a series of pedagogical reference articles within the documentation. This includes sections on the mathematical foundations of quantum mechanics (Hilbert spaces, linear operators, composite systems, etc.), quantum theory on both discrete and continuous Hilbert spaces, a brief overview of the quantum circuitry picturalism, and physical theories of time travel (both classical and quantum).</p>
+<p class="sd-card-text">The aim of this theory is to serve as a comprehensive and complete reference for basic quantum mechanics and the physical theories of time travel, thereby enabling the keen user to embark upon further research into these fascinating areas of study.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 sd-pt-0 sd-pb-0 sd-pl-0 sd-pr-0 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none sd-text-center sd-bg-white docutils">
+<div class="sd-card-header docutils">
+</div>
+<div class="sd-card-body docutils">
+<a class="only-light reference internal image-reference" href="_images/diagram_spacetime_minkowski-light.png"><img alt="full adder quantum circuit" class="only-light align-center" src="_images/diagram_spacetime_minkowski-light.png" style="width: 450px;" />
+</a>
+<a class="only-dark reference internal image-reference" href="_images/diagram_spacetime_minkowski-dark.png"><img alt="full adder quantum circuit" class="only-dark align-center" src="_images/diagram_spacetime_minkowski-dark.png" style="width: 450px;" />
+</a>
+</div>
+<div class="sd-card-footer docutils">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><p>Can’t find what you’re looking for? Try using the <a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a>.</p>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Overview</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

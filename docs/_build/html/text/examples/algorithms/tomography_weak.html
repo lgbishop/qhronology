@@ -1,0 +1,1023 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quantum state tomography via weak measurements &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Natural": "{\\mathbb{N}}", "Basis": "{e}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{X}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/examples/algorithms/tomography_weak';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Grandfather paradox" href="../ctcs/grandfather.html" />
+    <link rel="prev" title="Quantum state tomography" href="tomography_strong.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum algorithms and protocols</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toffoli.html">Toffoli decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_half.html">Half adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_full.html">Full adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_ripple.html">Ripple-carry adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_ripple_iterative.html">Ripple-carry adder (iterative)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_lookahead.html">Carry-lookahead adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_fourier.html">Fourier transform adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teleportation.html">Quantum teleportation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pswap.html">PSWAP (power-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iswap.html">iSWAP (imaginary-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tomography_strong.html">Quantum state tomography</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantum state tomography via weak measurements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum closed timelike curves</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/grandfather.html">Grandfather paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/unproven.html">Unproven-theorem paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/billiards.html">Billiard-ball paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/postselected.html">Manual P-CTC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/ecp.html">Equivalent-circuit picture for D-CTCs</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../part-examples.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quantum state tomography via weak measurements</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="quantum-state-tomography-via-weak-measurements">
+<span id="eg-tomography-weak"></span><h1>Quantum state tomography via weak measurements<a class="headerlink" href="#quantum-state-tomography-via-weak-measurements" title="Link to this heading">#</a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
+<p>The quantum state tomography methodology presented in <a class="reference internal" href="tomography_strong.html#eg-tomography-strong"><span class="std std-ref">Example: Quantum state tomography</span></a> is a standard scheme that uses ordinary (“strong”) measurements—those which by necessity disturb (i.e., collapse the wave function of) the quantum system under consideration. Thus, in order to perform state tomography without (significantly) disrupting the unknown system, we can use so-called <em>weak measurements</em>, that is, quantum measurements which minimize disturbance by leaving the measured state unaffected (to first order in the strength of the measurement). The idea of performing quantum state tomography using weak measurements constitutes a powerful technique that has been used with great success in a plethora of past experimental applications <span id="id1">[<a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#cite-1-knight-weak-1990" title="J. M. Knight and L. Vaidman, “Weak measurement of photon polarization”, Physics Letters A, 143(8):357–361, January 1990. https://www.sciencedirect.com/science/article/pii/037596019090371T, doi:10.1016/0375-9601(90)90371-T">19</a>, <a class="reference internal" href="#cite-1-hosten-observation-2008" title="O. Hosten and P. Kwiat, “Observation of the Spin Hall Effect of Light via Weak Measurements”, Science, 319(5864):787–790, February 2008. https://www.science.org/doi/10.1126/science.1152697, doi:10.1126/science.1152697">6</a>, <a class="reference internal" href="#cite-1-lundeen-experimental-2009" title="J. S. Lundeen and A. M. Steinberg, “Experimental Joint Weak Measurement on a Photon Pair as a Probe of Hardy's Paradox”, Physical Review Letters, 102(2):020404, January 2009. https://link.aps.org/doi/10.1103/PhysRevLett.102.020404, doi:10.1103/PhysRevLett.102.020404">7</a>, <a class="reference internal" href="#cite-1-dixon-ultrasensitive-2009" title="P. B. Dixon, D. J. Starling, A. N. Jordan, and J. C. Howell, “Ultrasensitive Beam Deflection Measurement via Interferometric Weak Value Amplification”, Physical Review Letters, 102(17):173601, April 2009. https://link.aps.org/doi/10.1103/PhysRevLett.102.173601, doi:10.1103/PhysRevLett.102.173601">8</a>, <a class="reference internal" href="#cite-1-kim-reversing-2009" title="Y.-S. Kim, Y.-W. Cho, Y.-S. Ra, and Y.-H. Kim, “Reversing the weak quantum measurement for a photonic qubit”, Optics Express, 17(14):11978–11985, July 2009. https://opg.optica.org/oe/abstract.cfm?uri=oe-17-14-11978, doi:10.1364/OE.17.011978">9</a>, <a class="reference internal" href="#cite-1-cho-weak-2010" title="Y.-W. Cho, H.-T. Lim, Y.-S. Ra, and Y.-H. Kim, “Weak value measurement with an incoherent measuring device”, New Journal of Physics, 12(2):023036, February 2010. https://dx.doi.org/10.1088/1367-2630/12/2/023036, doi:10.1088/1367-2630/12/2/023036">10</a>, <a class="reference internal" href="#cite-1-goggin-violation-2011" title="M. E. Goggin, M. P. Almeida, M. Barbieri, B. P. Lanyon, J. L. O’Brien, A. G. White, and G. J. Pryde, “Violation of the Leggett–Garg inequality with weak measurements of photons”, Proceedings of the National Academy of Sciences, 108(4):1256–1261, January 2011. https://www.pnas.org/doi/full/10.1073/pnas.1005774108, doi:10.1073/pnas.1005774108">11</a>, <a class="reference internal" href="#cite-1-zilberberg-charge-2011" title="O. Zilberberg, A. Romito, and Y. Gefen, “Charge Sensing Amplification via Weak Values Measurement”, Physical Review Letters, 106(8):080405, February 2011. https://link.aps.org/doi/10.1103/PhysRevLett.106.080405, doi:10.1103/PhysRevLett.106.080405">12</a>, <a class="reference internal" href="#cite-1-lundeen-direct-2011" title="J. S. Lundeen, B. Sutherland, A. Patel, C. Stewart, and C. Bamber, “Direct measurement of the quantum wavefunction”, Nature, 474(7350):188–191, June 2011. http://www.nature.com/articles/nature10120, doi:10.1038/nature10120">13</a>, <a class="reference internal" href="#cite-1-kocsis-observing-2011" title="S. Kocsis, B. Braverman, S. Ravets, M. J. Stevens, R. P. Mirin, L. K. Shalm, and A. M. Steinberg, “Observing the Average Trajectories of Single Photons in a Two-Slit Interferometer”, Science, 332(6034):1170–1173, June 2011. https://www.science.org/doi/10.1126/science.1202218, doi:10.1126/science.1202218">14</a>, <a class="reference internal" href="#cite-1-feizpour-amplifying-2011" title="A. Feizpour, X. Xing, and A. M. Steinberg, “Amplifying Single-Photon Nonlinearity Using Weak Measurements”, Physical Review Letters, 107(13):133603, September 2011. https://link.aps.org/doi/10.1103/PhysRevLett.107.133603, doi:10.1103/PhysRevLett.107.133603">15</a>, <a class="reference internal" href="#cite-1-kim-protecting-2012" title="Y.-S. Kim, J.-C. Lee, O. Kwon, and Y.-H. Kim, “Protecting entanglement from decoherence using weak measurement and quantum measurement reversal”, Nature Physics, 8(2):117–120, February 2012. http://www.nature.com/articles/nphys2178, doi:10.1038/nphys2178">16</a>, <a class="reference internal" href="#cite-1-rozema-violation-2012" title="L. A. Rozema, A. Darabi, D. H. Mahler, A. Hayat, Y. Soudagar, and A. M. Steinberg, “Violation of Heisenberg's Measurement-Disturbance Relationship by Weak Measurements”, Physical Review Letters, 109(10):100404, September 2012. https://link.aps.org/doi/10.1103/PhysRevLett.109.100404, doi:10.1103/PhysRevLett.109.100404">17</a>, <a class="reference internal" href="#cite-1-vijay-stabilizing-2012" title="R. Vijay, C. Macklin, D. H. Slichter, S. J. Weber, K. W. Murch, R. Naik, A. N. Korotkov, and I. Siddiqi, “Stabilizing Rabi oscillations in a superconducting qubit using quantum feedback”, Nature, 490(7418):77–80, October 2012. http://www.nature.com/articles/nature11505, doi:10.1038/nature11505">18</a>, <a class="reference internal" href="#cite-1-hatridge-quantum-2013" title="M. Hatridge, S. Shankar, M. Mirrahimi, F. Schackert, K. Geerlings, T. Brecht, K. M. Sliwa, B. Abdo, L. Frunzio, S. M. Girvin, R. J. Schoelkopf, and M. H. Devoret, “Quantum Back-Action of an Individual Variable-Strength Measurement”, Science, 339(6116):178–181, January 2013. https://www.science.org/doi/10.1126/science.1226897, doi:10.1126/science.1226897">19</a>, <a class="reference internal" href="#cite-1-salvail-full-2013" title="J. Z. Salvail, M. Agnew, A. S. Johnson, E. Bolduc, J. Leach, and R. W. Boyd, “Full characterization of polarization states of light via direct measurement”, Nature Photonics, 7(4):316–321, April 2013. http://www.nature.com/articles/nphoton.2013.24, doi:10.1038/nphoton.2013.24">20</a>, <a class="reference internal" href="#cite-1-groen-partial-measurement-2013" title="J. P. Groen, D. Ristè, L. Tornberg, J. Cramer, P. C. de Groot, T. Picot, G. Johansson, and L. DiCarlo, “Partial-Measurement Backaction and Nonclassical Weak Values in a Superconducting Circuit”, Physical Review Letters, 111(9):090506, August 2013. https://link.aps.org/doi/10.1103/PhysRevLett.111.090506, doi:10.1103/PhysRevLett.111.090506">21</a>, <a class="reference internal" href="#cite-1-malik-direct-2014" title="M. Malik, M. Mirhosseini, M. P. J. Lavery, J. Leach, M. J. Padgett, and R. W. Boyd, “Direct measurement of a 27-dimensional orbital-angular-momentum state vector”, Nature Communications, 5(1):3115, January 2014. http://www.nature.com/articles/ncomms4115, doi:10.1038/ncomms4115">22</a>, <a class="reference internal" href="#cite-1-blok-manipulating-2014" title="M. S. Blok, C. Bonato, M. L. Markham, D. J. Twitchen, V. V. Dobrovitski, and R. Hanson, “Manipulating a qubit through the backaction of sequential partial measurements and real-time feedback”, Nature Physics, 10(3):189–193, March 2014. http://www.nature.com/articles/nphys2881, doi:10.1038/nphys2881">23</a>, <a class="reference internal" href="#cite-1-magana-loaiza-amplification-2014" title="O. S. Magaña-Loaiza, M. Mirhosseini, B. Rodenburg, and R. W. Boyd, “Amplification of Angular Rotations Using Weak Measurements”, Physical Review Letters, 112(20):200401, May 2014. https://link.aps.org/doi/10.1103/PhysRevLett.112.200401, doi:10.1103/PhysRevLett.112.200401">24</a>, <a class="reference internal" href="#cite-1-denkmayr-observation-2014" title="T. Denkmayr, H. Geppert, S. Sponar, H. Lemmel, A. Matzkin, J. Tollaksen, and Y. Hasegawa, “Observation of a quantum Cheshire Cat in a matter-wave interferometer experiment”, Nature Communications, 5(1):4492, July 2014. http://www.nature.com/articles/ncomms5492, doi:10.1038/ncomms5492">25</a>, <a class="reference internal" href="#cite-1-mirhosseini-compressive-2014" title="M. Mirhosseini, O. S. Magaña-Loaiza, S. M. Hashemi Rafsanjani, and R. W. Boyd, “Compressive Direct Measurement of the Quantum Wave Function”, Physical Review Letters, 113(9):090402, August 2014. https://link.aps.org/doi/10.1103/PhysRevLett.113.090402, doi:10.1103/PhysRevLett.113.090402">26</a>, <a class="reference internal" href="#cite-1-shi-scan-free-2015" title="Z. Shi, M. Mirhosseini, J. Margiewicz, M. Malik, F. Rivera, Z. Zhu, and R. W. Boyd, “Scan-free direct measurement of an extremely high-dimensional photonic state”, Optica, 2(4):388–392, April 2015. https://opg.optica.org/optica/abstract.cfm?uri=optica-2-4-388, doi:10.1364/OPTICA.2.000388">27</a>, <a class="reference internal" href="#cite-1-mahler-experimental-2016" title="D. H. Mahler, L. Rozema, K. Fisher, L. Vermeyden, K. J. Resch, H. M. Wiseman, and A. Steinberg, “Experimental nonlocal and surreal Bohmian trajectories”, Science Advances, February 2016. https://www.science.org/10.1126/sciadv.1501466, doi:10.1126/sciadv.1501466">28</a>, <a class="reference internal" href="#cite-1-thekkadath-direct-2016" title="G. S. Thekkadath, L. Giner, Y. Chalich, M. J. Horton, J. Banker, and J. S. Lundeen, “Direct Measurement of the Density Matrix of a Quantum System”, Physical Review Letters, 117(12):120401, September 2016. https://link.aps.org/doi/10.1103/PhysRevLett.117.120401, doi:10.1103/PhysRevLett.117.120401">29</a>, <a class="reference internal" href="#cite-1-piacentini-measuring-2016" title="F. Piacentini, A. Avella, M. P. Levi, M. Gramegna, G. Brida, I. P. Degiovanni, E. Cohen, R. Lussana, F. Villa, A. Tosi, F. Zappa, and M. Genovese, “Measuring Incompatible Observables by Exploiting Sequential Weak Values”, Physical Review Letters, 117(17):170402, October 2016. https://link.aps.org/doi/10.1103/PhysRevLett.117.170402, doi:10.1103/PhysRevLett.117.170402">30</a>, <a class="reference internal" href="#cite-1-hallaji-weak-value-2017" title="M. Hallaji, A. Feizpour, G. Dmochowski, J. Sinclair, and A. M. Steinberg, “Weak-value amplification of the nonlinear effect of a single photon”, Nature Physics, 13(6):540–544, June 2017. http://www.nature.com/articles/nphys4040, doi:10.1038/nphys4040">31</a>, <a class="reference internal" href="#cite-1-kim-direct-2018" title="Y. Kim, Y.-S. Kim, S.-Y. Lee, S.-W. Han, S. Moon, Y.-H. Kim, and Y.-W. Cho, “Direct quantum process tomography via measuring sequential weak values of incompatible observables”, Nature Communications, 9(1):192, January 2018. https://www.nature.com/articles/s41467-017-02511-2, doi:10.1038/s41467-017-02511-2">32</a>, <a class="reference internal" href="#cite-1-nirala-measuring-2019" title="G. Nirala, S. N. Sahoo, A. K. Pati, and U. Sinha, “Measuring average of non-Hermitian operator with weak value in a Mach-Zehnder interferometer”, Physical Review A, 99(2):022111, February 2019. https://link.aps.org/doi/10.1103/PhysRevA.99.022111, doi:10.1103/PhysRevA.99.022111">33</a>]</span>.</p>
+<p>The scheme presented here follows the work in <span id="id2">[<a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#cite-1-bishop-quantum-2025" title="L. G. Bishop, F. Costa, and T. C. Ralph, “Quantum state tomography on closed timelike curves using weak measurements”, Classical and Quantum Gravity, 42(4):045018, February 2025. https://dx.doi.org/10.1088/1361-6382/ada90b, doi:10.1088/1361-6382/ada90b">30</a>]</span>. It is limited to <em>qubits</em>, though is it thought to be generalizable to qudits without too much difficulty. Note that while most treatments consider weak measurements characterized by weakly coupled interactions (that is, unitary operators close to identity), this formalism is based on <span id="id3">[<a class="reference internal" href="#cite-1-pryde-measuring-2004" title="G. J. Pryde, J. L. O’Brien, A. G. White, S. D. Bartlett, and T. C. Ralph, “Measuring a Photonic Qubit without Destroying It”, Physical Review Letters, 92(19):190402, May 2004. https://link.aps.org/doi/10.1103/PhysRevLett.92.190402, doi:10.1103/PhysRevLett.92.190402">34</a>, <a class="reference internal" href="#cite-1-pryde-measurement-2005" title="G. J. Pryde, J. L. O’Brien, A. G. White, T. C. Ralph, and H. M. Wiseman, “Measurement of Quantum Weak Values of Photon Polarization”, Physical Review Letters, 94(22):220405, June 2005. https://link.aps.org/doi/10.1103/PhysRevLett.94.220405, doi:10.1103/PhysRevLett.94.220405">35</a>]</span>, in which a near eigenstate of the NOT (Pauli-X) gate is perturbed <em>weakly</em> by a control state via the standard CNOT interaction. See, e.g., <span id="id4">[<a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#cite-1-wu-weak-2009" title="S. Wu and K. Mølmer, “Weak measurements with a qubit meter”, Physics Letters A, 374(1):34–39, December 2009. https://www.sciencedirect.com/science/article/pii/S0375960109012882, doi:10.1016/j.physleta.2009.10.026">23</a>, <a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#cite-1-kofman-nonperturbative-2012" title="A. G. Kofman, S. Ashhab, and F. Nori, “Nonperturbative theory of weak pre- and post-selected measurements”, Physics Reports, 520(2):43–133, November 2012. https://www.sciencedirect.com/science/article/pii/S0370157312002050, doi:10.1016/j.physrep.2012.07.001">29</a>, <a class="reference internal" href="#cite-1-wu-state-2013" title="S. Wu, “State tomography via weak measurements”, Scientific Reports, 3(1):1193, February 2013. https://www.nature.com/articles/srep01193, doi:10.1038/srep01193">36</a>, <a class="reference internal" href="#cite-1-svensson-pedagogical-2013" title="B. E. Y. Svensson, “Pedagogical Review of Quantum Measurement Theory with an Emphasis on Weak Measurements”, Quanta, 2(1):18–49, May 2013. http://quanta.ws/ojs/index.php/quanta/article/view/12, doi:10.12743/quanta.v2i1.12">37</a>, <a class="reference internal" href="#cite-1-tamir-introduction-2013" title="B. Tamir and E. Cohen, “Introduction to Weak Measurements and Weak Values”, Quanta, 2(1):7–17, May 2013. http://quanta.ws/ojs/index.php/quanta/article/view/14, doi:10.12743/quanta.v2i1.14">38</a>, <a class="reference internal" href="#cite-1-dressel-colloquium-2014" title="J. Dressel, M. Malik, F. M. Miatto, A. N. Jordan, and R. W. Boyd, “Colloquium: Understanding quantum weak values: Basics and applications”, Reviews of Modern Physics, 86(1):307–316, March 2014. https://link.aps.org/doi/10.1103/RevModPhys.86.307, doi:10.1103/RevModPhys.86.307">39</a>]</span> for pedagogical exposition of weak measurements and the associated weak values, and <span id="id5">[<a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#cite-1-story-weak-1991" title="J.g. Story, N.w.m. Ritchie, and R.g. Hulet, “Weak measurements”, Modern Physics Letters B, 05(26):1713–1725, November 1991. https://www.worldscientific.com/doi/abs/10.1142/S0217984991002069, doi:10.1142/S0217984991002069">20</a>, <a class="reference internal" href="#cite-1-kim-direct-2018" title="Y. Kim, Y.-S. Kim, S.-Y. Lee, S.-W. Han, S. Moon, Y.-H. Kim, and Y.-W. Cho, “Direct quantum process tomography via measuring sequential weak values of incompatible observables”, Nature Communications, 9(1):192, January 2018. https://www.nature.com/articles/s41467-017-02511-2, doi:10.1038/s41467-017-02511-2">32</a>, <a class="reference internal" href="#cite-1-wu-state-2013" title="S. Wu, “State tomography via weak measurements”, Scientific Reports, 3(1):1193, February 2013. https://www.nature.com/articles/srep01193, doi:10.1038/srep01193">36</a>, <a class="reference internal" href="#cite-1-botero-weak-2018" title="A. Botero, “Weak value tomography of strong quantum measurements”, Quantum Studies: Mathematics and Foundations, 5(3):423–437, September 2018. https://doi.org/10.1007/s40509-018-0155-0, doi:10.1007/s40509-018-0155-0">40</a>]</span> for good examples of weak-measurement tomography.</p>
+<p>At the heart of this methodology is an ancillary qubit, which is also known as the <em>target</em> or <em>probe</em>. In the <span class="math notranslate nohighlight">\(z\)</span>-basis <span class="math notranslate nohighlight">\(\left\{\ket{0},\ket{1}\right\}\)</span>, it may be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-eq-probe">
+<span class="eqno">(348)<a class="headerlink" href="#equation-eq-probe" title="Link to this equation">#</a></span>\[\ket{\Probe} = \sqrt{\frac{1+\Strength}{2}}\ket{0} + \sqrt{\frac{1-\Strength}{2}}\ket{1}, \quad 0 \leq \Strength \leq 1.\]</div>
+<p>Its function is to transform in response to the state of an unknown system <span class="math notranslate nohighlight">\(\StateCV\)</span>. This is achieved by coupling the two states together, thereby enabling direct measurement of the ancilla to yield information regarding <span class="math notranslate nohighlight">\(\StateCV\)</span>. If the interaction is sufficiently weak, then this state remains undisturbed. Note that of course, a quantum state cannot be fully characterized by performing just a single measurement. The best we can accomplish for qubits, at least using weak measurements, is to infer the expectation value of the unknown system along one of the three axes of the Bloch sphere. The original state <span class="math notranslate nohighlight">\(\StateCV\)</span> may then be completely reconstructed from the combined statistics, by way of the determination of the state’s Bloch vector.</p>
+<p>Perhaps the simplest coupling between an unknown state and the probe that will permit this tomography scheme is the CNOT gate, which we write as</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-tomography-weak-0">
+<span class="eqno">(349)<a class="headerlink" href="#equation-text-examples-algorithms-tomography-weak-0" title="Link to this equation">#</a></span>\[\Control^0 \NOT^1 \equiv {\ket{0}\bra{0}}^0 \otimes \Identity^1 + {\ket{1}\bra{1}}^0 \otimes \Pauli_x^1.\]</div>
+<p>As we wish to measure along each of three Bloch axes, this can be combined with basis transformation gates <span class="math notranslate nohighlight">\(\UnitaryBasis^{(\dagger)}_k\)</span>, yielding the system-probe unitary interaction</p>
+<div class="math notranslate nohighlight" id="equation-eq-unitary-tomography-weak">
+<span class="eqno">(350)<a class="headerlink" href="#equation-eq-unitary-tomography-weak" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \Tomography &amp;= \bigl(\UnitaryBasis^{\dagger}_k \otimes \Identity\bigr) \cdot \Control^0 \NOT^1 \cdot \bigl(\UnitaryBasis_k \otimes \Identity\bigr) \\
+   &amp;= \ket{0_k}\bra{0_k} \otimes \Identity + \ket{1_k}\bra{1_k} \otimes \Pauli_x.
+\end{aligned}\end{split}\]</div>
+<p>This is depicted diagrammatically as a quantum circuit in <a class="reference internal" href="#fig-circuit-algorithm-tomography-weak"><span class="std std-numref">Figure 24</span></a>, where we denote the evolved ancilla by <span class="math notranslate nohighlight">\(\StateProbe_k\)</span>. Here, the aforementioned basis gates <span class="math notranslate nohighlight">\(\UnitaryBasis^{(\dagger)}_k\)</span> (where <span class="math notranslate nohighlight">\(k=1,2,3\)</span>) represent transformations that map the <span class="math notranslate nohighlight">\(z\)</span>-basis eigenstates <span class="math notranslate nohighlight">\(\left\{\ket{0},\ket{1}\right\}\)</span> into either the <span class="math notranslate nohighlight">\(x\)</span>- (<span class="math notranslate nohighlight">\(k=1\)</span>), <span class="math notranslate nohighlight">\(y\)</span>- (<span class="math notranslate nohighlight">\(k=2\)</span>) or <span class="math notranslate nohighlight">\(z\)</span>- (<span class="math notranslate nohighlight">\(k=3\)</span>) bases. Specifically, we write</p>
+<div class="math notranslate nohighlight" id="equation-eq-tomography-eigenstates">
+<span class="eqno">(351)<a class="headerlink" href="#equation-eq-tomography-eigenstates" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \UnitaryBasis^\dagger_k  \ket{0} &amp;= \ket{0_k}, \\
+   \UnitaryBasis^\dagger_k  \ket{1} &amp;= \ket{1_k},
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\left\{\ket{0_k},\ket{1_k}\right\}\)</span> are eigenstates of the three bases of our qubit Hilbert space. This means that, given the Pauli matrices <a class="reference internal" href="../../theory/quantum-mechanics/discrete.html#equation-eq-pauli">(130)</a>, the states defined by <a class="reference internal" href="#equation-eq-tomography-eigenstates">(351)</a> necessarily satisfy</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-tomography-weak-1">
+<span class="eqno">(352)<a class="headerlink" href="#equation-text-examples-algorithms-tomography-weak-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \Pauli_k  \ket{0_k} &amp;= \ket{0_k}, \\
+   \Pauli_k  \ket{1_k} &amp;= -\ket{1_k}.
+\end{aligned}\end{split}\]</div>
+<p>For this to be fulfilled, we must have</p>
+<div class="math notranslate nohighlight" id="equation-eq-tomography-transformations">
+<span class="eqno">(353)<a class="headerlink" href="#equation-eq-tomography-transformations" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \UnitaryBasis_1 &amp;= \Hadamard, \\
+   \UnitaryBasis_2 &amp;= \Hadamard \Phase^\dagger, \\
+   \UnitaryBasis_3 &amp;= \Identity,
+\end{aligned}\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-tomography-weak-2">
+<span class="eqno">(354)<a class="headerlink" href="#equation-text-examples-algorithms-tomography-weak-2" title="Link to this equation">#</a></span>\[\Hadamard \equiv \frac{1}{\sqrt{2}} \bigl(\ket{0}\bra{0} + \ket{0}\bra{1} + \ket{1}\bra{0} - \ket{1}\bra{1}\bigr)\]</div>
+<p>is the Hadamard gate, and</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-tomography-weak-3">
+<span class="eqno">(355)<a class="headerlink" href="#equation-text-examples-algorithms-tomography-weak-3" title="Link to this equation">#</a></span>\[\Phase \equiv \ket{0}\bra{0} + \eye\ket{1}\bra{1}\]</div>
+<p>is a phase shift gate.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_tomography_weak-dark.png"><img alt="A quantum circuit diagram of a quantum state tomography algorithm." src="../../../_images/circuit_algorithm_tomography_weak-dark.png" style="width: 210.95999999999998px; height: 132.48px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_tomography_weak-light.png"><img alt="A quantum circuit diagram of a quantum state tomography algorithm." src="../../../_images/circuit_algorithm_tomography_weak-light.png" style="width: 210.95999999999998px; height: 132.48px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-circuit-algorithm-tomography-weak" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_tomography_weak-light.png"><img alt="A quantum circuit diagram of a quantum state tomography algorithm." src="../../../_images/circuit_algorithm_tomography_weak-light.png" style="width: 210.95999999999998px; height: 132.48px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 24 </span><span class="caption-text">A quantum state weak-measurement tomography algorithm.</span><a class="headerlink" href="#fig-circuit-algorithm-tomography-weak" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>With these definitions in mind, a weak measurement can be easily computed in a number of steps. First, given the unknown system <span class="math notranslate nohighlight">\(\StateCV\)</span>, the ancilla <span class="math notranslate nohighlight">\(\ket{\Probe}\)</span>, and the weak-measurement unitary <a class="reference internal" href="#equation-eq-unitary-tomography-weak">(350)</a>, the evolution of the product state <span class="math notranslate nohighlight">\(\StateCV\otimes\ket{\Probe}\bra{\Probe}\)</span> is the standard unitary map</p>
+<div class="math notranslate nohighlight" id="equation-eq-tomography-evolution">
+<span class="eqno">(356)<a class="headerlink" href="#equation-eq-tomography-evolution" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \MapGeneral_{\Tomography}\bigl[\StateCV\otimes\ket{\Probe}\bra{\Probe}\bigr] &amp;= \Tomography\bigl(\StateCV\otimes\ket{\Probe}\bra{\Probe}\bigr)\Tomography^\dagger \\\
+   %= \; &amp; \aket{0_k}\abra{0_k} \StateCV \aket{0_k}\abra{0_k} \otimes \aket{\Probe}\abra{\Probe} \\
+   %&amp;+ \aket{0_k}\abra{0_k} \StateCV \aket{1_k}\abra{1_k} \otimes \aket{\Probe}\abra{\Probe}\Pauli_x \\
+   %&amp;+ \aket{1_k}\abra{1_k} \StateCV \aket{0_k}\abra{0_k} \otimes \Pauli_x\aket{\Probe}\abra{\Probe} \\
+   %&amp;+ \aket{1_k}\abra{1_k} \StateCV \aket{1_k}\abra{1_k} \otimes \Pauli_x\aket{\Probe}\abra{\Probe}\Pauli_x \\
+   &amp;= \sum_{n,m=0}^{1} \ket{n_k}\bra{n_k}  \StateCV  \ket{m_k}\bra{m_k} \otimes \Pauli^n_x  \ket{\Probe}\bra{\Probe}  \Pauli_x^{m}.
+\end{aligned}\end{split}\]</div>
+<p>The state of the evolved system <span class="math notranslate nohighlight">\(\StateCV^\prime\)</span> after the interaction is computed by performing a partial trace on the probe’s Hilbert space,</p>
+<div class="math notranslate nohighlight" id="equation-eq-tomography-evolved-unknown">
+<span class="eqno">(357)<a class="headerlink" href="#equation-eq-tomography-evolved-unknown" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \StateCV^\prime = \; &amp; \trace_{1}\bigl[\Tomography\bigl(\StateCV\otimes\ket{\Probe}\bra{\Probe}\bigr)\Tomography^\dagger\bigr] \\
+   %= \; &amp; \aket{0_k}\abra{0_k} \StateCV \aket{0_k}\abra{0_k} \\
+   %&amp;+ \abra{\Probe}{\Pauli_x}\aket{\Probe} \aket{0_k}\abra{0_k} \StateCV \aket{1_k}\abra{1_k} \\
+   %&amp;+ \abra{\Probe}{\Pauli_x}\aket{\Probe} \aket{1_k}\abra{1_k} \StateCV \aket{0_k}\abra{0_k} \\
+   %&amp;+ \aket{1_k}\abra{1_k} \StateCV \aket{1_k}\abra{1_k}.
+   = \; &amp; \sum_{n,m=0}^{1} \bra{\Probe}  \Pauli_x^{m} \Pauli_x^n  \ket{\Probe} \cdot \ket{n_k}\bra{n_k}  \StateCV  \ket{m_k}\bra{m_k}.
+\end{aligned}\end{split}\]</div>
+<p>To show that the measurement is necessarily weak, thereby leaving this evolved state unperturbed for sufficiently small <span class="math notranslate nohighlight">\(\Strength\)</span>, we first use the definition of our normalized probe state <a class="reference internal" href="#equation-eq-probe">(348)</a> to compute</p>
+<div class="math notranslate nohighlight" id="equation-eq-probe-overlap">
+<span class="eqno">(358)<a class="headerlink" href="#equation-eq-probe-overlap" title="Link to this equation">#</a></span>\[\bra{\Probe} \Pauli_x  \ket{\Probe} = \sqrt{1-\Strength^2}.\]</div>
+<p>A Taylor series expansion of this lets us write</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-tomography-weak-4">
+<span class="eqno">(359)<a class="headerlink" href="#equation-text-examples-algorithms-tomography-weak-4" title="Link to this equation">#</a></span>\[\sqrt{1-\Strength^2} = 1 - \frac{\Strength^2}{2} + \mathcal{O}(\Strength^4),\]</div>
+<p>with which we may express the evolved system <a class="reference internal" href="#equation-eq-tomography-evolved-unknown">(357)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-tomography-expansion">
+<span class="eqno">(360)<a class="headerlink" href="#equation-eq-tomography-expansion" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \StateCV^\prime %=\; &amp; \ket{0_k}\bra{0_k} \StateCV \ket{0_k}\bra{0_k} \\
+   %&amp;+ \aket{0_k}\abra{0_k} \StateCV \aket{1_k}\abra{1_k} \\
+   %&amp;+ \aket{1_k}\abra{1_k} \StateCV \aket{0_k}\abra{0_k} \\
+   %&amp;+ \aket{1_k}\abra{1_k} \StateCV \aket{1_k}\abra{1_k} \\
+   %&amp;- \left(\frac{\Strength^2}{2} - \mathcal{O}(\Strength^4)\right) \left[\aket{0_k}\abra{0_k} \StateCV \aket{1_k}\abra{1_k} + \aket{1_k}\abra{1_k} \StateCV \aket{0_k}\abra{0_k}\right] \\
+   %=\; &amp; \sum_{n,m=0}^{1} \aket{n_k}\abra{n_k} \StateCV \aket{m_k}\abra{m_k} \\
+   %&amp;- \left(\frac{\Strength^2}{2} - \mathcal{O}(\Strength^4)\right) \left[\aket{0_k}\abra{0_k} \StateCV \aket{1_k}\abra{1_k} + \aket{1_k}\abra{1_k} \StateCV \aket{0_k}\abra{0_k}\right] \\
+   =\; &amp; \sum_{n,m=0}^{1} \ket{n_k}\bra{n_k}  \StateCV  \ket{m_k}\bra{m_k} + \mathcal{O}(\Strength^2).
+\end{aligned}\end{split}\]</div>
+<p>By comparing this to our probe density, which can be expanded as</p>
+<div class="math notranslate nohighlight" id="equation-eq-probe-density">
+<span class="eqno">(361)<a class="headerlink" href="#equation-eq-probe-density" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \ket{\Probe}\bra{\Probe} %&amp;= \Identity + \Strength\Pauli_z + \sqrt{1-\Strength^2}\Pauli_x, \\
+   %&amp;= \ket{+}\bra{+} + \Strength\Pauli_z - \left(\frac{\Strength^2}{2} -\mathcal{O}(\Strength^4)\right)\Pauli_x, \\
+   &amp;= \ket{+}\bra{+} + \frac{\Strength}{2}\Pauli_z + \mathcal{O}(\Strength^2),
+\end{aligned}\end{split}\]</div>
+<p>it is easy to see that for sufficiently small <span class="math notranslate nohighlight">\(\Strength\)</span>, e.g., <span class="math notranslate nohighlight">\(\abs{\Strength} \ll 1\)</span> such that <span class="math notranslate nohighlight">\(\mathcal{O}(\Strength^2) \approx 0\)</span>, the system state <a class="reference internal" href="#equation-eq-tomography-expansion">(360)</a> approximates its unperturbed form,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-tomography-weak-5">
+<span class="eqno">(362)<a class="headerlink" href="#equation-text-examples-algorithms-tomography-weak-5" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \StateCV^\prime \approx\; &amp; \sum_{n,m=0}^{1} \ket{n_k}\bra{n_k}  \StateCV  \ket{m_k}\bra{m_k} \\
+   %=\; &amp; \aket{0_k}\abra{0_k} \StateCV \aket{0_k}\abra{0_k} \\
+   %&amp;+ \aket{0_k}\abra{0_k} \StateCV \aket{1_k}\abra{1_k} \\
+   %&amp;+ \aket{1_k}\abra{1_k} \StateCV \aket{0_k}\abra{0_k} \\
+   %&amp;+ \aket{1_k}\abra{1_k} \StateCV \aket{1_k}\abra{1_k} \\
+   =\; &amp; \StateCV,
+\end{aligned}\end{split}\]</div>
+<p>while the probe <a class="reference internal" href="#equation-eq-probe-density">(361)</a>, containing a first-order power of <span class="math notranslate nohighlight">\(\Strength\)</span>, becomes</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-tomography-weak-6">
+<span class="eqno">(363)<a class="headerlink" href="#equation-text-examples-algorithms-tomography-weak-6" title="Link to this equation">#</a></span>\[\ket{\Probe}\bra{\Probe} \approx \ket{+}\bra{+} + \frac{\Strength}{2}\Pauli_z.\]</div>
+<p>This is exactly what we desire, since if the probe were to become exactly an eigenstate of the Pauli-X operator <span class="math notranslate nohighlight">\(\Pauli_x\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-tomography-weak-7">
+<span class="eqno">(364)<a class="headerlink" href="#equation-text-examples-algorithms-tomography-weak-7" title="Link to this equation">#</a></span>\[\ket{\pm} \equiv \frac{1}{\sqrt{2}}\bigl(\ket{0} \pm \ket{1}\bigr),\]</div>
+<p>then it would not be perturbed by the CNOT gate in its coupling <a class="reference internal" href="#equation-eq-unitary-tomography-weak">(350)</a> with the unknown system state. In other words, it would be unable to provide any information regarding <span class="math notranslate nohighlight">\(\StateCV\)</span>, and would thus be tomographically useless. As however the probe state <a class="reference internal" href="#equation-eq-probe-density">(361)</a> does not assume the form of an eigenstate of <span class="math notranslate nohighlight">\(\Pauli_x\)</span> while the system remains unperturbed by the interaction (provided <span class="math notranslate nohighlight">\(\Strength\)</span> is sufficiently small), then we can in principle infer the state of <span class="math notranslate nohighlight">\(\StateCV\)</span> via strong measurements of the evolved ancilla state <span class="math notranslate nohighlight">\(\StateProbe_k\)</span> (for all <span class="math notranslate nohighlight">\(k\)</span>). This is the meaning of a weak measurement, and we call <span class="math notranslate nohighlight">\(\Strength\)</span> the <em>strength</em> of the measurement.</p>
+<p>Let us now demonstrate how the qubit system <span class="math notranslate nohighlight">\(\StateCV\)</span> may be reconstructed by measuring the probe in the <span class="math notranslate nohighlight">\(z\)</span> basis. Starting with <a class="reference internal" href="#equation-eq-tomography-evolution">(356)</a>, we perform a partial trace on the first subsystem to obtain the evolved probe state,</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-probe">
+<span class="eqno">(365)<a class="headerlink" href="#equation-eq-state-probe" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \StateProbe_k &amp;\equiv \trace_{0}\bigl[\Tomography\bigl(\StateCV\otimes\ket{\Probe}\bra{\Probe}\bigr)\Tomography^\dagger\bigr] \\
+   %&amp;= \abra{0_k} \StateCV \aket{0_k} \aket{\Probe}\abra{\Probe} + \abra{1_k} \StateCV \aket{1_k} \Pauli_x\aket{\Probe}\abra{\Probe}\Pauli_x \\
+   &amp;= \sum_{n=0}^{1} \bra{n_k}  \StateCV  \ket{n_k} \cdot \Pauli^n_x  \ket{\Probe}\bra{\Probe}  \Pauli_x^{n}.
+\end{aligned}\end{split}\]</div>
+<p>Computing the expectation value of <span class="math notranslate nohighlight">\(\Pauli_z\)</span> for this form then yields</p>
+<div class="math notranslate nohighlight" id="equation-eq-tomography-connection">
+<span class="eqno">(366)<a class="headerlink" href="#equation-eq-tomography-connection" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+   \trace\left[\Pauli_z\StateProbe_k\right] &amp;= \bra{0}  \StateProbe_k  \ket{0} - \bra{1}  \StateProbe_k  \ket{1} \\
+   &amp;= \Strength \bigl(\bra{0_k}  \StateCV  \ket{0_k} - \bra{1_k}  \StateCV  \ket{1_k}\bigr) \\
+   &amp;= \Strength \, \trace\left[\Pauli_k \StateCV\right],
+\end{aligned}\end{split}\]</div>
+<p>where we used the fact that</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-tomography-weak-8">
+<span class="eqno">(367)<a class="headerlink" href="#equation-text-examples-algorithms-tomography-weak-8" title="Link to this equation">#</a></span>\[\Pauli_k = \ket{0_k}\bra{0_k} - \ket{1_k}\bra{1_k}.\]</div>
+<p>Rescaling by a factor <span class="math notranslate nohighlight">\(\tfrac{1}{\Strength}\)</span> then allows us to make the connection between performing a <span class="math notranslate nohighlight">\(z\)</span>-basis measurement on the probe state <a class="reference internal" href="#equation-eq-state-probe">(365)</a> and inferring the expectation value of <span class="math notranslate nohighlight">\(\Pauli_k\)</span> for the state of the unknown system. This is because, up to the factor <span class="math notranslate nohighlight">\(\Strength\)</span>, the two operations are equivalent. Note that, for brevity, we will write</p>
+<div class="math notranslate nohighlight" id="equation-eq-tomography-expectation">
+<span class="eqno">(368)<a class="headerlink" href="#equation-eq-tomography-expectation" title="Link to this equation">#</a></span>\[\Expectation_k \equiv \frac{1}{\Strength}\trace\left[\Pauli_z\StateProbe_k\right] = \trace\left[\Pauli_k \StateCV\right],\]</div>
+<p>which is often denoted in the literature as <span class="math notranslate nohighlight">\(\big&lt;\Pauli_k\big&gt;\)</span>.</p>
+<p>If we define <span class="math notranslate nohighlight">\(\Pauli_0 \equiv \Identity\)</span>, then the set of operators <span class="math notranslate nohighlight">\(\{\Pauli_k\}_{k=0}^3\)</span> forms a complete basis for the space of complex <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrices. Since this coincides with the space of linear operators <span class="math notranslate nohighlight">\(\SpaceLinear(\SpaceHilbert)\)</span> on our qubit (<span class="math notranslate nohighlight">\(2\)</span>-dimensional) Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, then any state <span class="math notranslate nohighlight">\(\StateCV \in \SpaceLinear(\SpaceHilbert)\)</span> can accordingly be reconstructed via the linear combination,</p>
+<div class="math notranslate nohighlight" id="equation-eq-tomography-reconstruction">
+<span class="eqno">(369)<a class="headerlink" href="#equation-eq-tomography-reconstruction" title="Link to this equation">#</a></span>\[ \StateCV = \frac{1}{2}\sum_{k=0}^{3} \trace\left[\Pauli_k \StateCV\right] \Pauli_k.\]</div>
+<p>Since the coefficient for <span class="math notranslate nohighlight">\(k = 0\)</span> is fixed by normalization (i.e., <span class="math notranslate nohighlight">\(\trace\left[\Pauli_0 \tau \right] = 1\)</span>), then the state is fully determined by the <em>Bloch vector</em>, which is defined, for an <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional state, as the <span class="math notranslate nohighlight">\((\Dimension^2-1)\)</span>-dimensional real vector of parameters <span class="math notranslate nohighlight">\(\trace\left[\Pauli_k \tau \right]\)</span> (for <span class="math notranslate nohighlight">\(k \in \Integers_{1}^{\Dimension^2 - 1}\)</span>). Accordingly, the linear combination <a class="reference internal" href="#equation-eq-tomography-reconstruction">(369)</a> is said to be the <em>Bloch sphere representation</em> of the state <span class="math notranslate nohighlight">\(\tau\)</span>. Thus, since we have shown that we can infer expectation values <a class="reference internal" href="#equation-eq-tomography-expectation">(368)</a> for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the <span class="math notranslate nohighlight">\(z\)</span>-basis, then we can characterize the state completely without directly measuring it.</p>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<div class="literal-block-wrapper docutils container" id="code-tomography-weak">
+<div class="code-block-caption"><span class="caption-number">Listing 24 </span><span class="caption-text">/text/examples/algorithms/tomography_weak.py</span><a class="headerlink" href="#code-tomography-weak" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span><span class="p">,</span> <span class="n">MatrixState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span><span class="p">,</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Pauli</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">flatten_list</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="c1"># Input</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;τ&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="n">unknown_state</span> <span class="o">=</span> <span class="n">MatrixState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">tau</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;τ&quot;</span><span class="p">)</span>
+
+<span class="n">probe_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
+    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;sqrt((1 + ε)/2)&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;sqrt((1 - ε)/2)&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
+    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ε&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;nonnegative&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
+    <span class="n">conditions</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;ε&quot;</span><span class="p">,</span> <span class="s2">&quot;1 - ε&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;ε&quot;</span><span class="p">,</span> <span class="s2">&quot;1 - ε&quot;</span><span class="p">),</span>
+    <span class="p">],</span>  <span class="c1"># Describes the fact that ε is between 0 and 1 (inclusive)</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;χ&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Gates</span>
+<span class="n">CN</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">HI</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">PI</span> <span class="o">=</span> <span class="n">Phase</span><span class="p">(</span><span class="n">exponent</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">VI</span> <span class="o">=</span> <span class="p">[[</span><span class="n">HI</span><span class="p">],</span> <span class="p">[</span><span class="n">PI</span><span class="p">,</span> <span class="n">HI</span><span class="p">],</span> <span class="p">[]]</span>
+
+<span class="c1"># Circuits</span>
+<span class="n">evolved_probe_states</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">gates</span> <span class="ow">in</span> <span class="n">VI</span><span class="p">:</span>
+    <span class="n">gates_pre</span> <span class="o">=</span> <span class="n">gates</span>
+    <span class="n">gates_post</span> <span class="o">=</span> <span class="n">gates</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">gates_post</span><span class="p">:</span>
+        <span class="n">gate</span><span class="o">.</span><span class="n">conjugate</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">tomography</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">unknown_state</span><span class="p">,</span> <span class="n">probe_state</span><span class="p">],</span>
+        <span class="n">gates</span><span class="o">=</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">gates_pre</span><span class="p">,</span> <span class="n">CN</span><span class="p">,</span> <span class="n">gates_post</span><span class="p">]),</span>
+        <span class="n">traces</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">tomography</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+    <span class="n">evolved_probe_state</span> <span class="o">=</span> <span class="n">tomography</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ω&quot;</span><span class="p">)</span>
+    <span class="n">evolved_probe_states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">evolved_probe_state</span><span class="p">)</span>
+
+<span class="c1"># Weak-measurement quantum state tomography</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">expectations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">expectations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Expectation value corresponding to the identity operator</span>
+<span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">evolved_probe_states</span><span class="p">:</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="s2">&quot;1/ε&quot;</span><span class="p">)</span>
+    <span class="n">statistics</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span>
+        <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">Z</span><span class="p">],</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">statistics</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">observable</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">expectation</span> <span class="o">=</span> <span class="n">statistics</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">expectations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expectation</span><span class="p">)</span>
+
+<span class="c1"># Reconstruct state via Bloch-sphere representation using weak measurements</span>
+<span class="n">pauli_matrices</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="n">spec</span> <span class="o">+=</span> <span class="n">expectations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">pauli_matrices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">reconstructed_state</span> <span class="o">=</span> <span class="n">MatrixState</span><span class="p">(</span>
+    <span class="n">spec</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">spec</span><span class="p">),</span>
+    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="n">tau</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">tau</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tau</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">tau</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;τ&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">reconstructed_state</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># Manually normalize</span>
+<span class="n">reconstructed_state</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+
+<span class="c1"># Results</span>
+<span class="n">unknown_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">reconstructed_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h2>
+<section id="diagram">
+<h3>Diagram<a class="headerlink" href="#diagram" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tomography</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_algorithms_tomography_weak-dark.png"><img alt="../../../_images/text_examples_algorithms_tomography_weak-dark.png" class="only-dark align-left" src="../../../_images/text_examples_algorithms_tomography_weak-dark.png" style="width: 310.8px; height: 167.60000000000002px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_algorithms_tomography_weak-light.png"><img alt="../../../_images/text_examples_algorithms_tomography_weak-light.png" class="only-light align-left" src="../../../_images/text_examples_algorithms_tomography_weak-light.png" style="width: 310.8px; height: 167.60000000000002px;" />
+</a>
+</div></blockquote>
+</section>
+<section id="states">
+<h3>States<a class="headerlink" href="#states" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unknown_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">τ = τ[0, 0]|0⟩⟨0| + τ[0, 1]|0⟩⟨1| + τ[1, 0]|1⟩⟨0| + τ[1, 1]|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reconstructed_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">τ = τ[0, 0]|0⟩⟨0| + τ[0, 1]|0⟩⟨1| + τ[1, 0]|1⟩⟨0| + τ[1, 1]|1⟩⟨1|</span>
+</pre></div>
+</div>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-knight-weak-1990" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>J. M. Knight and L. Vaidman, “Weak measurement of photon polarization”, <em>Physics Letters A</em>, 143(8):357–361, January 1990. <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/037596019090371T">https://www.sciencedirect.com/science/article/pii/037596019090371T</a>, <a class="reference external" href="https://doi.org/10.1016/0375-9601(90)90371-T">doi:10.1016/0375-9601(90)90371-T</a></p>
+</div>
+<div class="citation" id="cite-1-story-weak-1991" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<p>J.g. Story, N.w.m. Ritchie, and R.g. Hulet, “Weak measurements”, <em>Modern Physics Letters B</em>, 05(26):1713–1725, November 1991. <a class="reference external" href="https://www.worldscientific.com/doi/abs/10.1142/S0217984991002069">https://www.worldscientific.com/doi/abs/10.1142/S0217984991002069</a>, <a class="reference external" href="https://doi.org/10.1142/S0217984991002069">doi:10.1142/S0217984991002069</a></p>
+</div>
+<div class="citation" id="cite-1-wu-weak-2009" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>S. Wu and K. Mølmer, “Weak measurements with a qubit meter”, <em>Physics Letters A</em>, 374(1):34–39, December 2009. <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0375960109012882">https://www.sciencedirect.com/science/article/pii/S0375960109012882</a>, <a class="reference external" href="https://doi.org/10.1016/j.physleta.2009.10.026">doi:10.1016/j.physleta.2009.10.026</a></p>
+</div>
+<div class="citation" id="cite-1-kofman-nonperturbative-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>A. G. Kofman, S. Ashhab, and F. Nori, “Nonperturbative theory of weak pre- and post-selected measurements”, <em>Physics Reports</em>, 520(2):43–133, November 2012. <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0370157312002050">https://www.sciencedirect.com/science/article/pii/S0370157312002050</a>, <a class="reference external" href="https://doi.org/10.1016/j.physrep.2012.07.001">doi:10.1016/j.physrep.2012.07.001</a></p>
+</div>
+<div class="citation" id="cite-1-bishop-quantum-2025" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">5</a><span class="fn-bracket">]</span></span>
+<p>L. G. Bishop, F. Costa, and T. C. Ralph, “Quantum state tomography on closed timelike curves using weak measurements”, <em>Classical and Quantum Gravity</em>, 42(4):045018, February 2025. <a class="reference external" href="https://dx.doi.org/10.1088/1361-6382/ada90b">https://dx.doi.org/10.1088/1361-6382/ada90b</a>, <a class="reference external" href="https://doi.org/10.1088/1361-6382/ada90b">doi:10.1088/1361-6382/ada90b</a></p>
+</div>
+<div class="citation" id="cite-1-hosten-observation-2008" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">6</a><span class="fn-bracket">]</span></span>
+<p>O. Hosten and P. Kwiat, “Observation of the Spin Hall Effect of Light via Weak Measurements”, <em>Science</em>, 319(5864):787–790, February 2008. <a class="reference external" href="https://www.science.org/doi/10.1126/science.1152697">https://www.science.org/doi/10.1126/science.1152697</a>, <a class="reference external" href="https://doi.org/10.1126/science.1152697">doi:10.1126/science.1152697</a></p>
+</div>
+<div class="citation" id="cite-1-lundeen-experimental-2009" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">7</a><span class="fn-bracket">]</span></span>
+<p>J. S. Lundeen and A. M. Steinberg, “Experimental Joint Weak Measurement on a Photon Pair as a Probe of Hardy's Paradox”, <em>Physical Review Letters</em>, 102(2):020404, January 2009. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.102.020404">https://link.aps.org/doi/10.1103/PhysRevLett.102.020404</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.102.020404">doi:10.1103/PhysRevLett.102.020404</a></p>
+</div>
+<div class="citation" id="cite-1-dixon-ultrasensitive-2009" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">8</a><span class="fn-bracket">]</span></span>
+<p>P. B. Dixon, D. J. Starling, A. N. Jordan, and J. C. Howell, “Ultrasensitive Beam Deflection Measurement via Interferometric Weak Value Amplification”, <em>Physical Review Letters</em>, 102(17):173601, April 2009. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.102.173601">https://link.aps.org/doi/10.1103/PhysRevLett.102.173601</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.102.173601">doi:10.1103/PhysRevLett.102.173601</a></p>
+</div>
+<div class="citation" id="cite-1-kim-reversing-2009" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">9</a><span class="fn-bracket">]</span></span>
+<p>Y.-S. Kim, Y.-W. Cho, Y.-S. Ra, and Y.-H. Kim, “Reversing the weak quantum measurement for a photonic qubit”, <em>Optics Express</em>, 17(14):11978–11985, July 2009. <a class="reference external" href="https://opg.optica.org/oe/abstract.cfm?uri=oe-17-14-11978">https://opg.optica.org/oe/abstract.cfm?uri=oe-17-14-11978</a>, <a class="reference external" href="https://doi.org/10.1364/OE.17.011978">doi:10.1364/OE.17.011978</a></p>
+</div>
+<div class="citation" id="cite-1-cho-weak-2010" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">10</a><span class="fn-bracket">]</span></span>
+<p>Y.-W. Cho, H.-T. Lim, Y.-S. Ra, and Y.-H. Kim, “Weak value measurement with an incoherent measuring device”, <em>New Journal of Physics</em>, 12(2):023036, February 2010. <a class="reference external" href="https://dx.doi.org/10.1088/1367-2630/12/2/023036">https://dx.doi.org/10.1088/1367-2630/12/2/023036</a>, <a class="reference external" href="https://doi.org/10.1088/1367-2630/12/2/023036">doi:10.1088/1367-2630/12/2/023036</a></p>
+</div>
+<div class="citation" id="cite-1-goggin-violation-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">11</a><span class="fn-bracket">]</span></span>
+<p>M. E. Goggin, M. P. Almeida, M. Barbieri, B. P. Lanyon, J. L. O’Brien, A. G. White, and G. J. Pryde, “Violation of the Leggett–Garg inequality with weak measurements of photons”, <em>Proceedings of the National Academy of Sciences</em>, 108(4):1256–1261, January 2011. <a class="reference external" href="https://www.pnas.org/doi/full/10.1073/pnas.1005774108">https://www.pnas.org/doi/full/10.1073/pnas.1005774108</a>, <a class="reference external" href="https://doi.org/10.1073/pnas.1005774108">doi:10.1073/pnas.1005774108</a></p>
+</div>
+<div class="citation" id="cite-1-zilberberg-charge-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">12</a><span class="fn-bracket">]</span></span>
+<p>O. Zilberberg, A. Romito, and Y. Gefen, “Charge Sensing Amplification via Weak Values Measurement”, <em>Physical Review Letters</em>, 106(8):080405, February 2011. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.106.080405">https://link.aps.org/doi/10.1103/PhysRevLett.106.080405</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.106.080405">doi:10.1103/PhysRevLett.106.080405</a></p>
+</div>
+<div class="citation" id="cite-1-lundeen-direct-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">13</a><span class="fn-bracket">]</span></span>
+<p>J. S. Lundeen, B. Sutherland, A. Patel, C. Stewart, and C. Bamber, “Direct measurement of the quantum wavefunction”, <em>Nature</em>, 474(7350):188–191, June 2011. <a class="reference external" href="http://www.nature.com/articles/nature10120">http://www.nature.com/articles/nature10120</a>, <a class="reference external" href="https://doi.org/10.1038/nature10120">doi:10.1038/nature10120</a></p>
+</div>
+<div class="citation" id="cite-1-kocsis-observing-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">14</a><span class="fn-bracket">]</span></span>
+<p>S. Kocsis, B. Braverman, S. Ravets, M. J. Stevens, R. P. Mirin, L. K. Shalm, and A. M. Steinberg, “Observing the Average Trajectories of Single Photons in a Two-Slit Interferometer”, <em>Science</em>, 332(6034):1170–1173, June 2011. <a class="reference external" href="https://www.science.org/doi/10.1126/science.1202218">https://www.science.org/doi/10.1126/science.1202218</a>, <a class="reference external" href="https://doi.org/10.1126/science.1202218">doi:10.1126/science.1202218</a></p>
+</div>
+<div class="citation" id="cite-1-feizpour-amplifying-2011" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">15</a><span class="fn-bracket">]</span></span>
+<p>A. Feizpour, X. Xing, and A. M. Steinberg, “Amplifying Single-Photon Nonlinearity Using Weak Measurements”, <em>Physical Review Letters</em>, 107(13):133603, September 2011. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.107.133603">https://link.aps.org/doi/10.1103/PhysRevLett.107.133603</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.107.133603">doi:10.1103/PhysRevLett.107.133603</a></p>
+</div>
+<div class="citation" id="cite-1-kim-protecting-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">16</a><span class="fn-bracket">]</span></span>
+<p>Y.-S. Kim, J.-C. Lee, O. Kwon, and Y.-H. Kim, “Protecting entanglement from decoherence using weak measurement and quantum measurement reversal”, <em>Nature Physics</em>, 8(2):117–120, February 2012. <a class="reference external" href="http://www.nature.com/articles/nphys2178">http://www.nature.com/articles/nphys2178</a>, <a class="reference external" href="https://doi.org/10.1038/nphys2178">doi:10.1038/nphys2178</a></p>
+</div>
+<div class="citation" id="cite-1-rozema-violation-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">17</a><span class="fn-bracket">]</span></span>
+<p>L. A. Rozema, A. Darabi, D. H. Mahler, A. Hayat, Y. Soudagar, and A. M. Steinberg, “Violation of Heisenberg's Measurement-Disturbance Relationship by Weak Measurements”, <em>Physical Review Letters</em>, 109(10):100404, September 2012. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.109.100404">https://link.aps.org/doi/10.1103/PhysRevLett.109.100404</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.109.100404">doi:10.1103/PhysRevLett.109.100404</a></p>
+</div>
+<div class="citation" id="cite-1-vijay-stabilizing-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">18</a><span class="fn-bracket">]</span></span>
+<p>R. Vijay, C. Macklin, D. H. Slichter, S. J. Weber, K. W. Murch, R. Naik, A. N. Korotkov, and I. Siddiqi, “Stabilizing Rabi oscillations in a superconducting qubit using quantum feedback”, <em>Nature</em>, 490(7418):77–80, October 2012. <a class="reference external" href="http://www.nature.com/articles/nature11505">http://www.nature.com/articles/nature11505</a>, <a class="reference external" href="https://doi.org/10.1038/nature11505">doi:10.1038/nature11505</a></p>
+</div>
+<div class="citation" id="cite-1-hatridge-quantum-2013" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">19</a><span class="fn-bracket">]</span></span>
+<p>M. Hatridge, S. Shankar, M. Mirrahimi, F. Schackert, K. Geerlings, T. Brecht, K. M. Sliwa, B. Abdo, L. Frunzio, S. M. Girvin, R. J. Schoelkopf, and M. H. Devoret, “Quantum Back-Action of an Individual Variable-Strength Measurement”, <em>Science</em>, 339(6116):178–181, January 2013. <a class="reference external" href="https://www.science.org/doi/10.1126/science.1226897">https://www.science.org/doi/10.1126/science.1226897</a>, <a class="reference external" href="https://doi.org/10.1126/science.1226897">doi:10.1126/science.1226897</a></p>
+</div>
+<div class="citation" id="cite-1-salvail-full-2013" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">20</a><span class="fn-bracket">]</span></span>
+<p>J. Z. Salvail, M. Agnew, A. S. Johnson, E. Bolduc, J. Leach, and R. W. Boyd, “Full characterization of polarization states of light via direct measurement”, <em>Nature Photonics</em>, 7(4):316–321, April 2013. <a class="reference external" href="http://www.nature.com/articles/nphoton.2013.24">http://www.nature.com/articles/nphoton.2013.24</a>, <a class="reference external" href="https://doi.org/10.1038/nphoton.2013.24">doi:10.1038/nphoton.2013.24</a></p>
+</div>
+<div class="citation" id="cite-1-groen-partial-measurement-2013" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">21</a><span class="fn-bracket">]</span></span>
+<p>J. P. Groen, D. Ristè, L. Tornberg, J. Cramer, P. C. de Groot, T. Picot, G. Johansson, and L. DiCarlo, “Partial-Measurement Backaction and Nonclassical Weak Values in a Superconducting Circuit”, <em>Physical Review Letters</em>, 111(9):090506, August 2013. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.111.090506">https://link.aps.org/doi/10.1103/PhysRevLett.111.090506</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.111.090506">doi:10.1103/PhysRevLett.111.090506</a></p>
+</div>
+<div class="citation" id="cite-1-malik-direct-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">22</a><span class="fn-bracket">]</span></span>
+<p>M. Malik, M. Mirhosseini, M. P. J. Lavery, J. Leach, M. J. Padgett, and R. W. Boyd, “Direct measurement of a 27-dimensional orbital-angular-momentum state vector”, <em>Nature Communications</em>, 5(1):3115, January 2014. <a class="reference external" href="http://www.nature.com/articles/ncomms4115">http://www.nature.com/articles/ncomms4115</a>, <a class="reference external" href="https://doi.org/10.1038/ncomms4115">doi:10.1038/ncomms4115</a></p>
+</div>
+<div class="citation" id="cite-1-blok-manipulating-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">23</a><span class="fn-bracket">]</span></span>
+<p>M. S. Blok, C. Bonato, M. L. Markham, D. J. Twitchen, V. V. Dobrovitski, and R. Hanson, “Manipulating a qubit through the backaction of sequential partial measurements and real-time feedback”, <em>Nature Physics</em>, 10(3):189–193, March 2014. <a class="reference external" href="http://www.nature.com/articles/nphys2881">http://www.nature.com/articles/nphys2881</a>, <a class="reference external" href="https://doi.org/10.1038/nphys2881">doi:10.1038/nphys2881</a></p>
+</div>
+<div class="citation" id="cite-1-magana-loaiza-amplification-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">24</a><span class="fn-bracket">]</span></span>
+<p>O. S. Magaña-Loaiza, M. Mirhosseini, B. Rodenburg, and R. W. Boyd, “Amplification of Angular Rotations Using Weak Measurements”, <em>Physical Review Letters</em>, 112(20):200401, May 2014. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.112.200401">https://link.aps.org/doi/10.1103/PhysRevLett.112.200401</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.112.200401">doi:10.1103/PhysRevLett.112.200401</a></p>
+</div>
+<div class="citation" id="cite-1-denkmayr-observation-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">25</a><span class="fn-bracket">]</span></span>
+<p>T. Denkmayr, H. Geppert, S. Sponar, H. Lemmel, A. Matzkin, J. Tollaksen, and Y. Hasegawa, “Observation of a quantum Cheshire Cat in a matter-wave interferometer experiment”, <em>Nature Communications</em>, 5(1):4492, July 2014. <a class="reference external" href="http://www.nature.com/articles/ncomms5492">http://www.nature.com/articles/ncomms5492</a>, <a class="reference external" href="https://doi.org/10.1038/ncomms5492">doi:10.1038/ncomms5492</a></p>
+</div>
+<div class="citation" id="cite-1-mirhosseini-compressive-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">26</a><span class="fn-bracket">]</span></span>
+<p>M. Mirhosseini, O. S. Magaña-Loaiza, S. M. Hashemi Rafsanjani, and R. W. Boyd, “Compressive Direct Measurement of the Quantum Wave Function”, <em>Physical Review Letters</em>, 113(9):090402, August 2014. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.113.090402">https://link.aps.org/doi/10.1103/PhysRevLett.113.090402</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.113.090402">doi:10.1103/PhysRevLett.113.090402</a></p>
+</div>
+<div class="citation" id="cite-1-shi-scan-free-2015" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">27</a><span class="fn-bracket">]</span></span>
+<p>Z. Shi, M. Mirhosseini, J. Margiewicz, M. Malik, F. Rivera, Z. Zhu, and R. W. Boyd, “Scan-free direct measurement of an extremely high-dimensional photonic state”, <em>Optica</em>, 2(4):388–392, April 2015. <a class="reference external" href="https://opg.optica.org/optica/abstract.cfm?uri=optica-2-4-388">https://opg.optica.org/optica/abstract.cfm?uri=optica-2-4-388</a>, <a class="reference external" href="https://doi.org/10.1364/OPTICA.2.000388">doi:10.1364/OPTICA.2.000388</a></p>
+</div>
+<div class="citation" id="cite-1-mahler-experimental-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">28</a><span class="fn-bracket">]</span></span>
+<p>D. H. Mahler, L. Rozema, K. Fisher, L. Vermeyden, K. J. Resch, H. M. Wiseman, and A. Steinberg, “Experimental nonlocal and surreal Bohmian trajectories”, <em>Science Advances</em>, February 2016. <a class="reference external" href="https://www.science.org/10.1126/sciadv.1501466">https://www.science.org/10.1126/sciadv.1501466</a>, <a class="reference external" href="https://doi.org/10.1126/sciadv.1501466">doi:10.1126/sciadv.1501466</a></p>
+</div>
+<div class="citation" id="cite-1-thekkadath-direct-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">29</a><span class="fn-bracket">]</span></span>
+<p>G. S. Thekkadath, L. Giner, Y. Chalich, M. J. Horton, J. Banker, and J. S. Lundeen, “Direct Measurement of the Density Matrix of a Quantum System”, <em>Physical Review Letters</em>, 117(12):120401, September 2016. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.117.120401">https://link.aps.org/doi/10.1103/PhysRevLett.117.120401</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.117.120401">doi:10.1103/PhysRevLett.117.120401</a></p>
+</div>
+<div class="citation" id="cite-1-piacentini-measuring-2016" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">30</a><span class="fn-bracket">]</span></span>
+<p>F. Piacentini, A. Avella, M. P. Levi, M. Gramegna, G. Brida, I. P. Degiovanni, E. Cohen, R. Lussana, F. Villa, A. Tosi, F. Zappa, and M. Genovese, “Measuring Incompatible Observables by Exploiting Sequential Weak Values”, <em>Physical Review Letters</em>, 117(17):170402, October 2016. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.117.170402">https://link.aps.org/doi/10.1103/PhysRevLett.117.170402</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.117.170402">doi:10.1103/PhysRevLett.117.170402</a></p>
+</div>
+<div class="citation" id="cite-1-hallaji-weak-value-2017" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">31</a><span class="fn-bracket">]</span></span>
+<p>M. Hallaji, A. Feizpour, G. Dmochowski, J. Sinclair, and A. M. Steinberg, “Weak-value amplification of the nonlinear effect of a single photon”, <em>Nature Physics</em>, 13(6):540–544, June 2017. <a class="reference external" href="http://www.nature.com/articles/nphys4040">http://www.nature.com/articles/nphys4040</a>, <a class="reference external" href="https://doi.org/10.1038/nphys4040">doi:10.1038/nphys4040</a></p>
+</div>
+<div class="citation" id="cite-1-kim-direct-2018" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>32<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id5">2</a>)</span>
+<p>Y. Kim, Y.-S. Kim, S.-Y. Lee, S.-W. Han, S. Moon, Y.-H. Kim, and Y.-W. Cho, “Direct quantum process tomography via measuring sequential weak values of incompatible observables”, <em>Nature Communications</em>, 9(1):192, January 2018. <a class="reference external" href="https://www.nature.com/articles/s41467-017-02511-2">https://www.nature.com/articles/s41467-017-02511-2</a>, <a class="reference external" href="https://doi.org/10.1038/s41467-017-02511-2">doi:10.1038/s41467-017-02511-2</a></p>
+</div>
+<div class="citation" id="cite-1-nirala-measuring-2019" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">33</a><span class="fn-bracket">]</span></span>
+<p>G. Nirala, S. N. Sahoo, A. K. Pati, and U. Sinha, “Measuring average of non-Hermitian operator with weak value in a Mach-Zehnder interferometer”, <em>Physical Review A</em>, 99(2):022111, February 2019. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevA.99.022111">https://link.aps.org/doi/10.1103/PhysRevA.99.022111</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevA.99.022111">doi:10.1103/PhysRevA.99.022111</a></p>
+</div>
+<div class="citation" id="cite-1-pryde-measuring-2004" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">34</a><span class="fn-bracket">]</span></span>
+<p>G. J. Pryde, J. L. O’Brien, A. G. White, S. D. Bartlett, and T. C. Ralph, “Measuring a Photonic Qubit without Destroying It”, <em>Physical Review Letters</em>, 92(19):190402, May 2004. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.92.190402">https://link.aps.org/doi/10.1103/PhysRevLett.92.190402</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.92.190402">doi:10.1103/PhysRevLett.92.190402</a></p>
+</div>
+<div class="citation" id="cite-1-pryde-measurement-2005" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">35</a><span class="fn-bracket">]</span></span>
+<p>G. J. Pryde, J. L. O’Brien, A. G. White, T. C. Ralph, and H. M. Wiseman, “Measurement of Quantum Weak Values of Photon Polarization”, <em>Physical Review Letters</em>, 94(22):220405, June 2005. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.94.220405">https://link.aps.org/doi/10.1103/PhysRevLett.94.220405</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.94.220405">doi:10.1103/PhysRevLett.94.220405</a></p>
+</div>
+<div class="citation" id="cite-1-wu-state-2013" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>36<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id5">2</a>)</span>
+<p>S. Wu, “State tomography via weak measurements”, <em>Scientific Reports</em>, 3(1):1193, February 2013. <a class="reference external" href="https://www.nature.com/articles/srep01193">https://www.nature.com/articles/srep01193</a>, <a class="reference external" href="https://doi.org/10.1038/srep01193">doi:10.1038/srep01193</a></p>
+</div>
+<div class="citation" id="cite-1-svensson-pedagogical-2013" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">37</a><span class="fn-bracket">]</span></span>
+<p>B. E. Y. Svensson, “Pedagogical Review of Quantum Measurement Theory with an Emphasis on Weak Measurements”, <em>Quanta</em>, 2(1):18–49, May 2013. <a class="reference external" href="http://quanta.ws/ojs/index.php/quanta/article/view/12">http://quanta.ws/ojs/index.php/quanta/article/view/12</a>, <a class="reference external" href="https://doi.org/10.12743/quanta.v2i1.12">doi:10.12743/quanta.v2i1.12</a></p>
+</div>
+<div class="citation" id="cite-1-tamir-introduction-2013" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">38</a><span class="fn-bracket">]</span></span>
+<p>B. Tamir and E. Cohen, “Introduction to Weak Measurements and Weak Values”, <em>Quanta</em>, 2(1):7–17, May 2013. <a class="reference external" href="http://quanta.ws/ojs/index.php/quanta/article/view/14">http://quanta.ws/ojs/index.php/quanta/article/view/14</a>, <a class="reference external" href="https://doi.org/10.12743/quanta.v2i1.14">doi:10.12743/quanta.v2i1.14</a></p>
+</div>
+<div class="citation" id="cite-1-dressel-colloquium-2014" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">39</a><span class="fn-bracket">]</span></span>
+<p>J. Dressel, M. Malik, F. M. Miatto, A. N. Jordan, and R. W. Boyd, “Colloquium: Understanding quantum weak values: Basics and applications”, <em>Reviews of Modern Physics</em>, 86(1):307–316, March 2014. <a class="reference external" href="https://link.aps.org/doi/10.1103/RevModPhys.86.307">https://link.aps.org/doi/10.1103/RevModPhys.86.307</a>, <a class="reference external" href="https://doi.org/10.1103/RevModPhys.86.307">doi:10.1103/RevModPhys.86.307</a></p>
+</div>
+<div class="citation" id="cite-1-botero-weak-2018" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">40</a><span class="fn-bracket">]</span></span>
+<p>A. Botero, “Weak value tomography of strong quantum measurements”, <em>Quantum Studies: Mathematics and Foundations</em>, 5(3):423–437, September 2018. <a class="reference external" href="https://doi.org/10.1007/s40509-018-0155-0">https://doi.org/10.1007/s40509-018-0155-0</a>, <a class="reference external" href="https://doi.org/10.1007/s40509-018-0155-0">doi:10.1007/s40509-018-0155-0</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tomography_strong.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quantum state tomography</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ctcs/grandfather.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Grandfather paradox</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagram">Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#states">States</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

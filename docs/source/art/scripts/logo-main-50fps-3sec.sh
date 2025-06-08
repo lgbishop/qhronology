@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+bash ../renderers/animate.sh \
+    -i "logo-main" \
+    -o "$(basename "$0" ".sh")" \
+    -d "$(pwd)/../output" \
+    -F "webp" \
+    -e "" \
+    -l "$(pwd)/../output/logo-text-bold-light.pdf" \
+    -c true \
+    -t 8 \
+    -f 50 \
+    -p 3 \
+    -g "SouthEast" \
+    -a "4:1" \
+    -w 4000 \
+    -r 720 \
+    -q 60 \
+    -C 45 \
+    -S 30 \
+    -R 2 \
+    -D "floating" \
+    -B false \
+    -E 4.25 \
+    -T "3:53:7" \
+    -H "-1:2:-3" \
+    -v "1,1" \
+    -V "1,1"

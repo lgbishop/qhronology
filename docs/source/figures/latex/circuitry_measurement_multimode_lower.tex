@@ -1,0 +1,37 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+% \usetikzlibrary{quantikz2}
+\begin{document}
+\noindent\begin{minipage}{0.65\linewidth}
+\hfill
+\tikzset{
+    my label/.append style={below,yshift=-0.75cm},
+}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \lstick{$\ldots$} & \qw \\
+    \lstick{$\ldots$} & \meter{$\{\op{\tau}_j\}$}
+\end{quantikz}
+\end{minipage}%
+\begin{minipage}{0.35\linewidth}
+\begin{align}
+\quad \iff \quad \Probability = \{p_j\}, \quad p_j &= \trace[( \Identity^0 \otimes \op{\tau}^1_j) (\ldots)] \nonumber\\
+&= \trace[\op{\tau}_j \trace_{0}[(\ldots)]] \nonumber
+\end{align}
+\end{minipage}
+\end{document}

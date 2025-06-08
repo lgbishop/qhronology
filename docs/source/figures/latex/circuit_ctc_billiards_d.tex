@@ -1,0 +1,33 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \lstick{$\StateCR$} &\qw& [-0.85cm] \qw & [0.0cm] \qw & \swap{1}\gategroup[2,steps=2,style={thin,rounded corners,fill=none, inner xsep=2pt},background]{$\Unitary$} & \qw & [0.0cm] \qw & [-0.35cm] \qw \rstick{$\StateCR_\MapDCTCsCR$} \\
+    \lstick{$\quad$} && \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = -30, scale=0.65}, label style=cyan]{} & \push{\,\StateCV_\MapDCTCsCR\,} & \targX{} & \gate{\VacuumRotation(\TimeDelta)} & \gate[style={regular polygon, regular polygon sides = 3,inner xsep=0.5pt,inner ysep=0.5pt, rotate = 30, scale=0.65}, label style=cyan]{} & \rstick{$\hspace{0.0cm}\quad$}
+\end{quantikz}
+\iffalse
+\\
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{12},scale=1.15]
+\node[above,scale=0] at (0,0) {};
+\node[above,scale=1] at (0,-0.65) {(a)};
+\end{tikzpicture}
+\fi
+\end{document}

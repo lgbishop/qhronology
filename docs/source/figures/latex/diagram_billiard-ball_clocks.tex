@@ -1,0 +1,109 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+\renewcommand{\large}{\normalsize}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\begin{document}
+\begin{figure}[b!]
+\begin{center}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+\begin{tikzpicture}[font=\fontsize{10}{12},scale=1.15,baseline=(alignment.base)]
+    %\draw[step=1cm,gray,very thin] (-6,-6) grid (6,6);
+    
+    \node[isosceles triangle,shape border rotate = 0,isosceles triangle apex angle=45,scale=0.35,fill=\ColA,rotate=90] at (0,-1) {};
+    \node[isosceles triangle,shape border rotate = 0,isosceles triangle apex angle=45,scale=0.35,fill=\ColA,rotate=90] at (0,1) {};
+    
+    \draw[rounded corners=0.075cm, thick, \ColA] (0,-2) -- (0,0) -- (0,2);
+    
+    \draw[dashed] (-0.5,-1) -- (0.5,1);
+    
+    \draw[thin] (0,-2) -- (0.5,-2);
+    \draw[thin] (0,2) -- (0.5,2);
+    \draw[thin] (0,0) -- (0,0) -- (0.3,0) -- (0.5,0);
+    
+    \draw[black,fill=black] (0,-2) circle (0.035cm);
+    \draw[black,fill=black] (0,2) circle (0.035cm);
+    \draw[black,fill=black] (-0.5,-1) circle (0.05cm);
+    \draw[black,fill=black] (0.5,1) circle (0.05cm);
+    
+    \node[left] at (-0.35,-1) {\begin{tabular}{c} past \\ mouth \end{tabular}};
+    \node[right] at (0.35,1) {\begin{tabular}{c} future \\ mouth \end{tabular}};
+    
+    \node[right] at (0.35,-2) {\showclock{0}{0}};
+    \node[right] at (0.35,2) {\showclock{3}{05}};
+    \node[right] at (0.35,0) {\showclock{1}{30}};
+    
+    \node[left] at (0,-2) {$\StateCR$};
+    \node[left] at (0,2) {$\MapGeneral_\EvolutionNoninteracting\bigl[\StateCR\bigr]$};
+    \node[right] at (0.7,-2) {$[0]$};
+    \node[right] (alignment) at (0.7,0) {$[\TimeInbound]$};
+    \node[right] at (0.7,2) {$[\TimeInbound+\TimeOutbound]$};
+    %\node[above,scale=1] at (0,-3.5) {(a)};
+    
+    \node[right] at (-0.5,-2.7) {$x$};
+    \node[above] at (-1.25,-1.95) {$t$};
+    \draw [->,>=stealth,thick,black] (-1.25,-2.7) -- (-0.5,-2.7);
+    \draw [->,>=stealth,thick,black] (-1.25,-2.7) -- (-1.25,-1.95);
+\end{tikzpicture}
+\caption{Evolution $\EvolutionNoninteracting$}
+\end{subfigure}
+\hspace*{0cm}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+\begin{tikzpicture}[font=\fontsize{10}{12},scale=1.15,baseline=(alignment.base)]
+    %\draw[step=1cm,gray,very thin] (-6,-6) grid (6,6);
+    
+    \node[isosceles triangle,shape border rotate = 0,isosceles triangle apex angle=45,scale=0.35,fill=\ColB,rotate=90] at (0,-1) {};
+    \node[isosceles triangle,shape border rotate = 0,isosceles triangle apex angle=45,scale=0.35,fill=\ColB,rotate=90] at (0,1) {};
+    \node[isosceles triangle,shape border rotate = 0,isosceles triangle apex angle=45,scale=0.35,fill=\ColB,rotate=63.435] at (-0.25,-0.5) {};
+    \node[isosceles triangle,shape border rotate = 0,isosceles triangle apex angle=45,scale=0.35,fill=\ColB,rotate=63.435] at (0.25,0.5) {};
+    
+    \draw[rounded corners=0.25cm, thick, \ColB] (-0.5,-1) -- (0,0) -- (0,2);
+    \draw[rounded corners=0.25cm, thick, \ColB] (0,-2) -- (0,0) -- (0.5,1);
+    
+    \draw[thin] (0,-2) -- (0.5,-2);
+    \draw[thin] (0,2) -- (0.5,2);
+    \draw[thin] (0.025,0) -- (0.5,0);
+    \draw[thin] (-0.025,0) -- (-0.5,0);
+    
+    \draw[black,fill=black] (0,-2) circle (0.035cm);
+    \draw[black,fill=black] (0,2) circle (0.035cm);
+    \draw[black,fill=black] (0.5,1) circle (0.05cm);
+    \draw[black,fill=black] (-0.5,-1) circle (0.05cm);
+    
+    \node[left] at (-0.35,-1) {\begin{tabular}{c} past \\ mouth \end{tabular}};
+    \node[right] at (0.35,1) {\begin{tabular}{c} future \\ mouth \end{tabular}};
+    
+    \node[right] at (0.35,-2) {\showclock{0}{0}};
+    \node[right] at (0.35,2) {\showclock{4}{20}};
+    \node[left] at (-0.35,0) {\showclock{2}{50}};
+    \node[right] at (0.35,0) {\showclock{1}{30}};
+    
+    \node[left] at (0,-2) {$\StateCR$};
+    \node[left] at (0,2) {$\MapGeneral_\EvolutionInteracting\bigl[\StateCR\bigr]$};
+    \node[right] at (0.7,-2) {$[0]$};
+    \node[right] (alignment) at (0.7,0) {$[\TimeInbound]$};
+    \node[left] at (-0.7,0) {$[\TimeInbound+\TimeDelta]$};
+    \node[right] at (0.7,2) {$[\TimeInbound+\TimeDelta+\TimeOutbound]$};
+    %\node[above,scale=1] at (0,-3.5) {(b)};
+    
+    \node[right,opacity=0] at (-0.5,-2.7) {$x$};
+    \node[above,opacity=0] at (-1.25,-1.95) {$t$};
+    \draw [->,>=stealth,thick,black,opacity=0] (-1.25,-2.7) -- (-0.5,-2.7);
+    \draw [->,>=stealth,thick,black,opacity=0] (-1.25,-2.7) -- (-1.25,-1.95);
+\end{tikzpicture}
+\caption{Evolution $\EvolutionInteracting$}
+\end{subfigure}
+\end{center}
+\end{figure}
+\end{document}

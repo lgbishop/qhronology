@@ -1,0 +1,50 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\begin{document}
+\begin{blochsphere}[radius=\radiusSphere,opacity=0,rotation=\rotationSphere,style={line width=0.025cm}]
+    % \drawBallGrid[style={opacity=.3}]{30}{45}
+    % Draw the sphere...
+    \drawLongitudeCircle[]{\rotationSphere} % draw the longitude that face us to delimit the sphere
+    % ... and the equatorial plane
+    \drawLatitudeCircle[style={dashed,line width=0.03cm}]{0}
+    % Define the different points on the bloch sphere
+    \labelLatLon{ket0}{90}{0};
+    \labelLatLon{ket1}{-90}{0};
+    \labelLatLon{ketminus}{0}{180};
+    \labelLatLon{ketplus}{00}{25};
+    \labelLatLon{ketpluspi2}{0}{-90};  % Longitude seems to be defined in the "wrong" direction, hence the minus
+    \labelLatLon{ketplus3pi2}{0}{-270};
+    \labelLatLon{psi}{\psiLat}{-\psiLon};
+    % Draw and label the axis
+    \draw[-latex,style={line width=0.025cm}] (0,0) -- (ket0) node[above,inner sep=.5mm] at (ket0) {\footnotesize $\uv{e}_3$};
+    \draw[-latex,style={line width=0.025cm}] (0,0) -- (ketplus) node[below,inner sep=.5mm] at (ketplus) {\footnotesize$\uv{e}_1$};
+    \draw[-latex,style={line width=0.025cm}] (0,0) -- (ketpluspi2) node[right,inner sep=.5mm] at (ketpluspi2) {\footnotesize $\uv{e}_2$};
+    % Draw |psi>
+    \draw[-latex,style={line width=0.025cm}] (0,0) -- (psi) node[above]{\footnotesize $\vec{r}_{\StateVector}$};
+
+    % Draw the angles
+    \coordinate (origin) at (0,0);
+    {
+        % Will draw the angle/projection one the equatorial plane
+        \setDrawingPlane{0}{00}
+        % Draw the projection: cos is used to compute the length of the projection
+        \draw[current plane,dashed,style={line width=0.02cm}] (0,0) -- (-90+\psiLon:{cos(\psiLat)*\radiusSphere}) coordinate (psiProjectedEquat) -- (psi);
+        % Draw the angle
+        \pic[current plane, draw,fill=black!50,fill opacity=.5, text opacity=1,"\footnotesize $\varphi$", angle eccentricity=2.25]{angle=ketplus--origin--psiProjectedEquat};
+    }
+    { \setLongitudinalDrawingPlane{\psiLon}
+        % Draw the angle
+        \pic[current plane, draw,fill=black!50,fill opacity=.5, text opacity=1,"\footnotesize $\vartheta$", angle eccentricity=1.75]{angle=psi--origin--ket0};
+    }
+\end{blochsphere}
+\end{document}

@@ -1,0 +1,165 @@
+\documentclass{article}
+\pagenumbering{gobble}
+
+\usepackage[
+    centering,
+    left=2cm,
+    right=2cm,
+    top=2cm,
+    bottom=2cm,
+    %includehead,
+    %includefoot,
+    a4paper,
+    %letterpaper
+]{geometry}
+
+\usepackage{xparse}
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\eval}{m}{\fp_eval:n {#1}}
+\ExplSyntaxOff
+
+\providecommand\FPS{50} % Frame rate
+\providecommand\Period{3} % Time (seconds) of a single loop of the animation
+\providecommand\FramesTotal{\eval{\FPS*\Period}} % Total number of frames per loop
+\providecommand\FramesCurrent{0} % Current frame number, defaults to 0
+
+\providecommand\WormholeCircles{45} % Number of rings in the mesh
+\providecommand\WormholeSectors{30} % 32 for centered line at zero rotation
+\providecommand\WormholeRotations{2} % How many degrees to rotate per frame
+
+\newcommand\WormholeRate{\eval{\WormholeRotations*(360/\WormholeSectors)/\FramesTotal}} % How many degrees to rotate per frame
+\newcommand\WormholeAngle{\eval{90 + \FramesCurrent*\WormholeRate}} % Current rotation position, starting at 0
+
+\providecommand\ClockPositionCyclesHorizontal{3}
+\providecommand\ClockPositionCyclesVertical{2}
+\providecommand\ClockPositionAmplitudeHorizontal{1}
+\providecommand\ClockPositionAmplitudeVertical{1}
+
+\newcommand\ClockShiftHorizontal{sin(\ClockPositionCyclesHorizontal*2*pi*\FramesCurrent/\FramesTotal)}
+\newcommand\ClockShiftVertical{sin(\ClockPositionCyclesVertical*2*pi*\FramesCurrent/\FramesTotal)}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathrsfs}
+%\usepackage{clock}
+\usepackage[clock]{ifsym}
+\usepackage{mathtools}
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}
+%\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx} % Allows for eps images
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{tensor}
+\usepackage{centernot}
+\usepackage{dsfont}
+\usepackage[mathlines]{lineno}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+
+\usepackage[sfdefault]{ClearSans}
+
+\usepackage[T1]{fontenc}
+\noindent
+%\usepackage{sansmathfonts}
+
+\usepackage[skins]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{3d,calc,positioning}
+\usepackage{pgfplots}
+\usepgfplotslibrary{
+    colorbrewer,
+    colormaps,
+    patchplots,
+}
+\pgfplotsset{width=16cm}
+\pgfplotsset{compat=newest}
+% Jordy blue = 138,185,241
+% Pale cornflour blue = 171,205,239
+\pgfplotsset{
+    colormap={customcolormap}{[1cm]rgb255(0cm)=(24,115,255); rgb255(1cm)=(30,144,255); rgb255(2cm)=(108,182,255); rgb255(4cm)=(164,214,255); rgb255(6cm)=(189,224,255); rgb255(8cm)=(197,227,255); rgb255(10cm)=(210,232,255)},
+    %colormap={customcolormap}{[1cm]rgb255(0cm)=(24,115,255); rgb255(1cm)=(30,144,255); rgb255(2cm)=(145,215,255); rgb255(5cm)=(195,227,255); rgb255(7cm)=(210,232,255)},
+    %colormap={customcolormap}{rgb255(0cm)=(30,144,255); rgb(1cm)=(1,1,1)},
+    %colormap={customcolormap}{[1cm]rgb255(0cm)=(30,144,255); rgb255(6cm)=(210,232,255); rgb255(12cm)=(210,232,255)},
+    colormap={customcolormaplight}{rgb255(0cm)=(171,205,239); rgb(1cm)=(1,1,1); rgb(2cm)=(1,1,1)},
+    colormap={customcolormapdark}{rgb(0cm)=(0,1,1); rgb(1cm)=(0,0,0.5); rgb(2cm)=(0,0,0.5)},
+    colormap={customcolormapfaces}{rgb255(0cm)=(0, 57, 137),rgb255(1cm)=(0, 57, 137)},
+    % colormap={customcolormapmesh}{rgb255(0cm)=(255, 255, 255),rgb255(1cm)=(255, 255, 255),rgb255(2cm)=(0, 57, 137),rgb255(3cm)=(0, 57, 137),rgb255(4cm)=(0, 57, 137)},
+    colormap={customcolormapmesh}{rgb255(0cm)=(255, 255, 255),rgb255(1cm)=(255, 255, 255),rgb255(2cm)=(0, 37, 105),rgb255(3cm)=(0, 37, 105)},
+}
+\newcommand\B{2}
+\definecolor{meshcolor}{HTML}{FFFFFF}
+\definecolor{meshcolordark}{HTML}{7FFFD4}
+\definecolor{meshcolorlight}{HTML}{FFFFFF}
+\definecolor{fontcolor}{HTML}{FFFFFF}
+\definecolor{maincolor}{HTML}{002569}
+% \definecolor{maincolor}{HTML}{003989}
+%\definecolor{maincolor}{HTML}{224499}
+% \definecolor{maincolor}{RGB}{0,57,137}
+\definecolor{fontcolordark}{HTML}{FFFFFF}
+\definecolor{fontcolorlight}{HTML}{000000}
+
+\pagecolor{maincolor}
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture, overlay]
+    \begin{scope}[xshift=7.8825cm - 1.3cm, yshift=-17.75cm, scale=4.5, rotate=-45, xshift=0cm, yshift=0cm]
+    \begin{axis}[
+    %hide axis,
+    anchor=center,
+    %axis equal image,
+    unit vector ratio=1 1 1,
+    plot box ratio=1 1 4,
+    view={0}{42},
+    line width=12000sp, % 2000 to 7500
+    data cs=polar,
+    samples=(\WormholeSectors+1),
+    samples y=\WormholeCircles, %circles
+    domain=\WormholeAngle:(360+\WormholeAngle),
+    y domain=\B:500,
+    colormap name=customcolormapmesh,
+    declare function={
+        wormhole(\r)={2*\B*sqrt(\r/\B - 1)};
+        % added functions to calculate cartesian coordinates from
+        % polar coordinates
+        pol2cartX(\angle,\radius) = \radius * cos(\angle);
+        pol2cartY(\angle,\radius) = \radius * sin(\angle);
+    },
+    ]
+    %\addplot3 [surf, shader=flat, draw=black, z buffer=sort, samples=50] {-wormhole(y)};
+    \IfFileExists{./clock-distorted.png}{ % True
+
+    }{ % False
+    \addplot3 [surf, shader=flat, fill=maincolor, fill opacity=1, z buffer=sort] {wormhole(1.5*y)};
+    }
+    %\addplot3 [surf, shader=interp, z buffer=sort, samples=50] {wormhole(y)};
+    %\addplot3 [surf, smooth, draw=black, z buffer=sort, samples=50] {wormhole(y)};
+    %\node at (60,wormhole(200)) {\includegraphics[width=12cm]{extra_fancy_clock.png}};
+    \end{axis}
+    \end{scope}
+
+    % \filldraw [fill=maincolor, draw=maincolor] (-10,10) rectangle (10.5+20,-14.85+4.5);
+    % \filldraw [fill=maincolor, draw=maincolor] (-10,10) rectangle (-0.75,-30);
+    % \filldraw [fill=maincolor, draw=maincolor] (30,10) rectangle (20 - 3.25,-30);
+    % \filldraw [fill=maincolor, draw=maincolor] (-10,-30) rectangle (10.5+20,-24.7+1);
+
+    \IfFileExists{./clock-distorted.png}{ % True
+    \node[anchor=center,xshift=13.175cm,yshift=-1.35cm,rotate=45, opacity=1] at (0,0) {\includegraphics[height=1.5cm]{clock-distorted.png}};
+    }{ % False
+    \node[anchor=center,xshift=\eval{6.4825 + 1.5 + 0.125*\ClockPositionAmplitudeHorizontal*\ClockShiftHorizontal} cm,yshift=\eval{-16.35 - 0.125*\ClockPositionAmplitudeVertical*\ClockShiftVertical} cm,rotate=-45, opacity=1] at (0,0) {\includegraphics[height=6.5cm]{render-clock-fixed.png}};
+    % \node[anchor=center,xshift=6.75cm,yshift=-1.00cm,rotate=0, scale=8.5, color=fontcolor] at (0,0) {\fontfamily{qtm}\selectfont \contour{fontcolor}{Q}\tikzunderarrow[fontcolor]{\smash{\contour{fontcolor}{h\hspace{0.01cm}ronolo}}}\contour{fontcolor}{gy}};
+    % \node[anchor=north west,xshift=-0.5cm,yshift=0.5cm,rotate=0, scale=0.6, color=fontcolor] at (0,0) {\includegraphics{logo-text.pdf}};
+ %    \node[anchor=west,xshift=-0.5cm,yshift=-3.25cm,rotate=0, scale=1.45, color=fontcolor] at (0,0) {\textbf{A Python package for resolving quantum time-travel paradoxes}};
+    % \node[anchor=west,xshift=-0.5cm,yshift=-4.00cm,rotate=0, scale=1.45, color=fontcolor] at (0,0) {\textbf{and performing general quantum information processing \& computation}};
+ %    \node[anchor=west,xshift=-0.75cm,yshift=-5.75cm,rotate=0, scale=3, color=fontcolor] at (0,0) {\textbf{Documentation,}};
+ %    \node[anchor=west,xshift=-0.75cm,yshift=-7.25cm,rotate=0, scale=3, color=fontcolor] at (0,0) {\textbf{Examples,}};
+ %    \node[anchor=west,xshift=-0.75cm,yshift=-8.75cm,rotate=0, scale=3, color=fontcolor] at (0,0) {\textbf{and Theory}};
+    % \node[anchor=west,xshift=-0.75cm,yshift=-25.15cm,rotate=0, scale=2.5, color=fontcolor] at (10,0) {\textbf{Lachlan G. Bishop}};
+    }
+\end{tikzpicture}
+
+\end{document}
+

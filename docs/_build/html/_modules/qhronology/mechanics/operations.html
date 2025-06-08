@@ -1,0 +1,1807 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>qhronology.mechanics.operations &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e613acf8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraCode/fira_code.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/FiraMono/FiraMono.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/qhronology/mechanics/operations';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1" />
+    <meta name="docbuild:last-update" content="Jan 01, 1980"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+    <div class="navbar-persistent--mobile">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../text/appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">qhronology.mechanics.operations</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for qhronology.mechanics.operations</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Project: Qhronology (https://github.com/lgbishop/qhronology)</span>
+<span class="c1"># Author: lgbishop &lt;lachlanbishop@protonmail.com&gt;</span>
+<span class="c1"># Copyright: Lachlan G. Bishop 2025</span>
+<span class="c1"># License: AGPLv3 (non-commercial use), proprietary (commercial use)</span>
+<span class="c1"># For more details, see the README in the project repository:</span>
+<span class="c1"># https://github.com/lgbishop/qhronology,</span>
+<span class="c1"># or visit the website:</span>
+<span class="c1"># https://qhronology.com.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions and a mixin for performing quantum operations.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># https://peps.python.org/pep-0649/</span>
+<span class="c1"># https://peps.python.org/pep-0749/</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">TensorProduct</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum.dagger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dagger</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">mat</span><span class="p">,</span>
+    <span class="n">arr</span><span class="p">,</span>
+    <span class="n">num</span><span class="p">,</span>
+    <span class="n">sym</span><span class="p">,</span>
+    <span class="n">Forms</span><span class="p">,</span>
+    <span class="n">matrix_form</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">flatten_list</span><span class="p">,</span>
+    <span class="n">count_systems</span><span class="p">,</span>
+    <span class="n">extract_matrix</span><span class="p">,</span>
+    <span class="n">extract_symbols</span><span class="p">,</span>
+    <span class="n">symbolize_expression</span><span class="p">,</span>
+    <span class="n">symbolize_tuples</span><span class="p">,</span>
+    <span class="n">extract_conditions</span><span class="p">,</span>
+    <span class="n">recursively_simplify</span><span class="p">,</span>
+    <span class="n">to_density</span><span class="p">,</span>
+    <span class="n">to_column</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="densify">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.densify">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">densify</span><span class="p">(</span><span class="n">vector</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert ``vector`` to its corresponding matrix form via the outer product.</span>
+<span class="sd">    If ``vector`` is a square matrix, it is unmodified.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    vector : mat</span>
+<span class="sd">        The input vector.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The outer product of ``vector`` with itself.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; vector = sp.Matrix([[&quot;a&quot;], [&quot;b&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; densify(vector)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a*conjugate(a), a*conjugate(b)],</span>
+<span class="sd">    [b*conjugate(a), b*conjugate(b)]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vector</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">to_density</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="columnify">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.columnify">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">columnify</span><span class="p">(</span><span class="n">vector</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert ``vector`` to its corresponding column vector form via transposition.</span>
+<span class="sd">    If ``vector`` is a square matrix, it is unmodified.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    vector : mat</span>
+<span class="sd">        The input vector.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The column form of ``vector``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; vector = sp.Matrix([[&quot;a&quot;, &quot;b&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; columnify(vector)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a],</span>
+<span class="sd">    [b]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vector</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">to_column</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="dagger">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.dagger">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">dagger</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform conjugate transposition on ``matrix``.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat</span>
+<span class="sd">        The input matrix.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The conjugate transpose of ``matrix``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;], [&quot;b&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; dagger(matrix)</span>
+<span class="sd">    Matrix([[conjugate(a), conjugate(b)]])</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;, &quot;b&quot;], [&quot;c&quot;, &quot;d&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; dagger(matrix)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [conjugate(a), conjugate(c)],</span>
+<span class="sd">    [conjugate(b), conjugate(d)]])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">Dagger</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="simplify">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.simplify">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">simplify</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simplify ``matrix`` using a powerful (albeit slow) algorithm.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">        The matrix to be simplified.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The simplified version of ``matrix``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix(</span>
+<span class="sd">    ...     [</span>
+<span class="sd">    ...         [&quot;(a**2 - 1)/(a - 1) - 1&quot;, &quot;log(cos(b) + I*sin(b))/I&quot;],</span>
+<span class="sd">    ...         [&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;, &quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;],</span>
+<span class="sd">    ...     ]</span>
+<span class="sd">    ... )</span>
+<span class="sd">    &gt;&gt;&gt; simplify(matrix)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a, b],</span>
+<span class="sd">    [c, d]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">matrix</span></div>
+
+
+
+<div class="viewcode-block" id="apply">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.apply">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
+    <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">arguments</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply a Python function (``function``) to ``matrix``.</span>
+
+<span class="sd">    Useful when used with SymPy&#39;s symbolic-manipulation functions, such as:</span>
+
+<span class="sd">    - ``apart()``</span>
+<span class="sd">    - ``cancel()``</span>
+<span class="sd">    - ``collect()``</span>
+<span class="sd">    - ``expand()``</span>
+<span class="sd">    - ``factor()``</span>
+<span class="sd">    - ``simplify()``</span>
+
+<span class="sd">    More can be found at:</span>
+
+<span class="sd">    - `SymPy documentation: Simplification &lt;https://docs.sympy.org/latest/tutorials/intro-tutorial/simplification.html&gt;`_</span>
+<span class="sd">    - `SymPy documentation: Simplify &lt;https://docs.sympy.org/latest/modules/simplify/simplify.html&gt;`_</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">        The matrix to be transformed.</span>
+<span class="sd">    function : Callable</span>
+<span class="sd">        A Python function.</span>
+<span class="sd">        Its first non-keyword argument must be able to take a mathematical expression or</span>
+<span class="sd">        a matrix/array of such types.</span>
+<span class="sd">    arguments : dict[str, str]</span>
+<span class="sd">        A dictionary of keyword arguments (both keys and values as strings) to pass to</span>
+<span class="sd">        the ``function`` call.</span>
+<span class="sd">        Defaults to ``{}``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The transformed version of ``matrix``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;(x*y**2 - 2*x*y*z + x*z**2 + y**2 - 2*y*z + z**2)/(x**2 - 1)&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; apply(matrix, function=sp.cancel)</span>
+<span class="sd">    Matrix([[(y**2 - 2*y*z + z**2)/(x - 1)]])</span>
+<span class="sd">    &gt;&gt;&gt; apply(matrix, function=sp.collect, arguments={&quot;syms&quot;: &quot;x&quot;})</span>
+<span class="sd">    Matrix([[(x*(y**2 - 2*y*z + z**2) + y**2 - 2*y*z + z**2)/(x**2 - 1)]])</span>
+<span class="sd">    &gt;&gt;&gt; apply(matrix, function=sp.collect, arguments={&quot;syms&quot;: &quot;y&quot;})</span>
+<span class="sd">    Matrix([[(x*z**2 + y**2*(x + 1) + y*(-2*x*z - 2*z) + z**2)/(x**2 - 1)]])</span>
+<span class="sd">    &gt;&gt;&gt; apply(matrix, function=sp.collect, arguments={&quot;syms&quot;: &quot;z&quot;})</span>
+<span class="sd">    Matrix([[(x*y**2 + y**2 + z**2*(x + 1) + z*(-2*x*y - 2*y))/(x**2 - 1)]])</span>
+<span class="sd">    &gt;&gt;&gt; apply(matrix, function=sp.expand)</span>
+<span class="sd">    Matrix([[x*y**2/(x**2 - 1) - 2*x*y*z/(x**2 - 1) + x*z**2/(x**2 - 1) + y**2/(x**2 - 1) - 2*y*z/(x**2 - 1) + z**2/(x**2 - 1)]])</span>
+<span class="sd">    &gt;&gt;&gt; apply(matrix, function=sp.factor)</span>
+<span class="sd">    Matrix([[(y - z)**2/(x - 1)]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">arguments</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">arguments</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+            <span class="n">matrix</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="o">**</span><span class="n">arguments</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">matrix</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="o">**</span><span class="n">arguments</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Unable to apply the specified function (``</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()``) to the matrix.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">matrix</span></div>
+
+
+
+<div class="viewcode-block" id="rewrite">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.rewrite">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">rewrite</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rewrite the elements of ``matrix`` using the given mathematical function (``function``).</span>
+
+<span class="sd">    Useful when used with SymPy&#39;s mathematical functions, such as:</span>
+
+<span class="sd">    - ``exp()``</span>
+<span class="sd">    - ``log()``</span>
+<span class="sd">    - ``sin()``</span>
+<span class="sd">    - ``cos()``</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">        The matrix to be transformed.</span>
+<span class="sd">    function : Callable</span>
+<span class="sd">        A SymPy mathematical function.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The transformed version of ``matrix``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;cos(x)&quot;], [&quot;sin(x)&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; rewrite(matrix, function=sp.exp)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [   exp(I*x)/2 + exp(-I*x)/2],</span>
+<span class="sd">    [-I*(exp(I*x) - exp(-I*x))/2]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+            <span class="n">entry</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">rewrite</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+            <span class="n">matrix</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;The specified function (``</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()``) cannot be used to rewrite </span><span class="se">\</span>
+<span class="s2">            the matrix.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">matrix</span></div>
+
+
+
+<div class="viewcode-block" id="normalize">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.normalize">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">norm</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalize ``matrix`` to the value specified (``norm``).</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">        The matrix to be normalized.</span>
+<span class="sd">    norm : num | sym | str</span>
+<span class="sd">        The value to which the matrix is normalized.</span>
+<span class="sd">        Defaults to ``1``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The normalized version of ``matrix``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;], [&quot;b&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; normalize(matrix, norm=1)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a/sqrt(a*conjugate(a) + b*conjugate(b))],</span>
+<span class="sd">    [b/sqrt(a*conjugate(a) + b*conjugate(b))]])</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;, &quot;b&quot;], [&quot;c&quot;, &quot;d&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; normalize(matrix, norm=&quot;n&quot;)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a*n/(a + d), b*n/(a + d)],</span>
+<span class="sd">    [c*n/(a + d), d*n/(a + d)]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">norm</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">norm</span>
+
+    <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">is_vector</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">is_vector</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">matrix_form</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">densify</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
+    <span class="n">factor</span> <span class="o">=</span> <span class="n">norm</span> <span class="o">/</span> <span class="n">trace</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">factor</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">is_vector</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">factor</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">matrix</span>
+
+    <span class="k">return</span> <span class="n">matrix</span></div>
+
+
+
+<div class="viewcode-block" id="coefficient">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.coefficient">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">coefficient</span><span class="p">(</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">scalar</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Multiply ``matrix`` by a scalar value (``scalar``).</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">        The matrix to be scaled.</span>
+<span class="sd">    scalar : num | sym | str</span>
+<span class="sd">        The value by which the state is multiplied.</span>
+<span class="sd">        Defaults to ``1``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The scaled version of ``matrix``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;1&quot;], [&quot;1&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; coefficient(matrix, scalar=1 / sp.sqrt(2))</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [sqrt(2)/2],</span>
+<span class="sd">    [sqrt(2)/2]])</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;], [&quot;b&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; coefficient(matrix, scalar=&quot;exp(I*x)&quot;)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a*exp(I*x)],</span>
+<span class="sd">    [b*exp(I*x)]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">scalar</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">scalar</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">scalar</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">scalar</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">scalar</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">scalar</span> <span class="o">*</span> <span class="n">matrix</span>
+
+    <span class="k">return</span> <span class="n">matrix</span></div>
+
+
+
+<div class="viewcode-block" id="partial_trace">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.partial_trace">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">partial_trace</span><span class="p">(</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
+    <span class="n">targets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">discard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">optimize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute and return the partial trace of a matrix.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat</span>
+<span class="sd">        The matrix on which to perform the partial trace operation.</span>
+<span class="sd">    targets : int | list[int]</span>
+<span class="sd">        The numerical index/indices of the subsystem(s) to be partially traced over.</span>
+<span class="sd">        Defaults to ``[]``.</span>
+<span class="sd">    discard : bool</span>
+<span class="sd">        Whether the systems corresponding to the indices given in ``targets`` are to be</span>
+<span class="sd">        discarded (``True``) or kept (``False``).</span>
+<span class="sd">        Defaults to ``True``.</span>
+<span class="sd">    dim : int</span>
+<span class="sd">        The dimensionality of the matrix.</span>
+<span class="sd">        Must be a non-negative integer.</span>
+<span class="sd">        Defaults to ``2``.</span>
+<span class="sd">    optimize : bool</span>
+<span class="sd">        Whether to optimize the implementation&#39;s algorithm.</span>
+<span class="sd">        Can greatly increase the computational efficiency at the cost of a larger memory footprint</span>
+<span class="sd">        during computation.</span>
+<span class="sd">        Defaults to ``True``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The reduced matrix.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;], [&quot;b&quot;], [&quot;c&quot;], [&quot;d&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; partial_trace(matrix, targets=[0], dim=2)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a*conjugate(a) + c*conjugate(c), a*conjugate(b) + c*conjugate(d)],</span>
+<span class="sd">    [b*conjugate(a) + d*conjugate(c), b*conjugate(b) + d*conjugate(d)]])</span>
+<span class="sd">    &gt;&gt;&gt; partial_trace(matrix, targets=[1], dim=2)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a*conjugate(a) + b*conjugate(b), a*conjugate(c) + b*conjugate(d)],</span>
+<span class="sd">    [c*conjugate(a) + d*conjugate(b), c*conjugate(c) + d*conjugate(d)]])</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;, 0, 0, 0], [0, &quot;b&quot;, 0, 0], [0, 0, &quot;c&quot;, 0], [0, 0, 0, &quot;d&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; partial_trace(matrix, targets=[0], discard=True, dim=2)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a + c,     0],</span>
+<span class="sd">    [    0, b + d]])</span>
+<span class="sd">    &gt;&gt;&gt; partial_trace(matrix, targets=[1], discard=True, dim=2)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a + b,     0],</span>
+<span class="sd">    [    0, c + d]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">targets</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">targets</span>
+    <span class="n">discard</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">discard</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">discard</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
+    <span class="n">optimize</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">optimize</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">optimize</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="n">flatten_list</span><span class="p">(</span><span class="nb">list</span><span class="p">([</span><span class="n">targets</span><span class="p">]))</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">discard</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">matrix</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="c1"># Convert integer dim into the required list form</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">dim</span> <span class="o">=</span> <span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="o">*</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+    <span class="n">num_systems</span> <span class="o">=</span> <span class="n">dim</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">systems</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_systems</span><span class="p">)]</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">discard</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">keep</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">systems</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">keep</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">]</span>
+    <span class="n">num_keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">dim</span><span class="p">[</span><span class="n">keep</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_systems</span><span class="p">)]</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="p">[</span><span class="n">num_systems</span> <span class="o">+</span> <span class="n">k</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keep</span> <span class="k">else</span> <span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_systems</span><span class="p">)]</span>
+    <span class="n">operator_reduced</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">operator_reduced</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="n">operator_reduced</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">,</span> <span class="n">optimize</span><span class="o">=</span><span class="n">optimize</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">operator_reduced</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">operator_reduced</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">operator_reduced</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">num_keep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_keep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="measure">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.measure">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">measure</span><span class="p">(</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
+    <span class="n">operators</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">],</span>
+    <span class="n">targets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">observable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">statistics</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform a quantum measurement on one or more systems (indicated in ``targets``)</span>
+<span class="sd">    of ``matrix``.</span>
+
+<span class="sd">    This function has two main modes of operation:</span>
+
+<span class="sd">    - When ``statistics`` is ``True``,</span>
+<span class="sd">      the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in ``targets``)</span>
+<span class="sd">      is measured and the set of resulting statistics is returned.</span>
+<span class="sd">      This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:</span>
+
+<span class="sd">      - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)</span>
+<span class="sd">        when ``observable`` is ``False``</span>
+<span class="sd">        (``operators`` is a list of Kraus operators or projectors :math:`\\Kraus_i`)</span>
+<span class="sd">      - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)</span>
+<span class="sd">        when ``observable`` is ``True``</span>
+<span class="sd">        (``operators`` is a list of observables :math:`\\Observable_i`)</span>
+
+<span class="sd">    - When ``statistics`` is ``False``,</span>
+<span class="sd">      the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in ``targets``)</span>
+<span class="sd">      is measured and mutated it according to its predicted post-measurement form</span>
+<span class="sd">      (i.e., the sum of all possible measurement outcomes).</span>
+<span class="sd">      This yields the transformed states:</span>
+
+<span class="sd">      - When ``observable`` is ``False``:</span>
+
+<span class="sd">      .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger.</span>
+
+<span class="sd">      - When ``observable`` is ``True``:</span>
+
+<span class="sd">      .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.</span>
+
+<span class="sd">    In the case where ``operators`` contains only a single item (:math:`\\Kraus`) and the</span>
+<span class="sd">    current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state</span>
+<span class="sd">    is in accordance with the rule</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       \\ket{\\psi^\\prime} = \\frac{\\Kraus \\ket{\\psi}}</span>
+<span class="sd">           {\\sqrt{\\bra{\\psi} \\Kraus^\\dagger \\Kraus \\ket{\\psi}}}</span>
+
+<span class="sd">    when ``observable`` is ``False``. In all other mutation cases, the post-measurement state</span>
+<span class="sd">    is a matrix, even if the pre-measurement state was a vector.</span>
+
+<span class="sd">    The items in the list ``operators`` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),</span>
+<span class="sd">    in which case each is converted into its corresponding operator matrix representation</span>
+<span class="sd">    (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">        The matrix to be measured.</span>
+<span class="sd">    operators: list[mat | arr | QuantumObject]</span>
+<span class="sd">        The operator(s) with which to perform the measurement.</span>
+<span class="sd">        These would typically be a (complete) set of Kraus operators forming a POVM,</span>
+<span class="sd">        a (complete) set of (orthogonal) projectors forming a PVM,</span>
+<span class="sd">        or a set of observables constituting a complete basis for the relevant state space.</span>
+<span class="sd">    targets : int | list[int]</span>
+<span class="sd">        The numerical indices of the subsystem(s) to be measured.</span>
+<span class="sd">        They must be consecutive, and their number must match the number of systems spanned</span>
+<span class="sd">        by all given operators.</span>
+<span class="sd">        Indexing begins at ``0``.</span>
+<span class="sd">        All other systems are discarded (traced over) in the course of performing the measurement.</span>
+<span class="sd">    observable: bool</span>
+<span class="sd">        Whether to treat the items in ``operators`` as observables instead of Kraus operators</span>
+<span class="sd">        or projectors.</span>
+<span class="sd">        Defaults to ``False``.</span>
+<span class="sd">    statistics: bool</span>
+<span class="sd">        Whether to return a list of probabilities (``True``) or transform ``matrix`` into a</span>
+<span class="sd">        post-measurement probabilistic sum of all outcomes (``False``).</span>
+<span class="sd">        Defaults to ``False``.</span>
+<span class="sd">    dim : int</span>
+<span class="sd">        The dimensionality of ``matrix`` and the item(s) of ``operators``.</span>
+<span class="sd">        Must be a non-negative integer.</span>
+<span class="sd">        Defaults to ``2``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The post-measurement ``matrix``.</span>
+<span class="sd">        Returned only if ``statistics`` is ``False``.</span>
+<span class="sd">    num | sym | list[num | sym]</span>
+<span class="sd">        A list of probabilities corresponding to each operator given in ``operators``.</span>
+<span class="sd">        Returned only if ``statistics`` is ``True``.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    This method does not check for validity of supplied POVMs or the completeness of sets of</span>
+<span class="sd">    observables, nor does it renormalize the post-measurement state.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;], [&quot;b&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; plus = sp.Matrix([[1 / sp.sqrt(2)], [1 / sp.sqrt(2)]])</span>
+<span class="sd">    &gt;&gt;&gt; minus = sp.Matrix([[1 / sp.sqrt(2)], [-1 / sp.sqrt(2)]])</span>
+<span class="sd">    &gt;&gt;&gt; measure(matrix, operators=[plus, minus], targets=[0], observable=False, statistics=True)</span>
+<span class="sd">    [a*conjugate(a)/2 + a*conjugate(b)/2 + b*conjugate(a)/2 + b*conjugate(b)/2,</span>
+<span class="sd">     a*conjugate(a)/2 - a*conjugate(b)/2 - b*conjugate(a)/2 + b*conjugate(b)/2]</span>
+<span class="sd">    &gt;&gt;&gt; measure(matrix, operators=[plus, minus], targets=[0], observable=False, statistics=False)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a*conjugate(a)/2 + b*conjugate(b)/2, a*conjugate(b)/2 + b*conjugate(a)/2],</span>
+<span class="sd">    [a*conjugate(b)/2 + b*conjugate(a)/2, a*conjugate(a)/2 + b*conjugate(b)/2]])</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;], [&quot;b&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; I = sp.Matrix([[1, 0], [0, 1]])</span>
+<span class="sd">    &gt;&gt;&gt; X = sp.Matrix([[0, 1], [1, 0]])</span>
+<span class="sd">    &gt;&gt;&gt; Y = sp.Matrix([[0, -sp.I], [sp.I, 0]])</span>
+<span class="sd">    &gt;&gt;&gt; Z = sp.Matrix([[1, 0], [0, -1]])</span>
+<span class="sd">    &gt;&gt;&gt; measure(matrix, operators=[I, X, Y, Z], targets=[0], observable=True, statistics=True)</span>
+<span class="sd">    [a*conjugate(a) + b*conjugate(b),</span>
+<span class="sd">     a*conjugate(b) + b*conjugate(a),</span>
+<span class="sd">     I*(a*conjugate(b) - b*conjugate(a)),</span>
+<span class="sd">     a*conjugate(a) - b*conjugate(b)]</span>
+<span class="sd">    &gt;&gt;&gt; measure(matrix, operators=[I, X, Y, Z], targets=[0], observable=True, statistics=False)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [2*a*conjugate(a), 2*a*conjugate(b)],</span>
+<span class="sd">    [2*b*conjugate(a), 2*b*conjugate(b)]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">observable</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">observable</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">observable</span>
+    <span class="n">statistics</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">statistics</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">statistics</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
+    <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">is_vector</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">is_vector</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">matrix_form</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="n">operators_initial</span> <span class="o">=</span> <span class="n">operators</span>
+    <span class="n">operators</span> <span class="o">=</span> <span class="n">flatten_list</span><span class="p">([</span><span class="n">operators</span><span class="p">])</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="n">flatten_list</span><span class="p">([</span><span class="n">targets</span><span class="p">])</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">matrix</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">targets</span><span class="p">,</span> <span class="n">discard</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+    <span class="n">operator_matrices</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="n">operators</span><span class="p">:</span>
+        <span class="n">operator_matrices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">operator</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">statistics</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">matrix_post_measurement</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dim</span> <span class="o">**</span> <span class="nb">len</span><span class="p">(</span><span class="n">targets</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">observable</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">operator_matrices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">is_vector</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">matrix_post_measurement</span> <span class="o">=</span> <span class="n">operator_matrices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">matrix</span>
+                <span class="n">normalization</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">densify</span><span class="p">(</span><span class="n">matrix_post_measurement</span><span class="p">)))</span>
+                <span class="n">normalization</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">normalization</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+                <span class="n">normalization</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">normalization</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+                <span class="n">matrix_post_measurement</span> <span class="o">=</span> <span class="n">normalization</span> <span class="o">*</span> <span class="n">matrix_post_measurement</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="n">operator_matrices</span><span class="p">:</span>
+                    <span class="n">matrix_post_measurement</span> <span class="o">+=</span> <span class="p">(</span>
+                        <span class="n">densify</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span> <span class="o">*</span> <span class="n">densify</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">*</span> <span class="n">Dagger</span><span class="p">(</span><span class="n">densify</span><span class="p">(</span><span class="n">operator</span><span class="p">))</span>
+                    <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="n">operator_matrices</span><span class="p">:</span>
+                <span class="n">probability</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">densify</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span> <span class="o">*</span> <span class="n">densify</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+                <span class="n">probability</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+                <span class="n">probability</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+                <span class="n">matrix_post_measurement</span> <span class="o">+=</span> <span class="n">probability</span> <span class="o">*</span> <span class="n">densify</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">matrix_post_measurement</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">observable</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">probabilities</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
+                    <span class="n">densify</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span> <span class="o">*</span> <span class="n">densify</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">*</span> <span class="n">Dagger</span><span class="p">(</span><span class="n">densify</span><span class="p">(</span><span class="n">operator</span><span class="p">))</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="n">operator_matrices</span>
+            <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">probabilities</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">densify</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span> <span class="o">*</span> <span class="n">densify</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">operator</span> <span class="ow">in</span> <span class="n">operator_matrices</span>
+            <span class="p">]</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">probability</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">probabilities</span><span class="p">):</span>
+                <span class="n">probability</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+                <span class="n">probability</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+                <span class="n">probabilities</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">probability</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">operators_initial</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">probabilities</span> <span class="o">=</span> <span class="n">probabilities</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">probabilities</span></div>
+
+
+
+<div class="viewcode-block" id="postselect">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.postselect">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">postselect</span><span class="p">(</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
+    <span class="n">postselections</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform postselection on ``matrix`` against the operator(s) specified in ``postselections``.</span>
+
+<span class="sd">    The postselections can be given in either vector or matrix form. For the former,</span>
+<span class="sd">    the transformation of the vector :math:`\\ket{\\Psi}` follows the standard rule</span>
+
+<span class="sd">    .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi}</span>
+
+<span class="sd">    where :math:`\\ket{\\phi}` is the postselection vector.</span>
+<span class="sd">    In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of a</span>
+<span class="sd">    matrix :math:`\\op{\\rho}` naturally generalizes to</span>
+
+<span class="sd">    .. math:: \\op{\\rho}^\\prime = \\trace_{\\{i\\}}[\\op{\\omega} \\op{\\rho}]</span>
+
+<span class="sd">    where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which</span>
+<span class="sd">    the postselection is performed.</span>
+
+<span class="sd">    If multiple postselections are supplied, ``matrix`` will be successively postselected in</span>
+<span class="sd">    the order in which they are given. If a vector ``matrix`` is postselected against a matrix form,</span>
+<span class="sd">    it will automatically be transformed into its matrix form via the outer product as necessary.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">        The matrix to be measured.</span>
+<span class="sd">    postselections: list[tuple[mat | arr | QuantumObject, int]]</span>
+<span class="sd">        A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index</span>
+<span class="sd">        of their postselection target systems.</span>
+<span class="sd">    dim : int</span>
+<span class="sd">        The dimensionality of ``matrix`` and the item(s) of ``postselections``.</span>
+<span class="sd">        Must be a non-negative integer.</span>
+<span class="sd">        Defaults to ``2``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The postselected form of ``matrix``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;a&quot;], [0], [0], [&quot;b&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; zero = sp.Matrix([[1], [0]])</span>
+<span class="sd">    &gt;&gt;&gt; one = sp.Matrix([[0], [1]])</span>
+<span class="sd">    &gt;&gt;&gt; postselect(matrix, postselections=[(zero, [0])], dim=2)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [a],</span>
+<span class="sd">    [0]])</span>
+<span class="sd">    &gt;&gt;&gt; postselect(matrix, postselections=[(one, [0])], dim=2)</span>
+<span class="sd">    Matrix([</span>
+<span class="sd">    [0],</span>
+<span class="sd">    [b]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+    <span class="n">systems</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_systems</span><span class="p">)]</span>
+
+    <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">is_vector</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">is_vector</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">matrix_form</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">are_vector</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">postselections</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">twotuple</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">postselections</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">are_vector</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">twotuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">is_vector</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">matrix_form</span><span class="p">(</span><span class="n">twotuple</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                <span class="n">are_vector</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">postselection_is_vector</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">boolean</span> <span class="o">!=</span> <span class="kc">True</span> <span class="k">for</span> <span class="n">boolean</span> <span class="ow">in</span> <span class="n">are_vector</span><span class="p">)</span>
+
+    <span class="n">matrices</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">twotuple</span> <span class="ow">in</span> <span class="n">postselections</span><span class="p">:</span>
+        <span class="n">operator</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">twotuple</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">matrix_form</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="n">operator</span> <span class="o">=</span> <span class="n">columnify</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span>
+        <span class="n">matrices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span>
+        <span class="n">num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+        <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">twotuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]]))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_systems</span><span class="p">)]</span>
+        <span class="p">)</span>
+
+    <span class="n">operators</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">identity</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">system</span> <span class="ow">in</span> <span class="n">systems</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">system</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">flatten_list</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
+            <span class="n">operators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">identity</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">min_targets</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">system</span> <span class="ow">in</span> <span class="n">min_targets</span><span class="p">:</span>
+                <span class="n">operators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrices</span><span class="p">[</span><span class="n">min_targets</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">system</span><span class="p">)])</span>
+
+    <span class="k">if</span> <span class="n">is_vector</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">postselection_is_vector</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">operators_combined</span> <span class="o">=</span> <span class="n">TensorProduct</span><span class="p">(</span><span class="o">*</span><span class="n">operators</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">Dagger</span><span class="p">(</span><span class="n">operators_combined</span><span class="p">)</span> <span class="o">*</span> <span class="n">matrix</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">operator</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">operators</span><span class="p">):</span>
+            <span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span>
+        <span class="n">operators_combined</span> <span class="o">=</span> <span class="n">TensorProduct</span><span class="p">(</span><span class="o">*</span><span class="n">operators</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">operators_combined</span><span class="p">)</span> <span class="o">*</span> <span class="n">densify</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">matrix</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">flatten_list</span><span class="p">(</span><span class="n">targets</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">matrix</span></div>
+
+
+
+<div class="viewcode-block" id="OperationsMixin">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.OperationsMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OperationsMixin</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A mixin for endowing classes with the ability to have their ``matrix`` property mutated</span>
+<span class="sd">    by various quantum operations.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    The :py:class:`~qhronology.mechanics.operations.OperationsMixin` mixin is used exclusively by</span>
+<span class="sd">    the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding</span>
+<span class="sd">    section (:ref:`sec:docs_states_operations`) for documentation on its methods.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">densify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the state to its equivalent (density) matrix representation.</span>
+
+<span class="sd">        States that are already in density matrix form are unmodified.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = a|0⟩ + b|1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.densify()</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩⟨ψ| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">dagger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform conjugate transposition on the state.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = a|0⟩ + b|1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.dagger()</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        ⟨ψ| = conjugate(a)⟨0| + conjugate(b)⟨1|</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">dagger</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a forced simplification to the state using the values of its ``symbols`` and</span>
+<span class="sd">        ``conditions`` properties.</span>
+
+<span class="sd">        Useful if intermediate simplification is required during a sequence of mutating operations</span>
+<span class="sd">        in order to process the state into a more desirable form.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a Python function (``function``) to the state.</span>
+
+<span class="sd">        Useful when used with SymPy&#39;s symbolic-manipulation functions, such as:</span>
+
+<span class="sd">        - ``simplify()``</span>
+<span class="sd">        - ``expand()``</span>
+<span class="sd">        - ``factor()``</span>
+<span class="sd">        - ``collect()``</span>
+<span class="sd">        - ``cancel()``</span>
+<span class="sd">        - ``apart()``</span>
+
+<span class="sd">        More can be found at:</span>
+
+<span class="sd">        - `SymPy documentation: Simplification &lt;https://docs.sympy.org/latest/tutorials/intro-tutorial/simplification.html&gt;`_</span>
+<span class="sd">        - `SymPy documentation: Simplify &lt;https://docs.sympy.org/latest/modules/simplify/simplify.html&gt;`_</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        function : Callable</span>
+<span class="sd">            A Python function.</span>
+<span class="sd">            Its first non-keyword argument must be able to take a mathematical expression or</span>
+<span class="sd">            a matrix/array of such types.</span>
+<span class="sd">        arguments : dict[str, str]</span>
+<span class="sd">            A dictionary of keyword arguments (both keys and values as strings) to pass</span>
+<span class="sd">            to the ``function`` call.</span>
+<span class="sd">            Defaults to ``{}``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a*b + b*c + c*a&quot;, [0]), (&quot;x*y + y*z + z*x&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = (a*b + a*c + b*c)|0⟩ + (x*y + x*z + y*z)|1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.apply(sp.collect, {&quot;syms&quot;: [&quot;a&quot;, &quot;x&quot;]})</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = (a*(b + c) + b*c)|0⟩ + (x*(y + z) + y*z)|1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.apply(sp.expand)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = (a*b + a*c + b*c)|0⟩ + (x*y + x*z + y*z)|1⟩</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rewrite the elements of the state using the given mathematical function (``function``).</span>
+
+<span class="sd">        Useful when used with SymPy&#39;s mathematical functions, such as:</span>
+
+<span class="sd">        - ``exp()``</span>
+<span class="sd">        - ``log()``</span>
+<span class="sd">        - ``sin()``</span>
+<span class="sd">        - ``cos()``</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        function : Callable</span>
+<span class="sd">            A SymPy mathematical function.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;cos(θ)&quot;, [0]), (&quot;sin(θ)&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = cos(θ)|0⟩ + sin(θ)|1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.rewrite(sp.exp)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = (exp(I*θ)/2 + exp(-I*θ)/2)|0⟩ + -I*(exp(I*θ) - exp(-I*θ))/2|1⟩</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a forced (re)normalization on the state to the value specified (``norm``).</span>
+
+<span class="sd">        Useful when applied to the current quantum state both before and after mutating operations,</span>
+<span class="sd">        prior to any simplification (such as renormalization) performed on the processed output</span>
+<span class="sd">        (obtained via the ``state()`` method).</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        norm : num | sym | str</span>
+<span class="sd">            The value to which the state is normalized.</span>
+<span class="sd">            Defaults to ``1``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; identity = QuantumState(spec=[(&quot;1&quot;, [0]), (&quot;1&quot;, [1])], label=&quot;I&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; identity.print()</span>
+<span class="sd">        I = |0⟩⟨0| + |1⟩⟨1|</span>
+<span class="sd">        &gt;&gt;&gt; identity.normalize()</span>
+<span class="sd">        &gt;&gt;&gt; identity.print()</span>
+<span class="sd">        I = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|</span>
+
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = a|0⟩ + b|1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.normalize()</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = a/sqrt(a*conjugate(a) + b*conjugate(b))|0⟩ + b/sqrt(a*conjugate(a) + b*conjugate(b))|1⟩</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">norm</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">norm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">coefficient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scalar</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiply the state by a scalar value (``scalar``).</span>
+
+<span class="sd">        Can be useful to manually (re)normalize states, or introduce a phase factor.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        scalar : num | sym | str</span>
+<span class="sd">            The value by which the state is multiplied.</span>
+<span class="sd">            Defaults to ``1``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;1&quot;, [0]), (&quot;1&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = |0⟩ + |1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.coefficient(1 / sp.sqrt(2))</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = sqrt(2)/2|0⟩ + sqrt(2)/2|1⟩</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">scalar</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">scalar</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">scalar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">coefficient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scalar</span><span class="o">=</span><span class="n">scalar</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">partial_trace</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">targets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">discard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">optimize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a partial trace operation on the state.</span>
+
+<span class="sd">        Performs a total trace if ``targets`` is unspecified.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        targets : int | list[int]</span>
+<span class="sd">            The numerical index/indices of the subsystem(s) to be partially traced over.</span>
+<span class="sd">            Indexing begins at ``0``.</span>
+<span class="sd">            Defaults to ``[]``.</span>
+<span class="sd">        discard : bool</span>
+<span class="sd">            Whether the systems corresponding to the indices given in ``targets`` are to be</span>
+<span class="sd">            discarded (``True``) or kept (``False``).</span>
+<span class="sd">            Defaults to ``True``.</span>
+<span class="sd">        optimize : bool</span>
+<span class="sd">            Whether to optimize the partial trace implementation&#39;s algorithm.</span>
+<span class="sd">            Can greatly increase the computational efficiency at the cost of a larger memory</span>
+<span class="sd">            footprint during computation.</span>
+<span class="sd">            Defaults to ``True``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a*u&quot;, [0, 0]), (&quot;b*u&quot;, [1, 0]), (&quot;a*v&quot;, [0, 1]), (&quot;b*v&quot;, [1, 1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     conditions=[</span>
+<span class="sd">        ...         (&quot;a*conjugate(a) + b*conjugate(b)&quot;, &quot;1&quot;),</span>
+<span class="sd">        ...         (&quot;u*conjugate(u) + v*conjugate(v)&quot;, &quot;1&quot;),</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     label=&quot;Ψ&quot;,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |Ψ⟩ = a*u|0,0⟩ + a*v|0,1⟩ + b*u|1,0⟩ + b*v|1,1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.partial_trace([1])</span>
+<span class="sd">        &gt;&gt;&gt; psi.simplify()</span>
+<span class="sd">        &gt;&gt;&gt; psi.notation = &quot;ρ&quot;</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        ρ = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
+
+<span class="sd">        &gt;&gt;&gt; bell = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;1&quot;, [0, 0]), (&quot;1&quot;, [1, 1])], form=&quot;vector&quot;, norm=1, label=&quot;Φ&quot;</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; bell.print()</span>
+<span class="sd">        |Φ⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩</span>
+<span class="sd">        &gt;&gt;&gt; bell.partial_trace([0])</span>
+<span class="sd">        &gt;&gt;&gt; bell.notation = &quot;ρ&quot;</span>
+<span class="sd">        &gt;&gt;&gt; bell.print()</span>
+<span class="sd">        ρ = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span>
+            <span class="n">matrix</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">targets</span><span class="o">=</span><span class="n">targets</span><span class="p">,</span>
+            <span class="n">discard</span><span class="o">=</span><span class="n">discard</span><span class="p">,</span>
+            <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
+            <span class="n">optimize</span><span class="o">=</span><span class="n">optimize</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">measure</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">operators</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">],</span>
+        <span class="n">targets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">observable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">statistics</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a quantum measurement on one or more systems (indicated in ``targets``)</span>
+<span class="sd">        of the state.</span>
+
+<span class="sd">        This method has two main modes of operation:</span>
+
+<span class="sd">        - When ``statistics`` is ``True``,</span>
+<span class="sd">          the (reduced) state (:math:`\\op{\\rho}`)</span>
+<span class="sd">          (residing on the systems indicated in ``targets``)</span>
+<span class="sd">          is measured and the set of resulting statistics is returned.</span>
+<span class="sd">          This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with</span>
+<span class="sd">          each given operator, where:</span>
+
+<span class="sd">          - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]`</span>
+<span class="sd">            (measurement probabilities) when ``observable`` is ``False``</span>
+<span class="sd">            (``operators`` is a list of Kraus operators or projectors :math:`\\Kraus_i`)</span>
+<span class="sd">          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]`</span>
+<span class="sd">            (expectation values) when ``observable`` is ``True``</span>
+<span class="sd">            (``operators`` is a list of observables :math:`\\Observable_i`)</span>
+
+<span class="sd">        - When ``statistics`` is ``False``,</span>
+<span class="sd">          the (reduced) state (:math:`\\op{\\rho}`)</span>
+<span class="sd">          (residing on the systems indicated in ``targets``)</span>
+<span class="sd">          is measured and mutated it according to its predicted post-measurement form</span>
+<span class="sd">          (i.e., the sum of all possible measurement outcomes).</span>
+<span class="sd">          This yields the transformed states:</span>
+
+<span class="sd">          - When ``observable`` is ``False``:</span>
+
+<span class="sd">          .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger.</span>
+
+<span class="sd">          - When ``observable`` is ``True``:</span>
+
+<span class="sd">          .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}]\\Observable_i.</span>
+
+<span class="sd">        In the case where ``operators`` contains only a single item (:math:`\\Kraus`) and</span>
+<span class="sd">        the current state (:math:`\\ket{\\psi}`) is a vector form,</span>
+<span class="sd">        the transformation of the state is in accordance with the rule</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">           \\ket{\\psi^\\prime} = \\frac{\\Kraus \\ket{\\psi}}</span>
+<span class="sd">               {\\sqrt{\\bra{\\psi} \\Kraus^\\dagger \\Kraus \\ket{\\psi}}}</span>
+
+<span class="sd">        when ``observable`` is ``False``. In all other mutation cases, the post-measurement state</span>
+<span class="sd">        is a matrix, even if the pre-measurement state was a vector.</span>
+
+<span class="sd">        The items in the list ``operators`` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),</span>
+<span class="sd">        in which case each is converted into its corresponding operator matrix representation</span>
+<span class="sd">        (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        operators: list[mat | arr | QuantumObject]</span>
+<span class="sd">            The operator(s) with which to perform the measurement.</span>
+<span class="sd">            These would typically be a (complete) set of Kraus operators forming a POVM,</span>
+<span class="sd">            a (complete) set of (orthogonal) projectors forming a PVM,</span>
+<span class="sd">            or a set of observables constituting a complete basis for the relevant state space.</span>
+<span class="sd">        targets : int | list[int]</span>
+<span class="sd">            The numerical indices of the subsystem(s) to be measured.</span>
+<span class="sd">            They must be consecutive, and their number must match the number of systems spanned</span>
+<span class="sd">            by all given operators.</span>
+<span class="sd">            Indexing begins at ``0``.</span>
+<span class="sd">            All other systems are discarded (traced over) in the course of performing the measurement. Defaults to the value of ``self.systems``.</span>
+<span class="sd">        observable: bool</span>
+<span class="sd">            Whether to treat the items in ``operators`` as observables instead of Kraus operators</span>
+<span class="sd">            or projectors.</span>
+<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">        statistics: bool</span>
+<span class="sd">            Whether to return a list of probabilities (``True``) or mutate the state into a</span>
+<span class="sd">            post-measurement probabilistic sum of all outcomes (``False``).</span>
+<span class="sd">            Defaults to ``False``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">            Returned only if ``statistics`` is ``False``.</span>
+<span class="sd">        num | sym | list[num | sym]</span>
+<span class="sd">            A list of probabilities corresponding to each operator given in ``operators``.</span>
+<span class="sd">            Returned only if ``statistics`` is ``True``.</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ----</span>
+<span class="sd">        This method does not check for validity of supplied POVMs or the completeness of</span>
+<span class="sd">        sets of observables, nor does it renormalize the post-measurement state.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = a|0⟩ + b|1⟩</span>
+<span class="sd">        &gt;&gt;&gt; I = Pauli(index=0)</span>
+<span class="sd">        &gt;&gt;&gt; X = Pauli(index=1)</span>
+<span class="sd">        &gt;&gt;&gt; Y = Pauli(index=2)</span>
+<span class="sd">        &gt;&gt;&gt; Z = Pauli(index=3)</span>
+<span class="sd">        &gt;&gt;&gt; psi.measure(operators=[I, X, Y, Z], observable=True, statistics=True)</span>
+<span class="sd">        [a*conjugate(a) + b*conjugate(b),</span>
+<span class="sd">         a*conjugate(b) + b*conjugate(a),</span>
+<span class="sd">         I*(a*conjugate(b) - b*conjugate(a)),</span>
+<span class="sd">         a*conjugate(a) - b*conjugate(b)]</span>
+<span class="sd">        &gt;&gt;&gt; psi.measure(operators=[I, X, Y, Z], observable=True, statistics=False)</span>
+<span class="sd">        &gt;&gt;&gt; psi.simplify()</span>
+<span class="sd">        &gt;&gt;&gt; psi.coefficient(sp.Rational(1, 2))</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩⟨ψ| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
+
+<span class="sd">        &gt;&gt;&gt; from qhronology.mechanics.matrices import ket</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |ψ⟩ = a|0⟩ + b|1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.measure(operators=[ket(0), ket(1)], observable=False, statistics=True)</span>
+<span class="sd">        [a*conjugate(a), b*conjugate(b)]</span>
+<span class="sd">        &gt;&gt;&gt; psi.measure(operators=[ket(0), ket(1)], observable=False, statistics=False)</span>
+<span class="sd">        &gt;&gt;&gt; psi.notation = &quot;ρ&quot;</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        ρ = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems</span> <span class="k">if</span> <span class="n">targets</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">targets</span>
+        <span class="n">observable</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">observable</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">observable</span>
+        <span class="n">statistics</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">statistics</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">statistics</span>
+        <span class="k">if</span> <span class="n">statistics</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">measure</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">,</span>
+                <span class="n">operators</span><span class="o">=</span><span class="n">operators</span><span class="p">,</span>
+                <span class="n">targets</span><span class="o">=</span><span class="n">targets</span><span class="p">,</span>
+                <span class="n">observable</span><span class="o">=</span><span class="n">observable</span><span class="p">,</span>
+                <span class="n">statistics</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">measure</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">,</span>
+                <span class="n">operators</span><span class="o">=</span><span class="n">operators</span><span class="p">,</span>
+                <span class="n">targets</span><span class="o">=</span><span class="n">targets</span><span class="p">,</span>
+                <span class="n">observable</span><span class="o">=</span><span class="n">observable</span><span class="p">,</span>
+                <span class="n">statistics</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">postselect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">postselections</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform postselection on the state against the operators(s)</span>
+<span class="sd">        specified in ``postselections``.</span>
+
+<span class="sd">        The postselections can be given in either vector or matrix form.</span>
+<span class="sd">        For the former, the transformation of the vector state :math:`\\ket{\\Psi}` follows</span>
+<span class="sd">        the standard rule</span>
+
+<span class="sd">        .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi}</span>
+
+<span class="sd">        where :math:`\\ket{\\phi}` is the postselection vector.</span>
+<span class="sd">        In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of</span>
+<span class="sd">        a density matrix state :math:`\\op{\\rho}` naturally generalizes to</span>
+
+<span class="sd">        .. math:: \\op{\\rho}^\\prime = \\trace_{\\{i\\}}[\\op{\\omega} \\op{\\rho}]</span>
+
+<span class="sd">        where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which</span>
+<span class="sd">        the postselection is performed.</span>
+
+<span class="sd">        If multiple postselections are supplied, the state will be successively postselected in the</span>
+<span class="sd">        order in which they are given. If a vector state is postselected against a matrix form,</span>
+<span class="sd">        it will automatically be transformed into its matrix form as necessary.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        postselections: list[tuple[mat | arr | QuantumObject, int]]</span>
+<span class="sd">            A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index</span>
+<span class="sd">            of their postselection target systems.</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ----</span>
+<span class="sd">        Any classes given in ``postselections`` that are derived from the</span>
+<span class="sd">        :py:class:`~qhronology.utilities.objects.QuantumObject` base class</span>
+<span class="sd">        (such as :py:class:`~qhronology.quantum.states.QuantumState`</span>
+<span class="sd">        and :py:class:`~qhronology.quantum.gates.QuantumGate`)</span>
+<span class="sd">        will have their ``symbols`` and ``conditions`` properties merged into the current</span>
+<span class="sd">        :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0, 0]), (&quot;b&quot;, [1, 1])], form=&quot;vector&quot;, label=&quot;Ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; phi = QuantumState(spec=[(&quot;c&quot;, [0]), (&quot;d&quot;, [1])], form=&quot;vector&quot;, label=&quot;φ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |Ψ⟩ = a|0,0⟩ + b|1,1⟩</span>
+<span class="sd">        &gt;&gt;&gt; phi.print()</span>
+<span class="sd">        |φ⟩ = c|0⟩ + d|1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.postselect([(phi, [0])])</span>
+<span class="sd">        &gt;&gt;&gt; psi.label = &quot;Ψ&#39;&quot;</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |Ψ&#39;⟩ = a*conjugate(c)|0⟩ + b*conjugate(d)|1⟩</span>
+
+<span class="sd">        &gt;&gt;&gt; from qhronology.mechanics.matrices import ket</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0, 0]), (&quot;b&quot;, [1, 1])], form=&quot;vector&quot;, label=&quot;Ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |Ψ⟩ = a|0,0⟩ + b|1,1⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.label = &quot;Ψ&#39;&quot;</span>
+<span class="sd">        &gt;&gt;&gt; psi.postselect([(ket(0), [0])])</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |Ψ&#39;⟩ = a|0⟩</span>
+<span class="sd">        &gt;&gt;&gt; psi.reset()</span>
+<span class="sd">        &gt;&gt;&gt; psi.postselect([(ket(1), [0])])</span>
+<span class="sd">        &gt;&gt;&gt; psi.print()</span>
+<span class="sd">        |Ψ&#39;⟩ = b|1⟩</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Add the postselection(s) symbols and conditions to the current instance.</span>
+        <span class="k">for</span> <span class="n">twotuple</span> <span class="ow">in</span> <span class="n">postselections</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conditions</span> <span class="o">+=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">twotuple</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">twotuple</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span> <span class="o">|=</span> <span class="n">symbols</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span> <span class="o">|=</span> <span class="p">{</span><span class="n">symbol</span><span class="p">:</span> <span class="n">symbols</span><span class="p">[</span><span class="n">symbol</span><span class="p">]}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">postselect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">postselections</span><span class="o">=</span><span class="n">postselections</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 1980 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

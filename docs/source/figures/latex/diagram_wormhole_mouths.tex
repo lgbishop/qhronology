@@ -1,0 +1,112 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+\renewcommand{\large}{\normalsize}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\begin{document}
+\begin{tikzpicture}[scale=0.85]
+    \iffalse
+    % Draw shaded circle that looks like a sphere
+    \begin{scope}
+       \clip (0,0) circle (1);
+    \begin{scope}[transform canvas={rotate=-\rotation}]
+    \shade [ball color=white] (0,0.5) ellipse (1.8 and 1.5);
+    \end{scope}
+    \end{scope}
+    \fi
+    
+    \begin{scope}[viewport={\rotation}{22.5},shift={(-\sep cm,0)}]
+    
+    \draw[thick] (\ToXYZ{270-\rotation}{0}) -- ++($0.5*(\ToXYZ{270-\rotation}{0})$);
+    \draw[-{Latex[black,length=3mm,width=1.5mm]},thick] (\ToXYZ{90-\rotation}{0}) -- ++($\sep*(\ToXYZ{90-\rotation}{0})$) -- ++($1.35*(\ToXYZ{90-\rotation}{0})$) node[right, font=\large, black]{$x$};
+    
+    \draw[thick] (\ToXYZ{180}{-90}) -- ++($0.5*(\ToXYZ{180}{-90})$);
+    
+    \draw[thick] (\ToXYZ{0}{0}) -- ++($-1*(\ToXYZ{270-\rotation}{-45})$);
+    
+    \end{scope}
+    
+    \draw[thick, fill=white] (-\sep,0) circle (\radius) node[below right = 0.85*\radius, font=\large, black]{$\MouthPast$};
+    \draw[thick, fill=white] (\sep,0) circle (\radius) node[below right = 0.85*\radius, font=\large, black]{$\MouthFuture$};
+    %\draw[ball color = black!40, opacity = 0.2] (-\sep,0) circle (\radius);
+    %\draw[ball color = black!40, opacity = 0.2] (\sep,0) circle (\radius);
+    
+    \begin{scope}[viewport={\rotation}{22.5},shift={(-\sep cm,0)}]
+    \draw[-{Latex[black,length=3mm,width=1.5mm]},thick] (\ToXYZ{180}{90}) -- ++($0.75*(\ToXYZ{180}{90})$) node[above, font=\large, black]{$y$};
+    \draw[-{Latex[black,length=3mm,width=1.5mm]},thick] (\ToXYZ{180}{0}) -- (\ToXYZ{270-\rotation}{-45}) -- ++($0.75*(\ToXYZ{270-\rotation}{-45})$) node[below left, font=\large, black]{$z$};
+    \end{scope}
+    
+    % Draw things in actual 3D coordinates.
+    \begin{scope}[viewport={\rotation}{22.5},shift={(-\sep cm,0)},semithick]
+    
+    %\draw[thick, fill] (0,0) circle (1pt);
+    
+    \draw[domain=90-\rotation:270-\rotation, variable=\azimuth, smooth, densely dashed] plot (\ToXYZ{\azimuth}{0});
+    \draw[domain=90:270-\rotation, variable=\elevation, smooth, densely dashed] plot (\ToXYZ{0}{\elevation});
+    
+    %\draw[domain=-90-\rotation:90-\rotation, variable=\azimuth, smooth, densely dashed, black!30] plot (\ToXYZ{\azimuth}{0});
+    %\draw[domain=-90-\rotation:90, variable=\elevation, smooth, densely dashed, black!30] plot (\ToXYZ{0}{\elevation});
+    
+    \draw[domain=185-\offset:180, variable=\azimuth, smooth, thick, black!50] node[above = 0.3cm, font=\large, black]{$\vartheta$} plot (\ToXYZ{\azimuth}{\offset});
+    \draw[domain=180:180-\offset, variable=\elevation, smooth, thick, black!50] node[right = 0.2cm, font=\large, black]{$\varphi$} plot (\ToXYZ{-\offset+5}{\elevation});
+    \draw[black!50, fill] (\ToXYZ{185-\offset}{\offset}) circle (1.25pt) node[above right = -0.075cm, font=\large, black]{$P^-$};
+    
+    \iffalse
+    \draw[black!50, fill] (\ToXYZ{0}{0}) circle (1.25pt);
+    \draw[black!50, fill] (\ToXYZ{90}{0}) circle (1.25pt);
+    \draw[black!50, fill] (\ToXYZ{180}{0}) circle (1.25pt);
+    \draw[black!50, fill] (\ToXYZ{270-\rotation}{0}) circle (1.25pt);
+    \draw[black!50, fill] (\ToXYZ{180}{90}) circle (1.25pt);
+    \draw[black!50, fill] (\ToXYZ{180}{-90}) circle (1.25pt);
+    \fi
+    
+    \iffalse
+    \def\azimuth{deg(0.7*sin(\t)+pi)}
+    \def\elevation{deg(1.1*abs(sin(0.67*\t))-0.4)}
+    \draw[red, domain=-180:180, variable=\t, samples=101] plot (\ToXYZ{\azimuth}{\elevation});
+    \fi
+    
+    \end{scope}
+    
+    \begin{scope}[viewport={\rotation}{22.5},shift={(\sep cm,0)},semithick]
+    
+    %\draw[thick, fill] (0,0) circle (1pt);
+    
+    \draw[domain=90-\rotation:270-\rotation, variable=\azimuth, smooth, densely dashed] plot (\ToXYZ{\azimuth}{0});
+    \draw[domain=90:270-\rotation, variable=\elevation, smooth, densely dashed] plot (\ToXYZ{0}{\elevation});
+    
+    %\draw[domain=-90-\rotation:90-\rotation, variable=\azimuth, smooth, densely dashed, black!30] plot (\ToXYZ{\azimuth}{0});
+    %\draw[domain=-90-\rotation:90, variable=\elevation, smooth, densely dashed, black!30] plot (\ToXYZ{0}{\elevation});
+    
+    \draw[domain=175+\offset:180, variable=\azimuth, smooth, thick, black!50] node[above left = 0.55cm, font=\large, black]{$\vartheta$} plot (\ToXYZ{\azimuth}{\offset});
+    \draw[domain=180:180-\offset, variable=\elevation, smooth, thick, black!50] plot (\ToXYZ{\offset-5}{\elevation});
+    \draw[opacity = 0, text opacity = 1] (\ToXYZ{175+\offset}{0.65*\offset}) circle (1.25pt) node[left = -0.1cm, font=\large, black]{$\varphi$};
+    \draw[black!50, fill] (\ToXYZ{175+\offset}{\offset}) circle (1.25pt) node[above = -0.1cm, font=\large, black]{$P^+$};
+    
+    \iffalse
+    \draw[black!50, fill] (\ToXYZ{0}{0}) circle (1.25pt);
+    \draw[black!50, fill] (\ToXYZ{90}{0}) circle (1.25pt);
+    \draw[black!50, fill] (\ToXYZ{180}{0}) circle (1.25pt);
+    \draw[black!50, fill] (\ToXYZ{270-\rotation}{0}) circle (1.25pt);
+    \draw[black!50, fill] (\ToXYZ{180}{90}) circle (1.25pt);
+    \draw[black!50, fill] (\ToXYZ{180}{-90}) circle (1.25pt);
+    \fi
+    
+    \iffalse
+    \def\azimuth{deg(0.7*sin(\t)+pi)}
+    \def\elevation{deg(1.1*abs(sin(0.67*\t))-0.4)}
+    \draw[red, domain=-180:180, variable=\t, samples=101] plot (\ToXYZ{\azimuth}{\elevation});
+    \fi
+    
+    \end{scope}
+\end{tikzpicture}
+\end{document}

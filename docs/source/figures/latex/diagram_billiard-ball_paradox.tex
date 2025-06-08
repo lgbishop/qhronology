@@ -1,0 +1,83 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+\renewcommand{\large}{\normalsize}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\begin{document}
+\begin{figure}[b!]
+\begin{center}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+\begin{tikzpicture}[font=\fontsize{10}{12},scale=1.15]
+    %\draw[step=1cm,gray,very thin] (-6,-6) grid (6,6);
+
+    \node[isosceles triangle,shape border rotate = 90,isosceles triangle apex angle=45,scale=0.35,black,fill=\ColA] at (0,0) {};
+
+    \draw[thick, \ColA] (0,-2) -- (0,2);
+
+    \draw[black,fill=black] (0,-2) circle (0.035cm);
+    \draw[black,fill=black] (0,2) circle (0.035cm);
+    \draw[black,fill=black] (-1,0) circle (0.15cm);
+    \draw[black,fill=black] (1,0) circle (0.15cm);
+
+    \node[above] at (1,0.135) {\begin{tabular}{c} future \\ mouth \end{tabular}};
+    \node[above] at (-1,0.135) {\begin{tabular}{c} past \\ mouth \end{tabular}};
+
+    \node[below] at (0,-2) {$\left(\TimeInitial,\vec{\PositionInitial}\right)$};
+    \node[above] at (0,2) {$\left(\TimeFinal,\vec{\PositionFinal}\right)$};
+    %\node[above] at (0,-3.7) {$\mathrm{Evolution}\ \EvolutionA$};
+    %\node[above] at (0,-4.25) {(a)};
+
+    \node[right] at (-0.5,-3) {$x$};
+    \node[above] at (-1.25,-2.25) {$y$};
+    \draw [->,>=stealth,thick,black] (-1.25,-3) -- (-0.5,-3);
+    \draw [->,>=stealth,thick,black] (-1.25,-3) -- (-1.25,-2.25);
+\end{tikzpicture}
+\caption{Evolution $\EvolutionNoninteracting$}
+\end{subfigure}
+\hspace*{0cm}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+\begin{tikzpicture}[font=\fontsize{10}{12},scale=1.15]
+    %\draw[step=1cm,gray,very thin] (-6,-6) grid (6,6);
+    
+    \node[isosceles triangle,shape border rotate = 90,isosceles triangle apex angle=45,scale=0.35,black,fill=\ColB] at (0,-1) {};
+    \node[isosceles triangle,shape border rotate = 90,isosceles triangle apex angle=45,scale=0.35,black,fill=\ColB] at (0,1) {};
+    \node[isosceles triangle,shape border rotate = 0,isosceles triangle apex angle=45,scale=0.35,black,fill=\ColB] at (0.5,0) {};
+    \node[isosceles triangle,shape border rotate = 0,isosceles triangle apex angle=45,scale=0.35,black,fill=\ColB] at (-0.5,0) {};
+    
+    \draw[rounded corners=0.085cm, thick, \ColB] (-1,0) -- (0,0) -- (0,2);
+    \draw[rounded corners=0.085cm, thick, \ColB] (0,-2) -- (0,0) -- (1,0);
+    
+    \draw[black,fill=black] (0,-2) circle (0.035cm);
+    \draw[black,fill=black] (0,2) circle (0.035cm);
+    \draw[black,fill=black] (-1,0) circle (0.15cm);
+    \draw[black,fill=black] (1,0) circle (0.15cm);
+    
+    \node[above] at (1,0.135) {\begin{tabular}{c} future \\ mouth \end{tabular}};
+    \node[above] at (-1,0.135) {\begin{tabular}{c} past \\ mouth \end{tabular}};
+    
+    \node[below] at (0,-2) {$\left(\TimeInitial,\vec{\PositionInitial}\right)$};
+    \node[above] at (0,2) {$\left(\TimeFinal,\vec{\PositionFinal}\right)$};
+    %\node[above] at (0,-3.7) {$\mathrm{Evolution}\ \EvolutionB$};
+    %\node[above] at (0,-4.25) {(b)};
+    
+    \node[right,opacity=0] at (-0.5,-3) {$x$};
+    \node[above,opacity=0] at (-1.25,-2.25) {$y$};
+    \draw [->,>=stealth,thick,black,opacity=0] (-1.25,-3) -- (-0.5,-3);
+    \draw [->,>=stealth,thick,black,opacity=0] (-1.25,-3) -- (-1.25,-2.25);
+\end{tikzpicture}
+\caption{Evolution $\EvolutionInteracting$}
+\end{subfigure}
+\end{center}
+\end{figure}
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, transparent, align equals at=2.0]
+    \lstick{$\ldots$} & \gate[wires=3,label style={yshift=0.5*\QuantikzSeparationRow cm}]{\Unitary} & \qw \\
+    \lstick{$\ldots$} & \linethrough &  \qw \\
+    \lstick{$\ldots$} & & \qw
+\end{quantikz}
+$\quad \iff \quad \Unitary^{0,2} (\ldots) \Unitary^{\dagger 0,2}$
+\end{document}

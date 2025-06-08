@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+<script src="./three.min.js"></script>
+<div id="animated-background">
+  <canvas id="animated-background-canvas"></canvas>
+</div>
+<style>
+  #animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    transform: translateZ(0);
+  }
+  html.light { /* Defaults, correspond to the light theme. */
+    --color-wire: #ffffff;
+    --color-surface-inner: #80bfff;
+    --color-surface-outer: #ffffff;
+    --color-shift: 0.0;
+  }
+  html.dark { /* Correspond to the dark theme. */
+    --color-wire: #000000;
+    --color-surface-inner: #80bfff;
+    --color-surface-outer: #000000;
+    --color-shift: 0.2;
+  }
+  #animated-background canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+</style>
+<script>
+
+  // Check if the data-theme attribute is already set
+  if (!document.documentElement.dataset.theme) {
+    // If not set, default to 'light'
+    document.documentElement.dataset.theme = 'light';
+  }
+
+  // Function to update the theme class based on the dataset.theme value
+  function updateThemeClass() {
+    const htmlElement = document.documentElement;
+    const theme = htmlElement.dataset.theme; // Get the current theme from the dataset
+    console.log(theme);
+
+    if (theme === 'dark') {
+      // If the theme is dark, ensure dark class is present and light class is removed
+      htmlElement.classList.add('dark');
+      htmlElement.classList.remove('light');
+    } else if (theme === 'light') {
+      // If the theme is light, ensure light class is present and dark class is removed
+      htmlElement.classList.add('light');
+      htmlElement.classList.remove('dark');
+    }
+  }
+
+  // Initial theme setup
+  updateThemeClass();
+
+  // Create the scene, camera, and renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({
+    canvas: document.getElementById('animated-background-canvas'),
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  function getColors() {
+    // Function to get the value of a CSS variable
+    function getCSSVariable(variable) {
+      const htmlElement = document.documentElement; // Get the <html> element
+      const styles = getComputedStyle(htmlElement); // Get computed styles
+      return styles.getPropertyValue(variable); // Return the value of the variable
+    }
+
+    const currentColorWire = getCSSVariable('--color-wire');
+    const currentColorSurfaceInner = getCSSVariable('--color-surface-inner');
+    const currentColorSurfaceOuter = getCSSVariable('--color-surface-outer');
+    const currentColorShift = Number(getCSSVariable('--color-shift'));
+    colorWire = currentColorWire;
+    colorSurfaceInner = currentColorSurfaceInner;
+    colorSurfaceOuter = currentColorSurfaceOuter;
+    colorShift = currentColorShift;
+    console.log('Color Wire:', colorWire);
+    console.log('Color Surface Inner:', colorSurfaceInner);
+    console.log('Color Surface Outer:', colorSurfaceOuter);
+    console.log('Color Shift:', colorShift);
+  }
+
+  // Define the wormhole parameters
+  const wormholeRadius = 100;
+  const wormholeDepth = 10;
+  const rotationSpeed = 0.0002;
+  const countSpokes = 128;
+  const countCircles = 192;
+
+  function createWormhole() {
+
+    // Create the wormhole geometry
+    const wormholeGeometry = new THREE.ParametricGeometry((u, v, target) => {
+      const r = wormholeRadius * (1 * Math.pow(v,24)) - 1;
+      const h = wormholeDepth;
+      const theta = u * Math.PI * 8;
+      const z = v * h * 10 + 2;
+      target.set(r * Math.cos(theta), r * Math.sin(theta), z);
+    }, countSpokes, countCircles);
+
+    // Rotate if necessary.
+    //wormholeGeometry.rotateX(Math.PI / 2);
+    //wormholeGeometry.rotateY(Math.PI / 2);
+    //wormholeGeometry.rotateZ(Math.PI / 2);
+
+    // Create the material for the wormhole's surface
+    const surfaceMaterial = new THREE.MeshBasicMaterial({
+      vertexColors: true,
+      wireframe: false,
+      //color: colorSurfaceInner,
+      side: THREE.DoubleSide
+    });
+
+    getColors();
+
+    // General-purpose colour gradient function
+    function gradient(u, v) {
+      const r = u * 255;
+      const g = v * 255;
+      const b = (1 - u - v) * 255;
+      return new THREE.Color(r, g, b);
+    }
+
+    // Population the geometry's position attribute with colour values
+    // that are interpolated between the colorSurfaceInner and colorSurfaceOuter
+    const positions = wormholeGeometry.attributes.position.array;
+    const colors = new Float32Array(positions.length);
+    for (let i = 0; i < wormholeGeometry.attributes.position.count; i++) {
+      const z = wormholeGeometry.attributes.position.array[i * 3 + 2];
+      const color = new THREE.Color();
+      const colorInner = new THREE.Color(colorSurfaceInner);
+      const colorOuter = new THREE.Color(colorSurfaceOuter);
+      color.lerpColors(colorInner, colorOuter, Math.pow(z,8) / (1.0 * Math.pow(10,16)) + colorShift);
+      colors[i * 3] = color.r;
+      colors[i * 3 + 1] = color.g;
+      colors[i * 3 + 2] = color.b;
+    }
+    wormholeGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+    // Create the surface mesh from the geometry and material
+    surfaceMesh = new THREE.Mesh(wormholeGeometry, surfaceMaterial);
+
+    // Update the mesh material
+    surfaceMesh.material.vertexColors = true;
+    surfaceMesh.material.needsUpdate = true;
+
+    // Create the edges from the geometry.
+    const wormholeEdges = new THREE.EdgesGeometry(wormholeGeometry);
+
+    // Create the mesh wireframe from the edge
+    wormholeWireframe = new THREE.LineSegments(wormholeEdges, new THREE.LineBasicMaterial({
+      color: colorWire,
+      linewidth: 1,
+      // transparent: false,
+      // opacity: 1,
+      // depthTest: true,
+      // depthWrite: true
+    }));
+    // Set this to render second
+    wormholeWireframe.renderOrder = 1;
+
+  }
+
+  function renderWormhole() {
+    scene.clear();
+    updateThemeClass();
+    createWormhole();
+    scene.add(surfaceMesh);
+    scene.add(wormholeWireframe);
+  }
+  // Initialisation
+  // To be re-run on future theme-change events handled by the mutation observer below
+  renderWormhole();
+
+  // Create a MutationObserver to watch for changes to the class attribute
+  const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+            renderWormhole();
+          }
+      });
+  });
+
+  // Start observing the <html> element for class changes
+  observer.observe(document.documentElement, {
+      attributes: true // Watch for changes to attributes
+  });
+
+  // Animate the wormhole rotation.
+  function animate() {
+    requestAnimationFrame(animate);
+    wormholeWireframe.rotation.z += rotationSpeed;
+    surfaceMesh.rotation.z += rotationSpeed;
+    renderer.render(scene, camera);
+  }
+
+  // Position the camera to look down into the wormhole at an angle
+  // camera.lookAt(new THREE.Vector3(0, 0, 0));
+  camera.position.set(0, -300, 400);
+  camera.rotation.x = Math.PI / 4;
+  camera.rotation.z = - Math.PI / 4;
+  camera.zoom = 30;
+  camera.updateProjectionMatrix();
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // Start the animation
+  animate();
+</script>

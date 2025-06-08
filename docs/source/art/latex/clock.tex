@@ -1,0 +1,184 @@
+% LaTeX code for generating an analog clock face
+% Unashamedly pilfered from: https://tex.stackexchange.com/a/236941
+
+%\documentclass[border=1mm,tikz,convert={density=4000,size=4000x4000,outext=.png}]{standalone}
+% The Standalone class ignores the preamble, so cannot be used to animate!
+\documentclass{minimal}
+\pagenumbering{gobble}
+
+\usepackage{geometry}
+\geometry{
+paperwidth=5.25cm,
+paperheight=5.25cm,
+margin=0cm
+}
+
+\usepackage{xparse}
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\eval}{m}{\fp_eval:n {#1}}
+\ExplSyntaxOff
+
+\providecommand\FPS{50} % Frame rate
+\providecommand\Period{3} % Time (seconds) of a single loop of the animation
+\providecommand\FramesTotal{\eval{\FPS*\Period}} % Total number of frames per loop
+\providecommand\FramesCurrent{0} % Current frame number, defaults to 0
+
+\providecommand\ClockEdgeWidth{4.25}
+\providecommand\ClockHandInitialHour{3}
+\providecommand\ClockHandInitialMinute{53}
+\providecommand\ClockHandInitialSecond{7}
+\providecommand\ClockHandRevolutionsHour{-1}
+\providecommand\ClockHandRevolutionsMinute{2}
+\providecommand\ClockHandRevolutionsSecond{-3}
+
+% In \Total frames, \HourPosition: 0 -> 60*\HourRate
+\newcommand\ClockHandShiftHour{\eval{((\ClockHandRevolutionsHour*60*\FramesCurrent)/\FramesTotal)/5}}
+\newcommand\ClockHandShiftMinute{\eval{(\ClockHandRevolutionsMinute*60*\FramesCurrent)/\FramesTotal}}
+\newcommand\ClockHandShiftSecond{\eval{(\ClockHandRevolutionsSecond*60*\FramesCurrent)/\FramesTotal}}
+
+%\def\hourhand{3}
+%\def\minutehand{57}
+%\def\secondhand{7.5}
+\def\hourhand{\eval{\ClockHandInitialHour + \ClockHandShiftHour}}
+\def\minutehand{\eval{\ClockHandInitialMinute + \ClockHandShiftMinute}}
+\def\secondhand{\eval{\ClockHandInitialSecond + \ClockHandShiftSecond}}
+
+\usepackage[utf8]{inputenc}
+\usepackage{PTSansNarrow}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{3d}
+\usetikzlibrary{calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\newcommand*{\oldrom}[1]{\ifnum #1=4 IIII\else\expandafter\@slowromancap\romannumeral #1@\fi}
+\makeatother
+\tikzset{
+    hour pointer/.style={line cap=round, thick},
+    minute pointer/.style={thin, line cap=round},
+    ticks sep/.style={outer sep=-#1}, ticks sep={0pt},
+    ticks size/.store in=\clocktickssize,
+    ticks size=.25cm,
+    ticks/.style={thin},
+    main ticks/.style={very thick},
+    clock/.style={draw, minimum size=4cm, circle},
+    clock text/.code={\let\clocktext\textrm},
+    hour pointer size/.store in=\hourpointersize,
+    hour pointer size=0.5cm,
+    minute pointer size/.store in=\minutepointersize,
+    minute pointer size=0.75cm,
+    clock text sep/.store in=\clocktextsep,
+    clock text sep=1em,
+    pics/clock/.style args={#1:#2}{
+        code={%
+        \pgfmathsetmacro{\hourangle}{90-#1*30-#2*0.5}\pgfmathsetmacro{\minuteangle}{90-#2*6}
+        \node[clock] (-clock) {};
+        \foreach \angle [count=\xi] in {60,30,...,-270}
+        {
+            \draw[clock text, ticks] (-clock.\angle) -- ++(\angle:-\clocktickssize) node[anchor=center, shift={(\angle:-\clocktextsep)}] {\clocktext{\xi}};
+        };
+        \foreach \angle in {0,90,180,270} \draw[ticks, main ticks] (-clock.\angle) -- ++(\angle:-\clocktickssize);
+        \draw[minute pointer] (-clock.center) -- ++(\minuteangle:\minutepointersize);
+        \draw[hour pointer] (-clock.center) -- ++(\hourangle:\hourpointersize);
+        }
+    }
+}
+
+\newcommand\fancyclock[2]{%
+    \begin{tikzpicture}
+        \pic[hour pointer/.style={-{Kite[width=2pt]},
+                            insert path={node[circle,
+                                            minimum size=2pt,
+                                            inner sep=0pt,
+                                            fill=white,
+                                            draw, thick]{}
+                                        } },
+        minute pointer/.style={{Circle[length=2pt]}-{Kite[width=2pt]}, shorten <=-.25cm},
+        clock/.style={double=white, double distance=2pt, draw, fill=white, circle, minimum size=3cm},
+        clock text sep=0.6em,
+        ticks sep=1pt,
+        ticks/.style={shorten >=2pt}, main ticks/.style={shorten >=0pt, very thick},
+        clock text/.code={\let\clocktext\textit}
+        ] (Fancy) {clock=#1:#2};
+    \end{tikzpicture}
+}
+%%\syntax
+%%\fancyclock{<hour>}{<minute>}
+
+\usetikzlibrary{shadows,arrows.meta}
+\newcommand\extrafancyclock[3]{%
+    \begin{tikzpicture}[r/.style={font=\sffamily,inner sep=0,rotate=-30*\x,anchor=north},
+    s/.style={even odd rule,top color=black,bottom color=black,middle color=white}]
+
+        %\shade[s,shading angle=-10] circle (21mm) circle (22mm);
+        %\shade[s,shading angle=15]  circle (22mm) circle (25mm);
+        \draw[fill=black] circle (22mm);
+        \draw[fill=white] circle (21mm);
+        \draw[fill=white] circle (19mm);
+        %\draw[]  circle (22mm) circle (25mm);
+
+        \foreach\x[evaluate={\xf=int(5*\x);}] in{1,...,12}{
+        \draw ({30*(3-\x)}:19mm) node[r,anchor=south,scale=0.2,inner sep=1pt] {\xf}
+        node[r,scale=0.5,xscale=0.85] at ({30*(3-\x)}:1.8cm) 
+                                    {\uppercase\expandafter{\romannumeral\x}};
+        \ifodd\x\else\draw (30*\x:18mm-2.5ex)--++(30*\x:-1mm);\fi
+        }
+
+        \foreach\x in{1,...,60}{\draw (6*\x:18mm)--++(6*\x:1mm);}
+        \draw circle(18mm) circle(19mm) circle(18mm-2.5ex) circle(17mm-2.5ex);
+
+        \begin{scope}[rotate around={-6*(#2):(0,0)}, scale=0.65]%\hourhand+
+            \fill(0.5mm,0) to[out=90,in=-100] (80:1.2cm) to[in=-80,out=120] (90:1.75cm)
+            to[out=-100,in=60] (100:1.2cm) to[in=90,out=-80](-0.5mm,0);
+        \end{scope}
+
+        \begin{scope}[rotate around={-30*(#1 + #2 / 60):(0,0)}]
+            \fill(0.5mm,0) to[out=90,in=-150] (70:6mm) to[in=-80,out=120] (90:1.4cm)
+            to[out=-100,in=60] (110:6mm) to[in=90,out=-30](-0.5mm,0);
+        \end{scope}
+        \draw[thick,-{Kite[scale=0.8]}] (0,0) -- (90 - 6 * #3:1.8cm); %Seconds
+        \filldraw[fill=white]circle (1mm);
+    \end{tikzpicture}
+}
+%%\syntax
+%\extrafancyclock{<hour>}{<minute>}{<seconds>}
+
+\begin{document}
+
+\begin{tikzpicture}[r/.style={font=\sffamily,inner sep=0,rotate=-30*\x,anchor=north},s/.style={even odd rule,top color=black,bottom color=black,middle color=white}]
+
+    \filldraw[fill=white] circle (21.5mm);
+    \filldraw[black] circle (21mm) circle (21mm+\ClockEdgeWidth);
+    % \filldraw[black] circle (21.5mm) circle (22.5mm);
+    \filldraw[fill=white] circle (21.5mm);
+    \foreach\x[evaluate={\xf=int(5*\x);}] in{1,...,12}{
+        \draw ({30*(3-\x)}:19mm) node[r,anchor=south,scale=0.5,inner sep=1pt] {\xf} node[r,scale=1.5,xscale=0.85] at ({30*(3-\x)}:1.8cm) {\uppercase\expandafter{\romannumeral\x}};
+        \ifodd\x\else\draw (30*\x:18mm-2.5ex)--++(30*\x:-1mm);\fi
+    }
+
+        \foreach\x in{1,...,60}{\draw (6*\x:18mm)--++(6*\x:1mm);}
+        \draw circle(18mm) circle(19mm) circle(18mm-2.5ex) circle(17mm-2.5ex);
+
+    \begin{scope}[rotate around={-6*(\minutehand):(0,0)}] %\hourhand+
+        \fill(0.5mm,0) to[out=90,in=-100] (80:1.2cm) to[in=-80,out=120] (90:1.75cm) to[out=-100,in=60] (100:1.2cm) to[in=90,out=-80](-0.5mm,0);
+    \end{scope}
+
+    % \begin{scope}[rotate around={-30*(\hourhand+\minutehand/60):(0,0)}] % For accurate hourhand position in between hour markings
+    \begin{scope}[rotate around={-30*(\hourhand):(0,0)}]
+        \fill(0.5mm,0) to[out=90,in=-150] (70:6mm) to[in=-80,out=120] (90:1.4cm) to[out=-100,in=60] (110:6mm) to[in=90,out=-30](-0.5mm,0);
+    \end{scope}
+        \draw[thick,-{Kite[scale=0.8]}] (0,0) -- (90-6*\secondhand:1.8cm); %Seconds
+        \filldraw[fill=white]circle (1mm);
+
+\end{tikzpicture}
+
+\end{document}

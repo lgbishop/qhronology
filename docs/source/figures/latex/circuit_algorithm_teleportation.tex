@@ -1,0 +1,26 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+%\usetikzlibrary{quantikz}
+\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \lstick{$\ket{\psi}$} & \qw & \qw & \ctrl{1} & \gate{\Hadamard} & \qw & \meter{} \wire[d][2]{c} \\
+    \lstick{$\ket{0}$} & \gate{\Hadamard} & \ctrl{1} & \targ{} & \qw & \meter{} \wire[d][1]{c} \\
+    \lstick{$\ket{0}$} & \qw & \targ{} & \qw & \qw & \gate{\PauliX} & \gate{\PauliZ} & \qw \rstick{$\ket{\psi}$}
+\end{quantikz}
+\end{document}

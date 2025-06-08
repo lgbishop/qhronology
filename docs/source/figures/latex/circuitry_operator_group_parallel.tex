@@ -1,0 +1,26 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \qw & \gate[wires=1]{\op{A}}\gategroup[2,steps=1,style={thin,rounded corners,fill=none, inner xsep=2pt},background]{$\Unitary$} & \qw \\
+    \qw & \gate[wires=1]{\op{B}} & \qw
+\end{quantikz}
+$\quad \iff \quad \Unitary = \op{A} \otimes \op{B}$
+\end{document}

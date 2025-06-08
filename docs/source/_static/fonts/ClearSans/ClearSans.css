@@ -1,0 +1,9 @@
+/* static fonts */
+@font-face { font-family: "ClearSans"; font-style: normal; font-weight: 100; font-display: swap; src: url("ClearSans-Thin.woff") format("woff"); }
+@font-face { font-family: "ClearSans"; font-style: normal; font-weight: 300; font-display: swap; src: url("ClearSans-Light.woff") format("woff"); }
+@font-face { font-family: "ClearSans"; font-style: normal; font-weight: 400; font-display: swap; src: url("ClearSans-Regular.woff") format("woff"); }
+@font-face { font-family: "ClearSans"; font-style: italic; font-weight: 400; font-display: swap; src: url("ClearSans-Italic.woff") format("woff"); }
+@font-face { font-family: "ClearSans"; font-style: normal; font-weight: 500; font-display: swap; src: url("ClearSans-Medium.woff") format("woff"); }
+@font-face { font-family: "ClearSans"; font-style: italic; font-weight: 500; font-display: swap; src: url("ClearSans-MediumItalic.woff") format("woff"); }
+@font-face { font-family: "ClearSans"; font-style: normal; font-weight: 700; font-display: swap; src: url("ClearSans-Bold.woff") format("woff"); }
+@font-face { font-family: "ClearSans"; font-style: italic; font-weight: 700; font-display: swap; src: url("ClearSans-BoldItalic.woff") format("woff"); }

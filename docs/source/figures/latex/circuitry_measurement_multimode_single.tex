@@ -1,0 +1,26 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+%\usetikzlibrary{quantikz}
+\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
+    \lstick{$\ldots$} & \meter[2]{\hspace{-100cm}\{\StateDensity^{0,1}_i\}\hspace{-100cm}} \\
+    \lstick{$\ldots$} & \qw
+\end{quantikz}
+$\quad \iff \quad \Probability = \{p_i\}, \quad p_i = \trace[\StateDensity^{0,1}_i (\ldots)]$
+\end{document}
