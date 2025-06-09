@@ -637,8 +637,8 @@ html_theme_options = {
     # "show_version_warning_banner": False,
     "navbar_start": ["navbar-logo"],
     "navbar_center": ["navbar-nav"],
-    "navbar_end": ["navbar-icon-links"],
-    "navbar_persistent": ["theme-switcher", "search-field"],
+    "navbar_end": ["search-field", "navbar-icon-links"],
+    "navbar_persistent": ["theme-switcher"],
     "navbar_align": "content",
     # "external_links": [ # Appear on the navigation bar.
     #     {"name": "link-one-name", "url": "https://<link-one>"},
