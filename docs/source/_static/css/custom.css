@@ -729,9 +729,12 @@ input.form-control:focus-visible {
 /* } */
 
 /*** Sidebars ***/
-.bd-sidebar-primary {
+div.bd-sidebar-primary {
     background-color: var(--pst-color-background);
     width: 20%;
+}
+dialog.bd-sidebar-primary {
+    width: 75%;
 }
 .bd-sidebar-secondary {
     background-color: var(--pst-color-background);
