@@ -675,7 +675,6 @@ a.sd-btn > span.std-ref {
     background-color: var(--pst-color-bd-search) !important;
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
-    width: 18rem;
     gap: 0rem;
 }
 input.form-control {
@@ -735,6 +734,9 @@ div.bd-sidebar-primary {
 }
 dialog.bd-sidebar-primary {
     width: 75%;
+}
+.sidebar-header-items__end {
+	flex-direction: column;
 }
 .bd-sidebar-secondary {
     background-color: var(--pst-color-background);
