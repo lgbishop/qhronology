@@ -518,10 +518,10 @@ Quantum teleportation of an arbitrary qubit :math:`\ket{\psi} = a\ket{0} + b\ket
    >>> teleporting_state.fidelity(teleported_state)
    1
 
-:ref:`Unproven theorem paradox <eg:unproven>`
+:ref:`Unproven-theorem paradox <eg:unproven>`
 ---------------------------------------------
 
-Computing resolutions to the unproven theorem paradox according to various prescriptions of quantum time travel (D-CTCs and P-CTCs):
+Computing resolutions to the unproven-theorem paradox according to various prescriptions of quantum time travel (D-CTCs and P-CTCs):
 
 .. literalinclude:: /text/examples/ctcs/unproven.py
    :language: python

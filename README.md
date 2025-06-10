@@ -294,9 +294,9 @@ print(teleporting_state.fidelity(teleported_state))
 1
 ```
 
-### Unproven theorem paradox
+### Unproven-theorem paradox
 
-Computing resolutions to the unproven theorem paradox according to various prescriptions of quantum time travel (D-CTCs and P-CTCs):
+Computing resolutions to the unproven-theorem paradox according to various prescriptions of quantum time travel (D-CTCs and P-CTCs):
 
 ```python
 from qhronology.quantum.states import VectorState
@@ -346,7 +346,7 @@ unproven_PCTC_violating.print()
 >   <picture>
 >     <source width="175" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_ctcs_unproven-dark.png">
 >     <source width="175" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_ctcs_unproven-light.png">
->     <img width="175" alt="Unproven theorem paradox" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_ctcs_unproven-light.png">
+>     <img width="175" alt="Unproven-theorem paradox" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_ctcs_unproven-light.png">
 >   </picture>
 > </p>
 
