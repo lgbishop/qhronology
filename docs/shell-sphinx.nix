@@ -30,6 +30,7 @@ mkShell {
   ];
 
   shellHook = ''
+    unset SOURCE_DATE_EPOCH
     # bash build-latex.sh
     # bash build-html.sh
   '';
