@@ -14,13 +14,13 @@
     z-index: -1;
     transform: translateZ(0);
   }
-  html.light { /* Defaults, correspond to the light theme. */
+  html.light { /* Defaults, correspond to the light theme */
     --color-wire: #ffffff;
     --color-surface-inner: #80bfff;
     --color-surface-outer: #ffffff;
     --color-shift: 0.0;
   }
-  html.dark { /* Correspond to the dark theme. */
+  html.dark { /* Correspond to the dark theme */
     --color-wire: #000000;
     --color-surface-inner: #80bfff;
     --color-surface-outer: #000000;
@@ -155,7 +155,7 @@
     surfaceMesh.material.vertexColors = true;
     surfaceMesh.material.needsUpdate = true;
 
-    // Create the edges from the geometry.
+    // Create the edges from the geometry
     const wormholeEdges = new THREE.EdgesGeometry(wormholeGeometry);
 
     // Create the mesh wireframe from the edge
@@ -197,7 +197,7 @@
       attributes: true // Watch for changes to attributes
   });
 
-  // Animate the wormhole rotation.
+  // Animate the wormhole rotation
   function animate() {
     requestAnimationFrame(animate);
     wormholeWireframe.rotation.z += rotationSpeed;

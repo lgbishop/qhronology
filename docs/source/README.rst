@@ -2,6 +2,14 @@
 
 .. include:: /styles.rst
 
+.. raw:: html
+
+   <style>
+   .bd-main .bd-content {
+       justify-content: center;
+   }
+   </style>
+
 .. only:: html
 
    .. image:: /art/output/logo-main-50fps-3sec-animated-60compressed.webp
