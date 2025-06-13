@@ -884,7 +884,7 @@ div.semigraphical div pre {
     font-family: 'Source Code Pro', 'DejaVu Sans Mono', 'JuliaMono', monospace;
     font-size: 1.05rem;
     text-align: left;
-    line-height: 85% !important;
+    line-height: 100% !important;
 }
 
 div.bd-sidebar-secondary {

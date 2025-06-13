@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=b39a8f0e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=e1492156" />
     <link rel="stylesheet" type="text/css" href="../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -447,7 +447,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Live Qhronology testing environment</title>
 <!-- <script src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js"></script> -->
-<script src="./pyodide/pyodide.js"></script>
+<script src="./../../_static/js/Pyodide/pyodide/pyodide.js"></script>
 <style>
     textarea#input {
         color: var(--pst-color-text-base) !important;
@@ -496,6 +496,9 @@
         white-space: pre-wrap;
         overflow: auto;
         resize:both;
+        font-family: 'Source Code Pro', 'JuliaMono', monospace;
+        text-align: left;
+        line-height: 115% !important;
     }
 
     pre#codecell0 {
@@ -516,7 +519,7 @@
 
 
 <script type="module">
-    import { loadPyodide } from './pyodide/pyodide.mjs';
+    import { loadPyodide } from './../../_static/js/Pyodide/pyodide/pyodide.mjs';
 
 
     function sleep(ms) {
@@ -539,7 +542,7 @@
         await micropip.install("sympy");
         await micropip.install("numpy");
         output.innerText += "Loading qhronology" + "\n"
-        await micropip.install("./pyodide/qhronology-1.0.0-py3-none-any.whl");
+        await micropip.install("./../../_static/js/Pyodide/pyodide/qhronology-1.0.0-py3-none-any.whl");
         output.innerText += "Loaded qhronology" + "\n"
         output.innerText += "Live Qhronology environment initialized." + "\n"
 
