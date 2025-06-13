@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 13, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
   </head>
   
   
@@ -623,7 +623,6 @@
 <span class="n">sum_registers_complement</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">encoding_depth</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sum_registers</span>
 <span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sum_registers</span><span class="p">)</span>
 <span class="n">sum_state</span> <span class="o">=</span> <span class="n">adder</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">traces</span><span class="o">=</span><span class="n">sum_registers_complement</span><span class="p">)</span>
 <span class="n">sum_integer</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span><span class="n">sum_state</span><span class="o">.</span><span class="n">output</span><span class="p">())</span>
 
