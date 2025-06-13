@@ -96,7 +96,6 @@ sum_registers = [(i + encoding_depth) for i in range(0, encoding_depth)]
 sum_registers_complement = [
     i for i in range(0, 2 * encoding_depth) if i not in sum_registers
 ]
-print(sum_registers)
 sum_state = adder.state(label="s", traces=sum_registers_complement)
 sum_integer = decode(sum_state.output())
 

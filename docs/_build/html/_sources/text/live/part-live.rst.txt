@@ -33,4 +33,6 @@ Try copying one of the examples from the :ref:`Examples <part:examples>` section
 Python in the web browser is made possible using `Pyodide <https://pyodide.org>`_ (`repository <https://github.com/pyodide/pyodide>`_).
 Note that execution of Python here can be slower than in local environments.
 
+Please note that downloading the environment (including its packages and fonts) may take a while.
+
 .. include:: pyodide.rst
