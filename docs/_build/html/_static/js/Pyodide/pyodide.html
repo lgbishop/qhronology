@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Qhronology testing environment</title>
+<!-- <script src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js"></script> -->
+<script src="./pyodide/pyodide.js"></script>
+<style>
+    textarea#input {
+        color: var(--pst-color-text-base) !important;
+        background-color: var(--pst-color-surface) !important;
+        border: 1px solid var(--pst-color-border) !important;
+        width: 100%;
+        height: 20rem;
+        border-radius: 1px;
+        padding: 10px;
+        font-size: 0.875rem;
+        font-family: var(--pst-font-family-monospace) !important;
+    }
+
+    textarea#input:focus {
+        outline: none;
+        border: none;
+    }
+    textarea#input:focus-visible {
+        outline: 1px solid var(--pst-color-primary) !important;
+        border: 1px solid var(--pst-color-primary) !important;
+    }
+
+    button#run {
+        background-color: var(--pst-color-primary) !important;
+        color: var(--pst-color-btn-text) !important;
+        border: none;
+        border-radius: 1px;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+    button#run:hover {
+        background-color: var(--pst-color-secondary) !important;
+    }
+
+    #output {
+        color: var(--pst-color-text-base) !important;
+        background-color: var(--pst-color-surface) !important;
+        border: 1px solid var(--pst-color-border) !important;
+        border-radius: 1px;
+        margin: 0px;
+        width: 100%;
+        min-height: 100px;
+        white-space: pre-wrap;
+        overflow: auto;
+        resize:both;
+    }
+
+    pre#codecell0 {
+        margin: 0px;
+    }
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="/../../css/custom.css"> -->
+<h5>Input</h5>
+<textarea id="input" rows="10" wrap="soft" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Type your Python code here..."></textarea>
+<div><button id="run">Run</button></div>
+<h5>Output</h5>
+
+<div class="semigraphical highlight-default notranslate">
+<pre id="output" tabindex="-1">
+<span></span>
+</pre>
+</div>
+
+
+<script type="module">
+    import { loadPyodide } from './pyodide/pyodide.mjs';
+
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+    const runButton = document.getElementById("run");
+
+    async function main() {
+
+        let pyodide = await loadPyodide({
+            stdout: (text) => {output.innerText += text + "\n";},
+            stderr: (text) => {output.innerText += text + "\n";}
+        });
+
+        await pyodide.loadPackage("micropip");
+        const micropip = pyodide.pyimport("micropip");
+        await micropip.install("sympy");
+        await micropip.install("numpy");
+        output.innerText += "Loading qhronology" + "\n"
+        await micropip.install("./pyodide/qhronology-1.0.0-py3-none-any.whl");
+        output.innerText += "Loaded qhronology" + "\n"
+        output.innerText += "Live Qhronology environment initialized." + "\n"
+
+        // Redirect print statements to the output div
+        pyodide.globals.set("print", (value) => {
+            output.innerText += value + "\n"; // Append the printed value to the output
+        });
+
+        runButton.onclick = async () => {
+            const code = input.value;
+            output.innerText = ""; // Clear previous output
+            try {
+                await pyodide.runPythonAsync(code);
+            } catch (error) {
+                output.innerText = error; // Display any errors
+            }
+        };
+    }
+
+    main();
+</script>

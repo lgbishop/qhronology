@@ -612,15 +612,12 @@ html_theme = "pydata_sphinx_theme"
 # html_theme = "sphinx_immaterial"
 html_static_path = ["_static"]
 html_css_files = [
-    "default.css",  # Sphinx default CSS
     "css/custom.css",
     "fonts/ClearSans/ClearSans.css",
-    "fonts/FiraCode/fira_code.css",
-    "fonts/FiraMono/FiraMono.css",
-    "fonts/JuliaMono/JuliaMono.css",
     "fonts/DejaVuSansMono/DejaVuSansMono.css",
+    "fonts/JuliaMono/JuliaMono.css",
     "fonts/Roboto/Roboto.css",
-    "fonts/SourceCodePro/source-code-pro.css",
+    "fonts/SourceCodePro/SourceCodePro.css",
     "fonts/SourceSans3/SourceSans3.css",
 ]
 html_js_files = ["backgrounds/three.min.js"]
@@ -644,7 +641,7 @@ html_theme_options = {
     #     {"name": "link-one-name", "url": "https://<link-one>"},
     #     {"name": "link-two-name", "url": "https://<link-two>"}
     # ],
-    "header_links_before_dropdown": 5,
+    "header_links_before_dropdown": 6,
     "icon_links": [
         {
             "name": "Git Repository",
@@ -669,6 +666,7 @@ html_theme_options = {
         "text/theory/part-theory": [],
         "text/documentation/part-documentation": [],
         "text/examples/part-examples": [],
+        "text/theory/part-live": [],
         "text/theory/part-appendix": [],
     },
     "use_edit_page_button": False,  # Enables/disables the "edit-this-page" item in the secondary sidebar.
@@ -724,6 +722,7 @@ html_favicon = "./art/output/icon.svg"
 html_sidebars = {
     f"{root_doc}": [],
     "README": [],
+    "text/live/part-live": [],
     #'**': ["globaltoc"] # "sidebar-nav-bs"
     "**": [
         "sidebar-nav-bs",

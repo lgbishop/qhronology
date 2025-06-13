@@ -34,15 +34,12 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=b39a8f0e" />
     <link rel="stylesheet" type="text/css" href="_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
-    <link rel="stylesheet" type="text/css" href="_static/fonts/FiraCode/fira_code.css" />
-    <link rel="stylesheet" type="text/css" href="_static/fonts/FiraMono/FiraMono.css" />
-    <link rel="stylesheet" type="text/css" href="_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="_static/fonts/Roboto/Roboto.css?v=628a0b80" />
-    <link rel="stylesheet" type="text/css" href="_static/fonts/SourceCodePro/source-code-pro.css" />
+    <link rel="stylesheet" type="text/css" href="_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
     <link rel="stylesheet" type="text/css" href="_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -71,7 +68,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 10, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 13, 2025"/>
   </head>
   
   
@@ -172,6 +169,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="text/examples/part-examples.html">
     Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/live/part-live.html">
+    Live
   </a>
 </li>
 
@@ -314,6 +318,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="text/examples/part-examples.html">
     Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="text/live/part-live.html">
+    Live
   </a>
 </li>
 
@@ -508,13 +519,13 @@
     z-index: -1;
     transform: translateZ(0);
   }
-  html.light { /* Defaults, correspond to the light theme. */
+  html.light { /* Defaults, correspond to the light theme */
     --color-wire: #ffffff;
     --color-surface-inner: #80bfff;
     --color-surface-outer: #ffffff;
     --color-shift: 0.0;
   }
-  html.dark { /* Correspond to the dark theme. */
+  html.dark { /* Correspond to the dark theme */
     --color-wire: #000000;
     --color-surface-inner: #80bfff;
     --color-surface-outer: #000000;
@@ -649,7 +660,7 @@
     surfaceMesh.material.vertexColors = true;
     surfaceMesh.material.needsUpdate = true;
 
-    // Create the edges from the geometry.
+    // Create the edges from the geometry
     const wormholeEdges = new THREE.EdgesGeometry(wormholeGeometry);
 
     // Create the mesh wireframe from the edge
@@ -691,7 +702,7 @@
       attributes: true // Watch for changes to attributes
   });
 
-  // Animate the wormhole rotation.
+  // Animate the wormhole rotation
   function animate() {
     requestAnimationFrame(animate);
     wormholeWireframe.rotation.z += rotationSpeed;

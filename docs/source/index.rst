@@ -583,8 +583,8 @@ Features
    /text/theory/part-theory
    /text/documentation/part-documentation
    /text/examples/part-examples
+   /text/live/part-live
    /text/appendix/part-appendix
-
 
 .. .. only:: html
 
