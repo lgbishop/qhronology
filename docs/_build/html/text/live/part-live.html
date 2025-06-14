@@ -442,15 +442,18 @@
 .bd-main .bd-content {
     justify-content: center;
 }
+.bd-main .bd-content .bd-article-container {
+    overflow-x: visible;
+}
 </style><div style="display: none; visibility: hidden;"><section id="live">
 <h1>Live<a class="headerlink" href="#live" title="Link to this heading">#</a></h1>
 </div><p class="rubric"><span class="classheader0">Live Qhronology testing environment</span></p>
 </section>
-<p>Insert your Python code into the text box below, then click the <em>Run</em> button.
-Don’t forget to import SymPy, NumPy, and/or Qhronology as required.
+<p>Insert your Python code into the text box below, then click the <strong>*Run*</strong> button.
+Don’t forget to import SymPy, NumPy, and/or Qhronology, as required.
 Try copying one of the examples from the <a class="reference internal" href="../examples/part-examples.html#part-examples"><span class="std std-ref">Examples</span></a> section.</p>
 <p>Python in the web browser is made possible using <a class="reference external" href="https://pyodide.org">Pyodide</a> (<a class="reference external" href="https://github.com/pyodide/pyodide">repository</a>).
-Note that execution of Python here can be slower than in local environments.</p>
+Note that Python computations performed here can be slower than in local environments.</p>
 <p>Please note that downloading the environment (including its packages and fonts) may take a while.</p>
 <!DOCTYPE html>
 <meta charset="UTF-8">
@@ -467,6 +470,7 @@ Note that execution of Python here can be slower than in local environments.</p>
         height: 20rem;
         border-radius: 1px;
         padding: 10px;
+        resize: both;
         font-size: 0.875rem;
         font-family: var(--pst-font-family-monospace) !important;
     }
@@ -505,7 +509,7 @@ Note that execution of Python here can be slower than in local environments.</p>
         min-height: 100px;
         white-space: pre-wrap;
         overflow: auto;
-        resize:both;
+        resize: both;
         font-family: 'Source Code Pro', 'JuliaMono', monospace;
         text-align: left;
         line-height: 115% !important;
@@ -529,8 +533,10 @@ Note that execution of Python here can be slower than in local environments.</p>
 
 
 <script type="module">
-    import { loadPyodide } from './../../_static/js/Pyodide/pyodide/pyodide.mjs';
+    document.getElementById("run").disabled = true;
+    document.querySelector("#run").textContent = "Downloading...";
 
+    import { loadPyodide } from './../../_static/js/Pyodide/pyodide/pyodide.mjs';
 
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -561,14 +567,21 @@ Note that execution of Python here can be slower than in local environments.</p>
             output.innerText += value + "\n"; // Append the printed value to the output
         });
 
+        document.getElementById("run").disabled = false;
+        document.querySelector("#run").textContent = "Run";
+
         runButton.onclick = async () => {
             const code = input.value;
             output.innerText = ""; // Clear previous output
+            document.getElementById("run").disabled = true;
+            document.querySelector("#run").textContent = "Computing...";
             try {
                 await pyodide.runPythonAsync(code);
             } catch (error) {
                 output.innerText = error; // Display any errors
             }
+            document.getElementById("run").disabled = false;
+            document.querySelector("#run").textContent = "Run";
         };
     }
 

@@ -457,6 +457,7 @@
         height: 20rem;
         border-radius: 1px;
         padding: 10px;
+        resize: both;
         font-size: 0.875rem;
         font-family: var(--pst-font-family-monospace) !important;
     }
@@ -495,7 +496,7 @@
         min-height: 100px;
         white-space: pre-wrap;
         overflow: auto;
-        resize:both;
+        resize: both;
         font-family: 'Source Code Pro', 'JuliaMono', monospace;
         text-align: left;
         line-height: 115% !important;
@@ -519,8 +520,10 @@
 
 
 <script type="module">
-    import { loadPyodide } from './../../_static/js/Pyodide/pyodide/pyodide.mjs';
+    document.getElementById("run").disabled = true;
+    document.querySelector("#run").textContent = "Downloading...";
 
+    import { loadPyodide } from './../../_static/js/Pyodide/pyodide/pyodide.mjs';
 
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -551,14 +554,21 @@
             output.innerText += value + "\n"; // Append the printed value to the output
         });
 
+        document.getElementById("run").disabled = false;
+        document.querySelector("#run").textContent = "Run";
+
         runButton.onclick = async () => {
             const code = input.value;
             output.innerText = ""; // Clear previous output
+            document.getElementById("run").disabled = true;
+            document.querySelector("#run").textContent = "Computing...";
             try {
                 await pyodide.runPythonAsync(code);
             } catch (error) {
                 output.innerText = error; // Display any errors
             }
+            document.getElementById("run").disabled = false;
+            document.querySelector("#run").textContent = "Run";
         };
     }
 
