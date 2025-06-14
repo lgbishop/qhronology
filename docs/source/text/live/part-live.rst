@@ -29,7 +29,7 @@
 
    .. rubric:: :styleheader0:`Live Qhronology testing environment`
 
-Insert your Python code into the text box below, then click the ***Run*** button.
+Insert your Python code into the text box below, then click the **Run** button.
 Don't forget to import SymPy, NumPy, and/or Qhronology, as required.
 Try copying one of the examples from the :ref:`Examples <part:examples>` section.
 
