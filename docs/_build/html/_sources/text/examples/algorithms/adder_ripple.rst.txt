@@ -6,7 +6,7 @@ Ripple-carry adder
 Description
 -----------
 
-In this example, we use the single quantum adder circuit described in :ref:`Example: Full adder <eg:adder_full>` to construct a quantum *ripple-carry* adder. Given two (non-negative) integers :math:`x` and :math:`y` (encoded using qubits) as input, a ripple-carry adder computes the (encoded) arithmetic sum :math:`s` of these integers, that is, :math:`s = x + y`. In this form, the two integers are known as *summands*, and are also specifically called *augend* (:math:`x`) and *addend* (:math:`y`) according to the order in which they appear in the addition operation.
+In this example, we use the single quantum adder circuit described in :ref:`eg:adder_full` to construct a quantum *ripple-carry* adder. Given two (non-negative) integers :math:`x` and :math:`y` (encoded using qubits) as input, a ripple-carry adder computes the (encoded) arithmetic sum :math:`s` of these integers, that is, :math:`s = x + y`. In this form, the two integers are known as *summands*, and are also specifically called *augend* (:math:`x`) and *addend* (:math:`y`) according to the order in which they appear in the addition operation.
 
 In the case of a single adder, the magnitudes of the summands and their sum are confined to being within the dimensionality (e.g., binary) of their single-unit (e.g., bit) encoding. Integers larger than this limit therefore require multiple units of information to be encoded. For example, a non-negative integer :math:`z` can be encoded with a number :math:`\Number` of :math:`\Dimension`-dimensional unit values provided :math:`z \leq \Dimension^\Number - 1`. Under this encoding, the integer can be represented using an ordered array (or set or string) of such values,
 

@@ -69,7 +69,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -406,6 +406,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
@@ -487,7 +488,7 @@
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>Quantum teleportation <span id="id1">[<a class="reference internal" href="#cite-1-bennett-teleporting-1993" title="C. H. Bennett, G. Brassard, C. Crépeau, R. Jozsa, A. Peres, and W. K. Wootters, “Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels”, Physical Review Letters, 70(13):1895–1899, 1993. https://link.aps.org/doi/10.1103/PhysRevLett.70.1895, doi:10.1103/PhysRevLett.70.1895">1</a>]</span> is a significant technique of quantum theory in which the transfer of quantum information between two parties (that may be spatially separated) is achieved. Importantly, this does not involve the movement of physical entities, but concerns rather the transfer of the (quantum) statistics of a physical system (manifesting as a quantum state) to another. This is facilitated by a pair of entangled particles, the statistical correlations of which provide the actual mechanism of teleportation.</p>
-<p>Note that in the process of teleporting the state, the original is destroyed, and so the no-cloning theorem remains unviolated. Additionally, because classical information needs to be sent between the two parties, the teleportation cannot occur faster than the speed of light, meaning that the law of relativity is satisfied. This example (<a class="reference internal" href="#fig-circuit-algorithm-teleportation"><span class="std std-numref">Figure 21</span></a>) implements the canonical version of the algorithm.</p>
+<p>Note that in the process of teleporting the state, the original is destroyed, and so the no-cloning theorem remains unviolated. Additionally, because classical information needs to be sent between the two parties, the teleportation cannot occur faster than the speed of light, meaning that the law of relativity is satisfied. This example (<a class="reference internal" href="#fig-circuit-algorithm-teleportation"><span class="std std-numref">Figure 22</span></a>) implements the canonical version of the algorithm.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_teleportation-dark.png"><img alt="A quantum circuit diagram of a quantum teleportation protocol." src="../../../_images/circuit_algorithm_teleportation-dark.png" style="width: 450.0px; height: 127.08px;" />
 </a>
@@ -500,14 +501,14 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_teleportation-light.png"><img alt="A quantum circuit diagram of a quantum teleportation protocol." src="../../../_images/circuit_algorithm_teleportation-light.png" style="width: 450.0px; height: 127.08px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 21 </span><span class="caption-text">A quantum teleportation protocol.</span><a class="headerlink" href="#fig-circuit-algorithm-teleportation" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 22 </span><span class="caption-text">A quantum teleportation protocol.</span><a class="headerlink" href="#fig-circuit-algorithm-teleportation" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-teleportation">
-<div class="code-block-caption"><span class="caption-number">Listing 20 </span><span class="caption-text">/text/examples/algorithms/teleportation.py</span><a class="headerlink" href="#code-teleportation" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">/text/examples/algorithms/teleportation.py</span><a class="headerlink" href="#code-teleportation" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Not</span><span class="p">,</span> <span class="n">Measurement</span><span class="p">,</span> <span class="n">Pauli</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

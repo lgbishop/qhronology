@@ -6,7 +6,7 @@ Half adder
 Description
 -----------
 
-An *adder* is a circuit that sums the values of two quantum vector states in some basis. For instance, this could be the states :math:`\ket{x}` and :math:`\ket{y}` in a :math:`\Dimension`-dimensional number basis :math:`\{\ket{n}\}_{n=0}^{\Dimension - 1}`. As described in :ref:`Example: CNOT <eg:cnot>`, this can be accomplished with just a CNOT (controlled-NOT) gate, which produces the sum state :math:`\ket{x \oplus y}`.
+An *adder* is a circuit that sums the values of two quantum vector states in some basis. For instance, this could be the states :math:`\ket{x}` and :math:`\ket{y}` in a :math:`\Dimension`-dimensional number basis :math:`\{\ket{n}\}_{n=0}^{\Dimension - 1}`. As described in :ref:`eg:cnot`, this can be accomplished with just a CNOT (controlled-NOT) gate, which produces the sum state :math:`\ket{x \oplus y}`.
 
 We consider here perhaps the simplest form of a quantum adder: a *half* adder (see :numref:`fig:circuit_algorithm_adder_simple`). In addition to producing a *summation* output value
 

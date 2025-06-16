@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -408,6 +408,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../algorithms/generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../algorithms/cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../algorithms/ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
@@ -488,7 +489,7 @@
 <span id="eg-grandfather"></span><h1>Grandfather paradox<a class="headerlink" href="#grandfather-paradox" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>Probably the most prominent time-travel paradox is the <em>grandfather paradox</em>. Presented here is a simplified, quantum version of the paradox (based on <span id="id1">[<a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#cite-1-lloyd-closed-2011" title="S. Lloyd, L. Maccone, R. Garcia-Patron, V. Giovannetti, Y. Shikano, S. Pirandola, L. A. Rozema, A. Darabi, Y. Soudagar, L. K. Shalm, and A. M. Steinberg, “Closed Timelike Curves via Postselection: Theory and Experimental Test of Consistency”, Physical Review Letters, 106(4):040403, January 2011. https://link.aps.org/doi/10.1103/PhysRevLett.106.040403, doi:10.1103/PhysRevLett.106.040403">4</a>]</span>), in which a qubit CV state has an apparently paradoxical influence on its past self (exterior to the CTC) via a CNOT operation. This is illustrated in <a class="reference internal" href="#fig-circuit-ctc-grandfather"><span class="std std-numref">Figure 25</span></a>.</p>
+<p>Probably the most prominent time-travel paradox is the <em>grandfather paradox</em>. Presented here is a simplified, quantum version of the paradox (based on <span id="id1">[<a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#cite-1-lloyd-closed-2011" title="S. Lloyd, L. Maccone, R. Garcia-Patron, V. Giovannetti, Y. Shikano, S. Pirandola, L. A. Rozema, A. Darabi, Y. Soudagar, L. K. Shalm, and A. M. Steinberg, “Closed Timelike Curves via Postselection: Theory and Experimental Test of Consistency”, Physical Review Letters, 106(4):040403, January 2011. https://link.aps.org/doi/10.1103/PhysRevLett.106.040403, doi:10.1103/PhysRevLett.106.040403">4</a>]</span>), in which a qubit CV state has an apparently paradoxical influence on its past self (exterior to the CTC) via a CNOT operation. This is illustrated in <a class="reference internal" href="#fig-circuit-ctc-grandfather"><span class="std std-numref">Figure 26</span></a>.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_ctc_grandfather-dark.png"><img alt="A quantum circuit diagram of the grandfather paradox." src="../../../_images/circuit_ctc_grandfather-dark.png" style="width: 259.92px; height: 122.03999999999999px;" />
 </a>
@@ -501,12 +502,12 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_ctc_grandfather-light.png"><img alt="A quantum circuit diagram of the grandfather paradox." src="../../../_images/circuit_ctc_grandfather-light.png" style="width: 259.92px; height: 122.03999999999999px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 25 </span><span class="caption-text">A quantum model of the grandfather paradox.</span><a class="headerlink" href="#fig-circuit-ctc-grandfather" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 26 </span><span class="caption-text">A quantum model of the grandfather paradox.</span><a class="headerlink" href="#fig-circuit-ctc-grandfather" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>It consists of two systems: the first (upper) is the <em>chronology-respecting</em> (CR) system, while the second (lower) is the <em>chronology-violating</em> (CV) one. The Hilbert spaces of both will be ordinary qubit spaces, and using these we wish to describes the propagation of an observer (who can be either alive or dead) through the time machine and its chronology-violating region. Without loss of generality, we arbitrarily associate the level <span class="math notranslate nohighlight">\(\ket{0}\)</span> with observer’s state of being dead, while <span class="math notranslate nohighlight">\(\ket{1}\)</span> will denote their alive state. The circuit therefore describes the propagation of an observer whose state changes in accordance with their future state in the time machine (due to the CNOT gate), after which they SWAP onto the CV system and experience the interaction from the other perspective. The combined unitary gate thus has the form</p>
 <div class="math notranslate nohighlight" id="equation-eq-grandfather-unitary">
-<span class="eqno">(370)<a class="headerlink" href="#equation-eq-grandfather-unitary" title="Link to this equation">#</a></span>\[\begin{aligned}
+<span class="eqno">(372)<a class="headerlink" href="#equation-eq-grandfather-unitary" title="Link to this equation">#</a></span>\[\begin{aligned}
     \Unitary = \Swap^{0,1} \cdot \Control^1 \NOT^0.
 \end{aligned}\]</div>
 <p>As this is a quantum temporal paradox, there are multiple <a class="reference internal" href="../../theory/time-travel/quantum.html#sec-literature-quantum"><span class="std std-ref">prescriptions</span></a> by which resolutions can be computed.</p>
@@ -517,7 +518,7 @@
 <h3>D-CTCs<a class="headerlink" href="#d-ctcs" title="Link to this heading">#</a></h3>
 <p>In Deutsch’s model (D-CTCs), we necessarily have to calculate fixed-point solutions <span class="math notranslate nohighlight">\(\StateCV\)</span> for the CV system. This is accomplished by first computing the standard evolution of the bipartite input state <span class="math notranslate nohighlight">\(\StateCR \otimes \StateCV\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-0">
-<span class="eqno">(371)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(373)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \MapGeneral_{\Unitary} \bigl[\StateCR \otimes \StateCV\bigr] &amp;= \Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger \\
     &amp;= \Swap^{0,1} \cdot \Control^1 \NOT^0 \bigl(\StateCR \otimes \StateCV\bigr) \Control^1 \NOT^{\dagger 0} \cdot \Swap^{\dagger 0,1} \\
     &amp;= \Swap^{0,1} \bigl(\StateCR \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
@@ -531,13 +532,13 @@
 \end{aligned}\end{split}\]</div>
 <p>Subsequently tracing out the CR system yields the D-CTCs CV map,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-1">
-<span class="eqno">(372)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(374)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \MapDCTCsCV_{\Unitary} \bigl[\StateCR,\StateCV\bigr] &amp;= \trace_{0} \bigl[\Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
     &amp;= \bra{0}\StateCV\ket{0} \cdot \StateCR + \bra{1}\StateCV\ket{1} \cdot \Pauli_x\StateCR\Pauli_x^\dagger,
 \end{aligned}\end{split}\]</div>
 <p>while tracing out the CV system yields the CR map,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-2">
-<span class="eqno">(373)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(375)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \MapDCTCsCR_{\Unitary} \bigl[\StateCR,\StateCV\bigr] &amp;= \trace_{1} \bigl[\Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
     &amp;= \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
     &amp; \quad + \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \cdot \bigl[\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr] \\
@@ -546,13 +547,13 @@
 \end{aligned}\end{split}\]</div>
 <p>Solutions for the CV system are then given as fixed points of the corresponding map, i.e. <span class="math notranslate nohighlight">\(\StateCV_\MapDCTCsCR = \MapDCTCsCV_{\Unitary} \bigl[\StateCR,\StateCV_\MapDCTCsCR\bigr]\)</span>, and accordingly we find the unique state</p>
 <div class="math notranslate nohighlight" id="equation-eq-grandfather-d-ctcs-cv">
-<span class="eqno">(374)<a class="headerlink" href="#equation-eq-grandfather-d-ctcs-cv" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(376)<a class="headerlink" href="#equation-eq-grandfather-d-ctcs-cv" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \StateCV_\MapDCTCsCR &amp;= \frac{1}{2}\StateCR + \frac{1}{2}\Pauli_x\StateCR\Pauli_x^\dagger \\
     &amp;= \frac{1}{2}\Bigl[\ket{0}\bra{0} + \bigl(\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr)\bigl(\ket{0}\bra{1} + \ket{1}\bra{0}\bigr) + \ket{1}\bra{1}\Bigr].
 \end{aligned}\end{split}\]</div>
 <p>With this, the solution for the CR system can be computed to be</p>
 <div class="math notranslate nohighlight" id="equation-eq-grandfather-d-ctcs-cr">
-<span class="eqno">(375)<a class="headerlink" href="#equation-eq-grandfather-d-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{aligned}
+<span class="eqno">(377)<a class="headerlink" href="#equation-eq-grandfather-d-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{aligned}
     \StateCR_\MapDCTCsCR &amp;= \frac{1}{2}\Bigl[\ket{0}\bra{0} + \bigl(\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr)^2\bigl(\ket{0}\bra{1} + \ket{1}\bra{0}\bigr) + \ket{1}\bra{1}\Bigr]
 \end{aligned}\]</div>
 <p>which is similarly unique.</p>
@@ -561,7 +562,7 @@
 <h3>P-CTCs<a class="headerlink" href="#p-ctcs" title="Link to this heading">#</a></h3>
 <p>To compute the resolution to the grandfather paradox according to the postselected teleportation (P-CTCs) prescription of quantum time travel, we first calculate the reduced P-CTC operator,</p>
 <div class="math notranslate nohighlight" id="equation-eq-grandfather-p-ctcs-operator">
-<span class="eqno">(376)<a class="headerlink" href="#equation-eq-grandfather-p-ctcs-operator" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(378)<a class="headerlink" href="#equation-eq-grandfather-p-ctcs-operator" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \OperatorPCTC &amp;\equiv \trace_\CV[\Unitary] \\
     &amp;= \trace_1[\Swap^{0,1} \cdot \Control^1 \NOT^0] \\
     &amp;= \trace_1\bigl[\Swap^{0,1} \bigl(\Identity \otimes \ket{0}\bra{0} + \Pauli_x \otimes \ket{1}\bra{1}\bigr)\bigr] \\
@@ -572,33 +573,33 @@
 \end{aligned}\end{split}\]</div>
 <p>Using this, we can obtain the P-CTC CR state from its definition <a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#equation-eq-p-ctcs-cr">(250)</a>,</p>
 <div class="math notranslate nohighlight" id="equation-eq-grandfather-p-ctcs-cr">
-<span class="eqno">(377)<a class="headerlink" href="#equation-eq-grandfather-p-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(379)<a class="headerlink" href="#equation-eq-grandfather-p-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \StateCR_\MapPCTCsCR &amp;= \MapPCTCsCR_{\Unitary} \bigl[\StateCR\bigr] \\
     &amp;= \frac{\OperatorPCTC \StateCR \OperatorPCTC^\dagger}{\trace[\OperatorPCTC \StateCR \OperatorPCTC^\dagger]} \\
     &amp;= \ket{+}\bra{+}
 \end{aligned}\end{split}\]</div>
 <p>where we have used the canonical form</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-3">
-<span class="eqno">(378)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-3" title="Link to this equation">#</a></span>\[\ket{+} \equiv \frac{1}{\sqrt{2}}\bigl[\ket{0} + \ket{1}\bigr].\]</div>
+<span class="eqno">(380)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-3" title="Link to this equation">#</a></span>\[\ket{+} \equiv \frac{1}{\sqrt{2}}\bigl[\ket{0} + \ket{1}\bigr].\]</div>
 <p>Finally, using the expression <a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#equation-eq-p-ctcs-cv">(253)</a>, we can compute the P-CTC CV state (via weak-measurement quantum state tomography) to be</p>
 <div class="math notranslate nohighlight" id="equation-eq-grandfather-p-ctcs-cv">
-<span class="eqno">(379)<a class="headerlink" href="#equation-eq-grandfather-p-ctcs-cv" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(381)<a class="headerlink" href="#equation-eq-grandfather-p-ctcs-cv" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \StateCV_\MapPCTCsCR &amp;= \frac{1}{2}\StateCR + \frac{1}{2}\Pauli_x\StateCR\Pauli_x^\dagger \\
     &amp;= \frac{1}{2}\Bigl[\ket{0}\bra{0} + \bigl(\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr)\bigl(\ket{0}\bra{1} + \ket{1}\bra{0}\bigr) + \ket{1}\bra{1}\Bigr],
 \end{aligned}\end{split}\]</div>
-<p>Note that this is identical to the D-CTC CV state <a class="reference internal" href="#equation-eq-grandfather-d-ctcs-cv">(374)</a>.</p>
+<p>Note that this is identical to the D-CTC CV state <a class="reference internal" href="#equation-eq-grandfather-d-ctcs-cv">(376)</a>.</p>
 </section>
 <section id="p-ctc-restrictions-on-initial-data">
 <h3>P-CTC restrictions on initial data<a class="headerlink" href="#p-ctc-restrictions-on-initial-data" title="Link to this heading">#</a></h3>
 <p>The grandfather paradox is particularly interesting because it exhibits pathological behaviour under the P-CTC prescription. Indeed, its antichronological effect on a general qubit can be observed by analyzing the evolution of the entangled state,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-4">
-<span class="eqno">(380)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-4" title="Link to this equation">#</a></span>\[\ket{\phi}_{\mathrm{rec},\CR} = \sqrt{\Omega} \ket{0}_\mathrm{rec} \otimes \ket{0}_\CR + \sqrt{1 - \Omega} \ket{1}_\mathrm{rec} \otimes \ket{1}_\CR,\]</div>
+<span class="eqno">(382)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-4" title="Link to this equation">#</a></span>\[\ket{\phi}_{\mathrm{rec},\CR} = \sqrt{\Omega} \ket{0}_\mathrm{rec} \otimes \ket{0}_\CR + \sqrt{1 - \Omega} \ket{1}_\mathrm{rec} \otimes \ket{1}_\CR,\]</div>
 <p>where <span class="math notranslate nohighlight">\(0 \leq \Omega \leq 1\)</span> controls the balance of the entanglement. Here, the first subsystem is the <em>record</em> mode which, due to the entanglement, tells us (after measurement) which CR state interacted with the P-CTC. Accordingly, by using the bipartite unitary</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-5">
-<span class="eqno">(381)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-5" title="Link to this equation">#</a></span>\[\Identity_\mathrm{rec}\otimes\trace_\CV[\Unitary] = \Identity_\mathrm{rec}\otimes\ket{+}\bra{0}_\CR,\]</div>
+<span class="eqno">(383)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-5" title="Link to this equation">#</a></span>\[\Identity_\mathrm{rec}\otimes\trace_\CV[\Unitary] = \Identity_\mathrm{rec}\otimes\ket{+}\bra{0}_\CR,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\OperatorPCTC = \trace_\CV[\Unitary]\)</span> is the P-CTC operator, we obtain the evolution</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-6">
-<span class="eqno">(382)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-6" title="Link to this equation">#</a></span>\[\bigl(\Identity_\mathrm{rec}\otimes\trace_\CV[\Unitary]\bigr)\ket{\phi} = \sqrt{2\Omega}\ket{0}_\mathrm{rec}\otimes\ket{+}_\CR.\]</div>
+<span class="eqno">(384)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-6" title="Link to this equation">#</a></span>\[\bigl(\Identity_\mathrm{rec}\otimes\trace_\CV[\Unitary]\bigr)\ket{\phi} = \sqrt{2\Omega}\ket{0}_\mathrm{rec}\otimes\ket{+}_\CR.\]</div>
 <p>Renormalization vanishes the coefficient <span class="math notranslate nohighlight">\(\sqrt{2\Omega}\)</span>, leaving the record to consist of only the state <span class="math notranslate nohighlight">\(\ket{0}\)</span> regardless of the value of <span class="math notranslate nohighlight">\(\Omega\)</span>. This suggests that the CR input was likewise only <span class="math notranslate nohighlight">\(\ket{0}\)</span> even if <span class="math notranslate nohighlight">\(\Omega \neq 1\)</span>, indicating that the entanglement was broken.</p>
 <p>Prior to the renormalization, a value of <span class="math notranslate nohighlight">\(\Omega = 0\)</span> leads to a vanishing P-CTC evolution, and so the renormalization process merely serves to produce a physical output state for all <span class="math notranslate nohighlight">\(\Omega\)</span>. In doing so however, the record reveals that a CR input of <span class="math notranslate nohighlight">\(\ket{1}\)</span> was never prepared, even when <span class="math notranslate nohighlight">\(\Omega \neq 1\)</span>. An input of <span class="math notranslate nohighlight">\(\StateCR = \ket{1}\bra{1}\)</span> is thus forbidden under the P-CTC description of this simplified grandfather paradox. With the interpretation of <span class="math notranslate nohighlight">\(\ket{1}\)</span> as corresponding to “alive”, this result is curious, but is probably just an indication that this particular version of the grandfather paradox is overly simplistic. Additionally, in practice, the effects of quantum noise and decoherence would ensure that such an exact input state is not physically realizable. In any case, we conclude that although the grandfather paradox’s interaction places theoretical constraints for certain input CR states, a (unique) P-CTC CV state <span class="math notranslate nohighlight">\(\StateCV_{\MapPCTCsCR}\)</span> can <em>always</em> be determined via <a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#equation-eq-p-ctcs-cv">(253)</a>.</p>
 </section>
@@ -606,7 +607,7 @@
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-grandfather">
-<div class="code-block-caption"><span class="caption-number">Listing 25 </span><span class="caption-text">/text/examples/ctcs/grandfather.py</span><a class="headerlink" href="#code-grandfather" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 26 </span><span class="caption-text">/text/examples/ctcs/grandfather.py</span><a class="headerlink" href="#code-grandfather" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">MixedState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span><span class="p">,</span> <span class="n">Swap</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.prescriptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCTC</span><span class="p">,</span> <span class="n">DCTC</span><span class="p">,</span> <span class="n">PCTC</span>

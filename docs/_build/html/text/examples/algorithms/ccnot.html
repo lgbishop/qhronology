@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -408,6 +408,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">CCNOT (controlled-controlled-NOT)</a></li>
@@ -488,10 +489,10 @@
 <span id="eg-ccnot"></span><h1>CCNOT (controlled-controlled-NOT)<a class="headerlink" href="#ccnot-controlled-controlled-not" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>A CCNOT (controlled-controlled-NOT) gate, also known as a <em>Toffoli gate</em>, is a simple extension to a CNOT gate (see <a class="reference internal" href="cnot.html#eg-cnot"><span class="std std-ref">Example: CNOT</span></a>). It is useful as a method of multiplying the values of two qubits (e.g., <span class="math notranslate nohighlight">\(\ket{x}\)</span> and <span class="math notranslate nohighlight">\(\ket{y}\)</span>), and imprinting this result onto a third qubit (e.g., <span class="math notranslate nohighlight">\(\ket{z}\)</span>), e.g.,</p>
+<p>A CCNOT (controlled-controlled-NOT) gate, also known as a <em>Toffoli gate</em>, is a simple extension to a CNOT gate (see <a class="reference internal" href="cnot.html#eg-cnot"><span class="std std-ref">CNOT (controlled-NOT)</span></a>). It is useful as a method of multiplying the values of two qubits (e.g., <span class="math notranslate nohighlight">\(\ket{x}\)</span> and <span class="math notranslate nohighlight">\(\ket{y}\)</span>), and imprinting this result onto a third qubit (e.g., <span class="math notranslate nohighlight">\(\ket{z}\)</span>), e.g.,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-ccnot-0">
-<span class="eqno">(331)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-0" title="Link to this equation">#</a></span>\[\ket{x} \otimes \ket{y} \otimes \ket{z} \rightarrow \ket{x} \otimes \ket{y} \otimes \ket{z \oplus xy}.\]</div>
-<p><a class="reference internal" href="#fig-circuit-algorithm-csum"><span class="std std-numref">Figure 12</span></a> visualizes this operation.</p>
+<span class="eqno">(333)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-0" title="Link to this equation">#</a></span>\[\ket{x} \otimes \ket{y} \otimes \ket{z} \rightarrow \ket{x} \otimes \ket{y} \otimes \ket{z \oplus xy}.\]</div>
+<p><a class="reference internal" href="#fig-circuit-algorithm-csum"><span class="std std-numref">Figure 13</span></a> visualizes this operation.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_ccnot-dark.png"><img alt="A quantum circuit diagram of a CCNOT (controlled-controlled-NOT) gate." src="../../../_images/circuit_algorithm_ccnot-dark.png" style="width: 182.16px; height: 110.88px;" />
 </a>
@@ -504,18 +505,18 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_ccnot-light.png"><img alt="A quantum circuit diagram of a CCNOT (controlled-controlled-NOT) gate." src="../../../_images/circuit_algorithm_ccnot-light.png" style="width: 182.16px; height: 110.88px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 12 </span><span class="caption-text">A CCNOT (controlled-controlled-NOT) gate.</span><a class="headerlink" href="#fig-circuit-algorithm-csum" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 13 </span><span class="caption-text">A CCNOT (controlled-controlled-NOT) gate.</span><a class="headerlink" href="#fig-circuit-algorithm-csum" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As the input states are both vectors, the action of the (linear) CCNOT gate, described by the unitary</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-ccnot-1">
-<span class="eqno">(332)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(334)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Unitary &amp;= \Control^{0,1} \NOT^2 \\
     &amp;= \Identity \otimes \Identity \otimes \Identity + {\ket{1}\bra{1}} \otimes {\ket{1}\bra{1}} \otimes (\Pauli_{x} - \Identity),
 \end{aligned}\end{split}\]</div>
 <p>on the tripartite input <span class="math notranslate nohighlight">\(\ket{x} \otimes \ket{y} \otimes \ket{z}\)</span> yields a vector state:</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-ccnot-2">
-<span class="eqno">(333)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(335)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \MapGeneral_{\Unitary} \bigl[\ket{x} \otimes \ket{y} \oplus \ket{z}\bigr] &amp;= \Control^{0,1} \NOT^2 \ket{x} \otimes \ket{y} \oplus \ket{z} \\
     &amp;= \ket{x} \otimes \ket{y} \otimes \ket{z \oplus x y}
 \end{aligned}\end{split}\]</div>
@@ -583,7 +584,7 @@
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-ccnot">
-<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">/text/examples/algorithms/ccnot.py</span><a class="headerlink" href="#code-ccnot" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">/text/examples/algorithms/ccnot.py</span><a class="headerlink" href="#code-ccnot" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

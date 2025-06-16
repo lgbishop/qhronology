@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -408,6 +408,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
@@ -488,7 +489,7 @@
 <span id="eg-pswap"></span><h1>PSWAP (power-SWAP)<a class="headerlink" href="#pswap-power-swap" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>Exponentiation of the SWAP gate produces an interesting interaction (PSWAP) between its input systems: the degree to which their states’ values are exchanged depends entirely on the power to which the SWAP gate is taken. This effect means that the PSWAP gate is useful for modelling interesting physical phenomena such as probabilistic scattering, where the power parameter of the gate is analogous to the interaction chance of two particles in a scattering experiment. For even powers, no SWAP occurs, while for odd powers, a SWAP does occur. Non-integer values of the power therefore smoothly interpolate between these two outcomes in the form of a (weighted) quantum superposition of them. <a class="reference internal" href="#fig-circuit-algorithm-pswap"><span class="std std-numref">Figure 22</span></a> depicts a simple PSWAP interaction.</p>
+<p>Exponentiation of the SWAP gate produces an interesting interaction (PSWAP) between its input systems: the degree to which their states’ values are exchanged depends entirely on the power to which the SWAP gate is taken. This effect means that the PSWAP gate is useful for modelling interesting physical phenomena such as probabilistic scattering, where the power parameter of the gate is analogous to the interaction chance of two particles in a scattering experiment. For even powers, no SWAP occurs, while for odd powers, a SWAP does occur. Non-integer values of the power therefore smoothly interpolate between these two outcomes in the form of a (weighted) quantum superposition of them. <a class="reference internal" href="#fig-circuit-algorithm-pswap"><span class="std std-numref">Figure 23</span></a> depicts a simple PSWAP interaction.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_pswap-dark.png"><img alt="A quantum circuit diagram of a PSWAP gate." src="../../../_images/circuit_algorithm_pswap-dark.png" style="width: 233.28px; height: 77.03999999999999px;" />
 </a>
@@ -501,14 +502,14 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_pswap-light.png"><img alt="A quantum circuit diagram of a PSWAP gate." src="../../../_images/circuit_algorithm_pswap-light.png" style="width: 233.28px; height: 77.03999999999999px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 22 </span><span class="caption-text">A PSWAP gate (with power <span class="math notranslate nohighlight">\(p\)</span>).</span><a class="headerlink" href="#fig-circuit-algorithm-pswap" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 23 </span><span class="caption-text">A PSWAP gate (with power <span class="math notranslate nohighlight">\(p\)</span>).</span><a class="headerlink" href="#fig-circuit-algorithm-pswap" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-scattering">
-<div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">/text/examples/algorithms/pswap.py</span><a class="headerlink" href="#code-scattering" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 22 </span><span class="caption-text">/text/examples/algorithms/pswap.py</span><a class="headerlink" href="#code-scattering" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Swap</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

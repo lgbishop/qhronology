@@ -69,7 +69,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -406,6 +406,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
@@ -486,7 +487,7 @@
 <span id="eg-adder-ripple-iterative"></span><h1>Ripple-carry adder (iterative)<a class="headerlink" href="#ripple-carry-adder-iterative" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>This example builds upon the four-qubit ripple-carry adder in <a class="reference internal" href="adder_ripple.html#eg-adder-ripple"><span class="std std-ref">Example: Ripple-carry adder</span></a>. The implementation here simplifies the algorithm by instead applying copies of the circuit successively to a tetrapartite input state, which is a composition of the augend, addend, carry, and zero states. As a result, the sequence of trace operations (necessary to isolate the output sum and carry states) mixes the pure (vector) input composition, thereby destroying linearity of the evolution in the input states. This means that only mixed states for each qubit in the output sum state can be recovered, and so we can only sum single integers, not <em>superpositions</em> of integers. However, keeping the Hilbert space to a smaller total dimensionality at any one time makes the computations <em>much</em> faster, and so we can work with significantly larger integers.</p>
+<p>This example builds upon the four-qubit ripple-carry adder in <a class="reference internal" href="adder_ripple.html#eg-adder-ripple"><span class="std std-ref">Ripple-carry adder</span></a>. The implementation here simplifies the algorithm by instead applying copies of the circuit successively to a tetrapartite input state, which is a composition of the augend, addend, carry, and zero states. As a result, the sequence of trace operations (necessary to isolate the output sum and carry states) mixes the pure (vector) input composition, thereby destroying linearity of the evolution in the input states. This means that only mixed states for each qubit in the output sum state can be recovered, and so we can only sum single integers, not <em>superpositions</em> of integers. However, keeping the Hilbert space to a smaller total dimensionality at any one time makes the computations <em>much</em> faster, and so we can work with significantly larger integers.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_ripple_iterative-dark.png"><img alt="A quantum circuit diagram of one iteration of a multi-qubit quantum ripple-carry adder." src="../../../_images/circuit_algorithm_adder_ripple_iterative-dark.png" style="width: 509.76px; height: 156.96px;" />
 </a>
@@ -499,7 +500,7 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_ripple_iterative-light.png"><img alt="A quantum circuit diagram of one iteration of a multi-qubit quantum ripple-carry adder." src="../../../_images/circuit_algorithm_adder_ripple_iterative-light.png" style="width: 509.76px; height: 156.96px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 17 </span><span class="caption-text">One iteration of a multi-qubit quantum ripple-carry adder.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-ripple-iterative" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 18 </span><span class="caption-text">One iteration of a multi-qubit quantum ripple-carry adder.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-ripple-iterative" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -507,7 +508,7 @@
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>In this example, each qubit in the uppermost set on the diagram corresponds to the leftmost (most-significant) qubit in their respective encoded state, while each qubit in the lowermost set similarly corresponds to the rightmost (least-significant) qubit.</p>
 <div class="literal-block-wrapper docutils container" id="code-adder-ripple-iterative">
-<div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">/text/examples/algorithms/adder_ripple_iterative.py</span><a class="headerlink" href="#code-adder-ripple-iterative" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 18 </span><span class="caption-text">/text/examples/algorithms/adder_ripple_iterative.py</span><a class="headerlink" href="#code-adder-ripple-iterative" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumState</span><span class="p">,</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
