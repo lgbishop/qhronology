@@ -23,7 +23,7 @@ generator = QuantumCircuit(inputs=input_states, gates=gates)
 generator.diagram()
 
 # Output
-entangled_state = generator.state(label="E")
+entangled_state = generator.state(label="GHZ")
 
 # Results
 entangled_state.print()
