@@ -44,6 +44,7 @@ Quantum algorithms and protocols
 
    algorithms/generation_bell
    algorithms/generation_ghz
+   algorithms/generation_arbitrary
    algorithms/generation_w
    algorithms/cnot
    algorithms/ccnot

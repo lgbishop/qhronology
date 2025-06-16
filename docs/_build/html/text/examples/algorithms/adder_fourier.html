@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -408,6 +408,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
@@ -501,10 +502,10 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier-light.png"><img alt="A quantum circuit diagram of a QFT-based adder." src="../../../_images/circuit_algorithm_adder_fourier-light.png" style="width: 482.03999999999996px; height: 281.88px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 19 </span><span class="caption-text">A quantum circuit diagram of a QFT-based adder.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-fourier" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 20 </span><span class="caption-text">A quantum circuit diagram of a QFT-based adder.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-fourier" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>An example of this algorithm for <span class="math notranslate nohighlight">\(3\)</span>-qubit integers appears in <a class="reference internal" href="#fig-circuit-algorithm-adder-fourier-three"><span class="std std-numref">Figure 20</span></a>.</p>
+<p>An example of this algorithm for <span class="math notranslate nohighlight">\(3\)</span>-qubit integers appears in <a class="reference internal" href="#fig-circuit-algorithm-adder-fourier-three"><span class="std std-numref">Figure 21</span></a>.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier_three-dark.png"><img alt="A quantum circuit diagram of a QFT-based adder for :math:`3`-qubit states." src="../../../_images/circuit_algorithm_adder_fourier_three-dark.png" style="width: 988.1999999999999px; height: 269.64px;" />
 </a>
@@ -517,14 +518,14 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier_three-light.png"><img alt="A quantum circuit diagram of a QFT-based adder for :math:`3`-qubit states." src="../../../_images/circuit_algorithm_adder_fourier_three-light.png" style="width: 988.1999999999999px; height: 269.64px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 20 </span><span class="caption-text">A QFT-based adder for <span class="math notranslate nohighlight">\(3\)</span>-qubit states.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-fourier-three" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 21 </span><span class="caption-text">A QFT-based adder for <span class="math notranslate nohighlight">\(3\)</span>-qubit states.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-fourier-three" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-adder-fourier">
-<div class="code-block-caption"><span class="caption-number">Listing 19 </span><span class="caption-text">/text/examples/algorithms/adder_fourier.py</span><a class="headerlink" href="#code-adder-fourier" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 20 </span><span class="caption-text">/text/examples/algorithms/adder_fourier.py</span><a class="headerlink" href="#code-adder-fourier" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Fourier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

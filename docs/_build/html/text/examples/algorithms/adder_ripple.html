@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -408,6 +408,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
@@ -488,23 +489,23 @@
 <span id="eg-adder-ripple"></span><h1>Ripple-carry adder<a class="headerlink" href="#ripple-carry-adder" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>In this example, we use the single quantum adder circuit described in <a class="reference internal" href="adder_full.html#eg-adder-full"><span class="std std-ref">Example: Full adder</span></a> to construct a quantum <em>ripple-carry</em> adder. Given two (non-negative) integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> (encoded using qubits) as input, a ripple-carry adder computes the (encoded) arithmetic sum <span class="math notranslate nohighlight">\(s\)</span> of these integers, that is, <span class="math notranslate nohighlight">\(s = x + y\)</span>. In this form, the two integers are known as <em>summands</em>, and are also specifically called <em>augend</em> (<span class="math notranslate nohighlight">\(x\)</span>) and <em>addend</em> (<span class="math notranslate nohighlight">\(y\)</span>) according to the order in which they appear in the addition operation.</p>
+<p>In this example, we use the single quantum adder circuit described in <a class="reference internal" href="adder_full.html#eg-adder-full"><span class="std std-ref">Full adder</span></a> to construct a quantum <em>ripple-carry</em> adder. Given two (non-negative) integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> (encoded using qubits) as input, a ripple-carry adder computes the (encoded) arithmetic sum <span class="math notranslate nohighlight">\(s\)</span> of these integers, that is, <span class="math notranslate nohighlight">\(s = x + y\)</span>. In this form, the two integers are known as <em>summands</em>, and are also specifically called <em>augend</em> (<span class="math notranslate nohighlight">\(x\)</span>) and <em>addend</em> (<span class="math notranslate nohighlight">\(y\)</span>) according to the order in which they appear in the addition operation.</p>
 <p>In the case of a single adder, the magnitudes of the summands and their sum are confined to being within the dimensionality (e.g., binary) of their single-unit (e.g., bit) encoding. Integers larger than this limit therefore require multiple units of information to be encoded. For example, a non-negative integer <span class="math notranslate nohighlight">\(z\)</span> can be encoded with a number <span class="math notranslate nohighlight">\(\Number\)</span> of <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional unit values provided <span class="math notranslate nohighlight">\(z \leq \Dimension^\Number - 1\)</span>. Under this encoding, the integer can be represented using an ordered array (or set or string) of such values,</p>
 <div class="math notranslate nohighlight" id="equation-eq-encoding">
-<span class="eqno">(338)<a class="headerlink" href="#equation-eq-encoding" title="Link to this equation">#</a></span>\[z \equiv (z_{\Number - 1}, z_{\Number - 2}, \ldots, z_1, z_0) = (z_n)_{n = 0}^{\Number - 1}\]</div>
+<span class="eqno">(340)<a class="headerlink" href="#equation-eq-encoding" title="Link to this equation">#</a></span>\[z \equiv (z_{\Number - 1}, z_{\Number - 2}, \ldots, z_1, z_0) = (z_n)_{n = 0}^{\Number - 1}\]</div>
 <p>which collectively reconstruct the (decimal) value of the integer with the unique decoding expansion</p>
 <div class="math notranslate nohighlight" id="equation-eq-decoding">
-<span class="eqno">(339)<a class="headerlink" href="#equation-eq-decoding" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(341)<a class="headerlink" href="#equation-eq-decoding" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     z &amp;= \sum_{n = 0}^{\Number - 1} z_n \Dimension^n \\
     &amp;= z_0\Dimension^0 + z_1\Dimension^1 + \ldots + z_{\Number - 2}\Dimension^{\Number - 2} + z_{\Number - 1}\Dimension^{\Number - 1}.
 \end{aligned}\end{split}\]</div>
-<p>This is a type of <em>unsigned</em> integer encoding: all units of information are used to store the magnitude of the number, and there is no unit (e.g., a <em>sign bit</em>) reserved for storing the sign of the integer. It is perhaps the simplest integer encoding scheme possible, and so can be readily implemented in the context of quantum computing by utilizing the ability of quantum states to store information (both classical and quantum). This is typically realized using <span class="math notranslate nohighlight">\(2\)</span>-dimensional (binary) qubits (due to their simplicity), and so a collection of <span class="math notranslate nohighlight">\(\Number\)</span> such states allows for the encoding of (non-negative) integers up to <span class="math notranslate nohighlight">\(2^\Number - 1\)</span> via the scheme described in <a class="reference internal" href="#equation-eq-encoding">(338)</a> and <a class="reference internal" href="#equation-eq-decoding">(339)</a>. The addition of any two such encoded integers, for example,</p>
+<p>This is a type of <em>unsigned</em> integer encoding: all units of information are used to store the magnitude of the number, and there is no unit (e.g., a <em>sign bit</em>) reserved for storing the sign of the integer. It is perhaps the simplest integer encoding scheme possible, and so can be readily implemented in the context of quantum computing by utilizing the ability of quantum states to store information (both classical and quantum). This is typically realized using <span class="math notranslate nohighlight">\(2\)</span>-dimensional (binary) qubits (due to their simplicity), and so a collection of <span class="math notranslate nohighlight">\(\Number\)</span> such states allows for the encoding of (non-negative) integers up to <span class="math notranslate nohighlight">\(2^\Number - 1\)</span> via the scheme described in <a class="reference internal" href="#equation-eq-encoding">(340)</a> and <a class="reference internal" href="#equation-eq-decoding">(341)</a>. The addition of any two such encoded integers, for example,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-ripple-0">
-<span class="eqno">(340)<a class="headerlink" href="#equation-text-examples-algorithms-adder-ripple-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(342)<a class="headerlink" href="#equation-text-examples-algorithms-adder-ripple-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \ket{x} &amp;\equiv \bigotimes_{n = \Number - 1}^{0}\ket{x_n} = \ket{x_{\Number - 1},x_{\Number - 2},\ldots,x_1,x_0}, \\
     \ket{y} &amp;\equiv \bigotimes_{n = \Number - 1}^{0}\ket{y_n} = \ket{y_{\Number - 1},y_{\Number - 2},\ldots,y_1,y_0},
 \end{aligned}\end{split}\]</div>
-<p>can then be accomplished by a succession of exactly <span class="math notranslate nohighlight">\(\Number\)</span> quantum ripple-carry adders. Each of these adders is applied to a different pair of subsystems in the encoded integers’ states—the first acts on the least significant qubit (<span class="math notranslate nohighlight">\(n = 0\)</span>), with the carry qubit from the previous adder being used as input to the next one. An example of this for a <span class="math notranslate nohighlight">\(2\)</span>-qubit encoding (<span class="math notranslate nohighlight">\(\Number = 2\)</span>) is depicted in <a class="reference internal" href="#fig-circuit-algorithm-adder-ripple"><span class="std std-numref">Figure 16</span></a>.</p>
+<p>can then be accomplished by a succession of exactly <span class="math notranslate nohighlight">\(\Number\)</span> quantum ripple-carry adders. Each of these adders is applied to a different pair of subsystems in the encoded integers’ states—the first acts on the least significant qubit (<span class="math notranslate nohighlight">\(n = 0\)</span>), with the carry qubit from the previous adder being used as input to the next one. An example of this for a <span class="math notranslate nohighlight">\(2\)</span>-qubit encoding (<span class="math notranslate nohighlight">\(\Number = 2\)</span>) is depicted in <a class="reference internal" href="#fig-circuit-algorithm-adder-ripple"><span class="std std-numref">Figure 17</span></a>.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_ripple-dark.png"><img alt="A quantum circuit diagram of a quantum ripple-carry adder." src="../../../_images/circuit_algorithm_adder_ripple-dark.png" style="width: 924.12px; height: 325.44px;" />
 </a>
@@ -517,32 +518,32 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_ripple-light.png"><img alt="A quantum circuit diagram of a quantum ripple-carry adder." src="../../../_images/circuit_algorithm_adder_ripple-light.png" style="width: 924.12px; height: 325.44px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 16 </span><span class="caption-text">A <span class="math notranslate nohighlight">\(2\)</span>-qubit quantum ripple-carry adder. The CNOT operation between the FULL ADDER subcircuits transfers the value of the previous iteration’s carry output to the carry input of the next iteration.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-ripple" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 17 </span><span class="caption-text">A <span class="math notranslate nohighlight">\(2\)</span>-qubit quantum ripple-carry adder. The CNOT operation between the FULL ADDER subcircuits transfers the value of the previous iteration’s carry output to the carry input of the next iteration.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-ripple" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From this circuit, the general output values of the summation qubits can be computed to be</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-ripple-1">
-<span class="eqno">(341)<a class="headerlink" href="#equation-text-examples-algorithms-adder-ripple-1" title="Link to this equation">#</a></span>\[\begin{split}s_i =
+<span class="eqno">(343)<a class="headerlink" href="#equation-text-examples-algorithms-adder-ripple-1" title="Link to this equation">#</a></span>\[\begin{split}s_i =
     \begin{cases}
         x_0 \oplus y_0 \oplus c_0 &amp; i = 0; \\
         x_i \oplus y_i \oplus c_i \oplus c^\prime_{i - 1} &amp; i &gt; 0; \\
     \end{cases}\end{split}\]</div>
 <p>while the carry values are</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-ripple-2">
-<span class="eqno">(342)<a class="headerlink" href="#equation-text-examples-algorithms-adder-ripple-2" title="Link to this equation">#</a></span>\[\begin{split}c^\prime_i =
+<span class="eqno">(344)<a class="headerlink" href="#equation-text-examples-algorithms-adder-ripple-2" title="Link to this equation">#</a></span>\[\begin{split}c^\prime_i =
     \begin{cases}
         x_0 y_0 \oplus y_0 c_0 \oplus x_0 c_0 &amp; i = 0; \\
         x_i y_i \oplus (x_i \oplus y_i)(c_i \oplus c^\prime_{i-1}) &amp; i &gt; 0. \\
     \end{cases}\end{split}\]</div>
 <p>With these, the corresponding states</p>
 <div class="math notranslate nohighlight" id="equation-eq-encoded">
-<span class="eqno">(343)<a class="headerlink" href="#equation-eq-encoded" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(345)<a class="headerlink" href="#equation-eq-encoded" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \ket{s} &amp;\equiv \bigotimes_{n = \Number - 1}^{0}\ket{s_n}, \\
     \ket{c^\prime} &amp;\equiv \bigotimes_{n = \Number - 1}^{0}\ket{c^\prime_n},
 \end{aligned}\end{split}\]</div>
-<p>can be decoded, using <a class="reference internal" href="#equation-eq-decoding">(339)</a>, to be</p>
+<p>can be decoded, using <a class="reference internal" href="#equation-eq-decoding">(341)</a>, to be</p>
 <div class="math notranslate nohighlight" id="equation-eq-decoded">
-<span class="eqno">(344)<a class="headerlink" href="#equation-eq-decoded" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(346)<a class="headerlink" href="#equation-eq-decoded" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     s &amp;= \sum_{n = 0}^{\Number - 1} s_n \Dimension^n, \\
     c^\prime &amp;= \sum_{n = 0}^{\Number - 1} c^\prime_n \Dimension^n.
 \end{aligned}\end{split}\]</div>
@@ -551,7 +552,7 @@
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>Due to performance constraints, this example sums two 2-bit integers. Increasing the <code class="docutils literal notranslate"><span class="pre">encoding_depth</span></code> <em>greatly</em> increases the calculation time as a result of having to perform operations on larger matrices. The decimal <code class="docutils literal notranslate"><span class="pre">augend_integer</span></code> and <code class="docutils literal notranslate"><span class="pre">addend_integer</span></code> variables can be freely changed, provided their summation is within the encodable range.</p>
 <div class="literal-block-wrapper docutils container" id="code-adder-ripple">
-<div class="code-block-caption"><span class="caption-number">Listing 16 </span><span class="caption-text">/text/examples/algorithms/adder_ripple.py</span><a class="headerlink" href="#code-adder-ripple" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">/text/examples/algorithms/adder_ripple.py</span><a class="headerlink" href="#code-adder-ripple" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

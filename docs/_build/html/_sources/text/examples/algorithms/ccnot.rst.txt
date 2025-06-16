@@ -6,7 +6,7 @@ CCNOT (controlled-controlled-NOT)
 Description
 -----------
 
-A CCNOT (controlled-controlled-NOT) gate, also known as a *Toffoli gate*, is a simple extension to a CNOT gate (see :ref:`Example: CNOT <eg:cnot>`). It is useful as a method of multiplying the values of two qubits (e.g., :math:`\ket{x}` and :math:`\ket{y}`), and imprinting this result onto a third qubit (e.g., :math:`\ket{z}`), e.g.,
+A CCNOT (controlled-controlled-NOT) gate, also known as a *Toffoli gate*, is a simple extension to a CNOT gate (see :ref:`eg:cnot`). It is useful as a method of multiplying the values of two qubits (e.g., :math:`\ket{x}` and :math:`\ket{y}`), and imprinting this result onto a third qubit (e.g., :math:`\ket{z}`), e.g.,
 
 .. math:: \ket{x} \otimes \ket{y} \otimes \ket{z} \rightarrow \ket{x} \otimes \ket{y} \otimes \ket{z \oplus xy}.
 

@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -408,6 +408,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
@@ -488,7 +489,7 @@
 <span id="eg-iswap"></span><h1>iSWAP (imaginary-SWAP)<a class="headerlink" href="#iswap-imaginary-swap" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>An iSWAP (imaginary-SWAP) gate is a simply a SWAP gate in which any pair of states that are exchanged are also multiplied by a phase factor of <span class="math notranslate nohighlight">\(\e^{\tfrac{\eye\pi}{2}} = \eye\)</span> (the imaginary unit). It can be constructed from <span class="math notranslate nohighlight">\(\op{S}\)</span> (<span class="math notranslate nohighlight">\(\op{Z}^{\tfrac{1}{2}}\)</span>) gates, <span class="math notranslate nohighlight">\(\Hadamard\)</span> (Hadamard) gates, and CNOT gates, as depicted in <a class="reference internal" href="#fig-circuit-algorithm-iswap"><span class="std std-numref">Figure 23</span></a>.</p>
+<p>An iSWAP (imaginary-SWAP) gate is a simply a SWAP gate in which any pair of states that are exchanged are also multiplied by a phase factor of <span class="math notranslate nohighlight">\(\e^{\tfrac{\eye\pi}{2}} = \eye\)</span> (the imaginary unit). It can be constructed from <span class="math notranslate nohighlight">\(\op{S}\)</span> (<span class="math notranslate nohighlight">\(\op{Z}^{\tfrac{1}{2}}\)</span>) gates, <span class="math notranslate nohighlight">\(\Hadamard\)</span> (Hadamard) gates, and CNOT gates, as depicted in <a class="reference internal" href="#fig-circuit-algorithm-iswap"><span class="std std-numref">Figure 24</span></a>.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_iswap-dark.png"><img alt="A quantum circuit diagram of the construction of the iSWAP gate." src="../../../_images/circuit_algorithm_iswap-dark.png" style="width: 497.15999999999997px; height: 81.72px;" />
 </a>
@@ -501,14 +502,14 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_iswap-light.png"><img alt="A quantum circuit diagram of the construction of the iSWAP gate." src="../../../_images/circuit_algorithm_iswap-light.png" style="width: 497.15999999999997px; height: 81.72px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 23 </span><span class="caption-text">One possible construction of the iSWAP gate.</span><a class="headerlink" href="#fig-circuit-algorithm-iswap" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 24 </span><span class="caption-text">One possible construction of the iSWAP gate.</span><a class="headerlink" href="#fig-circuit-algorithm-iswap" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-iswap">
-<div class="code-block-caption"><span class="caption-number">Listing 22 </span><span class="caption-text">/text/examples/algorithms/iswap.py</span><a class="headerlink" href="#code-iswap" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">/text/examples/algorithms/iswap.py</span><a class="headerlink" href="#code-iswap" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pauli</span><span class="p">,</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Not</span><span class="p">,</span> <span class="n">GateStack</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

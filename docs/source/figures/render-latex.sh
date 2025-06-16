@@ -12,6 +12,7 @@ done
 # For when you want to test only specific files:
 # rm -f ./jobs-latex.txt
 # touch ./jobs-latex.txt
+# echo "./latex/circuit_algorithm_generation_arbitrary.tex" >> ./jobs-latex.txt
 # echo "./latex/circuit_algorithm_adder_full_multiple_linear.tex" >> ./jobs-latex.txt
 # echo "./latex/diagram_classes.tex" >> ./jobs-latex.txt
 # echo "./latex/diagram_billiard-ball_paradox.tex" >> ./jobs-latex.txt

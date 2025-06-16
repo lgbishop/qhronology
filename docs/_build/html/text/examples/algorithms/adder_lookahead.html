@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -408,6 +408,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
@@ -488,7 +489,7 @@
 <span id="eg-adder-lookahead"></span><h1>Carry-lookahead adder<a class="headerlink" href="#carry-lookahead-adder" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>A quantum <em>carry-lookahead</em> adder, proposed by Vedral et al. <span id="id1">[<a class="reference internal" href="#cite-1-vedral-quantum-1996" title="V. Vedral, A. Barenco, and A. Ekert, “Quantum networks for elementary arithmetic operations”, Physical Review A, 54(1):147–153, July 1996. https://link.aps.org/doi/10.1103/PhysRevA.54.147, doi:10.1103/PhysRevA.54.147">1</a>]</span>, is another style of multi-qubit adder and appears in <a class="reference internal" href="#fig-circuit-algorithm-adder-lookahead"><span class="std std-numref">Figure 18</span></a>. It consists of two phases: in the first, the carry qubits are computed, while in the second, the sums (taking into account the value of the carry qubits) are computed (in addition to the carry qubits being reverted back to their original values). Note that in this implementation, the order of the qubits in the encoding is reversed, such that the least-significant qubits are at the top while the most-significant qubits are at the bottom.</p>
+<p>A quantum <em>carry-lookahead</em> adder, proposed by Vedral et al. <span id="id1">[<a class="reference internal" href="#cite-1-vedral-quantum-1996" title="V. Vedral, A. Barenco, and A. Ekert, “Quantum networks for elementary arithmetic operations”, Physical Review A, 54(1):147–153, July 1996. https://link.aps.org/doi/10.1103/PhysRevA.54.147, doi:10.1103/PhysRevA.54.147">1</a>]</span>, is another style of multi-qubit adder and appears in <a class="reference internal" href="#fig-circuit-algorithm-adder-lookahead"><span class="std std-numref">Figure 19</span></a>. It consists of two phases: in the first, the carry qubits are computed, while in the second, the sums (taking into account the value of the carry qubits) are computed (in addition to the carry qubits being reverted back to their original values). Note that in this implementation, the order of the qubits in the encoding is reversed, such that the least-significant qubits are at the top while the most-significant qubits are at the bottom.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_lookahead-dark.png"><img alt="A quantum circuit diagram of a quantum carry-lookahead adder." src="../../../_images/circuit_algorithm_adder_lookahead-dark.png" style="width: 951.12px; height: 299.15999999999997px;" />
 </a>
@@ -501,33 +502,33 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_lookahead-light.png"><img alt="A quantum circuit diagram of a quantum carry-lookahead adder." src="../../../_images/circuit_algorithm_adder_lookahead-light.png" style="width: 951.12px; height: 299.15999999999997px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 18 </span><span class="caption-text">A <span class="math notranslate nohighlight">\(2\)</span>-qubit quantum carry-lookahead adder.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-lookahead" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 19 </span><span class="caption-text">A <span class="math notranslate nohighlight">\(2\)</span>-qubit quantum carry-lookahead adder.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-lookahead" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The values of the summation qubits can be determined to be</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-0">
-<span class="eqno">(345)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-0" title="Link to this equation">#</a></span>\[\begin{split}s_i =
+<span class="eqno">(347)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-0" title="Link to this equation">#</a></span>\[\begin{split}s_i =
     \begin{cases}
         x_0 \oplus y_0 \oplus c_0 &amp; i = 0; \\
         x_i \oplus y_i \oplus c^\prime_i &amp; i &gt; 0. \\
     \end{cases}\end{split}\]</div>
 <p>This version of an adder resets all output carry qubits to their original input values. The intermediary carry values however are</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-1">
-<span class="eqno">(346)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-1" title="Link to this equation">#</a></span>\[\begin{split}c^\prime_i =
+<span class="eqno">(348)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-1" title="Link to this equation">#</a></span>\[\begin{split}c^\prime_i =
     \begin{cases}
         c_1 \oplus x_0 y_0 \oplus c_0 (x_0 \oplus y_0) &amp; i = 1; \\
         c_i \oplus x_{i - 1} y_{i - 1} \oplus c^\prime_{i - 1} (x_{i - 1} \oplus y_{i - 1}) &amp; i &gt; 1. \\
     \end{cases}\end{split}\]</div>
 <p>The last qubit is simply an overflow qubit and has the value</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-2">
-<span class="eqno">(347)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-2" title="Link to this equation">#</a></span>\[c^\prime_\Dimension = c_\Dimension \oplus x_{\Dimension - 1} y_{\Dimension - 1} \oplus c^\prime_{\Dimension - 1} (x_{\Dimension - 1} \oplus y_{\Dimension - 1}).\]</div>
+<span class="eqno">(349)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-2" title="Link to this equation">#</a></span>\[c^\prime_\Dimension = c_\Dimension \oplus x_{\Dimension - 1} y_{\Dimension - 1} \oplus c^\prime_{\Dimension - 1} (x_{\Dimension - 1} \oplus y_{\Dimension - 1}).\]</div>
 <p>It is non-zero when the sum of the most-significant qubits (plus carry) “wraps around” (due to the modular arithmetic), and so represents the case where the total resulting sum is too big to be encoded with just <span class="math notranslate nohighlight">\(\Dimension\)</span> qubits, a situation known as <em>integer overflow</em>. If the value of this qubit is not required, then the circuit can be simplified by removing the last CARRY, the lone CNOT, and the qubit itself.</p>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>In this implementation, the dimensionality of the input state can be decreased by removing the overflow qubit (via <code class="docutils literal notranslate"><span class="pre">overflow_qubit</span> <span class="pre">=</span> <span class="pre">False</span></code>), thereby reducing the execution time of the algorithm.</p>
 <div class="literal-block-wrapper docutils container" id="code-adder-lookahead">
-<div class="code-block-caption"><span class="caption-number">Listing 18 </span><span class="caption-text">/text/examples/algorithms/adder_lookahead.py</span><a class="headerlink" href="#code-adder-lookahead" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19 </span><span class="caption-text">/text/examples/algorithms/adder_lookahead.py</span><a class="headerlink" href="#code-adder-lookahead" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -408,6 +408,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
@@ -490,8 +491,8 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>A CNOT (controlled-NOT) gate is a useful gate for performing a (qu)bit-wise sum of the state values of two quantum systems. For instance, given the states <span class="math notranslate nohighlight">\(\ket{x}\)</span> and <span class="math notranslate nohighlight">\(\ket{y}\)</span> in a <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional basis <span class="math notranslate nohighlight">\(\{\ket{n}\}_{n=0}^{\Dimension - 1}\)</span>, a CNOT operation has the action</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-cnot-0">
-<span class="eqno">(328)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-0" title="Link to this equation">#</a></span>\[\ket{x} \otimes \ket{y} \rightarrow \ket{x} \otimes \ket{x \oplus y}.\]</div>
-<p>A circuit diagram of a CNOT gate appears in <a class="reference internal" href="#fig-circuit-algorithm-cnot"><span class="std std-numref">Figure 11</span></a>.</p>
+<span class="eqno">(330)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-0" title="Link to this equation">#</a></span>\[\ket{x} \otimes \ket{y} \rightarrow \ket{x} \otimes \ket{x \oplus y}.\]</div>
+<p>A circuit diagram of a CNOT gate appears in <a class="reference internal" href="#fig-circuit-algorithm-cnot"><span class="std std-numref">Figure 12</span></a>.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_cnot-dark.png"><img alt="A quantum circuit diagram of a CNOT (controlled-NOT) gate." src="../../../_images/circuit_algorithm_cnot-dark.png" style="width: 172.07999999999998px; height: 65.52px;" />
 </a>
@@ -504,18 +505,18 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_cnot-light.png"><img alt="A quantum circuit diagram of a CNOT (controlled-NOT) gate." src="../../../_images/circuit_algorithm_cnot-light.png" style="width: 172.07999999999998px; height: 65.52px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 11 </span><span class="caption-text">A CNOT (controlled-NOT) gate.</span><a class="headerlink" href="#fig-circuit-algorithm-cnot" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 12 </span><span class="caption-text">A CNOT (controlled-NOT) gate.</span><a class="headerlink" href="#fig-circuit-algorithm-cnot" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As the input states are both vectors, the application of the CNOT gate</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-cnot-1">
-<span class="eqno">(329)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(331)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Unitary &amp;= \Control^0 \NOT^1 \\
     &amp;= \Identity \otimes \Identity + {\ket{1}\bra{1}} \otimes (\Pauli_{x} - \Identity),
 \end{aligned}\end{split}\]</div>
 <p>on the bipartite input <span class="math notranslate nohighlight">\(\ket{x} \otimes \ket{y}\)</span> simply produces a vector state:</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-cnot-2">
-<span class="eqno">(330)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(332)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \MapGeneral_{\Unitary} \bigl[\ket{x} \otimes \ket{y}\bigr] &amp;= \Control^0 \NOT^1 \ket{x} \otimes \ket{y} \\
     % &amp;= \sum\limits_{a,b=0}^{1} {\ket{a}\braket{a}{x}} \otimes {\ket{b \oplus a}\braket{b}{y}}, \\
     &amp;= \ket{x} \otimes \ket{x \oplus y}
@@ -558,7 +559,7 @@
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-cnot">
-<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">/text/examples/algorithms/cnot.py</span><a class="headerlink" href="#code-cnot" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">/text/examples/algorithms/cnot.py</span><a class="headerlink" href="#code-cnot" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

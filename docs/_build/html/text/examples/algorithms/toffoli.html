@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 14, 2025"/>
+    <meta name="docbuild:last-update" content="Jun 16, 2025"/>
   </head>
   
   
@@ -408,6 +408,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
@@ -489,7 +490,7 @@
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>An important research subfield of quantum computing involves the (de)construction of complex gates using sets of more primitive gates. This is termed <em>decomposition</em>, and mostly concerns the task of finding the (most) minimal <em>gate set</em> (i.e., most restricted) for any given gate. It is an interesting problem as primitive gates are in fact usually the only gates which can be directly implemented in many physical quantum computers. Consequently, finding compositions of such primitives that correctly reconstruct more complex gates is necessary in the pursuit of executing more advanced algorithms. Balancing the <em>depth</em> of the circuit (i.e., the longest path along its wires from input to output) with minimizing the size of the gate set also forms an avenue of research, as a circuit’s depth generally correlates with its execution time (discounting any execution time differences between the various types of gates).</p>
-<p>The Toffoli gate, also known as the CCNOT gate (see <a class="reference internal" href="ccnot.html#eg-ccnot"><span class="std std-ref">Example: CCNOT</span></a>), is one such gate that can be decomposed into more primitive gates. As it is an <em>entangling</em> gate, the Toffoli’s gate set must include more than just the single-qubit rotation gates (such as the <span class="math notranslate nohighlight">\(\op{T}\)</span> gate), as all such gates describe <em>non-entangling</em> operations. Thus, one such set of gates consists of the Hadamard gate <span class="math notranslate nohighlight">\(\Hadamard\)</span> and the CNOT gate, in addition to the <span class="math notranslate nohighlight">\(\op{T}\)</span> gate (fourth root of <span class="math notranslate nohighlight">\(\op{Z}\)</span>, i.e., <span class="math notranslate nohighlight">\(\op{Z}^{\tfrac{1}{4}}\)</span>). Using this restricted set, one possible decomposition of the Toffoli gate appears in <a class="reference internal" href="#fig-circuit-algorithm-toffoli"><span class="std std-numref">Figure 13</span></a>. Note that the conjugate transpose of any gate in the set, e.g., <span class="math notranslate nohighlight">\(\op{T}^\dagger\)</span>, is considered to also be in the set.</p>
+<p>The Toffoli gate, also known as the CCNOT gate (see <a class="reference internal" href="ccnot.html#eg-ccnot"><span class="std std-ref">CCNOT (controlled-controlled-NOT)</span></a>), is one such gate that can be decomposed into more primitive gates. As it is an <em>entangling</em> gate, the Toffoli’s gate set must include more than just the single-qubit rotation gates (such as the <span class="math notranslate nohighlight">\(\op{T}\)</span> gate), as all such gates describe <em>non-entangling</em> operations. Thus, one such set of gates consists of the Hadamard gate <span class="math notranslate nohighlight">\(\Hadamard\)</span> and the CNOT gate, in addition to the <span class="math notranslate nohighlight">\(\op{T}\)</span> gate (fourth root of <span class="math notranslate nohighlight">\(\op{Z}\)</span>, i.e., <span class="math notranslate nohighlight">\(\op{Z}^{\tfrac{1}{4}}\)</span>). Using this restricted set, one possible decomposition of the Toffoli gate appears in <a class="reference internal" href="#fig-circuit-algorithm-toffoli"><span class="std std-numref">Figure 14</span></a>. Note that the conjugate transpose of any gate in the set, e.g., <span class="math notranslate nohighlight">\(\op{T}^\dagger\)</span>, is considered to also be in the set.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_toffoli-dark.png"><img alt="A quantum circuit diagram depicting one possible decomposition of the Toffoli gate." src="../../../_images/circuit_algorithm_toffoli-dark.png" style="width: 734.04px; height: 127.08px;" />
 </a>
@@ -502,14 +503,14 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_toffoli-light.png"><img alt="A quantum circuit diagram depicting one possible decomposition of the Toffoli gate." src="../../../_images/circuit_algorithm_toffoli-light.png" style="width: 734.04px; height: 127.08px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 13 </span><span class="caption-text">One possible decomposition of the Toffoli gate.</span><a class="headerlink" href="#fig-circuit-algorithm-toffoli" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 14 </span><span class="caption-text">One possible decomposition of the Toffoli gate.</span><a class="headerlink" href="#fig-circuit-algorithm-toffoli" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-toffoli">
-<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">/text/examples/algorithms/toffoli.py</span><a class="headerlink" href="#code-toffoli" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 14 </span><span class="caption-text">/text/examples/algorithms/toffoli.py</span><a class="headerlink" href="#code-toffoli" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Not</span><span class="p">,</span> <span class="n">GateInterleave</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
