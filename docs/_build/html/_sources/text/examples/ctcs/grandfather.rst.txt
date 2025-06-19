@@ -77,7 +77,7 @@ Subsequently tracing out the CR system yields the D-CTCs CV map,
        &= \bra{0}\StateCV\ket{0} \cdot \StateCR + \bra{1}\StateCV\ket{1} \cdot \Pauli_x\StateCR\Pauli_x^\dagger,
    \end{aligned}
 
-while tracing out the CV system yields the CR map,
+while tracing out the CV system gives the CR map,
 
 .. math::
 
