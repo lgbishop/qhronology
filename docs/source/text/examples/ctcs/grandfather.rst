@@ -162,7 +162,7 @@ The grandfather paradox is particularly interesting because it exhibits patholog
 
 .. math:: \ket{\phi}_{\mathrm{rec},\CR} = \sqrt{\Omega} \ket{0}_\mathrm{rec} \otimes \ket{0}_\CR + \sqrt{1 - \Omega} \ket{1}_\mathrm{rec} \otimes \ket{1}_\CR,
 
-where :math:`0 \leq \Omega \leq 1` controls the balance of the entanglement. Here, the first subsystem is the *record* mode which, due to the entanglement, tells us (after measurement) which CR state interacted with the P-CTC. Accordingly, by using the bipartite unitary
+where :math:`0 \leq \Omega \leq 1` controls the balance of the entanglement. Here, the first subsystem is the *record* subsystem which, due to the entanglement, tells us (after measurement) which CR state interacted with the P-CTC. Accordingly, by using the bipartite unitary
 
 .. math:: \Identity_\mathrm{rec}\otimes\trace_\CV[\Unitary] = \Identity_\mathrm{rec}\otimes\ket{+}\bra{0}_\CR,
 

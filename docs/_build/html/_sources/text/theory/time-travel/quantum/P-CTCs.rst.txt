@@ -141,12 +141,12 @@ Here we show how a CR system state :math:`\StateCR\in\SpaceHilbert_\CR` in the D
 
    The postselected teleportation model of quantum time travel.
 
-In the P-CTCs formalism, self-consistent resolutions to quantum time-travel paradoxes are provided by way of quantum teleportation. This is achieved by first introducing a teleportation mode to the pre-existing CR and CV pair. On the CV and teleportation modes, a maximally entangled state :math:`\ket{\Bell} \in \SpacePure(\SpaceHilbert_\CV \otimes \SpaceHilbert_\Teleportation)` is placed (preselected). Here, :math:`\SpaceHilbert_\Teleportation` is the Hilbert space of the teleportation subsystem. With this, the evolution of the product input state :math:`\StateCR \otimes \ket{\Bell}\bra{\Bell}` under the unitary :math:`\Unitary \otimes \Identity` is simply
+In the P-CTCs formalism, self-consistent resolutions to quantum time-travel paradoxes are provided by way of quantum teleportation. This is achieved by first introducing a teleportation system to the pre-existing CR and CV pair. On the CV and teleportation modes, a maximally entangled state :math:`\ket{\Bell} \in \SpacePure(\SpaceHilbert_\CV \otimes \SpaceHilbert_\Teleportation)` is placed (preselected). Here, :math:`\SpaceHilbert_\Teleportation` is the Hilbert space of the teleportation system. With this, the evolution of the product input state :math:`\StateCR \otimes \ket{\Bell}\bra{\Bell}` under the unitary :math:`\Unitary \otimes \Identity` is simply
 
 .. math:: \StateCR \otimes \ket{\Bell}\bra{\Bell} \rightarrow \MapGeneral_{\Unitary \otimes \Identity}[\StateCR \otimes \ket{\Bell}\bra{\Bell}] = \bigl(\Unitary \otimes \Identity\bigr)\bigl(\StateCR \otimes \ket{\Bell}\bra{\Bell}\bigr)\bigl(\Unitary^\dagger \otimes \Identity\bigr).
    :label: eq:P-CTCs_evolved
 
-In accordance with the protocol of quantum teleportation, subsequent postselection against the same entangled state results in a quantum channel to the past (on the subsystem :math:`\SpaceHilbert_\Teleportation`). Mathematically, the evolved CR state becomes
+In accordance with the protocol of quantum teleportation, subsequent postselection against the same entangled state results in a quantum channel to the past (on the system :math:`\SpaceHilbert_\Teleportation`). Mathematically, the evolved CR state becomes
 
 .. math::
    :label: eq:P-CTCs_CR_unnormalized

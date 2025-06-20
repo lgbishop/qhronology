@@ -20,7 +20,7 @@ Fundamentals
 
 - **Time**: Time advances horizontally from the left to the right. Each vertical slice of the circuit corresponds to a distinct instant of time in the temporal progression. In other words, vertically aligned events occur simultaneously.
 
-- **Wires**: Each (physical) quantum or classical system (Hilbert space) is represented by a *wire* (also termed a *mode*) which is aligned with a single horizontal axis. Events at various points in time on these modes (such as state preparation, logical operations, measurement, etc.) are connected by lines (i.e., wires), thus forming a *circuit*.
+- **Wires**: Each (physical) quantum or classical system (Hilbert space) is represented by a *wire* which is aligned with a single horizontal axis. Events at various points in time on these modes (such as state preparation, logical operations, measurement, etc.) are connected by lines (i.e., wires), thus forming a *circuit*.
 
   - Quantum wires:
 
