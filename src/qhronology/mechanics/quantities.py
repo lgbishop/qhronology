@@ -387,7 +387,6 @@ def mutual(
     >>> matrix = sp.eye(4) / 4
     >>> mutual(matrix, [0], [1])
     0
-
     """
     systems_A = [0] if systems_A is None else systems_A
     dim = 2 if dim is None else dim
@@ -461,9 +460,7 @@ class QuantitiesMixin:
         ... )
         >>> state.trace()
         1/d
-
         """
-
         return trace(matrix=self)
 
     def purity(self) -> num | sym:

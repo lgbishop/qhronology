@@ -477,6 +477,90 @@ Methods
 
    \hrulefillthick
 
+.. automethod:: qhronology.quantum.states.QuantumState.print
+
+   .. rubric:: :styleheader6:`Examples`
+
+   >>> vector_state = QuantumState(spec=[("a", [0]), ("b", [1])], form="vector", label="ψ")
+   >>> vector_state.output()
+   Matrix([
+   [a],
+   [b]])
+   >>> vector_state.print()
+   |ψ⟩ = a|0⟩ + b|1⟩
+
+   >>> mixed_matrix_state = QuantumState(
+   ...     spec=[("a", [0]), ("b", [1])], form="matrix", label="ρ"
+   ... )
+   >>> mixed_matrix_state.output()
+   Matrix([
+   [a, 0],
+   [0, b]])
+   >>> mixed_matrix_state.print()
+   ρ = a|0⟩⟨0| + b|1⟩⟨1|
+
+   >>> pure_matrix_state = QuantumState(
+   ...     spec=[("a", [0]), ("b", [1])], form="matrix", kind="pure", label="ψ"
+   ... )
+   >>> pure_matrix_state.output()
+   Matrix([
+   [a*conjugate(a), a*conjugate(b)],
+   [b*conjugate(a), b*conjugate(b)]])
+   >>> pure_matrix_state.print()
+   |ψ⟩⟨ψ| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
+
+   >>> composite_vector_state = QuantumState(
+   ...     spec=[("a", [0, 0]), ("b", [1, 1])], form="vector", label="ψ"
+   ... )
+   >>> composite_vector_state.output()
+   Matrix([
+   [a],
+   [0],
+   [0],
+   [b]])
+   >>> composite_vector_state.print()
+   |ψ⟩ = a|0,0⟩ + b|1,1⟩
+   >>> composite_vector_state.print(delimeter="")
+   |ψ⟩ = a|00⟩ + b|11⟩
+   >>> composite_vector_state.print(product=True)
+   |ψ⟩ = a|0⟩⊗|0⟩ + b|1⟩⊗|1⟩
+
+   >>> composite_mixed_matrix_state = QuantumState(
+   ...     spec=[("a", [0, 0]), ("b", [1, 1])], form="matrix", label="ρ"
+   ... )
+   >>> composite_mixed_matrix_state.output()
+   Matrix([
+   [a, 0, 0, 0],
+   [0, 0, 0, 0],
+   [0, 0, 0, 0],
+   [0, 0, 0, b]])
+   >>> composite_mixed_matrix_state.print()
+   ρ = a|0,0⟩⟨0,0| + b|1,1⟩⟨1,1|
+   >>> composite_mixed_matrix_state.print(delimeter="")
+   ρ = a|00⟩⟨00| + b|11⟩⟨11|
+   >>> composite_mixed_matrix_state.print(product=True)
+   ρ = a|0⟩⟨0|⊗|0⟩⟨0| + b|1⟩⟨1|⊗|1⟩⟨1|
+
+   >>> composite_pure_matrix_state = QuantumState(
+   ...     spec=[("a", [0, 0]), ("b", [1, 1])], form="matrix", kind="pure", label="ψ"
+   ... )
+   >>> composite_pure_matrix_state.output()
+   Matrix([
+   [a*conjugate(a), 0, 0, a*conjugate(b)],
+   [             0, 0, 0,              0],
+   [             0, 0, 0,              0],
+   [b*conjugate(a), 0, 0, b*conjugate(b)]])
+   >>> composite_pure_matrix_state.print()
+   |ψ⟩⟨ψ| = a*conjugate(a)|0,0⟩⟨0,0| + a*conjugate(b)|0,0⟩⟨1,1| + b*conjugate(a)|1,1⟩⟨0,0| + b*conjugate(b)|1,1⟩⟨1,1|
+   >>> composite_pure_matrix_state.print(delimeter="")
+   |ψ⟩⟨ψ| = a*conjugate(a)|00⟩⟨00| + a*conjugate(b)|00⟩⟨11| + b*conjugate(a)|11⟩⟨00| + b*conjugate(b)|11⟩⟨11|
+   >>> composite_pure_matrix_state.print(product=True)
+   |ψ⟩⟨ψ| = a*conjugate(a)|0⟩⟨0|⊗|0⟩⟨0| + a*conjugate(b)|0⟩⟨1|⊗|0⟩⟨1| + b*conjugate(a)|1⟩⟨0|⊗|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|⊗|1⟩⟨1|
+
+.. raw:: latex
+
+   \hrulefillthick
+
 .. automethod:: qhronology.quantum.states.QuantumState.diagram
 
    .. rubric:: :styleheader6:`Examples`
