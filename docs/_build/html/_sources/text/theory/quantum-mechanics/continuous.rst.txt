@@ -106,12 +106,12 @@ The physical significance of this quantity, known as the *transition amplitude*,
 The path-integral formulation
 =============================
 
-The *path-integral formulation* :cite:p:`ryder_quantum_1996,kleinert_path_2009` (or the *sum-over-histories* approach) of quantum mechanics and field theory is a formalism that generalizes the principle of stationary action (from classical mechanics) to quantum mechanics. This formulation is based on the notion of the *propagator*,
+The *path-integral formulation* :cite:p:`ryder_quantum_1996,kleinert_path_2009` (or the *sum-over-histories* approach) of quantum mechanics and field theory is a formalism that generalizes the principle of stationary action (from classical mechanics) to quantum mechanics. It is based on the notion of the *propagator*,
 
 .. math:: \Propagator(\vec{\PositionFinal},\TimeFinal;\vec{\PositionInitial},\TimeInitial) \equiv \braket{\vec{\PositionFinal},\TimeFinal}{\vec{\PositionInitial},\TimeInitial}, \qquad \TimeFinal>\TimeInitial
    :label: eq:propagator
 
-which is a generalized function, defined as per :eq:`eq:propagator_overlap`. Of its many properties and applications, a primary use of the propagator is in its ability to evolve a wave function :math:`\WaveFunction(\vec{\PositionInitial},\TimeInitial)` to a later state via convolution, e.g.,
+which is, in general, a generalized function (often a distribution), and is defined as per :eq:`eq:propagator_overlap`. Of its many properties and applications, the primary utility of the propagator lies in its ability to evolve a wave function :math:`\WaveFunction(\vec{\PositionInitial},\TimeInitial)` to a later state via convolution, e.g.,
 
 .. math:: \WaveFunction(\vec{\PositionFinal},\TimeFinal) = \int_{\Reals^\Dimension} \Propagator(\vec{\PositionFinal},\TimeFinal;\vec{\PositionInitial},\TimeInitial) \, \WaveFunction(\vec{\PositionInitial},\TimeInitial) \, \diff^\Dimension{\vec{\PositionInitial}}.
    :label: eq:kernel
