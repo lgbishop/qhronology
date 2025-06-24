@@ -232,7 +232,6 @@ class QuantumCTC(QuantumCircuit):
         -------
         mat
             The total input state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
-
         """
         conditions = self.conditions if conditions is None else conditions
         label = (
@@ -646,7 +645,6 @@ class DCTC(QuantumCTC):
         -------
         mat
             The matrix representation of the CV output state.
-
         """
         free_symbol = self.free_symbol if free_symbol is None else free_symbol
 
@@ -736,7 +734,6 @@ class DCTC(QuantumCTC):
         -------
         mat
             The matrix representation of the (post-processed) CR output state.
-
         """
         conditions = self.conditions if conditions is None else conditions
         free_symbol = self.free_symbol if free_symbol is None else free_symbol
@@ -914,7 +911,6 @@ class DCTC(QuantumCTC):
         -------
         QuantumState
             The CV output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
-
         """
         conditions = self.conditions if conditions is None else conditions
         traces = [] if traces is None else traces
@@ -1010,7 +1006,6 @@ class DCTC(QuantumCTC):
         QuantumState
             The (post-processed) CR output state as a
             :py:class:`~qhronology.quantum.states.QuantumState` instance.
-
         """
         conditions = self.conditions if conditions is None else conditions
         traces = [] if traces is None else traces

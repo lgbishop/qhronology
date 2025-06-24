@@ -143,9 +143,13 @@ def to_column(vector: mat) -> mat:
         raise ValueError("Cannot convert a non-square matrix to a column vector.")
 
 
-def stringify(matrix: mat, dim: int) -> str:
+def stringify(
+    matrix: mat, dim: int, delimeter: str | None = None, product: bool | None = None
+) -> str:
     """Render the mathematical expression (as a string) of the given ``matrix``."""
     num_systems = count_systems(matrix, dim)
+    delimeter = "," if delimeter is None else delimeter
+    product = False if product is None else product
 
     basis = list(itertools.product([n for n in range(0, dim)], repeat=num_systems))
     matrix_strings = []
@@ -153,42 +157,38 @@ def stringify(matrix: mat, dim: int) -> str:
         for m in range(0, matrix.shape[1]):
             if matrix[n, m] != 0:
                 if matrix_shape(matrix) == Shapes.COLUMN.value:
-                    term = (
-                        "|"
-                        + str(basis[n])
-                        .replace("(", "")
-                        .replace(")", "")
-                        .replace(" ", "")
-                        .strip(",")
-                        + "⟩"
-                    )
+                    if product is True:
+                        term = "⊗".join(["|" + str(value) + "⟩" for value in basis[n]])
+                    else:
+                        term = (
+                            "|"
+                            + delimeter.join([str(value) for value in basis[n]])
+                            + "⟩"
+                        )
                 elif matrix_shape(matrix) == Shapes.ROW.value:
-                    term = (
-                        "⟨"
-                        + str(basis[m])
-                        .replace("(", "")
-                        .replace(")", "")
-                        .replace(" ", "")
-                        .strip(",")
-                        + "|"
-                    )
+                    if product is True:
+                        term = "⊗".join(["⟨" + str(value) + "|" for value in basis[m]])
+                    else:
+                        term = (
+                            "⟨"
+                            + delimeter.join([str(value) for value in basis[m]])
+                            + "|"
+                        )
                 elif matrix_shape(matrix) == Shapes.SQUARE.value:
-                    term = (
-                        "|"
-                        + str(basis[n])
-                        .replace("(", "")
-                        .replace(")", "")
-                        .replace(" ", "")
-                        .strip(",")
-                        + "⟩"
-                        + "⟨"
-                        + str(basis[m])
-                        .replace("(", "")
-                        .replace(")", "")
-                        .replace(" ", "")
-                        .strip(",")
-                        + "|"
-                    )
+                    kets = ["|" + str(value) + "⟩" for value in basis[n]]
+                    bras = ["⟨" + str(value) + "|" for value in basis[m]]
+                    ketbras = [kets[k] + bras[k] for k in range(0, len(kets))]
+                    if product is True:
+                        term = "⊗".join(ketbras)
+                    else:
+                        term = (
+                            "|"
+                            + delimeter.join([str(value) for value in basis[n]])
+                            + "⟩"
+                            + "⟨"
+                            + delimeter.join([str(value) for value in basis[m]])
+                            + "|"
+                        )
                 else:
                     raise ValueError(
                         "The given matrix must be either a square, a column, or a row."
@@ -270,7 +270,6 @@ def recursively_simplify(
     If ``comprehensive`` is ``False``, the algorithm uses a relatively efficient subset of
     simplifying operations, otherwise it uses a larger, more powerful (but slower) set.
     """
-
     conditions = [] if conditions is None else conditions
     limit = 2 if limit is None else limit
     comprehensive = False if comprehensive is None else comprehensive
@@ -406,9 +405,7 @@ def default_arguments(
     arguments, kwarguments, class_object, arg_pairs: list[tuple[str, Any]]
 ):
     """Change the default value of an argument in a subclass's constructor.
-    ``class_object`` is the class whose ``__init__`` signature is to be targeted.
-
-    """
+    ``class_object`` is the class whose ``__init__`` signature is to be targeted."""
     arg_strs, arg_defaults = zip(*arg_pairs)
     sig = inspect.signature(class_object.__init__)
     arguments_parent = list(sig.parameters.keys())
@@ -436,7 +433,6 @@ def fix_arguments(
 ):
     """Fix the value of an argument in a subclass's constructor.
     The argument ``class_object`` is the class whose ``__init__`` signature is to be targeted.
-
     """
     arg_strs, arg_values = zip(*arg_pairs)
     sig = inspect.signature(class_object.__init__)

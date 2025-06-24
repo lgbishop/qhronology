@@ -470,7 +470,6 @@ class QuantumCircuit(SymbolicsProperties):
         -------
         mat
             The total input state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
-
         """
         conditions = self.conditions if conditions is None else conditions
         label = (
@@ -574,7 +573,6 @@ class QuantumCircuit(SymbolicsProperties):
         ----
         This construction excludes measurement gates as they do not have a corresponding
         matrix representation.
-
         """
         spec = sp.eye(self.dim**self.num_systems_gross)
         for gate in self.gates:
@@ -680,7 +678,6 @@ class QuantumCircuit(SymbolicsProperties):
         -------
         mat
             The matrix representation of the (post-processed) output state.
-
         """
         conditions = self.conditions if conditions is None else conditions
         output_state = self.matrix
@@ -818,7 +815,6 @@ class QuantumCircuit(SymbolicsProperties):
         QuantumState
             The (post-processed) output state as a
             :py:class:`~qhronology.quantum.states.QuantumState` instance.
-
         """
         conditions = self.conditions if conditions is None else conditions
         simplify = False if simplify is None else simplify
@@ -957,9 +953,7 @@ class QuantumCircuit(SymbolicsProperties):
             A quantum state that takes the form of the post-measurement probabilistic sum
             of all outcomes of measurements corresponding to each operator given in ``operators``.
             Returned only if ``statistics`` is ``False``.
-
         """
-
         statistics = False if statistics is None else statistics
         state = self.state(postprocess=False)
         if statistics is True:
@@ -1029,7 +1023,6 @@ class QuantumCircuit(SymbolicsProperties):
         ----
         The quality of the visualization depends greatly on the output's configuration.
         For best results, the terminal should have a monospace font with good Unicode coverage.
-
         """
         pad = (0, 0) if pad is None else pad
         sep = (1, 1) if sep is None else sep

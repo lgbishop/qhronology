@@ -120,7 +120,6 @@ def dagger(matrix: mat | QuantumObject) -> mat:
     Matrix([
     [conjugate(a), conjugate(c)],
     [conjugate(b), conjugate(d)]])
-
     """
     matrix = extract_matrix(matrix)
     return sp.Matrix(Dagger(matrix))

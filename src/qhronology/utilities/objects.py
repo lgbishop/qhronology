@@ -78,13 +78,62 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         self.debug = debug
 
     def __str__(self) -> str:
-        return str(self.notation) + " = " + stringify(self.output(), self.dim)
+        expression = (
+            str(self.notation)
+            + " = "
+            + stringify(
+                self.output(),
+                dim=self.dim,
+            )
+        )
+        return expression
 
     def __repr__(self) -> str:
         return repr(self.output())
 
-    def print(self):
-        print(self)
+    def print(
+        self,
+        delimeter: str | None = None,
+        product: bool | None = None,
+        return_string: bool | None = None,
+    ) -> None | str:
+        """Print or return a mathematical expression of the quantum object as a multiline string.
+
+        Arguments
+        ---------
+        delimeter : str
+            A string containing the character(s) with which to delimit (i.e., separate) the values
+            in the ket and/or bra terms in the mathematical expression.
+            Defaults to ``,``.
+        product : bool
+            Whether to represent the mathematical expression using tensor products.
+            Only applies if the object is a multipartite composition.
+            Defaults to ``False``.
+        return_string : bool
+            Whether to return the mathematical expression as a multiline string.
+            Defaults to ``False``.
+
+        Returns
+        -------
+        None
+            Returned only if ``return_string`` is ``False``.
+        str
+            The constructed mathematical expression. Returned only if ``return_string`` is ``True``.
+        """
+        expression = (
+            str(self.notation)
+            + " = "
+            + stringify(
+                self.output(),
+                dim=self.dim,
+                delimeter=delimeter,
+                product=product,
+            )
+        )
+        if return_string is True:
+            return expression
+        else:
+            print(expression)
 
     def output(
         self,
@@ -111,7 +160,6 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         -------
         mat
             The object's simplified matrix representation.
-
         """
         output = self.matrix
 

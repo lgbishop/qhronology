@@ -3104,7 +3104,7 @@ class VisualizationMixin:
         style: str | None = None,
         return_string: bool | None = None,
     ) -> None | str:
-        """Print or return a string diagram of the quantum object as a multiline string.
+        """Print or return a circuit diagram of the quantum object as a multiline string.
 
         Arguments
         ---------
@@ -3137,7 +3137,6 @@ class VisualizationMixin:
         ----
         The quality of the visualization depends greatly on the output's configuration.
         For best results, the terminal should have a monospace font with good Unicode coverage.
-
         """
         pad = (1, 0) if pad is None else pad
         sep = (1, 1) if sep is None else sep
