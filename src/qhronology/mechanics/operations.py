@@ -126,18 +126,28 @@ def dagger(matrix: mat | QuantumObject) -> mat:
     return sp.Matrix(Dagger(matrix))
 
 
-def simplify(matrix: mat | QuantumObject) -> mat:
+def simplify(matrix: mat | QuantumObject, comprehensive: bool | None = None) -> mat:
     """Simplify ``matrix`` using a powerful (albeit slow) algorithm.
 
     Arguments
     ---------
     matrix : mat | QuantumObject
         The matrix to be simplified.
+    comprehensive : bool
+        Whether the simplifying algorithm should use a relatively efficient subset of
+        simplifying operations (``False``),
+        or alternatively use a larger, more powerful (but slower) set (``True``).
+        Defaults to ``False``.
 
     Returns
     -------
     mat
         The simplified version of ``matrix``.
+
+    Note
+    ----
+    If ``comprehensive`` is ``True``, the simplification algorithm will likely take *far*
+    longer to execute than if ``comprehensive`` were ``False``.
 
     Examples
     --------
@@ -151,6 +161,12 @@ def simplify(matrix: mat | QuantumObject) -> mat:
     Matrix([
     [a, b],
     [c, d]])
+
+    >>> matrix = sp.Matrix(["2*cos(pi*x/2)**2"])
+    >>> simplify(matrix, comprehensive=False)
+    Matrix([[2*cos(pi*x/2)**2]])
+    >>> simplify(matrix, comprehensive=True)
+    Matrix([[cos(pi*x) + 1]])
     """
     conditions = extract_conditions(matrix)
     symbols = extract_symbols(matrix)
@@ -159,7 +175,7 @@ def simplify(matrix: mat | QuantumObject) -> mat:
     matrix = symbolize_expression(matrix, symbols)
     conditions = symbolize_tuples(conditions, symbols)
 
-    matrix = recursively_simplify(matrix, conditions)
+    matrix = recursively_simplify(matrix, conditions, comprehensive=comprehensive)
 
     return matrix
 
@@ -838,15 +854,42 @@ class OperationsMixin:
         """
         self.matrix = dagger(self)
 
-    def simplify(self):
+    def simplify(self, comprehensive: bool | None = None):
         """Apply a forced simplification to the state using the values of its ``symbols`` and
         ``conditions`` properties.
 
         Useful if intermediate simplification is required during a sequence of mutating operations
         in order to process the state into a more desirable form.
 
+        Arguments
+        ---------
+        comprehensive : bool
+            Whether the simplifying algorithm should use a relatively efficient subset of
+            simplifying operations (``False``),
+            or alternatively use a larger, more powerful (but slower) set (``True``).
+            Defaults to ``False``.
+
+        Note
+        ----
+        If ``comprehensive`` is ``True``, the simplification algorithm will likely take *far*
+        longer to execute than if ``comprehensive`` were ``False``.
+
+        Examples
+        --------
+        >>> matrix = sp.Matrix(
+        ...     [
+        ...         ["(a**2 - 1)/(a - 1) - 1", "log(cos(b) + I*sin(b))/I"],
+        ...         ["acos((exp(I*c) + exp(-I*c))/2)", "d**log(E*(sin(d)**2 + cos(d)**2))"],
+        ...     ]
+        ... )
+        >>> rho = QuantumState(spec=matrix, form="matrix", label="ρ")
+        >>> rho.print()
+        ρ = (-1 + (a**2 - 1)/(a - 1))|0⟩⟨0| + -I*log(I*sin(b) + cos(b))|0⟩⟨1| + acos(exp(I*c)/2 + exp(-I*c)/2)|1⟩⟨0| + d**log(E*(sin(d)**2 + cos(d)**2))|1⟩⟨1|
+        >>> rho.simplify()
+        >>> rho.print()
+        ρ = a|0⟩⟨0| + b|0⟩⟨1| + c|1⟩⟨0| + d|1⟩⟨1|
         """
-        self.matrix = simplify(self)
+        self.matrix = simplify(self, comprehensive=comprehensive)
 
     def apply(self, function: Callable, arguments: dict[str, Any] | None = None):
         """Apply a Python function (``function``) to the state.

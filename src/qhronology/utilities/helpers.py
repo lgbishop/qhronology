@@ -262,13 +262,18 @@ def recursively_simplify(
     expression: mat | arr | num | sym,
     conditions: list[tuple[num | sym, num | sym]] | None = None,
     limit: int | None = None,
+    comprehensive: bool | None = None,
 ) -> mat | arr | num | sym:
     """Simplify ``expression`` recursively using the substitutions given in ``conditions``.
     Runs until ``expression`` is unchanged from the previous iteration,
-    or until the ``limit`` number of iterations is reached."""
+    or until the ``limit`` number of iterations is reached.
+    If ``comprehensive`` is ``False``, the algorithm uses a relatively efficient subset of
+    simplifying operations, otherwise it uses a larger, more powerful (but slower) set.
+    """
 
     conditions = [] if conditions is None else conditions
     limit = 2 if limit is None else limit
+    comprehensive = False if comprehensive is None else comprehensive
 
     expressions = expression
     if isinstance(expressions, mat) is False:
@@ -286,8 +291,10 @@ def recursively_simplify(
                 sp.factor,
                 sp.expand,
                 sp.cancel,
-            ]  # + [sp.cos, sp.exp]
-            # functions = [sp.simplify]
+            ]
+            if comprehensive is True:
+                functions += [sp.cos, sp.exp]
+            # functions = [sp.simplify] # Simple version for testing/comparison.
 
             # Generate all (sub-)permutations of the list ``functions``
             permutations = []
