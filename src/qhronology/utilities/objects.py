@@ -93,7 +93,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     def print(
         self,
-        delimeter: str | None = None,
+        delimiter: str | None = None,
         product: bool | None = None,
         return_string: bool | None = None,
     ) -> None | str:
@@ -101,10 +101,10 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
         Arguments
         ---------
-        delimeter : str
+        delimiter : str
             A string containing the character(s) with which to delimit (i.e., separate) the values
             in the ket and/or bra terms in the mathematical expression.
-            Defaults to ``,``.
+            Defaults to ``","``.
         product : bool
             Whether to represent the mathematical expression using tensor products.
             Only applies if the object is a multipartite composition.
@@ -126,7 +126,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             + stringify(
                 self.output(),
                 dim=self.dim,
-                delimeter=delimeter,
+                delimiter=delimiter,
                 product=product,
             )
         )
