@@ -144,11 +144,11 @@ def to_column(vector: mat) -> mat:
 
 
 def stringify(
-    matrix: mat, dim: int, delimeter: str | None = None, product: bool | None = None
+    matrix: mat, dim: int, delimiter: str | None = None, product: bool | None = None
 ) -> str:
     """Render the mathematical expression (as a string) of the given ``matrix``."""
     num_systems = count_systems(matrix, dim)
-    delimeter = "," if delimeter is None else delimeter
+    delimiter = "," if delimiter is None else delimiter
     product = False if product is None else product
 
     basis = list(itertools.product([n for n in range(0, dim)], repeat=num_systems))
@@ -162,7 +162,7 @@ def stringify(
                     else:
                         term = (
                             "|"
-                            + delimeter.join([str(value) for value in basis[n]])
+                            + delimiter.join([str(value) for value in basis[n]])
                             + "⟩"
                         )
                 elif matrix_shape(matrix) == Shapes.ROW.value:
@@ -171,7 +171,7 @@ def stringify(
                     else:
                         term = (
                             "⟨"
-                            + delimeter.join([str(value) for value in basis[m]])
+                            + delimiter.join([str(value) for value in basis[m]])
                             + "|"
                         )
                 elif matrix_shape(matrix) == Shapes.SQUARE.value:
@@ -183,10 +183,10 @@ def stringify(
                     else:
                         term = (
                             "|"
-                            + delimeter.join([str(value) for value in basis[n]])
+                            + delimiter.join([str(value) for value in basis[n]])
                             + "⟩"
                             + "⟨"
-                            + delimeter.join([str(value) for value in basis[m]])
+                            + delimiter.join([str(value) for value in basis[m]])
                             + "|"
                         )
                 else:
