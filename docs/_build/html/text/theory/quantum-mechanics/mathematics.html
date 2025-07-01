@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 30, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 01, 2025"/>
   </head>
   
   
@@ -634,9 +634,9 @@
 <div class="math notranslate nohighlight" id="equation-eq-basis-qudit">
 <span class="eqno">(37)<a class="headerlink" href="#equation-eq-basis-qudit" title="Link to this equation">#</a></span>\[\begin{split}\ket{0} = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix},
 \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix},
-\qquad \ldots
+\qquad \ldots,
 \qquad \ket{\Dimension - 1} = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}.\end{split}\]</div>
-<p>Here, the <span class="math notranslate nohighlight">\(i\)</span>-th element (indexing from zero, as customary in computer science) of the <span class="math notranslate nohighlight">\(i\)</span>-th vector contains a <span class="math notranslate nohighlight">\(1\)</span>, while all of its other entries are <span class="math notranslate nohighlight">\(0\)</span>. The corresponding covectors (bras) in the dual space <span class="math notranslate nohighlight">\(\dual{\SpaceHilbert}{} \cong \Complexes^{*\Dimension}\)</span> have similar representations as row vectors,</p>
+<p>Here, the <span class="math notranslate nohighlight">\(i\)</span>-th element (indexing from zero, as customary in computer science) of the <span class="math notranslate nohighlight">\(i\)</span>-th vector contains a <span class="math notranslate nohighlight">\(1\)</span>, while all of its other entries contain <span class="math notranslate nohighlight">\(0\)</span>. The corresponding covectors (bras) in the dual space <span class="math notranslate nohighlight">\(\dual{\SpaceHilbert}{} \cong \Complexes^{*\Dimension}\)</span> have similar representations as row vectors,</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-25">
 <span class="eqno">(38)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-25" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \bra{0} &amp;= \begin{bmatrix} 1 &amp; 0 &amp; \ldots &amp; 0 \end{bmatrix}, \\
@@ -917,7 +917,7 @@
 <p>A useful theorem for expressing composite vectors is the <em>Schmidt decomposition</em>: given a bipartite vector <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert_A \otimes \SpaceHilbert_B\)</span>, there exists sets of orthonormal states <span class="math notranslate nohighlight">\(\{\ket{k_A}\}\)</span> and <span class="math notranslate nohighlight">\(\{\ket{k_B}\}\)</span> for systems <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, respectively, such that</p>
 <div class="math notranslate nohighlight" id="equation-eq-schmidt-decomposition">
 <span class="eqno">(92)<a class="headerlink" href="#equation-eq-schmidt-decomposition" title="Link to this equation">#</a></span>\[\ket{\psi} = \sum_k \lambda_k \ket{k_A} \otimes \ket{k_B}.\]</div>
-<p>Here, <span class="math notranslate nohighlight">\(\lambda_k\)</span> are non-negative real numbers, known as <em>Schmidt coefficients</em> that satisfy</p>
+<p>Here, <span class="math notranslate nohighlight">\(\{\lambda_k\}_k\)</span> are non-negative real numbers, known as <em>Schmidt coefficients</em> that satisfy</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-74">
 <span class="eqno">(93)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-74" title="Link to this equation">#</a></span>\[\sum_k \lambda_k^2 = \braket{\psi}{\psi}.\]</div>
 <p>The number of (non-zero) Schmidt coefficients is called the <em>Schmidt number</em> of the vector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, and the bases <span class="math notranslate nohighlight">\(\{\ket{k_A}\}\)</span> and <span class="math notranslate nohighlight">\(\{\ket{k_B}\}\)</span> are called the <em>Schmidt bases</em>.</p>
