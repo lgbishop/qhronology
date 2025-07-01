@@ -22,7 +22,7 @@
 
    .. rubric:: :styleheader0:`Examples`
 
-A small collection of examples that demonstrate the various uses and functionality of the package. It is divided into two chapters. The first is *quantum algorithms and protocols*, which consists of standard processes and circuits that are significant to the fields of quantum computing and quantum information science. The second chapter is *quantum closed timelike curves*, which contains more exotic circuits involving antichronological time travel, particularly in the presence of physically interesting unitary interactions.
+A small collection of examples that demonstrate the various uses and functionality of the package. It is divided into two chapters. The first is *Quantum algorithms and protocols*, which consists of standard processes and circuits that are significant to the fields of quantum computing and quantum information science. The second chapter is *Quantum closed timelike curves*, which contains more exotic circuits involving antichronological time travel, particularly in the presence of physically interesting unitary interactions.
 
 .. raw:: html
 

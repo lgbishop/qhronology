@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=e1492156" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=751da52a" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jun 24, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 01, 2025"/>
   </head>
   
   
@@ -601,7 +601,7 @@
 <p>Using this methodology, it is possible to rigorously assign a state to the system on the P-CTC, with such a state taking the form</p>
 <div class="math notranslate nohighlight" id="equation-eq-p-ctcs-cv">
 <span class="eqno">(253)<a class="headerlink" href="#equation-eq-p-ctcs-cv" title="Link to this equation">#</a></span>\[\MapPCTCsCV_{\Unitary}[\StateCR] \equiv \trace_\CR\bigl[\Unitary(\StateCR \otimes \tfrac{1}{2}\Identity)\Unitary^\dagger\bigr].\]</div>
-<p>In contrast to its D-CTC counterpart, this state can be computed, and is in fact also unique, for <em>every</em> given combination of interaction <span class="math notranslate nohighlight">\(\Unitary\)</span> and input state <span class="math notranslate nohighlight">\(\StateCR\)</span>. Another interesting observation is that it is exactly equivalent to the CV output state from the first iteration of a maximally mixed seed state in the D-CTC ECP <a class="reference internal" href="D-CTCs.html#sec-ecp"><span class="std std-ref">Iterative picture: The equivalent circuit</span></a>. In essence, this means that a P-CTC can be thought of as being somewhat like a “partial” D-CTC—one in which the self-consistency condition is not fully realized (at least according to D-CTCs). This is curious result, as it suggests that despite their striking differences, the distinct notions of self-consistency that underpin both P-CTCs and D-CTCs may be more similar than originally thought.</p>
+<p>In contrast to its D-CTC counterpart, this state can be computed (and is in fact also unique) for <em>every</em> given combination of interaction <span class="math notranslate nohighlight">\(\Unitary\)</span> and input state <span class="math notranslate nohighlight">\(\StateCR\)</span>. Another interesting observation is that it is exactly equivalent to the CV output state from the first iteration of a maximally mixed seed state in the D-CTC ECP (see <a class="reference internal" href="D-CTCs.html#sec-ecp"><span class="std std-ref">Iterative picture: The equivalent circuit</span></a>). In essence, this means that a P-CTC can be thought of as being somewhat like a “partial” D-CTC—one in which the self-consistency condition is not fully realized (at least according to D-CTCs). This is curious result, as it suggests that despite their striking differences, the distinct notions of self-consistency that underpin both P-CTCs and D-CTCs may be more similar than traditionally thought.</p>
 <p>An important point to note is that the result <a class="reference internal" href="#equation-eq-p-ctcs-cv">(253)</a> is applicable only to <span class="math notranslate nohighlight">\(2\)</span>-dimensional (qubit) systems, and that a similar expression for <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional (qudit) systems has yet to be determined analytically. One such candidate however is the natural generalization</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-p-ctcs-7">
 <span class="eqno">(254)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-p-ctcs-7" title="Link to this equation">#</a></span>\[\MapPCTCsCV_{\Unitary}[\StateCR] \equiv \trace_\CR\bigl[\Unitary(\StateCR \otimes \tfrac{1}{\Dimension}\Identity)\Unitary^\dagger\bigr].\]</div>

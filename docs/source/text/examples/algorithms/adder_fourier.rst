@@ -135,7 +135,7 @@ Results
 .. code:: python
 
    >>> print(duration)
-   Duration: 0.326 seconds
+   Duration: 0.283 seconds
 
 As both the number of qubits and the circuit depth (number of gates) of the quantum Fourier adder are significantly smaller than any of the other quantum adder algorithms, we appropriately find that its operation is computationally much faster.
 
