@@ -171,14 +171,14 @@ When ``overflow_qubit = True``:
 .. code:: python
 
    >>> print(duration)
-   Duration: 5.815 seconds
+   Duration: 5.134 seconds
 
 When ``overflow_qubit = False``:
 
 .. code:: python
 
    >>> print(duration)
-   Duration: 1.469 seconds
+   Duration: 1.209 seconds
 
 This version of a multi-qubit full adder is evidently much faster than the :ref:`eg:adder_ripple` for the equivalent number of qubits, which highlights the efficiency advantage of using fewer qubits to achieve the same computation.
 

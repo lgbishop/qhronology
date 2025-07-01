@@ -109,7 +109,7 @@ Results
 .. code:: python
 
    >>> print(duration)
-   Duration: 3.621 seconds
+   Duration: 3.264 seconds
 
 Much faster and for much larger numbers than the linear implementation in :ref:`eg:adder_ripple`.
 
