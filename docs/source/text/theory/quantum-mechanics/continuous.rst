@@ -6,7 +6,7 @@
 Quantum mechanics on continuous Hilbert spaces
 **********************************************
 
-One of the more physically meaningful classes of Hilbert spaces are those which are *continuous*. Such systems typically describe the dynamics of quantum particles propagating in some physical continuum, that is, :math:`\Reals^\Dimension` for any :math:`\Dimension \in \IntegersPositive`. Mathematically, any continuous quantum system may be described by a state, which is a vector :math:`\ket{\WaveFunction}` residing in a Lebesgue space (a special function space that is also a type of Hilbert space), denoted :math:`\SpaceLebesgue^2(\SetSub)`, on certain set :math:`\SetSub` which is some configuration space (such as :math:`\Reals^3)`. The theory discussed here adapts the work presented in :cite:p:`ryder_quantum_1996,dimock_quantum_2011,zeidler_quantum_2006,zee_quantum_2010,townsend_modern_2012,griffiths_introduction_2018,schulten_notes_2014,dittrich_classical_2020,schulman_techniques_1981,dirac_principles_1982`.
+One of the more physically meaningful classes of Hilbert spaces are those which are *continuous*. Such systems typically describe the dynamics of quantum particles propagating in some physical continuum, that is, :math:`\Reals^\Dimension` for any :math:`\Dimension \in \IntegersPositive`. Mathematically, any continuous quantum system may be described by a state, which is a vector :math:`\ket{\WaveFunction}` residing in a (continuous) Lebesgue space (a special function space that is also a type of Hilbert space), denoted by :math:`\SpaceLebesgue^2(\SetSub)`, on certain set :math:`\SetSub` which is some configuration space (such as :math:`\Reals^3)`. The theory discussed here adapts the work presented in :cite:p:`ryder_quantum_1996,dimock_quantum_2011,zeidler_quantum_2006,zee_quantum_2010,townsend_modern_2012,griffiths_introduction_2018,schulten_notes_2014,dittrich_classical_2020,schulman_techniques_1981,dirac_principles_1982`.
 
 Probabilities and the Born rule
 ===============================
@@ -20,7 +20,7 @@ where :math:`\norm{\WaveFunction}_2` is the :math:`\SpaceLebesgue^2`-norm of :ma
 
 .. math:: \braket{\phi}{\WaveFunction} = \int_{\SetSub} \conj{\phi}{(\vec{\Coordinate})}\WaveFunction(\vec{\Coordinate})\,\diff{\Measure(\vec{\Coordinate})}, \qquad \phi,\WaveFunction\in \SpaceLebesgue^2(\vec{\Coordinate}).
 
-With this, the Lebesgue space is now a Hilbert space, and we have the isomorphism :math:`\SpaceLebesgue^2 \cong \SpaceHilbert`. From here, if the norm defined in :eq:`eq:square_integrable` is equal to :math:`1`,
+With this, the Lebesgue space :math:`\SpaceLebesgue^2(\SetSub)` is now a Hilbert space :math:`\SpaceHilbert`, and we have the isomorphism :math:`\SpaceLebesgue^2 \cong \SpaceHilbert`. From here, if the norm defined in :eq:`eq:square_integrable` is equal to :math:`1`,
 
 .. math:: \int_{\SetSub}\abs{\WaveFunction(\vec{\Coordinate})}^2 \, \diff{\Measure(\vec{\Coordinate})} = 1,
    :label: eq:normalization
@@ -28,9 +28,9 @@ With this, the Lebesgue space is now a Hilbert space, and we have the isomorphis
 then the element :math:`\WaveFunction\in \SpaceLebesgue^2(\SetSub)` defines a probability measure on :math:`\SetSub`. In the case that the measure :math:`\Measure(\vec{\Coordinate})` is continuous, then the real-valued function
 
 .. math:: \Probability(\vec{\Coordinate}) = \abs{\WaveFunction(\vec{\Coordinate})}^2
-   :label: eq:Born
+   :label: eq:Born_rule_continuous
 
-is called a *probability density function* (PDF) and the complex-valued function :math:`\WaveFunction(\vec{\Coordinate})` is called a *probability amplitude*. If the measure :math:`\Measure(\vec{\Coordinate})` is instead discrete, then the integral becomes a sum and :math:`\abs{\WaveFunction(\vec{\Coordinate})}^2` defines the probability measure on the set :math:`\SetSub`---that is, the probability that the quantum system represented by :math:`\ket{\WaveFunction}` assumes the state with parameter :math:`\vec{\Coordinate} \in \SetSub`. The rule :eq:`eq:Born` is perhaps the archetypal representation of the Born rule.
+is called a *probability density function* (PDF) and the complex-valued function :math:`\WaveFunction(\vec{\Coordinate})` is called a *probability amplitude*. If the measure :math:`\Measure(\vec{\Coordinate})` is instead discrete, then the integral becomes a sum and :math:`\abs{\WaveFunction(\vec{\Coordinate})}^2` defines the probability measure on the set :math:`\SetSub`---that is, the probability that the quantum system represented by :math:`\ket{\WaveFunction}` assumes the state with parameter :math:`\vec{\Coordinate} \in \SetSub`. The form :eq:`eq:Born_rule_continuous` is perhaps the archetypal representation of the Born rule for continuous quantum mechanics.
 
 The state vector :math:`\ket{\WaveFunction}` may be projected into different coordinate bases via the equivalence
 
@@ -41,7 +41,7 @@ where the configuration of the associated system in :math:`\Dimension`-dimension
 
 .. math:: \WaveFunction(\vec{\Position},\Time) = \braket{\vec{\Position},\Time}{\WaveFunction},
 
-which we interpret as the probability amplitude that the associated system (e.g., a particle) has position :math:`\vec{\Position}` at time :math:`\Time`. Accordingly, the PDF is given by the Born rule :eq:`eq:Born`,
+which we interpret as the probability amplitude that the associated system (e.g., a particle) has position :math:`\vec{\Position}` at time :math:`\Time`. Accordingly, the PDF is given by the Born rule :eq:`eq:Born_rule_continuous`,
 
 .. math:: \Probability(\vec{\Position},\Time) = \abs{\WaveFunction(\vec{\Position},\Time)}^2,
    :label: eq:probability_density
@@ -120,7 +120,7 @@ Here,
 
 .. math:: \WaveFunction(\vec{\Position},\Time) \equiv \braket{\vec{\Position},\Time}{\WaveFunction}
 
-is the wave function of the system in state :math:`\ket{\WaveFunction}` projected into :math:`\vec{\Position}`-space at time :math:`\Time`. Given its convolution property in :eq:`eq:kernel` and its relation to the time-evolution operator in :eq:`eq:propagator_overlap`, we say that the propagator is the *Green's function* (or integral *kernel*) for the Schrödinger equation :eq:`eq:Schrodinger`.
+is the wave function of the system in state :math:`\ket{\WaveFunction}` projected into :math:`\vec{\Position}`-space at time :math:`\Time`. Given both its convolution property in :eq:`eq:kernel` and its relation to the time-evolution operator in :eq:`eq:propagator_overlap`, we say that the propagator is the *Green's function* (or integral *kernel*) for the Schrödinger equation :eq:`eq:Schrodinger`.
 
 Similar to how a wave function can describe the probability amplitude for a particle's location :math:`\vec{\Position}` at time :math:`\Time`, we may say that the propagator :math:`\Propagator(\vec{\PositionFinal},\TimeFinal;\vec{\PositionInitial},\TimeInitial)` is the probability amplitude for the *transition* of the particle from :math:`(\vec{\PositionInitial},\TimeInitial)` to :math:`(\vec{\PositionFinal},\TimeFinal)`. In :math:`\Dimension`-dimensional space, this transition could be accomplished through an infinite number of distinct and unique trajectories.
 
@@ -152,7 +152,7 @@ For a system with a Hamiltonian whose dependence on momentum is purely quadratic
 .. math:: \Propagator(\vec{\PositionFinal},\TimeFinal;\vec{\PositionInitial},\TimeInitial) = \int_{\vec{\PositionInitial}}^{\vec{\PositionFinal}} \DifferentialPath^{\prime}\vec{\Position} \, \e^{\eye \Action[\vec{\Position}]/\hbar},
    :label: eq:propagator_configuration
 
-where the "normalized" differential, compared to :eq:`eq:differential_path_position`, is defined as
+where the "normalized" differential (compared to :eq:`eq:differential_path_position`) is defined as
 
 .. math:: \int_{\vec{\Position}_0}^{\vec{\Position}_\Number} \DifferentialPath^{\prime}\vec{\Position} \equiv \lim\limits_{\Number \rightarrow \infty} \left[\frac{\Mass}{2\pi\eye\hbar(\TimeFinal - \TimeInitial)}\right]^\frac{\Number\Dimension}{2} \prod_{k=1}^{\Number-1} \int_{\Reals^\Dimension} \diff^\Dimension{\vec{\Position}_k}.
    :label: eq:differential_path_position_normalized

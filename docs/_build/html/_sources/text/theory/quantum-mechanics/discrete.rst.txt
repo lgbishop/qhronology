@@ -18,12 +18,12 @@ A *quantum state* is then simply a particular value (or, more properly, a probab
 .. math:: \StateDensity = \sum_{i} p_i \StateDensity_i.
    :label: eq:state_general
 
-This describes a mixture of the density operators :math:`\{\StateDensity_i\}_i` corresponding to the statistical ensemble :math:`\SetProbability`. According to the spectral theorem :eq:`eq:spectral_theorem`, we are able to express any quantum state :math:`\StateDensity` in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert` equivalently as a convex combination of at most :math:`\Dimension` vectors :math:`\ket{\psi_i}`, i.e.,
+This describes a mixture of the density operators :math:`\{\StateDensity_i\}_i` corresponding to the statistical ensemble :math:`\SetProbability`. According to the spectral theorem :eq:`eq:spectral_theorem`, we are able to express any quantum state :math:`\StateDensity` in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert` equivalently as a convex combination of at most :math:`\Dimension` vectors :math:`\{\ket{\psi_i}\}_i`, i.e.,
 
 .. math:: \StateDensity = \sum_{i} p_i \ket{\psi_i}\bra{\psi_i}
    :label: eq:state_combination_pure
 
-where the coefficients :math:`p_i` collectively characterize :math:`\StateDensity`.
+where the coefficients :math:`\{p_i\}_i` collectively characterize :math:`\StateDensity`.
 
 Pure states
 -----------
@@ -462,7 +462,7 @@ It is convenient to express such maps using the general form
 
 .. math:: \MapGeneral[\StateDensity] = \sum_{i} \Kraus^\dagger_i \StateDensity \Kraus_i
 
-where :math:`\SetKraus = \{\Kraus_i\}` is a set of linear operators, known as *Kraus operators*. The characteristic of *trace-non-increasing* is the requirement that :math:`\trace[\StateDensity] \geq \trace\bigl[\MapGeneral[\StateDensity]\bigr]`. Since it is (almost) always assumed that the input state :math:`\StateDensity` satisfies :math:`\trace[\StateDensity] = 1`, then the Kraus operators of a trace-non-increasing quantum operation in turn satisfy
+where :math:`\SetKraus = \{\Kraus_i\}_i` is a set of linear operators, known as *Kraus operators*. The characteristic of *trace-non-increasing* is the requirement that :math:`\trace[\StateDensity] \geq \trace\bigl[\MapGeneral[\StateDensity]\bigr]`. Since it is (almost) always assumed that the input state :math:`\StateDensity` satisfies :math:`\trace[\StateDensity] = 1`, then the Kraus operators of a trace-non-increasing quantum operation in turn satisfy
 
 .. math:: \sum_{i} \Kraus^\dagger_i \Kraus_i \leq \Identity.
 
@@ -508,7 +508,7 @@ where the Kraus operators are given by
 
 .. math:: \Kraus_i = \bra{\Basis_i}\Unitary\ket{\psi}.
 
-This form, which is sometimes called the *operator-sum representation*, describes the evolution of some system in the Hilbert space :math:`\SpaceHilbert_\mathrm{S}` that interacts with an environment system (a separate system with Hilbert space :math:`\SpaceHilbert_\mathrm{E}`) some unitary :math:`\Unitary`. In this bipartite setup, the environment is initially in the state :math:`\ket{\psi}` (with :math:`\{\ket{\Basis_i}\}` denoting an orthonormal basis). Dropping the assumption that the environment is initially pure, we may in general write
+This form, which is sometimes called the *operator-sum representation*, describes the evolution of some system in the Hilbert space :math:`\SpaceHilbert_\mathrm{S}` that interacts with an environment system (a separate system with Hilbert space :math:`\SpaceHilbert_\mathrm{E}`) some unitary :math:`\Unitary`. In this bipartite setup, the environment is initially in the state :math:`\ket{\psi}` (with :math:`\{\ket{\Basis_i}\}_i` denoting an orthonormal basis). Dropping the assumption that the environment is initially pure, we may in general write
 
 .. math:: \MapGeneral[\StateDensity] = \trace_\mathrm{E} \bigl[\Unitary(\StateDensity_\mathrm{S} \otimes \op{\tau}_\mathrm{E})\Unitary^\dagger\bigr]
 
@@ -525,7 +525,7 @@ A *quantum measurement* of a quantum state is expressible in general as the map
 
 .. math:: \MapGeneral_i[\StateDensity] = \Kraus_i \StateDensity \Kraus^\dagger_i.
 
-Here, :math:`\{\Kraus_i\}` are Kraus operators which necessarily satisfy the completeness relation
+Here, :math:`\{\Kraus_i\}_i` are Kraus operators which necessarily satisfy the completeness relation
 
 .. math:: \sum_{i} \Kraus^\dagger_i \Kraus_i = \Identity
 
@@ -533,11 +533,11 @@ since all possible measurement values together must necessarily form a complete 
 
 .. math:: \Kraus_i = \Unitary_i \sqrt{\op{M}_i}
 
-where :math:`\SetUnitary = \{\Unitary_i\}` is a set of unitary operators and :math:`\SetObservable = \{\op{M}_i\}` is a set of positive operators, we can, due to the relation :math:`\Kraus^\dagger_i \Kraus_i = \op{M}_i` and the completeness of the Kraus operators, conclude that
+where :math:`\SetUnitary = \{\Unitary_i\}_i` is a set of unitary operators and :math:`\SetObservable = \{\op{M}_i\}_i` is a set of positive operators, we can, due to the relation :math:`\Kraus^\dagger_i \Kraus_i = \op{M}_i` and the completeness of the Kraus operators, conclude that
 
 .. math:: \sum_i \op{M}_i = \Identity.
 
-The set :math:`\SetObservable` is therefore called a *quantum observable*, or more formally, a *positive operator-valued measure* (POVM), and has an associated probability distribution :math:`\SetProbability = \{p_i\}` given by
+The set :math:`\SetObservable` is therefore called a *quantum observable*, or more formally, a *positive operator-valued measure* (POVM), and has an associated probability distribution :math:`\SetProbability = \{p_i\}_i` given by
 
 .. math:: p_i = \trace[\StateDensity\op{M}_i] = \trace[\Kraus_i \StateDensity \Kraus^\dagger_i].
 
@@ -551,13 +551,14 @@ This is to ensure that a physical post-measurement state is always recovered, wh
 
 This defines a linear, trace-preserving, completely positive map.
 
-A quantum observable :math:`\SetObservable = \{\op{\Pi}_i\}` is said to be *sharp* if, in addition to having positive operators, each operator :math:`\op{\Pi}_i` is a projector, that is, :math:`\op{\Pi}_i = \op{\Pi}^2_i`. According to the spectral theorem :eq:`eq:spectral_theorem`, every Hermitian operator :math:`\op{H}` may be expressed as
+A quantum observable :math:`\SetObservable = \{\op{\Pi}_i\}_i` is said to be *sharp* if, in addition to having positive operators, each operator :math:`\op{\Pi}_i` is a projector, that is, :math:`\op{\Pi}_i = \op{\Pi}^2_i`. According to the spectral theorem :eq:`eq:spectral_theorem`, every Hermitian operator :math:`\op{H}` may be expressed as
 
 .. math:: \op{H} = \sum_i \lambda_i \op{\Pi}_i
 
-with eigenvalues :math:`\lambda_i`. This means that the entire observable :math:`\SetObservable` is representable by the single Hermitian operator :math:`\op{H}`, which is why such operators are typically referred to simply as *observables* in standard quantum theory. Given this expression, the probability of measuring an eigenvalue :math:`\lambda_i` is given by
+with eigenvalues :math:`\{\lambda_i\}_i`. This means that the entire observable :math:`\SetObservable` is representable by the single Hermitian operator :math:`\op{H}`, which is why such operators are typically referred to simply as *observables* in standard quantum theory. Given this expression, the probability of measuring an eigenvalue :math:`\lambda_i` is given by
 
 .. math:: p_i = \trace[\StateDensity \op{\Pi}_i],
+   :label: eq:Born_rule_discrete
 
 which is known as the *Born rule*, and is one of the key principles of quantum mechanics. Accordingly, the *expected value* of the associated observable is simply
 

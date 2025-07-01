@@ -246,10 +246,10 @@ The alternative notation for the basis :math:`\{\ket{i}\}` is known as the *stan
    
    \ket{0} = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix},
    \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix},
-   \qquad \ldots
+   \qquad \ldots,
    \qquad \ket{\Dimension - 1} = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}.
 
-Here, the :math:`i`-th element (indexing from zero, as customary in computer science) of the :math:`i`-th vector contains a :math:`1`, while all of its other entries are :math:`0`. The corresponding covectors (bras) in the dual space :math:`\dual{\SpaceHilbert}{} \cong \Complexes^{*\Dimension}` have similar representations as row vectors,
+Here, the :math:`i`-th element (indexing from zero, as customary in computer science) of the :math:`i`-th vector contains a :math:`1`, while all of its other entries contain :math:`0`. The corresponding covectors (bras) in the dual space :math:`\dual{\SpaceHilbert}{} \cong \Complexes^{*\Dimension}` have similar representations as row vectors,
 
 .. math::
    \begin{aligned}
@@ -629,7 +629,7 @@ A useful theorem for expressing composite vectors is the *Schmidt decomposition*
 .. math:: \ket{\psi} = \sum_k \lambda_k \ket{k_A} \otimes \ket{k_B}.
    :label: eq:schmidt_decomposition
 
-Here, :math:`\lambda_k` are non-negative real numbers, known as *Schmidt coefficients* that satisfy
+Here, :math:`\{\lambda_k\}_k` are non-negative real numbers, known as *Schmidt coefficients* that satisfy
 
 .. math:: \sum_k \lambda_k^2 = \braket{\psi}{\psi}.
 
