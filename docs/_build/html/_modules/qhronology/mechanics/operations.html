@@ -47,7 +47,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -571,7 +571,6 @@
 <span class="sd">    Matrix([</span>
 <span class="sd">    [conjugate(a), conjugate(c)],</span>
 <span class="sd">    [conjugate(b), conjugate(d)]])</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">Dagger</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span></div>
@@ -580,18 +579,28 @@
 
 <div class="viewcode-block" id="simplify">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.simplify">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">simplify</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">simplify</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">comprehensive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Simplify ``matrix`` using a powerful (albeit slow) algorithm.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    matrix : mat | QuantumObject</span>
 <span class="sd">        The matrix to be simplified.</span>
+<span class="sd">    comprehensive : bool</span>
+<span class="sd">        Whether the simplifying algorithm should use a relatively efficient subset of</span>
+<span class="sd">        simplifying operations (``False``),</span>
+<span class="sd">        or alternatively use a larger, more powerful (but slower) set (``True``).</span>
+<span class="sd">        Defaults to ``False``.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    mat</span>
 <span class="sd">        The simplified version of ``matrix``.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    If ``comprehensive`` is ``True``, the simplification algorithm will likely take *far*</span>
+<span class="sd">    longer to execute than if ``comprehensive`` were ``False``.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -605,6 +614,12 @@
 <span class="sd">    Matrix([</span>
 <span class="sd">    [a, b],</span>
 <span class="sd">    [c, d]])</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([&quot;2*cos(pi*x/2)**2&quot;])</span>
+<span class="sd">    &gt;&gt;&gt; simplify(matrix, comprehensive=False)</span>
+<span class="sd">    Matrix([[2*cos(pi*x/2)**2]])</span>
+<span class="sd">    &gt;&gt;&gt; simplify(matrix, comprehensive=True)</span>
+<span class="sd">    Matrix([[cos(pi*x) + 1]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
@@ -613,7 +628,7 @@
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
     <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
-    <span class="n">matrix</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">comprehensive</span><span class="o">=</span><span class="n">comprehensive</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">matrix</span></div>
 
@@ -1316,15 +1331,42 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">dagger</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comprehensive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a forced simplification to the state using the values of its ``symbols`` and</span>
 <span class="sd">        ``conditions`` properties.</span>
 
 <span class="sd">        Useful if intermediate simplification is required during a sequence of mutating operations</span>
 <span class="sd">        in order to process the state into a more desirable form.</span>
 
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        comprehensive : bool</span>
+<span class="sd">            Whether the simplifying algorithm should use a relatively efficient subset of</span>
+<span class="sd">            simplifying operations (``False``),</span>
+<span class="sd">            or alternatively use a larger, more powerful (but slower) set (``True``).</span>
+<span class="sd">            Defaults to ``False``.</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ----</span>
+<span class="sd">        If ``comprehensive`` is ``True``, the simplification algorithm will likely take *far*</span>
+<span class="sd">        longer to execute than if ``comprehensive`` were ``False``.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; matrix = sp.Matrix(</span>
+<span class="sd">        ...     [</span>
+<span class="sd">        ...         [&quot;(a**2 - 1)/(a - 1) - 1&quot;, &quot;log(cos(b) + I*sin(b))/I&quot;],</span>
+<span class="sd">        ...         [&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;, &quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;],</span>
+<span class="sd">        ...     ]</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; rho = QuantumState(spec=matrix, form=&quot;matrix&quot;, label=&quot;ρ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; rho.print()</span>
+<span class="sd">        ρ = (-1 + (a**2 - 1)/(a - 1))|0⟩⟨0| + -I*log(I*sin(b) + cos(b))|0⟩⟨1| + acos(exp(I*c)/2 + exp(-I*c)/2)|1⟩⟨0| + d**log(E*(sin(d)**2 + cos(d)**2))|1⟩⟨1|</span>
+<span class="sd">        &gt;&gt;&gt; rho.simplify()</span>
+<span class="sd">        &gt;&gt;&gt; rho.print()</span>
+<span class="sd">        ρ = a|0⟩⟨0| + b|0⟩⟨1| + c|1⟩⟨0| + d|1⟩⟨1|</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comprehensive</span><span class="o">=</span><span class="n">comprehensive</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a Python function (``function``) to the state.</span>

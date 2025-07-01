@@ -205,7 +205,7 @@
    
    .. rst-class:: centered
       
-      **Latest Version:** 1.0.0 | **Date:** June 2025
+      **Latest Version:** 1.0.1 | **Date:** July 2025
    
    ----
 

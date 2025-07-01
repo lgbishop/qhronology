@@ -47,7 +47,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -917,7 +917,6 @@
 <span class="sd">        -------</span>
 <span class="sd">        mat</span>
 <span class="sd">            The total input state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conditions</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
         <span class="n">label</span> <span class="o">=</span> <span class="p">(</span>
@@ -1024,7 +1023,6 @@
 <span class="sd">        ----</span>
 <span class="sd">        This construction excludes measurement gates as they do not have a corresponding</span>
 <span class="sd">        matrix representation.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">spec</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">num_systems_gross</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">:</span>
@@ -1133,7 +1131,6 @@
 <span class="sd">        -------</span>
 <span class="sd">        mat</span>
 <span class="sd">            The matrix representation of the (post-processed) output state.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conditions</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
         <span class="n">output_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span>
@@ -1274,7 +1271,6 @@
 <span class="sd">        QuantumState</span>
 <span class="sd">            The (post-processed) output state as a</span>
 <span class="sd">            :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conditions</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
         <span class="n">simplify</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">simplify</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">simplify</span>
@@ -1416,9 +1412,7 @@
 <span class="sd">            A quantum state that takes the form of the post-measurement probabilistic sum</span>
 <span class="sd">            of all outcomes of measurements corresponding to each operator given in ``operators``.</span>
 <span class="sd">            Returned only if ``statistics`` is ``False``.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="n">statistics</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">statistics</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">statistics</span>
         <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">postprocess</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">statistics</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -1491,7 +1485,6 @@
 <span class="sd">        ----</span>
 <span class="sd">        The quality of the visualization depends greatly on the output&#39;s configuration.</span>
 <span class="sd">        For best results, the terminal should have a monospace font with good Unicode coverage.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pad</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">pad</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">pad</span>
         <span class="n">sep</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">sep</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">sep</span>
