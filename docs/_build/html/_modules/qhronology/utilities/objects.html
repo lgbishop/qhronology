@@ -47,7 +47,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -523,13 +523,65 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">debug</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notation</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; = &quot;</span> <span class="o">+</span> <span class="n">stringify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+        <span class="n">expression</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notation</span><span class="p">)</span>
+            <span class="o">+</span> <span class="s2">&quot; = &quot;</span>
+            <span class="o">+</span> <span class="n">stringify</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span>
+                <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">expression</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">())</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class="viewcode-block" id="QuantumObject.print">
+<a class="viewcode-back" href="../../../text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.print">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">delimiter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">product</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">return_string</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print or return a mathematical expression of the quantum object as a multiline string.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        delimiter : str</span>
+<span class="sd">            A string containing the character(s) with which to delimit (i.e., separate) the values</span>
+<span class="sd">            in the ket and/or bra terms in the mathematical expression.</span>
+<span class="sd">            Defaults to ``&quot;,&quot;``.</span>
+<span class="sd">        product : bool</span>
+<span class="sd">            Whether to represent the mathematical expression using tensor products.</span>
+<span class="sd">            Only applies if the object is a multipartite composition.</span>
+<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">        return_string : bool</span>
+<span class="sd">            Whether to return the mathematical expression as a multiline string.</span>
+<span class="sd">            Defaults to ``False``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">            Returned only if ``return_string`` is ``False``.</span>
+<span class="sd">        str</span>
+<span class="sd">            The constructed mathematical expression. Returned only if ``return_string`` is ``True``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">expression</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notation</span><span class="p">)</span>
+            <span class="o">+</span> <span class="s2">&quot; = &quot;</span>
+            <span class="o">+</span> <span class="n">stringify</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span>
+                <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
+                <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span>
+                <span class="n">product</span><span class="o">=</span><span class="n">product</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">return_string</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">expression</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="QuantumObject.output">
 <a class="viewcode-back" href="../../../text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.output">[docs]</a>
@@ -558,7 +610,6 @@
 <span class="sd">        -------</span>
 <span class="sd">        mat</span>
 <span class="sd">            The object&#39;s simplified matrix representation.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span>
 

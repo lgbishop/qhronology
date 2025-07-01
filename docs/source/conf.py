@@ -16,14 +16,14 @@ project = "Qhronology"
 copyright = "2025 Lachlan G. Bishop"
 author = "Lachlan G. Bishop"
 version = "1"
-release = "1.0.0"
+release = "1.0.1"
 html_title = "Qhronology"
 html_last_updated_fmt = "%b %d, %Y"
 language = "en"
 root_doc = "index"
 latex_doc = "index_latex"
 today_fmt = "%b %d, %Y"
-today = "June 2025"
+today = "July 2025"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

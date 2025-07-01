@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -575,18 +575,30 @@ If <code class="docutils literal notranslate"><span class="pre">vector</span></c
 
 <dl>
 <dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">comprehensive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#simplify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.simplify" title="Link to this definition">#</a></dt>
 <dd><p>Simplify <code class="docutils literal notranslate"><span class="pre">matrix</span></code> using a powerful (albeit slow) algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>matrix</strong> (<em>mat</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a>) – The matrix to be simplified.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>mat</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a>) – The matrix to be simplified.</p></li>
+<li><p><strong>comprehensive</strong> (<em>bool</em>) – Whether the simplifying algorithm should use a relatively efficient subset of
+simplifying operations (<code class="docutils literal notranslate"><span class="pre">False</span></code>),
+or alternatively use a larger, more powerful (but slower) set (<code class="docutils literal notranslate"><span class="pre">True</span></code>).
+Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><em>mat</em> – The simplified version of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">comprehensive</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the simplification algorithm will likely take <em>far</em>
+longer to execute than if <code class="docutils literal notranslate"><span class="pre">comprehensive</span></code> were <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">[</span>
@@ -598,6 +610,13 @@ If <code class="docutils literal notranslate"><span class="pre">vector</span></c
 <span class="go">Matrix([</span>
 <span class="go">[a, b],</span>
 <span class="go">[c, d]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="s2">&quot;2*cos(pi*x/2)**2&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">simplify</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">comprehensive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">Matrix([[2*cos(pi*x/2)**2]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">simplify</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">comprehensive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">Matrix([[cos(pi*x) + 1]])</span>
 </pre></div>
 </div>
 </dd></dl>

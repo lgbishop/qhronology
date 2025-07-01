@@ -260,6 +260,36 @@ Methods
 
    \hrulefillthick
 
+.. automethod:: qhronology.quantum.gates.QuantumGate.print
+
+   .. rubric:: :styleheader6:`Examples`
+
+   >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
+   >>> U = QuantumGate(spec=unitary, label="U", dim=2)
+   >>> U.output()
+   Matrix([
+   [U[0, 0], U[0, 1]],
+   [U[1, 0], U[1, 1]]])
+   >>> U.print()
+   U = U[0, 0]|0⟩⟨0| + U[0, 1]|0⟩⟨1| + U[1, 0]|1⟩⟨0| + U[1, 1]|1⟩⟨1|
+
+   >>> unitary = sp.MatrixSymbol("U", 4, 4).as_mutable()
+   >>> UU = QuantumGate(spec=unitary, label="UU", dim=2, targets = [0,1])
+   >>> UU.output()
+   Matrix([
+   [U[0, 0], U[0, 1], U[0, 2], U[0, 3]],
+   [U[1, 0], U[1, 1], U[1, 2], U[1, 3]],
+   [U[2, 0], U[2, 1], U[2, 2], U[2, 3]],
+   [U[3, 0], U[3, 1], U[3, 2], U[3, 3]]])
+   >>> UU.print()
+   UU = U[0, 0]|0,0⟩⟨0,0| + U[0, 1]|0,0⟩⟨0,1| + U[0, 2]|0,0⟩⟨1,0| + U[0, 3]|0,0⟩⟨1,1| + U[1, 0]|0,1⟩⟨0,0| + U[1, 1]|0,1⟩⟨0,1| + U[1, 2]|0,1⟩⟨1,0| + U[1, 3]|0,1⟩⟨1,1| + U[2, 0]|1,0⟩⟨0,0| + U[2, 1]|1,0⟩⟨0,1| + U[2, 2]|1,0⟩⟨1,0| + U[2, 3]|1,0⟩⟨1,1| + U[3, 0]|1,1⟩⟨0,0| + U[3, 1]|1,1⟩⟨0,1| + U[3, 2]|1,1⟩⟨1,0| + U[3, 3]|1,1⟩⟨1,1|
+   >>> UU.print(product=True)
+   UU = U[0, 0]|0⟩⟨0|⊗|0⟩⟨0| + U[0, 1]|0⟩⟨0|⊗|0⟩⟨1| + U[0, 2]|0⟩⟨1|⊗|0⟩⟨0| + U[0, 3]|0⟩⟨1|⊗|0⟩⟨1| + U[1, 0]|0⟩⟨0|⊗|1⟩⟨0| + U[1, 1]|0⟩⟨0|⊗|1⟩⟨1| + U[1, 2]|0⟩⟨1|⊗|1⟩⟨0| + U[1, 3]|0⟩⟨1|⊗|1⟩⟨1| + U[2, 0]|1⟩⟨0|⊗|0⟩⟨0| + U[2, 1]|1⟩⟨0|⊗|0⟩⟨1| + U[2, 2]|1⟩⟨1|⊗|0⟩⟨0| + U[2, 3]|1⟩⟨1|⊗|0⟩⟨1| + U[3, 0]|1⟩⟨0|⊗|1⟩⟨0| + U[3, 1]|1⟩⟨0|⊗|1⟩⟨1| + U[3, 2]|1⟩⟨1|⊗|1⟩⟨0| + U[3, 3]|1⟩⟨1|⊗|1⟩⟨1|
+
+.. raw:: latex
+
+   \hrulefillthick
+
 .. automethod:: qhronology.quantum.gates.QuantumGate.diagram
 
    .. rubric:: :styleheader6:`Examples`

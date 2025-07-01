@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -873,6 +873,66 @@ Defaults to the value of <code class="docutils literal notranslate"><span class=
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.print">
+<span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">return_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.print" title="Link to this definition">#</a></dt>
+<dd><p>Print or return a mathematical expression of the quantum object as a multiline string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delimiter</strong> (<em>str</em>) – A string containing the character(s) with which to delimit (i.e., separate) the values
+in the ket and/or bra terms in the mathematical expression.
+Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code>.</p></li>
+<li><p><strong>product</strong> (<em>bool</em>) – Whether to represent the mathematical expression using tensor products.
+Only applies if the object is a multipartite composition.
+Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>return_string</strong> (<em>bool</em>) – Whether to return the mathematical expression as a multiline string.
+Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>None</em> – Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><em>str</em> – The constructed mathematical expression. Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric"><span class="classheader6">Examples</span></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">U</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">U</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0], U[0, 1]],</span>
+<span class="go">[U[1, 0], U[1, 1]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">U</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">U = U[0, 0]|0⟩⟨0| + U[0, 1]|0⟩⟨1| + U[1, 0]|1⟩⟨0| + U[1, 1]|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;UU&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0], U[0, 1], U[0, 2], U[0, 3]],</span>
+<span class="go">[U[1, 0], U[1, 1], U[1, 2], U[1, 3]],</span>
+<span class="go">[U[2, 0], U[2, 1], U[2, 2], U[2, 3]],</span>
+<span class="go">[U[3, 0], U[3, 1], U[3, 2], U[3, 3]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UU</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">UU = U[0, 0]|0,0⟩⟨0,0| + U[0, 1]|0,0⟩⟨0,1| + U[0, 2]|0,0⟩⟨1,0| + U[0, 3]|0,0⟩⟨1,1| + U[1, 0]|0,1⟩⟨0,0| + U[1, 1]|0,1⟩⟨0,1| + U[1, 2]|0,1⟩⟨1,0| + U[1, 3]|0,1⟩⟨1,1| + U[2, 0]|1,0⟩⟨0,0| + U[2, 1]|1,0⟩⟨0,1| + U[2, 2]|1,0⟩⟨1,0| + U[2, 3]|1,0⟩⟨1,1| + U[3, 0]|1,1⟩⟨0,0| + U[3, 1]|1,1⟩⟨0,1| + U[3, 2]|1,1⟩⟨1,0| + U[3, 3]|1,1⟩⟨1,1|</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UU</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">UU = U[0, 0]|0⟩⟨0|⊗|0⟩⟨0| + U[0, 1]|0⟩⟨0|⊗|0⟩⟨1| + U[0, 2]|0⟩⟨1|⊗|0⟩⟨0| + U[0, 3]|0⟩⟨1|⊗|0⟩⟨1| + U[1, 0]|0⟩⟨0|⊗|1⟩⟨0| + U[1, 1]|0⟩⟨0|⊗|1⟩⟨1| + U[1, 2]|0⟩⟨1|⊗|1⟩⟨0| + U[1, 3]|0⟩⟨1|⊗|1⟩⟨1| + U[2, 0]|1⟩⟨0|⊗|0⟩⟨0| + U[2, 1]|1⟩⟨0|⊗|0⟩⟨1| + U[2, 2]|1⟩⟨1|⊗|0⟩⟨0| + U[2, 3]|1⟩⟨1|⊗|0⟩⟨1| + U[3, 0]|1⟩⟨0|⊗|1⟩⟨0| + U[3, 1]|1⟩⟨0|⊗|1⟩⟨1| + U[3, 2]|1⟩⟨1|⊗|1⟩⟨0| + U[3, 3]|1⟩⟨1|⊗|1⟩⟨1|</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.diagram">
 <span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">diagram</span></span><span class="sig-paren">(</span>
 
@@ -884,7 +944,7 @@ Defaults to the value of <code class="docutils literal notranslate"><span class=
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.diagram" title="Link to this definition">#</a></dt>
-<dd><p>Print or return a string diagram of the quantum object as a multiline string.</p>
+<dd><p>Print or return a circuit diagram of the quantum object as a multiline string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -2580,6 +2640,7 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">None</s
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.output"><code class="docutils literal notranslate"><span class="pre">QuantumGate.output()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.print"><code class="docutils literal notranslate"><span class="pre">QuantumGate.print()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.diagram"><code class="docutils literal notranslate"><span class="pre">QuantumGate.diagram()</span></code></a></li>
 </ul>
 </li>

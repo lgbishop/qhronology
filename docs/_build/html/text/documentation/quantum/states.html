@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -947,6 +947,124 @@ Defaults to the value of <code class="docutils literal notranslate"><span class=
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.print">
+<span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">return_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="headerlink" href="#qhronology.quantum.states.QuantumState.print" title="Link to this definition">#</a></dt>
+<dd><p>Print or return a mathematical expression of the quantum object as a multiline string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delimiter</strong> (<em>str</em>) – A string containing the character(s) with which to delimit (i.e., separate) the values
+in the ket and/or bra terms in the mathematical expression.
+Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code>.</p></li>
+<li><p><strong>product</strong> (<em>bool</em>) – Whether to represent the mathematical expression using tensor products.
+Only applies if the object is a multipartite composition.
+Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>return_string</strong> (<em>bool</em>) – Whether to return the mathematical expression as a multiline string.
+Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>None</em> – Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><em>str</em> – The constructed mathematical expression. Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric"><span class="classheader6">Examples</span></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vector_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vector_state</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[a],</span>
+<span class="go">[b]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vector_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ⟩ = a|0⟩ + b|1⟩</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mixed_matrix_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;matrix&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mixed_matrix_state</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[a, 0],</span>
+<span class="go">[0, b]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mixed_matrix_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">ρ = a|0⟩⟨0| + b|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pure_matrix_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;matrix&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;pure&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pure_matrix_state</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[a*conjugate(a), a*conjugate(b)],</span>
+<span class="go">[b*conjugate(a), b*conjugate(b)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pure_matrix_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ⟩⟨ψ| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">composite_vector_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_vector_state</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[a],</span>
+<span class="go">[0],</span>
+<span class="go">[0],</span>
+<span class="go">[b]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_vector_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ⟩ = a|0,0⟩ + b|1,1⟩</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_vector_state</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">|ψ⟩ = a|00⟩ + b|11⟩</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_vector_state</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">|ψ⟩ = a|0⟩⊗|0⟩ + b|1⟩⊗|1⟩</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">composite_mixed_matrix_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;matrix&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_mixed_matrix_state</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[a, 0, 0, 0],</span>
+<span class="go">[0, 0, 0, 0],</span>
+<span class="go">[0, 0, 0, 0],</span>
+<span class="go">[0, 0, 0, b]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_mixed_matrix_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">ρ = a|0,0⟩⟨0,0| + b|1,1⟩⟨1,1|</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_mixed_matrix_state</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">ρ = a|00⟩⟨00| + b|11⟩⟨11|</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_mixed_matrix_state</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">ρ = a|0⟩⟨0|⊗|0⟩⟨0| + b|1⟩⟨1|⊗|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">composite_pure_matrix_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;matrix&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;pure&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_pure_matrix_state</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[a*conjugate(a), 0, 0, a*conjugate(b)],</span>
+<span class="go">[             0, 0, 0,              0],</span>
+<span class="go">[             0, 0, 0,              0],</span>
+<span class="go">[b*conjugate(a), 0, 0, b*conjugate(b)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_pure_matrix_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ⟩⟨ψ| = a*conjugate(a)|0,0⟩⟨0,0| + a*conjugate(b)|0,0⟩⟨1,1| + b*conjugate(a)|1,1⟩⟨0,0| + b*conjugate(b)|1,1⟩⟨1,1|</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_pure_matrix_state</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">|ψ⟩⟨ψ| = a*conjugate(a)|00⟩⟨00| + a*conjugate(b)|00⟩⟨11| + b*conjugate(a)|11⟩⟨00| + b*conjugate(b)|11⟩⟨11|</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">composite_pure_matrix_state</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">product</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">|ψ⟩⟨ψ| = a*conjugate(a)|0⟩⟨0|⊗|0⟩⟨0| + a*conjugate(b)|0⟩⟨1|⊗|0⟩⟨1| + b*conjugate(a)|1⟩⟨0|⊗|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|⊗|1⟩⟨1|</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.diagram">
 <span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">diagram</span></span><span class="sig-paren">(</span>
 
@@ -958,7 +1076,7 @@ Defaults to the value of <code class="docutils literal notranslate"><span class=
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="headerlink" href="#qhronology.quantum.states.QuantumState.diagram" title="Link to this definition">#</a></dt>
-<dd><p>Print or return a string diagram of the quantum object as a multiline string.</p>
+<dd><p>Print or return a circuit diagram of the quantum object as a multiline string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1043,11 +1161,45 @@ All other attributes and properties are unchanged.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.simplify">
-<span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">simplify</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qhronology.quantum.states.QuantumState.simplify" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">simplify</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">comprehensive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#qhronology.quantum.states.QuantumState.simplify" title="Link to this definition">#</a></dt>
 <dd><p>Apply a forced simplification to the state using the values of its <code class="docutils literal notranslate"><span class="pre">symbols</span></code> and
 <code class="docutils literal notranslate"><span class="pre">conditions</span></code> properties.</p>
 <p>Useful if intermediate simplification is required during a sequence of mutating operations
 in order to process the state into a more desirable form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>comprehensive</strong> (<em>bool</em>) – Whether the simplifying algorithm should use a relatively efficient subset of
+simplifying operations (<code class="docutils literal notranslate"><span class="pre">False</span></code>),
+or alternatively use a larger, more powerful (but slower) set (<code class="docutils literal notranslate"><span class="pre">True</span></code>).
+Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">comprehensive</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the simplification algorithm will likely take <em>far</em>
+longer to execute than if <code class="docutils literal notranslate"><span class="pre">comprehensive</span></code> were <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;(a**2 - 1)/(a - 1) - 1&quot;</span><span class="p">,</span> <span class="s2">&quot;log(cos(b) + I*sin(b))/I&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;</span><span class="p">,</span> <span class="s2">&quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rho</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">matrix</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;matrix&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rho</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">ρ = (-1 + (a**2 - 1)/(a - 1))|0⟩⟨0| + -I*log(I*sin(b) + cos(b))|0⟩⟨1| + acos(exp(I*c)/2 + exp(-I*c)/2)|1⟩⟨0| + d**log(E*(sin(d)**2 + cos(d)**2))|1⟩⟨1|</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rho</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rho</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">ρ = a|0⟩⟨0| + b|0⟩⟨1| + c|1⟩⟨0| + d|1⟩⟨1|</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1991,6 +2143,7 @@ This means that neither <code class="docutils literal notranslate"><span class="
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.output"><code class="docutils literal notranslate"><span class="pre">QuantumState.output()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.print"><code class="docutils literal notranslate"><span class="pre">QuantumState.print()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.diagram"><code class="docutils literal notranslate"><span class="pre">QuantumState.diagram()</span></code></a></li>
 </ul>
 </li>
