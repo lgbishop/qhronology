@@ -2,7 +2,7 @@
 
 rm -rf ./pyodide
 
-# curl -OL https://github.com/pyodide/pyodide/releases/download/0.27.7/pyodide-0.27.7.tar.bz2
+curl -OL https://github.com/pyodide/pyodide/releases/download/0.27.7/pyodide-0.27.7.tar.bz2
 bzip2 -dk pyodide-*.tar.bz2
 tar -xvf pyodide-*.tar
 
