@@ -45,7 +45,7 @@ for FILE in "${jobs[@]}"; do
 
     cat "$SCRIPT"
 
-    PYTHONPATH="$PYTHONPATH:/home/lachie/Dropbox/programming/python/qhronology/src/" /run/current-system/sw/bin/python -B "${PATH_ABSOLUTE%.*}-truncated.py" > "${PATH_RELATIVE}/${NAME}.txt" 2>&1
+    PYTHONPATH="$PYTHONPATH:$(pwd)/../../../../../qhronology/src/" /run/current-system/sw/bin/python -B "${PATH_ABSOLUTE%.*}-truncated.py" > "${PATH_RELATIVE}/${NAME}.txt" 2>&1
     rm -f "$SCRIPT"
 
     ) &
