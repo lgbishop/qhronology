@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 02, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 03, 2025"/>
   </head>
   
   
@@ -568,13 +568,13 @@
 <div class="math notranslate nohighlight" id="equation-eq-t-ctcs">
 <span class="eqno">(272)<a class="headerlink" href="#equation-eq-t-ctcs" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \MapTCTCsCR_{\Unitary}[\StatePure] &amp;= \frac{1}{\Normalization^{\prime}} \Bigl( \trace_\CV[\Unitary] \ket{\StatePure}\bra{\StatePure} \trace_\CV[\Unitary^\dagger] + \Dimension \, \trace_\CV\bigl[ \Unitary\bigl(\ket{\StatePure}\bra{\StatePure} \otimes \tfrac{1}{\Dimension}\Identity\bigr) \Unitary^\dagger\bigr] \Bigr), \\
-    \Normalization^{\prime} &amp;\equiv \trace\Bigl\{ \trace_\CV[\Unitary] \ket{\StatePure}\bra{\StatePure} \trace_\CV[\Unitary^\dagger] \Bigr\} + \Dimension.
+    \Normalization^{\prime} &amp;\equiv \trace\Bigl[ \trace_\CV[\Unitary] \ket{\StatePure}\bra{\StatePure} \trace_\CV[\Unitary^\dagger] \Bigr] + \Dimension.
 \end{aligned}\end{split}\]</div>
 <p>In general, the methodology of the T-CTC prescription may equally be applied to mixed CR input states, giving</p>
 <div class="math notranslate nohighlight" id="equation-eq-t-ctcs-mixed">
 <span class="eqno">(273)<a class="headerlink" href="#equation-eq-t-ctcs-mixed" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \MapTCTCsCR_{\Unitary}[\StateCR] &amp;= \frac{1}{\Normalization^{\prime}} \Bigl( \trace_\CV[\Unitary] \StateCR \, \trace_\CV[\Unitary^\dagger] + \Dimension \, \trace_\CV\bigl[ \Unitary\bigl(\StateCR \otimes \tfrac{1}{\Dimension}\Identity\bigr) \Unitary^\dagger\bigr] \Bigr), \\
-    \Normalization^{\prime} &amp;\equiv \trace\Bigl\{ \trace_\CV[\Unitary] \StateCR \, \trace_\CV[\Unitary^\dagger] \Bigr\} + \Dimension.
+    \Normalization^{\prime} &amp;\equiv \trace\Bigl[ \trace_\CV[\Unitary] \StateCR \, \trace_\CV[\Unitary^\dagger] \Bigr] + \Dimension.
 \end{aligned}\end{split}\]</div>
 <p>In this form, it is immediately clear that the T-CTC equation of motion is a weighted mixture of the P-CTC equation of motion <a class="reference internal" href="P-CTCs.html#equation-eq-p-ctcs-cr">(250)</a> with an ordinary quantum channel, giving the impression that a T-CTC can be thought of as a noisy P-CTC. Therefore, T-CTCs, like P-CTCs, does not suffer from uniqueness ambiguities, while having the benefit of being consistent for any given <span class="math notranslate nohighlight">\(\Unitary\)</span> and <span class="math notranslate nohighlight">\(\StateCR\)</span>. This is because the condition</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-alternatives-10">

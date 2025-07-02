@@ -178,7 +178,7 @@ def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
     .. math::
 
        \\Fidelity(\\op{\\rho}, \\op{\\tau})
-           = \\left(\\trace{\\sqrt{\\sqrt{\\op{\\rho}}\\op{\\tau}\\sqrt{\\op{\\rho}}}}\\right)^2.
+           = \\left(\\trace{\\sqrt{\\sqrt{\\op{\\rho}}\\,\\op{\\tau}\\sqrt{\\op{\\rho}}}}\\right)^2.
 
     Arguments
     ---------
@@ -562,7 +562,7 @@ class QuantitiesMixin:
         .. math::
 
            \\Fidelity(\\op{\\rho}, \\op{\\tau})
-               = \\left(\\trace{\\sqrt{\\sqrt{\\op{\\rho}}\\op{\\tau}\\sqrt{\\op{\\rho}}}}\\right)^2.
+               = \\left(\\trace{\\sqrt{\\sqrt{\\op{\\rho}}\\,\\op{\\tau}\\sqrt{\\op{\\rho}}}}\\right)^2.
 
         Arguments
         ---------

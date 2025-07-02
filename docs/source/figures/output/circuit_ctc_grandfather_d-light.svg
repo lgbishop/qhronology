@@ -40,7 +40,7 @@
 <path clip-rule="nonzero" d="M 98.214844 48.394531 C 98.214844 45.640625 95.984375 43.410156 93.234375 43.410156 C 90.484375 43.410156 88.253906 45.640625 88.253906 48.394531 C 88.253906 51.144531 90.484375 53.375 93.234375 53.375 C 95.984375 53.375 98.214844 51.144531 98.214844 48.394531 Z M 98.214844 48.394531 "/>
 </clipPath>
 <clipPath id="clip-7">
-<path clip-rule="nonzero" d="M 134 24 L 140.382812 24 L 140.382812 30 L 134 30 Z M 134 24 "/>
+<path clip-rule="nonzero" d="M 134 25 L 140.382812 25 L 140.382812 31 L 134 31 Z M 134 25 "/>
 </clipPath>
 <clipPath id="clip-8">
 <path clip-rule="nonzero" d="M 0 29 L 33 29 L 33 61.09375 L 0 61.09375 Z M 0 29 "/>
@@ -70,13 +70,13 @@
 </g>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="37.8" y="51.077"/>
+<use xlink:href="#glyph-0-0" x="37.8" y="50.698"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-1" x="37.272" y="51.077"/>
+<use xlink:href="#glyph-1-1" x="37.272" y="50.698"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-2-0" x="41.627" y="52.572"/>
+<use xlink:href="#glyph-2-0" x="41.627" y="52.951"/>
 </g>
 <path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" d="M 71.449219 48.394531 C 71.449219 47.292969 70.554688 46.402344 69.453125 46.402344 C 68.355469 46.402344 67.460938 47.292969 67.460938 48.394531 C 67.460938 49.492188 68.355469 50.386719 69.453125 50.386719 C 70.554688 50.386719 71.449219 49.492188 71.449219 48.394531 Z M 71.449219 48.394531 "/>
 <g clip-path="url(#clip-5)">
@@ -105,14 +105,14 @@
 <use xlink:href="#glyph-1-2" x="-0.151" y="28.179"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="129.744" y="28.179"/>
+<use xlink:href="#glyph-0-0" x="129.744" y="28.02"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-2" x="128.829" y="28.179"/>
+<use xlink:href="#glyph-1-2" x="128.829" y="28.02"/>
 </g>
 <g clip-path="url(#clip-7)">
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-2-0" x="133.98" y="29.673"/>
+<use xlink:href="#glyph-2-0" x="133.98" y="30.274"/>
 </g>
 </g>
 <path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="0" d="M 21.574219 41.253906 L 9.210938 48.394531 L 21.574219 55.53125 Z M 21.574219 41.253906 "/>

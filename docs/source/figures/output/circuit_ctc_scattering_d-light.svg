@@ -37,7 +37,7 @@
 <path clip-rule="nonzero" d="M 76.300781 54.0625 C 76.300781 51.3125 74.070312 49.082031 71.320312 49.082031 C 68.570312 49.082031 66.339844 51.3125 66.339844 54.0625 C 66.339844 56.8125 68.570312 59.042969 71.320312 59.042969 C 74.070312 59.042969 76.300781 56.8125 76.300781 54.0625 Z M 76.300781 54.0625 "/>
 </clipPath>
 <clipPath id="clip-5">
-<path clip-rule="nonzero" d="M 113 24 L 119.988281 24 L 119.988281 30 L 113 30 Z M 113 24 "/>
+<path clip-rule="nonzero" d="M 113 25 L 119.988281 25 L 119.988281 31 L 113 31 Z M 113 25 "/>
 </clipPath>
 <clipPath id="clip-6">
 <path clip-rule="nonzero" d="M 0 35 L 33 35 L 33 66.761719 L 0 66.761719 Z M 0 35 "/>
@@ -61,13 +61,13 @@
 </g>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="37.8" y="56.747"/>
+<use xlink:href="#glyph-0-0" x="37.8" y="56.367"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-1" x="37.272" y="56.747"/>
+<use xlink:href="#glyph-1-1" x="37.272" y="56.367"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-2-0" x="41.627" y="58.241"/>
+<use xlink:href="#glyph-2-0" x="41.627" y="58.621"/>
 </g>
 <g clip-path="url(#clip-3)">
 <g clip-path="url(#clip-4)">
@@ -92,14 +92,14 @@
 <use xlink:href="#glyph-1-2" x="-0.151" y="28.179"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="109.339" y="28.179"/>
+<use xlink:href="#glyph-0-0" x="109.339" y="28.02"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-1-2" x="108.424" y="28.179"/>
+<use xlink:href="#glyph-1-2" x="108.424" y="28.02"/>
 </g>
 <g clip-path="url(#clip-5)">
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-2-0" x="113.575" y="29.673"/>
+<use xlink:href="#glyph-2-0" x="113.575" y="30.274"/>
 </g>
 </g>
 <path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="0" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 21.81925 -0.001625 C 21.81925 3.98275 18.592688 7.209312 14.608313 7.209312 C 10.627844 7.209312 7.397375 3.98275 7.397375 -0.001625 C 7.397375 -3.982094 10.627844 -7.212563 14.608313 -7.212563 C 18.592688 -7.212563 21.81925 -3.982094 21.81925 -0.001625 Z M 21.81925 -0.001625 " transform="matrix(1, 0, 0, -1, 56.712, 39.889)"/>

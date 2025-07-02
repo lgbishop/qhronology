@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 02, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 03, 2025"/>
   </head>
   
   
@@ -536,7 +536,7 @@
 <span id="sec-path-integral"></span><h2>The path-integral formulation<a class="headerlink" href="#the-path-integral-formulation" title="Link to this heading">#</a></h2>
 <p>The <em>path-integral formulation</em> <span id="id2">[<a class="reference internal" href="#cite-1-ryder-quantum-1996" title="L. H. Ryder, Quantum Field Theory, Cambridge University Press, Cambridge, 2nd edition, 1996.">4</a>, <a class="reference internal" href="#cite-1-kleinert-path-2009" title="H. Kleinert, Path Integrals in Quantum Mechanics, Statistics, Polymer Physics, and Financial Markets, World Scientific, 5th edition, 2009.">11</a>]</span> (or the <em>sum-over-histories</em> approach) of quantum mechanics and field theory is a formalism that generalizes the principle of stationary action (from classical mechanics) to quantum mechanics. It is based on the notion of the <em>propagator</em>,</p>
 <div class="math notranslate nohighlight" id="equation-eq-propagator">
-<span class="eqno">(212)<a class="headerlink" href="#equation-eq-propagator" title="Link to this equation">#</a></span>\[\Propagator(\vec{\PositionFinal},\TimeFinal;\vec{\PositionInitial},\TimeInitial) \equiv \braket{\vec{\PositionFinal},\TimeFinal}{\vec{\PositionInitial},\TimeInitial}, \qquad \TimeFinal&gt;\TimeInitial\]</div>
+<span class="eqno">(212)<a class="headerlink" href="#equation-eq-propagator" title="Link to this equation">#</a></span>\[\Propagator(\vec{\PositionFinal},\TimeFinal;\vec{\PositionInitial},\TimeInitial) \equiv \braket{\vec{\PositionFinal},\TimeFinal}{\vec{\PositionInitial},\TimeInitial}, \qquad \TimeFinal&gt;\TimeInitial,\]</div>
 <p>which is, in general, a generalized function (often a distribution), and is defined as per <a class="reference internal" href="#equation-eq-propagator-overlap">(211)</a>. Of its many properties and applications, the primary utility of the propagator lies in its ability to evolve a wave function <span class="math notranslate nohighlight">\(\WaveFunction(\vec{\PositionInitial},\TimeInitial)\)</span> to a later state via convolution, e.g.,</p>
 <div class="math notranslate nohighlight" id="equation-eq-kernel">
 <span class="eqno">(213)<a class="headerlink" href="#equation-eq-kernel" title="Link to this equation">#</a></span>\[\WaveFunction(\vec{\PositionFinal},\TimeFinal) = \int_{\Reals^\Dimension} \Propagator(\vec{\PositionFinal},\TimeFinal;\vec{\PositionInitial},\TimeInitial) \, \WaveFunction(\vec{\PositionInitial},\TimeInitial) \, \diff^\Dimension{\vec{\PositionInitial}}.\]</div>

@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 02, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 03, 2025"/>
   </head>
   
   
@@ -519,8 +519,8 @@
 <p>In Deutsch’s model (D-CTCs), we necessarily have to calculate fixed-point solutions <span class="math notranslate nohighlight">\(\StateCV\)</span> for the CV system. This is accomplished by first computing the standard evolution of the bipartite input state <span class="math notranslate nohighlight">\(\StateCR \otimes \StateCV\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-0">
 <span class="eqno">(373)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
-    \MapGeneral_{\Unitary} \bigl[\StateCR \otimes \StateCV\bigr] &amp;= \Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger \\
-    &amp;= \Swap^{0,1} \cdot \Control^1 \NOT^0 \bigl(\StateCR \otimes \StateCV\bigr) \Control^1 \NOT^{\dagger 0} \cdot \Swap^{\dagger 0,1} \\
+    \MapGeneral_{\Unitary} [\StateCR \otimes \StateCV] &amp;= \Unitary (\StateCR \otimes \StateCV) \Unitary^\dagger \\
+    &amp;= \Swap^{0,1} \cdot \Control^1 \NOT^0 (\StateCR \otimes \StateCV) \Control^1 \NOT^{\dagger 0} \cdot \Swap^{\dagger 0,1} \\
     &amp;= \Swap^{0,1} \bigl(\StateCR \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
     &amp; \qquad\quad\; + \StateCR\Pauli_x^\dagger \otimes \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \\
     &amp; \qquad\quad\; + \Pauli_x\StateCR \otimes \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \\
@@ -533,13 +533,13 @@
 <p>Subsequently tracing out the CR system yields the D-CTCs CV map,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-1">
 <span class="eqno">(374)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
-    \MapDCTCsCV_{\Unitary} \bigl[\StateCR,\StateCV\bigr] &amp;= \trace_{0} \bigl[\Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
+    \MapDCTCsCV_{\Unitary} [\StateCR,\StateCV] &amp;= \trace_{0} \bigl[\Unitary (\StateCR \otimes \StateCV) \Unitary^\dagger\bigr] \\
     &amp;= \bra{0}\StateCV\ket{0} \cdot \StateCR + \bra{1}\StateCV\ket{1} \cdot \Pauli_x\StateCR\Pauli_x^\dagger,
 \end{aligned}\end{split}\]</div>
 <p>while tracing out the CV system gives the CR map,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-grandfather-2">
 <span class="eqno">(375)<a class="headerlink" href="#equation-text-examples-ctcs-grandfather-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
-    \MapDCTCsCR_{\Unitary} \bigl[\StateCR,\StateCV\bigr] &amp;= \trace_{1} \bigl[\Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
+    \MapDCTCsCR_{\Unitary} [\StateCR,\StateCV] &amp;= \trace_{1} \bigl[\Unitary (\StateCR \otimes \StateCV) \Unitary^\dagger\bigr] \\
     &amp;= \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
     &amp; \quad + \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \cdot \bigl[\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr] \\
     &amp; \quad + \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \cdot \bigl[\bra{1}\StateCR\ket{0} + \bra{0}\StateCR\ket{1}\bigr] \\
@@ -574,7 +574,7 @@
 <p>Using this, we can obtain the P-CTC CR state from its definition <a class="reference internal" href="../../theory/time-travel/quantum/P-CTCs.html#equation-eq-p-ctcs-cr">(250)</a>,</p>
 <div class="math notranslate nohighlight" id="equation-eq-grandfather-p-ctcs-cr">
 <span class="eqno">(379)<a class="headerlink" href="#equation-eq-grandfather-p-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
-    \StateCR_\MapPCTCsCR &amp;= \MapPCTCsCR_{\Unitary} \bigl[\StateCR\bigr] \\
+    \StateCR_\MapPCTCsCR &amp;= \MapPCTCsCR_{\Unitary} [\StateCR] \\
     &amp;= \frac{\OperatorPCTC \StateCR \OperatorPCTC^\dagger}{\trace[\OperatorPCTC \StateCR \OperatorPCTC^\dagger]} \\
     &amp;= \ket{+}\bra{+}
 \end{aligned}\end{split}\]</div>

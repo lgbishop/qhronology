@@ -38,7 +38,7 @@ A subset of vectors :math:`\{\Basis_i\}_{i=1}^{\Dimension}` in :math:`\SpaceVect
 
 .. math:: \sum_{i=1}^{\Dimension}c_i\Basis_i = 0
 
-has the sole solution :math:`c_i = 0` for all :math:`n` (where :math:`c_i \in \Fields`). Otherwise, the set of vectors is said to be *linearly dependent*. The *dimension* of a vector space :math:`\SpaceVector`, denoted by :math:`\dim(\SpaceVector)`, is defined as the least upper bound of linearly independent vectors in :math:`\SpaceVector`. Informally, this is the largest possible number of linearly independent vectors which reside in :math:`\SpaceVector`. A vector space is said to have infinite dimension if there is no such largest number.
+has the sole solution :math:`c_i = 0` for all :math:`i \in \Integers_{1}^{\Dimension}` (where :math:`c_i \in \Fields`). Otherwise, the set of vectors is said to be *linearly dependent*. The *dimension* of a vector space :math:`\SpaceVector`, denoted by :math:`\dim(\SpaceVector)`, is defined as the least upper bound of linearly independent vectors in :math:`\SpaceVector`. Informally, this is the largest possible number of linearly independent vectors which reside in :math:`\SpaceVector`. A vector space is said to have infinite dimension if there is no such largest number.
 
 Furthermore, a subset :math:`\{\Basis_i\}_{i=1}^{\Dimension}` is said to *span* the vector space :math:`\SpaceVector` if and only if every vector :math:`\psi \in \SpaceVector` can be expressed as a (finite) linear combination of the form
 
@@ -125,7 +125,7 @@ and possesses the following properties:
        \text{(iii) } &\text{(triangle inequality):} &\norm{\psi + \phi}_p &\leq \norm{\psi}_p + \norm{\phi}_p.
    \end{aligned}
 
-*Hölder's inequality* provides a useful relation between the inner product of two vectors :math:`\psi,\phi \in \SpaceVector` and their :math:`p`-norms,
+*Hölder's inequality* provides a useful relation between the inner product of two vectors :math:`\psi,\phi \in \SpaceVector` and their norms,
 
 .. math:: \inner{\psi}{\phi} \leq \norm{\psi}_p \norm{\phi}_q, \quad \frac{1}{p} + \frac{1}{q} = 1.
    :label: eq:Holder
@@ -294,7 +294,7 @@ Given two such operators :math:`\op{A}` and :math:`\op{B}`, we can define their 
 
 for all :math:`\alpha, \beta \in \Complexes` and :math:`\ket{\psi} \in \SpaceHilbert`. We can also define their product to be the composition
 
-.. math:: \op{A}\op{B} : \ket{\psi} \mapsto \op{A} \circ \op{B} \ket{\psi} = \op{A}(\op{B}\ket{\psi})
+.. math:: \op{A}\op{B} : \ket{\psi} \mapsto \op{A} \circ \op{B} \ket{\psi} = \op{A}\bigl(\op{B}\ket{\psi}\bigr)
 
 for all :math:`\ket{\psi} \in \SpaceHilbert`. It is easy to prove that both of these definitions provide forms that are linear in the original sense :eq:`eq:operator_linear_map`, and thus operators form an algebra.
 
@@ -434,7 +434,7 @@ An important class of operators are the *normal* operators, which are characteri
 
 .. math:: \op{N}^\dagger\op{N} = \op{N}\op{N}^\dagger.
 
-The *spectral theorem* states that any normal operator :math:`\op{N}` admits a suitable *eigendecomposition*, that is, the eigenvectors :math:`\{\ket{v_i}\}` of :math:`\op{N}` form an orthonormal basis, and can be used in conjunction with the corresponding eigenvalues :math:`\{\lambda_i\}` to allow us to write
+The *spectral theorem* states that any normal operator :math:`\op{N}` admits a suitable *eigendecomposition*, that is, the eigenvectors :math:`\{\ket{v_i}\}_i` of :math:`\op{N}` form an orthonormal basis, and can be used in conjunction with the corresponding eigenvalues :math:`\{\lambda_i\}_i` to allow us to write
 
 .. math:: \op{N} = \sum_{i} \lambda_i \ket{v_i}\bra{v_i}, \quad \lambda_i \in \Complexes.
    :label: eq:spectral_theorem
@@ -485,7 +485,7 @@ Normal operators arise in many special forms, including:
 
    .. math:: \op{P} = \sum_{i} P_i \ket{v_i}\bra{v_i}
 
-   given eigenvalues :math:`P_i \geq 0` and eigenvectors :math:`\{\ket{v_i}\}`. Note that :math:`\op{P}` is called *positive-definite* if
+   given non-negative eigenvalues :math:`\{P_i\}_i` and eigenvectors :math:`\{\ket{v_i}\}_i`. Note that :math:`\op{P}` is called *positive-definite* if
 
    .. math:: \bra{\psi}\op{P}\ket{\psi} > 0, \quad \forall \, \ket{\psi} \in \SpaceHilbert.
 
@@ -624,7 +624,7 @@ where :math:`\{\ket{m}\}` and :math:`\{\ket{n}\}` are orthonormal bases of :math
 Schmidt decomposition
 ---------------------
 
-A useful theorem for expressing composite vectors is the *Schmidt decomposition*: given a bipartite vector :math:`\ket{\psi} \in \SpaceHilbert_A \otimes \SpaceHilbert_B`, there exists sets of orthonormal states :math:`\{\ket{k_A}\}` and :math:`\{\ket{k_B}\}` for systems :math:`A` and :math:`B`, respectively, such that
+A useful theorem for expressing composite vectors is the *Schmidt decomposition*: given a bipartite vector :math:`\ket{\psi} \in \SpaceHilbert_A \otimes \SpaceHilbert_B`, there exists sets of orthonormal states :math:`\{\ket{k_A}\}_k` and :math:`\{\ket{k_B}\}_k` for systems :math:`A` and :math:`B`, respectively, such that
 
 .. math:: \ket{\psi} = \sum_k \lambda_k \ket{k_A} \otimes \ket{k_B}.
    :label: eq:schmidt_decomposition
@@ -633,7 +633,7 @@ Here, :math:`\{\lambda_k\}_k` are non-negative real numbers, known as *Schmidt c
 
 .. math:: \sum_k \lambda_k^2 = \braket{\psi}{\psi}.
 
-The number of (non-zero) Schmidt coefficients is called the *Schmidt number* of the vector :math:`\ket{\psi}`, and the bases :math:`\{\ket{k_A}\}` and :math:`\{\ket{k_B}\}` are called the *Schmidt bases*.
+The number of (non-zero) Schmidt coefficients is called the *Schmidt number* of the vector :math:`\ket{\psi}`, and the bases :math:`\{\ket{k_A}\}_k` and :math:`\{\ket{k_B}\}_k` are called the *Schmidt bases*.
 
 The Schmidt decomposition :eq:`eq:schmidt_decomposition` is simply a way of expressing a vector in the tensor product of two inner product spaces (such as Hilbert spaces), and our ability to do so is a very powerful result. For example, given a normalized bipartite vector :math:`\ket{\psi}` with decomposition :eq:`eq:schmidt_decomposition`, the reduced operators for each system can be calculated to be
 
@@ -757,11 +757,11 @@ for all :math:`\op{A},\op{B} \in \SpaceLinear(\SpaceHilbert)` and :math:`\mu,\nu
 Concavity and convexity
 =======================
 
-A Hilbert space :math:`\SpaceHilbert` is said to be *convex* if for any finite collection of its elements :math:`\{\op{A}_i\}`, the linear combination satisfies
+A Hilbert space :math:`\SpaceHilbert` is said to be *convex* if for any finite collection of its elements :math:`\{\op{A}_i\}_i`, the linear combination satisfies
 
 .. math:: \sum_{i} p_i \op{A}_i \in \SpaceHilbert
 
-for any probability distribution :math:`\SetProbability = \{p_i\}`. If this does not hold, then :math:`\SpaceHilbert` is said to be *concave*. An element :math:`\op{A}_i \in \SpaceHilbert` in a convex space is called *extreme* if it cannot be represented as a non-trivial combination of other elements (that is, it can only be expressed with a single non-zero :math:`p_i`).
+for any probability distribution :math:`\SetProbability = \{p_i\}_i`. If this does not hold, then :math:`\SpaceHilbert` is said to be *concave*. An element :math:`\op{A}_i \in \SpaceHilbert` in a convex space is called *extreme* if it cannot be represented as a non-trivial combination of other elements (that is, it can only be expressed with a single non-zero :math:`p_i`).
 
 A (real) map
 

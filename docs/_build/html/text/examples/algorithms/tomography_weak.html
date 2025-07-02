@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 02, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 03, 2025"/>
   </head>
   
   
@@ -617,21 +617,21 @@
 <p>Computing the expectation value of <span class="math notranslate nohighlight">\(\Pauli_z\)</span> for this form then yields</p>
 <div class="math notranslate nohighlight" id="equation-eq-tomography-connection">
 <span class="eqno">(368)<a class="headerlink" href="#equation-eq-tomography-connection" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
-   \trace\left[\Pauli_z\StateProbe_k\right] &amp;= \bra{0}  \StateProbe_k  \ket{0} - \bra{1}  \StateProbe_k  \ket{1} \\
+   \trace[\Pauli_z\StateProbe_k] &amp;= \bra{0}  \StateProbe_k  \ket{0} - \bra{1}  \StateProbe_k  \ket{1} \\
    &amp;= \Strength \bigl(\bra{0_k}  \StateCV  \ket{0_k} - \bra{1_k}  \StateCV  \ket{1_k}\bigr) \\
-   &amp;= \Strength \, \trace\left[\Pauli_k \StateCV\right],
+   &amp;= \Strength \, \trace[\Pauli_k \StateCV],
 \end{aligned}\end{split}\]</div>
 <p>where we used the fact that</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-tomography-weak-8">
 <span class="eqno">(369)<a class="headerlink" href="#equation-text-examples-algorithms-tomography-weak-8" title="Link to this equation">#</a></span>\[\Pauli_k = \ket{0_k}\bra{0_k} - \ket{1_k}\bra{1_k}.\]</div>
 <p>Rescaling by a factor <span class="math notranslate nohighlight">\(\tfrac{1}{\Strength}\)</span> then allows us to make the connection between performing a <span class="math notranslate nohighlight">\(z\)</span>-basis measurement on the probe state <a class="reference internal" href="#equation-eq-state-probe">(367)</a> and inferring the expectation value of <span class="math notranslate nohighlight">\(\Pauli_k\)</span> for the state of the unknown system. This is because, up to the factor <span class="math notranslate nohighlight">\(\Strength\)</span>, the two operations are equivalent. Note that, for brevity, we will write</p>
 <div class="math notranslate nohighlight" id="equation-eq-tomography-expectation">
-<span class="eqno">(370)<a class="headerlink" href="#equation-eq-tomography-expectation" title="Link to this equation">#</a></span>\[\Expectation_k \equiv \frac{1}{\Strength}\trace\left[\Pauli_z\StateProbe_k\right] = \trace\left[\Pauli_k \StateCV\right],\]</div>
+<span class="eqno">(370)<a class="headerlink" href="#equation-eq-tomography-expectation" title="Link to this equation">#</a></span>\[\Expectation_k \equiv \frac{1}{\Strength}\trace[\Pauli_z\StateProbe_k] = \trace[\Pauli_k \StateCV],\]</div>
 <p>which is often denoted in the literature as <span class="math notranslate nohighlight">\(\big&lt;\Pauli_k\big&gt;\)</span>.</p>
 <p>If we define <span class="math notranslate nohighlight">\(\Pauli_0 \equiv \Identity\)</span>, then the set of operators <span class="math notranslate nohighlight">\(\{\Pauli_k\}_{k=0}^3\)</span> forms a complete basis for the space of complex <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrices. Since this coincides with the space of linear operators <span class="math notranslate nohighlight">\(\SpaceLinear(\SpaceHilbert)\)</span> on our qubit (<span class="math notranslate nohighlight">\(2\)</span>-dimensional) Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, then any state <span class="math notranslate nohighlight">\(\StateCV \in \SpaceLinear(\SpaceHilbert)\)</span> can accordingly be reconstructed via the linear combination,</p>
 <div class="math notranslate nohighlight" id="equation-eq-tomography-reconstruction">
-<span class="eqno">(371)<a class="headerlink" href="#equation-eq-tomography-reconstruction" title="Link to this equation">#</a></span>\[ \StateCV = \frac{1}{2}\sum_{k=0}^{3} \trace\left[\Pauli_k \StateCV\right] \Pauli_k.\]</div>
-<p>Since the coefficient for <span class="math notranslate nohighlight">\(k = 0\)</span> is fixed by normalization (i.e., <span class="math notranslate nohighlight">\(\trace\left[\Pauli_0 \tau \right] = 1\)</span>), then the state is fully determined by the <em>Bloch vector</em>, which is defined, for an <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional state, as the <span class="math notranslate nohighlight">\((\Dimension^2-1)\)</span>-dimensional real vector of parameters <span class="math notranslate nohighlight">\(\trace\left[\Pauli_k \tau \right]\)</span> (for <span class="math notranslate nohighlight">\(k \in \Integers_{1}^{\Dimension^2 - 1}\)</span>). Accordingly, the linear combination <a class="reference internal" href="#equation-eq-tomography-reconstruction">(371)</a> is said to be the <em>Bloch sphere representation</em> of the state <span class="math notranslate nohighlight">\(\tau\)</span>. Thus, since we have shown that we can infer expectation values <a class="reference internal" href="#equation-eq-tomography-expectation">(370)</a> for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the <span class="math notranslate nohighlight">\(z\)</span>-basis, then we can characterize the state completely without directly measuring it.</p>
+<span class="eqno">(371)<a class="headerlink" href="#equation-eq-tomography-reconstruction" title="Link to this equation">#</a></span>\[ \StateCV = \frac{1}{2}\sum_{k=0}^{3} \trace[\Pauli_k \StateCV] \Pauli_k.\]</div>
+<p>Since the coefficient for <span class="math notranslate nohighlight">\(k = 0\)</span> is fixed by normalization (i.e., <span class="math notranslate nohighlight">\(\trace[\Pauli_0 \StateCV] = 1\)</span>), then the state is completely (and uniquely) determined by the <em>Bloch vector</em>, which is defined for a <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional state as the <span class="math notranslate nohighlight">\((\Dimension^2-1)\)</span>-dimensional real vector of parameters <span class="math notranslate nohighlight">\(\bigl\{\trace[\Pauli_k \StateCV]\bigr\}_{k = 1}^{\Dimension^2 - 1}\)</span>. Accordingly, the linear combination <a class="reference internal" href="#equation-eq-tomography-reconstruction">(371)</a> is said to be the <em>Bloch sphere representation</em> of the state <span class="math notranslate nohighlight">\(\StateCV\)</span>. Thus, since we have shown that we can infer expectation values <a class="reference internal" href="#equation-eq-tomography-expectation">(370)</a> for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the <span class="math notranslate nohighlight">\(z\)</span>-basis, then we can characterize the state completely without directly measuring it.</p>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>

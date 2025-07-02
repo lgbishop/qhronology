@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 02, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 03, 2025"/>
   </head>
   
   
@@ -491,7 +491,7 @@
 <p>A subset of vectors <span class="math notranslate nohighlight">\(\{\Basis_i\}_{i=1}^{\Dimension}\)</span> in <span class="math notranslate nohighlight">\(\SpaceVector\)</span> is said to be <em>linearly independent</em> if and only if the equation</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-1">
 <span class="eqno">(3)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-1" title="Link to this equation">#</a></span>\[\sum_{i=1}^{\Dimension}c_i\Basis_i = 0\]</div>
-<p>has the sole solution <span class="math notranslate nohighlight">\(c_i = 0\)</span> for all <span class="math notranslate nohighlight">\(n\)</span> (where <span class="math notranslate nohighlight">\(c_i \in \Fields\)</span>). Otherwise, the set of vectors is said to be <em>linearly dependent</em>. The <em>dimension</em> of a vector space <span class="math notranslate nohighlight">\(\SpaceVector\)</span>, denoted by <span class="math notranslate nohighlight">\(\dim(\SpaceVector)\)</span>, is defined as the least upper bound of linearly independent vectors in <span class="math notranslate nohighlight">\(\SpaceVector\)</span>. Informally, this is the largest possible number of linearly independent vectors which reside in <span class="math notranslate nohighlight">\(\SpaceVector\)</span>. A vector space is said to have infinite dimension if there is no such largest number.</p>
+<p>has the sole solution <span class="math notranslate nohighlight">\(c_i = 0\)</span> for all <span class="math notranslate nohighlight">\(i \in \Integers_{1}^{\Dimension}\)</span> (where <span class="math notranslate nohighlight">\(c_i \in \Fields\)</span>). Otherwise, the set of vectors is said to be <em>linearly dependent</em>. The <em>dimension</em> of a vector space <span class="math notranslate nohighlight">\(\SpaceVector\)</span>, denoted by <span class="math notranslate nohighlight">\(\dim(\SpaceVector)\)</span>, is defined as the least upper bound of linearly independent vectors in <span class="math notranslate nohighlight">\(\SpaceVector\)</span>. Informally, this is the largest possible number of linearly independent vectors which reside in <span class="math notranslate nohighlight">\(\SpaceVector\)</span>. A vector space is said to have infinite dimension if there is no such largest number.</p>
 <p>Furthermore, a subset <span class="math notranslate nohighlight">\(\{\Basis_i\}_{i=1}^{\Dimension}\)</span> is said to <em>span</em> the vector space <span class="math notranslate nohighlight">\(\SpaceVector\)</span> if and only if every vector <span class="math notranslate nohighlight">\(\psi \in \SpaceVector\)</span> can be expressed as a (finite) linear combination of the form</p>
 <div class="math notranslate nohighlight" id="equation-eq-linear-combination">
 <span class="eqno">(4)<a class="headerlink" href="#equation-eq-linear-combination" title="Link to this equation">#</a></span>\[\psi = \sum_{i=1}^{\Dimension} \psi_i \Basis_i\]</div>
@@ -551,7 +551,7 @@
     \text{(ii) } &amp;\text{(positive-definiteness):} &amp;\norm{\psi}_p &amp;&gt; 0 \quad \text{if} \quad \psi \neq \vec{0},\\
     \text{(iii) } &amp;\text{(triangle inequality):} &amp;\norm{\psi + \phi}_p &amp;\leq \norm{\psi}_p + \norm{\phi}_p.
 \end{aligned}\end{split}\]</div>
-<p><em>Hölder’s inequality</em> provides a useful relation between the inner product of two vectors <span class="math notranslate nohighlight">\(\psi,\phi \in \SpaceVector\)</span> and their <span class="math notranslate nohighlight">\(p\)</span>-norms,</p>
+<p><em>Hölder’s inequality</em> provides a useful relation between the inner product of two vectors <span class="math notranslate nohighlight">\(\psi,\phi \in \SpaceVector\)</span> and their norms,</p>
 <div class="math notranslate nohighlight" id="equation-eq-holder">
 <span class="eqno">(17)<a class="headerlink" href="#equation-eq-holder" title="Link to this equation">#</a></span>\[\inner{\psi}{\phi} \leq \norm{\psi}_p \norm{\phi}_q, \quad \frac{1}{p} + \frac{1}{q} = 1.\]</div>
 <p>A vector <span class="math notranslate nohighlight">\(\psi \in \SpaceVector\)</span> is said to be <em>normalized</em> if</p>
@@ -670,7 +670,7 @@
 <span class="eqno">(42)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-27" title="Link to this equation">#</a></span>\[(\alpha\op{A} + \beta\op{B}) : \ket{\psi} \mapsto \alpha\op{A}\ket{\psi} + \beta\op{B}\ket{\psi}\]</div>
 <p>for all <span class="math notranslate nohighlight">\(\alpha, \beta \in \Complexes\)</span> and <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert\)</span>. We can also define their product to be the composition</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-28">
-<span class="eqno">(43)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-28" title="Link to this equation">#</a></span>\[\op{A}\op{B} : \ket{\psi} \mapsto \op{A} \circ \op{B} \ket{\psi} = \op{A}(\op{B}\ket{\psi})\]</div>
+<span class="eqno">(43)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-28" title="Link to this equation">#</a></span>\[\op{A}\op{B} : \ket{\psi} \mapsto \op{A} \circ \op{B} \ket{\psi} = \op{A}\bigl(\op{B}\ket{\psi}\bigr)\]</div>
 <p>for all <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert\)</span>. It is easy to prove that both of these definitions provide forms that are linear in the original sense <a class="reference internal" href="#equation-eq-operator-linear-map">(39)</a>, and thus operators form an algebra.</p>
 <p>In general, operators do not commute, e.g., <span class="math notranslate nohighlight">\(\op{A}\op{B} \neq \op{B}\op{A}\)</span>, and so the associated algebra is non-Abelian, or non-commutative. The difference between these orderings is captured by the <em>commutator</em>,</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-29">
@@ -776,7 +776,7 @@
 <p>An important class of operators are the <em>normal</em> operators, which are characterized by their commutation with their own conjugate transpose, i.e.,</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-46">
 <span class="eqno">(62)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-46" title="Link to this equation">#</a></span>\[\op{N}^\dagger\op{N} = \op{N}\op{N}^\dagger.\]</div>
-<p>The <em>spectral theorem</em> states that any normal operator <span class="math notranslate nohighlight">\(\op{N}\)</span> admits a suitable <em>eigendecomposition</em>, that is, the eigenvectors <span class="math notranslate nohighlight">\(\{\ket{v_i}\}\)</span> of <span class="math notranslate nohighlight">\(\op{N}\)</span> form an orthonormal basis, and can be used in conjunction with the corresponding eigenvalues <span class="math notranslate nohighlight">\(\{\lambda_i\}\)</span> to allow us to write</p>
+<p>The <em>spectral theorem</em> states that any normal operator <span class="math notranslate nohighlight">\(\op{N}\)</span> admits a suitable <em>eigendecomposition</em>, that is, the eigenvectors <span class="math notranslate nohighlight">\(\{\ket{v_i}\}_i\)</span> of <span class="math notranslate nohighlight">\(\op{N}\)</span> form an orthonormal basis, and can be used in conjunction with the corresponding eigenvalues <span class="math notranslate nohighlight">\(\{\lambda_i\}_i\)</span> to allow us to write</p>
 <div class="math notranslate nohighlight" id="equation-eq-spectral-theorem">
 <span class="eqno">(63)<a class="headerlink" href="#equation-eq-spectral-theorem" title="Link to this equation">#</a></span>\[\op{N} = \sum_{i} \lambda_i \ket{v_i}\bra{v_i}, \quad \lambda_i \in \Complexes.\]</div>
 <p>The converse holds true, such that any orthogonally diagonalizable operator is normal. A useful consequence of this theorem is that it is easy to compute the function of an operator,</p>
@@ -816,7 +816,7 @@
 <p>or using the spectral theorem,</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-56">
 <span class="eqno">(73)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-56" title="Link to this equation">#</a></span>\[\op{P} = \sum_{i} P_i \ket{v_i}\bra{v_i}\]</div>
-<p>given eigenvalues <span class="math notranslate nohighlight">\(P_i \geq 0\)</span> and eigenvectors <span class="math notranslate nohighlight">\(\{\ket{v_i}\}\)</span>. Note that <span class="math notranslate nohighlight">\(\op{P}\)</span> is called <em>positive-definite</em> if</p>
+<p>given non-negative eigenvalues <span class="math notranslate nohighlight">\(\{P_i\}_i\)</span> and eigenvectors <span class="math notranslate nohighlight">\(\{\ket{v_i}\}_i\)</span>. Note that <span class="math notranslate nohighlight">\(\op{P}\)</span> is called <em>positive-definite</em> if</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-57">
 <span class="eqno">(74)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-57" title="Link to this equation">#</a></span>\[\bra{\psi}\op{P}\ket{\psi} &gt; 0, \quad \forall \, \ket{\psi} \in \SpaceHilbert.\]</div>
 <p>In the special case where</p>
@@ -914,13 +914,13 @@
 <p>where <span class="math notranslate nohighlight">\(\{\ket{m}\}\)</span> and <span class="math notranslate nohighlight">\(\{\ket{n}\}\)</span> are orthonormal bases of <span class="math notranslate nohighlight">\(\SpaceHilbert_A\)</span> and <span class="math notranslate nohighlight">\(\SpaceHilbert_B\)</span>, respectively.</p>
 <section id="schmidt-decomposition">
 <h3>Schmidt decomposition<a class="headerlink" href="#schmidt-decomposition" title="Link to this heading">#</a></h3>
-<p>A useful theorem for expressing composite vectors is the <em>Schmidt decomposition</em>: given a bipartite vector <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert_A \otimes \SpaceHilbert_B\)</span>, there exists sets of orthonormal states <span class="math notranslate nohighlight">\(\{\ket{k_A}\}\)</span> and <span class="math notranslate nohighlight">\(\{\ket{k_B}\}\)</span> for systems <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, respectively, such that</p>
+<p>A useful theorem for expressing composite vectors is the <em>Schmidt decomposition</em>: given a bipartite vector <span class="math notranslate nohighlight">\(\ket{\psi} \in \SpaceHilbert_A \otimes \SpaceHilbert_B\)</span>, there exists sets of orthonormal states <span class="math notranslate nohighlight">\(\{\ket{k_A}\}_k\)</span> and <span class="math notranslate nohighlight">\(\{\ket{k_B}\}_k\)</span> for systems <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, respectively, such that</p>
 <div class="math notranslate nohighlight" id="equation-eq-schmidt-decomposition">
 <span class="eqno">(92)<a class="headerlink" href="#equation-eq-schmidt-decomposition" title="Link to this equation">#</a></span>\[\ket{\psi} = \sum_k \lambda_k \ket{k_A} \otimes \ket{k_B}.\]</div>
 <p>Here, <span class="math notranslate nohighlight">\(\{\lambda_k\}_k\)</span> are non-negative real numbers, known as <em>Schmidt coefficients</em> that satisfy</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-74">
 <span class="eqno">(93)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-74" title="Link to this equation">#</a></span>\[\sum_k \lambda_k^2 = \braket{\psi}{\psi}.\]</div>
-<p>The number of (non-zero) Schmidt coefficients is called the <em>Schmidt number</em> of the vector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, and the bases <span class="math notranslate nohighlight">\(\{\ket{k_A}\}\)</span> and <span class="math notranslate nohighlight">\(\{\ket{k_B}\}\)</span> are called the <em>Schmidt bases</em>.</p>
+<p>The number of (non-zero) Schmidt coefficients is called the <em>Schmidt number</em> of the vector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, and the bases <span class="math notranslate nohighlight">\(\{\ket{k_A}\}_k\)</span> and <span class="math notranslate nohighlight">\(\{\ket{k_B}\}_k\)</span> are called the <em>Schmidt bases</em>.</p>
 <p>The Schmidt decomposition <a class="reference internal" href="#equation-eq-schmidt-decomposition">(92)</a> is simply a way of expressing a vector in the tensor product of two inner product spaces (such as Hilbert spaces), and our ability to do so is a very powerful result. For example, given a normalized bipartite vector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> with decomposition <a class="reference internal" href="#equation-eq-schmidt-decomposition">(92)</a>, the reduced operators for each system can be calculated to be</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-75">
 <span class="eqno">(94)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-75" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
@@ -1000,10 +1000,10 @@
 </section>
 <section id="concavity-and-convexity">
 <h2>Concavity and convexity<a class="headerlink" href="#concavity-and-convexity" title="Link to this heading">#</a></h2>
-<p>A Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is said to be <em>convex</em> if for any finite collection of its elements <span class="math notranslate nohighlight">\(\{\op{A}_i\}\)</span>, the linear combination satisfies</p>
+<p>A Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is said to be <em>convex</em> if for any finite collection of its elements <span class="math notranslate nohighlight">\(\{\op{A}_i\}_i\)</span>, the linear combination satisfies</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-90">
 <span class="eqno">(111)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-90" title="Link to this equation">#</a></span>\[\sum_{i} p_i \op{A}_i \in \SpaceHilbert\]</div>
-<p>for any probability distribution <span class="math notranslate nohighlight">\(\SetProbability = \{p_i\}\)</span>. If this does not hold, then <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is said to be <em>concave</em>. An element <span class="math notranslate nohighlight">\(\op{A}_i \in \SpaceHilbert\)</span> in a convex space is called <em>extreme</em> if it cannot be represented as a non-trivial combination of other elements (that is, it can only be expressed with a single non-zero <span class="math notranslate nohighlight">\(p_i\)</span>).</p>
+<p>for any probability distribution <span class="math notranslate nohighlight">\(\SetProbability = \{p_i\}_i\)</span>. If this does not hold, then <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is said to be <em>concave</em>. An element <span class="math notranslate nohighlight">\(\op{A}_i \in \SpaceHilbert\)</span> in a convex space is called <em>extreme</em> if it cannot be represented as a non-trivial combination of other elements (that is, it can only be expressed with a single non-zero <span class="math notranslate nohighlight">\(p_i\)</span>).</p>
 <p>A (real) map</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-mathematics-91">
 <span class="eqno">(112)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-mathematics-91" title="Link to this equation">#</a></span>\[f({}\cdot{}) : \SpaceHilbert \rightarrow \Reals\]</div>

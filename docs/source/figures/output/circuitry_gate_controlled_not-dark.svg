@@ -67,7 +67,7 @@
 <path clip-rule="nonzero" d="M 3 9 L 35 9 L 35 29.320312 L 3 29.320312 Z M 3 9 "/>
 </clipPath>
 <clipPath id="clip-3">
-<path clip-rule="nonzero" d="M 220 16 L 224.515625 16 L 224.515625 20 L 220 20 Z M 220 16 "/>
+<path clip-rule="nonzero" d="M 220 17 L 224.515625 17 L 224.515625 21 L 220 21 Z M 220 17 "/>
 </clipPath>
 </defs>
 <path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 20.804688 2.007812 C 20.804688 0.910156 19.914062 0.015625 18.8125 0.015625 C 17.710938 0.015625 16.820312 0.910156 16.820312 2.007812 C 16.820312 3.109375 17.710938 4 18.8125 4 C 19.914062 4 20.804688 3.109375 20.804688 2.007812 Z M 20.804688 2.007812 "/>
@@ -163,7 +163,7 @@
 </g>
 <g clip-path="url(#clip-3)">
 <g fill="rgb(100%, 100%, 100%)" fill-opacity="1">
-<use xlink:href="#glyph-4-0" x="220.39" y="19.405"/>
+<use xlink:href="#glyph-4-0" x="220.39" y="20.164"/>
 </g>
 </g>
 </svg>

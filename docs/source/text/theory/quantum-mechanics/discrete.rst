@@ -81,12 +81,12 @@ Density operators representing mixed (impure) quantum states arise in quantum me
 Qubits
 ------
 
-Many physical applications of this theory in quantum mechanics involve Boolean (i.e., binary, or two-valued) logic, which is describable completely by a pair of orthonormal vectors that are often labelled :math:`\ket{0}` and :math:`\ket{1}`. The representations in :math:`\Complexes^2` of these vectors is typically the pair
+Many physical applications of this theory in quantum mechanics involve Boolean (i.e., binary, or two-valued) logic, which is completely describable by exactly two orthonormal vectors that are often labelled :math:`\ket{0}` and :math:`\ket{1}`. The representations in :math:`\Complexes^2` of these vectors is typically the pair
 
 .. math:: \ket{0} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}.
    :label: eq:basis_qubit
 
-Together, these form a computational basis that is canonically known as the :math:`z`-basis (and is referred to by many simply as the *computational* basis), given that each is an eigenvector of the Pauli-:math:`Z` operator :math:`\Pauli_z` :eq:`eq:Pauli`. Any quantum state with such binary dimensionality is called a *qubit* (though this nomenclature is often used solely in the context of *pure* binary states), and describes a two-level system that forms the basic unit of quantum information (analogous to the bit in classical computing). In the computational basis :math:`\{\ket{0},\ket{1}\}`, the simplest qubit which we can express is the quantum superposition
+Together, these form a complete basis that is canonically known as the :math:`z`-basis (given that each vector is an eigenvector of the Pauli-:math:`Z` operator :math:`\Pauli_z` :eq:`eq:Pauli`), though is alternatively often referred to by many simply as the *computational* basis. Any quantum state with such binary dimensionality is called a *qubit* (though this nomenclature is often used solely in the context of *pure* binary states), and describes a two-level system that forms the basic unit of quantum information (analogous to the bit in classical computing). In the computational basis :math:`\{\ket{0},\ket{1}\}`, the simplest qubit which we can express is the quantum superposition
 
 .. math:: \ket{\StateVector} = \alpha\ket{0} + \beta\ket{1}, \quad \abs{\alpha}^2 + \abs{\beta}^2 = 1, \quad \alpha,\beta \in \Complexes.
    :label: eq:vector_qubit
@@ -153,7 +153,7 @@ The Pauli matrices :math:`\{\Pauli_k\}_{k=1}^{3}` are Hermitian, and so represen
 .. math:: \StateDensity = \frac{1}{2}\sum_{\mu=0}^{3} \trace[\Pauli_\mu \StateDensity]\Pauli_\mu.
    :label: eq:matrix_qubit
 
-In the context of density operators, since the coefficient for :math:`\mu = 0` in :eq:`eq:matrix_qubit` is fixed by normalization (i.e., :math:`\trace[\Pauli_0 \StateDensity] = 1`), then the state :math:`\StateDensity` is completely (and uniquely) determined by the *Bloch vector*, which is defined, for an :math:`\Dimension`-dimensional state, as the :math:`(\Dimension^2 - 1)`-dimensional real vector of parameters :math:`\trace[\Pauli_k \StateDensity]` (for :math:`k \geq 1`). Accordingly, the linear combination :eq:`eq:matrix_qubit` is said to be the *Bloch sphere representation* of the state :math:`\StateDensity`. Note also of course that any appropriate basis, not just the Pauli basis (with identity), allows for reconstruction of any qubit state in the manner of :eq:`eq:matrix_qubit`.
+In the context of density operators, since the coefficient for :math:`\mu = 0` in :eq:`eq:matrix_qubit` is fixed by normalization (i.e., :math:`\trace[\Pauli_0 \StateDensity] = 1`), then the state :math:`\StateDensity` is completely (and uniquely) determined by the *Bloch vector*, which is defined for a :math:`\Dimension`-dimensional state as the :math:`(\Dimension^2 - 1)`-dimensional real vector of parameters :math:`\bigl\{\trace[\Pauli_k \StateDensity]\bigr\}_{k = 1}^{\Dimension^2 - 1}`. Accordingly, the linear combination :eq:`eq:matrix_qubit` is said to be the *Bloch sphere representation* of the state :math:`\StateDensity`. Note also of course that any appropriate basis, not just the Pauli basis (with identity), allows for reconstruction of any qubit state in the manner of :eq:`eq:matrix_qubit`.
 
 The Bloch vector provides a complete description of a quantum system because it represents the expectation values of specific informationally complete observables. In general, a complex :math:`\Dimension \times \Dimension` density matrix, which represents the state of an :math:`\Dimension`-dimensional quantum system, is geometrically equivalent to a vector in an :math:`(\Dimension^2 - 1)`-dimensional real space. This is because the space of density matrices is a (bounded) convex subset of :math:`\Reals^{\Dimension^2}`, with its elements possessing certain properties (namely Hermiticity, positive semi-definiteness, and trace equal to :math:`1`). Since this real space coincides with that of the (generalized) *Bloch ball*, including both the surface (the *Bloch sphere*, on which points correspond to pure states) and interior (in which points correspond to mixed states), then this is why determination of the Bloch vector is equivalent to identification of the quantum state. Therefore, as the Pauli operators form a set of informationally complete observables for qubit systems, then the inclusion of the identity operator to this set yields a *tomographically complete* basis for the space of :math:`2 \times 2` Hermitian matrices, of which the space of :math:`2`-dimensional density matrices is a subset.
 
@@ -162,12 +162,12 @@ The Bloch vector provides a complete description of a quantum system because it 
 Qutrits
 -------
 
-Quantum states realized by :math:`3`-dimensional systems are commonly known as *qutrits*. These objects are analogous to the "trit" unit of information in classical computing and so are useful for performing calculations with ternary logic. Such systems are typically described using a set of orthonormal (basis) vectors :math:`3`-dimensional :math:`\{\ket{0},\ket{1},\ket{2}\}` , with which a qutrit can in general be expressed as
+Quantum states realized by :math:`3`-dimensional systems are commonly known as *qutrits*. These objects are analogous to the "trit" unit of information in classical computing and so are useful for performing calculations with ternary logic. Such systems are typically described using a set of orthonormal (basis) vectors :math:`3`-dimensional :math:`\{\ket{0},\ket{1},\ket{2}\}`, with which a qutrit can in general be expressed as
 
 .. math:: \ket{\StateVector} = \alpha\ket{0} + \beta\ket{1} + \gamma\ket{2}, \quad \abs{\alpha}^2 + \abs{\beta}^2 + \abs{\gamma}^2 = 1, \quad \alpha,\beta,\gamma \in \Complexes.
    :label: eq:vector_qutrit
 
-In the :math:`\Complexes^3`-representation, the basis vectors can take the form
+In the :math:`\Complexes^3`-representation, the basis vectors often take the forms
 
 .. math:: \ket{0} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \qquad \ket{2} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix},
    :label: eq:basis_qutrit
@@ -220,9 +220,7 @@ Just like in the cases of qubits and qutrits, general :math:`\Dimension`-dimensi
 .. math:: \StateDensity = \frac{1}{\Dimension}\sum_{\mu=0}^{\Dimension^2 - 1} \trace[\GellMann_\mu \StateDensity]\GellMann_\mu.
    :label: eq:matrix_qudit
 
-In order for this to be true, the matrices :math:`\{\GellMann_\mu\}_{\mu=0}^{\Dimension^2 - 1}` must form a basis for the space of :math:`\Dimension \times \Dimension` density matrices. Though there are multiple ways to find such a basis, doing so is a non-trivial task. Our construction here closely follows the work of :cite:p:`thew_qudit_2002`, in which a suitable generalization of the Gell-Mann (or Pauli) matrices :eq:`eq:Gell-Mann` is obtained.
-
-We begin by introducing the elementary matrices :math:`\{\Basis_{i}^{j}\}_{i,j = 1}^{\Dimension}` which satisfy
+In order for this to be true, the matrices :math:`\{\GellMann_\mu\}_{\mu=0}^{\Dimension^2 - 1}` must form a basis for the space of :math:`\Dimension \times \Dimension` density matrices. Though there are multiple ways to find such a basis, doing so is a non-trivial task. Our construction here closely follows the work of :cite:p:`thew_qudit_2002`, in which a suitable generalization of the Gell-Mann (or Pauli) matrices :eq:`eq:Gell-Mann` is obtained. We begin by introducing the elementary matrices :math:`\{\Basis_{i}^{j}\}_{i,j = 1}^{\Dimension}` which satisfy
 
 .. math:: (\Basis_{i}^{j})_{nm} = \delta_{ni} \delta_{mj}, \qquad 1 \leq n \leq d, \quad 1 \leq m \leq d.
 
@@ -276,10 +274,10 @@ Trace distance
 
 The *trace distance* is a metric on the space of density matrices, thereby providing a measure of the "distance" (or distinguishability) between two states. It is a generalization of the *Kolmogorov distance* for classical probability distributions to quantum density operators, and is defined for any two such operators :math:`\op{\rho}` and :math:`\op{\tau}` as
 
-.. math:: \TraceDistance(\op{\rho},\op{\tau}) \equiv \frac{1}{2} \trace \bigl| \op{\rho} - \op{\tau} \bigr|.
+.. math:: \TraceDistance(\op{\rho},\op{\tau}) \equiv \frac{1}{2} \trace | \op{\rho} - \op{\tau} |.
    :label: eq:trace_distance
 
-Here, we defined :math:`\bigl| \op{A} \bigr| \equiv \sqrt{\op{A}^\dagger\op{A}}` to be the absolute value of an operator :math:`\op{A}`. Being a metric, the trace distance between density operators is always non-negative, i.e.,
+Here, we defined :math:`| \op{A} | \equiv \sqrt{\op{A}^\dagger\op{A}}` to be the absolute value of an operator :math:`\op{A}`. Being a metric, the trace distance between density operators is always non-negative, i.e.,
 
 .. math:: \TraceDistance(\op{\rho},\op{\tau}) \geq 0,
 
@@ -299,17 +297,17 @@ Another measure between two quantum states is the *fidelity*, which characterize
 .. math:: \Fidelity(\op{\rho},\op{\tau}) \equiv \left(\trace\sqrt{\sqrt{\op{\rho}} \, \op{\tau}\sqrt{\op{\rho}}}\right)^2,
    :label: eq:fidelity
 
-where the square roots of :math:`\op{\rho}` and :math:`\sqrt{\op{\rho}}\op{\tau}\sqrt{\op{\rho}}` (both positive-semidefinite matrices) are well-defined by the spectral theorem :eq:`eq:spectral_theorem`. While the fidelity is not a suitable metric on the space of density matrices, it still provides many of the properties that are expected of a useful distance measure. For example, it is non-negative for any input, e.g.,
+where the square roots of :math:`\op{\rho}` and :math:`\sqrt{\op{\rho}} \, \op{\tau}\sqrt{\op{\rho}}` (both positive-semidefinite matrices) are well-defined by the spectral theorem :eq:`eq:spectral_theorem`. While the fidelity is not a suitable metric on the space of density matrices, it still provides many of the properties that are expected of a useful distance measure. For example, it is non-negative for any input, e.g.,
 
 .. math:: 0 \leq \Fidelity(\op{\rho},\op{\tau}) \leq 1,
 
 with equivalence to its upper bound of unity if and only if :math:`\op{\rho} = \op{\tau}`.
 
-The fidelity expressed in :eq:`eq:fidelity` is the original, traditional form that is often cumbersome to use and inefficient to compute. Simpler yet equivalent reformulations are therefore desired, and perhaps the most encountered of such expressions is
+The fidelity expressed in :eq:`eq:fidelity` is the original, traditional form that is often cumbersome to use and inefficient to compute. Simpler yet equivalent reformulations are therefore desired, with perhaps the most encountered of such expressions being
 
-.. math:: \Fidelity(\op{\rho},\op{\tau}) \equiv \left(\trace\abs{\sqrt{\op{\rho}} \, \sqrt{\op{\tau}}}\right)^2,
+.. math:: \Fidelity(\op{\rho},\op{\tau}) \equiv \left(\trace\bigl|\sqrt{\op{\rho}} \sqrt{\op{\tau}}\bigr|\right)^2,
 
-where :math:`\bigl| \op{A} \bigr| \equiv \sqrt{\op{A}^\dagger\op{A}}`. Recent work :cite:p:`baldwin_efficiently_2023, muller_simplified_2023` has shown that, by leveraging the fact that the trace of a diagonalizable square matrix is equal to the sum of its eigenvalues, an even simpler expression for the fidelity can be written as
+where :math:`| \op{A} | \equiv \sqrt{\op{A}^\dagger\op{A}}`. Recent work :cite:p:`baldwin_efficiently_2023, muller_simplified_2023` has shown that, by leveraging the fact that the trace of a diagonalizable square matrix is equal to the sum of its eigenvalues, an even simpler expression for the fidelity can be written as
 
 .. math:: \Fidelity(\op{\rho},\op{\tau}) \equiv \left(\trace\sqrt{\op{\rho} \op{\tau}}\right)^2,
 
@@ -321,13 +319,13 @@ In the case where either density matrix is pure, we can write
 
    \Fidelity(\op{\rho},\op{\tau}) = \trace[\op{\rho}\op{\tau}] =
        \begin{cases}
-           \bra{\psi_\rho}\op{\tau}\ket{\psi_\rho} & \text{when } \op{\rho} = \ket{\psi_\rho}\bra{\psi_\rho}; \\
-           \bra{\psi_\tau}\op{\rho}\ket{\psi_\tau} & \text{when } \op{\tau} = \ket{\psi_\tau}\bra{\psi_\tau}; \\
+           \langle \psi_\rho | \op{\tau} | \psi_\rho \rangle & \text{when } \op{\rho} = | \psi_\rho \rangle \langle \psi_\rho |; \\
+           \langle \psi_\tau | \op{\rho} | \psi_\tau \rangle & \text{when } \op{\tau} = | \psi_\tau \rangle \langle \psi_\tau |; \\
        \end{cases}
 
 which further reduces to the overlap
 
-.. math:: \Fidelity(\op{\rho},\op{\tau}) = \abs{\braket{\psi_\rho}{\psi_\tau}}^2
+.. math:: \Fidelity(\op{\rho},\op{\tau}) = \abs{\langle \psi_\rho | \psi_\tau \rangle}^2
 
 when both states are pure.
 
@@ -423,7 +421,7 @@ where :math:`\ket{\psi_n} \in \SpacePure(\SpaceHilbert_n)` is a vector state on 
 
 where :math:`\StateDensity_k^n \in \SpaceMixed(\SpaceHilbert_n)` are density operators representing the :math:`n`-th subsystem, and the coefficients :math:`p_k` are non-negative real numbers that collectively satisfy :math:`\sum_{k} p_k = 1`. If there exists only a single non-zero :math:`p_k`, then the state is called *simply separable* or, similarly to the separable vector state case, a *product state*.
 
-A quantum state that is not separable (*non-separable*) is said to be *entangled*. The corresponding phenomenon, *quantum entanglement*, is one of the most fascinating features of quantum mechanics. It manifests physically as quantum correlations (of various quantum properties such as observable quantities) between the individual subsystems of a composite quantum system. For example, a group of particles is entangled when the quantum state of each individual particle cannot be described independently of the state of the other particles in a collective description. This behaviour is realized to varying degrees in many different kinds of physical situations, including most interestingly when the particles are spacelike separated.
+A quantum state that is not separable (termed *non-separable*) is said to be *entangled*. The corresponding phenomenon, *quantum entanglement*, is one of the most fascinating features of quantum mechanics. It manifests physically as quantum correlations (of various quantum properties such as observable quantities) between the individual subsystems of a composite quantum system. For example, a group of particles is entangled when the quantum state of each individual particle cannot be described independently of the state of the other particles in a collective description. This behaviour is realized to varying degrees in many different kinds of physical situations, including most interestingly when the particles are spacelike separated.
 
 Quantum entanglement is also necessarily characterized by *unrealized* correlations, such that the outcomes of measurements on the quantum system(s) are completely undecided until the measurement occurs. This means that the very act of performing a measurement on one subsystem of an entangled composition affects the entire system as a whole (i.e., apparent and irreversible collapse of the wave function). Though any such influence occurs seemingly instantaneously, quantum entanglement however does not allow any information to propagate superluminally (i.e., faster than the speed of light), despite the possibility that the subsystems of an entangled system are spacelike separated.
 

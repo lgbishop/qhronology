@@ -57,7 +57,7 @@ To find the D-CTC solutions, we first compute the standard evolution with the CR
 .. math::
 
    \begin{aligned}
-       \MapGeneral_{\Unitary} \bigl[\StateCR \otimes \StateCV\bigr] &= \Unitary \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \StateCV\bigr) \Unitary^\dagger \\
+       \MapGeneral_{\Unitary} [\StateCR \otimes \StateCV] &= \Unitary \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \StateCV\bigr) \Unitary^\dagger \\
        &= \Swap^{1,2} \cdot \Control^0 \NOT^1 \cdot \Control^2 \NOT^0 \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \StateCV\bigr) \Control^2 \NOT^{\dagger 0} \cdot \Control^0 \NOT^{\dagger 1} \cdot \Swap^{\dagger 1,2} \\
        &= \Swap^{1,2} \cdot \Control^0 \NOT^1 \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
        & \qquad\qquad\qquad\;\; + \ket{0}\bra{1}\otimes\ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \\
@@ -78,7 +78,7 @@ Subsequently tracing out the CR system (subsystems :math:`0` and :math:`1`) yiel
 .. math::
 
    \begin{aligned}
-       \MapDCTCsCV_{\Unitary} \bigl[\StateCR,\StateCV\bigr] &= \trace_{0, 1} \bigl[\Unitary \bigl(\ket{0}\bra{0} \otimes \ket{0}\bra{0} \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
+       \MapDCTCsCV_{\Unitary} [\StateCR,\StateCV] &= \trace_{0, 1} \bigl[\Unitary \bigl(\ket{0}\bra{0} \otimes \ket{0}\bra{0} \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
        &= \bra{0}\StateCV\ket{0} \cdot \ket{0}\bra{0} + \bra{1}\StateCV\ket{1} \cdot \ket{1}\bra{1},
    \end{aligned}
 
@@ -87,7 +87,7 @@ while tracing out the CV system (subsystem :math:`2`) gives the CR map,
 .. math::
 
    \begin{aligned}
-       \MapDCTCsCR_{\Unitary} \bigl[\StateCR,\StateCV\bigr] &= \trace_{2} \bigl[\Unitary \bigl(\ket{0}\bra{0} \otimes \ket{0}\bra{0} \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
+       \MapDCTCsCR_{\Unitary} [\StateCR,\StateCV] &= \trace_{2} \bigl[\Unitary \bigl(\ket{0}\bra{0} \otimes \ket{0}\bra{0} \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
        &= \bra{0}\StateCV\ket{0} \cdot \ket{0}\bra{0} \otimes \ket{0}\bra{0} + \bra{1}\StateCV\ket{1} \cdot \ket{1}\bra{1} \otimes \ket{1}\bra{1}.
    \end{aligned}
 
@@ -175,7 +175,7 @@ With this, we can easily determine the P-CTC CR state (corresponding to the inpu
    :label: eq:unproven_P-CTCs_CR
 
    \begin{aligned}
-       \StateCR_\MapPCTCsCR &= \MapPCTCsCR_{\Unitary} \bigl[\StateCR \bigr] \\
+       \StateCR_\MapPCTCsCR &= \MapPCTCsCR_{\Unitary} [\StateCR ] \\
        &= \frac{\OperatorPCTC \ket{0}\bra{0} \otimes \ket{0}\bra{0} \OperatorPCTC^\dagger}{\trace\bigr[\OperatorPCTC \ket{0}\bra{0} \otimes \ket{0}\bra{0} \OperatorPCTC^\dagger\bigr]} \\
        &= \ket{\Phi^+}\bra{\Phi^+}.
    \end{aligned}

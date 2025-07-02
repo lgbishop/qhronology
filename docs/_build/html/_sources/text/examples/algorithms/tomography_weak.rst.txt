@@ -201,9 +201,9 @@ Computing the expectation value of :math:`\Pauli_z` for this form then yields
    :label: eq:tomography_connection
 
    \begin{aligned}
-      \trace\left[\Pauli_z\StateProbe_k\right] &= \bra{0}  \StateProbe_k  \ket{0} - \bra{1}  \StateProbe_k  \ket{1} \\
+      \trace[\Pauli_z\StateProbe_k] &= \bra{0}  \StateProbe_k  \ket{0} - \bra{1}  \StateProbe_k  \ket{1} \\
       &= \Strength \bigl(\bra{0_k}  \StateCV  \ket{0_k} - \bra{1_k}  \StateCV  \ket{1_k}\bigr) \\
-      &= \Strength \, \trace\left[\Pauli_k \StateCV\right],
+      &= \Strength \, \trace[\Pauli_k \StateCV],
    \end{aligned}
 
 where we used the fact that
@@ -212,7 +212,7 @@ where we used the fact that
 
 Rescaling by a factor :math:`\tfrac{1}{\Strength}` then allows us to make the connection between performing a :math:`z`-basis measurement on the probe state :eq:`eq:state_probe` and inferring the expectation value of :math:`\Pauli_k` for the state of the unknown system. This is because, up to the factor :math:`\Strength`, the two operations are equivalent. Note that, for brevity, we will write
 
-.. math:: \Expectation_k \equiv \frac{1}{\Strength}\trace\left[\Pauli_z\StateProbe_k\right] = \trace\left[\Pauli_k \StateCV\right],
+.. math:: \Expectation_k \equiv \frac{1}{\Strength}\trace[\Pauli_z\StateProbe_k] = \trace[\Pauli_k \StateCV],
    :label: eq:tomography_expectation
 
 which is often denoted in the literature as :math:`\big<\Pauli_k\big>`.
@@ -222,9 +222,9 @@ If we define :math:`\Pauli_0 \equiv \Identity`, then the set of operators :math:
 .. math::
    :label: eq:tomography_reconstruction
 
-    \StateCV = \frac{1}{2}\sum_{k=0}^{3} \trace\left[\Pauli_k \StateCV\right] \Pauli_k.
+    \StateCV = \frac{1}{2}\sum_{k=0}^{3} \trace[\Pauli_k \StateCV] \Pauli_k.
 
-Since the coefficient for :math:`k = 0` is fixed by normalization (i.e., :math:`\trace\left[\Pauli_0 \tau \right] = 1`), then the state is fully determined by the *Bloch vector*, which is defined, for an :math:`\Dimension`-dimensional state, as the :math:`(\Dimension^2-1)`-dimensional real vector of parameters :math:`\trace\left[\Pauli_k \tau \right]` (for :math:`k \in \Integers_{1}^{\Dimension^2 - 1}`). Accordingly, the linear combination :eq:`eq:tomography_reconstruction` is said to be the *Bloch sphere representation* of the state :math:`\tau`. Thus, since we have shown that we can infer expectation values :eq:`eq:tomography_expectation` for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the :math:`z`-basis, then we can characterize the state completely without directly measuring it.
+Since the coefficient for :math:`k = 0` is fixed by normalization (i.e., :math:`\trace[\Pauli_0 \StateCV] = 1`), then the state is completely (and uniquely) determined by the *Bloch vector*, which is defined for a :math:`\Dimension`-dimensional state as the :math:`(\Dimension^2-1)`-dimensional real vector of parameters :math:`\bigl\{\trace[\Pauli_k \StateCV]\bigr\}_{k = 1}^{\Dimension^2 - 1}`. Accordingly, the linear combination :eq:`eq:tomography_reconstruction` is said to be the *Bloch sphere representation* of the state :math:`\StateCV`. Thus, since we have shown that we can infer expectation values :eq:`eq:tomography_expectation` for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the :math:`z`-basis, then we can characterize the state completely without directly measuring it.
 
 Implementation
 --------------
