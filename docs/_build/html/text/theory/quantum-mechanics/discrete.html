@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 03, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2025"/>
   </head>
   
   
@@ -806,12 +806,12 @@
 <p>where the Kraus operators are given by</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-32">
 <span class="eqno">(179)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-32" title="Link to this equation">#</a></span>\[\Kraus_i = \bra{\Basis_i}\Unitary\ket{\psi}.\]</div>
-<p>This form, which is sometimes called the <em>operator-sum representation</em>, describes the evolution of some system in the Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_\mathrm{S}\)</span> that interacts with an environment system (a separate system with Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_\mathrm{E}\)</span>) some unitary <span class="math notranslate nohighlight">\(\Unitary\)</span>. In this bipartite setup, the environment is initially in the state <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> (with <span class="math notranslate nohighlight">\(\{\ket{\Basis_i}\}_i\)</span> denoting an orthonormal basis). Dropping the assumption that the environment is initially pure, we may in general write</p>
+<p>This form, which is sometimes called the <em>operator-sum representation</em>, describes the evolution of some system in the Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_\mathrm{S}\)</span> that interacts with an environment system (a separate system with Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_\mathrm{E}\)</span>) via some unitary <span class="math notranslate nohighlight">\(\Unitary\)</span>. In this bipartite setup, the environment is initially in the state <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> (with <span class="math notranslate nohighlight">\(\{\ket{\Basis_i}\}_i\)</span> denoting an orthonormal basis). Dropping the assumption that the environment is initially pure, we may in general write</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-33">
-<span class="eqno">(180)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-33" title="Link to this equation">#</a></span>\[\MapGeneral[\StateDensity] = \trace_\mathrm{E} \bigl[\Unitary(\StateDensity_\mathrm{S} \otimes \op{\tau}_\mathrm{E})\Unitary^\dagger\bigr]\]</div>
+<span class="eqno">(180)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-33" title="Link to this equation">#</a></span>\[\MapGeneral[\StateDensity] = \trace_\mathrm{E} \bigl[\Unitary(\StateDensity^\mathrm{S} \otimes \op{\tau}^\mathrm{E})\Unitary^\dagger\bigr]\]</div>
 <p>where <span class="math notranslate nohighlight">\(\op{\tau}\)</span> is the environment state. The output of the environment under this evolution is complementarily given by</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-34">
-<span class="eqno">(181)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-34" title="Link to this equation">#</a></span>\[\tilde{\MapGeneral}[\op{\tau}] = \trace_\mathrm{S} \bigl[\Unitary(\StateDensity_\mathrm{S} \otimes \op{\tau}_\mathrm{E})\Unitary^\dagger\bigr].\]</div>
+<span class="eqno">(181)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-34" title="Link to this equation">#</a></span>\[\tilde{\MapGeneral}[\op{\tau}] = \trace_\mathrm{S} \bigl[\Unitary(\StateDensity^\mathrm{S} \otimes \op{\tau}^\mathrm{E})\Unitary^\dagger\bigr].\]</div>
 <p>Quantum operations of this kind, i.e., those which are both completely positive (CP) and trace-preserving (TP), are known as <em>CPTP maps</em> or, more popularly, <em>quantum channels</em>. Note however that there is no loss in generality in making the assumption that the environment is in a pure state, since it can always be purified by the introduction of an additional system.</p>
 </section>
 </section>

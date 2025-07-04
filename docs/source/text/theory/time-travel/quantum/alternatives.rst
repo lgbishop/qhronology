@@ -157,7 +157,7 @@ In general, the methodology of the T-CTC prescription may equally be applied to 
 
 In this form, it is immediately clear that the T-CTC equation of motion is a weighted mixture of the P-CTC equation of motion :eq:`eq:P-CTCs_CR` with an ordinary quantum channel, giving the impression that a T-CTC can be thought of as a noisy P-CTC. Therefore, T-CTCs, like P-CTCs, does not suffer from uniqueness ambiguities, while having the benefit of being consistent for any given :math:`\Unitary` and :math:`\StateCR`. This is because the condition
 
-.. math:: \trace\bigl[\trace_\CV[\Unitary] \StateCR \, \trace_\CV[\Unitary^\dagger]\bigr] = 0,
+.. math:: \trace\Bigl[\trace_\CV[\Unitary] \StateCR \, \trace_\CV[\Unitary^\dagger]\Bigr] = 0,
 
 while rendering P-CTCs inconsistent, poses no problems for T-CTCs. The prescription thus provides unique solutions to all paradoxes with the added advantage of not requiring either an adjunct condition or the introduction of noise in order to do so.
 

@@ -506,13 +506,13 @@ where the Kraus operators are given by
 
 .. math:: \Kraus_i = \bra{\Basis_i}\Unitary\ket{\psi}.
 
-This form, which is sometimes called the *operator-sum representation*, describes the evolution of some system in the Hilbert space :math:`\SpaceHilbert_\mathrm{S}` that interacts with an environment system (a separate system with Hilbert space :math:`\SpaceHilbert_\mathrm{E}`) some unitary :math:`\Unitary`. In this bipartite setup, the environment is initially in the state :math:`\ket{\psi}` (with :math:`\{\ket{\Basis_i}\}_i` denoting an orthonormal basis). Dropping the assumption that the environment is initially pure, we may in general write
+This form, which is sometimes called the *operator-sum representation*, describes the evolution of some system in the Hilbert space :math:`\SpaceHilbert_\mathrm{S}` that interacts with an environment system (a separate system with Hilbert space :math:`\SpaceHilbert_\mathrm{E}`) via some unitary :math:`\Unitary`. In this bipartite setup, the environment is initially in the state :math:`\ket{\psi}` (with :math:`\{\ket{\Basis_i}\}_i` denoting an orthonormal basis). Dropping the assumption that the environment is initially pure, we may in general write
 
-.. math:: \MapGeneral[\StateDensity] = \trace_\mathrm{E} \bigl[\Unitary(\StateDensity_\mathrm{S} \otimes \op{\tau}_\mathrm{E})\Unitary^\dagger\bigr]
+.. math:: \MapGeneral[\StateDensity] = \trace_\mathrm{E} \bigl[\Unitary(\StateDensity^\mathrm{S} \otimes \op{\tau}^\mathrm{E})\Unitary^\dagger\bigr]
 
 where :math:`\op{\tau}` is the environment state. The output of the environment under this evolution is complementarily given by
 
-.. math:: \tilde{\MapGeneral}[\op{\tau}] = \trace_\mathrm{S} \bigl[\Unitary(\StateDensity_\mathrm{S} \otimes \op{\tau}_\mathrm{E})\Unitary^\dagger\bigr].
+.. math:: \tilde{\MapGeneral}[\op{\tau}] = \trace_\mathrm{S} \bigl[\Unitary(\StateDensity^\mathrm{S} \otimes \op{\tau}^\mathrm{E})\Unitary^\dagger\bigr].
 
 Quantum operations of this kind, i.e., those which are both completely positive (CP) and trace-preserving (TP), are known as *CPTP maps* or, more popularly, *quantum channels*. Note however that there is no loss in generality in making the assumption that the environment is in a pure state, since it can always be purified by the introduction of an additional system.
 
