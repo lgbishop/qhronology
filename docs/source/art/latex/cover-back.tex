@@ -146,10 +146,10 @@
     % \filldraw [fill=maincolor, draw=maincolor] (30,10) rectangle (20 - 3.25,-30);
     % \filldraw [fill=maincolor, draw=maincolor] (-10,-30) rectangle (10.5+20,-24.7+1);
 
-    \IfFileExists{./clock-distorted.png}{ % True
-    \node[anchor=center,xshift=13.175cm,yshift=-1.35cm,rotate=45, opacity=1] at (0,0) {\includegraphics[height=1.5cm]{clock-distorted.png}};
-    }{ % False
-    \node[anchor=center,xshift=\eval{6.4825 + 1.5 + 0.125*\ClockPositionAmplitudeHorizontal*\ClockShiftHorizontal} cm,yshift=\eval{-16.35 - 0.125*\ClockPositionAmplitudeVertical*\ClockShiftVertical} cm,rotate=-45, opacity=1] at (0,0) {\includegraphics[height=6.5cm]{render-clock-fixed.png}};
+    % \IfFileExists{./clock-distorted.png}{ % True
+    % \node[anchor=center,xshift=13.175cm,yshift=-1.35cm,rotate=45, opacity=1] at (0,0) {\includegraphics[height=1.5cm]{clock-distorted.png}};
+    % }{ % False
+    % \node[anchor=center,xshift=\eval{6.4825 + 1.5 + 0.125*\ClockPositionAmplitudeHorizontal*\ClockShiftHorizontal} cm,yshift=\eval{-16.35 - 0.125*\ClockPositionAmplitudeVertical*\ClockShiftVertical} cm,rotate=-45, opacity=1] at (0,0) {\includegraphics[height=6.5cm]{render-clock-fixed.png}};
     % \node[anchor=center,xshift=6.75cm,yshift=-1.00cm,rotate=0, scale=8.5, color=fontcolor] at (0,0) {\fontfamily{qtm}\selectfont \contour{fontcolor}{Q}\tikzunderarrow[fontcolor]{\smash{\contour{fontcolor}{h\hspace{0.01cm}ronolo}}}\contour{fontcolor}{gy}};
     % \node[anchor=north west,xshift=-0.5cm,yshift=0.5cm,rotate=0, scale=0.6, color=fontcolor] at (0,0) {\includegraphics{logo-text.pdf}};
  %    \node[anchor=west,xshift=-0.5cm,yshift=-3.25cm,rotate=0, scale=1.45, color=fontcolor] at (0,0) {\textbf{A Python package for resolving quantum time-travel paradoxes}};
