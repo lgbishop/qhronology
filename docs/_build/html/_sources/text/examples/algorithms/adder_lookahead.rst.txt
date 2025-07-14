@@ -40,8 +40,8 @@ The values of the summation qubits can be determined to be
 
    s_i =
        \begin{cases}
-           x_0 \oplus y_0 \oplus c_0 & i = 0; \\
-           x_i \oplus y_i \oplus c^\prime_i & i > 0. \\
+           x_0 \oplus y_0 \oplus c_0, & \text{if } i = 0; \\
+           x_i \oplus y_i \oplus c^\prime_i, & \text{if } i > 0. \\
        \end{cases}
 
 This version of an adder resets all output carry qubits to their original input values. The intermediary carry values however are
@@ -50,8 +50,8 @@ This version of an adder resets all output carry qubits to their original input 
 
    c^\prime_i =
        \begin{cases}
-           c_1 \oplus x_0 y_0 \oplus c_0 (x_0 \oplus y_0) & i = 1; \\
-           c_i \oplus x_{i - 1} y_{i - 1} \oplus c^\prime_{i - 1} (x_{i - 1} \oplus y_{i - 1}) & i > 1. \\
+           c_1 \oplus x_0 y_0 \oplus c_0 (x_0 \oplus y_0), & \text{if } i = 1; \\
+           c_i \oplus x_{i - 1} y_{i - 1} \oplus c^\prime_{i - 1} (x_{i - 1} \oplus y_{i - 1}), & \text{if } i > 1. \\
        \end{cases}
 
 The last qubit is simply an overflow qubit and has the value

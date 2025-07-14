@@ -66,8 +66,8 @@ From this circuit, the general output values of the summation qubits can be comp
 
    s_i =
        \begin{cases}
-           x_0 \oplus y_0 \oplus c_0 & i = 0; \\
-           x_i \oplus y_i \oplus c_i \oplus c^\prime_{i - 1} & i > 0; \\
+           x_0 \oplus y_0 \oplus c_0, & \text{if } i = 0; \\
+           x_i \oplus y_i \oplus c_i \oplus c^\prime_{i - 1}, & \text{if } i > 0; \\
        \end{cases}
 
 while the carry values are
@@ -76,8 +76,8 @@ while the carry values are
 
    c^\prime_i =
        \begin{cases}
-           x_0 y_0 \oplus y_0 c_0 \oplus x_0 c_0 & i = 0; \\
-           x_i y_i \oplus (x_i \oplus y_i)(c_i \oplus c^\prime_{i-1}) & i > 0. \\
+           x_0 y_0 \oplus y_0 c_0 \oplus x_0 c_0, & \text{if } i = 0; \\
+           x_i y_i \oplus (x_i \oplus y_i)(c_i \oplus c^\prime_{i-1}), & \text{if } i > 0. \\
        \end{cases}
 
 With these, the corresponding states

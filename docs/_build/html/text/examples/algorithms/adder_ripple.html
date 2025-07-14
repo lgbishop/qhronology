@@ -526,15 +526,15 @@
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-ripple-1">
 <span class="eqno">(345)<a class="headerlink" href="#equation-text-examples-algorithms-adder-ripple-1" title="Link to this equation">#</a></span>\[\begin{split}s_i =
     \begin{cases}
-        x_0 \oplus y_0 \oplus c_0 &amp; i = 0; \\
-        x_i \oplus y_i \oplus c_i \oplus c^\prime_{i - 1} &amp; i &gt; 0; \\
+        x_0 \oplus y_0 \oplus c_0, &amp; \text{if } i = 0; \\
+        x_i \oplus y_i \oplus c_i \oplus c^\prime_{i - 1}, &amp; \text{if } i &gt; 0; \\
     \end{cases}\end{split}\]</div>
 <p>while the carry values are</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-ripple-2">
 <span class="eqno">(346)<a class="headerlink" href="#equation-text-examples-algorithms-adder-ripple-2" title="Link to this equation">#</a></span>\[\begin{split}c^\prime_i =
     \begin{cases}
-        x_0 y_0 \oplus y_0 c_0 \oplus x_0 c_0 &amp; i = 0; \\
-        x_i y_i \oplus (x_i \oplus y_i)(c_i \oplus c^\prime_{i-1}) &amp; i &gt; 0. \\
+        x_0 y_0 \oplus y_0 c_0 \oplus x_0 c_0, &amp; \text{if } i = 0; \\
+        x_i y_i \oplus (x_i \oplus y_i)(c_i \oplus c^\prime_{i-1}), &amp; \text{if } i &gt; 0. \\
     \end{cases}\end{split}\]</div>
 <p>With these, the corresponding states</p>
 <div class="math notranslate nohighlight" id="equation-eq-encoded">

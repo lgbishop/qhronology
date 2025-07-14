@@ -97,7 +97,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         product: bool | None = None,
         return_string: bool | None = None,
     ) -> None | str:
-        """Print or return a mathematical expression of the quantum object as a multiline string.
+        """Print or return a mathematical expression of the quantum object as a string.
 
         Arguments
         ---------
@@ -110,7 +110,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             Only applies if the object is a multipartite composition.
             Defaults to ``False``.
         return_string : bool
-            Whether to return the mathematical expression as a multiline string.
+            Whether to return the mathematical expression as a string.
             Defaults to ``False``.
 
         Returns

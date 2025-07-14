@@ -87,8 +87,8 @@ where
 
    \delta_{ij} \equiv
        \begin{cases}
-           0 & \text{when } i \neq j; \\
-           1 & \text{when } i = j.
+           0, & \text{if } i \neq j; \\
+           1, & \text{if } i = j.
        \end{cases}
 
 is the *Kronecker delta*. Orthonormality is a useful property: given an orthonormal basis :math:`\{\Basis_i\}_{i=1}^{\Dimension}`, the coefficients in the linear expansion :eq:`eq:linear_combination` may be (uniquely) determined by taking the inner product, i.e.,

@@ -319,8 +319,8 @@ In the case where either density matrix is pure, we can write
 
    \Fidelity(\op{\rho},\op{\tau}) = \trace[\op{\rho}\op{\tau}] =
        \begin{cases}
-           \langle \psi_\rho | \op{\tau} | \psi_\rho \rangle & \text{when } \op{\rho} = | \psi_\rho \rangle \langle \psi_\rho |; \\
-           \langle \psi_\tau | \op{\rho} | \psi_\tau \rangle & \text{when } \op{\tau} = | \psi_\tau \rangle \langle \psi_\tau |; \\
+           \langle \psi_\rho | \op{\tau} | \psi_\rho \rangle, & \text{if } \op{\rho} = | \psi_\rho \rangle \langle \psi_\rho |; \\
+           \langle \psi_\tau | \op{\rho} | \psi_\tau \rangle, & \text{if } \op{\tau} = | \psi_\tau \rangle \langle \psi_\tau |; \\
        \end{cases}
 
 which further reduces to the overlap
