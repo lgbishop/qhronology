@@ -1,0 +1,27 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+% \usepackage{geometry}
+% \geometry{
+% paperwidth=8cm,
+% paperheight=8cm,
+% margin=0cm
+% }
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}]%[transparent]
+    \lstick{$\ket{0}$} & \gate{\Rotation_y(\theta_0)} & \ctrl{1} & \qw & \push{\ \ldots\ } & \qw & \push{\ \ldots\ } & \qw & \ctrl{1} & \targ{} & \qw \rstick[4]{$\ket{\mathrm{W}}$} \\
+    \lstick{$\ket{0}$} & \qw & \gate{\Rotation_y(\theta_1)} & \ctrl{1} & \push{\ \ldots\ } & \qw & \push{\ \ldots\ } & \ctrl{1} & \targ{} & \qw & \qw \\
+    \lstick{$\vdots\ $} & \qw & \qw & \gate{\Rotation_y(\theta_2)} & \push{\ \ldots\ } & \ctrl{1} & \push{\ \ldots\ } & \targ{} & \qw & \qw & \qw \\
+    \lstick{$\ket{0}$} & \qw & \qw & \qw & \push{\ \ldots\ } & \targ{} & \push{\ \ldots\ } & \qw & \qw & \qw & \qw
+\end{quantikz}
+\end{document}

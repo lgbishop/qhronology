@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 01, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 15, 2025"/>
   </head>
   
   
@@ -408,8 +408,9 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generation_arbitrary.html">Generation of a generalized GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_ghz_general.html">Generation of a generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_w_general.html">Generation of a generalized W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="toffoli.html">Toffoli decomposition</a></li>
@@ -491,21 +492,21 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>The version of a quantum adder presented here sums two multi-qubit integers essentially by computing the summation in Fourier space <span id="id1">[<a class="reference internal" href="#cite-1-draper-addition-2000" title="T. G. Draper, “Addition on a Quantum Computer”, August 2000. http://arxiv.org/abs/quant-ph/0008033, doi:10.48550/arXiv.quant-ph/0008033">1</a>, <a class="reference internal" href="#cite-1-ruiz-perez-quantum-2017" title="L. Ruiz-Perez and J. C. Garcia-Escartin, “Quantum arithmetic with the quantum Fourier transform”, Quantum Information Processing, 16(6):152, April 2017. https://doi.org/10.1007/s11128-017-1603-1, doi:10.1007/s11128-017-1603-1">2</a>, <a class="reference internal" href="#cite-1-sahin-quantum-2020" title="E. Şahin, “Quantum arithmetic operations based on quantum fourier transform on signed integers”, International Journal of Quantum Information, 18(06):2050035, September 2020. https://www.worldscientific.com/doi/abs/10.1142/S0219749920500355, doi:10.1142/S0219749920500355">3</a>, <a class="reference internal" href="#cite-1-seidel-efficient-2022" title="R. Seidel, N. Tcholtchev, S. Bock, C. K.-U. Becker, and M. Hauswirth, “Efficient Floating Point Arithmetic for Quantum Computers”, IEEE Access, 10:72400–72415, 2022. https://ieeexplore.ieee.org/document/9815035, doi:10.1109/ACCESS.2022.3188251">4</a>, <a class="reference internal" href="#cite-1-atchade-adelomou-efficient-2023" title="P. Atchade-Adelomou and S. Gonzalez, “Efficient Quantum Modular Arithmetics for the ISQ Era”, November 2023. http://arxiv.org/abs/2311.08555, doi:10.48550/arXiv.2311.08555">5</a>, <a class="reference internal" href="#cite-1-wang-comprehensive-2025" title="S. Wang, X. Li, W. J. B. Lee, S. Deb, E. Lim, and A. Chattopadhyay, “A comprehensive study of quantum arithmetic circuits”, Philosophical Transactions A, January 2025. https://royalsocietypublishing.org/doi/10.1098/rsta.2023.0392, doi:10.1098/rsta.2023.0392">6</a>]</span>. This is achieved by first performing a quantum (discrete) Fourier transform on one of the encoded integers, following with a controlled-phase gate (serving the same function as an ordinary full adder in ordinary non-Fourier Hilbert space), and concluding with an inverse Fourier transform on the same integer.</p>
 <figure class="only-dark align-center" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier-dark.png"><img alt="A quantum circuit diagram of a QFT-based adder." src="../../../_images/circuit_algorithm_adder_fourier-dark.png" style="width: 482.03999999999996px; height: 281.88px;" />
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier-dark.png"><img alt="A quantum circuit diagram of a QFT-based adder." src="../../../_images/circuit_algorithm_adder_fourier-dark.png" style="width: 487.08px; height: 281.88px;" />
 </a>
 </figure>
 <figure class="only-light align-center" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier-light.png"><img alt="A quantum circuit diagram of a QFT-based adder." src="../../../_images/circuit_algorithm_adder_fourier-light.png" style="width: 482.03999999999996px; height: 281.88px;" />
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier-light.png"><img alt="A quantum circuit diagram of a QFT-based adder." src="../../../_images/circuit_algorithm_adder_fourier-light.png" style="width: 487.08px; height: 281.88px;" />
 </a>
 </figure>
 <figure class="light-dark hidden align-center" id="fig-circuit-algorithm-adder-fourier" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier-light.png"><img alt="A quantum circuit diagram of a QFT-based adder." src="../../../_images/circuit_algorithm_adder_fourier-light.png" style="width: 482.03999999999996px; height: 281.88px;" />
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier-light.png"><img alt="A quantum circuit diagram of a QFT-based adder." src="../../../_images/circuit_algorithm_adder_fourier-light.png" style="width: 487.08px; height: 281.88px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 20 </span><span class="caption-text">A quantum circuit diagram of a QFT-based adder.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-fourier" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 21 </span><span class="caption-text">A quantum circuit diagram of a QFT-based adder.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-fourier" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>An example of this algorithm for <span class="math notranslate nohighlight">\(3\)</span>-qubit integers appears in <a class="reference internal" href="#fig-circuit-algorithm-adder-fourier-three"><span class="std std-numref">Figure 21</span></a>.</p>
+<p>An example of this algorithm for <span class="math notranslate nohighlight">\(3\)</span>-qubit integers appears in <a class="reference internal" href="#fig-circuit-algorithm-adder-fourier-three"><span class="std std-numref">Figure 22</span></a>.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier_three-dark.png"><img alt="A quantum circuit diagram of a QFT-based adder for :math:`3`-qubit states." src="../../../_images/circuit_algorithm_adder_fourier_three-dark.png" style="width: 988.1999999999999px; height: 269.64px;" />
 </a>
@@ -518,14 +519,14 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_fourier_three-light.png"><img alt="A quantum circuit diagram of a QFT-based adder for :math:`3`-qubit states." src="../../../_images/circuit_algorithm_adder_fourier_three-light.png" style="width: 988.1999999999999px; height: 269.64px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 21 </span><span class="caption-text">A QFT-based adder for <span class="math notranslate nohighlight">\(3\)</span>-qubit states.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-fourier-three" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 22 </span><span class="caption-text">A QFT-based adder for <span class="math notranslate nohighlight">\(3\)</span>-qubit states.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-fourier-three" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-adder-fourier">
-<div class="code-block-caption"><span class="caption-number">Listing 20 </span><span class="caption-text">/text/examples/algorithms/adder_fourier.py</span><a class="headerlink" href="#code-adder-fourier" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">/text/examples/algorithms/adder_fourier.py</span><a class="headerlink" href="#code-adder-fourier" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Fourier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

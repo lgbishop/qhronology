@@ -308,7 +308,7 @@ In this :math:`3`-dimensional total Hilbert space (of both the vacuum and the cl
 
    \begin{aligned}
       \StateCR_{\MapDCTCsCR} &= \frac{1}{2}\Bigl[\ket{1}\bra{1} + \bigl(\ParameterFree + (1 - \ParameterFree)\e^{\eye \pi \TimeDelta/\TimeOrthogonalization}\bigr)\ket{1}\bra{2} + \bigl(\ParameterFree + (1 - \ParameterFree)\e^{-\eye \pi \TimeDelta/\TimeOrthogonalization}\bigr)\ket{2}\bra{1} + \ket{2}\bra{2}\Bigr]\\
-      \StateCV_{\MapDCTCsCR} &= \ParameterFree\ket{0}\bra{0} + (1 - \ParameterFree)\frac{1}{2}\bigl[\ket{1}\bra{1} + \e^{\eye \pi \TimeDelta/\TimeOrthogonalization}\ket{1}\bra{2} + \e^{-\eye \pi \TimeDelta/\TimeOrthogonalization}\ket{2}\bra{1} + \ket{2}\bra{2}\bigr],
+      \StateCV_{\MapDCTCsCR} &= \ParameterFree\ket{0}\bra{0} + (1 - \ParameterFree)\frac{1}{2}\Bigl[\ket{1}\bra{1} + \e^{\eye \pi \TimeDelta/\TimeOrthogonalization}\ket{1}\bra{2} + \e^{-\eye \pi \TimeDelta/\TimeOrthogonalization}\ket{2}\bra{1} + \ket{2}\bra{2}\Bigr],
    \end{aligned}
 
 while the P-CTC solutions are

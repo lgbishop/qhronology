@@ -56,8 +56,8 @@ In Deutsch's model (D-CTCs), we necessarily have to calculate fixed-point soluti
 .. math::
 
    \begin{aligned}
-       \MapGeneral_{\Unitary} \bigl[\StateCR \otimes \StateCV\bigr] &= \Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger \\
-       &= \Swap^{0,1} \cdot \Control^1 \NOT^0 \bigl(\StateCR \otimes \StateCV\bigr) \Control^1 \NOT^{\dagger 0} \cdot \Swap^{\dagger 0,1} \\
+       \MapGeneral_{\Unitary} [\StateCR \otimes \StateCV] &= \Unitary (\StateCR \otimes \StateCV) \Unitary^\dagger \\
+       &= \Swap^{0,1} \cdot \Control^1 \NOT^0 (\StateCR \otimes \StateCV) \Control^1 \NOT^{\dagger 0} \cdot \Swap^{\dagger 0,1} \\
        &= \Swap^{0,1} \bigl(\StateCR \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
        & \qquad\quad\; + \StateCR\Pauli_x^\dagger \otimes \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \\
        & \qquad\quad\; + \Pauli_x\StateCR \otimes \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \\
@@ -73,7 +73,7 @@ Subsequently tracing out the CR system yields the D-CTCs CV map,
 .. math::
 
    \begin{aligned}
-       \MapDCTCsCV_{\Unitary} \bigl[\StateCR,\StateCV\bigr] &= \trace_{0} \bigl[\Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
+       \MapDCTCsCV_{\Unitary} [\StateCR,\StateCV] &= \trace_{0} \bigl[\Unitary (\StateCR \otimes \StateCV) \Unitary^\dagger\bigr] \\
        &= \bra{0}\StateCV\ket{0} \cdot \StateCR + \bra{1}\StateCV\ket{1} \cdot \Pauli_x\StateCR\Pauli_x^\dagger,
    \end{aligned}
 
@@ -82,7 +82,7 @@ while tracing out the CV system gives the CR map,
 .. math::
 
    \begin{aligned}
-       \MapDCTCsCR_{\Unitary} \bigl[\StateCR,\StateCV\bigr] &= \trace_{1} \bigl[\Unitary \bigl(\StateCR \otimes \StateCV\bigr) \Unitary^\dagger\bigr] \\
+       \MapDCTCsCR_{\Unitary} [\StateCR,\StateCV] &= \trace_{1} \bigl[\Unitary (\StateCR \otimes \StateCV) \Unitary^\dagger\bigr] \\
        &= \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
        & \quad + \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \cdot \bigl[\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr] \\
        & \quad + \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \cdot \bigl[\bra{1}\StateCR\ket{0} + \bra{0}\StateCR\ket{1}\bigr] \\
@@ -134,7 +134,7 @@ Using this, we can obtain the P-CTC CR state from its definition :eq:`eq:P-CTCs_
    :label: eq:grandfather_P-CTCs_CR
 
    \begin{aligned}
-       \StateCR_\MapPCTCsCR &= \MapPCTCsCR_{\Unitary} \bigl[\StateCR\bigr] \\
+       \StateCR_\MapPCTCsCR &= \MapPCTCsCR_{\Unitary} [\StateCR] \\
        &= \frac{\OperatorPCTC \StateCR \OperatorPCTC^\dagger}{\trace[\OperatorPCTC \StateCR \OperatorPCTC^\dagger]} \\
        &= \ket{+}\bra{+}
    \end{aligned}

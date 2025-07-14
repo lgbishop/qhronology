@@ -56,12 +56,12 @@ This means that, with time-evolution unitary :math:`\Unitary(\TimeInitial,\TimeF
    :label: eq:path_amplitude_split
 
    \begin{aligned}
-       (\bra{\WaveFunctionFinal}\otimes\bra{\WaveFunctionCTCFinal})\Unitary(\TimeFinal,\TimeInitial)(\ket{\WaveFunctionInitial}\otimes\ket{\WaveFunctionCTCInitial}) &= \iiiint\diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}} \, \WaveFunctionInitial(u^{\prime}) \conj{\WaveFunctionFinal}{(u^{\prime\prime})}\WaveFunctionCTCInitial(v^{\prime}) \conj{\WaveFunctionCTCFinal}{(v^{\prime\prime})} \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\Position \, \e^{\eye \Action[\Position]/\hbar}.
+       \bigl(\bra{\WaveFunctionFinal}\otimes\bra{\WaveFunctionCTCFinal}\bigr)\Unitary(\TimeFinal,\TimeInitial)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{\WaveFunctionCTCInitial}\bigr) &= \iiiint\diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}} \, \WaveFunctionInitial(u^{\prime}) \conj{\WaveFunctionFinal}{(u^{\prime\prime})}\WaveFunctionCTCInitial(v^{\prime}) \conj{\WaveFunctionCTCFinal}{(v^{\prime\prime})} \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\Position \, \e^{\eye \Action[\Position]/\hbar}.
    \end{aligned}
 
 Now, to include a CTC in this scheme, we mandate that the initial and final coordinates for the chronology-violating system are the same, just like in a CTC. Mathematically, we impose the boundary condition :math:`v^{\prime}=v^{\prime\prime}` a :math:`\delta`-function in :eq:`eq:path_amplitude_split`, and the resulting transition amplitude for the chronology-respecting system with an incorporated CTC may be written as
 
-.. math:: (\bra{\WaveFunctionFinal}\otimes\Identity)\Unitary(\TimeFinal,\TimeInitial)(\ket{\WaveFunctionInitial}\otimes\Identity) = \iiiint\diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}} \, \WaveFunctionInitial(u^{\prime}) \conj{\WaveFunctionFinal}{(u^{\prime\prime})} \delta(v^{\prime}-v^{\prime\prime}) \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\Position \, \e^{\eye \Action[\Position]/\hbar}.
+.. math:: \bigl(\bra{\WaveFunctionFinal}\otimes\Identity\bigr)\Unitary(\TimeFinal,\TimeInitial)\bigl(\ket{\WaveFunctionInitial}\otimes\Identity\bigr) = \iiiint\diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}} \, \WaveFunctionInitial(u^{\prime}) \conj{\WaveFunctionFinal}{(u^{\prime\prime})} \delta(v^{\prime}-v^{\prime\prime}) \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\Position \, \e^{\eye \Action[\Position]/\hbar}.
    :label: eq:P-CTCs_path
 
 The coherent addition of all possible initial and final conditions for the CTC is captured through the :math:`v^{\prime}` and :math:`v^{\prime\prime}` integrals, hence the removal of the CTC states :math:`\ket{\WaveFunctionCTCInitial}` and :math:`\ket{\WaveFunctionCTCFinal}`. This indicates that it is not possible to assign a state to the CTC system (at least in this context), which in turn means that compatibility with the boundary conditions implies that the CR system is not in a forbidden state.
@@ -89,11 +89,11 @@ From here, we replace the CV state :math:`\ket{\WaveFunctionCTC}` with the maxim
    :label: eq:P-CTCs_postselection
 
    \begin{aligned}
-       (\bra{\WaveFunctionFinal}\otimes\bra{\Bell})(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity)(\ket{\WaveFunctionInitial}\otimes\ket{\Bell}) &= \iint \diff{v^{\prime\prime}}\,\diff{w^{\prime\prime}}\,\conj{\Bell}{(v^{\prime\prime},w^{\prime\prime})}\delta(v^{\prime\prime}-w^{\prime\prime})(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}}) \\
-       &\quad\times(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity)\\
-       &\quad\times\iint \diff{v^{\prime}}\,\diff{w^{\prime}}\,\Bell(v^{\prime},w^{\prime})\delta(v^{\prime}-w^{\prime})(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}})\\
+       \bigl(\bra{\WaveFunctionFinal}\otimes\bra{\Bell}\bigr)\bigl(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{\Bell}\bigr) &= \iint \diff{v^{\prime\prime}}\,\diff{w^{\prime\prime}}\,\conj{\Bell}{(v^{\prime\prime},w^{\prime\prime})}\delta(v^{\prime\prime}-w^{\prime\prime})\bigl(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}}\bigr) \\
+       &\quad\times\bigl(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\\
+       &\quad\times\iint \diff{v^{\prime}}\,\diff{w^{\prime}}\,\Bell(v^{\prime},w^{\prime})\delta(v^{\prime}-w^{\prime})\bigl(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}}\bigr)\\
        &= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\,\Bell(v^{\prime},w^{\prime})\conj{\Bell}{(v^{\prime\prime},w^{\prime\prime})}\delta(v^{\prime}-w^{\prime})\delta(v^{\prime\prime}-w^{\prime\prime}) \\
-       &\quad\times(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}})(\Unitary^{\prime}(\TimeFinal,\TimeInitial)\otimes\Identity)(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}})\\
+       &\quad\times\bigl(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}}\bigr)\bigl(\Unitary^{\prime}(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}}\bigr)\\
        &= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\,\Bell(v^{\prime},w^{\prime})\conj{\Bell}{(v^{\prime\prime},w^{\prime\prime})}\delta(v^{\prime}-w^{\prime})\delta(v^{\prime\prime}-w^{\prime\prime}) \\
        &\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime})\conj{\WaveFunctionFinal}{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\Position \, \e^{\eye \Action[\Position]/\hbar} \cdot \underbrace{\bra{w^{\prime\prime}}\Identity\ket{w^{\prime}}}_{=\delta(w^{\prime\prime}-w^{\prime})} \\
        &= \iiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\Bell(v^{\prime},w^{\prime})\conj{\Bell}{(v^{\prime\prime},w^{\prime})}\delta(v^{\prime}-w^{\prime})\delta(v^{\prime\prime}-w^{\prime}) \\
@@ -106,7 +106,7 @@ From here, we replace the CV state :math:`\ket{\WaveFunctionCTC}` with the maxim
 
 Thus, we can see that the path-integral formulation :eq:`eq:P-CTCs_path` is equivalent to postselection :eq:`eq:P-CTCs_postselection`, that is,
 
-.. math:: (\bra{\WaveFunctionFinal}\otimes\Identity)\Unitary(\TimeFinal,\TimeInitial)(\ket{\WaveFunctionInitial}\otimes\Identity) = (\bra{\WaveFunctionFinal}\otimes\bra{\Bell})(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity)(\ket{\WaveFunctionInitial}\otimes\ket{\Bell}).
+.. math:: \bigl(\bra{\WaveFunctionFinal}\otimes\Identity\bigr)\Unitary(\TimeFinal,\TimeInitial)\bigl(\ket{\WaveFunctionInitial}\otimes\Identity\bigr) = \bigl(\bra{\WaveFunctionFinal}\otimes\bra{\Bell}\bigr)\bigl(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{\Bell}\bigr).
 
 Of course, being based on the path-integral formulation, these quantities are in general not normalized, and so must be renormalized in order to ensure that the probabilistic interpretation of the theory remains intact.
 

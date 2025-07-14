@@ -1128,7 +1128,7 @@ class Summation(QuantumGate):
 
     .. math:: \\SUM(n) = \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k \\oplus n}\\bra{k}
 
-    where :math:`n` (``shift``) is the *shift* parameter,
+    where :math:`n \\in \\Integers_{\\geq 0}` (``shift``) is the *shift* parameter,
     and :math:`k \\oplus n \\equiv k + n \\mathrel{\\mathrm{mod}} \\Dimension`.
 
     The case of :math:`n = 1` is known as the *shift* operator, and represents a (non-Hermitian)
