@@ -44,8 +44,9 @@ Quantum algorithms and protocols
 
    algorithms/generation_bell
    algorithms/generation_ghz
-   algorithms/generation_arbitrary
+   algorithms/generation_ghz_general
    algorithms/generation_w
+   algorithms/generation_w_general
    algorithms/cnot
    algorithms/ccnot
    algorithms/toffoli
