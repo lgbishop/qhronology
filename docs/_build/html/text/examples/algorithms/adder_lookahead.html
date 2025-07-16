@@ -510,15 +510,15 @@
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-0">
 <span class="eqno">(349)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-0" title="Link to this equation">#</a></span>\[\begin{split}s_i =
     \begin{cases}
-        x_0 \oplus y_0 \oplus c_0 &amp; i = 0; \\
-        x_i \oplus y_i \oplus c^\prime_i &amp; i &gt; 0. \\
+        x_0 \oplus y_0 \oplus c_0, &amp; \text{if } i = 0; \\
+        x_i \oplus y_i \oplus c^\prime_i, &amp; \text{if } i &gt; 0. \\
     \end{cases}\end{split}\]</div>
 <p>This version of an adder resets all output carry qubits to their original input values. The intermediary carry values however are</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-1">
 <span class="eqno">(350)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-1" title="Link to this equation">#</a></span>\[\begin{split}c^\prime_i =
     \begin{cases}
-        c_1 \oplus x_0 y_0 \oplus c_0 (x_0 \oplus y_0) &amp; i = 1; \\
-        c_i \oplus x_{i - 1} y_{i - 1} \oplus c^\prime_{i - 1} (x_{i - 1} \oplus y_{i - 1}) &amp; i &gt; 1. \\
+        c_1 \oplus x_0 y_0 \oplus c_0 (x_0 \oplus y_0), &amp; \text{if } i = 1; \\
+        c_i \oplus x_{i - 1} y_{i - 1} \oplus c^\prime_{i - 1} (x_{i - 1} \oplus y_{i - 1}), &amp; \text{if } i &gt; 1. \\
     \end{cases}\end{split}\]</div>
 <p>The last qubit is simply an overflow qubit and has the value</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-2">
