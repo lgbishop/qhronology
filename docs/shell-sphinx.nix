@@ -34,5 +34,4 @@ mkShell {
     # bash build-latex.sh
     # bash build-html.sh
   '';
-
 }
