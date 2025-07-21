@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 15, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 21, 2025"/>
   </head>
   
   
@@ -495,7 +495,7 @@
 <dd><p>Calculate the chronology-violating (CV) state according to the P-CTC weak-measurement
 tomography expression for the prescription’s CV map</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-prescriptions-p-ctcs-0">
-<span class="eqno">(310)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-p-ctcs-0" title="Link to this equation">#</a></span>\[\MapPCTCsCV_{\Unitary}[\StateCR]
+<span class="eqno">(312)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-p-ctcs-0" title="Link to this equation">#</a></span>\[\MapPCTCsCV_{\Unitary}[\StateCR]
     = \trace_\CR\bigl[\Unitary(\StateCR \otimes \tfrac{1}{\Dimension}\Identity)
     \Unitary^\dagger\bigr]\]</div>
 <p>given the chronology-respecting (CR) input state <code class="docutils literal notranslate"><span class="pre">input_respecting</span></code> (<span class="math notranslate nohighlight">\(\StateCR\)</span>)
@@ -538,19 +538,19 @@ CR and CV systems.</p></li>
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableDenseMatrix</span></span></span><a class="reference internal" href="../../../../_modules/qhronology/quantum/prescriptions.html#pctc_respecting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.prescriptions.pctc_respecting" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the (non-renormalized) chronology-respecting (CR) state according to the P-CTC prescription’s non-renormalizing CR map</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-prescriptions-p-ctcs-1">
-<span class="eqno">(311)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-p-ctcs-1" title="Link to this equation">#</a></span>\[\MapPCTCsCR_{\Unitary}[\StateCR]
+<span class="eqno">(313)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-p-ctcs-1" title="Link to this equation">#</a></span>\[\MapPCTCsCR_{\Unitary}[\StateCR]
     \propto \OperatorPCTC \StateCR \OperatorPCTC^\dagger\]</div>
 <p>given the chronology-respecting (CR) input state <code class="docutils literal notranslate"><span class="pre">input_respecting</span></code> (<span class="math notranslate nohighlight">\(\StateCR\)</span>)
 and (unitary) interaction described by <code class="docutils literal notranslate"><span class="pre">gate</span></code> (<span class="math notranslate nohighlight">\(\Unitary\)</span>).
 Here,</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-prescriptions-p-ctcs-2">
-<span class="eqno">(312)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-p-ctcs-2" title="Link to this equation">#</a></span>\[\OperatorPCTC \equiv \trace_\CV[\Unitary]\]</div>
+<span class="eqno">(314)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-p-ctcs-2" title="Link to this equation">#</a></span>\[\OperatorPCTC \equiv \trace_\CV[\Unitary]\]</div>
 <p>is the P-CTC operator.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This function does not renormalize the output state as per the renormalized P-CTC map</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-prescriptions-p-ctcs-3">
-<span class="eqno">(313)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-p-ctcs-3" title="Link to this equation">#</a></span>\[\MapPCTCsCR_{\Unitary}[\StateCR]
+<span class="eqno">(315)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-p-ctcs-3" title="Link to this equation">#</a></span>\[\MapPCTCsCR_{\Unitary}[\StateCR]
     = \frac{\OperatorPCTC \StateCR \OperatorPCTC^\dagger}
     {\trace\bigl[ \OperatorPCTC \StateCR \OperatorPCTC^\dagger\bigr]}\]</div>
 </div>

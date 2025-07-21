@@ -268,7 +268,7 @@ class QuantumGate(QuantumObject):
                &= \\ket{0}\\bra{0}\\otimes\\Identity + \\ket{1}\\bra{1}\\otimes\\Unitary
                    + \\ket{2}\\bra{2}\\otimes\\Unitary^{2} + \\ldots
                    + \\ket{\\Dimension - 1}\\bra{\\Dimension - 1}\\otimes\\Unitary^{\\Dimension - 1}
-            \\end{aligned}
+           \\end{aligned}
         """
         return list(set(self._controls))
 

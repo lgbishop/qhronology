@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 15, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 21, 2025"/>
   </head>
   
   
@@ -479,7 +479,7 @@
 <h3>Fundamentals<a class="headerlink" href="#fundamentals" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>Time</strong>: Time advances horizontally from the left to the right. Each vertical slice of the circuit corresponds to a distinct instant of time in the temporal progression. In other words, vertically aligned events occur simultaneously.</p></li>
-<li><p><strong>Wires</strong>: Each (physical) quantum or classical system (Hilbert space) is represented by a <em>wire</em> which is aligned with a single horizontal axis. Events at various points in time on these modes (such as state preparation, logical operations, measurement, etc.) are connected by lines (i.e., wires), thus forming a <em>circuit</em>.</p>
+<li><p><strong>Wires</strong>: Each (physical) quantum or classical system (Hilbert space) is represented by a solid horizontal line called a <em>wire</em>. Multiple wires (<em>bundles</em>) therefore represent composite (multipartite) systems, and sequences of events at various points in time on these wires (such as state preparation, logical operations, measurement, etc.) form structures that are conventionally called <em>circuits</em>.</p>
 <ul class="simple">
 <li><p>Quantum wires:</p></li>
 </ul>
@@ -514,7 +514,7 @@
 </div></blockquote>
 </li>
 <li><p><strong>Omission</strong>: Ellipses denote the omission of parts of the circuit. This notation is usually employed only in the context of the subsequent tutorial circuits as a way to give focus to the important parts of each example.</p></li>
-<li><p><strong>Ordering and labels</strong>: For circuits with multiple systems, the order of tensor products (from left-to-right) in its corresponding mathematical expression matches the order of modes (from top-to-bottom) in the circuit. In the case of any ambiguity, the Hilbert spaces in which the states and operators reside are labelled using either superscripts or subscripts (depending on the context). If the systems are not explicitly named, the common convention is to denote them in order (from top-to-bottom) using the integers, starting from <span class="math notranslate nohighlight">\(0\)</span> (zero, as is customary in computer science) and counting up.</p></li>
+<li><p><strong>Ordering and labels</strong>: For circuits with multiple systems, the order of tensor products (from left-to-right) in its corresponding mathematical expression matches the order of the systems (from top-to-bottom) in the circuit. In the case of any ambiguity, the Hilbert spaces in which the states and operators reside are labelled using either superscripts or subscripts (depending on the context). If the systems are not explicitly named, the common convention is to denote them in order (from top-to-bottom) using the integers, starting from <span class="math notranslate nohighlight">\(0\)</span> (zero, as is customary in computer science) and counting up.</p></li>
 </ul>
 </section>
 <section id="states">
@@ -536,7 +536,7 @@
 </a>
 </div></blockquote>
 </li>
-<li><p>States prepared over several modes are denoted using a brace extending across all of the relevant subsystems:</p>
+<li><p>States prepared over several systems are denoted using a brace extending across all of the relevant subsystems:</p>
 <blockquote>
 <div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_preselection_multimode_density-dark.png"><img alt="../../../_images/circuitry_preselection_multimode_density-dark.png" class="only-dark align-left" src="../../../_images/circuitry_preselection_multimode_density-dark.png" style="width: 187.92px; height: 59.04px;" />
 </a>
@@ -581,7 +581,7 @@
 </a>
 </div></blockquote>
 </li>
-<li><p>An empty wire (i.e., the absence of a gate on a mode) corresponds to the identity operator:</p>
+<li><p>An empty wire (i.e., the absence of a gate on a system) corresponds to the identity operator:</p>
 <blockquote>
 <div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_operator_identity-dark.png"><img alt="../../../_images/circuitry_operator_identity-dark.png" class="only-dark align-left" src="../../../_images/circuitry_operator_identity-dark.png" style="width: 507.59999999999997px; height: 36.36px;" />
 </a>
@@ -653,10 +653,78 @@
 </li>
 </ul>
 </section>
-<section id="other-operations">
-<h3>Other operations<a class="headerlink" href="#other-operations" title="Link to this heading">#</a></h3>
+<section id="control">
+<h3>Control<a class="headerlink" href="#control" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>The <strong>trace</strong> over a system (i.e., termination of a wire) is denoted by either a grounding symbol or a down arrow on the end of its corresponding mode:</p>
+<li><p>The operation of a gate can be affected by the use of a <strong>control</strong> node located on a different wire. This results in the value of the <em>controlling</em> system directly influencing the <em>controlled</em> system, which is depicted visually by connecting these systems with a vertical wire. Using a general <span class="math notranslate nohighlight">\(\Unitary\)</span> gate, we can construct the following examples for qubit (<span class="math notranslate nohighlight">\(2\)</span>-dimensional) systems:</p>
+<ul class="simple">
+<li><p>controlled-<span class="math notranslate nohighlight">\(\Unitary\)</span>:</p></li>
+</ul>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary-dark.png"><img alt="../../../_images/circuitry_gate_controlled_unitary-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_controlled_unitary-dark.png" style="width: 468.35999999999996px; height: 73.8px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary-light.png"><img alt="../../../_images/circuitry_gate_controlled_unitary-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_controlled_unitary-light.png" style="width: 468.35999999999996px; height: 73.8px;" />
+</a>
+</div></blockquote>
+<ul class="simple">
+<li><p>controlled-<span class="math notranslate nohighlight">\(\Unitary\)</span> (inverted):</p></li>
+</ul>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_inverted-dark.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_inverted-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_controlled_unitary_inverted-dark.png" style="width: 468.0px; height: 74.52px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_inverted-light.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_inverted-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_controlled_unitary_inverted-light.png" style="width: 468.0px; height: 74.52px;" />
+</a>
+</div></blockquote>
+<ul class="simple">
+<li><p>anticontrolled-<span class="math notranslate nohighlight">\(\Unitary\)</span>:</p></li>
+</ul>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_anti-dark.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_anti-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_controlled_unitary_anti-dark.png" style="width: 468.35999999999996px; height: 74.52px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_anti-light.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_anti-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_controlled_unitary_anti-light.png" style="width: 468.35999999999996px; height: 74.52px;" />
+</a>
+</div></blockquote>
+<ul class="simple">
+<li><p>multiply-controlled-<span class="math notranslate nohighlight">\(\Unitary\)</span>:</p></li>
+</ul>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_multiple-dark.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_multiple-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_controlled_unitary_multiple-dark.png" style="width: 580.68px; height: 104.39999999999999px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_multiple-light.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_multiple-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_controlled_unitary_multiple-light.png" style="width: 580.68px; height: 104.39999999999999px;" />
+</a>
+</div></blockquote>
+<ul class="simple">
+<li><p>controlled-anticontrolled-<span class="math notranslate nohighlight">\(\Unitary\)</span>:</p></li>
+</ul>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_mixed-dark.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_mixed-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_controlled_unitary_mixed-dark.png" style="width: 598.3199999999999px; height: 118.44px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_mixed-light.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_mixed-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_controlled_unitary_mixed-light.png" style="width: 598.3199999999999px; height: 118.44px;" />
+</a>
+</div></blockquote>
+</li>
+<li><p>In the case where the systems are over qudits, one generalization of the logic of the control and anticontrol nodes to <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional systems are, respectively, the natural choices</p>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-circuitry-0">
+<span class="eqno">(220)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-circuitry-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \Control^{0} \Unitary^{1} &amp;= \sum\limits_{k=0}^{\Dimension - 1} \ket{k}\bra{k}\otimes\Unitary^{k} \\
+    &amp;= \ket{0}\bra{0}\otimes\Identity + \ket{1}\bra{1}\otimes\Unitary
+        + \ket{2}\bra{2}\otimes\Unitary^{2} + \ldots
+        + \ket{\Dimension - 1}\bra{\Dimension - 1}\otimes\Unitary^{\Dimension - 1},
+\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-circuitry-1">
+<span class="eqno">(221)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-circuitry-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \Anticontrol^{0} \Unitary^{1} &amp;= \sum\limits_{k=0}^{\Dimension - 1} \ket{k}\bra{k}\otimes\Unitary^{\Dimension - 1 - k} \\
+    &amp;= \ket{0}\bra{0}\otimes\Unitary^{\Dimension - 1} + \ket{1}\bra{1}\otimes\Unitary^{\Dimension - 2}
+        + \ket{2}\bra{2}\otimes\Unitary^{\Dimension - 3} + \ldots
+        + \ket{\Dimension - 1}\bra{\Dimension - 1}\otimes\Identity.
+\end{aligned}\end{split}\]</div>
+</li>
+</ul>
+</section>
+<section id="trace">
+<h3>Trace<a class="headerlink" href="#trace" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The <strong>trace</strong> over a system (i.e., termination of a wire) is denoted by either a grounding symbol or a down arrow on the end of its corresponding wire:</p>
 <blockquote>
 <div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_trace-dark.png"><img alt="../../../_images/circuitry_trace-dark.png" class="only-dark align-left" src="../../../_images/circuitry_trace-dark.png" style="width: 398.15999999999997px; height: 47.879999999999995px;" />
 </a>
@@ -686,6 +754,11 @@
 </a>
 </div></blockquote>
 </li>
+</ul>
+</section>
+<section id="postselection">
+<h3>Postselection<a class="headerlink" href="#postselection" title="Link to this heading">#</a></h3>
+<ul>
 <li><p><strong>Postselection</strong> against a state is simply the mirror of state preparation/preselection. This is indicated with either:</p>
 <ul class="simple">
 <li><p>The postselection state (explicitly in the dual Hilbert space, e.g., <span class="math notranslate nohighlight">\(\bra{\StateVector}\)</span> and <span class="math notranslate nohighlight">\(\StateDensity^\dagger\)</span>) at the termination of the wire.</p></li>
@@ -736,6 +809,11 @@
 <li><p>Note that in most cases, the cap notation will be omitted for simplicity. This is particularly true when the postselection state is pre-defined (i.e., not unknown), and so the associated postselection is unambiguous.</p></li>
 </ul>
 </li>
+</ul>
+</section>
+<section id="measurement">
+<h3>Measurement<a class="headerlink" href="#measurement" title="Link to this heading">#</a></h3>
+<ul>
 <li><p>The <strong>measurement</strong> of a system with respect to a particular basis is represented by the termination of its wire with a meter:</p>
 <blockquote>
 <div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_measurement_singlemode_pure-dark.png"><img alt="../../../_images/circuitry_measurement_singlemode_pure-dark.png" class="only-dark align-left" src="../../../_images/circuitry_measurement_singlemode_pure-dark.png" style="width: 443.88px; height: 56.519999999999996px;" />
@@ -818,6 +896,11 @@
 </a>
 </div></blockquote>
 </li>
+</ul>
+</section>
+<section id="closed-timelike-curves">
+<h3>Closed timelike curves<a class="headerlink" href="#closed-timelike-curves" title="Link to this heading">#</a></h3>
+<ul>
 <li><p>The closed and timelike nature of the paths of chronology-violating systems (i.e., those which correspond to quantum states propagating along closed timelike curves) is captured by the use of triangular caps at the ends of the associated wires:</p>
 <ul class="simple">
 <li><p>Future connection:</p></li>
@@ -941,46 +1024,6 @@
 <div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_fourier-dark.png"><img alt="../../../_images/circuitry_gate_fourier-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_fourier-dark.png" style="width: 496.79999999999995px; height: 61.559999999999995px;" />
 </a>
 <a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_fourier-light.png"><img alt="../../../_images/circuitry_gate_fourier-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_fourier-light.png" style="width: 496.79999999999995px; height: 61.559999999999995px;" />
-</a>
-</div></blockquote>
-</li>
-<li><p>controlled-<span class="math notranslate nohighlight">\(\Unitary\)</span>:</p>
-<blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary-dark.png"><img alt="../../../_images/circuitry_gate_controlled_unitary-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_controlled_unitary-dark.png" style="width: 468.35999999999996px; height: 73.8px;" />
-</a>
-<a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary-light.png"><img alt="../../../_images/circuitry_gate_controlled_unitary-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_controlled_unitary-light.png" style="width: 468.35999999999996px; height: 73.8px;" />
-</a>
-</div></blockquote>
-</li>
-<li><p>controlled-<span class="math notranslate nohighlight">\(\Unitary\)</span> (inverted):</p>
-<blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_inverted-dark.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_inverted-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_controlled_unitary_inverted-dark.png" style="width: 468.0px; height: 74.52px;" />
-</a>
-<a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_inverted-light.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_inverted-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_controlled_unitary_inverted-light.png" style="width: 468.0px; height: 74.52px;" />
-</a>
-</div></blockquote>
-</li>
-<li><p>anticontrolled-<span class="math notranslate nohighlight">\(\Unitary\)</span>:</p>
-<blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_anti-dark.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_anti-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_controlled_unitary_anti-dark.png" style="width: 468.35999999999996px; height: 74.52px;" />
-</a>
-<a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_anti-light.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_anti-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_controlled_unitary_anti-light.png" style="width: 468.35999999999996px; height: 74.52px;" />
-</a>
-</div></blockquote>
-</li>
-<li><p>multiply-controlled-<span class="math notranslate nohighlight">\(\Unitary\)</span>:</p>
-<blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_multiple-dark.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_multiple-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_controlled_unitary_multiple-dark.png" style="width: 580.68px; height: 104.39999999999999px;" />
-</a>
-<a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_multiple-light.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_multiple-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_controlled_unitary_multiple-light.png" style="width: 580.68px; height: 104.39999999999999px;" />
-</a>
-</div></blockquote>
-</li>
-<li><p>controlled-anticontrolled-<span class="math notranslate nohighlight">\(\Unitary\)</span>:</p>
-<blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_mixed-dark.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_mixed-dark.png" class="only-dark align-left" src="../../../_images/circuitry_gate_controlled_unitary_mixed-dark.png" style="width: 598.3199999999999px; height: 118.44px;" />
-</a>
-<a class="only-light reference internal image-reference" href="../../../_images/circuitry_gate_controlled_unitary_mixed-light.png"><img alt="../../../_images/circuitry_gate_controlled_unitary_mixed-light.png" class="only-light align-left" src="../../../_images/circuitry_gate_controlled_unitary_mixed-light.png" style="width: 598.3199999999999px; height: 118.44px;" />
 </a>
 </div></blockquote>
 </li>
@@ -1184,7 +1227,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentals">Fundamentals</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#states">States</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gates">Gates</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-operations">Other operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control">Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trace">Trace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#postselection">Postselection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measurement">Measurement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-timelike-curves">Closed timelike curves</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-special-gates">List of special gates</a></li>

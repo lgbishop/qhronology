@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 15, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 21, 2025"/>
   </head>
   
   
@@ -521,7 +521,7 @@ of <code class="docutils literal notranslate"><span class="pre">matrix</span></c
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/quantities.html#purity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.quantities.purity" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the purity (<span class="math notranslate nohighlight">\(\Purity\)</span>) of <code class="docutils literal notranslate"><span class="pre">state</span></code> (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-0">
-<span class="eqno">(314)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-0" title="Link to this equation">#</a></span>\[\Purity(\op{\rho}) = \trace[\op{\rho}^2].\]</div>
+<span class="eqno">(316)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-0" title="Link to this equation">#</a></span>\[\Purity(\op{\rho}) = \trace[\op{\rho}^2].\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>state</strong> (<em>mat</em><em> | </em><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><em>QuantumObject</em></a>) – The matrix representation of the input state.</p>
@@ -558,7 +558,7 @@ of <code class="docutils literal notranslate"><span class="pre">matrix</span></c
 <dd><p>Calculate the trace distance (<span class="math notranslate nohighlight">\(\TraceDistance\)</span>) between two states
 <code class="docutils literal notranslate"><span class="pre">state_A</span></code> (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) and <code class="docutils literal notranslate"><span class="pre">state_B</span></code> (<span class="math notranslate nohighlight">\(\op{\tau}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-1">
-<span class="eqno">(315)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-1" title="Link to this equation">#</a></span>\[\TraceDistance(\op{\rho}, \op{\tau})
+<span class="eqno">(317)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-1" title="Link to this equation">#</a></span>\[\TraceDistance(\op{\rho}, \op{\tau})
     = \frac{1}{2}\trace{\abs{\op{\rho} - \op{\tau}}}.\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -604,7 +604,7 @@ of <code class="docutils literal notranslate"><span class="pre">matrix</span></c
 <dd><p>Calculate the fidelity (<span class="math notranslate nohighlight">\(\Fidelity\)</span>) between two states
 <code class="docutils literal notranslate"><span class="pre">state_A</span></code> (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) and <code class="docutils literal notranslate"><span class="pre">state_B</span></code> (<span class="math notranslate nohighlight">\(\op{\tau}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-2">
-<span class="eqno">(316)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-2" title="Link to this equation">#</a></span>\[\Fidelity(\op{\rho}, \op{\tau})
+<span class="eqno">(318)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-2" title="Link to this equation">#</a></span>\[\Fidelity(\op{\rho}, \op{\tau})
     = \left(\trace{\sqrt{\sqrt{\op{\rho}}\,\op{\tau}\sqrt{\op{\rho}}}}\right)^2.\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -656,12 +656,12 @@ of <code class="docutils literal notranslate"><span class="pre">matrix</span></c
 <dd><p>Calculate the relative von Neumann entropy (<span class="math notranslate nohighlight">\(\Entropy\)</span>) between two states
 <code class="docutils literal notranslate"><span class="pre">state_A</span></code> (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) and <code class="docutils literal notranslate"><span class="pre">state_B</span></code> (<span class="math notranslate nohighlight">\(\op{\tau}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-3">
-<span class="eqno">(317)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-3" title="Link to this equation">#</a></span>\[\Entropy(\op{\rho} \Vert \op{\tau})
+<span class="eqno">(319)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-3" title="Link to this equation">#</a></span>\[\Entropy(\op{\rho} \Vert \op{\tau})
     = \trace\bigl[\op{\rho} (\log_\Base\op{\rho} - \log_\Base\op{\tau})\bigr].\]</div>
 <p>If <code class="docutils literal notranslate"><span class="pre">state_B</span></code> is not specified (i.e., <code class="docutils literal notranslate"><span class="pre">None</span></code>), calculate the ordinary von Neumann entropy
 of <code class="docutils literal notranslate"><span class="pre">state_A</span></code> (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) instead:</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-4">
-<span class="eqno">(318)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-4" title="Link to this equation">#</a></span>\[\Entropy(\op{\rho}) = \trace[\op{\rho}\log_\Base\op{\rho}].\]</div>
+<span class="eqno">(320)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-4" title="Link to this equation">#</a></span>\[\Entropy(\op{\rho}) = \trace[\op{\rho}\log_\Base\op{\rho}].\]</div>
 <p>Here, <span class="math notranslate nohighlight">\(\Base\)</span> represents <code class="docutils literal notranslate"><span class="pre">base</span></code>, which is the dimensionality of the unit
 of information with which the entropy is measured.</p>
 <dl class="field-list simple">
@@ -724,7 +724,7 @@ the relative entropy between <code class="docutils literal notranslate"><span cl
 <code class="docutils literal notranslate"><span class="pre">systems_A</span></code> (<span class="math notranslate nohighlight">\(A\)</span>) and <code class="docutils literal notranslate"><span class="pre">systems_B</span></code> (<span class="math notranslate nohighlight">\(B\)</span>) of a composite quantum system
 represented by <code class="docutils literal notranslate"><span class="pre">state</span></code> (<span class="math notranslate nohighlight">\(\rho^{A,B}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-5">
-<span class="eqno">(319)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-5" title="Link to this equation">#</a></span>\[\MutualInformation(A : B)
+<span class="eqno">(321)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-5" title="Link to this equation">#</a></span>\[\MutualInformation(A : B)
     = \Entropy(\op{\rho}^A) + \Entropy(\op{\rho}^B) - \Entropy(\op{\rho}^{A,B})\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Entropy(\op{\rho})\)</span> is the von Neumann entropy of a state <span class="math notranslate nohighlight">\(\op{\rho}\)</span>.</p>
 <dl class="field-list simple">

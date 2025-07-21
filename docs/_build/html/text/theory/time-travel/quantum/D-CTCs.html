@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 15, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 21, 2025"/>
   </head>
   
   
@@ -498,37 +498,37 @@
 </figure>
 <p>The mathematical formulation of his self-consistent evolution of a quantum state through a region with a time machine is provided by requiring that any given chronology-violating (CV) system enters the CTC in the state</p>
 <div class="math notranslate nohighlight" id="equation-eq-state-cv">
-<span class="eqno">(220)<a class="headerlink" href="#equation-eq-state-cv" title="Link to this equation">#</a></span>\[\StateCV \in \SpaceMixed(\SpaceHilbert_\CV),\]</div>
+<span class="eqno">(222)<a class="headerlink" href="#equation-eq-state-cv" title="Link to this equation">#</a></span>\[\StateCV \in \SpaceMixed(\SpaceHilbert_\CV),\]</div>
 <p>and then emerges in the past in the same state despite having interacted with a chronology-respecting (CR) system in the state</p>
 <div class="math notranslate nohighlight" id="equation-eq-state-cr">
-<span class="eqno">(221)<a class="headerlink" href="#equation-eq-state-cr" title="Link to this equation">#</a></span>\[\StateCR \in \SpaceMixed(\SpaceHilbert_\CR)\]</div>
+<span class="eqno">(223)<a class="headerlink" href="#equation-eq-state-cr" title="Link to this equation">#</a></span>\[\StateCR \in \SpaceMixed(\SpaceHilbert_\CR)\]</div>
 <p>through a unitary <span class="math notranslate nohighlight">\(\Unitary\)</span> on <span class="math notranslate nohighlight">\(\SpaceHilbert_\CR\otimes\SpaceHilbert_\CV\)</span>. The joint density operator entering the gate is simply the tensor product <span class="math notranslate nohighlight">\(\StateCR \otimes \StateCV\)</span> on <span class="math notranslate nohighlight">\(\SpaceHilbert_\CR\otimes\SpaceHilbert_\CV\)</span> so that the standard evolution through the unitary is given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-d-ctcs-evolution">
-<span class="eqno">(222)<a class="headerlink" href="#equation-eq-d-ctcs-evolution" title="Link to this equation">#</a></span>\[\StateCR \otimes \StateCV \rightarrow \MapGeneral_{\Unitary}[\StateCR \otimes \StateCV] = \Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger.\]</div>
+<span class="eqno">(224)<a class="headerlink" href="#equation-eq-d-ctcs-evolution" title="Link to this equation">#</a></span>\[\StateCR \otimes \StateCV \rightarrow \MapGeneral_{\Unitary}[\StateCR \otimes \StateCV] = \Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger.\]</div>
 <p>We can now trace the CV and CR subsystems out and denote the resulting maps as</p>
 <div class="math notranslate nohighlight" id="equation-eq-d-ctcs-cv">
-<span class="eqno">(223)<a class="headerlink" href="#equation-eq-d-ctcs-cv" title="Link to this equation">#</a></span>\[\begin{aligned}
+<span class="eqno">(225)<a class="headerlink" href="#equation-eq-d-ctcs-cv" title="Link to this equation">#</a></span>\[\begin{aligned}
     \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV] &amp;\equiv \trace_\CR\bigl[\Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger\bigr],
 \end{aligned}\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-d-ctcs-cr">
-<span class="eqno">(224)<a class="headerlink" href="#equation-eq-d-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{aligned}
+<span class="eqno">(226)<a class="headerlink" href="#equation-eq-d-ctcs-cr" title="Link to this equation">#</a></span>\[\begin{aligned}
     \MapDCTCsCR_{\Unitary}[\StateCR,\StateCV] &amp;\equiv \trace_\CV\bigl[\Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger\bigr].
 \end{aligned}\]</div>
-<p>Self-consistent solutions of the CTC state may then be identified as fixed points of the CV map <a class="reference internal" href="#equation-eq-d-ctcs-cv">(223)</a>, which are expressible via</p>
+<p>Self-consistent solutions of the CTC state may then be identified as fixed points of the CV map <a class="reference internal" href="#equation-eq-d-ctcs-cv">(225)</a>, which are expressible via</p>
 <div class="math notranslate nohighlight" id="equation-eq-d-ctcs-ctc">
-<span class="eqno">(225)<a class="headerlink" href="#equation-eq-d-ctcs-ctc" title="Link to this equation">#</a></span>\[\StateCV = \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV].\]</div>
-<p>This condition essentially codifies the requirement that the “younger” CTC state (the right-hand side) exiting the gate is the same as the “older” CTC state (the left-hand side) entering the gate. Once solutions to equation <a class="reference internal" href="#equation-eq-d-ctcs-ctc">(225)</a> are determined, the evolution of the system state <span class="math notranslate nohighlight">\(\StateCR\)</span> through the interaction <span class="math notranslate nohighlight">\(\Unitary\)</span> in this Deutsch model is then simply given by the CR map <a class="reference internal" href="#equation-eq-d-ctcs-cr">(224)</a>. Deutsch’s original construction specifically interprets D-CTCs as being portals between parallel universes—a time traveller on a D-CTC would pass in and out of such universes—and so the quantum states in this context describes a superposition of states where the time traveller does and does not exist.</p>
-<p>The fact that the imposed self-consistency constraint in <a class="reference internal" href="#equation-eq-d-ctcs-ctc">(225)</a> is a fixed-point condition means that the non-linearity introduced to the laws of quantum mechanics is distinct from that of other models. Furthermore, as the rigid matching requirement is for the density matrix as opposed to the individual states in a pure state decomposition, the Deutsch model intrinsically treats density matrices ontologically as ontic (“real”) objects rather than as epistemic knowledge representations.</p>
+<span class="eqno">(227)<a class="headerlink" href="#equation-eq-d-ctcs-ctc" title="Link to this equation">#</a></span>\[\StateCV = \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV].\]</div>
+<p>This condition essentially codifies the requirement that the “younger” CTC state (the right-hand side) exiting the gate is the same as the “older” CTC state (the left-hand side) entering the gate. Once solutions to equation <a class="reference internal" href="#equation-eq-d-ctcs-ctc">(227)</a> are determined, the evolution of the system state <span class="math notranslate nohighlight">\(\StateCR\)</span> through the interaction <span class="math notranslate nohighlight">\(\Unitary\)</span> in this Deutsch model is then simply given by the CR map <a class="reference internal" href="#equation-eq-d-ctcs-cr">(226)</a>. Deutsch’s original construction specifically interprets D-CTCs as being portals between parallel universes—a time traveller on a D-CTC would pass in and out of such universes—and so the quantum states in this context describes a superposition of states where the time traveller does and does not exist.</p>
+<p>The fact that the imposed self-consistency constraint in <a class="reference internal" href="#equation-eq-d-ctcs-ctc">(227)</a> is a fixed-point condition means that the non-linearity introduced to the laws of quantum mechanics is distinct from that of other models. Furthermore, as the rigid matching requirement is for the density matrix as opposed to the individual states in a pure state decomposition, the Deutsch model intrinsically treats density matrices ontologically as ontic (“real”) objects rather than as epistemic knowledge representations.</p>
 <section id="deutsch-s-picture-the-rule-of-maximum-entropy">
 <h2>Deutsch’s picture: The rule of maximum entropy<a class="headerlink" href="#deutsch-s-picture-the-rule-of-maximum-entropy" title="Link to this heading">#</a></h2>
 <p>Of crucial significance is the fact that the Deutsch prescription resolves time-travel paradoxes without placing any constraints on the input system state. This is because Deutsch proved that at least one consistent solution of the (normalized) map</p>
 <div class="math notranslate nohighlight" id="equation-eq-d-ctcs-entropy">
-<span class="eqno">(226)<a class="headerlink" href="#equation-eq-d-ctcs-entropy" title="Link to this equation">#</a></span>\[\begin{aligned}
+<span class="eqno">(228)<a class="headerlink" href="#equation-eq-d-ctcs-entropy" title="Link to this equation">#</a></span>\[\begin{aligned}
     \normalized{\MapDCTCsCV_{\Unitary}^{\infty}}[\StateCR,\StateCV^{(0)}] \equiv \lim_{N\rightarrow\infty}\frac{1}{N+1} \sum_{k=0}^{N}\MapDCTCsCV_{\Unitary}^{k}(\StateCR,\StateCV^{(0)})
 \end{aligned}\]</div>
 <p>exists for every unitary <span class="math notranslate nohighlight">\(\Unitary\)</span> and input <span class="math notranslate nohighlight">\(\StateCR\)</span>. Here, <span class="math notranslate nohighlight">\(\StateCV^{(0)} \in \SpaceLinear(\SpaceHilbert_\CV)\)</span> represents some initial CV state, and <span class="math notranslate nohighlight">\(\MapDCTCsCV^{k}\)</span> denotes <span class="math notranslate nohighlight">\(k\)</span> compositions of the D-CTC CV map, i.e.,</p>
 <div class="math notranslate nohighlight" id="equation-eq-d-ctcs-cv-compositions">
-<span class="eqno">(227)<a class="headerlink" href="#equation-eq-d-ctcs-cv-compositions" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(229)<a class="headerlink" href="#equation-eq-d-ctcs-cv-compositions" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \MapDCTCsCV^{k}_{\Unitary}\bigl[\StateCR,\StateCV^{(0)}\bigr] &amp;= (\,\underbrace{\MapDCTCsCV_{\Unitary} \circ \MapDCTCsCV_{\Unitary} \circ \ldots \circ \MapDCTCsCV_{\Unitary}}_{k \text{ times}}\,)\bigl[\StateCR,\StateCV^{(0)}\bigr] \\
     &amp;= \MapDCTCsCV_{\Unitary}\biggl[ \StateCR,\MapDCTCsCV_{\Unitary}\Bigl[ \StateCR,\ldots,\MapDCTCsCV_{\Unitary}\bigl[\StateCR,\StateCV^{(0)}\bigr] \Bigr] \biggr].
 \end{aligned}\end{split}\]</div>
@@ -553,44 +553,44 @@
 <p><span class="caption-number">Figure 5 </span><span class="caption-text">The equivalent-circuit picture of a D-CTC.</span><a class="headerlink" href="#fig-circuit-ctc-dctc-ecp" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In this model, the CTC-trapped state <span class="math notranslate nohighlight">\(\StateCV^{(n-1)}\)</span> enters the <span class="math notranslate nohighlight">\(n\)</span>th interaction <span class="math notranslate nohighlight">\(\Unitary\)</span> and exits, according to the fixed-point condition <a class="reference internal" href="#equation-eq-d-ctcs-ctc">(225)</a>, in the state</p>
+<p>In this model, the CTC-trapped state <span class="math notranslate nohighlight">\(\StateCV^{(n-1)}\)</span> enters the <span class="math notranslate nohighlight">\(n\)</span>th interaction <span class="math notranslate nohighlight">\(\Unitary\)</span> and exits, according to the fixed-point condition <a class="reference internal" href="#equation-eq-d-ctcs-ctc">(227)</a>, in the state</p>
 <div class="math notranslate nohighlight" id="equation-eq-ecp-single">
-<span class="eqno">(228)<a class="headerlink" href="#equation-eq-ecp-single" title="Link to this equation">#</a></span>\[\StateCV^{(n)} = \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}].\]</div>
+<span class="eqno">(230)<a class="headerlink" href="#equation-eq-ecp-single" title="Link to this equation">#</a></span>\[\StateCV^{(n)} = \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}].\]</div>
 <p>The final output <span class="math notranslate nohighlight">\(\StateCV^{(\infty)}\)</span> is then obtained by applying this map recursively <em>ad infinitum</em> to an initial state <span class="math notranslate nohighlight">\(\StateCV^{(0)}\)</span>. Accordingly, one finds, in the limit,</p>
 <div class="math notranslate nohighlight" id="equation-eq-ecp-cv">
-<span class="eqno">(229)<a class="headerlink" href="#equation-eq-ecp-cv" title="Link to this equation">#</a></span>\[\StateCV^{(\infty)} = \lim_{N \rightarrow\infty}\MapDCTCsCV_{\Unitary}^{N}[\StateCR,\StateCV^{(0)}]\]</div>
+<span class="eqno">(231)<a class="headerlink" href="#equation-eq-ecp-cv" title="Link to this equation">#</a></span>\[\StateCV^{(\infty)} = \lim_{N \rightarrow\infty}\MapDCTCsCV_{\Unitary}^{N}[\StateCR,\StateCV^{(0)}]\]</div>
 <p>Given this framework, the ECP then introduces an arbitrarily small decoherence interaction <span class="math notranslate nohighlight">\(\Decoherence\)</span>, parametrized by the decoherence strength <span class="math notranslate nohighlight">\(0&lt;\delta\ll1\)</span>, to each CTC iteration,</p>
 <div class="math notranslate nohighlight" id="equation-eq-ecp-decoherence">
-<span class="eqno">(230)<a class="headerlink" href="#equation-eq-ecp-decoherence" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(232)<a class="headerlink" href="#equation-eq-ecp-decoherence" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \StateCV^{(n)} &amp;= \Decoherence\bigl[\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}]\bigr] \\
     &amp;= (1-\delta)\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}] + \delta\normalized{\Identity}
 \end{aligned}\end{split}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-time-travel-quantum-d-ctcs-0">
-<span class="eqno">(231)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-d-ctcs-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(233)<a class="headerlink" href="#equation-text-theory-time-travel-quantum-d-ctcs-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \normalized{\Identity} &amp;\equiv \frac{1}{\dim(\SpaceHilbert)}\Identity, \\
     \Identity &amp;\equiv \sum_{i}^{\dim(\SpaceHilbert)}\ket{i}\bra{i} \in \SpaceHilbert,
 \end{aligned}\end{split}\]</div>
 <p>are the unnormalized and normalized maximally mixed (identity) states, respectively. The corresponding final output is then</p>
 <div class="math notranslate nohighlight" id="equation-eq-ecp-cv-decoherence">
-<span class="eqno">(232)<a class="headerlink" href="#equation-eq-ecp-cv-decoherence" title="Link to this equation">#</a></span>\[\StateCV^{(\infty)} = \lim_{N\rightarrow\infty}\left[(1-\delta)^{N}\MapDCTCsCV_{\Unitary}^{N}[\StateCR,\StateCV^{(0)}] + \sum_{k=0}^{N-1}\delta^{k}(1-\delta)^{k}\MapDCTCsCV_{\Unitary}^{k}[\StateCR,\normalized{\Identity}]\right].\]</div>
-<p>From this result, it can be determined that the non-uniqueness in the solutions to the CV CTC map corresponds to sensitivity to the initial condition <span class="math notranslate nohighlight">\(\StateCV^{(0)}\)</span>. Ralph and Myers then show that the result of <a class="reference internal" href="#equation-eq-ecp-cv-decoherence">(232)</a> converges to the unique solution of Deutsch’s maximum entropy rule, and that this rule and result coincides with setting the initial state to be the maximally mixed CTC state <span class="math notranslate nohighlight">\(\StateCV^{(0)}=\normalized{\Identity}\)</span> in <a class="reference internal" href="#equation-eq-ecp-cv">(229)</a>. The appealing feature of this picture is that Deutsch’s maximum entropy rule is not merely a postulate of the theory; rather, it is a direct result.</p>
+<span class="eqno">(234)<a class="headerlink" href="#equation-eq-ecp-cv-decoherence" title="Link to this equation">#</a></span>\[\StateCV^{(\infty)} = \lim_{N\rightarrow\infty}\left[(1-\delta)^{N}\MapDCTCsCV_{\Unitary}^{N}[\StateCR,\StateCV^{(0)}] + \sum_{k=0}^{N-1}\delta^{k}(1-\delta)^{k}\MapDCTCsCV_{\Unitary}^{k}[\StateCR,\normalized{\Identity}]\right].\]</div>
+<p>From this result, it can be determined that the non-uniqueness in the solutions to the CV CTC map corresponds to sensitivity to the initial condition <span class="math notranslate nohighlight">\(\StateCV^{(0)}\)</span>. Ralph and Myers then show that the result of <a class="reference internal" href="#equation-eq-ecp-cv-decoherence">(234)</a> converges to the unique solution of Deutsch’s maximum entropy rule, and that this rule and result coincides with setting the initial state to be the maximally mixed CTC state <span class="math notranslate nohighlight">\(\StateCV^{(0)}=\normalized{\Identity}\)</span> in <a class="reference internal" href="#equation-eq-ecp-cv">(231)</a>. The appealing feature of this picture is that Deutsch’s maximum entropy rule is not merely a postulate of the theory; rather, it is a direct result.</p>
 <p>Later, Allen <span id="id3">[<a class="reference internal" href="comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>]</span> noticed that the equivalent circuit does not always converge when there is decoherence interaction, and that Ralph and Myers’s proof of the derivation of the maximum entropy rule was incomplete. However, Dong <span id="id4">[<a class="reference internal" href="comparison.html#cite-1-dong-ralphs-2017" title="X. Dong, H. Chen, and L. Zhou, “Ralph's equivalent circuit model, revised Deutsch's maximum entropy rule and discontinuous quantum evolutions in D-CTCs”, arXiv:1711.06814 [quant-ph], November 2017. http://arxiv.org/abs/1711.06814">7</a>]</span> then showed that the ECP leads instead to a <em>revised</em> maximum entropy rule, one which is distinct from (and perhaps more valid than) Deutsch’s original rule. It asserts that, when multiple valid solutions of the CV map exist, the Deutsch model “chooses” the <em>stable</em> fixed-point state with the most entropy (as determined by the equivalent model with a decoherence interaction). Additionally, note that the final fixed point as given by this revised rule is in general dependent on the decoherence strength (<span class="math notranslate nohighlight">\(\delta\)</span>).</p>
 </section>
 <section id="allen-s-picture-noise-incorporation">
 <span id="sec-allen"></span><h2>Allen’s picture: Noise incorporation<a class="headerlink" href="#allen-s-picture-noise-incorporation" title="Link to this heading">#</a></h2>
 <p>In 2014, Allen <span id="id5">[<a class="reference internal" href="comparison.html#cite-1-allen-treating-2014" title="J.-M. A. Allen, “Treating time travel quantum mechanically”, Physical Review A, 90(4):042107, October 2014. https://link.aps.org/doi/10.1103/PhysRevA.90.042107, doi:10.1103/PhysRevA.90.042107">1</a>]</span> proposed a different method of resolving the uniqueness ambiguity. It consists of the incorporation of noise into the CV channel via a noise channel <span class="math notranslate nohighlight">\(\Depolarization\)</span> with depolarization parameter <span class="math notranslate nohighlight">\(0&lt;\nu&lt;1\)</span>, which is accomplished by</p>
 <div class="math notranslate nohighlight" id="equation-eq-depolarization">
-<span class="eqno">(233)<a class="headerlink" href="#equation-eq-depolarization" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(235)<a class="headerlink" href="#equation-eq-depolarization" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \StateCV &amp;= \Depolarization\bigl[\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV]\bigr] \\
     &amp;= (1-\nu)\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV] + \nu\normalized{\Identity}.
 \end{aligned}\end{split}\]</div>
 <p>Allen then proves that this addition resolves the uniqueness ambiguity without requiring a maximum entropy rule, and that the unique fixed-point CTC state is <span class="math notranslate nohighlight">\(\StateCV^{(0)}\)</span>-independent and given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-allen">
-<span class="eqno">(234)<a class="headerlink" href="#equation-eq-allen" title="Link to this equation">#</a></span>\[\begin{aligned}
+<span class="eqno">(236)<a class="headerlink" href="#equation-eq-allen" title="Link to this equation">#</a></span>\[\begin{aligned}
     \normalized{\Depolarization[\MapDCTCsCV_{\Unitary}^{\infty}]}(\StateCR) = \lim_{N\rightarrow\infty}\frac{1}{N+1} \sum_{k=0}^{N}\Depolarization\bigl[\MapDCTCsCV_{\Unitary}^{k}[\StateCR,\StateCV^{(0)}]\bigr].
 \end{aligned}\]</div>
-<p>Given that <span class="math notranslate nohighlight">\(\Depolarization\)</span> is a noise channel, then it should be <em>strictly contractive</em> (that is, its trace distance should always decrease under its action), leaving <a class="reference internal" href="#equation-eq-allen">(234)</a> unique. Dong <span id="id6">[<a class="reference internal" href="comparison.html#cite-1-dong-ralphs-2017" title="X. Dong, H. Chen, and L. Zhou, “Ralph's equivalent circuit model, revised Deutsch's maximum entropy rule and discontinuous quantum evolutions in D-CTCs”, arXiv:1711.06814 [quant-ph], November 2017. http://arxiv.org/abs/1711.06814">7</a>]</span> then show that Allen’s picture is inequivalent to both Deutsch’s and Ralph and Myers’s pictures.</p>
+<p>Given that <span class="math notranslate nohighlight">\(\Depolarization\)</span> is a noise channel, then it should be <em>strictly contractive</em> (that is, its trace distance should always decrease under its action), leaving <a class="reference internal" href="#equation-eq-allen">(236)</a> unique. Dong <span id="id6">[<a class="reference internal" href="comparison.html#cite-1-dong-ralphs-2017" title="X. Dong, H. Chen, and L. Zhou, “Ralph's equivalent circuit model, revised Deutsch's maximum entropy rule and discontinuous quantum evolutions in D-CTCs”, arXiv:1711.06814 [quant-ph], November 2017. http://arxiv.org/abs/1711.06814">7</a>]</span> then show that Allen’s picture is inequivalent to both Deutsch’s and Ralph and Myers’s pictures.</p>
 <p class="bibliography rubric"><span class="classbibliography">References</span></p>
 <div class="bibliography docutils container" id="bibliography-1">
 <div role="list" class="citation-list">

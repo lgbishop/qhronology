@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 15, 2025"/>
+    <meta name="docbuild:last-update" content="Jul 21, 2025"/>
   </head>
   
   
@@ -508,21 +508,21 @@
 </figure>
 <p>The values of the summation qubits can be determined to be</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-0">
-<span class="eqno">(349)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-0" title="Link to this equation">#</a></span>\[\begin{split}s_i =
+<span class="eqno">(351)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-0" title="Link to this equation">#</a></span>\[\begin{split}s_i =
     \begin{cases}
         x_0 \oplus y_0 \oplus c_0, &amp; \text{if } i = 0; \\
         x_i \oplus y_i \oplus c^\prime_i, &amp; \text{if } i &gt; 0. \\
     \end{cases}\end{split}\]</div>
 <p>This version of an adder resets all output carry qubits to their original input values. The intermediary carry values however are</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-1">
-<span class="eqno">(350)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-1" title="Link to this equation">#</a></span>\[\begin{split}c^\prime_i =
+<span class="eqno">(352)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-1" title="Link to this equation">#</a></span>\[\begin{split}c^\prime_i =
     \begin{cases}
         c_1 \oplus x_0 y_0 \oplus c_0 (x_0 \oplus y_0), &amp; \text{if } i = 1; \\
         c_i \oplus x_{i - 1} y_{i - 1} \oplus c^\prime_{i - 1} (x_{i - 1} \oplus y_{i - 1}), &amp; \text{if } i &gt; 1. \\
     \end{cases}\end{split}\]</div>
 <p>The last qubit is simply an overflow qubit and has the value</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-2">
-<span class="eqno">(351)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-2" title="Link to this equation">#</a></span>\[c^\prime_\Dimension = c_\Dimension \oplus x_{\Dimension - 1} y_{\Dimension - 1} \oplus c^\prime_{\Dimension - 1} (x_{\Dimension - 1} \oplus y_{\Dimension - 1}).\]</div>
+<span class="eqno">(353)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-2" title="Link to this equation">#</a></span>\[c^\prime_\Dimension = c_\Dimension \oplus x_{\Dimension - 1} y_{\Dimension - 1} \oplus c^\prime_{\Dimension - 1} (x_{\Dimension - 1} \oplus y_{\Dimension - 1}).\]</div>
 <p>It is non-zero when the sum of the most-significant qubits (plus carry) “wraps around” (due to the modular arithmetic), and so represents the case where the total resulting sum is too big to be encoded with just <span class="math notranslate nohighlight">\(\Dimension\)</span> qubits, a situation known as <em>integer overflow</em>. If the value of this qubit is not required, then the circuit can be simplified by removing the last CARRY, the lone CNOT, and the qubit itself.</p>
 </section>
 <section id="implementation">
