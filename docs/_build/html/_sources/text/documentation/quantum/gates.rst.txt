@@ -106,6 +106,114 @@ Main class
          \vspace{1em}
 
    >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
+   >>> UI = QuantumGate(spec=unitary, targets=[0], num_systems=2, label="U")
+   >>> UI.output()
+   Matrix([
+   [U[0, 0],       0, U[0, 1],       0],
+   [      0, U[0, 0],       0, U[0, 1]],
+   [U[1, 0],       0, U[1, 1],       0],
+   [      0, U[1, 0],       0, U[1, 1]]])
+   >>> UI.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_ui-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_ui-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
+   >>> IU = QuantumGate(spec=unitary, targets=[1], num_systems=2, label="U")
+   >>> IU.output()
+   Matrix([
+   [U[0, 0], U[0, 1],       0,       0],
+   [U[1, 0], U[1, 1],       0,       0],
+   [      0,       0, U[0, 0], U[0, 1]],
+   [      0,       0, U[1, 0], U[1, 1]]])
+   >>> IU.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_iu-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_iu-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> unitary = sp.MatrixSymbol("U", 4, 4).as_mutable()
+   >>> UU = QuantumGate(spec=unitary, targets=[0, 1], num_systems=2, label="U")
+   >>> UU.output()
+   Matrix([
+   [U[0, 0], U[0, 1], U[0, 2], U[0, 3]],
+   [U[1, 0], U[1, 1], U[1, 2], U[1, 3]],
+   [U[2, 0], U[2, 1], U[2, 2], U[2, 3]],
+   [U[3, 0], U[3, 1], U[3, 2], U[3, 3]]])
+   >>> UU.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_uu-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_uu-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
    >>> CU = QuantumGate(spec=unitary, targets=[1], controls=[0], label="U")
    >>> CU.output()
    Matrix([
@@ -132,6 +240,158 @@ Main class
       .. only:: html or latex
 
          .. image:: /figures/output/text_examples_docstrings_gate_custom_cu-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
+   >>> UC = QuantumGate(spec=unitary, targets=[0], controls=[1], label="U")
+   >>> UC.output()
+   Matrix([
+   [1,       0, 0,       0],
+   [0, U[0, 0], 0, U[0, 1]],
+   [0,       0, 1,       0],
+   [0, U[1, 0], 0, U[1, 1]]])
+   >>> UC.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_uc-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_uc-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
+   >>> AU = QuantumGate(spec=unitary, targets=[1], anticontrols=[0], label="U")
+   >>> AU.output()
+   Matrix([
+   [U[0, 0], U[0, 1], 0, 0],
+   [U[1, 0], U[1, 1], 0, 0],
+   [      0,       0, 1, 0],
+   [      0,       0, 0, 1]])
+   >>> AU.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_au-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_au-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
+   >>> CCU = QuantumGate(spec=unitary, targets=[2], controls=[0, 1], label="U")
+   >>> CCU.output()
+   Matrix([
+   [1, 0, 0, 0, 0, 0,       0,       0],
+   [0, 1, 0, 0, 0, 0,       0,       0],
+   [0, 0, 1, 0, 0, 0,       0,       0],
+   [0, 0, 0, 1, 0, 0,       0,       0],
+   [0, 0, 0, 0, 1, 0,       0,       0],
+   [0, 0, 0, 0, 0, 1,       0,       0],
+   [0, 0, 0, 0, 0, 0, U[0, 0], U[0, 1]],
+   [0, 0, 0, 0, 0, 0, U[1, 0], U[1, 1]]])
+   >>> CCU.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_ccu-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_ccu-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
+   >>> AUC = QuantumGate(spec=unitary, targets=[1], controls=[2], anticontrols=[0], label="U")
+   >>> AUC.output()
+   Matrix([
+   [1,       0, 0,       0, 0, 0, 0, 0],
+   [0, U[0, 0], 0, U[0, 1], 0, 0, 0, 0],
+   [0,       0, 1,       0, 0, 0, 0, 0],
+   [0, U[1, 0], 0, U[1, 1], 0, 0, 0, 0],
+   [0,       0, 0,       0, 1, 0, 0, 0],
+   [0,       0, 0,       0, 0, 1, 0, 0],
+   [0,       0, 0,       0, 0, 0, 1, 0],
+   [0,       0, 0,       0, 0, 0, 0, 1]])
+   >>> AUC.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_auc-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_auc-light.png
             :scale: 40 %
             :align: left
             :class: only-light
@@ -378,14 +638,12 @@ Please note that the documentation of these subclasses includes only properties 
          \end{mdframed}
          \vspace{1em}
 
-   >>> YI = Pauli(index=2, targets=[0], num_systems=2)
-   >>> YI.output()
+   >>> Y = Pauli(index=2)
+   >>> Y.output()
    Matrix([
-   [0, 0, -I,  0],
-   [0, 0,  0, -I],
-   [I, 0,  0,  0],
-   [0, I,  0,  0]])
-   >>> YI.diagram()
+   [0, -I],
+   [I,  0]])
+   >>> Y.diagram()
 
    ..
 
@@ -396,14 +654,14 @@ Please note that the documentation of these subclasses includes only properties 
 
       .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_gate_pauli_yi-dark.png
+         .. image:: /figures/output/text_examples_docstrings_gate_pauli_y-dark.png
             :scale: 40 %
             :align: left
             :class: only-dark
 
       .. only:: html or latex
 
-         .. image:: /figures/output/text_examples_docstrings_gate_pauli_yi-light.png
+         .. image:: /figures/output/text_examples_docstrings_gate_pauli_y-light.png
             :scale: 40 %
             :align: left
             :class: only-light
@@ -413,14 +671,12 @@ Please note that the documentation of these subclasses includes only properties 
          \end{mdframed}
          \vspace{1em}
 
-   >>> IZ = Pauli(index=3, targets=[1])
-   >>> IZ.output()
+   >>> Z = Pauli(index=3)
+   >>> Z.output()
    Matrix([
-   [1,  0, 0,  0],
-   [0, -1, 0,  0],
-   [0,  0, 1,  0],
-   [0,  0, 0, -1]])
-   >>> IZ.diagram()
+   [1,  0],
+   [0, -1]])
+   >>> Z.diagram()
 
    ..
 
@@ -431,14 +687,14 @@ Please note that the documentation of these subclasses includes only properties 
 
       .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_gate_pauli_iz-dark.png
+         .. image:: /figures/output/text_examples_docstrings_gate_pauli_z-dark.png
             :scale: 40 %
             :align: left
             :class: only-dark
 
       .. only:: html or latex
 
-         .. image:: /figures/output/text_examples_docstrings_gate_pauli_iz-light.png
+         .. image:: /figures/output/text_examples_docstrings_gate_pauli_z-light.png
             :scale: 40 %
             :align: left
             :class: only-light

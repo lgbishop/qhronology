@@ -171,7 +171,7 @@ Main class
    ...     spec=[("p", [0]), ("1 - p", [1])],
    ...     form="matrix",
    ...     kind="mixed",
-   ...     symbols={"p": {"real": True}},
+   ...     symbols={"p": {"real": True, "nonnegative": True}},
    ...     norm=1,
    ...     label="τ",
    ... )
@@ -279,7 +279,12 @@ Main class
          \end{mdframed}
          \vspace{1em}
 
-   >>> bell_state = QuantumState(spec=[(1, [0, 0]), (1, [1, 1])], form="vector", norm=1, label="Φ")
+   >>> bell_state = QuantumState(
+   ...     spec=[(1, [0, 0]), (1, [1, 1])],
+   ...     form="vector",
+   ...     norm=1,
+   ...     label="Φ",
+   ... )
    >>> bell_state.output()
    Matrix([
    [sqrt(2)/2],
@@ -316,20 +321,25 @@ Main class
          \end{mdframed}
          \vspace{1em}
 
-   >>> tripartite_zero = QuantumState(spec=[(1, [0, 0, 0])], form="vector", label="0,0,0")
-   >>> tripartite_zero.output()
+   >>> ghz_state = QuantumState(
+   ...     spec=[(1, [0, 0, 0]), (1, [1, 1, 1])],
+   ...     form="vector",
+   ...     norm=1,
+   ...     label="GHZ",
+   ... )
+   >>> ghz_state.output()
    Matrix([
-   [1],
-   [0],
-   [0],
-   [0],
-   [0],
-   [0],
-   [0],
-   [0]])
-   >>> tripartite_zero.print()
-   |0,0,0⟩ = |0,0,0⟩
-   >>> tripartite_zero.diagram()
+   [sqrt(2)/2],
+   [        0],
+   [        0],
+   [        0],
+   [        0],
+   [        0],
+   [        0],
+   [sqrt(2)/2]])
+   >>> ghz_state.print()
+   |GHZ⟩ = sqrt(2)/2|0,0,0⟩ + sqrt(2)/2|1,1,1⟩
+   >>> ghz_state.diagram()
 
    ..
 
@@ -340,14 +350,60 @@ Main class
 
       .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_state_tripartite_zero-dark.png
+         .. image:: /figures/output/text_examples_docstrings_state_tripartite_ghz-dark.png
             :scale: 40 %
             :align: left
             :class: only-dark
 
       .. only:: html or latex
 
-         .. image:: /figures/output/text_examples_docstrings_state_tripartite_zero-light.png
+         .. image:: /figures/output/text_examples_docstrings_state_tripartite_ghz-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> w_state = QuantumState(
+   ...     spec=[(1, [0, 0, 1]), (1, [0, 1, 0]), (1, [1, 0, 0])],
+   ...     form="vector",
+   ...     norm=1,
+   ...     label="W",
+   ... )
+   >>> w_state.output()
+   Matrix([
+   [        0],
+   [sqrt(3)/3],
+   [sqrt(3)/3],
+   [        0],
+   [sqrt(3)/3],
+   [        0],
+   [        0],
+   [        0]])
+   >>> w_state.print()
+   |W⟩ = sqrt(3)/3|0,0,1⟩ + sqrt(3)/3|0,1,0⟩ + sqrt(3)/3|1,0,0⟩
+   >>> w_state.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_state_tripartite_w-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_state_tripartite_w-light.png
             :scale: 40 %
             :align: left
             :class: only-light
@@ -481,7 +537,9 @@ Methods
 
    .. rubric:: :styleheader6:`Examples`
 
-   >>> vector_state = QuantumState(spec=[("a", [0]), ("b", [1])], form="vector", label="ψ")
+   >>> vector_state = QuantumState(
+   ...     spec=[("a", [0]), ("b", [1])], form="vector", label="ψ"
+   ... )
    >>> vector_state.output()
    Matrix([
    [a],

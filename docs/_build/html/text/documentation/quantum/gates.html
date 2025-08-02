@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 21, 2025"/>
+    <meta name="docbuild:last-update" content="Aug 02, 2025"/>
   </head>
   
   
@@ -624,6 +624,57 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;G
 </a>
 </div></blockquote>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UI</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UI</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0],       0, U[0, 1],       0],</span>
+<span class="go">[      0, U[0, 0],       0, U[0, 1]],</span>
+<span class="go">[U[1, 0],       0, U[1, 1],       0],</span>
+<span class="go">[      0, U[1, 0],       0, U[1, 1]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UI</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ui-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ui-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_ui-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0], U[0, 1],       0,       0],</span>
+<span class="go">[U[1, 0], U[1, 1],       0,       0],</span>
+<span class="go">[      0,       0, U[0, 0], U[0, 1]],</span>
+<span class="go">[      0,       0, U[1, 0], U[1, 1]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IU</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_iu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_iu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_iu-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0], U[0, 1], U[0, 2], U[0, 3]],</span>
+<span class="go">[U[1, 0], U[1, 1], U[1, 2], U[1, 3]],</span>
+<span class="go">[U[2, 0], U[2, 1], U[2, 2], U[2, 3]],</span>
+<span class="go">[U[3, 0], U[3, 1], U[3, 2], U[3, 3]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UU</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png" style="width: 78.80000000000001px; height: 65.2px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_uu-light.png" style="width: 78.80000000000001px; height: 65.2px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
 <span class="go">Matrix([</span>
@@ -638,6 +689,82 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;G
 <div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
 </a>
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_cu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_cu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_cu-light.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UC</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UC</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[1,       0, 0,       0],</span>
+<span class="go">[0, U[0, 0], 0, U[0, 1]],</span>
+<span class="go">[0,       0, 1,       0],</span>
+<span class="go">[0, U[1, 0], 0, U[1, 1]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UC</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uc-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uc-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_uc-light.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">anticontrols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0], U[0, 1], 0, 0],</span>
+<span class="go">[U[1, 0], U[1, 1], 0, 0],</span>
+<span class="go">[      0,       0, 1, 0],</span>
+<span class="go">[      0,       0, 0, 1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AU</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_au-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_au-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_au-dark.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_au-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_au-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_au-light.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CCU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CCU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[1, 0, 0, 0, 0, 0,       0,       0],</span>
+<span class="go">[0, 1, 0, 0, 0, 0,       0,       0],</span>
+<span class="go">[0, 0, 1, 0, 0, 0,       0,       0],</span>
+<span class="go">[0, 0, 0, 1, 0, 0,       0,       0],</span>
+<span class="go">[0, 0, 0, 0, 1, 0,       0,       0],</span>
+<span class="go">[0, 0, 0, 0, 0, 1,       0,       0],</span>
+<span class="go">[0, 0, 0, 0, 0, 0, U[0, 0], U[0, 1]],</span>
+<span class="go">[0, 0, 0, 0, 0, 0, U[1, 0], U[1, 1]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CCU</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png" style="width: 78.80000000000001px; height: 84.0px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png" style="width: 78.80000000000001px; height: 84.0px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AUC</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">anticontrols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AUC</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[1,       0, 0,       0, 0, 0, 0, 0],</span>
+<span class="go">[0, U[0, 0], 0, U[0, 1], 0, 0, 0, 0],</span>
+<span class="go">[0,       0, 1,       0, 0, 0, 0, 0],</span>
+<span class="go">[0, U[1, 0], 0, U[1, 1], 0, 0, 0, 0],</span>
+<span class="go">[0,       0, 0,       0, 1, 0, 0, 0],</span>
+<span class="go">[0,       0, 0,       0, 0, 1, 0, 0],</span>
+<span class="go">[0,       0, 0,       0, 0, 0, 1, 0],</span>
+<span class="go">[0,       0, 0,       0, 0, 0, 0, 1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AUC</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png" style="width: 78.80000000000001px; height: 71.2px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_auc-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_auc-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_auc-light.png" style="width: 78.80000000000001px; height: 71.2px;" />
 </a>
 </div></blockquote>
 </dd></dl>
@@ -1092,36 +1219,32 @@ This means that the constructor does not take <code class="docutils literal notr
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_x-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_x-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_x-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
 </div></blockquote>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">YI</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">YI</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
 <span class="go">Matrix([</span>
-<span class="go">[0, 0, -I,  0],</span>
-<span class="go">[0, 0,  0, -I],</span>
-<span class="go">[I, 0,  0,  0],</span>
-<span class="go">[0, I,  0,  0]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">YI</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+<span class="go">[0, -I],</span>
+<span class="go">[I,  0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_yi-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_yi-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_yi-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_yi-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_yi-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_yi-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_y-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_y-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_y-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
 </div></blockquote>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">IZ</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">IZ</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
 <span class="go">Matrix([</span>
-<span class="go">[1,  0, 0,  0],</span>
-<span class="go">[0, -1, 0,  0],</span>
-<span class="go">[0,  0, 1,  0],</span>
-<span class="go">[0,  0, 0, -1]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">IZ</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+<span class="go">[1,  0],</span>
+<span class="go">[0, -1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_iz-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_iz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_iz-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_iz-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_iz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_iz-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_z-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_z-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_z-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
 </div></blockquote>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ZZ</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Z⊗Z&quot;</span><span class="p">)</span>

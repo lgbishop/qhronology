@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 21, 2025"/>
+    <meta name="docbuild:last-update" content="Aug 02, 2025"/>
   </head>
   
   
@@ -575,13 +575,16 @@
 
     <span class="n">augend_bit_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
         <span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="n">augend_bit</span><span class="p">,</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-        <span class="n">label</span><span class="o">=</span><span class="n">augend_state</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">augend_state</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
     <span class="p">)</span>
     <span class="n">addend_bit_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
         <span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="n">addend_bit</span><span class="p">,</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-        <span class="n">label</span><span class="o">=</span><span class="n">addend_state</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">addend_state</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
     <span class="p">)</span>
-    <span class="n">carry_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;c&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">carry_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
+        <span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;c&quot;</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
+    <span class="p">)</span>
 
     <span class="n">augend_states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">augend_bit_state</span><span class="p">)</span>
     <span class="n">addend_states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">addend_bit_state</span><span class="p">)</span>
