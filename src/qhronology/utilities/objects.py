@@ -246,9 +246,21 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         Not intended to be set by the user in most cases."""
         if self._notation is None:
             if self.is_vector is True:
-                if matrix_shape(self.matrix) == Shapes.COLUMN.value:
+                if (
+                    matrix_shape(self.matrix) == Shapes.COLUMN.value
+                    and self.conjugate == False
+                ) or (
+                    matrix_shape(self.matrix) == Shapes.ROW.value
+                    and self.conjugate == True
+                ):
                     notation = "|" + self.label + "⟩"
-                elif matrix_shape(self.matrix) == Shapes.ROW.value:
+                elif (
+                    matrix_shape(self.matrix) == Shapes.ROW.value
+                    and self.conjugate == False
+                ) or (
+                    matrix_shape(self.matrix) == Shapes.COLUMN.value
+                    and self.conjugate == True
+                ):
                     notation = "⟨" + self.label + "|"
                 else:
                     notation = self.label
