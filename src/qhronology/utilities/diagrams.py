@@ -2932,8 +2932,8 @@ class DiagramCircuit(VisualizationProperties):
 
 
 def partition_systems(systems, boundaries):
-    systems = list(set(systems))
-    boundaries = list(set(boundaries))
+    systems = sorted(list(set(systems)))
+    boundaries = sorted(list(set(boundaries)))
     partitions = []
     boundaries[-1] = max(max(systems), max(boundaries))
     boundaries.sort()
