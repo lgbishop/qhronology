@@ -1274,14 +1274,14 @@ Please note that the documentation of these subclasses includes only properties 
 
       .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_gate_diagonal_p3-dark.png
+         .. image:: /figures/output/text_examples_docstrings_gate_diagonal_d3-dark.png
             :scale: 40 %
             :align: left
             :class: only-dark
 
       .. only:: html or latex
 
-         .. image:: /figures/output/text_examples_docstrings_gate_diagonal_p3-light.png
+         .. image:: /figures/output/text_examples_docstrings_gate_diagonal_d3-light.png
             :scale: 40 %
             :align: left
             :class: only-light
