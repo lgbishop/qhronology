@@ -614,7 +614,7 @@ Citation
 .. code:: text
 
    @software{bishop_qhronology_2025,
-      title = {{Qhronology: A Python package for resolving quantum time-travel paradoxes and performing general quantum information processing & computation}},
+      title = {{Qhronology: A Python package for studying quantum models of closed timelike curves and performing general quantum information processing & computation}},
       author = {Bishop, Lachlan G.},
       year = {2025},
       url = {https://github.com/lgbishop/qhronology},

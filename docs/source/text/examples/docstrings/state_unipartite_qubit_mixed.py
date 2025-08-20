@@ -4,7 +4,7 @@ qubit_mixed = QuantumState(
     spec=[("p", [0]), ("1 - p", [1])],
     form="matrix",
     kind="mixed",
-    symbols={"p": {"real": True}},
+    symbols={"p": {"real": True, "nonnegative": True}},
     norm=1,
     label="τ",
 )

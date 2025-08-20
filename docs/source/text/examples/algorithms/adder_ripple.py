@@ -38,14 +38,15 @@ for i in range(0, encoding_depth):
 
     augend_bit_state = VectorState(
         spec=encode(augend_bit, 1),
-        label=augend_state.label + str(encoding_depth - 1 - i),
+        label=augend_state.label + "_" + str(encoding_depth - 1 - i),
     )
     addend_bit_state = VectorState(
         spec=encode(addend_bit, 1),
-        label=addend_state.label + str(encoding_depth - 1 - i),
+        label=addend_state.label + "_" + str(encoding_depth - 1 - i),
     )
     carry_state = VectorState(
-        spec=encode(0, 1), label="c" + str(encoding_depth - 1 - i)
+        spec=encode(0, 1),
+        label="c" + "_" + str(encoding_depth - 1 - i),
     )
     zero_state = VectorState(spec=encode(0, 1), label="0")
 

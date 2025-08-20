@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 15, 2025"/>
+    <meta name="docbuild:last-update" content="Aug 19, 2025"/>
   </head>
   
   
@@ -624,6 +624,57 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;G
 </a>
 </div></blockquote>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UI</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UI</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0],       0, U[0, 1],       0],</span>
+<span class="go">[      0, U[0, 0],       0, U[0, 1]],</span>
+<span class="go">[U[1, 0],       0, U[1, 1],       0],</span>
+<span class="go">[      0, U[1, 0],       0, U[1, 1]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UI</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ui-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ui-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_ui-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0], U[0, 1],       0,       0],</span>
+<span class="go">[U[1, 0], U[1, 1],       0,       0],</span>
+<span class="go">[      0,       0, U[0, 0], U[0, 1]],</span>
+<span class="go">[      0,       0, U[1, 0], U[1, 1]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IU</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_iu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_iu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_iu-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0], U[0, 1], U[0, 2], U[0, 3]],</span>
+<span class="go">[U[1, 0], U[1, 1], U[1, 2], U[1, 3]],</span>
+<span class="go">[U[2, 0], U[2, 1], U[2, 2], U[2, 3]],</span>
+<span class="go">[U[3, 0], U[3, 1], U[3, 2], U[3, 3]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UU</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png" style="width: 78.80000000000001px; height: 65.2px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_uu-light.png" style="width: 78.80000000000001px; height: 65.2px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
 <span class="go">Matrix([</span>
@@ -638,6 +689,82 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;G
 <div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
 </a>
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_cu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_cu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_cu-light.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UC</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UC</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[1,       0, 0,       0],</span>
+<span class="go">[0, U[0, 0], 0, U[0, 1]],</span>
+<span class="go">[0,       0, 1,       0],</span>
+<span class="go">[0, U[1, 0], 0, U[1, 1]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">UC</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uc-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uc-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_uc-light.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">anticontrols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0], U[0, 1], 0, 0],</span>
+<span class="go">[U[1, 0], U[1, 1], 0, 0],</span>
+<span class="go">[      0,       0, 1, 0],</span>
+<span class="go">[      0,       0, 0, 1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AU</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_au-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_au-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_au-dark.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_au-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_au-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_au-light.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CCU</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CCU</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[1, 0, 0, 0, 0, 0,       0,       0],</span>
+<span class="go">[0, 1, 0, 0, 0, 0,       0,       0],</span>
+<span class="go">[0, 0, 1, 0, 0, 0,       0,       0],</span>
+<span class="go">[0, 0, 0, 1, 0, 0,       0,       0],</span>
+<span class="go">[0, 0, 0, 0, 1, 0,       0,       0],</span>
+<span class="go">[0, 0, 0, 0, 0, 1,       0,       0],</span>
+<span class="go">[0, 0, 0, 0, 0, 0, U[0, 0], U[0, 1]],</span>
+<span class="go">[0, 0, 0, 0, 0, 0, U[1, 0], U[1, 1]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CCU</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png" style="width: 78.80000000000001px; height: 84.0px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png" style="width: 78.80000000000001px; height: 84.0px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AUC</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">anticontrols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AUC</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[1,       0, 0,       0, 0, 0, 0, 0],</span>
+<span class="go">[0, U[0, 0], 0, U[0, 1], 0, 0, 0, 0],</span>
+<span class="go">[0,       0, 1,       0, 0, 0, 0, 0],</span>
+<span class="go">[0, U[1, 0], 0, U[1, 1], 0, 0, 0, 0],</span>
+<span class="go">[0,       0, 0,       0, 1, 0, 0, 0],</span>
+<span class="go">[0,       0, 0,       0, 0, 1, 0, 0],</span>
+<span class="go">[0,       0, 0,       0, 0, 0, 1, 0],</span>
+<span class="go">[0,       0, 0,       0, 0, 0, 0, 1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AUC</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png" style="width: 78.80000000000001px; height: 71.2px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_auc-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_auc-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_auc-light.png" style="width: 78.80000000000001px; height: 71.2px;" />
 </a>
 </div></blockquote>
 </dd></dl>
@@ -664,12 +791,12 @@ Provides a complete description of the operator in a standard <code class="docut
 <p>For example, a controlled-<span class="math notranslate nohighlight">\(\Unitary\)</span> gate in <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions
 takes the form</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-0">
-<span class="eqno">(286)<a class="headerlink" href="#equation-text-documentation-quantum-gates-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(288)<a class="headerlink" href="#equation-text-documentation-quantum-gates-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Control^{0} \Unitary^{1} &amp;= \sum\limits_{k=0}^{\Dimension - 1} \ket{k}\bra{k}\otimes\Unitary^{k} \\
     &amp;= \ket{0}\bra{0}\otimes\Identity + \ket{1}\bra{1}\otimes\Unitary
         + \ket{2}\bra{2}\otimes\Unitary^{2} + \ldots
         + \ket{\Dimension - 1}\bra{\Dimension - 1}\otimes\Unitary^{\Dimension - 1}
- \end{aligned}\end{split}\]</div>
+\end{aligned}\end{split}\]</div>
 </dd></dl>
 
 <dl class="py property">
@@ -679,7 +806,7 @@ takes the form</p>
 <p>For example, an anticontrolled-<span class="math notranslate nohighlight">\(\Unitary\)</span> gate in <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions
 takes the form</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-1">
-<span class="eqno">(287)<a class="headerlink" href="#equation-text-documentation-quantum-gates-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(289)<a class="headerlink" href="#equation-text-documentation-quantum-gates-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Anticontrol^{0} \Unitary^{1} &amp;= \sum\limits_{k=0}^{\Dimension - 1} \ket{k}\bra{k}\otimes\Unitary^{\Dimension - 1 - k} \\
     &amp;= \ket{0}\bra{0}\otimes\Unitary^{\Dimension - 1} + \ket{1}\bra{1}\otimes\Unitary^{\Dimension - 2}
         + \ket{2}\bra{2}\otimes\Unitary^{\Dimension - 3} + \ldots
@@ -760,13 +887,13 @@ Is guaranteed to produce valid powers only for involutory matrices.</p>
 <p>For an involutory matrix <span class="math notranslate nohighlight">\(\op{A}\)</span>, that is <span class="math notranslate nohighlight">\(\op{A}^2 = \Identity\)</span> (where
 <span class="math notranslate nohighlight">\(\Identity\)</span> is the identity matrix), we have the identity,</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-2">
-<span class="eqno">(288)<a class="headerlink" href="#equation-text-documentation-quantum-gates-2" title="Link to this equation">#</a></span>\[\exp[\eye x \op{A}] = \cos(x)\Identity + \eye\sin(x)\op{A},\]</div>
+<span class="eqno">(290)<a class="headerlink" href="#equation-text-documentation-quantum-gates-2" title="Link to this equation">#</a></span>\[\exp[\eye x \op{A}] = \cos(x)\Identity + \eye\sin(x)\op{A},\]</div>
 <p>for any <span class="math notranslate nohighlight">\(x \in \Complexes\)</span>. In the case of <span class="math notranslate nohighlight">\(x = -\frac{\pi}{2}\)</span>, this becomes</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-3">
-<span class="eqno">(289)<a class="headerlink" href="#equation-text-documentation-quantum-gates-3" title="Link to this equation">#</a></span>\[\exp\Bigl[-\eye\frac{\pi}{2}\op{A}\Bigr] = -\eye\op{A},\]</div>
+<span class="eqno">(291)<a class="headerlink" href="#equation-text-documentation-quantum-gates-3" title="Link to this equation">#</a></span>\[\exp\Bigl[-\eye\frac{\pi}{2}\op{A}\Bigr] = -\eye\op{A},\]</div>
 <p>which can be rearranged to give</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-4">
-<span class="eqno">(290)<a class="headerlink" href="#equation-text-documentation-quantum-gates-4" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(292)<a class="headerlink" href="#equation-text-documentation-quantum-gates-4" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \op{A} &amp;= \eye \exp\Bigl[-\eye\frac{\pi}{2}\op{A}\Bigr] \\
     &amp;= \exp\Bigl[\eye\frac{\pi}{2}\Bigr] \cdot
         \exp\Bigl[-\eye\frac{\pi}{2}\op{A}\Bigr].
@@ -774,7 +901,7 @@ Is guaranteed to produce valid powers only for involutory matrices.</p>
 <p>Simply taking this expression to an arbitrary power <span class="math notranslate nohighlight">\(p \in \mathbb{C}\)</span> thus yields
 the identity</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-5">
-<span class="eqno">(291)<a class="headerlink" href="#equation-text-documentation-quantum-gates-5" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(293)<a class="headerlink" href="#equation-text-documentation-quantum-gates-5" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \op{A}^p &amp;= \exp\Bigl[\eye\frac{\pi}{2} p\Bigr] \cdot
         \exp\Bigl[-\eye\frac{\pi}{2} p \op{A}\Bigr] \\
     &amp;= \exp\Bigl[\eye\frac{\pi}{2} p\Bigr]
@@ -1092,36 +1219,32 @@ This means that the constructor does not take <code class="docutils literal notr
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_x-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_x-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_x-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
 </div></blockquote>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">YI</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">YI</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
 <span class="go">Matrix([</span>
-<span class="go">[0, 0, -I,  0],</span>
-<span class="go">[0, 0,  0, -I],</span>
-<span class="go">[I, 0,  0,  0],</span>
-<span class="go">[0, I,  0,  0]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">YI</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+<span class="go">[0, -I],</span>
+<span class="go">[I,  0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_yi-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_yi-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_yi-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_yi-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_yi-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_yi-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_y-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_y-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_y-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
 </div></blockquote>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">IZ</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">IZ</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
 <span class="go">Matrix([</span>
-<span class="go">[1,  0, 0,  0],</span>
-<span class="go">[0, -1, 0,  0],</span>
-<span class="go">[0,  0, 1,  0],</span>
-<span class="go">[0,  0, 0, -1]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">IZ</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+<span class="go">[1,  0],</span>
+<span class="go">[0, -1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_iz-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_iz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_iz-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_iz-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_iz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_iz-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_z-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_z-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_z-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
 </div></blockquote>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ZZ</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Z⊗Z&quot;</span><span class="p">)</span>
@@ -1275,7 +1398,7 @@ and so inherits all of its attributes, properties, and methods.</p>
 <p>The elementary rotation matrices <span class="math notranslate nohighlight">\(\Rotation_i\)</span> are a set of three <span class="math notranslate nohighlight">\(2 \times 2\)</span>
 matrices,</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-6">
-<span class="eqno">(292)<a class="headerlink" href="#equation-text-documentation-quantum-gates-6" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(294)<a class="headerlink" href="#equation-text-documentation-quantum-gates-6" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Rotation_x &amp;= \e^{-\eye\Pauli_{x}\theta/2} =
         \begin{bmatrix} \cos(\theta/2) &amp; -\eye\sin(\theta/2) \\
         -\eye\sin(\theta/2) &amp; \cos(\theta/2)  \end{bmatrix} \\
@@ -1390,7 +1513,7 @@ and so inherits all of its attributes, properties, and methods.</p>
 <p>In <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions, a phase operator <span class="math notranslate nohighlight">\(\Phase\)</span> may be represented as a
 <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> diagonal matrix</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-7">
-<span class="eqno">(293)<a class="headerlink" href="#equation-text-documentation-quantum-gates-7" title="Link to this equation">#</a></span>\[\Phase(\omega) =
+<span class="eqno">(295)<a class="headerlink" href="#equation-text-documentation-quantum-gates-7" title="Link to this equation">#</a></span>\[\Phase(\omega) =
     \sum\limits_{k=0}^{\Dimension - 1} \omega^k \ket{k}\bra{k}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega\)</span> is the <em>phase</em> factor.</p>
 <p>This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems
@@ -1507,7 +1630,7 @@ and so inherits all of its attributes, properties, and methods.</p>
 <p>In <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions, a diagonal operator <span class="math notranslate nohighlight">\(\Diagonal\)</span> may be represented
 as a <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> diagonal matrix</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-8">
-<span class="eqno">(294)<a class="headerlink" href="#equation-text-documentation-quantum-gates-8" title="Link to this equation">#</a></span>\[\Diagonal(\lambda_0, \lambda_1, \ldots, \lambda_{\Dimension - 1}) =
+<span class="eqno">(296)<a class="headerlink" href="#equation-text-documentation-quantum-gates-8" title="Link to this equation">#</a></span>\[\Diagonal(\lambda_0, \lambda_1, \ldots, \lambda_{\Dimension - 1}) =
     \sum\limits_{k=0}^{\Dimension - 1} \lambda_k\ket{k}\bra{k},
     \quad \lambda_k \in \Complexes, \; \abs{\lambda_k} = 1\]</div>
 <p>where <span class="math notranslate nohighlight">\(\{\lambda_k\}_{k=0}^{\Dimension - 1}\)</span> are the main diagonal <em>entries</em>.</p>
@@ -1581,9 +1704,9 @@ element of <code class="docutils literal notranslate"><span class="pre">1</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_p3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_p3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_p3-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_d3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_d3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_d3-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_p3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_p3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_p3-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_d3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_d3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_d3-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
 </a>
 </div></blockquote>
 <dl class="py property">
@@ -1619,7 +1742,7 @@ and so inherits all of its attributes, properties, and methods.</p>
 systems <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> may be represented as a
 <span class="math notranslate nohighlight">\(\Dimension^2 \times \Dimension^2\)</span> matrix</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-9">
-<span class="eqno">(295)<a class="headerlink" href="#equation-text-documentation-quantum-gates-9" title="Link to this equation">#</a></span>\[\Swap^{A,B} =
+<span class="eqno">(297)<a class="headerlink" href="#equation-text-documentation-quantum-gates-9" title="Link to this equation">#</a></span>\[\Swap^{A,B} =
     \sum\limits_{j,k=0}^{\Dimension - 1}
     {\ket{j}\bra{k}}^A \otimes {\ket{k}\bra{j}}^B,\]</div>
 <p>where the identity operator acts on all other systems.</p>
@@ -1792,7 +1915,7 @@ and so inherits all of its attributes, properties, and methods.</p>
 <p>The SUM gate is essentially a generalization of the NOT gate. In <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions,
 it is defined as the operator</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-10">
-<span class="eqno">(296)<a class="headerlink" href="#equation-text-documentation-quantum-gates-10" title="Link to this equation">#</a></span>\[\SUM(n) = \sum\limits_{k=0}^{\Dimension - 1} \ket{k \oplus n}\bra{k}\]</div>
+<span class="eqno">(298)<a class="headerlink" href="#equation-text-documentation-quantum-gates-10" title="Link to this equation">#</a></span>\[\SUM(n) = \sum\limits_{k=0}^{\Dimension - 1} \ket{k \oplus n}\bra{k}\]</div>
 <p>where <span class="math notranslate nohighlight">\(n \in \Integers_{\geq 0}\)</span> (<code class="docutils literal notranslate"><span class="pre">shift</span></code>) is the <em>shift</em> parameter,
 and <span class="math notranslate nohighlight">\(k \oplus n \equiv k + n \mathrel{\mathrm{mod}} \Dimension\)</span>.</p>
 <p>The case of <span class="math notranslate nohighlight">\(n = 1\)</span> is known as the <em>shift</em> operator, and represents a (non-Hermitian)
@@ -2001,13 +2124,13 @@ and so inherits all of its attributes, properties, and methods.</p>
 <p>The elementary Hadamard gate <span class="math notranslate nohighlight">\(\Hadamard\)</span> (for qubits) may be represented as the
 <span class="math notranslate nohighlight">\(2 \times 2\)</span> operator</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-11">
-<span class="eqno">(297)<a class="headerlink" href="#equation-text-documentation-quantum-gates-11" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(299)<a class="headerlink" href="#equation-text-documentation-quantum-gates-11" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Hadamard &amp;= \frac{1}{\sqrt{2}}\sum\limits_{j,k=0}^{1} (-1)^{jk} \ket{j}\bra{k} \\
     &amp;= \frac{1}{\sqrt{2}}\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{bmatrix}.
 \end{aligned}\end{split}\]</div>
 <p>This can be generalized to the following <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional form for qudits,</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-12">
-<span class="eqno">(298)<a class="headerlink" href="#equation-text-documentation-quantum-gates-12" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(300)<a class="headerlink" href="#equation-text-documentation-quantum-gates-12" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Hadamard_\Dimension &amp;= \frac{1}{\sqrt{\Dimension}}\sum\limits_{j,k=0}^{\Dimension - 1}
         \omega_\Dimension^{k(\Dimension - j)} \ket{j}\bra{k} \\
     &amp;= \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; \ldots &amp; 1 \\
@@ -2097,7 +2220,7 @@ and so inherits all of its attributes, properties, and methods.</p>
 <p>The elementary Fourier operator <span class="math notranslate nohighlight">\(\QFT\)</span> for a single <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional
 qudit may be represented as the <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> matrix</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-13">
-<span class="eqno">(299)<a class="headerlink" href="#equation-text-documentation-quantum-gates-13" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(301)<a class="headerlink" href="#equation-text-documentation-quantum-gates-13" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \QFT &amp;= \frac{1}{\sqrt{\Dimension}} \sum\limits_{j,k=0}^{\Dimension - 1}
         \omega_{\Dimension}^{jk} \ket{j}\bra{k} \\
     &amp;= \frac{1}{\sqrt{\Dimension}} \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 &amp; \ldots &amp; 1 \\
@@ -2116,7 +2239,7 @@ on the basis state
 <span class="math notranslate nohighlight">\(\bigotimes\limits_{\ell=1}^{N} \ket{j_\ell} \equiv \ket{j_1, \ldots, j_N}\)</span>
 (where <span class="math notranslate nohighlight">\(j_\ell \in \Integers_{0}^{\Dimension - 1}\)</span>) is</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-14">
-<span class="eqno">(300)<a class="headerlink" href="#equation-text-documentation-quantum-gates-14" title="Link to this equation">#</a></span>\[\ket{j_1, \ldots, j_N} \stackrel{\QFT_N}{\longrightarrow}
+<span class="eqno">(302)<a class="headerlink" href="#equation-text-documentation-quantum-gates-14" title="Link to this equation">#</a></span>\[\ket{j_1, \ldots, j_N} \stackrel{\QFT_N}{\longrightarrow}
     \frac{1}{\sqrt{\Dimension^N}}
     \bigotimes\limits_{\ell=1}^{N}
     \sum\limits_{k_\ell=0}^{\Dimension - 1}
@@ -2234,13 +2357,13 @@ and so inherits all of its attributes, properties, and methods.</p>
 (<code class="docutils literal notranslate"><span class="pre">operators</span></code> is a list of Kraus operators or projectors <span class="math notranslate nohighlight">\(\Kraus_i\)</span>):</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-15">
-<span class="eqno">(301)<a class="headerlink" href="#equation-text-documentation-quantum-gates-15" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \Kraus_i \op{\rho} \Kraus_i^\dagger.\]</div>
+<span class="eqno">(303)<a class="headerlink" href="#equation-text-documentation-quantum-gates-15" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \Kraus_i \op{\rho} \Kraus_i^\dagger.\]</div>
 <ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">observable</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>
 (<code class="docutils literal notranslate"><span class="pre">operators</span></code> is a list of observables <span class="math notranslate nohighlight">\(\Observable_i\)</span>):</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-16">
-<span class="eqno">(302)<a class="headerlink" href="#equation-text-documentation-quantum-gates-16" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \trace[\Observable_i \op{\rho}] \Observable_i.\]</div>
+<span class="eqno">(304)<a class="headerlink" href="#equation-text-documentation-quantum-gates-16" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \trace[\Observable_i \op{\rho}] \Observable_i.\]</div>
 <p>The items in the list <code class="docutils literal notranslate"><span class="pre">operators</span></code> can also be vectors (e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\)</span>),
 in which case each is converted into its corresponding matrix representation
 (e.g., <span class="math notranslate nohighlight">\(\Kraus_i = \ket{\xi_i}\bra{\xi_i}\)</span>) prior to any measurements.</p>
@@ -2354,7 +2477,7 @@ by interleaving them.</p>
 for gates described by the multipartite operators <span class="math notranslate nohighlight">\(\op{A} \otimes \Identity\)</span>
 and <span class="math notranslate nohighlight">\(\Identity \otimes \op{B}\)</span>, their interleaved composition is</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-17">
-<span class="eqno">(303)<a class="headerlink" href="#equation-text-documentation-quantum-gates-17" title="Link to this equation">#</a></span>\[(\op{A} \otimes \Identity) \cdot (\Identity \otimes \op{B}) = \op{A} \otimes \op{B}.\]</div>
+<span class="eqno">(305)<a class="headerlink" href="#equation-text-documentation-quantum-gates-17" title="Link to this equation">#</a></span>\[(\op{A} \otimes \Identity) \cdot (\Identity \otimes \op{B}) = \op{A} \otimes \op{B}.\]</div>
 <p>While this is a subclass of <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>,
 all of its inherited properties, except for those corresponding to arguments in its constructor,
 are read-only. This is because they are calculated from their corresponding properties in the
@@ -2487,7 +2610,7 @@ For example, for gates described by the multipartite operators
 <span class="math notranslate nohighlight">\(\op{A} \otimes \Identity\)</span> and <span class="math notranslate nohighlight">\(\Identity \otimes \op{B}\)</span>,
 their stacked composition is</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-18">
-<span class="eqno">(304)<a class="headerlink" href="#equation-text-documentation-quantum-gates-18" title="Link to this equation">#</a></span>\[(\op{A} \otimes \Identity) \otimes (\Identity \otimes \op{B})
+<span class="eqno">(306)<a class="headerlink" href="#equation-text-documentation-quantum-gates-18" title="Link to this equation">#</a></span>\[(\op{A} \otimes \Identity) \otimes (\Identity \otimes \op{B})
 = \op{A} \otimes \Identity \otimes \Identity \otimes \op{B}.\]</div>
 <p>This class is derived from the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class,
 and so should be used in much the same way.</p>

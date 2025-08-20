@@ -61,8 +61,11 @@
 \def\glyphwidth{\getmonowidth}
 \def\glyphheight{\getmonoheight}
 
+% These fonts must be installed on the local system.
+% (They are not LaTeX fonts).
 \usepackage[verbose]{newunicodechar}
-\newfontfamily{\greekfont}[Scale=MatchAveragecase]{JuliaMono}
+% \newfontfamily{\greekfont}[Scale=MatchAveragecase]{JuliaMono}
+\newfontfamily{\greekfont}[Scale=MatchAveragecase]{NewComputerModern10}
 \newfontfamily{\latinfont}[Scale=MatchAveragecase]{Fragment Mono}
 \newfontfamily{\shapefont}[Scale=MatchAveragecase]{DejaVu Sans Mono}
 \newfontfamily{\linefont}[Scale=MatchAveragecase]{Fragment Mono}
@@ -81,7 +84,7 @@
 %     \newunicodechar{#1}{\textit{\makebox[\glyphwidth][c]{\greekfont #1}}}%
 % }
 \newcommand{\definegreekitalicisedreplacement}[1]{%
-    \newunicodechar{#1}{\makebox[\glyphwidth][c]{\greekfont \textit{#1}}}%
+    \newunicodechar{#1}{\makebox[\glyphwidth][c]{\textit{\greekfont#1}}}%
 }
 \newcommand{\definelatinreplacement}[1]{%
     \newunicodechar{#1}{\makebox[\glyphwidth][c]{\latinfont #1}}%
@@ -249,10 +252,10 @@
 \definegreekitalicisedreplacement{π} % pi
 \definegreekitalicisedreplacement{ρ} % rho
 \definegreekitalicisedreplacement{σ} % sigma
-\definegreekitalicisedreplacement{ς} % final sigma
+\definegreekitalicisedreplacement{ς} % var sigma
 \definegreekitalicisedreplacement{τ} % tau
 \definegreekitalicisedreplacement{υ} % upsilon
-% \definegreekitalicisedreplacement{ϕ} % phi
+\definegreekitalicisedreplacement{ϕ} % var phi
 \definegreekitalicisedreplacement{φ} % phi
 \definegreekitalicisedreplacement{χ} % chi
 \definegreekitalicisedreplacement{ψ} % psi

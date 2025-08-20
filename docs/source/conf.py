@@ -220,7 +220,7 @@ latex_elements = {
 
 \vspace*{\fill}
 
-\emph{Qhronology}: A Python package for resolving quantum time-travel paradoxes and performing general quantum information processing \& computation.
+\emph{Qhronology}: A Python package for studying quantum models of closed timelike curves and performing general quantum information processing \& computation.
 
 \textcopyright\enspace 2025 Lachlan G. Bishop
 
@@ -328,6 +328,8 @@ Read the full license here:
 
 % Make normal (medium) series semi-bold instead for the loaded ttfamily.
 \DeclareFontSeriesDefault[tt]{md}{sb}
+% Make roman (serif) series bold-extended when bold is called.
+\DeclareFontSeriesDefault[rm]{bf}{bx}
 
 %%% Fixes for pdflatex being unable to compile when the included code snippets (e.g., the usage examples) contain non-ascii characters (i.e., Greek letters).
 

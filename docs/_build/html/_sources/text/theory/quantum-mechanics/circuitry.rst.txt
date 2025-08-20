@@ -20,7 +20,7 @@ Fundamentals
 
 - **Time**: Time advances horizontally from the left to the right. Each vertical slice of the circuit corresponds to a distinct instant of time in the temporal progression. In other words, vertically aligned events occur simultaneously.
 
-- **Wires**: Each (physical) quantum or classical system (Hilbert space) is represented by a *wire* which is aligned with a single horizontal axis. Events at various points in time on these modes (such as state preparation, logical operations, measurement, etc.) are connected by lines (i.e., wires), thus forming a *circuit*.
+- **Wires**: Each (physical) quantum or classical system (Hilbert space) is represented by a solid horizontal line called a *wire*. Multiple wires (*bundles*) therefore represent composite (multipartite) systems, and sequences of events at various points in time on these wires (such as state preparation, logical operations, measurement, etc.) form structures that are conventionally called *circuits*.
 
   - Quantum wires:
 
@@ -130,7 +130,7 @@ Fundamentals
 
 - **Omission**: Ellipses denote the omission of parts of the circuit. This notation is usually employed only in the context of the subsequent tutorial circuits as a way to give focus to the important parts of each example.
 
-- **Ordering and labels**: For circuits with multiple systems, the order of tensor products (from left-to-right) in its corresponding mathematical expression matches the order of modes (from top-to-bottom) in the circuit. In the case of any ambiguity, the Hilbert spaces in which the states and operators reside are labelled using either superscripts or subscripts (depending on the context). If the systems are not explicitly named, the common convention is to denote them in order (from top-to-bottom) using the integers, starting from :math:`0` (zero, as is customary in computer science) and counting up.
+- **Ordering and labels**: For circuits with multiple systems, the order of tensor products (from left-to-right) in its corresponding mathematical expression matches the order of the systems (from top-to-bottom) in the circuit. In the case of any ambiguity, the Hilbert spaces in which the states and operators reside are labelled using either superscripts or subscripts (depending on the context). If the systems are not explicitly named, the common convention is to denote them in order (from top-to-bottom) using the integers, starting from :math:`0` (zero, as is customary in computer science) and counting up.
 
 States
 ------
@@ -187,7 +187,7 @@ States
       \end{mdframed}
       \vspace{1em}
 
-- States prepared over several modes are denoted using a brace extending across all of the relevant subsystems:
+- States prepared over several systems are denoted using a brace extending across all of the relevant subsystems:
 
    .. raw:: latex
       
@@ -320,7 +320,7 @@ Gates
       \end{mdframed}
       \vspace{1em}
 
-- An empty wire (i.e., the absence of a gate on a mode) corresponds to the identity operator:
+- An empty wire (i.e., the absence of a gate on a system) corresponds to the identity operator:
 
    .. raw:: latex
       
@@ -561,10 +561,165 @@ Gates
 
   - If the system structure of the operators is unambiguous in the context of the circuit, then the (superscript) system labels are usually omitted for the sake of notational brevity.
 
-Other operations
-----------------
+Control
+-------
 
-- The **trace** over a system (i.e., termination of a wire) is denoted by either a grounding symbol or a down arrow on the end of its corresponding mode:
+- The operation of a gate can be affected by the use of a **control** node located on a different wire. This results in the value of the *controlling* system directly influencing the *controlled* system, which is depicted visually by connecting these systems with a vertical wire. Using a general :math:`\Unitary` gate, we can construct the following examples for qubit (:math:`2`-dimensional) systems:
+
+  - controlled-:math:`\Unitary`:
+
+   .. raw:: latex
+   
+      \vspace{1em}
+      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+   .. only:: html
+
+      .. image:: /figures/output/circuitry_gate_controlled_unitary-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html or latex
+
+      .. image:: /figures/output/circuitry_gate_controlled_unitary-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+   .. raw:: latex
+   
+      \end{mdframed}
+      \vspace{1em}
+
+  - controlled-:math:`\Unitary` (inverted):
+
+   .. raw:: latex
+      
+      \vspace{1em}
+      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+   .. only:: html
+
+      .. image:: /figures/output/circuitry_gate_controlled_unitary_inverted-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html or latex
+
+      .. image:: /figures/output/circuitry_gate_controlled_unitary_inverted-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+   .. raw:: latex
+      
+      \end{mdframed}
+      \vspace{1em}
+
+  - anticontrolled-:math:`\Unitary`:
+
+   .. raw:: latex
+      
+      \vspace{1em}
+      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+   .. only:: html
+
+      .. image:: /figures/output/circuitry_gate_controlled_unitary_anti-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html or latex
+
+      .. image:: /figures/output/circuitry_gate_controlled_unitary_anti-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+   .. raw:: latex
+      
+      \end{mdframed}
+      \vspace{1em}
+
+  - multiply-controlled-:math:`\Unitary`:
+
+   .. raw:: latex
+      
+      \vspace{1em}
+      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+   .. only:: html
+
+      .. image:: /figures/output/circuitry_gate_controlled_unitary_multiple-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html or latex
+
+      .. image:: /figures/output/circuitry_gate_controlled_unitary_multiple-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+   .. raw:: latex
+      
+      \end{mdframed}
+      \vspace{1em}
+
+  - controlled-anticontrolled-:math:`\Unitary`:
+
+   .. raw:: latex
+      
+      \vspace{1em}
+      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+   .. only:: html
+
+      .. image:: /figures/output/circuitry_gate_controlled_unitary_mixed-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html or latex
+
+      .. image:: /figures/output/circuitry_gate_controlled_unitary_mixed-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+   .. raw:: latex
+      
+      \end{mdframed}
+      \vspace{1em}
+
+- In the case where the systems are over qudits, one generalization of the logic of the control and anticontrol nodes to :math:`\Dimension`-dimensional systems are, respectively, the natural choices
+
+  .. math::
+
+     \begin{aligned}
+         \Control^{0} \Unitary^{1} &= \sum\limits_{k=0}^{\Dimension - 1} \ket{k}\bra{k}\otimes\Unitary^{k} \\
+         &= \ket{0}\bra{0}\otimes\Identity + \ket{1}\bra{1}\otimes\Unitary
+             + \ket{2}\bra{2}\otimes\Unitary^{2} + \ldots
+             + \ket{\Dimension - 1}\bra{\Dimension - 1}\otimes\Unitary^{\Dimension - 1},
+     \end{aligned}
+
+  .. math::
+
+     \begin{aligned}
+         \Anticontrol^{0} \Unitary^{1} &= \sum\limits_{k=0}^{\Dimension - 1} \ket{k}\bra{k}\otimes\Unitary^{\Dimension - 1 - k} \\
+         &= \ket{0}\bra{0}\otimes\Unitary^{\Dimension - 1} + \ket{1}\bra{1}\otimes\Unitary^{\Dimension - 2}
+             + \ket{2}\bra{2}\otimes\Unitary^{\Dimension - 3} + \ldots
+             + \ket{\Dimension - 1}\bra{\Dimension - 1}\otimes\Identity.
+     \end{aligned}
+
+Trace
+-----
+
+- The **trace** over a system (i.e., termination of a wire) is denoted by either a grounding symbol or a down arrow on the end of its corresponding wire:
 
    .. raw:: latex
       
@@ -669,6 +824,9 @@ Other operations
       
       \end{mdframed}
       \vspace{1em}
+
+Postselection
+-------------
 
 - **Postselection** against a state is simply the mirror of state preparation/preselection. This is indicated with either:
 
@@ -836,6 +994,9 @@ Other operations
       \vspace{1em}
 
   - Note that in most cases, the cap notation will be omitted for simplicity. This is particularly true when the postselection state is pre-defined (i.e., not unknown), and so the associated postselection is unambiguous.
+
+Measurement
+-----------
 
 - The **measurement** of a system with respect to a particular basis is represented by the termination of its wire with a meter:
 
@@ -1101,6 +1262,9 @@ Other operations
       
       \end{mdframed}
       \vspace{1em}
+
+Closed timelike curves
+----------------------
 
 - The closed and timelike nature of the paths of chronology-violating systems (i.e., those which correspond to quantum states propagating along closed timelike curves) is captured by the use of triangular caps at the ends of the associated wires:
 
@@ -1467,136 +1631,6 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_fourier-light.png
-         :scale: 36 %
-         :align: left
-         :class: only-light
-
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
-
-- controlled-:math:`\Unitary`:
-
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
-
-   .. only:: html
-
-      .. image:: /figures/output/circuitry_gate_controlled_unitary-dark.png
-         :scale: 36 %
-         :align: left
-         :class: only-dark
-
-   .. only:: html or latex
-
-      .. image:: /figures/output/circuitry_gate_controlled_unitary-light.png
-         :scale: 36 %
-         :align: left
-         :class: only-light
-
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
-
-- controlled-:math:`\Unitary` (inverted):
-
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
-
-   .. only:: html
-
-      .. image:: /figures/output/circuitry_gate_controlled_unitary_inverted-dark.png
-         :scale: 36 %
-         :align: left
-         :class: only-dark
-
-   .. only:: html or latex
-
-      .. image:: /figures/output/circuitry_gate_controlled_unitary_inverted-light.png
-         :scale: 36 %
-         :align: left
-         :class: only-light
-
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
-
-- anticontrolled-:math:`\Unitary`:
-
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
-
-   .. only:: html
-
-      .. image:: /figures/output/circuitry_gate_controlled_unitary_anti-dark.png
-         :scale: 36 %
-         :align: left
-         :class: only-dark
-
-   .. only:: html or latex
-
-      .. image:: /figures/output/circuitry_gate_controlled_unitary_anti-light.png
-         :scale: 36 %
-         :align: left
-         :class: only-light
-
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
-
-- multiply-controlled-:math:`\Unitary`:
-
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
-
-   .. only:: html
-
-      .. image:: /figures/output/circuitry_gate_controlled_unitary_multiple-dark.png
-         :scale: 36 %
-         :align: left
-         :class: only-dark
-
-   .. only:: html or latex
-
-      .. image:: /figures/output/circuitry_gate_controlled_unitary_multiple-light.png
-         :scale: 36 %
-         :align: left
-         :class: only-light
-
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
-
-- controlled-anticontrolled-:math:`\Unitary`:
-
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
-
-   .. only:: html
-
-      .. image:: /figures/output/circuitry_gate_controlled_unitary_mixed-dark.png
-         :scale: 36 %
-         :align: left
-         :class: only-dark
-
-   .. only:: html or latex
-
-      .. image:: /figures/output/circuitry_gate_controlled_unitary_mixed-light.png
          :scale: 36 %
          :align: left
          :class: only-light

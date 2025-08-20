@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Jul 15, 2025"/>
+    <meta name="docbuild:last-update" content="Aug 19, 2025"/>
   </head>
   
   
@@ -492,7 +492,7 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>The circuit in <a class="reference internal" href="#fig-circuit-algorithm-generation-w-general"><span class="std std-numref">Figure 12</span></a> illustrates an algorithm for the generation of a generalized <span class="math notranslate nohighlight">\(\Number\)</span>-qubit W state (see <a class="reference internal" href="generation_w.html#eg-generation-w"><span class="std std-ref">Generation of a W state</span></a>),</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-generation-w-general-0">
-<span class="eqno">(330)<a class="headerlink" href="#equation-text-examples-algorithms-generation-w-general-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(332)<a class="headerlink" href="#equation-text-examples-algorithms-generation-w-general-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \ket{\mathrm{W}} &amp;= \frac{1}{\sqrt{\Number}} \sum_{k=0}^{\Number - 1} \left(\bigotimes_{n=0}^{\Number - 1 - k} \ket{0}\right) \otimes \ket{1} \otimes \left(\bigotimes_{n=\Number - 1 - k}^{0} \ket{0}\right) \\
     &amp;= \frac{1}{\sqrt{\Number}} \sum_{k=0}^{\Number - 1} \ket{0}^{\otimes k} \otimes \ket{1} \otimes \ket{0}^{\otimes (\Number - 1 - k)} \\
     &amp;= \frac{1}{\sqrt{\Number}} \bigl[\ket{1} \otimes \ket{0} \otimes \ldots \otimes \ket{0} \\
@@ -518,7 +518,7 @@
 </figure>
 <p>The complete unitary transformation described by this circuit is the product</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-generation-w-general-1">
-<span class="eqno">(331)<a class="headerlink" href="#equation-text-examples-algorithms-generation-w-general-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(333)<a class="headerlink" href="#equation-text-examples-algorithms-generation-w-general-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Unitary &amp;= \NOT^{0} \cdot \Control^{0} \NOT^{1} \cdot \Control^{1} \NOT^{2} \cdot \ldots \cdot \Control^{\Number - 2} \NOT^{\Number - 1} \\
     &amp;\quad \cdot \; \Control^{\Number - 3} \Rotation_{y}^{\Number - 2}(\theta_{\Number - 2}) \cdot \ldots \cdot \Control^{1} \Rotation_{y}^{2}(\theta_{2}) \cdot \Control^{0} \Rotation_{y}^{1}(\theta_{1}) \cdot \Rotation_{y}^{0}(\theta_{0}) \\
     &amp;= \NOT^{0} \cdot \Biggl(\prod_{n = 1}^{\Number - 1} \Control^{n - 1} \NOT^{n} \Biggr) \cdot \Biggl(\prod_{n = \Number - 2}^{1} \Control^{n - 1} \Rotation_{y}^{n}(\theta_{n})  \Biggr) \cdot \Rotation_{y}^{0}(\theta_{0}).

@@ -197,9 +197,9 @@
 
    .. rst-class:: centered
       
-      **A Python package for resolving quantum time-travel paradoxes and**
+      **A Python package for studying quantum models of closed timelike curves**
 
-      **performing general quantum information processing & computation**
+      **and performing general quantum information processing & computation**
 
    ----
    
