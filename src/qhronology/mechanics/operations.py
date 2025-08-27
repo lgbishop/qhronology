@@ -1023,8 +1023,6 @@ class OperationsMixin:
     ):
         """Perform a partial trace operation on the state.
 
-        Performs a total trace if ``targets`` is unspecified.
-
         Arguments
         ---------
         targets : int | list[int]
