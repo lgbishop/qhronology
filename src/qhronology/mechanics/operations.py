@@ -1185,8 +1185,9 @@ class OperationsMixin:
         >>> psi.measure(operators=[I, X, Y, Z], observable=True, statistics=False)
         >>> psi.simplify()
         >>> psi.coefficient(sp.Rational(1, 2))
+        >>> psi.label += "′"
         >>> psi.print()
-        |ψ⟩⟨ψ| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
+        |ψ′⟩⟨ψ′| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
 
         >>> from qhronology.mechanics.matrices import ket
         >>> psi = QuantumState(spec=[("a", [0]), ("b", [1])], form="vector", label="ψ")
@@ -1195,9 +1196,9 @@ class OperationsMixin:
         >>> psi.measure(operators=[ket(0), ket(1)], observable=False, statistics=True)
         [a*conjugate(a), b*conjugate(b)]
         >>> psi.measure(operators=[ket(0), ket(1)], observable=False, statistics=False)
-        >>> psi.notation = "ρ"
+        >>> psi.notation = "ρ′"
         >>> psi.print()
-        ρ = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|
+        ρ′ = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|
         """
         targets = self.systems if targets is None else targets
         observable = False if observable is None else observable
@@ -1268,22 +1269,22 @@ class OperationsMixin:
         >>> phi.print()
         |φ⟩ = c|0⟩ + d|1⟩
         >>> psi.postselect([(phi, [0])])
-        >>> psi.label = "Ψ'"
+        >>> psi.label += "′"
         >>> psi.print()
-        |Ψ'⟩ = a*conjugate(c)|0⟩ + b*conjugate(d)|1⟩
+        |Ψ′⟩ = a*conjugate(c)|0⟩ + b*conjugate(d)|1⟩
 
         >>> from qhronology.mechanics.matrices import ket
         >>> psi = QuantumState(spec=[("a", [0, 0]), ("b", [1, 1])], form="vector", label="Ψ")
         >>> psi.print()
         |Ψ⟩ = a|0,0⟩ + b|1,1⟩
-        >>> psi.label = "Ψ'"
+        >>> psi.label += "′"
         >>> psi.postselect([(ket(0), [0])])
         >>> psi.print()
-        |Ψ'⟩ = a|0⟩
+        |Ψ′⟩ = a|0⟩
         >>> psi.reset()
         >>> psi.postselect([(ket(1), [0])])
         >>> psi.print()
-        |Ψ'⟩ = b|1⟩
+        |Ψ′⟩ = b|1⟩
         """
         # Add the postselection(s) symbols and conditions to the current instance.
         for twotuple in postselections:

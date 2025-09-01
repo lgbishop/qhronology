@@ -30,7 +30,7 @@ iswap.diagram()
 
 # Output
 input_state = QuantumCircuit(inputs=[psi, phi]).state(label="ψ,φ")
-output_state = iswap.state(label="(ψ,φ)'")
+output_state = iswap.state(label="(ψ,φ)′")
 output_state.simplify()
 
 # Results

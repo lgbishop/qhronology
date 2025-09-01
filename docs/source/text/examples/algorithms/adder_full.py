@@ -30,7 +30,7 @@ adder.diagram()
 
 # Output
 sum_state = adder.state(label="s", traces=[0, 1, 3])
-carry_output_state = adder.state(label="c'", traces=[0, 1, 2])
+carry_output_state = adder.state(label="c′", traces=[0, 1, 2])
 
 # Results
 augend_state.print()

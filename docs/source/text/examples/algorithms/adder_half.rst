@@ -138,7 +138,7 @@ States
 .. code:: python
 
    >>> carry_output_state.print()
-   c' = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|
+   c′ = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|
 
 .. only:: html
 

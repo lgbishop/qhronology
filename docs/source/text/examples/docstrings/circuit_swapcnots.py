@@ -24,8 +24,8 @@ swapcnots.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
 
 # Output
 print(repr(swapcnots.gate()))
-upper = swapcnots.state(traces=[1], label="ψ'")
-lower = swapcnots.state(traces=[0], label="φ'")
+upper = swapcnots.state(traces=[1], label="ψ′")
+lower = swapcnots.state(traces=[0], label="φ′")
 upper.kind = "pure"
 lower.kind = "pure"
 upper.simplify()

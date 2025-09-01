@@ -439,6 +439,10 @@ Read the full license here:
 \DeclareUnicodeCharacter{2296}{$\ominus$}
 \DeclareUnicodeCharacter{2297}{$\otimes$}
 \DeclareUnicodeCharacter{221A}{$\surd$}
+\DeclareUnicodeCharacter{27E8}{$\langle$}
+\DeclareUnicodeCharacter{27E9}{$\rangle$}
+
+\DeclareUnicodeCharacter{2032}{$^\prime$}
 
 % \usepackage{titlesec}
 \titleclass{\part}{top}

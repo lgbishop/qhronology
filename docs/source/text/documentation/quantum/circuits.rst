@@ -58,7 +58,7 @@ Main class
    |ψ⟩ = a|0⟩ + b|1⟩
 
    >>> output_state.print()
-   |ψ'⟩ = b|0⟩ + a|1⟩
+   |ψ′⟩ = b|0⟩ + a|1⟩
 
    .. literalinclude:: /text/examples/docstrings/circuit_arbitrary.py
       :language: python
@@ -131,13 +131,13 @@ Main class
    |ψ⟩ = a|0⟩ + b|1⟩
 
    >>> upper.print()
-   |ψ'⟩⟨ψ'| = c*conjugate(c)|0⟩⟨0| + c*conjugate(d)|0⟩⟨1| + d*conjugate(c)|1⟩⟨0| + d*conjugate(d)|1⟩⟨1|
+   |ψ′⟩⟨ψ′| = c*conjugate(c)|0⟩⟨0| + c*conjugate(d)|0⟩⟨1| + d*conjugate(c)|1⟩⟨0| + d*conjugate(d)|1⟩⟨1|
 
    >>> phi.print()
    |φ⟩ = c|0⟩ + d|1⟩
 
    >>> lower.print()
-   |φ'⟩⟨φ'| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
+   |φ′⟩⟨φ′| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
 
    >>> upper.distance(phi)
    0
@@ -187,7 +187,7 @@ Main class
    |ψ⟩ = a|0⟩ + b|1⟩
 
    >>> output_state.print()
-   |ψ'⟩ = a|0⟩ + b|1⟩
+   |ψ′⟩ = a|0⟩ + b|1⟩
 
    .. literalinclude:: /text/examples/docstrings/circuit_fourier.py
       :language: python

@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Aug 28, 2025"/>
+    <meta name="docbuild:last-update" content="Aug 31, 2025"/>
   </head>
   
   
@@ -1663,8 +1663,9 @@
 <span class="sd">        &gt;&gt;&gt; psi.measure(operators=[I, X, Y, Z], observable=True, statistics=False)</span>
 <span class="sd">        &gt;&gt;&gt; psi.simplify()</span>
 <span class="sd">        &gt;&gt;&gt; psi.coefficient(sp.Rational(1, 2))</span>
+<span class="sd">        &gt;&gt;&gt; psi.label += &quot;′&quot;</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
-<span class="sd">        |ψ⟩⟨ψ| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
+<span class="sd">        |ψ′⟩⟨ψ′| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
 
 <span class="sd">        &gt;&gt;&gt; from qhronology.mechanics.matrices import ket</span>
 <span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
@@ -1673,9 +1674,9 @@
 <span class="sd">        &gt;&gt;&gt; psi.measure(operators=[ket(0), ket(1)], observable=False, statistics=True)</span>
 <span class="sd">        [a*conjugate(a), b*conjugate(b)]</span>
 <span class="sd">        &gt;&gt;&gt; psi.measure(operators=[ket(0), ket(1)], observable=False, statistics=False)</span>
-<span class="sd">        &gt;&gt;&gt; psi.notation = &quot;ρ&quot;</span>
+<span class="sd">        &gt;&gt;&gt; psi.notation = &quot;ρ′&quot;</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
-<span class="sd">        ρ = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
+<span class="sd">        ρ′ = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">targets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems</span> <span class="k">if</span> <span class="n">targets</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">targets</span>
         <span class="n">observable</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">observable</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">observable</span>
@@ -1746,22 +1747,22 @@
 <span class="sd">        &gt;&gt;&gt; phi.print()</span>
 <span class="sd">        |φ⟩ = c|0⟩ + d|1⟩</span>
 <span class="sd">        &gt;&gt;&gt; psi.postselect([(phi, [0])])</span>
-<span class="sd">        &gt;&gt;&gt; psi.label = &quot;Ψ&#39;&quot;</span>
+<span class="sd">        &gt;&gt;&gt; psi.label += &quot;′&quot;</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
-<span class="sd">        |Ψ&#39;⟩ = a*conjugate(c)|0⟩ + b*conjugate(d)|1⟩</span>
+<span class="sd">        |Ψ′⟩ = a*conjugate(c)|0⟩ + b*conjugate(d)|1⟩</span>
 
 <span class="sd">        &gt;&gt;&gt; from qhronology.mechanics.matrices import ket</span>
 <span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0, 0]), (&quot;b&quot;, [1, 1])], form=&quot;vector&quot;, label=&quot;Ψ&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |Ψ⟩ = a|0,0⟩ + b|1,1⟩</span>
-<span class="sd">        &gt;&gt;&gt; psi.label = &quot;Ψ&#39;&quot;</span>
+<span class="sd">        &gt;&gt;&gt; psi.label += &quot;′&quot;</span>
 <span class="sd">        &gt;&gt;&gt; psi.postselect([(ket(0), [0])])</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
-<span class="sd">        |Ψ&#39;⟩ = a|0⟩</span>
+<span class="sd">        |Ψ′⟩ = a|0⟩</span>
 <span class="sd">        &gt;&gt;&gt; psi.reset()</span>
 <span class="sd">        &gt;&gt;&gt; psi.postselect([(ket(1), [0])])</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
-<span class="sd">        |Ψ&#39;⟩ = b|1⟩</span>
+<span class="sd">        |Ψ′⟩ = b|1⟩</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Add the postselection(s) symbols and conditions to the current instance.</span>
         <span class="k">for</span> <span class="n">twotuple</span> <span class="ow">in</span> <span class="n">postselections</span><span class="p">:</span>

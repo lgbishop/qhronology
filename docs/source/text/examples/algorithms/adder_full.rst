@@ -166,7 +166,7 @@ States
 .. code:: python
 
    >>> carry_output_state.print()
-   c' = |1⟩⟨1|
+   c′ = |1⟩⟨1|
 
 .. only:: html
 

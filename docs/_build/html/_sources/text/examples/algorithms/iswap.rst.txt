@@ -101,7 +101,7 @@ States
 .. code:: python
 
    >>> output_state.print()
-   |(ψ,φ)'⟩ = a*c|0,0⟩ + I*b*c|0,1⟩ + I*a*d|1,0⟩ + b*d|1,1⟩
+   |(ψ,φ)′⟩ = a*c|0,0⟩ + I*b*c|0,1⟩ + I*a*d|1,0⟩ + b*d|1,1⟩
 
 .. raw:: latex
    

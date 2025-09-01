@@ -19,7 +19,7 @@ adder.diagram()
 
 # Output
 sum_state = adder.state(label="s", traces=[0, 2])
-carry_output_state = adder.state(label="c'", traces=[0, 1])
+carry_output_state = adder.state(label="c′", traces=[0, 1])
 
 # Results
 augend_state.print()
