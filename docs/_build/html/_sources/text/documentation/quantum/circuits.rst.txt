@@ -127,28 +127,41 @@ Main class
          \end{mdframed}
          \vspace{1em}
 
-   >>> psi.print()
+   >>> print(repr(swapcnots.gate()))
+   Matrix([
+   [1, 0, 0, 0],
+   [0, 0, 1, 0],
+   [0, 1, 0, 0],
+   [0, 0, 0, 1]])
+
+   >>> input_upper.print()
    |ψ⟩ = a|0⟩ + b|1⟩
 
-   >>> upper.print()
-   |ψ′⟩⟨ψ′| = c*conjugate(c)|0⟩⟨0| + c*conjugate(d)|0⟩⟨1| + d*conjugate(c)|1⟩⟨0| + d*conjugate(d)|1⟩⟨1|
-
-   >>> phi.print()
+   >>> input_lower.print()
    |φ⟩ = c|0⟩ + d|1⟩
 
-   >>> lower.print()
+   >>> swapcnots.input().print()
+   |ψ⊗φ⟩ = a*c|0,0⟩ + a*d|0,1⟩ + b*c|1,0⟩ + b*d|1,1⟩
+
+   >>> output_upper.print()
+   |ψ′⟩⟨ψ′| = c*conjugate(c)|0⟩⟨0| + c*conjugate(d)|0⟩⟨1| + d*conjugate(c)|1⟩⟨0| + d*conjugate(d)|1⟩⟨1|
+
+   >>> output_lower.print()
    |φ′⟩⟨φ′| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
 
-   >>> upper.distance(phi)
+   >>> output_total.print()
+   |(ψ⊗φ)′⟩ = a*c|0,0⟩ + b*c|0,1⟩ + a*d|1,0⟩ + b*d|1,1⟩
+
+   >>> output_upper.distance(input_lower)
    0
 
-   >>> lower.distance(psi)
+   >>> output_lower.distance(input_upper)
    0
 
-   >>> upper.fidelity(phi)
+   >>> output_upper.fidelity(input_lower)
    1
 
-   >>> lower.fidelity(psi)
+   >>> output_lower.fidelity(input_upper)
    1
 
    .. literalinclude:: /text/examples/docstrings/circuit_postselection.py

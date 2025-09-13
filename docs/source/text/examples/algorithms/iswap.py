@@ -3,13 +3,13 @@ from qhronology.quantum.gates import Pauli, Hadamard, Not, GateStack
 from qhronology.quantum.circuits import QuantumCircuit
 
 # Input
-psi = VectorState(
+input_upper = VectorState(
     spec=[("a", [0]), ("b", [1])],
     symbols={"a": {"complex": True}, "b": {"complex": True}},
     conditions=[("a*conjugate(a) + b*conjugate(b)", "1")],
     label="ψ",
 )
-phi = VectorState(
+input_lower = VectorState(
     spec=[("c", [0]), ("d", [1])],
     symbols={"c": {"complex": True}, "d": {"complex": True}},
     conditions=[("c*conjugate(c) + d*conjugate(d)", "1")],
@@ -25,11 +25,11 @@ NC = Not(targets=[0], controls=[1])
 IH = Hadamard(targets=[1], num_systems=2)
 
 # Circuit
-iswap = QuantumCircuit(inputs=[psi, phi], gates=[SS, HI, CN, NC, IH])
+iswap = QuantumCircuit(inputs=[input_upper, input_lower], gates=[SS, HI, CN, NC, IH])
 iswap.diagram()
 
 # Output
-input_state = QuantumCircuit(inputs=[psi, phi]).state(label="ψ,φ")
+input_state = iswap.input(label="ψ,φ")
 output_state = iswap.state(label="(ψ,φ)′")
 output_state.simplify()
 

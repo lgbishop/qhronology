@@ -3,7 +3,7 @@ from qhronology.quantum.gates import Swap
 from qhronology.quantum.circuits import QuantumCircuit
 
 # Input
-psi = VectorState(
+input_upper = VectorState(
     spec=[("a", [0]), ("b", [1])],
     symbols={"a": {"complex": True}, "b": {"complex": True}},
     conditions=[("a*conjugate(a) + b*conjugate(b)", "1")],
@@ -11,7 +11,7 @@ psi = VectorState(
     norm=1,
     label="ψ",
 )
-phi = VectorState(
+input_lower = VectorState(
     spec=[("c", [0]), ("d", [1])],
     symbols={"c": {"complex": True}, "d": {"complex": True}},
     conditions=[("c*conjugate(c) + d*conjugate(d)", "1")],
@@ -30,11 +30,11 @@ S = Swap(
 )
 
 # Circuit
-pswap = QuantumCircuit(inputs=[psi, phi], gates=[S])
+pswap = QuantumCircuit(inputs=[input_upper, input_lower], gates=[S])
 pswap.diagram()
 
 # Output
-input_state = QuantumCircuit(inputs=[psi, phi]).state(label="ψ,φ")
+input_state = pswap.input(label="ψ,φ")
 output_state = pswap.state(label="(ψ,φ)′")
 
 # Results

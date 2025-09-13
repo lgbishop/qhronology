@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Sep 02, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 13, 2025"/>
   </head>
   
   
@@ -640,12 +640,12 @@ that of each of the gates in <code class="docutils literal notranslate"><span cl
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
 
 <span class="c1"># Input</span>
-<span class="n">psi</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
+<span class="n">input_upper</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
     <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">phi</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
+<span class="n">input_lower</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
     <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;φ&quot;</span><span class="p">,</span>
@@ -656,29 +656,33 @@ that of each of the gates in <code class="docutils literal notranslate"><span cl
 <span class="n">NC</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c1"># Circuit</span>
-<span class="n">swapcnots</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">psi</span><span class="p">,</span> <span class="n">phi</span><span class="p">],</span> <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">CN</span><span class="p">,</span> <span class="n">NC</span><span class="p">,</span> <span class="n">CN</span><span class="p">])</span>
+<span class="n">swapcnots</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">input_upper</span><span class="p">,</span> <span class="n">input_lower</span><span class="p">],</span> <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">CN</span><span class="p">,</span> <span class="n">NC</span><span class="p">,</span> <span class="n">CN</span><span class="p">])</span>
 <span class="n">swapcnots</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;unicode&quot;</span><span class="p">)</span>
 
 <span class="c1"># Output</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">swapcnots</span><span class="o">.</span><span class="n">gate</span><span class="p">()))</span>
-<span class="n">upper</span> <span class="o">=</span> <span class="n">swapcnots</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">traces</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ′&quot;</span><span class="p">)</span>
-<span class="n">lower</span> <span class="o">=</span> <span class="n">swapcnots</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">traces</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;φ′&quot;</span><span class="p">)</span>
-<span class="n">upper</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;pure&quot;</span>
-<span class="n">lower</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;pure&quot;</span>
-<span class="n">upper</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
-<span class="n">lower</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="n">output_total</span> <span class="o">=</span> <span class="n">swapcnots</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;(ψ⊗φ)′&quot;</span><span class="p">)</span>
+<span class="n">output_upper</span> <span class="o">=</span> <span class="n">swapcnots</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">traces</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ′&quot;</span><span class="p">)</span>
+<span class="n">output_lower</span> <span class="o">=</span> <span class="n">swapcnots</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">traces</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;φ′&quot;</span><span class="p">)</span>
+<span class="n">output_upper</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;pure&quot;</span>
+<span class="n">output_lower</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;pure&quot;</span>
+<span class="n">output_upper</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="n">output_lower</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
 
 <span class="c1"># Results</span>
-<span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="n">upper</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="n">phi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="n">lower</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">input_upper</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">input_lower</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">swapcnots</span><span class="o">.</span><span class="n">input</span><span class="p">()</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">upper</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">phi</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lower</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">psi</span><span class="p">))</span>
+<span class="n">output_upper</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">output_lower</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="n">output_total</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">upper</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">phi</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lower</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">psi</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_upper</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">input_lower</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_lower</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">input_upper</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">output_upper</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">input_lower</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_lower</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">input_upper</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -691,35 +695,51 @@ that of each of the gates in <code class="docutils literal notranslate"><span cl
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_swapcnots-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_swapcnots-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_swapcnots-light.png" style="width: 173.20000000000002px; height: 50.800000000000004px;" />
 </a>
 </div></blockquote>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">swapcnots</span><span class="o">.</span><span class="n">gate</span><span class="p">()))</span>
+<span class="go">Matrix([</span>
+<span class="go">[1, 0, 0, 0],</span>
+<span class="go">[0, 0, 1, 0],</span>
+<span class="go">[0, 1, 0, 0],</span>
+<span class="go">[0, 0, 0, 1]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_upper</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="go">|ψ⟩ = a|0⟩ + b|1⟩</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">upper</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="go">|ψ′⟩⟨ψ′| = c*conjugate(c)|0⟩⟨0| + c*conjugate(d)|0⟩⟨1| + d*conjugate(c)|1⟩⟨0| + d*conjugate(d)|1⟩⟨1|</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_lower</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="go">|φ⟩ = c|0⟩ + d|1⟩</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lower</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">swapcnots</span><span class="o">.</span><span class="n">input</span><span class="p">()</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ⊗φ⟩ = a*c|0,0⟩ + a*d|0,1⟩ + b*c|1,0⟩ + b*d|1,1⟩</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_upper</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ′⟩⟨ψ′| = c*conjugate(c)|0⟩⟨0| + c*conjugate(d)|0⟩⟨1| + d*conjugate(c)|1⟩⟨0| + d*conjugate(d)|1⟩⟨1|</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_lower</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="go">|φ′⟩⟨φ′| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">upper</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_total</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|(ψ⊗φ)′⟩ = a*c|0,0⟩ + b*c|0,1⟩ + a*d|1,0⟩ + b*d|1,1⟩</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_upper</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">input_lower</span><span class="p">)</span>
 <span class="go">0</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lower</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_lower</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">input_upper</span><span class="p">)</span>
 <span class="go">0</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">upper</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_upper</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">input_lower</span><span class="p">)</span>
 <span class="go">1</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lower</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_lower</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">input_upper</span><span class="p">)</span>
 <span class="go">1</span>
 </pre></div>
 </div>
