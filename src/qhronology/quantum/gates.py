@@ -1594,7 +1594,7 @@ class Measurement(QuantumGate):
         for operator in self.operators:
             operator = densify(extract_matrix(operator))
             ordered = arrange(
-                [targets_compliment, self.targets], [identity] + [operator]
+                [targets_compliment, [min(self.targets)]], [identity] + [operator]
             )
             matrix = sp.Matrix(TensorProduct(*ordered))
             matrices.append(matrix)
