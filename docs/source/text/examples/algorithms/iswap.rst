@@ -83,7 +83,7 @@ Gate
 
 .. code:: python
 
-   >>> print(repr(iswap.gate()))
+   >>> print(repr(iswap.gate(simplify=True)))
    Matrix([
    [1, 0, 0, 0],
    [0, 0, I, 0],
