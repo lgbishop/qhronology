@@ -133,12 +133,12 @@ States
 .. code:: python
 
    >>> sum_state.print()
-   s = b*conjugate(b)|0⟩⟨0| + a*conjugate(a)|1⟩⟨1|
+   s = (a*u*conjugate(a)*conjugate(u) + b*v*conjugate(b)*conjugate(v))|0⟩⟨0| + a*u*conjugate(a)*conjugate(v)|0⟩⟨1| + a*v*conjugate(a)*conjugate(u)|1⟩⟨0| + (a*v*conjugate(a)*conjugate(v) + b*u*conjugate(b)*conjugate(u))|1⟩⟨1|
 
 .. code:: python
 
    >>> carry_output_state.print()
-   c′ = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|
+   c′ = (a*conjugate(a) + b*u*conjugate(b)*conjugate(u))|0⟩⟨0| + b*v*conjugate(b)*conjugate(v)|1⟩⟨1|
 
 .. only:: html
 

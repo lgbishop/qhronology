@@ -151,7 +151,7 @@ States
 .. code:: python
 
    >>> addend_state.print()
-   |y⟩ = |1⟩
+   |y⟩ = u|0⟩ + v|1⟩
 
 .. code:: python
 
@@ -161,12 +161,12 @@ States
 .. code:: python
 
    >>> sum_state.print()
-   s = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|
+   s = (a*v*conjugate(a)*conjugate(v) + b*u*conjugate(b)*conjugate(u))|0⟩⟨0| + (a*u*conjugate(a)*conjugate(u) + b*v*conjugate(b)*conjugate(v))|1⟩⟨1|
 
 .. code:: python
 
    >>> carry_output_state.print()
-   c′ = |1⟩⟨1|
+   c′ = a*u*conjugate(a)*conjugate(u)|0⟩⟨0| + (a*v*conjugate(a)*conjugate(v) + b*conjugate(b))|1⟩⟨1|
 
 .. only:: html
 
