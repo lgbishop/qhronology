@@ -787,7 +787,76 @@ that of each of the gates in <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Fourier transform decomposition</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Unitarity of general symbolic gates</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumGate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum.dagger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dagger</span>
+
+<span class="c1"># Construct unitary matrix and its conditions and symbols</span>
+<span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">((</span><span class="n">Dagger</span><span class="p">(</span><span class="n">unitary</span><span class="p">)</span> <span class="o">*</span> <span class="n">unitary</span><span class="p">)[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">symbols</span> <span class="o">=</span> <span class="p">{</span><span class="n">unitary</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)}</span>
+
+<span class="c1"># Gates</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span>
+    <span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span>
+    <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span>
+    <span class="n">conditions</span><span class="o">=</span><span class="n">conditions</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">Ud</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span>
+    <span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span>
+    <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span>
+    <span class="n">conditions</span><span class="o">=</span><span class="n">conditions</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U^†&quot;</span><span class="p">,</span>
+    <span class="n">conjugate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Circuit</span>
+<span class="n">unitarity</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">U</span><span class="p">,</span> <span class="n">Ud</span><span class="p">])</span>
+<span class="n">unitarity</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;unicode&quot;</span><span class="p">)</span>
+
+<span class="c1"># Output</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">U</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">Ud</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">unitarity</span><span class="o">.</span><span class="n">gate</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitarity</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;unicode&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_unitarity-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_unitarity-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_unitarity-dark.png" style="width: 123.2px; height: 33.6px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_unitarity-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_unitarity-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_unitarity-light.png" style="width: 123.2px; height: 33.6px;" />
+</a>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">U</span><span class="p">))</span>
+<span class="go">Matrix([</span>
+<span class="go">[U[0, 0], U[0, 1]],</span>
+<span class="go">[U[1, 0], U[1, 1]]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">Ud</span><span class="p">))</span>
+<span class="go">Matrix([</span>
+<span class="go">[conjugate(U[0, 0]), conjugate(U[1, 0])],</span>
+<span class="go">[conjugate(U[0, 1]), conjugate(U[1, 1])]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">unitarity</span><span class="o">.</span><span class="n">gate</span><span class="p">()))</span>
+<span class="go">Matrix([</span>
+<span class="go">[1, 0],</span>
+<span class="go">[0, 1]])</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Fourier transform decomposition</span><a class="headerlink" href="#id6" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">MatrixState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Fourier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

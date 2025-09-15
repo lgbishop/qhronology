@@ -202,6 +202,53 @@ Main class
    >>> output_state.print()
    |ψ′⟩ = a|0⟩ + b|1⟩
 
+   .. literalinclude:: /text/examples/docstrings/circuit_unitarity.py
+      :language: python
+      :caption: Unitarity of general symbolic gates
+
+   >>> unitarity.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_circuit_unitarity-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_circuit_unitarity-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> print(repr(U))
+   Matrix([
+   [U[0, 0], U[0, 1]],
+   [U[1, 0], U[1, 1]]])
+
+   >>> print(repr(Ud))
+   Matrix([
+   [conjugate(U[0, 0]), conjugate(U[1, 0])],
+   [conjugate(U[0, 1]), conjugate(U[1, 1])]])
+
+   >>> print(repr(unitarity.gate()))
+   Matrix([
+   [1, 0],
+   [0, 1]])
+
    .. literalinclude:: /text/examples/docstrings/circuit_fourier.py
       :language: python
       :caption: Fourier transform decomposition
