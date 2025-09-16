@@ -2,12 +2,12 @@
 
 .. _`sec:D-CTCs`:
 
-The Deutsch model (D-CTCs)
-==========================
+Deutsch's model (D-CTCs)
+========================
 
-In 1991, David Deutsch introduced a method of analysing the flow of information in a chronology-violating network. This prescription, now known as the *Deutsch model* :cite:p:`deutsch_quantum_1991`, consists of a quantum theory of computation applied to a CTC model where most of the geometry has been abstracted away. It is based on the requirement that time evolution of the local density operator (taken as a fundamental object) of a quantum system must be self-consistent.
+In 1991, David Deutsch introduced a method of analysing the flow of information in a chronology-violating network. This prescription, known as *Deutsch's model* :cite:p:`deutsch_quantum_1991`, consists of a quantum theory of computation applied to a CTC in which most of the geometry has been abstracted away. It is based on the requirement that time evolution of the local density operator (taken as a fundamental object) of a quantum system must be self-consistent.
 
-One of the main results of Deutsch's work on time travel is his proposal for the time evolution of quantum states through a quantum circuit representation of a chronology-violating network (illustrated in :numref:`fig:circuit_ctc_dctc`), with particular note as to how it resolves time-travel paradoxes and indeterminism.
+One of the main results of Deutsch's work on time travel is the proposal for the time evolution of quantum states through a quantum circuit representation of a chronology-violating network (illustrated in :numref:`fig:circuit_ctc_dctc`), with particular note as to how it resolves time-travel paradoxes and indeterminism.
 
 .. only:: html
 
@@ -35,7 +35,7 @@ One of the main results of Deutsch's work on time travel is his proposal for the
 
    Deutsch's model of quantum time travel.
 
-The mathematical formulation of his self-consistent evolution of a quantum state through a region with a time machine is provided by requiring that any given chronology-violating (CV) system enters the CTC in the state
+The mathematical formulation of the self-consistent evolution of a quantum state through a region with a time machine is provided by requiring that any given chronology-violating (CV) system enters the CTC in the state
 
 .. math:: \StateCV \in \SpaceMixed(\SpaceHilbert_\CV),
    :label: eq:state_CV
@@ -71,9 +71,9 @@ Self-consistent solutions of the CTC state may then be identified as fixed point
 .. math:: \StateCV = \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV].
    :label: eq:D-CTCs_CTC
 
-This condition essentially codifies the requirement that the "younger" CTC state (the right-hand side) exiting the gate is the same as the "older" CTC state (the left-hand side) entering the gate. Once solutions to equation :eq:`eq:D-CTCs_CTC` are determined, the evolution of the system state :math:`\StateCR` through the interaction :math:`\Unitary` in this Deutsch model is then simply given by the CR map :eq:`eq:D-CTCs_CR`. Deutsch's original construction specifically interprets D-CTCs as being portals between parallel universes---a time traveller on a D-CTC would pass in and out of such universes---and so the quantum states in this context describes a superposition of states where the time traveller does and does not exist.
+This condition essentially codifies the requirement that the "younger" CTC state (the right-hand side) exiting the gate is the same as the "older" CTC state (the left-hand side) entering the gate. Once solutions to equation :eq:`eq:D-CTCs_CTC` are determined, the evolution of the system state :math:`\StateCR` through the interaction :math:`\Unitary` in Deutsch's model is then simply given by the CR map :eq:`eq:D-CTCs_CR`. Deutsch's original construction specifically interprets D-CTCs as being portals between parallel universes---a time traveller on a D-CTC would pass in and out of such universes---and so the quantum states in this context describes a superposition of states where the time traveller does and does not exist.
 
-The fact that the imposed self-consistency constraint in :eq:`eq:D-CTCs_CTC` is a fixed-point condition means that the non-linearity introduced to the laws of quantum mechanics is distinct from that of other models. Furthermore, as the rigid matching requirement is for the density matrix as opposed to the individual states in a pure state decomposition, the Deutsch model intrinsically treats density matrices ontologically as ontic ("real") objects rather than as epistemic knowledge representations.
+The fact that the imposed self-consistency constraint in :eq:`eq:D-CTCs_CTC` is a fixed-point condition means that the non-linearity introduced to the laws of quantum mechanics is distinct from that of other models. Furthermore, as the rigid matching requirement is for the density matrix as opposed to the individual states in a pure state decomposition, Deutsch's model intrinsically treats density matrices ontologically as ontic ("real") objects rather than as epistemic knowledge representations.
 
 Deutsch's picture: The rule of maximum entropy
 ----------------------------------------------
@@ -170,7 +170,7 @@ are the unnormalized and normalized maximally mixed (identity) states, respectiv
 
 From this result, it can be determined that the non-uniqueness in the solutions to the CV CTC map corresponds to sensitivity to the initial condition :math:`\StateCV^{(0)}`. Ralph and Myers then show that the result of :eq:`eq:ECP_CV_decoherence` converges to the unique solution of Deutsch's maximum entropy rule, and that this rule and result coincides with setting the initial state to be the maximally mixed CTC state :math:`\StateCV^{(0)}=\normalized{\Identity}` in :eq:`eq:ECP_CV`. The appealing feature of this picture is that Deutsch's maximum entropy rule is not merely a postulate of the theory; rather, it is a direct result.
 
-Later, Allen :cite:p:`allen_treating_2014` noticed that the equivalent circuit does not always converge when there is decoherence interaction, and that Ralph and Myers's proof of the derivation of the maximum entropy rule was incomplete. However, Dong :cite:p:`dong_ralphs_2017` then showed that the ECP leads instead to a *revised* maximum entropy rule, one which is distinct from (and perhaps more valid than) Deutsch's original rule. It asserts that, when multiple valid solutions of the CV map exist, the Deutsch model "chooses" the *stable* fixed-point state with the most entropy (as determined by the equivalent model with a decoherence interaction). Additionally, note that the final fixed point as given by this revised rule is in general dependent on the decoherence strength (:math:`\delta`).
+Later, Allen :cite:p:`allen_treating_2014` noticed that the equivalent circuit does not always converge when there is decoherence interaction, and that Ralph and Myers's proof of the derivation of the maximum entropy rule was incomplete. However, Dong :cite:p:`dong_ralphs_2017` then showed that the ECP leads instead to a *revised* maximum entropy rule, one which is distinct from (and perhaps more valid than) Deutsch's original rule. It asserts that, when multiple valid solutions of the CV map exist, Deutsch's model "chooses" the *stable* fixed-point state with the most entropy (as determined by the equivalent model with a decoherence interaction). Additionally, note that the final fixed point as given by this revised rule is in general dependent on the decoherence strength (:math:`\delta`).
 
 .. _`sec:Allen`:
 
