@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Sep 15, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 16, 2025"/>
   </head>
   
   
@@ -1202,7 +1202,8 @@ superclass <a class="reference internal" href="#qhronology.quantum.gates.Quantum
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Pauli gates are defined only for <span class="math notranslate nohighlight">\(2\)</span>-dimensional (i.e., binary/qubit) systems.
-This means that the constructor does not take <code class="docutils literal notranslate"><span class="pre">dim</span></code> as an argument, nor can the associated property be set.</p>
+This means that the constructor does not take <code class="docutils literal notranslate"><span class="pre">dim</span></code> as an argument, nor can the associated
+property be set.</p>
 </div>
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -2515,8 +2516,10 @@ value and do not have overlapping <code class="docutils literal notranslate"><sp
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The resulting visualization (using the <code class="docutils literal notranslate"><span class="pre">diagram()</span></code> method or in circuit diagrams)
-may not be accurate in every case. However, the composed matrix should still be correct.</p>
+<p>The resulting visualization (using the inherited
+<a class="reference internal" href="#qhronology.quantum.gates.QuantumGate.diagram" title="qhronology.quantum.gates.QuantumGate.diagram"><code class="xref py py-meth docutils literal notranslate"><span class="pre">diagram()</span></code></a> method or in
+circuit diagrams) may not be accurate in every case.
+However, the composed matrix should still be correct.</p>
 </div>
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">HI</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>

@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Sep 15, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 16, 2025"/>
   </head>
   
   
@@ -962,7 +962,8 @@
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    The Pauli gates are defined only for :math:`2`-dimensional (i.e., binary/qubit) systems.</span>
-<span class="sd">    This means that the constructor does not take ``dim`` as an argument, nor can the associated property be set.</span>
+<span class="sd">    This means that the constructor does not take ``dim`` as an argument, nor can the associated</span>
+<span class="sd">    property be set.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">DIM</span> <span class="o">=</span> <span class="mi">2</span>
@@ -1056,7 +1057,8 @@
 <span class="sd">    ----</span>
 <span class="sd">    The Gell-Mann gates are defined only for :math:`3`-dimensional (i.e., ternary/qutrit) systems.</span>
 <span class="sd">    This means that the constructor does not take ``dim`` as an argument, nor can the associated</span>
-<span class="sd">    property be set.&quot;&quot;&quot;</span>
+<span class="sd">    property be set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">DIM</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="n">MATRICES</span> <span class="o">=</span> <span class="p">{</span>
@@ -2158,8 +2160,10 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The resulting visualization (using the ``diagram()`` method or in circuit diagrams)</span>
-<span class="sd">    may not be accurate in every case. However, the composed matrix should still be correct.</span>
+<span class="sd">    The resulting visualization (using the inherited</span>
+<span class="sd">    :py:meth:`~qhronology.quantum.gates.QuantumGate.diagram` method or in</span>
+<span class="sd">    circuit diagrams) may not be accurate in every case.</span>
+<span class="sd">    However, the composed matrix should still be correct.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>

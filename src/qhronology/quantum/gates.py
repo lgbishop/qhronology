@@ -511,7 +511,8 @@ class Pauli(QuantumGate):
     Note
     ----
     The Pauli gates are defined only for :math:`2`-dimensional (i.e., binary/qubit) systems.
-    This means that the constructor does not take ``dim`` as an argument, nor can the associated property be set.
+    This means that the constructor does not take ``dim`` as an argument, nor can the associated
+    property be set.
     """
 
     DIM = 2
@@ -602,7 +603,8 @@ class GellMann(QuantumGate):
     ----
     The Gell-Mann gates are defined only for :math:`3`-dimensional (i.e., ternary/qutrit) systems.
     This means that the constructor does not take ``dim`` as an argument, nor can the associated
-    property be set."""
+    property be set.
+    """
 
     DIM = 3
     MATRICES = {
@@ -1674,8 +1676,10 @@ class GateInterleave(QuantumGate):
 
     Note
     ----
-    The resulting visualization (using the ``diagram()`` method or in circuit diagrams)
-    may not be accurate in every case. However, the composed matrix should still be correct.
+    The resulting visualization (using the inherited
+    :py:meth:`~qhronology.quantum.gates.QuantumGate.diagram` method or in
+    circuit diagrams) may not be accurate in every case.
+    However, the composed matrix should still be correct.
     """
 
     def __init__(
