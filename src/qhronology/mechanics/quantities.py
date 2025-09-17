@@ -57,15 +57,14 @@ def trace(matrix: mat | QuantumObject) -> num | sym:
     >>> trace(matrix)
     U[0, 0] + U[1, 1] + U[2, 2]
     """
-    conditions = extract_conditions(matrix)
     symbols = extract_symbols(matrix)
-    matrix = densify(extract_matrix(matrix))
-
-    matrix = symbolize_expression(matrix, symbols)
+    conditions = extract_conditions(matrix)
     conditions = symbolize_tuples(conditions, symbols)
 
-    trace = sp.trace(matrix)
+    matrix = densify(extract_matrix(matrix))
+    matrix = symbolize_expression(matrix, symbols)
 
+    trace = sp.trace(matrix)
     trace = recursively_simplify(trace, conditions)
     return trace
 
@@ -97,16 +96,14 @@ def purity(state: mat | QuantumObject) -> num | sym:
     >>> purity(matrix)
     (a*conjugate(a) + b*conjugate(b))**2
     """
-    conditions = extract_conditions(state)
     symbols = extract_symbols(state)
-    matrix = densify(extract_matrix(state))
-
-    matrix = symbolize_expression(matrix, symbols)
-
+    conditions = extract_conditions(state)
     conditions = symbolize_tuples(conditions, symbols)
 
-    purity = sp.trace(matrix**2)
+    matrix = densify(extract_matrix(state))
+    matrix = symbolize_expression(matrix, symbols)
 
+    purity = sp.trace(matrix**2)
     purity = recursively_simplify(purity, conditions)
     return purity
 
@@ -148,15 +145,16 @@ def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
     >>> distance(matrix, matrix)
     0
     """
-    conditions = extract_conditions(state_A, state_B)
     symbols = extract_symbols(state_A, state_B)
+    conditions = extract_conditions(state_A, state_B)
+    conditions = symbolize_tuples(conditions, symbols)
+
     matrix_A = densify(extract_matrix(state_A))
     matrix_B = densify(extract_matrix(state_B))
 
     matrix_A = symbolize_expression(matrix_A, symbols)
     matrix_B = symbolize_expression(matrix_B, symbols)
 
-    conditions = symbolize_tuples(conditions, symbols)
     matrix_A = recursively_simplify(matrix_A, conditions)
     matrix_B = recursively_simplify(matrix_B, conditions)
 
@@ -166,7 +164,6 @@ def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
     root = recursively_simplify(sp.sqrt(product), conditions)
     trace = recursively_simplify(sp.trace(root) / 2, conditions)
     distance = trace
-
     distance = recursively_simplify(trace, conditions)
     return distance
 
@@ -213,15 +210,15 @@ def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
     >>> fidelity(matrix_A, matrix_B)
     0
     """
-    conditions = extract_conditions(state_A, state_B)
     symbols = extract_symbols(state_A, state_B)
+    conditions = extract_conditions(state_A, state_B)
+    conditions = symbolize_tuples(conditions, symbols)
+
     matrix_A = densify(extract_matrix(state_A))
     matrix_B = densify(extract_matrix(state_B))
 
     matrix_A = symbolize_expression(matrix_A, symbols)
     matrix_B = symbolize_expression(matrix_B, symbols)
-
-    conditions = symbolize_tuples(conditions, symbols)
 
     matrix_A = recursively_simplify(matrix_A, conditions)
     matrix_B = recursively_simplify(matrix_B, conditions)
@@ -231,7 +228,6 @@ def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
     trace = recursively_simplify(sp.trace(root), conditions)
     square = recursively_simplify(trace**2, conditions)
     fidelity = square
-
     fidelity = recursively_simplify(fidelity, conditions)
     return fidelity
 
@@ -239,7 +235,7 @@ def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
 def entropy(
     state_A: mat | QuantumObject,
     state_B: mat | QuantumObject | None = None,
-    base: num | None = None,
+    base: num | sym | str | None = None,
 ) -> num | sym:
     """Calculate the relative von Neumann entropy (:math:`\\Entropy`) between two states
     ``state_A`` (:math:`\\op{\\rho}`) and ``state_B`` (:math:`\\op{\\tau}`):
@@ -263,7 +259,7 @@ def entropy(
         The matrix representation of the first input state.
     state_B : mat | QuantumObject
         The matrix representation of the second input state.
-    base : num
+    base : num | sym | str
         The dimensionality of the unit of information with which the entropy is measured.
         Defaults to ``2``.
 
@@ -299,16 +295,15 @@ def entropy(
     >>> entropy(matrix_B, matrix_A)
     -1
     """
-    conditions = extract_conditions(state_A)
     symbols = extract_symbols(state_A)
-    matrix_A = densify(extract_matrix(state_A))
+    conditions = extract_conditions(state_A)
+    conditions = symbolize_tuples(conditions, symbols)
 
     base = 2 if base is None else base
     base = symbolize_expression(base, symbols)
 
+    matrix_A = densify(extract_matrix(state_A))
     matrix_A = symbolize_expression(matrix_A, symbols)
-
-    conditions = symbolize_tuples(conditions, symbols)
     matrix_A = recursively_simplify(matrix_A, conditions)
 
     if state_B is not None:
@@ -334,7 +329,6 @@ def entropy(
         entropy = -sp.trace(
             matrix_A * apply_function(matrix_A, sp.log, arguments=[base])
         )
-
     entropy = recursively_simplify(entropy, conditions)
     return entropy
 
@@ -344,6 +338,7 @@ def mutual(
     systems_A: int | list[int] | None = None,
     systems_B: int | list[int] | None = None,
     dim: int | None = None,
+    base: num | sym | str | None = None,
 ) -> num | sym:
     """Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems
     ``systems_A`` (:math:`A`) and ``systems_B`` (:math:`B`) of a composite quantum system
@@ -371,6 +366,9 @@ def mutual(
         The dimensionality of the composite quantum system (and its subsystems).
         Must be a non-negative integer.
         Defaults to ``2``.
+    base : num | sym | str
+        The dimensionality of the unit of information with which the mutual information is measured.
+        Defaults to the value of ``dim``.
 
     Returns
     -------
@@ -384,6 +382,14 @@ def mutual(
     >>> mutual(matrix, [0], [1])
     2
 
+    >>> matrix = sp.Matrix([1, 0, 0, 0, 0, 0, 0, 0, 1]) / sp.sqrt(2)
+    >>> mutual(matrix, [0], [1], dim=3)
+    2*log(2)/log(3)
+
+    >>> matrix = sp.Matrix(["a", 0, 0, "b"])
+    >>> mutual(matrix, [0], [1], base="d")
+    (-2*b*(a*log(a*conjugate(a))*conjugate(a) + b*log(b*conjugate(b))*conjugate(b))*conjugate(b) + (a*conjugate(a) + b*conjugate(b))**2*log(a*conjugate(a) + b*conjugate(b)))/(b*log(d)*conjugate(b))
+
     >>> matrix = sp.eye(4) / 4
     >>> mutual(matrix, [0], [1])
     0
@@ -391,13 +397,15 @@ def mutual(
     systems_A = [0] if systems_A is None else systems_A
     dim = 2 if dim is None else dim
 
-    conditions = extract_conditions(state)
     symbols = extract_symbols(state)
-    matrix_AB = densify(extract_matrix(state))
-
-    matrix_AB = symbolize_expression(matrix_AB, symbols)
-
+    conditions = extract_conditions(state)
     conditions = symbolize_tuples(conditions, symbols)
+
+    base = dim if base is None else base
+    base = symbolize_expression(base, symbols)
+
+    matrix_AB = densify(extract_matrix(state))
+    matrix_AB = symbolize_expression(matrix_AB, symbols)
     matrix_AB = recursively_simplify(matrix_AB, conditions)
 
     num_systems = count_systems(matrix_AB, dim)
@@ -412,8 +420,11 @@ def mutual(
         matrix=matrix_AB, targets=systems_B, discard=True, dim=dim, optimize=True
     )
 
-    mutual = entropy(matrix_A) + entropy(matrix_B) - entropy(matrix_AB)
-
+    mutual = (
+        entropy(matrix_A, base=base)
+        + entropy(matrix_B, base=base)
+        - entropy(matrix_AB, base=base)
+    )
     mutual = recursively_simplify(mutual, conditions)
     return mutual
 
@@ -620,7 +631,7 @@ class QuantitiesMixin:
         return fidelity(state_A=self, state_B=state)
 
     def entropy(
-        self, state: mat | QuantumObject = None, base: num | None = None
+        self, state: mat | QuantumObject = None, base: num | sym | str | None = None
     ) -> num | sym:
         """Calculate the relative von Neumann entropy (:math:`\\Entropy`) between
         the internal state (:math:`\\op{\\rho}`) and the given ``state`` (:math:`\\op{\\tau}`):
@@ -642,7 +653,7 @@ class QuantitiesMixin:
         ---------
         state : mat | QuantumObject
             The given state.
-        base : num
+        base : num | sym | str
             The dimensionality of the unit of information with which the entropy is measured.
             Defaults to ``2``.
 
@@ -690,13 +701,16 @@ class QuantitiesMixin:
         (-p*log(p) + (p - 1)*log(1 - p))/log(2)
         >>> state_B.entropy()
         (-q*log(q) + (q - 1)*log(1 - q))/log(2)
-        >>> state_A.entropy(state_B)
-        (-(p - 1)*(log(1 - p) - log(1 - q)) + log((p/q)**p))/log(2)
+        >>> state_A.entropy(state_B, base="d")
+        (-(p - 1)*(log(1 - p) - log(1 - q)) + log((p/q)**p))/log(d)
         """
         return entropy(state_A=self, state_B=state, base=base)
 
     def mutual(
-        self, systems_A: int | list[int], systems_B: int | list[int] | None = None
+        self,
+        systems_A: int | list[int],
+        systems_B: int | list[int] | None = None,
+        base: num | sym | str | None = None,
     ) -> num | sym:
         """Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems
         ``systems_A`` (:math:`A`) and ``systems_B`` (:math:`B`)
@@ -718,11 +732,10 @@ class QuantitiesMixin:
         systems_B : int | list[int]
             The indices of the second subsystem.
             Defaults to the complement of ``systems_A`` with respect to the entire composition
-            of subsystems of ``state``.
-        dim : int
-            The dimensionality of the composite quantum system (and its subsystems).
-            Must be a non-negative integer.
-            Defaults to ``2``.
+            of the subsystems of ``state``.
+        base : num | sym | str
+            The dimensionality of the unit of information with which the mutual information is measured.
+            Defaults to the value of ``self.dim``.
 
         Returns
         -------
@@ -749,9 +762,23 @@ class QuantitiesMixin:
         ...     conditions=[("a + b", 1)],
         ...     norm=1,
         ... )
-        >>> state_AB.mutual([0], [1])
-        (-a*log(a) - b*log(b))/log(2)
+        >>> state_AB.mutual([0], [1], base="d")
+        -log(a**a*b**b)/log(d)
+
+        >>> state_ABC = QuantumState(
+        ...     spec=[("a", [1, 0, 0]), ("b", [0, 1, 0]), ("c", [0, 0, 1])],
+        ...     kind="mixed",
+        ...     symbols={"a": {"complex": True}, "b": {"complex": True}, "c": {"complex": True}},
+        ...     conditions=[("a + b + c", 1)],
+        ...     norm=1,
+        ... )
+        >>> state_ABC.mutual([0], [1])
+        (-a*log(a) - b*log(b) - c*log(c))/log(2)
         """
         return mutual(
-            state=self, systems_A=systems_A, systems_B=systems_B, dim=self.dim
+            state=self,
+            systems_A=systems_A,
+            systems_B=systems_B,
+            dim=self.dim,
+            base=base,
         )
