@@ -30,6 +30,7 @@ mv -f ./pyodide-temp/pyodide-lock.json ./pyodide
 
 rm -rf ./pyodide-temp
 
+# QHRONOLOGY_VERSION_NUMBER
 curl -OL https://github.com/lgbishop/qhronology/releases/download/1.0.1/qhronology-1.0.1-py3-none-any.whl
 mv -f qhronology-*.whl ./pyodide
 

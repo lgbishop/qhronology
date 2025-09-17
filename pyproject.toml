@@ -4,6 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qhronology"
+# QHRONOLOGY_VERSION_NUMBER
 version = "1.0.1"
 dependencies = [
   "sympy>=1.12",
