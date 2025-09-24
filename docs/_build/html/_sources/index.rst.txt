@@ -207,6 +207,8 @@
       
       **Latest Version:** 1.0.1 | **Date:** July 2025
    
+      .. QHRONOLOGY_VERSION_NUMBER
+
    ----
 
    .. https://sphinx-design.readthedocs.io/en/latest/grids.html
