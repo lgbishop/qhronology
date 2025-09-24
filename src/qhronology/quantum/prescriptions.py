@@ -816,7 +816,8 @@ class DCTC(QuantumCTC):
         postprocess: bool | None = None,
         free_symbol: sym | str | None = None,
     ) -> mat:
-        """An alias for the :py:meth:`~qhronology.quantum.prescriptions.DCTC.output_respecting` method.
+        """An alias for the :py:meth:`~qhronology.quantum.prescriptions.DCTC.output_respecting`
+        method.
 
         Useful for polymorphism.
 
@@ -1124,7 +1125,8 @@ def pctc_respecting(
     systems_respecting: list[int],
     systems_violating: list[int],
 ) -> mat:
-    """Calculate the (non-renormalized) chronology-respecting (CR) state according to the P-CTC prescription's non-renormalizing CR map
+    """Calculate the (non-renormalized) chronology-respecting (CR) state according to the
+    P-CTC prescription's non-renormalizing CR map
 
     .. math::
 
@@ -1147,7 +1149,7 @@ def pctc_respecting(
 
        \\MapPCTCsCR_{\\Unitary}[\\StateCR]
            = \\frac{\\OperatorPCTC \\StateCR \\OperatorPCTC^\\dagger}
-           {\\trace\\bigl[ \\OperatorPCTC \\StateCR \\OperatorPCTC^\\dagger\\bigr]}
+           {\\trace\\bigl[ \\OperatorPCTC \\StateCR \\OperatorPCTC^\\dagger\\bigr]}.
 
     Arguments
     ---------

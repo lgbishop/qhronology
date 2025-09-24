@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Aug 19, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 25, 2025"/>
   </head>
   
   
@@ -1405,7 +1405,6 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">1</span
 
 <span class="sig-paren">)</span><a class="headerlink" href="#qhronology.quantum.states.QuantumState.partial_trace" title="Link to this definition">#</a></dt>
 <dd><p>Perform a partial trace operation on the state.</p>
-<p>Performs a total trace if <code class="docutils literal notranslate"><span class="pre">targets</span></code> is unspecified.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1564,8 +1563,9 @@ sets of observables, nor does it renormalize the post-measurement state.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">I</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">statistics</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">label</span> <span class="o">+=</span> <span class="s2">&quot;′&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="go">|ψ⟩⟨ψ| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
+<span class="go">|ψ′⟩⟨ψ′| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.matrices</span><span class="w"> </span><span class="kn">import</span> <span class="n">ket</span>
@@ -1575,9 +1575,9 @@ sets of observables, nor does it renormalize the post-measurement state.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">statistics</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">[a*conjugate(a), b*conjugate(b)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">statistics</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">notation</span> <span class="o">=</span> <span class="s2">&quot;ρ&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">notation</span> <span class="o">=</span> <span class="s2">&quot;ρ′&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="go">ρ = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
+<span class="go">ρ′ = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1631,23 +1631,23 @@ will have their <code class="docutils literal notranslate"><span class="pre">sym
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="go">|φ⟩ = c|0⟩ + d|1⟩</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">postselect</span><span class="p">([(</span><span class="n">phi</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Ψ&#39;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">label</span> <span class="o">+=</span> <span class="s2">&quot;′&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="go">|Ψ&#39;⟩ = a*conjugate(c)|0⟩ + b*conjugate(d)|1⟩</span>
+<span class="go">|Ψ′⟩ = a*conjugate(c)|0⟩ + b*conjugate(d)|1⟩</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.matrices</span><span class="w"> </span><span class="kn">import</span> <span class="n">ket</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ψ&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="go">|Ψ⟩ = a|0,0⟩ + b|1,1⟩</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Ψ&#39;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">label</span> <span class="o">+=</span> <span class="s2">&quot;′&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">postselect</span><span class="p">([(</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="go">|Ψ&#39;⟩ = a|0⟩</span>
+<span class="go">|Ψ′⟩ = a|0⟩</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">postselect</span><span class="p">([(</span><span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="go">|Ψ&#39;⟩ = b|1⟩</span>
+<span class="go">|Ψ′⟩ = b|1⟩</span>
 </pre></div>
 </div>
 </dd></dl>

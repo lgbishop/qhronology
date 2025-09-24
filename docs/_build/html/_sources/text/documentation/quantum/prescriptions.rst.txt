@@ -80,7 +80,7 @@ Please note that the documentation of this class includes only properties and me
       :language: python
       :caption: CNOT interaction with a CTC
 
-   >>> CNOT.diagram(pad=(0,0), sep=(1,1), style="unicode")
+   >>> CNOT.diagram()
 
    ..
 

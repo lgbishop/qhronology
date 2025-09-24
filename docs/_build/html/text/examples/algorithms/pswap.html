@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Aug 19, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 25, 2025"/>
   </head>
   
   
@@ -510,13 +510,13 @@
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-scattering">
-<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">/text/examples/algorithms/pswap.py</span><a class="headerlink" href="#code-scattering" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 24 </span><span class="caption-text">/text/examples/algorithms/pswap.py</span><a class="headerlink" href="#code-scattering" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Swap</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
 
 <span class="c1"># Input</span>
-<span class="n">psi</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
+<span class="n">input_upper</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
     <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
     <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)],</span>
@@ -524,7 +524,7 @@
     <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">phi</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
+<span class="n">input_lower</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
     <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
     <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)],</span>
@@ -543,12 +543,12 @@
 <span class="p">)</span>
 
 <span class="c1"># Circuit</span>
-<span class="n">pswap</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">psi</span><span class="p">,</span> <span class="n">phi</span><span class="p">],</span> <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">S</span><span class="p">])</span>
+<span class="n">pswap</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">input_upper</span><span class="p">,</span> <span class="n">input_lower</span><span class="p">],</span> <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">S</span><span class="p">])</span>
 <span class="n">pswap</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 
 <span class="c1"># Output</span>
-<span class="n">input_state</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">psi</span><span class="p">,</span> <span class="n">phi</span><span class="p">])</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ,φ&quot;</span><span class="p">)</span>
-<span class="n">output_state</span> <span class="o">=</span> <span class="n">pswap</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;(ψ,φ)&#39;&quot;</span><span class="p">)</span>
+<span class="n">input_state</span> <span class="o">=</span> <span class="n">pswap</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ,φ&quot;</span><span class="p">)</span>
+<span class="n">output_state</span> <span class="o">=</span> <span class="n">pswap</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;(ψ,φ)′&quot;</span><span class="p">)</span>
 
 <span class="c1"># Results</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">pswap</span><span class="o">.</span><span class="n">gate</span><span class="p">()))</span>
@@ -590,7 +590,7 @@
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="go">|(ψ,φ)&#39;⟩ = a*c|0,0⟩ + (a*d*(exp(I*pi*p)/2 + 1/2) + b*c*(1/2 - exp(I*pi*p)/2))|0,1⟩ + (a*d*(1/2 - exp(I*pi*p)/2) + b*c*(exp(I*pi*p)/2 + 1/2))|1,0⟩ + b*d|1,1⟩</span>
+<span class="go">|(ψ,φ)′⟩ = a*c|0,0⟩ + (a*d*(exp(I*pi*p)/2 + 1/2) + b*c*(1/2 - exp(I*pi*p)/2))|0,1⟩ + (a*d*(1/2 - exp(I*pi*p)/2) + b*c*(exp(I*pi*p)/2 + 1/2))|1,0⟩ + b*d|1,1⟩</span>
 </pre></div>
 </div>
 </section>

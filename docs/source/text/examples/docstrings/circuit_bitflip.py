@@ -13,7 +13,7 @@ bitflip = QuantumCircuit(inputs=[input_state], gates=[NOT])
 bitflip.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
 
 # Output
-output_state = bitflip.state(label="ψ'")
+output_state = bitflip.state(label="ψ′")
 
 # Results
 input_state.print()

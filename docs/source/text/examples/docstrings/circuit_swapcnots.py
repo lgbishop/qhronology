@@ -3,12 +3,12 @@ from qhronology.quantum.gates import Not
 from qhronology.quantum.circuits import QuantumCircuit
 
 # Input
-psi = VectorState(
+input_upper = VectorState(
     spec=[("a", [0]), ("b", [1])],
     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
     label="ψ",
 )
-phi = VectorState(
+input_lower = VectorState(
     spec=[("c", [0]), ("d", [1])],
     conditions=[("c*conjugate(c) + d*conjugate(d)", 1)],
     label="φ",
@@ -19,26 +19,30 @@ CN = Not(targets=[1], controls=[0])
 NC = Not(targets=[0], controls=[1])
 
 # Circuit
-swapcnots = QuantumCircuit(inputs=[psi, phi], gates=[CN, NC, CN])
+swapcnots = QuantumCircuit(inputs=[input_upper, input_lower], gates=[CN, NC, CN])
 swapcnots.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
 
 # Output
 print(repr(swapcnots.gate()))
-upper = swapcnots.state(traces=[1], label="ψ'")
-lower = swapcnots.state(traces=[0], label="φ'")
-upper.kind = "pure"
-lower.kind = "pure"
-upper.simplify()
-lower.simplify()
+output_total = swapcnots.state(label="(ψ⊗φ)′")
+output_upper = swapcnots.state(traces=[1], label="ψ′")
+output_lower = swapcnots.state(traces=[0], label="φ′")
+output_upper.kind = "pure"
+output_lower.kind = "pure"
+output_upper.simplify()
+output_lower.simplify()
 
 # Results
-psi.print()
-upper.print()
-phi.print()
-lower.print()
+input_upper.print()
+input_lower.print()
+swapcnots.input().print()
 
-print(upper.distance(phi))
-print(lower.distance(psi))
+output_upper.print()
+output_lower.print()
+output_total.print()
 
-print(upper.fidelity(phi))
-print(lower.fidelity(psi))
+print(output_upper.distance(input_lower))
+print(output_lower.distance(input_upper))
+
+print(output_upper.fidelity(input_lower))
+print(output_lower.fidelity(input_upper))

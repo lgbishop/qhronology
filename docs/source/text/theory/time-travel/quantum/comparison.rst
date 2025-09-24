@@ -5,7 +5,7 @@
 Comparison of D-CTCs and P-CTCs
 ===============================
 
-In ordinary quantum mechanics, any mixed state can be purified in an enlarged Hilbert space through the use of an ancillary system. In the Deutsch model however, purification of the CV state is not possible since it has to be in a proper mixture (that is, it can not be a subsystem of a pure entangled state) :cite:p:`pati_purification_2011`. The very power of the prescription lies in the fact that it allows for the information trapped within the CTC to exist in a mixed state, and it is this distinguishing feature which enables it to solve classically paradoxical scenarios.
+In ordinary quantum mechanics, any mixed state can be purified in an enlarged Hilbert space through the use of an ancillary system. In Deutsch's model however, purification of the CV state is not possible since it has to be in a proper mixture (that is, it can not be a subsystem of a pure entangled state) :cite:p:`pati_purification_2011`. The very power of the prescription lies in the fact that it allows for the information trapped within the CTC to exist in a mixed state, and it is this distinguishing feature which enables it to solve classically paradoxical scenarios.
 
 P-CTCs on the other hand provide solutions by ignoring the precise mechanism behind antichronological time travel. Instead, the theory posits that the effect is simply mathematically equivalent to the operational protocol of preselecting and postselecting against the same maximally entangled state.
 

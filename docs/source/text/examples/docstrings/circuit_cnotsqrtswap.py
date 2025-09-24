@@ -31,7 +31,7 @@ CNOT.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
 
 # Output
 print(repr(CNOT.gate(simplify=True)))
-output = CNOT.state(label="(ψ⊗φ)'")
+output = CNOT.state(label="(ψ⊗φ)′")
 output.simplify()
 
 CNOT.input().print()

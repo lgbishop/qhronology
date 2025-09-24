@@ -1,6 +1,7 @@
 from qhronology.quantum.states import VectorState
 from qhronology.quantum.gates import Not
 from qhronology.quantum.circuits import QuantumCircuit
+import sympy as sp
 
 augend_integers = [0, 1]
 addend_integers = 1
@@ -11,7 +12,11 @@ augend_state = VectorState(
     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
     label="x",
 )
-addend_state = VectorState(spec=[(1, [1])], label="y")
+addend_state = VectorState(
+    spec=[("u", [0]), ("v", [1])],
+    conditions=[("u*conjugate(u) + v*conjugate(v)", 1)],
+    label="y",
+)
 carry_input_state = VectorState(spec=[(1, [1])], label="c")
 zero_state = VectorState(spec=[(1, [0])], label="0")
 
@@ -30,11 +35,12 @@ adder.diagram()
 
 # Output
 sum_state = adder.state(label="s", traces=[0, 1, 3])
-carry_output_state = adder.state(label="c'", traces=[0, 1, 2])
+carry_output_state = adder.state(label="c′", traces=[0, 1, 2])
 
 # Results
 augend_state.print()
 addend_state.print()
 carry_input_state.print()
 sum_state.print()
+carry_output_state.apply(sp.collect, arguments={"syms": ["b*conjugate(b)"]})
 carry_output_state.print()

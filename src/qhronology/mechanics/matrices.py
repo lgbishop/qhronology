@@ -463,11 +463,11 @@ def decode_slow(
     Note
     ----
     The current method by which this particular implementation operates is accurate but slow.
-    For a faster algorithm, use the ``decode_fast()`` function.
+    For a faster algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_fast` function.
 
     Note
     ----
-    This function can also be called using the alias ``decode()``.
+    This function can also be called using the alias :py:func:`~qhronology.mechanics.matrices.decode`.
 
     Arguments
     ---------
@@ -541,11 +541,12 @@ def decode_fast(matrix: mat | QuantumObject, dim: int | None = None) -> int:
     ----
     The current method by which this particular implementation operates is fast but may be
     inaccurate (due to some computational shortcuts that may not work in all cases).
-    For a slower but accurate algorithm, use the ``decode_slow()`` function.
+    For a slower but accurate algorithm, use the
+    :py:func:`~qhronology.mechanics.matrices.decode_slow` function.
 
     Note
     ----
-    The output cannot be reversed like in ``decode_slow()``.
+    The output cannot be reversed like in :py:func:`~qhronology.mechanics.matrices.decode_slow`.
 
     Arguments
     ---------

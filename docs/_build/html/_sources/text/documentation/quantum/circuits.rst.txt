@@ -58,7 +58,7 @@ Main class
    |ψ⟩ = a|0⟩ + b|1⟩
 
    >>> output_state.print()
-   |ψ'⟩ = b|0⟩ + a|1⟩
+   |ψ′⟩ = b|0⟩ + a|1⟩
 
    .. literalinclude:: /text/examples/docstrings/circuit_arbitrary.py
       :language: python
@@ -127,28 +127,41 @@ Main class
          \end{mdframed}
          \vspace{1em}
 
-   >>> psi.print()
+   >>> print(repr(swapcnots.gate()))
+   Matrix([
+   [1, 0, 0, 0],
+   [0, 0, 1, 0],
+   [0, 1, 0, 0],
+   [0, 0, 0, 1]])
+
+   >>> input_upper.print()
    |ψ⟩ = a|0⟩ + b|1⟩
 
-   >>> upper.print()
-   |ψ'⟩⟨ψ'| = c*conjugate(c)|0⟩⟨0| + c*conjugate(d)|0⟩⟨1| + d*conjugate(c)|1⟩⟨0| + d*conjugate(d)|1⟩⟨1|
-
-   >>> phi.print()
+   >>> input_lower.print()
    |φ⟩ = c|0⟩ + d|1⟩
 
-   >>> lower.print()
-   |φ'⟩⟨φ'| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
+   >>> swapcnots.input().print()
+   |ψ⊗φ⟩ = a*c|0,0⟩ + a*d|0,1⟩ + b*c|1,0⟩ + b*d|1,1⟩
 
-   >>> upper.distance(phi)
+   >>> output_upper.print()
+   |ψ′⟩⟨ψ′| = c*conjugate(c)|0⟩⟨0| + c*conjugate(d)|0⟩⟨1| + d*conjugate(c)|1⟩⟨0| + d*conjugate(d)|1⟩⟨1|
+
+   >>> output_lower.print()
+   |φ′⟩⟨φ′| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
+
+   >>> output_total.print()
+   |(ψ⊗φ)′⟩ = a*c|0,0⟩ + b*c|0,1⟩ + a*d|1,0⟩ + b*d|1,1⟩
+
+   >>> output_upper.distance(input_lower)
    0
 
-   >>> lower.distance(psi)
+   >>> output_lower.distance(input_upper)
    0
 
-   >>> upper.fidelity(phi)
+   >>> output_upper.fidelity(input_lower)
    1
 
-   >>> lower.fidelity(psi)
+   >>> output_lower.fidelity(input_upper)
    1
 
    .. literalinclude:: /text/examples/docstrings/circuit_postselection.py
@@ -187,7 +200,54 @@ Main class
    |ψ⟩ = a|0⟩ + b|1⟩
 
    >>> output_state.print()
-   |ψ'⟩ = a|0⟩ + b|1⟩
+   |ψ′⟩ = a|0⟩ + b|1⟩
+
+   .. literalinclude:: /text/examples/docstrings/circuit_unitarity.py
+      :language: python
+      :caption: Unitarity of general symbolic gates
+
+   >>> unitarity.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_circuit_unitarity-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_circuit_unitarity-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> print(repr(U))
+   Matrix([
+   [U[0, 0], U[0, 1]],
+   [U[1, 0], U[1, 1]]])
+
+   >>> print(repr(Ud))
+   Matrix([
+   [conjugate(U[0, 0]), conjugate(U[1, 0])],
+   [conjugate(U[0, 1]), conjugate(U[1, 1])]])
+
+   >>> print(repr(unitarity.gate()))
+   Matrix([
+   [1, 0],
+   [0, 1]])
 
    .. literalinclude:: /text/examples/docstrings/circuit_fourier.py
       :language: python

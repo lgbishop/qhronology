@@ -24,7 +24,7 @@ postselected_teleportation.diagram(pad=(1, 0), sep=(2, 1), force_separation=True
 
 # Output
 # Manual P-CTC
-output_state = postselected_teleportation.state(label="ψ'")
+output_state = postselected_teleportation.state(label="ψ′")
 output_state.apply(sp.factor)
 
 # P-CTC prescription
