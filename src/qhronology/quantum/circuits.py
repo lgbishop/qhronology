@@ -421,6 +421,7 @@ class QuantumCircuit(SymbolicsProperties):
 
     def input(
         self,
+        merge: bool | None = None,
         conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -438,6 +439,11 @@ class QuantumCircuit(SymbolicsProperties):
 
         Arguments
         ---------
+        merge : bool
+            Whether to merge the labels of the individual quantum states into a single product,
+            separated by ``"⊗"`` operators, prior to any notational processing.
+            Only relevant when all states are vectors.
+            Defaults to ``True``.
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of ``self.conditions``.
@@ -461,7 +467,10 @@ class QuantumCircuit(SymbolicsProperties):
             When not ``None``, overrides the value passed to ``label``.
             Must have a non-zero length.
             Not intended to be set by the user in most cases.
-            Defaults to ``None``.
+            Defaults to ``"⊗".join([state.notation for state in self.inputs])``
+            if ``label`` is ``None``
+            and (``merge`` is ``False`` or the input states are all vectors),
+            else ``None``.
         debug : bool
             Whether to print the internal state (held in ``matrix``) on change.
             Defaults to ``False``.
@@ -470,20 +479,42 @@ class QuantumCircuit(SymbolicsProperties):
         -------
         mat
             The total input state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+
+        Note
+        ----
+        Passing a value of ``False`` to the ``merge`` argument results in a state whose ``notation``
+        is fixed and incompatible with any subsequent changes (including densification).
+        This behaviour may be improved in the future.
         """
+        merge = True if merge is None else merge
+        inputs = copy.deepcopy(self.inputs)
         conditions = self.conditions if conditions is None else conditions
-        label = (
-            "⊗".join([state.label for state in self.inputs]) if label is None else label
-        )
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
         if self.input_is_vector is True:
             form = Forms.VECTOR.value
             kind = Kinds.PURE.value
+        else:
+            for state in inputs:
+                state.densify()
 
-        inputs = [state.output(conjugate=False) for state in self.inputs]
-        if self.input_is_vector is False:
-            inputs = [densify(state) for state in inputs]
+        # TODO: This is the only place where such label/notation combining occurs for states,
+        # and it does not extend properly to cases where states are combined further or
+        # densification is performed.
+        # Therefore, need to upgrade QuantumObject functionality to allow for multiple labels to be
+        # stored, each with their own form/kind specification.
+        if label is None and (
+            (merge is False and self.input_is_vector is True)
+            or self.input_is_vector is False
+        ):
+            notation = (
+                "⊗".join([state.notation for state in inputs])
+                if notation is None
+                else notation
+            )
+        label = "⊗".join([state.label for state in inputs]) if label is None else label
+
+        inputs = [state.output() for state in inputs]
         identity = (sp.Rational(1, self.dim)) * sp.eye(self.dim)
         for _ in range(0, self.num_systems_gross - self.num_systems_inputs):
             inputs.append(identity)
