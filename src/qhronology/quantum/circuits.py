@@ -432,7 +432,7 @@ class QuantumCircuit(SymbolicsProperties):
         """Construct the composite input state of the quantum circuit as a
         :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.
 
-        This is computed as the tensor product of the individual gates in the order in which
+        This is computed as the tensor product of the individual states in the order in which
         they appear in the ``inputs`` property.
         Is a vector state only when all of the component states are vectors.
 
