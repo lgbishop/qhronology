@@ -11,4 +11,6 @@ for FILE in "${files[@]}"; do
     DIRECTORY=$(basename $(dirname "$FILE"))
 
     mv -f "${PATH_DESTINATION}/${NAME}.txt" "${PATH_DESTINATION}/text_examples_${DIRECTORY}_${NAME}.txt"
+
+    perl -i -C -pe 's/(.)/$1\{\\kern0pt\}/g' "${PATH_DESTINATION}/text_examples_${DIRECTORY}_${NAME}.txt"
 done
