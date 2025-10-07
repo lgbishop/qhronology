@@ -1483,12 +1483,12 @@ STYLES.update({"METER_LOWER": style_GATE_LOWER})
 
 style_LSTICK_UPPER = dict(STYLES["LSTICK_SINGLE"])
 style_LSTICK_UPPER["edge_connector_right_quantum"] = {
-    "ascii": "{bracket_connector_right_unset",
+    "ascii": "(bracket_connector_right_unset",
     "unicode": "⎧bracket_connector_right_unset",
     "unicode_alt": "⎧bracket_connector_right_unset",
 }
 style_LSTICK_UPPER["edge_connector_right_classical"] = {
-    "ascii": "{bracket_connector_right_unset",
+    "ascii": "(bracket_connector_right_unset",
     "unicode": "⎧bracket_connector_right_unset",
     "unicode_alt": "⎧bracket_connector_right_unset",
 }
@@ -1516,12 +1516,12 @@ STYLES.update({"LSTICK_UPPER": style_LSTICK_UPPER})
 
 style_LSTICK_MIDDLE = dict(STYLES["LSTICK_SINGLE"])
 style_LSTICK_MIDDLE["edge_connector_right_quantum"] = {
-    "ascii": "{bracket_connector_right_unset",
+    "ascii": "(bracket_connector_right_unset",
     "unicode": "⎨bracket_connector_right_unset",
     "unicode_alt": "⎨bracket_connector_right_unset",
 }
 style_LSTICK_MIDDLE["edge_connector_right_classical"] = {
-    "ascii": "{bracket_connector_right_unset",
+    "ascii": "(bracket_connector_right_unset",
     "unicode": "⎨bracket_connector_right_unset",
     "unicode_alt": "⎨bracket_connector_right_unset",
 }
@@ -1564,12 +1564,12 @@ STYLES.update({"LSTICK_MIDDLE": style_LSTICK_MIDDLE})
 
 style_LSTICK_LOWER = dict(STYLES["LSTICK_SINGLE"])
 style_LSTICK_LOWER["edge_connector_right_quantum"] = {
-    "ascii": "{bracket_connector_right_unset",
+    "ascii": "(bracket_connector_right_unset",
     "unicode": "⎩bracket_connector_right_unset",
     "unicode_alt": "⎩bracket_connector_right_unset",
 }
 style_LSTICK_LOWER["edge_connector_right_classical"] = {
-    "ascii": "{bracket_connector_right_unset",
+    "ascii": "(bracket_connector_right_unset",
     "unicode": "⎩bracket_connector_right_unset",
     "unicode_alt": "⎩bracket_connector_right_unset",
 }
@@ -1597,12 +1597,12 @@ STYLES.update({"LSTICK_LOWER": style_LSTICK_LOWER})
 
 style_RSTICK_UPPER = dict(STYLES["RSTICK_SINGLE"])
 style_RSTICK_UPPER["edge_connector_left_quantum"] = {
-    "ascii": "bracket_connector_left_unset}",
+    "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎫",
     "unicode_alt": "bracket_connector_left_unset⎫",
 }
 style_RSTICK_UPPER["edge_connector_left_classical"] = {
-    "ascii": "bracket_connector_left_unset}",
+    "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎫",
     "unicode_alt": "bracket_connector_left_unset⎫",
 }
@@ -1630,12 +1630,12 @@ STYLES.update({"RSTICK_UPPER": style_RSTICK_UPPER})
 
 style_RSTICK_MIDDLE = dict(STYLES["RSTICK_SINGLE"])
 style_RSTICK_MIDDLE["edge_connector_left_quantum"] = {
-    "ascii": "bracket_connector_left_unset}",
+    "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎬",
     "unicode_alt": "bracket_connector_left_unset⎬",
 }
 style_RSTICK_MIDDLE["edge_connector_left_classical"] = {
-    "ascii": "bracket_connector_left_unset}",
+    "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎬",
     "unicode_alt": "bracket_connector_left_unset⎬",
 }
@@ -1678,12 +1678,12 @@ STYLES.update({"RSTICK_MIDDLE": style_RSTICK_MIDDLE})
 
 style_RSTICK_LOWER = dict(STYLES["RSTICK_SINGLE"])
 style_RSTICK_LOWER["edge_connector_left_quantum"] = {
-    "ascii": "bracket_connector_left_unset}",
+    "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎭",
     "unicode_alt": "bracket_connector_left_unset⎭",
 }
 style_RSTICK_LOWER["edge_connector_left_classical"] = {
-    "ascii": "bracket_connector_left_unset}",
+    "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎭",
     "unicode_alt": "bracket_connector_left_unset⎭",
 }
