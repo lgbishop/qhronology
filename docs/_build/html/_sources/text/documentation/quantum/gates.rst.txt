@@ -26,7 +26,7 @@ Facilities to combine gates together are also provided by the package and take t
 
    from qhronology.quantum.gates import GateInterleave, GateStack
 
-Both of these classes concern the creation of more complex spatial ("vertical") gate structures. Temporal ("horizontal") compositions (i.e., gate sequences) as single object instances on the other hand are not supported as this is achievable simply by combining the individual components sequentially in a circuit.
+Both of these classes concern the creation of more complex spatial ("vertical") gate structures. Temporal ("horizontal") compositions (i.e., gates wired in serial) as single object instances on the other hand are not supported as this is achievable simply by combining the individual components sequentially in a circuit.
 
 Main class
 ==========
