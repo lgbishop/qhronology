@@ -6,6 +6,7 @@ in pkgs-system.mkShell {
     (pkgs-system.python3.withPackages (python-pkgs: with python-pkgs; [
       sympy
       numpy
+      scipy
       ipython
     ]))
     pkgs-system.vscodium
