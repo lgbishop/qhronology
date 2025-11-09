@@ -152,8 +152,10 @@ def simplify(matrix: mat | QuantumObject, comprehensive: bool | None = None) -> 
     --------
     >>> matrix = sp.Matrix(
     ...     [
-    ...         ["(a**2 - 1)/(a - 1) - 1", "log(cos(b) + I*sin(b))/I"],
-    ...         ["acos((exp(I*c) + exp(-I*c))/2)", "d**log(E*(sin(d)**2 + cos(d)**2))"],
+    ...         ["(a**2 - 1)/(a - 1) - 1",
+    ...          "log(cos(b) + I*sin(b))/I"],
+    ...         ["acos((exp(I*c) + exp(-I*c))/2)",
+    ...          "d**log(E*(sin(d)**2 + cos(d)**2))"],
     ...     ]
     ... )
     >>> simplify(matrix)
@@ -877,8 +879,10 @@ class OperationsMixin:
         --------
         >>> matrix = sp.Matrix(
         ...     [
-        ...         ["(a**2 - 1)/(a - 1) - 1", "log(cos(b) + I*sin(b))/I"],
-        ...         ["acos((exp(I*c) + exp(-I*c))/2)", "d**log(E*(sin(d)**2 + cos(d)**2))"],
+        ...         ["(a**2 - 1)/(a - 1) - 1",
+        ...          "log(cos(b) + I*sin(b))/I"],
+        ...         ["acos((exp(I*c) + exp(-I*c))/2)",
+        ...          "d**log(E*(sin(d)**2 + cos(d)**2))"],
         ...     ]
         ... )
         >>> rho = QuantumState(spec=matrix, form="matrix", label="ρ")
@@ -975,19 +979,19 @@ class OperationsMixin:
 
         Examples
         --------
-        >>> identity = QuantumState(spec=[("1", [0]), ("1", [1])], label="I")
-        >>> identity.print()
-        I = |0⟩⟨0| + |1⟩⟨1|
-        >>> identity.normalize()
-        >>> identity.print()
-        I = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
-
         >>> psi = QuantumState(spec=[("a", [0]), ("b", [1])], form="vector", label="ψ")
         >>> psi.print()
         |ψ⟩ = a|0⟩ + b|1⟩
         >>> psi.normalize()
         >>> psi.print()
         |ψ⟩ = a/sqrt(a*conjugate(a) + b*conjugate(b))|0⟩ + b/sqrt(a*conjugate(a) + b*conjugate(b))|1⟩
+
+        >>> identity = QuantumState(spec=[("1", [0]), ("1", [1])], label="I")
+        >>> identity.print()
+        I = |0⟩⟨0| + |1⟩⟨1|
+        >>> identity.normalize("2/d")
+        >>> identity.print()
+        I = 1/d|0⟩⟨0| + 1/d|1⟩⟨1|
         """
         norm = 1 if norm is None else norm
         self.matrix = normalize(self, norm=norm)
