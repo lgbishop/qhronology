@@ -46,7 +46,7 @@ The set of physical pure states :math:`\SpacePure(\SpaceHilbert)` on a Hilbert s
 
 .. note::
 
-   The concept of vectors which differ only up to a multiplicate constant of magnitude :math:`1` (i.e., a phase factor :math:`\e^{\eye \theta}`) being identified is a direct consequence of the fact that such states are physically indistinguishable---that is, there is no performable experiment which is able to differentiate them. This leads to the idea that the notion of a pure "state" in quantum mechanics is perhaps better described by a more complete (and unique) object called a *ray*, residing in a projective Hilbert space. Put simply, a ray :math:`\underline{\StatePure}` is the set of all state vectors :math:`\StatePure` which are scalar non-zero multiples of each other, i.e.,
+   The concept of vectors which differ only up to a multiplicative constant of magnitude :math:`1` (i.e., a phase factor :math:`\e^{\eye \theta}`) being identified is a direct consequence of the fact that such states are physically indistinguishable---that is, there is no performable experiment which is able to differentiate them. This leads to the idea that the notion of a pure "state" in quantum mechanics is perhaps better described by a more complete (and unique) object called a *ray*, residing in a projective Hilbert space. Put simply, a ray :math:`\underline{\StatePure}` is the set of all state vectors :math:`\StatePure` which are scalar non-zero multiples of each other, i.e.,
 
    .. math:: \underline{\StatePure} = \bigl\{\e^{\eye \theta} \StatePure : \StatePure \in \SpaceHilbert, \, \norm{\psi}_2 = 1, \, \theta \in \Reals \bigr\}.
 
