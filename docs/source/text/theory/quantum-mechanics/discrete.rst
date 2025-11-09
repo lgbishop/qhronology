@@ -46,7 +46,7 @@ The set of physical pure states :math:`\SpacePure(\SpaceHilbert)` on a Hilbert s
 
 .. note::
 
-   The concept of vectors which differ only up to a multiplicative constant of magnitude :math:`1` (i.e., a phase factor :math:`\e^{\eye \theta}`) being identified is a direct consequence of the fact that such states are physically indistinguishable---that is, there is no performable experiment which is able to differentiate them. This leads to the idea that the notion of a pure "state" in quantum mechanics is perhaps better described by a more complete (and unique) object called a *ray*, residing in a projective Hilbert space. Put simply, a ray :math:`\underline{\StatePure}` is the set of all state vectors :math:`\StatePure` which are scalar non-zero multiples of each other, i.e.,
+   The concept of vectors which differ only up to a multiplicative constant of magnitude :math:`1` (e.g., a phase factor :math:`\e^{\eye \theta}`) being identified is a direct consequence of the fact that such states are physically indistinguishable---that is, there is no performable experiment which is able to differentiate them. This leads to the idea that the notion of a pure "state" in quantum mechanics is perhaps better described by a more complete (and unique) object called a *ray*, residing in a projective Hilbert space. Put simply, a ray :math:`\underline{\StatePure}` is the set of all state vectors :math:`\StatePure` which are scalar non-zero multiples of each other, i.e.,
 
    .. math:: \underline{\StatePure} = \bigl\{\e^{\eye \theta} \StatePure : \StatePure \in \SpaceHilbert, \, \norm{\psi}_2 = 1, \, \theta \in \Reals \bigr\}.
 
@@ -65,7 +65,7 @@ Unlike pure states, mixed states cannot be represented as a state vector (e.g., 
 
 .. math:: \SpaceMixed(\SpaceHilbert) \equiv \bigl\{ \StateDensity \in \SpaceLinear(\SpaceHilbert) : \StateDensity^\dagger = \StateDensity, \, \trace[\StateDensity] = 1 \bigr\}.
 
-Density operators representing mixed (impure) quantum states arise in quantum mechanics in two distinct situations. The first of these is when the preparation of a system is not fully known. In this case, the (incomplete/limited) knowledge of the quantum state can be captured only by a density operator that describes a statistical (i.e., mixture) of all possible preparations. The second situation is when one wants to describe a physical system that is entangled with another. Quantum entanglement theoretically prevents the existence of complete knowledge about subsystems in an entangled state, and so it is impossible to represent the state of any such subsystems as a pure state.
+Density operators representing mixed (impure) quantum states arise in quantum mechanics in two distinct situations. The first of these is when the preparation of a system is not fully known. In this case, the (incomplete/limited) knowledge of the quantum state can be captured only by a density operator that describes a statistical ensemble (i.e., mixture) of all possible preparations. The second situation is when one wants to describe a physical system that is entangled with another. Quantum entanglement theoretically prevents the existence of complete knowledge about subsystems in an entangled state, and so it is impossible to represent the state of any such subsystems as a pure state.
 
 .. note::
 
