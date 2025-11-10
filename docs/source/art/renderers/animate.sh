@@ -460,5 +460,3 @@ if [[ $CLEAN == true ]]; then
         rm -f "$f"
     done
 fi
-
-echo $PATH_LATEX
