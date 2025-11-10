@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Oct 07, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
   </head>
   
   
@@ -606,8 +606,10 @@
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix(</span>
 <span class="sd">    ...     [</span>
-<span class="sd">    ...         [&quot;(a**2 - 1)/(a - 1) - 1&quot;, &quot;log(cos(b) + I*sin(b))/I&quot;],</span>
-<span class="sd">    ...         [&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;, &quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;],</span>
+<span class="sd">    ...         [&quot;(a**2 - 1)/(a - 1) - 1&quot;,</span>
+<span class="sd">    ...          &quot;log(cos(b) + I*sin(b))/I&quot;],</span>
+<span class="sd">    ...         [&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;,</span>
+<span class="sd">    ...          &quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;],</span>
 <span class="sd">    ...     ]</span>
 <span class="sd">    ... )</span>
 <span class="sd">    &gt;&gt;&gt; simplify(matrix)</span>
@@ -1355,8 +1357,10 @@
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; matrix = sp.Matrix(</span>
 <span class="sd">        ...     [</span>
-<span class="sd">        ...         [&quot;(a**2 - 1)/(a - 1) - 1&quot;, &quot;log(cos(b) + I*sin(b))/I&quot;],</span>
-<span class="sd">        ...         [&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;, &quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;],</span>
+<span class="sd">        ...         [&quot;(a**2 - 1)/(a - 1) - 1&quot;,</span>
+<span class="sd">        ...          &quot;log(cos(b) + I*sin(b))/I&quot;],</span>
+<span class="sd">        ...         [&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;,</span>
+<span class="sd">        ...          &quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;],</span>
 <span class="sd">        ...     ]</span>
 <span class="sd">        ... )</span>
 <span class="sd">        &gt;&gt;&gt; rho = QuantumState(spec=matrix, form=&quot;matrix&quot;, label=&quot;ρ&quot;)</span>
@@ -1453,19 +1457,19 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; identity = QuantumState(spec=[(&quot;1&quot;, [0]), (&quot;1&quot;, [1])], label=&quot;I&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; identity.print()</span>
-<span class="sd">        I = |0⟩⟨0| + |1⟩⟨1|</span>
-<span class="sd">        &gt;&gt;&gt; identity.normalize()</span>
-<span class="sd">        &gt;&gt;&gt; identity.print()</span>
-<span class="sd">        I = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|</span>
-
 <span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |ψ⟩ = a|0⟩ + b|1⟩</span>
 <span class="sd">        &gt;&gt;&gt; psi.normalize()</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |ψ⟩ = a/sqrt(a*conjugate(a) + b*conjugate(b))|0⟩ + b/sqrt(a*conjugate(a) + b*conjugate(b))|1⟩</span>
+
+<span class="sd">        &gt;&gt;&gt; identity = QuantumState(spec=[(&quot;1&quot;, [0]), (&quot;1&quot;, [1])], label=&quot;I&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; identity.print()</span>
+<span class="sd">        I = |0⟩⟨0| + |1⟩⟨1|</span>
+<span class="sd">        &gt;&gt;&gt; identity.normalize(&quot;2/d&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; identity.print()</span>
+<span class="sd">        I = 1/d|0⟩⟨0| + 1/d|1⟩⟨1|</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">norm</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">norm</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">norm</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>

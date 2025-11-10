@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Oct 07, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
   </head>
   
   
@@ -602,8 +602,10 @@ longer to execute than if <code class="docutils literal notranslate"><span class
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">[</span>
-<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;(a**2 - 1)/(a - 1) - 1&quot;</span><span class="p">,</span> <span class="s2">&quot;log(cos(b) + I*sin(b))/I&quot;</span><span class="p">],</span>
-<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;</span><span class="p">,</span> <span class="s2">&quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;(a**2 - 1)/(a - 1) - 1&quot;</span><span class="p">,</span>
+<span class="gp">... </span>         <span class="s2">&quot;log(cos(b) + I*sin(b))/I&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>         <span class="s2">&quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">]</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simplify</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>

@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Oct 07, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
   </head>
   
   
@@ -1227,8 +1227,10 @@ longer to execute than if <code class="docutils literal notranslate"><span class
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="p">[</span>
-<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;(a**2 - 1)/(a - 1) - 1&quot;</span><span class="p">,</span> <span class="s2">&quot;log(cos(b) + I*sin(b))/I&quot;</span><span class="p">],</span>
-<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;</span><span class="p">,</span> <span class="s2">&quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;(a**2 - 1)/(a - 1) - 1&quot;</span><span class="p">,</span>
+<span class="gp">... </span>         <span class="s2">&quot;log(cos(b) + I*sin(b))/I&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;acos((exp(I*c) + exp(-I*c))/2)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>         <span class="s2">&quot;d**log(E*(sin(d)**2 + cos(d)**2))&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">]</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rho</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">matrix</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;matrix&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ&quot;</span><span class="p">)</span>
@@ -1347,20 +1349,20 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">1</span
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">identity</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">identity</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="go">I = |0⟩⟨0| + |1⟩⟨1|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">identity</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">identity</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="go">I = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|</span>
-</pre></div>
-</div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span> <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="go">|ψ⟩ = a|0⟩ + b|1⟩</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="go">|ψ⟩ = a/sqrt(a*conjugate(a) + b*conjugate(b))|0⟩ + b/sqrt(a*conjugate(a) + b*conjugate(b))|1⟩</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">identity</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">identity</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">I = |0⟩⟨0| + |1⟩⟨1|</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">identity</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s2">&quot;2/d&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">identity</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">I = 1/d|0⟩⟨0| + 1/d|1⟩⟨1|</span>
 </pre></div>
 </div>
 </dd></dl>
