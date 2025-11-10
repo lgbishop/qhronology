@@ -220,7 +220,7 @@ latex_elements = {
 
 \vspace*{\fill}
 
-\emph{Qhronology}: A Python package for studying quantum models of closed timelike curves and performing general quantum information processing \& computation.
+\emph{Qhronology}: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing \& computation.
 
 \textcopyright\enspace 2025 Lachlan G. Bishop
 

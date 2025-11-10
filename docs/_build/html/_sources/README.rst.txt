@@ -56,7 +56,7 @@ Overview
 
 ..   - transition probabilities (T-CTCs)
 
-- general quantum computation and information processing
+- general quantum information processing and computation
 
   - algebraic, symbolic calculations
   - (classical) simulation of quantum experiments (limited by the finite precision of floating-point arithmetic)
@@ -614,7 +614,7 @@ Citation
 .. code:: text
 
    @software{bishop_qhronology_2025,
-      title = {{Qhronology: A Python package for studying quantum models of closed timelike curves and performing general quantum information processing & computation}},
+      title = {{Qhronology: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing & computation}},
       author = {Bishop, Lachlan G.},
       year = {2025},
       url = {https://github.com/lgbishop/qhronology},

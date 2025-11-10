@@ -13,7 +13,7 @@ _Qhronology_ is a Python package for computing the states of the chronology-resp
   - Deutsch's model (D-CTCs)
   - postselected teleportation (P-CTCs)
 
-- general quantum computation and information processing
+- general quantum information processing and computation
 
   - algebraic, symbolic calculations
   - (classical) simulation of quantum experiments (limited by the finite precision of floating-point arithmetic)
@@ -391,7 +391,7 @@ Contributions to Qhronology (both the package and its documentation), including 
 
 ```bibtex
 @software{bishop_qhronology_2025,
-  title = {{Qhronology: A Python package for studying quantum models of closed timelike curves and performing general quantum information processing & computation}},
+  title = {{Qhronology: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing & computation}},
   author = {Bishop, Lachlan G.},
   year = {2025},
   url = {https://github.com/lgbishop/qhronology},
