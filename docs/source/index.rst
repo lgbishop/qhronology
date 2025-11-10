@@ -199,7 +199,7 @@
       
       **A Python package for studying quantum models of closed timelike curves**
 
-      **and performing general quantum information processing & computation**
+      **and simulating general quantum information processing & computation**
 
    ----
    

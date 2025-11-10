@@ -16,7 +16,7 @@ authors = [
 maintainers = [
   {name = "lgbishop", email = "lachlanbishop@protonmail.com"}
 ]
-description = "A Python package for studying quantum models of closed timelike curves and performing general quantum information processing & computation"
+description = "A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing & computation"
 readme = "README.md"
 
 license = "AGPL-3.0-or-later OR LicenseRef-Custom-Commercial-License-Agreement"
