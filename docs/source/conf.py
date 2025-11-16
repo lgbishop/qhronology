@@ -600,6 +600,7 @@ Read the full license here:
     "sphinxsetup": "TitleColor=black, \
     div.note_border-radius=0px, \
     pre_border-radius=0px, \
+    pre_padding=0.25cm, \
     noteBorderColor={HTML}{2266C0}, \
     div.note_title-foreground-TeXcolor={HTML}{2266C0}, \
     div.note_title-background-TeXcolor={HTML}{DCE7FC}, \
