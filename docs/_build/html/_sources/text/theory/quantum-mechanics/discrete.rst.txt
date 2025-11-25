@@ -182,7 +182,7 @@ Qutrits described by :math:`3`-dimensional density operators have corresponding 
 .. math:: \StateDensity = \frac{1}{3}\sum_{\mu=0}^{8} \trace[\GellMann_\mu \StateDensity]\GellMann_\mu.
    :label: eq:matrix_qutrit
 
-where :math:`\{\Pauli_\mu\}_{\mu=0}^{3}` is a complete basis for the space of :math:`3 \times 3` complex matrices. Perhaps the most notable choice of matrices with which to construct a such a basis are the *Gell-Mann matrices*,
+where :math:`\{\GellMann_\mu\}_{\mu=0}^{3}` is a complete basis for the space of :math:`3 \times 3` complex matrices. Perhaps the most notable choice of matrices with which to construct a such a basis are the *Gell-Mann matrices*,
 
 .. math::
    :label: eq:Gell-Mann

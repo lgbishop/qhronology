@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 25, 2025"/>
   </head>
   
   
@@ -868,7 +868,6 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.input">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">input</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -886,11 +885,6 @@
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        merge : bool</span>
-<span class="sd">            Whether to merge the labels of the individual quantum states into a single product,</span>
-<span class="sd">            separated by ``&quot;⊗&quot;`` operators, prior to any notational processing.</span>
-<span class="sd">            Only relevant when all states are vectors.</span>
-<span class="sd">            Defaults to ``True``.</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of ``self.conditions``.</span>
@@ -914,10 +908,7 @@
 <span class="sd">            When not ``None``, overrides the value passed to ``label``.</span>
 <span class="sd">            Must have a non-zero length.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to ``&quot;⊗&quot;.join([state.notation for state in self.inputs])``</span>
-<span class="sd">            if ``label`` is ``None``</span>
-<span class="sd">            and (``merge`` is ``False`` or the input states are all vectors),</span>
-<span class="sd">            else ``None``.</span>
+<span class="sd">            Defaults to ``None``.</span>
 <span class="sd">        debug : bool</span>
 <span class="sd">            Whether to print the internal state (held in ``matrix``) on change.</span>
 <span class="sd">            Defaults to ``False``.</span>
@@ -926,42 +917,20 @@
 <span class="sd">        -------</span>
 <span class="sd">        mat</span>
 <span class="sd">            The total input state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
-
-<span class="sd">        Note</span>
-<span class="sd">        ----</span>
-<span class="sd">        Passing a value of ``False`` to the ``merge`` argument results in a state whose ``notation``</span>
-<span class="sd">        is fixed and incompatible with any subsequent changes (including densification).</span>
-<span class="sd">        This behaviour may be improved in the future.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">merge</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">merge</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">merge</span>
-        <span class="n">inputs</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span>
         <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conditions</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;⊗&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">state</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">])</span> <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">label</span>
+        <span class="p">)</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">Forms</span><span class="o">.</span><span class="n">MATRIX</span><span class="o">.</span><span class="n">value</span>
         <span class="n">kind</span> <span class="o">=</span> <span class="n">Kinds</span><span class="o">.</span><span class="n">MIXED</span><span class="o">.</span><span class="n">value</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_is_vector</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">form</span> <span class="o">=</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span>
             <span class="n">kind</span> <span class="o">=</span> <span class="n">Kinds</span><span class="o">.</span><span class="n">PURE</span><span class="o">.</span><span class="n">value</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
-                <span class="n">state</span><span class="o">.</span><span class="n">densify</span><span class="p">()</span>
 
-        <span class="c1"># TODO: This is the only place where such label/notation combining occurs for states,</span>
-        <span class="c1"># and it does not extend properly to cases where states are combined further or</span>
-        <span class="c1"># densification is performed.</span>
-        <span class="c1"># Therefore, need to upgrade QuantumObject functionality to allow for multiple labels to be</span>
-        <span class="c1"># stored, each with their own form/kind specification.</span>
-        <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span>
-            <span class="p">(</span><span class="n">merge</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_is_vector</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">)</span>
-            <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_is_vector</span> <span class="ow">is</span> <span class="kc">False</span>
-        <span class="p">):</span>
-            <span class="n">notation</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="s2">&quot;⊗&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">state</span><span class="o">.</span><span class="n">notation</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">])</span>
-                <span class="k">if</span> <span class="n">notation</span> <span class="ow">is</span> <span class="kc">None</span>
-                <span class="k">else</span> <span class="n">notation</span>
-            <span class="p">)</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;⊗&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">state</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">])</span> <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">label</span>
-
-        <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">state</span><span class="o">.</span><span class="n">output</span><span class="p">()</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">]</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">state</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">conjugate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_is_vector</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">densify</span><span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">]</span>
         <span class="n">identity</span> <span class="o">=</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">))</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems_gross</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems_inputs</span><span class="p">):</span>
             <span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">identity</span><span class="p">)</span>

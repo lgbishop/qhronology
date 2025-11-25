@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 25, 2025"/>
   </head>
   
   
@@ -1105,7 +1105,6 @@ i.e., traces and postselections]).</p>
 <span class="sig-prename descclassname"><span class="pre">QuantumCircuit.</span></span><span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">merge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Number</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">generic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Basic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixSymbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixElement</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Symbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Number</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">generic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Basic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixSymbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixElement</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Symbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">simplify</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">conjugate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -1124,10 +1123,6 @@ Is a vector state only when all of the component states are vectors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>merge</strong> (<em>bool</em>) – Whether to merge the labels of the individual quantum states into a single product,
-separated by <code class="docutils literal notranslate"><span class="pre">&quot;⊗&quot;</span></code> operators, prior to any notational processing.
-Only relevant when all states are vectors.
-Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>conditions</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>num</em><em> | </em><em>sym</em><em> | </em><em>str</em><em>, </em><em>num</em><em> | </em><em>sym</em><em> | </em><em>str</em><em>]</em><em>]</em>) – Algebraic conditions to be applied to the state.
 Defaults to the value of <code class="docutils literal notranslate"><span class="pre">self.conditions</span></code>.</p></li>
 <li><p><strong>simplify</strong> (<em>bool</em>) – Whether to perform algebraic simplification on the state.
@@ -1145,10 +1140,7 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;�
 When not <code class="docutils literal notranslate"><span class="pre">None</span></code>, overrides the value passed to <code class="docutils literal notranslate"><span class="pre">label</span></code>.
 Must have a non-zero length.
 Not intended to be set by the user in most cases.
-Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;⊗&quot;.join([state.notation</span> <span class="pre">for</span> <span class="pre">state</span> <span class="pre">in</span> <span class="pre">self.inputs])</span></code>
-if <code class="docutils literal notranslate"><span class="pre">label</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>
-and (<code class="docutils literal notranslate"><span class="pre">merge</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> or the input states are all vectors),
-else <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>debug</strong> (<em>bool</em>) – Whether to print the internal state (held in <code class="docutils literal notranslate"><span class="pre">matrix</span></code>) on change.
 Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
@@ -1157,12 +1149,6 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">False</
 <dd class="field-even"><p><em>mat</em> – The total input state as a <a class="reference internal" href="states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> instance.</p>
 </dd>
 </dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Passing a value of <code class="docutils literal notranslate"><span class="pre">False</span></code> to the <code class="docutils literal notranslate"><span class="pre">merge</span></code> argument results in a state whose <code class="docutils literal notranslate"><span class="pre">notation</span></code>
-is fixed and incompatible with any subsequent changes (including densification).
-This behaviour may be improved in the future.</p>
-</div>
 </dd></dl>
 
 <dl class="py method">
