@@ -768,7 +768,7 @@ class QuantitiesMixin:
         >>> state_ABC = QuantumState(
         ...     spec=[("a", [1, 0, 0]), ("b", [0, 1, 0]), ("c", [0, 0, 1])],
         ...     kind="mixed",
-        ...     symbols={"a": {"complex": True}, "b": {"complex": True}, "c": {"complex": True}},
+        ...     symbols={"a": {"real": True}, "b": {"real": True}, "c": {"real": True}},
         ...     conditions=[("a + b + c", 1)],
         ...     norm=1,
         ... )
