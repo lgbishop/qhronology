@@ -1626,7 +1626,7 @@ class GateInterleave(QuantumGate):
     """Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together
     by interleaving them.
 
-    This is achieved by multiplying the matrix representations of the gates together. For example,
+    This is achieved by multiplying the gates' matrix representations. For example,
     for gates described by the multipartite operators :math:`\\op{A} \\otimes \\Identity`
     and :math:`\\Identity \\otimes \\op{B}`, their interleaved composition is
 
@@ -1926,7 +1926,7 @@ class GateStack(GateInterleave):
     """Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together
     by "stacking" them vertically.
 
-    This is achieved by computing the tensor product matrix representations of the gates together.
+    This is achieved by computing the tensor product of the gates' matrix representations.
     For example, for gates described by the multipartite operators
     :math:`\\op{A} \\otimes \\Identity` and :math:`\\Identity \\otimes \\op{B}`,
     their stacked composition is
