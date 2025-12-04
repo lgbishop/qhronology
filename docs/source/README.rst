@@ -584,9 +584,9 @@ Computing resolutions to the unproven-theorem paradox according to various presc
    >>> unproven_PCTC_violating.print()
    τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
 
-.. raw:: latex
+.. .. raw:: latex
 
-   \newpage
+..    \newpage
 
 Documentation
 =============
