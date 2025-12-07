@@ -1362,14 +1362,14 @@ class Fourier(QuantumGate):
     
     where :math:`j \\equiv \\sum\\limits_{\\ell=1}^{N} j_\\ell \\Dimension^{N - \\ell}`.
 
-    If ``composite`` is ``True``, a copy of the elementary form :math:`\\QFT` is placed on
-    each of the subsystems corresponding to the indices in the ``targets`` property.
-
-    If ``composite`` is ``False``, the composite form :math:`\\QFT_N` is applied to the subsystems
+    If ``composite`` is ``True``, the composite form :math:`\\QFT_N` is applied to the subsystems
     specified by ``targets`` in:
     
     - *ascending* order if ``reverse`` is ``False``
     - *descending* order if ``reverse`` is ``True``
+
+    If ``composite`` is ``False``, a copy of the elementary form :math:`\\QFT` is placed on
+    each of the subsystems corresponding to the indices in the ``targets`` property.
 
     Arguments
     ---------
