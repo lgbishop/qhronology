@@ -525,7 +525,8 @@ def measure(
     - When ``statistics`` is ``True``,
       the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in ``targets``)
       is measured and the set of resulting statistics is returned.
-      This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:
+      This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each
+      given operator, where:
 
       - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)
         when ``observable`` is ``False``
@@ -1149,7 +1150,8 @@ class OperationsMixin:
             They must be consecutive, and their number must match the number of systems spanned
             by all given operators.
             Indexing begins at ``0``.
-            All other systems are discarded (traced over) in the course of performing the measurement. Defaults to the value of ``self.systems``.
+            All other systems are discarded (traced over) in the course of performing the measurement.
+            Defaults to the value of ``self.systems``.
         observable: bool
             Whether to treat the items in ``operators`` as observables instead of Kraus operators
             or projectors.

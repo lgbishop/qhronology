@@ -971,8 +971,8 @@ class QuantumCircuit(SymbolicsProperties):
             (as opposed to Kraus operators or projectors).
             Defaults to ``False``.
         statistics : bool
-            Whether to return a list of probabilities (``True``) or mutate the state into
-            a post-measurement probabilistic sum of all outcomes (``False``).
+            Whether to return a list of probabilities (``True``)
+            or the post-measurement state (``False``).
             Defaults to ``False``.
 
         Returns
