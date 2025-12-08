@@ -44,16 +44,18 @@ ttT = GateInterleave(tII, ItI, IIT)
 NCH = GateInterleave(NCI, IIH)
 
 # Circuit
-circuit = QuantumCircuit(
+decomposition = QuantumCircuit(
     inputs=[first_state, second_state, third_state],
     gates=[IIH, TTT, NCI, INC, CIN, ItI, CNI, ttT, INC, CIN, NCH],
 )
-circuit.diagram(force_separation=True)
+decomposition.diagram(force_separation=True)
 
 # Output
-output_state = circuit.state(label="x, y, z ⊕ xy")
+output_state = decomposition.state(label="x, y, z ⊕ xy")
 
 # Results
+print(repr(decomposition.gate()))
+
 first_state.print()
 second_state.print()
 third_state.print()

@@ -52,7 +52,7 @@ Diagram
 
 .. code:: python
 
-   >>> circuit.diagram(force_separation = True)
+   >>> decomposition.diagram(force_separation = True)
 
 ..
 
@@ -79,6 +79,22 @@ Diagram
       
       \end{mdframed}
       \vspace{1em}
+
+Gate
+^^^^
+
+.. code:: python
+
+   >>> print(repr(decomposition.gate()))
+   Matrix([
+   [1, 0, 0, 0, 0, 0, 0, 0],
+   [0, 1, 0, 0, 0, 0, 0, 0],
+   [0, 0, 1, 0, 0, 0, 0, 0],
+   [0, 0, 0, 1, 0, 0, 0, 0],
+   [0, 0, 0, 0, 1, 0, 0, 0],
+   [0, 0, 0, 0, 0, 1, 0, 0],
+   [0, 0, 0, 0, 0, 0, 0, 1],
+   [0, 0, 0, 0, 0, 0, 1, 0]])
 
 States
 ^^^^^^
