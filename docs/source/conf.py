@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.abspath("../../src"))  # Source code dir relative to 
 project = "Qhronology"
 copyright = "2025 Lachlan G. Bishop"
 author = "Lachlan G. Bishop"
-version = "1"
+version = "1.0.1"  # QHRONOLOGY_VERSION_NUMBER
 release = "1.0.1"  # QHRONOLOGY_VERSION_NUMBER
 html_title = "Qhronology"
 html_last_updated_fmt = "%b %d, %Y"
@@ -211,6 +211,7 @@ latex_elements = {
     "pointsize": "10pt",
     # "pxunit": "0.5bp",
     "figure_align": "H",
+    "releasename": "Version",
     #     'fontpkg': r"""
     # \setmainfont{DejaVu Serif}
     # \setsansfont{DejaVu Sans}
