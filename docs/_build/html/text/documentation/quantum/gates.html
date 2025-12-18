@@ -70,8 +70,8 @@
     <link rel="prev" title="States" href="states.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Nov 25, 2025"/>
+  <meta name="docsearch:version" content="1.0.1" />
+    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
   </head>
   
   
@@ -2101,9 +2101,9 @@ nor can the associated property be set.</p>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png" style="width: 34.800000000000004px; height: 14.8px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png" style="width: 123.2px; height: 33.6px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_rnot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_rnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_rnot-light.png" style="width: 34.800000000000004px; height: 14.8px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_rnot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_rnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_rnot-light.png" style="width: 123.2px; height: 33.6px;" />
 </a>
 </div></blockquote>
 </dd></dl>
@@ -2246,14 +2246,14 @@ on the basis state
     \sum\limits_{k_\ell=0}^{\Dimension - 1}
     \e^{2\pi\eye j k_\ell \Dimension^{-\ell}} \ket{k_\ell}\]</div>
 <p>where <span class="math notranslate nohighlight">\(j \equiv \sum\limits_{\ell=1}^{N} j_\ell \Dimension^{N - \ell}\)</span>.</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">composite</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, a copy of the elementary form <span class="math notranslate nohighlight">\(\QFT\)</span> is placed on
-each of the subsystems corresponding to the indices in the <code class="docutils literal notranslate"><span class="pre">targets</span></code> property.</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">composite</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, the composite form <span class="math notranslate nohighlight">\(\QFT_N\)</span> is applied to the subsystems
+<p>If <code class="docutils literal notranslate"><span class="pre">composite</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the composite form <span class="math notranslate nohighlight">\(\QFT_N\)</span> is applied to the subsystems
 specified by <code class="docutils literal notranslate"><span class="pre">targets</span></code> in:</p>
 <ul class="simple">
 <li><p><em>ascending</em> order if <code class="docutils literal notranslate"><span class="pre">reverse</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
 <li><p><em>descending</em> order if <code class="docutils literal notranslate"><span class="pre">reverse</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
 </ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">composite</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, a copy of the elementary form <span class="math notranslate nohighlight">\(\QFT\)</span> is placed on
+each of the subsystems corresponding to the indices in the <code class="docutils literal notranslate"><span class="pre">targets</span></code> property.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -2474,7 +2474,7 @@ Kraus operators or projectors).</p>
 <dd><p>Bases: <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a></p>
 <p>Compose two or more <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> instances together
 by interleaving them.</p>
-<p>This is achieved by multiplying the matrix representations of the gates together. For example,
+<p>This is achieved by multiplying the gates’ matrix representations. For example,
 for gates described by the multipartite operators <span class="math notranslate nohighlight">\(\op{A} \otimes \Identity\)</span>
 and <span class="math notranslate nohighlight">\(\Identity \otimes \op{B}\)</span>, their interleaved composition is</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-17">
@@ -2608,7 +2608,7 @@ to be composited.</p>
 <dd><p>Bases: <a class="reference internal" href="#qhronology.quantum.gates.GateInterleave" title="qhronology.quantum.gates.GateInterleave"><code class="xref py py-class docutils literal notranslate"><span class="pre">GateInterleave</span></code></a></p>
 <p>Compose two or more <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> instances together
 by “stacking” them vertically.</p>
-<p>This is achieved by computing the tensor product matrix representations of the gates together.
+<p>This is achieved by computing the tensor product of the gates’ matrix representations.
 For example, for gates described by the multipartite operators
 <span class="math notranslate nohighlight">\(\op{A} \otimes \Identity\)</span> and <span class="math notranslate nohighlight">\(\Identity \otimes \op{B}\)</span>,
 their stacked composition is</p>

@@ -70,8 +70,8 @@
     <link rel="prev" title="CCNOT (controlled-controlled-NOT)" href="ccnot.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Nov 25, 2025"/>
+  <meta name="docsearch:version" content="1.0.1" />
+    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
   </head>
   
   
@@ -558,16 +558,18 @@
 <span class="n">NCH</span> <span class="o">=</span> <span class="n">GateInterleave</span><span class="p">(</span><span class="n">NCI</span><span class="p">,</span> <span class="n">IIH</span><span class="p">)</span>
 
 <span class="c1"># Circuit</span>
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span>
     <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">first_state</span><span class="p">,</span> <span class="n">second_state</span><span class="p">,</span> <span class="n">third_state</span><span class="p">],</span>
     <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">IIH</span><span class="p">,</span> <span class="n">TTT</span><span class="p">,</span> <span class="n">NCI</span><span class="p">,</span> <span class="n">INC</span><span class="p">,</span> <span class="n">CIN</span><span class="p">,</span> <span class="n">ItI</span><span class="p">,</span> <span class="n">CNI</span><span class="p">,</span> <span class="n">ttT</span><span class="p">,</span> <span class="n">INC</span><span class="p">,</span> <span class="n">CIN</span><span class="p">,</span> <span class="n">NCH</span><span class="p">],</span>
 <span class="p">)</span>
-<span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">decomposition</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Output</span>
-<span class="n">output_state</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;x, y, z ⊕ xy&quot;</span><span class="p">)</span>
+<span class="n">output_state</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;x, y, z ⊕ xy&quot;</span><span class="p">)</span>
 
 <span class="c1"># Results</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">decomposition</span><span class="o">.</span><span class="n">gate</span><span class="p">()))</span>
+
 <span class="n">first_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="n">second_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="n">third_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
@@ -580,7 +582,7 @@
 <h2>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h2>
 <section id="diagram">
 <h3>Diagram<a class="headerlink" href="#diagram" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">force_separation</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">force_separation</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
@@ -589,6 +591,21 @@
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_algorithms_toffoli-light.png"><img alt="../../../_images/text_examples_algorithms_toffoli-light.png" class="only-light align-left" src="../../../_images/text_examples_algorithms_toffoli-light.png" style="width: 461.20000000000005px; height: 96.80000000000001px;" />
 </a>
 </div></blockquote>
+</section>
+<section id="gate">
+<h3>Gate<a class="headerlink" href="#gate" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">decomposition</span><span class="o">.</span><span class="n">gate</span><span class="p">()))</span>
+<span class="go">Matrix([</span>
+<span class="go">[1, 0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">[0, 1, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">[0, 0, 1, 0, 0, 0, 0, 0],</span>
+<span class="go">[0, 0, 0, 1, 0, 0, 0, 0],</span>
+<span class="go">[0, 0, 0, 0, 1, 0, 0, 0],</span>
+<span class="go">[0, 0, 0, 0, 0, 1, 0, 0],</span>
+<span class="go">[0, 0, 0, 0, 0, 0, 0, 1],</span>
+<span class="go">[0, 0, 0, 0, 0, 0, 1, 0]])</span>
+</pre></div>
+</div>
 </section>
 <section id="states">
 <h3>States<a class="headerlink" href="#states" title="Link to this heading">#</a></h3>
@@ -663,6 +680,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagram">Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gate">Gate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#states">States</a></li>
 </ul>
 </li>

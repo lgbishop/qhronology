@@ -70,8 +70,8 @@
     <link rel="prev" title="Home" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Nov 25, 2025"/>
+  <meta name="docsearch:version" content="1.0.1" />
+    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
   </head>
   
   
@@ -819,7 +819,34 @@
 </section>
 <section id="contributing">
 <h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h2>
-<p>Contributions to Qhronology (both the package and its documentation), including any features, fixes, and suggestions, are welcome provided they are compatible with the project’s concept and vision, while also conforming to its style. Please see <a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/CONTRIBUTING">CONTRIBUTING</a> for more details about contributing to the project. Feel free to contact <a class="reference external" href="mailto:lachlanbishop&#37;&#52;&#48;protonmail&#46;com">lachlanbishop<span>&#64;</span>protonmail<span>&#46;</span>com</a> to discuss any significant additions or changes you wish to propose.</p>
+<p>Contributions to Qhronology (both the package and its documentation), including any features, fixes, and suggestions, are welcome provided they are compatible with the project’s concept and vision, while also conforming to its style. Please see below for more details about contributing to the project. Feel free to contact <a class="reference external" href="mailto:lachlanbishop&#37;&#52;&#48;protonmail&#46;com">lachlanbishop<span>&#64;</span>protonmail<span>&#46;</span>com</a> to discuss any significant additions or changes you wish to propose.</p>
+<section id="copyright-and-licensing">
+<h3>Copyright and licensing<a class="headerlink" href="#copyright-and-licensing" title="Link to this heading">#</a></h3>
+<p>The nature of Qhronology’s dual-licensing structure means that the legal requirements of contributors (and their contributions) to the project are different, and more complex, than those of ordinary permissive and copyleft licenses. The intention of this licensing scheme is to maintain a project that is both free and open for non-commercial use (both private and public), while simultaneously placing stronger restrictions and limits on commercial use. Please note that Qhronology will <em>always</em> be free and open for non-commercial use.</p>
+<p>As a result, contributors are required to accept a contributor licensing agreement (CLA) for each contribution to the project. The CLA constitutes a legal agreement between contributors and the project that mainly exists to facilitate the transfer of copyright of the work contained in contributions to the project. This is necessary for the project, made available for non-commercial use under the AGPL, to protect its ability to be distributed for commercial use under non-AGPL terms. Importantly, this does not remove the credit for any contributions, and care will be taken to make proper attribution when and where it is appropriate.</p>
+<p>The acceptance of the CLA is achieved simply by reading the document itself (<a class="reference external" href="https://github.com/lgbishop/qhronology/blob/latest/licenses/CLA.txt">CLA.txt</a>), agreeing to all of its terms and conditions, and then declaring so by reproducing the following (inside the code environment below) verbatim in the description of any merge/pull requests to the project’s repository:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ ] I declare that I have read Qhronology&#39;s Contributor License Agreement and agree to its terms and conditions.
+</pre></div>
+</div>
+<p>The box must be checked, which can be accomplished by inserting a lowercase “<code class="docutils literal notranslate"><span class="pre">x</span></code>” in place of the white space within the square brackets. Failure to do so may result in your contribution being rejected. If accepted, please note that the CLA is irrevocable. Note also that for contributions which are sufficiently small (such as minor bug fixes or typographical error fixes), you are not required to state your agreement to the CLA as these contributions are small enough to not be copyrightable.</p>
+</section>
+<section id="explanation">
+<h3>Explanation<a class="headerlink" href="#explanation" title="Link to this heading">#</a></h3>
+<p>Qhronology is committed to making contributions available as FOSS (free and open-source software) under an OSI-approved license in some form. Currently, this is achieved by offering the project as free for non-commercial use with the GNU Affero General Public License version 3 (AGPL-3.0-or-later). The main reason of the CLA therefore is that Qhronology needs to have permission from contributors to be able to redistribute their contributions under a non-AGPL license. Accepting the CLA is simply a way of legally declaring that you have both the necessary ownership of the contributions and actually do grant us the rights to use them. Such contributions include adding to or changing any of the following facets of the project:</p>
+<ul class="simple">
+<li><p>code</p></li>
+<li><p>graphics (including figures, icons, and artwork)</p></li>
+<li><p>documentation (including text, code examples, and equations)</p></li>
+</ul>
+<p>Simultaneously, Qhronology reserves the right to, at any time:</p>
+<ul class="simple">
+<li><p>change the project’s licensing model (including the licenses themselves)</p></li>
+<li><p>reassign copyright of the project</p></li>
+<li><p>modify or delete any past contributions to the project</p></li>
+<li><p>change the Terms and Conditions in the CLA</p></li>
+</ul>
+<p>Performing any of these actions will not change the conditions of the agreement at the time of acceptance of the CLA.</p>
+</section>
 </section>
 <section id="citation">
 <h2>Citation<a class="headerlink" href="#citation" title="Link to this heading">#</a></h2>
@@ -841,11 +868,12 @@
 <li><p>Permit more intuitive usage (i.e., summation and multiplication) of quantum objects via operator overloading.</p></li>
 <li><p>Tighter integration with SymPy’s <code class="docutils literal notranslate"><span class="pre">pprint()</span></code> functionality for enhanced state and gate printing.</p></li>
 <li><p>Implement T-CTCs (the <em>transition-probabilities</em> quantum model of time travel).</p></li>
-<li><p>Create the ability for circuit visualizations to target <em>Quantikz</em> LaTeX output.</p>
+<li><p>Add the ability for circuit visualizations to target <em>Quantikz</em> LaTeX output.</p>
 <ul>
 <li><p>Automatically rasterize using available (local) LaTeX installation.</p></li>
 </ul>
 </li>
+<li><p>Add the ability to label a circuit’s output systems.</p></li>
 <li><p>Implement the permutation (PERM) gate.</p></li>
 </ul>
 </li>
@@ -945,7 +973,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other">Other</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copyright-and-licensing">Copyright and licensing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation">Explanation</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">Citation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#possible-future-work">Possible future work</a></li>
 </ul>

@@ -1,6 +1,8 @@
 Contributing
 ============
 
+Contributions to Qhronology (both the package and its documentation), including any features, fixes, and suggestions, are welcome provided they are compatible with the project's concept and vision, while also conforming to its style. Please see below for more details about contributing to the project. Feel free to contact lachlanbishop@protonmail.com to discuss any significant additions or changes you wish to propose.
+
 Copyright and licensing
 -----------------------
 
@@ -10,15 +12,11 @@ As a result, contributors are required to accept a contributor licensing agreeme
 
 The acceptance of the CLA is achieved simply by reading the document itself (`CLA.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/CLA.txt>`_), agreeing to all of its terms and conditions, and then declaring so by reproducing the following (inside the code environment below) verbatim in the description of any merge/pull requests to the project's repository:
 
-.. code::
+.. code:: text
 
    [ ] I declare that I have read Qhronology's Contributor License Agreement and agree to its terms and conditions.
 
-The box must be checked, which can be accomplished by inserting a lowercase "``x``" in place of the white space within the square brackets.
-
-Failure to do so may result in your contribution being rejected. If accepted, please note that the CLA is irrevocable.
-
-Note that for contributions which are sufficiently small (such as minor bug fixes or typographical error fixes), you are not required to state your agreement to the CLA as these contributions are small enough to not be copyrightable.
+The box must be checked, which can be accomplished by inserting a lowercase "``x``" in place of the white space within the square brackets. Failure to do so may result in your contribution being rejected. If accepted, please note that the CLA is irrevocable. Note also that for contributions which are sufficiently small (such as minor bug fixes or typographical error fixes), you are not required to state your agreement to the CLA as these contributions are small enough to not be copyrightable.
 
 Explanation
 -----------

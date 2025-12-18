@@ -65,8 +65,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Nov 25, 2025"/>
+  <meta name="docsearch:version" content="1.0.1" />
+    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
   </head>
   
   
@@ -997,7 +997,8 @@
 <span class="sd">    - When ``statistics`` is ``True``,</span>
 <span class="sd">      the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in ``targets``)</span>
 <span class="sd">      is measured and the set of resulting statistics is returned.</span>
-<span class="sd">      This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:</span>
+<span class="sd">      This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each</span>
+<span class="sd">      given operator, where:</span>
 
 <span class="sd">      - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)</span>
 <span class="sd">        when ``observable`` is ``False``</span>
@@ -1627,7 +1628,8 @@
 <span class="sd">            They must be consecutive, and their number must match the number of systems spanned</span>
 <span class="sd">            by all given operators.</span>
 <span class="sd">            Indexing begins at ``0``.</span>
-<span class="sd">            All other systems are discarded (traced over) in the course of performing the measurement. Defaults to the value of ``self.systems``.</span>
+<span class="sd">            All other systems are discarded (traced over) in the course of performing the measurement.</span>
+<span class="sd">            Defaults to the value of ``self.systems``.</span>
 <span class="sd">        observable: bool</span>
 <span class="sd">            Whether to treat the items in ``operators`` as observables instead of Kraus operators</span>
 <span class="sd">            or projectors.</span>

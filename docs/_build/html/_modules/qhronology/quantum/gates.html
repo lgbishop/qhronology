@@ -65,8 +65,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Nov 25, 2025"/>
+  <meta name="docsearch:version" content="1.0.1" />
+    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
   </head>
   
   
@@ -1840,14 +1840,14 @@
 <span class="sd">    </span>
 <span class="sd">    where :math:`j \\equiv \\sum\\limits_{\\ell=1}^{N} j_\\ell \\Dimension^{N - \\ell}`.</span>
 
-<span class="sd">    If ``composite`` is ``True``, a copy of the elementary form :math:`\\QFT` is placed on</span>
-<span class="sd">    each of the subsystems corresponding to the indices in the ``targets`` property.</span>
-
-<span class="sd">    If ``composite`` is ``False``, the composite form :math:`\\QFT_N` is applied to the subsystems</span>
+<span class="sd">    If ``composite`` is ``True``, the composite form :math:`\\QFT_N` is applied to the subsystems</span>
 <span class="sd">    specified by ``targets`` in:</span>
 <span class="sd">    </span>
 <span class="sd">    - *ascending* order if ``reverse`` is ``False``</span>
 <span class="sd">    - *descending* order if ``reverse`` is ``True``</span>
+
+<span class="sd">    If ``composite`` is ``False``, a copy of the elementary form :math:`\\QFT` is placed on</span>
+<span class="sd">    each of the subsystems corresponding to the indices in the ``targets`` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -2110,7 +2110,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together</span>
 <span class="sd">    by interleaving them.</span>
 
-<span class="sd">    This is achieved by multiplying the matrix representations of the gates together. For example,</span>
+<span class="sd">    This is achieved by multiplying the gates&#39; matrix representations. For example,</span>
 <span class="sd">    for gates described by the multipartite operators :math:`\\op{A} \\otimes \\Identity`</span>
 <span class="sd">    and :math:`\\Identity \\otimes \\op{B}`, their interleaved composition is</span>
 
@@ -2413,7 +2413,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together</span>
 <span class="sd">    by &quot;stacking&quot; them vertically.</span>
 
-<span class="sd">    This is achieved by computing the tensor product matrix representations of the gates together.</span>
+<span class="sd">    This is achieved by computing the tensor product of the gates&#39; matrix representations.</span>
 <span class="sd">    For example, for gates described by the multipartite operators</span>
 <span class="sd">    :math:`\\op{A} \\otimes \\Identity` and :math:`\\Identity \\otimes \\op{B}`,</span>
 <span class="sd">    their stacked composition is</span>

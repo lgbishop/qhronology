@@ -70,8 +70,8 @@
     <link rel="prev" title="Documentation" href="../part-documentation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1" />
-    <meta name="docbuild:last-update" content="Nov 25, 2025"/>
+  <meta name="docsearch:version" content="1.0.1" />
+    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
   </head>
   
   
@@ -1526,7 +1526,8 @@ or a set of observables constituting a complete basis for the relevant state spa
 They must be consecutive, and their number must match the number of systems spanned
 by all given operators.
 Indexing begins at <code class="docutils literal notranslate"><span class="pre">0</span></code>.
-All other systems are discarded (traced over) in the course of performing the measurement. Defaults to the value of <code class="docutils literal notranslate"><span class="pre">self.systems</span></code>.</p></li>
+All other systems are discarded (traced over) in the course of performing the measurement.
+Defaults to the value of <code class="docutils literal notranslate"><span class="pre">self.systems</span></code>.</p></li>
 <li><p><strong>observable</strong> (<em>bool</em>) – Whether to treat the items in <code class="docutils literal notranslate"><span class="pre">operators</span></code> as observables instead of Kraus operators
 or projectors.
 Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
@@ -2000,7 +2001,7 @@ of the internal state.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state_ABC</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;mixed&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
+<span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
 <span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a + b + c&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>

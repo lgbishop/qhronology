@@ -584,9 +584,9 @@ Computing resolutions to the unproven-theorem paradox according to various presc
    >>> unproven_PCTC_violating.print()
    τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
 
-.. raw:: latex
+.. .. raw:: latex
 
-   \newpage
+..    \newpage
 
 Documentation
 =============
@@ -598,15 +598,9 @@ The latest version of the documentation for the package is available at:
 
 Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repository <https://github.com/sphinx-doc/sphinx>`_), with their shared source files residing within the ``docs`` directory at the root of the project's repository. This includes all project text and artwork. Please see `shell-sphinx.nix <https://github.com/lgbishop/qhronology/blob/latest/docs/shell-sphinx.nix>`_ within that directory for a list of dependencies required to build both documentation targets. Note that a full LaTeX system installation from 2024 or later is required to build the project's PDF documentation, figures, and artwork (including the logo). Also note that the documentation's rendered circuit diagrams (generated from the package itself) were created using a custom LaTeX template (`render-text.tex <https://github.com/lgbishop/qhronology/blob/latest/docs/source/figures/render-text.tex>`_) and associated shell script (`render-text.sh <https://github.com/lgbishop/qhronology/blob/latest/docs/source/figures/render-text.sh>`_).
 
-License
-=======
-
 .. include:: ./../../LICENSE
 
-Contributing
-============
-
-Contributions to Qhronology (both the package and its documentation), including any features, fixes, and suggestions, are welcome provided they are compatible with the project's concept and vision, while also conforming to its style. Please see `CONTRIBUTING <https://github.com/lgbishop/qhronology/blob/latest/CONTRIBUTING>`_ for more details about contributing to the project. Feel free to contact lachlanbishop@protonmail.com to discuss any significant additions or changes you wish to propose.
+.. include:: ./../../CONTRIBUTING
 
 Citation
 ========
@@ -633,9 +627,11 @@ Possible future work
 
   - Implement T-CTCs (the *transition-probabilities* quantum model of time travel).
 
-  - Create the ability for circuit visualizations to target *Quantikz* LaTeX output.
+  - Add the ability for circuit visualizations to target *Quantikz* LaTeX output.
 
     - Automatically rasterize using available (local) LaTeX installation.
+
+  - Add the ability to label a circuit's output systems.
 
   - Implement the permutation (PERM) gate.
 
