@@ -414,6 +414,8 @@ Contributions to Qhronology (both the package and its documentation), including 
 
     - Automatically rasterize using available (local) LaTeX installation.
 
+  - Add the ability to label a circuit's output systems.
+
   - Implement the permutation (PERM) gate.
 
 - Documentation:

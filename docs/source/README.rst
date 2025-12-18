@@ -633,9 +633,11 @@ Possible future work
 
   - Implement T-CTCs (the *transition-probabilities* quantum model of time travel).
 
-  - Create the ability for circuit visualizations to target *Quantikz* LaTeX output.
+  - Add the ability for circuit visualizations to target *Quantikz* LaTeX output.
 
     - Automatically rasterize using available (local) LaTeX installation.
+
+  - Add the ability to label a circuit's output systems.
 
   - Implement the permutation (PERM) gate.
 
