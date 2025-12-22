@@ -33,7 +33,7 @@ One of the main results of Deutsch's work on time travel is the proposal for the
    :figwidth: 100 %
    :figclass: light-dark hidden
 
-   Deutsch's model of quantum time travel.
+   Deutsch's model of quantum time travel. Note that the depiction of the interaction between chronology-respecting (CR, upper) and chronology-violating (CV, lower) systems as shown here is standard way of visualizing any circuit with CTCs.
 
 The mathematical formulation of the self-consistent evolution of a quantum state through a region with a time machine is provided by requiring that any given chronology-violating (CV) system enters the CTC in the state
 
@@ -84,10 +84,10 @@ Of crucial significance is the fact that the Deutsch prescription resolves time-
    :label: eq:D-CTCs_entropy
 
    \begin{aligned}
-       \normalized{\MapDCTCsCV_{\Unitary}^{\infty}}[\StateCR,\StateCV^{(0)}] \equiv \lim_{N\rightarrow\infty}\frac{1}{N+1} \sum_{k=0}^{N}\MapDCTCsCV_{\Unitary}^{k}(\StateCR,\StateCV^{(0)}) 
+       \normalized{\MapDCTCsCV_{\Unitary}^{\infty}}\bigl[\StateCR,\StateCV^{(0)}\bigr] \equiv \lim_{N\rightarrow\infty}\frac{1}{N+1} \sum_{k=0}^{N}\MapDCTCsCV_{\Unitary}^{k}\bigl[\StateCR,\StateCV^{(0)}\bigr]
    \end{aligned}
 
-exists for every unitary :math:`\Unitary` and input :math:`\StateCR`. Here, :math:`\StateCV^{(0)} \in \SpaceLinear(\SpaceHilbert_\CV)` represents some initial CV state, and :math:`\MapDCTCsCV^{k}` denotes :math:`k` compositions of the D-CTC CV map, i.e.,
+exists for every unitary :math:`\Unitary` and input :math:`\StateCR`. Here, :math:`\StateCV^{(0)} \in \SpaceMixed(\SpaceHilbert_\CV)` represents some initial CV state, and :math:`\MapDCTCsCV^{k}` denotes :math:`k` compositions of the D-CTC CV map, i.e.,
 
 .. math::
    :label: eq:D-CTCs_CV_compositions
