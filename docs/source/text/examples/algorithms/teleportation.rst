@@ -6,9 +6,9 @@ Quantum teleportation
 Description
 -----------
 
-Quantum teleportation :cite:p:`bennett_teleporting_1993` is a significant technique of quantum theory in which the transfer of quantum information between two parties (that may be spatially separated) is achieved. Importantly, this does not involve the movement of physical entities, but concerns rather the transfer of the (quantum) statistics of a physical system (manifesting as a quantum state) to another. This is facilitated by a pair of entangled particles, the statistical correlations of which provide the actual mechanism of teleportation.
+Quantum teleportation :cite:p:`bennett_teleporting_1993` is a significant technique of quantum theory in which the transfer of quantum information between two parties (that may be spatially separated) is achieved. Importantly, this does not involve the movement of physical entities, but concerns rather the relocation of the (quantum) statistics of a physical system (manifesting as a quantum state) to another. This is often facilitated by a pair of entangled particles, the statistical correlations of which provide the actual mechanism of teleportation.
 
-Note that in the process of teleporting the state, the original is destroyed, and so the no-cloning theorem remains unviolated. Additionally, because classical information needs to be sent between the two parties, the teleportation cannot occur faster than the speed of light, meaning that the law of relativity is satisfied. This example (:numref:`fig:circuit_algorithm_teleportation`) implements the canonical version of the algorithm.
+Note that in the process of teleporting the state, the original is destroyed, and so the no-cloning theorem remains unviolated. Additionally, because classical information needs to be sent between the two parties, the teleportation cannot occur faster than the speed of light, meaning that the laws of (special) relativity are satisfied. This example (:numref:`fig:circuit_algorithm_teleportation`) implements the canonical version of the algorithm.
 
 .. only:: html
 
