@@ -3,9 +3,6 @@ from qhronology.quantum.gates import Not
 from qhronology.quantum.circuits import QuantumCircuit
 import sympy as sp
 
-augend_integers = [0, 1]
-addend_integers = 1
-
 # Input
 augend_state = VectorState(
     spec=[("a", [0]), ("b", [1])],
