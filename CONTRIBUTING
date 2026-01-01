@@ -3,8 +3,8 @@ Contributing
 
 Contributions to Qhronology (both the package and its documentation), including any features, fixes, and suggestions, are welcome provided they are compatible with the project's concept and vision, while also conforming to its style. Please see below for more details about contributing to the project. Feel free to contact lachlanbishop@protonmail.com to discuss any significant additions or changes you wish to propose.
 
-Copyright and licensing
------------------------
+Contributor licensing agreement (CLA)
+-------------------------------------
 
 The nature of Qhronology's dual-licensing structure means that the legal requirements of contributors (and their contributions) to the project are different, and more complex, than those of ordinary permissive and copyleft licenses. The intention of this licensing scheme is to maintain a project that is both free and open for non-commercial use (both private and public), while simultaneously placing stronger restrictions and limits on commercial use. Please note that Qhronology will *always* be free and open for non-commercial use.
 
@@ -16,12 +16,12 @@ The acceptance of the CLA is achieved simply by reading the document itself (`CL
 
    [ ] I declare that I have read Qhronology's Contributor License Agreement and agree to its terms and conditions.
 
-The box must be checked, which can be accomplished by inserting a lowercase "``x``" in place of the white space within the square brackets. Failure to do so may result in your contribution being rejected. If accepted, please note that the CLA is irrevocable. Note also that for contributions which are sufficiently small (such as minor bug fixes or typographical error fixes), you are not required to state your agreement to the CLA as these contributions are small enough to not be copyrightable.
+The box must be checked, which can be accomplished by replacing the white space within the square brackets with a lowercase "``x``" character. Failure to do so may result in your contribution being rejected. If accepted, please note that the CLA is irrevocable. Note also that for contributions which are sufficiently small (such as minor bug fixes or typographical error fixes), you are not required to state your agreement to the CLA (as these contributions are small enough to not be copyrightable).
 
-Explanation
------------
+Copyright
+---------
 
-Qhronology is committed to making contributions available as FOSS (free and open-source software) under an OSI-approved license in some form. Currently, this is achieved by offering the project as free for non-commercial use with the GNU Affero General Public License version 3 (AGPL-3.0-or-later). The main reason of the CLA therefore is that Qhronology needs to have permission from contributors to be able to redistribute their contributions under a non-AGPL license. Accepting the CLA is simply a way of legally declaring that you have both the necessary ownership of the contributions and actually do grant us the rights to use them. Such contributions include adding to or changing any of the following facets of the project:
+The Qhronology project is committed to making contributions available as FOSS (free and open-source software) under an OSI-approved license in some form. Currently, this is achieved by offering the project as free for non-commercial use with the GNU Affero General Public License version 3 (AGPL-3.0-or-later). The main reason of the CLA therefore is that Qhronology needs permission from contributors in order to be able to redistribute their contributions under a non-AGPL license. Accepting the CLA is simply a way of legally declaring that you have both the necessary ownership of the contributions and actually do grant us the rights to use them. Such contributions include adding to or changing any of the following facets of the project:
 
 - code
 - graphics (including figures, icons, and artwork)
@@ -34,4 +34,4 @@ Simultaneously, Qhronology reserves the right to, at any time:
 - modify or delete any past contributions to the project
 - change the Terms and Conditions in the CLA
 
-Performing any of these actions will not change the conditions of the agreement at the time of acceptance of the CLA.
+If any of these actions are performed, the conditions of the agreement at the time of acceptance of the CLA will not change.
