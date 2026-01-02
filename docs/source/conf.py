@@ -243,13 +243,13 @@ Source code available online:
 \hrulefill
 \vspace*{0.4cm}
 
-This documentation, including its text and images, is published under the \texttt{CC BY-NC-ND 4.0} license. In accordance with this license, you are free to share (copy and redistribute) the material, in any medium or format, under the following terms:
+This documentation, including its text and images, is published under the CC BY-NC-ND 4.0 license. In accordance with this license, you are free to share (copy and redistribute) the material, in any medium or format, under the following terms:
 
 \begin{description}
-    \item[Attribution] -- You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-    \item[NonCommercial] -- You may not use the material for commercial purposes.
-    \item[NoDerivatives] -- If you remix, transform, or build upon the material, you may not distribute the modified material.
-    \item[No additional restrictions] -- You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+    \item[Attribution] {\textemdash} You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+    \item[NonCommercial] {\textemdash} You may not use the material for commercial purposes.
+    \item[NoDerivatives] {\textemdash} If you remix, transform, or build upon the material, you may not distribute the modified material.
+    \item[No additional restrictions] {\textemdash} You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 \end{description}
 
 For more information, see:
