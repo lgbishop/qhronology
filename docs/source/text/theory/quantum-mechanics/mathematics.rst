@@ -40,16 +40,23 @@ A subset of vectors :math:`\{\Basis_i\}_{i=1}^{\Dimension}` in :math:`\SpaceVect
 
 has the sole solution :math:`c_i = 0` for all :math:`i \in \Integers_{1}^{\Dimension}` (where :math:`c_i \in \Fields`). Otherwise, the set of vectors is said to be *linearly dependent*. The *dimension* of a vector space :math:`\SpaceVector`, denoted by :math:`\dim(\SpaceVector)`, is defined as the least upper bound of linearly independent vectors in :math:`\SpaceVector`. Informally, this is the largest possible number of linearly independent vectors which reside in :math:`\SpaceVector`. A vector space is said to have infinite dimension if there is no such largest number.
 
-Furthermore, a subset :math:`\{\Basis_i\}_{i=1}^{\Dimension}` is said to *span* the vector space :math:`\SpaceVector` if and only if every vector :math:`\psi \in \SpaceVector` can be expressed as a (finite) linear combination of the form
+Furthermore, a subset :math:`\SpaceSubset = \{\Basis_i\}_{i=1}^{\Dimension}` is said to *span* the vector space :math:`\SpaceVector` if and only if every vector :math:`\psi \in \SpaceVector` can be written as a (finite) linear combination of the form
 
-.. math:: \psi = \sum_{i=1}^{\Dimension} \psi_i \Basis_i
+.. math:: \psi = \sum_{i=1}^{\Dimension} \psi_i \Basis_i.
    :label: eq:linear_combination
 
-where :math:`\psi_i \in \Fields` collectively characterize the vector :math:`\psi`. To this end, we often write
+Here, the scalars :math:`\psi_i \in \Fields` collectively characterize the vector :math:`\psi`, and so we often write
 
 .. math:: \psi = (\psi_i)_{i=1}^{\Dimension} = (\psi_1,\psi_2,\ldots,\psi_\Dimension)^\transpose.
 
-Moreover, if :math:`\{\Basis_i\}_{i=1}^{\Dimension}` is both linearly independent and spans :math:`\SpaceVector`, then this subset is a (vector) *basis* for :math:`\SpaceVector`, and its linear combinations are unique.
+This notion can expressed more formally by defining
+
+.. math:: \Span(\SpaceSubset) \equiv \left\{ \sum_{i=1}^{\Dimension} \psi_i \Basis_i : \psi_i \in \Fields \ \forall \ i \right\},
+   :label: eq:span
+
+with which we can make the identification :math:`\SpaceVector = \Span(\SpaceSubset)`. In such a case, we say that :math:`\SpaceSubset` is a *spanning set* (or *generating set*) of :math:`\SpaceVector`. However, if not every vector :math:`\psi \in \SpaceVector` can be expressed by the elements of :math:`\SpaceSubset` via the form :eq:`eq:linear_combination`, then :math:`\Span(\SpaceSubset)` simply defines the smallest linear proper subspace of :math:`\SpaceVector` that contains :math:`\SpaceSubset`.
+
+If :math:`\SpaceSubset = \{\Basis_i\}_{i=1}^{\Dimension}` is both linearly independent and spans :math:`\SpaceVector`, then this subset constitutes a (vector) *basis* for :math:`\SpaceVector`, and the linear combinations of its elements are unique. Every vector space possesses at least one basis, and in case of multiple such bases, they all have the same *cardinality* (i.e., number of unique elements), which is equivalent to the vector space's dimensionality.
 
 Inner product space
 -------------------
@@ -219,7 +226,7 @@ are of course possible, but note that only in the case of :math:`p=2` is the seq
 Dirac notation
 --------------
 
-Here we establish the notational convention that is used nearly universally in the formalism of quantum mechanics on Hilbert spaces. This standard system is known as *Dirac notation* or *bra-ket notation*. In this notation, a vector :math:`\psi \in \SpaceHilbert` is represented by :math:`\ket{\psi}` and is called a *ket*. Similarly, a covector in the dual space :math:`\phi \in \dual{\SpaceHilbert}{}` is denoted by :math:`\bra{\phi}` and called a *bra*. With these constructs, the value of the dual map :eq:`eq:dual_map` is given by
+We establish here the notational convention that is used nearly universally in the formalism of quantum mechanics on Hilbert spaces. This standard system is known as *Dirac notation* or *bra-ket notation*. In this notation, a vector :math:`\psi \in \SpaceHilbert` is represented by :math:`\ket{\psi}` and is called a *ket*. Similarly, a covector in the dual space :math:`\phi \in \dual{\SpaceHilbert}{}` is denoted by :math:`\bra{\phi}` and called a *bra*. With these constructs, the value of the dual map :eq:`eq:dual_map` is given by
 
 .. math:: \phi(\psi) \equiv \braket{\phi}{\psi} \equiv \inner{\phi}{\psi}.
 
@@ -227,7 +234,7 @@ This form is known as a *bra-ket*, and is simply a representation of the inner p
 
 .. math:: \conj{\lambda}{}\bra{\psi} \longleftrightarrow \lambda\ket{\psi}.
 
-Given an orthonormal basis :math:`\{\ket{\Basis_i}\}` of a discrete Hilbert space :math:`\SpaceHilbert`, we can expand in Dirac notation a general ket :math:`\ket{\psi} \in \SpaceHilbert` in terms of the basis as
+Given an orthonormal basis :math:`\{\ket{\Basis_i}\}_i` of a discrete Hilbert space :math:`\SpaceHilbert`, we can expand in Dirac notation a general ket :math:`\ket{\psi} \in \SpaceHilbert` in terms of the basis as
 
 .. math:: \ket{\psi} = \sum_{i} \psi_i \ket{\Basis_i}, \quad \psi_i = \braket{\Basis_i}{\psi}.
 
@@ -239,7 +246,7 @@ with which the above expansion appears as
 
 .. math:: \ket{\psi} = \sum_{i} \braket{i}{\psi} \ket{i}.
 
-The alternative notation for the basis :math:`\{\ket{i}\}` is known as the *standard basis* (in the nomenclature of mathematics) or the *computational basis* (in the nomenclature of quantum computing). It is always assumed to be orthonormal, and necessarily spans :math:`\SpaceHilbert`. As these objects (kets) reside in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert \cong \Complexes^\Dimension`, they have corresponding representations in :math:`\Complexes^\Dimension` as column vectors, the standard choice being explicitly
+The alternative notation for the basis :math:`\{\ket{i}\}_i` is known as the *standard basis* (in the nomenclature of mathematics) or the *computational basis* (in the nomenclature of quantum computing). It is always assumed to be orthonormal, and necessarily spans :math:`\SpaceHilbert`. As these objects (kets) reside in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert \cong \Complexes^\Dimension`, they have corresponding representations in :math:`\Complexes^\Dimension` as column vectors, the standard choice being explicitly
 
 .. math::
    :label: eq:basis_qudit
@@ -249,7 +256,7 @@ The alternative notation for the basis :math:`\{\ket{i}\}` is known as the *stan
    \qquad \ldots,
    \qquad \ket{\Dimension - 1} = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}.
 
-Here, the :math:`i`-th element (indexing from zero, as customary in computer science) of the :math:`i`-th vector contains a :math:`1`, while all of its other entries contain :math:`0`. The corresponding covectors (bras) in the dual space :math:`\dual{\SpaceHilbert}{} \cong \Complexes^{*\Dimension}` have similar representations as row vectors,
+Here, the :math:`i`-th element (indexing from zero, as customary in computer science) of the :math:`i`-th vector contains a :math:`1`, while all of the other entries contain :math:`0`. The corresponding covectors (bras) in the dual space :math:`\dual{\SpaceHilbert}{} \cong \Complexes^{*\Dimension}` have similar representations as row vectors,
 
 .. math::
    \begin{aligned}
@@ -346,7 +353,7 @@ where the number :math:`a_\psi \in \Complexes` is called the *eigenvalue*. Given
 
    .. math:: \Identity\ket{\psi} = \ket{\psi}, \quad \forall \, \ket{\psi} \in \SpaceHilbert.
 
-   Given any orthonormal basis :math:`\{\ket{i}\}`, we may write
+   Given any orthonormal basis :math:`\{\ket{i}\}_i`, we may write
 
    .. math:: \Identity = \sum_{i} \ket{i}\bra{i}.
 
@@ -414,7 +421,7 @@ defined on an operator :math:`\op{A} \in \SpaceLinear(\SpaceHilbert)` as
 
 .. math:: \trace[\op{A}] \equiv \sum_{i} \bra{i}\op{A}\ket{i} = \sum_{i} A_{ii}
 
-where :math:`\{\ket{i}\}` is any orthonormal basis. The trace has the following properties:
+where :math:`\{\ket{i}\}_i` is any orthonormal basis. The trace has the following properties:
 
 .. math::
 
@@ -601,7 +608,7 @@ In general, an operator :math:`\op{Q} \in \SpaceLinear(\SpaceHilbert_A \otimes \
 
 .. math:: \op{Q} = \sum_{i,j,k,l} Q_{ik}^{jl} \ket{i}\bra{j} \otimes \ket{k}\bra{l},
 
-where :math:`\{\ket{i}\},\{\ket{k}\}` are orthonormal bases in :math:`\SpaceHilbert_A` and :math:`\{\ket{j}\},\{\ket{l}\}` are orthonormal bases in :math:`\SpaceHilbert_B`. The partial transposes of such an operator over each space :math:`\SpaceHilbert_A` and :math:`\SpaceHilbert_B` are defined respectively as
+where :math:`\{\ket{i}\}_i, \{\ket{k}\}_k` are orthonormal bases in :math:`\SpaceHilbert_A` and :math:`\{\ket{j}\}_j, \{\ket{l}\}_l` are orthonormal bases in :math:`\SpaceHilbert_B`. The partial transposes of such an operator over each space :math:`\SpaceHilbert_A` and :math:`\SpaceHilbert_B` are defined respectively as
 
 .. math::
 
@@ -761,9 +768,7 @@ A Hilbert space :math:`\SpaceHilbert` is said to be *convex* if for any finite c
 
 .. math:: \sum_{i} p_i \op{A}_i \in \SpaceHilbert
 
-for any probability distribution :math:`\SetProbability = \{p_i\}_i`. If this does not hold, then :math:`\SpaceHilbert` is said to be *concave*. An element :math:`\op{A}_i \in \SpaceHilbert` in a convex space is called *extreme* if it cannot be represented as a non-trivial combination of other elements (that is, it can only be expressed with a single non-zero :math:`p_i`).
-
-A (real) map
+for any probability distribution :math:`\SetProbability = \{p_i\}_i`. If this does not hold, then :math:`\SpaceHilbert` is said to be *concave*. An element :math:`\op{A}_i \in \SpaceHilbert` in a convex space is called *extreme* if it cannot be represented as a non-trivial combination of other elements (that is, it can only be expressed with a single non-zero :math:`p_i`). Furthermore, a (real) map
 
 .. math:: f({}\cdot{}) : \SpaceHilbert \rightarrow \Reals
 
