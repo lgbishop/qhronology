@@ -958,3 +958,7 @@ span.s1, span.s2 {
 span.nd {
     color: var(--pst-color-on-surface) !important;
 }
+
+svg.fa-square-github {
+    font-size: x-large;
+}
