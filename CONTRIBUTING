@@ -10,18 +10,18 @@ The nature of Qhronology's dual-licensing structure means that the legal require
 
 As a result, contributors are required to accept a contributor licensing agreement (CLA) for each contribution to the project. The CLA constitutes a legal agreement between contributors and the project that mainly exists to facilitate the transfer of copyright of the work contained in contributions to the project. This is necessary for the project, made available for non-commercial use under the AGPL, to protect its ability to be distributed for commercial use under non-AGPL terms. Importantly, this does not remove the credit for any contributions, and care will be taken to make proper attribution when and where it is appropriate.
 
-The acceptance of the CLA is achieved simply by reading the document itself (`CLA.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/CLA.txt>`_), agreeing to all of its terms and conditions, and then declaring so by reproducing the following (inside the code environment below) verbatim in the description of any merge/pull requests to the project's repository:
+The acceptance of the CLA is achieved simply by reading the document itself (`CLA.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/CLA.txt>`_) and then declaring your agreement to its terms and conditions by reproducing the following (inside the code environment below) verbatim in the description of any merge/pull requests to the project's repository:
 
 .. code:: text
 
    [ ] I declare that I have read Qhronology's Contributor License Agreement and agree to its terms and conditions.
 
-The box must be checked, which can be accomplished by replacing the white space within the square brackets with a lowercase "``x``" character. Failure to do so may result in your contribution being rejected. If accepted, please note that the CLA is irrevocable. Note also that for contributions which are sufficiently small (such as minor bug fixes or typographical error fixes), you are not required to state your agreement to the CLA (as these contributions are small enough to not be copyrightable).
+The box must be checked, which can be accomplished by replacing the white space within the square brackets with a lowercase "``x``" character. Failure to do so may result in your contribution being rejected. If accepted, please note that the CLA is irrevocable. Note also that sufficiently small contributions (such as minor bug fixes or typographical error fixes) need not be accompanied by a CLA declaration as such changes are small enough to not be copyrightable.
 
 Copyright
 ---------
 
-The Qhronology project is committed to making contributions available as FOSS (free and open-source software) under an OSI-approved license in some form. Currently, this is achieved by offering the project as free for non-commercial use with the GNU Affero General Public License v3.0 (AGPL-3.0-or-later). The main reason of the CLA therefore is that Qhronology needs permission from contributors in order to be able to redistribute their contributions under a non-AGPL license. Accepting the CLA is simply a way of legally declaring that you have both the necessary ownership of the contributions and actually do grant us the rights to use them. Such contributions include adding to or changing any of the following facets of the project:
+The Qhronology project is committed to making contributions available as FOSS (free and open-source software) under an OSI-approved license in some form. Currently, this is achieved by offering the project as free for non-commercial use with the GNU Affero General Public License v3.0 (AGPL-3.0-or-later). The main reason of the CLA therefore is that Qhronology needs permission from contributors in order to be able to redistribute their contributions under a non-AGPL license. Accepting the CLA is simply a way of legally declaring that you have both the necessary ownership of the contributions and actually do grant the project the rights to use them. Such contributions include adding to or changing any of the project's following facets:
 
 - code
 - graphics (including figures, icons, and artwork)

@@ -155,8 +155,9 @@
 \newcommand{\Complexes}{\mathbb{C}}
 \newcommand{\Integers}{\mathbb{Z}}
 \newcommand{\IntegersPositive}{\mathbb{Z}^+}
-\newcommand{\Natural}{\mathbb{N}}
+\newcommand{\Naturals}{\mathbb{N}}
 \newcommand{\Basis}{e}
+\newcommand{\Element}{v}
 \newcommand{\SetField}{F}
 \newcommand{\SetSub}{X}
 \newcommand{\SetSubTwo}{V}

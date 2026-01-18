@@ -1827,7 +1827,7 @@ In the case of a pure (vector) input state, the circuit is simply:
       \end{mdframed}
       \vspace{1em}
 
-In this case, we could, without loss of generality, denote the output state with a vector state (such as :math:`\ket{\StateVector^\prime} = \Unitary\ket{\StateVector}`, equivalent to :math:`\StateDensity^\prime = \ket{\StateVector^\prime}\bra{\StateVector^\prime}`), since the action of the (linear transformation) unitary gate preserves the purity of the systems on which it acts. Note that this is not true in general for all circuits; (non-unitary) operations like the (partial) trace do not necessarily preserve the purity of a particular system, and so the output states cannot always be denoted by vector states even if the input states are pure.
+In this case, we could, without loss of generality, denote the output state with a vector state (such as :math:`\ket{\StateVector^\prime} = \Unitary\ket{\StateVector}`, equivalent to :math:`\StateDensity^\prime = \ket{\StateVector^\prime}\bra{\StateVector^\prime}`), since the action of the (linear transformation) unitary gate preserves the purity of the systems on which it acts. Note that this is not true in general for all circuits; (non-unitary) operations like the (partial) trace do not necessarily preserve the purity of a particular system, and so the output states cannot always be denoted by vector states, even if the input states are pure.
 
 More interesting cases are those of multipartite systems. For instance, the evolution of a bipartite input state under a composite unitary gate is:
 

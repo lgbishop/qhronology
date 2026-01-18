@@ -32,31 +32,35 @@ Similarly, :eq:`eq:vector_identities` given some scalars :math:`a,b,c \in \Field
        \text{(iii) } &\text{(identity):} &\exists! \ 1 \in \Fields \quad \text{such that} \quad 1\psi &= \psi.
    \end{aligned}
 
-Formally, we say that :math:`\SpaceVector` is an :math:`\Fields`-vector space if it is an (additive) Abelian group with a function (scalar multiplication) :math:`\Fields \times \SpaceVector \rightarrow \SpaceVector` which satisfies the above axioms.
+Formally, we say that :math:`\SpaceVector` is a :math:`\Fields`-vector space if it is an (additive) Abelian group with a function (scalar multiplication) :math:`\Fields \times \SpaceVector \rightarrow \SpaceVector` which satisfies the above axioms. Building upon this, a *vector subspace* :math:`\SpaceSubset` of a vector space :math:`\SpaceVector` is a non-empty subset of :math:`\SpaceVector` that is similarly closed under both addition and scalar multiplication.
 
-A subset of vectors :math:`\{\Basis_i\}_{i=1}^{\Dimension}` in :math:`\SpaceVector` is said to be *linearly independent* if and only if the equation
+Given a subset :math:`\SpaceSubset = \{\Basis_i\}_{i}` of a :math:`\Fields`-vector space :math:`\SpaceVector`, a *linear combination* of its elements is given by the expression
 
-.. math:: \sum_{i=1}^{\Dimension}c_i\Basis_i = 0
+.. math:: \sum_{i} c_i \Basis_i \in \SpaceVector,
 
-has the sole solution :math:`c_i = 0` for all :math:`i \in \Integers_{1}^{\Dimension}` (where :math:`c_i \in \Fields`). Otherwise, the set of vectors is said to be *linearly dependent*. The *dimension* of a vector space :math:`\SpaceVector`, denoted by :math:`\dim(\SpaceVector)`, is defined as the least upper bound of linearly independent vectors in :math:`\SpaceVector`. Informally, this is the largest possible number of linearly independent vectors which reside in :math:`\SpaceVector`. A vector space is said to have infinite dimension if there is no such largest number.
+where :math:`c_i \in \Fields` are the combination's *coefficients*. Such a set is said to be *linearly independent* if the only linear combination that results in the zero vector, that is,
 
-Furthermore, a subset :math:`\SpaceSubset = \{\Basis_i\}_{i=1}^{\Dimension}` is said to *span* the vector space :math:`\SpaceVector` if and only if every vector :math:`\psi \in \SpaceVector` can be written as a (finite) linear combination of the form
+.. math:: \sum_{i} c_i \Basis_i = \vec{0},
 
-.. math:: \psi = \sum_{i=1}^{\Dimension} \psi_i \Basis_i.
-   :label: eq:linear_combination
+occurs when all of its coefficients are zero, i.e., :math:`c_i = 0` (for all :math:`i`). Otherwise, the set of vectors is said to be *linearly dependent*. The *dimension* of a vector space :math:`\SpaceVector`, denoted by :math:`\dim(\SpaceVector)`, can be informally defined as the least upper bound of the number of linearly independent vectors in :math:`\SpaceVector`. A vector space is called *infinite-dimensional* if there is no such bound, otherwise it is *finite-dimensional*.
 
-Here, the scalars :math:`\psi_i \in \Fields` collectively characterize the vector :math:`\psi`, and so we often write
+The (linear) *span* of a vector space :math:`\SpaceVector` (over a field :math:`\Fields`) is defined as the set of all linear combinations of its elements :math:`\Element_i \in \SpaceVector`,
 
-.. math:: \psi = (\psi_i)_{i=1}^{\Dimension} = (\psi_1,\psi_2,\ldots,\psi_\Dimension)^\transpose.
-
-This notion can expressed more formally by defining
-
-.. math:: \Span(\SpaceSubset) \equiv \left\{ \sum_{i=1}^{\Dimension} \psi_i \Basis_i : \psi_i \in \Fields \ \forall \ i \right\},
+.. math:: \Span(\SpaceVector) \equiv \left\{ \sum_{i} \lambda_i \Element_i : \Element_i \in \SpaceVector, \, \lambda_i \in \Fields \right\}.
    :label: eq:span
 
-with which we can make the identification :math:`\SpaceVector = \Span(\SpaceSubset)`. In such a case, we say that :math:`\SpaceSubset` is a *spanning set* (or *generating set*) of :math:`\SpaceVector`. However, if not every vector :math:`\psi \in \SpaceVector` can be expressed by the elements of :math:`\SpaceSubset` via the form :eq:`eq:linear_combination`, then :math:`\Span(\SpaceSubset)` simply defines the smallest linear proper subspace of :math:`\SpaceVector` that contains :math:`\SpaceSubset`.
+If :math:`\SpaceSubset = \{\Basis_i\}_{i}` is a subset of a vector space :math:`\SpaceVector`, then :math:`\Span(\SpaceSubset)` defines the smallest linear subspace of :math:`\SpaceVector` that contains :math:`\SpaceSubset`. Furthermore, if every vector :math:`\psi \in \SpaceVector` can be written using the elements of :math:`\SpaceSubset` as a (finite) linear combination of the form
 
-If :math:`\SpaceSubset = \{\Basis_i\}_{i=1}^{\Dimension}` is both linearly independent and spans :math:`\SpaceVector`, then this subset constitutes a (vector) *basis* for :math:`\SpaceVector`, and the linear combinations of its elements are unique. Every vector space possesses at least one basis, and in case of multiple such bases, they all have the same *cardinality* (i.e., number of unique elements), which is equivalent to the vector space's dimensionality.
+.. math:: \psi = \sum_{i} \psi_i \Basis_i \in \Span(\SpaceSubset),
+   :label: eq:linear_combination
+
+where the scalars :math:`\psi_i \in \Fields` collectively characterize the vector :math:`\psi`, then all vectors in :math:`\SpaceVector` are also elements of :math:`\Span(\SpaceSubset)`. Since :math:`\SpaceSubset` is a subset of :math:`\SpaceVector`, we therefore have the equivalence :math:`\SpaceVector = \Span(\SpaceSubset)` (in the sense of sets) and say that :math:`\SpaceSubset` is a *spanning set* (or *generating set*) of :math:`\SpaceVector`.
+
+If the set :math:`\SpaceSubset` is both linearly independent and spans :math:`\SpaceVector`, then :math:`\SpaceSubset` constitutes a (vector) *basis* for :math:`\SpaceVector`. Every vector space possesses at least one basis, with the linear combinations of each always being unique. Furthermore, all bases of the same vector space have the same *cardinality* (i.e., number of unique elements), which is a number that formally defines a vector space's dimensionality. As a result, any vector residing in a :math:`\Dimension`-dimensional vector space can always be expressed via the form :eq:`eq:linear_combination` as a :math:`d`-tuple of its combination's coefficients, e.g.,
+
+.. math:: \psi = (\psi_i)_{i=1}^{\Dimension} = (\psi_1,\psi_2,\ldots,\psi_\Dimension),
+
+which exactly (and uniquely) characterizes the vector with respect to that particular basis.
 
 Inner product space
 -------------------
@@ -84,11 +88,11 @@ A pair of vectors :math:`\psi,\phi \in \SpaceVector` are *orthogonal* if
 
 .. math:: \inner{\phi}{\psi} = 0.
 
-Furthermore, a set of vectors :math:`\{\phi_i\}_{i=1}^{\Dimension}` is said to be *orthonormal* with respect to the inner product :eq:`eq:inner_map` if
+Furthermore, a set of vectors :math:`\{\Element_i\}_{i}` is said to be *orthonormal* with respect to the inner product :eq:`eq:inner_map` if
 
-.. math:: \inner{\phi_i}{\phi_j} = \delta_{ij}
+.. math:: \inner{\Element_i}{\Element_j} = \delta_{ij}
 
-where
+holds true for all :math:`i, j`, where
 
 .. math::
 
@@ -110,6 +114,35 @@ with which we can express the inner product of two vectors as
 
 .. math:: \inner{\phi}{\psi} = \sum_{i=1}^{\Dimension} \inner{\phi}{\Basis_i} \inner{\Basis_i}{\psi} = \sum_{i=1}^{\Dimension} \conj{\phi_i}{} \psi_i.
    :label: eq:inner_expansion
+
+Dual space
+----------
+
+Any vector space :math:`\SpaceVector` has a corresponding *dual vector space* :math:`\dual{\SpaceVector}{}`, which is the space of all linear forms (functionals) on :math:`\SpaceVector`. Mathematically, this is to say that an element :math:`\varphi \in \dual{\SpaceVector}{}` defines a map
+
+.. math:: \varphi : \psi \mapsto \varphi(\psi) \in \Complexes
+
+for every :math:`\psi \in \SpaceVector` such that
+
+.. math:: \varphi(a\psi + b\chi) = a\varphi(\psi) + b\varphi(\chi)
+
+for all :math:`\psi,\chi` and :math:`a,b \in \Complexes`. Elements of the dual space :math:`\dual{\SpaceVector}{}` are often termed *covectors*, and the space itself becomes a vector space when equipped with addition and scalar multiplication, that is,
+
+.. math::
+
+   \begin{aligned}
+       \text{(i) } &\text{(additivity):} &(\varphi_1 + \varphi_2)(\psi) &= \varphi_1(\psi) + \varphi_2(\psi),\\
+       \text{(ii) } &\text{(scalar multiplication):} &(c\varphi)(\psi)&= c\varphi(\psi),
+   \end{aligned}
+
+for all :math:`\varphi, \varphi_1, \varphi_2 \in \dual{\SpaceVector}{}`, :math:`\psi \in \SpaceVector`, and :math:`c \in \Complexes`.
+
+The most straightforward way of constructing linear maps in a dual space is to use the inner product: given some vector :math:`\phi \in \SpaceVector`, we may define a map :math:`\inner{\phi}{{}\cdot{}} \in \dual{\SpaceVector}{}` which has the action
+
+.. math:: \inner{\phi}{{}\cdot{}} : \psi \mapsto \inner{\phi}{\psi}.
+   :label: eq:dual_map
+
+Being based on the inner product, this form is guaranteed to be linear in its argument.
 
 Vector norm
 -----------
@@ -158,35 +191,6 @@ Additionally, in the case if :math:`p=2`, Hölder's inequality :eq:`eq:Holder` b
 .. math:: \inner{\psi}{\phi} \leq \norm{\psi}_2 \norm{\phi}_2 = \sqrt{\inner{\psi}{\psi}} \sqrt{\inner{\phi}{\phi}}.
    :label: eq:Cauchy-Schwarz
 
-Dual space
-----------
-
-Any vector space :math:`\SpaceVector` has a corresponding *dual vector space* :math:`\dual{\SpaceVector}{}`, which is the space of all linear forms (functionals) on :math:`\SpaceVector`. Mathematically, this is to say that an element :math:`\varphi \in \dual{\SpaceVector}{}` defines a map
-
-.. math:: \varphi : \psi \mapsto \varphi(\psi) \in \Complexes
-
-for every :math:`\psi \in \SpaceVector` such that
-
-.. math:: \varphi(a\psi + b\chi) = a\varphi(\psi) + b\varphi(\chi)
-
-for all :math:`\psi,\chi` and :math:`a,b \in \Complexes`. Elements of the dual space :math:`\dual{\SpaceVector}{}` are often termed *covectors*, and the space itself becomes a vector space when equipped with addition and scalar multiplication, that is,
-
-.. math::
-
-   \begin{aligned}
-       \text{(i) } &\text{(additivity):} &(\varphi_1 + \varphi_2)(\psi) &= \varphi_1(\psi) + \varphi_2(\psi),\\
-       \text{(ii) } &\text{(scalar multiplication):} &(c\varphi)(\psi)&= c\varphi(\psi),
-   \end{aligned}
-
-for all :math:`\varphi, \varphi_1, \varphi_2 \in \dual{\SpaceVector}{}`, :math:`\psi \in \SpaceVector`, and :math:`c \in \Complexes`.
-
-The most straightforward way of constructing linear maps in a dual space is to use the inner product: given some vector :math:`\phi \in \SpaceVector`, we may define a map :math:`\inner{\phi}{{}\cdot{}} \in \dual{\SpaceVector}{}` which has the action
-
-.. math:: \inner{\phi}{{}\cdot{}} : \psi \mapsto \inner{\phi}{\psi}.
-   :label: eq:dual_map
-
-Being based on the inner product, this form is guaranteed to be linear in its argument.
-
 Hilbert space
 -------------
 
@@ -194,13 +198,22 @@ An inner product vector space equipped with a norm is called a *normed space*. A
 
 .. math:: \norm{\psi_i - \psi_j}_p \rightarrow 0 \quad \text{as} \quad i,j\rightarrow\infty.
 
-If all Cauchy sequences converge (as per the above condition) in :math:`\SpaceVector`, then the normed space :math:`\SpaceVector` is said to be *complete*. This is to say that there exists a vector :math:`\psi\in\SpaceVector` such that
+If all Cauchy sequences converge (as per the above condition) in :math:`\SpaceVector`, then the normed space :math:`\SpaceVector` is said to be *complete*. This is to say that there exists a vector :math:`\chi\in\SpaceVector` such that
 
-.. math:: \lim_{i\rightarrow\infty}\norm{\psi_i - \psi}_p = 0.
+.. math:: \lim_{i\rightarrow\infty}\norm{\psi_i - \chi}_p = 0.
 
 A complete normed space is called a *Banach space*.
 
-The special case of a normed inner product space that is complete with respect to the 2-norm :eq:`eq:norm-2` is known as a *Hilbert space*. This construction is central to the formalism of quantum theory. The *Riesz representation theorem* establishes that any linear map :math:`\varphi : \SpaceHilbert \rightarrow \Complexes` can be *uniquely* written as :eq:`eq:dual_map` for some fixed choice of :math:`\phi \in \SpaceHilbert`. Consequently, the inner product provides a vector space isomorphism
+The special case of a normed space that is both complete (with respect to the 2-norm :eq:`eq:norm-2`) and equipped with an inner product is known as a *Hilbert space*. Often denoted by :math:`\SpaceHilbert`, such spaces are central to the formalism of quantum theory.
+
+Two Hilbert spaces, e.g., :math:`\SpaceHilbert_A` and :math:`\SpaceHilbert_B`, are said to be *isomorphic* (denoted :math:`\SpaceHilbert_A \cong \SpaceHilbert_B`) if there exists a linear, surjective map :math:`U : \SpaceHilbert_A \rightarrow \SpaceHilbert_B` that preserves the inner product, i.e.,
+
+.. math:: \inner{U\psi}{U\phi}_{\SpaceHilbert_B} = \inner{\psi}{\phi}_{\SpaceHilbert_A},
+   :label: eq:unitary_map
+
+for all :math:`\psi, \phi \in \SpaceHilbert_A`. Such a map is called *unitary*, and constitutes a special kind of linear operator on the Hilbert space (see :ref:`sec:operators`).
+
+The *Riesz representation theorem* establishes that any linear map :math:`\varphi : \SpaceHilbert \rightarrow \Complexes` can be *uniquely* written as :eq:`eq:dual_map` for some fixed choice of :math:`\phi \in \SpaceHilbert`. Consequently, the inner product provides a vector space isomorphism
 
 .. math:: \dual{\SpaceHilbert}{} \cong \SpaceHilbert,
    :label: eq:Hilbert_isomorphism
@@ -234,9 +247,9 @@ This form is known as a *bra-ket*, and is simply a representation of the inner p
 
 .. math:: \conj{\lambda}{}\bra{\psi} \longleftrightarrow \lambda\ket{\psi}.
 
-Given an orthonormal basis :math:`\{\ket{\Basis_i}\}_i` of a discrete Hilbert space :math:`\SpaceHilbert`, we can expand in Dirac notation a general ket :math:`\ket{\psi} \in \SpaceHilbert` in terms of the basis as
+Given an orthonormal basis :math:`\{\ket{\Basis_i}\}_{i=1}^{\Dimension}` of a discrete Hilbert space :math:`\SpaceHilbert`, we can expand in Dirac notation a general ket :math:`\ket{\psi} \in \SpaceHilbert` in terms of the basis as
 
-.. math:: \ket{\psi} = \sum_{i} \psi_i \ket{\Basis_i}, \quad \psi_i = \braket{\Basis_i}{\psi}.
+.. math:: \ket{\psi} = \sum_{i=1}^{\Dimension} \psi_i \ket{\Basis_i}, \quad \psi_i = \braket{\Basis_i}{\psi}.
 
 This notation is slightly cumbersome, and so it is conventional to simplify it by making the basis identification
 
@@ -244,9 +257,9 @@ This notation is slightly cumbersome, and so it is conventional to simplify it b
 
 with which the above expansion appears as
 
-.. math:: \ket{\psi} = \sum_{i} \braket{i}{\psi} \ket{i}.
+.. math:: \ket{\psi} = \sum_{i=1}^{\Dimension} \braket{i}{\psi} \ket{i}.
 
-The alternative notation for the basis :math:`\{\ket{i}\}_i` is known as the *standard basis* (in the nomenclature of mathematics) or the *computational basis* (in the nomenclature of quantum computing). It is always assumed to be orthonormal, and necessarily spans :math:`\SpaceHilbert`. As these objects (kets) reside in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert \cong \Complexes^\Dimension`, they have corresponding representations in :math:`\Complexes^\Dimension` as column vectors, the standard choice being explicitly
+The alternative notation for the basis :math:`\{\ket{i}\}_{i=1}^{\Dimension}` is known as the *standard basis* (in the nomenclature of mathematics) or the *computational basis* (in the nomenclature of quantum computing). It is always assumed to be orthonormal, and necessarily spans :math:`\SpaceHilbert`. As these objects (kets) reside in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert \cong \Complexes^\Dimension`, they have corresponding representations in :math:`\Complexes^\Dimension` as column vectors, the standard choice being explicitly
 
 .. math::
    :label: eq:basis_qudit
@@ -267,6 +280,8 @@ Here, the :math:`i`-th element (indexing from zero, as customary in computer sci
    \end{aligned}
 
 In a finite-dimensional Hilbert space, any basis of linearly independent vectors has the same (finite) number of members, irrespective of their orthogonality.
+
+.. _`sec:operators`:
 
 Linear operators and operations
 ===============================
@@ -353,9 +368,9 @@ where the number :math:`a_\psi \in \Complexes` is called the *eigenvalue*. Given
 
    .. math:: \Identity\ket{\psi} = \ket{\psi}, \quad \forall \, \ket{\psi} \in \SpaceHilbert.
 
-   Given any orthonormal basis :math:`\{\ket{i}\}_i`, we may write
+   Given any orthonormal basis :math:`\{\ket{i}\}_{i=1}^{\Dimension}`, we may write
 
-   .. math:: \Identity = \sum_{i} \ket{i}\bra{i}.
+   .. math:: \Identity = \sum_{i=1}^{\Dimension} \ket{i}\bra{i}.
 
 -  The *zero* operator :math:`\op{0}` is the (unique) operator that satisfies
 
@@ -374,7 +389,7 @@ Transposition and conjugation
 
 Given a finite-dimensional Hilbert space :math:`\SpaceHilbert`, each operator :math:`\op{A} \in \SpaceLinear(\SpaceHilbert)` can be expanded in an orthonormal basis as
 
-.. math:: \op{A} = \sum_{i,j} \ket{i}\bra{i}\op{A}\ket{j}\bra{j} = \sum_{i,j} A_{ij}\ket{i}\bra{j}
+.. math:: \op{A} = \sum_{i,j=1}^{\Dimension} \ket{i}\bra{i}\op{A}\ket{j}\bra{j} = \sum_{i,j=1}^{\Dimension} A_{ij}\ket{i}\bra{j}
 
 where
 
@@ -382,15 +397,15 @@ where
 
 are the elements of the corresponding matrix representation of the operator (in the given basis). Similarly, the product of two operators may be written as
 
-.. math:: \op{A}\op{B} = \sum_{i,j,k} A_{ik}B_{kj}\ket{i}\bra{j}
+.. math:: \op{A}\op{B} = \sum_{i,j,k=1}^{\Dimension} A_{ik}B_{kj}\ket{i}\bra{j}
 
 where :math:`B_{kj} \equiv \bra{k}\op{B}\ket{j}`. These expressions make it easy to characterize the action of operations on such operators. Our primary interest lies in the *transpose* and the *conjugate transpose* (or *adjoint*), which are defined for any orthonormally expandable :math:`\op{A}` by
 
 .. math::
 
    \begin{aligned}
-       \text{transpose:}& \quad &\op{A}^\transpose &= \sum_{i,j} A_{ij}\ket{j}\bra{i}, \\
-       \text{conjugate transpose:}& &\op{A}^\dagger &= \sum_{i,j} \conj{A_{ij}}{}\ket{j}\bra{i} = \conj{(\op{A}^\transpose)}{} = (\conj{\op{A}}{})^\transpose.
+       \text{transpose:}& \quad &\op{A}^\transpose &= \sum_{i,j=1}^{\Dimension} A_{ij}\ket{j}\bra{i}, \\
+       \text{conjugate transpose:}& &\op{A}^\dagger &= \sum_{i,j=1}^{\Dimension} \conj{A_{ij}}{}\ket{j}\bra{i} = \conj{(\op{A}^\transpose)}{} = (\conj{\op{A}}{})^\transpose.
    \end{aligned}
 
 From these, it is easy to deduce the following properties:
@@ -419,9 +434,9 @@ Another useful operation is the *trace*,
 
 defined on an operator :math:`\op{A} \in \SpaceLinear(\SpaceHilbert)` as
 
-.. math:: \trace[\op{A}] \equiv \sum_{i} \bra{i}\op{A}\ket{i} = \sum_{i} A_{ii}
+.. math:: \trace[\op{A}] \equiv \sum_{i=1}^{\Dimension} \bra{i}\op{A}\ket{i} = \sum_{i} A_{ii}
 
-where :math:`\{\ket{i}\}_i` is any orthonormal basis. The trace has the following properties:
+where :math:`\{\ket{i}\}_{i=1}^{\Dimension}` is any orthonormal basis. The trace has the following properties:
 
 .. math::
 
@@ -441,14 +456,14 @@ An important class of operators are the *normal* operators, which are characteri
 
 .. math:: \op{N}^\dagger\op{N} = \op{N}\op{N}^\dagger.
 
-The *spectral theorem* states that any normal operator :math:`\op{N}` admits a suitable *eigendecomposition*, that is, the eigenvectors :math:`\{\ket{v_i}\}_i` of :math:`\op{N}` form an orthonormal basis, and can be used in conjunction with the corresponding eigenvalues :math:`\{\lambda_i\}_i` to allow us to write
+The *spectral theorem* states that any normal operator :math:`\op{N}` admits a suitable *eigendecomposition*, that is, the eigenvectors :math:`\{\ket{v_i}\}_{i=1}^{\Dimension}` of :math:`\op{N}` form an orthonormal basis, and can be used in conjunction with the corresponding eigenvalues :math:`\{\lambda_i\}_{i=1}^{\Dimension}` to allow us to write
 
-.. math:: \op{N} = \sum_{i} \lambda_i \ket{v_i}\bra{v_i}, \quad \lambda_i \in \Complexes.
+.. math:: \op{N} = \sum_{i=1}^{\Dimension} \lambda_i \ket{v_i}\bra{v_i}, \quad \lambda_i \in \Complexes.
    :label: eq:spectral_theorem
 
 The converse holds true, such that any orthogonally diagonalizable operator is normal. A useful consequence of this theorem is that it is easy to compute the function of an operator,
 
-.. math:: f(\op{N}) = \sum_{i} f(\lambda_i) \ket{v_i}\bra{v_i}.
+.. math:: f(\op{N}) = \sum_{i=1}^{\Dimension} f(\lambda_i) \ket{v_i}\bra{v_i}.
 
 Normal operators arise in many special forms, including:
 
@@ -466,11 +481,11 @@ Normal operators arise in many special forms, including:
 
    .. math:: \op{S}^\dagger = -\op{S}.
 
--  *Unitary* operators :math:`\op{U}`, defined by
+-  *Unitary* operators :math:`\op{U}`, formally defined by :eq:`eq:unitary_map`, which (in most cases) is equivalent to the property
 
    .. math:: \op{U}^\dagger \op{U} = \op{U}\op{U}^\dagger = \Identity,
 
-   or equivalently,
+   or simply,
 
    .. math:: \op{U}^\dagger = \op{U}^{-1}.
 
@@ -490,15 +505,15 @@ Normal operators arise in many special forms, including:
 
    or using the spectral theorem,
 
-   .. math:: \op{P} = \sum_{i} P_i \ket{v_i}\bra{v_i}
+   .. math:: \op{P} = \sum_{i=1}^{\Dimension} P_i \ket{v_i}\bra{v_i}
 
-   given non-negative eigenvalues :math:`\{P_i\}_i` and eigenvectors :math:`\{\ket{v_i}\}_i`. Note that :math:`\op{P}` is called *positive-definite* if
+   given non-negative eigenvalues :math:`\{P_i\}_{i=1}^{\Dimension}` and eigenvectors :math:`\{\ket{v_i}\}_{i=1}^{\Dimension}`. Note that :math:`\op{P}` is called *positive-definite* if
 
    .. math:: \bra{\psi}\op{P}\ket{\psi} > 0, \quad \forall \, \ket{\psi} \in \SpaceHilbert.
 
    In the special case where
 
-   .. math:: \trace[\op{P}] = \sum_{i} P_i = 1,
+   .. math:: \trace[\op{P}] = \sum_{i=1}^{\Dimension} P_i = 1,
 
    then :math:`\op{P}` is called a *density* operator.
 
@@ -582,7 +597,7 @@ then their inner product becomes
 
 .. math:: \braket{\Phi}{\Psi} = \bigl(\bra{\phi} \otimes \bra{\phi^{\prime}}\bigr)\bigl(\ket{\psi} \otimes \ket{\psi^{\prime}}\bigr) = {\braket{\phi}{\psi}}_1 {\braket{\phi^{\prime}}{\psi^{\prime}}}_2.
 
-Systems which are to be understood as not being constructable from tensor products of Hilbert spaces (subsystems) are said to be *non-composite* and are often termed *unipartite*.
+Systems which are to be understood as not being constructable from tensor products of Hilbert spaces (subsystems) are said to be *non-composite* and are often termed *unipartite* or *monopartite*.
 
 As far as linear operators on composite Hilbert spaces are concerned, if :math:`\op{A} \in \SpaceLinear(\SpaceHilbert_A)` and :math:`\op{B} \in \SpaceLinear(\SpaceHilbert_B)` are two operators, then their tensor product
 
@@ -626,7 +641,7 @@ Similarly, the partial traces over :math:`\SpaceHilbert_A` and :math:`\SpaceHilb
        \trace_{B}[\op{Q}] &= \sum_{n} \bigl(\Identity \otimes \bra{n}\bigr)\op{Q}\bigl(\Identity \otimes \ket{n}\bigr) = \sum_{n,i,j} Q_{in}^{jn} \ket{i}\bra{j},
    \end{aligned}
 
-where :math:`\{\ket{m}\}` and :math:`\{\ket{n}\}` are orthonormal bases of :math:`\SpaceHilbert_A` and :math:`\SpaceHilbert_B`, respectively.
+where :math:`\{\ket{m}\}_m` and :math:`\{\ket{n}\}_n` are orthonormal bases of :math:`\SpaceHilbert_A` and :math:`\SpaceHilbert_B`, respectively.
 
 Schmidt decomposition
 ---------------------
@@ -662,7 +677,7 @@ We now turn our attention to :math:`\Dimension`-dimensional Hilbert spaces, whic
 
    \ket{\psi} = \sum_{i=1}^{\Dimension} \psi_i \ket{\Basis_i}.
 
-If we instead have :math:`\Number` such systems :math:`\{\ket{\psi_n}\}_{n=1}^{\Number}`, each residing in the same Hilbert space :math:`\ket{\psi_n} \in \SpaceHilbert_{\Dimension}`, then their composition is
+If we instead have :math:`\Number` such systems :math:`\{\ket{\psi_n}\}_{n=1}^{\Number}`, each residing in the same Hilbert space :math:`\SpaceHilbert_{\Dimension}`, then their composition is
 
 .. math::
    :label: eq:composition_state
@@ -672,10 +687,10 @@ If we instead have :math:`\Number` such systems :math:`\{\ket{\psi_n}\}_{n=1}^{\
        &= \bigotimes_{n=1}^{\Number} \sum_{i=1}^{\Dimension} \psi_{i_n} \ket{\Basis_{i_n}} \\
        &= \sum_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension} \psi_{i_1} \psi_{i_2} \ldots \psi_{i_\Number} \ket{\Basis_{i_1}} \otimes \ket{\Basis_{i_2}} \otimes \ldots \otimes \ket{\Basis_{i_\Number}} \\
        &= \sum_{i=1}^{\Dimension} \left( \prod_{n=1}^{\Number} \psi_{i_n} \right) \bigotimes_{n=1}^{\Number} \ket{\Basis_{i_n}} \\
-       &= \sum_{i=1}^{\Dimension} \psi_{i_1, i_2, \ldots, i_\Number} \ket{\Basis_{i_1, i_2, \ldots, i_\Number}} \\
+       &= \sum_{i=1}^{\Dimension} \psi_{i_1, i_2, \ldots, i_\Number} \ket{\Basis_{i_1, i_2, \ldots, i_\Number}}.
    \end{aligned}
 
-where :math:`\psi_{i_n}` is the :math:`i_n`-th component of the :math:`n`-th state (with basis :math:`\{\ket{\Basis_{i_n}}\}_{i_n = 1}^{\Dimension} \equiv \{\ket{\Basis_i}\}_{i = 1}^{\Dimension}` for all :math:`n`), i.e.,
+Here, :math:`\psi_{i_n}` is the :math:`i_n`-th component of the :math:`n`-th state (with basis :math:`\{\ket{\Basis_{i_n}}\}_{i_n = 1}^{\Dimension} \equiv \{\ket{\Basis_i}\}_{i = 1}^{\Dimension}` for all :math:`n`), i.e.,
 
 .. math::
 

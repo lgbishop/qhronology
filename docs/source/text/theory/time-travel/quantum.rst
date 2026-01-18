@@ -29,7 +29,7 @@ Less direct (yet still important) approaches of studying (antichronological) tim
 - locality :cite:p:`kay_principle_1992, kay_quantum_1997`
 - holography :cite:p:`emparan_holography_2022`
 
-Note however that these topics are mentioned purely for the sake of completeness. Since we are primarily interested in computing state evolutions using the aforementioned quantum prescriptions of time travel, all of the concerns in these topics are out of the scope of this project.
+Note however that these topics are mentioned purely for the sake of completeness. Since we are primarily interested in computing state evolutions using the aforementioned quantum prescriptions of time travel, all other concerns are out of the scope of this project.
 
 .. toctree::
    :maxdepth: 2

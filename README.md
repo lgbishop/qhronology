@@ -9,17 +9,12 @@
 _Qhronology_ is a Python package for computing the states of the chronology-respecting (CR) and chronology-violating (CV) quantum systems according to the foremost quantum theories of time travel. It also functions as a (mostly) complete quantum circuit simulator, and contains an engine for the basic visualization of quantum circuit diagrams. Its main features include:
 
 - temporal paradox resolution using quantum-mechanical prescriptions of time travel
-
   - Deutsch's model (D-CTCs)
   - postselected teleportation (P-CTCs)
-
 - general quantum information processing and computation
-
   - algebraic, symbolic calculations
   - (classical) simulation of quantum experiments (limited by the finite precision of floating-point arithmetic)
-
 - quantum circuit visualization 
-
   - text-based semigraphical diagrams constructed using glyphs from monospace fonts (support for both ASCII and Unicode)
 
 The primary purpose of Qhronology is to facilitate the study of quantum theories of time travel in both educational and research capacities. In addition to this, the package also functions as a quantum circuit simulator, allowing for comprehensive analysis of the general quantum operations of quantum information processing and computation. Qhronology's underlying mathematical system accomplishes this using the standard $d$-dimensional matrix mechanics of discrete-variable quantum theory in a general $\mathbb{C}^d$-representation.
@@ -401,33 +396,20 @@ Contributions to Qhronology (both the package and its documentation), including 
 ## Possible future work
 
 - Package:
-
   - Write proper (more formal) unit tests.
-
   - Permit more intuitive usage (i.e., summation and multiplication) of quantum objects via operator overloading.
-
   - Tighter integration with SymPy's `pprint()` functionality for enhanced state and gate printing.
-
   - Implement T-CTCs (the _transition-probabilities_ quantum model of time travel).
-
   - Create the ability for circuit visualizations to target _Quantikz_ LaTeX output.
-
     - Automatically rasterize using available (local) LaTeX installation.
-
   - Add the ability to label a circuit's output systems.
-
   - Implement the permutation (PERM) gate.
-
+  - Add the ability for circuits to be optimized (to reduced gate depth).
+  - Add the ability for circuits and/or gates to be decomposed (using a specified gate set).
 - Documentation:
-
   - More examples.
-
   - Website:
-
     - Fix citation numbering.
-
 - Theory:
-
   - Expand section on the Cauchy problem near CTCs.
-
   - Add a section on the general theory of relativity and the associated geometric theories of CTCs.

@@ -53,7 +53,6 @@ Overview
 
   - Deutsch's model (D-CTCs)
   - postselected teleportation (P-CTCs)
-
 ..   - transition probabilities (T-CTCs)
 
 - general quantum information processing and computation
@@ -64,7 +63,6 @@ Overview
 - quantum circuit visualization 
 
   - text-based semigraphical diagrams constructed using glyphs from monospace fonts (support for both ASCII and Unicode)
-
 ..   - monospace (ASCII and Unicode) glyph diagrams
 ..   - ``quantikz`` LaTeX package renders
 
@@ -620,25 +618,21 @@ Possible future work
 - Package:
 
   - Write proper (more formal) unit tests.
-
   - Permit more intuitive usage (i.e., summation and multiplication) of quantum objects via operator overloading.
-
   - Tighter integration with SymPy's ``pprint()`` functionality for enhanced state and gate printing.
-
   - Implement T-CTCs (the *transition-probabilities* quantum model of time travel).
-
   - Add the ability for circuit visualizations to target *Quantikz* LaTeX output.
 
     - Automatically rasterize using available (local) LaTeX installation.
 
   - Add the ability to label a circuit's output systems.
-
   - Implement the permutation (PERM) gate.
+  - Add the ability for circuits to be optimized (to reduced gate depth).
+  - Add the ability for circuits and/or gates to be decomposed (using a specified gate set).
 
 - Documentation:
 
   - More examples.
-
   - Website:
 
     - Fix citation numbering.
@@ -646,5 +640,4 @@ Possible future work
 - Theory:
 
   - Expand section on the Cauchy problem near CTCs.
-
   - Add a section on the general theory of relativity and the associated geometric theories of CTCs.

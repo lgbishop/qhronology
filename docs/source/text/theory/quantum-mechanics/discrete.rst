@@ -35,10 +35,10 @@ An extreme point in the convex space spanned by operators :eq:`eq:state_general`
 
 This is necessarily a projection operator, i.e., :math:`\StateDensity^2 = \StateDensity`. Due to this form, any given pure state can be completely (and uniquely) represented by the vector
 
-.. math:: \ket{\psi} = \sum_{i} c_i \ket{\Basis_i}
+.. math:: \ket{\psi} = \sum_{i=1}^{\Dimension} c_i \ket{\Basis_i}
    :label: eq:state_superposition
 
-where :math:`\{\ket{\Basis_i}\}_i` is an orthonormal basis for the associated Hilbert space, and :math:`c_i \in \Complexes` are the state-characterizing probability amplitudes.
+where :math:`\{\ket{\Basis_i}\}_{i=1}^{\Dimension}` is an orthonormal basis for the associated Hilbert space, and :math:`c_i \in \Complexes` are the state-characterizing probability amplitudes.
 
 The set of physical pure states :math:`\SpacePure(\SpaceHilbert)` on a Hilbert space :math:`\SpaceHilbert` is the set of all normalized (unit) vectors on :math:`\SpaceHilbert`, with vectors equal up to a global phase considered to be equivalent (as such global phase differences are not observable, i.e., constitute measurable quantities). Compactly, we write
 
