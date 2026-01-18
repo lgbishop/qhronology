@@ -607,25 +607,25 @@ Citation
 
 - The package:
 
-   .. code:: text
+.. code:: text
 
-      @software{bishop_qhronology-software_2025,
-        title = {{Qhronology: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing & computation}},
-        author = {Bishop, Lachlan G.},
-        year = {2025},
-        url = {https://github.com/lgbishop/qhronology},
-      }
+   @software{bishop_qhronology-software_2025,
+     title = {{Qhronology: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing & computation}},
+     author = {Bishop, Lachlan G.},
+     year = {2025},
+     url = {https://github.com/lgbishop/qhronology},
+   }
 
 - The project documentation:
 
-   .. code:: text
+.. code:: text
 
-      @software{bishop_qhronology-documentation_2025,
-        title = {{Qhronology: Documentation, Examples, and Theory}},
-        author = {Bishop, Lachlan G.},
-        year = {2025},
-        url = {https://github.com/lgbishop/qhronology/blob/latest/docs/_build/latex/Qhronology.pdf},
-      }
+   @software{bishop_qhronology-documentation_2025,
+     title = {{Qhronology: Documentation, Examples, and Theory}},
+     author = {Bishop, Lachlan G.},
+     year = {2025},
+     url = {https://github.com/lgbishop/qhronology/blob/latest/docs/_build/latex/Qhronology.pdf},
+   }
 
 Possible future work
 ====================
