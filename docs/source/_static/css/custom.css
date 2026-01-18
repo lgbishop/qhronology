@@ -10,7 +10,7 @@ html {
     --bs-body-font-size: 0.95rem !important;
     --pst-font-family-base: 'Source Sans 3', 'Roboto', var(--pst-font-family-base-system);
     --pst-font-family-heading: 'ClearSans', 'Source Code Pro', 'Roboto', var(--pst-font-family-base-system);
-    --pst-font-family-monospace: 'Source Code Pro', 'Courier', var(--pst-font-family-monospace-system);
+    --pst-font-family-monospace: 'Cousine', 'Source Code Pro', 'Courier', var(--pst-font-family-monospace-system);
     --pst-font-size-h0: 2.00rem;
     --pst-font-size-h1: 1.75rem;
     --pst-font-size-h2: 1.5rem;
