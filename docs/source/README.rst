@@ -603,14 +603,27 @@ Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repositor
 Citation
 ========
 
-.. code:: text
+- The package:
 
-   @software{bishop_qhronology_2025,
-      title = {{Qhronology: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing & computation}},
-      author = {Bishop, Lachlan G.},
-      year = {2025},
-      url = {https://github.com/lgbishop/qhronology},
-   }
+   .. code:: text
+
+      @software{bishop_qhronology-software_2025,
+        title = {{Qhronology: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing & computation}},
+        author = {Bishop, Lachlan G.},
+        year = {2025},
+        url = {https://github.com/lgbishop/qhronology},
+      }
+
+- The project documentation:
+
+   .. code:: text
+
+      @software{bishop_qhronology-documentation_2025,
+        title = {{Qhronology: Documentation, Examples, and Theory}},
+        author = {Bishop, Lachlan G.},
+        year = {2025},
+        url = {https://github.com/lgbishop/qhronology/blob/latest/docs/_build/latex/Qhronology.pdf},
+      }
 
 Possible future work
 ====================
