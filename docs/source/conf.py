@@ -266,8 +266,6 @@ Read the full license here:
 \input{header.tex.txt}
 \input{macros.tex.txt}
 
-\setcounter{tocdepth}{1}
-
 % \definecolor{accentcolor}{HTML}{224499}
 % \definecolor{accentcolor}{HTML}{005AAA}
 \definecolor{accentcolor}{HTML}{2266C0}
@@ -290,18 +288,6 @@ Read the full license here:
 \pdfimageresolution=128 % Controls the scaling of images. https://github.com/sphinx-doc/sphinx/issues/8253
 
 %%% FONTS:
-
-% \usepackage{tocloft}
-% \renewcommand\sphinxtableofcontentshook{}
-% \renewcommand{\cftpartfont}{\sffamily\bfseries}
-% \renewcommand{\cftchapfont}{\sffamily\bfseries}
-% \renewcommand{\cftsecfont}{\rmfamily}
-% \renewcommand{\cftsubsecfont}{\rmfamily}
-
-% \renewcommand{\cftpartpagefont}{\rmfamily\bfseries}
-% \renewcommand{\cftchappagefont}{\rmfamily\bfseries}
-% \renewcommand{\cftsecpagefont}{\rmfamily}
-% \renewcommand{\cftsubsecpagefont}{\rmfamily}
 
 % \usepackage[%
 %     protrusion=true,
@@ -580,6 +566,7 @@ Read the full license here:
 
 \makeatletter
 \def\hrulefillthick{{\color{fontcolor}\leavevmode\leaders\hrule height 0.85pt\hfill\kern\z@}}
+\def\hrulefillverythick{{\color{fontcolor}\leavevmode\leaders\hrule height 2.5pt\hfill\kern\z@}}
 \def\hrulefillinvisible{{\color{white}\leavevmode\leaders\hrule height 0.85pt\hfill\kern\z@}}
 \makeatother
 
@@ -591,6 +578,46 @@ Read the full license here:
 \renewcommand{\labelitemii}{\footnotesize{$\bullet$}}
 \renewcommand{\labelitemiii}{\footnotesize{$\vartriangleright$}}
 \renewcommand{\labelitemiv}{\footnotesize{$\circ$}}
+
+% Table of contents:
+
+\usepackage{tocloft}
+
+\addto\captionsenglish{
+    \renewcommand{\contentsname}
+    {\vspace{-2cm}\huge\sffamily{Contents}\newline\hrulefillverythick\vspace{-1.35cm}} % ToC will show "CONTENTS" instead of "Content"
+}
+
+\setcounter{tocdepth}{1}
+
+\renewcommand{\cftpartfont}{\fontsize{12}{14}\sffamily\bfseries}
+\renewcommand{\cftchapfont}{\fontsize{10}{12}\sffamily\bfseries}
+\renewcommand{\cftsecfont}{\fontsize{9}{11}\sffamily\bfseries}
+\renewcommand{\cftsubsecfont}{\fontsize{9}{11}\sffamily\bfseries}
+\renewcommand{\cftsubsubsecfont}{\fontsize{9}{11}\sffamily\bfseries}
+\renewcommand{\cftparafont}{\fontsize{9}{11}\sffamily\bfseries}
+\renewcommand{\cftpartpagefont}{\fontsize{9}{11}\sffamily\bfseries}
+\renewcommand{\cftchappagefont}{\fontsize{9}{11}\sffamily\bfseries}
+\renewcommand{\cftsecpagefont}{\fontsize{9}{11}\sffamily\bfseries}
+\renewcommand{\cftsubsecpagefont}{\fontsize{9}{11}\sffamily\bfseries}
+\renewcommand{\cftsubsubsecpagefont}{\fontsize{9}{11}\sffamily\bfseries}
+\renewcommand{\cftparapagefont}{\fontsize{9}{11}\sffamily\bfseries}
+
+\renewcommand{\cftbeforesecskip}{0.1em}
+\renewcommand{\cftchapafterpnum}{\vskip0.25em}
+\renewcommand{\cftsecafterpnum}{\vskip0.1em}
+% % \renewcommand{\cftbeforesubsecskip}{0.35em}
+\renewcommand{\cftsubsecafterpnum}{\vskip0.00em}
+\renewcommand{\cftsubsubsecafterpnum}{\vskip0.00em}
+\renewcommand{\cftparaafterpnum}{\vskip0.00em}
+
+\renewcommand{\cftchapaftersnumb}{\hskip0.5em}
+\renewcommand{\cftsecaftersnumb}{\hskip0.5em}
+\renewcommand{\cftsubsecaftersnumb}{\hskip0.5em}
+\renewcommand{\cftsubsubsecaftersnumb}{\hskip0.5em}
+\renewcommand{\cftparaaftersnumb}{\hskip0.5em}
+
+\renewcommand{\sphinxtableofcontentshook}{}% else it will overwrite tocloft!
 
 """,
     "passoptionstopackages": r"""
