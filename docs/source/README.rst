@@ -53,6 +53,7 @@ Overview
 
   - Deutsch's model (D-CTCs)
   - postselected teleportation (P-CTCs)
+
 ..   - transition probabilities (T-CTCs)
 
 - general quantum information processing and computation
@@ -63,6 +64,7 @@ Overview
 - quantum circuit visualization 
 
   - text-based semigraphical diagrams constructed using glyphs from monospace fonts (support for both ASCII and Unicode)
+
 ..   - monospace (ASCII and Unicode) glyph diagrams
 ..   - ``quantikz`` LaTeX package renders
 
