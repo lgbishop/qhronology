@@ -297,8 +297,8 @@ def rewrite(matrix: mat | QuantumObject, function: Callable) -> mat:
             matrix[index] = entry
     except:
         raise ValueError(
-            f"The specified function (``{function.__name__}()``) cannot be used to rewrite \
-            the matrix."
+            f"""The specified function (``{function.__name__}()``) cannot be used to rewrite
+            the matrix."""
         )
 
     return matrix

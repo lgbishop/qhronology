@@ -144,8 +144,8 @@ class QuantumCTC(QuantumCircuit):
                     systems_violating
                 ):
                     raise ValueError(
-                        "The union of ``systems_respecting`` and ``systems_violating`` is \
-                        inequivalent to the entire system's structure."
+                        """The union of ``systems_respecting`` and ``systems_violating`` is
+                        inequivalent to the entire system's structure."""
                     )
 
             self.systems_respecting = systems_respecting
@@ -249,8 +249,8 @@ class QuantumCTC(QuantumCircuit):
 
         if count_systems(input_state, self.dim) != len(self.systems_respecting):
             raise ValueError(
-                "The size of the given input state(s) does not match that specified by the \
-                property ``systems_respecting``."
+                """The size of the given input state(s) does not match that specified by the
+                property ``systems_respecting``."""
             )
 
         input_state = QuantumState(
@@ -411,15 +411,15 @@ def dctc_violating(
             del equations[-1]
         else:
             raise NotImplementedError(
-                "Support for multiple non-parametrized D-CTC CV solutions has not yet been \
-                implemented."
+                """Support for multiple non-parametrized D-CTC CV solutions has not yet been
+                implemented."""
             )
         counter += 1
         if counter == 2:
             raise NotImplementedError(
-                "The D-CTC CV algorithm was unable to determine a solution (fixed point) \
-                to the CV map. If you are certain that your circuit does indeed have a solution, \
-                you are welcome to file a bug report."
+                """The D-CTC CV algorithm was unable to determine a solution (fixed point)
+                to the CV map. If you are certain that your circuit does indeed have a solution,
+                you are welcome to file a bug report."""
             )
 
     solutions = list(solutions[1])[0]

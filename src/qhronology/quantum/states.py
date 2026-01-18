@@ -183,8 +183,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         if hasattr(self, "_form"):
             if kind not in COMPATIBILITIES[self.form]:
                 raise AttributeError(
-                    f"The given ``kind`` ('{kind}') is incompatible with the given ``form`` \
-                    ('{self.form}')."
+                    f"""The given ``kind`` ('{kind}') is incompatible with the given ``form``
+                    ('{self.form}')."""
                 )
         self._kind = kind
 

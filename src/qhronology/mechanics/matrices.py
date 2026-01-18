@@ -296,8 +296,8 @@ def quantum_state(
             for twotuple in spec:
                 if len(twotuple) != 2:
                     raise ValueError(
-                        "One or more of the tuples in the given ``spec`` does not have exactly \
-                        two (2) elements."
+                        """One or more of the tuples in the given ``spec`` does not have exactly
+                        two (2) elements."""
                     )
             coefficients = sp.Matrix([twotuple[0] for twotuple in spec])
             levels = [twotuple[1] for twotuple in spec]
@@ -326,8 +326,8 @@ def quantum_state(
     if form == Forms.VECTOR.value:
         if matrix_shape(state) == "SQUARE":
             raise ValueError(
-                "The given ``spec`` describes a square matrix and so cannot be cast into a \
-                vector form."
+                """The given ``spec`` describes a square matrix and so cannot be cast into a
+                vector form."""
             )
         else:
             state = columnify(state)
@@ -437,8 +437,8 @@ def encode(
     num_systems = len(digits) if num_systems is None else num_systems
     if len(digits) > num_systems:
         raise ValueError(
-            f"The given ``num_systems`` ({num_systems}) is too few to encode the \
-            ``integer`` ({integer}) in the ``dim`` ({dim})."
+            f"""The given ``num_systems`` ({num_systems}) is too few to encode the
+            ``integer`` ({integer}) with dimensionality ``dim`` ({dim})."""
         )
 
     padding = [0] * num_systems

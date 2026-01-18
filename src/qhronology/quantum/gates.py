@@ -249,8 +249,8 @@ class QuantumGate(QuantumObject):
                 is True
             ):
                 raise ValueError(
-                    "The ``targets``, ``controls``, and ``anticontrols`` lists cannot have any \
-                    elements in common."
+                    """The ``targets``, ``controls``, and ``anticontrols`` lists cannot have any
+                    elements in common."""
                 )
         self._targets = targets
 
@@ -281,8 +281,8 @@ class QuantumGate(QuantumObject):
             self._anticontrols = []
         if check_systems_conflicts(self.targets, controls, self.anticontrols) is True:
             raise ValueError(
-                "The ``targets``, ``controls``, and ``anticontrols`` lists cannot have any \
-                elements in common."
+                """The ``targets``, ``controls``, and ``anticontrols`` lists cannot have any
+                elements in common."""
             )
         self._controls = sorted(list(set(controls)))
 
@@ -313,8 +313,8 @@ class QuantumGate(QuantumObject):
             self._anticontrols = []
         if check_systems_conflicts(self.targets, self.controls, anticontrols) is True:
             raise ValueError(
-                "The ``targets``, ``controls``, and ``anticontrols`` lists cannot have any \
-                elements in common."
+                """The ``targets``, ``controls``, and ``anticontrols`` lists cannot have any
+                elements in common."""
             )
         self._anticontrols = sorted(list(set(anticontrols)))
 

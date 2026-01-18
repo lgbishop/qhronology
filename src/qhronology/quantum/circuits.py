@@ -215,8 +215,8 @@ class QuantumCircuit(SymbolicsProperties):
                 if len(listed) > 1:
                     if set(systems) != set(listed):
                         raise ValueError(
-                            "Mismatch between the postselection's specified targets and its \
-                            calculated size."
+                            """Mismatch between the postselection's specified targets and its
+                            calculated size."""
                         )
                 systems_postselections += systems
             systems_postselections = list(set(systems_postselections))
@@ -360,8 +360,8 @@ class QuantumCircuit(SymbolicsProperties):
         if dim_input is not None and dim_gate is not None:
             if dim_input != dim_gate:
                 raise ValueError(
-                    "One or more of the gates has dimensionality different to that of the \
-                    input state(s)."
+                    """One or more of the gates has dimensionality different to that of the
+                    input state(s)."""
                 )
         return dim
 
