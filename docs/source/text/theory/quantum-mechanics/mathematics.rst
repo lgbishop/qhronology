@@ -6,7 +6,7 @@
 Mathematical foundations of quantum mechanics
 *********************************************
 
-Quantum mechanics, one of the cornerstones of our modern view of reality, is founded on the mathematical formalism of linear algebra, which itself is built upon structures known as vector spaces. The following mathematical preliminaries have been adapted from :cite:p:`nielsen_quantum_2010,zeidler_quantum_2006,audretsch_entangled_2007,dimock_quantum_2011,shankar_principles_2012,ohya_mathematical_2011,ballentine_quantum_2014,holevo_quantum_2012,watrous_theory_2018,prugovecki_quantum_1982,hiai_introduction_2014,dirac_principles_1982`.
+Quantum mechanics, one of the cornerstones of our modern view of reality, is founded on the mathematical formalism of linear algebra, which itself is built upon structures known as vector spaces. The following mathematical preliminaries have been adapted from :cite:p:`nielsen_quantum_2010, zeidler_quantum_2006, audretsch_entangled_2007, dimock_quantum_2011, shankar_principles_2012, ohya_mathematical_2011, ballentine_quantum_2014, holevo_quantum_2012, watrous_theory_2018, prugovecki_quantum_1982, hiai_introduction_2014, dirac_principles_1982`.
 
 Vector spaces
 =============

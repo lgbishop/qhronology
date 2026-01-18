@@ -106,7 +106,7 @@ To overcome this problem, Deutsch argued that the "correct" solution is the one 
 Iterative picture: The equivalent circuit
 -----------------------------------------
 
-In 2010, Ralph and Myers introduced their equivalent-circuit picture (ECP) :cite:p:`ralph_information_2010,ralph_reply_2011,pienaar_quantum_2011,ralph_relativistic_2012,dong_ralphs_2017` of the D-CTC model. This approach was formulated as a method of deriving the maximum entropy rule and thus resolving the uniqueness ambiguity. It consists of essentially "unwrapping" the D-CTC time-loop fixed-point circuit (:numref:`fig:circuit_ctc_dctc`) into an infinite sequence of interactions with perfect copies of the input state, and is illustrated in :numref:`fig:circuit_ctc_dctc_ecp`.
+In 2010, Ralph and Myers introduced their equivalent-circuit picture (ECP) :cite:p:`ralph_information_2010, ralph_reply_2011, pienaar_quantum_2011, ralph_relativistic_2012, dong_ralphs_2017` of the D-CTC model. This approach was formulated as a method of deriving the maximum entropy rule and thus resolving the uniqueness ambiguity. It consists of essentially "unwrapping" the D-CTC time-loop fixed-point circuit (:numref:`fig:circuit_ctc_dctc`) into an infinite sequence of interactions with perfect copies of the input state, and is illustrated in :numref:`fig:circuit_ctc_dctc_ecp`.
 
 .. only:: html
 

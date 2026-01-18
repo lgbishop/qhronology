@@ -6,7 +6,7 @@
 Quantum mechanics on continuous Hilbert spaces
 **********************************************
 
-One of the more physically meaningful classes of Hilbert spaces are those which are *continuous*. Such systems typically describe the dynamics of quantum particles propagating in some physical continuum, that is, :math:`\Reals^\Dimension` for any :math:`\Dimension \in \IntegersPositive`. Mathematically, any continuous quantum system may be described by a state, which is a vector :math:`\ket{\WaveFunction}` residing in a (continuous) Lebesgue space (a special function space that is also a type of Hilbert space), denoted by :math:`\SpaceLebesgue^2(\SetSub)`, on certain set :math:`\SetSub` which is some configuration space (such as :math:`\Reals^3)`. The theory discussed here adapts the work presented in :cite:p:`ryder_quantum_1996,dimock_quantum_2011,zeidler_quantum_2006,zee_quantum_2010,townsend_modern_2012,griffiths_introduction_2018,schulten_notes_2014,dittrich_classical_2020,schulman_techniques_1981,dirac_principles_1982`.
+One of the more physically meaningful classes of Hilbert spaces are those which are *continuous*. Such systems typically describe the dynamics of quantum particles propagating in some physical continuum, that is, :math:`\Reals^\Dimension` for any :math:`\Dimension \in \IntegersPositive`. Mathematically, any continuous quantum system may be described by a state, which is a vector :math:`\ket{\WaveFunction}` residing in a (continuous) Lebesgue space (a special function space that is also a type of Hilbert space), denoted by :math:`\SpaceLebesgue^2(\SetSub)`, on certain set :math:`\SetSub` which is some configuration space (such as :math:`\Reals^3)`. The theory discussed here adapts the work presented in :cite:p:`ryder_quantum_1996, dimock_quantum_2011, zeidler_quantum_2006, zee_quantum_2010, townsend_modern_2012, griffiths_introduction_2018, schulten_notes_2014, dittrich_classical_2020, schulman_techniques_1981, dirac_principles_1982`.
 
 Probabilities and the Born rule
 ===============================
@@ -106,7 +106,7 @@ The physical significance of this quantity, known as the *transition amplitude*,
 The path-integral formulation
 =============================
 
-The *path-integral formulation* :cite:p:`ryder_quantum_1996,kleinert_path_2009` (or the *sum-over-histories* approach) of quantum mechanics and field theory is a formalism that generalizes the principle of stationary action (from classical mechanics) to quantum mechanics. It is based on the notion of the *propagator*,
+The *path-integral formulation* :cite:p:`ryder_quantum_1996, kleinert_path_2009` (or the *sum-over-histories* approach) of quantum mechanics and field theory is a formalism that generalizes the principle of stationary action (from classical mechanics) to quantum mechanics. It is based on the notion of the *propagator*,
 
 .. math:: \Propagator(\vec{\PositionFinal},\TimeFinal;\vec{\PositionInitial},\TimeInitial) \equiv \braket{\vec{\PositionFinal},\TimeFinal}{\vec{\PositionInitial},\TimeInitial}, \qquad \TimeFinal>\TimeInitial,
    :label: eq:propagator

@@ -6,7 +6,7 @@
 Quantum mechanics on discrete Hilbert spaces
 ********************************************
 
-The theory of *quantum mechanics* seeks to explain the dynamics of the particles of which our universe is composed. It differs from classical physics in that certain properties (such as energy and momentum) of bound systems are restricted to being within sets of discrete values---a characteristic known as *quantization*. Additionally, objects described by quantum mechanics have properties distinctive of both waves and particles (termed *wave-particle duality*), and there are fundamental limits to the accuracy with which values of specific physical quantities can be predicted prior to their measurement (described by the *uncertainty principle*). The theory presented here is based on the treatments in :cite:p:`nielsen_quantum_2010,zeidler_quantum_2006,wilde_quantum_2017,bengtsson_geometry_2017,williams_explorations_2010,dimock_quantum_2011,schlosshauer_decoherence_2007,moret-bonillo_adventures_2017,serrano_quantum_2022,dirac_principles_1982,yanofsky_quantum_2008`.
+The theory of *quantum mechanics* seeks to explain the dynamics of the particles of which our universe is composed. It differs from classical physics in that certain properties (such as energy and momentum) of bound systems are restricted to being within sets of discrete values---a characteristic known as *quantization*. Additionally, objects described by quantum mechanics have properties distinctive of both waves and particles (termed *wave-particle duality*), and there are fundamental limits to the accuracy with which values of specific physical quantities can be predicted prior to their measurement (described by the *uncertainty principle*). The theory presented here is based on the treatments in :cite:p:`nielsen_quantum_2010, zeidler_quantum_2006, wilde_quantum_2017, bengtsson_geometry_2017, williams_explorations_2010, dimock_quantum_2011, schlosshauer_decoherence_2007, moret-bonillo_adventures_2017, serrano_quantum_2022, dirac_principles_1982, yanofsky_quantum_2008`.
 
 Quantum states
 ==============
@@ -567,19 +567,19 @@ which is known as the *Born rule*, and is one of the key principles of quantum m
 Integrals over quantum states
 =============================
 
-Let :math:`\SpaceHilbert` denote the Hilbert space for a :math:`\Dimension`-dimensional quantum system. The integral over quantum states :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert)` is defined :cite:p:`bengtsson_geometry_2017,allen_treating_2014` as
+Let :math:`\SpaceHilbert` denote the Hilbert space for a :math:`\Dimension`-dimensional quantum system. The integral over quantum states :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert)` is defined :cite:p:`bengtsson_geometry_2017, allen_treating_2014` as
 
 .. math:: \Integral = \int_{\SpaceMixed(\SpaceHilbert)} \diff[\StateDensity] \, \FunctionIntermediate(\StateDensity) 
    :label: eq:integral_mixed
 
 where :math:`\FunctionIntermediate : \SpaceMixed(\SpaceHilbert) \rightarrow \Complexes` is any scalar function, and :math:`\diff[\StateDensity]` is the integration measure over :math:`\SpaceMixed(\SpaceHilbert)`. To compute the integral, an explicit form of the measure must be defined, and we are typically free to choose any such form in accordance with what we wish to accomplish. In the case of mixed states :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert)`, there is in fact no unique natural measure on :math:`\SpaceMixed(\SpaceHilbert)`. One must therefore be chosen (along with a way to parametrize :math:`\StateDensity`), which means that that is no unique, natural way to define the integral :math:`\Integral`, as it will depend on the choice of measure used.
 
-For the specific case of pure states :math:`\ket{\StateVector} \in \SpacePure(\SpaceHilbert)` however, we are able to define both a suitable measure and parametrization. Given some :math:`\FunctionIntermediate : \SpacePure(\SpaceHilbert) \rightarrow \Complexes`, the integral over pure states :cite:p:`bengtsson_geometry_2017,allen_treating_2014` is
+For the specific case of pure states :math:`\ket{\StateVector} \in \SpacePure(\SpaceHilbert)` however, we are able to define both a suitable measure and parametrization. Given some :math:`\FunctionIntermediate : \SpacePure(\SpaceHilbert) \rightarrow \Complexes`, the integral over pure states :cite:p:`bengtsson_geometry_2017, allen_treating_2014` is
 
 .. math:: \Integral = \int_{\SpacePure(\SpaceHilbert)} \diff[\StateVector] \, \FunctionIntermediate(\StateVector) 
    :label: eq:integral_pure
 
-An important class of unitary transformations consists of random unitary matrices distributed according to the Haar measure on the group of :math:`\Dimension\times\Dimension` unitary matrices :math:`\GroupUnitary(\Dimension)`. This is significant for our purposes, as conveniently there exists a unique, natural measure over :math:`\SpacePure(\SpaceHilbert)` that is invariant under such transformations, and perhaps the best way to write this is in the Hurwitz parametrization :cite:p:`hurwitz_uber_1897,zyczkowski_induced_2001,bengtsson_geometry_2017`. Let us first introduce the Bloch sphere parametrization, often used for qubits, which involves the rotationally invariant area measure on a (unit) :math:`2`-sphere:
+An important class of unitary transformations consists of random unitary matrices distributed according to the Haar measure on the group of :math:`\Dimension\times\Dimension` unitary matrices :math:`\GroupUnitary(\Dimension)`. This is significant for our purposes, as conveniently there exists a unique, natural measure over :math:`\SpacePure(\SpaceHilbert)` that is invariant under such transformations, and perhaps the best way to write this is in the Hurwitz parametrization :cite:p:`hurwitz_uber_1897, zyczkowski_induced_2001, bengtsson_geometry_2017`. Let us first introduce the Bloch sphere parametrization, often used for qubits, which involves the rotationally invariant area measure on a (unit) :math:`2`-sphere:
 
 .. math::
 
