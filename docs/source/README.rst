@@ -54,8 +54,6 @@ Overview
   - Deutsch's model (D-CTCs)
   - postselected teleportation (P-CTCs)
 
-..   - transition probabilities (T-CTCs)
-
 - general quantum information processing and computation
 
   - algebraic, symbolic calculations
@@ -64,9 +62,6 @@ Overview
 - quantum circuit visualization 
 
   - text-based semigraphical diagrams constructed using glyphs from monospace fonts (support for both ASCII and Unicode)
-
-..   - monospace (ASCII and Unicode) glyph diagrams
-..   - ``quantikz`` LaTeX package renders
 
 The primary purpose of Qhronology is to facilitate the study of quantum theories of time travel in both educational and research capacities. In addition to this, the package also functions as a quantum circuit simulator, allowing for comprehensive analysis of the general quantum operations of quantum information processing and computation. Qhronology's underlying mathematical system accomplishes this using the standard :math:`\Dimension`-dimensional matrix mechanics of discrete-variable quantum theory in a general :math:`\Complexes^\Dimension`-representation.
 
