@@ -872,6 +872,11 @@ pre {
     border-radius: 0.0rem;
 }
 
+div.notranslate div pre {
+    border-radius: 0.0rem;
+    font-size: 0.9em;
+}
+
 code.literal {
     border-radius: 0.0rem;
     background-color: var(--pst-color-surface);
