@@ -228,10 +228,16 @@ ICN = Not(targets=[2], controls=[1], num_systems=3)
 CNI = Not(targets=[1], controls=[0], num_systems=3)
 HII = Hadamard(targets=[0], num_systems=3)
 IMI = Measurement(
-    operators=[ket(0), ket(1)], observable=False, targets=[1], num_systems=3
+    operators=[ket(0), ket(1)],
+    observable=False,
+    targets=[1],
+    num_systems=3,
 )
 MII = Measurement(
-    operators=[ket(0), ket(1)], observable=False, targets=[0], num_systems=3
+    operators=[ket(0), ket(1)],
+    observable=False,
+    targets=[0],
+    num_systems=3,
 )
 ICX = Pauli(index=1, targets=[2], controls=[1], num_systems=3)
 CIZ = Pauli(index=3, targets=[2], controls=[0], num_systems=3)
@@ -410,8 +416,8 @@ Contributions to Qhronology (both the package and its documentation), including 
   - Write proper (more formal) unit tests.
   - Permit more intuitive usage (i.e., summation and multiplication) of quantum objects via operator overloading.
   - Tighter integration with SymPy's `pprint()` functionality for enhanced state and gate printing.
-  - Implement T-CTCs (the _transition-probabilities_ quantum model of time travel).
-  - Create the ability for circuit visualizations to target _Quantikz_ LaTeX output.
+  - Implement T-CTCs (the *transition-probabilities* quantum model of time travel).
+  - Create the ability for circuit visualizations to target *Quantikz* LaTeX output.
     - Automatically rasterize using available (local) LaTeX installation.
   - Add the ability to label a circuit's output systems.
   - Implement the permutation (PERM) gate.
