@@ -51,7 +51,7 @@ In this part, detailed documentation of the Qhronology package is presented. Thi
 
 .. rubric:: :styleheader1:`Quantum`
 
-The ``quantum`` subpackage contains most of Qhronology's underlying mathematical framework.
+The ``quantum`` subpackage contains most of Qhronology's underlying mathematical framework and its user-facing classes.
 
 .. list-table:: Overview of Qhronology's ``quantum`` subpackage
    :widths: 15 25 20
@@ -111,7 +111,7 @@ The ``quantum`` subpackage contains most of Qhronology's underlying mathematical
 
 .. rubric:: :styleheader1:`Mechanics`
 
-The ``mechanics`` subpackage contains Qhronology's core logic for creating quantum vectors and matrices, performing operations on such constructs, and computing various significant scalar quantities.
+The ``mechanics`` subpackage contains Qhronology's core logic for creating fundamental quantum objects, performing operations on them, and computing various quantum-mechanical scalar quantities.
 
 .. list-table:: Overview of Qhronology's ``mechanics`` subpackage
    :widths: 15 25 20

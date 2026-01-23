@@ -33,12 +33,13 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=751da52a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=fa040db7" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -47,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
+    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -65,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.1" />
-    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
+  <meta name="docsearch:version" content="1.0.2" />
+    <meta name="docbuild:last-update" content="Jan 24, 2026"/>
   </head>
   
   
@@ -757,8 +758,8 @@
             <span class="n">matrix</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;The specified function (``</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()``) cannot be used to rewrite </span><span class="se">\</span>
-<span class="s2">            the matrix.&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The specified function (``</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()``) cannot be used to rewrite</span>
+<span class="s2">            the matrix.&quot;&quot;&quot;</span>
         <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">matrix</span></div>
@@ -854,7 +855,7 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[&quot;1&quot;], [&quot;1&quot;]])</span>
+<span class="sd">    &gt;&gt;&gt; matrix = sp.Matrix([[1], [1]])</span>
 <span class="sd">    &gt;&gt;&gt; coefficient(matrix, scalar=1 / sp.sqrt(2))</span>
 <span class="sd">    Matrix([</span>
 <span class="sd">    [sqrt(2)/2],</span>
@@ -1397,14 +1398,16 @@
 <span class="sd">            Its first non-keyword argument must be able to take a mathematical expression or</span>
 <span class="sd">            a matrix/array of such types.</span>
 <span class="sd">        arguments : dict[str, str]</span>
-<span class="sd">            A dictionary of keyword arguments (both keys and values as strings) to pass</span>
+<span class="sd">            A dictionary of keyword arguments (with the keywords as strings) to pass</span>
 <span class="sd">            to the ``function`` call.</span>
 <span class="sd">            Defaults to ``{}``.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; psi = QuantumState(</span>
-<span class="sd">        ...     spec=[(&quot;a*b + b*c + c*a&quot;, [0]), (&quot;x*y + y*z + z*x&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;</span>
+<span class="sd">        ...     spec=[(&quot;a*b + b*c + c*a&quot;, [0]), (&quot;x*y + y*z + z*x&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     label=&quot;ψ&quot;,</span>
 <span class="sd">        ... )</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |ψ⟩ = (a*b + a*c + b*c)|0⟩ + (x*y + x*z + y*z)|1⟩</span>
@@ -1434,7 +1437,11 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;cos(θ)&quot;, [0]), (&quot;sin(θ)&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;cos(θ)&quot;, [0]), (&quot;sin(θ)&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     label=&quot;ψ&quot;,</span>
+<span class="sd">        ... )</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |ψ⟩ = cos(θ)|0⟩ + sin(θ)|1⟩</span>
 <span class="sd">        &gt;&gt;&gt; psi.rewrite(sp.exp)</span>
@@ -1446,8 +1453,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a forced (re)normalization on the state to the value specified (``norm``).</span>
 
-<span class="sd">        Useful when applied to the current quantum state both before and after mutating operations,</span>
-<span class="sd">        prior to any simplification (such as renormalization) performed on the processed output</span>
+<span class="sd">        Useful when applied to a quantum state both before and after mutating operations,</span>
+<span class="sd">        prior to any simplification (such as renormalization) performed on its processed output</span>
 <span class="sd">        (obtained via the ``state()`` method).</span>
 
 <span class="sd">        Arguments</span>
@@ -1458,14 +1465,22 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a&quot;, [0]), (&quot;b&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     label=&quot;ψ&quot;,</span>
+<span class="sd">        ... )</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |ψ⟩ = a|0⟩ + b|1⟩</span>
 <span class="sd">        &gt;&gt;&gt; psi.normalize()</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |ψ⟩ = a/sqrt(a*conjugate(a) + b*conjugate(b))|0⟩ + b/sqrt(a*conjugate(a) + b*conjugate(b))|1⟩</span>
 
-<span class="sd">        &gt;&gt;&gt; identity = QuantumState(spec=[(&quot;1&quot;, [0]), (&quot;1&quot;, [1])], label=&quot;I&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; identity = QuantumState(</span>
+<span class="sd">        ...     spec=[(1, [0]), (1, [1])],</span>
+<span class="sd">        ...     symbols={&quot;d&quot;: {&quot;real&quot;: True}},</span>
+<span class="sd">        ...     label=&quot;I&quot;,</span>
+<span class="sd">        ... )</span>
 <span class="sd">        &gt;&gt;&gt; identity.print()</span>
 <span class="sd">        I = |0⟩⟨0| + |1⟩⟨1|</span>
 <span class="sd">        &gt;&gt;&gt; identity.normalize(&quot;2/d&quot;)</span>
@@ -1488,12 +1503,27 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;1&quot;, [0]), (&quot;1&quot;, [1])], form=&quot;vector&quot;, label=&quot;ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(</span>
+<span class="sd">        ...     spec=[(1, [0]), (1, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     label=&quot;ψ&quot;,</span>
+<span class="sd">        ... )</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |ψ⟩ = |0⟩ + |1⟩</span>
 <span class="sd">        &gt;&gt;&gt; psi.coefficient(1 / sp.sqrt(2))</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |ψ⟩ = sqrt(2)/2|0⟩ + sqrt(2)/2|1⟩</span>
+
+<span class="sd">        &gt;&gt;&gt; phi = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;cos(θ)&quot;, [0]), (&quot;sin(θ)&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     label=&quot;φ&quot;,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; phi.print()</span>
+<span class="sd">        |φ⟩ = cos(θ)|0⟩ + sin(θ)|1⟩</span>
+<span class="sd">        &gt;&gt;&gt; phi.coefficient(&quot;exp(I*ξ)&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; phi.print()</span>
+<span class="sd">        |φ⟩ = exp(I*ξ)*cos(θ)|0⟩ + exp(I*ξ)*sin(θ)|1⟩</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">scalar</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">scalar</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">scalar</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">coefficient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scalar</span><span class="o">=</span><span class="n">scalar</span><span class="p">)</span>
@@ -1528,8 +1558,8 @@
 <span class="sd">        ...     spec=[(&quot;a*u&quot;, [0, 0]), (&quot;b*u&quot;, [1, 0]), (&quot;a*v&quot;, [0, 1]), (&quot;b*v&quot;, [1, 1])],</span>
 <span class="sd">        ...     form=&quot;vector&quot;,</span>
 <span class="sd">        ...     conditions=[</span>
-<span class="sd">        ...         (&quot;a*conjugate(a) + b*conjugate(b)&quot;, &quot;1&quot;),</span>
-<span class="sd">        ...         (&quot;u*conjugate(u) + v*conjugate(v)&quot;, &quot;1&quot;),</span>
+<span class="sd">        ...         (&quot;a*conjugate(a) + b*conjugate(b)&quot;, 1),</span>
+<span class="sd">        ...         (&quot;u*conjugate(u) + v*conjugate(v)&quot;, 1),</span>
 <span class="sd">        ...     ],</span>
 <span class="sd">        ...     label=&quot;Ψ&quot;,</span>
 <span class="sd">        ... )</span>
@@ -1542,7 +1572,10 @@
 <span class="sd">        ρ = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|</span>
 
 <span class="sd">        &gt;&gt;&gt; bell = QuantumState(</span>
-<span class="sd">        ...     spec=[(&quot;1&quot;, [0, 0]), (&quot;1&quot;, [1, 1])], form=&quot;vector&quot;, norm=1, label=&quot;Φ&quot;</span>
+<span class="sd">        ...     spec=[(1, [0, 0]), (1, [1, 1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     norm=1,</span>
+<span class="sd">        ...     label=&quot;Φ&quot;,</span>
 <span class="sd">        ... )</span>
 <span class="sd">        &gt;&gt;&gt; bell.print()</span>
 <span class="sd">        |Φ⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩</span>
@@ -1726,7 +1759,7 @@
 <span class="sd">        the postselection is performed.</span>
 
 <span class="sd">        If multiple postselections are supplied, the state will be successively postselected in the</span>
-<span class="sd">        order in which they are given. If a vector state is postselected against a matrix form,</span>
+<span class="sd">        order in which they are specified. If a vector state is postselected against a matrix form,</span>
 <span class="sd">        it will automatically be transformed into its matrix form as necessary.</span>
 
 <span class="sd">        Arguments</span>
@@ -1746,8 +1779,16 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0, 0]), (&quot;b&quot;, [1, 1])], form=&quot;vector&quot;, label=&quot;Ψ&quot;)</span>
-<span class="sd">        &gt;&gt;&gt; phi = QuantumState(spec=[(&quot;c&quot;, [0]), (&quot;d&quot;, [1])], form=&quot;vector&quot;, label=&quot;φ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a&quot;, [0, 0]), (&quot;b&quot;, [1, 1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     label=&quot;Ψ&quot;,</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; phi = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;c&quot;, [0]), (&quot;d&quot;, [1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     label=&quot;φ&quot;,</span>
+<span class="sd">        ... )</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |Ψ⟩ = a|0,0⟩ + b|1,1⟩</span>
 <span class="sd">        &gt;&gt;&gt; phi.print()</span>
@@ -1758,7 +1799,11 @@
 <span class="sd">        |Ψ′⟩ = a*conjugate(c)|0⟩ + b*conjugate(d)|1⟩</span>
 
 <span class="sd">        &gt;&gt;&gt; from qhronology.mechanics.matrices import ket</span>
-<span class="sd">        &gt;&gt;&gt; psi = QuantumState(spec=[(&quot;a&quot;, [0, 0]), (&quot;b&quot;, [1, 1])], form=&quot;vector&quot;, label=&quot;Ψ&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; psi = QuantumState(</span>
+<span class="sd">        ...     spec=[(&quot;a&quot;, [0, 0]), (&quot;b&quot;, [1, 1])],</span>
+<span class="sd">        ...     form=&quot;vector&quot;,</span>
+<span class="sd">        ...     label=&quot;Ψ&quot;,</span>
+<span class="sd">        ... )</span>
 <span class="sd">        &gt;&gt;&gt; psi.print()</span>
 <span class="sd">        |Ψ⟩ = a|0,0⟩ + b|1,1⟩</span>
 <span class="sd">        &gt;&gt;&gt; psi.label += &quot;′&quot;</span>

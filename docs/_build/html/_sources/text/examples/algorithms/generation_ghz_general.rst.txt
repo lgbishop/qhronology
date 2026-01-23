@@ -1,7 +1,7 @@
 .. _`eg:generation_ghz_general`:
 
-Generation of a generalized GHZ state
-=====================================
+Generation of the generalized GHZ state
+=======================================
 
 Description
 -----------
@@ -42,7 +42,7 @@ from primitive :math:`\ket{0}` states. This is also known as the *generalized* G
    :figwidth: 100 %
    :figclass: light-dark hidden
 
-   Generation of a generalized GHZ state.
+   Generation of the generalized GHZ state.
 
 The complete unitary transformation described by this circuit is the product
 

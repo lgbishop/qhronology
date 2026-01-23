@@ -6,7 +6,7 @@ Fourier transform adder
 Description
 -----------
 
-The version of a quantum adder presented here sums two multi-qubit integers essentially by computing the summation in Fourier space :cite:p:`draper_addition_2000, ruiz-perez_quantum_2017, sahin_quantum_2020, pavlidis_quantum_2021, seidel_efficient_2022, atchade-adelomou_efficient_2023, wang_comprehensive_2025`. This is achieved by first performing a quantum (discrete) Fourier transform on one of the encoded integers, following with a controlled-phase gate (serving the same function as an ordinary full adder in ordinary non-Fourier Hilbert space), and concluding with an inverse Fourier transform on the same integer.
+The version of a quantum adder presented here sums two multi-qubit integers essentially by computing the summation in Fourier space :cite:p:`draper_addition_2000, ruiz-perez_quantum_2017, sahin_quantum_2020, pavlidis_quantum-fourier-transform-based_2021, seidel_efficient_2022, atchade-adelomou_efficient_2023, wang_comprehensive_2025`. This is achieved by first performing a quantum (discrete) Fourier transform on one of the encoded integers, following with a controlled-phase gate (serving the same function as an ordinary full adder in ordinary non-Fourier Hilbert space), and concluding with an inverse Fourier transform on the same integer.
 
 .. only:: html
 

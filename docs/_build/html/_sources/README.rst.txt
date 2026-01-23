@@ -47,40 +47,29 @@ Overview
       :alt: Qhronology logo
       :align: center
 
-*Qhronology* is a Python package for computing the states of the chronology-respecting (CR) and chronology-violating (CV) quantum systems according to the foremost quantum theories of time travel. It also functions as a (mostly) complete quantum circuit simulator, and contains an engine for the basic visualization of quantum circuit diagrams. Its main features include:
+*Qhronology* is a Python package for computing the states of the chronology-respecting (CR) and chronology-violating (CV) quantum systems according to the foremost quantum prescriptions of closed timelike curves (CTCs). By providing a unique approach to describing general quantum objects (such as states and gates), Qhronology can also function as a complete quantum circuit simulator, and additionally contains an engine for the visualization of quantum circuit diagrams. Its main features include:
 
-- temporal paradox resolution using quantum-mechanical prescriptions of time travel
+- calculation of the states of the CR and CV quantum systems according to quantum-mechanical prescriptions of closed timelike curves
 
   - Deutsch's model (D-CTCs)
   - postselected teleportation (P-CTCs)
 
-..   - transition probabilities (T-CTCs)
+- simulation of general quantum information processing and computation
 
-- general quantum information processing and computation
+  - numerical and symbolic calculations involving any number of variables and parameters
+  - (classical) replication of quantum experiments
 
-  - algebraic, symbolic calculations
-  - (classical) simulation of quantum experiments (limited by the finite precision of floating-point arithmetic)
+- visualization of quantum circuit diagrams
 
-- quantum circuit visualization 
+  - text-based semigraphical diagrams constructed using glyphs from monospace fonts
 
-  - text-based semigraphical diagrams constructed using glyphs from monospace fonts (support for both ASCII and Unicode)
+The primary purpose of Qhronology is to facilitate the study of quantum models of antichronological time travel and quantum algorithms of quantum computing in both educational and research capacities. As part of this, the project aims to make the expression of quantum states, gates, circuits, and models of CTCs near-limitlessly possible within a framework that is syntactically simple, informationally dense, mathematically powerful, extremely flexible, and easily extensible. Qhronology therefore provides a sufficiently complete and self-contained set of tools with the intention that using external packages and libraries to perform transformations on its quantum constructs should not be necessary (at least in most cases). Its underlying mathematical system accomplishes this using the standard :math:`\Dimension`-dimensional matrix mechanics of discrete-variable quantum theory in a general :math:`\Complexes^\Dimension`-representation.
 
-..   - monospace (ASCII and Unicode) glyph diagrams
-..   - ``quantikz`` LaTeX package renders
-
-The primary purpose of Qhronology is to facilitate the study of quantum theories of time travel in both educational and research capacities. In addition to this, the package also functions as a quantum circuit simulator, allowing for comprehensive analysis of the general quantum operations of quantum information processing and computation. Qhronology's underlying mathematical system accomplishes this using the standard :math:`\Dimension`-dimensional matrix mechanics of discrete-variable quantum theory in a general :math:`\Complexes^\Dimension`-representation.
-
-The package provides a sufficiently complete and self-contained set of tools with the intention that performing transformations on quantum constructs and data with external packages and libraries need not be necessary (in most cases). Qhronology aims to make the expression of quantum states, gates, circuits, and time-travel prescriptions near-limitlessly possible with a framework that is syntactically simple, informationally dense, programmatically intuitive, mathematically powerful, extremely flexible, and easily extensible.
-
-In addition to functionality provided by Python's standard library, Qhronology is built around features from both the canonical `SymPy <https://sympy.org>`_ (`repository <https://github.com/sympy/sympy>`_) and `NumPy <https://numpy.org>`_ (`repository <https://github.com/numpy/numpy>`_) projects. In particular, the package greatly leverages the symbolic and linear algebra capabilities of the former, and so aims to have a deep compatibility with SymPy and its matrix objects. It is hoped that users possessing experience with these projects should therefore find Qhronology's interface both familiar and intuitive.
-
-.. raw:: latex
-
-   \vspace*{-0.35em}
+Qhronology is written entirely in the `Python <https://www.python.org/>`_ programming language. Being high-level, dynamically type-checked, and interpreted (at least within the context of its CPython reference implementation), Python is well-suited for building an accessible framework that emphasizes interactivity and scriptability. Additionally, like any popular language, it has both an extensive standard library and a plethora of powerful packages available to it. Qhronology is built around features from two such packages: the canonical `SymPy <https://sympy.org>`_ and `NumPy <https://numpy.org>`_ projects. In particular, the package greatly leverages the symbolic and linear algebra capabilities of the former, and so aims to have a deep compatibility with SymPy and its matrix objects. It is therefore hoped that users who possess experience with these projects find Qhronology's interface both familiar and intuitive.
 
 .. note::
 
-   Qhronology in its current form is considered to be highly experimental. Its output may be incorrect, and some features may not work as intended. Additionally, please note that its functionality, including any and all functions, classes, methods, and modules, may be subject to change in future versions.
+   Qhronology, in its current form, is considered to be highly experimental. Its output may not always be correct, and some features may not work as intended. Additionally, please note that all components of the package, including its functions, methods, classes, modules, and subpackages, may be subject to change in future versions.
 
 .. raw:: latex
 
@@ -104,7 +93,7 @@ Designed to provide a powerful set of features with a simple and intuitive synta
 
 .. raw:: latex
 
-   \vspace*{0.65em}
+   \vspace*{0.5em}
 
 .. only:: html
 
@@ -148,7 +137,7 @@ The fundamental indeterminism of quantum mechanics can be leveraged to provide r
 
 .. raw:: latex
 
-   \vspace*{0.65em}
+   \vspace*{0.5em}
 
 .. only:: html
 
@@ -197,7 +186,7 @@ Quantum circuit diagrams provide a powerful picturalism through which any quantu
 
 .. raw:: latex
 
-   \vspace*{0.65em}
+   \vspace*{0.5em}
 
 .. only:: html
 
@@ -226,6 +215,10 @@ Quantum circuit diagrams provide a powerful picturalism through which any quantu
 
    \vspace*{-0.15em}
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 Numerous examples
 -----------------
 
@@ -241,7 +234,7 @@ Bundled with the project is a small collection of complete examples that showcas
 
 .. raw:: latex
 
-   \vspace*{0.5em}
+   \vspace*{0.25em}
 
 .. only:: html
 
@@ -371,7 +364,7 @@ Local installation of Qhronology from `PyPI <https://pypi.org/project/qhronology
 
 You may also be able to use an alternative package manager of your choice.
 
-After installation, the package can simply be imported in Python in the usual way. One suggestion is as follows:
+After installation, the package can be imported in Python in the usual way. One suggestion is as follows:
 
 .. code:: python
 
@@ -605,13 +598,28 @@ Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repositor
 Citation
 ========
 
+- The package:
+
 .. code:: text
 
-   @software{bishop_qhronology_2025,
-      title = {{Qhronology: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing & computation}},
-      author = {Bishop, Lachlan G.},
-      year = {2025},
-      url = {https://github.com/lgbishop/qhronology},
+   @software{bishop_qhronology-software_2025,
+     title = {Qhronology: {{A Python}} Package for Studying Quantum Models of Closed Timelike Curves and Simulating General Quantum Information Processing \& Computation},
+     author = {Bishop, Lachlan G.},
+     year = {2025},
+     url = {https://github.com/lgbishop/qhronology},
+     addendum = {Source code: \url{https://github.com/lgbishop/qhronology}}
+   }
+
+- The project documentation:
+
+.. code:: text
+
+   @misc{bishop_qhronology-documentation_2025,
+     title = {Qhronology: {{Documentation}}, {{Examples}}, and {{Theory}}},
+     author = {Bishop, Lachlan G.},
+     year = {2025},
+     url = {https://github.com/lgbishop/qhronology/blob/latest/docs/_build/latex/Qhronology.pdf},
+     addendum = {Available online: \url{https://github.com/lgbishop/qhronology}}
    }
 
 Possible future work
@@ -620,25 +628,21 @@ Possible future work
 - Package:
 
   - Write proper (more formal) unit tests.
-
   - Permit more intuitive usage (i.e., summation and multiplication) of quantum objects via operator overloading.
-
   - Tighter integration with SymPy's ``pprint()`` functionality for enhanced state and gate printing.
-
   - Implement T-CTCs (the *transition-probabilities* quantum model of time travel).
-
   - Add the ability for circuit visualizations to target *Quantikz* LaTeX output.
 
     - Automatically rasterize using available (local) LaTeX installation.
 
   - Add the ability to label a circuit's output systems.
-
   - Implement the permutation (PERM) gate.
+  - Add the ability for circuits to be optimized (to reduced gate depth).
+  - Add the ability for circuits and/or gates to be decomposed (using a specified gate set).
 
 - Documentation:
 
   - More examples.
-
   - Website:
 
     - Fix citation numbering.
@@ -646,5 +650,4 @@ Possible future work
 - Theory:
 
   - Expand section on the Cauchy problem near CTCs.
-
   - Add a section on the general theory of relativity and the associated geometric theories of CTCs.

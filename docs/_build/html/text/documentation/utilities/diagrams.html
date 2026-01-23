@@ -34,12 +34,13 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=751da52a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=fa040db7" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -48,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
+    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +67,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.1" />
-    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
+  <meta name="docsearch:version" content="1.0.2" />
+    <meta name="docbuild:last-update" content="Jan 24, 2026"/>
   </head>
   
   
@@ -575,25 +576,25 @@ quantum circuit diagram elements.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pad</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – A two-tuple describing the horizontal and vertical interior paddings between the content
-at the centre of the object (e.g., its label) and its outer edge (e.g., block border).
-Both integers must be non-negative.
+<li><p><strong>pad</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying intra-gate padding
+(i.e., the horizontal and vertical interior paddings between the content at the centre
+of each gate (e.g., label) and its outer edge (e.g., block border).
 Defaults to <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>.</p></li>
-<li><p><strong>sep</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – A two-tuple describing the horizontal and vertical exterior separation distances
-at the object’s edges.
-Both integers must be non-negative.
+<li><p><strong>sep</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying inter-gate separation
+(i.e., the horizontal and vertical exterior separation distances between the edges of
+neighbouring gates.
 Defaults to <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">1)</span></code>.</p></li>
-<li><p><strong>style</strong> (<em>str</em>) – A string specifying the style for the circuit visualization to take.
+<li><p><strong>style</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string specifying the style for the circuit visualization to take.
 Can be any of <code class="docutils literal notranslate"><span class="pre">&quot;ascii&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;unicode&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;unicode_alt&quot;</span></code>.
 Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;unicode&quot;</span></code>.</p></li>
-<li><p><strong>return_string</strong> (<em>bool</em>) – Whether to return the assembled diagram as a multiline string.
+<li><p><strong>return_string</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to return the assembled diagram as a multiline string.
 Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>None</em> – Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><em>str</em> – The rendered circuit diagram. Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> – Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> – The rendered circuit diagram. Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </p>
 </dd>

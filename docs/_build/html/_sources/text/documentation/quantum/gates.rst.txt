@@ -6,7 +6,7 @@
 Gates
 *****
 
-Quantum logic gates provide the building blocks for describing quantum operations that are usually (unitary) interactions between two or more (sub)systems, or (linear) transformations of any number of systems. In Qhronology, they are constructed as instances of the :py:class:`~qhronology.quantum.gates.QuantumGate` base class,
+Quantum logic gates provide the building blocks for describing quantum operations, which are usually either (unitary) interactions between two or more (sub)systems, or (linear) transformations of any number of systems. In Qhronology, they are represented by instances of the :py:class:`~qhronology.quantum.gates.QuantumGate` base class,
 
 .. code:: python
 
@@ -18,7 +18,7 @@ and its derivatives (subclasses),
 
    from qhronology.quantum.gates import Pauli, GellMann, Rotation, Phase, Diagonal, Swap, Summation, Not, Hadamard, Fourier, Measurement
 
-These represent a distinct vertical "slice" in the quantum circuit picturalism, and so include information about the locations of both control and anticontrol nodes, in addition to the presence of any empty wires. They also possess other metadata associated with the gate such as any parameter values, symbolic assumptions, and algebraic conditions.
+These objects describe a distinct vertical "slice" in the quantum circuit picturalism, and so include information about the locations of both control and anticontrol nodes, in addition to the presence of any empty wires. They also possess other metadata associated with the gate such as parameter values, symbolic assumptions, and algebraic conditions.
 
 Facilities to combine gates together are also provided by the package and take two forms: "interleaved" compositions via the :py:class:`~qhronology.quantum.gates.GateInterleave` class, and "stacked" compositions via the :py:class:`~qhronology.quantum.gates.GateStack` class:
 
@@ -704,6 +704,39 @@ Please note that the documentation of these subclasses includes only properties 
          \end{mdframed}
          \vspace{1em}
 
+   >>> I = Pauli(index=0)
+   >>> I.output()
+   Matrix([
+   [1, 0],
+   [0, 1]])
+   >>> I.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_pauli_i-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_gate_pauli_i-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
    >>> ZZ = Pauli(index=3, targets=[0, 1], label="Z⊗Z")
    >>> ZZ.output()
    Matrix([
@@ -1070,7 +1103,7 @@ Please note that the documentation of these subclasses includes only properties 
    Matrix([
    [1,           0],
    [0, exp(I*pi/4)]])
-   >>> D.diagram()
+   >>> T.diagram()
 
    ..
 
@@ -1181,7 +1214,7 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. rubric:: :styleheader6:`Examples`
 
-   >>> D = Diagonal(entries={0: "u", 1: "v"}, exponentiation=False)
+   >>> D = Diagonal(entries={0: "u", 1: "v"})
    >>> D.output()
    Matrix([
    [u, 0],
@@ -1205,6 +1238,43 @@ Please note that the documentation of these subclasses includes only properties 
       .. only:: html or latex
 
          .. image:: /figures/output/text_examples_docstrings_gate_diagonal_d-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> D3 = Diagonal(
+   ...     entries={0: "a", 1: "b", 2: "c"},
+   ...     dim=3,
+   ... )
+   >>> D3.output()
+   Matrix([
+   [a, 0, 0],
+   [0, b, 0],
+   [0, 0, c]])
+   >>> D3.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_diagonal_d3-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_gate_diagonal_d3-light.png
             :scale: 40 %
             :align: left
             :class: only-light
@@ -1243,45 +1313,6 @@ Please note that the documentation of these subclasses includes only properties 
       .. only:: html or latex
 
          .. image:: /figures/output/text_examples_docstrings_gate_diagonal_p-light.png
-            :scale: 40 %
-            :align: left
-            :class: only-light
-
-      .. raw:: latex
-         
-         \end{mdframed}
-         \vspace{1em}
-
-   >>> D3 = Diagonal(
-   ...     entries={0: "a", 1: "b", 2: "c"},
-   ...     exponentiation=False,
-   ...     symbols={"a": {"real": True}, "b": {"real": True}, "c": {"real": True}},
-   ...     dim=3,
-   ... )
-   >>> D3.output()
-   Matrix([
-   [a, 0, 0],
-   [0, b, 0],
-   [0, 0, c]])
-   >>> D3.diagram()
-
-   ..
-
-      .. raw:: latex
-         
-         \vspace{1em}
-         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
-
-      .. only:: html
-
-         .. image:: /figures/output/text_examples_docstrings_gate_diagonal_d3-dark.png
-            :scale: 40 %
-            :align: left
-            :class: only-dark
-
-      .. only:: html or latex
-
-         .. image:: /figures/output/text_examples_docstrings_gate_diagonal_d3-light.png
             :scale: 40 %
             :align: left
             :class: only-light
@@ -1590,6 +1621,45 @@ Please note that the documentation of these subclasses includes only properties 
          \end{mdframed}
          \vspace{1em}
 
+   >>> CSWAP = Swap(targets=[1, 2], controls=[0])
+   >>> CSWAP.output()
+   Matrix([
+   [1, 0, 0, 0, 0, 0, 0, 0],
+   [0, 1, 0, 0, 0, 0, 0, 0],
+   [0, 0, 1, 0, 0, 0, 0, 0],
+   [0, 0, 0, 1, 0, 0, 0, 0],
+   [0, 0, 0, 0, 1, 0, 0, 0],
+   [0, 0, 0, 0, 0, 0, 1, 0],
+   [0, 0, 0, 0, 0, 1, 0, 0],
+   [0, 0, 0, 0, 0, 0, 0, 1]])
+   >>> CSWAP.diagram()
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_swap_cswap-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_gate_swap_cswap-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
    >>> SCS = Swap(targets=[0, 2], controls=[1])
    >>> SCS.output()
    Matrix([
@@ -1629,7 +1699,12 @@ Please note that the documentation of these subclasses includes only properties 
          \end{mdframed}
          \vspace{1em}
 
-   >>> RSWAP = Swap(targets=[0, 1], exponent=sp.Rational(1, 2), label="√SWAP", family="GATE")
+   >>> RSWAP = Swap(
+   ...     targets=[0, 1],
+   ...     exponent=sp.Rational(1, 2),
+   ...     label="√SWAP",
+   ...     family="GATE",
+   ... )
    >>> RSWAP.output()
    Matrix([
    [1,         0,         0, 0],
@@ -1696,45 +1771,6 @@ Please note that the documentation of these subclasses includes only properties 
       .. only:: html or latex
 
          .. image:: /figures/output/text_examples_docstrings_gate_swap_pswap-light.png
-            :scale: 40 %
-            :align: left
-            :class: only-light
-
-      .. raw:: latex
-         
-         \end{mdframed}
-         \vspace{1em}
-
-   >>> CSWAP = Swap(targets=[1, 2], controls=[0])
-   >>> CSWAP.output()
-   Matrix([
-   [1, 0, 0, 0, 0, 0, 0, 0],
-   [0, 1, 0, 0, 0, 0, 0, 0],
-   [0, 0, 1, 0, 0, 0, 0, 0],
-   [0, 0, 0, 1, 0, 0, 0, 0],
-   [0, 0, 0, 0, 1, 0, 0, 0],
-   [0, 0, 0, 0, 0, 0, 1, 0],
-   [0, 0, 0, 0, 0, 1, 0, 0],
-   [0, 0, 0, 0, 0, 0, 0, 1]])
-   >>> CSWAP.diagram()
-
-   ..
-
-      .. raw:: latex
-         
-         \vspace{1em}
-         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
-
-      .. only:: html
-
-         .. image:: /figures/output/text_examples_docstrings_gate_swap_cswap-dark.png
-            :scale: 40 %
-            :align: left
-            :class: only-dark
-
-      .. only:: html or latex
-
-         .. image:: /figures/output/text_examples_docstrings_gate_swap_cswap-light.png
             :scale: 40 %
             :align: left
             :class: only-light
@@ -1835,7 +1871,7 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. rubric:: :styleheader6:`Examples`
 
-   >>> N = Not(targets=[0])
+   >>> N = Not()
    >>> N.output()
    Matrix([
    [0, 1],
@@ -2012,7 +2048,11 @@ Please note that the documentation of these subclasses includes only properties 
          \end{mdframed}
          \vspace{1em}
 
-   >>> RNOT = Not(targets=[0], exponent=sp.Rational(1, 2))
+   >>> RNOT = Not(
+   ...     exponent=sp.Rational(1, 2),
+   ...     label="√NOT",
+   ...     family="GATE",
+   ... )
    >>> RNOT.output()
    Matrix([
    [1/2 + I/2, 1/2 - I/2],
@@ -2320,7 +2360,12 @@ Please note that the documentation of these subclasses includes only properties 
          \vspace{1em}
 
    >>> pauli_matrices = [Pauli(index=i) for i in [1, 2, 3]]
-   >>> M_pauli = Measurement(operators=pauli_matrices, observable=True, targets=[0], num_systems=2)
+   >>> M_pauli = Measurement(
+   ...     operators=pauli_matrices,
+   ...     observable=True,
+   ...     targets=[0],
+   ...     num_systems=2,
+   ... )
    >>> M_pauli.diagram()
 
    ..
@@ -2352,7 +2397,12 @@ Please note that the documentation of these subclasses includes only properties 
    >>> from qhronology.mechanics.matrices import ket
    >>> plus = (ket(0) + ket(1)) / sp.sqrt(2)
    >>> minus = (ket(0) - ket(1)) / sp.sqrt(2)
-   >>> M_pm = Measurement(operators=[plus, minus], observable=False, targets=[1], num_systems=2)
+   >>> M_pm = Measurement(
+   ...     operators=[plus, minus],
+   ...     observable=False,
+   ...     targets=[1],
+   ...     num_systems=2,
+   ... )
    >>> M_pm.diagram()
 
    ..

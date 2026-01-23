@@ -7,9 +7,10 @@ html {
     --pst-sidebar-secondary: 15rem;
     --pst-font-size-base: 17px; /* Adjust depending on the main font used */
     --pst-sidebar-font-size: 0.9rem;
+    --bs-body-font-size: 0.95rem !important;
     --pst-font-family-base: 'Source Sans 3', 'Roboto', var(--pst-font-family-base-system);
     --pst-font-family-heading: 'ClearSans', 'Source Code Pro', 'Roboto', var(--pst-font-family-base-system);
-    --pst-font-family-monospace: 'Source Code Pro', 'Courier', var(--pst-font-family-monospace-system);
+    --pst-font-family-monospace: 'Cousine', 'Source Code Pro', 'Courier', var(--pst-font-family-monospace-system);
     --pst-font-size-h0: 2.00rem;
     --pst-font-size-h1: 1.75rem;
     --pst-font-size-h2: 1.5rem;
@@ -266,8 +267,12 @@ dd > p {
     font-style: italic;
 } */
 
-em.sig-param > :first-child {
+em.sig-param {
     font-style: normal;
+}
+
+em.sig-param > :first-child {
+    font-style: italic !important;
     color: var(--pst-color-code-string);
     /* color: var(--pst-color-inline-code); */
 }
@@ -277,7 +282,7 @@ em.sig-param > :nth-child(2) {
 }
 
 span.default_value > span.pre {
-    font-style: normal;
+    font-style: italic !important;
     color: var(--pst-color-secondary);
 }
 
@@ -871,6 +876,11 @@ pre {
     border-radius: 0.0rem;
 }
 
+div.notranslate div pre {
+    border-radius: 0.0rem;
+    font-size: 0.9em;
+}
+
 code.literal {
     border-radius: 0.0rem;
     background-color: var(--pst-color-surface);
@@ -956,4 +966,8 @@ span.s1, span.s2 {
 }
 span.nd {
     color: var(--pst-color-on-surface) !important;
+}
+
+svg.fa-square-github {
+    font-size: x-large;
 }

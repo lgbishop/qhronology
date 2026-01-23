@@ -34,12 +34,13 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=751da52a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=fa040db7" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -48,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
+    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +67,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.1" />
-    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
+  <meta name="docsearch:version" content="1.0.2" />
+    <meta name="docbuild:last-update" content="Jan 24, 2026"/>
   </head>
   
   
@@ -488,20 +489,20 @@ of its derived classes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>delimiter</strong> (<em>str</em>) – A string containing the character(s) with which to delimit (i.e., separate) the values
+<li><p><strong>delimiter</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string containing the character(s) with which to delimit (i.e., separate) the values
 in the ket and/or bra terms in the mathematical expression.
 Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code>.</p></li>
-<li><p><strong>product</strong> (<em>bool</em>) – Whether to represent the mathematical expression using tensor products.
+<li><p><strong>product</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to represent the mathematical expression using tensor products.
 Only applies if the object is a multipartite composition.
 Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>return_string</strong> (<em>bool</em>) – Whether to return the mathematical expression as a string.
+<li><p><strong>return_string</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to return the mathematical expression as a string.
 Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>None</em> – Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><em>str</em> – The constructed mathematical expression. Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> – Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> – The constructed mathematical expression. Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </p>
 </dd>
@@ -523,17 +524,17 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">False</
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>conditions</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>num</em><em> | </em><em>sym</em><em> | </em><em>str</em><em>, </em><em>num</em><em> | </em><em>sym</em><em> | </em><em>str</em><em>]</em><em>]</em>) – Algebraic conditions to be applied to the state.
+<li><p><strong>conditions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">sym</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">sym</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – Algebraic conditions to be applied to the state.
 Defaults to the value of <code class="docutils literal notranslate"><span class="pre">self.conditions</span></code>.</p></li>
-<li><p><strong>simplify</strong> (<em>bool</em>) – Whether to perform algebraic simplification on the object.
+<li><p><strong>simplify</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform algebraic simplification on the object.
 Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>conjugate</strong> (<em>bool</em>) – Whether to perform Hermitian conjugation on the object.
+<li><p><strong>conjugate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the object.
 If <code class="docutils literal notranslate"><span class="pre">False</span></code>, does not conjugate.
 Defaults to the value of <code class="docutils literal notranslate"><span class="pre">self.conjugate</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>mat</em> – The object’s simplified matrix representation.</p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span></code> – The object’s simplified matrix representation.</p>
 </dd>
 </dl>
 </dd></dl>

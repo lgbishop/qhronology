@@ -34,12 +34,13 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=751da52a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=fa040db7" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -48,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
+    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -68,8 +69,8 @@
     <link rel="prev" title="Fourier transform adder" href="adder_fourier.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.1" />
-    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
+  <meta name="docsearch:version" content="1.0.2" />
+    <meta name="docbuild:last-update" content="Jan 24, 2026"/>
   </head>
   
   
@@ -405,10 +406,10 @@
   <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum algorithms and protocols</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of a GHZ state</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generation_ghz_general.html">Generation of a generalized GHZ state</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of a W state</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generation_w_general.html">Generation of a generalized W state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of the GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_ghz_general.html">Generation of the generalized GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of the W state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_w_general.html">Generation of the generalized W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="toffoli.html">Toffoli decomposition</a></li>
@@ -488,8 +489,8 @@
 <span id="eg-teleportation"></span><h1>Quantum teleportation<a class="headerlink" href="#quantum-teleportation" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>Quantum teleportation <span id="id1">[<a class="reference internal" href="#cite-1-bennett-teleporting-1993" title="C. H. Bennett, G. Brassard, C. Crépeau, R. Jozsa, A. Peres, and W. K. Wootters, “Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels”, Physical Review Letters, 70(13):1895–1899, 1993. https://link.aps.org/doi/10.1103/PhysRevLett.70.1895, doi:10.1103/PhysRevLett.70.1895">1</a>]</span> is a significant technique of quantum theory in which the transfer of quantum information between two parties (that may be spatially separated) is achieved. Importantly, this does not involve the movement of physical entities, but concerns rather the transfer of the (quantum) statistics of a physical system (manifesting as a quantum state) to another. This is facilitated by a pair of entangled particles, the statistical correlations of which provide the actual mechanism of teleportation.</p>
-<p>Note that in the process of teleporting the state, the original is destroyed, and so the no-cloning theorem remains unviolated. Additionally, because classical information needs to be sent between the two parties, the teleportation cannot occur faster than the speed of light, meaning that the law of relativity is satisfied. This example (<a class="reference internal" href="#fig-circuit-algorithm-teleportation"><span class="std std-numref">Figure 23</span></a>) implements the canonical version of the algorithm.</p>
+<p>Quantum teleportation <span id="id1">[<a class="reference internal" href="#cite-1-bennett-teleporting-1993" title="C. H. Bennett, G. Brassard, C. Crépeau, R. Jozsa, A. Peres, and W. K. Wootters, “Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels”, Physical Review Letters, 70(13):1895–1899, 1993. doi:10.1103/PhysRevLett.70.1895">1</a>]</span> is a significant technique of quantum theory in which the transfer of quantum information between two parties (that may be spatially separated) is achieved. Importantly, this does not involve the movement of physical entities, but concerns rather the relocation of the (quantum) statistics of a physical system (manifesting as a quantum state) to another. This is often facilitated by a pair of entangled particles, the statistical correlations of which provide the actual mechanism of teleportation.</p>
+<p>Note that in the process of teleporting the state, the original is destroyed, and so the no-cloning theorem remains unviolated. Additionally, because classical information needs to be sent between the two parties, the teleportation cannot occur faster than the speed of light, meaning that the laws of (special) relativity are satisfied. This example (<a class="reference internal" href="#fig-circuit-algorithm-teleportation"><span class="std std-numref">Figure 23</span></a>) implements the canonical version of the algorithm.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_teleportation-dark.png"><img alt="A quantum circuit diagram of a quantum teleportation protocol." src="../../../_images/circuit_algorithm_teleportation-dark.png" style="width: 450.0px; height: 127.08px;" />
 </a>
@@ -519,7 +520,7 @@
 <span class="n">teleporting_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]],</span>
     <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)],</span>
+    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">zero_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;0,0&quot;</span><span class="p">)</span>
@@ -530,10 +531,16 @@
 <span class="n">CNI</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">HII</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">IMI</span> <span class="o">=</span> <span class="n">Measurement</span><span class="p">(</span>
-    <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span>
+    <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span>
+    <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">MII</span> <span class="o">=</span> <span class="n">Measurement</span><span class="p">(</span>
-    <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span>
+    <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span>
+    <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">ICX</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">CIZ</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -599,7 +606,7 @@
 <div role="list" class="citation-list">
 <div class="citation" id="cite-1-bennett-teleporting-1993" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>C. H. Bennett, G. Brassard, C. Crépeau, R. Jozsa, A. Peres, and W. K. Wootters, “Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels”, <em>Physical Review Letters</em>, 70(13):1895–1899, 1993. <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevLett.70.1895">https://link.aps.org/doi/10.1103/PhysRevLett.70.1895</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.70.1895">doi:10.1103/PhysRevLett.70.1895</a></p>
+<p>C. H. Bennett, G. Brassard, C. Crépeau, R. Jozsa, A. Peres, and W. K. Wootters, “Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels”, <em>Physical Review Letters</em>, 70(13):1895–1899, 1993. <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.70.1895">doi:10.1103/PhysRevLett.70.1895</a></p>
 </div>
 </div>
 </div>

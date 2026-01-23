@@ -1,7 +1,7 @@
 .. _`eg:generation_w`:
 
-Generation of a W state
-=======================
+Generation of the W state
+=========================
 
 Description
 -----------
@@ -32,7 +32,7 @@ The circuit in :numref:`fig:circuit_algorithm_generation_w` illustrates an algor
    :figwidth: 100 %
    :figclass: light-dark hidden
 
-   Generation of a W state.
+   Generation of the W state.
 
 The complete unitary transformation described by this circuit is the product
 

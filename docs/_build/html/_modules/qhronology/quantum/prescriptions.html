@@ -33,12 +33,13 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=751da52a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=fa040db7" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -47,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=292eb321"></script>
+    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -65,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.1" />
-    <meta name="docbuild:last-update" content="Dec 19, 2025"/>
+  <meta name="docsearch:version" content="1.0.2" />
+    <meta name="docbuild:last-update" content="Jan 24, 2026"/>
   </head>
   
   
@@ -589,8 +590,8 @@
                     <span class="n">systems_violating</span>
                 <span class="p">):</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                        <span class="s2">&quot;The union of ``systems_respecting`` and ``systems_violating`` is </span><span class="se">\</span>
-<span class="s2">                        inequivalent to the entire system&#39;s structure.&quot;</span>
+<span class="w">                        </span><span class="sd">&quot;&quot;&quot;The union of ``systems_respecting`` and ``systems_violating`` is</span>
+<span class="sd">                        inequivalent to the entire system&#39;s structure.&quot;&quot;&quot;</span>
                     <span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">systems_respecting</span> <span class="o">=</span> <span class="n">systems_respecting</span>
@@ -696,8 +697,8 @@
 
         <span class="k">if</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">input_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_respecting</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;The size of the given input state(s) does not match that specified by the </span><span class="se">\</span>
-<span class="s2">                property ``systems_respecting``.&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;The size of the given input state(s) does not match that specified by the</span>
+<span class="sd">                property ``systems_respecting``.&quot;&quot;&quot;</span>
             <span class="p">)</span>
 
         <span class="n">input_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -862,15 +863,15 @@
             <span class="k">del</span> <span class="n">equations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
-                <span class="s2">&quot;Support for multiple non-parametrized D-CTC CV solutions has not yet been </span><span class="se">\</span>
-<span class="s2">                implemented.&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;Support for multiple non-parametrized D-CTC CV solutions has not yet been</span>
+<span class="sd">                implemented.&quot;&quot;&quot;</span>
             <span class="p">)</span>
         <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
-                <span class="s2">&quot;The D-CTC CV algorithm was unable to determine a solution (fixed point) </span><span class="se">\</span>
-<span class="s2">                to the CV map. If you are certain that your circuit does indeed have a solution, </span><span class="se">\</span>
-<span class="s2">                you are welcome to file a bug report.&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;The D-CTC CV algorithm was unable to determine a solution (fixed point)</span>
+<span class="sd">                to the CV map. If you are certain that your circuit does indeed have a solution,</span>
+<span class="sd">                you are welcome to file a bug report.&quot;&quot;&quot;</span>
             <span class="p">)</span>
 
     <span class="n">solutions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">solutions</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
