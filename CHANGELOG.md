@@ -7,10 +7,10 @@
 ### Package:
 
 - Fix: Notation property for conjugation of vectors. ([579cba5](https://github.com/lgbishop/qhronology/commit/579cba54bfc122833ae227d89577eaa3c3c14dff))
-- Fix: Ordering of boundaries list in partition_systems. ([2dfd3eb](https://github.com/lgbishop/qhronology/commit/2dfd3ebe757fe288ffc7f6a7256fbab0b2ff0d04))
+- Fix: Ordering of boundaries list in `partition_systems`. ([2dfd3eb](https://github.com/lgbishop/qhronology/commit/2dfd3ebe757fe288ffc7f6a7256fbab0b2ff0d04))
 - Fix: Measurement gate for multipartite operators. ([9ff3d7e](https://github.com/lgbishop/qhronology/commit/9ff3d7e2b3919d01e1c4b862f6bbe80708c4342c))
 - Fix: Entropy and mutual information functions, reorder internal logic of all quantities. ([398a808](https://github.com/lgbishop/qhronology/commit/398a80860c26f5723f1846de90036be48c078ded))
-- Add `merge` argument to QuantumCircuit `input()` method and enhance its labelling functionality. ([6053055](https://github.com/lgbishop/qhronology/commit/605305515a3f9c3058948cbb0fe57d83df64ca90))
+- Add `merge` argument to `QuantumCircuit.input()` method and enhance its labelling functionality. ([6053055](https://github.com/lgbishop/qhronology/commit/605305515a3f9c3058948cbb0fe57d83df64ca90))
 - Change state edge connectors from braces to parentheses in the diagram `'ascii'` style ([0544c3c](https://github.com/lgbishop/qhronology/commit/0544c3cb9e46a0453aaa2a4c44c902666436b7e7))
 
 ### Documentation:
