@@ -6,7 +6,12 @@ from qhronology.quantum.circuits import QuantumCircuit
 zero_state = VectorState(spec=[(1, [0])], label="0")
 
 # Gates
-R = Rotation(axis=1, angle="2*θ", symbols={"θ": {"real": True}}, label="R(2θ)")
+R = Rotation(
+    axis=1,
+    angle="2*θ",
+    symbols={"θ": {"real": True}},
+    label="R(2θ)",
+)
 P = Diagonal(
     entries={1: "φ + pi/2"},
     exponentiation=True,

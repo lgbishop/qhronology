@@ -16,10 +16,12 @@ encoding_depth = 2
 
 # Input
 augend_state = VectorState(
-    spec=encode(integer=augend_integer, num_systems=encoding_depth), label="x"
+    spec=encode(integer=augend_integer, num_systems=encoding_depth),
+    label="x",
 )
 addend_state = VectorState(
-    spec=encode(integer=addend_integer, num_systems=encoding_depth), label="y"
+    spec=encode(integer=addend_integer, num_systems=encoding_depth),
+    label="y",
 )
 
 QFT = []

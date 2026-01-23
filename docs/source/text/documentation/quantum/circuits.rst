@@ -12,7 +12,7 @@ In Qhronology, quantum circuits are created as instances of the :py:class:`~qhro
 
    from qhronology.quantum.circuits import QuantumCircuit
 
-In the circuit diagram picturalism of these structures, time increases from left to right, and so the preparation of *input* states (created as instances of the :py:class:`~qhronology.quantum.states.QuantumState` class and its derivatives) begins in the past (on the left) while the measurement (or postselection) of *output* states occurs in the future (on the right). Operations on these states are represented by quantum gates (created as instances of the various subclasses of the :py:class:`~qhronology.quantum.gates.QuantumGate` base class), and all of these events are connected by quantum wires describing the flow of quantum information (i.e., quantum probabilities) through time.
+In the circuit diagram picturalism, time increases from left to right. Accordingly, the preparation of *input* states (given as instances of the :py:class:`~qhronology.quantum.states.QuantumState`) begins in the past (on the left), while post-processing (such as postselections and partial traces) occurs in the future (on the right). Intermediary operations on these states are represented by quantum gates, given as instances of the :py:class:`~qhronology.quantum.gates.QuantumGate` class and its derivatives. All of these events are connected by quantum wires describing the flow of quantum information (i.e., quantum probabilities) through time.
 
 Main class
 ==========
@@ -495,34 +495,6 @@ Methods
          \end{mdframed}
          \vspace{1em}
 
-   >>> circuit.diagram(pad=(0, 0), sep=(1, 1), style="ascii")
-
-   ..
-
-      .. raw:: latex
-         
-         \vspace{1em}
-         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
-
-      .. only:: html
-
-         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_ascii-dark.png
-            :scale: 40 %
-            :align: left
-            :class: only-dark
-
-      .. only:: html or latex
-
-         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_ascii-light.png
-            :scale: 40 %
-            :align: left
-            :class: only-light
-
-      .. raw:: latex
-         
-         \end{mdframed}
-         \vspace{1em}
-
    >>> circuit.diagram(pad=(0, 0), sep=(1, 1), style="unicode_alt")
 
    ..
@@ -542,6 +514,34 @@ Methods
       .. only:: html or latex
 
          .. image:: /figures/output/text_examples_docstrings_diagram_circuit_shaded-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> circuit.diagram(pad=(0, 0), sep=(1, 1), style="ascii")
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_ascii-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_ascii-light.png
             :scale: 40 %
             :align: left
             :class: only-light
@@ -607,7 +607,7 @@ Methods
          \end{mdframed}
          \vspace{1em}
 
-   >>> circuit.diagram(pad=(0, 1), sep=(1, 1), force_separation=True, style="unicode")
+   >>> circuit.diagram(pad=(0, 0), sep=(2, 1), force_separation=True, style="unicode")
 
    ..
 
@@ -618,14 +618,42 @@ Methods
 
       .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_padding_vertical_increase-dark.png
+         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-dark.png
             :scale: 40 %
             :align: left
             :class: only-dark
 
       .. only:: html or latex
 
-         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_padding_vertical_increase-light.png
+         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+      .. raw:: latex
+         
+         \end{mdframed}
+         \vspace{1em}
+
+   >>> circuit.diagram(pad=(0, 0), sep=(0, 1), force_separation=True, style="unicode")
+
+   ..
+
+      .. raw:: latex
+         
+         \vspace{1em}
+         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html or latex
+
+         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-light.png
             :scale: 40 %
             :align: left
             :class: only-light
@@ -691,7 +719,7 @@ Methods
          \end{mdframed}
          \vspace{1em}
 
-   >>> circuit.diagram(pad=(0, 0), sep=(2, 1), force_separation=True, style="unicode")
+   >>> circuit.diagram(pad=(0, 1), sep=(1, 1), force_separation=True, style="unicode")
 
    ..
 
@@ -702,42 +730,14 @@ Methods
 
       .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-dark.png
+         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_padding_vertical_increase-dark.png
             :scale: 40 %
             :align: left
             :class: only-dark
 
       .. only:: html or latex
 
-         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-light.png
-            :scale: 40 %
-            :align: left
-            :class: only-light
-
-      .. raw:: latex
-         
-         \end{mdframed}
-         \vspace{1em}
-
-   >>> circuit.diagram(pad=(0, 0), sep=(0, 1), force_separation=True, style="unicode")
-
-   ..
-
-      .. raw:: latex
-         
-         \vspace{1em}
-         \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
-
-      .. only:: html
-
-         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-dark.png
-            :scale: 40 %
-            :align: left
-            :class: only-dark
-
-      .. only:: html or latex
-
-         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-light.png
+         .. image:: /figures/output/text_examples_docstrings_diagram_circuit_padding_vertical_increase-light.png
             :scale: 40 %
             :align: left
             :class: only-light

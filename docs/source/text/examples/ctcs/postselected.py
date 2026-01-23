@@ -18,7 +18,9 @@ UI = QuantumGate(spec=unitary, targets=[0, 1], num_systems=3, label="U")
 
 # Circuit
 postselected_teleportation = QuantumCircuit(
-    inputs=[input_state, bell_state], gates=[UI], postselections=[(bell_state, [1, 2])]
+    inputs=[input_state, bell_state],
+    gates=[UI],
+    postselections=[(bell_state, [1, 2])],
 )
 postselected_teleportation.diagram(pad=(1, 0), sep=(2, 1), force_separation=True)
 

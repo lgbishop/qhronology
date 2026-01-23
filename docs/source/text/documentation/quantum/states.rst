@@ -6,19 +6,25 @@
 States
 ******
 
-In Qhronology, quantum states are both represented and constructed natively in the *computational* basis (also known as the *standard* or :math:`z`-basis). This is achieved primarily through the use of the :py:class:`~qhronology.quantum.states.QuantumState` class,
+In Qhronology, quantum states are described in the *computational* basis (also known as the *standard* basis or the :math:`z`-basis) and represented by instances of the :py:class:`~qhronology.quantum.states.QuantumState` class:
 
 .. code:: python
 
    from qhronology.quantum.states import QuantumState
 
-which itself relies chiefly on functionality provided by the matrix-generating :py:func:`~qhronology.mechanics.matrices.quantum_state` function:
+When using this class, the characterization of a quantum state is facilitated primarily by four arguments (or properties):
 
-.. code:: python
+#. :py:attr:`~qhronology.quantum.states.QuantumState.spec`: quantifies the values (i.e., amplitudes or probabilities) corresponding to specific components of the state's mathematical representation.
 
-   from qhronology.mechanics.matrices import quantum_state
+#. :py:attr:`~qhronology.quantum.states.QuantumState.form`: describes the state as being either a ``"vector"`` or a ``"matrix"``. Defaults to ``"vector"``.
 
-Characterization of quantum states is facilitated by two properties: ``form`` distinguishes between states which are ``"vector"`` or ``"matrix"``, while ``kind`` distinguishes those which are ``"pure"`` or ``"mixed"``. Of the four combinations (pairs) of these properties, all are valid except for the pairing of ``"vector"`` and ``"mixed"``. Therefore, to expedite and simplify state instantiation, the following subclasses of the base class :py:class:`~qhronology.quantum.states.QuantumState` are provided:
+#. :py:attr:`~qhronology.quantum.states.QuantumState.kind`: describes the state as being either ``"pure"`` or ``"mixed"``. Defaults to ``"pure"``.
+
+#. :py:attr:`~qhronology.quantum.states.QuantumState.dim`: quantifies the state's dimensionality as an integer greater than or equal to ``2``. Defaults to ``2``.
+
+Note that, of the four combinations (pairs) of the values which may be passed to :py:attr:`~qhronology.quantum.states.QuantumState.form` and :py:attr:`~qhronology.quantum.states.QuantumState.kind`, all are valid except for the pairing of ``"vector"`` and ``"mixed"``.
+
+To expedite and simplify state instantiation, the following subclasses of the base class :py:class:`~qhronology.quantum.states.QuantumState` are provided:
 
 .. code:: python
 
@@ -38,7 +44,7 @@ Main class
    ...     spec=[("a", [0]), ("b", [1])],
    ...     form="vector",
    ...     symbols={"a": {"complex": True}, "b": {"complex": True}},
-   ...     conditions=[("a*conjugate(a) + b*conjugate(b)", "1")],
+   ...     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
    ...     norm=1,
    ...     label="ψ",
    ... )
@@ -85,7 +91,7 @@ Main class
    ...         "b": {"complex": True},
    ...         "c": {"complex": True},
    ...     },
-   ...     conditions=[("a*conjugate(a) + b*conjugate(b) + c*conjugate(c)", "1")],
+   ...     conditions=[("a*conjugate(a) + b*conjugate(b) + c*conjugate(c)", 1)],
    ...     norm=1,
    ...     label="φ",
    ... )
@@ -209,7 +215,11 @@ Main class
          \end{mdframed}
          \vspace{1em}
 
-   >>> custom_vector = QuantumState(spec=[["μ"], ["ν"]], kind="mixed", label="η")
+   >>> custom_vector = QuantumState(
+   ...     spec=[["μ"], ["ν"]],
+   ...     kind="mixed",
+   ...     label="η",
+   ... )
    >>> custom_vector.output()
    Matrix([
    [μ*conjugate(μ), μ*conjugate(ν)],
@@ -244,7 +254,11 @@ Main class
          \end{mdframed}
          \vspace{1em}
 
-   >>> custom_matrix = QuantumState(spec=[["w", "x"], ["y", "z"]], kind="mixed", label="ω")
+   >>> custom_matrix = QuantumState(
+   ...     spec=[["w", "x"], ["y", "z"]],
+   ...     kind="mixed",
+   ...     label="ω"
+   ... )
    >>> custom_matrix.output()
    Matrix([
    [w, x],
@@ -423,6 +437,21 @@ Constructor argument properties
 -------------------------------
 
 .. autoproperty:: qhronology.quantum.states.QuantumState.spec
+
+The object passed to ``spec`` can be any of the following four types:
+
+- a SymPy matrix
+- a NumPy array
+- a list of lists (specifying a matrix)
+- a list of 2-tuples
+
+The data type of the elements contained within the first three of these options can be any of the following: numerical (including all scalars from SymPy, NumPy, and the standard library), SymPy symbolic (including expressions), or string representations of such scalar types. However, the fourth option---the bespoke list-of-tuples format---is intended to be the primary way of characterizing quantum states. Its structure is reasonably straightforward: each 2-tuple contains first an amplitude or probability (a scalar expression as a numerical, symbolic, or string value), followed by a list of non-negative integers corresponding to the levels of the number states of the desired basis vector. In the case of multiple such tuples in the given list, the resulting quantum state is the sum of all components formed from each individual tuple. For example, passing the list ``[("α", [0, 0]), ("β", [1, 1])]`` to ``spec`` in a :py:class:`~qhronology.quantum.states.QuantumState` construction yields a state which corresponds to one of the following forms (depending on the values passed to the other core arguments or properties):
+
+- :py:attr:`~qhronology.quantum.states.QuantumState.form` is ``"vector"``: :math:`\alpha\ket{0,0} + \beta\ket{1,1}`
+- :py:attr:`~qhronology.quantum.states.QuantumState.form` is ``"matrix"``:
+
+  - :py:attr:`~qhronology.quantum.states.QuantumState.kind` is ``"pure"``: :math:`\abs{\alpha}^2\ket{0,0}\bra{0,0} + \alpha\beta^*\ket{0,0}\bra{1,1} + \alpha^*\beta\ket{1,1}\bra{0,0} + \abs{\beta}^2\ket{1,1}\bra{1,1}`
+  - :py:attr:`~qhronology.quantum.states.QuantumState.kind` is ``"mixed"``: :math:`\alpha\ket{0,0}\bra{0,0} + \beta\ket{1,1}\bra{1,1}`
 
 .. raw:: latex
 

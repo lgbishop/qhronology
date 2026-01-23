@@ -6,7 +6,7 @@ num_systems = 4
 
 # Input
 zero_state = VectorState(spec=[(1, [0])], label="0")
-input_states = [zero_state for i in range(0, num_systems)]
+input_states = [zero_state for _ in range(0, num_systems)]
 
 # Gates
 ROTs = [

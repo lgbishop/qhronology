@@ -1,7 +1,7 @@
 .. _`eg:generation_w_general`:
 
-Generation of a generalized W state
-===================================
+Generation of the generalized W state
+=====================================
 
 Description
 -----------
@@ -45,7 +45,7 @@ from primitive :math:`\ket{0}` states.
    :figwidth: 100 %
    :figclass: light-dark hidden
 
-   Generation of a generalized W state.
+   Generation of the generalized W state.
 
 The complete unitary transformation described by this circuit is the product
 

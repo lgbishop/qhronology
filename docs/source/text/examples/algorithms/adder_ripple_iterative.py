@@ -16,10 +16,12 @@ encoding_depth = 8
 
 # Input
 augend_state = VectorState(
-    spec=encode(integer=augend_integer, num_systems=encoding_depth), label="x_i"
+    spec=encode(integer=augend_integer, num_systems=encoding_depth),
+    label="x_i",
 )
 addend_state = VectorState(
-    spec=encode(integer=addend_integer, num_systems=encoding_depth), label="y_i"
+    spec=encode(integer=addend_integer, num_systems=encoding_depth),
+    label="y_i",
 )
 carry_state = VectorState(spec=encode(0, 1), label="c_i")
 zero_state = VectorState(spec=encode(0, 1), notation="0")

@@ -496,7 +496,11 @@ class QuantitiesMixin:
         >>> state.purity()
         1
 
-        >>> state = QuantumState(spec=[("p", [0]), ("1 - p", [1])], kind="mixed", norm=1)
+        >>> state = QuantumState(
+        ...     spec=[("p", [0]), ("1 - p", [1])],
+        ...     kind="mixed",
+        ...     norm=1,
+        ... )
         >>> state.purity()
         p**2 + (1 - p)**2
         """
@@ -768,7 +772,11 @@ class QuantitiesMixin:
         >>> state_ABC = QuantumState(
         ...     spec=[("a", [1, 0, 0]), ("b", [0, 1, 0]), ("c", [0, 0, 1])],
         ...     kind="mixed",
-        ...     symbols={"a": {"real": True}, "b": {"real": True}, "c": {"real": True}},
+        ...     symbols={
+        ...         "a": {"positive": True},
+        ...         "b": {"positive": True},
+        ...         "c": {"positive": True},
+        ...     },
         ...     conditions=[("a + b + c", 1)],
         ...     norm=1,
         ... )

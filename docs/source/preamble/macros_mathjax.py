@@ -219,7 +219,7 @@ mathjax3_config = {
       "Pauli": "{\\op{\\sigma}}",
       "GellMann": "{\\op{\\lambda}}",
       "GellMannGeneralized": "{\\op{\\lambda}}",
-      "NOT": "{\\op{X}}",
+      "NOT": "{\\op{N}}",
       "PauliX": "{\\op{X}}",
       "PauliY": "{\\op{Y}}",
       "PauliZ": "{\\op{Z}}",

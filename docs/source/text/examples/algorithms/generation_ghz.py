@@ -12,7 +12,8 @@ ICN = Not(targets=[2], controls=[1], num_systems=3)
 
 # Circuit
 generator = QuantumCircuit(
-    inputs=[zero_state, zero_state, zero_state], gates=[HII, CNI, ICN]
+    inputs=[zero_state, zero_state, zero_state],
+    gates=[HII, CNI, ICN],
 )
 generator.diagram()
 

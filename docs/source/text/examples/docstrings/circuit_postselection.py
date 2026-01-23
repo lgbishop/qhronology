@@ -7,11 +7,16 @@ input_state = VectorState(
     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
     label="ψ",
 )
-bell = VectorState(spec=[(1, [0, 0]), (1, [1, 1])], norm=False, label="Φ")
+bell = VectorState(
+    spec=[(1, [0, 0]), (1, [1, 1])],
+    norm=False,
+    label="Φ",
+)
 
 # Circuit
 postselection = QuantumCircuit(
-    inputs=[input_state, bell], gates=[], postselections=[(bell, [0, 1])]
+    inputs=[input_state, bell],
+    postselections=[(bell, [0, 1])],
 )
 postselection.diagram(pad=(0, 0), sep=(4, 1), style="unicode")
 

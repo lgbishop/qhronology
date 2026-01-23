@@ -83,6 +83,8 @@ maximum_signature_line_length = 10
 
 add_module_names = False
 autodoc_preserve_defaults = False
+# autodoc_typehints = "both"
+# autodoc_typehints_description_target = "all"
 
 napoleon_google_docstring = False
 napoleon_numpy_docstring = True
@@ -95,7 +97,7 @@ napoleon_use_admonition_for_references = False
 napoleon_use_ivar = False
 napoleon_use_param = True
 napoleon_use_rtype = False
-napoleon_preprocess_types = False
+napoleon_preprocess_types = True
 napoleon_type_aliases = None
 napoleon_attr_annotations = True
 
@@ -266,6 +268,8 @@ Read the full license here:
 \input{header.tex.txt}
 \input{macros.tex.txt}
 
+\widowpenalty=10000
+
 % \definecolor{accentcolor}{HTML}{224499}
 % \definecolor{accentcolor}{HTML}{005AAA}
 \definecolor{accentcolor}{HTML}{2266C0}
@@ -318,7 +322,7 @@ Read the full license here:
 % Make roman (serif) series bold-extended when bold is called.
 \DeclareFontSeriesDefault[rm]{bf}{bx}
 
-%%% Fixes for pdflatex being unable to compile when the included code snippets (e.g., the usage examples) contain non-ascii characters (i.e., Greek letters).
+%%% Fixes for pdflatex being unable to compile when the included code snippets (e.g., the usage examples) contain non-ascii characters (e.g., Greek letters).
 
 \DeclareUnicodeCharacter{0391}{$\Alpha$}
 \DeclareUnicodeCharacter{0392}{$\Beta$}
@@ -519,6 +523,7 @@ Read the full license here:
 % \definecolor{color_arguments}{HTML}{B10061}
 \definecolor{color_arguments}{HTML}{224499}
 \definecolor{color_types}{HTML}{699ADA}
+\definecolor{color_background}{HTML}{F5F5F5}
 
 \usepackage{ifthen}
 \makeatletter
@@ -531,9 +536,9 @@ Read the full license here:
     \else% Define colors based on the role
       \ifthenelse{\equal{#1}{default_value}}{\textcolor{color_defaults}{#2}}{% defaults
       \ifthenelse{\equal{#1}{k}}{\textit{\textcolor{color_keywords}{#2}}}{% keywords
-      \ifthenelse{\equal{#1}{n}}{\textcolor{color_names}{#2}}{% names
+      \ifthenelse{\equal{#1}{n}}{\textup{\textcolor{color_names}{#2}}}{% names
       \ifthenelse{\equal{#1}{o}}{\textcolor{color_operators}{#2}}{% operators
-      \ifthenelse{\equal{#1}{p}}{\textcolor{color_punctuation}{#2}}{% punctuation
+      \ifthenelse{\equal{#1}{p}}{\textup{\textcolor{color_punctuation}{#2}}}{% punctuation
       \ifthenelse{\equal{#1}{std}}{\textcolor{color_standard}{#2}}{% standard text
       \ifthenelse{\equal{#1}{w}}{#2}{% whitespace
       \textcolor{black}{#2}}}}}}}}% Default color if #1 doesn't match any case
@@ -542,10 +547,12 @@ Read the full license here:
 }
 \makeatother
 
-% {\sphinxcode{\sphinxupquote{QuantumState.}}\sphinxbfcode{\sphinxupquote{output}}}
-
 \let\newsphinxcode\sphinxcode
 \renewcommand{\sphinxcode}[1]{\newsphinxcode{\textcolor{color_code}{#1}}}
+
+% \fboxsep=0.15em
+% \let\newsphinxupquote\sphinxupquote
+% \renewcommand{\sphinxupquote}[1]{\newsphinxupquote{\colorbox{color_background}{#1}}}
 
 \let\newsphinxbfcode\sphinxbfcode
 \renewcommand{\sphinxbfcode}[1]{\newsphinxbfcode{\textcolor{color_bfcode}{#1}}}
@@ -570,7 +577,35 @@ Read the full license here:
 \def\hrulefillinvisible{{\color{white}\leavevmode\leaders\hrule height 0.85pt\hfill\kern\z@}}
 \makeatother
 
+\setlength{\headsep}{0.5cm}
+
 \usepackage[bottom]{footmisc}
+\setlength{\skip\footins}{0.5cm}
+
+%%% \enlargethispageonce macro
+\usepackage{etoolbox} % for robust booleans (optional)
+\newif\ifenlargethispageused
+\enlargethispageusedfalse
+
+% Reset the flag at the start of every page
+\makeatletter
+\let\orig@shipout\shipout
+\def\shipout{%
+  \global\enlargethispageusedfalse % reset for next page globally
+  \orig@shipout
+}
+\makeatother
+
+% User-level macro that enlarges the page only once per page
+\newcommand{\enlargethispageonce}[1]{%
+  \ifenlargethispageused
+    % already used on this page: do nothing
+  \else
+    \enlargethispage{#1}%
+    \global\enlargethispageusedtrue
+  \fi
+}
+%%%
 
 % \setlist[itemize]{leftmargin=0.5cm}
 
@@ -633,7 +668,9 @@ Read the full license here:
     div.note_title-foreground-TeXcolor={HTML}{2266C0}, \
     div.note_title-background-TeXcolor={HTML}{DCE7FC}, \
     verbatimvisiblespace=\\textcolor{color_types}{\\textvisiblespace}, \
-    verbatimcontinued=\\makebox[2\\fontcharwd\\font`\\x][r]{\\textcolor{color_types}{\\tiny$\\hookrightarrow$}}",
+    verbatimcontinued=\\makebox[2\\fontcharwd\\font`\\x][r]{\\textcolor{color_types}{\\tiny$\\hookrightarrow$}}, \
+    AtStartFootnote=\\mbox{ }, \
+    BeforeFootnote=\\leavevmode\\unskip\\enlargethispageonce{0.9\\baselineskip}",
     "fncychap": r"",
     # "printindex": r'\footnotesize\raggedright\printindex',
 }

@@ -3109,14 +3109,14 @@ class VisualizationMixin:
         Arguments
         ---------
         pad : tuple[int, int]
-            A two-tuple describing the horizontal and vertical interior paddings between the content
-            at the centre of the object (e.g., its label) and its outer edge (e.g., block border).
-            Both integers must be non-negative.
+            A two-tuple of non-negative integers specifying intra-gate padding
+            (i.e., the horizontal and vertical interior paddings between the content at the centre
+            of each gate (e.g., label) and its outer edge (e.g., block border).
             Defaults to ``(0, 0)``.
         sep : tuple[int, int]
-            A two-tuple describing the horizontal and vertical exterior separation distances
-            at the object's edges.
-            Both integers must be non-negative.
+            A two-tuple of non-negative integers specifying inter-gate separation
+            (i.e., the horizontal and vertical exterior separation distances between the edges of
+            neighbouring gates.
             Defaults to ``(1, 1)``.
         style : str
             A string specifying the style for the circuit visualization to take.

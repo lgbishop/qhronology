@@ -1,7 +1,7 @@
 .. _`eg:generation_ghz`:
 
-Generation of a GHZ state
-=========================
+Generation of the GHZ state
+===========================
 
 Description
 -----------
@@ -32,7 +32,7 @@ The circuit in :numref:`fig:circuit_algorithm_generation_ghz` illustrates an alg
    :figwidth: 100 %
    :figclass: light-dark hidden
 
-   Generation of a GHZ state.
+   Generation of the GHZ state.
 
 The complete unitary transformation described by this circuit is the product
 

@@ -11,10 +11,16 @@ clock_state_evolved = VectorState(spec=[[0, 1, -1]], dim=3, norm=1, label="ψ")
 
 # Gates
 I = QuantumGate(
-    spec=[[1, 0, 0], [0, 1, 0], [0, 0, 1]], targets=[0], num_systems=1, dim=3
+    spec=[[1, 0, 0], [0, 1, 0], [0, 0, 1]],
+    targets=[0],
+    num_systems=1,
+    dim=3,
 )
 zero = QuantumGate(
-    spec=[[1, 0, 0], [0, 0, 0], [0, 0, 0]], targets=[0], num_systems=1, dim=3
+    spec=[[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+    targets=[0],
+    num_systems=1,
+    dim=3,
 )
 S = Swap(targets=[0, 1], num_systems=2, dim=3)
 IR = Diagonal(
@@ -46,7 +52,9 @@ S_vacuum = QuantumGate(
 
 # CTC
 billiards = QuantumCTC(
-    inputs=[clock_state_unevolved], gates=[S_vacuum, IR], systems_respecting=[0]
+    inputs=[clock_state_unevolved],
+    gates=[S_vacuum, IR],
+    systems_respecting=[0],
 )
 billiards.diagram()
 

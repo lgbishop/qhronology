@@ -3,7 +3,7 @@ from qhronology.quantum.circuits import QuantumCircuit
 import sympy as sp
 from sympy.physics.quantum.dagger import Dagger
 
-# Construct unitary matrix and its conditions and symbols
+# Construct unitary matrix, along with its conditions and symbols
 unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
 conditions = [
     ((Dagger(unitary) * unitary)[i, j], sp.eye(2)[i, j])
@@ -18,6 +18,7 @@ U = QuantumGate(
     symbols=symbols,
     conditions=conditions,
     label="U",
+    conjugate=False,  # Not needed but demonstrative
 )
 Ud = QuantumGate(
     spec=unitary,

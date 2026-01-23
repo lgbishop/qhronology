@@ -388,7 +388,7 @@ def coefficient(
 
     Examples
     --------
-    >>> matrix = sp.Matrix([["1"], ["1"]])
+    >>> matrix = sp.Matrix([[1], [1]])
     >>> coefficient(matrix, scalar=1 / sp.sqrt(2))
     Matrix([
     [sqrt(2)/2],
@@ -919,14 +919,16 @@ class OperationsMixin:
             Its first non-keyword argument must be able to take a mathematical expression or
             a matrix/array of such types.
         arguments : dict[str, str]
-            A dictionary of keyword arguments (both keys and values as strings) to pass
+            A dictionary of keyword arguments (with the keywords as strings) to pass
             to the ``function`` call.
             Defaults to ``{}``.
 
         Examples
         --------
         >>> psi = QuantumState(
-        ...     spec=[("a*b + b*c + c*a", [0]), ("x*y + y*z + z*x", [1])], form="vector", label="ψ"
+        ...     spec=[("a*b + b*c + c*a", [0]), ("x*y + y*z + z*x", [1])],
+        ...     form="vector",
+        ...     label="ψ",
         ... )
         >>> psi.print()
         |ψ⟩ = (a*b + a*c + b*c)|0⟩ + (x*y + x*z + y*z)|1⟩
@@ -956,7 +958,11 @@ class OperationsMixin:
 
         Examples
         --------
-        >>> psi = QuantumState(spec=[("cos(θ)", [0]), ("sin(θ)", [1])], form="vector", label="ψ")
+        >>> psi = QuantumState(
+        ...     spec=[("cos(θ)", [0]), ("sin(θ)", [1])],
+        ...     form="vector",
+        ...     label="ψ",
+        ... )
         >>> psi.print()
         |ψ⟩ = cos(θ)|0⟩ + sin(θ)|1⟩
         >>> psi.rewrite(sp.exp)
@@ -968,8 +974,8 @@ class OperationsMixin:
     def normalize(self, norm: num | sym | str | None = None):
         """Perform a forced (re)normalization on the state to the value specified (``norm``).
 
-        Useful when applied to the current quantum state both before and after mutating operations,
-        prior to any simplification (such as renormalization) performed on the processed output
+        Useful when applied to a quantum state both before and after mutating operations,
+        prior to any simplification (such as renormalization) performed on its processed output
         (obtained via the ``state()`` method).
 
         Arguments
@@ -980,14 +986,22 @@ class OperationsMixin:
 
         Examples
         --------
-        >>> psi = QuantumState(spec=[("a", [0]), ("b", [1])], form="vector", label="ψ")
+        >>> psi = QuantumState(
+        ...     spec=[("a", [0]), ("b", [1])],
+        ...     form="vector",
+        ...     label="ψ",
+        ... )
         >>> psi.print()
         |ψ⟩ = a|0⟩ + b|1⟩
         >>> psi.normalize()
         >>> psi.print()
         |ψ⟩ = a/sqrt(a*conjugate(a) + b*conjugate(b))|0⟩ + b/sqrt(a*conjugate(a) + b*conjugate(b))|1⟩
 
-        >>> identity = QuantumState(spec=[("1", [0]), ("1", [1])], label="I")
+        >>> identity = QuantumState(
+        ...     spec=[(1, [0]), (1, [1])],
+        ...     symbols={"d": {"real": True}},
+        ...     label="I",
+        ... )
         >>> identity.print()
         I = |0⟩⟨0| + |1⟩⟨1|
         >>> identity.normalize("2/d")
@@ -1010,12 +1024,27 @@ class OperationsMixin:
 
         Examples
         --------
-        >>> psi = QuantumState(spec=[("1", [0]), ("1", [1])], form="vector", label="ψ")
+        >>> psi = QuantumState(
+        ...     spec=[(1, [0]), (1, [1])],
+        ...     form="vector",
+        ...     label="ψ",
+        ... )
         >>> psi.print()
         |ψ⟩ = |0⟩ + |1⟩
         >>> psi.coefficient(1 / sp.sqrt(2))
         >>> psi.print()
         |ψ⟩ = sqrt(2)/2|0⟩ + sqrt(2)/2|1⟩
+
+        >>> phi = QuantumState(
+        ...     spec=[("cos(θ)", [0]), ("sin(θ)", [1])],
+        ...     form="vector",
+        ...     label="φ",
+        ... )
+        >>> phi.print()
+        |φ⟩ = cos(θ)|0⟩ + sin(θ)|1⟩
+        >>> phi.coefficient("exp(I*ξ)")
+        >>> phi.print()
+        |φ⟩ = exp(I*ξ)*cos(θ)|0⟩ + exp(I*ξ)*sin(θ)|1⟩
         """
         scalar = 1 if scalar is None else scalar
         self.matrix = coefficient(self, scalar=scalar)
@@ -1050,8 +1079,8 @@ class OperationsMixin:
         ...     spec=[("a*u", [0, 0]), ("b*u", [1, 0]), ("a*v", [0, 1]), ("b*v", [1, 1])],
         ...     form="vector",
         ...     conditions=[
-        ...         ("a*conjugate(a) + b*conjugate(b)", "1"),
-        ...         ("u*conjugate(u) + v*conjugate(v)", "1"),
+        ...         ("a*conjugate(a) + b*conjugate(b)", 1),
+        ...         ("u*conjugate(u) + v*conjugate(v)", 1),
         ...     ],
         ...     label="Ψ",
         ... )
@@ -1064,7 +1093,10 @@ class OperationsMixin:
         ρ = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
 
         >>> bell = QuantumState(
-        ...     spec=[("1", [0, 0]), ("1", [1, 1])], form="vector", norm=1, label="Φ"
+        ...     spec=[(1, [0, 0]), (1, [1, 1])],
+        ...     form="vector",
+        ...     norm=1,
+        ...     label="Φ",
         ... )
         >>> bell.print()
         |Φ⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩
@@ -1248,7 +1280,7 @@ class OperationsMixin:
         the postselection is performed.
 
         If multiple postselections are supplied, the state will be successively postselected in the
-        order in which they are given. If a vector state is postselected against a matrix form,
+        order in which they are specified. If a vector state is postselected against a matrix form,
         it will automatically be transformed into its matrix form as necessary.
 
         Arguments
@@ -1268,8 +1300,16 @@ class OperationsMixin:
 
         Examples
         --------
-        >>> psi = QuantumState(spec=[("a", [0, 0]), ("b", [1, 1])], form="vector", label="Ψ")
-        >>> phi = QuantumState(spec=[("c", [0]), ("d", [1])], form="vector", label="φ")
+        >>> psi = QuantumState(
+        ...     spec=[("a", [0, 0]), ("b", [1, 1])],
+        ...     form="vector",
+        ...     label="Ψ",
+        ... )
+        >>> phi = QuantumState(
+        ...     spec=[("c", [0]), ("d", [1])],
+        ...     form="vector",
+        ...     label="φ",
+        ... )
         >>> psi.print()
         |Ψ⟩ = a|0,0⟩ + b|1,1⟩
         >>> phi.print()
@@ -1280,7 +1320,11 @@ class OperationsMixin:
         |Ψ′⟩ = a*conjugate(c)|0⟩ + b*conjugate(d)|1⟩
 
         >>> from qhronology.mechanics.matrices import ket
-        >>> psi = QuantumState(spec=[("a", [0, 0]), ("b", [1, 1])], form="vector", label="Ψ")
+        >>> psi = QuantumState(
+        ...     spec=[("a", [0, 0]), ("b", [1, 1])],
+        ...     form="vector",
+        ...     label="Ψ",
+        ... )
         >>> psi.print()
         |Ψ⟩ = a|0,0⟩ + b|1,1⟩
         >>> psi.label += "′"

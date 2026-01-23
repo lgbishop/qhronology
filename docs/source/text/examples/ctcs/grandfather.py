@@ -6,14 +6,22 @@ import sympy as sp
 
 # Input
 rho = sp.MatrixSymbol("ρ", 2, 2).as_mutable()
-input_state = MixedState(spec=rho, conditions=[(rho[0, 0], 1 - rho[1, 1])], label="ρ")
+input_state = MixedState(
+    spec=rho,
+    conditions=[(rho[0, 0], 1 - rho[1, 1])],
+    label="ρ",
+)
 
 # Gates
 NC = Not(targets=[0], controls=[1], num_systems=2)
 S = Swap(targets=[0, 1], num_systems=2)
 
 # CTC
-grandfather = QuantumCTC([input_state], gates=[NC, S], systems_respecting=[0])
+grandfather = QuantumCTC(
+    inputs=[input_state],
+    gates=[NC, S],
+    systems_respecting=[0],
+)
 grandfather.diagram()
 
 # Output

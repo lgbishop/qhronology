@@ -5,7 +5,7 @@ qutrit_vector = QuantumState(
     form="vector",
     dim=3,
     symbols={"a": {"complex": True}, "b": {"complex": True}, "c": {"complex": True}},
-    conditions=[("a*conjugate(a) + b*conjugate(b) + c*conjugate(c)", "1")],
+    conditions=[("a*conjugate(a) + b*conjugate(b) + c*conjugate(c)", 1)],
     norm=1,
     label="φ",
 )

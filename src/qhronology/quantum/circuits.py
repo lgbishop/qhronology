@@ -1017,14 +1017,14 @@ class QuantumCircuit(SymbolicsProperties):
         Arguments
         ---------
         pad : tuple[int, int]
-            A two-tuple describing the horizontal and vertical interior paddings between the content
-            at the centre of each gate (e.g., label) and its outer edge (e.g., block border).
-            Both integers must be non-negative.
+            A two-tuple of non-negative integers specifying intra-gate padding
+            (i.e., the horizontal and vertical interior paddings between the content at the centre
+            of each gate (e.g., label) and its outer edge (e.g., block border).
             Defaults to ``(0, 0)``.
         sep : tuple[int, int]
-            A two-tuple describing the horizontal and vertical exterior separation distances
-            between the edges of neighbouring gates.
-            Both integers must be non-negative.
+            A two-tuple of non-negative integers specifying inter-gate separation
+            (i.e., the horizontal and vertical exterior separation distances between the edges of
+            neighbouring gates.
             Defaults to ``(1, 1)``.
         uniform_spacing : bool
             Whether to uniformly space the gates horizontally such that the midpoint of each

@@ -267,8 +267,12 @@ dd > p {
     font-style: italic;
 } */
 
-em.sig-param > :first-child {
+em.sig-param {
     font-style: normal;
+}
+
+em.sig-param > :first-child {
+    font-style: italic !important;
     color: var(--pst-color-code-string);
     /* color: var(--pst-color-inline-code); */
 }
@@ -278,7 +282,7 @@ em.sig-param > :nth-child(2) {
 }
 
 span.default_value > span.pre {
-    font-style: normal;
+    font-style: italic !important;
     color: var(--pst-color-secondary);
 }
 

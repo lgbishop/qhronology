@@ -1327,7 +1327,7 @@ List of special gates
 
 Note that in these examples, :math:`\Dimension` is the dimensionality of the relevant linear operator's underlying Hilbert space.
 
-- X (Pauli-X):
+- :math:`\PauliX` (Pauli-:math:`X`):
 
    .. raw:: latex
       
@@ -1353,7 +1353,7 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
       \end{mdframed}
       \vspace{1em}
 
-- Y (Pauli-Y):
+- :math:`\PauliY` (Pauli-:math:`Y`):
 
    .. raw:: latex
       
@@ -1379,7 +1379,7 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
       \end{mdframed}
       \vspace{1em}
 
-- Z (Pauli-Z):
+- :math:`\PauliZ` (Pauli-:math:`Z`):
 
    .. raw:: latex
       
@@ -1405,7 +1405,7 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
       \end{mdframed}
       \vspace{1em}
 
-- NOT (bit-flip), equivalent to the Pauli-X gate for qubits:
+- NOT (logical negation or bit-flip), equivalent to the Pauli-:math:`X` gate for qubits:
 
    .. raw:: latex
       
@@ -1457,7 +1457,7 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
       \end{mdframed}
       \vspace{1em}
 
-- P (phase):
+- :math:`\Phase` (phase):
 
    .. raw:: latex
       
@@ -1483,7 +1483,7 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
       \end{mdframed}
       \vspace{1em}
 
-- R (rotation):
+- :math:`\Rotation` (rotation):
 
    .. raw:: latex
       
@@ -1588,7 +1588,7 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
       \end{mdframed}
       \vspace{1em}
 
-- HAD (Hadamard):
+- :math:`\Hadamard` (Hadamard):
 
    .. raw:: latex
       
@@ -1614,7 +1614,7 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
       \end{mdframed}
       \vspace{1em}
 
-- QFT (quantum Fourier transform):
+- :math:`\QFT` (quantum Fourier transform):
 
    .. raw:: latex
       

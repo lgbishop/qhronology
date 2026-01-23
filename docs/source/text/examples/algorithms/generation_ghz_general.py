@@ -7,7 +7,7 @@ dim = 4
 
 # Input
 zero_state = VectorState(spec=[(1, [0])], label="0", dim=dim)
-input_states = [zero_state for i in range(0, num_systems)]
+input_states = [zero_state for _ in range(0, num_systems)]
 
 # Gates
 HII = Hadamard(targets=[0], num_systems=num_systems, dim=dim)

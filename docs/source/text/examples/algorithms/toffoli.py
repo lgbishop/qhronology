@@ -8,19 +8,19 @@ import sympy as sp
 first_state = VectorState(
     spec=[("a", [0]), ("b", [1])],
     symbols={"a": {"complex": True}, "b": {"complex": True}},
-    conditions=[("a*conjugate(a) + b*conjugate(b)", "1")],
+    conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
     label="x",
 )
 second_state = VectorState(
     spec=[("c", [0]), ("d", [1])],
     symbols={"c": {"complex": True}, "d": {"complex": True}},
-    conditions=[("c*conjugate(c) + d*conjugate(d)", "1")],
+    conditions=[("c*conjugate(c) + d*conjugate(d)", 1)],
     label="y",
 )
 third_state = VectorState(
     spec=[("u", [0]), ("v", [1])],
     symbols={"u": {"complex": True}, "v": {"complex": True}},
-    conditions=[("u*conjugate(u) + v*conjugate(v)", "1")],
+    conditions=[("u*conjugate(u) + v*conjugate(v)", 1)],
     label="z",
 )
 
@@ -35,10 +35,18 @@ INC = Not(targets=[1], controls=[2], num_systems=3)
 CIN = Not(targets=[2], controls=[0], num_systems=3)
 CNI = Not(targets=[1], controls=[0], num_systems=3)
 ItI = Phase(
-    exponent=sp.Rational(1, 4), conjugate=True, targets=[1], num_systems=3, label="T^†"
+    exponent=sp.Rational(1, 4),
+    conjugate=True,
+    targets=[1],
+    num_systems=3,
+    label="T^†",
 )
 tII = Phase(
-    exponent=sp.Rational(1, 4), conjugate=True, targets=[0], num_systems=3, label="T^†"
+    exponent=sp.Rational(1, 4),
+    conjugate=True,
+    targets=[0],
+    num_systems=3,
+    label="T^†",
 )
 ttT = GateInterleave(tII, ItI, IIT)
 NCH = GateInterleave(NCI, IIH)

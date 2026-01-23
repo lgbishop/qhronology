@@ -11,10 +11,16 @@ dimensionality = 2
 # Input
 rho = sp.MatrixSymbol("ρ", dimensionality, dimensionality).as_mutable()
 respecting_state = MixedState(
-    spec=rho, dim=dimensionality, conditions=[(sp.trace(rho), 1)], label="ρ"
+    spec=rho,
+    dim=dimensionality,
+    conditions=[(sp.trace(rho), 1)],
+    label="ρ",
 )
 seed_state = MixedState(
-    spec=sp.eye(dimensionality), dim=dimensionality, norm=1, label="τ_0"
+    spec=sp.eye(dimensionality),
+    dim=dimensionality,
+    norm=1,
+    label="τ_0",
 )
 
 # Gate
