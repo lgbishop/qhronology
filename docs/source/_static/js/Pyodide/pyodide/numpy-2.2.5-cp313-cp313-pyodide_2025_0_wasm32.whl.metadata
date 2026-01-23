@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: numpy
-Version: 2.0.2
+Version: 2.2.5
 Summary: Fundamental package for array computing in Python
 Author: Travis E. Oliphant et al.
 Maintainer-Email: NumPy Developers <numpy-discussion@python.org>
@@ -42,10 +42,10 @@ Classifier: License :: OSI Approved :: BSD License
 Classifier: Programming Language :: C
 Classifier: Programming Language :: Python
 Classifier: Programming Language :: Python :: 3
-Classifier: Programming Language :: Python :: 3.9
 Classifier: Programming Language :: Python :: 3.10
 Classifier: Programming Language :: Python :: 3.11
 Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
 Classifier: Programming Language :: Python :: 3 :: Only
 Classifier: Programming Language :: Python :: Implementation :: CPython
 Classifier: Topic :: Software Development
@@ -61,7 +61,7 @@ Project-URL: source, https://github.com/numpy/numpy
 Project-URL: download, https://pypi.org/project/numpy/#files
 Project-URL: tracker, https://github.com/numpy/numpy/issues
 Project-URL: release notes, https://numpy.org/doc/stable/release
-Requires-Python: >=3.9
+Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 
 <h1 align="center">

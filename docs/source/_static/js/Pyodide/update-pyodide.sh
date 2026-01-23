@@ -2,7 +2,7 @@
 
 rm -rf ./pyodide
 
-curl -OL https://github.com/pyodide/pyodide/releases/download/0.27.7/pyodide-0.27.7.tar.bz2
+curl -OL https://github.com/pyodide/pyodide/releases/download/0.29.2/pyodide-0.29.2.tar.bz2
 bzip2 -dk pyodide-*.tar.bz2
 tar -xvf pyodide-*.tar
 
@@ -31,7 +31,7 @@ mv -f ./pyodide-temp/pyodide-lock.json ./pyodide
 rm -rf ./pyodide-temp
 
 # QHRONOLOGY_VERSION_NUMBER
-curl -OL https://github.com/lgbishop/qhronology/releases/download/1.0.1/qhronology-1.0.1-py3-none-any.whl
+curl -OL https://github.com/lgbishop/qhronology/releases/download/1.0.2/qhronology-1.0.2-py3-none-any.whl
 mv -f qhronology-*.whl ./pyodide
 
 rm -rf pyodide-*.tar.bz2

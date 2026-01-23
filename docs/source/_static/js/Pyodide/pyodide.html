@@ -2,7 +2,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Live Qhronology testing environment</title>
-<!-- <script src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/pyodide/v0.29.2/full/pyodide.js"></script> -->
 <script src="./../../_static/js/Pyodide/pyodide/pyodide.js"></script>
 <style>
     textarea#input {
@@ -101,7 +101,7 @@
         await micropip.install("sympy");
         await micropip.install("numpy");
         output.innerText += "Loading qhronology" + "\n"
-        await micropip.install("./../../_static/js/Pyodide/pyodide/qhronology-1.0.1-py3-none-any.whl");
+        await micropip.install("./../../_static/js/Pyodide/pyodide/qhronology-1.0.2-py3-none-any.whl");
         output.innerText += "Loaded qhronology" + "\n"
         output.innerText += "Live Qhronology environment initialized." + "\n"
 
