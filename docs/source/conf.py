@@ -15,15 +15,15 @@ sys.path.insert(0, os.path.abspath("../../src"))  # Source code dir relative to 
 project = "Qhronology"
 copyright = "2025 Lachlan G. Bishop"
 author = "Lachlan G. Bishop"
-version = "1.0.1"  # QHRONOLOGY_VERSION_NUMBER
-release = "1.0.1"  # QHRONOLOGY_VERSION_NUMBER
+version = "1.0.2"  # QHRONOLOGY_VERSION_NUMBER
+release = "1.0.2"  # QHRONOLOGY_VERSION_NUMBER
 html_title = "Qhronology"
 html_last_updated_fmt = "%b %d, %Y"
 language = "en"
 root_doc = "index"
 latex_doc = "index_latex"
 today_fmt = "%b %d, %Y"
-today = "July 2025"
+today = "24th January 2026"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
