@@ -39,7 +39,7 @@ fi
 pdftk ./_build/latex/first.pdf ./source/art/output/cover-inner-left.pdf ./source/art/output/cover-inner-right.pdf ./source/art/output/cover-back.pdf cat output ./_build/latex/Qhronology_documentation.pdf
 
 exiftool -overwrite_original -all:all= ./_build/latex/Qhronology_documentation.pdf
-exiftool -overwrite_original -Title="Qhronology - Documentation, Examples, and Theory" -Author="Lachlan G. Bishop" -Subject="" -Creator="" -Producer="" ./_build/latex/Qhronology_documentation.pdf
+exiftool -overwrite_original -Title="Qhronology: Documentation, Examples, and Theory" -Author="Lachlan G. Bishop" -Subject="" -Creator="" -Producer="" ./_build/latex/Qhronology_documentation.pdf
 exiftool -overwrite_original -xmp:all= ./_build/latex/Qhronology_documentation.pdf
 
 # pdftk ./_build/latex/Qhronology_documentation.pdf update_info info.txt output ./_build/latex/Qhronology.pdf

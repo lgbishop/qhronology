@@ -638,10 +638,10 @@ Read the full license here:
 \renewcommand{\cftsubsubsecpagefont}{\fontsize{9}{11}\sffamily\bfseries}
 \renewcommand{\cftparapagefont}{\fontsize{9}{11}\sffamily\bfseries}
 
-\renewcommand{\cftbeforesecskip}{0.1em}
+\renewcommand{\cftbeforesecskip}{0.075em}
 \renewcommand{\cftchapafterpnum}{\vskip0.25em}
-\renewcommand{\cftsecafterpnum}{\vskip0.1em}
-% % \renewcommand{\cftbeforesubsecskip}{0.35em}
+\renewcommand{\cftsecafterpnum}{\vskip0.00em}
+% \renewcommand{\cftbeforesubsecskip}{0.35em}
 \renewcommand{\cftsubsecafterpnum}{\vskip0.00em}
 \renewcommand{\cftsubsubsecafterpnum}{\vskip0.00em}
 \renewcommand{\cftparaafterpnum}{\vskip0.00em}
