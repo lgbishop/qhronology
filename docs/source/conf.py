@@ -724,6 +724,12 @@ html_theme_options = {
             "type": "fontawesome",
         },
         {
+            "name": "arXiv Paper",
+            "url": "https://arxiv.org/abs/2601.17459",
+            "icon": "_static/logos/arxiv-logomark-small-square.svg",
+            "type": "local",
+        },
+        {
             "name": "PDF Documentation",
             "url": "https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf",
             "icon": "fa-regular fa-file-pdf",

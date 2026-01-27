@@ -968,6 +968,10 @@ span.nd {
     color: var(--pst-color-on-surface) !important;
 }
 
+ul.navbar-icon-links {
+    column-gap: 1rem;
+}
+
 svg.fa-square-github {
     font-size: x-large;
 }

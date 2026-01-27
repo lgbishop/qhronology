@@ -391,9 +391,10 @@ Contributions to Qhronology (both the package and its documentation), including 
 - The package:
 ```bibtex
 @software{bishop_qhronology-software_2025,
-  title = {Qhronology: {{A Python}} Package for Studying Quantum Models of Closed Timelike Curves and Simulating General Quantum Information Processing \& Computation},
+  title = {Qhronology: {{A Python}} package for studying quantum models of closed timelike curves and simulating general quantum information processing \& computation},
   author = {Bishop, Lachlan G.},
-  year = {2025},
+  year = 2025,
+  month = jun,
   url = {https://github.com/lgbishop/qhronology},
   addendum = {Source code: \url{https://github.com/lgbishop/qhronology}}
 }
@@ -404,9 +405,29 @@ Contributions to Qhronology (both the package and its documentation), including 
 @misc{bishop_qhronology-documentation_2025,
   title = {Qhronology: {{Documentation}}, {{Examples}}, and {{Theory}}},
   author = {Bishop, Lachlan G.},
-  year = {2025},
+  year = 2025,
+  month = jun,
   url = {https://github.com/lgbishop/qhronology/blob/latest/docs/_build/latex/Qhronology.pdf},
-  addendum = {Available online: \url{https://github.com/lgbishop/qhronology}}
+  addendum = {Available online: \url{https://qhronology.com}}
+}
+```
+
+- The [paper](https://arxiv.org/abs/2601.17459):
+```bibtex
+@misc{bishop_qhronology_2026,
+  title = {Qhronology: {{A Python}} package for studying quantum models of closed timelike curves},
+  shorttitle = {Qhronology},
+  author = {Bishop, Lachlan G.},
+  year = 2026,
+  month = jan,
+  number = {arXiv:2601.17459},
+  eprint = {2601.17459},
+  primaryclass = {quant-ph},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2601.17459},
+  abstract = {Qhronology is a novel scientific-computing package for studying quantum models of closed timelike curves (CTCs) and simulating general quantum information processing and computation. Written in Python, the program provides a comprehensive framework for analyzing quantum theories of antichronological time travel, including functionality to calculate quantum resolutions to temporal paradoxes. It also operates as a complete quantum circuit simulator, enabling the examination of quantum algorithms and protocols in both numerical and symbolic capacities. In this paper, we formally introduce Qhronology, beginning with discussion on aspects of its design philosophy and architecture. An overview of its basic usage is then presented, along with a collection of examples demonstrating its various capabilities within a variety of distinct contexts. Lastly, the performance of the package's circuit simulation component is characterized by way of some simple empirical benchmarking.},
+  archiveprefix = {arXiv},
+  url = {https://arxiv.org/abs/2601.17459}
 }
 ```
 
