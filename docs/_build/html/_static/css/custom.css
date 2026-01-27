@@ -315,6 +315,15 @@ dl[class]:not(.option-list, .field-list, .footnote, .glossary, .simple) {
     margin-bottom: 2rem;
 }
 
+em.property > span.pre, span.p, span.w {
+    font-style: normal;
+}
+
+span.descname {
+    font-style: italic;
+	color: var(--pst-color-code-string);
+}
+
 
 /*** Animated clock on the home page ***/
 img.clock-animated {
