@@ -102,9 +102,9 @@ The usefulness of having a parametrization for which the integration measure is 
 
    \begin{aligned}
        \Integral_{\alpha\beta,\alpha\beta} = \Integral_{\alpha\alpha,\beta\beta} &= \int_{\SpacePure(\SpaceHilbert_\CV)} \diff[\StateVector] \, \abs{\braket{\Dimension - 1}{\StateVector}}^2 \, \abs{\braket{\Dimension - 2}{\StateVector}}^2 \\
-       &= (2\pi)^{\Dimension - 1} \prod_{\gamma = 1}^{\Dimension - 3} \int_{\vartheta_\gamma \in [0, \tfrac{\pi}{2}]} \diff\vartheta_\gamma \, \cos(\vartheta_\gamma) \, \sin^{2\gamma - 1}(\vartheta_\gamma)\\
-       &\quad \times \int_{\vartheta_{\Dimension - 2} \in [0,2\pi]} \diff\vartheta_{\Dimension - 2} \, \cos^3(\vartheta_{\Dimension - 2}) \sin^{2\Dimension - 5}(\vartheta_{\Dimension - 2}) \\
-       &\quad \times \int_{\vartheta_{\Dimension - 1} \in [0,2\pi]} \diff\vartheta_{\Dimension - 1} \, \cos^3(\vartheta_{\Dimension - 1}) \sin^{2\Dimension - 1}(\vartheta_{\Dimension - 1}),
+       &= (2\pi)^{\Dimension - 1} \prod_{\gamma = 1}^{\Dimension - 3} \int_{\vartheta_\gamma \in [0, \tfrac{\pi}{2}]} \diff\vartheta_\gamma \, \cos(\vartheta_\gamma) \!\; \sin^{2\gamma - 1}(\vartheta_\gamma)\\
+       &\quad \times \int_{\vartheta_{\Dimension - 2} \in [0,2\pi]} \diff\vartheta_{\Dimension - 2} \, \cos^3(\vartheta_{\Dimension - 2}) \!\; \sin^{2\Dimension - 5}(\vartheta_{\Dimension - 2}) \\
+       &\quad \times \int_{\vartheta_{\Dimension - 1} \in [0,2\pi]} \diff\vartheta_{\Dimension - 1} \, \cos^3(\vartheta_{\Dimension - 1}) \!\; \sin^{2\Dimension - 1}(\vartheta_{\Dimension - 1}),
    \end{aligned}
 
 while for :math:`\alpha = \beta`,
@@ -113,9 +113,9 @@ while for :math:`\alpha = \beta`,
 
    \begin{aligned}
        \Integral_{\alpha\alpha,\alpha\alpha} &= \int_{\SpacePure(\SpaceHilbert_\CV)} \diff[\StateVector] \, \abs{\braket{\Dimension - 1}{\StateVector}}^4 \\
-       &= (2\pi)^{\Dimension - 1} \prod_{\gamma = 1}^{\Dimension - 3} \int_{\vartheta_\gamma \in [0, \tfrac{\pi}{2}]} \diff\vartheta_\gamma \, \cos(\vartheta_\gamma) \, \sin^{2\gamma - 1}(\vartheta_\gamma)\\
-       &\quad \times \int_{\vartheta_{\Dimension - 2} \in [0,2\pi]} \diff\vartheta_{\Dimension - 2} \, \cos(\vartheta_{\Dimension - 2}) \sin^{2\Dimension - 5}(\vartheta_{\Dimension - 2}) \\
-       &\quad \times \int_{\vartheta_{\Dimension - 1} \in [0,2\pi]} \diff\vartheta_{\Dimension - 1} \, \cos^5(\vartheta_{\Dimension - 1}) \sin^{2\Dimension - 3}(\vartheta_{\Dimension - 1}).
+       &= (2\pi)^{\Dimension - 1} \prod_{\gamma = 1}^{\Dimension - 3} \int_{\vartheta_\gamma \in [0, \tfrac{\pi}{2}]} \diff\vartheta_\gamma \, \cos(\vartheta_\gamma) \!\; \sin^{2\gamma - 1}(\vartheta_\gamma)\\
+       &\quad \times \int_{\vartheta_{\Dimension - 2} \in [0,2\pi]} \diff\vartheta_{\Dimension - 2} \, \cos(\vartheta_{\Dimension - 2}) \!\; \sin^{2\Dimension - 5}(\vartheta_{\Dimension - 2}) \\
+       &\quad \times \int_{\vartheta_{\Dimension - 1} \in [0,2\pi]} \diff\vartheta_{\Dimension - 1} \, \cos^5(\vartheta_{\Dimension - 1}) \!\; \sin^{2\Dimension - 3}(\vartheta_{\Dimension - 1}).
    \end{aligned}
 
 Evaluation (numerical or otherwise) of the integrals in these forms reveals that

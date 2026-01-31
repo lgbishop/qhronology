@@ -149,12 +149,12 @@ which signify integration over all position :math:`\vec{\Position}(\Time)` and m
 
 For a system with a Hamiltonian whose dependence on momentum is purely quadratic, the integral over the momentum evolutions :math:`\vec{\Momentum}(\Time)` in :eq:`eq:propagator_phase` can be directly computed. Subsequently, the propagator reduces to the *configuration-space path integral*,
 
-.. math:: \Propagator(\vec{\PositionFinal},\TimeFinal;\vec{\PositionInitial},\TimeInitial) = \int_{\vec{\PositionInitial}}^{\vec{\PositionFinal}} \DifferentialPath^{\prime}\vec{\Position} \, \e^{\eye \Action[\vec{\Position}]/\hbar},
+.. math:: \Propagator(\vec{\PositionFinal},\TimeFinal;\vec{\PositionInitial},\TimeInitial) = \int_{\vec{\PositionInitial}}^{\vec{\PositionFinal}} \DifferentialPath^{\prime}\!\vec{\Position} \, \e^{\eye \Action[\vec{\Position}]/\hbar},
    :label: eq:propagator_configuration
 
 where the "normalized" differential (compared to :eq:`eq:differential_path_position`) is defined as
 
-.. math:: \int_{\vec{\Position}_0}^{\vec{\Position}_\Number} \DifferentialPath^{\prime}\vec{\Position} \equiv \lim\limits_{\Number \rightarrow \infty} \left[\frac{\Mass}{2\pi\eye\hbar(\TimeFinal - \TimeInitial)}\right]^\frac{\Number\Dimension}{2} \prod_{k=1}^{\Number-1} \int_{\Reals^\Dimension} \diff^\Dimension{\vec{\Position}_k}.
+.. math:: \int_{\vec{\Position}_0}^{\vec{\Position}_\Number} \DifferentialPath^{\prime}\!\vec{\Position} \equiv \lim\limits_{\Number \rightarrow \infty} \left[\frac{\Mass}{2\pi\eye\hbar(\TimeFinal - \TimeInitial)}\right]^\frac{\Number\Dimension}{2} \prod_{k=1}^{\Number-1} \int_{\Reals^\Dimension} \diff^\Dimension{\vec{\Position}_k}.
    :label: eq:differential_path_position_normalized
 
 Here, :math:`\Mass` is the system's mass parameter. Note that this is an integral over *all* possible paths (both classical and quantum) and not just the classical path :math:`\classical{\vec{\Position}}(\Time)` (that which satisfies the relevant classical equations of motion) with action :math:`\classical{\Action} \equiv \Action[\classical{\vec{\Position}}]`. This expression is often presented as the typical form of the path integral.
