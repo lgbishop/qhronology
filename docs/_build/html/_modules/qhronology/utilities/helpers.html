@@ -29,11 +29,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d4d32e97" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b063fbe0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 01, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 06, 2026"/>
   </head>
   
   
@@ -529,8 +529,8 @@
 <div class="viewcode-block" id="count_systems">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.count_systems">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">count_systems</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Count the number of ``dim``-dimensional subsystems which constitute the (composite) system</span>
-<span class="sd">    represented by ``matrix``.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Count the number of :python:`dim`-dimensional subsystems which constitute the (composite) system</span>
+<span class="sd">    represented by :python:`matrix`.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">logn</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">to_density</span><span class="p">(</span><span class="n">matrix</span><span class="p">))[</span><span class="mi">0</span><span class="p">]))</span></div>
 
 
@@ -538,7 +538,7 @@
 <div class="viewcode-block" id="count_dims">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.count_dims">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">count_dims</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">,</span> <span class="n">systems</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the dimensionality of the (composite) system represented by ``matrix``.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the dimensionality of the (composite) system represented by :python:`matrix`.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="n">sp</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">to_density</span><span class="p">(</span><span class="n">matrix</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">systems</span><span class="p">))))</span></div>
 
 
@@ -547,7 +547,7 @@
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.check_systems_conflicts">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">check_systems_conflicts</span><span class="p">(</span><span class="o">*</span><span class="n">subsystems</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check for conflicts (common element(s)) in the given (unpacked) tuple of lists.</span>
-<span class="sd">    Returns ``True`` if any are found, otherwise ``False``.&quot;&quot;&quot;</span>
+<span class="sd">    Returns :python:`True` if any are found, otherwise :python:`False`.&quot;&quot;&quot;</span>
     <span class="n">subsystems_list</span> <span class="o">=</span> <span class="n">flatten_list</span><span class="p">([</span><span class="o">*</span><span class="n">subsystems</span><span class="p">])</span>
     <span class="n">subsystems_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">subsystems_list</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">subsystems_list</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">subsystems_set</span><span class="p">)</span></div>
@@ -557,8 +557,8 @@
 <div class="viewcode-block" id="adjust_targets">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.adjust_targets">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">adjust_targets</span><span class="p">(</span><span class="n">targets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">removed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adjust the specified system indices (``targets``) according to those which have been</span>
-<span class="sd">    removed (``removed``) from the total set.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adjust the specified system indices (:python:`targets`) according to those which have been</span>
+<span class="sd">    removed (:python:`removed`) from the total set.&quot;&quot;&quot;</span>
     <span class="n">targets</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">targets</span><span class="p">]))))</span>
     <span class="n">removed</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">removed</span><span class="p">]))))</span>
 
@@ -575,11 +575,11 @@
 <div class="viewcode-block" id="arrange">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.arrange">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">arrange</span><span class="p">(</span><span class="n">positions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Arranges the elements of ``items`` the according to the respective locations</span>
-<span class="sd">    (e.g., system indices) in ``positions``.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Arranges the elements of :python:`items` the according to the respective locations</span>
+<span class="sd">    (e.g., system indices) in :python:`positions`.</span>
 <span class="sd">    The main use case would be to arrange gates in a multipartite system.</span>
 
-<span class="sd">    The lengths of both ``positions`` and ``items`` must be the same, and ``positions`` must not</span>
+<span class="sd">    The lengths of both :python:`positions` and :python:`items` must be the same, and :python:`positions` must not</span>
 <span class="sd">    contain any missing system indices.</span>
 
 <span class="sd">    Examples</span>
@@ -589,7 +589,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">&quot;The number of items in ``positions`` and ``items`` do not match.&quot;</span>
+            <span class="s2">&quot;The number of items in :python:`positions` and :python:`items` do not match.&quot;</span>
         <span class="p">)</span>
 
     <span class="n">arranged</span> <span class="o">=</span> <span class="p">[]</span>
@@ -605,7 +605,7 @@
 <div class="viewcode-block" id="to_density">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_density">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">to_density</span><span class="p">(</span><span class="n">vector</span><span class="p">:</span> <span class="n">mat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the outer product of ``vector`` with itself, thereby converting any vector state</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the outer product of :python:`vector` with itself, thereby converting any vector state</span>
 <span class="sd">    into density matrix form.</span>
 <span class="sd">    Leaves square matrices unaffected, and raises an error for non-square matrices.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">COLUMN</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
@@ -624,7 +624,7 @@
 <div class="viewcode-block" id="to_column">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_column">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">to_column</span><span class="p">(</span><span class="n">vector</span><span class="p">:</span> <span class="n">mat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transpose ``vector`` into its column form.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transpose :python:`vector` into its column form.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">COLUMN</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">vector</span>
     <span class="k">elif</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">ROW</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
@@ -641,7 +641,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">stringify</span><span class="p">(</span>
     <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">delimiter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">product</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Render the mathematical expression (as a string) of the given ``matrix``.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Render the mathematical expression (as a string) of the given :python:`matrix`.&quot;&quot;&quot;</span>
     <span class="n">num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
     <span class="n">delimiter</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span> <span class="k">if</span> <span class="n">delimiter</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">delimiter</span>
     <span class="n">product</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">product</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">product</span>
@@ -725,7 +725,7 @@
                 <span class="n">expression</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">expression</span><span class="p">))</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-                    <span class="s2">&quot;The given ``expression`` cannot be converted to a symbolic representation.&quot;</span>
+                    <span class="s2">&quot;The given :python:`expression` cannot be converted to a symbolic representation.&quot;</span>
                 <span class="p">)</span>
 
         <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
@@ -749,7 +749,7 @@
     <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">symbols_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">sym</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Sympify the numerical, symbolic, or string expression pairs within tuples of the</span>
-<span class="sd">    list ``conditions`` and replace the symbols with given counterparts.&quot;&quot;&quot;</span>
+<span class="sd">    list :python:`conditions` and replace the symbols with given counterparts.&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">conditions</span><span class="p">)):</span>
         <span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
         <span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">conditions</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">symbols_list</span><span class="p">)</span>
@@ -768,10 +768,10 @@
     <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">comprehensive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simplify ``expression`` recursively using the substitutions given in ``conditions``.</span>
-<span class="sd">    Runs until ``expression`` is unchanged from the previous iteration,</span>
-<span class="sd">    or until the ``limit`` number of iterations is reached.</span>
-<span class="sd">    If ``comprehensive`` is ``False``, the algorithm uses a relatively efficient subset of</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simplify :python:`expression` recursively using the substitutions given in :python:`conditions`.</span>
+<span class="sd">    Runs until :python:`expression` is unchanged from the previous iteration,</span>
+<span class="sd">    or until the :python:`limit` number of iterations is reached.</span>
+<span class="sd">    If :python:`comprehensive` is :python:`False`, the algorithm uses a relatively efficient subset of</span>
 <span class="sd">    simplifying operations, otherwise it uses a larger, more powerful (but slower) set.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">conditions</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
@@ -799,7 +799,7 @@
                 <span class="n">functions</span> <span class="o">+=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">]</span>
             <span class="c1"># functions = [sp.simplify] # Simple version for testing/comparison.</span>
 
-            <span class="c1"># Generate all (sub-)permutations of the list ``functions``</span>
+            <span class="c1"># Generate all (sub-)permutations of the list :python:`functions`</span>
             <span class="n">permutations</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">functions</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
                 <span class="n">permutations</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">(</span><span class="n">functions</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">n</span><span class="p">))</span>
@@ -843,7 +843,7 @@
 <div class="viewcode-block" id="extract_matrix">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_matrix">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_matrix</span><span class="p">(</span><span class="n">operator</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract the SymPy matrix from the ``operator`` object.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract the SymPy matrix from the :python:`operator` object.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">matrix</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
@@ -854,7 +854,9 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;A valid SymPy matrix cannot be extracted from ``operator``.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;A valid SymPy matrix cannot be extracted from :python:`operator`.&quot;</span>
+        <span class="p">)</span>
     <span class="k">return</span> <span class="n">matrix</span></div>
 
 
@@ -862,8 +864,8 @@
 <div class="viewcode-block" id="extract_conditions">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_conditions">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_conditions</span><span class="p">(</span><span class="o">*</span><span class="n">states</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract any substitution conditions accessible via the ``conditions`` property</span>
-<span class="sd">    from the objects in ``states``.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract any substitution conditions accessible via the :python:`conditions` property</span>
+<span class="sd">    from the objects in :python:`states`.&quot;&quot;&quot;</span>
     <span class="n">conditions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">symbols_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
@@ -881,8 +883,8 @@
 <div class="viewcode-block" id="extract_symbols">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_symbols">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_symbols</span><span class="p">(</span><span class="o">*</span><span class="n">states</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">sym</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract any SymPy symbols accessible via the ``symbols`` property</span>
-<span class="sd">    from the objects in ``states``.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract any SymPy symbols accessible via the :python:`symbols` property</span>
+<span class="sd">    from the objects in :python:`states`.&quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
@@ -900,7 +902,7 @@
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies a function to a matrix. This is accomplished using eigendecomposition,</span>
 <span class="sd">    in which the specified matrix is assumed to be normal</span>
-<span class="sd">    (i.e., ``matrix * Dagger(matrix) = Dagger(matrix) * matrix``,</span>
+<span class="sd">    (i.e., :python:`matrix * Dagger(matrix) = Dagger(matrix) * matrix`,</span>
 <span class="sd">    which holds true for density operators).&quot;&quot;&quot;</span>
     <span class="n">arguments</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">arguments</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">arguments</span>
     <span class="n">eigentriple</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">eigenvects</span><span class="p">()</span>
@@ -924,7 +926,8 @@
     <span class="n">arguments</span><span class="p">,</span> <span class="n">kwarguments</span><span class="p">,</span> <span class="n">class_object</span><span class="p">,</span> <span class="n">arg_pairs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the default value of an argument in a subclass&#39;s constructor.</span>
-<span class="sd">    ``class_object`` is the class whose ``__init__`` signature is to be targeted.&quot;&quot;&quot;</span>
+<span class="sd">    :python:`class_object` is the class whose :python:`__init__` signature is to be targeted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">arg_strs</span><span class="p">,</span> <span class="n">arg_defaults</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">arg_pairs</span><span class="p">)</span>
     <span class="n">sig</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">class_object</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span>
     <span class="n">arguments_parent</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -954,7 +957,7 @@
     <span class="n">arguments</span><span class="p">,</span> <span class="n">kwarguments</span><span class="p">,</span> <span class="n">class_object</span><span class="p">,</span> <span class="n">arg_pairs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix the value of an argument in a subclass&#39;s constructor.</span>
-<span class="sd">    The argument ``class_object`` is the class whose ``__init__`` signature is to be targeted.</span>
+<span class="sd">    The argument :python:`class_object` is the class whose :python:`__init__` signature is to be targeted.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">arg_strs</span><span class="p">,</span> <span class="n">arg_values</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">arg_pairs</span><span class="p">)</span>
     <span class="n">sig</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">class_object</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span>
@@ -986,7 +989,7 @@
 <div class="viewcode-block" id="assemble_composition">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.assemble_composition">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">assemble_composition</span><span class="p">(</span><span class="o">*</span><span class="n">pairs</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">mat</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assemble a composite state from constituent subsystems described by the items in ``pairs``.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assemble a composite state from constituent subsystems described by the items in :python:`pairs`.</span>
 <span class="sd">    For each pair:</span>
 <span class="sd">    - the first element is the subsystem&#39;s state matrix.</span>
 <span class="sd">    - the second element is the list of indices of its systems.&quot;&quot;&quot;</span>

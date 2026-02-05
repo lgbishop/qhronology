@@ -13,10 +13,18 @@ Presented here is a simple tomographical reconstruction of an arbitrary qubit de
 Implementation
 --------------
 
+.. raw:: latex
+
+   \begin{codetitled}{Quantum state tomography}{}
+
 .. literalinclude:: /text/examples/algorithms/tomography_strong.py
    :name: code:tomography_strong
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -24,15 +32,31 @@ Output
 States
 ^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> unknown_state.print()
    τ = τ[0, 0]|0⟩⟨0| + τ[0, 1]|0⟩⟨1| + τ[1, 0]|1⟩⟨0| + τ[1, 1]|1⟩⟨1|
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> reconstructed_state.print()
    τ = τ[0, 0]|0⟩⟨0| + τ[0, 1]|0⟩⟨1| + τ[1, 0]|1⟩⟨0| + τ[1, 1]|1⟩⟨1|
+
+.. raw:: latex
+
+   \end{code}
 
 .. raw:: latex
    

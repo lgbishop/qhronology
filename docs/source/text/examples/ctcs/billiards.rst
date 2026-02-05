@@ -18,17 +18,26 @@ It is important to reiterate that it is only the functionality of the clock whic
 
 One of the open questions in the study of the quantum mechanics of time travel that can be investigated using this model is whether a quantum description does indeed address the issue of evolution indeterminism. As we shall see, a parametrization of the solutions in the D-CTCs description is observed. Although usually interpreted as solution multiplicity, this arises naturally as a choice of initial state in the CTC. Alternatively, in P-CTCs, only one quantum state is offered by the prescription as a solution to the paradox. This state takes the form of a pure superposition of the clock having evolved and not evolved on the CTC during its history through the time machine region. A focus of these P-CTC findings is how this superposition lends credence to the semiclassical billiard-ball conjecture of Friedman et al. in :cite:p:`friedman_cauchy_1990`. The well-known problem of how P-CTCs place constraints on the initial data (where such restrictions depend on the future of the time-travelling state), and how this limits the actions that one is able to perform in the billiard-ball interaction, is also discussed.
 
+Model
+^^^^^
+
+A quantum "billiard ball" can be modelled simply as a quantum particle, described by a qudit state, that moves though a :math:`(1+1)`-dimensional spacetime. For the billiard-ball paradox, such a spacetime consists of a time-machine wormhole, the mouths of which appear and disappear in such a way as to allow only the two desired paths (see :numref:`fig:diagram_billiard-ball_clocks`). We use the quantum billiard ball's qudit degree of freedom to encode a "clock", as described in the subsequent section. It is important to note that the particle's position degree of freedom begins as a semiclassical wave packet, with negligible probability that it falls into the time machine by its own free evolution. This is a significant point, as it allows us to justify both dropping position from the particle's description and the consideration of only the two trajectories :math:`\EvolutionNoninteracting` and :math:`\EvolutionInteracting`. It also connects with the WKB approximation mentioned by Friedman et al., who propose to apply the sum-over-histories only to the semiclassical trajectories (thus excluding trajectories which pass into the time machine without collision).
+
+.. raw:: latex
+
+   \vspace*{0.35cm}
+
 .. only:: html
 
    .. figure:: /figures/output/diagram_billiard-ball_clocks-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A spatial diagram of the simplified billiard-ball paradox.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/diagram_billiard-ball_clocks-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A spatial diagram of the simplified billiard-ball paradox.
       :align: center
       :figwidth: 100 %
@@ -36,18 +45,13 @@ One of the open questions in the study of the quantum mechanics of time travel t
 
 .. figure:: /figures/output/diagram_billiard-ball_clocks-light.png
    :name: fig:diagram_billiard-ball_clocks
-   :scale: 36 %
+   :scale: 34 %
    :alt: A spatial diagram of the simplified billiard-ball paradox.
    :align: center
    :figwidth: 100 %
    :figclass: light-dark hidden
 
    A simplified, :math:`(1+1)`-dimensional version of the billiard-ball paradox (:numref:`fig:diagram_billiard-ball_paradox`). This diagram visualizes the basic idea of the model under study in the reference frame of the clock. (a) The history where the clock travels through the CTC-wormhole region with no interaction; (b) the history of a clock which elastically interacts with itself. The times as measured by the clock at specific points along the histories are given in brackets next to their analogue clock symbols. The clocks begin at time :math:`\Time=0` and, due to their initial velocity, measure the proper times :math:`\Time_\EvolutionNoninteracting=\TimeInbound+\TimeOutbound` and :math:`\Time_\EvolutionInteracting=\TimeInbound+\TimeDelta+\TimeOutbound = \Time_\EvolutionNoninteracting + \TimeDelta` for evolutions :math:`\EvolutionNoninteracting` and :math:`\EvolutionInteracting`, respectively. This means that we denote the duration of the segment on the CTC in evolution :math:`\EvolutionInteracting` to be :math:`\TimeDelta`, while the inbound and outbound times to and from the wormhole axis (dashed line) are :math:`\TimeInbound` and :math:`\TimeOutbound`, respectively. It is important to note that the final position bears no information about the path the ball has taken.
-
-Model
-^^^^^
-
-A quantum "billiard ball" can be modelled simply as a quantum particle, described by a qudit state, that moves though a :math:`(1+1)`-dimensional spacetime. For the billiard-ball paradox, such a spacetime consists of a time-machine wormhole, the mouths of which appear and disappear in such a way as to allow only the two desired paths (see :numref:`fig:diagram_billiard-ball_clocks`). We use the quantum billiard ball's qudit degree of freedom to encode a "clock", as described in the subsequent section. It is important to note that the particle's position degree of freedom begins as a semiclassical wave packet, with negligible probability that it falls into the time machine by its own free evolution. This is a significant point, as it allows us to justify both dropping position from the particle's description and the consideration of only the two trajectories :math:`\EvolutionNoninteracting` and :math:`\EvolutionInteracting`. It also connects with the WKB approximation mentioned by Friedman et al., who propose to apply the sum-over-histories only to the semiclassical trajectories (thus excluding trajectories which pass into the time machine without collision).
 
 For simplicity and rigour, we work in :math:`(1+1)`-dimensions, which means the only interaction that can occur between the billiard-ball clock's future and past selves is a complete exchange of momentum. This is a useful characteristic, as a quantum SWAP gate between two qudit systems perfectly replicates this action within the quantum circuit framework. Additionally, to allow the billiard-ball paradox for the clock to function as intended, we also require the time machine to be dynamic. This means that, at least in the geometrical picture, the mouths of the wormhole appear and disappear at exactly the right points in the spacetime to allow the clock to evolve in two distinct ways within the chronology-violating region.
 
@@ -129,7 +133,7 @@ Evidently, in the case that the evolution time difference is equal to the orthog
 
 The case of :math:`\TimeDelta = \TimeOrthogonalization` can thus be interpreted as when the clock's "resolution" exactly matches the time difference between the relevant states. This is the key mechanism with which one can investigate temporal differences between the multiple trajectories (such as the two paths in the simple billiard-ball paradox) that are generated via the indeterminism present in spacetimes containing CTCs. Note that such modelling of an internal clock to track a quantum particle's proper time was first described in :cite:p:`zych_quantum_2011`.
 
-As a final point, note that the simple form of the clock state and its associated Hamiltonian are only convenient choices---the results we obtain from the model of the billiard-ball paradox are completely independent of them (provided the initial clock is not an energy eigenstate but is a superposition of different energies). In particular, given that any quantum system can be decomposed into an orthogonal energy basis, then the use of such a basis poses no restrictions on any findings. The use of uniform :math:`1/\sqrt{\Dimension}` weights in the initial state also merely provides simplicity compared to that of general amplitudes :math:`\{c_n\}_{n=1}^{\Dimension}`. In the same vein, the fact that the energy levels are chosen to be equally spaced means that the orthogonalization time is the same between orthogonal states. Non-equally spaced energies on the other hand would only prevent the simplification of the D-CTC solutions. Indeed, the only consequential assumption which we make of the clock system is that it is finite-dimensional, a fact that can be justified by assuming that the clock states must belong to some set of bound states.
+As a final point, note that the simple form of the clock state and its associated Hamiltonian are only convenient choices---the results we obtain from the model of the billiard-ball paradox are completely independent of them (provided the initial clock is not an energy eigenstate but is a superposition of different energies). In particular, given that any quantum system can be decomposed into an orthogonal energy basis, then the use of such a basis poses no restrictions on any findings. The use of uniform :math:`\tfrac{1}{\sqrt{\Dimension}}` weights in the initial state also merely provides simplicity compared to that of general amplitudes :math:`\{c_n\}_{n=1}^{\Dimension}`. In the same vein, the fact that the energy levels are chosen to be equally spaced means that the orthogonalization time is the same between orthogonal states. Non-equally spaced energies on the other hand would only prevent the simplification of the D-CTC solutions. Indeed, the only consequential assumption which we make of the clock system is that it is finite-dimensional, a fact that can be justified by assuming that the clock states must belong to some set of bound states.
 
 Quantum circuit model of the billiard-ball paradox
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -145,14 +149,14 @@ to be the CR input along the trajectories illustrated in :numref:`fig:diagram_bi
 .. only:: html
 
    .. figure:: /figures/output/circuit_ctc_billiards_evolutions-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: Quantum circuit diagrams of the individual evolutions in the billiard-ball paradox.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_ctc_billiards_evolutions-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: Quantum circuit diagrams of the individual evolutions in the billiard-ball paradox.
       :align: center
       :figwidth: 100 %
@@ -160,7 +164,7 @@ to be the CR input along the trajectories illustrated in :numref:`fig:diagram_bi
 
 .. figure:: /figures/output/circuit_ctc_billiards_evolutions-light.png
    :name: fig:circuit_ctc_billiards_evolutions
-   :scale: 36 %
+   :scale: 34 %
    :alt: Quantum circuit diagrams of the individual evolutions in the billiard-ball paradox.
    :align: center
    :figwidth: 100 %
@@ -217,14 +221,14 @@ Under this, the input state may either self-consistently interact with the CTC, 
 .. only:: html
 
    .. figure:: /figures/output/circuit_ctc_billiards-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the billiard-ball paradox.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_ctc_billiards-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the billiard-ball paradox.
       :align: center
       :figwidth: 100 %
@@ -232,7 +236,7 @@ Under this, the input state may either self-consistently interact with the CTC, 
 
 .. figure:: /figures/output/circuit_ctc_billiards-light.png
    :name: fig:circuit_ctc_billiards
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of the billiard-ball paradox.
    :align: center
    :figwidth: 100 %
@@ -385,10 +389,18 @@ Implementation
 
 This implementation is strictly for qubits. For simplicity, we set :math:`\frac{\TimeDelta}{\TimeOrthogonalization} \equiv t`.
 
+.. raw:: latex
+
+   \begin{codetitled}{Billiard-ball paradox}{}
+
 .. literalinclude:: /text/examples/ctcs/billiards.py
    :name: code:billiards
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -396,16 +408,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> billiards.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_ctcs_billiards.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -414,40 +430,71 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_ctcs_billiards-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> billiards_DCTC_respecting.print()
    ρ_D = 1/2|1⟩⟨1| + -(g*exp(I*pi*t) - g - exp(I*pi*t))/2|1⟩⟨2| + (g*exp(I*pi*t) - g + 1)*exp(-I*pi*t)/2|2⟩⟨1| + 1/2|2⟩⟨2|
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> billiards_DCTC_violating.print()
    τ_D = g|0⟩⟨0| + (1/2 - g/2)|1⟩⟨1| + (1 - g)*exp(I*pi*t)/2|1⟩⟨2| + (1 - g)*exp(-I*pi*t)/2|2⟩⟨1| + (1/2 - g/2)|2⟩⟨2|
+
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> billiards_PCTC_respecting.print()
    |ψ_P⟩ = sqrt(2)*sqrt(1/(cos(pi*t) + 3))|1⟩ + sqrt(2)*(1 + exp(-I*pi*t))*sqrt(1/(cos(pi*t) + 3))/2|2⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> billiards_PCTC_violating.print()
    τ_P = 1/3|0⟩⟨0| + 1/3|1⟩⟨1| + exp(I*pi*t)/3|1⟩⟨2| + exp(-I*pi*t)/3|2⟩⟨1| + 1/3|2⟩⟨2|
+
+.. raw:: latex
+
+   \end{code}
 
 .. only:: html
 

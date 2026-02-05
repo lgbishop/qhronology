@@ -10,7 +10,7 @@ The nature of Qhronology's dual-licensing structure means that the legal require
 
 As a result, contributors are required to accept a contributor licensing agreement (CLA) for each contribution to the project. The CLA constitutes a legal agreement between contributors and the project that mainly exists to facilitate the transfer of copyright of the work contained in contributions to the project. This is necessary for the project, made available for non-commercial use under the AGPL, to protect its ability to be distributed for commercial use under non-AGPL terms. Importantly, this does not remove the credit for any contributions, and care will be taken to make proper attribution when and where it is appropriate.
 
-The acceptance of the CLA is achieved simply by reading the document itself (`CLA.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/CLA.txt>`_) and then declaring your agreement to its terms and conditions by reproducing the following (inside the code environment below) verbatim in the description of any merge/pull requests to the project's repository:
+The acceptance of the CLA is achieved simply by reading the document itself (`CLA.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/CLA.txt>`_) and then declaring your agreement to its terms and conditions by reproducing, in the description of any merge/pull requests to the project's repository, the following statement:
 
 .. code:: text
 

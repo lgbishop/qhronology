@@ -17,14 +17,14 @@ Studies :cite:p:`friedman_cauchy_1990, echeverria_billiard_1991, lossev_jinn_199
 .. only:: html
 
    .. figure:: /figures/output/diagram_billiard-ball_paradox-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A spatial diagram of the billiard-ball paradox.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/diagram_billiard-ball_paradox-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A spatial diagram of the billiard-ball paradox.
       :align: center
       :figwidth: 100 %
@@ -32,7 +32,7 @@ Studies :cite:p:`friedman_cauchy_1990, echeverria_billiard_1991, lossev_jinn_199
 
 .. figure:: /figures/output/diagram_billiard-ball_paradox-light.png
    :name: fig:diagram_billiard-ball_paradox
-   :scale: 36 %
+   :scale: 34 %
    :alt: A spatial diagram of the billiard-ball paradox.
    :align: center
    :figwidth: 100 %

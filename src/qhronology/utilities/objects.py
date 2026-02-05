@@ -104,21 +104,21 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         delimiter : str
             A string containing the character(s) with which to delimit (i.e., separate) the values
             in the ket and/or bra terms in the mathematical expression.
-            Defaults to ``","``.
+            Defaults to :python:`","`.
         product : bool
             Whether to represent the mathematical expression using tensor products.
             Only applies if the object is a multipartite composition.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         return_string : bool
             Whether to return the mathematical expression as a string.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
 
         Returns
         -------
         None
-            Returned only if ``return_string`` is ``False``.
+            Returned only if :python:`return_string` is :python:`False`.
         str
-            The constructed mathematical expression. Returned only if ``return_string`` is ``True``.
+            The constructed mathematical expression. Returned only if :python:`return_string` is :python:`True`.
         """
         expression = (
             str(self.notation)
@@ -147,14 +147,14 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the object.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the object.
-            If ``False``, does not conjugate.
-            Defaults to the value of ``self.conjugate``.
+            If :python:`False`, does not conjugate.
+            Defaults to the value of :python:`self.conjugate`.
 
         Returns
         -------
@@ -185,8 +185,8 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     @property
     def form(self) -> str:
         """The *form* of the object.
-        Can be either of ``"vector"`` or ``"matrix"``.
-        Only :py:class:`~qhronology.quantum.states.QuantumState` objects can be ``"vector"``.
+        Can be either of :python:`"vector"` or :python:`"matrix"`.
+        Only :py:class:`~qhronology.quantum.states.QuantumState` objects can be :python:`"vector"`.
         """
         return matrix_form(self.matrix)
 
@@ -195,14 +195,14 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         if hasattr(self, "_kind"):
             if form == Forms.VECTOR.value and self.kind == Kinds.MIXED.value:
                 raise AttributeError(
-                    f"The given ``form`` ('{form}') is incompatible with the given ``kind`` ('{self.kind}')."
+                    f"The given :python:`form` ('{form}') is incompatible with the given :python:`kind` ('{self.kind}')."
                 )
         self._form = form
 
     @property
     def is_vector(self) -> bool:
         """Test for whether the object is a vector.
-        Returns ``True`` if so, otherwise ``False``."""
+        Returns :python:`True` if so, otherwise :python:`False`."""
         is_vector = False
         if self.form == Forms.VECTOR.value:
             is_vector = True
@@ -218,7 +218,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     def dim(self, dim: int):
         if hasattr(self, "_dim") is True:
             raise AttributeError(
-                "The ``dim`` attribute cannot be set after instancing."
+                "The :python:`dim` attribute cannot be set after instancing."
             )
         self._dim = dim
 
@@ -234,14 +234,14 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     @property
     def labels(self) -> list[str]:
-        """An ordered list of the object's labels corresponding to its ``boundaries``.
+        """An ordered list of the object's labels corresponding to its :python:`boundaries`.
         Used exclusively by the visualization engine."""
         return [self.notation]
 
     @property
     def notation(self) -> str:
         """The formatted string used to represent the object in mathematical expressions.
-        When set, overrides the value of the ``label`` property.
+        When set, overrides the value of the :python:`label` property.
         Must have a non-zero length.
         Not intended to be set by the user in most cases."""
         if self._notation is None:
@@ -289,7 +289,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     @property
     def boundaries(self) -> list[int]:
-        """An ordered list of indices of the object's boundaries corresponding to its ``labels``.
+        """An ordered list of indices of the object's boundaries corresponding to its :python:`labels`.
         Used exclusively by the visualization engine."""
         return [self.num_systems]
 
@@ -354,7 +354,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     @property
     def debug(self) -> bool:
-        """Whether to print the object's matrix representation (stored in the ``matrix`` property)
+        """Whether to print the object's matrix representation (stored in the :python:`matrix` property)
         on mutation."""
         return self._debug
 

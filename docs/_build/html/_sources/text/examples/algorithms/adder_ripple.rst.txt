@@ -37,14 +37,14 @@ can then be accomplished by a succession of exactly :math:`\Number` quantum ripp
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_adder_ripple-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum ripple-carry adder.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_adder_ripple-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum ripple-carry adder.
       :align: center
       :figwidth: 100 %
@@ -52,7 +52,7 @@ can then be accomplished by a succession of exactly :math:`\Number` quantum ripp
 
 .. figure:: /figures/output/circuit_algorithm_adder_ripple-light.png
    :name: fig:circuit_algorithm_adder_ripple
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of a quantum ripple-carry adder.
    :align: center
    :figwidth: 100 %
@@ -103,12 +103,20 @@ can be decoded, using :eq:`eq:decoding`, to be
 Implementation
 --------------
 
-Due to performance constraints, this example sums two 2-bit integers. Increasing the ``encoding_depth`` *greatly* increases the calculation time as a result of having to perform operations on larger matrices. The decimal ``augend_integer`` and ``addend_integer`` variables can be freely changed, provided their summation is within the encodable range.
+Due to performance constraints, this example sums two 2-bit integers. Increasing the :python:`encoding_depth` *greatly* increases the calculation time as a result of having to perform operations on larger matrices. The decimal :python:`augend_integer` and :python:`addend_integer` variables can be freely changed, provided their summation is within the encodable range.
+
+.. raw:: latex
+
+   \begin{codetitled}{Ripple-carry adder}{}
 
 .. literalinclude:: /text/examples/algorithms/adder_ripple.py
    :name: code:adder_ripple
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -116,16 +124,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> adder.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_ripple.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -134,48 +146,87 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_ripple-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> augend_state.print()
    |x⟩ = |0,1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> addend_state.print()
    |y⟩ = |0,1⟩
+
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> sum_state.print()
    |s⟩ = |1,0⟩
 
+.. raw:: latex
+
+   \end{code}
+
 Results
 ^^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> print(computation)
    Computation: 1 + 1 = 2
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> print(duration)
    Duration: 14.913 seconds
+
+.. raw:: latex
+
+   \end{code}
 
 This is of course *extremely* slow, mainly due to the computations involving relatively large matrices in the underlying calculation. Optimization of Qhronology's linear algebra algorithms, particularly the partial trace implementation, should improve both efficiency and speed.
 

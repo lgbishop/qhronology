@@ -98,19 +98,19 @@ Designed to provide a powerful set of features with a simple and intuitive synta
 .. only:: html
 
    .. image:: /figures/output/circuit_algorithm_teleportation-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :align: center
       :class: only-dark
 
    .. image:: /figures/output/circuit_algorithm_teleportation-light.png
-      :scale: 36 %
+      :scale: 34 %
       :align: center
       :class: only-light
 
 .. only:: latex
 
-   .. image:: /figures/output/circuit_algorithm_teleportation-light.png
-      :scale: 34 %
+   .. image:: /figures/output/circuit_algorithm_teleportation.pdf
+      :scale: 115 %
       :align: center
       :class: light-dark hidden
 
@@ -142,19 +142,19 @@ The fundamental indeterminism of quantum mechanics can be leveraged to provide r
 .. only:: html
 
    .. image:: /figures/output/circuit_ctc-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :align: center
       :class: only-dark
 
    .. image:: /figures/output/circuit_ctc-light.png
-      :scale: 36 %
+      :scale: 34 %
       :align: center
       :class: only-light
 
 .. only:: latex
 
-   .. image:: /figures/output/circuit_ctc-light.png
-      :scale: 36 %
+   .. image:: /figures/output/circuit_ctc.pdf
+      :scale: 115 %
       :align: center
       :class: light-dark hidden
 
@@ -202,8 +202,8 @@ Quantum circuit diagrams provide a powerful picturalism through which any quantu
 
 .. only:: latex
 
-   .. image:: /figures/output/text_examples_algorithms_generation_w-light.png
-      :scale: 44 %
+   .. image:: /figures/output/text_examples_algorithms_generation_w.pdf
+      :scale: 135 %
       :align: center
       :class: light-dark hidden
 
@@ -239,19 +239,19 @@ Bundled with the project is a small collection of complete examples that showcas
 .. only:: html
 
    .. image:: /figures/output/circuit_ctc_grandfather-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :align: center
       :class: only-dark
 
    .. image:: /figures/output/circuit_ctc_grandfather-light.png
-      :scale: 36 %
+      :scale: 34 %
       :align: center
       :class: only-light
 
 .. only:: latex
 
-   .. image:: /figures/output/circuit_ctc_grandfather-light.png
-      :scale: 36 %
+   .. image:: /figures/output/circuit_ctc_grandfather.pdf
+      :scale: 115 %
       :align: center
       :class: light-dark hidden
 
@@ -283,19 +283,19 @@ All of the functions, classes, and methods in each of the various submodules hav
 .. only:: html
 
    .. image:: /figures/output/diagram_bloch_sphere-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :align: center
       :class: only-dark
 
    .. image:: /figures/output/diagram_bloch_sphere-light.png
-      :scale: 36 %
+      :scale: 34 %
       :align: center
       :class: only-light
 
 .. only:: latex
 
-   .. image:: /figures/output/diagram_bloch_sphere-light.png
-      :scale: 34 %
+   .. image:: /figures/output/diagram_bloch_sphere.pdf
+      :scale: 120 %
       :align: center
       :class: light-dark hidden
 
@@ -303,9 +303,9 @@ All of the functions, classes, and methods in each of the various submodules hav
 
 ..    \end{tabular}
 
-.. raw:: latex
+.. .. raw:: latex
 
-   \vspace*{-0.15em}
+..    \vspace*{-0.15em}
 
 Foundational theory
 -------------------
@@ -324,24 +324,24 @@ The aim of this theory is to serve as a comprehensive and complete reference for
 
 .. raw:: latex
 
-   \vspace*{0.15em}
+   \vspace*{0.65em}
 
 .. only:: html
 
    .. image:: /figures/output/diagram_spacetime_minkowski-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :align: center
       :class: only-dark
 
    .. image:: /figures/output/diagram_spacetime_minkowski-light.png
-      :scale: 36 %
+      :scale: 34 %
       :align: center
       :class: only-light
 
 .. only:: latex
 
-   .. image:: /figures/output/diagram_spacetime_minkowski-light.png
-      :scale: 34 %
+   .. image:: /figures/output/diagram_spacetime_minkowski.pdf
+      :scale: 115 %
       :align: center
       :class: light-dark hidden
 
@@ -349,30 +349,50 @@ The aim of this theory is to serve as a comprehensive and complete reference for
 
 ..    \end{tabular}
 
-.. .. raw:: latex
+.. raw:: latex
 
-..    \newpage
+   \newpage
 
 Package installation and structure
 ==================================
 
-Local installation of Qhronology from `PyPI <https://pypi.org/project/qhronology/>`_ can be accomplished using ``pip`` (`website <https://pip.pypa.io/>`_, `repository <https://github.com/pypa/pip>`_) via your operating system's command line, e.g.,
+Local installation of Qhronology from `PyPI <https://pypi.org/project/qhronology/>`_ can be accomplished using :sh:`pip` (`website <https://pip.pypa.io/>`_, `repository <https://github.com/pypa/pip>`_) via your operating system's command line, e.g.,
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: sh
 
    $ pip install qhronology
 
+.. raw:: latex
+
+   \end{code}
+
 You may also be able to use an alternative package manager of your choice.
 
 After installation, the package can be imported in Python in the usual way. One suggestion is as follows:
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    import qhronology as qy
 
+.. raw:: latex
+
+   \end{code}
+
 The package has the following directory structure:
 
-::
+.. raw:: latex
+
+   \begin{code}
+
+.. code:: text
 
    qhronology
    ├──quantum
@@ -391,25 +411,53 @@ The package has the following directory structure:
       ├──objects.py
       └──symbolics.py
 
+.. raw:: latex
+
+   \end{code}
+
 Requirements
 ------------
 
 Within the package and documentation, SymPy and NumPy are imported in their conventional manners:
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    import sympy as sp
    import numpy as np
 
+.. raw:: latex
+
+   \end{code}
+
 Qhronology is compatible with the following package versions (from `requirements.txt <https://github.com/lgbishop/qhronology/blob/latest/requirements.txt>`_):
+
+.. raw:: latex
+
+   \begin{code}
 
 .. literalinclude:: ./../../requirements.txt
 
+.. raw:: latex
+
+   \end{code}
+
 These are the earliest versions with which the current release has been tested, but older versions may also be compatible. It also requires
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    python>=3.11
+
+.. raw:: latex
+
+   \end{code}
 
 .. .. raw:: latex
 
@@ -423,19 +471,27 @@ Examples
 
 Generation of the :math:`\ket{\Bell^+}` Bell state from primitive :math:`\ket{0}` states:
 
+.. raw:: latex
+
+   \begin{codetitled}{Generation of a Bell state}{}
+
 .. literalinclude:: /text/examples/algorithms/generation_bell.py
    :language: python
+
+.. raw:: latex
+
+   \tcblowerspaced
 
 .. code:: python
 
    >>> generator.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.05cm -0.02cm 0 -0.10cm]{text_examples_algorithms_generation_bell.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -444,41 +500,48 @@ Generation of the :math:`\ket{\Bell^+}` Bell state from primitive :math:`\ket{0}
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_generation_bell-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
-
 .. code:: python
 
    >>> phi_plus.print()
    |Φ+⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩
+
+.. raw:: latex
+
+   \end{codetitled}
 
 :ref:`Quantum teleportation <eg:teleportation>`
 -----------------------------------------------
 
 Quantum teleportation of an arbitrary qubit :math:`\ket{\psi} = a\ket{0} + b\ket{1}`:
 
+.. raw:: latex
+
+   \begin{codetitled}{Quantum teleportation}{}
+
 .. literalinclude:: /text/examples/algorithms/teleportation.py
    :language: python
+
+.. raw:: latex
+
+   \tcblowerspaced
 
 .. code:: python
 
    >>> teleporter.diagram(force_separation=True)
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.02cm 0 -0.10cm]{text_examples_algorithms_teleportation.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -487,17 +550,12 @@ Quantum teleportation of an arbitrary qubit :math:`\ket{\psi} = a\ket{0} + b\ket
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_teleportation-light.png
          :scale: 40 %
          :align: left
          :class: only-light
-
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
 
 .. code:: python
 
@@ -519,24 +577,40 @@ Quantum teleportation of an arbitrary qubit :math:`\ket{\psi} = a\ket{0} + b\ket
    >>> teleporting_state.fidelity(teleported_state)
    1
 
+.. raw:: latex
+
+   \end{codetitled}
+
+.. raw:: latex
+
+   \newpage
+
 :ref:`Unproven-theorem paradox <eg:unproven>`
 ---------------------------------------------
 
 Computing resolutions to the unproven-theorem paradox according to various prescriptions of quantum time travel (D-CTCs and P-CTCs):
 
+.. raw:: latex
+
+   \begin{codetitled}{Unproven-theorem paradox}{}
+
 .. literalinclude:: /text/examples/ctcs/unproven.py
    :language: python
+
+.. raw:: latex
+
+   \tcblowerspaced
 
 .. code:: python
 
    >>> unproven.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.05cm 0 -0.12cm]{text_examples_ctcs_unproven.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -545,17 +619,12 @@ Computing resolutions to the unproven-theorem paradox according to various presc
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_ctcs_unproven-light.png
          :scale: 40 %
          :align: left
          :class: only-light
-
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
 
 .. code:: python
 
@@ -577,6 +646,10 @@ Computing resolutions to the unproven-theorem paradox according to various presc
    >>> unproven_PCTC_violating.print()
    τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
 
+.. raw:: latex
+
+   \end{codetitled}
+
 .. .. raw:: latex
 
 ..    \newpage
@@ -593,14 +666,26 @@ Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repositor
 
 .. include:: ./../../LICENSE
 
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
+
 .. include:: ./../../CONTRIBUTING
+
+.. raw:: latex
+
+   \newpage
 
 Citation
 ========
 
 - The package:
 
-.. code:: text
+.. raw:: latex
+
+   \begin{code}
+
+.. code:: bibtex
 
    @software{bishop_qhronology-software_2025,
      title = {Qhronology: {{A Python}} package for studying quantum models of closed timelike curves and simulating general quantum information processing \& computation},
@@ -611,9 +696,17 @@ Citation
      addendum = {Source code: \url{https://github.com/lgbishop/qhronology}}
    }
 
+.. raw:: latex
+
+   \end{code}
+
 - The project documentation:
 
-.. code:: text
+.. raw:: latex
+
+   \begin{code}
+
+.. code:: bibtex
 
    @misc{bishop_qhronology-documentation_2025,
      title = {Qhronology: {{Documentation}}, {{Examples}}, and {{Theory}}},
@@ -624,25 +717,38 @@ Citation
      addendum = {Available online: \url{https://qhronology.com}}
    }
 
+.. raw:: latex
+
+   \end{code}
+
 - The `paper <https://arxiv.org/abs/2601.17459>`_:
 
-.. code:: text
+.. raw:: latex
+
+   \begin{code}
+
+.. code:: bibtex
 
    @misc{bishop_qhronology_2026,
      title = {Qhronology: {{A Python}} package for studying quantum models of closed timelike curves},
-     shorttitle = {Qhronology},
      author = {Bishop, Lachlan G.},
      year = 2026,
      month = jan,
      number = {arXiv:2601.17459},
-     eprint = {2601.17459},
      primaryclass = {quant-ph},
      publisher = {arXiv},
      doi = {10.48550/arXiv.2601.17459},
      abstract = {Qhronology is a novel scientific-computing package for studying quantum models of closed timelike curves (CTCs) and simulating general quantum information processing and computation. Written in Python, the program provides a comprehensive framework for analyzing quantum theories of antichronological time travel, including functionality to calculate quantum resolutions to temporal paradoxes. It also operates as a complete quantum circuit simulator, enabling the examination of quantum algorithms and protocols in both numerical and symbolic capacities. In this paper, we formally introduce Qhronology, beginning with discussion on aspects of its design philosophy and architecture. An overview of its basic usage is then presented, along with a collection of examples demonstrating its various capabilities within a variety of distinct contexts. Lastly, the performance of the package's circuit simulation component is characterized by way of some simple empirical benchmarking.},
-     archiveprefix = {arXiv},
      url = {https://arxiv.org/abs/2601.17459}
    }
+
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \newpage
 
 Possible future work
 ====================
@@ -651,7 +757,7 @@ Possible future work
 
   - Write proper (more formal) unit tests.
   - Permit more intuitive usage (i.e., summation and multiplication) of quantum objects via operator overloading.
-  - Tighter integration with SymPy's ``pprint()`` functionality for enhanced state and gate printing.
+  - Tighter integration with SymPy's :python:`pprint()` functionality for enhanced state and gate printing.
   - Implement T-CTCs (the *transition-probabilities* quantum model of time travel).
   - Add the ability for circuit visualizations to target *Quantikz* LaTeX output.
 

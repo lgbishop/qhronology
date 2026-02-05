@@ -29,11 +29,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d4d32e97" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b063fbe0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 01, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 06, 2026"/>
   </head>
   
   
@@ -529,64 +529,64 @@
 <span class="sd">    ---------</span>
 <span class="sd">    spec</span>
 <span class="sd">        The specification of the quantum state. Provides a complete description of the state&#39;s</span>
-<span class="sd">        values in a standard ``dim``-dimensional basis. Can be one of:</span>
+<span class="sd">        values in a standard :python:`dim`-dimensional basis. Can be one of:</span>
 
-<span class="sd">        - a SymPy matrix (``mat``)</span>
-<span class="sd">        - a NumPy array (``arr``)</span>
+<span class="sd">        - a SymPy matrix (:python:`mat`)</span>
+<span class="sd">        - a NumPy array (:python:`arr`)</span>
 <span class="sd">        - a list of lists of numerical, symbolic, or string expressions (that collectively specify</span>
-<span class="sd">          a matrix) (``list[list[num | sym | str]]``)</span>
+<span class="sd">          a matrix) (:python:`list[list[num | sym | str]]`)</span>
 <span class="sd">        - a list of 2-tuples of numerical, symbolic, or string coefficients and their respective</span>
-<span class="sd">          number-basis specifications (``list[tuple[num | sym | str, int | list[int]]]``)</span>
+<span class="sd">          number-basis specifications (:python:`list[tuple[num | sym | str, int | list[int]]]`)</span>
 
 <span class="sd">    form : str</span>
 <span class="sd">        A string specifying the *form* for the quantum state to take.</span>
-<span class="sd">        Can be either of ``&quot;vector&quot;`` or ``&quot;matrix&quot;``.</span>
-<span class="sd">        Defaults to ``&quot;matrix&quot;``.</span>
+<span class="sd">        Can be either of :python:`&quot;vector&quot;` or :python:`&quot;matrix&quot;`.</span>
+<span class="sd">        Defaults to :python:`&quot;matrix&quot;`.</span>
 <span class="sd">    kind : str</span>
 <span class="sd">        A string specifying the *kind* for the quantum state to take.</span>
-<span class="sd">        Can be either of ``&quot;mixed&quot;`` or ``&quot;pure&quot;``.</span>
-<span class="sd">        Defaults to ``&quot;mixed&quot;``.</span>
+<span class="sd">        Can be either of :python:`&quot;mixed&quot;` or :python:`&quot;pure&quot;`.</span>
+<span class="sd">        Defaults to :python:`&quot;mixed&quot;`.</span>
 <span class="sd">    dim : int</span>
 <span class="sd">        The dimensionality of the quantum state&#39;s Hilbert space.</span>
 <span class="sd">        Must be a non-negative integer.</span>
-<span class="sd">        Defaults to ``2``.</span>
+<span class="sd">        Defaults to :python:`2`.</span>
 <span class="sd">    symbols : dict[sym | str, dict[str, Any]]</span>
 <span class="sd">        A dictionary in which the keys are individual symbols (usually found within the state</span>
-<span class="sd">        specification ``spec``) and the values are dictionaries of their respective SymPy</span>
-<span class="sd">        keyword-argument ``assumptions``.</span>
-<span class="sd">        Defaults to ``{}``.</span>
+<span class="sd">        specification :python:`spec`) and the values are dictionaries of their respective SymPy</span>
+<span class="sd">        keyword-argument :python:`assumptions`.</span>
+<span class="sd">        Defaults to :python:`{}`.</span>
 <span class="sd">    conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">        A list of :math:`2`-tuples of conditions to be applied to the state.</span>
 <span class="sd">        All instances of the expression in each tuple&#39;s first element are replaced by the</span>
 <span class="sd">        expression in the respective second element.</span>
-<span class="sd">        This uses the same format as the SymPy ``subs()`` method.</span>
+<span class="sd">        This uses the same format as the SymPy :python:`subs()` method.</span>
 <span class="sd">        The order in which they are applied is simply their order in the list.</span>
-<span class="sd">        Defaults to ``[]``.</span>
+<span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    conjugate : bool</span>
 <span class="sd">        Whether to perform Hermitian conjugation on the state when it is called.</span>
-<span class="sd">        Defaults to ``False``.</span>
+<span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    norm : bool | num | sym | str</span>
 <span class="sd">        The value to which the state is normalized.</span>
-<span class="sd">        If ``True``, normalizes to a value of :math:`1`.</span>
-<span class="sd">        If ``False``, does not normalize.</span>
-<span class="sd">        Defaults to ``False``.</span>
+<span class="sd">        If :python:`True`, normalizes to a value of :math:`1`.</span>
+<span class="sd">        If :python:`False`, does not normalize.</span>
+<span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    label : str</span>
 <span class="sd">        The unformatted string used to represent the state in mathematical expressions.</span>
 <span class="sd">        Must have a non-zero length.</span>
-<span class="sd">        Defaults to ``&quot;ρ&quot;`` (if ``form == &quot;matrix&quot;``) or ``&quot;ψ&quot;`` (if ``form == &quot;vector&quot;``).</span>
+<span class="sd">        Defaults to :python:`&quot;ρ&quot;` (if :python:`form == &quot;matrix&quot;`) or :python:`&quot;ψ&quot;` (if :python:`form == &quot;vector&quot;`).</span>
 <span class="sd">    notation : str</span>
 <span class="sd">        The formatted string used to represent the state in mathematical expressions.</span>
-<span class="sd">        When not ``None``, overrides the value passed to ``label``.</span>
+<span class="sd">        When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">        Must have a non-zero length.</span>
 <span class="sd">        Not intended to be set by the user in most cases.</span>
-<span class="sd">        Defaults to ``None``.</span>
+<span class="sd">        Defaults to :python:`None`.</span>
 <span class="sd">    family : str</span>
 <span class="sd">        A string expressing the kind of block element for which the object is to be visualized.</span>
 <span class="sd">        Not intended to be set by the user.</span>
-<span class="sd">        Defaults to ``&quot;LSTICK&quot;``.</span>
+<span class="sd">        Defaults to :python:`&quot;LSTICK&quot;`.</span>
 <span class="sd">    debug : bool</span>
-<span class="sd">        Whether to print the internal state (held in ``matrix``) on change.</span>
-<span class="sd">        Defaults to ``False``.</span>
+<span class="sd">        Whether to print the internal state (held in :python:`matrix`) on change.</span>
+<span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -643,7 +643,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">kind</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The *kind* of quantum state.</span>
-<span class="sd">        Can be either of ``&quot;mixed&quot;`` or ``&quot;pure&quot;``.&quot;&quot;&quot;</span>
+<span class="sd">        Can be either of :python:`&quot;mixed&quot;` or :python:`&quot;pure&quot;`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kind</span>
 
     <span class="nd">@kind</span><span class="o">.</span><span class="n">setter</span>
@@ -651,7 +651,7 @@
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_form&quot;</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">kind</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">COMPATIBILITIES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="p">]:</span>
                 <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The given ``kind`` (&#39;</span><span class="si">{</span><span class="n">kind</span><span class="si">}</span><span class="s2">&#39;) is incompatible with the given ``form``</span>
+                    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The given :python:`kind` (&#39;</span><span class="si">{</span><span class="n">kind</span><span class="si">}</span><span class="s2">&#39;) is incompatible with the given :python:`form`</span>
 <span class="s2">                    (&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="si">}</span><span class="s2">&#39;).&quot;&quot;&quot;</span>
                 <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_kind</span> <span class="o">=</span> <span class="n">kind</span>
@@ -666,7 +666,7 @@
         <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the quantum state.</span>
-<span class="sd">        Provides a complete description of the state in a standard ``dim``-dimensional basis.</span>
+<span class="sd">        Provides a complete description of the state in a standard :python:`dim`-dimensional basis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span>
 
@@ -685,14 +685,14 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The value to which the state is normalized.</span>
-<span class="sd">        If ``True``, normalizes to a value of :math:`1`.</span>
-<span class="sd">        If ``False``, does not normalize.</span>
+<span class="sd">        If :python:`True`, normalizes to a value of :math:`1`.</span>
+<span class="sd">        If :python:`False`, does not normalize.</span>
 
 <span class="sd">        Examples of valid values include:</span>
 
-<span class="sd">        - ``1/2``</span>
-<span class="sd">        - ``&quot;1/d&quot;``</span>
-<span class="sd">        - ``&quot;a*conjugate(a) + b*conjugate(b)&quot;``</span>
+<span class="sd">        - :python:`1/2`</span>
+<span class="sd">        - :python:`&quot;1/d&quot;`</span>
+<span class="sd">        - :python:`&quot;a*conjugate(a) + b*conjugate(b)&quot;`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_norm</span>
 
@@ -704,7 +704,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Read-only property containing the number of systems which the state spans.</span>
 <span class="sd">        The current value is calculated from the state&#39;s matrix representation and its</span>
-<span class="sd">        dimensionality ``dim``.</span>
+<span class="sd">        dimensionality :python:`dim`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">count_systems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
 
@@ -728,18 +728,18 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            If ``False``, does not conjugate.</span>
-<span class="sd">            Defaults to the value of ``self.conjugate``.</span>
+<span class="sd">            If :python:`False`, does not conjugate.</span>
+<span class="sd">            Defaults to the value of :python:`self.conjugate`.</span>
 <span class="sd">        norm : bool | num | sym | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
-<span class="sd">            If ``False``, does not normalize.</span>
-<span class="sd">            Defaults to the value of ``self.norm``.</span>
+<span class="sd">            If :python:`False`, does not normalize.</span>
+<span class="sd">            Defaults to the value of :python:`self.norm`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -776,12 +776,12 @@
 <div class="viewcode-block" id="QuantumState.reset">
 <a class="viewcode-back" href="../../../text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.reset">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the quantum state&#39;s internal matrix state (specifically its ``matrix`` property)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the quantum state&#39;s internal matrix state (specifically its :python:`matrix` property)</span>
 <span class="sd">        to its original value at instantiation.</span>
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        This reset only the ``matrix`` property of the instance.</span>
+<span class="sd">        This reset only the :python:`matrix` property of the instance.</span>
 <span class="sd">        All other attributes and properties are unchanged.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">quantum_state</span><span class="p">(</span>
@@ -798,15 +798,9 @@
 
 <span class="sd">    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,</span>
 <span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
-<span class="sd">    The distinction is that this ``VectorState`` class fixes both the ``form`` and ``kind``</span>
-<span class="sd">    arguments to the values of ``&quot;vector&quot;`` and ``&quot;pure&quot;``, respectively, at instantiation.</span>
-<span class="sd">    This means that neither ``*args`` or ``**kwargs`` must contain these arguments.</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; qubit_vector = VectorState(spec=[(1, [0]), (1, [1])], norm=1)</span>
-<span class="sd">    &gt;&gt;&gt; qubit_vector.print()</span>
-<span class="sd">    |ψ⟩ = sqrt(2)/2|0⟩ + sqrt(2)/2|1⟩</span>
+<span class="sd">    The distinction is that this :python:`VectorState` class fixes both the :python:`form` and :python:`kind`</span>
+<span class="sd">    arguments to the values of :python:`&quot;vector&quot;` and :python:`&quot;pure&quot;`, respectively, at instantiation.</span>
+<span class="sd">    This means that neither :python:`*args` or :python:`**kwargs` must contain these arguments.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -827,19 +821,9 @@
 
 <span class="sd">    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,</span>
 <span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
-<span class="sd">    The distinction is that this ``MatrixState`` class fixes the ``form`` argument to a value of</span>
-<span class="sd">    ``&quot;matrix&quot;`` at instantiation.</span>
-<span class="sd">    This means that neither ``*args`` or ``**kwargs`` must contain this argument.</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; qubit_matrix_pure = MatrixState(spec=[(1, [0]), (1, [1])], kind=&quot;pure&quot;, norm=1)</span>
-<span class="sd">    &gt;&gt;&gt; qubit_matrix_pure.print()</span>
-<span class="sd">    |ψ⟩⟨ψ| = 1/2|0⟩⟨0| + 1/2|0⟩⟨1| + 1/2|1⟩⟨0| + 1/2|1⟩⟨1|</span>
-
-<span class="sd">    &gt;&gt;&gt; qubit_matrix_mixed = MatrixState(spec=[(1, [0]), (1, [1])], kind=&quot;mixed&quot;, norm=1)</span>
-<span class="sd">    &gt;&gt;&gt; qubit_matrix_mixed.print()</span>
-<span class="sd">    ρ = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|</span>
+<span class="sd">    The distinction is that this :python:`MatrixState` class fixes the :python:`form` argument to a value of</span>
+<span class="sd">    :python:`&quot;matrix&quot;` at instantiation.</span>
+<span class="sd">    This means that neither :python:`*args` or :python:`**kwargs` must contain this argument.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -857,18 +841,8 @@
 
 <span class="sd">    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,</span>
 <span class="sd">    and so inherits all of its attributes, properties, and methods. The distinction is that</span>
-<span class="sd">    this ``PureState`` class fixes the ``kind`` argument to a value of ``&quot;pure&quot;`` at instantiation.</span>
-<span class="sd">    This means that neither ``*args`` or ``**kwargs`` must contain this argument.</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; qubit_pure_vector = PureState(spec=[(1, [0]), (1, [1])], form=&quot;vector&quot;, norm=1)</span>
-<span class="sd">    &gt;&gt;&gt; qubit_pure_vector.print()</span>
-<span class="sd">    |ψ⟩ = sqrt(2)/2|0⟩ + sqrt(2)/2|1⟩</span>
-
-<span class="sd">    &gt;&gt;&gt; qubit_pure_matrix = PureState(spec=[(1, [0]), (1, [1])], form=&quot;matrix&quot;, norm=1)</span>
-<span class="sd">    &gt;&gt;&gt; qubit_pure_matrix.print()</span>
-<span class="sd">    |ψ⟩⟨ψ| = 1/2|0⟩⟨0| + 1/2|0⟩⟨1| + 1/2|1⟩⟨0| + 1/2|1⟩⟨1|</span>
+<span class="sd">    this :python:`PureState` class fixes the :python:`kind` argument to a value of :python:`&quot;pure&quot;` at instantiation.</span>
+<span class="sd">    This means that neither :python:`*args` or :python:`**kwargs` must contain this argument.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -886,15 +860,9 @@
 
 <span class="sd">    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,</span>
 <span class="sd">    and so inherits all of its attributes, properties, and methods. The distinction is that</span>
-<span class="sd">    this ``MixedState`` class fixes both the ``form`` and ``kind`` arguments to the values of</span>
-<span class="sd">    ``&quot;matrix&quot;`` and ``&quot;mixed&quot;``, respectively, at instantiation.</span>
-<span class="sd">    This means that neither ``*args`` or ``**kwargs`` must contain these arguments.</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; qubit_mixed = MixedState(spec=[(1, [0]), (1, [1])], norm=1)</span>
-<span class="sd">    &gt;&gt;&gt; qubit_mixed.print()</span>
-<span class="sd">    ρ = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|</span>
+<span class="sd">    this :python:`MixedState` class fixes both the :python:`form` and :python:`kind` arguments to the values of</span>
+<span class="sd">    :python:`&quot;matrix&quot;` and :python:`&quot;mixed&quot;`, respectively, at instantiation.</span>
+<span class="sd">    This means that neither :python:`*args` or :python:`**kwargs` must contain these arguments.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>

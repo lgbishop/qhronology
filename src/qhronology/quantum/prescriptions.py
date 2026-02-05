@@ -59,63 +59,63 @@ class QuantumCTC(QuantumCircuit):
     Arguments
     ---------
     *args
-        Variable length argument list, passed directly to the constructor ``__init__``  of the
+        Variable length argument list, passed directly to the constructor :python:`__init__`  of the
         superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.
     circuit : QuantumCircuit
         An instance of the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class.
-        The values of its attributes override any other values specified in ``*args`` and
-        ``**kwargs``.
-        Defaults to ``None``.
+        The values of its attributes override any other values specified in :python:`*args` and
+        :python:`**kwargs`.
+        Defaults to :python:`None`.
     systems_respecting : int | list[int]
         The numerical indices of the chronology-respecting (CR) subsystems.
-        Defaults to ``[]``.
+        Defaults to :python:`[]`.
     systems_violating : int | list[int]
         The numerical indices of the chronology-violating (CV) subsystems.
-        Defaults to ``[]``.
+        Defaults to :python:`[]`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor ``__init__`` of the
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
         superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.
 
     Note
     ----
-    The lists of indices specified in ``systems_respecting`` and ``systems_violating`` must both be
+    The lists of indices specified in :python:`systems_respecting` and :python:`systems_violating` must both be
     contiguous.
-    Additionally, the circuit's inputs (``inputs``) are treated as one contiguous total state,
-    with the indices of its subsystems exactly matching those specified in ``systems_respecting``.
+    Additionally, the circuit's inputs (:python:`inputs`) are treated as one contiguous total state,
+    with the indices of its subsystems exactly matching those specified in :python:`systems_respecting`.
 
     Note
     ----
-    It is best practice to specify only one of either ``systems_violating`` or
-    ``systems_violating``, never both.
+    It is best practice to specify only one of either :python:`systems_violating` or
+    :python:`systems_violating`, never both.
     The properties associated with both of these constructor arguments automatically ensure that
     they are always complementary (with respect to the entire system space), and so only one needs
     to be specified.
 
     Note
     ----
-    The ``circuit`` argument can be used to merge the value of every attribute from a pre-existing
+    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing
     :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the
     :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance.
     Any such mergers override the values of the attributes associated with the other arguments
     specified in the constructor. It is best practice to specify either of:
 
-    - only ``circuit`` and one of either ``systems_respecting`` or ``systems_violating``
+    - only :python:`circuit` and one of either :python:`systems_respecting` or :python:`systems_violating`
 
-    - ``*args`` and ``**kwargs`` (like a typical initialization of a
+    - :python:`*args` and :python:`**kwargs` (like a typical initialization of a
       :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance)
-      without specifying ``circuit``
+      without specifying :python:`circuit`
 
     Note
     ----
     The total interaction between the CR and CV systems is expected to be unitary,
-    and so the sequence of gates in ``gates`` cannot contain any non-unitary gates
+    and so the sequence of gates in :python:`gates` cannot contain any non-unitary gates
     (e.g., measurement operations).
 
     Note
     ----
     Post-processing (e.g., traces and postselections) cannot be performed on any
     chronology-violating (CV) systems (i.e., those corresponding to indices specified in
-    ``systems_violating``).
+    :python:`systems_violating`).
     """
 
     def __init__(
@@ -137,14 +137,14 @@ class QuantumCTC(QuantumCircuit):
             systems_violating = [] if systems_violating is None else systems_violating
             if len(systems_respecting) == 0 and len(systems_violating) == 0:
                 raise ValueError(
-                    "Either ``systems_respecting`` or ``systems_violating`` must be set."
+                    "Either :python:`systems_respecting` or :python:`systems_violating` must be set."
                 )
             if len(systems_respecting) != 0 and len(systems_violating) != 0:
                 if set(self.systems) != set(systems_respecting) | set(
                     systems_violating
                 ):
                     raise ValueError(
-                        """The union of ``systems_respecting`` and ``systems_violating`` is
+                        """The union of :python:`systems_respecting` and :python:`systems_violating` is
                         inequivalent to the entire system's structure."""
                     )
 
@@ -172,7 +172,7 @@ class QuantumCTC(QuantumCircuit):
 
     @property
     def input_is_vector(self) -> bool:
-        """Whether all states in ``inputs`` are vector states."""
+        """Whether all states in :python:`inputs` are vector states."""
         is_vector = True
         if any(
             form != Forms.VECTOR.value for form in [state.form for state in self.inputs]
@@ -194,39 +194,39 @@ class QuantumCTC(QuantumCircuit):
         curve as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.
 
         This is computed as the tensor product of the individual gates in the order in which they
-        appear in the ``inputs`` property.
+        appear in the :python:`inputs` property.
         Is a vector state only when all of the component states are vectors.
 
         Arguments
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            If ``False``, does not substitute the conditions.
-            Defaults to the value of ``self.conditions``.
+            If :python:`False`, does not substitute the conditions.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         norm : bool | num | sym | str
             The value to which the state is normalized.
-            If ``True``, normalizes to a value of :math:`1`.
-            If ``False``, does not normalize.
-            Defaults to ``False``.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         label : str
             The unformatted string used to represent the state in mathematical expressions.
             Must have a non-zero length.
-            Defaults to ``"⊗".join([state.label for state in self.inputs])``.
+            Defaults to :python:`"⊗".join([state.label for state in self.inputs])`.
         notation : str
             The formatted string used to represent the state in mathematical expressions.
-            When not ``None``, overrides the value passed to ``label``.
+            When not :python:`None`, overrides the value passed to :python:`label`.
             Must have a non-zero length.
             Not intended to be set by the user in most cases.
-            Defaults to ``None``.
+            Defaults to :python:`None`.
         debug : bool
-            Whether to print the internal state (held in ``matrix``) on change.
-            Defaults to ``False``.
+            Whether to print the internal state (held in :python:`matrix`) on change.
+            Defaults to :python:`False`.
 
         Returns
         -------
@@ -250,7 +250,7 @@ class QuantumCTC(QuantumCircuit):
         if count_systems(input_state, self.dim) != len(self.systems_respecting):
             raise ValueError(
                 """The size of the given input state(s) does not match that specified by the
-                property ``systems_respecting``."""
+                property :python:`systems_respecting`."""
             )
 
         input_state = QuantumState(
@@ -288,8 +288,8 @@ class QuantumCTC(QuantumCircuit):
 
         return input_state
 
-    # The four methods below merely output the reduced states, so the ``systems_respective`` and
-    # ``systems_violating`` of the base class acts just like extra traces.
+    # The four methods below merely output the reduced states, so the :python:`systems_respective` and
+    # :python:`systems_violating` of the base class acts just like extra traces.
     def output_violating(self) -> mat:
         return self.state(traces=self.systems_respecting).output()
 
@@ -318,8 +318,8 @@ def dctc_violating(
         \\MapDCTCsCV_{\\Unitary}[\\StateCR,\\StateCV]
             = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\StateCV)\\Unitary^\\dagger\\bigr]
 
-    given the chronology-respecting (CR) input state ``input_respecting`` (:math:`\\StateCR`)
-    and (unitary) interaction described by ``gate`` (:math:`\\Unitary`).
+    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)
+    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
 
     Arguments
     ---------
@@ -335,7 +335,7 @@ def dctc_violating(
     free_symbol : sym | str
         The representation of the algebraic symbol to be used as the free parameter in the case
         where the CV map has a multiplicity of fixed points.
-        Defaults to ``"g"``.
+        Defaults to :python:`"g"`.
 
     Returns
     -------
@@ -361,8 +361,8 @@ def dctc_violating(
     trace_respecting = input_respecting.trace()
     input_respecting = densify(extract_matrix(input_respecting))
 
-    # Use ``Symbol`` for persistent (structurally bound) variables.
-    # Use ``Dummy`` for non-persistent (not structurally bound) variables.
+    # Use :python:`Symbol` for persistent (structurally bound) variables.
+    # Use :python:`Dummy` for non-persistent (not structurally bound) variables.
     # The latter should be used so as to not interfere with any user-predefined variables.
     input_violating = sp.Matrix(
         [
@@ -509,9 +509,9 @@ def dctc_respecting(
        \\MapDCTCsCR_{\\Unitary}[\\StateCR,\\StateCV]
            = \\trace_\\CV\\bigl[\\Unitary(\\StateCR \\otimes \\StateCV)\\Unitary^\\dagger\\bigr]
 
-    given the chronology-respecting (CR) input state ``input_respecting`` (:math:`\\StateCR`),
-    chronology-violating (CV) solution state ``input_violating`` (:math:`\\StateCV`),
-    and (unitary) interaction described by ``gate`` (:math:`\\Unitary`).
+    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`),
+    chronology-violating (CV) solution state :python:`input_violating` (:math:`\\StateCV`),
+    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
 
     Arguments
     ---------
@@ -567,14 +567,14 @@ class DCTC(QuantumCTC):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor ``__init__`` of the
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
         superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     free_symbol : sym | str
         The representation of the algebraic symbol to be used as the free parameter in the case
         where the CV map has a multiplicity of fixed points.
-        Defaults to ``"g"``.
+        Defaults to :python:`"g"`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor ``__init__`` of the
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
         superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
 
@@ -629,17 +629,17 @@ class DCTC(QuantumCTC):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter
             in the case where the CV map has a multiplicity of fixed points.
-            Defaults to the value of ``self.free_symbol``.
+            Defaults to the value of :python:`self.free_symbol`.
 
         Returns
         -------
@@ -714,21 +714,21 @@ class DCTC(QuantumCTC):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         postprocess : bool
             Whether to post-process the state
             (i.e., perform the circuit's traces and postselections).
-            Defaults to ``True``.
+            Defaults to :python:`True`.
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter
             in the case where the CV map has a multiplicity of fixed points.
-            Defaults to the value of ``self.free_symbol``.
+            Defaults to the value of :python:`self.free_symbol`.
 
         Returns
         -------
@@ -825,21 +825,21 @@ class DCTC(QuantumCTC):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         postprocess : bool
             Whether to post-process the state
             (i.e., perform the circuit's traces and postselections).
-            Defaults to ``True``.
+            Defaults to :python:`True`.
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter
             in the case where the CV map has a multiplicity of fixed points.
-            Defaults to the value of ``self.free_symbol``.
+            Defaults to the value of :python:`self.free_symbol`.
 
         Returns
         -------
@@ -873,40 +873,40 @@ class DCTC(QuantumCTC):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state before committing it to the
-            ``matrix`` property.
-            Defaults to ``False``.
+            :python:`matrix` property.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         norm : bool | num | sym | str
             The value to which the state is normalized.
-            If ``True``, normalizes to a value of :math:`1`.
-            If ``False``, does not normalize.
-            Defaults to ``False``.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         label : str
             The unformatted string used to represent the state in mathematical expressions.
             Must have a non-zero length.
-            Defaults to ``"ρ"`` (if ``form == "matrix"``) or ``"ψ"`` (if ``form == "vector"``).
+            Defaults to :python:`"ρ"` (if :python:`form == "matrix"`) or :python:`"ψ"` (if :python:`form == "vector"`).
         notation : str
             The formatted string used to represent the state in mathematical expressions.
-            When not ``None``, overrides the value passed to ``label``.
+            When not :python:`None`, overrides the value passed to :python:`label`.
             Must have a non-zero length.
             Not intended to be set by the user in most cases.
-            Defaults to ``None``.
+            Defaults to :python:`None`.
         traces : list[int]
             A list of indices of the CV systems (relative to the entire circuit) on which to
             perform partial traces.
-            Defaults to ``[]``.
+            Defaults to :python:`[]`.
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter
             in the case where the CV map has a multiplicity of fixed points.
-            Defaults to the value of ``self.free_symbol``.
+            Defaults to the value of :python:`self.free_symbol`.
         debug : bool
-            Whether to print the internal state (held in ``matrix``) on change.
-            Defaults to ``False``.
+            Whether to print the internal state (held in :python:`matrix`) on change.
+            Defaults to :python:`False`.
 
         Returns
         -------
@@ -962,45 +962,45 @@ class DCTC(QuantumCTC):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state before committing it to the
-            ``matrix`` property.
-            Defaults to ``False``.
+            :python:`matrix` property.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         norm : bool | num | sym | str
             The value to which the state is normalized.
-            If ``True``, normalizes to a value of :math:`1`.
-            If ``False``, does not normalize.
-            Defaults to ``False``.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         label : str
             The unformatted string used to represent the state in mathematical expressions.
             Must have a non-zero length.
-            Defaults to ``"ρ"`` (if ``form == "matrix"``) or ``"ψ"`` (if ``form == "vector"``).
+            Defaults to :python:`"ρ"` (if :python:`form == "matrix"`) or :python:`"ψ"` (if :python:`form == "vector"`).
         notation : str
             The formatted string used to represent the state in mathematical expressions.
-            When not ``None``, overrides the value passed to ``label``.
+            When not :python:`None`, overrides the value passed to :python:`label`.
             Must have a non-zero length.
             Not intended to be set by the user in most cases.
-            Defaults to ``None``.
+            Defaults to :python:`None`.
         traces : list[int]
             A list of indices of the CR systems (relative to the entire circuit) on which to
             perform partial traces.
-            Performed regardless of the value of ``postprocess``.
-            Defaults to ``[]``.
+            Performed regardless of the value of :python:`postprocess`.
+            Defaults to :python:`[]`.
         postprocess : bool
             Whether to post-process the state
             (i.e., perform the circuit's traces and postselections).
-            Defaults to ``True``.
+            Defaults to :python:`True`.
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter
             in the case where the CV map has a multiplicity of fixed points.
-            Defaults to the value of ``self.free_symbol``.
+            Defaults to the value of :python:`self.free_symbol`.
         debug : bool
-            Whether to print the internal state (held in ``matrix``) on change.
-            Defaults to ``False``.
+            Whether to print the internal state (held in :python:`matrix`) on change.
+            Defaults to :python:`False`.
 
         Returns
         -------
@@ -1063,8 +1063,8 @@ def pctc_violating(
            = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\tfrac{1}{\\Dimension}\\Identity)
            \\Unitary^\\dagger\\bigr]
 
-    given the chronology-respecting (CR) input state ``input_respecting`` (:math:`\\StateCR`)
-    and (unitary) interaction described by ``gate`` (:math:`\\Unitary`).
+    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)
+    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
     Here, :math:`\\Dimension` is the dimensionality of the CV system's Hilbert space
     (assumed to be equivalent to that of its CR counterpart), while :math:`\\Identity` is the
     :math:`\\Dimension \\times \\Dimension` identity matrix.
@@ -1133,8 +1133,8 @@ def pctc_respecting(
        \\MapPCTCsCR_{\\Unitary}[\\StateCR]
            \\propto \\OperatorPCTC \\StateCR \\OperatorPCTC^\\dagger
 
-    given the chronology-respecting (CR) input state ``input_respecting`` (:math:`\\StateCR`)
-    and (unitary) interaction described by ``gate`` (:math:`\\Unitary`).
+    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)
+    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
     Here,
 
     .. math:: \\OperatorPCTC \\equiv \\trace_\\CV[\\Unitary]
@@ -1205,10 +1205,10 @@ class PCTC(QuantumCTC):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor ``__init__`` of the
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
         superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor ``__init__`` of the
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
         superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
 
@@ -1239,13 +1239,13 @@ class PCTC(QuantumCTC):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
 
         Returns
         -------
@@ -1321,17 +1321,17 @@ class PCTC(QuantumCTC):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         postprocess : bool
             Whether to post-process the state
             (i.e., perform the circuit's traces and postselections).
-            Defaults to ``True``.
+            Defaults to :python:`True`.
 
         Returns
         -------
@@ -1434,17 +1434,17 @@ class PCTC(QuantumCTC):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         postprocess : bool
             Whether to post-process the state
             (i.e., perform the circuit's traces and postselections).
-            Defaults to ``True``.
+            Defaults to :python:`True`.
 
         Returns
         -------
@@ -1480,36 +1480,36 @@ class PCTC(QuantumCTC):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state before committing it in the
-            ``matrix`` property.
-            Defaults to ``False``.
+            :python:`matrix` property.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         norm : bool | num | sym | str
             The value to which the state is normalized.
-            If ``True``, normalizes to a value of :math:`1`.
-            If ``False``, does not normalize.
-            Defaults to ``False``.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         label : str
             The unformatted string used to represent the state in mathematical expressions.
             Must have a non-zero length.
-            Defaults to ``"ρ"`` (if ``form == "matrix"``) or ``"ψ"`` (if ``form == "vector"``).
+            Defaults to :python:`"ρ"` (if :python:`form == "matrix"`) or :python:`"ψ"` (if :python:`form == "vector"`).
         notation : str
             The formatted string used to represent the state in mathematical expressions.
-            When not ``None``, overrides the value passed to ``label``.
+            When not :python:`None`, overrides the value passed to :python:`label`.
             Must have a non-zero length.
             Not intended to be set by the user in most cases.
-            Defaults to ``None``.
+            Defaults to :python:`None`.
         traces : list[int]
             A list of indices of the CV systems (relative to the entire circuit) on which to
             perform partial traces.
-            Defaults to ``[]``.
+            Defaults to :python:`[]`.
         debug : bool
-            Whether to print the internal state (held in ``matrix``) on change.
-            Defaults to ``False``.
+            Whether to print the internal state (held in :python:`matrix`) on change.
+            Defaults to :python:`False`.
 
         Returns
         -------
@@ -1565,41 +1565,41 @@ class PCTC(QuantumCTC):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state before committing it to the
-            ``matrix`` property.
-            Defaults to ``False``.
+            :python:`matrix` property.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         norm : bool | num | sym | str
             The value to which the state is normalized.
-            If ``True``, normalizes to a value of :math:`1`.
-            If ``False``, does not normalize.
-            Defaults to ``False``.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         label : str
             The unformatted string used to represent the state in mathematical expressions.
             Must have a non-zero length.
-            Defaults to ``"ρ"`` (if ``form == "matrix"``) or ``"ψ"`` (if ``form == "vector"``).
+            Defaults to :python:`"ρ"` (if :python:`form == "matrix"`) or :python:`"ψ"` (if :python:`form == "vector"`).
         notation : str
             The formatted string used to represent the state in mathematical expressions.
-            When not ``None``, overrides the value passed to ``label``.
+            When not :python:`None`, overrides the value passed to :python:`label`.
             Must have a non-zero length.
             Not intended to be set by the user in most cases.
-            Defaults to ``None``.
+            Defaults to :python:`None`.
         traces : list[int]
             A list of indices of the CR systems (relative to the entire circuit) on which to
             perform partial traces.
-            Performed regardless of the value of ``postprocess``.
-            Defaults to ``[]``.
+            Performed regardless of the value of :python:`postprocess`.
+            Defaults to :python:`[]`.
         postprocess : bool
             Whether to post-process the state
             (i.e., perform the circuit's traces and postselections).
-            Defaults to ``True``.
+            Defaults to :python:`True`.
         debug : bool
-            Whether to print the internal state (held in ``matrix``) on change.
-            Defaults to ``False``.
+            Whether to print the internal state (held in :python:`matrix`) on change.
+            Defaults to :python:`False`.
 
         Returns
         -------
@@ -1609,7 +1609,7 @@ class PCTC(QuantumCTC):
 
         Note
         ----
-        The output state is not renormalized if ``norm`` is ``False``.
+        The output state is not renormalized if :python:`norm` is :python:`False`.
         """
         conditions = self.conditions if conditions is None else conditions
         traces = [] if traces is None else traces

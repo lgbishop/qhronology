@@ -30,11 +30,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d4d32e97" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b063fbe0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -68,7 +68,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 01, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 06, 2026"/>
   </head>
   
   
@@ -559,7 +559,7 @@ quantum circuit diagrams and storing their metadata.</p>
 </dl>
 
 <span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/qhronology/utilities/diagrams.html#DiagramColumn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.utilities.diagrams.DiagramColumn" title="Link to this definition">#</a></dt>
-<dd><p>A class for assembling a collection of <code class="docutils literal notranslate"><span class="pre">DiagramCell</span></code> instances into a column.</p>
+<dd><p>A class for assembling a collection of <code class="code highlight python docutils literal highlight-python"><span class="n">DiagramCell</span></code> instances into a column.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -573,7 +573,7 @@ quantum circuit diagrams and storing their metadata.</p>
 </dl>
 
 <span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/qhronology/utilities/diagrams.html#DiagramCircuit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.utilities.diagrams.DiagramCircuit" title="Link to this definition">#</a></dt>
-<dd><p>A class for assembling <code class="docutils literal notranslate"><span class="pre">DiagramColumn</span></code> instances together into a grid.</p>
+<dd><p>A class for assembling <code class="code highlight python docutils literal highlight-python"><span class="n">DiagramColumn</span></code> instances together into a grid.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -601,22 +601,22 @@ quantum circuit diagram elements.</p>
 <li><p><strong>pad</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying intra-gate padding
 (i.e., the horizontal and vertical interior paddings between the content at the centre
 of each gate (e.g., label) and its outer edge (e.g., block border).
-Defaults to <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>.</p></li>
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>.</p></li>
 <li><p><strong>sep</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying inter-gate separation
 (i.e., the horizontal and vertical exterior separation distances between the edges of
 neighbouring gates.
-Defaults to <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">1)</span></code>.</p></li>
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></code>.</p></li>
 <li><p><strong>style</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string specifying the style for the circuit visualization to take.
-Can be any of <code class="docutils literal notranslate"><span class="pre">&quot;ascii&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;unicode&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;unicode_alt&quot;</span></code>.
-Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;unicode&quot;</span></code>.</p></li>
+Can be any of <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;ascii&quot;</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;unicode&quot;</span></code>, or <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;unicode_alt&quot;</span></code>.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;unicode&quot;</span></code>.</p></li>
 <li><p><strong>return_string</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to return the assembled diagram as a multiline string.
-Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> – Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> – The rendered circuit diagram. Returned only if <code class="docutils literal notranslate"><span class="pre">return_string</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> – Returned only if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> – The rendered circuit diagram. Returned only if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
 </ul>
 </p>
 </dd>

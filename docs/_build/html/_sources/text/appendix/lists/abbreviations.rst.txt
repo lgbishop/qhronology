@@ -3,7 +3,7 @@ List of abbreviations
 *********************
 
 .. csv-table:: List of symbols
-   :header: "Abbreviation", "Description"
+   :header: "**Abbreviation**", "**Description**"
    :widths: 10, 30
 
    "PVM", "projection-valued measure"

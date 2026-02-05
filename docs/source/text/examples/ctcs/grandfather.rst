@@ -11,14 +11,14 @@ Probably the most prominent time-travel paradox is the *grandfather paradox*. Pr
 .. only:: html
 
    .. figure:: /figures/output/circuit_ctc_grandfather-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the grandfather paradox.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_ctc_grandfather-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the grandfather paradox.
       :align: center
       :figwidth: 100 %
@@ -26,7 +26,7 @@ Probably the most prominent time-travel paradox is the *grandfather paradox*. Pr
 
 .. figure:: /figures/output/circuit_ctc_grandfather-light.png
    :name: fig:circuit_ctc_grandfather
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of the grandfather paradox.
    :align: center
    :figwidth: 100 %
@@ -34,7 +34,7 @@ Probably the most prominent time-travel paradox is the *grandfather paradox*. Pr
 
    A quantum model of the grandfather paradox.
 
-It consists of two systems: the first (upper) is the *chronology-respecting* (CR) system, while the second (lower) is the *chronology-violating* (CV) one. The Hilbert spaces of both will be ordinary qubit spaces, and using these we wish to describes the propagation of an observer (who can be either alive or dead) through the time machine and its chronology-violating region. Without loss of generality, we arbitrarily associate the level :math:`\ket{0}` with observer's state of being dead, while :math:`\ket{1}` will denote their alive state. The circuit therefore describes the propagation of an observer whose state changes in accordance with their future state in the time machine (due to the CNOT gate), after which they SWAP onto the CV system and experience the interaction from the other perspective. The combined unitary gate thus has the form
+Here, we have two systems: the first (upper) is the *chronology-respecting* (CR) system, while the second (lower) is the *chronology-violating* (CV) one. For simplicity, the Hilbert spaces of both are ordinary qubit spaces, which are sufficient for modelling the evolution of an observer through the time machine and its chronology-violating region. In the grandfather paradox, the sole (quantum) degree of freedom of the observer is their *vital status* ("aliveness"): whether they are alive or dead. Without loss of generality, we arbitrarily associate the level :math:`\ket{0}` with observer being dead, while :math:`\ket{1}` will denote their alive state. The circuit therefore describes a scenario in which an observer's state changes in accordance with their own future state in the time machine (due to the CNOT gate), after which they SWAP onto the CV system and experience the interaction from the other perspective. The combined unitary gate thus has the form
 
 .. math::
    :label: eq:grandfather_unitary
@@ -156,7 +156,7 @@ Finally, using the expression :eq:`eq:P-CTCs_CV`, we can compute the P-CTC CV st
 Note that this is identical to the D-CTC CV state :eq:`eq:grandfather_D-CTCs_CV`.
 
 P-CTC restrictions on initial data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 
 The grandfather paradox is particularly interesting because it exhibits pathological behaviour under the P-CTC prescription. Indeed, its antichronological effect on a general qubit can be observed by analyzing the evolution of the entangled state,
 
@@ -177,10 +177,18 @@ Prior to the renormalization, a value of :math:`\Omega = 0` leads to a vanishing
 Implementation
 --------------
 
+.. raw:: latex
+
+   \begin{codetitled}{Grandfather paradox}{}
+
 .. literalinclude:: /text/examples/ctcs/grandfather.py
    :name: code:grandfather
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -188,16 +196,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> grandfather.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_ctcs_grandfather.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -206,40 +218,71 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_ctcs_grandfather-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> grandfather_DCTC_respecting.print()
    ρ_D = 1/2|0⟩⟨0| + (ρ[0, 1] + ρ[1, 0])**2/2|0⟩⟨1| + (ρ[0, 1] + ρ[1, 0])**2/2|1⟩⟨0| + 1/2|1⟩⟨1|
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> grandfather_DCTC_violating.print()
    τ_D = 1/2|0⟩⟨0| + (ρ[0, 1]/2 + ρ[1, 0]/2)|0⟩⟨1| + (ρ[0, 1]/2 + ρ[1, 0]/2)|1⟩⟨0| + 1/2|1⟩⟨1|
+
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> grandfather_PCTC_respecting.print()
    ρ_P = 1/2|0⟩⟨0| + 1/2|0⟩⟨1| + 1/2|1⟩⟨0| + 1/2|1⟩⟨1|
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> grandfather_PCTC_violating.print()
    τ_P = 1/2|0⟩⟨0| + (ρ[0, 1]/2 + ρ[1, 0]/2)|0⟩⟨1| + (ρ[0, 1]/2 + ρ[1, 0]/2)|1⟩⟨0| + 1/2|1⟩⟨1|
+
+.. raw:: latex
+
+   \end{code}
 
 .. only:: html
 

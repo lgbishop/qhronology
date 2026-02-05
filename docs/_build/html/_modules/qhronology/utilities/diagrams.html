@@ -29,11 +29,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d4d32e97" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b063fbe0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 01, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 06, 2026"/>
   </head>
   
   
@@ -2724,7 +2724,7 @@
 <div class="viewcode-block" id="DiagramColumn">
 <a class="viewcode-back" href="../../../text/documentation/utilities/diagrams.html#qhronology.utilities.diagrams.DiagramColumn">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DiagramColumn</span><span class="p">(</span><span class="n">VisualizationProperties</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for assembling a collection of ``DiagramCell`` instances into a column.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for assembling a collection of :python:`DiagramCell` instances into a column.&quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">cells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DiagramCell</span><span class="p">],</span> <span class="n">section</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
@@ -2917,7 +2917,7 @@
 <div class="viewcode-block" id="DiagramCircuit">
 <a class="viewcode-back" href="../../../text/documentation/utilities/diagrams.html#qhronology.utilities.diagrams.DiagramCircuit">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DiagramCircuit</span><span class="p">(</span><span class="n">VisualizationProperties</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for assembling ``DiagramColumn`` instances together into a grid.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for assembling :python:`DiagramColumn` instances together into a grid.&quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -3225,7 +3225,7 @@
                     <span class="p">):</span>
                         <span class="n">trim_right</span> <span class="o">+=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">sep</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 
-                <span class="c1"># ``force_separation`` argument</span>
+                <span class="c1"># :python:`force_separation` argument</span>
                 <span class="k">if</span> <span class="n">force_separation</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                     <span class="n">uniform_spacing</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">index_column</span><span class="p">]</span><span class="o">.</span><span class="n">section</span> <span class="o">==</span> <span class="n">Sections</span><span class="o">.</span><span class="n">GATES</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
@@ -3606,26 +3606,26 @@
 <span class="sd">            A two-tuple of non-negative integers specifying intra-gate padding</span>
 <span class="sd">            (i.e., the horizontal and vertical interior paddings between the content at the centre</span>
 <span class="sd">            of each gate (e.g., label) and its outer edge (e.g., block border).</span>
-<span class="sd">            Defaults to ``(0, 0)``.</span>
+<span class="sd">            Defaults to :python:`(0, 0)`.</span>
 <span class="sd">        sep : tuple[int, int]</span>
 <span class="sd">            A two-tuple of non-negative integers specifying inter-gate separation</span>
 <span class="sd">            (i.e., the horizontal and vertical exterior separation distances between the edges of</span>
 <span class="sd">            neighbouring gates.</span>
-<span class="sd">            Defaults to ``(1, 1)``.</span>
+<span class="sd">            Defaults to :python:`(1, 1)`.</span>
 <span class="sd">        style : str</span>
 <span class="sd">            A string specifying the style for the circuit visualization to take.</span>
-<span class="sd">            Can be any of ``&quot;ascii&quot;``, ``&quot;unicode&quot;``, or ``&quot;unicode_alt&quot;``.</span>
-<span class="sd">            Defaults to ``&quot;unicode&quot;``.</span>
+<span class="sd">            Can be any of :python:`&quot;ascii&quot;`, :python:`&quot;unicode&quot;`, or :python:`&quot;unicode_alt&quot;`.</span>
+<span class="sd">            Defaults to :python:`&quot;unicode&quot;`.</span>
 <span class="sd">        return_string : bool</span>
 <span class="sd">            Whether to return the assembled diagram as a multiline string.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        None</span>
-<span class="sd">            Returned only if ``return_string`` is ``False``.</span>
+<span class="sd">            Returned only if :python:`return_string` is :python:`False`.</span>
 <span class="sd">        str</span>
-<span class="sd">            The rendered circuit diagram. Returned only if ``return_string`` is ``True``.</span>
+<span class="sd">            The rendered circuit diagram. Returned only if :python:`return_string` is :python:`True`.</span>
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>

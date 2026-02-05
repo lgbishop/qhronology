@@ -11,14 +11,14 @@ Exponentiation of the SWAP gate produces an interesting interaction (PSWAP) betw
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_pswap-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a PSWAP gate.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_pswap-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a PSWAP gate.
       :align: center
       :figwidth: 100 %
@@ -26,7 +26,7 @@ Exponentiation of the SWAP gate produces an interesting interaction (PSWAP) betw
 
 .. figure:: /figures/output/circuit_algorithm_pswap-light.png
    :name: fig:circuit_algorithm_pswap
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of a PSWAP gate.
    :align: center
    :figwidth: 100 %
@@ -37,10 +37,18 @@ Exponentiation of the SWAP gate produces an interesting interaction (PSWAP) betw
 Implementation
 --------------
 
+.. raw:: latex
+
+   \begin{codetitled}{PSWAP (power-SWAP)}{}
+
 .. literalinclude:: /text/examples/algorithms/pswap.py
    :name: code:scattering
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -48,16 +56,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> pswap.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_pswap.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -66,20 +78,23 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_pswap-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 Gate
 ^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
@@ -90,18 +105,38 @@ Gate
    [0, 1/2 - exp(I*pi*p)/2, exp(I*pi*p)/2 + 1/2, 0],
    [0,                   0,                   0, 1]])
 
+.. raw:: latex
+
+   \end{code}
+
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> input_state.print()
    |ψ,φ⟩ = a*c|0,0⟩ + a*d|0,1⟩ + b*c|1,0⟩ + b*d|1,1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> output_state.print()
    |(ψ,φ)′⟩ = a*c|0,0⟩ + (a*d*(exp(I*pi*p)/2 + 1/2) + b*c*(1/2 - exp(I*pi*p)/2))|0,1⟩ + (a*d*(1/2 - exp(I*pi*p)/2) + b*c*(exp(I*pi*p)/2 + 1/2))|1,0⟩ + b*d|1,1⟩
+
+.. raw:: latex
+
+   \end{code}
 
 .. raw:: latex
    

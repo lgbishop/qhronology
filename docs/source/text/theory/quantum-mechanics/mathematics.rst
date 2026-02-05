@@ -22,7 +22,7 @@ A (linear) *vector space* over a field :math:`\Fields` is a non-empty set :math:
        \text{(iii) } &\text{(identity):} &\exists! \ \vec{0} \in \SpaceVector \quad \text{such that} \quad \psi + \vec{0} &= \psi.
    \end{aligned}
 
-Similarly, :eq:`eq:vector_identities` given some scalars :math:`a,b,c \in \Fields`, closure under multiplication with a scalar likewise requires
+Similarly, given some scalars :math:`a,b,c \in \Fields`, closure under (scalar) multiplication likewise requires:
 
 .. math::
 
@@ -505,7 +505,7 @@ Normal operators arise in many special forms, including:
 
    or using the spectral theorem,
 
-   .. math:: \op{P} = \sum_{i=1}^{\Dimension} P_i \ket{v_i}\bra{v_i}
+   .. math:: \op{P} = \sum_{i=1}^{\Dimension} P_i \ket{v_i}\bra{v_i},
 
    given non-negative eigenvalues :math:`\{P_i\}_{i=1}^{\Dimension}` and eigenvectors :math:`\{\ket{v_i}\}_{i=1}^{\Dimension}`. Note that :math:`\op{P}` is called *positive-definite* if
 

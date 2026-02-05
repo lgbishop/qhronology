@@ -29,11 +29,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d4d32e97" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b063fbe0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 01, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 06, 2026"/>
   </head>
   
   
@@ -527,63 +527,63 @@
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable length argument list, passed directly to the constructor ``__init__``  of the</span>
+<span class="sd">        Variable length argument list, passed directly to the constructor :python:`__init__`  of the</span>
 <span class="sd">        superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.</span>
 <span class="sd">    circuit : QuantumCircuit</span>
 <span class="sd">        An instance of the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class.</span>
-<span class="sd">        The values of its attributes override any other values specified in ``*args`` and</span>
-<span class="sd">        ``**kwargs``.</span>
-<span class="sd">        Defaults to ``None``.</span>
+<span class="sd">        The values of its attributes override any other values specified in :python:`*args` and</span>
+<span class="sd">        :python:`**kwargs`.</span>
+<span class="sd">        Defaults to :python:`None`.</span>
 <span class="sd">    systems_respecting : int | list[int]</span>
 <span class="sd">        The numerical indices of the chronology-respecting (CR) subsystems.</span>
-<span class="sd">        Defaults to ``[]``.</span>
+<span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    systems_violating : int | list[int]</span>
 <span class="sd">        The numerical indices of the chronology-violating (CV) subsystems.</span>
-<span class="sd">        Defaults to ``[]``.</span>
+<span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor ``__init__`` of the</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
 <span class="sd">        superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The lists of indices specified in ``systems_respecting`` and ``systems_violating`` must both be</span>
+<span class="sd">    The lists of indices specified in :python:`systems_respecting` and :python:`systems_violating` must both be</span>
 <span class="sd">    contiguous.</span>
-<span class="sd">    Additionally, the circuit&#39;s inputs (``inputs``) are treated as one contiguous total state,</span>
-<span class="sd">    with the indices of its subsystems exactly matching those specified in ``systems_respecting``.</span>
+<span class="sd">    Additionally, the circuit&#39;s inputs (:python:`inputs`) are treated as one contiguous total state,</span>
+<span class="sd">    with the indices of its subsystems exactly matching those specified in :python:`systems_respecting`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    It is best practice to specify only one of either ``systems_violating`` or</span>
-<span class="sd">    ``systems_violating``, never both.</span>
+<span class="sd">    It is best practice to specify only one of either :python:`systems_violating` or</span>
+<span class="sd">    :python:`systems_violating`, never both.</span>
 <span class="sd">    The properties associated with both of these constructor arguments automatically ensure that</span>
 <span class="sd">    they are always complementary (with respect to the entire system space), and so only one needs</span>
 <span class="sd">    to be specified.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The ``circuit`` argument can be used to merge the value of every attribute from a pre-existing</span>
+<span class="sd">    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing</span>
 <span class="sd">    :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the</span>
 <span class="sd">    :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance.</span>
 <span class="sd">    Any such mergers override the values of the attributes associated with the other arguments</span>
 <span class="sd">    specified in the constructor. It is best practice to specify either of:</span>
 
-<span class="sd">    - only ``circuit`` and one of either ``systems_respecting`` or ``systems_violating``</span>
+<span class="sd">    - only :python:`circuit` and one of either :python:`systems_respecting` or :python:`systems_violating`</span>
 
-<span class="sd">    - ``*args`` and ``**kwargs`` (like a typical initialization of a</span>
+<span class="sd">    - :python:`*args` and :python:`**kwargs` (like a typical initialization of a</span>
 <span class="sd">      :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance)</span>
-<span class="sd">      without specifying ``circuit``</span>
+<span class="sd">      without specifying :python:`circuit`</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    The total interaction between the CR and CV systems is expected to be unitary,</span>
-<span class="sd">    and so the sequence of gates in ``gates`` cannot contain any non-unitary gates</span>
+<span class="sd">    and so the sequence of gates in :python:`gates` cannot contain any non-unitary gates</span>
 <span class="sd">    (e.g., measurement operations).</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    Post-processing (e.g., traces and postselections) cannot be performed on any</span>
 <span class="sd">    chronology-violating (CV) systems (i.e., those corresponding to indices specified in</span>
-<span class="sd">    ``systems_violating``).</span>
+<span class="sd">    :python:`systems_violating`).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -605,14 +605,14 @@
             <span class="n">systems_violating</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">systems_violating</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">systems_violating</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">systems_respecting</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">systems_violating</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;Either ``systems_respecting`` or ``systems_violating`` must be set.&quot;</span>
+                    <span class="s2">&quot;Either :python:`systems_respecting` or :python:`systems_violating` must be set.&quot;</span>
                 <span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">systems_respecting</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">systems_violating</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="n">systems_respecting</span><span class="p">)</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span>
                     <span class="n">systems_violating</span>
                 <span class="p">):</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                        </span><span class="sd">&quot;&quot;&quot;The union of ``systems_respecting`` and ``systems_violating`` is</span>
+<span class="w">                        </span><span class="sd">&quot;&quot;&quot;The union of :python:`systems_respecting` and :python:`systems_violating` is</span>
 <span class="sd">                        inequivalent to the entire system&#39;s structure.&quot;&quot;&quot;</span>
                     <span class="p">)</span>
 
@@ -640,7 +640,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">input_is_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether all states in ``inputs`` are vector states.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether all states in :python:`inputs` are vector states.&quot;&quot;&quot;</span>
         <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
             <span class="n">form</span> <span class="o">!=</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">form</span> <span class="ow">in</span> <span class="p">[</span><span class="n">state</span><span class="o">.</span><span class="n">form</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">]</span>
@@ -664,39 +664,39 @@
 <span class="sd">        curve as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.</span>
 
 <span class="sd">        This is computed as the tensor product of the individual gates in the order in which they</span>
-<span class="sd">        appear in the ``inputs`` property.</span>
+<span class="sd">        appear in the :python:`inputs` property.</span>
 <span class="sd">        Is a vector state only when all of the component states are vectors.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            If ``False``, does not substitute the conditions.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            If :python:`False`, does not substitute the conditions.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        norm : bool | num | sym | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
-<span class="sd">            If ``True``, normalizes to a value of :math:`1`.</span>
-<span class="sd">            If ``False``, does not normalize.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
+<span class="sd">            If :python:`False`, does not normalize.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        label : str</span>
 <span class="sd">            The unformatted string used to represent the state in mathematical expressions.</span>
 <span class="sd">            Must have a non-zero length.</span>
-<span class="sd">            Defaults to ``&quot;⊗&quot;.join([state.label for state in self.inputs])``.</span>
+<span class="sd">            Defaults to :python:`&quot;⊗&quot;.join([state.label for state in self.inputs])`.</span>
 <span class="sd">        notation : str</span>
 <span class="sd">            The formatted string used to represent the state in mathematical expressions.</span>
-<span class="sd">            When not ``None``, overrides the value passed to ``label``.</span>
+<span class="sd">            When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">            Must have a non-zero length.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to ``None``.</span>
+<span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        debug : bool</span>
-<span class="sd">            Whether to print the internal state (held in ``matrix``) on change.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -720,7 +720,7 @@
         <span class="k">if</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">input_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_respecting</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 <span class="w">                </span><span class="sd">&quot;&quot;&quot;The size of the given input state(s) does not match that specified by the</span>
-<span class="sd">                property ``systems_respecting``.&quot;&quot;&quot;</span>
+<span class="sd">                property :python:`systems_respecting`.&quot;&quot;&quot;</span>
             <span class="p">)</span>
 
         <span class="n">input_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -759,8 +759,8 @@
         <span class="k">return</span> <span class="n">input_state</span></div>
 
 
-    <span class="c1"># The four methods below merely output the reduced states, so the ``systems_respective`` and</span>
-    <span class="c1"># ``systems_violating`` of the base class acts just like extra traces.</span>
+    <span class="c1"># The four methods below merely output the reduced states, so the :python:`systems_respective` and</span>
+    <span class="c1"># :python:`systems_violating` of the base class acts just like extra traces.</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">output_violating</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">traces</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_respecting</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
 
@@ -792,8 +792,8 @@
 <span class="sd">        \\MapDCTCsCV_{\\Unitary}[\\StateCR,\\StateCV]</span>
 <span class="sd">            = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\StateCV)\\Unitary^\\dagger\\bigr]</span>
 
-<span class="sd">    given the chronology-respecting (CR) input state ``input_respecting`` (:math:`\\StateCR`)</span>
-<span class="sd">    and (unitary) interaction described by ``gate`` (:math:`\\Unitary`).</span>
+<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)</span>
+<span class="sd">    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -809,7 +809,7 @@
 <span class="sd">    free_symbol : sym | str</span>
 <span class="sd">        The representation of the algebraic symbol to be used as the free parameter in the case</span>
 <span class="sd">        where the CV map has a multiplicity of fixed points.</span>
-<span class="sd">        Defaults to ``&quot;g&quot;``.</span>
+<span class="sd">        Defaults to :python:`&quot;g&quot;`.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -835,8 +835,8 @@
     <span class="n">trace_respecting</span> <span class="o">=</span> <span class="n">input_respecting</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
     <span class="n">input_respecting</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">))</span>
 
-    <span class="c1"># Use ``Symbol`` for persistent (structurally bound) variables.</span>
-    <span class="c1"># Use ``Dummy`` for non-persistent (not structurally bound) variables.</span>
+    <span class="c1"># Use :python:`Symbol` for persistent (structurally bound) variables.</span>
+    <span class="c1"># Use :python:`Dummy` for non-persistent (not structurally bound) variables.</span>
     <span class="c1"># The latter should be used so as to not interfere with any user-predefined variables.</span>
     <span class="n">input_violating</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span>
         <span class="p">[</span>
@@ -986,9 +986,9 @@
 <span class="sd">       \\MapDCTCsCR_{\\Unitary}[\\StateCR,\\StateCV]</span>
 <span class="sd">           = \\trace_\\CV\\bigl[\\Unitary(\\StateCR \\otimes \\StateCV)\\Unitary^\\dagger\\bigr]</span>
 
-<span class="sd">    given the chronology-respecting (CR) input state ``input_respecting`` (:math:`\\StateCR`),</span>
-<span class="sd">    chronology-violating (CV) solution state ``input_violating`` (:math:`\\StateCV`),</span>
-<span class="sd">    and (unitary) interaction described by ``gate`` (:math:`\\Unitary`).</span>
+<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`),</span>
+<span class="sd">    chronology-violating (CV) solution state :python:`input_violating` (:math:`\\StateCV`),</span>
+<span class="sd">    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -1047,14 +1047,14 @@
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor ``__init__`` of the</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
 <span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    free_symbol : sym | str</span>
 <span class="sd">        The representation of the algebraic symbol to be used as the free parameter in the case</span>
 <span class="sd">        where the CV map has a multiplicity of fixed points.</span>
-<span class="sd">        Defaults to ``&quot;g&quot;``.</span>
+<span class="sd">        Defaults to :python:`&quot;g&quot;`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor ``__init__`` of the</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
 <span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1111,17 +1111,17 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        free_symbol : str</span>
 <span class="sd">            The string representation of the algebraic symbol to be used as the free parameter</span>
 <span class="sd">            in the case where the CV map has a multiplicity of fixed points.</span>
-<span class="sd">            Defaults to the value of ``self.free_symbol``.</span>
+<span class="sd">            Defaults to the value of :python:`self.free_symbol`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1199,21 +1199,21 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        postprocess : bool</span>
 <span class="sd">            Whether to post-process the state</span>
 <span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
-<span class="sd">            Defaults to ``True``.</span>
+<span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        free_symbol : str</span>
 <span class="sd">            The string representation of the algebraic symbol to be used as the free parameter</span>
 <span class="sd">            in the case where the CV map has a multiplicity of fixed points.</span>
-<span class="sd">            Defaults to the value of ``self.free_symbol``.</span>
+<span class="sd">            Defaults to the value of :python:`self.free_symbol`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1313,21 +1313,21 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        postprocess : bool</span>
 <span class="sd">            Whether to post-process the state</span>
 <span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
-<span class="sd">            Defaults to ``True``.</span>
+<span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        free_symbol : str</span>
 <span class="sd">            The string representation of the algebraic symbol to be used as the free parameter</span>
 <span class="sd">            in the case where the CV map has a multiplicity of fixed points.</span>
-<span class="sd">            Defaults to the value of ``self.free_symbol``.</span>
+<span class="sd">            Defaults to the value of :python:`self.free_symbol`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1364,40 +1364,40 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state before committing it to the</span>
-<span class="sd">            ``matrix`` property.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            :python:`matrix` property.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        norm : bool | num | sym | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
-<span class="sd">            If ``True``, normalizes to a value of :math:`1`.</span>
-<span class="sd">            If ``False``, does not normalize.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
+<span class="sd">            If :python:`False`, does not normalize.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        label : str</span>
 <span class="sd">            The unformatted string used to represent the state in mathematical expressions.</span>
 <span class="sd">            Must have a non-zero length.</span>
-<span class="sd">            Defaults to ``&quot;ρ&quot;`` (if ``form == &quot;matrix&quot;``) or ``&quot;ψ&quot;`` (if ``form == &quot;vector&quot;``).</span>
+<span class="sd">            Defaults to :python:`&quot;ρ&quot;` (if :python:`form == &quot;matrix&quot;`) or :python:`&quot;ψ&quot;` (if :python:`form == &quot;vector&quot;`).</span>
 <span class="sd">        notation : str</span>
 <span class="sd">            The formatted string used to represent the state in mathematical expressions.</span>
-<span class="sd">            When not ``None``, overrides the value passed to ``label``.</span>
+<span class="sd">            When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">            Must have a non-zero length.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to ``None``.</span>
+<span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        traces : list[int]</span>
 <span class="sd">            A list of indices of the CV systems (relative to the entire circuit) on which to</span>
 <span class="sd">            perform partial traces.</span>
-<span class="sd">            Defaults to ``[]``.</span>
+<span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        free_symbol : str</span>
 <span class="sd">            The string representation of the algebraic symbol to be used as the free parameter</span>
 <span class="sd">            in the case where the CV map has a multiplicity of fixed points.</span>
-<span class="sd">            Defaults to the value of ``self.free_symbol``.</span>
+<span class="sd">            Defaults to the value of :python:`self.free_symbol`.</span>
 <span class="sd">        debug : bool</span>
-<span class="sd">            Whether to print the internal state (held in ``matrix``) on change.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1456,45 +1456,45 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state before committing it to the</span>
-<span class="sd">            ``matrix`` property.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            :python:`matrix` property.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        norm : bool | num | sym | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
-<span class="sd">            If ``True``, normalizes to a value of :math:`1`.</span>
-<span class="sd">            If ``False``, does not normalize.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
+<span class="sd">            If :python:`False`, does not normalize.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        label : str</span>
 <span class="sd">            The unformatted string used to represent the state in mathematical expressions.</span>
 <span class="sd">            Must have a non-zero length.</span>
-<span class="sd">            Defaults to ``&quot;ρ&quot;`` (if ``form == &quot;matrix&quot;``) or ``&quot;ψ&quot;`` (if ``form == &quot;vector&quot;``).</span>
+<span class="sd">            Defaults to :python:`&quot;ρ&quot;` (if :python:`form == &quot;matrix&quot;`) or :python:`&quot;ψ&quot;` (if :python:`form == &quot;vector&quot;`).</span>
 <span class="sd">        notation : str</span>
 <span class="sd">            The formatted string used to represent the state in mathematical expressions.</span>
-<span class="sd">            When not ``None``, overrides the value passed to ``label``.</span>
+<span class="sd">            When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">            Must have a non-zero length.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to ``None``.</span>
+<span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        traces : list[int]</span>
 <span class="sd">            A list of indices of the CR systems (relative to the entire circuit) on which to</span>
 <span class="sd">            perform partial traces.</span>
-<span class="sd">            Performed regardless of the value of ``postprocess``.</span>
-<span class="sd">            Defaults to ``[]``.</span>
+<span class="sd">            Performed regardless of the value of :python:`postprocess`.</span>
+<span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        postprocess : bool</span>
 <span class="sd">            Whether to post-process the state</span>
 <span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
-<span class="sd">            Defaults to ``True``.</span>
+<span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        free_symbol : str</span>
 <span class="sd">            The string representation of the algebraic symbol to be used as the free parameter</span>
 <span class="sd">            in the case where the CV map has a multiplicity of fixed points.</span>
-<span class="sd">            Defaults to the value of ``self.free_symbol``.</span>
+<span class="sd">            Defaults to the value of :python:`self.free_symbol`.</span>
 <span class="sd">        debug : bool</span>
-<span class="sd">            Whether to print the internal state (held in ``matrix``) on change.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1561,8 +1561,8 @@
 <span class="sd">           = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\tfrac{1}{\\Dimension}\\Identity)</span>
 <span class="sd">           \\Unitary^\\dagger\\bigr]</span>
 
-<span class="sd">    given the chronology-respecting (CR) input state ``input_respecting`` (:math:`\\StateCR`)</span>
-<span class="sd">    and (unitary) interaction described by ``gate`` (:math:`\\Unitary`).</span>
+<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)</span>
+<span class="sd">    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).</span>
 <span class="sd">    Here, :math:`\\Dimension` is the dimensionality of the CV system&#39;s Hilbert space</span>
 <span class="sd">    (assumed to be equivalent to that of its CR counterpart), while :math:`\\Identity` is the</span>
 <span class="sd">    :math:`\\Dimension \\times \\Dimension` identity matrix.</span>
@@ -1634,8 +1634,8 @@
 <span class="sd">       \\MapPCTCsCR_{\\Unitary}[\\StateCR]</span>
 <span class="sd">           \\propto \\OperatorPCTC \\StateCR \\OperatorPCTC^\\dagger</span>
 
-<span class="sd">    given the chronology-respecting (CR) input state ``input_respecting`` (:math:`\\StateCR`)</span>
-<span class="sd">    and (unitary) interaction described by ``gate`` (:math:`\\Unitary`).</span>
+<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)</span>
+<span class="sd">    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).</span>
 <span class="sd">    Here,</span>
 
 <span class="sd">    .. math:: \\OperatorPCTC \\equiv \\trace_\\CV[\\Unitary]</span>
@@ -1709,10 +1709,10 @@
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor ``__init__`` of the</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
 <span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor ``__init__`` of the</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
 <span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1745,13 +1745,13 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1830,17 +1830,17 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        postprocess : bool</span>
 <span class="sd">            Whether to post-process the state</span>
 <span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
-<span class="sd">            Defaults to ``True``.</span>
+<span class="sd">            Defaults to :python:`True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1946,17 +1946,17 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        postprocess : bool</span>
 <span class="sd">            Whether to post-process the state</span>
 <span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
-<span class="sd">            Defaults to ``True``.</span>
+<span class="sd">            Defaults to :python:`True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1995,36 +1995,36 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state before committing it in the</span>
-<span class="sd">            ``matrix`` property.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            :python:`matrix` property.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        norm : bool | num | sym | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
-<span class="sd">            If ``True``, normalizes to a value of :math:`1`.</span>
-<span class="sd">            If ``False``, does not normalize.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
+<span class="sd">            If :python:`False`, does not normalize.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        label : str</span>
 <span class="sd">            The unformatted string used to represent the state in mathematical expressions.</span>
 <span class="sd">            Must have a non-zero length.</span>
-<span class="sd">            Defaults to ``&quot;ρ&quot;`` (if ``form == &quot;matrix&quot;``) or ``&quot;ψ&quot;`` (if ``form == &quot;vector&quot;``).</span>
+<span class="sd">            Defaults to :python:`&quot;ρ&quot;` (if :python:`form == &quot;matrix&quot;`) or :python:`&quot;ψ&quot;` (if :python:`form == &quot;vector&quot;`).</span>
 <span class="sd">        notation : str</span>
 <span class="sd">            The formatted string used to represent the state in mathematical expressions.</span>
-<span class="sd">            When not ``None``, overrides the value passed to ``label``.</span>
+<span class="sd">            When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">            Must have a non-zero length.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to ``None``.</span>
+<span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        traces : list[int]</span>
 <span class="sd">            A list of indices of the CV systems (relative to the entire circuit) on which to</span>
 <span class="sd">            perform partial traces.</span>
-<span class="sd">            Defaults to ``[]``.</span>
+<span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        debug : bool</span>
-<span class="sd">            Whether to print the internal state (held in ``matrix``) on change.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2083,41 +2083,41 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state before committing it to the</span>
-<span class="sd">            ``matrix`` property.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            :python:`matrix` property.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        norm : bool | num | sym | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
-<span class="sd">            If ``True``, normalizes to a value of :math:`1`.</span>
-<span class="sd">            If ``False``, does not normalize.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
+<span class="sd">            If :python:`False`, does not normalize.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        label : str</span>
 <span class="sd">            The unformatted string used to represent the state in mathematical expressions.</span>
 <span class="sd">            Must have a non-zero length.</span>
-<span class="sd">            Defaults to ``&quot;ρ&quot;`` (if ``form == &quot;matrix&quot;``) or ``&quot;ψ&quot;`` (if ``form == &quot;vector&quot;``).</span>
+<span class="sd">            Defaults to :python:`&quot;ρ&quot;` (if :python:`form == &quot;matrix&quot;`) or :python:`&quot;ψ&quot;` (if :python:`form == &quot;vector&quot;`).</span>
 <span class="sd">        notation : str</span>
 <span class="sd">            The formatted string used to represent the state in mathematical expressions.</span>
-<span class="sd">            When not ``None``, overrides the value passed to ``label``.</span>
+<span class="sd">            When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">            Must have a non-zero length.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to ``None``.</span>
+<span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        traces : list[int]</span>
 <span class="sd">            A list of indices of the CR systems (relative to the entire circuit) on which to</span>
 <span class="sd">            perform partial traces.</span>
-<span class="sd">            Performed regardless of the value of ``postprocess``.</span>
-<span class="sd">            Defaults to ``[]``.</span>
+<span class="sd">            Performed regardless of the value of :python:`postprocess`.</span>
+<span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        postprocess : bool</span>
 <span class="sd">            Whether to post-process the state</span>
 <span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
-<span class="sd">            Defaults to ``True``.</span>
+<span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        debug : bool</span>
-<span class="sd">            Whether to print the internal state (held in ``matrix``) on change.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2127,7 +2127,7 @@
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        The output state is not renormalized if ``norm`` is ``False``.</span>
+<span class="sd">        The output state is not renormalized if :python:`norm` is :python:`False`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conditions</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
         <span class="n">traces</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">traces</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">traces</span>

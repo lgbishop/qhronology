@@ -55,27 +55,27 @@ def list_depth(nested_list: list) -> int:
 
 
 def count_systems(matrix: mat, dim: int) -> int:
-    """Count the number of ``dim``-dimensional subsystems which constitute the (composite) system
-    represented by ``matrix``."""
+    """Count the number of :python:`dim`-dimensional subsystems which constitute the (composite) system
+    represented by :python:`matrix`."""
     return int(np.emath.logn(dim, sp.shape(to_density(matrix))[0]))
 
 
 def count_dims(matrix: mat, systems: list[int]) -> int:
-    """Compute the dimensionality of the (composite) system represented by ``matrix``."""
+    """Compute the dimensionality of the (composite) system represented by :python:`matrix`."""
     return int((sp.shape(to_density(matrix))[0]) ** (1 / len(set(systems))))
 
 
 def check_systems_conflicts(*subsystems: list[int]) -> bool:
     """Check for conflicts (common element(s)) in the given (unpacked) tuple of lists.
-    Returns ``True`` if any are found, otherwise ``False``."""
+    Returns :python:`True` if any are found, otherwise :python:`False`."""
     subsystems_list = flatten_list([*subsystems])
     subsystems_set = set(subsystems_list)
     return len(subsystems_list) != len(subsystems_set)
 
 
 def adjust_targets(targets: list[int], removed: list[int]) -> list[int]:
-    """Adjust the specified system indices (``targets``) according to those which have been
-    removed (``removed``) from the total set."""
+    """Adjust the specified system indices (:python:`targets`) according to those which have been
+    removed (:python:`removed`) from the total set."""
     targets = sorted(list(set(flatten_list([targets]))))
     removed = sorted(list(set(flatten_list([removed]))))
 
@@ -89,11 +89,11 @@ def adjust_targets(targets: list[int], removed: list[int]) -> list[int]:
 
 
 def arrange(positions: list[list[int]], items: list[Any]) -> list[Any]:
-    """Arranges the elements of ``items`` the according to the respective locations
-    (e.g., system indices) in ``positions``.
+    """Arranges the elements of :python:`items` the according to the respective locations
+    (e.g., system indices) in :python:`positions`.
     The main use case would be to arrange gates in a multipartite system.
 
-    The lengths of both ``positions`` and ``items`` must be the same, and ``positions`` must not
+    The lengths of both :python:`positions` and :python:`items` must be the same, and :python:`positions` must not
     contain any missing system indices.
 
     Examples
@@ -103,7 +103,7 @@ def arrange(positions: list[list[int]], items: list[Any]) -> list[Any]:
     """
     if len(positions) != len(items):
         raise ValueError(
-            "The number of items in ``positions`` and ``items`` do not match."
+            "The number of items in :python:`positions` and :python:`items` do not match."
         )
 
     arranged = []
@@ -116,7 +116,7 @@ def arrange(positions: list[list[int]], items: list[Any]) -> list[Any]:
 
 
 def to_density(vector: mat) -> mat:
-    """Compute the outer product of ``vector`` with itself, thereby converting any vector state
+    """Compute the outer product of :python:`vector` with itself, thereby converting any vector state
     into density matrix form.
     Leaves square matrices unaffected, and raises an error for non-square matrices."""
     if matrix_shape(vector) == Shapes.COLUMN.value:
@@ -132,7 +132,7 @@ def to_density(vector: mat) -> mat:
 
 
 def to_column(vector: mat) -> mat:
-    """Transpose ``vector`` into its column form."""
+    """Transpose :python:`vector` into its column form."""
     if matrix_shape(vector) == Shapes.COLUMN.value:
         return vector
     elif matrix_shape(vector) == Shapes.ROW.value:
@@ -146,7 +146,7 @@ def to_column(vector: mat) -> mat:
 def stringify(
     matrix: mat, dim: int, delimiter: str | None = None, product: bool | None = None
 ) -> str:
-    """Render the mathematical expression (as a string) of the given ``matrix``."""
+    """Render the mathematical expression (as a string) of the given :python:`matrix`."""
     num_systems = count_systems(matrix, dim)
     delimiter = "," if delimiter is None else delimiter
     product = False if product is None else product
@@ -227,7 +227,7 @@ def symbolize_expression(
                 expression = sp.sympify(str(expression))
             except:
                 raise TypeError(
-                    "The given ``expression`` cannot be converted to a symbolic representation."
+                    "The given :python:`expression` cannot be converted to a symbolic representation."
                 )
 
         for symbol in symbols:
@@ -248,7 +248,7 @@ def symbolize_tuples(
     conditions: list[tuple[num | sym | str, num | sym | str]], symbols_list: list[sym]
 ) -> list[tuple[num | sym, num | sym]]:
     """Sympify the numerical, symbolic, or string expression pairs within tuples of the
-    list ``conditions`` and replace the symbols with given counterparts."""
+    list :python:`conditions` and replace the symbols with given counterparts."""
     for n in range(0, len(conditions)):
         conditions[n] = list(conditions[n])
         conditions[n][0] = symbolize_expression(conditions[n][0], symbols_list)
@@ -264,10 +264,10 @@ def recursively_simplify(
     limit: int | None = None,
     comprehensive: bool | None = None,
 ) -> mat | arr | num | sym:
-    """Simplify ``expression`` recursively using the substitutions given in ``conditions``.
-    Runs until ``expression`` is unchanged from the previous iteration,
-    or until the ``limit`` number of iterations is reached.
-    If ``comprehensive`` is ``False``, the algorithm uses a relatively efficient subset of
+    """Simplify :python:`expression` recursively using the substitutions given in :python:`conditions`.
+    Runs until :python:`expression` is unchanged from the previous iteration,
+    or until the :python:`limit` number of iterations is reached.
+    If :python:`comprehensive` is :python:`False`, the algorithm uses a relatively efficient subset of
     simplifying operations, otherwise it uses a larger, more powerful (but slower) set.
     """
     conditions = [] if conditions is None else conditions
@@ -295,7 +295,7 @@ def recursively_simplify(
                 functions += [sp.cos, sp.exp]
             # functions = [sp.simplify] # Simple version for testing/comparison.
 
-            # Generate all (sub-)permutations of the list ``functions``
+            # Generate all (sub-)permutations of the list :python:`functions`
             permutations = []
             for n in range(1, len(functions) + 1):
                 permutations += list(itertools.permutations(functions, r=n))
@@ -336,7 +336,7 @@ def recursively_simplify(
 
 
 def extract_matrix(operator: mat | arr | QuantumObject) -> mat:
-    """Extract the SymPy matrix from the ``operator`` object."""
+    """Extract the SymPy matrix from the :python:`operator` object."""
     try:
         matrix = operator.output()
     except:
@@ -347,13 +347,15 @@ def extract_matrix(operator: mat | arr | QuantumObject) -> mat:
     try:
         matrix = sp.Matrix(matrix)
     except:
-        raise ValueError("A valid SymPy matrix cannot be extracted from ``operator``.")
+        raise ValueError(
+            "A valid SymPy matrix cannot be extracted from :python:`operator`."
+        )
     return matrix
 
 
 def extract_conditions(*states) -> list[tuple[num | sym, num | sym]]:
-    """Extract any substitution conditions accessible via the ``conditions`` property
-    from the objects in ``states``."""
+    """Extract any substitution conditions accessible via the :python:`conditions` property
+    from the objects in :python:`states`."""
     conditions = []
     symbols_list = []
     for state in states:
@@ -368,8 +370,8 @@ def extract_conditions(*states) -> list[tuple[num | sym, num | sym]]:
 
 
 def extract_symbols(*states) -> list[sym]:
-    """Extract any SymPy symbols accessible via the ``symbols`` property
-    from the objects in ``states``."""
+    """Extract any SymPy symbols accessible via the :python:`symbols` property
+    from the objects in :python:`states`."""
     symbols = dict()
     for state in states:
         try:
@@ -384,7 +386,7 @@ def apply_function(
 ) -> mat:
     """Applies a function to a matrix. This is accomplished using eigendecomposition,
     in which the specified matrix is assumed to be normal
-    (i.e., ``matrix * Dagger(matrix) = Dagger(matrix) * matrix``,
+    (i.e., :python:`matrix * Dagger(matrix) = Dagger(matrix) * matrix`,
     which holds true for density operators)."""
     arguments = [] if arguments is None else arguments
     eigentriple = matrix.eigenvects()
@@ -405,7 +407,8 @@ def default_arguments(
     arguments, kwarguments, class_object, arg_pairs: list[tuple[str, Any]]
 ):
     """Change the default value of an argument in a subclass's constructor.
-    ``class_object`` is the class whose ``__init__`` signature is to be targeted."""
+    :python:`class_object` is the class whose :python:`__init__` signature is to be targeted.
+    """
     arg_strs, arg_defaults = zip(*arg_pairs)
     sig = inspect.signature(class_object.__init__)
     arguments_parent = list(sig.parameters.keys())
@@ -432,7 +435,7 @@ def fix_arguments(
     arguments, kwarguments, class_object, arg_pairs: list[tuple[str, Any]]
 ):
     """Fix the value of an argument in a subclass's constructor.
-    The argument ``class_object`` is the class whose ``__init__`` signature is to be targeted.
+    The argument :python:`class_object` is the class whose :python:`__init__` signature is to be targeted.
     """
     arg_strs, arg_values = zip(*arg_pairs)
     sig = inspect.signature(class_object.__init__)
@@ -461,7 +464,7 @@ def fix_arguments(
 
 
 def assemble_composition(*pairs: tuple[mat, list[int]]) -> mat:
-    """Assemble a composite state from constituent subsystems described by the items in ``pairs``.
+    """Assemble a composite state from constituent subsystems described by the items in :python:`pairs`.
     For each pair:
     - the first element is the subsystem's state matrix.
     - the second element is the list of indices of its systems."""

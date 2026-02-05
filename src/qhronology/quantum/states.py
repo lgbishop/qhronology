@@ -61,64 +61,64 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     ---------
     spec
         The specification of the quantum state. Provides a complete description of the state's
-        values in a standard ``dim``-dimensional basis. Can be one of:
+        values in a standard :python:`dim`-dimensional basis. Can be one of:
 
-        - a SymPy matrix (``mat``)
-        - a NumPy array (``arr``)
+        - a SymPy matrix (:python:`mat`)
+        - a NumPy array (:python:`arr`)
         - a list of lists of numerical, symbolic, or string expressions (that collectively specify
-          a matrix) (``list[list[num | sym | str]]``)
+          a matrix) (:python:`list[list[num | sym | str]]`)
         - a list of 2-tuples of numerical, symbolic, or string coefficients and their respective
-          number-basis specifications (``list[tuple[num | sym | str, int | list[int]]]``)
+          number-basis specifications (:python:`list[tuple[num | sym | str, int | list[int]]]`)
 
     form : str
         A string specifying the *form* for the quantum state to take.
-        Can be either of ``"vector"`` or ``"matrix"``.
-        Defaults to ``"matrix"``.
+        Can be either of :python:`"vector"` or :python:`"matrix"`.
+        Defaults to :python:`"matrix"`.
     kind : str
         A string specifying the *kind* for the quantum state to take.
-        Can be either of ``"mixed"`` or ``"pure"``.
-        Defaults to ``"mixed"``.
+        Can be either of :python:`"mixed"` or :python:`"pure"`.
+        Defaults to :python:`"mixed"`.
     dim : int
         The dimensionality of the quantum state's Hilbert space.
         Must be a non-negative integer.
-        Defaults to ``2``.
+        Defaults to :python:`2`.
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols (usually found within the state
-        specification ``spec``) and the values are dictionaries of their respective SymPy
-        keyword-argument ``assumptions``.
-        Defaults to ``{}``.
+        specification :python:`spec`) and the values are dictionaries of their respective SymPy
+        keyword-argument :python:`assumptions`.
+        Defaults to :python:`{}`.
     conditions : list[tuple[num | sym | str, num | sym | str]]
         A list of :math:`2`-tuples of conditions to be applied to the state.
         All instances of the expression in each tuple's first element are replaced by the
         expression in the respective second element.
-        This uses the same format as the SymPy ``subs()`` method.
+        This uses the same format as the SymPy :python:`subs()` method.
         The order in which they are applied is simply their order in the list.
-        Defaults to ``[]``.
+        Defaults to :python:`[]`.
     conjugate : bool
         Whether to perform Hermitian conjugation on the state when it is called.
-        Defaults to ``False``.
+        Defaults to :python:`False`.
     norm : bool | num | sym | str
         The value to which the state is normalized.
-        If ``True``, normalizes to a value of :math:`1`.
-        If ``False``, does not normalize.
-        Defaults to ``False``.
+        If :python:`True`, normalizes to a value of :math:`1`.
+        If :python:`False`, does not normalize.
+        Defaults to :python:`False`.
     label : str
         The unformatted string used to represent the state in mathematical expressions.
         Must have a non-zero length.
-        Defaults to ``"ρ"`` (if ``form == "matrix"``) or ``"ψ"`` (if ``form == "vector"``).
+        Defaults to :python:`"ρ"` (if :python:`form == "matrix"`) or :python:`"ψ"` (if :python:`form == "vector"`).
     notation : str
         The formatted string used to represent the state in mathematical expressions.
-        When not ``None``, overrides the value passed to ``label``.
+        When not :python:`None`, overrides the value passed to :python:`label`.
         Must have a non-zero length.
         Not intended to be set by the user in most cases.
-        Defaults to ``None``.
+        Defaults to :python:`None`.
     family : str
         A string expressing the kind of block element for which the object is to be visualized.
         Not intended to be set by the user.
-        Defaults to ``"LSTICK"``.
+        Defaults to :python:`"LSTICK"`.
     debug : bool
-        Whether to print the internal state (held in ``matrix``) on change.
-        Defaults to ``False``.
+        Whether to print the internal state (held in :python:`matrix`) on change.
+        Defaults to :python:`False`.
     """
 
     def __init__(
@@ -175,7 +175,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     @property
     def kind(self) -> str:
         """The *kind* of quantum state.
-        Can be either of ``"mixed"`` or ``"pure"``."""
+        Can be either of :python:`"mixed"` or :python:`"pure"`."""
         return self._kind
 
     @kind.setter
@@ -183,7 +183,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         if hasattr(self, "_form"):
             if kind not in COMPATIBILITIES[self.form]:
                 raise AttributeError(
-                    f"""The given ``kind`` ('{kind}') is incompatible with the given ``form``
+                    f"""The given :python:`kind` ('{kind}') is incompatible with the given :python:`form`
                     ('{self.form}')."""
                 )
         self._kind = kind
@@ -198,7 +198,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         | list[tuple[num | sym | str, int | list[int]]]
     ):
         """The matrix representation of the quantum state.
-        Provides a complete description of the state in a standard ``dim``-dimensional basis.
+        Provides a complete description of the state in a standard :python:`dim`-dimensional basis.
         """
         return self._spec
 
@@ -217,14 +217,14 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     @property
     def norm(self) -> bool | num | sym | str:
         """The value to which the state is normalized.
-        If ``True``, normalizes to a value of :math:`1`.
-        If ``False``, does not normalize.
+        If :python:`True`, normalizes to a value of :math:`1`.
+        If :python:`False`, does not normalize.
 
         Examples of valid values include:
 
-        - ``1/2``
-        - ``"1/d"``
-        - ``"a*conjugate(a) + b*conjugate(b)"``
+        - :python:`1/2`
+        - :python:`"1/d"`
+        - :python:`"a*conjugate(a) + b*conjugate(b)"`
         """
         return self._norm
 
@@ -236,7 +236,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     def num_systems(self) -> int:
         """Read-only property containing the number of systems which the state spans.
         The current value is calculated from the state's matrix representation and its
-        dimensionality ``dim``.
+        dimensionality :python:`dim`.
         """
         return count_systems(self.matrix, self.dim)
 
@@ -258,18 +258,18 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            If ``False``, does not conjugate.
-            Defaults to the value of ``self.conjugate``.
+            If :python:`False`, does not conjugate.
+            Defaults to the value of :python:`self.conjugate`.
         norm : bool | num | sym | str
             The value to which the state is normalized.
-            If ``False``, does not normalize.
-            Defaults to the value of ``self.norm``.
+            If :python:`False`, does not normalize.
+            Defaults to the value of :python:`self.norm`.
 
         Returns
         -------
@@ -303,12 +303,12 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         return state
 
     def reset(self):
-        """Reset the quantum state's internal matrix state (specifically its ``matrix`` property)
+        """Reset the quantum state's internal matrix state (specifically its :python:`matrix` property)
         to its original value at instantiation.
 
         Note
         ----
-        This reset only the ``matrix`` property of the instance.
+        This reset only the :python:`matrix` property of the instance.
         All other attributes and properties are unchanged.
         """
         self.matrix = quantum_state(
@@ -321,15 +321,9 @@ class VectorState(QuantumState):
 
     This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,
     and so inherits all of its attributes, properties, and methods.
-    The distinction is that this ``VectorState`` class fixes both the ``form`` and ``kind``
-    arguments to the values of ``"vector"`` and ``"pure"``, respectively, at instantiation.
-    This means that neither ``*args`` or ``**kwargs`` must contain these arguments.
-
-    Examples
-    --------
-    >>> qubit_vector = VectorState(spec=[(1, [0]), (1, [1])], norm=1)
-    >>> qubit_vector.print()
-    |ψ⟩ = sqrt(2)/2|0⟩ + sqrt(2)/2|1⟩
+    The distinction is that this :python:`VectorState` class fixes both the :python:`form` and :python:`kind`
+    arguments to the values of :python:`"vector"` and :python:`"pure"`, respectively, at instantiation.
+    This means that neither :python:`*args` or :python:`**kwargs` must contain these arguments.
     """
 
     def __init__(self, *args, **kwargs):
@@ -347,19 +341,9 @@ class MatrixState(QuantumState):
 
     This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,
     and so inherits all of its attributes, properties, and methods.
-    The distinction is that this ``MatrixState`` class fixes the ``form`` argument to a value of
-    ``"matrix"`` at instantiation.
-    This means that neither ``*args`` or ``**kwargs`` must contain this argument.
-
-    Examples
-    --------
-    >>> qubit_matrix_pure = MatrixState(spec=[(1, [0]), (1, [1])], kind="pure", norm=1)
-    >>> qubit_matrix_pure.print()
-    |ψ⟩⟨ψ| = 1/2|0⟩⟨0| + 1/2|0⟩⟨1| + 1/2|1⟩⟨0| + 1/2|1⟩⟨1|
-
-    >>> qubit_matrix_mixed = MatrixState(spec=[(1, [0]), (1, [1])], kind="mixed", norm=1)
-    >>> qubit_matrix_mixed.print()
-    ρ = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
+    The distinction is that this :python:`MatrixState` class fixes the :python:`form` argument to a value of
+    :python:`"matrix"` at instantiation.
+    This means that neither :python:`*args` or :python:`**kwargs` must contain this argument.
     """
 
     def __init__(self, *args, **kwargs):
@@ -374,18 +358,8 @@ class PureState(QuantumState):
 
     This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,
     and so inherits all of its attributes, properties, and methods. The distinction is that
-    this ``PureState`` class fixes the ``kind`` argument to a value of ``"pure"`` at instantiation.
-    This means that neither ``*args`` or ``**kwargs`` must contain this argument.
-
-    Examples
-    --------
-    >>> qubit_pure_vector = PureState(spec=[(1, [0]), (1, [1])], form="vector", norm=1)
-    >>> qubit_pure_vector.print()
-    |ψ⟩ = sqrt(2)/2|0⟩ + sqrt(2)/2|1⟩
-
-    >>> qubit_pure_matrix = PureState(spec=[(1, [0]), (1, [1])], form="matrix", norm=1)
-    >>> qubit_pure_matrix.print()
-    |ψ⟩⟨ψ| = 1/2|0⟩⟨0| + 1/2|0⟩⟨1| + 1/2|1⟩⟨0| + 1/2|1⟩⟨1|
+    this :python:`PureState` class fixes the :python:`kind` argument to a value of :python:`"pure"` at instantiation.
+    This means that neither :python:`*args` or :python:`**kwargs` must contain this argument.
     """
 
     def __init__(self, *args, **kwargs):
@@ -400,15 +374,9 @@ class MixedState(QuantumState):
 
     This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,
     and so inherits all of its attributes, properties, and methods. The distinction is that
-    this ``MixedState`` class fixes both the ``form`` and ``kind`` arguments to the values of
-    ``"matrix"`` and ``"mixed"``, respectively, at instantiation.
-    This means that neither ``*args`` or ``**kwargs`` must contain these arguments.
-
-    Examples
-    --------
-    >>> qubit_mixed = MixedState(spec=[(1, [0]), (1, [1])], norm=1)
-    >>> qubit_mixed.print()
-    ρ = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
+    this :python:`MixedState` class fixes both the :python:`form` and :python:`kind` arguments to the values of
+    :python:`"matrix"` and :python:`"mixed"`, respectively, at instantiation.
+    This means that neither :python:`*args` or :python:`**kwargs` must contain these arguments.
     """
 
     def __init__(self, *args, **kwargs):

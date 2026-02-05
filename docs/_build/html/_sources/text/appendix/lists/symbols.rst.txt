@@ -3,7 +3,7 @@ List of symbols
 ***************
 
 .. csv-table:: List of symbols
-   :header: "Symbol", "Description"
+   :header: "**Symbol**", "**Description**"
    :widths: 10, 30
 
    ":math:`\eye`", "imaginary unit"

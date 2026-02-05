@@ -7,7 +7,11 @@ import sympy as sp
 
 # Input
 rho = sp.MatrixSymbol("ρ", 2, 2).as_mutable()
-input_state = MixedState(spec=rho, conditions=[(rho[1, 1], 1 - rho[0, 0])], label="ρ")
+input_state = MixedState(
+    spec=rho,
+    conditions=[(rho[1, 1], 1 - rho[0, 0])],
+    label="ρ",
+)
 
 # Gate
 CN = Not(targets=[0], controls=[1], num_systems=2)

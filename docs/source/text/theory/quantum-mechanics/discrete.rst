@@ -107,7 +107,7 @@ Given that the factor :math:`\e^{\eye\varsigma}` represents a global phase, then
 
 Similarly, a :math:`2`-dimensional density operator :math:`\StateDensity` in the same representation corresponds to the vector
 
-.. math:: \vec{r}_{\StateDensity} = \trace[\StateDensity \Pauli_1]\uv{e}_1 + \trace[\StateDensity \Pauli_2]\uv{e}_2 + \trace[\StateDensity \Pauli_3]\uv{e}_3
+.. math:: \vec{r}_{\StateDensity} = \trace[\StateDensity \Pauli_1]\uv{e}_1 + \trace[\StateDensity \Pauli_2]\uv{e}_2 + \trace[\StateDensity \Pauli_3]\uv{e}_3,
 
 where
 
@@ -125,14 +125,14 @@ are the *Pauli matrices*.
 .. only:: html
 
    .. figure:: /figures/output/diagram_bloch_sphere-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A diagram of the Bloch sphere.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/diagram_bloch_sphere-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A diagram of the Bloch sphere.
       :align: center
       :figwidth: 100 %
@@ -514,7 +514,7 @@ where :math:`\op{\tau}` is the environment state. The output of the environment 
 
 .. math:: \tilde{\MapGeneral}[\op{\tau}] = \trace_\mathrm{S} \bigl[\Unitary(\StateDensity^\mathrm{S} \otimes \op{\tau}^\mathrm{E})\Unitary^\dagger\bigr].
 
-Quantum operations of this kind, i.e., those which are both completely positive (CP) and trace-preserving (TP), are known as *CPTP maps* or, more popularly, *quantum channels*. Note however that there is no loss in generality in making the assumption that the environment is in a pure state, since it can always be purified by the introduction of an additional system.
+Quantum operations of this kind, i.e., those which are both completely positive (CP) and trace-preserving (TP), are known as *CPTP maps* or, more popularly, *quantum channels*. Note however that there is no loss in generality in making the assumption that the environment is in a pure state, since it can always be purified via the introduction of an additional system.
 
 Quantum measurements
 ====================
@@ -572,7 +572,7 @@ Let :math:`\SpaceHilbert` denote the Hilbert space for a :math:`\Dimension`-dime
 .. math:: \Integral = \int_{\SpaceMixed(\SpaceHilbert)} \diff[\StateDensity] \, \FunctionIntermediate(\StateDensity) 
    :label: eq:integral_mixed
 
-where :math:`\FunctionIntermediate : \SpaceMixed(\SpaceHilbert) \rightarrow \Complexes` is any scalar function, and :math:`\diff[\StateDensity]` is the integration measure over :math:`\SpaceMixed(\SpaceHilbert)`. To compute the integral, an explicit form of the measure must be defined, and we are typically free to choose any such form in accordance with what we wish to accomplish. In the case of mixed states :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert)`, there is in fact no unique natural measure on :math:`\SpaceMixed(\SpaceHilbert)`. One must therefore be chosen (along with a way to parametrize :math:`\StateDensity`), which means that that is no unique, natural way to define the integral :math:`\Integral`, as it will depend on the choice of measure used.
+where :math:`\FunctionIntermediate : \SpaceMixed(\SpaceHilbert) \rightarrow \Complexes` is any scalar function, and :math:`\diff[\StateDensity]` is the integration measure over :math:`\SpaceMixed(\SpaceHilbert)`. To compute the integral, an explicit form of the measure must be defined, and we are typically free to choose any such form in accordance with what we wish to accomplish. In the case of mixed states :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert)`, there is in fact no unique natural measure on :math:`\SpaceMixed(\SpaceHilbert)`. One must therefore be chosen (along with a way to parametrize :math:`\StateDensity`), which means that there is correspondingly no unique way to write the integral :math:`\Integral`, as any definition will depend on the choice of measure used.
 
 For the specific case of pure states :math:`\ket{\StateVector} \in \SpacePure(\SpaceHilbert)` however, we are able to define both a suitable measure and parametrization. Given some :math:`\FunctionIntermediate : \SpacePure(\SpaceHilbert) \rightarrow \Complexes`, the integral over pure states :cite:p:`bengtsson_geometry_2017, allen_treating_2014` is
 

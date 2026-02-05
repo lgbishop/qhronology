@@ -63,6 +63,8 @@ html[data-theme="dark"] {
     --pst-color-btn-text-hover: #FFFFFF;
     --pst-color-target: #334455;
     --custom-color-nav-link-hover: rgba(230,230,230,0.15);
+    /* --pst-color-table-heading-bg: #003989; */
+    --pst-color-table-heading-bg: var(--pst-color-info-bg);
 }
 
 html[data-theme="light"] {
@@ -107,6 +109,9 @@ html[data-theme="light"] {
     /* --pst-color-target: #E0F0FF; */
     --pst-color-target: #EAF5FF;
     --custom-color-nav-link-hover: rgba(230,230,230,0.5);
+    /* --pst-color-table-heading-bg: #E3F0FF; */
+    /* --pst-color-table-heading-bg: #DCE7FC; */
+    --pst-color-table-heading-bg: var(--pst-color-info-bg);
 }
 
 body {
@@ -320,7 +325,6 @@ em.property > span.pre, span.p, span.w {
 }
 
 span.descname {
-    font-style: italic;
 	color: var(--pst-color-code-string);
 }
 
@@ -705,7 +709,7 @@ input.form-control {
     line-height: 0.5;
     box-shadow: none !important;
     padding: 0.375rem 0.75rem 0.375rem 0.75rem;
-    max-width: 10rem;
+    /* max-width: 10rem; */
 }
 input.form-control:focus {
     /* box-shadow: none !important; */
@@ -736,6 +740,9 @@ input.form-control:focus-visible {
 .bd-search .search-button__kbd-shortcut {
     font-size: 14px;
 }
+.navbar-item > form.bd-search {
+    max-width: 16rem;
+}
 
 /* .bd-search { */
 /*     gap: 0rem; */
@@ -763,6 +770,26 @@ nav.bd-links {
     margin-right: 0rem;
 }
 
+nav.bd-links li.current > a {
+    background-color: var(--pst-color-surface);
+}
+
+nav.bd-links li > a:hover {
+    background-color: var(--pst-color-surface);
+}
+
+.toc-entry a > code {
+    color: unset;
+}
+
+.toc-entry a.nav-link.active {
+    background-color: var(--pst-color-surface);
+}
+
+.toc-entry a.nav-link:hover {
+    background-color: var(--pst-color-surface);
+}
+
 div.navbar-nav > p.caption[role=heading] > span.caption-text {
     font-weight: 600;
     font-family: var(--pst-font-family-heading);
@@ -779,6 +806,27 @@ p.prev-next-title, a {
 
 a.reference.internal > span.std.std-ref {
     font-style: italic;
+}
+
+a.reference.internal {
+    color: var(--pst-color-primary) !important;
+    font-weight: bold;
+}
+
+a.reference.internal:hover {
+    color: var(--pst-color-link-hover) !important;
+}
+
+p > a.reference.internal {
+    font-weight: normal;
+}
+
+span > a.reference.internal {
+    font-weight: normal;
+}
+
+a.reference.internal.sd-btn {
+    color: var(--pst-color-btn-text) !important;
 }
 
 /* .bd-footer {
@@ -846,6 +894,10 @@ table figcaption {
     font-weight: var(--bs-body-font-weight);
 }
 
+table > thead > tr > th > p > strong {
+    font-weight: bold;
+}
+
 blockquote {
     background-color: var(--pst-color-surface);
     border-left: none;
@@ -892,12 +944,32 @@ div.notranslate div pre {
 
 code.literal {
     border-radius: 0.0rem;
-    background-color: var(--pst-color-surface);
-    border: 1px solid var(--pst-color-border);
-    padding-top: 0rem;
-    padding-bottom: 0rem;
+    background-color: var(--pst-color-surface) !important;
+    border: none;
+    /* border: 1px solid var(--pst-color-border); */
+    padding-top: 0.05rem;
+    padding-bottom: 0.05rem;
     padding-left: 0.1rem;
     padding-right: 0.1rem;
+}
+
+code.py {
+    font-weight: normal !important;
+    font-style: italic;
+    color: var(--pst-color-secondary);
+}
+
+code.python {
+    font-weight: normal !important;
+}
+
+code.xref {
+    font-weight: bold !important;
+    color: var(--pst-color-inline-code-links);
+}
+
+code.highlight > span.n {
+    color: var(--pst-color-inline-code) !important;
 }
 
 div.semigraphical div pre {

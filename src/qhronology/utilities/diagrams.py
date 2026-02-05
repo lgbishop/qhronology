@@ -2238,7 +2238,7 @@ class DiagramCell(VisualizationProperties):
 
 
 class DiagramColumn(VisualizationProperties):
-    """A class for assembling a collection of ``DiagramCell`` instances into a column."""
+    """A class for assembling a collection of :python:`DiagramCell` instances into a column."""
 
     def __init__(
         self, *args, cells: list[DiagramCell], section: str | None = None, **kwargs
@@ -2428,7 +2428,7 @@ class DiagramColumn(VisualizationProperties):
 
 
 class DiagramCircuit(VisualizationProperties):
-    """A class for assembling ``DiagramColumn`` instances together into a grid."""
+    """A class for assembling :python:`DiagramColumn` instances together into a grid."""
 
     def __init__(self, *args, columns: list, **kwargs):
         super().__init__(*args, **kwargs)
@@ -2736,7 +2736,7 @@ class DiagramCircuit(VisualizationProperties):
                     ):
                         trim_right += math.floor((sep["right"] + 1) / 2)
 
-                # ``force_separation`` argument
+                # :python:`force_separation` argument
                 if force_separation is True:
                     uniform_spacing = True
                     if self.columns[index_column].section == Sections.GATES.value:
@@ -3112,26 +3112,26 @@ class VisualizationMixin:
             A two-tuple of non-negative integers specifying intra-gate padding
             (i.e., the horizontal and vertical interior paddings between the content at the centre
             of each gate (e.g., label) and its outer edge (e.g., block border).
-            Defaults to ``(0, 0)``.
+            Defaults to :python:`(0, 0)`.
         sep : tuple[int, int]
             A two-tuple of non-negative integers specifying inter-gate separation
             (i.e., the horizontal and vertical exterior separation distances between the edges of
             neighbouring gates.
-            Defaults to ``(1, 1)``.
+            Defaults to :python:`(1, 1)`.
         style : str
             A string specifying the style for the circuit visualization to take.
-            Can be any of ``"ascii"``, ``"unicode"``, or ``"unicode_alt"``.
-            Defaults to ``"unicode"``.
+            Can be any of :python:`"ascii"`, :python:`"unicode"`, or :python:`"unicode_alt"`.
+            Defaults to :python:`"unicode"`.
         return_string : bool
             Whether to return the assembled diagram as a multiline string.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
 
         Returns
         -------
         None
-            Returned only if ``return_string`` is ``False``.
+            Returned only if :python:`return_string` is :python:`False`.
         str
-            The rendered circuit diagram. Returned only if ``return_string`` is ``True``.
+            The rendered circuit diagram. Returned only if :python:`return_string` is :python:`True`.
 
         Note
         ----

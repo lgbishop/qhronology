@@ -11,14 +11,14 @@ A quantum *carry-lookahead* adder, proposed by Vedral et al. :cite:p:`vedral_qua
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_adder_lookahead-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum carry-lookahead adder.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_adder_lookahead-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum carry-lookahead adder.
       :align: center
       :figwidth: 100 %
@@ -26,7 +26,7 @@ A quantum *carry-lookahead* adder, proposed by Vedral et al. :cite:p:`vedral_qua
 
 .. figure:: /figures/output/circuit_algorithm_adder_lookahead-light.png
    :name: fig:circuit_algorithm_adder_lookahead
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of a quantum carry-lookahead adder.
    :align: center
    :figwidth: 100 %
@@ -63,12 +63,20 @@ It is non-zero when the sum of the most-significant qubits (plus carry) "wraps a
 Implementation
 --------------
 
-In this implementation, the dimensionality of the input state can be decreased by removing the overflow qubit (via ``overflow_qubit = False``), thereby reducing the execution time of the algorithm.
+In this implementation, the dimensionality of the input state can be decreased by removing the overflow qubit (via :python:`overflow_qubit = False`), thereby reducing the execution time of the algorithm.
+
+.. raw:: latex
+
+   \begin{codetitled}{Carry-lookahead adder}{}
 
 .. literalinclude:: /text/examples/algorithms/adder_lookahead.py
    :name: code:adder_lookahead
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -76,18 +84,22 @@ Output
 Diagram
 ^^^^^^^
 
-When ``overflow_qubit = True``:
+When :python:`overflow_qubit = True`:
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> adder.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_lookahead.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -96,30 +108,33 @@ When ``overflow_qubit = True``:
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_lookahead-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
-When ``overflow_qubit = False``:
+When :python:`overflow_qubit = False`:
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> adder.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_lookahead_false.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -128,57 +143,108 @@ When ``overflow_qubit = False``:
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_lookahead_false-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> augend_state.print()
    |x⟩ = |1,0⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> addend_state.print()
    |y⟩ = |1,0⟩
+
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> sum_state.print()
    |s⟩ = |0,1⟩
 
+.. raw:: latex
+
+   \end{code}
+
 Results
 ^^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> print(computation)
    Computation: 1 + 1 = 2
 
-When ``overflow_qubit = True``:
+.. raw:: latex
+
+   \end{code}
+
+When :python:`overflow_qubit = True`:
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> print(duration)
    Duration: 5.134 seconds
 
-When ``overflow_qubit = False``:
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \newpage
+
+When :python:`overflow_qubit = False`:
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> print(duration)
    Duration: 1.209 seconds
+
+.. raw:: latex
+
+   \end{code}
 
 This version of a multi-qubit full adder is evidently much faster than the :ref:`eg:adder_ripple` for the equivalent number of qubits, which highlights the efficiency advantage of using fewer qubits to achieve the same computation.
 

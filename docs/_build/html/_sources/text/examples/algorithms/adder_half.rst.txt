@@ -21,14 +21,14 @@ which represents the *overflow* of the summation. This is simply the value by wh
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_adder_half-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum half adder.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_adder_half-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum half adder.
       :align: center
       :figwidth: 100 %
@@ -36,7 +36,7 @@ which represents the *overflow* of the summation. This is simply the value by wh
 
 .. figure:: /figures/output/circuit_algorithm_adder_half-light.png
    :name: fig:circuit_algorithm_adder_simple
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of a quantum half adder.
    :align: center
    :figwidth: 100 %
@@ -52,10 +52,10 @@ A truth table for this circuit in the context of qubits appears in :numref:`tabl
    :widths: 5 5 10 10
    :header-rows: 1
 
-   * - :math:`x` (augend)
-     - :math:`y` (addend)
-     - :math:`s` (sum)
-     - :math:`c^\prime` (carry)
+   * - :math:`x` **(augend)**
+     - :math:`y` **(addend)**
+     - :math:`s` **(sum)**
+     - :math:`c^\prime` **(carry)**
    * - :math:`0`
      - :math:`0`
      - :math:`0`
@@ -76,10 +76,18 @@ A truth table for this circuit in the context of qubits appears in :numref:`tabl
 Implementation
 --------------
 
+.. raw:: latex
+
+   \begin{codetitled}{Half adder}{}
+
 .. literalinclude:: /text/examples/algorithms/adder_half.py
    :name: code:adder_half
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -87,16 +95,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> adder.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_half.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -105,40 +117,71 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_half-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> augend_state.print()
    |x⟩ = a|0⟩ + b|1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> addend_state.print()
    |y⟩ = |1⟩
+
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> sum_state.print()
    s = (a*u*conjugate(a)*conjugate(u) + b*v*conjugate(b)*conjugate(v))|0⟩⟨0| + a*u*conjugate(a)*conjugate(v)|0⟩⟨1| + a*v*conjugate(a)*conjugate(u)|1⟩⟨0| + (a*v*conjugate(a)*conjugate(v) + b*u*conjugate(b)*conjugate(u))|1⟩⟨1|
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> carry_output_state.print()
    c′ = (a*conjugate(a) + b*u*conjugate(b)*conjugate(u))|0⟩⟨0| + b*v*conjugate(b)*conjugate(v)|1⟩⟨1|
+
+.. raw:: latex
+
+   \end{code}
 
 .. only:: html
 

@@ -30,11 +30,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d4d32e97" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b063fbe0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -70,7 +70,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 01, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 06, 2026"/>
   </head>
   
   
@@ -453,7 +453,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ctcs/unproven.html">Unproven-theorem paradox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ctcs/billiards.html">Billiard-ball paradox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ctcs/postselected.html">Manual P-CTC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ctcs/ecp.html">Equivalent-circuit picture for D-CTCs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/ecp.html">Equivalent-circuit picture of D-CTCs</a></li>
 </ul>
 </div>
 </nav></div>
@@ -514,15 +514,15 @@
 <p>Quantum teleportation <span id="id1">[<a class="reference internal" href="#cite-1-bennett-teleporting-1993" title="C. H. Bennett, G. Brassard, C. Crépeau, R. Jozsa, A. Peres, and W. K. Wootters, “Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels”, Physical Review Letters, 70(13):1895–1899, 1993. doi:10.1103/PhysRevLett.70.1895">1</a>]</span> is a significant technique of quantum theory in which the transfer of quantum information between two parties (that may be spatially separated) is achieved. Importantly, this does not involve the movement of physical entities, but concerns rather the relocation of the (quantum) statistics of a physical system (manifesting as a quantum state) to another. This is often facilitated by a pair of entangled particles, the statistical correlations of which provide the actual mechanism of teleportation.</p>
 <p>Note that in the process of teleporting the state, the original is destroyed, and so the no-cloning theorem remains unviolated. Additionally, because classical information needs to be sent between the two parties, the teleportation cannot occur faster than the speed of light, meaning that the laws of (special) relativity are satisfied. This example (<a class="reference internal" href="#fig-circuit-algorithm-teleportation"><span class="std std-numref">Figure 23</span></a>) implements the canonical version of the algorithm.</p>
 <figure class="only-dark align-center" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_teleportation-dark.png"><img alt="A quantum circuit diagram of a quantum teleportation protocol." src="../../../_images/circuit_algorithm_teleportation-dark.png" style="width: 450.0px; height: 127.08px;" />
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_teleportation-dark.png"><img alt="A quantum circuit diagram of a quantum teleportation protocol." src="../../../_images/circuit_algorithm_teleportation-dark.png" style="width: 425.00000000000006px; height: 120.02000000000001px;" />
 </a>
 </figure>
 <figure class="only-light align-center" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_teleportation-light.png"><img alt="A quantum circuit diagram of a quantum teleportation protocol." src="../../../_images/circuit_algorithm_teleportation-light.png" style="width: 450.0px; height: 127.08px;" />
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_teleportation-light.png"><img alt="A quantum circuit diagram of a quantum teleportation protocol." src="../../../_images/circuit_algorithm_teleportation-light.png" style="width: 425.00000000000006px; height: 120.02000000000001px;" />
 </a>
 </figure>
 <figure class="light-dark hidden align-center" id="fig-circuit-algorithm-teleportation" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_teleportation-light.png"><img alt="A quantum circuit diagram of a quantum teleportation protocol." src="../../../_images/circuit_algorithm_teleportation-light.png" style="width: 450.0px; height: 127.08px;" />
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_teleportation-light.png"><img alt="A quantum circuit diagram of a quantum teleportation protocol." src="../../../_images/circuit_algorithm_teleportation-light.png" style="width: 425.00000000000006px; height: 120.02000000000001px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 23 </span><span class="caption-text">A quantum teleportation protocol.</span><a class="headerlink" href="#fig-circuit-algorithm-teleportation" title="Link to this image">#</a></p>
@@ -532,7 +532,7 @@
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-teleportation">
-<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">/text/examples/algorithms/teleportation.py</span><a class="headerlink" href="#code-teleportation" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 23 </span><span class="caption-text">/text/examples/algorithms/teleportation.py</span><a class="headerlink" href="#code-teleportation" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Not</span><span class="p">,</span> <span class="n">Measurement</span><span class="p">,</span> <span class="n">Pauli</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

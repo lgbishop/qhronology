@@ -11,14 +11,14 @@ The version of a quantum adder presented here sums two multi-qubit integers esse
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_adder_fourier-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a QFT-based adder.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_adder_fourier-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a QFT-based adder.
       :align: center
       :figwidth: 100 %
@@ -26,7 +26,7 @@ The version of a quantum adder presented here sums two multi-qubit integers esse
 
 .. figure:: /figures/output/circuit_algorithm_adder_fourier-light.png
    :name: fig:circuit_algorithm_adder_fourier
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of a QFT-based adder.
    :align: center
    :figwidth: 100 %
@@ -39,14 +39,14 @@ An example of this algorithm for :math:`3`-qubit integers appears in :numref:`fi
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_adder_fourier_three-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a QFT-based adder for :math:`3`-qubit states.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_adder_fourier_three-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a QFT-based adder for :math:`3`-qubit states.
       :align: center
       :figwidth: 100 %
@@ -54,7 +54,7 @@ An example of this algorithm for :math:`3`-qubit integers appears in :numref:`fi
 
 .. figure:: /figures/output/circuit_algorithm_adder_fourier_three-light.png
    :name: fig:circuit_algorithm_adder_fourier_three
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of a QFT-based adder for :math:`3`-qubit states.
    :align: center
    :figwidth: 100 %
@@ -65,10 +65,18 @@ An example of this algorithm for :math:`3`-qubit integers appears in :numref:`fi
 Implementation
 --------------
 
+.. raw:: latex
+
+   \begin{codetitled}{Fourier transform adder}{}
+
 .. literalinclude:: /text/examples/algorithms/adder_fourier.py
    :name: code:adder_fourier
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -76,16 +84,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> adder.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_fourier.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -94,48 +106,87 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_fourier-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> augend_state.print()
    |x⟩ = |0,1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> addend_state.print()
    |y⟩ = |0,1⟩
+
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> sum_state.print()
    s = |1,0⟩⟨1,0|
 
+.. raw:: latex
+
+   \end{code}
+
 Results
 ^^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> print(computation)
    Computation: 1 + 1 = 2
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> print(duration)
    Duration: 0.283 seconds
+
+.. raw:: latex
+
+   \end{code}
 
 As both the number of qubits and the circuit depth (number of gates) of the quantum Fourier adder are significantly smaller than any of the other quantum adder algorithms, we appropriately find that its operation is computationally much faster.
 

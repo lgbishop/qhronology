@@ -32,14 +32,14 @@ Fundamentals
    .. only:: html
 
       .. image:: /figures/output/circuitry_wire_quantum_input-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_wire_quantum_input-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -59,14 +59,14 @@ Fundamentals
    .. only:: html
 
       .. image:: /figures/output/circuitry_wire_quantum_output-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_wire_quantum_output-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -85,14 +85,14 @@ Fundamentals
    .. only:: html
 
       .. image:: /figures/output/circuitry_wire_classical_input-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_wire_classical_input-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -112,14 +112,14 @@ Fundamentals
    .. only:: html
 
       .. image:: /figures/output/circuitry_wire_classical_output-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_wire_classical_output-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -127,6 +127,10 @@ Fundamentals
       
       \end{mdframed}
       \vspace{1em}
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 - **Omission**: Ellipses denote the omission of parts of the circuit. This notation is usually employed only in the context of the subsequent tutorial circuits as a way to give focus to the important parts of each example.
 
@@ -145,14 +149,14 @@ States
    .. only:: html
 
       .. image:: /figures/output/circuitry_preselection_singlemode_density-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_preselection_singlemode_density-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -171,14 +175,14 @@ States
    .. only:: html
 
       .. image:: /figures/output/circuitry_preselection_singlemode_pure-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_preselection_singlemode_pure-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -197,14 +201,14 @@ States
    .. only:: html
 
       .. image:: /figures/output/circuitry_preselection_multimode_density-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_preselection_multimode_density-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -223,14 +227,14 @@ States
    .. only:: html
 
       .. image:: /figures/output/circuitry_preselection_multimode_separable-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_preselection_multimode_separable-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -252,14 +256,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_singlemode_single-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_singlemode_single-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -278,14 +282,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_singlemode_series-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_singlemode_series-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -304,14 +308,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_multimode_parallel-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_multimode_parallel-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -330,14 +334,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_identity-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_identity-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -356,14 +360,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_group_series-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_group_series-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -383,14 +387,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_group_parallel-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_group_parallel-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -409,14 +413,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_multimode_nonsimultaneous_upper,lower-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_multimode_nonsimultaneous_upper,lower-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -436,14 +440,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_multimode_nonsimultaneous_lower,upper-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_multimode_nonsimultaneous_lower,upper-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -451,6 +455,10 @@ Gates
       
       \end{mdframed}
       \vspace{1em}
+
+.. raw:: latex
+
+   \newpage
 
 - Multipartite (composite) operators are denoted by gates which span the relevant wires:
 
@@ -462,14 +470,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_multimode_multipartite_neighbouring-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_multimode_multipartite_neighbouring-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -489,14 +497,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_multimode_multipartite_absence_lower-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_multimode_multipartite_absence_lower-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -516,14 +524,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_multimode_multipartite_absence_upper-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_multimode_multipartite_absence_upper-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -543,14 +551,14 @@ Gates
    .. only:: html
 
       .. image:: /figures/output/circuitry_operator_multimode_multipartite_absence_middle-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_operator_multimode_multipartite_absence_middle-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -576,14 +584,14 @@ Control
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_controlled_unitary-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_controlled_unitary-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -602,14 +610,14 @@ Control
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_controlled_unitary_inverted-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_controlled_unitary_inverted-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -617,6 +625,10 @@ Control
       
       \end{mdframed}
       \vspace{1em}
+
+  .. raw:: latex
+
+     \newpage
 
   - anticontrolled-:math:`\Unitary`:
 
@@ -628,14 +640,14 @@ Control
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_controlled_unitary_anti-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_controlled_unitary_anti-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -654,14 +666,14 @@ Control
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_controlled_unitary_multiple-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_controlled_unitary_multiple-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -680,14 +692,14 @@ Control
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_controlled_unitary_mixed-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_controlled_unitary_mixed-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -729,14 +741,14 @@ Trace
    .. only:: html
 
       .. image:: /figures/output/circuitry_trace-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_trace-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -755,14 +767,14 @@ Trace
    .. only:: html
 
       .. image:: /figures/output/circuitry_trace_partial_upper-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_trace_partial_upper-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -782,14 +794,14 @@ Trace
    .. only:: html
 
       .. image:: /figures/output/circuitry_trace_partial_lower-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_trace_partial_lower-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -809,14 +821,14 @@ Trace
    .. only:: html
 
       .. image:: /figures/output/circuitry_trace_partial_both-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_trace_partial_both-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -842,14 +854,14 @@ Postselection
    .. only:: html
 
       .. image:: /figures/output/circuitry_postselection_singlemode_pure-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_postselection_singlemode_pure-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -869,14 +881,14 @@ Postselection
    .. only:: html
 
       .. image:: /figures/output/circuitry_postselection_singlemode_density-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_postselection_singlemode_density-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -896,14 +908,14 @@ Postselection
    .. only:: html
 
       .. image:: /figures/output/circuitry_postselection_multimode_single-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_postselection_multimode_single-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -923,14 +935,14 @@ Postselection
    .. only:: html
 
       .. image:: /figures/output/circuitry_postselection_multimode_upper-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_postselection_multimode_upper-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -950,14 +962,14 @@ Postselection
    .. only:: html
 
       .. image:: /figures/output/circuitry_postselection_multimode_lower-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_postselection_multimode_lower-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -977,14 +989,14 @@ Postselection
    .. only:: html
 
       .. image:: /figures/output/circuitry_postselection_multimode_both-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_postselection_multimode_both-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -994,6 +1006,10 @@ Postselection
       \vspace{1em}
 
   - Note that in most cases, the cap notation will be omitted for simplicity. This is particularly true when the postselection state is pre-defined (i.e., not unknown), and so the associated postselection is unambiguous.
+
+.. raw:: latex
+
+   \newpage
 
 Measurement
 -----------
@@ -1008,14 +1024,14 @@ Measurement
    .. only:: html
 
       .. image:: /figures/output/circuitry_measurement_singlemode_pure-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_measurement_singlemode_pure-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1035,14 +1051,14 @@ Measurement
    .. only:: html
 
       .. image:: /figures/output/circuitry_measurement_singlemode_density-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_measurement_singlemode_density-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1062,14 +1078,14 @@ Measurement
    .. only:: html
 
       .. image:: /figures/output/circuitry_measurement_multimode_single-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_measurement_multimode_single-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1088,14 +1104,14 @@ Measurement
    .. only:: html
 
       .. image:: /figures/output/circuitry_measurement_multimode_upper-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_measurement_multimode_upper-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1115,14 +1131,14 @@ Measurement
    .. only:: html
 
       .. image:: /figures/output/circuitry_measurement_multimode_lower-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_measurement_multimode_lower-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1143,14 +1159,14 @@ Measurement
    .. only:: html
 
       .. image:: /figures/output/circuitry_measurement_multimode_both-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_measurement_multimode_both-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1158,6 +1174,10 @@ Measurement
       
       \end{mdframed}
       \vspace{1em}
+
+.. raw:: latex
+
+   \newpage
 
 - A measurement for which the outcome is discarded (or forgotten) leaves the measured system in a superposition of all post-measurement states corresponding to all measurement operators :math:`\{\StateDensity_i\}`. As this characteristically destroys purity, the post-gate wire of such a discarded measurement operation is visualized using a classical wire:
 
@@ -1169,14 +1189,14 @@ Measurement
    .. only:: html
 
       .. image:: /figures/output/circuitry_measurement_singlemode_discarded-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_measurement_singlemode_discarded-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1195,14 +1215,14 @@ Measurement
    .. only:: html
 
       .. image:: /figures/output/circuitry_measurement_control_equation-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_measurement_control_equation-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1221,14 +1241,14 @@ Measurement
    .. only:: html
 
       .. image:: /figures/output/circuitry_measurement_control_equivalence-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_measurement_control_equivalence-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1247,14 +1267,14 @@ Measurement
    .. only:: html
 
       .. image:: /figures/output/circuitry_measurement_control_deferred-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_measurement_control_deferred-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1278,14 +1298,14 @@ Closed timelike curves
    .. only:: html
 
       .. image:: /figures/output/circuitry_ctc_future-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_ctc_future-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1304,14 +1324,14 @@ Closed timelike curves
    .. only:: html
 
       .. image:: /figures/output/circuitry_ctc_past-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_ctc_past-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1325,6 +1345,10 @@ Closed timelike curves
 List of special gates
 =====================
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 Note that in these examples, :math:`\Dimension` is the dimensionality of the relevant linear operator's underlying Hilbert space.
 
 - :math:`\PauliX` (Pauli-:math:`X`):
@@ -1337,14 +1361,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_pauli_x-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_pauli_x-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1363,14 +1387,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_pauli_y-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_pauli_y-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1389,14 +1413,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_pauli_z-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_pauli_z-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1415,14 +1439,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_not-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_not-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1441,14 +1465,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_sum-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_sum-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1467,14 +1491,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_phase-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_phase-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1493,14 +1517,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_rotation-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_rotation-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1520,14 +1544,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_swap-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_swap-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1546,14 +1570,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_swap_power-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_swap_power-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1572,14 +1596,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_permute-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_permute-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1598,14 +1622,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_hadamard-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_hadamard-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1624,14 +1648,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_fourier-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_fourier-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1650,14 +1674,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_controlled_not-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_controlled_not-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1676,14 +1700,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_controlled_cnot-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_controlled_cnot-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1702,14 +1726,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_controlled_sum-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_controlled_sum-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1728,14 +1752,14 @@ Note that in these examples, :math:`\Dimension` is the dimensionality of the rel
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_controlled_swap-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_controlled_swap-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1757,14 +1781,14 @@ A better understanding of quantum circuitry notation can be gained by studying a
    .. only:: html
 
       .. image:: /figures/output/circuitry_example_singlemode_simplest-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_example_singlemode_simplest-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1785,14 +1809,14 @@ If we were to place a gate corresponding to an arbitrary unitary operator :math:
    .. only:: html
 
       .. image:: /figures/output/circuitry_example_singlemode_density-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_example_singlemode_density-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1801,7 +1825,7 @@ If we were to place a gate corresponding to an arbitrary unitary operator :math:
       \end{mdframed}
       \vspace{1em}
 
-In the case of a pure (vector) input state, the circuit is simply:
+For a pure (vector) input state, the circuit is simply:
 
    .. raw:: latex
       
@@ -1811,14 +1835,14 @@ In the case of a pure (vector) input state, the circuit is simply:
    .. only:: html
 
       .. image:: /figures/output/circuitry_example_singlemode_pure-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_example_singlemode_pure-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1826,6 +1850,10 @@ In the case of a pure (vector) input state, the circuit is simply:
       
       \end{mdframed}
       \vspace{1em}
+
+.. raw:: latex
+
+   \newpage
 
 In this case, we could, without loss of generality, denote the output state with a vector state (such as :math:`\ket{\StateVector^\prime} = \Unitary\ket{\StateVector}`, equivalent to :math:`\StateDensity^\prime = \ket{\StateVector^\prime}\bra{\StateVector^\prime}`), since the action of the (linear transformation) unitary gate preserves the purity of the systems on which it acts. Note that this is not true in general for all circuits; (non-unitary) operations like the (partial) trace do not necessarily preserve the purity of a particular system, and so the output states cannot always be denoted by vector states, even if the input states are pure.
 
@@ -1839,14 +1867,14 @@ More interesting cases are those of multipartite systems. For instance, the evol
    .. only:: html
 
       .. image:: /figures/output/circuitry_example_multimode_nonseparable_single-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_example_multimode_nonseparable_single-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1865,14 +1893,14 @@ The evolution of the same state under parallel operations appears as:
    .. only:: html
 
       .. image:: /figures/output/circuitry_example_multimode_nonseparable_parallel-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_example_multimode_nonseparable_parallel-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1891,14 +1919,14 @@ In the case where the input state is explicitly separable, we write:
    .. only:: html
 
       .. image:: /figures/output/circuitry_example_multimode_separable_single-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_example_multimode_separable_single-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1917,14 +1945,14 @@ Due to the input state's separability, the mathematics corresponding to parallel
    .. only:: html
 
       .. image:: /figures/output/circuitry_example_multimode_separable_parallel-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_example_multimode_separable_parallel-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1953,14 +1981,14 @@ Note that our description of quantum circuits thus far has considered quantum pr
    .. only:: html
 
       .. image:: /figures/output/circuitry_example_vector-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_example_vector-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 
@@ -1979,14 +2007,14 @@ which is purely a vector description. In our combined matrix and vector formalis
    .. only:: html
 
       .. image:: /figures/output/circuitry_example_matrix-dark.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_example_matrix-light.png
-         :scale: 36 %
+         :scale: 34 %
          :align: left
          :class: only-light
 

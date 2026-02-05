@@ -30,11 +30,11 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ea780ccc" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=d4d32e97" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=b063fbe0" />
     <link rel="stylesheet" type="text/css" href="../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -70,7 +70,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 01, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 06, 2026"/>
   </head>
   
   
@@ -498,24 +498,25 @@
 </section>
 <p>In this part, detailed documentation of the Qhronology package is presented. This includes in-depth descriptions of the package’s various submodules and their respective functions and classes (including all methods and properties). Numerous usage examples of many of the most important objects are also provided. Note however that only the components of the package which are intended to be used by the end user are included here. For the other, undocumented modules, please see the relevant parts of the package’s source code.</p>
 <p class="rubric"><span class="classheader1">Quantum</span></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">quantum</span></code> subpackage contains most of Qhronology’s underlying mathematical framework and its user-facing classes.</p>
+<p>The <code class="code highlight python docutils literal highlight-python"><span class="n">quantum</span></code> subpackage contains most of Qhronology’s underlying mathematical framework and its user-facing classes.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">Overview of Qhronology’s <code class="docutils literal notranslate"><span class="pre">quantum</span></code> subpackage</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Overview of Qhronology’s <code class="code highlight python docutils literal highlight-python"><span class="n">quantum</span></code> subpackage</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 25.0%" />
-<col style="width: 41.7%" />
+<col style="width: 21.7%" />
+<col style="width: 45.0%" />
 <col style="width: 33.3%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Module</p></th>
-<th class="head"><p>Contents</p></th>
-<th class="head"><p>Objects</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Module</strong></p></th>
+<th class="head"><p><strong>Contents</strong></p></th>
+<th class="head"><p><strong>Objects</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">states.py</span></code></p></td>
+<tr class="row-even"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">states</span><span class="o">.</span><span class="n">py</span></code></p></td>
 <td><p>Classes for the creation of quantum states.</p></td>
 <td><div class="line-block">
+<div class="line"></div>
 <div class="line"><strong>Main class:</strong></div>
 <div class="line"><a class="reference internal" href="quantum/states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a></div>
 <div class="line"><strong>Subclasses:</strong></div>
@@ -526,9 +527,10 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gates.py</span></code></p></td>
+<tr class="row-odd"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">gates</span><span class="o">.</span><span class="n">py</span></code></p></td>
 <td><p>Classes for the creation of quantum gates.</p></td>
 <td><div class="line-block">
+<div class="line"></div>
 <div class="line"><strong>Main class:</strong></div>
 <div class="line"><a class="reference internal" href="quantum/gates.html#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a></div>
 <div class="line"><strong>Subclasses:</strong></div>
@@ -549,17 +551,24 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">circuits.py</span></code></p></td>
+<tr class="row-even"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">circuits</span><span class="o">.</span><span class="n">py</span></code></p></td>
 <td><p>A class for the creation of quantum circuits.</p></td>
 <td><div class="line-block">
+<div class="line"></div>
 <div class="line"><strong>Class:</strong></div>
 <div class="line"><a class="reference internal" href="quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit" title="qhronology.quantum.circuits.QuantumCircuit"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">prescriptions.py</span></code></p></td>
-<td><p>A class for the creation of quantum circuits containing closed timelike curves. Classes and functions implementing quantum prescriptions of time travel.</p></td>
+<tr class="row-odd"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">prescriptions</span><span class="o">.</span><span class="n">py</span></code></p></td>
 <td><div class="line-block">
+<div class="line"></div>
+<div class="line">A class for the creation of quantum circuits containing closed timelike curves.</div>
+<div class="line">Classes and functions implementing quantum prescriptions of time travel.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"></div>
 <div class="line"><strong>Main class:</strong></div>
 <div class="line"><a class="reference internal" href="quantum/prescriptions.html#qhronology.quantum.prescriptions.QuantumCTC" title="qhronology.quantum.prescriptions.QuantumCTC"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCTC</span></code></a></div>
 <div class="line"><strong>Subclasses:</strong></div>
@@ -577,24 +586,25 @@
 </table>
 </div>
 <p class="rubric"><span class="classheader1">Mechanics</span></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">mechanics</span></code> subpackage contains Qhronology’s core logic for creating fundamental quantum objects, performing operations on them, and computing various quantum-mechanical scalar quantities.</p>
+<p>The <code class="code highlight python docutils literal highlight-python"><span class="n">mechanics</span></code> subpackage contains Qhronology’s core logic for creating fundamental quantum objects, performing operations on them, and computing various quantum-mechanical scalar quantities.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Overview of Qhronology’s <code class="docutils literal notranslate"><span class="pre">mechanics</span></code> subpackage</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Overview of Qhronology’s <code class="code highlight python docutils literal highlight-python"><span class="n">mechanics</span></code> subpackage</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 25.0%" />
-<col style="width: 41.7%" />
+<col style="width: 21.7%" />
+<col style="width: 45.0%" />
 <col style="width: 33.3%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Module</p></th>
-<th class="head"><p>Contents</p></th>
-<th class="head"><p>Objects</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Module</strong></p></th>
+<th class="head"><p><strong>Contents</strong></p></th>
+<th class="head"><p><strong>Objects</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">matrices.py</span></code></p></td>
+<tr class="row-even"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">matrices</span><span class="o">.</span><span class="n">py</span></code></p></td>
 <td><p>Core functions for creating quantum vectors and matrices.</p></td>
 <td><div class="line-block">
+<div class="line"></div>
 <div class="line"><strong>Functions:</strong></div>
 <div class="line"><a class="reference internal" href="mechanics/matrices.html#qhronology.mechanics.matrices.vector_basis" title="qhronology.mechanics.matrices.vector_basis"><code class="xref py py-func docutils literal notranslate"><span class="pre">vector_basis()</span></code></a></div>
 <div class="line"><a class="reference internal" href="mechanics/matrices.html#qhronology.mechanics.matrices.ket" title="qhronology.mechanics.matrices.ket"><code class="xref py py-func docutils literal notranslate"><span class="pre">ket()</span></code></a></div>
@@ -608,9 +618,15 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">quantities.py</span></code></p></td>
-<td><p>Functions for computing quantum quantities from matrices. A mixin for endowing compatible classes with the ability to calculate these quantities.</p></td>
+<tr class="row-odd"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">quantities</span><span class="o">.</span><span class="n">py</span></code></p></td>
 <td><div class="line-block">
+<div class="line"></div>
+<div class="line">Functions for computing quantum quantities from matrices.</div>
+<div class="line">A mixin for endowing compatible classes with the ability to calculate these quantities.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"></div>
 <div class="line"><strong>Functions:</strong></div>
 <div class="line"><a class="reference internal" href="mechanics/quantities.html#qhronology.mechanics.quantities.trace" title="qhronology.mechanics.quantities.trace"><code class="xref py py-func docutils literal notranslate"><span class="pre">trace()</span></code></a></div>
 <div class="line"><a class="reference internal" href="mechanics/quantities.html#qhronology.mechanics.quantities.purity" title="qhronology.mechanics.quantities.purity"><code class="xref py py-func docutils literal notranslate"><span class="pre">purity()</span></code></a></div>
@@ -623,9 +639,15 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">operations.py</span></code></p></td>
-<td><p>Functions for performing quantum operations on matrices. A mixin for endowing compatible classes with the ability to perform these operations.</p></td>
+<tr class="row-even"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">operations</span><span class="o">.</span><span class="n">py</span></code></p></td>
 <td><div class="line-block">
+<div class="line"></div>
+<div class="line">Functions for performing quantum operations on matrices.</div>
+<div class="line">A mixin for endowing compatible classes with the ability to perform these operations.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"></div>
 <div class="line"><strong>Functions:</strong></div>
 <div class="line"><a class="reference internal" href="mechanics/operations.html#qhronology.mechanics.operations.densify" title="qhronology.mechanics.operations.densify"><code class="xref py py-func docutils literal notranslate"><span class="pre">densify()</span></code></a></div>
 <div class="line"><a class="reference internal" href="mechanics/operations.html#qhronology.mechanics.operations.columnify" title="qhronology.mechanics.operations.columnify"><code class="xref py py-func docutils literal notranslate"><span class="pre">columnify()</span></code></a></div>
@@ -649,22 +671,22 @@
 <p class="rubric"><span class="classheader1">Structure</span></p>
 <p>For reference, a structure diagram detailing the relationships between Qhronology’s classes in the standard UML (Unified Modelling Language) framework is depicted in <a class="reference internal" href="#fig-diagram-classes"><span class="std std-numref">Figure 7</span></a>.</p>
 <figure class="only-dark align-center" style="width: 100%">
-<a class="reference internal image-reference" href="../../_images/diagram_classes-dark.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../_images/diagram_classes-dark.png" style="width: 609.12px; height: 1029.96px;" />
+<a class="reference internal image-reference" href="../../_images/diagram_classes-dark.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../_images/diagram_classes-dark.png" style="width: 575.2800000000001px; height: 972.7400000000001px;" />
 </a>
 </figure>
 <figure class="only-light align-center" style="width: 100%">
-<a class="reference internal image-reference" href="../../_images/diagram_classes-light.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../_images/diagram_classes-light.png" style="width: 609.12px; height: 1029.96px;" />
+<a class="reference internal image-reference" href="../../_images/diagram_classes-light.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../_images/diagram_classes-light.png" style="width: 575.2800000000001px; height: 972.7400000000001px;" />
 </a>
 </figure>
 <figure class="light-dark hidden align-center" id="fig-diagram-classes" style="width: 100%">
-<a class="reference internal image-reference" href="../../_images/diagram_classes-light.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../_images/diagram_classes-light.png" style="width: 609.12px; height: 1029.96px;" />
+<a class="reference internal image-reference" href="../../_images/diagram_classes-light.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../_images/diagram_classes-light.png" style="width: 575.2800000000001px; height: 972.7400000000001px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 7 </span><span class="caption-text">The (inheritance) relationships between the package’s classes.</span><a class="headerlink" href="#fig-diagram-classes" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p class="rubric"><span class="classheader1">Types</span></p>
-<p>Qhronology’s underlying functionality takes advantage of a few bespoke type aliases, which are detailed in the table below.</p>
+<p>Qhronology’s underlying functionality takes advantage of a few bespoke type aliases, which are summarized in the table below.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
 <caption><span class="caption-number">Table 3 </span><span class="caption-text">Internal type aliases</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
@@ -673,27 +695,27 @@
 <col style="width: 61.5%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Type Alias</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Definition</p></th>
+<tr class="row-odd"><th class="head"><p><strong>Alias</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Definition</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">num</span></code></p></td>
+<tr class="row-even"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">num</span></code></p></td>
 <td><p>Scalar numerical numbers</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">numbers.Number</span> <span class="pre">|</span> <span class="pre">numpy.generic</span> <span class="pre">|</span> <span class="pre">sympy.Basic</span></code></p></td>
+<td><p><code class="code highlight python docutils literal highlight-python"><span class="n">numbers</span><span class="o">.</span><span class="n">Number</span> <span class="o">|</span> <span class="n">numpy</span><span class="o">.</span><span class="n">generic</span> <span class="o">|</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Basic</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sym</span></code></p></td>
+<tr class="row-odd"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">sym</span></code></p></td>
 <td><p>SymPy symbolic scalar expressions and symbols</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sympy.matrices.expressions.matexpr.MatrixSymbol</span> <span class="pre">|</span> <span class="pre">sympy.matrices.expressions.matexpr.MatrixElement</span> <span class="pre">|</span> <span class="pre">sympy.core.symbol.Symbol</span></code></p></td>
+<td><p><code class="code highlight python docutils literal highlight-python"><span class="n">sympy</span><span class="o">.</span><span class="n">matrices</span><span class="o">.</span><span class="n">expressions</span><span class="o">.</span><span class="n">matexpr</span><span class="o">.</span><span class="n">MatrixSymbol</span> <span class="o">|</span> <span class="n">sympy</span><span class="o">.</span><span class="n">matrices</span><span class="o">.</span><span class="n">expressions</span><span class="o">.</span><span class="n">matexpr</span><span class="o">.</span><span class="n">MatrixElement</span> <span class="o">|</span> <span class="n">sympy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">Symbol</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mat</span></code></p></td>
+<tr class="row-even"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">mat</span></code></p></td>
 <td><p>SymPy (mutable) dense matrices</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sympy.matrices.dense.MutableDenseMatrix</span></code></p></td>
+<td><p><code class="code highlight python docutils literal highlight-python"><span class="n">sympy</span><span class="o">.</span><span class="n">matrices</span><span class="o">.</span><span class="n">dense</span><span class="o">.</span><span class="n">MutableDenseMatrix</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">arr</span></code></p></td>
+<tr class="row-odd"><td><p><code class="code highlight python docutils literal highlight-python"><span class="n">arr</span></code></p></td>
 <td><p>NumPy arrays</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p></td>
+<td><p><code class="code highlight python docutils literal highlight-python"><span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span></code></p></td>
 </tr>
 </tbody>
 </table>

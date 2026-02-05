@@ -2,6 +2,15 @@
    To use, import this file via the include directive, e.g.:
    .. include:: /styles.rst
 
+.. role:: inlinelatex(raw)
+   :format: latex
+
+.. role:: python(code)
+   :language: python
+
+.. role:: sh(code)
+   :language: sh
+
 .. role:: styleheader0
    :class: classheader0
 

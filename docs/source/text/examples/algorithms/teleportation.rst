@@ -13,14 +13,14 @@ Note that in the process of teleporting the state, the original is destroyed, an
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_teleportation-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum teleportation protocol.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_teleportation-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum teleportation protocol.
       :align: center
       :figwidth: 100 %
@@ -28,7 +28,7 @@ Note that in the process of teleporting the state, the original is destroyed, an
 
 .. figure:: /figures/output/circuit_algorithm_teleportation-light.png
    :name: fig:circuit_algorithm_teleportation
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of a quantum teleportation protocol.
    :align: center
    :figwidth: 100 %
@@ -39,10 +39,18 @@ Note that in the process of teleporting the state, the original is destroyed, an
 Implementation
 --------------
 
+.. raw:: latex
+
+   \begin{codetitled}{Quantum teleportation}{}
+
 .. literalinclude:: /text/examples/algorithms/teleportation.py
    :name: code:teleportation
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -50,16 +58,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> teleporter.diagram(force_separation=True)
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_teleportation.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -68,43 +80,74 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_teleportation-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> teleporting_state.print()
    |ψ⟩ = a|0⟩ + b|1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> teleported_state.print()
    ρ = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
 
+.. raw:: latex
+
+   \end{code}
+
 Results
 ^^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> teleporting_state.distance(teleported_state)
    0
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> teleporting_state.fidelity(teleported_state)
    1
+
+.. raw:: latex
+
+   \end{code}
 
 .. only:: html
 

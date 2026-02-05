@@ -150,7 +150,7 @@ bibtex_default_style = "phys"
 
 numfig = True
 numfig_format = {
-    "code-block": "Listing %s",
+    "code-block": "Code Block %s",
     "figure": "Figure %s",
     "section": "Section %s",
     "table": "Table %s",
@@ -270,6 +270,8 @@ Read the full license here:
 
 \widowpenalty=10000
 
+\usepackage{fvextra}
+
 % \definecolor{accentcolor}{HTML}{224499}
 % \definecolor{accentcolor}{HTML}{005AAA}
 \definecolor{accentcolor}{HTML}{2266C0}
@@ -312,7 +314,7 @@ Read the full license here:
 \usepackage{mlmodern}
 
 % ttfamily (code, monospace, verbatim)
-\usepackage[scaled=0.85]{sourcecodepro}
+\usepackage[scaled=0.84]{sourcecodepro}
 %\usepackage[scaled=0.85,lining]{FiraMono}
 %\usepackage[scaled=0.85]{beramono}
 %\usepackage{ascii}
@@ -466,10 +468,10 @@ Read the full license here:
 {\sffamily\large\bfseries}{\thesubsection}{1em}{#1}
 \titleformat{\subsubsection}
 {\sffamily\large\bfseries}{\thesubsubsection}{1em}{#1}
-\titleformat{\paragraph}[runin]
+\titleformat{\paragraph}
 {\sffamily\large\bfseries}{\theparagraph}{1em}{#1}
-\titleformat{\subparagraph}[runin]
-{\sffamily\large\bfseries}{\thesubparagraph}{1em}{#1}
+\titleformat{\subparagraph}
+{\sffamily\normalsize\bfseries}{\thesubparagraph}{1em}{#1}
 
 \titlespacing*{\section}{0pt}{16pt}{10pt}
 \titlespacing*{\subsection}{0pt}{12pt}{8pt}
@@ -654,6 +656,120 @@ Read the full license here:
 
 \renewcommand{\sphinxtableofcontentshook}{}% else it will overwrite tocloft!
 
+\captionsetup{labelfont={small,bf,sf},textfont={small}}
+\captionsetup[subfigure]{justification=justified}
+
+\renewcommand\sphinxcaption{\caption}
+
+\newcommand{\py}[1]{\textcolor{color_keywords}{\textbf{\texttt{#1}}}}
+
+\definecolor{colorbackground}{HTML}{F5F5F5}
+\definecolor{colorcomment}{HTML}{699ADA}
+\definecolor{colorprimary}{HTML}{224499}
+\definecolor{colorlogo}{HTML}{003989}
+
+% From class diagram.
+\definecolor{darkerblue}{HTML}{003989}
+\definecolor{darkblue}{HTML}{224499}
+\definecolor{lightblue}{HTML}{E3F0FF}
+% \definecolor{lightblue}{HTML}{DCE7FC}
+
+\usepackage[skins,breakable]{tcolorbox}
+
+\newtcolorbox[auto counter]{code}[1][]{
+enhanced,
+breakable,
+segmentation at break=true,
+before skip balanced=0.35\baselineskip + 2pt,
+after skip balanced=0.35\baselineskip + 2pt,
+arc=0mm,
+outer arc=0mm,
+boxrule=0.2mm,
+boxsep=0cm,
+toptitle=0.1cm,
+bottomtitle=0.1cm,
+lefttitle=0.1cm,
+righttitle=0.1cm,
+top=0.23cm,
+bottom=0.23cm,
+leftupper=0.3cm,
+rightupper=0.2cm, % + \tcboxedtitlewidth,
+leftlower=0.3cm,
+rightlower=0.2cm, % + \tcboxedtitlewidth,
+colback=colorbackground,
+colframe=colorprimary,
+colbacktitle=colorprimary,
+coltitle=white,
+fonttitle=\ttfamily,
+attach boxed title to top right={yshift=-\tcboxedtitleheight},
+boxed title style={
+arc=0mm,
+outer arc=0mm,
+boxrule=0mm,
+boxsep=0cm,
+top=0.125cm,
+bottom=0.125cm,
+left=0.075cm,
+right=0.075cm,
+opacityframe=0,
+},
+segmentation style={
+draw=colorprimary,
+solid,
+line width=0.4mm,
+% decoration={
+% snake,
+% pre length=1mm,
+% post length=1mm,
+% segment length=6mm,
+% amplitude=0.35mm,
+% },
+% decorate,
+postaction={decoration={text effects along path, text align={left indent=0em}, text color=colorprimary, text format delimiters={[}{]}, text={OUTPUT},
+text effects/.cd, path from text, group letters, every word separator/.style={fill=none}, characters={fill=colorprimary, xshift=0em, yshift=-0.2cm, font=\ttfamily\bfseries\color{colorbackground}},
+}, decorate},
+},
+% underlay first={
+% \node[minimum width=1cm,minimum height=0.5cm,outer sep=auto,
+% anchor=north east,fill=white] at ([yshift=-2*\tcboxedtitleheight]interior.north east)
+% {\ttfamily\Huge\thetcbcounter};
+% },
+% underlay last={
+% \node[minimum width=1cm,minimum height=0.5cm,outer sep=auto,
+% anchor=north east,fill=white] at ([yshift=-\tcboverlaplower]segmentation.north east)
+% {\itshape\small lower};
+% },
+title={\thetcbcounter},
+#1
+}
+
+\newenvironment{codetitled}[2]{
+\begin{code}[
+title={\textsf{\textbf{\textit{\small #1}}} \hfill \thetcbcounter},
+attach boxed title to top right=false,
+attach boxed title to top,
+boxed title style={
+top=0.1cm,
+bottom=0.1cm,
+},
+rightupper=0.2cm,
+rightlower=0.2cm,
+lefttitle=0.075cm,
+righttitle=0.075cm,
+label={#2},
+]}{\end{code}
+}
+
+\makeatletter
+\appto\tcb@use@after@lastbox{\@endparenv\@doendpe}
+\makeatother
+
+\newcommand{\tcblowerspaced}{\vspace{0.00\tcbtextheight}\tcblower\vspace{10.00\tcbtextheight}}
+
+\usepackage{changepage}
+
+\renewcommand{\sphinxSetupCaptionForVerbatim}[1]{}
+
 """,
     "passoptionstopackages": r"""
 \PassOptionsToPackage{final}{hyperref}
@@ -661,17 +777,28 @@ Read the full license here:
 """,
     # \PassOptionsToPackage{footskip=0.75cm}{geometry}
     "sphinxsetup": "TitleColor=black, \
+    hmargin=2.5cm, \
+    vmargin=2.5cm, \
+    marginpar=0cm, \
+    TableRowColorHeader={HTML}{E3F0FF}, \
+    TableRowColorOdd={HTML}{F7F7F7}, \
+    TableRowColorEven={HTML}{EEEEEE}, \
     div.note_border-radius=0px, \
     pre_border-radius=0px, \
-    pre_border-width=0.2mm, \
-    pre_border-TeXcolor={HTML}{224499}, \
-    pre_background-TeXcolor={HTML}{F5F5F5}, \
-    pre_padding=0.25cm, \
+    pre_border-width=0.02mm, \
+    pre_border-TeXcolor={HTML}{F5F5F5}, \
+    pre_background-TeXcolor=red, \
+    pre_padding-top=0.2cm, \
+    pre_padding-bottom=0.2cm, \
+    pre_padding-left=0.0cm, \
+    pre_padding-right=0.0cm, \
+    pre_TeXextras=, \
     noteBorderColor={HTML}{2266C0}, \
     div.note_title-foreground-TeXcolor={HTML}{2266C0}, \
     div.note_title-background-TeXcolor={HTML}{DCE7FC}, \
     verbatimvisiblespace=\\textcolor{color_types}{\\textvisiblespace}, \
     verbatimcontinued=\\makebox[2\\fontcharwd\\font`\\x][r]{\\textcolor{color_types}{\\tiny$\\hookrightarrow$}}, \
+    verbatimwithframe=false, \
     AtStartFootnote=\\mbox{ }, \
     BeforeFootnote=\\leavevmode\\unskip\\enlargethispageonce{0.9\\baselineskip}",
     "fncychap": r"",
@@ -679,6 +806,7 @@ Read the full license here:
 }
 latex_show_urls = "footnote"
 latex_show_pagerefs = True
+latex_table_style = ["booktabs", "colorrows"]
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

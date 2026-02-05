@@ -11,14 +11,14 @@ An iSWAP (imaginary-SWAP) gate is a simply a SWAP gate in which any pair of stat
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_iswap-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the construction of the iSWAP gate.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_iswap-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the construction of the iSWAP gate.
       :align: center
       :figwidth: 100 %
@@ -26,7 +26,7 @@ An iSWAP (imaginary-SWAP) gate is a simply a SWAP gate in which any pair of stat
 
 .. figure:: /figures/output/circuit_algorithm_iswap-light.png
    :name: fig:circuit_algorithm_iswap
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of the construction of the iSWAP gate.
    :align: center
    :figwidth: 100 %
@@ -34,13 +34,25 @@ An iSWAP (imaginary-SWAP) gate is a simply a SWAP gate in which any pair of stat
 
    One possible construction of the iSWAP gate.
 
+.. raw:: latex
+
+   \enlargethispage{-1\baselineskip}
+
 Implementation
 --------------
+
+.. raw:: latex
+
+   \begin{codetitled}{iSWAP (imaginary-SWAP)}{}
 
 .. literalinclude:: /text/examples/algorithms/iswap.py
    :name: code:iswap
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -48,16 +60,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> iswap.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_iswap.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -66,20 +82,23 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_iswap-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 Gate
 ^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
@@ -90,18 +109,38 @@ Gate
    [0, I, 0, 0],
    [0, 0, 0, 1]])
 
+.. raw:: latex
+
+   \end{code}
+
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> input_state.print()
    |ψ,φ⟩ = a*c|0,0⟩ + a*d|0,1⟩ + b*c|1,0⟩ + b*d|1,1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> output_state.print()
    |(ψ,φ)′⟩ = a*c|0,0⟩ + I*b*c|0,1⟩ + I*a*d|1,0⟩ + b*d|1,1⟩
+
+.. raw:: latex
+
+   \end{code}
 
 .. raw:: latex
    

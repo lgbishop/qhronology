@@ -12,14 +12,14 @@ One of the main results of Deutsch's work on time travel is the proposal for the
 .. only:: html
 
    .. figure:: /figures/output/circuit_ctc_dctc-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of Deutsch's model of quantum time travel.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_ctc_dctc-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of Deutsch's model of quantum time travel.
       :align: center
       :figwidth: 100 %
@@ -27,7 +27,7 @@ One of the main results of Deutsch's work on time travel is the proposal for the
 
 .. figure:: /figures/output/circuit_ctc_dctc-light.png
    :name: fig:circuit_ctc_dctc
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of Deutsch's model of quantum time travel.
    :align: center
    :figwidth: 100 %
@@ -35,12 +35,12 @@ One of the main results of Deutsch's work on time travel is the proposal for the
 
    Deutsch's model of quantum time travel. Note that the depiction of the interaction between chronology-respecting (CR, upper) and chronology-violating (CV, lower) systems as shown here is standard way of visualizing any circuit with CTCs.
 
-The mathematical formulation of the self-consistent evolution of a quantum state through a region with a time machine is provided by requiring that any given chronology-violating (CV) system enters the CTC in the state
+The mathematical formulation of the self-consistent evolution of a quantum state through a region with a time machine is provided by requiring that any given CV system enters the CTC in the state
 
 .. math:: \StateCV \in \SpaceMixed(\SpaceHilbert_\CV),
    :label: eq:state_CV
 
-and then emerges in the past in the same state despite having interacted with a chronology-respecting (CR) system in the state
+and then emerges in the past in the same state despite having interacted with a CR system in the state
 
 .. math:: \StateCR \in \SpaceMixed(\SpaceHilbert_\CR)
    :label: eq:state_CR
@@ -111,14 +111,14 @@ In 2010, Ralph and Myers introduced their equivalent-circuit picture (ECP) :cite
 .. only:: html
 
    .. figure:: /figures/output/circuit_ctc_dctc_ecp-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the equivalent-circuit picture of a D-CTC.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_ctc_dctc_ecp-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the equivalent-circuit picture of a D-CTC.
       :align: center
       :figwidth: 100 %
@@ -126,7 +126,7 @@ In 2010, Ralph and Myers introduced their equivalent-circuit picture (ECP) :cite
 
 .. figure:: /figures/output/circuit_ctc_dctc_ecp-light.png
    :name: fig:circuit_ctc_dctc_ecp
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of the equivalent-circuit picture of a D-CTC.
    :align: center
    :figwidth: 100 %

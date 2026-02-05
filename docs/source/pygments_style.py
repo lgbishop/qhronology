@@ -1,15 +1,15 @@
-"""
+'''
     Custom styles for the Qhronology project.
-"""
+'''
 
 from pygments.style import Style
 from pygments.token import Keyword, Name, Comment, String, Error, \
      Number, Operator, Generic, Whitespace
 
 class QhronologyLightStyle(Style):
-    """
+    '''
     A custom light-theme style for the Qhronology project.
-    """
+    '''
     name = 'qhronology-light'
 
     styles = {
@@ -27,32 +27,33 @@ class QhronologyLightStyle(Style):
         # String:                 '#00a1bb',
         String:                 '#008A8A',
         # String.Char:            '#800080',
-        String.Doc:             "#2266C0",
-        # String.Interpol:        "bold #BB6688",
-        # String.Escape:          "bold #BB6622",
-        # String.Regex:           "#BB6688",
-        # String.Symbol:          "#B8860B",
-        # String.Other:           "#008000",
+        String.Doc:             '#2266C0',
+        # String.Interpol:        'bold #BB6688',
+        # String.Escape:          'bold #BB6622',
+        # String.Regex:           '#BB6688',
+        # String.Symbol:          '#B8860B',
+        # String.Other:           '#008000',
         Number:                 '#B10061',
         Keyword:                'bold #224499',
-        # Keyword.Pseudo:         "nobold",
-        # Keyword.Type:           "bold #00BB00",
-        # Operator:               "#666666",
+        # Keyword.Pseudo:         'nobold',
+        # Keyword.Type:           'bold #00BB00',
+        Operator:               '#696969',
         Operator.Word:          'bold #002569',
+        # Name:                   '#7000CC',
         Name.Tag:               'bold #002569',
         Name.Attribute:         '#FF0000',
-        # Name.Builtin:           "#AA22FF",
-        # Name.Function:          "#00A000",
-        Name.Class:             'bold #FF2550',
-        Name.Namespace:         "bold #0066C0",
-        # Name.Exception:         "bold #D2413A",
-        # Name.Variable:          "#B8860B",
-        # Name.Constant:          "#880000",
-        # Name.Label:             "#A0A000",
-        # Name.Entity:            "bold #999999",
-        # Name.Attribute:         "#BB4444",
-        # Name.Tag:               "bold #008000",
-        Name.Decorator:         "italic #9933CC",
+        # Name.Builtin:           '#AA22FF',
+        Name.Function:          '#7000CC',
+        Name.Class:             'bold #7000CC',
+        Name.Namespace:         'bold #0066C0',
+        # Name.Exception:         'bold #D2413A',
+        Name.Variable:          '#7000CC',
+        Name.Constant:          'bold #0066C0',
+        # Name.Label:             '#A0A000',
+        # Name.Entity:            'bold #999999',
+        Name.Attribute:         'bold #0066C0',
+        # Name.Tag:               'bold #008000',
+        Name.Decorator:         'italic #9933CC',
 
         Generic.Heading:        '#999999',
         Generic.Subheading:     '#aaaaaa',

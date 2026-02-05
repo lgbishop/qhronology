@@ -11,14 +11,14 @@ This example builds upon the four-qubit ripple-carry adder in :ref:`eg:adder_rip
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_adder_ripple_iterative-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of one iteration of a multi-qubit quantum ripple-carry adder.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_adder_ripple_iterative-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of one iteration of a multi-qubit quantum ripple-carry adder.
       :align: center
       :figwidth: 100 %
@@ -26,7 +26,7 @@ This example builds upon the four-qubit ripple-carry adder in :ref:`eg:adder_rip
 
 .. figure:: /figures/output/circuit_algorithm_adder_ripple_iterative-light.png
    :name: fig:circuit_algorithm_adder_ripple_iterative
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of one iteration of a multi-qubit quantum ripple-carry adder.
    :align: center
    :figwidth: 100 %
@@ -39,10 +39,18 @@ Implementation
 
 In this example, each qubit in the uppermost set on the diagram corresponds to the leftmost (most-significant) qubit in their respective encoded state, while each qubit in the lowermost set similarly corresponds to the rightmost (least-significant) qubit.
 
+.. raw:: latex
+
+   \begin{codetitled}{Ripple-carry adder (iterative)}{}
+
 .. literalinclude:: /text/examples/algorithms/adder_ripple_iterative.py
    :name: code:adder_ripple_iterative
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -50,16 +58,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> adder.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_ripple_iterative.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -68,48 +80,87 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_ripple_iterative-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> augend_state.print()
    |x⟩ = |0,0,0,1,1,1,1,1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> addend_state.print()
    |y⟩ = |1,1,0,1,1,0,0,1⟩
+
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> sum_state.print()
    |s⟩ = |1,1,1,1,1,0,0,0⟩
 
+.. raw:: latex
+
+   \end{code}
+
 Results
 ^^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> print(computation)
    Computation: 31 + 217 = 248
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> print(duration)
    Duration: 3.264 seconds
+
+.. raw:: latex
+
+   \end{code}
 
 Much faster and for much larger numbers than the linear implementation in :ref:`eg:adder_ripple`.
 

@@ -118,14 +118,14 @@ Here we show how a CR system state :math:`\StateCR\in\SpaceHilbert_\CR` in the D
 .. only:: html
 
    .. figure:: /figures/output/circuit_ctc_pctc-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the postselected teleportation model of quantum time travel.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_ctc_pctc-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the postselected teleportation model of quantum time travel.
       :align: center
       :figwidth: 100 %
@@ -133,7 +133,7 @@ Here we show how a CR system state :math:`\StateCR\in\SpaceHilbert_\CR` in the D
 
 .. figure:: /figures/output/circuit_ctc_pctc-light.png
    :name: fig:circuit_ctc_pctc
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of the postselected teleportation model of quantum time travel.
    :align: center
    :figwidth: 100 %

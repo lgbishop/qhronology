@@ -51,27 +51,29 @@ In this part, detailed documentation of the Qhronology package is presented. Thi
 
 .. rubric:: :styleheader1:`Quantum`
 
-The ``quantum`` subpackage contains most of Qhronology's underlying mathematical framework and its user-facing classes.
+The :python:`quantum` subpackage contains most of Qhronology's underlying mathematical framework and its user-facing classes.
 
-.. list-table:: Overview of Qhronology's ``quantum`` subpackage
-   :widths: 15 25 20
+.. list-table:: Overview of Qhronology's :python:`quantum` subpackage
+   :widths: 13 27 20
    :header-rows: 1
 
-   * - Module
-     - Contents
-     - Objects
-   * - ``states.py``
+   * - **Module**
+     - **Contents**
+     - **Objects**
+   * - :python:`states.py`
      - Classes for the creation of quantum states.
-     - | **Main class:**
+     - | :inlinelatex:`\vspace{-2\baselineskip}`
+       | **Main class:**
        | :py:class:`~qhronology.quantum.states.QuantumState`
        | **Subclasses:**
        | :py:class:`~qhronology.quantum.states.VectorState`
        | :py:class:`~qhronology.quantum.states.MatrixState`
        | :py:class:`~qhronology.quantum.states.PureState`
        | :py:class:`~qhronology.quantum.states.MixedState`
-   * - ``gates.py``
+   * - :python:`gates.py`
      - Classes for the creation of quantum gates.
-     - | **Main class:**
+     - | :inlinelatex:`\vspace{-2\baselineskip}`
+       | **Main class:**
        | :py:class:`~qhronology.quantum.gates.QuantumGate`
        | **Subclasses:**
        | :py:class:`~qhronology.quantum.gates.Pauli`
@@ -88,13 +90,17 @@ The ``quantum`` subpackage contains most of Qhronology's underlying mathematical
        | **Combining gates:**
        | :py:class:`~qhronology.quantum.gates.GateInterleave`
        | :py:class:`~qhronology.quantum.gates.GateStack`
-   * - ``circuits.py``
+   * - :python:`circuits.py`
      - A class for the creation of quantum circuits.
-     - | **Class:**
+     - | :inlinelatex:`\vspace{-2\baselineskip}`
+       | **Class:**
        | :py:class:`~qhronology.quantum.circuits.QuantumCircuit`
-   * - ``prescriptions.py``
-     - A class for the creation of quantum circuits containing closed timelike curves. Classes and functions implementing quantum prescriptions of time travel.
-     - | **Main class:**
+   * - :python:`prescriptions.py`
+     - | :inlinelatex:`\vspace{-2\baselineskip}`
+       | A class for the creation of quantum circuits containing closed timelike curves.
+       | Classes and functions implementing quantum prescriptions of time travel.
+     - | :inlinelatex:`\vspace{-2\baselineskip}`
+       | **Main class:**
        | :py:class:`~qhronology.quantum.prescriptions.QuantumCTC`
        | **Subclasses:**
        | :py:class:`~qhronology.quantum.prescriptions.DCTC`
@@ -111,18 +117,19 @@ The ``quantum`` subpackage contains most of Qhronology's underlying mathematical
 
 .. rubric:: :styleheader1:`Mechanics`
 
-The ``mechanics`` subpackage contains Qhronology's core logic for creating fundamental quantum objects, performing operations on them, and computing various quantum-mechanical scalar quantities.
+The :python:`mechanics` subpackage contains Qhronology's core logic for creating fundamental quantum objects, performing operations on them, and computing various quantum-mechanical scalar quantities.
 
-.. list-table:: Overview of Qhronology's ``mechanics`` subpackage
-   :widths: 15 25 20
+.. list-table:: Overview of Qhronology's :python:`mechanics` subpackage
+   :widths: 13 27 20
    :header-rows: 1
 
-   * - Module
-     - Contents
-     - Objects
-   * - ``matrices.py``
+   * - **Module**
+     - **Contents**
+     - **Objects**
+   * - :python:`matrices.py`
      - Core functions for creating quantum vectors and matrices.
-     - | **Functions:**
+     - | :inlinelatex:`\vspace{-2\baselineskip}`
+       | **Functions:**
        | :py:func:`~qhronology.mechanics.matrices.vector_basis`
        | :py:func:`~qhronology.mechanics.matrices.ket`
        | :py:func:`~qhronology.mechanics.matrices.bra`
@@ -132,9 +139,12 @@ The ``mechanics`` subpackage contains Qhronology's core logic for creating funda
        | :py:func:`~qhronology.mechanics.matrices.decode`
        | :py:func:`~qhronology.mechanics.matrices.decode_fast`
        | :py:func:`~qhronology.mechanics.matrices.decode_multiple`
-   * - ``quantities.py``
-     - Functions for computing quantum quantities from matrices. A mixin for endowing compatible classes with the ability to calculate these quantities.
-     - | **Functions:**
+   * - :python:`quantities.py`
+     - | :inlinelatex:`\vspace{-2\baselineskip}`
+       | Functions for computing quantum quantities from matrices.
+       | A mixin for endowing compatible classes with the ability to calculate these quantities.
+     - | :inlinelatex:`\vspace{-2\baselineskip}`
+       | **Functions:**
        | :py:func:`~qhronology.mechanics.quantities.trace`
        | :py:func:`~qhronology.mechanics.quantities.purity`
        | :py:func:`~qhronology.mechanics.quantities.distance`
@@ -143,9 +153,12 @@ The ``mechanics`` subpackage contains Qhronology's core logic for creating funda
        | :py:func:`~qhronology.mechanics.quantities.mutual`
        | **Mixin:**
        | :py:class:`~qhronology.mechanics.quantities.QuantitiesMixin`
-   * - ``operations.py``
-     - Functions for performing quantum operations on matrices. A mixin for endowing compatible classes with the ability to perform these operations.
-     - | **Functions:**
+   * - :python:`operations.py`
+     - | :inlinelatex:`\vspace{-2\baselineskip}`
+       | Functions for performing quantum operations on matrices.
+       | A mixin for endowing compatible classes with the ability to perform these operations.
+     - | :inlinelatex:`\vspace{-2\baselineskip}`
+       | **Functions:**
        | :py:func:`~qhronology.mechanics.operations.densify`
        | :py:func:`~qhronology.mechanics.operations.columnify`
        | :py:func:`~qhronology.mechanics.operations.dagger`
@@ -168,17 +181,21 @@ The ``mechanics`` subpackage contains Qhronology's core logic for creating funda
 
 For reference, a structure diagram detailing the relationships between Qhronology's classes in the standard UML (Unified Modelling Language) framework is depicted in :numref:`fig:diagram_classes`.
 
+.. raw:: latex
+
+   \vspace{\baselineskip}
+
 .. only:: html
 
    .. figure:: /figures/output/diagram_classes-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A simple diagram depicting the (inheritance) relationships between the package's classes.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/diagram_classes-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A simple diagram depicting the (inheritance) relationships between the package's classes.
       :align: center
       :figwidth: 100 %
@@ -186,7 +203,7 @@ For reference, a structure diagram detailing the relationships between Qhronolog
 
 .. figure:: /figures/output/diagram_classes-light.png
    :name: fig:diagram_classes
-   :scale: 36 %
+   :scale: 34 %
    :alt: A simple diagram depicting the (inheritance) relationships between the package's classes.
    :align: center
    :figwidth: 100 %
@@ -200,27 +217,27 @@ For reference, a structure diagram detailing the relationships between Qhronolog
 
 .. rubric:: :styleheader1:`Types`
 
-Qhronology's underlying functionality takes advantage of a few bespoke type aliases, which are detailed in the table below.
+Qhronology's underlying functionality takes advantage of a few bespoke type aliases, which are summarized in the table below.
 
 .. list-table:: Internal type aliases
    :widths: 5 20 40
    :header-rows: 1
 
-   * - Type Alias
-     - Description
-     - Definition
-   * - ``num``
+   * - **Alias**
+     - **Description**
+     - **Definition**
+   * - :python:`num`
      - Scalar numerical numbers
-     - ``numbers.Number | numpy.generic | sympy.Basic``
-   * - ``sym``
+     - :python:`numbers.Number | numpy.generic | sympy.Basic`
+   * - :python:`sym`
      - SymPy symbolic scalar expressions and symbols
-     - ``sympy.matrices.expressions.matexpr.MatrixSymbol | sympy.matrices.expressions.matexpr.MatrixElement | sympy.core.symbol.Symbol``
-   * - ``mat``
+     - :python:`sympy.matrices.expressions.matexpr.MatrixSymbol | sympy.matrices.expressions.matexpr.MatrixElement | sympy.core.symbol.Symbol`
+   * - :python:`mat`
      - SymPy (mutable) dense matrices
-     - ``sympy.matrices.dense.MutableDenseMatrix``
-   * - ``arr``
+     - :python:`sympy.matrices.dense.MutableDenseMatrix`
+   * - :python:`arr`
      - NumPy arrays
-     - ``numpy.ndarray``
+     - :python:`numpy.ndarray`
 
 .. raw:: html
 

@@ -26,9 +26,17 @@ Class
 .. autoclass:: qhronology.quantum.prescriptions.DCTC
    :show-inheritance:
 
+   .. raw:: latex
+
+      \begin{adjustwidth}{0.00cm}{0cm}
+
    .. rubric:: :styleheader6:`Examples`
 
    For usage examples, please see the superclass :py:class:`~qhronology.quantum.prescriptions.QuantumCTC`.
+
+   .. raw:: latex
+
+      \end{adjustwidth}
 
 .. raw:: latex
 
@@ -39,10 +47,6 @@ Class
 Constructor argument properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. raw:: latex
-
-   \hrulefillinvisible
-
 .. autoproperty:: qhronology.quantum.prescriptions.DCTC.free_symbol
 
 .. raw:: latex
@@ -51,10 +55,6 @@ Constructor argument properties
 
 Read-only properties
 ^^^^^^^^^^^^^^^^^^^^
-
-.. raw:: latex
-
-   \hrulefillinvisible
 
 .. autoproperty:: qhronology.quantum.prescriptions.DCTC.matrix
 
@@ -66,10 +66,6 @@ Read-only properties
 
 Methods
 ^^^^^^^
-
-.. raw:: latex
-
-   \hrulefillinvisible
 
 .. automethod:: qhronology.quantum.prescriptions.DCTC.output_violating
 
@@ -88,6 +84,10 @@ Methods
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.prescriptions.DCTC.state_violating
 

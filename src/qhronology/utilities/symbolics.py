@@ -43,34 +43,34 @@ class SymbolicsProperties:
     def symbols(self) -> dict[sym | str, dict[str, Any]]:
         """A dictionary in which the keys are individual symbols (contained within the object's
         matrix representation) and the values are dictionaries of their respective SymPy
-        keyword-argument ``assumptions`` ("predicates").
+        keyword-argument :python:`assumptions` ("predicates").
         A full list of currently supported predicates, and their defaults, is as follows:
 
-        - ``"algebraic"``: ``True``
-        - ``"commutative"``: ``True``
-        - ``"complex"``: ``True``
-        - ``"extended_negative"``: ``False``
-        - ``"extended_nonnegative"``: ``True``
-        - ``"extended_nonpositive"``: ``False``
-        - ``"extended_nonzero"``: ``True``
-        - ``"extended_positive"``: ``True``
-        - ``"extended_real"``: ``True``
-        - ``"finite"``: ``True``
-        - ``"hermitian"``: ``True``
-        - ``"imaginary"``: ``False``
-        - ``"infinite"``: ``False``
-        - ``"integer"``: ``True``
-        - ``"irrational"``: ``False``
-        - ``"negative"``: ``False``
-        - ``"noninteger"``: ``False``
-        - ``"nonnegative"``: ``True``
-        - ``"nonpositive"``: ``False``
-        - ``"nonzero"``: ``True``
-        - ``"positive"``: ``True``
-        - ``"rational"``: ``True``
-        - ``"real"``: ``True``
-        - ``"transcendental"``: ``False``
-        - ``"zero"``: ``False``
+        - :python:`"algebraic"`: :python:`True`
+        - :python:`"commutative"`: :python:`True`
+        - :python:`"complex"`: :python:`True`
+        - :python:`"extended_negative"`: :python:`False`
+        - :python:`"extended_nonnegative"`: :python:`True`
+        - :python:`"extended_nonpositive"`: :python:`False`
+        - :python:`"extended_nonzero"`: :python:`True`
+        - :python:`"extended_positive"`: :python:`True`
+        - :python:`"extended_real"`: :python:`True`
+        - :python:`"finite"`: :python:`True`
+        - :python:`"hermitian"`: :python:`True`
+        - :python:`"imaginary"`: :python:`False`
+        - :python:`"infinite"`: :python:`False`
+        - :python:`"integer"`: :python:`True`
+        - :python:`"irrational"`: :python:`False`
+        - :python:`"negative"`: :python:`False`
+        - :python:`"noninteger"`: :python:`False`
+        - :python:`"nonnegative"`: :python:`True`
+        - :python:`"nonpositive"`: :python:`False`
+        - :python:`"nonzero"`: :python:`True`
+        - :python:`"positive"`: :python:`True`
+        - :python:`"rational"`: :python:`True`
+        - :python:`"real"`: :python:`True`
+        - :python:`"transcendental"`: :python:`False`
+        - :python:`"zero"`: :python:`False`
         """
         return dict(self._symbols)
 

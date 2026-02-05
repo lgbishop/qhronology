@@ -15,14 +15,14 @@ A circuit diagram of a CNOT gate appears in :numref:`fig:circuit_algorithm_cnot`
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_cnot-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a CNOT (controlled-NOT) gate.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_cnot-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a CNOT (controlled-NOT) gate.
       :align: center
       :figwidth: 100 %
@@ -30,7 +30,7 @@ A circuit diagram of a CNOT gate appears in :numref:`fig:circuit_algorithm_cnot`
 
 .. figure:: /figures/output/circuit_algorithm_cnot-light.png
    :name: fig:circuit_algorithm_cnot
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of a CNOT (controlled-NOT) gate.
    :align: center
    :figwidth: 100 %
@@ -84,10 +84,18 @@ Observe how the value of the second system is now the sum of the inputs values (
 Implementation
 --------------
 
+.. raw:: latex
+
+   \begin{codetitled}{CNOT (controlled-NOT)}{}
+
 .. literalinclude:: /text/examples/algorithms/cnot.py
    :name: code:cnot
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -95,16 +103,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> circuit.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_cnot.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -113,35 +125,59 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_cnot-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> first_state.print()
    |x⟩ = a|0⟩ + b|1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> second_state.print()
    |y⟩ = c|0⟩ + d|1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> output_state.print()
    |x, x ⊕ y⟩ = a*c|0,0⟩ + a*d|0,1⟩ + b*d|1,0⟩ + b*c|1,1⟩
+
+.. raw:: latex
+
+   \end{code}
+
 .. raw:: latex
    
    \newpage

@@ -9,9 +9,17 @@ This module provides classes for the creation of diagrams of quantum states, gat
 
 It is not intended to be used directly by the user.
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    from qhronology.utilities import diagrams
+
+.. raw:: latex
+
+   \end{code}
 
 .. automodule:: qhronology.utilities.diagrams
    :members:

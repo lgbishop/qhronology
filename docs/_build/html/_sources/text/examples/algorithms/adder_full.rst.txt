@@ -19,14 +19,14 @@ Importantly, this means that full adders can be used in succession as a way to s
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_adder_full-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum adder with a carry qubit.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_adder_full-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum adder with a carry qubit.
       :align: center
       :figwidth: 100 %
@@ -34,7 +34,7 @@ Importantly, this means that full adders can be used in succession as a way to s
 
 .. figure:: /figures/output/circuit_algorithm_adder_full-light.png
    :name: fig:circuit_algorithm_adder_full
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of a quantum adder with a carry qubit.
    :align: center
    :figwidth: 100 %
@@ -50,11 +50,11 @@ A truth table for this circuit in the context of qubits appears in :numref:`tabl
    :widths: 6 6 10 10 10
    :header-rows: 1
 
-   * - :math:`x` (augend)
-     - :math:`y` (addend)
-     - :math:`c` (carry input)
-     - :math:`s` (sum)
-     - :math:`c^\prime` (carry output)
+   * - :math:`x` **(augend)**
+     - :math:`y` **(addend)**
+     - :math:`c` **(carry input)**
+     - :math:`s` **(sum)**
+     - :math:`c^\prime` **(carry output)**
    * - :math:`0`
      - :math:`0`
      - :math:`0`
@@ -99,10 +99,18 @@ A truth table for this circuit in the context of qubits appears in :numref:`tabl
 Implementation
 --------------
 
+.. raw:: latex
+
+   \begin{codetitled}{Full adder}{}
+
 .. literalinclude:: /text/examples/algorithms/adder_full.py
    :name: code:adder_full
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -110,16 +118,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> adder.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_full.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -128,45 +140,84 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_full-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> augend_state.print()
    |x⟩ = a|0⟩ + b|1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> addend_state.print()
    |y⟩ = u|0⟩ + v|1⟩
+
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> carry_input_state.print()
    |c⟩ = |1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> sum_state.print()
    s = (a*v*conjugate(a)*conjugate(v) + b*u*conjugate(b)*conjugate(u))|0⟩⟨0| + (a*u*conjugate(a)*conjugate(u) + b*v*conjugate(b)*conjugate(v))|1⟩⟨1|
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> carry_output_state.print()
    c′ = a*u*conjugate(a)*conjugate(u)|0⟩⟨0| + (a*v*conjugate(a)*conjugate(v) + b*conjugate(b))|1⟩⟨1|
+
+.. raw:: latex
+
+   \end{code}
 
 .. only:: html
 

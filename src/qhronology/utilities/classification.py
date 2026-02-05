@@ -82,7 +82,7 @@ COMPATIBILITIES = KIND_FORM | FORM_KIND
 
 
 def matrix_form(matrix: mat) -> str | None:
-    """Describe the form of ``matrix`` using the terminology of mathematics."""
+    """Describe the form of :python:`matrix` using the terminology of mathematics."""
     if matrix.shape[0] != 1 and matrix.shape[1] == 1:
         return Forms.VECTOR.value
     elif matrix.shape[0] == 1 and matrix.shape[1] != 1:
@@ -91,12 +91,12 @@ def matrix_form(matrix: mat) -> str | None:
         return Forms.MATRIX.value
     else:
         raise ValueError(
-            "The given ``matrix`` is invalid for describing either a vector or matrix state."
+            "The given :python:`matrix` is invalid for describing either a vector or matrix state."
         )
 
 
 def matrix_shape(matrix: mat) -> str | None:
-    """Describe the shape of ``matrix`` using the terminology of mathematics."""
+    """Describe the shape of :python:`matrix` using the terminology of mathematics."""
     if matrix.shape[0] != 1 and matrix.shape[1] == 1:
         return Shapes.COLUMN.value
     elif matrix.shape[0] == 1 and matrix.shape[1] != 1:
@@ -105,5 +105,5 @@ def matrix_shape(matrix: mat) -> str | None:
         return Shapes.SQUARE.value
     else:
         raise ValueError(
-            "The given ``matrix`` is invalid for describing either a vector or matrix state."
+            "The given :python:`matrix` is invalid for describing either a vector or matrix state."
         )

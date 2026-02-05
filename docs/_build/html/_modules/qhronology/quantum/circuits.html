@@ -29,11 +29,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b97cf656" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d4d32e97" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=b063fbe0" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 01, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 06, 2026"/>
   </head>
   
   
@@ -547,48 +547,48 @@
 <span class="sd">    inputs : list[QuantumState]</span>
 <span class="sd">        An ordered list of :py:class:`~qhronology.quantum.states.QuantumState` instances.</span>
 <span class="sd">        The total input state is the tensor product of these individual states in the order</span>
-<span class="sd">        in which they appear in ``inputs``.</span>
-<span class="sd">        Must all have the same value of the ``dim`` property.</span>
-<span class="sd">        Defaults to ``[]``.</span>
+<span class="sd">        in which they appear in :python:`inputs`.</span>
+<span class="sd">        Must all have the same value of the :python:`dim` property.</span>
+<span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    gates : list[QuantumGate]</span>
 <span class="sd">        An ordered list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances.</span>
 <span class="sd">        The total gate is the product of these individual gates in the order in which they appear</span>
-<span class="sd">        in ``gates``.</span>
-<span class="sd">        Must all have the same values of the ``dim`` and ``num_systems`` properties.</span>
-<span class="sd">        Defaults to ``[]``.</span>
+<span class="sd">        in :python:`gates`.</span>
+<span class="sd">        Must all have the same values of the :python:`dim` and :python:`num_systems` properties.</span>
+<span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    traces : list[int]</span>
 <span class="sd">        The numerical indices of the subsystems to be traced over.</span>
-<span class="sd">        Defaults to ``[]``.</span>
+<span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    postselections: list[tuple[mat | arr | QuantumObject, int | list[int]]]</span>
 <span class="sd">        A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index</span>
 <span class="sd">        of their postselection target systems.</span>
-<span class="sd">        Must all have the same value of the ``dim`` property.</span>
-<span class="sd">        Defaults to ``[]``.</span>
+<span class="sd">        Must all have the same value of the :python:`dim` property.</span>
+<span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    symbols : dict[sym | str, dict[str, Any]]</span>
 <span class="sd">        A dictionary in which the keys are individual symbols and the values are dictionaries</span>
-<span class="sd">        of their respective SymPy keyword-argument ``assumptions``.</span>
-<span class="sd">        The value of the ``symbols`` property of all states in ``inputs`` and gates in ``gates`` are automatically merged into the instance&#39;s corresponding ``symbols`` property.</span>
-<span class="sd">        Defaults to ``{}``.</span>
+<span class="sd">        of their respective SymPy keyword-argument :python:`assumptions`.</span>
+<span class="sd">        The value of the :python:`symbols` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance&#39;s corresponding :python:`symbols` property.</span>
+<span class="sd">        Defaults to :python:`{}`.</span>
 <span class="sd">    conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">        A list of :math:`2`-tuples of conditions to be applied to all objects (such as states and</span>
 <span class="sd">        gates) computed from the circuit.</span>
 <span class="sd">        All instances of the expression in each tuple&#39;s first element are replaced by the</span>
 <span class="sd">        expression in the respective second element.</span>
-<span class="sd">        This uses the same format as the SymPy ``subs()`` method.</span>
+<span class="sd">        This uses the same format as the SymPy :python:`subs()` method.</span>
 <span class="sd">        The order in which they are applied is simply their order in the list.</span>
-<span class="sd">        The value of the ``conditions`` property of all states in ``inputs`` and gates in ``gates``</span>
-<span class="sd">        are automatically merged into the instance&#39;s corresponding ``conditions`` property.</span>
-<span class="sd">        Defaults to ``[]``.</span>
+<span class="sd">        The value of the :python:`conditions` property of all states in :python:`inputs` and gates in :python:`gates`</span>
+<span class="sd">        are automatically merged into the instance&#39;s corresponding :python:`conditions` property.</span>
+<span class="sd">        Defaults to :python:`[]`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    All states, gates, postselections, and measurement operators recorded in the instance must</span>
-<span class="sd">    share the same dimensionality (i.e., the value of the ``dim`` property).</span>
+<span class="sd">    share the same dimensionality (i.e., the value of the :python:`dim` property).</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The sum of the ``num_systems`` properties of the quantum states in ``inputs`` should match</span>
-<span class="sd">    that of each of the gates in ``gates``.</span>
+<span class="sd">    The sum of the :python:`num_systems` properties of the quantum states in :python:`inputs` should match</span>
+<span class="sd">    that of each of the gates in :python:`gates`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -625,8 +625,8 @@
 <span class="sd">        The total input state is the tensor product of these individual states in the order</span>
 <span class="sd">        in which they appear in the list.</span>
 
-<span class="sd">        Each state&#39;s ``symbols`` and ``conditions`` properties are merged into their counterparts</span>
-<span class="sd">        in the instance upon their addition to the ``gates`` property.</span>
+<span class="sd">        Each state&#39;s :python:`symbols` and :python:`conditions` properties are merged into their counterparts</span>
+<span class="sd">        in the instance upon their addition to the :python:`gates` property.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span>
 
@@ -645,10 +645,10 @@
 <span class="sd">        The total gate is the product of these individual gates in the order in which they appear</span>
 <span class="sd">        in the list.</span>
 
-<span class="sd">        Must all have the same ``num_systems`` property.</span>
+<span class="sd">        Must all have the same :python:`num_systems` property.</span>
 
-<span class="sd">        Each gate&#39;s ``symbols`` and ``conditions`` properties are merged into their counterparts</span>
-<span class="sd">        in the instance upon their addition to the ``gates`` property.</span>
+<span class="sd">        Each gate&#39;s :python:`symbols` and :python:`conditions` properties are merged into their counterparts</span>
+<span class="sd">        in the instance upon their addition to the :python:`gates` property.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gates</span>
 
@@ -665,8 +665,8 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;A list of 2-tuples of vectors or matrix operators paired with the first (smallest)</span>
 <span class="sd">        index of their postselection target systems.</span>
 
-<span class="sd">        Any ``symbols`` and ``conditions`` properties of each postselection are merged into their</span>
-<span class="sd">        counterparts in the instance upon their addition to the ``postselections`` property.</span>
+<span class="sd">        Any :python:`symbols` and :python:`conditions` properties of each postselection are merged into their</span>
+<span class="sd">        counterparts in the instance upon their addition to the :python:`postselections` property.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postselections</span>
 
@@ -739,7 +739,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">systems_removed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The indices of all of the systems targeted by the ``traces`` and ``postselections``</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The indices of all of the systems targeted by the :python:`traces` and :python:`postselections`</span>
 <span class="sd">        properties.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">flatten_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_traces</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems_postselections</span><span class="p">)</span>
 
@@ -760,7 +760,7 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_systems_gates</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">num_systems_gates</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;One or more of the gates in the circuit has mismatching ``num_systems``.&quot;</span>
+                    <span class="s2">&quot;One or more of the gates in the circuit has mismatching :python:`num_systems`.&quot;</span>
                 <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">num_systems_gates</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -782,7 +782,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Alias for ``num_systems_gross``.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Alias for :python:`num_systems_gross`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems_gross</span>
 
     <span class="nd">@property</span>
@@ -835,7 +835,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">input_is_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether all states in ``inputs`` are vector states.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether all states in :python:`inputs` are vector states.&quot;&quot;&quot;</span>
         <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
             <span class="n">form</span> <span class="o">!=</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">form</span> <span class="ow">in</span> <span class="p">[</span><span class="n">state</span><span class="o">.</span><span class="n">form</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">]</span>
@@ -904,46 +904,46 @@
 <span class="sd">        :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.</span>
 
 <span class="sd">        This is computed as the tensor product of the individual states in the order in which</span>
-<span class="sd">        they appear in the ``inputs`` property.</span>
+<span class="sd">        they appear in the :python:`inputs` property.</span>
 <span class="sd">        Is a vector state only when all of the component states are vectors.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
 <span class="sd">        merge : bool</span>
 <span class="sd">            Whether to merge the labels of the individual quantum states into a single product,</span>
-<span class="sd">            separated by ``&quot;⊗&quot;`` operators, prior to any notational processing.</span>
+<span class="sd">            separated by :python:`&quot;⊗&quot;` operators, prior to any notational processing.</span>
 <span class="sd">            Only relevant when all states are vectors.</span>
-<span class="sd">            Defaults to ``True``.</span>
+<span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        norm : bool | num | sym | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
-<span class="sd">            If ``True``, normalizes to a value of :math:`1`.</span>
-<span class="sd">            If ``False``, does not normalize.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
+<span class="sd">            If :python:`False`, does not normalize.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        label : str</span>
 <span class="sd">            The unformatted string used to represent the state in mathematical expressions.</span>
 <span class="sd">            Must have a non-zero length.</span>
-<span class="sd">            Defaults to ``&quot;⊗&quot;.join([state.label for state in self.inputs])``.</span>
+<span class="sd">            Defaults to :python:`&quot;⊗&quot;.join([state.label for state in self.inputs])`.</span>
 <span class="sd">        notation : str</span>
 <span class="sd">            The formatted string used to represent the state in mathematical expressions.</span>
-<span class="sd">            When not ``None``, overrides the value passed to ``label``.</span>
+<span class="sd">            When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">            Must have a non-zero length.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to ``&quot;⊗&quot;.join([state.notation for state in self.inputs])``</span>
-<span class="sd">            if ``label`` is ``None``</span>
-<span class="sd">            and (``merge`` is ``False`` or the input states are all vectors),</span>
-<span class="sd">            else ``None``.</span>
+<span class="sd">            Defaults to :python:`&quot;⊗&quot;.join([state.notation for state in self.inputs])`</span>
+<span class="sd">            if :python:`label` is :python:`None`</span>
+<span class="sd">            and (:python:`merge` is :python:`False` or the input states are all vectors),</span>
+<span class="sd">            else :python:`None`.</span>
 <span class="sd">        debug : bool</span>
-<span class="sd">            Whether to print the internal state (held in ``matrix``) on change.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -952,7 +952,7 @@
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        Passing a value of ``False`` to the ``merge`` argument results in a state whose ``notation``</span>
+<span class="sd">        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation`</span>
 <span class="sd">        is fixed and incompatible with any subsequent changes (including densification).</span>
 <span class="sd">        This behaviour may be improved in the future.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1041,32 +1041,32 @@
 <span class="sd">        as a :py:class:`~qhronology.quantum.gates.QuantumGate` instance and return it.</span>
 
 <span class="sd">        This is computed as the matrix product of the individual gates in the reverse order</span>
-<span class="sd">        in which they appear in the ``gates`` property.</span>
+<span class="sd">        in which they appear in the :python:`gates` property.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the gate.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the gate.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the gate when it is called.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        exponent : num | sym | str</span>
 <span class="sd">            A numerical or string representation of a scalar value to which gate&#39;s operator</span>
-<span class="sd">            (residing on ``targets``) is exponentiated.</span>
+<span class="sd">            (residing on :python:`targets`) is exponentiated.</span>
 <span class="sd">            Must be a non-negative integer.</span>
-<span class="sd">            Defaults to ``1``.</span>
+<span class="sd">            Defaults to :python:`1`.</span>
 <span class="sd">        label : str</span>
 <span class="sd">            The unformatted string used to represent the gate in mathematical expressions.</span>
-<span class="sd">            Defaults to ``&quot;U&quot;``.</span>
+<span class="sd">            Defaults to :python:`&quot;U&quot;`.</span>
 <span class="sd">        notation : str</span>
 <span class="sd">            The formatted string used to represent the gate in mathematical expressions.</span>
-<span class="sd">            When not ``None``, overrides the value passed to ``label``.</span>
+<span class="sd">            When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to ``None``.</span>
+<span class="sd">            Defaults to :python:`None`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1169,17 +1169,17 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        postprocess : bool</span>
 <span class="sd">            Whether to post-process the state</span>
 <span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
-<span class="sd">            Defaults to ``True``.</span>
+<span class="sd">            Defaults to :python:`True`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1284,41 +1284,41 @@
 <span class="sd">        ---------</span>
 <span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of ``self.conditions``.</span>
+<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
 <span class="sd">            Whether to perform algebraic simplification on the state before committing it to the</span>
-<span class="sd">            ``matrix`` property.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            :python:`matrix` property.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        norm : bool | num | sym | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
-<span class="sd">            If ``True``, normalizes to a value of :math:`1`.</span>
-<span class="sd">            If ``False``, does not normalize.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
+<span class="sd">            If :python:`False`, does not normalize.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        label : str</span>
 <span class="sd">            The unformatted string used to represent the state in mathematical expressions.</span>
 <span class="sd">            Must have a non-zero length.</span>
-<span class="sd">            Defaults to ``&quot;ρ&quot;`` (if ``form == &quot;matrix&quot;``) or ``&quot;ψ&quot;`` (if ``form == &quot;vector&quot;``).</span>
+<span class="sd">            Defaults to :python:`&quot;ρ&quot;` (if :python:`form == &quot;matrix&quot;`) or :python:`&quot;ψ&quot;` (if :python:`form == &quot;vector&quot;`).</span>
 <span class="sd">        notation : str</span>
 <span class="sd">            The formatted string used to represent the state in mathematical expressions.</span>
-<span class="sd">            When not ``None``, overrides the value passed to ``label``.</span>
+<span class="sd">            When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">            Must have a non-zero length.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to ``None``.</span>
+<span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        traces : list[int]</span>
 <span class="sd">            A list of indices of the systems (relative to the entire circuit) on which to perform</span>
 <span class="sd">            partial traces.</span>
-<span class="sd">            Performed regardless of the value of ``postprocess``.</span>
-<span class="sd">            Defaults to ``[]``.</span>
+<span class="sd">            Performed regardless of the value of :python:`postprocess`.</span>
+<span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        postprocess : bool</span>
 <span class="sd">            Whether to post-process the state</span>
 <span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
-<span class="sd">            Defaults to ``True``.</span>
+<span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        debug : bool</span>
-<span class="sd">            Whether to print the internal state (held in ``matrix``) on change.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1384,41 +1384,41 @@
         <span class="n">observable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">statistics</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumState</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a quantum measurement on one or more systems (indicated in ``targets``)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a quantum measurement on one or more systems (indicated in :python:`targets`)</span>
 <span class="sd">        of the circuit&#39;s total output state.</span>
 <span class="sd">        This occurs prior to any post-processing (i.e., traces and postselections).</span>
 
 <span class="sd">        This method has two main modes of operation:</span>
 
-<span class="sd">        - When ``statistics`` is ``True``, the (reduced) state (:math:`\\op{\\rho}`)</span>
-<span class="sd">          (residing on the systems indicated in ``targets``) is measured and the set of resulting</span>
+<span class="sd">        - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`)</span>
+<span class="sd">          (residing on the systems indicated in :python:`targets`) is measured and the set of resulting</span>
 <span class="sd">          statistics is returned. This takes the form of an ordered list of values</span>
 <span class="sd">          :math:`\\{p_i\\}_i` associated with each given operator, where:</span>
 
 <span class="sd">          - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]`</span>
-<span class="sd">            (measurement probabilities) when ``observable`` is ``False``</span>
-<span class="sd">            (``operators`` is a list of Kraus operators or projectors :math:`\\Kraus_i`)</span>
+<span class="sd">            (measurement probabilities) when :python:`observable` is :python:`False`</span>
+<span class="sd">            (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)</span>
 <span class="sd">          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]`</span>
-<span class="sd">            (expectation values) when ``observable`` is ``True``</span>
-<span class="sd">            (``operators`` is a list of observables :math:`\\Observable_i`)</span>
+<span class="sd">            (expectation values) when :python:`observable` is :python:`True`</span>
+<span class="sd">            (:python:`operators` is a list of observables :math:`\\Observable_i`)</span>
 
-<span class="sd">        - When ``statistics`` is ``False``, the (reduced) state (:math:`\\op{\\rho}`)</span>
-<span class="sd">          (residing on the systems indicated in ``targets``) is measured and mutated it according</span>
+<span class="sd">        - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`)</span>
+<span class="sd">          (residing on the systems indicated in :python:`targets`) is measured and mutated it according</span>
 <span class="sd">          to its predicted post-measurement form (i.e., the sum of all possible measurement</span>
 <span class="sd">          outcomes). This yields the transformed states:</span>
 
-<span class="sd">          - When ``observable`` is ``False``:</span>
+<span class="sd">          - When :python:`observable` is :python:`False`:</span>
 
 <span class="sd">          .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger.</span>
 
-<span class="sd">          - When ``observable`` is ``True``:</span>
+<span class="sd">          - When :python:`observable` is :python:`True`:</span>
 
 <span class="sd">          .. math::</span>
 
 <span class="sd">             \\op{\\rho}^\\prime</span>
 <span class="sd">                 = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.</span>
 
-<span class="sd">        In the case where ``operators`` contains only a single item (:math:`\\Kraus`),</span>
+<span class="sd">        In the case where :python:`operators` contains only a single item (:math:`\\Kraus`),</span>
 <span class="sd">        and the current state (:math:`\\ket{\\psi}`) is a vector form,</span>
 <span class="sd">        the transformation of the state is in accordance with the rule</span>
 
@@ -1427,10 +1427,10 @@
 <span class="sd">           \\ket{\\psi^\\prime} = \\frac{\\Kraus \\ket{\\psi}}</span>
 <span class="sd">               {\\sqrt{\\bra{\\psi} \\Kraus^\\dagger \\Kraus \\ket{\\psi}}}</span>
 
-<span class="sd">        when ``observable`` is ``False``. In all other mutation cases, the post-measurement state</span>
+<span class="sd">        when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state</span>
 <span class="sd">        is a matrix, even if the pre-measurement state was a vector.</span>
 
-<span class="sd">        The items in the list ``operators`` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),</span>
+<span class="sd">        The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),</span>
 <span class="sd">        in which case each is converted into its corresponding operator matrix representation</span>
 <span class="sd">        (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
 
@@ -1445,27 +1445,27 @@
 <span class="sd">            The numerical indices of the system(s) to be measured.</span>
 <span class="sd">            They must be consecutive, and their number must match the number of systems spanned</span>
 <span class="sd">            by all given operators.</span>
-<span class="sd">            Indexing begins at ``0``.</span>
+<span class="sd">            Indexing begins at :python:`0`.</span>
 <span class="sd">            All other systems are discarded (traced over) in the course of performing the</span>
 <span class="sd">            measurement.</span>
 <span class="sd">        observable : bool</span>
-<span class="sd">            Whether to treat the items in ``operators`` as observables</span>
+<span class="sd">            Whether to treat the items in :python:`operators` as observables</span>
 <span class="sd">            (as opposed to Kraus operators or projectors).</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        statistics : bool</span>
-<span class="sd">            Whether to return a list of probabilities (``True``)</span>
-<span class="sd">            or the post-measurement state (``False``).</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Whether to return a list of probabilities (:python:`True`)</span>
+<span class="sd">            or the post-measurement state (:python:`False`).</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        list[num | sym]</span>
-<span class="sd">            A list of probabilities corresponding to each operator given in ``operators``.</span>
-<span class="sd">            Returned only if ``statistics`` is ``True``.</span>
+<span class="sd">            A list of probabilities corresponding to each operator given in :python:`operators`.</span>
+<span class="sd">            Returned only if :python:`statistics` is :python:`True`.</span>
 <span class="sd">        QuantumState</span>
 <span class="sd">            A quantum state that takes the form of the post-measurement probabilistic sum</span>
-<span class="sd">            of all outcomes of measurements corresponding to each operator given in ``operators``.</span>
-<span class="sd">            Returned only if ``statistics`` is ``False``.</span>
+<span class="sd">            of all outcomes of measurements corresponding to each operator given in :python:`operators`.</span>
+<span class="sd">            Returned only if :python:`statistics` is :python:`False`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">statistics</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">statistics</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">statistics</span>
         <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">postprocess</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1505,35 +1505,35 @@
 <span class="sd">            A two-tuple of non-negative integers specifying intra-gate padding</span>
 <span class="sd">            (i.e., the horizontal and vertical interior paddings between the content at the centre</span>
 <span class="sd">            of each gate (e.g., label) and its outer edge (e.g., block border).</span>
-<span class="sd">            Defaults to ``(0, 0)``.</span>
+<span class="sd">            Defaults to :python:`(0, 0)`.</span>
 <span class="sd">        sep : tuple[int, int]</span>
 <span class="sd">            A two-tuple of non-negative integers specifying inter-gate separation</span>
 <span class="sd">            (i.e., the horizontal and vertical exterior separation distances between the edges of</span>
 <span class="sd">            neighbouring gates.</span>
-<span class="sd">            Defaults to ``(1, 1)``.</span>
+<span class="sd">            Defaults to :python:`(1, 1)`.</span>
 <span class="sd">        uniform_spacing : bool</span>
 <span class="sd">            Whether to uniformly space the gates horizontally such that the midpoint of each</span>
 <span class="sd">            is equidistant from those of its neighbours.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        force_separation : bool</span>
 <span class="sd">            Whether to force the horizontal gate separation to be exactly the value given</span>
-<span class="sd">            in ``sep`` for all gates in the circuit.</span>
-<span class="sd">            When not ``False``, the value of ``uniform_spacing`` is ignored.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            in :python:`sep` for all gates in the circuit.</span>
+<span class="sd">            When not :python:`False`, the value of :python:`uniform_spacing` is ignored.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        style : str</span>
 <span class="sd">            A string specifying the style for the circuit visualization to take.</span>
-<span class="sd">            Can be any of ``&quot;ascii&quot;``, ``&quot;unicode&quot;``, or ``&quot;unicode_alt&quot;``.</span>
-<span class="sd">            Defaults to ``&quot;unicode&quot;``.</span>
+<span class="sd">            Can be any of :python:`&quot;ascii&quot;`, :python:`&quot;unicode&quot;`, or :python:`&quot;unicode_alt&quot;`.</span>
+<span class="sd">            Defaults to :python:`&quot;unicode&quot;`.</span>
 <span class="sd">        return_string : bool</span>
 <span class="sd">            Whether to return the assembled diagram as a multiline string.</span>
-<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        None</span>
-<span class="sd">            Returned only if ``return_string`` is ``False``.</span>
+<span class="sd">            Returned only if :python:`return_string` is :python:`False`.</span>
 <span class="sd">        str</span>
-<span class="sd">            The rendered circuit diagram. Returned only if ``return_string`` is ``True``.</span>
+<span class="sd">            The rendered circuit diagram. Returned only if :python:`return_string` is :python:`True`.</span>
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>

@@ -11,14 +11,14 @@ The *unproven-theorem paradox* :cite:p:`deutsch_quantum_1991, lloyd_closed_2011,
 .. only:: html
 
    .. figure:: /figures/output/circuit_ctc_unproven-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the unproven-theorem paradox under the D-CTCs prescription.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_ctc_unproven-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of the unproven-theorem paradox under the D-CTCs prescription.
       :align: center
       :figwidth: 100 %
@@ -26,7 +26,7 @@ The *unproven-theorem paradox* :cite:p:`deutsch_quantum_1991, lloyd_closed_2011,
 
 .. figure:: /figures/output/circuit_ctc_unproven-light.png
    :name: fig:circuit_ctc_unproven
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of the unproven-theorem paradox under the D-CTCs prescription.
    :align: center
    :figwidth: 100 %
@@ -195,10 +195,17 @@ Observe that the D-CTC resolution :eq:`eq:unproven_D-CTCs_CR` turns out not to b
 Implementation
 --------------
 
+.. raw:: latex
+
+   \begin{codetitled}{Unproven-theorem paradox}{}
+
 .. literalinclude:: /text/examples/ctcs/unproven.py
    :name: code:unproven
    :language: python
-   :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -206,16 +213,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> unproven.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_ctcs_unproven.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -224,40 +235,75 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_ctcs_unproven-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> unproven_DCTC_respecting.print()
    ρ_D = g|0,0⟩⟨0,0| + (1 - g)|1,1⟩⟨1,1|
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> unproven_DCTC_violating.print()
    τ_D = g|0⟩⟨0| + (1 - g)|1⟩⟨1|
+
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> unproven_PCTC_respecting.print()
    |ψ_P⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> unproven_PCTC_violating.print()
    τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
+
+.. raw:: latex
+
+   \end{code}
 
 .. only:: html
 

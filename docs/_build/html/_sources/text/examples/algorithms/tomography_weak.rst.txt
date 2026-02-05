@@ -74,14 +74,14 @@ is a phase shift gate.
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_tomography_weak-dark.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum state tomography algorithm.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_tomography_weak-light.png
-      :scale: 36 %
+      :scale: 34 %
       :alt: A quantum circuit diagram of a quantum state tomography algorithm.
       :align: center
       :figwidth: 100 %
@@ -89,7 +89,7 @@ is a phase shift gate.
 
 .. figure:: /figures/output/circuit_algorithm_tomography_weak-light.png
    :name: fig:circuit_algorithm_tomography_weak
-   :scale: 36 %
+   :scale: 34 %
    :alt: A quantum circuit diagram of a quantum state tomography algorithm.
    :align: center
    :figwidth: 100 %
@@ -229,10 +229,22 @@ Since the coefficient for :math:`k = 0` is fixed by normalization (i.e., :math:`
 Implementation
 --------------
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
+.. raw:: latex
+
+   \begin{codetitled}{Quantum state tomography via weak measurements}{}
+
 .. literalinclude:: /text/examples/algorithms/tomography_weak.py
    :name: code:tomography_weak
    :language: python
    :caption:
+
+.. raw:: latex
+
+   \end{codetitled}
 
 Output
 ------
@@ -240,16 +252,20 @@ Output
 Diagram
 ^^^^^^^
 
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> tomography.diagram()
 
-..
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_tomography_weak.pdf}
+   \vspace{-1\baselineskip}
 
-   .. raw:: latex
-      
-      \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+..
 
    .. only:: html
 
@@ -258,30 +274,45 @@ Diagram
          :align: left
          :class: only-dark
 
-   .. only:: html or latex
+   .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_tomography_weak-light.png
          :scale: 40 %
          :align: left
          :class: only-light
 
-   .. raw:: latex
-      
-      \end{mdframed}
-      \vspace{1em}
+.. raw:: latex
+   
+   \end{code}
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \begin{code}
 
 .. code:: python
 
    >>> unknown_state.print()
    τ = τ[0, 0]|0⟩⟨0| + τ[0, 1]|0⟩⟨1| + τ[1, 0]|1⟩⟨0| + τ[1, 1]|1⟩⟨1|
 
+.. raw:: latex
+
+   \end{code}
+
+.. raw:: latex
+
+   \begin{code}
+
 .. code:: python
 
    >>> reconstructed_state.print()
    τ = τ[0, 0]|0⟩⟨0| + τ[0, 1]|0⟩⟨1| + τ[1, 0]|1⟩⟨0| + τ[1, 1]|1⟩⟨1|
+
+.. raw:: latex
+
+   \end{code}
 
 .. only:: html
 

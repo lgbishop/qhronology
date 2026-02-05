@@ -79,48 +79,48 @@ class QuantumCircuit(SymbolicsProperties):
     inputs : list[QuantumState]
         An ordered list of :py:class:`~qhronology.quantum.states.QuantumState` instances.
         The total input state is the tensor product of these individual states in the order
-        in which they appear in ``inputs``.
-        Must all have the same value of the ``dim`` property.
-        Defaults to ``[]``.
+        in which they appear in :python:`inputs`.
+        Must all have the same value of the :python:`dim` property.
+        Defaults to :python:`[]`.
     gates : list[QuantumGate]
         An ordered list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances.
         The total gate is the product of these individual gates in the order in which they appear
-        in ``gates``.
-        Must all have the same values of the ``dim`` and ``num_systems`` properties.
-        Defaults to ``[]``.
+        in :python:`gates`.
+        Must all have the same values of the :python:`dim` and :python:`num_systems` properties.
+        Defaults to :python:`[]`.
     traces : list[int]
         The numerical indices of the subsystems to be traced over.
-        Defaults to ``[]``.
+        Defaults to :python:`[]`.
     postselections: list[tuple[mat | arr | QuantumObject, int | list[int]]]
         A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index
         of their postselection target systems.
-        Must all have the same value of the ``dim`` property.
-        Defaults to ``[]``.
+        Must all have the same value of the :python:`dim` property.
+        Defaults to :python:`[]`.
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols and the values are dictionaries
-        of their respective SymPy keyword-argument ``assumptions``.
-        The value of the ``symbols`` property of all states in ``inputs`` and gates in ``gates`` are automatically merged into the instance's corresponding ``symbols`` property.
-        Defaults to ``{}``.
+        of their respective SymPy keyword-argument :python:`assumptions`.
+        The value of the :python:`symbols` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`symbols` property.
+        Defaults to :python:`{}`.
     conditions : list[tuple[num | sym | str, num | sym | str]]
         A list of :math:`2`-tuples of conditions to be applied to all objects (such as states and
         gates) computed from the circuit.
         All instances of the expression in each tuple's first element are replaced by the
         expression in the respective second element.
-        This uses the same format as the SymPy ``subs()`` method.
+        This uses the same format as the SymPy :python:`subs()` method.
         The order in which they are applied is simply their order in the list.
-        The value of the ``conditions`` property of all states in ``inputs`` and gates in ``gates``
-        are automatically merged into the instance's corresponding ``conditions`` property.
-        Defaults to ``[]``.
+        The value of the :python:`conditions` property of all states in :python:`inputs` and gates in :python:`gates`
+        are automatically merged into the instance's corresponding :python:`conditions` property.
+        Defaults to :python:`[]`.
 
     Note
     ----
     All states, gates, postselections, and measurement operators recorded in the instance must
-    share the same dimensionality (i.e., the value of the ``dim`` property).
+    share the same dimensionality (i.e., the value of the :python:`dim` property).
 
     Note
     ----
-    The sum of the ``num_systems`` properties of the quantum states in ``inputs`` should match
-    that of each of the gates in ``gates``.
+    The sum of the :python:`num_systems` properties of the quantum states in :python:`inputs` should match
+    that of each of the gates in :python:`gates`.
     """
 
     def __init__(
@@ -157,8 +157,8 @@ class QuantumCircuit(SymbolicsProperties):
         The total input state is the tensor product of these individual states in the order
         in which they appear in the list.
 
-        Each state's ``symbols`` and ``conditions`` properties are merged into their counterparts
-        in the instance upon their addition to the ``gates`` property.
+        Each state's :python:`symbols` and :python:`conditions` properties are merged into their counterparts
+        in the instance upon their addition to the :python:`gates` property.
         """
         return self._inputs
 
@@ -177,10 +177,10 @@ class QuantumCircuit(SymbolicsProperties):
         The total gate is the product of these individual gates in the order in which they appear
         in the list.
 
-        Must all have the same ``num_systems`` property.
+        Must all have the same :python:`num_systems` property.
 
-        Each gate's ``symbols`` and ``conditions`` properties are merged into their counterparts
-        in the instance upon their addition to the ``gates`` property.
+        Each gate's :python:`symbols` and :python:`conditions` properties are merged into their counterparts
+        in the instance upon their addition to the :python:`gates` property.
         """
         return self._gates
 
@@ -197,8 +197,8 @@ class QuantumCircuit(SymbolicsProperties):
         """A list of 2-tuples of vectors or matrix operators paired with the first (smallest)
         index of their postselection target systems.
 
-        Any ``symbols`` and ``conditions`` properties of each postselection are merged into their
-        counterparts in the instance upon their addition to the ``postselections`` property.
+        Any :python:`symbols` and :python:`conditions` properties of each postselection are merged into their
+        counterparts in the instance upon their addition to the :python:`postselections` property.
         """
         return self._postselections
 
@@ -271,7 +271,7 @@ class QuantumCircuit(SymbolicsProperties):
 
     @property
     def systems_removed(self) -> list[int]:
-        """The indices of all of the systems targeted by the ``traces`` and ``postselections``
+        """The indices of all of the systems targeted by the :python:`traces` and :python:`postselections`
         properties."""
         return flatten_list(self.systems_traces + self.systems_postselections)
 
@@ -292,7 +292,7 @@ class QuantumCircuit(SymbolicsProperties):
         if len(num_systems_gates) > 0:
             if len(set(num_systems_gates)) != 1:
                 raise ValueError(
-                    "One or more of the gates in the circuit has mismatching ``num_systems``."
+                    "One or more of the gates in the circuit has mismatching :python:`num_systems`."
                 )
         else:
             num_systems_gates = [0]
@@ -314,7 +314,7 @@ class QuantumCircuit(SymbolicsProperties):
 
     @property
     def num_systems(self) -> int:
-        """Alias for ``num_systems_gross``."""
+        """Alias for :python:`num_systems_gross`."""
         return self.num_systems_gross
 
     @property
@@ -367,7 +367,7 @@ class QuantumCircuit(SymbolicsProperties):
 
     @property
     def input_is_vector(self) -> bool:
-        """Whether all states in ``inputs`` are vector states."""
+        """Whether all states in :python:`inputs` are vector states."""
         is_vector = True
         if any(
             form != Forms.VECTOR.value for form in [state.form for state in self.inputs]
@@ -434,46 +434,46 @@ class QuantumCircuit(SymbolicsProperties):
         :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.
 
         This is computed as the tensor product of the individual states in the order in which
-        they appear in the ``inputs`` property.
+        they appear in the :python:`inputs` property.
         Is a vector state only when all of the component states are vectors.
 
         Arguments
         ---------
         merge : bool
             Whether to merge the labels of the individual quantum states into a single product,
-            separated by ``"⊗"`` operators, prior to any notational processing.
+            separated by :python:`"⊗"` operators, prior to any notational processing.
             Only relevant when all states are vectors.
-            Defaults to ``True``.
+            Defaults to :python:`True`.
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         norm : bool | num | sym | str
             The value to which the state is normalized.
-            If ``True``, normalizes to a value of :math:`1`.
-            If ``False``, does not normalize.
-            Defaults to ``False``.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         label : str
             The unformatted string used to represent the state in mathematical expressions.
             Must have a non-zero length.
-            Defaults to ``"⊗".join([state.label for state in self.inputs])``.
+            Defaults to :python:`"⊗".join([state.label for state in self.inputs])`.
         notation : str
             The formatted string used to represent the state in mathematical expressions.
-            When not ``None``, overrides the value passed to ``label``.
+            When not :python:`None`, overrides the value passed to :python:`label`.
             Must have a non-zero length.
             Not intended to be set by the user in most cases.
-            Defaults to ``"⊗".join([state.notation for state in self.inputs])``
-            if ``label`` is ``None``
-            and (``merge`` is ``False`` or the input states are all vectors),
-            else ``None``.
+            Defaults to :python:`"⊗".join([state.notation for state in self.inputs])`
+            if :python:`label` is :python:`None`
+            and (:python:`merge` is :python:`False` or the input states are all vectors),
+            else :python:`None`.
         debug : bool
-            Whether to print the internal state (held in ``matrix``) on change.
-            Defaults to ``False``.
+            Whether to print the internal state (held in :python:`matrix`) on change.
+            Defaults to :python:`False`.
 
         Returns
         -------
@@ -482,7 +482,7 @@ class QuantumCircuit(SymbolicsProperties):
 
         Note
         ----
-        Passing a value of ``False`` to the ``merge`` argument results in a state whose ``notation``
+        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation`
         is fixed and incompatible with any subsequent changes (including densification).
         This behaviour may be improved in the future.
         """
@@ -568,32 +568,32 @@ class QuantumCircuit(SymbolicsProperties):
         as a :py:class:`~qhronology.quantum.gates.QuantumGate` instance and return it.
 
         This is computed as the matrix product of the individual gates in the reverse order
-        in which they appear in the ``gates`` property.
+        in which they appear in the :python:`gates` property.
 
         Arguments
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the gate.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the gate.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the gate when it is called.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         exponent : num | sym | str
             A numerical or string representation of a scalar value to which gate's operator
-            (residing on ``targets``) is exponentiated.
+            (residing on :python:`targets`) is exponentiated.
             Must be a non-negative integer.
-            Defaults to ``1``.
+            Defaults to :python:`1`.
         label : str
             The unformatted string used to represent the gate in mathematical expressions.
-            Defaults to ``"U"``.
+            Defaults to :python:`"U"`.
         notation : str
             The formatted string used to represent the gate in mathematical expressions.
-            When not ``None``, overrides the value passed to ``label``.
+            When not :python:`None`, overrides the value passed to :python:`label`.
             Not intended to be set by the user in most cases.
-            Defaults to ``None``.
+            Defaults to :python:`None`.
 
         Returns
         -------
@@ -693,17 +693,17 @@ class QuantumCircuit(SymbolicsProperties):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         postprocess : bool
             Whether to post-process the state
             (i.e., perform the circuit's traces and postselections).
-            Defaults to ``True``.
+            Defaults to :python:`True`.
 
         Returns
         -------
@@ -805,41 +805,41 @@ class QuantumCircuit(SymbolicsProperties):
         ---------
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
-            Defaults to the value of ``self.conditions``.
+            Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform algebraic simplification on the state before committing it to the
-            ``matrix`` property.
-            Defaults to ``False``.
+            :python:`matrix` property.
+            Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         norm : bool | num | sym | str
             The value to which the state is normalized.
-            If ``True``, normalizes to a value of :math:`1`.
-            If ``False``, does not normalize.
-            Defaults to ``False``.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         label : str
             The unformatted string used to represent the state in mathematical expressions.
             Must have a non-zero length.
-            Defaults to ``"ρ"`` (if ``form == "matrix"``) or ``"ψ"`` (if ``form == "vector"``).
+            Defaults to :python:`"ρ"` (if :python:`form == "matrix"`) or :python:`"ψ"` (if :python:`form == "vector"`).
         notation : str
             The formatted string used to represent the state in mathematical expressions.
-            When not ``None``, overrides the value passed to ``label``.
+            When not :python:`None`, overrides the value passed to :python:`label`.
             Must have a non-zero length.
             Not intended to be set by the user in most cases.
-            Defaults to ``None``.
+            Defaults to :python:`None`.
         traces : list[int]
             A list of indices of the systems (relative to the entire circuit) on which to perform
             partial traces.
-            Performed regardless of the value of ``postprocess``.
-            Defaults to ``[]``.
+            Performed regardless of the value of :python:`postprocess`.
+            Defaults to :python:`[]`.
         postprocess : bool
             Whether to post-process the state
             (i.e., perform the circuit's traces and postselections).
-            Defaults to ``True``.
+            Defaults to :python:`True`.
         debug : bool
-            Whether to print the internal state (held in ``matrix``) on change.
-            Defaults to ``False``.
+            Whether to print the internal state (held in :python:`matrix`) on change.
+            Defaults to :python:`False`.
 
         Returns
         -------
@@ -902,41 +902,41 @@ class QuantumCircuit(SymbolicsProperties):
         observable: bool | None = None,
         statistics: bool | None = None,
     ) -> QuantumState | list[num | sym]:
-        """Perform a quantum measurement on one or more systems (indicated in ``targets``)
+        """Perform a quantum measurement on one or more systems (indicated in :python:`targets`)
         of the circuit's total output state.
         This occurs prior to any post-processing (i.e., traces and postselections).
 
         This method has two main modes of operation:
 
-        - When ``statistics`` is ``True``, the (reduced) state (:math:`\\op{\\rho}`)
-          (residing on the systems indicated in ``targets``) is measured and the set of resulting
+        - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`)
+          (residing on the systems indicated in :python:`targets`) is measured and the set of resulting
           statistics is returned. This takes the form of an ordered list of values
           :math:`\\{p_i\\}_i` associated with each given operator, where:
 
           - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]`
-            (measurement probabilities) when ``observable`` is ``False``
-            (``operators`` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
+            (measurement probabilities) when :python:`observable` is :python:`False`
+            (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
           - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]`
-            (expectation values) when ``observable`` is ``True``
-            (``operators`` is a list of observables :math:`\\Observable_i`)
+            (expectation values) when :python:`observable` is :python:`True`
+            (:python:`operators` is a list of observables :math:`\\Observable_i`)
 
-        - When ``statistics`` is ``False``, the (reduced) state (:math:`\\op{\\rho}`)
-          (residing on the systems indicated in ``targets``) is measured and mutated it according
+        - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`)
+          (residing on the systems indicated in :python:`targets`) is measured and mutated it according
           to its predicted post-measurement form (i.e., the sum of all possible measurement
           outcomes). This yields the transformed states:
 
-          - When ``observable`` is ``False``:
+          - When :python:`observable` is :python:`False`:
 
           .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger.
 
-          - When ``observable`` is ``True``:
+          - When :python:`observable` is :python:`True`:
 
           .. math::
 
              \\op{\\rho}^\\prime
                  = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.
 
-        In the case where ``operators`` contains only a single item (:math:`\\Kraus`),
+        In the case where :python:`operators` contains only a single item (:math:`\\Kraus`),
         and the current state (:math:`\\ket{\\psi}`) is a vector form,
         the transformation of the state is in accordance with the rule
 
@@ -945,10 +945,10 @@ class QuantumCircuit(SymbolicsProperties):
            \\ket{\\psi^\\prime} = \\frac{\\Kraus \\ket{\\psi}}
                {\\sqrt{\\bra{\\psi} \\Kraus^\\dagger \\Kraus \\ket{\\psi}}}
 
-        when ``observable`` is ``False``. In all other mutation cases, the post-measurement state
+        when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state
         is a matrix, even if the pre-measurement state was a vector.
 
-        The items in the list ``operators`` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),
+        The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),
         in which case each is converted into its corresponding operator matrix representation
         (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.
 
@@ -963,27 +963,27 @@ class QuantumCircuit(SymbolicsProperties):
             The numerical indices of the system(s) to be measured.
             They must be consecutive, and their number must match the number of systems spanned
             by all given operators.
-            Indexing begins at ``0``.
+            Indexing begins at :python:`0`.
             All other systems are discarded (traced over) in the course of performing the
             measurement.
         observable : bool
-            Whether to treat the items in ``operators`` as observables
+            Whether to treat the items in :python:`operators` as observables
             (as opposed to Kraus operators or projectors).
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         statistics : bool
-            Whether to return a list of probabilities (``True``)
-            or the post-measurement state (``False``).
-            Defaults to ``False``.
+            Whether to return a list of probabilities (:python:`True`)
+            or the post-measurement state (:python:`False`).
+            Defaults to :python:`False`.
 
         Returns
         -------
         list[num | sym]
-            A list of probabilities corresponding to each operator given in ``operators``.
-            Returned only if ``statistics`` is ``True``.
+            A list of probabilities corresponding to each operator given in :python:`operators`.
+            Returned only if :python:`statistics` is :python:`True`.
         QuantumState
             A quantum state that takes the form of the post-measurement probabilistic sum
-            of all outcomes of measurements corresponding to each operator given in ``operators``.
-            Returned only if ``statistics`` is ``False``.
+            of all outcomes of measurements corresponding to each operator given in :python:`operators`.
+            Returned only if :python:`statistics` is :python:`False`.
         """
         statistics = False if statistics is None else statistics
         state = self.state(postprocess=False)
@@ -1020,35 +1020,35 @@ class QuantumCircuit(SymbolicsProperties):
             A two-tuple of non-negative integers specifying intra-gate padding
             (i.e., the horizontal and vertical interior paddings between the content at the centre
             of each gate (e.g., label) and its outer edge (e.g., block border).
-            Defaults to ``(0, 0)``.
+            Defaults to :python:`(0, 0)`.
         sep : tuple[int, int]
             A two-tuple of non-negative integers specifying inter-gate separation
             (i.e., the horizontal and vertical exterior separation distances between the edges of
             neighbouring gates.
-            Defaults to ``(1, 1)``.
+            Defaults to :python:`(1, 1)`.
         uniform_spacing : bool
             Whether to uniformly space the gates horizontally such that the midpoint of each
             is equidistant from those of its neighbours.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
         force_separation : bool
             Whether to force the horizontal gate separation to be exactly the value given
-            in ``sep`` for all gates in the circuit.
-            When not ``False``, the value of ``uniform_spacing`` is ignored.
-            Defaults to ``False``.
+            in :python:`sep` for all gates in the circuit.
+            When not :python:`False`, the value of :python:`uniform_spacing` is ignored.
+            Defaults to :python:`False`.
         style : str
             A string specifying the style for the circuit visualization to take.
-            Can be any of ``"ascii"``, ``"unicode"``, or ``"unicode_alt"``.
-            Defaults to ``"unicode"``.
+            Can be any of :python:`"ascii"`, :python:`"unicode"`, or :python:`"unicode_alt"`.
+            Defaults to :python:`"unicode"`.
         return_string : bool
             Whether to return the assembled diagram as a multiline string.
-            Defaults to ``False``.
+            Defaults to :python:`False`.
 
         Returns
         -------
         None
-            Returned only if ``return_string`` is ``False``.
+            Returned only if :python:`return_string` is :python:`False`.
         str
-            The rendered circuit diagram. Returned only if ``return_string`` is ``True``.
+            The rendered circuit diagram. Returned only if :python:`return_string` is :python:`True`.
 
         Note
         ----
