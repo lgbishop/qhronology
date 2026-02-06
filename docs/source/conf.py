@@ -526,6 +526,7 @@ Read the full license here:
 \definecolor{color_arguments}{HTML}{224499}
 \definecolor{color_types}{HTML}{699ADA}
 \definecolor{color_background}{HTML}{F5F5F5}
+\definecolor{color_output}{HTML}{224499}
 
 \usepackage{ifthen}
 \makeatletter
@@ -671,8 +672,8 @@ Read the full license here:
 % From class diagram.
 \definecolor{darkerblue}{HTML}{003989}
 \definecolor{darkblue}{HTML}{224499}
-\definecolor{lightblue}{HTML}{E3F0FF}
-% \definecolor{lightblue}{HTML}{DCE7FC}
+% \definecolor{lightblue}{HTML}{E3F0FF}
+\definecolor{lightblue}{HTML}{DCE7FC}
 
 \usepackage[skins,breakable]{tcolorbox}
 
@@ -780,7 +781,7 @@ label={#2},
     hmargin=2.5cm, \
     vmargin=2.5cm, \
     marginpar=0cm, \
-    TableRowColorHeader={HTML}{E3F0FF}, \
+    TableRowColorHeader={HTML}{DCE7FC}, \
     TableRowColorOdd={HTML}{F7F7F7}, \
     TableRowColorEven={HTML}{EEEEEE}, \
     div.note_border-radius=0px, \

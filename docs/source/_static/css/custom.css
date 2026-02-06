@@ -1048,6 +1048,16 @@ span.s1, span.s2 {
 span.nd {
     color: var(--pst-color-on-surface) !important;
 }
+span.na {
+    color: var(--pst-color-primary) !important;
+    font-weight: bold;
+}
+span.s {
+    color: var(--pst-color-code-string) !important;
+}
+span.m {
+    color: var(--pst-color-on-surface) !important;
+}
 
 ul.navbar-icon-links {
     column-gap: 1rem;
