@@ -266,7 +266,6 @@ Read the full license here:
     "fontenc": r"\usepackage[LGR,T1]{fontenc}",
     "preamble": r"""
 \input{header.tex.txt}
-\input{macros.tex.txt}
 
 \widowpenalty=10000
 
@@ -773,6 +772,7 @@ label={#2},
 
 \renewcommand{\sphinxSetupCaptionForVerbatim}[1]{}
 
+\input{macros.tex.txt}
 """,
     "passoptionstopackages": r"""
 \PassOptionsToPackage{final}{hyperref}

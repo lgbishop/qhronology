@@ -80,7 +80,7 @@ where we assume that :math:`\Bell(w)` satisfies the normalization condition
 
 Furthermore, note how :eq:`eq:Bell_continuous` can be put in a more useful form by using a :math:`\delta`-function,
 
-.. math:: \ket{\Bell} = \iint \diff{v}\,\diff{w} \, \Bell(v,w)\delta(v-w) \!\; \ket{v}\otimes\ket{w}.
+.. math:: \ket{\Bell} = \iint \diff{v}\,\diff{w} \, \Bell(v,w) \!\; \delta(v-w) \!\; \ket{v}\otimes\ket{w}.
    :label: eq:Bell_continuous_delta
 
 From here, we replace the CV state :math:`\ket{\WaveFunctionCTC}` with the maximally entangled :math:`\ket{\Bell}`, thereby meaning that our input state :math:`\ket{\WaveFunctionInitial}\otimes\ket{\WaveFunctionCTCInitial}` evolves under a transformation described by the composition :math:`\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity`. To clarify, the time-evolution operator :math:`\Unitary` only acts on the :math:`\SpaceHilbert_\CR` (CR) and :math:`\SpaceHilbert_\CV` (CV) Hilbert spaces while the identity :math:`\Identity` acts on the third (teleportation) Hilbert space :math:`\SpaceHilbert_\Teleportation`. With this, we then postselect on the output being in the state :math:`\ket{\WaveFunctionFinal}\otimes\ket{\Bell}`, which physically represents the teleportation Hilbert space :math:`\SpaceHilbert_\Teleportation` being used to send this conditional selection back in time, thereby yielding the necessary postselected teleportation. This entire sequence can be formulated by replacing the CTC state in :eq:`eq:path_amplitude_split` with our maximally entangled state :eq:`eq:Bell_continuous_delta`, which yields
