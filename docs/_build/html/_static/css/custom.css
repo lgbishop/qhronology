@@ -64,6 +64,7 @@ html[data-theme="dark"] {
     --pst-color-target: #334455;
     --custom-color-nav-link-hover: rgba(230,230,230,0.15);
     /* --pst-color-table-heading-bg: #003989; */
+    --pst-color-info-bg: #06245d;
     --pst-color-table-heading-bg: var(--pst-color-info-bg);
 }
 
@@ -111,6 +112,7 @@ html[data-theme="light"] {
     --custom-color-nav-link-hover: rgba(230,230,230,0.5);
     /* --pst-color-table-heading-bg: #E3F0FF; */
     /* --pst-color-table-heading-bg: #DCE7FC; */
+    --pst-color-info-bg: #D8E9FF;
     --pst-color-table-heading-bg: var(--pst-color-info-bg);
 }
 

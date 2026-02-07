@@ -673,7 +673,9 @@ Read the full license here:
 \definecolor{darkerblue}{HTML}{003989}
 \definecolor{darkblue}{HTML}{224499}
 % \definecolor{lightblue}{HTML}{E3F0FF}
-\definecolor{lightblue}{HTML}{DCE7FC}
+% \definecolor{lightblue}{HTML}{DCE7FC}
+% \definecolor{lightblue}{HTML}{D1E5FF}
+\definecolor{lightblue}{HTML}{D8E9FF}
 
 \usepackage[skins,breakable]{tcolorbox}
 
@@ -781,7 +783,7 @@ label={#2},
     hmargin=2.5cm, \
     vmargin=2.5cm, \
     marginpar=0cm, \
-    TableRowColorHeader={HTML}{DCE7FC}, \
+    TableRowColorHeader={HTML}{D8E9FF}, \
     TableRowColorOdd={HTML}{F7F7F7}, \
     TableRowColorEven={HTML}{EEEEEE}, \
     div.note_border-radius=0px, \
@@ -796,7 +798,7 @@ label={#2},
     pre_TeXextras=, \
     noteBorderColor={HTML}{2266C0}, \
     div.note_title-foreground-TeXcolor={HTML}{2266C0}, \
-    div.note_title-background-TeXcolor={HTML}{DCE7FC}, \
+    div.note_title-background-TeXcolor={HTML}{D8E9FF}, \
     verbatimvisiblespace=\\textcolor{color_types}{\\textvisiblespace}, \
     verbatimcontinued=\\makebox[2\\fontcharwd\\font`\\x][r]{\\textcolor{color_types}{\\tiny$\\hookrightarrow$}}, \
     verbatimwithframe=false, \
