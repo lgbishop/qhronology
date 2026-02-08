@@ -1,5 +1,5 @@
 # Project: Qhronology (https://github.com/lgbishop/qhronology)
-# Author: lgbishop <lachlanbishop@protonmail.com>
+# Author: lgbishop <lgbishop@protonmail.com>
 # Copyright: Lachlan G. Bishop 2025
 # License: AGPLv3 (non-commercial use), proprietary (commercial use)
 # For more details, see the README in the project repository:

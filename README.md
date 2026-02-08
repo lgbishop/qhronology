@@ -384,7 +384,7 @@ Please see [LICENSE](https://github.com/lgbishop/qhronology/blob/latest/LICENSE)
 
 ## Contributing
 
-Contributions to Qhronology (both the package and its documentation), including any features, fixes, and suggestions, are welcome provided they are compatible with the project's concept and vision, while also conforming to its style. Please see [CONTRIBUTING](https://github.com/lgbishop/qhronology/blob/latest/CONTRIBUTING) for more details about contributing to the project. Feel free to contact lachlanbishop@protonmail.com to discuss any significant additions or changes you wish to propose.
+Contributions to Qhronology (both the package and its documentation), including any features, fixes, and suggestions, are welcome provided they are compatible with the project's concept and vision, while also conforming to its style. Please see [CONTRIBUTING](https://github.com/lgbishop/qhronology/blob/latest/CONTRIBUTING) for more details about contributing to the project. Feel free to contact lgbishop@protonmail.com to discuss any significant additions or changes you wish to propose.
 
 ## Citation
 
