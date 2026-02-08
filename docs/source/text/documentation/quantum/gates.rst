@@ -687,7 +687,7 @@ Methods
 Subclasses
 ==========
 
-Most of the canonical gates used in standard quantum computing theory are implemented in Qhronology as an assortment of subclasses of the :py:class:`~qhronology.quantum.gates.QuantumGate` class. It is important to be aware of how, even though they share many of the same arguments and properties, the usage of these classes can differ greatly. This is especially true among a few distinct categorizations of gates, namely dimensionality and compositionality, which are summarized in the tables below:
+Most of the canonical gates used in standard quantum computing theory are implemented in Qhronology as an assortment of subclasses of the :py:class:`~qhronology.quantum.gates.QuantumGate` class. It is important to be aware of how, even though they share many of the same arguments and properties, the usage of these classes can differ greatly. This is especially true among a few distinct categorizations of gates, namely *dimensionality* and *compositionality*, which are summarized in the tables below:
 
 .. raw:: latex
 
