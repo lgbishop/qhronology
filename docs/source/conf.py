@@ -235,7 +235,7 @@ Latest documentation PDF version available online:
 
 Official website:
 
-\texttt{\url{https://qhronology.com}}
+\texttt{\url{https://qhronology.org}}
 
 Source code available online:
 

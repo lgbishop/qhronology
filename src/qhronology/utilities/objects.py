@@ -5,7 +5,7 @@
 # For more details, see the README in the project repository:
 # https://github.com/lgbishop/qhronology,
 # or visit the website:
-# https://qhronology.com.
+# https://qhronology.org.
 
 """
 The base class for constructing quantum states and gates.
