@@ -6,7 +6,7 @@
 
 # Qhronology
 
-*Qhronology* is a Python package for computing the states of the chronology-respecting (CR) and chronology-violating (CV) quantum systems according to the foremost quantum prescriptions of closed timelike curves (CTCs). By providing a unique approach to describing general quantum objects (such as states and gates), Qhronology can also function as a complete quantum circuit simulator, and additionally contains an engine for the visualization of quantum circuit diagrams. Its main features include:
+*Qhronology* is a Python package for computing the states of the chronology-respecting (CR) and chronology-violating (CV) quantum systems according to the foremost quantum prescriptions of closed timelike curves (CTCs). By providing a unique approach to describing general quantum objects (such as states and gates), Qhronology can also operate as a complete quantum circuit simulator, of which a prominent component is its engine for the visualization of quantum circuit diagrams. Its main features include:
 
 - calculation of the states of the CR and CV quantum systems according to quantum-mechanical prescriptions of closed timelike curves
   - Deutsch's model (D-CTCs)
