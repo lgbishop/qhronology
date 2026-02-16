@@ -474,10 +474,10 @@ def measure(
     -------
     mat
         The post-measurement :python:`matrix`.
-        Returned only if :python:`statistics` is :python:`False`.
+        Returned if :python:`statistics` is :python:`False`.
     num | sym | list[num | sym]
         A list of probabilities corresponding to each operator given in :python:`operators`.
-        Returned only if :python:`statistics` is :python:`True`.
+        Returned if :python:`statistics` is :python:`True`.
 
     Note
     ----
@@ -886,10 +886,10 @@ class OperationsMixin:
         Returns
         -------
         None
-            Returned only if :python:`statistics` is :python:`False`.
+            Returned if :python:`statistics` is :python:`False`.
         num | sym | list[num | sym]
             A list of probabilities corresponding to each operator given in :python:`operators`.
-            Returned only if :python:`statistics` is :python:`True`.
+            Returned if :python:`statistics` is :python:`True`.
 
         Note
         ----

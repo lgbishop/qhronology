@@ -1349,7 +1349,7 @@ List of special gates
 
    \enlargethispage{\baselineskip}
 
-Note that in these examples, :math:`\Dimension` is the dimensionality of the relevant linear operator's underlying Hilbert space.
+Note that in these examples, the symbol :math:`\Dimension` denotes the dimensionality of the relevant linear operator's underlying Hilbert space.
 
 - :math:`\PauliX` (Pauli-:math:`X`):
 
@@ -1799,7 +1799,7 @@ A better understanding of quantum circuitry notation can be gained by studying a
 
 As there are no operations (such as gates or measurements) on the wire, the explicitly labelled output state :math:`\StateDensity^\prime` is identically equal to the input state :math:`\StateDensity` (since the quantum wire directly connects the two).
 
-If we were to place a gate corresponding to an arbitrary unitary operator :math:`\Unitary` upon the intermediary wire, the action from the resulting operation is the standard transformation of a matrix by a linear operator:
+If we were to place a gate corresponding to an arbitrary unitary operator :math:`\Unitary` upon the intermediary wire, the resulting action is the standard transformation of a matrix by a linear operator:
 
    .. raw:: latex
       

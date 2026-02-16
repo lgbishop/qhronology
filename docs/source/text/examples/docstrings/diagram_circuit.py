@@ -18,10 +18,16 @@ ICN = Not(targets=[2], controls=[1], num_systems=3)
 CNI = Not(targets=[1], controls=[0], num_systems=3)
 HII = Hadamard(targets=[0], num_systems=3)
 IMI = Measurement(
-    operators=[ket(0), ket(1)], observable=False, targets=[1], num_systems=3
+    operators=[ket(0), ket(1)],
+    observable=False,
+    targets=[1],
+    num_systems=3,
 )
 MII = Measurement(
-    operators=[ket(0), ket(1)], observable=False, targets=[0], num_systems=3
+    operators=[ket(0), ket(1)],
+    observable=False,
+    targets=[0],
+    num_systems=3,
 )
 MMI = GateInterleave(MII, IMI)
 ICX = Pauli(index=1, targets=[2], controls=[1], num_systems=3)

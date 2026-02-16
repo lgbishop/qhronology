@@ -5,7 +5,7 @@
 Quantities
 ==========
 
-This module provides functions and a mixin for calculating quantum quantities.
+This module provides functions and a mixin for calculating quantum quantities:
 
 .. raw:: latex
 

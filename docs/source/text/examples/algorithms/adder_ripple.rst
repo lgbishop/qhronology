@@ -222,7 +222,7 @@ Results
 .. code:: python
 
    >>> print(duration)
-   Duration: 14.913 seconds
+   Duration: 11.294 seconds
 
 .. raw:: latex
 

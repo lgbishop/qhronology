@@ -44,3 +44,5 @@ pctc_output.apply(sp.factor)
 input_state.print()
 output_state.print()
 pctc_output.print()
+
+print(output_state.distance(pctc_output))

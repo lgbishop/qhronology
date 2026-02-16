@@ -39,12 +39,12 @@ Described by the unitary
 .. math:: \Unitary = \Swap^{1,2} \cdot \Control^0 \NOT^1 \cdot \Control^2 \NOT^0,
    :label: eq:unproven_unitary
 
-the unproven-theorem paradox encapsulates the scenario in which the proof of a theorem that a mathematician reads in the past is the very same proof which they write down in the future book (with the book having travelled back in time). We therefore denote the absence and presence of the proof in each subsystem intuitively by :math:`\ket{0}` and :math:`\ket{1}`, respectively. Under this interpretation, when the mathematician and/or the book are in the state :math:`\ket{1}`, they possess a "correct" proof, while being in the state :math:`\ket{0}` means that they do not. (Alternatively, one can think of these qubit levels as denoting different answers to some problem the mathematician is working on. They can then encode their proof of some theorem into an :math:`\Number`-bit binary string by using :math:`\Number` copies of the circuit :cite:p:`allen_treating_2014`.) Thus, the CR input state
+the unproven-theorem paradox encapsulates the scenario in which the proof of a theorem that a mathematician reads in the past is the very same proof which they write down in the future book (with the book having travelled back in time). We therefore denote the absence and presence of the proof in each subsystem intuitively by :math:`\ket{0}` and :math:`\ket{1}`, respectively. Under this interpretation, when the mathematician and/or the book are in the state :math:`\ket{1}`, they possess a "correct" proof, while being in the state :math:`\ket{0}` means that they do not. (Alternatively, one can think of these qubit levels as denoting different answers to some problem the mathematician is working on. They can then encode their proof of some theorem into an :math:`\Number`-bit binary string by using :math:`\Number` copies of the circuit :cite:p:`allen_treating_2014`.) Thus, we will use the CR input state
 
-.. math:: \StateCR = \ket{0}\bra{0}\otimes\ket{0}\bra{0}
+.. math:: \StateCR = \ket{0}\bra{0}\otimes\ket{0}\bra{0},
    :label: eq:unproven_input
 
-describes the situation in which both the book and mathematician do not initially possess the proof.
+which describes both the book and mathematician as not initially possessing the proof.
 
 Solutions
 ---------
@@ -52,7 +52,7 @@ Solutions
 D-CTCs
 ^^^^^^
 
-To find the D-CTC solutions, we first compute the standard evolution with the CR input state :eq:`eq:unproven_input`,
+To find the D-CTC solutions, we first compute the standard evolution through the circuit with the CR input state :eq:`eq:unproven_input`,
 
 .. math::
 

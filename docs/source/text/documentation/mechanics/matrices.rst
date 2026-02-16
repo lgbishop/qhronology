@@ -5,7 +5,7 @@
 Matrices
 ========
 
-This module provides a collection of core functions for constructing matrices in quantum mechanics.
+This module provides core functions for constructing matrices in quantum mechanics:
 
 .. raw:: latex
 
@@ -221,7 +221,12 @@ Functions
 
    .. code:: python
 
-      >>> quantum_state([("a", [0]), ("b", [1])], form="vector", kind="pure", dim=2)
+      >>> quantum_state(
+      ...     spec=[("a", [0]), ("b", [1])],
+      ...     form="vector",
+      ...     kind="pure",
+      ...     dim=2,
+      ... )
       Matrix([
       [a],
       [b]])
@@ -236,7 +241,12 @@ Functions
 
    .. code:: python
 
-      >>> quantum_state([("a", [0]), ("b", [1])], form="matrix", kind="pure", dim=2)
+      >>> quantum_state(
+      ...     spec=[("a", [0]), ("b", [1])],
+      ...     form="matrix",
+      ...     kind="pure",
+      ...     dim=2,
+      ... )
       Matrix([
       [a*conjugate(a), a*conjugate(b)],
       [b*conjugate(a), b*conjugate(b)]])
@@ -251,7 +261,12 @@ Functions
 
    .. code:: python
 
-      >>> quantum_state([("a", [0]), ("b", [1])], form="matrix", kind="mixed", dim=2)
+      >>> quantum_state(
+      ...     spec=[("a", [0]), ("b", [1])],
+      ...     form="matrix",
+      ...     kind="mixed",
+      ...     dim=2,
+      ... )
       Matrix([
       [a, 0],
       [0, b]])
@@ -309,7 +324,12 @@ Functions
 
    .. code:: python
 
-      >>> quantum_state([["a", "b"], ["c", "d"]], form="matrix", kind="mixed", dim=2)
+      >>> quantum_state(
+      ...     spec=[["a", "b"], ["c", "d"]],
+      ...     form="matrix",
+      ...     kind="mixed",
+      ...     dim=2,
+      ... )
       Matrix([
       [a, b],
       [c, d]])
@@ -325,7 +345,12 @@ Functions
    .. code:: python
 
       >>> matrix = sp.Matrix([["a", "b"], ["c", "d"]])
-      >>> quantum_state(matrix, form="matrix", kind="mixed", dim=2)
+      >>> quantum_state(
+      ...     spec=matrix,
+      ...     form="matrix",
+      ...     kind="mixed",
+      ...     dim=2,
+      ... )
       Matrix([
       [a, b],
       [c, d]])

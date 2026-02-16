@@ -65,7 +65,7 @@ Overview
 
 The primary purpose of Qhronology is to facilitate the study of quantum models of antichronological time travel and quantum algorithms of quantum computing in both educational and research capacities. As part of this, the project aims to make the expression of quantum states, gates, circuits, and models of CTCs near-limitlessly possible within a framework that is syntactically simple, informationally dense, mathematically powerful, extremely flexible, and easily extensible. Qhronology therefore provides a sufficiently complete and self-contained set of tools with the intention that using external packages and libraries to perform transformations on its quantum constructs should not be necessary (at least in most cases). Its underlying mathematical system accomplishes this using the standard :math:`\Dimension`-dimensional matrix mechanics of discrete-variable quantum theory in a general :math:`\Complexes^\Dimension`-representation.
 
-Qhronology is written entirely in the `Python <https://www.python.org/>`_ programming language. Being high-level, dynamically type-checked, and interpreted (at least within the context of its CPython reference implementation), Python is well-suited for building an accessible framework that emphasizes interactivity and scriptability. Additionally, like any popular language, it has both an extensive standard library and a plethora of powerful packages available to it. Qhronology is built around features from two such packages: the canonical `SymPy <https://sympy.org>`_ and `NumPy <https://numpy.org>`_ projects. In particular, the package greatly leverages the symbolic and linear algebra capabilities of the former, and so aims to have a deep compatibility with SymPy and its matrix objects. It is therefore hoped that users who possess experience with these projects find Qhronology's interface both familiar and intuitive.
+Qhronology is written entirely in the `Python <https://www.python.org/>`_ programming language. Being high-level, dynamically type-checked, and interpreted (at least within the context of its CPython reference implementation), Python is well-suited for building an accessible framework that emphasizes interactivity and scriptability. Additionally, like any popular language, it has both an extensive standard library and a plethora of powerful community packages available to it. Qhronology is built around features from two such packages: the canonical `SymPy <https://sympy.org>`_ and `NumPy <https://numpy.org>`_ projects. In particular, the package greatly leverages the symbolic and linear algebra capabilities of the former, and so aims to have a deep compatibility with SymPy and its matrix objects. It is therefore hoped that users who possess experience with these projects find Qhronology's interface both familiar and intuitive.
 
 .. note::
 
@@ -226,7 +226,7 @@ Numerous examples
 
 ..    \begin{tabular}{M{0.65\textwidth}  C{0.35\textwidth}}
 
-Bundled with the project is a small collection of complete examples that showcase its capabilities and syntax. These are divided into two categories: :ref:`sec:examples_algorithms` and :ref:`sec:examples_ctc`. The former contains implementations of canonical algorithms in quantum computing, while the latter consists of more exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.
+Bundled with the project is a small collection of complete examples that showcase its capabilities and syntax. These are divided into two categories: :ref:`sec:examples_algorithms` and :ref:`sec:examples_ctc`. The former contains implementations of canonical algorithms in quantum computing, while the latter consists of exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.
 
 .. .. raw:: latex
 
@@ -372,7 +372,7 @@ Local installation of Qhronology from `PyPI <https://pypi.org/project/qhronology
 
 You may also be able to use an alternative package manager of your choice.
 
-After installation, the package can be imported in Python in the usual way. One suggestion is as follows:
+After installation, the package can be imported in Python in the standard way. One suggestion is as follows:
 
 .. raw:: latex
 
@@ -679,7 +679,7 @@ Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repositor
 Citation
 ========
 
-- The package:
+- The package itself:
 
 .. raw:: latex
 
@@ -700,7 +700,7 @@ Citation
 
    \end{code}
 
-- The project documentation:
+- The project's documentation:
 
 .. raw:: latex
 

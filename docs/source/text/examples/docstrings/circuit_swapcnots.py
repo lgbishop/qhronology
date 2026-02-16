@@ -19,7 +19,10 @@ CN = Not(targets=[1], controls=[0])
 NC = Not(targets=[0], controls=[1])
 
 # Circuit
-swapcnots = QuantumCircuit(inputs=[input_upper, input_lower], gates=[CN, NC, CN])
+swapcnots = QuantumCircuit(
+    inputs=[input_upper, input_lower],
+    gates=[CN, NC, CN],
+)
 swapcnots.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
 
 # Output

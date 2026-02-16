@@ -628,8 +628,8 @@ Read the full license here:
 \setcounter{tocdepth}{1}
 
 \renewcommand{\cftpartfont}{\fontsize{12}{14}\sffamily\bfseries}
-\renewcommand{\cftchapfont}{\fontsize{10}{12}\sffamily\bfseries}
-\renewcommand{\cftsecfont}{\fontsize{9}{11}\sffamily\bfseries}
+\renewcommand{\cftchapfont}{\fontsize{11}{14}\sffamily\bfseries}
+\renewcommand{\cftsecfont}{\fontsize{10}{12}\sffamily\bfseries}
 \renewcommand{\cftsubsecfont}{\fontsize{9}{11}\sffamily\bfseries}
 \renewcommand{\cftsubsubsecfont}{\fontsize{9}{11}\sffamily\bfseries}
 \renewcommand{\cftparafont}{\fontsize{9}{11}\sffamily\bfseries}
@@ -640,7 +640,7 @@ Read the full license here:
 \renewcommand{\cftsubsubsecpagefont}{\fontsize{9}{11}\sffamily\bfseries}
 \renewcommand{\cftparapagefont}{\fontsize{9}{11}\sffamily\bfseries}
 
-\renewcommand{\cftbeforesecskip}{0.075em}
+\renewcommand{\cftbeforesecskip}{0.05em}
 \renewcommand{\cftchapafterpnum}{\vskip0.25em}
 \renewcommand{\cftsecafterpnum}{\vskip0.00em}
 % \renewcommand{\cftbeforesubsecskip}{0.35em}
@@ -806,6 +806,7 @@ label={#2},
     BeforeFootnote=\\leavevmode\\unskip\\enlargethispageonce{0.9\\baselineskip}",
     "fncychap": r"",
     # "printindex": r'\footnotesize\raggedright\printindex',
+    "printindex": r"\def\twocolumn[#1]{#1}\printindex",
 }
 latex_show_urls = "footnote"
 latex_show_pagerefs = True

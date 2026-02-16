@@ -3129,9 +3129,9 @@ class VisualizationMixin:
         Returns
         -------
         None
-            Returned only if :python:`return_string` is :python:`False`.
+            Returned if :python:`return_string` is :python:`False`.
         str
-            The rendered circuit diagram. Returned only if :python:`return_string` is :python:`True`.
+            The rendered circuit diagram. Returned if :python:`return_string` is :python:`True`.
 
         Note
         ----

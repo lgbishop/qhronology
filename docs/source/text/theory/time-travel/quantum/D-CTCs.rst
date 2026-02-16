@@ -141,7 +141,7 @@ In this model, the CTC-trapped state :math:`\StateCV^{(n-1)}` enters the :math:`
 
 The final output :math:`\StateCV^{(\infty)}` is then obtained by applying this map recursively *ad infinitum* to an initial state :math:`\StateCV^{(0)}`. Accordingly, one finds, in the limit,
 
-.. math:: \StateCV^{(\infty)} = \lim_{N \rightarrow\infty}\MapDCTCsCV_{\Unitary}^{N}[\StateCR,\StateCV^{(0)}]
+.. math:: \StateCV^{(\infty)} = \lim_{N \rightarrow\infty}\MapDCTCsCV_{\Unitary}^{N}[\StateCR,\StateCV^{(0)}].
    :label: eq:ECP_CV
 
 Given this framework, the ECP then introduces an arbitrarily small decoherence interaction :math:`\Decoherence`, parametrized by the decoherence strength :math:`0<\delta\ll1`, to each CTC iteration,

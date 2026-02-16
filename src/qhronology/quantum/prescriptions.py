@@ -53,8 +53,8 @@ class QuantumCTC(QuantumCircuit):
     Instances provide complete descriptions of quantum circuits involving antichronological time
     travel. The class however does not possess any ability to compute the output state
     (e.g., resolve temporal paradoxes) of the circuit;
-    this is functionality that is associated with the specific prescriptions of quantum time travel,
-    and such prescriptions are implemented as subclasses.
+    that functionality is associated with the specific prescriptions of quantum time travel,
+    which are implemented as subclasses.
 
     Arguments
     ---------
@@ -1061,11 +1061,11 @@ def pctc_violating(
 
        \\MapPCTCsCV_{\\Unitary}[\\StateCR]
            = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\tfrac{1}{\\Dimension}\\Identity)
-           \\Unitary^\\dagger\\bigr]
+           \\Unitary^\\dagger\\bigr],
 
     given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)
-    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
-    Here, :math:`\\Dimension` is the dimensionality of the CV system's Hilbert space
+    and interaction described by :python:`gate` (:math:`\\Unitary`).
+    Here, :math:`\\Dimension` is the dimensionality of the CV Hilbert space
     (assumed to be equivalent to that of its CR counterpart), while :math:`\\Identity` is the
     :math:`\\Dimension \\times \\Dimension` identity matrix.
 

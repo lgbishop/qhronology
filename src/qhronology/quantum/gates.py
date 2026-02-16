@@ -606,7 +606,7 @@ class GellMann(QuantumGate):
             &\\GellMann_7 \\equiv -\\eye\\ket{2}\\bra{3} + \\eye\\ket{3}\\bra{2}
                 = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & -\\eye \\\\ 0 & \\eye & 0 \\end{bmatrix},
         \\end{aligned}
-        \\qquad
+        \\quad\:\:
         \\begin{aligned}
             &\\GellMann_2 \\equiv -\\eye\\ket{0}\\bra{1} + \\eye \\ket{1}\\bra{0}
                 = \\begin{bmatrix} 0 & -\\eye & 0 \\\\ \\eye & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}, \\\\
@@ -1566,8 +1566,7 @@ class Measurement(QuantumGate):
 
     The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),
     in which case each is converted into its corresponding matrix representation
-    (e.g., :math:`\\Kraus_i = \\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.
-
+    (e.g., :math:`\\Kraus_i = \\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurement(s).
     Note also that this method does not check for validity of supplied POVMs or the completeness
     of sets of observables, nor does it renormalize the post-measurement state.
 
@@ -1591,17 +1590,16 @@ class Measurement(QuantumGate):
 
     Note
     ----
-    Measurement operations in quantum physics are, in general, non-linear and non-unitary
-    operations on (normalized) state vectors and density operators. As such, they cannot be
-    represented by matrices, and so the :python:`matrix` property therefore does not return a valid
-    representation of the measurement operation. Instead, it returns an identity matrix of the
-    appropriate size for its number of dimensions and systems.
+    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s)
+    to be measured. These indices must be consecutive, and their number must match the number of
+    systems spanned by all given operators.
 
     Note
     ----
-    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s)
-    to be measured. These indices must be consecutive, and their number must match the number of
-    systems spanned by all given operators."""
+    Measurement operations in quantum physics are, in general, non-linear and non-unitary
+    operations on (normalized) state vectors and density operators. As such, they cannot be
+    represented by matrices, and so the :python:`matrix` property therefore does not return a valid
+    representation of the measurement operation."""
 
     def __init__(
         self,

@@ -53,7 +53,7 @@ on the tripartite input :math:`\ket{x} \otimes \ket{y} \otimes \ket{z}` yields a
 
    \begin{aligned}
        \MapGeneral_{\Unitary} \bigl[\ket{x} \otimes \ket{y} \oplus \ket{z}\bigr] &= \Control^{0,1} \NOT^2 \ket{x} \otimes \ket{y} \oplus \ket{z} \\
-       &= \ket{x} \otimes \ket{y} \otimes \ket{z \oplus x y}
+       &= \ket{x} \otimes \ket{y} \otimes \ket{z \oplus x y}.
    \end{aligned}
 
 :numref:`table:ccnot` is a truth table for this operation in the context of qubits.

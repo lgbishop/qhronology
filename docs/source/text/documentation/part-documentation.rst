@@ -117,7 +117,7 @@ The :python:`quantum` subpackage contains most of Qhronology's underlying mathem
 
 .. rubric:: :styleheader1:`Mechanics`
 
-The :python:`mechanics` subpackage contains Qhronology's core logic for creating fundamental quantum objects, performing operations on them, and computing various quantum-mechanical scalar quantities.
+The :python:`mechanics` subpackage contains Qhronology's core logic for creating fundamental quantum objects, performing operations on them, and computing quantum-mechanical scalar quantities.
 
 .. list-table:: Overview of Qhronology's :python:`mechanics` subpackage
    :widths: 13 27 20

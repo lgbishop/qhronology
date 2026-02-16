@@ -54,7 +54,7 @@ on the bipartite input :math:`\ket{x} \otimes \ket{y}` simply produces a vector 
    \begin{aligned}
        \MapGeneral_{\Unitary} \bigl[\ket{x} \otimes \ket{y}\bigr] &= \Control^0 \NOT^1 \ket{x} \otimes \ket{y} \\
        % &= \sum\limits_{a,b=0}^{1} {\ket{a}\braket{a}{x}} \otimes {\ket{b \oplus a}\braket{b}{y}}, \\
-       &= \ket{x} \otimes \ket{x \oplus y}
+       &= \ket{x} \otimes \ket{x \oplus y}.
    \end{aligned}
 
 Observe how the value of the second system is now the sum of the inputs values (modulo the dimensionality), so if we simply discard (trace over) the first system, we obtain our desired result. A truth table for qubits appears in :numref:`table:cnot`.

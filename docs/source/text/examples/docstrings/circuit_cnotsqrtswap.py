@@ -26,7 +26,10 @@ PI = Diagonal(
 PR = GateInterleave(IRy_dag, PI)
 
 # Circuit
-CNOT = QuantumCircuit(inputs=[psi, phi], gates=[IRy, RSWAP, ZI, RSWAP, RzRz, PR])
+CNOT = QuantumCircuit(
+    inputs=[psi, phi],
+    gates=[IRy, RSWAP, ZI, RSWAP, RzRz, PR],
+)
 CNOT.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
 
 # Output

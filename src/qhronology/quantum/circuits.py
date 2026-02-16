@@ -979,11 +979,11 @@ class QuantumCircuit(SymbolicsProperties):
         -------
         list[num | sym]
             A list of probabilities corresponding to each operator given in :python:`operators`.
-            Returned only if :python:`statistics` is :python:`True`.
+            Returned if :python:`statistics` is :python:`True`.
         QuantumState
             A quantum state that takes the form of the post-measurement probabilistic sum
             of all outcomes of measurements corresponding to each operator given in :python:`operators`.
-            Returned only if :python:`statistics` is :python:`False`.
+            Returned if :python:`statistics` is :python:`False`.
         """
         statistics = False if statistics is None else statistics
         state = self.state(postprocess=False)
@@ -1046,9 +1046,9 @@ class QuantumCircuit(SymbolicsProperties):
         Returns
         -------
         None
-            Returned only if :python:`return_string` is :python:`False`.
+            Returned if :python:`return_string` is :python:`False`.
         str
-            The rendered circuit diagram. Returned only if :python:`return_string` is :python:`True`.
+            The rendered circuit diagram. Returned if :python:`return_string` is :python:`True`.
 
         Note
         ----

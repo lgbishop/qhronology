@@ -109,7 +109,7 @@ Similarly, a :math:`2`-dimensional density operator :math:`\StateDensity` in the
 
 .. math:: \vec{r}_{\StateDensity} = \trace[\StateDensity \Pauli_1]\uv{e}_1 + \trace[\StateDensity \Pauli_2]\uv{e}_2 + \trace[\StateDensity \Pauli_3]\uv{e}_3,
 
-where
+where :math:`\{\Pauli_k\}_{k=1}^{3}` are the *Pauli matrices*, which are defined as
 
 .. math::
    :label: eq:Pauli
@@ -117,10 +117,8 @@ where
    \begin{aligned}
        \Pauli_1 &= \Pauli_x \equiv \ket{0}\bra{1} + \ket{1}\bra{0} \!\!\!\!\!\! & &= \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}, \\
        \Pauli_2 &= \Pauli_y \equiv -\eye \ket{0}\bra{1} + \eye \ket{1}\bra{0} \!\!\!\!\!\! & &= \begin{bmatrix} 0 & -\eye \\ \eye & 0 \end{bmatrix}, \\
-       \Pauli_3 &= \Pauli_z \equiv \ket{0}\bra{0} - \ket{1}\bra{1} \!\!\!\!\!\! & &= \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix},
+       \Pauli_3 &= \Pauli_z \equiv \ket{0}\bra{0} - \ket{1}\bra{1} \!\!\!\!\!\! & &= \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}.
    \end{aligned}
-
-are the *Pauli matrices*.
 
 .. only:: html
 
@@ -148,7 +146,7 @@ are the *Pauli matrices*.
 
    The Bloch sphere.
 
-The Pauli matrices :math:`\{\Pauli_k\}_{k=1}^{3}` are Hermitian, and so represent observables in the context of quantum mechanics. Together with the identity operator (writing :math:`\Pauli_0 = \Identity_2`), the set :math:`\{\Pauli_\mu\}_{\mu=0}^{3}` forms a complete basis for the space of complex :math:`2 \times 2` matrices. Since this coincides with the space of linear operators :math:`\SpaceLinear(\SpaceHilbert)` on a qubit Hilbert space :math:`\SpaceHilbert`, then any (density) operator :math:`\StateDensity \in \SpaceLinear(\SpaceHilbert)` can be expressed as the linear combination
+The Pauli matrices are Hermitian, and so represent observables in the context of quantum mechanics. Together with the identity operator (writing :math:`\Pauli_0 = \Identity_2`), the set :math:`\{\Pauli_\mu\}_{\mu=0}^{3}` forms a complete basis for the space of complex :math:`2 \times 2` matrices. Since this coincides with the space of linear operators :math:`\SpaceLinear(\SpaceHilbert)` on a qubit Hilbert space :math:`\SpaceHilbert`, then any (density) operator :math:`\StateDensity \in \SpaceLinear(\SpaceHilbert)` can be expressed as the linear combination
 
 .. math:: \StateDensity = \frac{1}{2}\sum_{\mu=0}^{3} \trace[\Pauli_\mu \StateDensity]\Pauli_\mu.
    :label: eq:matrix_qubit
@@ -576,7 +574,7 @@ where :math:`\FunctionIntermediate : \SpaceMixed(\SpaceHilbert) \rightarrow \Com
 
 For the specific case of pure states :math:`\ket{\StateVector} \in \SpacePure(\SpaceHilbert)` however, we are able to define both a suitable measure and parametrization. Given some :math:`\FunctionIntermediate : \SpacePure(\SpaceHilbert) \rightarrow \Complexes`, the integral over pure states :cite:p:`bengtsson_geometry_2017, allen_treating_2014` is
 
-.. math:: \Integral = \int_{\SpacePure(\SpaceHilbert)} \diff[\StateVector] \, \FunctionIntermediate(\StateVector) 
+.. math:: \Integral = \int_{\SpacePure(\SpaceHilbert)} \diff[\StateVector] \, \FunctionIntermediate(\StateVector).
    :label: eq:integral_pure
 
 An important class of unitary transformations consists of random unitary matrices distributed according to the Haar measure on the group of :math:`\Dimension\times\Dimension` unitary matrices :math:`\GroupUnitary(\Dimension)`. This is significant for our purposes, as conveniently there exists a unique, natural measure over :math:`\SpacePure(\SpaceHilbert)` that is invariant under such transformations, and perhaps the best way to write this is in the Hurwitz parametrization :cite:p:`hurwitz_uber_1897, zyczkowski_induced_2001, bengtsson_geometry_2017`. Let us first introduce the Bloch sphere parametrization, often used for qubits, which involves the rotationally invariant area measure on a (unit) :math:`2`-sphere:

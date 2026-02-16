@@ -116,9 +116,9 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         Returns
         -------
         None
-            Returned only if :python:`return_string` is :python:`False`.
+            Returned if :python:`return_string` is :python:`False`.
         str
-            The constructed mathematical expression. Returned only if :python:`return_string` is :python:`True`.
+            The constructed mathematical expression. Returned if :python:`return_string` is :python:`True`.
         """
         expression = (
             str(self.notation)

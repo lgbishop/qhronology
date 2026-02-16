@@ -4,7 +4,7 @@ List of symbols
 
 .. csv-table:: List of symbols
    :header: "**Symbol**", "**Description**"
-   :widths: 10, 30
+   :widths: 8, 30
 
    ":math:`\eye`", "imaginary unit"
    ":math:`\e`", "Euler's number (:math:`\approx 2.718\ldots`)"
@@ -17,8 +17,8 @@ List of symbols
    ":math:`\ominus`", "subtraction in modular arithmetic (:math:`x \ominus y \equiv x - y \mathrel{\mathrm{mod}} m` for a modulus :math:`m \in \IntegersPositive`)"
    ":math:`\otimes`", "tensor product (also known as the Kronecker product in the context of matrices)"
    ":math:`\SpaceHilbert`", "Hilbert space"
-   ":math:`\langle{}\cdot{},{}\cdot{}\rangle`", "inner product (the Mathematician's notation)"
-   ":math:`\braket{{}\cdot{}}{{}\cdot{}}`", "inner product (the Physicist's notation, ""*bra-ket*"")"
+   ":math:`\langle{}\cdot{},{}\cdot{}\rangle`", "inner product (the mathematician's notation)"
+   ":math:`\braket{{}\cdot{}}{{}\cdot{}}`", "inner product (the physicist's notation, ""*bra-ket*"")"
    ":math:`\langle{}\cdot{}\rangle`", "expected value"
    ":math:`\ell^p`", "space of sequences with converging :math:`p`-norm"
    ":math:`\SpaceLebesgue^p`", "space of functions with converging :math:`p`-norm"

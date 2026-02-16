@@ -514,7 +514,9 @@ Constructor argument properties
    - a list of lists (specifying a matrix)
    - a list of 2-tuples
 
-   The data type of the elements contained within the first three of these options can be any of the following: numerical (including all scalars from SymPy, NumPy, and the standard library), SymPy symbolic (including expressions), or string representations of such scalar types. However, the fourth option---the bespoke list-of-tuples format---is intended to be the primary way of characterizing quantum states. Its structure is reasonably straightforward: each 2-tuple contains first an amplitude or probability (a scalar expression as a numerical, symbolic, or string value), followed by a list of non-negative integers corresponding to the levels of the number states of the desired basis vector. In the case of multiple such tuples in the given list, the resulting quantum state is the sum of all components formed from each individual tuple. For example, passing the list :python:`[("α", [0, 0]), ("β", [1, 1])]` to :python:`spec` in a :py:class:`~qhronology.quantum.states.QuantumState` construction yields a state which corresponds to one of the following forms (depending on the values passed to the other core arguments or properties):
+   The data type of the elements contained within the first three of these options can be any of the following: numerical (including all scalars from SymPy, NumPy, and the standard library), SymPy symbolic (including expressions), or string representations of such scalar types. However, the fourth option---the bespoke list-of-tuples format---is intended to be the primary way of characterizing quantum states. Its structure is reasonably straightforward: each 2-tuple contains first an amplitude or probability (a scalar expression as a numerical, symbolic, or string value), followed by a list of non-negative integers corresponding to the levels of the number states of the desired basis vector. In the case of multiple such tuples in the given list, the resulting quantum state is the sum of all components formed from each individual tuple.
+
+   For example, passing the list :python:`[("α", [0, 0]), ("β", [1, 1])]` to :python:`spec` in a :py:class:`~qhronology.quantum.states.QuantumState` construction yields a state which corresponds to one of the following forms (depending on the values passed to the other core arguments or properties):
 
    - :py:attr:`~qhronology.quantum.states.QuantumState.form` is :python:`"vector"`: :math:`\alpha\ket{0,0} + \beta\ket{1,1}`
    - :py:attr:`~qhronology.quantum.states.QuantumState.form` is :python:`"matrix"`:
@@ -1143,7 +1145,12 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
    .. code:: python
 
       >>> psi = QuantumState(
-      ...     spec=[("a*u", [0, 0]), ("b*u", [1, 0]), ("a*v", [0, 1]), ("b*v", [1, 1])],
+      ...     spec=[
+      ...         ("a*u", [0, 0]),
+      ...         ("b*u", [1, 0]),
+      ...         ("a*v", [0, 1]),
+      ...         ("b*v", [1, 1]),
+      ...     ],
       ...     form="vector",
       ...     conditions=[
       ...         ("a*conjugate(a) + b*conjugate(b)", 1),
