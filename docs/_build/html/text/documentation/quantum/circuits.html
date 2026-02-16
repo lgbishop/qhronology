@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 10, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 16, 2026"/>
   </head>
   
   
@@ -682,7 +682,10 @@ that of each of the gates in <code class="code highlight python docutils literal
 <span class="n">NC</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c1"># Circuit</span>
-<span class="n">swapcnots</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">input_upper</span><span class="p">,</span> <span class="n">input_lower</span><span class="p">],</span> <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">CN</span><span class="p">,</span> <span class="n">NC</span><span class="p">,</span> <span class="n">CN</span><span class="p">])</span>
+<span class="n">swapcnots</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">input_upper</span><span class="p">,</span> <span class="n">input_lower</span><span class="p">],</span>
+    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">CN</span><span class="p">,</span> <span class="n">NC</span><span class="p">,</span> <span class="n">CN</span><span class="p">],</span>
+<span class="p">)</span>
 <span class="n">swapcnots</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;unicode&quot;</span><span class="p">)</span>
 
 <span class="c1"># Output</span>
@@ -1397,10 +1400,10 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list[num</span> <span class="pre">|</span> <span class="pre">sym]</span></code> – A list of probabilities corresponding to each operator given in <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code>.
-Returned only if <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
+Returned if <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
 <li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code> – A quantum state that takes the form of the post-measurement probabilistic sum
 of all outcomes of measurements corresponding to each operator given in <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code>.
-Returned only if <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+Returned if <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 </ul>
 </p>
 </dd>
@@ -1449,8 +1452,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> – Returned only if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> – The rendered circuit diagram. Returned only if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> – Returned if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> – The rendered circuit diagram. Returned if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
 </ul>
 </p>
 </dd>
@@ -1481,10 +1484,16 @@ For best results, the terminal should have a monospace font with good Unicode co
 <span class="n">CNI</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">HII</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">IMI</span> <span class="o">=</span> <span class="n">Measurement</span><span class="p">(</span>
-    <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span>
+    <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span>
+    <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">MII</span> <span class="o">=</span> <span class="n">Measurement</span><span class="p">(</span>
-    <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span>
+    <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="n">ket</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ket</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span>
+    <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">MMI</span> <span class="o">=</span> <span class="n">GateInterleave</span><span class="p">(</span><span class="n">MII</span><span class="p">,</span> <span class="n">IMI</span><span class="p">)</span>
 <span class="n">ICX</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>

@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 10, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 16, 2026"/>
   </head>
   
   
@@ -1461,11 +1461,11 @@
 <span class="sd">        -------</span>
 <span class="sd">        list[num | sym]</span>
 <span class="sd">            A list of probabilities corresponding to each operator given in :python:`operators`.</span>
-<span class="sd">            Returned only if :python:`statistics` is :python:`True`.</span>
+<span class="sd">            Returned if :python:`statistics` is :python:`True`.</span>
 <span class="sd">        QuantumState</span>
 <span class="sd">            A quantum state that takes the form of the post-measurement probabilistic sum</span>
 <span class="sd">            of all outcomes of measurements corresponding to each operator given in :python:`operators`.</span>
-<span class="sd">            Returned only if :python:`statistics` is :python:`False`.</span>
+<span class="sd">            Returned if :python:`statistics` is :python:`False`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">statistics</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">statistics</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">statistics</span>
         <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">postprocess</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1531,9 +1531,9 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        None</span>
-<span class="sd">            Returned only if :python:`return_string` is :python:`False`.</span>
+<span class="sd">            Returned if :python:`return_string` is :python:`False`.</span>
 <span class="sd">        str</span>
-<span class="sd">            The rendered circuit diagram. Returned only if :python:`return_string` is :python:`True`.</span>
+<span class="sd">            The rendered circuit diagram. Returned if :python:`return_string` is :python:`True`.</span>
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>

@@ -721,7 +721,7 @@ Citation
 
    \end{code}
 
-- The `paper <https://arxiv.org/abs/2601.17459>`_:
+- The project's `technical paper <https://arxiv.org/abs/2601.17459>`_:
 
 .. raw:: latex
 

@@ -648,11 +648,11 @@ Read the full license here:
 \renewcommand{\cftsubsubsecafterpnum}{\vskip0.00em}
 \renewcommand{\cftparaafterpnum}{\vskip0.00em}
 
-\renewcommand{\cftchapaftersnumb}{\hskip0.5em}
-\renewcommand{\cftsecaftersnumb}{\hskip0.5em}
-\renewcommand{\cftsubsecaftersnumb}{\hskip0.5em}
-\renewcommand{\cftsubsubsecaftersnumb}{\hskip0.5em}
-\renewcommand{\cftparaaftersnumb}{\hskip0.5em}
+\renewcommand{\cftchapaftersnumb}{\hskip1em}
+\renewcommand{\cftsecaftersnumb}{\hskip1.25em}
+\renewcommand{\cftsubsecaftersnumb}{\hskip0.75em}
+\renewcommand{\cftsubsubsecaftersnumb}{\hskip0.75em}
+\renewcommand{\cftparaaftersnumb}{\hskip0.75em}
 
 \renewcommand{\sphinxtableofcontentshook}{}% else it will overwrite tocloft!
 

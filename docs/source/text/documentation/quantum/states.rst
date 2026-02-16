@@ -1203,7 +1203,7 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
 .. raw:: latex
 
-   \enlargethispage{-3\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.measure
 

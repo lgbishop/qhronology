@@ -54,6 +54,10 @@ Implementation
 
    \end{codetitled}
 
+.. raw:: latex
+
+   \newpage
+
 Output
 ------
 

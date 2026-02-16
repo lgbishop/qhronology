@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 10, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 16, 2026"/>
   </head>
   
   
@@ -558,9 +558,11 @@
     \bigl(\bra{\WaveFunctionFinal}\otimes\bra{\Bell}\bigr)\bigl(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{\Bell}\bigr) &amp;= \iint \diff{v^{\prime\prime}}\,\diff{w^{\prime\prime}}\,\conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime\prime}-w^{\prime\prime})\bigl(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}}\bigr) \\
     &amp;\quad\times\bigl(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\\
     &amp;\quad\times\iint \diff{v^{\prime}}\,\diff{w^{\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \delta(v^{\prime}-w^{\prime})\bigl(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}}\bigr)\\
-    &amp;= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime\prime}) \\
+    &amp;= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\\
+    &amp;\quad\times\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime\prime}) \\
     &amp;\quad\times\bigl(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}}\bigr)\bigl(\Unitary^{\prime}(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}}\bigr)\\
-    &amp;= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime\prime}) \\
+    &amp;= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\\
+    &amp;\quad\times\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime\prime}) \\
     &amp;\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \cdot \underbrace{\bra{w^{\prime\prime}}\Identity\ket{w^{\prime}}}_{=\delta(w^{\prime\prime}-w^{\prime})} \\
     &amp;= \iiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime}) \\
     &amp;\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \\

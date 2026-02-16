@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 10, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 16, 2026"/>
   </head>
   
   
@@ -1053,8 +1053,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> – Returned only if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> – The constructed mathematical expression. Returned only if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> – Returned if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> – The constructed mathematical expression. Returned if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
 </ul>
 </p>
 </dd>
@@ -1119,8 +1119,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> – Returned only if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> – The rendered circuit diagram. Returned only if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> – Returned if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> – The rendered circuit diagram. Returned if <code class="code highlight python docutils literal highlight-python"><span class="n">return_string</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
 </ul>
 </p>
 </dd>
@@ -1420,7 +1420,7 @@ matrices,</p>
     &amp;\GellMann_7 \equiv -\eye\ket{2}\bra{3} + \eye\ket{3}\bra{2}
         = \begin{bmatrix} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; -\eye \\ 0 &amp; \eye &amp; 0 \end{bmatrix},
 \end{aligned}
-\qquad
+\quad\:\:
 \begin{aligned}
     &amp;\GellMann_2 \equiv -\eye\ket{0}\bra{1} + \eye \ket{1}\bra{0}
         = \begin{bmatrix} 0 &amp; -\eye &amp; 0 \\ \eye &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}, \\
@@ -2493,8 +2493,8 @@ and so inherits all of its attributes, properties, and methods.</p>
 <span class="eqno">(310)<a class="headerlink" href="#equation-text-documentation-quantum-gates-19" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \trace[\Observable_i \op{\rho}] \Observable_i.\]</div>
 <p>The items in the list <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> can also be vectors (e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\)</span>),
 in which case each is converted into its corresponding matrix representation
-(e.g., <span class="math notranslate nohighlight">\(\Kraus_i = \ket{\xi_i}\bra{\xi_i}\)</span>) prior to any measurements.</p>
-<p>Note also that this method does not check for validity of supplied POVMs or the completeness
+(e.g., <span class="math notranslate nohighlight">\(\Kraus_i = \ket{\xi_i}\bra{\xi_i}\)</span>) prior to any measurement(s).
+Note also that this method does not check for validity of supplied POVMs or the completeness
 of sets of observables, nor does it renormalize the post-measurement state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2515,17 +2515,16 @@ superclass <a class="reference internal" href="#qhronology.quantum.gates.Quantum
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Measurement operations in quantum physics are, in general, non-linear and non-unitary
-operations on (normalized) state vectors and density operators. As such, they cannot be
-represented by matrices, and so the <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> property therefore does not return a valid
-representation of the measurement operation. Instead, it returns an identity matrix of the
-appropriate size for its number of dimensions and systems.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
 <p>The <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code> argument must be specified as a list of numerical indices of the subsystem(s)
 to be measured. These indices must be consecutive, and their number must match the number of
 systems spanned by all given operators.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Measurement operations in quantum physics are, in general, non-linear and non-unitary
+operations on (normalized) state vectors and density operators. As such, they cannot be
+represented by matrices, and so the <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> property therefore does not return a valid
+representation of the measurement operation.</p>
 </div>
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.matrices</span><span class="w"> </span><span class="kn">import</span> <span class="n">ket</span>

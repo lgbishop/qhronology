@@ -56,7 +56,7 @@ Implementation
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \newpage
 
 Output
 ------

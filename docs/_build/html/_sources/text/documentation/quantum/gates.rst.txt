@@ -2638,6 +2638,10 @@ Please note that the documentation of these subclasses includes only properties 
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
+
 .. autoclass:: qhronology.quantum.gates.Measurement
    :show-inheritance:
 

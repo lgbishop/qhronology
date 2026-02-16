@@ -47,7 +47,7 @@ A truth table for this circuit in the context of qubits appears in :numref:`tabl
 .. list-table:: Truth table for the full adder.
    :name: table:adder_full
    :align: left
-   :widths: 6 6 10 10 10
+   :widths: 8 8 10 10 10
    :header-rows: 1
 
    * - :math:`x` **(augend)**

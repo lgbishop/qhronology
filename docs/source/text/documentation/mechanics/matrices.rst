@@ -320,6 +320,10 @@ Functions
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -368,6 +372,10 @@ Functions
    \hrulefillthick
 
 .. autofunction:: qhronology.mechanics.matrices.encode
+
+   .. raw:: latex
+
+      \newpage
 
    .. raw:: latex
 

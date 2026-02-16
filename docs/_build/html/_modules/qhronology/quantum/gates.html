@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 10, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 16, 2026"/>
   </head>
   
   
@@ -1083,7 +1083,7 @@
 <span class="sd">            &amp;\\GellMann_7 \\equiv -\\eye\\ket{2}\\bra{3} + \\eye\\ket{3}\\bra{2}</span>
 <span class="sd">                = \\begin{bmatrix} 0 &amp; 0 &amp; 0 \\\\ 0 &amp; 0 &amp; -\\eye \\\\ 0 &amp; \\eye &amp; 0 \\end{bmatrix},</span>
 <span class="sd">        \\end{aligned}</span>
-<span class="sd">        \\qquad</span>
+<span class="sd">        \\quad\:\:</span>
 <span class="sd">        \\begin{aligned}</span>
 <span class="sd">            &amp;\\GellMann_2 \\equiv -\\eye\\ket{0}\\bra{1} + \\eye \\ket{1}\\bra{0}</span>
 <span class="sd">                = \\begin{bmatrix} 0 &amp; -\\eye &amp; 0 \\\\ \\eye &amp; 0 &amp; 0 \\\\ 0 &amp; 0 &amp; 0 \\end{bmatrix}, \\\\</span>
@@ -2070,8 +2070,7 @@
 
 <span class="sd">    The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),</span>
 <span class="sd">    in which case each is converted into its corresponding matrix representation</span>
-<span class="sd">    (e.g., :math:`\\Kraus_i = \\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
-
+<span class="sd">    (e.g., :math:`\\Kraus_i = \\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurement(s).</span>
 <span class="sd">    Note also that this method does not check for validity of supplied POVMs or the completeness</span>
 <span class="sd">    of sets of observables, nor does it renormalize the post-measurement state.</span>
 
@@ -2095,17 +2094,16 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    Measurement operations in quantum physics are, in general, non-linear and non-unitary</span>
-<span class="sd">    operations on (normalized) state vectors and density operators. As such, they cannot be</span>
-<span class="sd">    represented by matrices, and so the :python:`matrix` property therefore does not return a valid</span>
-<span class="sd">    representation of the measurement operation. Instead, it returns an identity matrix of the</span>
-<span class="sd">    appropriate size for its number of dimensions and systems.</span>
+<span class="sd">    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s)</span>
+<span class="sd">    to be measured. These indices must be consecutive, and their number must match the number of</span>
+<span class="sd">    systems spanned by all given operators.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s)</span>
-<span class="sd">    to be measured. These indices must be consecutive, and their number must match the number of</span>
-<span class="sd">    systems spanned by all given operators.&quot;&quot;&quot;</span>
+<span class="sd">    Measurement operations in quantum physics are, in general, non-linear and non-unitary</span>
+<span class="sd">    operations on (normalized) state vectors and density operators. As such, they cannot be</span>
+<span class="sd">    represented by matrices, and so the :python:`matrix` property therefore does not return a valid</span>
+<span class="sd">    representation of the measurement operation.&quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

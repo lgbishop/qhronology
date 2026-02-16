@@ -1965,6 +1965,10 @@ This is, of course, simply equivalent to two distinct subcircuits with the outpu
 
 .. note:: For more examples, see the :ref:`Examples <part:examples>` section.
 
+.. raw:: latex
+
+   \newpage
+
 Remarks
 =======
 

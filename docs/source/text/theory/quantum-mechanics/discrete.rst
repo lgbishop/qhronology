@@ -155,6 +155,10 @@ In the context of density operators, since the coefficient for :math:`\mu = 0` i
 
 The Bloch vector provides a complete description of a quantum system because it represents the expectation values of specific informationally complete observables. In general, a complex :math:`\Dimension \times \Dimension` density matrix, which represents the state of an :math:`\Dimension`-dimensional quantum system, is geometrically equivalent to a vector in an :math:`(\Dimension^2 - 1)`-dimensional real space. This is because the space of density matrices is a (bounded) convex subset of :math:`\Reals^{\Dimension^2}`, with its elements possessing certain properties (namely Hermiticity, positive semi-definiteness, and trace equal to :math:`1`). Since this real space coincides with that of the (generalized) *Bloch ball*, including both the surface (the *Bloch sphere*, on which points correspond to pure states) and interior (in which points correspond to mixed states), then this is why determination of the Bloch vector is equivalent to identification of the quantum state. Therefore, as the Pauli operators form a set of informationally complete observables for qubit systems, then the inclusion of the identity operator to this set yields a *tomographically complete* basis for the space of :math:`2 \times 2` Hermitian matrices, of which the space of :math:`2`-dimensional density matrices is a subset.
 
+.. raw:: latex
+
+   \newpage
+
 .. _`sec:qutrits`:
 
 Qutrits

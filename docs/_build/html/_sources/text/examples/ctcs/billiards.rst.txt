@@ -127,7 +127,7 @@ we may write :eq:`eq:clock_overlap_orthogonalization` as
 .. math:: \braket{\qclock(\Time)}{\qclock(\Time+\TimeDelta)} = \frac{\e^{-\eye \Energy_1\TimeDelta/\hbar}}{\Dimension} \frac{1 - \exp\left[-2\pi\eye\frac{\TimeDelta}{\TimeOrthogonalization}\right]}{1 - \exp\left[-2\pi\eye\frac{1}{\Dimension}\frac{\TimeDelta}{\TimeOrthogonalization}\right]}.
    :label: eq:clock_evolved_orthogonalization_identity
 
-Evidently, in the case that the evolution time difference is equal to the orthogonalization time, i.e., :math:`\TimeDelta = \TimeOrthogonalization`, then from :eq:`eq:clock_evolved_orthogonalization_identity` it is easy to see that the clock overlap vanishes, i.e.
+Evidently, in the case that the evolution time difference is equal to the orthogonalization time, that is, :math:`\TimeDelta = \TimeOrthogonalization`, then from :eq:`eq:clock_evolved_orthogonalization_identity` it is easy to see that the clock overlap vanishes, i.e.,
 
 .. math:: \left.\braket{\qclock(\Time)}{\qclock(\Time+\TimeDelta)}\right|_{\TimeDelta = \TimeOrthogonalization} = 0.
 

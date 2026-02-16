@@ -100,6 +100,14 @@ can be decoded, using :eq:`eq:decoding`, to be
        c^\prime &= \sum_{n = 0}^{\Number - 1} c^\prime_n \Dimension^n.
    \end{aligned}
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 Implementation
 --------------
 
@@ -117,6 +125,10 @@ Due to performance constraints, this example sums two 2-bit integers. Increasing
 .. raw:: latex
 
    \end{codetitled}
+
+.. raw:: latex
+
+   \newpage
 
 Output
 ------
