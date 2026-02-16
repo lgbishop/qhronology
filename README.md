@@ -19,7 +19,7 @@
 
 The primary purpose of Qhronology is to facilitate the study of quantum models of antichronological time travel and quantum algorithms of quantum computing in both educational and research capacities. As part of this, the project aims to make the expression of quantum states, gates, circuits, and models of CTCs near-limitlessly possible within a framework that is syntactically simple, informationally dense, mathematically powerful, extremely flexible, and easily extensible. Qhronology therefore provides a sufficiently complete and self-contained set of tools with the intention that using external packages and libraries to perform transformations on its quantum constructs should not be necessary (at least in most cases). Its underlying mathematical system accomplishes this using the standard $d$-dimensional matrix mechanics of discrete-variable quantum theory in a general $\mathbb{C}^d$-representation.
 
-Qhronology is written entirely in the [Python](https://www.python.org/) programming language. Being high-level, dynamically type-checked, and interpreted (at least within the context of its CPython reference implementation), Python is well-suited for building an accessible framework that emphasizes interactivity and scriptability. Additionally, like any popular language, it has both an extensive standard library and a plethora of powerful packages available to it. Qhronology is built around features from two such packages: the canonical [SymPy](https://sympy.org) ([repository](https://github.com/sympy/sympy)) and [NumPy](https://numpy.org) ([repository](https://github.com/numpy/numpy)) projects. In particular, the package greatly leverages the symbolic and linear algebra capabilities of the former, and so aims to have a deep compatibility with SymPy and its matrix objects. It is therefore hoped that users who possess experience with these projects find Qhronology's interface both familiar and intuitive.
+Qhronology is written entirely in the [Python](https://www.python.org) programming language. Being high-level, dynamically type-checked, and interpreted (at least within the context of its CPython reference implementation), Python is well-suited for building an accessible framework that emphasizes interactivity and scriptability. Additionally, like any popular language, it has both an extensive standard library and a plethora of powerful packages available to it. Qhronology is built around features from two such packages: the canonical [SymPy](https://sympy.org) ([repository](https://github.com/sympy/sympy)) and [NumPy](https://numpy.org) ([repository](https://github.com/numpy/numpy)) projects. In particular, the package greatly leverages the symbolic and linear algebra capabilities of the former, and so aims to have a deep compatibility with SymPy and its matrix objects. It is therefore hoped that users who possess experience with these projects find Qhronology's interface both familiar and intuitive.
 
 > [!NOTE]
 > Qhronology, in its current form, is considered to be highly experimental. Its output may not always be correct, and some features may not work as intended. Additionally, please note that all components of the package, including its functions, methods, classes, modules, and subpackages, may be subject to change in future versions.
@@ -176,7 +176,10 @@ HI = Hadamard(targets=[0], num_systems=2)
 CN = Not(targets=[1], controls=[0], num_systems=2)
 
 # Circuit
-generator = QuantumCircuit(inputs=[zero_state, zero_state], gates=[HI, CN])
+generator = QuantumCircuit(
+    inputs=[zero_state, zero_state],
+    gates=[HI, CN],
+)
 generator.diagram()
 
 # Output
@@ -322,19 +325,20 @@ unproven.diagram()
 # Output
 # D-CTCs
 unproven_DCTC = DCTC(circuit=unproven)
-unproven_DCTC_respecting = unproven_DCTC.state_respecting(norm=1, label="ρ_D")
-unproven_DCTC_violating = unproven_DCTC.state_violating(norm=1, label="τ_D")
+unproven_DCTC_CR = unproven_DCTC.state_respecting(label="ρ_D")
+unproven_DCTC_CV = unproven_DCTC.state_violating(label="τ_D")
 
 # P-CTCs
 unproven_PCTC = PCTC(circuit=unproven)
-unproven_PCTC_respecting = unproven_PCTC.state_respecting(norm=1, label="ψ_P")
-unproven_PCTC_violating = unproven_PCTC.state_violating(norm=1, label="τ_P")
+unproven_PCTC_CR = unproven_PCTC.state_respecting(label="ψ_P")
+unproven_PCTC_CV = unproven_PCTC.state_violating(label="τ_P")
+unproven_PCTC_CR.normalize()
 
 # Results
-unproven_DCTC_respecting.print()
-unproven_DCTC_violating.print()
-unproven_PCTC_respecting.print()
-unproven_PCTC_violating.print()
+unproven_DCTC_CR.print()
+unproven_DCTC_CV.print()
+unproven_PCTC_CR.print()
+unproven_PCTC_CV.print()
 ```
 
 ```python
@@ -350,22 +354,22 @@ unproven_PCTC_violating.print()
 > </p>
 
 ```python
->>> unproven_DCTC_respecting.print()
+>>> unproven_DCTC_CR.print()
 ρ_D = g|0,0⟩⟨0,0| + (1 - g)|1,1⟩⟨1,1|
 ```
 
 ```python
->>> unproven_DCTC_violating.print()
+>>> unproven_DCTC_CV.print()
 τ_D = g|0⟩⟨0| + (1 - g)|1⟩⟨1|
 ```
 
 ```python
->>> unproven_PCTC_respecting.print()
+>>> unproven_PCTC_CR.print()
 |ψ_P⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩
 ```
 
 ```python
->>> unproven_PCTC_violating.print()
+>>> unproven_PCTC_CV.print()
 τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
 ```
 
@@ -431,7 +435,7 @@ Contributions to Qhronology (both the package and its documentation), including 
 ## Possible future work
 
 - Package:
-  - Write proper (more formal) unit tests.
+  - Write proper (formal) unit tests.
   - Permit more intuitive usage (i.e., summation and multiplication) of quantum objects via operator overloading.
   - Tighter integration with SymPy's `pprint()` functionality for enhanced state and gate printing.
   - Implement T-CTCs (the *transition-probabilities* quantum model of time travel).

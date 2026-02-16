@@ -6,7 +6,7 @@
 Quantum mechanics on discrete Hilbert spaces
 ********************************************
 
-The theory of *quantum mechanics* seeks to explain the dynamics of the particles of which our universe is composed. It differs from classical physics in that certain properties (such as energy and momentum) of bound systems are restricted to being within sets of discrete values---a characteristic known as *quantization*. Additionally, objects described by quantum mechanics have properties distinctive of both waves and particles (termed *wave-particle duality*), and there are fundamental limits to the accuracy with which values of specific physical quantities can be predicted prior to their measurement (described by the *uncertainty principle*). The theory presented here is based on the treatments in :cite:p:`nielsen_quantum_2010, zeidler_quantum_2006, wilde_quantum_2017, bengtsson_geometry_2017, williams_explorations_2010, dimock_quantum_2011, schlosshauer_decoherence_2007, moret-bonillo_adventures_2017, serrano_quantum_2022, dirac_principles_1982, yanofsky_quantum_2008`.
+The theory of *quantum mechanics* seeks to explain the dynamics of the particles of which our universe is composed. It differs from classical physics in that certain properties (such as energy and momentum) of bound systems are restricted to being within sets of discrete values---a characteristic known as *quantization*. Additionally, entities described by quantum mechanics have properties distinctive of both waves and particles (termed *wave-particle duality*), and there are fundamental limits to the accuracy with which values of specific physical quantities can be predicted prior to their measurement (described by the *uncertainty principle*). The theory presented here is based on the treatments in :cite:p:`nielsen_quantum_2010, zeidler_quantum_2006, wilde_quantum_2017, bengtsson_geometry_2017, williams_explorations_2010, dimock_quantum_2011, schlosshauer_decoherence_2007, moret-bonillo_adventures_2017, serrano_quantum_2022, dirac_principles_1982, yanofsky_quantum_2008`.
 
 Quantum states
 ==============
@@ -24,6 +24,10 @@ This describes a mixture of the density operators :math:`\{\StateDensity_i\}_i` 
    :label: eq:state_combination_pure
 
 where the coefficients :math:`\{p_i\}_i` collectively characterize :math:`\StateDensity`.
+
+.. raw:: latex
+
+   \newpage
 
 Pure states
 -----------
@@ -43,6 +47,10 @@ where :math:`\{\ket{\Basis_i}\}_{i=1}^{\Dimension}` is an orthonormal basis for 
 The set of physical pure states :math:`\SpacePure(\SpaceHilbert)` on a Hilbert space :math:`\SpaceHilbert` is the set of all normalized (unit) vectors on :math:`\SpaceHilbert`, with vectors equal up to a global phase considered to be equivalent (as such global phase differences are not observable, i.e., constitute measurable quantities). Compactly, we write
 
 .. math:: \SpacePure(\SpaceHilbert) \equiv \bigl\{ \ket{\psi} \in \SpaceHilbert : \norm{\ket{\psi}}_2 = 1, \, \ket{\psi} \cong \e^{\eye \theta} \ket{\psi} \, \, \forall \, \, \theta \in \Reals \bigr\}.
+
+.. raw:: latex
+
+   \vspace*{-1.5\baselineskip}
 
 .. note::
 
@@ -96,7 +104,7 @@ In the :math:`\Complexes^2`-representation :eq:`eq:basis_qubit`, this state can 
 .. math:: \ket{\StateVector} = \alpha \begin{bmatrix} 1 \\ 0 \end{bmatrix} + \beta \begin{bmatrix} 0 \\ 1 \end{bmatrix} = \begin{bmatrix} \alpha \\ \beta \end{bmatrix}.
    :label: eq:vector_qubit_column
 
-An alternative parametrisation of the qubit vector state :eq:`eq:vector_qubit` takes the form
+An alternative parametrization of the qubit vector state :eq:`eq:vector_qubit` takes the form
 
 .. math:: \ket{\StateVector} = \e^{\eye\varsigma}\left[\cos\biggl(\frac{\vartheta}{2}\biggr)\ket{0} + \e^{\eye\varphi}\sin\biggl(\frac{\vartheta}{2}\biggr)\ket{1}\right], \quad \varsigma,\vartheta,\varphi \in \Reals.
    :label: eq:vector_qubit_sphere
@@ -120,6 +128,10 @@ where :math:`\{\Pauli_k\}_{k=1}^{3}` are the *Pauli matrices*, which are defined
        \Pauli_3 &= \Pauli_z \equiv \ket{0}\bra{0} - \ket{1}\bra{1} \!\!\!\!\!\! & &= \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}.
    \end{aligned}
 
+.. raw:: latex
+
+   \vspace*{-0.85\baselineskip}
+
 .. only:: html
 
    .. figure:: /figures/output/diagram_bloch_sphere-dark.png
@@ -138,7 +150,7 @@ where :math:`\{\Pauli_k\}_{k=1}^{3}` are the *Pauli matrices*, which are defined
 
 .. figure:: /figures/output/diagram_bloch_sphere-light.png
    :name: fig:diagram_bloch_sphere
-   :scale: 36 %
+   :scale: 40 %
    :alt: A diagram of the Bloch sphere.
    :align: center
    :figwidth: 100 %
@@ -146,18 +158,14 @@ where :math:`\{\Pauli_k\}_{k=1}^{3}` are the *Pauli matrices*, which are defined
 
    The Bloch sphere.
 
-The Pauli matrices are Hermitian, and so represent observables in the context of quantum mechanics. Together with the identity operator (writing :math:`\Pauli_0 = \Identity_2`), the set :math:`\{\Pauli_\mu\}_{\mu=0}^{3}` forms a complete basis for the space of complex :math:`2 \times 2` matrices. Since this coincides with the space of linear operators :math:`\SpaceLinear(\SpaceHilbert)` on a qubit Hilbert space :math:`\SpaceHilbert`, then any (density) operator :math:`\StateDensity \in \SpaceLinear(\SpaceHilbert)` can be expressed as the linear combination
+.. raw:: latex
+
+   \vspace*{-0.85\baselineskip}
+
+The Pauli matrices are Hermitian, and so represent observables in the context of quantum mechanics. Together with the identity operator (writing :math:`\Pauli_0 = \Identity_2`), the set :math:`\{\Pauli_\mu\}_{\mu=0}^{3}` forms a complete basis for the space of complex :math:`2 \times 2` matrices. Since this coincides with the space of linear operators :math:`\SpaceLinear(\SpaceHilbert)` on a qubit Hilbert space :math:`\SpaceHilbert`, then any (density) operator :math:`\StateDensity \in \SpaceLinear(\SpaceHilbert)` can be (completely and uniquely) expressed as the linear combination
 
 .. math:: \StateDensity = \frac{1}{2}\sum_{\mu=0}^{3} \trace[\Pauli_\mu \StateDensity]\Pauli_\mu.
    :label: eq:matrix_qubit
-
-In the context of density operators, since the coefficient for :math:`\mu = 0` in :eq:`eq:matrix_qubit` is fixed by normalization (i.e., :math:`\trace[\Pauli_0 \StateDensity] = 1`), then the state :math:`\StateDensity` is completely (and uniquely) determined by the *Bloch vector*, which is defined for a :math:`\Dimension`-dimensional state as the :math:`(\Dimension^2 - 1)`-dimensional real vector of parameters :math:`\bigl\{\trace[\Pauli_k \StateDensity]\bigr\}_{k = 1}^{\Dimension^2 - 1}`. Accordingly, the linear combination :eq:`eq:matrix_qubit` is said to be the *Bloch sphere representation* of the state :math:`\StateDensity`. Note also of course that any appropriate basis, not just the Pauli basis (with identity), allows for reconstruction of any qubit state in the manner of :eq:`eq:matrix_qubit`.
-
-The Bloch vector provides a complete description of a quantum system because it represents the expectation values of specific informationally complete observables. In general, a complex :math:`\Dimension \times \Dimension` density matrix, which represents the state of a :math:`\Dimension`-dimensional quantum system, is geometrically equivalent to a vector in a :math:`(\Dimension^2 - 1)`-dimensional real space. This is because the space of density matrices is a (bounded) convex subset of :math:`\Reals^{\Dimension^2}`, with its elements possessing certain properties (namely Hermiticity, positive semi-definiteness, and trace equal to :math:`1`). Since this real space coincides with that of the (generalized) *Bloch ball*, including both the surface (the *Bloch sphere*, on which points correspond to pure states) and interior (in which points correspond to mixed states), then this is why determination of the Bloch vector is equivalent to identification of the quantum state. Therefore, as the Pauli operators form a set of informationally complete observables for qubit systems, then the inclusion of the identity operator to this set yields a *tomographically complete* basis for the space of :math:`2 \times 2` Hermitian matrices, of which the space of :math:`2`-dimensional density matrices is a subset.
-
-.. raw:: latex
-
-   \newpage
 
 .. _`sec:qutrits`:
 
@@ -181,26 +189,35 @@ with which :eq:`eq:vector_qutrit` can be rewritten as
 
 Qutrits described by :math:`3`-dimensional density operators have corresponding representations as :math:`3 \times 3` density matrices. One way of expressing such a state is via the linear combination
 
-.. math:: \StateDensity = \frac{1}{3}\sum_{\mu=0}^{8} \trace[\GellMann_\mu \StateDensity]\GellMann_\mu.
+.. math:: \StateDensity = \frac{1}{3}\sum_{\mu=0}^{8} \trace[\GellMann_\mu \StateDensity]\GellMann_\mu,
    :label: eq:matrix_qutrit
 
-where :math:`\{\GellMann_\mu\}_{\mu=0}^{3}` is a complete basis for the space of :math:`3 \times 3` complex matrices. Perhaps the most notable choice of matrices with which to construct a such a basis are the *Gell-Mann matrices*,
+where :math:`\{\GellMann_\mu\}_{\mu=0}^{3}` is a complete basis for the space of :math:`3 \times 3` complex matrices. The most notable choice of matrices with which to construct a such a basis are the *Gell-Mann matrices* (with :math:`\GellMann_0 \equiv \Identity_3`),
 
 .. math::
    :label: eq:Gell-Mann
 
    \begin{aligned}
-       \GellMann_1 &\equiv \ket{0}\bra{1} + \ket{1}\bra{0} \!\!\!\!\!\! & &= \begin{bmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \\
-       \GellMann_2 &\equiv -\eye\ket{0}\bra{1} + \eye \ket{1}\bra{0} \!\!\!\!\!\! & &= \begin{bmatrix} 0 & -\eye & 0 \\ \eye & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \\
-       \GellMann_3 &\equiv \ket{0}\bra{0} - \ket{1}\bra{1} \!\!\!\!\!\! & &= \begin{bmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \\
-       \GellMann_4 &\equiv \ket{0}\bra{2} + \ket{2}\bra{0} \!\!\!\!\!\! & &= \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 \end{bmatrix}, \\
-       \GellMann_5 &\equiv -\eye\ket{0}\bra{2} + \eye\ket{2}\bra{0} \!\!\!\!\!\! & &= \begin{bmatrix} 0 & 0 & -\eye \\ 0 & 0 & 0 \\ \eye & 0 & 0 \end{bmatrix}, \\
-       \GellMann_6 &\equiv \ket{2}\bra{3} + \ket{3}\bra{2} \!\!\!\!\!\! & &= \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{bmatrix}, \\
-       \GellMann_7 &\equiv -\eye\ket{2}\bra{3} + \eye\ket{3}\bra{2} \!\!\!\!\!\! & &= \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & -\eye \\ 0 & \eye & 0 \end{bmatrix}, \\
-       \GellMann_8 &\equiv \frac{1}{\sqrt{3}}\bigl(\ket{0}\bra{0} + \ket{1}\bra{1} - 2\ket{2}\bra{2}\bigr) \!\!\!\!\!\! & &= \frac{1}{\sqrt{3}}\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -2 \end{bmatrix},
+       &\GellMann_1 \equiv \ket{0}\bra{1} + \ket{1}\bra{0}
+           = \begin{bmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \\
+       &\GellMann_3 \equiv \ket{0}\bra{0} - \ket{1}\bra{1}
+           = \begin{bmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \\
+       &\GellMann_5 \equiv -\eye\ket{0}\bra{2} + \eye\ket{2}\bra{0}
+           = \begin{bmatrix} 0 & 0 & -\eye \\ 0 & 0 & 0 \\ \eye & 0 & 0 \end{bmatrix}, \\
+       &\GellMann_7 \equiv -\eye\ket{2}\bra{3} + \eye\ket{3}\bra{2}
+           = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & -\eye \\ 0 & \eye & 0 \end{bmatrix},
    \end{aligned}
-
-in addition to :math:`\GellMann_0 \equiv \Identity_3`.
+   \quad\:\:
+   \begin{aligned}
+       &\GellMann_2 \equiv -\eye\ket{0}\bra{1} + \eye \ket{1}\bra{0}
+           = \begin{bmatrix} 0 & -\eye & 0 \\ \eye & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \\
+       &\GellMann_4 \equiv \ket{0}\bra{2} + \ket{2}\bra{0}
+           = \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 \end{bmatrix}, \\
+       &\GellMann_6 \equiv \ket{2}\bra{3} + \ket{3}\bra{2}
+           = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{bmatrix}, \\
+       &\GellMann_8 \equiv \frac{1}{\sqrt{3}}\bigl(\ket{0}\bra{0} + \ket{1}\bra{1} - 2\ket{2}\bra{2}\bigr)
+           = \frac{1}{\sqrt{3}}\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -2 \end{bmatrix}.
+   \end{aligned}
 
 .. _`sec:qudits`:
 
@@ -209,7 +226,7 @@ Qudits
 
 Quantum vector states in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert_\Dimension` can in general be expressed as the superposition
 
-.. math:: \ket{\StateVector} = \sum_{i=0}^{\Dimension - 1} c_i \ket{i}, \quad \sum_{i=0}^{\Dimension - 1} \abs{c_i}^2 = 1, \quad c_i \in \Complexes.
+.. math:: \ket{\StateVector} = \sum_{i=0}^{\Dimension - 1} c_i \ket{i}, \quad \sum_{i=0}^{\Dimension - 1} \abs{c_i}^2 = 1, \quad c_i \in \Complexes,
    :label: eq:vector_qudit
 
 which is often referred to as a *qudit*. Here, :math:`\{\ket{i}\}_{i=0}^{\Dimension - 1}` is a vector basis for :math:`\SpaceHilbert_\Dimension`, and may be expressed in a :math:`\Complexes^\Dimension`-representation using the vectors in :eq:`eq:basis_qudit`. With this, we can write :eq:`eq:vector_qudit` as
@@ -222,7 +239,11 @@ Just like in the cases of qubits and qutrits, general :math:`\Dimension`-dimensi
 .. math:: \StateDensity = \frac{1}{\Dimension}\sum_{\mu=0}^{\Dimension^2 - 1} \trace[\GellMann_\mu \StateDensity]\GellMann_\mu.
    :label: eq:matrix_qudit
 
-In order for this to be true, the matrices :math:`\{\GellMann_\mu\}_{\mu=0}^{\Dimension^2 - 1}` must form a basis for the space of :math:`\Dimension \times \Dimension` density matrices. Though there are multiple ways to find such a basis, doing so is a non-trivial task. Our construction here closely follows the work of :cite:p:`thew_qudit_2002`, in which a suitable generalization of the Gell-Mann (or Pauli) matrices :eq:`eq:Gell-Mann` is obtained. We begin by introducing the elementary matrices :math:`\{\Basis_{i}^{j}\}_{i,j = 1}^{\Dimension}` which satisfy
+In the context of density operators, since the coefficient for :math:`\mu = 0` in :eq:`eq:matrix_qudit` (and its specialized forms :eq:`eq:matrix_qubit` and :eq:`eq:matrix_qutrit`) is fixed by normalization (i.e., :math:`\trace[\GellMann_0 \StateDensity] = 1`, implying that :math:`\GellMann_0 \equiv \Identity_\Dimension`), then the state :math:`\StateDensity` is completely (and uniquely) determined by the *Bloch vector*, which is defined for a :math:`\Dimension`-dimensional state as the :math:`(\Dimension^2 - 1)`-dimensional real vector of parameters :math:`\bigl\{\trace[\GellMann_k \StateDensity]\bigr\}_{k = 1}^{\Dimension^2 - 1}`. Accordingly, a linear combination of the form :eq:`eq:matrix_qudit` is said to be the *Bloch sphere representation* of the state :math:`\StateDensity`. Note also of course that any appropriate basis allows for reconstruction of any qudit state in the manner of :eq:`eq:matrix_qudit`.
+
+The Bloch vector provides a complete description of a quantum system because it represents the expectation values of specific informationally complete observables. In general, a complex :math:`\Dimension \times \Dimension` density matrix, which represents the state of a :math:`\Dimension`-dimensional quantum system, is geometrically equivalent to a vector in a :math:`(\Dimension^2 - 1)`-dimensional real space. This is because the space of density matrices is a (bounded) convex subset of :math:`\Reals^{\Dimension^2}`, with its elements possessing certain properties (namely Hermiticity, positive semi-definiteness, and trace equal to :math:`1`). Since this real space coincides with that of the (generalized) *Bloch ball*, including both the surface (the *Bloch sphere*, on which points correspond to pure states) and interior (in which points correspond to mixed states), then this is why determination of the Bloch vector is equivalent to identification of the quantum state. Therefore, as an appropriate set of operators forms a set of informationally complete observables for the relevant systems (such as the Pauli operators for qubits or the Gell-Mann operators for qutrits), then the inclusion of the identity operator to this set yields a *tomographically complete* basis for the space of :math:`\Dimension \times \Dimension` Hermitian matrices, of which the space of :math:`\Dimension`-dimensional density matrices is a subset.
+
+Thus, in order for :eq:`eq:matrix_qudit` to hold true, the matrices :math:`\{\GellMann_\mu\}_{\mu=0}^{\Dimension^2 - 1}` must form a basis for the space of :math:`\Dimension \times \Dimension` density matrices. Though there are multiple ways to find such a basis, doing so is a non-trivial task. Our construction here closely follows the work of :cite:p:`thew_qudit_2002`, in which a suitable generalization of the Gell-Mann (or Pauli) matrices :eq:`eq:Gell-Mann` is obtained. We begin by introducing the elementary matrices :math:`\{\Basis_{i}^{j}\}_{i,j = 1}^{\Dimension}` which satisfy
 
 .. math:: (\Basis_{i}^{j})_{nm} = \delta_{ni} \delta_{mj}, \qquad 1 \leq n \leq d, \quad 1 \leq m \leq d.
 
@@ -322,12 +343,12 @@ In the case where either density matrix is pure, we can write
    \Fidelity(\op{\rho},\op{\tau}) = \trace[\op{\rho}\op{\tau}] =
        \begin{cases}
            \langle \psi_\rho | \op{\tau} | \psi_\rho \rangle, & \text{if } \op{\rho} = | \psi_\rho \rangle \langle \psi_\rho |; \\
-           \langle \psi_\tau | \op{\rho} | \psi_\tau \rangle, & \text{if } \op{\tau} = | \psi_\tau \rangle \langle \psi_\tau |; \\
+           \langle \psi_\tau | \op{\rho} | \psi_\tau \rangle, & \text{if } \op{\tau} = | \psi_\tau \rangle \langle \psi_\tau |, \\
        \end{cases}
 
 which further reduces to the overlap
 
-.. math:: \Fidelity(\op{\rho},\op{\tau}) = \abs{\langle \psi_\rho | \psi_\tau \rangle}^2
+.. math:: \Fidelity(\op{\rho},\op{\tau}) = \bigl|\langle \psi_\rho | \psi_\tau \rangle\bigr|^2
 
 when both states are pure.
 
@@ -427,19 +448,19 @@ A quantum state that is not separable (termed *non-separable*) is said to be *en
 
 Quantum entanglement is also necessarily characterized by *unrealized* correlations, such that the outcomes of measurements on the quantum system(s) are completely undecided until the measurement occurs. This means that the very act of performing a measurement on one subsystem of an entangled composition affects the entire system as a whole (i.e., apparent and irreversible collapse of the wave function). Though any such influence occurs seemingly instantaneously, quantum entanglement however does not allow any information to propagate superluminally (i.e., faster than the speed of light), despite the possibility that the subsystems of an entangled system are spacelike separated.
 
-A quantum system is said to be *maximally entangled* if it cannot be separated into pure states on each of its subsystems. This can only occur between exactly two particles, which is to say that a single particle cannot be maximally entangled with more than one other particle at a time. This is a property called *monogamy*, and is a restriction that results in perfect quantum correlations between any two such entangled subsystems. For qubits, the maximally entangled states are the *Bell states*, of which there are four:
+A quantum system is said to be *maximally entangled* if it cannot be separated into pure states on each of its subsystems. This can only occur between exactly two particles, which is to say that a single particle cannot be maximally entangled with more than one other particle at a time. This is a property called *monogamy*, and is a restriction that results in perfect quantum correlations between any two such entangled subsystems. For qubits, the maximally entangled states are known as the *Bell states*, of which there are four:
 
 .. math::
    :label: eq:Bell_state
 
    \begin{aligned}
-       \ket{\Phi^+} &\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{0} + \ket{1} \otimes \ket{1} \bigr), \\
-       \ket{\Phi^-} &\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{0} - \ket{1} \otimes \ket{1} \bigr), \\
-       \ket{\Psi^+} &\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{1} + \ket{1} \otimes \ket{0} \bigr), \\
-       \ket{\Psi^-} &\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{1} - \ket{1} \otimes \ket{0} \bigr).
+       \bigl|\Phi^+\bigr\rangle &\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{0} + \ket{1} \otimes \ket{1} \bigr), \\
+       \bigl|\Phi^-\bigr\rangle &\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{0} - \ket{1} \otimes \ket{1} \bigr), \\
+       \bigl|\Psi^+\bigr\rangle &\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{1} + \ket{1} \otimes \ket{0} \bigr), \\
+       \bigl|\Psi^-\bigr\rangle &\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{1} - \ket{1} \otimes \ket{0} \bigr).
    \end{aligned}
 
-For systems composed of three or more subsystems (e.g., particles), any multipartite entanglement that manifests cannot be maximal as in the bipartite case (due to the monogamy), but still exists in many quantitatively different types. An example of an entangled three-qubit system is the *Greenberger-Horne-Zeilinger (GHZ) state*,
+For systems composed of three or more subsystems, any multipartite entanglement that manifests cannot be maximal (unlike the bipartite case) due to the monogamy of entanglement, but still exists in many quantitatively different types. An example of an entangled three-qubit system is the *Greenberger-Horne-Zeilinger* (*GHZ*) *state*,
 
 .. math:: \ket{\mathrm{GHZ}} = \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{0} \otimes \ket{0} + \ket{1} \otimes \ket{1} \otimes \ket{1}\bigr).
    :label: eq:GHZ_state

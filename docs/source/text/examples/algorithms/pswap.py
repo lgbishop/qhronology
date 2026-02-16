@@ -30,7 +30,10 @@ S = Swap(
 )
 
 # Circuit
-pswap = QuantumCircuit(inputs=[input_upper, input_lower], gates=[S])
+pswap = QuantumCircuit(
+    inputs=[input_upper, input_lower],
+    gates=[S],
+)
 pswap.diagram()
 
 # Output

@@ -34,9 +34,16 @@ This example merely serves as a proof of the P-CTC prescription (for qubits). Th
 
    The P-CTCs prescription with explicit preselection and postselection.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
 
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
 
 .. raw:: latex
 
@@ -63,11 +70,11 @@ Diagram
 
 .. code:: python
 
-   >>> postselected_teleportation.diagram(pad=(1, 0), sep=(1, 1), force_separation=True)
+   >>> postselected_teleportation.diagram(pad=(1, 0), sep=(2, 1), force_separation=True)
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_ctcs_postselected.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.12cm]{text_examples_ctcs_postselected.pdf}
    \vspace{-1\baselineskip}
 
 ..

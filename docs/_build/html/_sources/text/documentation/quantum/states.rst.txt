@@ -46,7 +46,11 @@ To expedite and simplify state instantiation, the following subclasses of the ba
 
    \end{code}
 
-These classes are *specialized* (or *restrictive*) subclasses, meaning that they do not extend the base class in any way, and instead merely constrain its functionality in order to enforce the desired behaviour. They therefore allow for quantum state objects to be initialized in ways that are more concise than the general :py:class:`~qhronology.quantum.states.QuantumState` class. See :ref:`sec:docs_states_subclasses` for more information.
+These classes are *specialized* (or *restricting*) subclasses, meaning that they do not extend the base class in any way, and instead merely constrain its functionality in order to enforce the desired behaviour. They therefore allow for quantum state objects to be initialized in ways that are more concise than the general :py:class:`~qhronology.quantum.states.QuantumState` class. See :numref:`sec:docs_states_subclasses` :ref:`sec:docs_states_subclasses` for more information.
+
+.. raw:: latex
+
+   \newpage
 
 Main class
 ==========
@@ -122,7 +126,9 @@ Main class
       ...         "b": {"complex": True},
       ...         "c": {"complex": True},
       ...     },
-      ...     conditions=[("a*conjugate(a) + b*conjugate(b) + c*conjugate(c)", 1)],
+      ...     conditions=[
+      ...         ("a*conjugate(a) + b*conjugate(b) + c*conjugate(c)", 1),
+      ...     ],
       ...     norm=1,
       ...     label="φ",
       ... )
@@ -254,6 +260,10 @@ Main class
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -391,6 +401,10 @@ Main class
       \end{code}
 
    .. raw:: latex
+      
+      \enlargethispage{1\baselineskip}
+
+   .. raw:: latex
 
       \begin{code}
 
@@ -440,6 +454,10 @@ Main class
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+      
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -511,7 +529,7 @@ Constructor argument properties
 
    - a SymPy matrix
    - a NumPy array
-   - a list of lists (specifying a matrix)
+   - a list of lists (describing a matrix)
    - a list of 2-tuples
 
    The data type of the elements contained within the first three of these options can be any of the following: numerical (including all scalars from SymPy, NumPy, and the standard library), SymPy symbolic (including expressions), or string representations of such scalar types. However, the fourth option---the bespoke list-of-tuples format---is intended to be the primary way of characterizing quantum states. Its structure is reasonably straightforward: each 2-tuple contains first an amplitude or probability (a scalar expression as a numerical, symbolic, or string value), followed by a list of non-negative integers corresponding to the levels of the number states of the desired basis vector. In the case of multiple such tuples in the given list, the resulting quantum state is the sum of all components formed from each individual tuple.
@@ -597,10 +615,6 @@ Constructor argument properties
 Read-only properties
 --------------------
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. autoproperty:: qhronology.quantum.states.QuantumState.systems
 
 .. raw:: latex
@@ -620,7 +634,6 @@ Read-only properties
    \hrulefillthick
 
 .. autoproperty:: qhronology.quantum.states.QuantumState.matrix
-
 
 .. raw:: latex
 
@@ -652,7 +665,9 @@ Methods
    .. code:: python
 
       >>> vector_state = QuantumState(
-      ...     spec=[("a", [0]), ("b", [1])], form="vector", label="ψ"
+      ...     spec=[("a", [0]), ("b", [1])],
+      ...     form="vector",
+      ...     label="ψ",
       ... )
       >>> vector_state.output()
       Matrix([
@@ -672,7 +687,10 @@ Methods
    .. code:: python
 
       >>> mixed_matrix_state = QuantumState(
-      ...     spec=[("a", [0]), ("b", [1])], form="matrix", kind="mixed", label="ρ"
+      ...     spec=[("a", [0]), ("b", [1])],
+      ...     form="matrix",
+      ...     kind="mixed",
+      ...     label="ρ",
       ... )
       >>> mixed_matrix_state.output()
       Matrix([
@@ -692,7 +710,10 @@ Methods
    .. code:: python
 
       >>> pure_matrix_state = QuantumState(
-      ...     spec=[("a", [0]), ("b", [1])], form="matrix", kind="pure", label="ψ"
+      ...     spec=[("a", [0]), ("b", [1])],
+      ...     form="matrix",
+      ...     kind="pure",
+      ...     label="ψ",
       ... )
       >>> pure_matrix_state.output()
       Matrix([
@@ -805,9 +826,15 @@ Methods
 
 .. raw:: latex
 
-   \enlargethispage{2\baselineskip}
+   \newpage
+   \null
+   \vspace*{-2\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.diagram
+
+   .. raw:: latex
+
+      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -823,7 +850,19 @@ Methods
 
 .. raw:: latex
 
+   \vspace*{-0.25\baselineskip}
+
+.. raw:: latex
+
    \hrulefillthick
+
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. _`sec:docs_states_operations`:
 
@@ -852,7 +891,11 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    .. code:: python
 
-      >>> psi = QuantumState(spec=[("a", [0]), ("b", [1])], form="vector", label="ψ")
+      >>> psi = QuantumState(
+      ...     spec=[("a", [0]), ("b", [1])],
+      ...     form="vector",
+      ...     label="ψ",
+      ... )
       >>> psi.print()
       |ψ⟩ = a|0⟩ + b|1⟩
       >>> psi.densify()
@@ -871,6 +914,10 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. automethod:: qhronology.quantum.states.QuantumState.dagger
 
    .. raw:: latex
@@ -885,7 +932,11 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    .. code:: python
 
-      >>> psi = QuantumState(spec=[("a", [0]), ("b", [1])], form="vector", label="ψ")
+      >>> psi = QuantumState(
+      ...     spec=[("a", [0]), ("b", [1])],
+      ...     form="vector",
+      ...     label="ψ",
+      ... )
       >>> psi.print()
       |ψ⟩ = a|0⟩ + b|1⟩
       >>> psi.dagger()
@@ -903,10 +954,6 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.simplify
 
@@ -949,6 +996,43 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
+.. automethod:: qhronology.quantum.states.QuantumState.rewrite
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{0.00cm}{0cm}
+
+   .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> psi = QuantumState(
+      ...     spec=[("cos(θ)", [0]), ("sin(θ)", [1])],
+      ...     form="vector",
+      ...     label="ψ",
+      ... )
+      >>> psi.print()
+      |ψ⟩ = cos(θ)|0⟩ + sin(θ)|1⟩
+      >>> psi.rewrite(sp.exp)
+      >>> psi.print()
+      |ψ⟩ = (exp(I*θ)/2 + exp(-I*θ)/2)|0⟩ + -I*(exp(I*θ) - exp(-I*θ))/2|1⟩
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+.. raw:: latex
+
+   \hrulefillthick
+
 .. automethod:: qhronology.quantum.states.QuantumState.apply
 
    .. raw:: latex
@@ -976,43 +1060,6 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
       >>> psi.apply(sp.expand)
       >>> psi.print()
       |ψ⟩ = (a*b + a*c + b*c)|0⟩ + (x*y + x*z + y*z)|1⟩
-
-   .. raw:: latex
-
-      \end{code}
-
-   .. raw:: latex
-
-      \end{adjustwidth}
-
-.. raw:: latex
-
-   \hrulefillthick
-
-.. automethod:: qhronology.quantum.states.QuantumState.rewrite
-
-   .. raw:: latex
-
-      \begin{adjustwidth}{0.00cm}{0cm}
-
-   .. rubric:: :styleheader6:`Examples`
-
-   .. raw:: latex
-
-      \begin{code}
-
-   .. code:: python
-
-      >>> psi = QuantumState(
-      ...     spec=[("cos(θ)", [0]), ("sin(θ)", [1])],
-      ...     form="vector",
-      ...     label="ψ",
-      ... )
-      >>> psi.print()
-      |ψ⟩ = cos(θ)|0⟩ + sin(θ)|1⟩
-      >>> psi.rewrite(sp.exp)
-      >>> psi.print()
-      |ψ⟩ = (exp(I*θ)/2 + exp(-I*θ)/2)|0⟩ + -I*(exp(I*θ) - exp(-I*θ))/2|1⟩
 
    .. raw:: latex
 
@@ -1142,6 +1189,10 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. automethod:: qhronology.quantum.states.QuantumState.partial_trace
 
    .. raw:: latex
@@ -1213,11 +1264,11 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{-2\baselineskip}
-
 .. automethod:: qhronology.quantum.states.QuantumState.measure
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -1231,19 +1282,31 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    .. code:: python
 
-      >>> psi = QuantumState(spec=[("a", [0]), ("b", [1])], form="vector", label="ψ")
+      >>> psi = QuantumState(
+      ...     spec=[("a", [0]), ("b", [1])],
+      ...     form="vector",
+      ...     label="ψ",
+      ... )
       >>> psi.print()
       |ψ⟩ = a|0⟩ + b|1⟩
       >>> I = Pauli(index=0)
       >>> X = Pauli(index=1)
       >>> Y = Pauli(index=2)
       >>> Z = Pauli(index=3)
-      >>> psi.measure(operators=[I, X, Y, Z], observable=True, statistics=True)
+      >>> psi.measure(
+      ...     operators=[I, X, Y, Z],
+      ...     observable=True,
+      ...     statistics=True,
+      ... )
       [a*conjugate(a) + b*conjugate(b),
        a*conjugate(b) + b*conjugate(a),
        I*(a*conjugate(b) - b*conjugate(a)),
        a*conjugate(a) - b*conjugate(b)]
-      >>> psi.measure(operators=[I, X, Y, Z], observable=True, statistics=False)
+      >>> psi.measure(
+      ...     operators=[I, X, Y, Z],
+      ...     observable=True,
+      ...     statistics=False,
+      ... )
       >>> psi.simplify()
       >>> psi.coefficient(sp.Rational(1, 2))
       >>> psi.label += "′"
@@ -1261,12 +1324,24 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
    .. code:: python
 
       >>> from qhronology.mechanics.matrices import ket
-      >>> psi = QuantumState(spec=[("a", [0]), ("b", [1])], form="vector", label="ψ")
+      >>> psi = QuantumState(
+      ...     spec=[("a", [0]), ("b", [1])],
+      ...     form="vector",
+      ...     label="ψ",
+      ... )
       >>> psi.print()
       |ψ⟩ = a|0⟩ + b|1⟩
-      >>> psi.measure(operators=[ket(0), ket(1)], observable=False, statistics=True)
+      >>> psi.measure(
+      ...     operators=[ket(0), ket(1)],
+      ...     observable=False,
+      ...     statistics=True,
+      ... )
       [a*conjugate(a), b*conjugate(b)]
-      >>> psi.measure(operators=[ket(0), ket(1)], observable=False, statistics=False)
+      >>> psi.measure(
+      ...     operators=[ket(0), ket(1)],
+      ...     observable=False,
+      ...     statistics=False,
+      ... )
       >>> psi.notation = "ρ′"
       >>> psi.print()
       ρ′ = a*conjugate(a)|0⟩⟨0| + b*conjugate(b)|1⟩⟨1|
@@ -1541,8 +1616,16 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    .. code:: python
 
-      >>> plus_state = QuantumState(spec=[(1, [0]), (1, [1])], form="vector", norm=1)
-      >>> minus_state = QuantumState(spec=[(1, [0]), (-1, [1])], form="vector", norm=1)
+      >>> plus_state = QuantumState(
+      ...     spec=[(1, [0]), (1, [1])],
+      ...     form="vector",
+      ...     norm=1,
+      ... )
+      >>> minus_state = QuantumState(
+      ...     spec=[(1, [0]), (-1, [1])],
+      ...     form="vector",
+      ...     norm=1,
+      ... )
       >>> plus_state.distance(minus_state)
       1
 
@@ -1599,6 +1682,10 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    .. raw:: latex
 
+      \newpage
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1628,8 +1715,16 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    .. code:: python
 
-      >>> plus_state = QuantumState(spec=[(1, [0]), (1, [1])], form="vector", norm=1)
-      >>> minus_state = QuantumState(spec=[(1, [0]), (-1, [1])], form="vector", norm=1)
+      >>> plus_state = QuantumState
+      ...     spec=[(1, [0]), (1, [1])],
+      ...     form="vector",
+      ...     norm=1,
+      ... )
+      >>> minus_state = QuantumState(
+      ...     spec=[(1, [0]), (-1, [1])],
+      ...     form="vector",
+      ...     norm=1,
+      ... )
       >>> plus_state.fidelity(minus_state)
       0
 
@@ -1646,6 +1741,10 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
    \hrulefillthick
 
 .. automethod:: qhronology.quantum.states.QuantumState.entropy
+
+   .. raw:: latex
+
+      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -1719,9 +1818,21 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
 .. raw:: latex
 
+   \vspace*{-0.25\baselineskip}
+
+.. raw:: latex
+
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. automethod:: qhronology.quantum.states.QuantumState.mutual
+
+   .. raw:: latex
+
+      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -1801,12 +1912,24 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \vspace*{-0.35\baselineskip}
+
 .. _`sec:docs_states_subclasses`:
 
 Subclasses
 ==========
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. autoclass:: qhronology.quantum.states.VectorState
+
+   .. raw:: latex
+
+      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -1850,7 +1973,11 @@ Subclasses
 
    .. code:: python
 
-      >>> matrix_pure = MatrixState(spec=[(1, [0]), (1, [1])], kind="pure", norm=1)
+      >>> matrix_pure = MatrixState(
+      ...     spec=[(1, [0]), (1, [1])],
+      ...     kind="pure",
+      ...     norm=1,
+      ... )
       >>> matrix_pure.print()
       |ψ⟩⟨ψ| = 1/2|0⟩⟨0| + 1/2|0⟩⟨1| + 1/2|1⟩⟨0| + 1/2|1⟩⟨1|
 
@@ -1864,7 +1991,11 @@ Subclasses
 
    .. code:: python
 
-      >>> matrix_mixed = MatrixState(spec=[(1, [0]), (1, [1])], kind="mixed", norm=1)
+      >>> matrix_mixed = MatrixState(
+      ...     spec=[(1, [0]), (1, [1])],
+      ...     kind="mixed",
+      ...     norm=1,
+      ... )
       >>> matrix_mixed.print()
       ρ = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
 
@@ -1894,7 +2025,11 @@ Subclasses
 
    .. code:: python
 
-      >>> pure_vector = PureState(spec=[(1, [0]), (1, [1])], form="vector", norm=1)
+      >>> pure_vector = PureState(
+      ...     spec=[(1, [0]), (1, [1])],
+      ...     form="vector",
+      ...     norm=1,
+      ... )
       >>> pure_vector.print()
       |ψ⟩ = sqrt(2)/2|0⟩ + sqrt(2)/2|1⟩
 
@@ -1908,7 +2043,11 @@ Subclasses
 
    .. code:: python
 
-      >>> pure_matrix = PureState(spec=[(1, [0]), (1, [1])], form="matrix", norm=1)
+      >>> pure_matrix = PureState(
+      ...     spec=[(1, [0]), (1, [1])],
+      ...     form="matrix",
+      ...     norm=1,
+      ... )
       >>> pure_matrix.print()
       |ψ⟩⟨ψ| = 1/2|0⟩⟨0| + 1/2|0⟩⟨1| + 1/2|1⟩⟨0| + 1/2|1⟩⟨1|
 

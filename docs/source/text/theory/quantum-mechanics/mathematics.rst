@@ -90,7 +90,7 @@ A pair of vectors :math:`\psi,\phi \in \SpaceVector` are *orthogonal* if
 
 Furthermore, a set of vectors :math:`\{\Element_i\}_{i}` is said to be *orthonormal* with respect to the inner product :eq:`eq:inner_map` if
 
-.. math:: \inner{\Element_i}{\Element_j} = \delta_{ij}
+.. math:: \langle\Element_i, \Element_j\rangle = \delta_{ij}
 
 holds true for all :math:`i, j`, where
 
@@ -104,7 +104,7 @@ holds true for all :math:`i, j`, where
 
 is the *Kronecker delta*. Orthonormality is a useful property: given an orthonormal basis :math:`\{\Basis_i\}_{i=1}^{\Dimension}`, the coefficients in the linear expansion :eq:`eq:linear_combination` may be (uniquely) determined by taking the inner product, i.e.,
 
-.. math:: \inner{\Basis_i}{\psi} = \inner{\Basis_i}{\sum_{j=1}^{\Dimension} \psi_j \Basis_j } = \sum_{j=1}^{\Dimension}\psi_j\inner{\Basis_i}{\Basis_j} = \psi_i.
+.. math:: \inner{\Basis_i}{\psi} = \inner{\Basis_i}{\sum_{j=1}^{\Dimension} \psi_j \Basis_j } = \sum_{j=1}^{\Dimension}\psi_j \langle\Basis_i, \Basis_j\rangle = \psi_i.
 
 Using this, we may rewrite the linear combination :eq:`eq:linear_combination` as
 
@@ -122,11 +122,11 @@ Any vector space :math:`\SpaceVector` has a corresponding *dual vector space* :m
 
 .. math:: \varphi : \psi \mapsto \varphi(\psi) \in \Complexes
 
-for every :math:`\psi \in \SpaceVector` such that
+for every :math:`\psi,\chi \in \SpaceVector` such that
 
 .. math:: \varphi(a\psi + b\chi) = a\varphi(\psi) + b\varphi(\chi)
 
-for all :math:`\psi,\chi` and :math:`a,b \in \Complexes`. Elements of the dual space :math:`\dual{\SpaceVector}{}` are often termed *covectors*, and the space itself becomes a vector space when equipped with addition and scalar multiplication, that is,
+for all :math:`a,b \in \Complexes`. Elements of the dual space :math:`\dual{\SpaceVector}{}` are often termed *covectors*, and the space itself becomes a vector space when equipped with addition and scalar multiplication, that is,
 
 .. math::
 
@@ -196,7 +196,7 @@ Hilbert space
 
 An inner product vector space equipped with a norm is called a *normed space*. A sequence :math:`(\psi_i)_{n=1}^{\infty}` in such a space is termed a *Cauchy sequence* if
 
-.. math:: \norm{\psi_i - \psi_j}_p \rightarrow 0 \quad \text{as} \quad i,j\rightarrow\infty.
+.. math:: \bigl|\bigl|\psi_i - \psi_j\bigr|\bigr|_p \rightarrow 0 \quad \text{as} \quad i,j\rightarrow\infty.
 
 If all Cauchy sequences converge (as per the above condition) in :math:`\SpaceVector`, then the normed space :math:`\SpaceVector` is said to be *complete*. This is to say that there exists a vector :math:`\chi\in\SpaceVector` such that
 
@@ -211,7 +211,7 @@ Two Hilbert spaces, e.g., :math:`\SpaceHilbert_A` and :math:`\SpaceHilbert_B`, a
 .. math:: \inner{U\psi}{U\phi}_{\SpaceHilbert_B} = \inner{\psi}{\phi}_{\SpaceHilbert_A},
    :label: eq:unitary_map
 
-for all :math:`\psi, \phi \in \SpaceHilbert_A`. Such a map is called *unitary*, and constitutes a special kind of linear operator on the Hilbert space (see :ref:`sec:operators`).
+for all :math:`\psi, \phi \in \SpaceHilbert_A`. Such a map is called *unitary*, and constitutes a special kind of linear operator on the Hilbert space (see :numref:`sec:operators` :ref:`sec:operators`).
 
 The *Riesz representation theorem* establishes that any linear map :math:`\varphi : \SpaceHilbert \rightarrow \Complexes` can be *uniquely* written as :eq:`eq:dual_map` for some fixed choice of :math:`\phi \in \SpaceHilbert`. Consequently, the inner product provides a vector space isomorphism
 
@@ -232,7 +232,7 @@ If this holds, then :math:`\psi \in \ell^2` where :math:`\ell^2` is the space of
 
 which, as per the Cauchy-Schwarz inequality :eq:`eq:Cauchy-Schwarz`, converges provided the individual vector norms do. Importantly, the notion of completeness of :math:`\ell^2` with respect to its norm enables us to perform calculus in this space, including computing limits and derivatives of vectors :math:`\psi \in \ell^2`. Generalizations to other sequence spaces, e.g., :math:`\ell^p` with :math:`p \geq 1` and the associated norm
 
-.. math:: \norm{\psi}_p = \left[\sum_{i=1}^{\infty} \abs{\psi_i}^p\right]^{\frac{1}{p}} < \infty.
+.. math:: \norm{\psi}_p = \left[\sum_{i=1}^{\infty} \abs{\psi_i}^p\right]^{\frac{1}{p}} < \infty,
 
 are of course possible, but note that only in the case of :math:`p=2` is the sequence space a Hilbert space.
 
@@ -273,10 +273,10 @@ Here, the :math:`i`-th element (indexing from zero, as customary in computer sci
 
 .. math::
    \begin{aligned}
-       \bra{0} &= \begin{bmatrix} 1 & 0 & \ldots & 0 \end{bmatrix}, \\
-       \bra{1} &= \begin{bmatrix} 0 & 1 & \ldots & 0 \end{bmatrix}, \\
+       \bra{0} &= [\, 1 \quad 0 \quad \ldots \quad 0\, ], \\
+       \bra{1} &= [\, 0 \quad 1 \quad \ldots \quad 0\, ], \\
        &\;\;\vdots \\
-       \bra{\Dimension - 1} &= \begin{bmatrix} 0 & 0 & \ldots & 1 \end{bmatrix}.
+       \bra{\Dimension - 1} &= [\, 0 \quad 0 \quad \ldots \quad 1\, ].
    \end{aligned}
 
 In a finite-dimensional Hilbert space, any basis of linearly independent vectors has the same (finite) number of members, irrespective of their orthogonality.
@@ -332,7 +332,7 @@ which possesses the following properties:
        \text{(i) } &\text{(antisymmetry):} &[\op{A},\op{B}] &= -[\op{B},\op{A}],\\
        \text{(ii) } &\text{(linearity):} &[\alpha_1\op{A}_1 + \alpha_2\op{A}_2,\op{B}] &= \alpha_1[\op{A}_1,\op{B}] + \alpha_2[\op{A}_2,\op{B}] \quad \forall \, \alpha_1,\alpha_2 \in \Complexes,\\
        \text{(iii) } &\text{(Leibniz identity):} &[\op{A},\op{B}\op{C}] & = [\op{A},\op{B}]\op{C} + \op{B}[\op{A},\op{C}],\\
-       \text{(iv) } &\text{(Jacobi identity):} &\bigl[\op{A},[\op{B},\op{C}]\bigr] + \bigl[\op{B},[\op{C},\op{A}]\bigr] + \bigl[\op{C},[\op{A},\op{B}]\bigr] &=0.
+       \text{(iv) } &\text{(Jacobi identity):} &0 &=\bigl[\op{A},[\op{B},\op{C}]\bigr] + \bigl[\op{B},[\op{C},\op{A}]\bigr] + \bigl[\op{C},[\op{A},\op{B}]\bigr].
    \end{aligned}
 
 Outer product
@@ -349,7 +349,7 @@ In addition to the inner product, we may also use the Dirac notation to easily e
        &= \sum_{i,j} \psi_i \conj{\phi_j}{} \ket{i}\bra{j}.
    \end{aligned}
 
-Here, :math:`\phi \otimes \psi` denotes the tensor product between two vectors :math:`\phi` and :math:`\psi` (see :ref:`sec:composite`). The resulting form :math:`\ket{\psi}\bra{\phi} \in \SpaceHilbert` is a linear operator in its own right and exists in the space
+Here, :math:`\phi \otimes \psi` denotes the tensor product between two vectors :math:`\phi` and :math:`\psi` (see :numref:`sec:composite` :ref:`sec:composite`). The resulting form :math:`\ket{\psi}\bra{\phi} \in \SpaceHilbert` is a linear operator in its own right and exists in the space
 
 .. math:: \SpaceHilbert = \SpaceHilbert_1 \otimes \dual{\SpaceHilbert_2}{},
 
@@ -579,8 +579,8 @@ then their inner product is
 .. math::
 
    \begin{aligned}
-       \braket{\Psi}{\Phi} &= \sum_{i,j,k,l} \conj{\Phi_{ij}}{} \Psi_{kl} \bigl(\bra{\mu_i} \otimes \bra{\nu_j}\bigr)\bigl(\ket{\mu_k} \otimes \ket{\nu_l}\bigr) \\
-       &= \sum_{i,j,k,l} \conj{\Phi_{ij}}{} \Psi_{kl} {\braket{\mu_i}{\mu_k}}_1 {\braket{\nu_j}{\nu_l}}_2 \\
+       \braket{\Psi}{\Phi} &= \sum_{i,j,k,l} \conj{\Phi_{ij}}{} \Psi_{kl} \bigl(\bra{\mu_i} \otimes \langle\nu_j|\bigr)\bigl(\ket{\mu_k} \otimes \ket{\nu_l}\bigr) \\
+       &= \sum_{i,j,k,l} \conj{\Phi_{ij}}{} \Psi_{kl} {\braket{\mu_i}{\mu_k}}_1 {\langle\nu_j | \nu_l\rangle}_2 \\
        &= \sum_{i,j} \conj{\Phi_{ij}}{} \Psi_{ij}
    \end{aligned}
 
@@ -593,7 +593,7 @@ by the orthonormality of the bases. Here, :math:`{\braket{{}\cdot{}}{{}\cdot{}}}
        \ket{\Phi} &= \ket{\phi} \otimes \ket{\phi^{\prime}},
    \end{aligned}
 
-then their inner product becomes
+then the inner product becomes
 
 .. math:: \braket{\Phi}{\Psi} = \bigl(\bra{\phi} \otimes \bra{\phi^{\prime}}\bigr)\bigl(\ket{\psi} \otimes \ket{\psi^{\prime}}\bigr) = {\braket{\phi}{\psi}}_1 {\braket{\phi^{\prime}}{\psi^{\prime}}}_2.
 
@@ -643,31 +643,6 @@ Similarly, the partial traces over :math:`\SpaceHilbert_A` and :math:`\SpaceHilb
 
 where :math:`\{\ket{m}\}_m` and :math:`\{\ket{n}\}_n` are orthonormal bases of :math:`\SpaceHilbert_A` and :math:`\SpaceHilbert_B`, respectively.
 
-Schmidt decomposition
----------------------
-
-A useful theorem for expressing composite vectors is the *Schmidt decomposition*: given a bipartite vector :math:`\ket{\psi} \in \SpaceHilbert_A \otimes \SpaceHilbert_B`, there exists sets of orthonormal states :math:`\{\ket{k_A}\}_k` and :math:`\{\ket{k_B}\}_k` for systems :math:`A` and :math:`B`, respectively, such that
-
-.. math:: \ket{\psi} = \sum_k \lambda_k \ket{k_A} \otimes \ket{k_B}.
-   :label: eq:schmidt_decomposition
-
-Here, :math:`\{\lambda_k\}_k` are non-negative real numbers, known as *Schmidt coefficients* that satisfy
-
-.. math:: \sum_k \lambda_k^2 = \braket{\psi}{\psi}.
-
-The number of (non-zero) Schmidt coefficients is called the *Schmidt number* of the vector :math:`\ket{\psi}`, and the bases :math:`\{\ket{k_A}\}_k` and :math:`\{\ket{k_B}\}_k` are called the *Schmidt bases*.
-
-The Schmidt decomposition :eq:`eq:schmidt_decomposition` is simply a way of expressing a vector in the tensor product of two inner product spaces (such as Hilbert spaces), and our ability to do so is a very powerful result. For example, given a normalized bipartite vector :math:`\ket{\psi}` with decomposition :eq:`eq:schmidt_decomposition`, the reduced operators for each system can be calculated to be
-
-.. math::
-
-   \begin{aligned}
-       \StateDensity^A &\equiv \trace_B\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_A}\bra{k_A}, \\
-       \StateDensity^B &\equiv \trace_A\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_B}\bra{k_B}.
-   \end{aligned}
-
-The fact that the eigenvalues of both of these operators are identical (simply equal to :math:`\lambda_k^2`) is a significant result. This is because many of the important properties of operators are completely determined by their eigenvalues. Consequently, such properties of the reduced operators of a vector on a composite system will automatically be the same, regardless of the structure of the composite vector.
-
 Multiple systems of arbitrary dimension
 ---------------------------------------
 
@@ -684,17 +659,17 @@ If we instead have :math:`\Number` such systems :math:`\{\ket{\psi_n}\}_{n=1}^{\
 
    \begin{aligned}
        \ket{\psi_1} \otimes \ket{\psi_2} \otimes \ldots \otimes \ket{\psi_\Number} &\equiv \bigotimes_{n=1}^{\Number} \ket{\psi_n} \\
-       &= \bigotimes_{n=1}^{\Number} \sum_{i=1}^{\Dimension} \psi_{i_n} \ket{\Basis_{i_n}} \\
-       &= \sum_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension} \psi_{i_1} \psi_{i_2} \ldots \psi_{i_\Number} \ket{\Basis_{i_1}} \otimes \ket{\Basis_{i_2}} \otimes \ldots \otimes \ket{\Basis_{i_\Number}} \\
-       &= \sum_{i=1}^{\Dimension} \left( \prod_{n=1}^{\Number} \psi_{i_n} \right) \bigotimes_{n=1}^{\Number} \ket{\Basis_{i_n}} \\
-       &= \sum_{i=1}^{\Dimension} \psi_{i_1, i_2, \ldots, i_\Number} \ket{\Basis_{i_1, i_2, \ldots, i_\Number}}.
+       &= \bigotimes_{n=1}^{\Number} \sum_{i=1}^{\Dimension} \psi_{i_n} \bigl|\Basis_{i_n}\bigr\rangle \\
+       &= \sum_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension} \psi_{i_1} \psi_{i_2} \ldots \psi_{i_\Number} \bigl|\Basis_{i_1}\bigr\rangle \otimes \bigl|\Basis_{i_2}\bigr\rangle \otimes \ldots \otimes \bigl|\Basis_{i_\Number}\bigr\rangle \\
+       &= \sum_{i=1}^{\Dimension} \left( \prod_{n=1}^{\Number} \psi_{i_n} \right) \bigotimes_{n=1}^{\Number} \bigl|\Basis_{i_n}\bigr\rangle \\
+       &= \sum_{i=1}^{\Dimension} \psi_{i_1, i_2, \ldots, i_\Number} \bigl|\Basis_{i_1, i_2, \ldots, i_\Number}\bigr\rangle.
    \end{aligned}
 
-Here, :math:`\psi_{i_n}` is the :math:`i_n`-th component of the :math:`n`-th state (with basis :math:`\{\ket{\Basis_{i_n}}\}_{i_n = 1}^{\Dimension} \equiv \{\ket{\Basis_i}\}_{i = 1}^{\Dimension}` for all :math:`n`), i.e.,
+Here, :math:`\psi_{i_n}` is the :math:`i_n`-th component of the :math:`n`-th state (with basis :math:`\bigl\{\bigl|\Basis_{i_n}\bigr\rangle\bigr\}_{i_n = 1}^{\Dimension} \equiv \{\ket{\Basis_i}\}_{i = 1}^{\Dimension}` for all :math:`n`), i.e.,
 
 .. math::
 
-   \ket{\psi_n} = \sum_{i_n = 1}^{\Dimension} \psi_{i_n} \ket{\Basis_{i_n}},
+   \ket{\psi_n} = \sum_{i_n = 1}^{\Dimension} \psi_{i_n} \bigl|\Basis_{i_n}\bigr\rangle,
 
 the amalgamated components are
 
@@ -706,15 +681,15 @@ and we introduced the composite vector
 
 .. math::
 
-   \ket{\Basis_{\{i_n\}}} \equiv \ket{\Basis_{i_1, i_2, \ldots, i_\Number}} \equiv \bigotimes_{n=1}^{\Number} \ket{\Basis_{i_n}}.
+   \bigl|\Basis_{\{i_n\}}\bigr\rangle \equiv \bigl|\Basis_{i_1, i_2, \ldots, i_\Number}\bigr\rangle \equiv \bigotimes_{n=1}^{\Number} \bigl|\Basis_{i_n}\bigr\rangle.
 
-Since :math:`\{\ket{\Basis_{i_n}}\}_{i_n = 1}^{\Dimension}` is a basis for the Hilbert space :math:`\SpaceHilbert_{\Dimension}`, then accordingly the set of states
+Since :math:`\bigl\{\bigl|\Basis_{i_n}\bigr\rangle\bigr\}_{i_n = 1}^{\Dimension}` is a basis for the Hilbert space :math:`\SpaceHilbert_{\Dimension}`, then accordingly the set of states
 
 .. math::
 
    \begin{aligned}
-      \Bigl\{\ket{\Basis_{\{i_n\}}} : 1 \leq i_n \leq \Dimension, \, 1 \leq n \leq \Number \Bigr\} &\equiv \left\{\bigotimes_{n=1}^{\Number} \ket{\Basis_{i_n}}\right\}_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension} \\
-      &= \bigl\{\ket{\Basis_{i_1}} \otimes \ket{\Basis_{i_2}} \otimes \ldots \otimes \ket{\Basis_{i_\Number}}\bigr\}_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension},
+      \Bigl\{\bigl|\Basis_{\{i_n\}}\bigr\rangle : 1 \leq i_n \leq \Dimension, \, 1 \leq n \leq \Number \Bigr\} &\equiv \left\{\bigotimes_{n=1}^{\Number} \bigl|\Basis_{i_n}\bigr\rangle\right\}_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension} \\
+      &= \bigl\{\bigl|\Basis_{i_1}\bigr\rangle \otimes \bigl|\Basis_{i_2}\bigr\rangle \otimes \ldots \otimes \bigl|\Basis_{i_\Number}\bigr\rangle\bigr\}_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension},
    \end{aligned}
 
 makes a basis for the composite space
@@ -723,11 +698,11 @@ makes a basis for the composite space
 
    \SpaceHilbert_{\Dimension}^{\otimes \Number} \equiv \bigotimes_{i=1}^{\Number} \SpaceHilbert_{\Dimension} \equiv \underbrace{\SpaceHilbert_{\Dimension} \otimes \SpaceHilbert_{\Dimension} \otimes \ldots \otimes \SpaceHilbert_{\Dimension}}_{\Number \text{ times}}.
 
-As this is :math:`\Number` compositions of :math:`\Dimension`-dimensional systems, there are a total of :math:`\Dimension^\Number` basis states :math:`\ket{\Basis_{\{i_n\}}}` which span :math:`\SpaceHilbert_{\Dimension}^{\otimes \Number}`. This :math:`\Dimension^\Number`-dimensional composite space may therefore be written as :math:`\SpaceHilbert_{\Dimension^\Number}`, and we have the isomorphism
+As this is :math:`\Number` compositions of :math:`\Dimension`-dimensional systems, there are a total of :math:`\Dimension^\Number` basis states :math:`\bigl|\Basis_{\{i_n\}}\bigr\rangle` which span :math:`\SpaceHilbert_{\Dimension}^{\otimes \Number}`. This :math:`\Dimension^\Number`-dimensional composite space may therefore be written as :math:`\SpaceHilbert_{\Dimension^\Number}`, and we have the isomorphism
 
 .. math:: \SpaceHilbert_{\Dimension^\Number} \cong \SpaceHilbert_{\Dimension}^{\otimes \Number}.
 
-In other words, a :math:`\Dimension^\Number`-dimensional Hilbert space :math:`\SpaceHilbert_{\Dimension^\Number}` is decomposable into exactly :math:`\Number` tensor products :math:`\SpaceHilbert_{\Dimension}^{\otimes \Number}` of a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert_\Dimension`. Importantly, this means any linear operator :math:`\op{A} \in \SpaceHilbert_{\Dimension^\Number}` may be embedded in :math:`\SpaceHilbert_{\Dimension}^{\otimes N}` via a decomposition into tensor products of generalized Gell-Mann matrices (with the identity :math:`\GellMannGeneralized_{0} \equiv \Identity_{\Dimension}`) (see :ref:`sec:qudits`),
+In other words, a :math:`\Dimension^\Number`-dimensional Hilbert space :math:`\SpaceHilbert_{\Dimension^\Number}` is decomposable into exactly :math:`\Number` tensor products :math:`\SpaceHilbert_{\Dimension}^{\otimes \Number}` of a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert_\Dimension`. Importantly, this means any linear operator :math:`\op{A} \in \SpaceHilbert_{\Dimension^\Number}` may be embedded in :math:`\SpaceHilbert_{\Dimension}^{\otimes N}` via a decomposition into tensor products of generalized Gell-Mann matrices (with the identity :math:`\GellMannGeneralized_{0} \equiv \Identity_{\Dimension}`) (see :numref:`sec:qudits` :ref:`sec:qudits`),
 
 .. math::
    :label: eq:operator_decomposition
@@ -744,7 +719,7 @@ collectively characterize :math:`\op{A}` under this decomposition. For example, 
 
    \op{A} = \frac{1}{\Dimension^2}\sum_{i_1,i_2=0}^{\Dimension^2 - 1} A_{i_1,i_2} \GellMannGeneralized_{i_1} \otimes \GellMannGeneralized_{i_2}
 
-with :math:`A_{i_1, i_2} = \trace\bigl[(\GellMannGeneralized_{i_1} \otimes \GellMannGeneralized_{i_2})\op{A}\bigr]`. Alternatively, in the case of binary (:math:`\Dimension = 2`) systems (see :ref:`sec:qubits`), this decomposition :eq:`eq:operator_decomposition` is accomplished using the Pauli matrices :eq:`eq:Pauli` (with the identity :math:`\Pauli_{0} \equiv \Identity_{2}`),
+with :math:`A_{i_1, i_2} = \trace\bigl[(\GellMannGeneralized_{i_1} \otimes \GellMannGeneralized_{i_2})\op{A}\bigr]`. Alternatively, in the case of binary (:math:`\Dimension = 2`) systems (see :numref:`sec:qubits` :ref:`sec:qubits`), this decomposition :eq:`eq:operator_decomposition` is accomplished using the Pauli matrices :eq:`eq:Pauli` (with the identity :math:`\Pauli_{0} \equiv \Identity_{2}`),
 
 .. math::
 
@@ -753,6 +728,47 @@ with :math:`A_{i_1, i_2} = \trace\bigl[(\GellMannGeneralized_{i_1} \otimes \Gell
 where
 
 .. math:: A_{i_1, i_2, \ldots, i_\Number} = \trace\bigl[(\Pauli_{i_1} \otimes \Pauli_{i_2} \otimes \ldots \otimes \Pauli_{i_\Number})\op{A}\bigr].
+
+Schmidt decomposition
+---------------------
+
+Any bipartite vector state :math:`\ket{\psi} \in \SpaceHilbert_A \otimes \SpaceHilbert_B` can be written in the form
+
+.. math:: \ket{\psi} = \sum_{i,j} \psi_{i, j} \ket{i_A} \otimes \ket{j_B},
+   :label: eq:bipartite_vector
+
+where the coefficients :math:`\psi_{i, j} \in \Complexes` satisfy :math:`\sum_{i,j} |\psi_{i, j}|^2 = \braket{\psi}{\psi}`, and the sets of states :math:`\{\ket{i_A}\}_i` and :math:`\{\ket{j_B}\}_j` are orthonormal bases for the subsystems :math:`A` and :math:`B`, respectively. In general, if :math:`\Dimension_A = \dim(\SpaceHilbert_A)` and :math:`\Dimension_B = \dim(\SpaceHilbert_B)` are the dimensions of these subsystems, then the expression :eq:`eq:bipartite_vector` may have at most :math:`\Dimension_A \times \Dimension_B` terms (with the actual number depending on the chosen bases).
+
+An extremely useful theorem for such vectors on bipartite systems is the *Schmidt decomposition*, which states that there exist sets of orthonormal states :math:`\{\ket{k_A}\}_k` and :math:`\{\ket{k_B}\}_k` for the subsystems :math:`\SpaceHilbert_A` and :math:`\SpaceHilbert_B` such that we can equivalently express the state :eq:`eq:bipartite_vector` (i.e., any vector state) as
+
+.. math:: \ket{\psi} = \sum_k \lambda_k \ket{k_A} \otimes \ket{k_B}.
+   :label: eq:schmidt_decomposition
+
+Here, :math:`k \leq \text{min}(\Dimension_A, \Dimension_B)`, and :math:`\{\lambda_k\}_k` are non-negative real numbers, known as *Schmidt coefficients*, which satisfy
+
+.. math:: \sum_k \lambda_k^2 = \braket{\psi}{\psi}.
+
+The number of (non-zero) Schmidt coefficients is called the *Schmidt number* of the vector :math:`\ket{\psi}`. Importantly, the sets of states :math:`\{\ket{k_A}\}_k` and :math:`\{\ket{k_B}\}_k` (sometimes called *Schmidt bases*) are merely orthonormal within their respective spaces and do not (and need not) in general constitute bases for them.
+
+The Schmidt decomposition :eq:`eq:schmidt_decomposition` is simply a way of expressing a vector in the tensor product of two inner product spaces (such as Hilbert spaces), and our ability to do so is a very powerful result. For example, given a normalized bipartite vector :math:`\ket{\psi}` with decomposition :eq:`eq:schmidt_decomposition`, the reduced operators for each system can be calculated to be
+
+.. math::
+
+   \begin{aligned}
+       \StateDensity^A &\equiv \trace_B\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_A}\bra{k_A}, \\
+       \StateDensity^B &\equiv \trace_A\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_B}\bra{k_B}.
+   \end{aligned}
+
+The fact that the eigenvalues of both of these operators are identical (simply equal to :math:`\lambda_k^2`) is highly significant, as many of the important properties of operators are completely determined by their eigenvalues. Consequently, such properties of the reduced operators of a vector on a composite system will automatically be the same, regardless of the structure of the composite vector.
+
+It is useful to know that although bipartite states readily admit Schmidt decomposition, the same is *not* true for states composed of more than two systems. This is to say that any multipartite (:math:`\Number`-systems) vector state,
+
+.. math:: \ket{\psi} = \sum_{i_1, i_2, \ldots, i_\Number} \psi_{i_1, i_2, \ldots, i_\Number} \ket{i_1} \otimes \ket{i_2} \otimes \ldots \otimes \ket{i_\Number},
+   :label: eq:multipartite_vector
+
+*cannot* always be written in a generalized form of the Schmidt decomposition, i.e.,
+
+.. math:: \ket{\psi} = \sum_k \lambda_k \ket{k_1} \otimes \ket{k_2} \otimes \ldots \otimes \ket{k_\Number}, \quad \sum_k \lambda_k^2 = \braket{\psi}{\psi}, \quad \lambda_k \in \Reals_{\geq 0}.
 
 Superoperators
 ==============

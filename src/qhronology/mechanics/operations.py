@@ -129,6 +129,46 @@ def simplify(matrix: mat | QuantumObject, comprehensive: bool | None = None) -> 
     return matrix
 
 
+def rewrite(matrix: mat | QuantumObject, function: Callable) -> mat:
+    """Rewrite the elements of :python:`matrix` using the given mathematical function (:python:`function`).
+
+    Useful when used with SymPy's mathematical functions, such as:
+
+    - :python:`exp()`
+    - :python:`log()`
+    - :python:`sin()`
+    - :python:`cos()`
+    - :python:`sqrt()`
+
+    Arguments
+    ---------
+    matrix : mat | QuantumObject
+        The matrix to be transformed.
+    function : Callable
+        A SymPy mathematical function.
+
+    Returns
+    -------
+    mat
+        The transformed version of :python:`matrix`.
+    """
+    symbols = extract_symbols(matrix)
+    matrix = extract_matrix(matrix)
+
+    matrix = symbolize_expression(matrix, symbols)
+
+    try:
+        for index, entry in enumerate(matrix):
+            entry = entry.rewrite(function)
+            matrix[index] = entry
+    except:
+        raise ValueError(
+            f"""The specified function (:python:`{function.__name__}()`) cannot be used to rewrite the matrix."""
+        )
+
+    return matrix
+
+
 def apply(
     matrix: mat | QuantumObject,
     function: Callable,
@@ -144,6 +184,8 @@ def apply(
     - :python:`expand()`
     - :python:`factor()`
     - :python:`simplify()`
+    - :python:`separatevars()`
+    - :python:`rewrite()` (though the :py:func:`~qhronology.mechanics.operations.rewrite` function should be used instead)
 
     More can be found at:
 
@@ -182,45 +224,6 @@ def apply(
             raise ValueError(
                 f"""Unable to apply the specified function (:python:`{function.__name__}()`) to the matrix."""
             )
-
-    return matrix
-
-
-def rewrite(matrix: mat | QuantumObject, function: Callable) -> mat:
-    """Rewrite the elements of :python:`matrix` using the given mathematical function (:python:`function`).
-
-    Useful when used with SymPy's mathematical functions, such as:
-
-    - :python:`exp()`
-    - :python:`log()`
-    - :python:`sin()`
-    - :python:`cos()`
-
-    Arguments
-    ---------
-    matrix : mat | QuantumObject
-        The matrix to be transformed.
-    function : Callable
-        A SymPy mathematical function.
-
-    Returns
-    -------
-    mat
-        The transformed version of :python:`matrix`.
-    """
-    symbols = extract_symbols(matrix)
-    matrix = extract_matrix(matrix)
-
-    matrix = symbolize_expression(matrix, symbols)
-
-    try:
-        for index, entry in enumerate(matrix):
-            entry = entry.rewrite(function)
-            matrix[index] = entry
-    except:
-        raise ValueError(
-            f"""The specified function (:python:`{function.__name__}()`) cannot be used to rewrite the matrix."""
-        )
 
     return matrix
 
@@ -405,11 +408,11 @@ def measure(
 
       - When :python:`observable` is :python:`False`:
 
-      .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger.
+      .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger
 
       - When :python:`observable` is :python:`True`:
 
-      .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.
+      .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i
 
     In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule
 
@@ -627,7 +630,7 @@ class OperationsMixin:
 
     Note
     ----
-    The :py:class:`~qhronology.mechanics.operations.OperationsMixin` mixin is used exclusively by the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding section (:ref:`sec:docs_states_operations`) for documentation on its methods.
+    The :py:class:`~qhronology.mechanics.operations.OperationsMixin` mixin is used exclusively by the :py:class:`~qhronology.quantum.states.QuantumState` class---please see :numref:`sec:docs_states_operations` :ref:`sec:docs_states_operations` for documentation on its methods.
     """
 
     def densify(self):
@@ -658,6 +661,24 @@ class OperationsMixin:
         """
         self.matrix = simplify(self, comprehensive=comprehensive)
 
+    def rewrite(self, function: Callable):
+        """Rewrite the elements of the state using the given mathematical function (:python:`function`).
+
+        Useful when used with SymPy's mathematical functions, such as:
+
+        - :python:`exp()`
+        - :python:`log()`
+        - :python:`sin()`
+        - :python:`cos()`
+        - :python:`sqrt()`
+
+        Arguments
+        ---------
+        function : Callable
+            A SymPy mathematical function.
+        """
+        self.matrix = rewrite(self, function=function)
+
     def apply(self, function: Callable, arguments: dict[str, Any] | None = None):
         """Apply a Python function (:python:`function`) to the state.
 
@@ -669,6 +690,8 @@ class OperationsMixin:
         - :python:`collect()`
         - :python:`cancel()`
         - :python:`apart()`
+        - :python:`separatevars()`
+        - :python:`rewrite()` (though the :py:meth:`~qhronology.quantum.states.QuantumState.rewrite` method should be used instead)
 
         More can be found at:
 
@@ -685,23 +708,6 @@ class OperationsMixin:
             Defaults to :python:`{}`.
         """
         self.matrix = apply(self, function=function, arguments=arguments)
-
-    def rewrite(self, function: Callable):
-        """Rewrite the elements of the state using the given mathematical function (:python:`function`).
-
-        Useful when used with SymPy's mathematical functions, such as:
-
-        - :python:`exp()`
-        - :python:`log()`
-        - :python:`sin()`
-        - :python:`cos()`
-
-        Arguments
-        ---------
-        function : Callable
-            A SymPy mathematical function.
-        """
-        self.matrix = rewrite(self, function=function)
 
     def normalize(self, norm: num | expr | str | None = None):
         """Perform a forced (re)normalization on the state to the value specified (:python:`norm`).
@@ -775,6 +781,11 @@ class OperationsMixin:
         - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured, and the set of resulting statistics is returned.
           This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:
 
+          .. raw:: latex
+
+             \\null
+             \\vspace*{-2.5\\baselineskip}
+
           - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)
             when :python:`observable` is :python:`False`
             (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
@@ -782,16 +793,26 @@ class OperationsMixin:
             when :python:`observable` is :python:`True`
             (:python:`operators` is a list of observables :math:`\\Observable_i`)
 
+        .. raw:: latex
+
+           \\null
+           \\vspace*{-1.75\\baselineskip}
+
         - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
           This yields the transformed states:
 
           - When :python:`observable` is :python:`False`:
 
-          .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger.
+          .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger
 
           - When :python:`observable` is :python:`True`:
 
-          .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}]\\Observable_i.
+          .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}]\\Observable_i
+
+        .. raw:: latex
+
+           \\null
+           \\vspace*{-1.25\\baselineskip}
 
         In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule
 
@@ -803,6 +824,12 @@ class OperationsMixin:
         when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state is a matrix, even if the pre-measurement state was a vector.
 
         The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding operator matrix representation (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.
+
+        .. raw:: latex
+
+           \\enlargethispage{\\baselineskip}
+           \\null
+           \\vspace*{-1.25\\baselineskip}
 
         Arguments
         ---------

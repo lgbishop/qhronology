@@ -12,7 +12,12 @@ input_states = [zero_state for _ in range(0, num_systems)]
 # Gates
 HII = Hadamard(targets=[0], num_systems=num_systems, dim=dim)
 CNOTs = [
-    Summation(targets=[i + 1], controls=[i], num_systems=num_systems, dim=dim)
+    Summation(
+        targets=[i + 1],
+        controls=[i],
+        num_systems=num_systems,
+        dim=dim,
+    )
     for i in range(0, num_systems - 1)
 ]
 

@@ -34,6 +34,10 @@ A quantum *carry-lookahead* adder, proposed by Vedral et al. :cite:p:`vedral_qua
 
    A :math:`2`-qubit quantum carry-lookahead adder.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 The values of the summation qubits can be determined to be
 
 .. math::
@@ -96,7 +100,7 @@ When :python:`overflow_qubit = True`:
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_lookahead.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_lookahead.pdf}
    \vspace{-1\baselineskip}
 
 ..
@@ -131,7 +135,7 @@ When :python:`overflow_qubit = False`:
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_lookahead_false.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_lookahead_false.pdf}
    \vspace{-1\baselineskip}
 
 ..
@@ -205,7 +209,7 @@ Results
 
 .. code:: python
 
-   >>> print(computation)
+   >>> print(f"Computation: {computation}")
    Computation: 1 + 1 = 2
 
 .. raw:: latex
@@ -220,16 +224,12 @@ When :python:`overflow_qubit = True`:
 
 .. code:: python
 
-   >>> print(duration)
+   >>> print(f"Duration: {duration} seconds")
    Duration: 2.596 seconds
 
 .. raw:: latex
 
    \end{code}
-
-.. raw:: latex
-
-   \newpage
 
 When :python:`overflow_qubit = False`:
 
@@ -239,14 +239,14 @@ When :python:`overflow_qubit = False`:
 
 .. code:: python
 
-   >>> print(duration)
+   >>> print(f"Duration: {duration} seconds")
    Duration: 0.507 seconds
 
 .. raw:: latex
 
    \end{code}
 
-This version of a multi-qubit full adder is evidently much faster than the :ref:`eg:adder_ripple` for the equivalent number of qubits, which highlights the efficiency advantage of using fewer qubits to achieve the same computation.
+This version of a multi-qubit full adder is evidently much faster than the :numref:`eg:adder_ripple` :ref:`eg:adder_ripple` for the equivalent number of qubits, which highlights the efficiency advantage of using fewer qubits to achieve the same computation.
 
 .. only:: html
 

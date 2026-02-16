@@ -3099,8 +3099,7 @@ class VisualizationMixin:
 
         Note
         ----
-        The quality of the visualization depends greatly on the output's configuration.
-        For best results, the terminal should have a monospace font with good Unicode coverage.
+        The quality of the semigraphical diagrams depends greatly on the typeface with which they are visualized. For best results, monospace (fixed-width) fonts with good Unicode coverage should be used.
         """
         pad = (1, 0) if pad is None else pad
         sep = (1, 1) if sep is None else sep

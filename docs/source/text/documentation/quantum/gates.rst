@@ -50,13 +50,17 @@ Facilities to combine gates together are also provided by the package and take t
 
    \end{code}
 
-Both of these classes concern the creation of more complex spatial ("vertical") gate structures. Temporal ("horizontal") compositions (i.e., gates wired in serial) as single object instances on the other hand are not supported as this is achievable simply by combining the individual components sequentially in a circuit.
+Both of these classes concern the creation of more complex spatial ("vertical") gate structures. Temporal ("horizontal") compositions (i.e., gates wired in serial) as single object instances on the other hand are not supported, as this can be achieved simply by combining the individual components sequentially in a circuit.
 
 Main class
 ==========
 
 .. autoclass:: qhronology.quantum.gates.QuantumGate
    :show-inheritance:
+
+   .. raw:: latex
+
+      \newpage
 
    .. raw:: latex
 
@@ -110,7 +114,7 @@ Main class
    .. code:: python
 
       >>> unitary = sp.MatrixSymbol("U", 3, 3).as_mutable()
-      >>> U3 = QuantumGate(spec=unitary, label="U", dim=3)
+      >>> U3 = QuantumGate(spec=unitary, dim=3, label="U")
       >>> U3.output()
       Matrix([
       [U[0, 0], U[0, 1], U[0, 2]],
@@ -150,7 +154,12 @@ Main class
    .. code:: python
 
       >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
-      >>> UI = QuantumGate(spec=unitary, targets=[0], num_systems=2, label="U")
+      >>> UI = QuantumGate(
+      ...     spec=unitary,
+      ...     targets=[0],
+      ...     num_systems=2,
+      ...     label="U",
+      ... )
       >>> UI.output()
       Matrix([
       [U[0, 0],       0, U[0, 1],       0],
@@ -186,16 +195,17 @@ Main class
 
    .. raw:: latex
 
-      \enlargethispage{-\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
 
       >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
-      >>> IU = QuantumGate(spec=unitary, targets=[1], num_systems=2, label="U")
+      >>> IU = QuantumGate(
+      ...     spec=unitary,
+      ...     targets=[1],
+      ...     num_systems=2,
+      ...     label="U",
+      ... )
       >>> IU.output()
       Matrix([
       [U[0, 0], U[0, 1],       0,       0],
@@ -236,7 +246,12 @@ Main class
    .. code:: python
 
       >>> unitary = sp.MatrixSymbol("U", 4, 4).as_mutable()
-      >>> UU = QuantumGate(spec=unitary, targets=[0, 1], num_systems=2, label="U")
+      >>> UU = QuantumGate(
+      ...     spec=unitary,
+      ...     targets=[0, 1],
+      ...     num_systems=2,
+      ...     label="U",
+      ... )
       >>> UU.output()
       Matrix([
       [U[0, 0], U[0, 1], U[0, 2], U[0, 3]],
@@ -272,12 +287,21 @@ Main class
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
 
       >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
-      >>> CU = QuantumGate(spec=unitary, targets=[1], controls=[0], label="U")
+      >>> CU = QuantumGate(
+      ...     spec=unitary,
+      ...     targets=[1],
+      ...     controls=[0],
+      ...     label="U",
+      ... )
       >>> CU.output()
       Matrix([
       [1, 0,       0,       0],
@@ -318,7 +342,12 @@ Main class
    .. code:: python
 
       >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
-      >>> UC = QuantumGate(spec=unitary, targets=[0], controls=[1], label="U")
+      >>> UC = QuantumGate(
+      ...     spec=unitary,
+      ...     targets=[0],
+      ...     controls=[1],
+      ...     label="U",
+      ... )
       >>> UC.output()
       Matrix([
       [1,       0, 0,       0],
@@ -354,7 +383,7 @@ Main class
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
+      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -363,7 +392,12 @@ Main class
    .. code:: python
 
       >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
-      >>> AU = QuantumGate(spec=unitary, targets=[1], anticontrols=[0], label="U")
+      >>> AU = QuantumGate(
+      ...     spec=unitary,
+      ...     targets=[1],
+      ...     anticontrols=[0],
+      ...     label="U",
+      ... )
       >>> AU.output()
       Matrix([
       [U[0, 0], U[0, 1], 0, 0],
@@ -405,7 +439,10 @@ Main class
 
       >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
       >>> CCU = QuantumGate(
-      ...     spec=unitary, targets=[2], controls=[0, 1], label="U"
+      ...     spec=unitary,
+      ...     targets=[2],
+      ...     controls=[0, 1],
+      ...     label="U",
       ... )
       >>> CCU.output()
       Matrix([
@@ -452,7 +489,11 @@ Main class
 
       >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
       >>> AUC = QuantumGate(
-      ...     spec=unitary, targets=[1], controls=[2], anticontrols=[0], label="U"
+      ...     spec=unitary,
+      ...     targets=[1],
+      ...     controls=[2],
+      ...     anticontrols=[0],
+      ...     label="U",
       ... )
       >>> AUC.output()
       Matrix([
@@ -562,6 +603,10 @@ Constructor argument properties
 
 .. raw:: latex
 
+   \newpage
+
+.. raw:: latex
+
    \hrulefillthick
 
 .. autoproperty:: qhronology.quantum.gates.QuantumGate.coefficient
@@ -608,6 +653,10 @@ Read-only properties
 Methods
 -------
 
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
+
 .. automethod:: qhronology.quantum.gates.QuantumGate.output
 
 .. raw:: latex
@@ -629,7 +678,11 @@ Methods
    .. code:: python
 
       >>> unitary = sp.MatrixSymbol("U", 2, 2).as_mutable()
-      >>> U = QuantumGate(spec=unitary, label="U", dim=2)
+      >>> U = QuantumGate(
+      ...     spec=unitary,
+      ...     dim=2,
+      ...     label="U",
+      ... )
       >>> U.output()
       Matrix([
       [U[0, 0], U[0, 1]],
@@ -643,16 +696,17 @@ Methods
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
 
       >>> unitary = sp.MatrixSymbol("U", 4, 4).as_mutable()
-      >>> UU = QuantumGate(spec=unitary, label="UU", dim=2, targets = [0,1])
+      >>> UU = QuantumGate(
+      ...     spec=unitary,
+      ...     targets=[0, 1],
+      ...     dim=2,
+      ...     label="UU",
+      ... )
       >>> UU.output()
       Matrix([
       [U[0, 0], U[0, 1], U[0, 2], U[0, 3]],
@@ -684,7 +738,7 @@ Methods
 
    .. rubric:: :styleheader6:`Examples`
 
-   For usage examples, please see those of the :py:class:`~qhronology.quantum.gates.QuantumGate` class and its :ref:`subclasses <sec:docs_gates_subclasses>`.
+   For usage examples, please see those of the :py:class:`~qhronology.quantum.gates.QuantumGate` class and its subclasses (:numref:`sec:docs_gates_subclasses` :ref:`sec:docs_gates_subclasses`).
 
    .. raw:: latex
 
@@ -703,7 +757,7 @@ Methods
 Subclasses
 ==========
 
-Most of the canonical gates used in standard quantum computing theory are implemented in Qhronology as an assortment of subclasses of the :py:class:`~qhronology.quantum.gates.QuantumGate` class. It is important to be aware of how, even though they share many of the same arguments and properties, the usage of these classes can differ greatly. This is especially true among a few distinct categorizations of gates, namely *dimensionality* and *compositionality*, which are summarized in the tables below:
+Most of the canonical gates used in standard quantum computing theory are implemented in Qhronology as an assortment of subclasses of the :py:class:`~qhronology.quantum.gates.QuantumGate` class. It is important to be aware of how, even though they share many of the same arguments and properties, the usage of these classes can differ greatly. This is especially true among a few distinct categorizations of gates, namely *dimensionality* and *compositionality*, which are summarized below:
 
 .. raw:: latex
 
@@ -726,8 +780,12 @@ Most of the canonical gates used in standard quantum computing theory are implem
 
    \renewcommand{\arraystretch}{1.25}
 
-.. list-table:: Classifications and aliases of Qhronology's :py:class:`~qhronology.quantum.gates.QuantumGate` subclasses
-   :widths: 3 1 3 3
+.. raw:: latex
+
+   \vspace*{\baselineskip}
+
+.. list-table:: Classifications and aliases of Qhronology's :py:class:`~qhronology.quantum.gates.QuantumGate` subclasses.
+   :widths: 9 7 11 13
    :header-rows: 1
    :stub-columns: 1
 
@@ -787,10 +845,6 @@ Please note that the documentation of these subclasses includes only properties 
 .. note::
 
    In all of these subclasses, the :python:`spec` property should not be set.
-
-.. raw:: latex
-
-   \newpage
 
 .. autoclass:: qhronology.quantum.gates.Pauli
    :show-inheritance:
@@ -876,6 +930,10 @@ Please note that the documentation of these subclasses includes only properties 
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -1035,6 +1093,10 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
+      \enlargethispage{-\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1046,7 +1108,7 @@ Please note that the documentation of these subclasses includes only properties 
       ...     coefficient="exp(-I*θ/2)",
       ...     label="R_xx(θ)",
       ... )
-      >>> R_xx.output(simplify = True)
+      >>> R_xx.output(simplify=True)
       Matrix([
       [   cos(θ/2),           0,           0, -I*sin(θ/2)],
       [          0,    cos(θ/2), -I*sin(θ/2),           0],
@@ -1099,6 +1161,14 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
+      \vspace*{-\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{2\baselineskip}
+
+   .. raw:: latex
+
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
@@ -1144,6 +1214,45 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
+      \begin{code}
+
+   .. code:: python
+
+      >>> I = GellMann(index=0)
+      >>> I.output()
+      Matrix([
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1]])
+      >>> I.diagram()
+
+   .. raw:: latex
+      
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_gellmann_i.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_gellmann_i-dark.png
+            :scale: 40 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_gellmann_i-light.png
+            :scale: 40 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
       \end{adjustwidth}
 
    .. raw:: latex
@@ -1162,13 +1271,13 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
-      \begin{adjustwidth}{0.00cm}{0cm}
-
-   .. rubric:: :styleheader6:`Examples`
+      \vspace*{-0.85\baselineskip}
 
    .. raw:: latex
 
-      \enlargethispage{-\baselineskip}
+      \begin{adjustwidth}{0.00cm}{0cm}
+
+   .. rubric:: :styleheader6:`Examples`
 
    .. raw:: latex
 
@@ -1210,6 +1319,10 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1245,6 +1358,14 @@ Please note that the documentation of these subclasses includes only properties 
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -1431,6 +1552,10 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1467,10 +1592,6 @@ Please note that the documentation of these subclasses includes only properties 
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -1525,6 +1646,10 @@ Please note that the documentation of these subclasses includes only properties 
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.Diagonal
    :show-inheritance:
@@ -1685,6 +1810,10 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
+      \vspace*{-0.35\baselineskip}
+
+   .. raw:: latex
+
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
@@ -1776,7 +1905,7 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
-      \enlargethispage{-\baselineskip}
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -1865,6 +1994,10 @@ Please note that the documentation of these subclasses includes only properties 
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -2009,6 +2142,10 @@ Please note that the documentation of these subclasses includes only properties 
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. autoclass:: qhronology.quantum.gates.Summation
    :show-inheritance:
 
@@ -2110,11 +2247,6 @@ Please note that the documentation of these subclasses includes only properties 
 
    \hrulefillthick
 
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. autoclass:: qhronology.quantum.gates.Not
    :show-inheritance:
 
@@ -2162,45 +2294,45 @@ Please note that the documentation of these subclasses includes only properties 
 
       \end{code}
 
-   .. raw:: latex
+   .. .. raw:: latex
 
-      \begin{code}
+   ..    \begin{code}
 
-   .. code:: python
+   .. .. code:: python
 
-      >>> NN = Not(targets=[0, 1])
-      >>> NN.output()
-      Matrix([
-      [0, 0, 0, 1],
-      [0, 0, 1, 0],
-      [0, 1, 0, 0],
-      [1, 0, 0, 0]])
-      >>> NN.diagram()
+   ..    >>> NN = Not(targets=[0, 1])
+   ..    >>> NN.output()
+   ..    Matrix([
+   ..    [0, 0, 0, 1],
+   ..    [0, 0, 1, 0],
+   ..    [0, 1, 0, 0],
+   ..    [1, 0, 0, 0]])
+   ..    >>> NN.diagram()
 
-   .. raw:: latex
+   .. .. raw:: latex
       
-      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_not_nn.pdf}
-      \vspace{-1\baselineskip}
+   ..    \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_not_nn.pdf}
+   ..    \vspace{-1\baselineskip}
 
-   ..
+   .. ..
 
-      .. only:: html
+   ..    .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_gate_not_nn-dark.png
-            :scale: 40 %
-            :align: left
-            :class: only-dark
+   ..       .. image:: /figures/output/text_examples_docstrings_gate_not_nn-dark.png
+   ..          :scale: 40 %
+   ..          :align: left
+   ..          :class: only-dark
 
-      .. only:: html
+   ..    .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_gate_not_nn-light.png
-            :scale: 40 %
-            :align: left
-            :class: only-light
+   ..       .. image:: /figures/output/text_examples_docstrings_gate_not_nn-light.png
+   ..          :scale: 40 %
+   ..          :align: left
+   ..          :class: only-light
 
-   .. raw:: latex
+   .. .. raw:: latex
 
-      \end{code}
+   ..    \end{code}
 
    .. raw:: latex
 
@@ -2426,6 +2558,10 @@ Please note that the documentation of these subclasses includes only properties 
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{-3\baselineskip}
 
    .. raw:: latex
 
@@ -2662,10 +2798,6 @@ Please note that the documentation of these subclasses includes only properties 
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
-
 .. autoclass:: qhronology.quantum.gates.Measurement
    :show-inheritance:
 
@@ -2815,8 +2947,8 @@ Please note that the documentation of these subclasses includes only properties 
 
    \hrulefillthick
 
-Combining gates
-===============
+Combinations
+============
 
 .. autoclass:: qhronology.quantum.gates.GateInterleave
    :show-inheritance:
@@ -2868,6 +3000,10 @@ Combining gates
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \newpage
 
    .. raw:: latex
 
@@ -2974,6 +3110,10 @@ Combining gates
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \newpage
+
 .. autoclass:: qhronology.quantum.gates.GateStack
    :show-inheritance:
 
@@ -3036,7 +3176,12 @@ Combining gates
 
    .. code:: python
 
-      >>> gates = [Not(targets=[(i + 1) % 2], controls=[i % 2]) for i in range(0, 4)]
+      >>> gates = [
+      ...     Not(
+      ...         targets=[(i + 1) % 2],
+      ...         controls=[i % 2],
+      ...     ) for i in range(0, 4)
+      ... ]
       >>> CNOTs = GateStack(*gates)
       >>> CNOTS.diagram()
 

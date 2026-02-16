@@ -2,7 +2,7 @@
 List of abbreviations
 *********************
 
-.. csv-table:: List of symbols
+.. csv-table:: List of abbreviations.
    :header: "**Abbreviation**", "**Description**"
    :widths: 10, 30
 
@@ -16,5 +16,4 @@ List of abbreviations
    "CV", "chronology-violating"
    "D-CTC", "Deutschian closed timelike curve"
    "P-CTC", "postselected-teleportation closed timelike curve"
-   "T-CTC", "transition-probabilities closed timelike curve"
    "ECP", "equivalent-circuit picture"

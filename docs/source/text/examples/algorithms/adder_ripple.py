@@ -28,7 +28,9 @@ carry_states = []
 zero_states = []
 for i in range(0, encoding_depth):
     target_bit = i
-    complement_bits = [n for n in range(0, encoding_depth) if n != target_bit]
+    complement_bits = [
+        n for n in range(0, encoding_depth) if n != target_bit
+    ]
 
     augend_state.partial_trace(complement_bits)
     addend_state.partial_trace(complement_bits)
@@ -60,7 +62,12 @@ for i in range(0, encoding_depth):
 
 input_spec = flatten_list(
     [
-        [augend_states[i], addend_states[i], carry_states[i], zero_states[i]]
+        [
+            augend_states[i],
+            addend_states[i],
+            carry_states[i],
+            zero_states[i],
+        ]
         for i in range(0, encoding_depth)
     ]
 )
@@ -111,18 +118,21 @@ adder.diagram()
 # Output
 initial_time = time.time()
 sum_registers = [2 + i * 4 for i in range(0, encoding_depth)]
-not_sum_registers = [i for i in range(0, 4 * encoding_depth) if i not in sum_registers]
+not_sum_registers = [
+    i for i in range(0, 4 * encoding_depth) if i not in sum_registers
+]
 sum_state = adder.state(label="s", traces=not_sum_registers)
 sum_integer = decode_fast(sum_state.output())
 sum_state = VectorState(spec=encode(sum_integer), label="s")
 final_time = time.time()
+
 
 # Results
 augend_state.print()
 addend_state.print()
 sum_state.print()
 
-computation = f"Computation: {augend_integer} + {addend_integer} = {sum_integer}"
-duration = f"Duration: {sp.N(final_time - initial_time,8).round(3)} seconds"
-print(computation)
-print(duration)
+computation = f"{augend_integer} + {addend_integer} = {sum_integer}"
+duration = sp.N(final_time - initial_time, n=8).round(3)
+print(f"Computation: {computation}")
+print(f"Duration: {duration} seconds")

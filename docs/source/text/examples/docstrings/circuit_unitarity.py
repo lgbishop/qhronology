@@ -10,7 +10,11 @@ conditions = [
     for i in range(0, 2)
     for j in range(0, 2)
 ]
-symbols = {unitary[i, j]: {"complex": True} for i in range(0, 2) for j in range(0, 2)}
+symbols = {
+    unitary[i, j]: {"complex": True}
+    for i in range(0, 2)
+    for j in range(0, 2)
+}
 
 # Gates
 U = QuantumGate(
@@ -18,7 +22,6 @@ U = QuantumGate(
     symbols=symbols,
     conditions=conditions,
     label="U",
-    conjugate=False,  # Not needed but demonstrative
 )
 Ud = QuantumGate(
     spec=unitary,

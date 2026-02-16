@@ -16,7 +16,7 @@ The circuit in :numref:`fig:circuit_algorithm_generation_ghz_general` illustrate
        &= \frac{1}{\sqrt{\Dimension}} \sum_{k=0}^{\Dimension - 1} \ket{k} \otimes \ldots \otimes \ket{k},
    \end{aligned}
 
-from primitive :math:`\ket{0}` states. This is also known as the *generalized* GHZ state (see :ref:`eg:generation_ghz`).
+from primitive :math:`\ket{0}` states. This is a generalized version of the GHZ state (see :numref:`eg:generation_ghz` :ref:`eg:generation_ghz`).
 
 .. only:: html
 
@@ -44,6 +44,10 @@ from primitive :math:`\ket{0}` states. This is also known as the *generalized* G
 
    Generation of the generalized GHZ state.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 The complete unitary transformation described by this circuit is the product
 
 .. math::
@@ -55,6 +59,10 @@ The complete unitary transformation described by this circuit is the product
 
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
 
 .. raw:: latex
 
@@ -72,6 +80,10 @@ Implementation
 Output
 ------
 
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
+
 Diagram
 ^^^^^^^
 
@@ -85,7 +97,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_generation_ghz_general.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_generation_ghz_general.pdf}
    \vspace{-1\baselineskip}
 
 ..

@@ -71,10 +71,6 @@ Functions
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. autofunction:: qhronology.mechanics.quantities.purity
 
    .. raw:: latex

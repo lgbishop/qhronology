@@ -46,127 +46,139 @@ Please note that the documentation of this class includes only properties and me
 .. autoclass:: qhronology.quantum.prescriptions.QuantumCTC
    :show-inheritance:
 
-   .. raw:: latex
+.. raw:: latex
 
-      \begin{adjustwidth}{0.00cm}{0cm}
+   \begin{adjustwidth}{2.5em}{0cm}
 
-   .. rubric:: :styleheader6:`Examples`
+.. rubric:: :styleheader6:`Examples`
 
-   .. raw:: latex
+.. raw:: latex
 
-      \begin{codetitled}{SWAP interaction with a CTC}{}
+   \enlargethispage{-\baselineskip}
 
-   .. literalinclude:: /text/examples/docstrings/prescription_swap.py
-      :language: python
-      :caption: SWAP interaction with a CTC
+.. raw:: latex
 
-   .. raw:: latex
+   \begin{codetitled}{SWAP interaction with a CTC}{}
 
-      \tcblowerspaced
+.. literalinclude:: /text/examples/docstrings/prescription_swap.py
+   :language: python
+   :caption: SWAP interaction with a CTC
 
-   .. code:: python
+.. raw:: latex
 
-      >>> SWAP.diagram()
+   \tcblowerspaced
 
-   .. raw:: latex
-      
-      \includegraphics[scale=1.25, trim=-0.02cm 0.12cm 0 0.02cm]{text_examples_docstrings_prescription_swap.pdf}
-      \vspace{-1\baselineskip}
+.. code:: python
 
-   ..
+   >>> SWAP.diagram()
 
-      .. only:: html
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.00cm 0 -0.08cm]{text_examples_docstrings_prescription_swap.pdf}
+   \vspace{-1\baselineskip}
 
-         .. image:: /figures/output/text_examples_docstrings_prescription_swap-dark.png
-            :scale: 40 %
-            :align: left
-            :class: only-dark
+..
 
-      .. only:: html
+   .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_prescription_swap-light.png
-            :scale: 40 %
-            :align: left
-            :class: only-light
+      .. image:: /figures/output/text_examples_docstrings_prescription_swap-dark.png
+         :scale: 40 %
+         :align: left
+         :class: only-dark
 
-   .. code:: python
+   .. only:: html
 
-      >>> SWAP_DCTC_respecting.print()
-      ρ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-      >>> SWAP_DCTC_violating.print()
-      τ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-      >>> SWAP_PCTC_respecting.print()
-      ρ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-      >>> SWAP_PCTC_violating.print()
-      τ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
+      .. image:: /figures/output/text_examples_docstrings_prescription_swap-light.png
+         :scale: 40 %
+         :align: left
+         :class: only-light
 
-   .. raw:: latex
+.. code:: python
 
-      \end{codetitled}
+   >>> SWAP_DCTC_CR.print()
+   ρ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
+   >>> SWAP_DCTC_CV.print()
+   τ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
+   >>> SWAP_PCTC_CR.print()
+   ρ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
+   >>> SWAP_PCTC_CV.print()
+   τ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
 
-   .. raw:: latex
+.. raw:: latex
 
-      \enlargethispage{\baselineskip}
+   \end{codetitled}
 
-   .. raw:: latex
+.. raw:: latex
 
-      \begin{codetitled}{CNOT interaction with a CTC}{}
+   \vspace*{0.35\baselineskip}
 
-   .. literalinclude:: /text/examples/docstrings/prescription_cnot.py
-      :language: python
-      :caption: CNOT interaction with a CTC
+.. raw:: latex
 
-   .. raw:: latex
+   \begin{codetitled}{CNOT interaction with a CTC}{}
 
-      \tcblowerspaced
+.. literalinclude:: /text/examples/docstrings/prescription_cnot.py
+   :language: python
+   :caption: CNOT interaction with a CTC
 
-   .. code:: python
+.. raw:: latex
 
-      >>> CNOT.diagram()
+   \tcblowerspaced
 
-   .. raw:: latex
-      
-      \includegraphics[scale=1.25, trim=-0.02cm 0.12cm 0 0.02cm]{text_examples_docstrings_prescription_cnot.pdf}
-      \vspace{-1\baselineskip}
+.. code:: python
 
-   ..
+   >>> CNOT.diagram()
 
-      .. only:: html
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.025cm 0 -0.12cm]{text_examples_docstrings_prescription_cnot.pdf}
+   \vspace{-1\baselineskip}
 
-         .. image:: /figures/output/text_examples_docstrings_prescription_cnot-dark.png
-            :scale: 40 %
-            :align: left
-            :class: only-dark
+..
 
-      .. only:: html
+   .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_prescription_cnot-light.png
-            :scale: 40 %
-            :align: left
-            :class: only-light
+      .. image:: /figures/output/text_examples_docstrings_prescription_cnot-dark.png
+         :scale: 40 %
+         :align: left
+         :class: only-dark
 
-   .. code:: python
+   .. only:: html
 
-      >>> CNOT_DCTC_respecting.print()
-      ρ_D = ρ[0, 0]|0⟩⟨0| + 2*g*ρ[0, 1]|0⟩⟨1| + 2*g*ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-      >>> CNOT_DCTC_violating.print()
-      τ_D = 1/2|0⟩⟨0| + g|0⟩⟨1| + g|1⟩⟨0| + 1/2|1⟩⟨1|
-      >>> CNOT_PCTC_respecting.print()
-      ρ_P = |0⟩⟨0|
-      >>> CNOT_PCTC_violating.print()
-      τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
+      .. image:: /figures/output/text_examples_docstrings_prescription_cnot-light.png
+         :scale: 40 %
+         :align: left
+         :class: only-light
 
-   .. raw:: latex
+.. code:: python
 
-      \end{codetitled}
+   >>> CNOT_DCTC_CR.print()
+   ρ_D = ρ[0, 0]|0⟩⟨0| + 2*g*ρ[0, 1]|0⟩⟨1| + 2*g*ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
+   >>> CNOT_DCTC_CV.print()
+   τ_D = 1/2|0⟩⟨0| + g|0⟩⟨1| + g|1⟩⟨0| + 1/2|1⟩⟨1|
+   >>> CNOT_PCTC_CR.print()
+   ρ_P = |0⟩⟨0|
+   >>> CNOT_PCTC_CV.print()
+   τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
 
-   .. raw:: latex
+.. raw:: latex
 
-      \end{adjustwidth}
+   \end{codetitled}
+
+.. raw:: latex
+
+   \end{adjustwidth}
+
+.. raw:: latex
+
+   \vspace*{0.15\baselineskip}
 
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
 
 .. _`sec:docs_prescriptions_properties`:
 
@@ -185,6 +197,10 @@ Constructor argument properties
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
+
 Read-only properties
 --------------------
 
@@ -194,10 +210,18 @@ Read-only properties
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
+
 .. _`sec:docs_prescriptions_methods`:
 
 Methods
 -------
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.prescriptions.QuantumCTC.input
 
@@ -271,11 +295,3 @@ Please note that the documentation of these subclasses includes only properties 
    :maxdepth: 2
 
    prescriptions/P-CTCs
-
-.. T-CTCs
-.. ------
-
-.. .. toctree::
-..    :maxdepth: 2
-
-..    prescriptions/T-CTCs

@@ -25,6 +25,7 @@ from qhronology.utilities.classification import (
     mat,
     num,
     sym,
+    expr,
     Forms,
     Kinds,
     Shapes,

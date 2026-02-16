@@ -11,6 +11,10 @@ Qhronology
 
    /../../README
 
+.. .. toctree::
+
+..    /text/documentation/architecture
+
 .. raw:: latex
 
    \part{\sffamily Theory}

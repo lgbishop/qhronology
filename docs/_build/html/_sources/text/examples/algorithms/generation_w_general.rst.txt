@@ -6,7 +6,7 @@ Generation of the generalized W state
 Description
 -----------
 
-The circuit in :numref:`fig:circuit_algorithm_generation_w_general` illustrates an algorithm for the generation of a generalized :math:`\Number`-qubit W state (see :ref:`eg:generation_w`),
+The circuit in :numref:`fig:circuit_algorithm_generation_w_general` illustrates an algorithm for the generation of a generalized :math:`\Number`-qubit W state (see :numref:`eg:generation_w` :ref:`eg:generation_w`),
 
 .. math::
 
@@ -47,6 +47,10 @@ from primitive :math:`\ket{0}` states.
 
    Generation of the generalized W state.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 The complete unitary transformation described by this circuit is the product
 
 .. math::
@@ -54,10 +58,14 @@ The complete unitary transformation described by this circuit is the product
    \begin{aligned}
        \Unitary &= \NOT^{0} \cdot \Control^{0} \NOT^{1} \cdot \Control^{1} \NOT^{2} \cdot \ldots \cdot \Control^{\Number - 2} \NOT^{\Number - 1} \\
        &\quad \cdot \; \Control^{\Number - 3} \Rotation_{y}^{\Number - 2}(\theta_{\Number - 2}) \cdot \ldots \cdot \Control^{1} \Rotation_{y}^{2}(\theta_{2}) \cdot \Control^{0} \Rotation_{y}^{1}(\theta_{1}) \cdot \Rotation_{y}^{0}(\theta_{0}) \\
-       &= \NOT^{0} \cdot \Biggl(\prod_{n = 1}^{\Number - 1} \Control^{n - 1} \NOT^{n} \Biggr) \cdot \Biggl(\prod_{n = \Number - 2}^{1} \Control^{n - 1} \Rotation_{y}^{n}(\theta_{n})  \Biggr) \cdot \Rotation_{y}^{0}(\theta_{0}).
+       &= \NOT^{0} \cdot \Biggl(\prod_{n = 1}^{\Number - 1} \Control^{n - 1} \NOT^{n} \Biggr) \cdot \Biggl(\prod_{n = \Number - 2}^{1} \Control^{n - 1} \Rotation_{y}^{n}(\theta_{n})  \Biggr) \cdot \Rotation_{y}^{0}(\theta_{0})
    \end{aligned}
 
 where the :math:`y`-rotation angles are given by :math:`\theta_n = 2 \arccos\left(\tfrac{1}{\sqrt{\Number - n}}\right)`.
+
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
 
 Implementation
 --------------
@@ -91,7 +99,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_generation_w_general.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_generation_w_general.pdf}
    \vspace{-1\baselineskip}
 
 ..

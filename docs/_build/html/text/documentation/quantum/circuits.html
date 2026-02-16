@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9e158f31" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
   </head>
   
   
@@ -427,7 +427,11 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum</span></p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Architecture</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="states.html">States</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gates.html">Gates</a></li>
@@ -550,15 +554,17 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All states, gates, postselections, and measurement operators recorded in the instance must share the same dimensionality (i.e., the value of the <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code> property).</p>
+<p>All states, gates, and postselections recorded in the instance must share the same dimensionality (i.e., the value of the <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code> property).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The sum of the <code class="code highlight python docutils literal highlight-python"><span class="n">num_systems</span></code> properties of the quantum states in <code class="code highlight python docutils literal highlight-python"><span class="n">inputs</span></code> should match that of each of the gates in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code>.</p>
 </div>
+</dd></dl>
+
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Code Block 1 </span><span class="caption-text">Quantum bit-flip</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 2 </span><span class="caption-text">Quantum bit-flip</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
@@ -598,7 +604,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Code Block 2 </span><span class="caption-text">Arbitrary state generation</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 3 </span><span class="caption-text">Arbitrary state generation</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span><span class="p">,</span> <span class="n">Diagonal</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
@@ -647,7 +653,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Code Block 3 </span><span class="caption-text">CNOTs equivalent to SWAP</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 4 </span><span class="caption-text">CNOTs equivalent to SWAP</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
@@ -740,7 +746,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Code Block 4 </span><span class="caption-text">Bell postselection</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 5 </span><span class="caption-text">Bell postselection</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
 
@@ -786,7 +792,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Code Block 5 </span><span class="caption-text">Unitarity of general symbolic gates</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 6 </span><span class="caption-text">Unitarity of general symbolic gates</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumGate</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
@@ -799,7 +805,11 @@ Defaults to <code class="code highlight python docutils literal highlight-python
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="p">]</span>
-<span class="n">symbols</span> <span class="o">=</span> <span class="p">{</span><span class="n">unitary</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)}</span>
+<span class="n">symbols</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">unitary</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
 
 <span class="c1"># Gates</span>
 <span class="n">U</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span>
@@ -807,7 +817,6 @@ Defaults to <code class="code highlight python docutils literal highlight-python
     <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span>
     <span class="n">conditions</span><span class="o">=</span><span class="n">conditions</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">,</span>
-    <span class="n">conjugate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Not needed but demonstrative</span>
 <span class="p">)</span>
 <span class="n">Ud</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span>
@@ -852,15 +861,15 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Code Block 6 </span><span class="caption-text">Fourier transform decomposition</span><a class="headerlink" href="#id6" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 7 </span><span class="caption-text">Fourier transform decomposition</span><a class="headerlink" href="#id6" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">MatrixState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Fourier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 
-<span class="n">size</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># Adjust the number of qudits</span>
-<span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Adjust the dimensionality of the Fourier transform</span>
+<span class="n">size</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># The number of qudits</span>
+<span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># The dimensionality of the Fourier transform</span>
 
 <span class="c1"># Input</span>
 <span class="n">rho</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;ρ&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">**</span><span class="n">size</span><span class="p">,</span> <span class="n">dim</span><span class="o">**</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
@@ -872,15 +881,21 @@ Defaults to <code class="code highlight python docutils literal highlight-python
     <span class="n">count</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="n">i</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">QFT</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">num_systems</span><span class="o">=</span><span class="n">size</span><span class="p">))</span>
+            <span class="n">QFT</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">Hadamard</span><span class="p">(</span>
+                    <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="n">num_systems</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+                    <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">QFT</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="n">Phase</span><span class="p">(</span>
                     <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">],</span>
                     <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
                     <span class="n">exponent</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">**</span><span class="n">j</span><span class="p">),</span>
-                    <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
                     <span class="n">num_systems</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+                    <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
                     <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dim</span><span class="o">**</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
                     <span class="n">family</span><span class="o">=</span><span class="s2">&quot;GATE&quot;</span><span class="p">,</span>
                 <span class="p">)</span>
@@ -890,7 +905,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="n">fourier</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">input_state</span><span class="p">],</span> <span class="n">gates</span><span class="o">=</span><span class="n">QFT</span><span class="p">)</span>
 <span class="n">fourier</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;unicode&quot;</span><span class="p">)</span>
 
-<span class="c1"># Output</span>
+<span class="c1"># # Output</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">fourier</span><span class="o">.</span><span class="n">gate</span><span class="p">()))</span>
 </pre></div>
 </div>
@@ -904,8 +919,6 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_fourier-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_fourier-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_fourier-light.png" style="width: 421.20000000000005px; height: 128.4px;" />
 </a>
 </div></blockquote>
-</dd></dl>
-
 <section id="constructor-argument-properties">
 <span id="sec-docs-circuits-properties"></span><h3>Constructor argument properties<a class="headerlink" href="#constructor-argument-properties" title="Link to this heading">#</a></h3>
 <dl class="py property">
@@ -933,14 +946,14 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.circuits.QuantumCircuit.postselections">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumCircuit.</span></span><span class="sig-name descname"><span class="pre">postselections</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableDenseMatrix</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.circuits.QuantumCircuit.postselections" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumCircuit.</span></span><span class="sig-name descname"><span class="pre">postselections</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.circuits.QuantumCircuit.postselections" title="Link to this definition">#</a></dt>
 <dd><p>A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.</p>
 <p>Any <code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">conditions</span></code> properties of each postselection are merged into their counterparts in the instance upon their addition to the <code class="code highlight python docutils literal highlight-python"><span class="n">postselections</span></code> property.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.circuits.QuantumCircuit.symbols">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumCircuit.</span></span><span class="sig-name descname"><span class="pre">symbols</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">MatrixSymbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixElement</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Symbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.circuits.QuantumCircuit.symbols" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumCircuit.</span></span><span class="sig-name descname"><span class="pre">symbols</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.circuits.QuantumCircuit.symbols" title="Link to this definition">#</a></dt>
 <dd><p>A dictionary in which the keys are individual symbols (contained within the object’s matrix representation) and the values are dictionaries of their respective SymPy keyword-argument <code class="code highlight python docutils literal highlight-python"><span class="n">assumptions</span></code> (“predicates”).
 A full list of currently supported predicates, and their defaults, is as follows:</p>
 <ul class="simple">
@@ -1074,7 +1087,7 @@ Calculated from its states and gates, and so all must have the same value.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.circuits.QuantumCircuit.matrix">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumCircuit.</span></span><span class="sig-name descname"><span class="pre">matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">MutableDenseMatrix</span></em><a class="headerlink" href="#qhronology.quantum.circuits.QuantumCircuit.matrix" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumCircuit.</span></span><span class="sig-name descname"><span class="pre">matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">mat</span></em><a class="headerlink" href="#qhronology.quantum.circuits.QuantumCircuit.matrix" title="Link to this definition">#</a></dt>
 <dd><p>The matrix representation of the total output state prior to any post-processing (i.e., traces and postselections).</p>
 </dd></dl>
 
@@ -1304,18 +1317,18 @@ This yields the transformed states:</p>
 <li><p>When <code class="code highlight python docutils literal highlight-python"><span class="n">observable</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>:</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-circuits-0">
-<span class="eqno">(313)<a class="headerlink" href="#equation-text-documentation-quantum-circuits-0" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \Kraus_i \op{\rho} \Kraus_i^\dagger.\]</div>
+<span class="eqno">(316)<a class="headerlink" href="#equation-text-documentation-quantum-circuits-0" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \Kraus_i \op{\rho} \Kraus_i^\dagger\]</div>
 <ul class="simple">
 <li><p>When <code class="code highlight python docutils literal highlight-python"><span class="n">observable</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>:</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-circuits-1">
-<span class="eqno">(314)<a class="headerlink" href="#equation-text-documentation-quantum-circuits-1" title="Link to this equation">#</a></span>\[\op{\rho}^\prime
-    = \sum_i \trace[\Observable_i \op{\rho}] \Observable_i.\]</div>
+<span class="eqno">(317)<a class="headerlink" href="#equation-text-documentation-quantum-circuits-1" title="Link to this equation">#</a></span>\[\op{\rho}^\prime
+    = \sum_i \trace[\Observable_i \op{\rho}] \Observable_i\]</div>
 </li>
 </ul>
 <p>In the case where <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> contains only a single item (<span class="math notranslate nohighlight">\(\Kraus\)</span>), and the current state (<span class="math notranslate nohighlight">\(\ket{\psi}\)</span>) is a vector form, the transformation of the state is in accordance with the rule</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-circuits-2">
-<span class="eqno">(315)<a class="headerlink" href="#equation-text-documentation-quantum-circuits-2" title="Link to this equation">#</a></span>\[\ket{\psi^\prime} = \frac{\Kraus \ket{\psi}}
+<span class="eqno">(318)<a class="headerlink" href="#equation-text-documentation-quantum-circuits-2" title="Link to this equation">#</a></span>\[\ket{\psi^\prime} = \frac{\Kraus \ket{\psi}}
     {\sqrt{\bra{\psi} \Kraus^\dagger \Kraus \ket{\psi}}}\]</div>
 <p>when <code class="code highlight python docutils literal highlight-python"><span class="n">observable</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>. In all other mutation cases, the post-measurement state is a matrix, even if the pre-measurement state was a vector.</p>
 <p>The items in the list <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> can also be vectors (e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\)</span>), in which case each is converted into its corresponding operator matrix representation (e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\bra{\xi_i}\)</span>) prior to any measurements.</p>
@@ -1392,8 +1405,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The quality of the visualization depends greatly on the output’s configuration.
-For best results, the terminal should have a monospace font with good Unicode coverage.</p>
+<p>The quality of the semigraphical diagrams depends greatly on the typeface with which they are visualized. For best results, monospace (fixed-width) fonts with good Unicode coverage should be used.</p>
 </div>
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>

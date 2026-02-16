@@ -54,6 +54,10 @@ Functions
 
    .. raw:: latex
 
+      \enlargethispage{-\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -121,6 +125,10 @@ Functions
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \newpage
 
    .. raw:: latex
 
@@ -205,15 +213,29 @@ Functions
 
 .. raw:: latex
 
+   \newpage
+   \null
+   \vspace*{-2\baselineskip}
+
+.. raw:: latex
+
    \hrulefillthick
 
 .. autofunction:: qhronology.mechanics.matrices.quantum_state
 
    .. raw:: latex
 
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -320,10 +342,6 @@ Functions
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -372,10 +390,6 @@ Functions
    \hrulefillthick
 
 .. autofunction:: qhronology.mechanics.matrices.encode
-
-   .. raw:: latex
-
-      \newpage
 
    .. raw:: latex
 
@@ -469,6 +483,10 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
+
 .. autofunction:: qhronology.mechanics.matrices.decode_slow
 
    .. raw:: latex
@@ -518,7 +536,15 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
+
 .. autofunction:: qhronology.mechanics.matrices.decode_fast
+
+   .. raw:: latex
+
+      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 

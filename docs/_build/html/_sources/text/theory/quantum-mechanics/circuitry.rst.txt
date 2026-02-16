@@ -6,23 +6,47 @@
 Quantum circuitry
 *****************
 
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
+
 Anatomy of a quantum circuit
 ============================
+
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
 
 Analogous to how the processing of information inside a classical computer may be represented diagrammatically by wires and logic gates, the *quantum circuitry* picturalism provides a way by which quantum operations can likewise be expressed visually. The formalism is based on the *Penrose graphical notation* (also often called *tensor network diagrams*)---a graphical notation for the visualization of tensors. This diagramming scheme is similar to logic circuit diagrams, in which wires depict the flow of information between logic gates (themselves representing logical operations on their input states).
 
 A quantum circuit diagram is constructed using wires spanning input and output sections, upon which quantum gates are placed, describing manipulations and transformations (e.g., unitary operations) on the quantum states which follow these wires. A circuit's *inputs* (on the left) is a collection of one or more quantum states which, when encoded in an appropriate basis (for qubits this is typically the computational basis), is often called a (quantum) *register*. Oppositely, a circuit's *outputs* (on the right) is the set of quantum state(s) resulting from the transformations performed on the input(s) by the intermediary quantum gate(s). *Quantum computation* is then defined as any (unitary) evolution which takes an initial input state into some final output state. In this regard, it is important to note that, despite the "circuit" nomenclature, quantum circuits are typically not used to depict *closed* loops of state evolution.
 
-One of the first uses of quantum circuit diagrams as we know them today was by Feynman :cite:p:`feynman_quantum_1986`. The construction of these diagrams is described in more detail in :cite:p:`nielsen_quantum_2010, serrano_quantum_2022, moret-bonillo_adventures_2017, williams_explorations_2010, wilde_quantum_2017`. All diagrams here were produced using the excellent LaTeX (TikZ) *Quantikz* package :cite:p:`kay_tutorial_2019`.
+One of the first uses of quantum circuit diagrams as we know them today was by Feynman :cite:p:`feynman_quantum_1986`. The construction of these diagrams is described in more detail in :cite:p:`nielsen_quantum_2010, serrano_quantum_2022, moret-bonillo_adventures_2017, williams_explorations_2010, wilde_quantum_2017`. All of the diagrams presented here were produced using the excellent LaTeX (TikZ) *Quantikz* package :cite:p:`kay_tutorial_2019`.
+
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
 
 Fundamentals
 ------------
+
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
 
 - **Time**: Time advances horizontally from the left to the right. Each vertical slice of the circuit corresponds to a distinct instant of time in the temporal progression. In other words, vertically aligned events occur simultaneously.
 
 - **Wires**: Each (physical) quantum or classical system (Hilbert space) is represented by a solid horizontal line called a *wire*. Multiple wires (*bundles*) therefore represent composite (multipartite) systems, and sequences of events at various points in time on these wires (such as state preparation, logical operations, measurement, etc.) form structures that are conventionally called *circuits*.
 
   - Quantum wires:
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -51,9 +75,13 @@ Fundamentals
       <div>
 
    .. raw:: latex
+
+      \newpage
+
+   .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      \vspace{1.0em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
    .. only:: html
@@ -73,9 +101,21 @@ Fundamentals
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
 
   - Classical wires:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -104,6 +144,10 @@ Fundamentals
       <div>
 
    .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
       
       \end{mdframed}
       \vspace{1em}
@@ -126,20 +170,36 @@ Fundamentals
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
 
-.. raw:: latex
+   .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+      \end{adjustwidth}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - **Omission**: Ellipses denote the omission of parts of the circuit. This notation is usually employed only in the context of the subsequent tutorial circuits as a way to give focus to the important parts of each example.
 
 - **Ordering and labels**: For circuits with multiple systems, the order of tensor products (from left-to-right) in its corresponding mathematical expression matches the order of the systems (from top-to-bottom) in the circuit. In the case of any ambiguity, the Hilbert spaces in which the states and operators reside are labelled using either superscripts or subscripts (depending on the context). If the systems are not explicitly named, the common convention is to denote them in order (from top-to-bottom) using the integers, starting from :math:`0` (zero, as is customary in computer science) and counting up.
 
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
+
 States
 ------
 
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
+
 - State preparation or preselection is represented by:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -163,9 +223,17 @@ States
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - The preparation of pure states is similarly:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
 
@@ -189,9 +257,17 @@ States
    .. raw:: latex
 
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - States prepared over several systems are denoted using a brace extending across all of the relevant subsystems:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -215,9 +291,17 @@ States
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - The preparation of separable states is:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -241,7 +325,11 @@ States
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 Gates
 -----
@@ -270,7 +358,7 @@ Gates
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
 
 - Sequences of single-system operators are represented by sequences of gates:
 
@@ -296,7 +384,7 @@ Gates
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
 
 - Operators which act on different subsystems within composite systems are represented distinctly by parallel gates:
 
@@ -322,7 +410,7 @@ Gates
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
 
 - An empty wire (i.e., the absence of a gate on a system) corresponds to the identity operator:
 
@@ -348,7 +436,7 @@ Gates
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
 
 - **Groups** of gates may be denoted with a bounding box, e.g.:
 
@@ -401,9 +489,19 @@ Gates
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+.. raw:: latex
+
+   \newpage
+   \null
+   \vspace*{-2.15\baselineskip}
 
 - Gates acting on different systems at distinct times (i.e., non-simultaneous operators) are separated horizontally. If all other wires in their instant are empty, then they may be combined:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -432,6 +530,10 @@ Gates
       <div>
 
    .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
       
       \end{mdframed}
       \vspace{1em}
@@ -454,13 +556,21 @@ Gates
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 .. raw:: latex
 
-   \newpage
+   \enlargethispage{\baselineskip}
 
 - Multipartite (composite) operators are denoted by gates which span the relevant wires:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
 
@@ -487,6 +597,10 @@ Gates
       </blockquote>
       <blockquote>
       <div>
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -516,6 +630,10 @@ Gates
       <div>
 
    .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
       
       \end{mdframed}
       \vspace{1em}
@@ -543,6 +661,10 @@ Gates
       <div>
 
    .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
       
       \end{mdframed}
       \vspace{1em}
@@ -565,16 +687,38 @@ Gates
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \newpage
+      \null
+      \vspace*{-2\baselineskip}
 
   - If the system structure of the operators is unambiguous in the context of the circuit, then the (superscript) system labels are usually omitted for the sake of notational brevity.
+
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
 
 Control
 -------
 
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
+
 - The operation of a gate can be affected by the use of a **control** node located on a different wire. This results in the value of the *controlling* system directly influencing the *controlled* system, which is depicted visually by connecting these systems with a vertical wire. Using a general :math:`\Unitary` gate, we can construct the following examples for qubit (:math:`2`-dimensional) systems:
 
   - controlled-:math:`\Unitary`:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
    
@@ -598,9 +742,25 @@ Control
    .. raw:: latex
    
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
   - controlled-:math:`\Unitary` (inverted):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -624,13 +784,25 @@ Control
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
 
-  .. raw:: latex
+   .. raw:: latex
 
-     \newpage
+      \end{adjustwidth}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
   - anticontrolled-:math:`\Unitary`:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -654,9 +826,25 @@ Control
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
   - multiply-controlled-:math:`\Unitary`:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -680,9 +868,29 @@ Control
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
   - controlled-anticontrolled-:math:`\Unitary`:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -706,9 +914,13 @@ Control
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
 
-- In the case where the systems are over qudits, one generalization of the logic of the control and anticontrol nodes to :math:`\Dimension`-dimensional systems are, respectively, the natural choices
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+- In the case where the systems are over qudits, one generalization of the logic of the control and anticontrol nodes to :math:`\Dimension`-dimensional systems are, respectively, the natural choices:
 
   .. math::
 
@@ -755,7 +967,7 @@ Trace
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
 
 - This extends neatly to the **partial trace**:
 
@@ -835,7 +1047,11 @@ Trace
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 Postselection
 -------------
@@ -845,6 +1061,10 @@ Postselection
   - The postselection state (explicitly in the dual Hilbert space, e.g., :math:`\bra{\StateVector}` and :math:`\StateDensity^\dagger`) at the termination of the wire.
 
   - A round cap at the termination of the wire, followed by the postselection state.
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -1003,13 +1223,13 @@ Postselection
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
 
   - Note that in most cases, the cap notation will be omitted for simplicity. This is particularly true when the postselection state is pre-defined (i.e., not unknown), and so the associated postselection is unambiguous.
-
-.. raw:: latex
-
-   \newpage
 
 Measurement
 -----------
@@ -1070,6 +1290,10 @@ Measurement
       <div>
 
    .. raw:: latex
+
+      \newpage
+
+   .. raw:: latex
       
       \end{mdframed}
       \vspace{1em}
@@ -1092,9 +1316,17 @@ Measurement
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
 
 - Performing a measurement on a system returns a set of probabilities associated with the particular set of states against which the system was measured. In a circuit where measurement is not performed on every system, the measurement statistics are obtained by simply discarding (tracing out) all systems which do not undergo measurement:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
 
@@ -1115,12 +1347,20 @@ Measurement
          :align: left
          :class: only-light
 
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
    .. raw:: html
 
       </div>
       </blockquote>
       <blockquote>
       <div>
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1145,11 +1385,19 @@ Measurement
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
   - Note however that the output of the circuit still remains as the composite product of all unmeasured systems.
 
 - Multiple measurements simply indicate that multiple sets of probabilities will be obtained, each corresponding to the independent measurement of their respective system, e.g.,
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1173,13 +1421,21 @@ Measurement
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 .. raw:: latex
 
-   \newpage
+   \enlargethispage{\baselineskip}
 
-- A measurement for which the outcome is discarded (or forgotten) leaves the measured system in a superposition of all post-measurement states corresponding to all measurement operators :math:`\{\StateDensity_i\}`. As this characteristically destroys purity, the post-gate wire of such a discarded measurement operation is visualized using a classical wire:
+- A measurement for which the outcome is discarded (or forgotten) leaves the measured system in a superposition of the post-measurement states corresponding to all measurement operators :math:`\{\StateDensity_i\}`. As this characteristically destroys purity, the post-gate wire of a discarded measurement operation is visualized using a classical wire:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1203,9 +1459,13 @@ Measurement
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
 
 - Usage of the measurement outcomes as the (classical) control of a gate is denoted by the connection of the meter and the gate with a classical wire:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1229,9 +1489,21 @@ Measurement
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
   - Note that a terminating post-measurement system like this is equivalent to a discarded measurement operation followed by a (partial) trace, and that a classical control wire is merely a device used to indicate the conveyance of classical information (and is in fact completely equivalent to a quantum control wire). This means we have the equivalence:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -1255,9 +1527,25 @@ Measurement
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
   - The *principle of deferred measurement* states that measurement operations commute with control operations. Depicted visually, this is the equivalence:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -1281,7 +1569,15 @@ Measurement
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 Closed timelike curves
 ----------------------
@@ -1289,6 +1585,14 @@ Closed timelike curves
 - The closed and timelike nature of the paths of chronology-violating systems (i.e., those which correspond to quantum states propagating along closed timelike curves) is captured by the use of triangular caps at the ends of the associated wires:
 
   - Future connection:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -1312,9 +1616,29 @@ Closed timelike curves
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
   - Past connection:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
       
@@ -1338,20 +1662,38 @@ Closed timelike curves
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+   .. raw:: latex
+
+      \newpage
+      \null
+      \vspace*{-2.0\baselineskip}
 
   - These constructs can be thought of as the "mouths" of a wormhole, and so represent a instantaneous physical connection ("portals") between the past and the future such that any quantum state which propagates into the future mouth immediately emerges from the corresponding past mouth. Note however that of course not every chronology-violating system is associated with a *wormhole-based* time machine, and so these connections should be taken as representing closed timelike curves in the most general, abstract sense.
+
+.. raw:: latex
+
+   \vspace*{-0.5\baselineskip}
 
 List of special gates
 =====================
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \vspace*{-0.15\baselineskip}
 
 Note that in these examples, the symbol :math:`\Dimension` denotes the dimensionality of the relevant linear operator's underlying Hilbert space.
 
 - :math:`\PauliX` (Pauli-:math:`X`):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1375,9 +1717,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - :math:`\PauliY` (Pauli-:math:`Y`):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1401,9 +1751,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - :math:`\PauliZ` (Pauli-:math:`Z`):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1427,9 +1785,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - NOT (logical negation or bit-flip), equivalent to the Pauli-:math:`X` gate for qubits:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1453,9 +1819,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - SUM (summation), a parameter-dependent :math:`\Dimension`-dimensional generalization of the NOT gate:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1479,9 +1853,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - :math:`\Phase` (phase):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1505,36 +1887,51 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - :math:`\Rotation` (rotation):
 
    .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
       
       \vspace{1em}
-      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
+      \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=1em,innerrightmargin=1em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-1em,rightmargin=-1em]
 
    .. only:: html
 
       .. image:: /figures/output/circuitry_gate_rotation-dark.png
-         :scale: 34 %
+         :scale: 50 %
          :align: left
          :class: only-dark
 
    .. only:: html or latex
 
       .. image:: /figures/output/circuitry_gate_rotation-light.png
-         :scale: 34 %
+         :scale: 50 %
          :align: left
          :class: only-light
 
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
 
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - SWAP (exchange):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1558,9 +1955,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - PSWAP (power-SWAP):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1584,9 +1989,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - PERM (permutation):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1610,9 +2023,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - :math:`\Hadamard` (Hadamard):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1636,9 +2057,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - :math:`\QFT` (quantum Fourier transform):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1662,9 +2091,21 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 - CNOT (controlled-NOT):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1688,9 +2129,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - CCNOT (controlled-controlled-NOT gate, doubly-controlled-NOT gate, also known as the *Toffoli* gate):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1714,9 +2163,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - CSUM (controlled-SUM):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1740,9 +2197,17 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 - CSWAP (controlled-SWAP, also known as the *Fredkin* gate):
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1766,12 +2231,20 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{0.35em}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 Examples
 ========
 
 A better understanding of quantum circuitry notation can be gained by studying a few basic examples. Perhaps the simplest complete quantum circuit that we can construct consists of just a unipartite quantum state :math:`\StateDensity` which evolves into the future along a single quantum wire, subsequently becoming the output state :math:`\StateDensity^\prime`:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1805,9 +2278,17 @@ A better understanding of quantum circuitry notation can be gained by studying a
       
       \end{adjustwidth}
 
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
 As there are no operations (such as gates or measurements) on the wire, the explicitly labelled output state :math:`\StateDensity^\prime` is identically equal to the input state :math:`\StateDensity` (since the quantum wire directly connects the two).
 
 If we were to place a gate corresponding to an arbitrary unitary operator :math:`\Unitary` upon the intermediary wire, the resulting action is the standard transformation of a matrix by a linear operator:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1841,7 +2322,19 @@ If we were to place a gate corresponding to an arbitrary unitary operator :math:
       
       \end{adjustwidth}
 
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
+.. raw:: latex
+
+   \newpage
+
 For a pure (vector) input state, the circuit is simply:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1875,9 +2368,17 @@ For a pure (vector) input state, the circuit is simply:
       
       \end{adjustwidth}
 
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
 In this case, we could, without loss of generality, denote the output state with a vector state (such as :math:`\ket{\StateVector^\prime} = \Unitary\ket{\StateVector}`, equivalent to :math:`\StateDensity^\prime = \ket{\StateVector^\prime}\bra{\StateVector^\prime}`), since the action of the (linear transformation) unitary gate preserves the purity of the systems on which it acts. Note that this is not true in general for all circuits; (non-unitary) operations like the (partial) trace do not necessarily preserve the purity of a particular system, and so the output states cannot always be denoted by vector states, even if the input states are pure.
 
 More interesting cases are those of multipartite systems. For instance, the evolution of a bipartite input state under a composite unitary gate is:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1911,7 +2412,15 @@ More interesting cases are those of multipartite systems. For instance, the evol
       
       \end{adjustwidth}
 
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
 The evolution of the same state under parallel operations appears as:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1945,7 +2454,15 @@ The evolution of the same state under parallel operations appears as:
       
       \end{adjustwidth}
 
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
 In the case where the input state is explicitly separable, we write:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -1979,7 +2496,15 @@ In the case where the input state is explicitly separable, we write:
       
       \end{adjustwidth}
 
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
 Due to the input state's separability, the mathematics corresponding to parallel operations on these systems may be greatly simplified:
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -2013,9 +2538,13 @@ Due to the input state's separability, the mathematics corresponding to parallel
       
       \end{adjustwidth}
 
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
 This is, of course, simply equivalent to two distinct subcircuits with the outputs :math:`\StateDensity^\prime_A = \Unitary_A \StateDensity_A \Unitary_A^\dagger` and :math:`\StateDensity^\prime_B = \Unitary_B \StateDensity_B \Unitary_B^\dagger`, respectively.
 
-.. note:: For more examples, see the :ref:`Examples <part:examples>` section.
+.. note:: For more examples, see :ref:`Part III: Examples <part:examples>`.
 
 Remarks
 =======
@@ -2024,6 +2553,10 @@ Matrix vs. vector circuits
 --------------------------
 
 Note that our description of quantum circuits thus far has considered quantum processes involving both matrix states (such as mixed states and matrix representations of pure states) and vector states. Traditionally however, quantum circuit diagrams were used exclusively to visualize completely vector processes: all inputs are vector states, all intermediate operations are linear transformations, and so accordingly all outputs are vectors (up until any non-linear operations such as measurement). In such a paradigm, the mathematics corresponding to any given quantum circuit is necessarily always expressible as (linear and unitary) operations on *vectors*. It is therefore not necessary to express the circuit output using density matrices (such as outer products like :math:`\ket{\StateVector^\prime}\bra{\StateVector^\prime}`) in the case of exclusively purity-preserving operations. For example, we may write
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -2057,7 +2590,15 @@ Note that our description of quantum circuits thus far has considered quantum pr
       
       \end{adjustwidth}
 
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
+
 which is purely a vector description. In our combined matrix and vector formalism, we can equivalently express the above circuit as
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
       
@@ -2090,6 +2631,10 @@ which is purely a vector description. In our combined matrix and vector formalis
    .. raw:: latex
       
       \end{adjustwidth}
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
 where, despite the vector input and linear transformation, the output is given as a (density) matrix. The circuit formalism presented here is thus a more general one, such that the quantum circuits describe operations on (density) *matrix* states, not just vector states. This additionally means that both purity-preserving and purity-non-preserving operations (such as the partial trace) are completely captured by our methodology. Note however that in cases where a pure state output is obtained, it is often useful to specify such output in vector form (this being the most compact way of expressing pure states).
 

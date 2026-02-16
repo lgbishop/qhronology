@@ -34,6 +34,10 @@ The version of a quantum adder presented here sums two multi-qubit integers esse
 
    A quantum circuit diagram of a QFT-based adder.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 An example of this algorithm for :math:`3`-qubit integers appears in :numref:`fig:circuit_algorithm_adder_fourier_three`.
 
 .. only:: html
@@ -61,6 +65,10 @@ An example of this algorithm for :math:`3`-qubit integers appears in :numref:`fi
    :figclass: light-dark hidden
 
    A QFT-based adder for :math:`3`-qubit states.
+
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
 
 Implementation
 --------------
@@ -90,11 +98,11 @@ Diagram
 
 .. code:: python
 
-   >>> adder.diagram()
+   >>> adder.diagram(sep=(0, 1))
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_fourier.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_fourier.pdf}
    \vspace{-1\baselineskip}
 
 ..
@@ -119,6 +127,10 @@ Diagram
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -168,7 +180,7 @@ Results
 
 .. code:: python
 
-   >>> print(computation)
+   >>> print(f"Computation: {computation}")
    Computation: 1 + 1 = 2
 
 .. raw:: latex
@@ -181,7 +193,7 @@ Results
 
 .. code:: python
 
-   >>> print(duration)
+   >>> print(f"Duration: {duration} seconds")
    Duration: 0.033 seconds
 
 .. raw:: latex

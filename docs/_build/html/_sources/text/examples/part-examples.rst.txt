@@ -85,4 +85,3 @@ Quantum closed timelike curves
    ctcs/billiards
    ctcs/postselected
    ctcs/ecp
-   .. ctcs/scattering

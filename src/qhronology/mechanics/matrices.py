@@ -127,7 +127,7 @@ def quantum_state(
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
-        - a list of lists of numerical, symbolic, or string expressions that collectively specify a vector or (square) matrix (:python:`list[list[num | expr | str]]`)
+        - a list of lists of numerical, symbolic, or string expressions that collectively describe a vector or (square) matrix (:python:`list[list[num | expr | str]]`)
         - a list of 2-tuples of numerical, symbolic, or string coefficients paired their respective number-basis specification (:python:`list[tuple[num | expr | str, int | list[int]]]`)
 
     form : str
@@ -303,15 +303,6 @@ def decode_slow(
 ) -> int:
     """Decodes a quantum matrix or vector state to an unsigned integer.
 
-    Note
-    ----
-    The current method by which this particular implementation operates is accurate but slow.
-    For a faster algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_fast` function.
-
-    Note
-    ----
-    This function can also be called using the alias :py:func:`~qhronology.mechanics.matrices.decode`.
-
     Arguments
     ---------
     matrix : mat | QuantumObject
@@ -332,6 +323,15 @@ def decode_slow(
     -------
     int
         The decoded (unsigned) integer.
+
+    Note
+    ----
+    The current method by which this particular implementation operates is accurate but slow.
+    For a faster algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_fast` function.
+
+    Note
+    ----
+    This function can also be called using the alias :py:func:`~qhronology.mechanics.matrices.decode`.
     """
     dim = 2 if dim is None else dim
     reverse = False if reverse is None else reverse
@@ -369,15 +369,6 @@ decode = decode_slow
 def decode_fast(matrix: mat | QuantumObject, dim: int | None = None) -> int:
     """Decodes a quantum matrix or vector state to an unsigned integer.
 
-    Note
-    ----
-    The current method by which this particular implementation operates is fast but may be inaccurate (due to some computational shortcuts that may not work in all cases).
-    For a slower but accurate algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_slow` function.
-
-    Note
-    ----
-    The output cannot be reversed like in :py:func:`~qhronology.mechanics.matrices.decode_slow`.
-
     Arguments
     ---------
     matrix : mat | QuantumObject
@@ -391,6 +382,15 @@ def decode_fast(matrix: mat | QuantumObject, dim: int | None = None) -> int:
     -------
     int
         The decoded (unsigned) integer.
+
+    Note
+    ----
+    The current method by which this particular implementation operates is fast but may be inaccurate (due to some computational shortcuts that may not work in all cases).
+    For a slower but accurate algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_slow` function.
+
+    Note
+    ----
+    The output cannot be reversed like in :py:func:`~qhronology.mechanics.matrices.decode_slow`.
     """
     dim = 2 if dim is None else dim
     matrix = densify(extract_matrix(matrix))

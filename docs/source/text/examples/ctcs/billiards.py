@@ -6,8 +6,18 @@ import sympy as sp
 from sympy.physics.quantum import TensorProduct
 
 # Input
-clock_state_unevolved = VectorState(spec=[[0, 1, 1]], dim=3, norm=1, label="ψ")
-clock_state_evolved = VectorState(spec=[[0, 1, -1]], dim=3, norm=1, label="ψ")
+clock_state_unevolved = VectorState(
+    spec=[[0, 1, 1]],
+    dim=3,
+    norm=1,
+    label="ψ",
+)
+clock_state_evolved = VectorState(
+    spec=[[0, 1, -1]],
+    dim=3,
+    norm=1,
+    label="ψ",
+)
 
 # Gates
 I = QuantumGate(
@@ -22,7 +32,6 @@ zero = QuantumGate(
     num_systems=1,
     dim=3,
 )
-S = Swap(targets=[0, 1], num_systems=2, dim=3)
 IR = Diagonal(
     entries={2: "-pi*t"},
     exponentiation=True,
@@ -34,6 +43,7 @@ IR = Diagonal(
 )
 
 # Construct SWAP gate in clock subspace
+S = Swap(targets=[0, 1], num_systems=2, dim=3)
 S = sp.Matrix(9, 9, lambda i, j: 0 if i % 3 == 0 or j % 3 == 0 else S.matrix[i, j])
 
 # Construct vacuum-excluding SWAP gate
@@ -61,19 +71,19 @@ billiards.diagram()
 # Output
 # D-CTCs
 billiards_DCTC = DCTC(circuit=billiards)
-billiards_DCTC_respecting = billiards_DCTC.state_respecting(norm=False, label="ρ_D")
-billiards_DCTC_violating = billiards_DCTC.state_violating(norm=False, label="τ_D")
-billiards_DCTC_respecting.simplify()
-billiards_DCTC_respecting.apply(sp.factor)
+billiards_DCTC_CR = billiards_DCTC.state_respecting(label="ρ_D")
+billiards_DCTC_CV = billiards_DCTC.state_violating(label="τ_D")
+billiards_DCTC_CR.simplify()
+billiards_DCTC_CR.apply(sp.factor)
 
 # P-CTCs
 billiards_PCTC = PCTC(circuit=billiards)
-billiards_PCTC_respecting = billiards_PCTC.state_respecting(norm=False, label="ψ_P")
-billiards_PCTC_violating = billiards_PCTC.state_violating(norm=False, label="τ_P")
-billiards_PCTC_respecting.normalize(1)
+billiards_PCTC_CR = billiards_PCTC.state_respecting(label="ψ_P")
+billiards_PCTC_CV = billiards_PCTC.state_violating(label="τ_P")
+billiards_PCTC_CR.normalize()
 
 # Results
-billiards_DCTC_respecting.print()
-billiards_DCTC_violating.print()
-billiards_PCTC_respecting.print()
-billiards_PCTC_violating.print()
+billiards_DCTC_CR.print()
+billiards_DCTC_CV.print()
+billiards_PCTC_CR.print()
+billiards_PCTC_CV.print()

@@ -24,16 +24,25 @@ seed_state = MixedState(
 )
 
 # Gate
-unitary = sp.MatrixSymbol("U", dimensionality**2, dimensionality**2).as_mutable()
-U = QuantumGate(spec=unitary, targets=[0, 1], num_systems=2, dim=dimensionality)
+unitary = sp.MatrixSymbol(
+    "U",
+    dimensionality**2,
+    dimensionality**2,
+).as_mutable()
+U = QuantumGate(
+    spec=unitary,
+    targets=[0, 1],
+    num_systems=2,
+    dim=dimensionality,
+)
 
 # Construct conditions
-conditions_respecting = [(sp.trace(rho), 1)]
+conditions_CR = [(sp.trace(rho), 1)]
 conditions_unitary = [
     ((unitary * Dagger(unitary))[n], (sp.eye(dimensionality**2))[n])
     for n in range(0, len(unitary))
 ]
-conditions = conditions_respecting + conditions_unitary
+conditions = conditions_CR + conditions_unitary
 
 # Circuit
 violating_state = seed_state
@@ -46,9 +55,11 @@ for n in range(1, iterations + 1):
     )
     iteration.diagram(pad=(1, 0), sep=(0, 1), style="unicode")
     violating_state = iteration.state(label=f"τ_{n}")
+    violating_state.simplify()
 
 # Output
 final_state = violating_state
 
 # Results
 seed_state.print()
+# final_state.print()  # Too large to display

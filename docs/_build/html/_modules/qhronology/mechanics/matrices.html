@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9e158f31" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
   </head>
   
   
@@ -604,7 +604,7 @@
 
 <span class="sd">        - a SymPy matrix (:python:`mat`)</span>
 <span class="sd">        - a NumPy array (:python:`arr`)</span>
-<span class="sd">        - a list of lists of numerical, symbolic, or string expressions that collectively specify a vector or (square) matrix (:python:`list[list[num | expr | str]]`)</span>
+<span class="sd">        - a list of lists of numerical, symbolic, or string expressions that collectively describe a vector or (square) matrix (:python:`list[list[num | expr | str]]`)</span>
 <span class="sd">        - a list of 2-tuples of numerical, symbolic, or string coefficients paired their respective number-basis specification (:python:`list[tuple[num | expr | str, int | list[int]]]`)</span>
 
 <span class="sd">    form : str</span>
@@ -786,15 +786,6 @@
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decodes a quantum matrix or vector state to an unsigned integer.</span>
 
-<span class="sd">    Note</span>
-<span class="sd">    ----</span>
-<span class="sd">    The current method by which this particular implementation operates is accurate but slow.</span>
-<span class="sd">    For a faster algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_fast` function.</span>
-
-<span class="sd">    Note</span>
-<span class="sd">    ----</span>
-<span class="sd">    This function can also be called using the alias :py:func:`~qhronology.mechanics.matrices.decode`.</span>
-
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    matrix : mat | QuantumObject</span>
@@ -815,6 +806,15 @@
 <span class="sd">    -------</span>
 <span class="sd">    int</span>
 <span class="sd">        The decoded (unsigned) integer.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    The current method by which this particular implementation operates is accurate but slow.</span>
+<span class="sd">    For a faster algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_fast` function.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    This function can also be called using the alias :py:func:`~qhronology.mechanics.matrices.decode`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
     <span class="n">reverse</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">reverse</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">reverse</span>
@@ -855,15 +855,6 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">decode_fast</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decodes a quantum matrix or vector state to an unsigned integer.</span>
 
-<span class="sd">    Note</span>
-<span class="sd">    ----</span>
-<span class="sd">    The current method by which this particular implementation operates is fast but may be inaccurate (due to some computational shortcuts that may not work in all cases).</span>
-<span class="sd">    For a slower but accurate algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_slow` function.</span>
-
-<span class="sd">    Note</span>
-<span class="sd">    ----</span>
-<span class="sd">    The output cannot be reversed like in :py:func:`~qhronology.mechanics.matrices.decode_slow`.</span>
-
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    matrix : mat | QuantumObject</span>
@@ -877,6 +868,15 @@
 <span class="sd">    -------</span>
 <span class="sd">    int</span>
 <span class="sd">        The decoded (unsigned) integer.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    The current method by which this particular implementation operates is fast but may be inaccurate (due to some computational shortcuts that may not work in all cases).</span>
+<span class="sd">    For a slower but accurate algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_slow` function.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    The output cannot be reversed like in :py:func:`~qhronology.mechanics.matrices.decode_slow`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>

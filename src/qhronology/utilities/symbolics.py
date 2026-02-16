@@ -20,7 +20,7 @@ from typing import Any
 
 import sympy as sp
 
-from qhronology.utilities.classification import num, sym
+from qhronology.utilities.classification import num, sym, expr
 
 
 class SymbolicsProperties:

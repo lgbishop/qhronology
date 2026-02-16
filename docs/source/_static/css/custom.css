@@ -297,6 +297,14 @@ span.default_value > span.pre {
     color: var(--pst-color-accent);
 }
 
+span.sig-return-typehint > a.reference > span.pre {
+    font-weight: bold;
+}
+
+em.sig-param > span.n > a.reference > span.pre {
+    font-weight: bold;
+}
+
 dd.field-odd > ul > li > p > strong {
     font-family: var(--pst-font-family-monospace);
 }
@@ -953,6 +961,10 @@ div.notranslate div pre {
     font-size: 0.9em;
 }
 
+div.literal-block-wrapper {
+    border-radius: 0.0rem;
+}
+
 code.literal {
     border-radius: 0.0rem;
     background-color: var(--pst-color-surface) !important;
@@ -979,13 +991,17 @@ code.xref {
     color: var(--pst-color-inline-code-links);
 }
 
+code.xref.std-numref {
+    display: none;
+}
+
 code.highlight > span.n {
     color: var(--pst-color-inline-code) !important;
 }
 
 div.semigraphical div pre {
-    font-family: 'Source Code Pro', 'DejaVu Sans Mono', 'JuliaMono', monospace;
-    font-size: 1.05rem;
+    font-family: 'Cousine', 'Source Code Pro', 'JuliaMono', monospace;
+    font-size: 0.875rem;
     text-align: left;
     line-height: 100% !important;
 }

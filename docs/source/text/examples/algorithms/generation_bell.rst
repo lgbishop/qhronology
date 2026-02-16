@@ -34,12 +34,20 @@ The circuit in :numref:`fig:circuit_algorithm_generation_bell` illustrates an al
 
    Generation of a Bell state.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 The complete unitary transformation described by this circuit is the product
 
 .. math:: \Unitary = \Control^0 \NOT^1 \cdot \Hadamard^0.
 
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 .. raw:: latex
 
@@ -53,10 +61,6 @@ Implementation
 .. raw:: latex
 
    \end{codetitled}
-
-.. raw:: latex
-
-   \newpage
 
 Output
 ------
@@ -74,7 +78,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_generation_bell.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_generation_bell.pdf}
    \vspace{-1\baselineskip}
 
 ..

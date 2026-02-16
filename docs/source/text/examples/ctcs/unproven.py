@@ -22,16 +22,17 @@ unproven.diagram()
 # Output
 # D-CTCs
 unproven_DCTC = DCTC(circuit=unproven)
-unproven_DCTC_respecting = unproven_DCTC.state_respecting(norm=1, label="ρ_D")
-unproven_DCTC_violating = unproven_DCTC.state_violating(norm=1, label="τ_D")
+unproven_DCTC_CR = unproven_DCTC.state_respecting(label="ρ_D")
+unproven_DCTC_CV = unproven_DCTC.state_violating(label="τ_D")
 
 # P-CTCs
 unproven_PCTC = PCTC(circuit=unproven)
-unproven_PCTC_respecting = unproven_PCTC.state_respecting(norm=1, label="ψ_P")
-unproven_PCTC_violating = unproven_PCTC.state_violating(norm=1, label="τ_P")
+unproven_PCTC_CR = unproven_PCTC.state_respecting(label="ψ_P")
+unproven_PCTC_CV = unproven_PCTC.state_violating(label="τ_P")
+unproven_PCTC_CR.normalize()
 
 # Results
-unproven_DCTC_respecting.print()
-unproven_DCTC_violating.print()
-unproven_PCTC_respecting.print()
-unproven_PCTC_violating.print()
+unproven_DCTC_CR.print()
+unproven_DCTC_CV.print()
+unproven_PCTC_CR.print()
+unproven_PCTC_CV.print()

@@ -34,8 +34,16 @@ Exponentiation of the SWAP gate produces an interesting interaction (PSWAP) betw
 
    A PSWAP gate (with power :math:`p`).
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
 
 .. raw:: latex
 
@@ -66,7 +74,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_pswap.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_pswap.pdf}
    \vspace{-1\baselineskip}
 
 ..
@@ -111,6 +119,10 @@ Gate
 
 States
 ^^^^^^
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 

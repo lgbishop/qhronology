@@ -34,6 +34,10 @@ Probably the most prominent time-travel paradox is the *grandfather paradox*. Pr
 
    A quantum model of the grandfather paradox.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 Here, we have two systems: the first (upper) is the *chronology-respecting* (CR) system, while the second (lower) is the *chronology-violating* (CV) one. For simplicity, the Hilbert spaces of both are ordinary qubit spaces, which are sufficient for modelling the evolution of an observer through the time machine and its chronology-violating region. In the grandfather paradox, the sole (quantum) degree of freedom of the observer is their *vital status* ("aliveness"): whether they are alive or dead. Without loss of generality, we arbitrarily associate the level :math:`\ket{0}` with observer being dead, while :math:`\ket{1}` will denote their alive state. The circuit therefore describes a scenario in which an observer's state changes in accordance with their own future state in the time machine (due to the CNOT gate), after which they SWAP onto the CV system and experience the interaction from the other perspective. The combined unitary gate thus has the form
 
 .. math::
@@ -43,7 +47,7 @@ Here, we have two systems: the first (upper) is the *chronology-respecting* (CR)
        \Unitary = \Swap^{0,1} \cdot \Control^1 \NOT^0.
    \end{aligned}
 
-As this is a quantum temporal paradox, there are multiple :ref:`prescriptions <sec:literature_quantum>` by which resolutions can be computed.
+As this is a quantum temporal paradox, there are multiple prescriptions (see :numref:`sec:literature_quantum` :ref:`sec:literature_quantum`) by which resolutions can be computed.
 
 Solutions
 ---------
@@ -89,7 +93,7 @@ while tracing out the CV system gives the CR map,
        & \quad + \ket{1}\bra{1}\StateCV\ket{1}\bra{1}.
    \end{aligned}
 
-Solutions for the CV system are then given as fixed points of the corresponding map, i.e. :math:`\StateCV_\MapDCTCsCR = \MapDCTCsCV_{\Unitary} \bigl[\StateCR,\StateCV_\MapDCTCsCR\bigr]`, and accordingly we find the unique state
+Solutions for the CV system are then given as fixed points of the corresponding map, i.e., :math:`\StateCV_\MapDCTCsCR = \MapDCTCsCV_{\Unitary} \bigl[\StateCR,\StateCV_\MapDCTCsCR\bigr]`, and accordingly we find the unique state
 
 .. math::
    :label: eq:grandfather_D-CTCs_CV
@@ -136,7 +140,7 @@ Using this, we can obtain the P-CTC CR state from its definition :eq:`eq:P-CTCs_
    \begin{aligned}
        \StateCR_\MapPCTCsCR &= \MapPCTCsCR_{\Unitary} [\StateCR] \\
        &= \frac{\OperatorPCTC \StateCR \OperatorPCTC^\dagger}{\trace[\OperatorPCTC \StateCR \OperatorPCTC^\dagger]} \\
-       &= \ket{+}\bra{+}
+       &= \ket{+}\bra{+},
    \end{aligned}
 
 where we have used the canonical form
@@ -150,7 +154,7 @@ Finally, using the expression :eq:`eq:P-CTCs_CV`, we can compute the P-CTC CV st
 
    \begin{aligned}
        \StateCV_\MapPCTCsCR &= \frac{1}{2}\StateCR + \frac{1}{2}\Pauli_x\StateCR\Pauli_x^\dagger \\
-       &= \frac{1}{2}\Bigl[\ket{0}\bra{0} + \bigl(\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr)\bigl(\ket{0}\bra{1} + \ket{1}\bra{0}\bigr) + \ket{1}\bra{1}\Bigr],
+       &= \frac{1}{2}\Bigl[\ket{0}\bra{0} + \bigl(\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr)\bigl(\ket{0}\bra{1} + \ket{1}\bra{0}\bigr) + \ket{1}\bra{1}\Bigr].
    \end{aligned}
 
 Note that this is identical to the D-CTC CV state :eq:`eq:grandfather_D-CTCs_CV`.
@@ -176,6 +180,10 @@ Prior to the renormalization, a value of :math:`\Omega = 0` leads to a vanishing
 
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
 
 .. raw:: latex
 
@@ -206,7 +214,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_ctcs_grandfather.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.15cm]{text_examples_ctcs_grandfather.pdf}
    \vspace{-1\baselineskip}
 
 ..
@@ -238,7 +246,7 @@ States
 
 .. code:: python
 
-   >>> grandfather_DCTC_respecting.print()
+   >>> grandfather_DCTC_CR.print()
    ρ_D = 1/2|0⟩⟨0| + (ρ[0, 1] + ρ[1, 0])**2/2|0⟩⟨1| + (ρ[0, 1] + ρ[1, 0])**2/2|1⟩⟨0| + 1/2|1⟩⟨1|
 
 .. raw:: latex
@@ -251,7 +259,7 @@ States
 
 .. code:: python
 
-   >>> grandfather_DCTC_violating.print()
+   >>> grandfather_DCTC_CV.print()
    τ_D = 1/2|0⟩⟨0| + (ρ[0, 1]/2 + ρ[1, 0]/2)|0⟩⟨1| + (ρ[0, 1]/2 + ρ[1, 0]/2)|1⟩⟨0| + 1/2|1⟩⟨1|
 
 .. raw:: latex
@@ -264,7 +272,7 @@ States
 
 .. code:: python
 
-   >>> grandfather_PCTC_respecting.print()
+   >>> grandfather_PCTC_CR.print()
    ρ_P = 1/2|0⟩⟨0| + 1/2|0⟩⟨1| + 1/2|1⟩⟨0| + 1/2|1⟩⟨1|
 
 .. raw:: latex
@@ -277,7 +285,7 @@ States
 
 .. code:: python
 
-   >>> grandfather_PCTC_violating.print()
+   >>> grandfather_PCTC_CV.print()
    τ_P = 1/2|0⟩⟨0| + (ρ[0, 1]/2 + ρ[1, 0]/2)|0⟩⟨1| + (ρ[0, 1]/2 + ρ[1, 0]/2)|1⟩⟨0| + 1/2|1⟩⟨1|
 
 .. raw:: latex

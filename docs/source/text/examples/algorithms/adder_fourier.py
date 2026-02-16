@@ -88,8 +88,11 @@ for i in range(0, encoding_depth):
 gates = flatten_list(QFT + CPHASE + IQFT)
 
 # Circuit
-adder = QuantumCircuit(inputs=[augend_state, addend_state], gates=gates)
-adder.diagram()
+adder = QuantumCircuit(
+    inputs=[augend_state, addend_state],
+    gates=gates,
+)
+adder.diagram(sep=(0, 1))
 
 # Output
 initial_time = time.time()
@@ -106,7 +109,7 @@ augend_state.print()
 addend_state.print()
 sum_state.print()
 
-computation = f"Computation: {augend_integer} + {addend_integer} = {sum_integer}"
-duration = f"Duration: {sp.N(final_time - initial_time,8).round(3)} seconds"
-print(computation)
-print(duration)
+computation = f"{augend_integer} + {addend_integer} = {sum_integer}"
+duration = sp.N(final_time - initial_time, n=8).round(3)
+print(f"Computation: {computation}")
+print(f"Duration: {duration} seconds")

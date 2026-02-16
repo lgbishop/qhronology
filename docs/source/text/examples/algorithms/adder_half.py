@@ -22,7 +22,8 @@ CNI = Not(targets=[1], controls=[0], num_systems=3)
 
 # Circuit
 adder = QuantumCircuit(
-    inputs=[augend_state, addend_state, zero_state], gates=[CCN, CNI]
+    inputs=[augend_state, addend_state, zero_state],
+    gates=[CCN, CNI],
 )
 adder.diagram()
 

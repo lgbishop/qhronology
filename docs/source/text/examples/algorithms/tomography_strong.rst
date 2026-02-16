@@ -15,6 +15,10 @@ Implementation
 
 .. raw:: latex
 
+   \enlargethispage{\baselineskip}
+
+.. raw:: latex
+
    \begin{codetitled}{Quantum state tomography}{}
 
 .. literalinclude:: /text/examples/algorithms/tomography_strong.py

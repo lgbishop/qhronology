@@ -26,9 +26,24 @@ third_state = VectorState(
 
 # Gates
 IIH = Hadamard(targets=[2], num_systems=3)
-TII = Phase(exponent=sp.Rational(1, 4), targets=[0], num_systems=3, label="T")
-ITI = Phase(exponent=sp.Rational(1, 4), targets=[1], num_systems=3, label="T")
-IIT = Phase(exponent=sp.Rational(1, 4), targets=[2], num_systems=3, label="T")
+TII = Phase(
+    exponent=sp.Rational(1, 4),
+    targets=[0],
+    num_systems=3,
+    label="T",
+)
+ITI = Phase(
+    exponent=sp.Rational(1, 4),
+    targets=[1],
+    num_systems=3,
+    label="T",
+)
+IIT = Phase(
+    exponent=sp.Rational(1, 4),
+    targets=[2],
+    num_systems=3,
+    label="T",
+)
 TTT = GateInterleave(TII, ITI, IIT)
 NCI = Not(targets=[0], controls=[1], num_systems=3)
 INC = Not(targets=[1], controls=[2], num_systems=3)

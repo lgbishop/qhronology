@@ -34,6 +34,10 @@ The *unproven-theorem paradox* :cite:p:`deutsch_quantum_1991, lloyd_closed_2011,
 
    A quantum model of the unproven-theorem paradox under the D-CTCs prescription.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 Described by the unitary
 
 .. math:: \Unitary = \Swap^{1,2} \cdot \Control^0 \NOT^1 \cdot \Control^2 \NOT^0,
@@ -110,7 +114,7 @@ These equations, along with the trace condition
 
 .. math:: \trace[\StateCV] = \bra{0}\StateCV\ket{0} + \bra{1}\StateCV\ket{1} = 1,
 
-(which describes the expectation that any CV state is normalized), are solved when
+(which describes the expectation that any given CV state is normalized), are solved when
 
 .. math:: \bra{1}\StateCV\ket{1} = 1 - \bra{0}\StateCV\ket{0},
 
@@ -166,7 +170,7 @@ To compute the P-CTC CR solution, we first calculate the P-CTC operator,
        &\qquad\quad + \ket{1}\bra{0} \otimes \ket{1}\bra{1} \otimes \ket{0}\bra{1} \\
        &\qquad\quad + \ket{1}\bra{0} \otimes \ket{1}\bra{0} \otimes \ket{1}\bra{1}\bigr] \\
        &= \ket{0}\bra{0} \otimes \ket{0}\bra{0} + \ket{1}\bra{1} \otimes \ket{0}\bra{1} + \ket{0}\bra{1} \otimes \ket{1}\bra{1} + \ket{1}\bra{0} \otimes \ket{1}\bra{0} \\
-       &= \sqrt{2}\bigl(\ket{\Phi^+}\bra{0,0} + \ket{\Psi^+}\bra{1,1}\bigr).
+       &= \sqrt{2}\bigl(\bigl|\Phi^+\bigr\rangle\bra{0,0} + \bigl|\Psi^+\bigr\rangle\bra{1,1}\bigr).
    \end{aligned}
 
 With this, we can easily determine the P-CTC CR state (corresponding to the input state :eq:`eq:unproven_input`) via its definition :eq:`eq:P-CTCs_CR`,
@@ -177,7 +181,7 @@ With this, we can easily determine the P-CTC CR state (corresponding to the inpu
    \begin{aligned}
        \StateCR_\MapPCTCsCR &= \MapPCTCsCR_{\Unitary} [\StateCR ] \\
        &= \frac{\OperatorPCTC \ket{0}\bra{0} \otimes \ket{0}\bra{0} \OperatorPCTC^\dagger}{\trace\bigr[\OperatorPCTC \ket{0}\bra{0} \otimes \ket{0}\bra{0} \OperatorPCTC^\dagger\bigr]} \\
-       &= \ket{\Phi^+}\bra{\Phi^+}.
+       &= \bigl|\Phi^+\bigr\rangle\bigl\langle\Phi^+\bigr|.
    \end{aligned}
 
 Lastly, using the expression :eq:`eq:P-CTCs_CV`, we can compute the P-CTC CV state (via weak-measurement quantum state tomography) to be
@@ -223,7 +227,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_ctcs_unproven.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.15cm]{text_examples_ctcs_unproven.pdf}
    \vspace{-1\baselineskip}
 
 ..
@@ -246,10 +250,6 @@ Diagram
 
    \end{code}
 
-.. raw:: latex
-
-   \enlargethispage{2\baselineskip}
-
 States
 ^^^^^^
 
@@ -259,7 +259,7 @@ States
 
 .. code:: python
 
-   >>> unproven_DCTC_respecting.print()
+   >>> unproven_DCTC_CR.print()
    ρ_D = g|0,0⟩⟨0,0| + (1 - g)|1,1⟩⟨1,1|
 
 .. raw:: latex
@@ -272,7 +272,7 @@ States
 
 .. code:: python
 
-   >>> unproven_DCTC_violating.print()
+   >>> unproven_DCTC_CV.print()
    τ_D = g|0⟩⟨0| + (1 - g)|1⟩⟨1|
 
 .. raw:: latex
@@ -285,7 +285,7 @@ States
 
 .. code:: python
 
-   >>> unproven_PCTC_respecting.print()
+   >>> unproven_PCTC_CR.print()
    |ψ_P⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩
 
 .. raw:: latex
@@ -298,7 +298,7 @@ States
 
 .. code:: python
 
-   >>> unproven_PCTC_violating.print()
+   >>> unproven_PCTC_CV.print()
    τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
 
 .. raw:: latex

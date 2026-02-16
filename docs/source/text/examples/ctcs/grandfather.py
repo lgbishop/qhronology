@@ -27,20 +27,19 @@ grandfather.diagram()
 # Output
 # D-CTCs
 grandfather_DCTC = DCTC(circuit=grandfather)
-grandfather_DCTC_respecting = grandfather_DCTC.state_respecting(norm=False, label="ρ_D")
-grandfather_DCTC_violating = grandfather_DCTC.state_violating(norm=False, label="τ_D")
-grandfather_DCTC_respecting.apply(sp.factor)
+grandfather_DCTC_CR = grandfather_DCTC.state_respecting(label="ρ_D")
+grandfather_DCTC_CV = grandfather_DCTC.state_violating(label="τ_D")
+grandfather_DCTC_CR.apply(sp.factor)
 
 # P-CTCs
 grandfather_PCTC = PCTC(circuit=grandfather)
-grandfather_PCTC_respecting = grandfather_PCTC.state_respecting(norm=1, label="ρ_P")
-grandfather_PCTC_violating = grandfather_PCTC.state_violating(norm=1, label="τ_P")
-grandfather_PCTC_respecting.coefficient("1/(sqrt(2))")  # Manually renormalize
-grandfather_PCTC_respecting.simplify()
-grandfather_PCTC_violating.simplify()
+grandfather_PCTC_CR = grandfather_PCTC.state_respecting(label="ρ_P")
+grandfather_PCTC_CV = grandfather_PCTC.state_violating(label="τ_P")
+grandfather_PCTC_CR.normalize()
+grandfather_PCTC_CR.simplify()
 
 # Results
-grandfather_DCTC_respecting.print()
-grandfather_DCTC_violating.print()
-grandfather_PCTC_respecting.print()
-grandfather_PCTC_violating.print()
+grandfather_DCTC_CR.print()
+grandfather_DCTC_CV.print()
+grandfather_PCTC_CR.print()
+grandfather_PCTC_CV.print()

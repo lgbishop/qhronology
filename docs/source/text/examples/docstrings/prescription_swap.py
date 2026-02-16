@@ -8,7 +8,7 @@ import sympy as sp
 rho = sp.MatrixSymbol("ρ", 2, 2).as_mutable()
 input_state = MixedState(
     spec=rho,
-    conditions=[(rho[1, 1], 1 - rho[0, 0])],
+    conditions=[(1 - rho[0, 0], rho[1, 1])],  # For normalization
     label="ρ",
 )
 
@@ -17,29 +17,27 @@ S = Swap(targets=[0, 1], num_systems=2)
 I = Pauli(index=0, targets=[0, 1], num_systems=2)
 
 # CTC
-SWAP = QuantumCTC(inputs=[input_state], gates=[S], systems_respecting=[0])
+SWAP = QuantumCTC(
+    inputs=[input_state],
+    gates=[S],
+    systems_respecting=[0],
+)
 SWAP.diagram()
 
 # Output
 # D-CTCs
 SWAP_DCTC = DCTC(circuit=SWAP)
-SWAP_DCTC_respecting = SWAP_DCTC.state_respecting(norm=False, label="ρ_D")
-SWAP_DCTC_violating = SWAP_DCTC.state_violating(norm=False, label="τ_D")
-SWAP_DCTC_respecting.conditions = [(1 - rho[0, 0], rho[1, 1])]
-SWAP_DCTC_respecting.simplify()
-SWAP_DCTC_violating.conditions = [(1 - rho[0, 0], rho[1, 1])]
+SWAP_DCTC_CR = SWAP_DCTC.state_respecting(norm=1, label="ρ_D")
+SWAP_DCTC_CV = SWAP_DCTC.state_violating(norm=1, label="τ_D")
+SWAP_DCTC_CR.simplify()
 
 # P-CTCs
 SWAP_PCTC = PCTC(circuit=SWAP)
-SWAP_PCTC_respecting = SWAP_PCTC.state_respecting(norm=False, label="ρ_P")
-SWAP_PCTC_violating = SWAP_PCTC.state_violating(norm=False, label="τ_P")
-SWAP_PCTC_respecting.conditions = [(1 - rho[0, 0], rho[1, 1])]
-SWAP_PCTC_violating.conditions = [(1 - rho[0, 0], rho[1, 1])]
-SWAP_PCTC_respecting.simplify()
-SWAP_PCTC_violating.simplify()
+SWAP_PCTC_CR = SWAP_PCTC.state_respecting(label="ρ_P")
+SWAP_PCTC_CV = SWAP_PCTC.state_violating(label="τ_P")
 
 # Results
-SWAP_DCTC_respecting.print()
-SWAP_DCTC_violating.print()
-SWAP_PCTC_respecting.print()
-SWAP_PCTC_violating.print()
+SWAP_DCTC_CR.print()
+SWAP_DCTC_CV.print()
+SWAP_PCTC_CR.print()
+SWAP_PCTC_CV.print()

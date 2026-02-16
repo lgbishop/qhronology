@@ -13,7 +13,7 @@ This module provides functions and a mixin for performing quantum operations.
 
 .. code:: python
 
-   from qhronology.mechanics.operations import densify, columnify, dagger, simplify, apply, rewrite, normalize, coefficient, partial_trace, measure, postselect
+   from qhronology.mechanics.operations import densify, columnify, dagger, simplify, rewrite, apply, normalize, coefficient, partial_trace, measure, postselect
    from qhronology.mechanics.operations import OperationsMixin
 
 .. raw:: latex
@@ -137,6 +137,10 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
+
 .. autofunction:: qhronology.mechanics.operations.simplify
 
    .. raw:: latex
@@ -192,47 +196,9 @@ Functions
 
    \hrulefillthick
 
-.. autofunction:: qhronology.mechanics.operations.apply
-
-   .. raw:: latex
-
-      \begin{adjustwidth}{0.00cm}{0cm}
-
-   .. rubric:: :styleheader6:`Examples`
-
-   .. raw:: latex
-
-      \begin{code}
-
-   .. code:: python
-
-      >>> matrix = sp.Matrix([
-      ...     ["(x*y**2 - 2*x*y*z + x*z**2 + y**2 - 2*y*z + z**2)/(x**2 - 1)"],
-      ... ])
-      >>> apply(matrix, function=sp.cancel)
-      Matrix([[(y**2 - 2*y*z + z**2)/(x - 1)]])
-      >>> apply(matrix, function=sp.collect, arguments={"syms": "x"})
-      Matrix([[(x*(y**2 - 2*y*z + z**2) + y**2 - 2*y*z + z**2)/(x**2 - 1)]])
-      >>> apply(matrix, function=sp.collect, arguments={"syms": "y"})
-      Matrix([[(x*z**2 + y**2*(x + 1) + y*(-2*x*z - 2*z) + z**2)/(x**2 - 1)]])
-      >>> apply(matrix, function=sp.collect, arguments={"syms": "z"})
-      Matrix([[(x*y**2 + y**2 + z**2*(x + 1) + z*(-2*x*y - 2*y))/(x**2 - 1)]])
-      >>> apply(matrix, function=sp.expand)
-      Matrix([[x*y**2/(x**2 - 1) - 2*x*y*z/(x**2 - 1) + x*z**2/(x**2 - 1) + y**2/(x**2 - 1) - 2*y*z/(x**2 - 1) + z**2/(x**2 - 1)]])
-      >>> apply(matrix, function=sp.factor)
-      Matrix([[(y - z)**2/(x - 1)]])
-
-   .. raw:: latex
-
-      \end{code}
-
-   .. raw:: latex
-
-      \end{adjustwidth}
-
 .. raw:: latex
 
-   \hrulefillthick
+   \enlargethispage{-\baselineskip}
 
 .. autofunction:: qhronology.mechanics.operations.rewrite
 
@@ -265,6 +231,57 @@ Functions
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
+.. autofunction:: qhronology.mechanics.operations.apply
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{0.00cm}{0cm}
+
+   .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> matrix = sp.Matrix([
+      ...     ["""(x*y**2 - 2*x*y*z + x*z**2 + y**2 - 2*y*z + z**2)
+      ...         /(x**2 - 1)"""],
+      ... ])
+      >>> apply(matrix, function=sp.cancel)
+      Matrix([[(y**2 - 2*y*z + z**2)/(x - 1)]])
+      >>> apply(matrix, function=sp.collect, arguments={"syms": "x"})
+      Matrix([[(x*(y**2 - 2*y*z + z**2) + y**2 - 2*y*z + z**2)/(x**2 - 1)]])
+      >>> apply(matrix, function=sp.collect, arguments={"syms": "y"})
+      Matrix([[(x*z**2 + y**2*(x + 1) + y*(-2*x*z - 2*z) + z**2)/(x**2 - 1)]])
+      >>> apply(matrix, function=sp.collect, arguments={"syms": "z"})
+      Matrix([[(x*y**2 + y**2 + z**2*(x + 1) + z*(-2*x*y - 2*y))/(x**2 - 1)]])
+      >>> apply(matrix, function=sp.expand)
+      Matrix([[x*y**2/(x**2 - 1) - 2*x*y*z/(x**2 - 1) + x*z**2/(x**2 - 1) + y**2/(x**2 - 1) - 2*y*z/(x**2 - 1) + z**2/(x**2 - 1)]])
+      >>> apply(matrix, function=sp.factor)
+      Matrix([[(y - z)**2/(x - 1)]])
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. raw:: latex
+
+   \newpage
 
 .. autofunction:: qhronology.mechanics.operations.normalize
 
@@ -362,6 +379,10 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
+
 .. autofunction:: qhronology.mechanics.operations.partial_trace
 
    .. raw:: latex
@@ -424,6 +445,10 @@ Functions
    \hrulefillthick
 
 .. autofunction:: qhronology.mechanics.operations.measure
+
+   .. raw:: latex
+
+      \enlargethispage{2\baselineskip}
 
    .. raw:: latex
 
@@ -546,10 +571,6 @@ Functions
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
 
 Mixin
 -----

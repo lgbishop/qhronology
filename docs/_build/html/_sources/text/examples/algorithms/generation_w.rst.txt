@@ -34,6 +34,10 @@ The circuit in :numref:`fig:circuit_algorithm_generation_w` illustrates an algor
 
    Generation of the W state.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 The complete unitary transformation described by this circuit is the product
 
 .. math:: \Unitary = \NOT^0 \cdot \Control^0 \NOT^1 \cdot \Control^1 \NOT^2 \cdot \Control^0 \Hadamard^1 \cdot \Rotation_{y}^0(\theta)
@@ -42,6 +46,10 @@ where the :math:`y`-rotation angle is :math:`\theta = 2 \arccos\left(\tfrac{1}{\
 
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{-3\baselineskip}
 
 .. raw:: latex
 
@@ -72,7 +80,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_generation_w.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_generation_w.pdf}
    \vspace{-1\baselineskip}
 
 ..

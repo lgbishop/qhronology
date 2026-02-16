@@ -1,7 +1,7 @@
 let
   # Pin to a specific nixpkgs commit for reproducibility
   # Simply change the hash in the URL to switch versions
-  pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/30e2e2857ba47844aa71991daa6ed1fc678bcbb7.tar.gz") {}; # commit corresponding to initial release
+  pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/2343bbb58f99267223bc2aac4fc9ea301a155a16.tar.gz") {};
 in pkgs.mkShell {
   packages = [
     (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [

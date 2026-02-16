@@ -8,7 +8,9 @@ The Qhronology package (including any distributions, both source and built, and 
 
 - **Non-commercial use**: You are free to copy, distribute, and transmit Qhronology for non-commercial purposes. Non-commercial use is subject to the terms of version 3.0 of the GNU Affero General Public License (AGPL-3.0-or-later). Redistribution of the software in accordance with this license must only be done under the same non-commercial terms. The AGPL in its entirety can be viewed online at https://www.gnu.org/licenses/agpl-3.0.html. A copy of the license is also included with the project's source code: `AGPL-3.0-or-later.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/AGPL-3.0-or-later.txt>`_.
 
-- **Commercial use**: Any use of Qhronology for a commercial purpose is subject to and requires a special license. If you intend to use the package in such a manner, please contact lgbishop@protonmail.com to arrange a license agreement.
+- **Commercial use**: Any use of Qhronology for a commercial purpose is subject to and requires a special license. If you intend to use the package in such a manner, contact lgbishop@protonmail.com to arrange a license agreement.
+
+:inlinelatex:`\newpage`
 
 Guidelines on distinguishing use
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -41,6 +43,6 @@ External assets licensed for distribution with the project as part of its docume
 
 - Fonts --- applicable fonts are redistributed (vendored and embedded) as per their SIL Open Font License 1.1: `OFL-1.1.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/OFL-1.1.txt>`_
 - `MathJax <https://github.com/mathjax/MathJax>`_ --- redistributed (vendored) as per its Apache License 2.0: `Apache-2.0.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/Apache-2.0.txt>`_
-- `three.js <https://github.com/mrdoob/three.js/>`_ --- redistributed (vendored) as per its MIT License: `MIT.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/MIT.txt>`_
+- `three.js <https://github.com/mrdoob/three.js>`_ --- redistributed (vendored) as per its MIT License: `MIT.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/MIT.txt>`_
 - `Pyodide <https://github.com/pyodide/pyodide>`_ --- redistributed (vendored) as per its Mozilla Public License 2.0: `MPL-2.0.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/MPL-2.0.txt>`_
 - `SymPy <https://github.com/sympy/sympy>`_ and `NumPy <https://github.com/numpy/numpy>`_ --- redistributed (vendored) as per their respective licenses (both derivatives of the BSD-3-Clause License): `SymPy.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/SymPy.txt>`_ and `NumPy.txt <https://github.com/lgbishop/qhronology/blob/latest/licenses/NumPy.txt>`_

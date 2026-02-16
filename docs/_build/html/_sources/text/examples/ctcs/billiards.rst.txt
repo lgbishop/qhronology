@@ -6,7 +6,7 @@ Billiard-ball paradox
 Description
 -----------
 
-In this example, a quantum model of the billiard-ball paradox (see :ref:`sec:billiards`) is studied, with the analysis closely following the work in :cite:p:`bishop_time-traveling_2021`. The basic idea is as follows:
+In this example, a quantum model of the billiard-ball paradox (see :numref:`sec:billiards` :ref:`sec:billiards`) is studied, with the analysis closely following the work in :cite:p:`bishop_time-traveling_2021`. The basic idea is as follows:
 
 i. We consider a simplified :math:`(1+1)`-dimensional version of the classical problem (see :numref:`fig:diagram_billiard-ball_paradox`) in which, by virtue of the spacetime dimensionality and geometry of the CTC-wormhole, there are *only* two possible classical paths.
 ii. This problem is mapped to a quantum circuit representation and we use a vacuum state to allow the particles to be present or absent from particular paths.
@@ -14,18 +14,18 @@ iii. An internal degree of freedom that operates like a clock is included into t
     
 It is emphasized that the scenario presented here being effectively :math:`(1+1)`-dimensional [point (i)] is not a characteristic specified by Friedman et al. in their original study :cite:p:`friedman_cauchy_1990`, but is part of the modelling of the paradox. In addition, the model is based upon two distinct mechanisms. The first of these [point (ii)] involves the introduction of a "vacuum" state: by considering such a state to represent the absence of a billiard ball, we can use it to allow the associated clock to either travel unperturbed (if there is nothing, i.e., a vacuum, in the CTC) or otherwise be scattered into the CTC (if the billiard ball's future self is trapped inside the CTC). The second mechanism [point (iii)] of the model consists of an internal degree of freedom which is incorporated into the billiard ball's quantum description. Using this modification, we can measure the proper time of the model's distinct classical evolutions, which is to say that the billiard ball effectively functions like a clock. This allows us to operationally extract which-way information, i.e., determine which history the billiard ball experienced. This is necessary to give operational meaning to the probabilities associated with the two classical paths, which are indistinguishable by position measurements alone.
 
-It is important to reiterate that it is only the functionality of the clock which makes the two evolutions of the billiard-ball paradox distinguishable. In the Friedman et al. conjecture :cite:p:`friedman_cauchy_1990`, the use of a semiclassical sum-over-histories approach is only meaningful when the evolutions :math:`\EvolutionNoninteracting` and :math:`\EvolutionInteracting` are treated distinctly *a priori*. This enables one to assign evolution probabilities without the need for conventional which-way information. It should be stressed that Friedman et al. do not provide an operational prescription on how to associate paths with probability, which is the reason why we employ a quantum clock.
+It is important to reiterate that it is only the clock's functionality which makes the two evolutions of the billiard-ball paradox distinguishable. In the Friedman et al. conjecture :cite:p:`friedman_cauchy_1990`, the use of a semiclassical sum-over-histories approach is only meaningful when the evolutions :math:`\EvolutionNoninteracting` and :math:`\EvolutionInteracting` are treated distinctly *a priori*. This enables one to assign evolution probabilities without the need for conventional which-way information. It should be stressed that Friedman et al. do not provide an operational prescription on how to associate paths with probabilities, which is the reason why we employ a quantum clock.
 
 One of the open questions in the study of the quantum mechanics of time travel that can be investigated using this model is whether a quantum description does indeed address the issue of evolution indeterminism. As we shall see, a parametrization of the solutions in the D-CTCs description is observed. Although usually interpreted as solution multiplicity, this arises naturally as a choice of initial state in the CTC. Alternatively, in P-CTCs, only one quantum state is offered by the prescription as a solution to the paradox. This state takes the form of a pure superposition of the clock having evolved and not evolved on the CTC during its history through the time machine region. A focus of these P-CTC findings is how this superposition lends credence to the semiclassical billiard-ball conjecture of Friedman et al. in :cite:p:`friedman_cauchy_1990`. The well-known problem of how P-CTCs place constraints on the initial data (where such restrictions depend on the future of the time-travelling state), and how this limits the actions that one is able to perform in the billiard-ball interaction, is also discussed.
 
 Model
 ^^^^^
 
-A quantum "billiard ball" can be modelled simply as a quantum particle, described by a qudit state, that moves though a :math:`(1+1)`-dimensional spacetime. For the billiard-ball paradox, such a spacetime consists of a time-machine wormhole, the mouths of which appear and disappear in such a way as to allow only the two desired paths (see :numref:`fig:diagram_billiard-ball_clocks`). We use the quantum billiard ball's qudit degree of freedom to encode a "clock", as described in the subsequent section. It is important to note that the particle's position degree of freedom begins as a semiclassical wave packet, with negligible probability that it falls into the time machine by its own free evolution. This is a significant point, as it allows us to justify both dropping position from the particle's description and the consideration of only the two trajectories :math:`\EvolutionNoninteracting` and :math:`\EvolutionInteracting`. It also connects with the WKB approximation mentioned by Friedman et al., who propose to apply the sum-over-histories only to the semiclassical trajectories (thus excluding trajectories which pass into the time machine without collision).
+A quantum "billiard ball" can be modelled simply as a quantum particle, described by a qudit state, that moves though a :math:`(1+1)`-dimensional spacetime. For the billiard-ball paradox, such a spacetime consists of a time-machine wormhole, the mouths of which appear and disappear in such a way as to allow only the two desired paths. The particular geometry of our formulation of the paradox is depicted in :numref:`fig:diagram_billiard-ball_clocks`.
 
 .. raw:: latex
 
-   \vspace*{0.35cm}
+   \vspace*{0.25\baselineskip}
 
 .. only:: html
 
@@ -53,9 +53,15 @@ A quantum "billiard ball" can be modelled simply as a quantum particle, describe
 
    A simplified, :math:`(1+1)`-dimensional version of the billiard-ball paradox (:numref:`fig:diagram_billiard-ball_paradox`). This diagram visualizes the basic idea of the model under study in the reference frame of the clock. (a) The history where the clock travels through the CTC-wormhole region with no interaction; (b) the history of a clock which elastically interacts with itself. The times as measured by the clock at specific points along the histories are given in brackets next to their analogue clock symbols. The clocks begin at time :math:`\Time=0` and, due to their initial velocity, measure the proper times :math:`\Time_\EvolutionNoninteracting=\TimeInbound+\TimeOutbound` and :math:`\Time_\EvolutionInteracting=\TimeInbound+\TimeDelta+\TimeOutbound = \Time_\EvolutionNoninteracting + \TimeDelta` for evolutions :math:`\EvolutionNoninteracting` and :math:`\EvolutionInteracting`, respectively. This means that we denote the duration of the segment on the CTC in evolution :math:`\EvolutionInteracting` to be :math:`\TimeDelta`, while the inbound and outbound times to and from the wormhole axis (dashed line) are :math:`\TimeInbound` and :math:`\TimeOutbound`, respectively. It is important to note that the final position bears no information about the path the ball has taken.
 
+.. raw:: latex
+
+   \vspace*{-0.5\baselineskip}
+
+Central to our treatment of this paradox is the quantum billiard ball's qudit degree of freedom to encode a "clock", as described in the subsequent section. It is important to note that the particle's position degree of freedom begins as a semiclassical wave packet, with negligible probability that it falls into the time machine by its own free evolution. This is a significant point, as it allows us to justify both dropping position from the particle's description and the consideration of only the two trajectories :math:`\EvolutionNoninteracting` and :math:`\EvolutionInteracting`. It also connects with the WKB approximation mentioned by Friedman et al., who propose to apply the sum-over-histories only to the semiclassical trajectories (thus excluding trajectories which pass into the time machine without collision).
+
 For simplicity and rigour, we work in :math:`(1+1)`-dimensions, which means the only interaction that can occur between the billiard-ball clock's future and past selves is a complete exchange of momentum. This is a useful characteristic, as a quantum SWAP gate between two qudit systems perfectly replicates this action within the quantum circuit framework. Additionally, to allow the billiard-ball paradox for the clock to function as intended, we also require the time machine to be dynamic. This means that, at least in the geometrical picture, the mouths of the wormhole appear and disappear at exactly the right points in the spacetime to allow the clock to evolve in two distinct ways within the chronology-violating region.
 
-It is also important to note that in practice, the methods discussed in :ref:`sec:wormholes` are likely incapable of constructing a time machine precisely to this required specification. However, as the physical origin of this time machine is not relevant to the quantum mechanics of the problem at hand, we simply do not concern ourselves with such details. We therefore proceed under the assumption that CTCs exactly satisfying our conditions may not strictly be physically realizable, but it is nevertheless the consequences of their existence, not their existence itself, in which we are interested. In addition to this, it is important to note that, due to our abstracting the geometry of the problem away, the findings from this quantum model are independent of the specific kind of CTC (such as those in, e.g., the wormhole-based time machine, the Gödel universe, the Kerr solution, etc.) employed to facilitate the requisite time-travel mechanism. In the billiard-ball paradox's original, motivating formulation (:ref:`sec:billiards`), the CTCs are generated specifically by a wormhole-based time machine, but this fact has no consequence in our abstract, quantum formulation of the paradox---the time-travel trajectories in the quantum picture are CTCs in perhaps the purest sense of the concept---and so any CTC possessing the necessary characteristics will suffice.
+It is also important to note that in practice, the methods discussed in :numref:`sec:wormholes` :ref:`sec:wormholes` are likely incapable of constructing a time machine precisely to this required specification. However, as the physical origin of this time machine is not relevant to the quantum mechanics of the problem at hand, we simply do not concern ourselves with such details. We therefore proceed under the assumption that CTCs exactly satisfying our conditions may not strictly be physically realizable, but it is nevertheless the consequences of their existence, not their existence itself, in which we are interested. In addition to this, it is important to note that, due to our abstracting the geometry of the problem away, the findings from this quantum model are independent of the specific kind of CTC (such as those in, e.g., the wormhole-based time machine, the Gödel universe, the Kerr solution, etc.) employed to facilitate the requisite time-travel mechanism. In the billiard-ball paradox's original, motivating formulation (:numref:`sec:billiards` :ref:`sec:billiards`), the CTCs are generated specifically by a wormhole-based time machine, but this fact has no consequence in our abstract, quantum formulation of the paradox---the time-travel trajectories in the quantum picture are CTCs in perhaps the purest sense of the concept---and so any CTC possessing the necessary characteristics will suffice.
 
 In any case, the resulting non-collisional evolution :math:`\EvolutionNoninteracting` from this specification of the time machine is trivial: the particle remains stationary as the past wormhole mouth appears and disappears behind it, while the future mouth later appears and disappears in front of the particle. Nothing passes in or out of the time machine. On the other hand, in the collisional evolution :math:`\EvolutionInteracting`, a moving particle emerges from the appearing past mouth and strikes the stationary particle, transferring all of its momentum to it. The struck particle then travels into the future mouth that appears directly in front of it, while the other particle becomes stationary and remains so in place of its collision partner. While these trajectories are classical, the particle can be in superpositions of being absent or present on either path. It is stressed that the particle's position degree of freedom factors out of the evolution because the two classical trajectories coincide in final position and velocity. Therefore, the only relevant degrees of freedom are the internal states of the clock.
 
@@ -71,7 +77,7 @@ For our analysis, we employ the :math:`\Dimension`-level, pure, equiprobabilisti
 
 Here, the number states :math:`\{\ket{n}\}_{n=1}^\Dimension`, which obey orthonormality via the condition :math:`\braket{m}{n} = \delta_{nm}`, collectively form a basis for the :math:`\Dimension`-dimensional Hilbert space in which the clock resides. With this, let us define the clock Hamiltonian as
 
-.. math:: \OperatorHamiltonian_\Clock = \sum_{n=1}^{\Dimension} \Energy_n\ket{n}\bra{n}
+.. math:: \OperatorHamiltonian_\Clock = \sum_{n=1}^{\Dimension} \Energy_n\ket{n}\bra{n},
    :label: eq:clock_Hamiltonian
 
 where :math:`\Energy_n` is the energy of the :math:`n`-th eigenstate :math:`\ket{n}`. Time evolution of a state over the times :math:`\TimeInitial\rightarrow\TimeFinal` is then generated by the time-evolution unitary, which in its standard form may be written
@@ -79,7 +85,7 @@ where :math:`\Energy_n` is the energy of the :math:`n`-th eigenstate :math:`\ket
 .. math:: \Rotation(\TimeFinal;\TimeInitial) \equiv \Rotation(\TimeFinal-\TimeInitial) = \e^{-\eye\OperatorHamiltonian_\Clock(\TimeFinal-\TimeInitial)/\hbar}.
    :label: eq:clock_evolution
 
-This is written using the standard notation for the rotation operator :math:`\Rotation` because the transformation of a clock state produced by "time evolution" *is* simply a standard rotation operation. Given this form, the evolution of an initial clock state :math:`\ket{\qclock(\Time)}` (at time :math:`\Time`) to a later state :math:`\ket{\qclock(\Time+\TimeDelta)}` (at time :math:`\Time+\TimeDelta`) is simply
+This is expressed in the standard notation for the rotation operator :math:`\Rotation` because the transformation of a clock state produced by "time evolution" is simply a standard rotation operation. Given this form, the evolution of an initial clock state :math:`\ket{\qclock(\Time)}` (at time :math:`\Time`) to a later state :math:`\ket{\qclock(\Time+\TimeDelta)}` (at time :math:`\Time+\TimeDelta`) is simply
 
 .. math:: \ket{\qclock(\Time+\TimeDelta)} = \Rotation(\TimeDelta)\ket{\qclock(\Time)} = \e^{-\eye\OperatorHamiltonian_\Clock\TimeDelta/\hbar}\ket{\qclock(\Time)}.
    :label: eq:clock_ticked
@@ -177,7 +183,7 @@ Here, the elastic self-collision of the clock between its past and future selves
 .. math:: \Swap = \sum_{j,k=1}^{\Dimension}{\ket{j}\bra{k}}_\CR\otimes{\ket{k}\bra{j}}_\CV.
    :label: eq:swap
 
-In effect, this exchange of the CV (trapped CTC) and CR (incoming system) quantum states mimics the momentum-exchange collision interaction between the billiard ball's past and future selves [which necessarily occurs in :math:`(1+1)` dimensions]. (Note that here, the basis states correspond to those from which the particle's wave function is constructed. This means that, in the case of a quantum clock, these basis states represent the number states of the clock's Hilbert space.) This is because the complete transference of momentum between two particles (here, the past and future versions of the billiard ball) is necessarily an exchange of quantum clock state, provided the associated particles are otherwise identical. To clarify, in a particle's quantum description, the clock degree of freedom is the identifying attribute, while momentum performs the same function in its classical description. As such, the two necessarily correspond such that when a pair of classically indistinguishable particles trade momentum, they exchange their clocks, i.e., :math:`\Swap \ket{\qclock(\Time_1)} \otimes \ket{\qclock(\Time_2)} = \ket{\qclock(\Time_2)} \otimes \ket{\qclock(\Time_1)}`.
+In effect, this exchange of the CV (trapped CTC) and CR (incoming system) quantum states mimics the momentum-exchange collision interaction between the billiard ball's past and future selves [which necessarily occurs in :math:`(1+1)` dimensions]. (Note that here, the basis states correspond to those from which the particle's wave function is constructed. This means that, in the case of a quantum clock, these basis states represent the number states of the clock's Hilbert space.) This is because the complete transference of momentum between two particles (here, the past and future versions of the billiard ball) is necessarily an exchange of quantum clock state, provided the associated particles are otherwise identical. To clarify, in a particle's quantum description, the clock degree of freedom is the identifying attribute, while momentum performs the same function in its classical description. As such, the two necessarily correspond such that when a pair of classically indistinguishable particles trade momentum, they exchange their clocks, i.e., :math:`\Swap \ket{\qclock(\Time_A)} \otimes \ket{\qclock(\Time_B)} = \ket{\qclock(\Time_B)} \otimes \ket{\qclock(\Time_A)}`.
 
 Additionally, for simplicity, the rotations of the clock on the path sections outside of the CTC (on the CV system between the time machine) have been neglected. This is valid because these time evolutions (namely the inbound :math:`\TimeInbound` and outbound :math:`\TimeOutbound` times) are experienced by both paths, and so contribute the same to the clock's total time evolution. This means that a clock which does not interact with the CTC will not evolve, while one which does interact will evolve (by the CTC "duration" :math:`\TimeDelta`).
  
@@ -196,10 +202,10 @@ where :math:`\VacuumIdentity = \Identity + \ket{0}\bra{0}` is the identity matri
       \VacuumSwap \ket{0} \otimes \ket{0} &= \ket{0} \otimes \ket{0}, \\
       \VacuumSwap \ket{\qclock} \otimes \ket{0} &= \ket{\qclock} \otimes \ket{0}, \\
       \VacuumSwap \ket{0} \otimes \ket{\qclock} &= \ket{0} \otimes \ket{\qclock}, \\
-      \VacuumSwap \ket{\qclock(\Time_1)} \otimes \ket{\qclock(\Time_2)} &= \ket{\qclock(\Time_2)} \otimes \ket{\qclock(\Time_1)}.
+      \VacuumSwap \ket{\qclock(\Time_A)} \otimes \ket{\qclock(\Time_B)} &= \ket{\qclock(\Time_B)} \otimes \ket{\qclock(\Time_A)}.
    \end{aligned}
 
-In this interpretation, the state :math:`\ket{0}` represents the physical absence of a clock :math:`\ket{\qclock}`, hence the "vacuum" nomenclature.
+Under this interpretation, the state :math:`\ket{0}` represents the physical absence of a clock :math:`\ket{\qclock}`, hence the "vacuum" nomenclature.
 
 In the associated extended Hilbert space, we write the vacuum-inclusive time-evolution operator as
 
@@ -244,6 +250,10 @@ Under this, the input state may either self-consistently interact with the CTC, 
 
    A quantum model of the (simplified) billiard-ball paradox. Here, the SWAP gate is a modified :math:`\ket{0}`-excluding variant as defined in :eq:`eq:swap_vacuum`.
 
+.. raw:: latex
+
+   \vspace*{-0.5\baselineskip}
+
 Solutions
 ---------
 
@@ -252,7 +262,7 @@ The D-CTC solutions can be calculated to be
 .. math::
 
    \begin{aligned}
-      \StateCR_{\MapDCTCsCR} &= \ParameterFree\ket{\qclock(0)}\bra{\qclock(0)} + (1 - \ParameterFree)\ket{\qclock(\TimeDelta)}\bra{\qclock(\TimeDelta)}\\
+      \StateCR_{\MapDCTCsCR} &= \ParameterFree\ket{\qclock(0)}\bra{\qclock(0)} + (1 - \ParameterFree)\ket{\qclock(\TimeDelta)}\bra{\qclock(\TimeDelta)},\\
       \StateCV_{\MapDCTCsCR} &= \ParameterFree\ket{0}\bra{0} + (1 - \ParameterFree)\ket{\qclock(\TimeDelta)}\bra{\qclock(\TimeDelta)}.
    \end{aligned}
 
@@ -265,7 +275,7 @@ For P-CTCs on the other hand, we first compute the P-CTC operator,
 
    \begin{aligned}
        \OperatorPCTC &\equiv \trace_\CV[\Unitary] \\
-       &= \trace\bigl[\VacuumRotation(\TimeDelta)\bigr] \ket{0}\bra{0} + \Identity + \Rotation(\TimeDelta).
+       &= \trace\bigl[\VacuumRotation(\TimeDelta)\bigr] \ket{0}\bra{0} + \Identity + \Rotation(\TimeDelta),
    \end{aligned}
 
 with which the corresponding solution can be determined to be
@@ -277,7 +287,7 @@ where
 .. math::
 
    \begin{aligned}
-      \Normalization &= \trace[\OperatorPCTC \StateCR \OperatorPCTC^\dagger],\\
+      \Normalization &= \trace[\OperatorPCTC \StateCR \OperatorPCTC^\dagger]\\
       &= 2 + \frac{1}{\Dimension}\Bigl(\trace\bigl[\Rotation(\TimeDelta)\bigr] + \trace\bigl[\Rotation^\dagger(\TimeDelta)\bigr]\Bigr).
    \end{aligned}
 
@@ -311,7 +321,7 @@ In this :math:`3`-dimensional total Hilbert space (of both the vacuum and the cl
 .. math::
 
    \begin{aligned}
-      \StateCR_{\MapDCTCsCR} &= \frac{1}{2}\Bigl[\ket{1}\bra{1} + \bigl(\ParameterFree + (1 - \ParameterFree)\e^{\eye \pi \TimeDelta/\TimeOrthogonalization}\bigr)\ket{1}\bra{2} + \bigl(\ParameterFree + (1 - \ParameterFree)\e^{-\eye \pi \TimeDelta/\TimeOrthogonalization}\bigr)\ket{2}\bra{1} + \ket{2}\bra{2}\Bigr]\\
+      \StateCR_{\MapDCTCsCR} &= \frac{1}{2}\Bigl[\ket{1}\bra{1} + \bigl(\ParameterFree + (1 - \ParameterFree)\e^{\eye \pi \TimeDelta/\TimeOrthogonalization}\bigr)\ket{1}\bra{2} + \bigl(\ParameterFree + (1 - \ParameterFree)\e^{-\eye \pi \TimeDelta/\TimeOrthogonalization}\bigr)\ket{2}\bra{1} + \ket{2}\bra{2}\Bigr],\\
       \StateCV_{\MapDCTCsCR} &= \ParameterFree\ket{0}\bra{0} + (1 - \ParameterFree)\frac{1}{2}\Bigl[\ket{1}\bra{1} + \e^{\eye \pi \TimeDelta/\TimeOrthogonalization}\ket{1}\bra{2} + \e^{-\eye \pi \TimeDelta/\TimeOrthogonalization}\ket{2}\bra{1} + \ket{2}\bra{2}\Bigr],
    \end{aligned}
 
@@ -330,7 +340,7 @@ P-CTC restrictions on initial data
 
 One interesting general characteristic of P-CTCs is that they can pose constraints on initial conditions. Due to the renormalization, such constraints depend on the future of the time-travelling state. Here, we explicitly demonstrate the restrictions associated with the P-CTCs description of the circuit.
 
-Given the :math:`\Dimension`-level clock :eq:`eq:clock_vector`, there exist exactly :math:`\Dimension` mutually orthogonal, equally spaced states :math:`\bigl\{\ket{\qclock^{(k)}(\TimeOrthogonalization)}\bigr\}_{k=0}^{\Dimension-1}` of which it can assume. As a consequence, one may express the clock gate :eq:`eq:clock_evolution` in terms of the ground-state energy :math:`\Energy_1` (defined via :eq:`eq:clock_energies`) as
+Given the :math:`\Dimension`-level clock :eq:`eq:clock_vector`, there exist exactly :math:`\Dimension` mutually orthogonal, equally spaced states :math:`\bigl\{\bigl|\qclock^{(k)}(\TimeOrthogonalization)\bigr\rangle\bigr\}_{k=0}^{\Dimension-1}` of which it can assume. As a consequence, one may express the clock gate :eq:`eq:clock_evolution` in terms of the ground-state energy :math:`\Energy_1` (defined via :eq:`eq:clock_energies`) as
 
 .. math:: \Rotation(\TimeFinal - \TimeInitial) = \e^{-\eye \Energy_1 (\TimeFinal - \TimeInitial)/\hbar} \sum_{n=1}^{\Dimension}\exp\left[-2\pi\eye\frac{n-1}{\Dimension}\frac{\TimeFinal - \TimeInitial}{\TimeOrthogonalization}\right]\ket{n}\bra{n}.
    :label: eq:rotation_global
@@ -340,7 +350,7 @@ From this, it is easy to conclude that
 .. math:: \Rotation^\Dimension(\TimeOrthogonalization) = \e^{-\eye \Dimension \Energy_1 \TimeOrthogonalization/\hbar}\Identity,
    :label: eq:rotation_orthogonalization
 
-which simply indicates that :math:`\Dimension` orthogonal rotations of the clock return it to its initial state, up to the global phase :math:`\e^{-\eye \Dimension \Energy_1 \TimeOrthogonalization/\hbar}`. Accordingly, a clock :math:`\ket{\qclock}` that orthogonalizes :math:`p\in\Integers_{>0}` times accumulates :math:`p` such phases. Therefore, judicious choice of the clock's orthogonalization time :math:`\TimeOrthogonalization`, such that it is related to the CTC time delay :math:`\TimeDelta` by
+which simply indicates that :math:`\Dimension` orthogonal rotations of the clock return it to its initial state, up to the global phase :math:`\e^{-\eye \Dimension \Energy_1 \TimeOrthogonalization/\hbar}`. Accordingly, a clock that orthogonalizes :math:`p\in\Integers_{>0}` times accumulates :math:`p` such phases. Therefore, judicious choice of the clock's orthogonalization time :math:`\TimeOrthogonalization`, such that it is related to the CTC time delay :math:`\TimeDelta` by
 
 .. math:: \TimeDelta = p \Dimension \TimeOrthogonalization,
    :label: eq:orthogonalization_time_multiple
@@ -382,12 +392,16 @@ The persistence of the entanglement means that when the record indicates that we
 
 regardless of the value of :math:`\ParameterVacuum` (provided it is non-zero). Thus, the mere presence of the interaction with the CTC in the future implies that the record subsystem will show that no clock was ever prepared, even though the initial state :eq:`eq:billiards_P-CTCs_entangled` included the possibility that a clock was there (which would show up in the record if the future interaction with the CTC was avoided).
 
-Given the path-integral correspondence of P-CTCs, the conditions :eq:`eq:orthogonalization_time_multiple` and :eq:`eq:billiards_P-CTCs_energy_vanish` collectively form a case in which *no* clocks can evolve through the circuit due to destructive interference in the path integral. This is to say that P-CTCs suppress all evolutions of non-vacuous states as a result of the particular future evolution of clock states in our model, thereby posing constraints on the initial state. This issue highlights the well-known problem of antichronological and superluminal influence with P-CTCs :cite:p:`ralph_relativistic_2012, bub_quantum_2014, ghosh_quantum_2018`. In contrast, the initial data for D-CTCs are never affected by the presence (or absence) of a CTC in the future.
+Given the path-integral correspondence of P-CTCs, the conditions :eq:`eq:orthogonalization_time_multiple` and :eq:`eq:billiards_P-CTCs_energy_vanish` collectively form a case in which, due to destructive interference in the path integral, no clocks can evolve through the circuit. This is to say that P-CTCs suppress all evolutions of non-vacuous states as a result of the particular future evolution of clock states in our model, thereby posing constraints on the initial state. This issue highlights the well-known problem of antichronological and superluminal influence with P-CTCs :cite:p:`ralph_relativistic_2012, bub_quantum_2014, ghosh_quantum_2018`. In contrast, the initial data for D-CTCs are never affected by the presence (or absence) of a CTC in the future.
 
 Implementation
 --------------
 
 This implementation is strictly for qubits. For simplicity, we set :math:`\frac{\TimeDelta}{\TimeOrthogonalization} \equiv t`.
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -418,7 +432,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_ctcs_billiards.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.05cm 0 -0.12cm]{text_examples_ctcs_billiards.pdf}
    \vspace{-1\baselineskip}
 
 ..
@@ -450,7 +464,7 @@ States
 
 .. code:: python
 
-   >>> billiards_DCTC_respecting.print()
+   >>> billiards_DCTC_CR.print()
    ρ_D = 1/2|1⟩⟨1| + -(g*exp(I*pi*t) - g - exp(I*pi*t))/2|1⟩⟨2| + (g*exp(I*pi*t) - g + 1)*exp(-I*pi*t)/2|2⟩⟨1| + 1/2|2⟩⟨2|
 
 .. raw:: latex
@@ -463,7 +477,7 @@ States
 
 .. code:: python
 
-   >>> billiards_DCTC_violating.print()
+   >>> billiards_DCTC_CV.print()
    τ_D = g|0⟩⟨0| + (1/2 - g/2)|1⟩⟨1| + (1 - g)*exp(I*pi*t)/2|1⟩⟨2| + (1 - g)*exp(-I*pi*t)/2|2⟩⟨1| + (1/2 - g/2)|2⟩⟨2|
 
 .. raw:: latex
@@ -476,7 +490,7 @@ States
 
 .. code:: python
 
-   >>> billiards_PCTC_respecting.print()
+   >>> billiards_PCTC_CR.print()
    |ψ_P⟩ = sqrt(2)*sqrt(1/(cos(pi*t) + 3))|1⟩ + sqrt(2)*(1 + exp(-I*pi*t))*sqrt(1/(cos(pi*t) + 3))/2|2⟩
 
 .. raw:: latex
@@ -489,7 +503,7 @@ States
 
 .. code:: python
 
-   >>> billiards_PCTC_violating.print()
+   >>> billiards_PCTC_CV.print()
    τ_P = 1/3|0⟩⟨0| + 1/3|1⟩⟨1| + exp(I*pi*t)/3|1⟩⟨2| + exp(-I*pi*t)/3|2⟩⟨1| + 1/3|2⟩⟨2|
 
 .. raw:: latex

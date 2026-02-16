@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9e158f31" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
   </head>
   
   
@@ -607,6 +607,49 @@
 
 
 
+<div class="viewcode-block" id="rewrite">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.rewrite">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">rewrite</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rewrite the elements of :python:`matrix` using the given mathematical function (:python:`function`).</span>
+
+<span class="sd">    Useful when used with SymPy&#39;s mathematical functions, such as:</span>
+
+<span class="sd">    - :python:`exp()`</span>
+<span class="sd">    - :python:`log()`</span>
+<span class="sd">    - :python:`sin()`</span>
+<span class="sd">    - :python:`cos()`</span>
+<span class="sd">    - :python:`sqrt()`</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">        The matrix to be transformed.</span>
+<span class="sd">    function : Callable</span>
+<span class="sd">        A SymPy mathematical function.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mat</span>
+<span class="sd">        The transformed version of :python:`matrix`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+            <span class="n">entry</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">rewrite</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+            <span class="n">matrix</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The specified function (:python:`</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()`) cannot be used to rewrite the matrix.&quot;&quot;&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">matrix</span></div>
+
+
+
 <div class="viewcode-block" id="apply">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.apply">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span>
@@ -624,6 +667,8 @@
 <span class="sd">    - :python:`expand()`</span>
 <span class="sd">    - :python:`factor()`</span>
 <span class="sd">    - :python:`simplify()`</span>
+<span class="sd">    - :python:`separatevars()`</span>
+<span class="sd">    - :python:`rewrite()` (though the :py:func:`~qhronology.mechanics.operations.rewrite` function should be used instead)</span>
 
 <span class="sd">    More can be found at:</span>
 
@@ -662,48 +707,6 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Unable to apply the specified function (:python:`</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()`) to the matrix.&quot;&quot;&quot;</span>
             <span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">matrix</span></div>
-
-
-
-<div class="viewcode-block" id="rewrite">
-<a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.rewrite">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">rewrite</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rewrite the elements of :python:`matrix` using the given mathematical function (:python:`function`).</span>
-
-<span class="sd">    Useful when used with SymPy&#39;s mathematical functions, such as:</span>
-
-<span class="sd">    - :python:`exp()`</span>
-<span class="sd">    - :python:`log()`</span>
-<span class="sd">    - :python:`sin()`</span>
-<span class="sd">    - :python:`cos()`</span>
-
-<span class="sd">    Arguments</span>
-<span class="sd">    ---------</span>
-<span class="sd">    matrix : mat | QuantumObject</span>
-<span class="sd">        The matrix to be transformed.</span>
-<span class="sd">    function : Callable</span>
-<span class="sd">        A SymPy mathematical function.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    mat</span>
-<span class="sd">        The transformed version of :python:`matrix`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-    <span class="n">matrix</span> <span class="o">=</span> <span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-
-    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
-            <span class="n">entry</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">rewrite</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
-            <span class="n">matrix</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The specified function (:python:`</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()`) cannot be used to rewrite the matrix.&quot;&quot;&quot;</span>
-        <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">matrix</span></div>
 
@@ -900,11 +903,11 @@
 
 <span class="sd">      - When :python:`observable` is :python:`False`:</span>
 
-<span class="sd">      .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger.</span>
+<span class="sd">      .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger</span>
 
 <span class="sd">      - When :python:`observable` is :python:`True`:</span>
 
-<span class="sd">      .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.</span>
+<span class="sd">      .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i</span>
 
 <span class="sd">    In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule</span>
 
@@ -1128,7 +1131,7 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The :py:class:`~qhronology.mechanics.operations.OperationsMixin` mixin is used exclusively by the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding section (:ref:`sec:docs_states_operations`) for documentation on its methods.</span>
+<span class="sd">    The :py:class:`~qhronology.mechanics.operations.OperationsMixin` mixin is used exclusively by the :py:class:`~qhronology.quantum.states.QuantumState` class---please see :numref:`sec:docs_states_operations` :ref:`sec:docs_states_operations` for documentation on its methods.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">densify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1159,6 +1162,24 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comprehensive</span><span class="o">=</span><span class="n">comprehensive</span><span class="p">)</span>
 
+    <span class="k">def</span><span class="w"> </span><span class="nf">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rewrite the elements of the state using the given mathematical function (:python:`function`).</span>
+
+<span class="sd">        Useful when used with SymPy&#39;s mathematical functions, such as:</span>
+
+<span class="sd">        - :python:`exp()`</span>
+<span class="sd">        - :python:`log()`</span>
+<span class="sd">        - :python:`sin()`</span>
+<span class="sd">        - :python:`cos()`</span>
+<span class="sd">        - :python:`sqrt()`</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        function : Callable</span>
+<span class="sd">            A SymPy mathematical function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">)</span>
+
     <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a Python function (:python:`function`) to the state.</span>
 
@@ -1170,6 +1191,8 @@
 <span class="sd">        - :python:`collect()`</span>
 <span class="sd">        - :python:`cancel()`</span>
 <span class="sd">        - :python:`apart()`</span>
+<span class="sd">        - :python:`separatevars()`</span>
+<span class="sd">        - :python:`rewrite()` (though the :py:meth:`~qhronology.quantum.states.QuantumState.rewrite` method should be used instead)</span>
 
 <span class="sd">        More can be found at:</span>
 
@@ -1186,23 +1209,6 @@
 <span class="sd">            Defaults to :python:`{}`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Rewrite the elements of the state using the given mathematical function (:python:`function`).</span>
-
-<span class="sd">        Useful when used with SymPy&#39;s mathematical functions, such as:</span>
-
-<span class="sd">        - :python:`exp()`</span>
-<span class="sd">        - :python:`log()`</span>
-<span class="sd">        - :python:`sin()`</span>
-<span class="sd">        - :python:`cos()`</span>
-
-<span class="sd">        Arguments</span>
-<span class="sd">        ---------</span>
-<span class="sd">        function : Callable</span>
-<span class="sd">            A SymPy mathematical function.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a forced (re)normalization on the state to the value specified (:python:`norm`).</span>
@@ -1276,6 +1282,11 @@
 <span class="sd">        - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured, and the set of resulting statistics is returned.</span>
 <span class="sd">          This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:</span>
 
+<span class="sd">          .. raw:: latex</span>
+
+<span class="sd">             \\null</span>
+<span class="sd">             \\vspace*{-2.5\\baselineskip}</span>
+
 <span class="sd">          - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)</span>
 <span class="sd">            when :python:`observable` is :python:`False`</span>
 <span class="sd">            (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)</span>
@@ -1283,16 +1294,26 @@
 <span class="sd">            when :python:`observable` is :python:`True`</span>
 <span class="sd">            (:python:`operators` is a list of observables :math:`\\Observable_i`)</span>
 
+<span class="sd">        .. raw:: latex</span>
+
+<span class="sd">           \\null</span>
+<span class="sd">           \\vspace*{-1.75\\baselineskip}</span>
+
 <span class="sd">        - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).</span>
 <span class="sd">          This yields the transformed states:</span>
 
 <span class="sd">          - When :python:`observable` is :python:`False`:</span>
 
-<span class="sd">          .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger.</span>
+<span class="sd">          .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger</span>
 
 <span class="sd">          - When :python:`observable` is :python:`True`:</span>
 
-<span class="sd">          .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}]\\Observable_i.</span>
+<span class="sd">          .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}]\\Observable_i</span>
+
+<span class="sd">        .. raw:: latex</span>
+
+<span class="sd">           \\null</span>
+<span class="sd">           \\vspace*{-1.25\\baselineskip}</span>
 
 <span class="sd">        In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule</span>
 
@@ -1304,6 +1325,12 @@
 <span class="sd">        when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state is a matrix, even if the pre-measurement state was a vector.</span>
 
 <span class="sd">        The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding operator matrix representation (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
+
+<span class="sd">        .. raw:: latex</span>
+
+<span class="sd">           \\enlargethispage{\\baselineskip}</span>
+<span class="sd">           \\null</span>
+<span class="sd">           \\vspace*{-1.25\\baselineskip}</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>

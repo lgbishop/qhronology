@@ -22,6 +22,7 @@ from sympy.physics.quantum.dagger import Dagger
 from qhronology.utilities.classification import (
     num,
     sym,
+    expr,
     mat,
     arr,
     Forms,
@@ -47,7 +48,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     """A class for creating quantum states and storing their metadata.
 
     Instances provide complete descriptions of both vector and matrix quantum states, along with various associated attributes (such as mathematical conditions, including normalization).
-    The internal state of the class is expressly mutable, and a selection of useful methods are provided with which the state can be manipulated and otherwise transformed in various quantum-mechanically significant ways.
+    The internal state of the class is expressly mutable, and a selection of useful methods are provided with which it can be manipulated and otherwise transformed in various quantum-mechanically significant ways.
     This includes:
 
     - normalization
@@ -63,7 +64,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
-        - a list of lists of numerical, symbolic, or string expressions (that collectively specify a matrix) (:python:`list[list[num | expr | str]]`)
+        - a list of lists of numerical, symbolic, or string expressions that collectively describe a matrix (:python:`list[list[num | expr | str]]`)
         - a list of 2-tuples of numerical, symbolic, or string coefficients and their respective number-basis specifications (:python:`list[tuple[num | expr | str, int | list[int]]]`)
 
     form : str
@@ -297,7 +298,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
 
         Note
         ----
-        This reset only the :python:`matrix` property of the instance.
+        This resets only the :python:`matrix` property of the instance.
         All other attributes and properties are unchanged.
         """
         self.matrix = quantum_state(

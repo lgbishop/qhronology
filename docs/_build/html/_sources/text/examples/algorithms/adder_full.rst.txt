@@ -42,12 +42,16 @@ Importantly, this means that full adders can be used in succession as a way to s
 
    A quantum full adder.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 A truth table for this circuit in the context of qubits appears in :numref:`table:adder_full`.
 
 .. list-table:: Truth table for the full adder.
    :name: table:adder_full
    :align: left
-   :widths: 8 8 10 10 10
+   :widths: 8 8 11 11 11
    :header-rows: 1
 
    * - :math:`x` **(augend)**
@@ -96,8 +100,22 @@ A truth table for this circuit in the context of qubits appears in :numref:`tabl
      - :math:`1`
      - :math:`1`
 
+.. raw:: latex
+
+   \newpage
+   \null
+   \vspace*{-2.25\baselineskip}
+
 Implementation
 --------------
+
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -128,7 +146,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_full.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_full.pdf}
    \vspace{-1\baselineskip}
 
 ..

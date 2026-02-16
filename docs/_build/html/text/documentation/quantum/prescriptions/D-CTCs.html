@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=4f16c007" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=9e158f31" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
   </head>
   
   
@@ -427,7 +427,11 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum</span></p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Architecture</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../architecture.html">Architecture</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../states.html">States</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gates.html">Gates</a></li>
@@ -508,17 +512,17 @@
 <span class="sig-name descname"><span class="pre">dctc_violating</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">input_respecting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MutableDenseMatrix</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><span class="pre">QuantumState</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">gate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MutableDenseMatrix</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../gates.html#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><span class="pre">QuantumGate</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">input_respecting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><span class="pre">QuantumState</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">gate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../gates.html#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><span class="pre">QuantumGate</span></a></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">systems_respecting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">systems_violating</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">free_symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MatrixSymbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixElement</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Symbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">free_symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableDenseMatrix</span></span></span><a class="reference internal" href="../../../../_modules/qhronology/quantum/prescriptions.html#dctc_violating"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.prescriptions.dctc_violating" title="Link to this definition">#</a></dt>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../../_modules/qhronology/quantum/prescriptions.html#dctc_violating"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.prescriptions.dctc_violating" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the chronology-violating (CV) state(s) according to the D-CTC prescription by computing fixed points of the map</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-prescriptions-d-ctcs-0">
-<span class="eqno">(316)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-d-ctcs-0" title="Link to this equation">#</a></span>\[\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV]
+<span class="eqno">(319)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-d-ctcs-0" title="Link to this equation">#</a></span>\[\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV]
     = \trace_\CR\bigl[\Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger\bigr]\]</div>
 <p>given the chronology-respecting (CR) input state <code class="code highlight python docutils literal highlight-python"><span class="n">input_respecting</span></code> (<span class="math notranslate nohighlight">\(\StateCR\)</span>) and (unitary) interaction described by <code class="code highlight python docutils literal highlight-python"><span class="n">gate</span></code> (<span class="math notranslate nohighlight">\(\Unitary\)</span>).</p>
 <dl class="field-list simple">
@@ -547,17 +551,17 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="sig-name descname"><span class="pre">dctc_respecting</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">input_respecting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MutableDenseMatrix</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><span class="pre">QuantumState</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">input_violating</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MutableDenseMatrix</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><span class="pre">QuantumState</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">gate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MutableDenseMatrix</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../gates.html#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><span class="pre">QuantumGate</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">input_respecting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><span class="pre">QuantumState</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">input_violating</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><span class="pre">QuantumState</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">gate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../gates.html#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><span class="pre">QuantumGate</span></a></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">systems_respecting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">systems_violating</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableDenseMatrix</span></span></span><a class="reference internal" href="../../../../_modules/qhronology/quantum/prescriptions.html#dctc_respecting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.prescriptions.dctc_respecting" title="Link to this definition">#</a></dt>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../../_modules/qhronology/quantum/prescriptions.html#dctc_respecting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.prescriptions.dctc_respecting" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the chronology-respecting (CR) state(s) according to the D-CTC prescription’s CR map</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-prescriptions-d-ctcs-1">
-<span class="eqno">(317)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-d-ctcs-1" title="Link to this equation">#</a></span>\[\MapDCTCsCR_{\Unitary}[\StateCR,\StateCV]
+<span class="eqno">(320)<a class="headerlink" href="#equation-text-documentation-quantum-prescriptions-d-ctcs-1" title="Link to this equation">#</a></span>\[\MapDCTCsCR_{\Unitary}[\StateCR,\StateCV]
     = \trace_\CV\bigl[\Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger\bigr]\]</div>
 <p>given the chronology-respecting (CR) input state <code class="code highlight python docutils literal highlight-python"><span class="n">input_respecting</span></code> (<span class="math notranslate nohighlight">\(\StateCR\)</span>), chronology-violating (CV) solution state <code class="code highlight python docutils literal highlight-python"><span class="n">input_violating</span></code> (<span class="math notranslate nohighlight">\(\StateCV\)</span>), and (unitary) interaction described by <code class="code highlight python docutils literal highlight-python"><span class="n">gate</span></code> (<span class="math notranslate nohighlight">\(\Unitary\)</span>).</p>
 <dl class="field-list simple">
@@ -585,7 +589,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 
 <dl>
 <dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">free_symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MatrixSymbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixElement</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Symbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">free_symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
 </dl>
 
@@ -611,7 +615,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span id="sec-docs-d-ctcs-properties"></span><h3>Constructor argument properties<a class="headerlink" href="#constructor-argument-properties" title="Link to this heading">#</a></h3>
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.prescriptions.DCTC.free_symbol">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DCTC.</span></span><span class="sig-name descname"><span class="pre">free_symbol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">MatrixSymbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixElement</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Symbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#qhronology.quantum.prescriptions.DCTC.free_symbol" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DCTC.</span></span><span class="sig-name descname"><span class="pre">free_symbol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#qhronology.quantum.prescriptions.DCTC.free_symbol" title="Link to this definition">#</a></dt>
 <dd><p>The representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.</p>
 </dd></dl>
 
@@ -620,7 +624,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <h3>Read-only properties<a class="headerlink" href="#read-only-properties" title="Link to this heading">#</a></h3>
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.prescriptions.DCTC.matrix">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DCTC.</span></span><span class="sig-name descname"><span class="pre">matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">MutableDenseMatrix</span></em><a class="headerlink" href="#qhronology.quantum.prescriptions.DCTC.matrix" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DCTC.</span></span><span class="sig-name descname"><span class="pre">matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">mat</span></em><a class="headerlink" href="#qhronology.quantum.prescriptions.DCTC.matrix" title="Link to this definition">#</a></dt>
 <dd><p>The matrix representation of the total D-CTC chronology-respecting (CR) output state prior to any post-processing.</p>
 </dd></dl>
 

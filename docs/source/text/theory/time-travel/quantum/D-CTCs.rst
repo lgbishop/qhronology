@@ -9,6 +9,10 @@ In 1991, David Deutsch introduced a method of analysing the flow of information 
 
 One of the main results of Deutsch's work on time travel is the proposal for the time evolution of quantum states through a quantum circuit representation of a chronology-violating network (illustrated in :numref:`fig:circuit_ctc_dctc`), with particular note as to how it resolves time-travel paradoxes and indeterminism.
 
+.. raw:: latex
+
+   \vspace*{0.25\baselineskip}
+
 .. only:: html
 
    .. figure:: /figures/output/circuit_ctc_dctc-dark.png
@@ -34,6 +38,10 @@ One of the main results of Deutsch's work on time travel is the proposal for the
    :figclass: light-dark hidden
 
    Deutsch's model of quantum time travel. Note that the depiction of the interaction between chronology-respecting (CR, upper) and chronology-violating (CV, lower) systems as shown here is standard way of visualizing any circuit with CTCs.
+
+.. raw:: latex
+
+   \vspace*{-0.5\baselineskip}
 
 The mathematical formulation of the self-consistent evolution of a quantum state through a region with a time machine is provided by requiring that any given CV system enters the CTC in the state
 
@@ -73,7 +81,7 @@ Self-consistent solutions of the CTC state may then be identified as fixed point
 
 This condition essentially codifies the requirement that the "younger" CTC state (the right-hand side) exiting the gate is the same as the "older" CTC state (the left-hand side) entering the gate. Once solutions to equation :eq:`eq:D-CTCs_CTC` are determined, the evolution of the system state :math:`\StateCR` through the interaction :math:`\Unitary` in Deutsch's model is then simply given by the CR map :eq:`eq:D-CTCs_CR`. Deutsch's original construction specifically interprets D-CTCs as being portals between parallel universes---a time traveller on a D-CTC would pass in and out of such universes---and so the quantum states in this context describes a superposition of states where the time traveller does and does not exist.
 
-The fact that the imposed self-consistency constraint in :eq:`eq:D-CTCs_CTC` is a fixed-point condition means that the non-linearity introduced to the laws of quantum mechanics is distinct from that of other models. Furthermore, as the rigid matching requirement is for the density matrix as opposed to the individual states in a pure state decomposition, Deutsch's model intrinsically treats density matrices ontologically as ontic ("real") objects rather than as epistemic knowledge representations.
+The fact that the imposed self-consistency constraint in :eq:`eq:D-CTCs_CTC` is a fixed-point condition means that the non-linearity introduced to the laws of quantum mechanics is distinct from that of other models. Furthermore, as the rigid matching requirement is for the density matrix as opposed to the individual states in a pure state decomposition, Deutsch's model intrinsically treats density matrices ontologically as ontic ("real") objects rather than as epistemic representations of knowledge.
 
 Deutsch's picture: The rule of maximum entropy
 ----------------------------------------------
@@ -108,6 +116,10 @@ Iterative picture: The equivalent circuit
 
 In 2010, Ralph and Myers introduced their equivalent-circuit picture (ECP) :cite:p:`ralph_information_2010, ralph_reply_2011, pienaar_quantum_2011, ralph_relativistic_2012, dong_ralphs_2017` of the D-CTC model. This approach was formulated as a method of deriving the maximum entropy rule and thus resolving the uniqueness ambiguity. It consists of essentially "unwrapping" the D-CTC time-loop fixed-point circuit (:numref:`fig:circuit_ctc_dctc`) into an infinite sequence of interactions with perfect copies of the input state, and is illustrated in :numref:`fig:circuit_ctc_dctc_ecp`.
 
+.. raw:: latex
+
+   \vspace*{0.25\baselineskip}
+
 .. only:: html
 
    .. figure:: /figures/output/circuit_ctc_dctc_ecp-dark.png
@@ -134,6 +146,10 @@ In 2010, Ralph and Myers introduced their equivalent-circuit picture (ECP) :cite
 
    The equivalent-circuit picture of a D-CTC.
 
+.. raw:: latex
+
+   \vspace*{-0.5\baselineskip}
+
 In this model, the CTC-trapped state :math:`\StateCV^{(n-1)}` enters the :math:`n`\ th interaction :math:`\Unitary` and exits, according to the fixed-point condition :eq:`eq:D-CTCs_CTC`, in the state
 
 .. math:: \StateCV^{(n)} = \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}].
@@ -159,8 +175,8 @@ where
 .. math::
 
    \begin{aligned}
-       \normalized{\Identity} &\equiv \frac{1}{\dim(\SpaceHilbert)}\Identity, \\
-       \Identity &\equiv \sum_{i}^{\dim(\SpaceHilbert)}\ket{i}\bra{i} \in \SpaceHilbert,
+       \Identity &\equiv \sum_{i}^{\dim(\SpaceHilbert)}\ket{i}\bra{i} \in \SpaceHilbert, \\
+       \normalized{\Identity} &\equiv \frac{1}{\dim(\SpaceHilbert)}\Identity,
    \end{aligned}
 
 are the unnormalized and normalized maximally mixed (identity) states, respectively. The corresponding final output is then

@@ -56,13 +56,19 @@ This means that, with time-evolution unitary :math:`\Unitary(\TimeInitial,\TimeF
    :label: eq:path_amplitude_split
 
    \begin{aligned}
-       \bigl(\bra{\WaveFunctionFinal}\otimes\bra{\WaveFunctionCTCFinal}\bigr)\Unitary(\TimeFinal,\TimeInitial)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{\WaveFunctionCTCInitial}\bigr) &= \iiiint\diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}} \, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})} \!\; \WaveFunctionCTCInitial(v^{\prime}) \!\; \conj{\WaveFunctionCTCFinal}\!\!\;{(v^{\prime\prime})} \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar}.
+       \bigl(\bra{\WaveFunctionFinal}\otimes\bra{\WaveFunctionCTCFinal}\bigr)\Unitary(\TimeFinal,\TimeInitial)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{\WaveFunctionCTCInitial}\bigr) &= \iiiint\diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}} \, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})} \!\; \WaveFunctionCTCInitial(v^{\prime}) \!\; \conj{\WaveFunctionCTCFinal}\!\!\;{(v^{\prime\prime})} \\
+       &\qquad\qquad\qquad\qquad\qquad\qquad\qquad\times \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar}.
    \end{aligned}
 
 Now, to include a CTC in this scheme, we mandate that the initial and final coordinates for the chronology-violating system are the same, just like in a CTC. Mathematically, we impose the boundary condition :math:`v^{\prime}=v^{\prime\prime}` via a :math:`\delta`-function in :eq:`eq:path_amplitude_split`, and the resulting transition amplitude for the chronology-respecting system with an incorporated CTC may be written as
 
-.. math:: \bigl(\bra{\WaveFunctionFinal}\otimes\Identity\bigr)\Unitary(\TimeFinal,\TimeInitial)\bigl(\ket{\WaveFunctionInitial}\otimes\Identity\bigr) = \iiiint\diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}} \, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar}.
+.. math::
    :label: eq:P-CTCs_path
+
+   \begin{aligned}
+       \bigl(\bra{\WaveFunctionFinal}\otimes\Identity\bigr)\Unitary(\TimeFinal,\TimeInitial)\bigl(\ket{\WaveFunctionInitial}\otimes\Identity\bigr) &= \iiiint\diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}} \, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \\
+       &\qquad\qquad\qquad\qquad\qquad\qquad\qquad\times \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar}.
+   \end{aligned}
 
 The coherent addition of all possible initial and final conditions for the CTC is captured through the :math:`v^{\prime}` and :math:`v^{\prime\prime}` integrals, hence the removal of the CTC states :math:`\ket{\WaveFunctionCTCInitial}` and :math:`\ket{\WaveFunctionCTCFinal}`. This indicates that it is not possible to assign a state to the CTC system (at least in this context), which in turn means that compatibility with the boundary conditions implies that the CR system is not in a forbidden state.
 
@@ -89,21 +95,18 @@ From here, we replace the CV state :math:`\ket{\WaveFunctionCTC}` with the maxim
    :label: eq:P-CTCs_postselection
 
    \begin{aligned}
-       \bigl(\bra{\WaveFunctionFinal}\otimes\bra{\Bell}\bigr)\bigl(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{\Bell}\bigr) &= \iint \diff{v^{\prime\prime}}\,\diff{w^{\prime\prime}}\,\conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime\prime}-w^{\prime\prime})\bigl(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}}\bigr) \\
-       &\quad\times\bigl(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\\
-       &\quad\times\iint \diff{v^{\prime}}\,\diff{w^{\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \delta(v^{\prime}-w^{\prime})\bigl(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}}\bigr)\\
-       &= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\\
-       &\quad\times\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime\prime}) \\
-       &\quad\times\bigl(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}}\bigr)\bigl(\Unitary^{\prime}(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}}\bigr)\\
-       &= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\\
-       &\quad\times\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime\prime}) \\
-       &\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \cdot \underbrace{\bra{w^{\prime\prime}}\Identity\ket{w^{\prime}}}_{=\delta(w^{\prime\prime}-w^{\prime})} \\
-       &= \iiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime}) \\
-       &\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \\
-       &= \iint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\Bell(v^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \\
-       &\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \\
-       &= \iiiint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \\
-       &\quad\times\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar}.
+       &\bigl(\bra{\WaveFunctionFinal}\otimes\bra{\Bell}\bigr)\bigl(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{\Bell}\bigr) \\
+       &\qquad= \iint \diff{v^{\prime\prime}}\,\diff{w^{\prime\prime}}\,\conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime\prime}-w^{\prime\prime})\bigl(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}}\bigr) \\
+       &\qquad\quad\times\bigl(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity\bigr) \\
+       &\qquad\quad\times\iint \diff{v^{\prime}}\,\diff{w^{\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \delta(v^{\prime}-w^{\prime})\bigl(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}}\bigr) \\
+       &\qquad= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime\prime}) \\
+       &\qquad\quad\times\bigl(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}}\bigr)\bigl(\Unitary^{\prime}(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}}\bigr) \\
+       &\qquad= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime\prime}) \\
+       &\qquad\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \underbrace{\bra{w^{\prime\prime}}\Identity\ket{w^{\prime}}}_{=\delta(w^{\prime\prime}-w^{\prime})} \\
+       &\qquad= \iiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime}) \\
+       &\qquad\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \\
+       &\qquad= \iint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\Bell(v^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \\
+       &\qquad= \iiiint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar}.
    \end{aligned}
 
 Thus, we can see that the path-integral formulation :eq:`eq:P-CTCs_path` is equivalent to postselection :eq:`eq:P-CTCs_postselection`, that is,
@@ -116,6 +119,12 @@ General form of P-CTC system evolution
 --------------------------------------
 
 Here we show how a CR system state :math:`\StateCR\in\SpaceHilbert_\CR` in the Dirac bra-ket formalism evolves through the postselected teleportation chronology-violating network depicted in :numref:`fig:circuit_ctc_pctc`.
+
+.. raw:: latex
+
+   \newpage
+   \null
+   \vspace*{-1.25\baselineskip}
 
 .. only:: html
 
@@ -143,6 +152,10 @@ Here we show how a CR system state :math:`\StateCR\in\SpaceHilbert_\CR` in the D
 
    The postselected teleportation model of quantum time travel.
 
+.. raw:: latex
+
+   \vspace*{-0.5\baselineskip}
+
 In the P-CTCs formalism, self-consistent resolutions to quantum time-travel paradoxes are provided by way of quantum teleportation. This is achieved by first introducing a teleportation system to the pre-existing CR and CV pair. On the CV and teleportation modes, a maximally entangled state :math:`\ket{\Bell} \in \SpacePure(\SpaceHilbert_\CV \otimes \SpaceHilbert_\Teleportation)` is placed (preselected). Here, :math:`\SpaceHilbert_\Teleportation` is the Hilbert space of the teleportation system. With this, the evolution of the product input state :math:`\StateCR \otimes \ket{\Bell}\bra{\Bell}` under the unitary :math:`\Unitary \otimes \Identity` is simply
 
 .. math:: \StateCR \otimes \ket{\Bell}\bra{\Bell} \rightarrow \MapGeneral_{\Unitary \otimes \Identity}[\StateCR \otimes \ket{\Bell}\bra{\Bell}] = \bigl(\Unitary \otimes \Identity\bigr)\bigl(\StateCR \otimes \ket{\Bell}\bra{\Bell}\bigr)\bigl(\Unitary^\dagger \otimes \Identity\bigr).
@@ -164,7 +177,7 @@ where we computed
 
 The P-CTCs evolution of the input state :math:`\StateCR` is then given by the renormalized form of the non-unitary map :eq:`eq:P-CTCs_CR_unnormalized`, that is,
 
-.. math:: \MapPCTCsCR_{\Unitary}[\StateCR] = \frac{\OperatorPCTC \StateCR \OperatorPCTC^\dagger}{\trace[ \OperatorPCTC \StateCR \OperatorPCTC^\dagger]}.
+.. math:: \MapPCTCsCR_{\Unitary}[\StateCR] = \frac{\OperatorPCTC \StateCR \OperatorPCTC^\dagger}{\trace[ \OperatorPCTC \StateCR \OperatorPCTC^\dagger]},
    :label: eq:P-CTCs_CR
 
 where we defined the P-CTC operator
@@ -186,7 +199,7 @@ A striking observation in a comparison of D-CTCs and P-CTCs is the sheer incompa
 
 Although the state on the P-CTC is ordinarily unassignable, the P-CTC itself is the conduit by which information is necessarily transported to the past. In principle, this means that some CV state exists physically, and so must admit a definite form. It is therefore natural to ponder exactly what state the quantum system on the P-CTC assumes for any given scenario. A methodology which provides the ability to investigate the CV states in quantum prescriptions of time travel would therefore be both useful and enlightening.
 
-To solve this problem, one might think of employing the well-established technique of *quantum state tomography* :cite:p:`james_measurement_2001, thew_qudit_2002, mauro_dariano_quantum_2003, dariano_2_2004, nielsen_quantum_2010`. This essentially consists of the determination of an unknown quantum state by measuring it with respect to all elements of an appropriate *tomographically* or *informationally* complete basis (set of observables). Examples of such bases include the Pauli matrices (plus the identity matrix) :eq:`eq:Pauli` for qubits, and the Gell-Mann matrices (also with the identity) :eq:`eq:Gell-Mann` for qutrits. Once the unknown state (or rather, an ensemble of identically prepared quantum states) has been measured exhaustively in a suitable basis, the resulting statistics (i.e., expectation values) enable the determination of the Bloch vector via :eq:`eq:matrix_qudit`, which is equivalent to precise identification of the associated (and previously unknown) state.
+To solve this problem, one might think of employing the well-established technique of *quantum state tomography* :cite:p:`james_measurement_2001, thew_qudit_2002, mauro_dariano_quantum_2003, dariano_quantum_2004, nielsen_quantum_2010`. This essentially consists of the determination of an unknown quantum state by measuring it with respect to all elements of an appropriate *tomographically* or *informationally* complete basis (set of observables). Examples of such bases include the Pauli matrices (plus the identity matrix) :eq:`eq:Pauli` for qubits, and the Gell-Mann matrices (also with the identity) :eq:`eq:Gell-Mann` for qutrits. Once the unknown state (or rather, an ensemble of identically prepared quantum states) has been measured exhaustively in a suitable basis, the resulting statistics (i.e., expectation values) enable the determination of the Bloch vector via :eq:`eq:matrix_qudit`, which is equivalent to precise identification of the associated (and previously unknown) state.
 
 At first glance, this could conceivably allow for the determination of the state of the time-travelling (CV) system in any given quantum prescription of antichronological time travel. A problem with this methodology however is its incompatibility with the requirement of resolving the state without simultaneously disturbing it (i.e., collapsing the wave function). Such a feature is essential, as an ordinary ("strong") measurement would necessarily disturb the CV state, thereby disrupting the relevant self-consistency condition(s) in any given quantum formulation of CTCs (like D-CTCs and P-CTCs). Therefore, in order to measure the state on the CTC without (significantly) perturbing the system, one can use so-called *weak measurements* :cite:p:`aharonov_quantum_2005, aharonov_how_1988, peres_quantum_1989, leggett_comment_1989, aharonov_aharonov_1989, duck_sense_1989, aharonov_properties_1990, knight_weak_1990, story_weak_1991, johansen_weak_2004, vaidman_weak_2009, wu_weak_2009, kedem_modular_2010, wu_weak_2011, nakamura_evaluation_2012, lundeen_procedure_2012, pang_weak_2012, kofman_nonperturbative_2012`, that is, quantum measurements which minimize disturbance by leaving the measured state unaffected (to first order). This technique and its findings were first presented in :cite:p:`bishop_quantum_2025`.
 
@@ -195,7 +208,7 @@ Using this methodology, it is possible to rigorously assign a state to the syste
 .. math:: \MapPCTCsCV_{\Unitary}[\StateCR] \equiv \trace_\CR\bigl[\Unitary(\StateCR \otimes \tfrac{1}{2}\Identity)\Unitary^\dagger\bigr].
    :label: eq:P-CTCs_CV
 
-In contrast to its D-CTC counterpart, this state can be computed (and is in fact also unique) for *every* given combination of interaction :math:`\Unitary` and input state :math:`\StateCR`. Another interesting observation is that it is exactly equivalent to the CV output state from the first iteration of a maximally mixed seed state in the D-CTC ECP (see :ref:`sec:ECP`). In essence, this means that a P-CTC can be thought of as being somewhat like a "partial" D-CTC---one in which the self-consistency condition is not fully realized (at least according to D-CTCs). This is curious result, as it suggests that despite their striking differences, the distinct notions of self-consistency that underpin both P-CTCs and D-CTCs may be more similar than traditionally thought.
+In contrast to its D-CTC counterpart, this state can be computed (and is in fact also unique) for *every* given combination of interaction :math:`\Unitary` and input state :math:`\StateCR`. Another interesting observation is that it is exactly equivalent to the CV output state from the first iteration of a maximally mixed seed state in the D-CTC ECP (see :numref:`sec:ECP` :ref:`sec:ECP`). In essence, this means that a P-CTC can be thought of as being somewhat like a "partial" D-CTC---one in which the self-consistency condition is not fully realized (at least according to D-CTCs). This is curious result, as it suggests that despite their striking differences, the distinct notions of self-consistency that underpin both P-CTCs and D-CTCs may be more similar than traditionally thought.
 
 An important point to note is that the result :eq:`eq:P-CTCs_CV` is applicable only to :math:`2`-dimensional (qubit) systems, and that a similar expression for :math:`\Dimension`-dimensional (qudit) systems has yet to be determined analytically. One such candidate however is the natural generalization
 

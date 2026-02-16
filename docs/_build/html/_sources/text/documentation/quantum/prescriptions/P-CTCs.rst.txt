@@ -58,6 +58,10 @@ Read-only properties
 Methods
 ^^^^^^^
 
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
+
 .. automethod:: qhronology.quantum.prescriptions.PCTC.output_violating
 
 .. raw:: latex
@@ -70,6 +74,10 @@ Methods
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. automethod:: qhronology.quantum.prescriptions.PCTC.output
 
 .. raw:: latex
@@ -78,7 +86,7 @@ Methods
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.prescriptions.PCTC.state_violating
 

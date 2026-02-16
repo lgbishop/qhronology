@@ -50,14 +50,23 @@ expectations.append(1)  # Expectation value corresponding to the identity operat
 for state in evolved_probe_states:
     state.coefficient("1/ε")
     statistics = state.measure(
-        operators=[Z], targets=[0], statistics=True, observable=True
+        operators=[Z],
+        targets=[0],
+        statistics=True,
+        observable=True,
     )
     expectation = statistics[0]
     expectations.append(expectation)
 
-# Reconstruct state via Bloch-sphere representation using weak measurements
+# Reconstruct state via weak measurements
+# (Using the Bloch-sphere representation)
 pauli_matrices = [
-    Pauli(index=i, targets=[0], num_systems=1).output() for i in range(0, 4)
+    Pauli(
+        index=i,
+        targets=[0],
+        num_systems=1,
+    ).output()
+    for i in range(0, 4)
 ]
 spec = sp.zeros(2)
 for i in range(0, 4):

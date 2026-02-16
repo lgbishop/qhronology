@@ -7,14 +7,22 @@ from qhronology.quantum.prescriptions import pctc_respecting
 import sympy as sp
 
 # Input
-rho = sp.MatrixSymbol("ρ", 2, 2).as_mutable()
 unitary = sp.MatrixSymbol("U", 4, 4).as_mutable()
 
 input_state = VectorState(spec=[("a", [0]), ("b", [1])], label="ψ")
-bell_state = VectorState(spec=[(1, [0, 0]), (1, [1, 1])], norm=1, label="Φ")
+bell_state = VectorState(
+    spec=[(1, [0, 0]), (1, [1, 1])],
+    norm=1,
+    label="Φ",
+)
 
 # Gate
-UI = QuantumGate(spec=unitary, targets=[0, 1], num_systems=3, label="U")
+UI = QuantumGate(
+    spec=unitary,
+    targets=[0, 1],
+    num_systems=3,
+    label="U",
+)
 
 # Circuit
 postselected_teleportation = QuantumCircuit(

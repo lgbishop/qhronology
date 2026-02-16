@@ -32,7 +32,7 @@ def phys_names(children, context, role, **kwargs):
     if len(persons) > 20:
         formatted_names = [style.format_name(
             person, style.abbreviate_names) for person in persons[:20]]
-        formatted_names += [richtext.Text("et al.")]
+        formatted_names += [Text("et al.")]
         return join(sep=', ')[formatted_names].format_data(context)
     else:
         formatted_names = [style.format_name(
@@ -195,16 +195,18 @@ class PhysStyle(BaseStyle):
     def format_web_refs(self, e):
         # based on urlbst output.web.refs
         return sentence(add_period=False) [
-            optional [ self.format_url(e) ],
-                       # optional [ ' (visited on ', field('urldate'), ')' ] ],
-            optional [ self.format_eprint(e) ],
-            optional [ self.format_pubmed(e) ],
-            optional [ self.format_doi(e) ],
-            ]
+            # optional [ ' (visited on ', field('urldate'), ')' ],
+            # optional [ self.format_pubmed(e) ],
+            optional [ first_of [
+                optional [ self.format_doi(e) ],
+                optional [ self.format_url(e) ],
+                optional [ self.format_eprint(e) ],
+            ] ]
+        ]
 
     def format_url(self, e):
         return words[
-            # 'URL:',
+            'URL:',
             href[
                 field('url', raw=True),
                 field('url', raw=True)
@@ -224,14 +226,17 @@ class PhysStyle(BaseStyle):
         ]
 
     def format_doi(self, e):
-        return href[
-            join[
-                'https://doi.org/',
-                field('doi', raw=True)
-            ],
-            join[
-                'doi:',
-                field('doi', raw=True)
+        return words[
+            'DOI:',
+            href[
+                join[
+                    'https://doi.org/',
+                    field('doi', raw=True)
+                ],
+                join[
+                    # 'doi:',
+                    field('doi', raw=True)
+                ]
             ]
         ]
 
@@ -270,9 +275,13 @@ class PhysStyle(BaseStyle):
             sentence [
                 self.format_names('author'),
                 self.format_title(e, 'title'),
-                tag('em') [optional_field('journal')],
+                optional [ first_of [
+                    optional [ tag('em') [ field('archiveprefix') ], optional [ ' [',field('primaryclass'),']' ] ],
+                    optional [ tag('em') [ field('journal') ] ],
+                ]],
                 optional[ volume_and_pages ],
-                date],
+                date,
+            ],
             # sentence [ optional_field('note') ],
             self.format_web_refs(e),
         ]
@@ -469,11 +478,16 @@ class PhysStyle(BaseStyle):
             sentence[
                 optional[ self.format_names('author') ],
                 optional[ self.format_title(e, 'title') ],
-                optional[ field('howpublished') ],
+                optional [ tag('em') [ first_of [ optional [ field('journal') ], optional [ field('archiveprefix') ] ] ], optional [ ' [',field('primaryclass'),']' ] ],
+                optional[ field('address') ],
+                optional[ field('annotation') ],
                 optional[ date ],
             ],
+            sentence(capfirst=False,add_period=False,sep=', ') [
+                optional [ self.format_web_refs(e) ],
+                optional [ field('addendum') ],
+            ],
             # sentence [ optional_field('note') ],
-            self.format_web_refs(e),
         ]
         return template
 

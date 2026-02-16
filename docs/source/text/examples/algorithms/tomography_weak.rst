@@ -6,7 +6,7 @@ Quantum state tomography via weak measurements
 Description
 -----------
 
-The quantum state tomography methodology presented in :ref:`eg:tomography_strong` is a standard scheme that uses ordinary ("strong") measurements---those which by necessity disturb (i.e., collapse the wave function of) the quantum system under consideration. Thus, in order to perform state tomography without (significantly) disrupting the unknown system, we can use so-called *weak measurements*, that is, quantum measurements which minimize disturbance by leaving the measured state unaffected (to first order in the strength of the measurement). The idea of performing quantum state tomography using weak measurements constitutes a powerful technique that has been used with great success in a plethora of past experimental applications :cite:p:`knight_weak_1990, hosten_observation_2008, lundeen_experimental_2009, dixon_ultrasensitive_2009, kim_reversing_2009, cho_weak_2010, goggin_violation_2011, zilberberg_charge_2011, lundeen_direct_2011, kocsis_observing_2011, feizpour_amplifying_2011, kim_protecting_2012, rozema_violation_2012, vijay_stabilizing_2012, hatridge_quantum_2013, salvail_full_2013, groen_partial-measurement_2013, malik_direct_2014, blok_manipulating_2014, magana-loaiza_amplification_2014, denkmayr_observation_2014, mirhosseini_compressive_2014, shi_scan-free_2015, mahler_experimental_2016, thekkadath_direct_2016, piacentini_measuring_2016, hallaji_weak-value_2017, kim_direct_2018, nirala_measuring_2019`.
+The quantum state tomography methodology presented in :numref:`eg:tomography_strong` :ref:`eg:tomography_strong` is a standard scheme that uses ordinary ("strong") measurements---those which by necessity disturb (i.e., collapse the wave function of) the quantum system under consideration. Thus, in order to perform state tomography without (significantly) disrupting the unknown system, we can use so-called *weak measurements*, that is, quantum measurements which minimize disturbance by leaving the measured state unaffected (to first order in the strength of the measurement). The idea of performing quantum state tomography using weak measurements constitutes a powerful technique that has been used with great success in a plethora of past experimental applications :cite:p:`knight_weak_1990, hosten_observation_2008, lundeen_experimental_2009, dixon_ultrasensitive_2009, kim_reversing_2009, cho_weak_2010, goggin_violation_2011, zilberberg_charge_2011, lundeen_direct_2011, kocsis_observing_2011, feizpour_amplifying_2011, kim_protecting_2012, rozema_violation_2012, vijay_stabilizing_2012, hatridge_quantum_2013, salvail_full_2013, groen_partial-measurement_2013, malik_direct_2014, blok_manipulating_2014, magana-loaiza_amplification_2014, denkmayr_observation_2014, mirhosseini_compressive_2014, shi_scan-free_2015, mahler_experimental_2016, thekkadath_direct_2016, piacentini_measuring_2016, hallaji_weak-value_2017, kim_direct_2018, nirala_measuring_2019`.
 
 The scheme presented here follows the work in :cite:p:`bishop_quantum_2025`. It is limited to *qubits*, though is it thought to be generalizable to qudits without too much difficulty. Note that while most treatments consider weak measurements characterized by weakly coupled interactions (that is, unitary operators close to identity), this formalism is based on :cite:p:`pryde_measuring_2004, pryde_measurement_2005`, in which a near eigenstate of the NOT (Pauli-:math:`X`) gate is perturbed *weakly* by a control state via the standard CNOT interaction. See, e.g., :cite:p:`wu_weak_2009, kofman_nonperturbative_2012, wu_state_2013, svensson_pedagogical_2013, tamir_introduction_2013, dressel_colloquium_2014` for pedagogical exposition of weak measurements and the associated weak values, and :cite:p:`story_weak_1991, wu_state_2013, kim_direct_2018, botero_weak_2018` for good examples of weak-measurement tomography.
 
@@ -69,7 +69,7 @@ is the Hadamard gate, and
 
 .. math:: \Phase \equiv \ket{0}\bra{0} + \eye\ket{1}\bra{1}
 
-is a phase shift gate.
+is a phase gate.
 
 .. only:: html
 
@@ -96,6 +96,10 @@ is a phase shift gate.
    :figclass: light-dark hidden
 
    A quantum state weak-measurement tomography algorithm.
+
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
 
 With these definitions in mind, a weak measurement can be easily computed in a number of steps. First, given the unknown system :math:`\StateCV`, the ancilla :math:`\ket{\Probe}`, and the weak-measurement unitary :eq:`eq:unitary_tomography_weak`, the evolution of the product state :math:`\StateCV\otimes\ket{\Probe}\bra{\Probe}` is the standard unitary map
 
@@ -224,14 +228,10 @@ If we define :math:`\Pauli_0 \equiv \Identity`, then the set of operators :math:
 
     \StateCV = \frac{1}{2}\sum_{k=0}^{3} \trace[\Pauli_k \StateCV] \Pauli_k.
 
-Since the coefficient for :math:`k = 0` is fixed by normalization (i.e., :math:`\trace[\Pauli_0 \StateCV] = 1`), then the state is completely (and uniquely) determined by the *Bloch vector*, which is defined for a :math:`\Dimension`-dimensional state as the :math:`(\Dimension^2-1)`-dimensional real vector of parameters :math:`\bigl\{\trace[\Pauli_k \StateCV]\bigr\}_{k = 1}^{\Dimension^2 - 1}`. Accordingly, the linear combination :eq:`eq:tomography_reconstruction` is said to be the *Bloch sphere representation* of the state :math:`\StateCV`. Thus, since we have shown that we can infer expectation values :eq:`eq:tomography_expectation` for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the :math:`z`-basis, then we can characterize the state completely without directly measuring it.
+Since the coefficient for :math:`k = 0` is fixed by normalization (i.e., :math:`\trace[\Pauli_0 \StateCV] = 1`), then the state is completely (and uniquely) determined by the *Bloch vector*, which is defined for a :math:`\Dimension`-dimensional state as the :math:`(\Dimension^2-1)`-dimensional real vector of parameters :math:`\bigl\{\trace[\Pauli_k \StateCV]\bigr\}_{k = 1}^{\Dimension^2 - 1}`. Accordingly, the linear combination :eq:`eq:tomography_reconstruction` is said to be the *Bloch sphere representation* of the state :math:`\StateCV`. Thus, since we have shown that we can infer expectation values :eq:`eq:tomography_expectation` for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the :math:`z`-basis, then we can completely characterize the state without directly measuring it.
 
 Implementation
 --------------
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -262,7 +262,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_tomography_weak.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_tomography_weak.pdf}
    \vspace{-1\baselineskip}
 
 ..

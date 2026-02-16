@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9e158f31" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
   </head>
   
   
@@ -513,7 +513,7 @@
 <span id="eg-adder-lookahead"></span><h1>Carry-lookahead adder<a class="headerlink" href="#carry-lookahead-adder" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>A quantum <em>carry-lookahead</em> adder, proposed by Vedral et al. <span id="id1">[<a class="reference internal" href="#cite-1-vedral-quantum-1996" title="V. Vedral, A. Barenco, and A. Ekert, “Quantum networks for elementary arithmetic operations”, Physical Review A, 54(1):147–153, July 1996. doi:10.1103/PhysRevA.54.147">1</a>]</span>, is another style of multi-qubit adder and appears in <a class="reference internal" href="#fig-circuit-algorithm-adder-lookahead"><span class="std std-numref">Figure 20</span></a>. It consists of two phases: in the first, the carry qubits are computed, while in the second, the sums (taking into account the value of the carry qubits) are computed (in addition to the carry qubits being reverted back to their original values). Note that in this implementation, the order of the qubits in the encoding is reversed, such that the least-significant qubits are at the top while the most-significant qubits are at the bottom.</p>
+<p>A quantum <em>carry-lookahead</em> adder, proposed by Vedral et al. <span id="id1">[<a class="reference internal" href="#cite-1-vedral-quantum-1996" title="V. Vedral, A. Barenco, and A. Ekert, “Quantum networks for elementary arithmetic operations”, Physical Review A, 54(1):147–153, July 1996. DOI: 10.1103/PhysRevA.54.147">1</a>]</span>, is another style of multi-qubit adder and appears in <a class="reference internal" href="#fig-circuit-algorithm-adder-lookahead"><span class="std std-numref">Figure 20</span></a>. It consists of two phases: in the first, the carry qubits are computed, while in the second, the sums (taking into account the value of the carry qubits) are computed (in addition to the carry qubits being reverted back to their original values). Note that in this implementation, the order of the qubits in the encoding is reversed, such that the least-significant qubits are at the top while the most-significant qubits are at the bottom.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_lookahead-dark.png"><img alt="A quantum circuit diagram of a quantum carry-lookahead adder." src="../../../_images/circuit_algorithm_adder_lookahead-dark.png" style="width: 898.2800000000001px; height: 282.54px;" />
 </a>
@@ -531,28 +531,28 @@
 </figure>
 <p>The values of the summation qubits can be determined to be</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-0">
-<span class="eqno">(357)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-0" title="Link to this equation">#</a></span>\[\begin{split}s_i =
+<span class="eqno">(360)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-0" title="Link to this equation">#</a></span>\[\begin{split}s_i =
     \begin{cases}
         x_0 \oplus y_0 \oplus c_0, &amp; \text{if } i = 0; \\
         x_i \oplus y_i \oplus c^\prime_i, &amp; \text{if } i &gt; 0. \\
     \end{cases}\end{split}\]</div>
 <p>This version of an adder resets all output carry qubits to their original input values. The intermediary carry values however are</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-1">
-<span class="eqno">(358)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-1" title="Link to this equation">#</a></span>\[\begin{split}c^\prime_i =
+<span class="eqno">(361)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-1" title="Link to this equation">#</a></span>\[\begin{split}c^\prime_i =
     \begin{cases}
         c_1 \oplus x_0 y_0 \oplus c_0 (x_0 \oplus y_0), &amp; \text{if } i = 1; \\
         c_i \oplus x_{i - 1} y_{i - 1} \oplus c^\prime_{i - 1} (x_{i - 1} \oplus y_{i - 1}), &amp; \text{if } i &gt; 1. \\
     \end{cases}\end{split}\]</div>
 <p>The last qubit is simply an overflow qubit and has the value</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-adder-lookahead-2">
-<span class="eqno">(359)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-2" title="Link to this equation">#</a></span>\[c^\prime_\Dimension = c_\Dimension \oplus x_{\Dimension - 1} y_{\Dimension - 1} \oplus c^\prime_{\Dimension - 1} (x_{\Dimension - 1} \oplus y_{\Dimension - 1}).\]</div>
+<span class="eqno">(362)<a class="headerlink" href="#equation-text-examples-algorithms-adder-lookahead-2" title="Link to this equation">#</a></span>\[c^\prime_\Dimension = c_\Dimension \oplus x_{\Dimension - 1} y_{\Dimension - 1} \oplus c^\prime_{\Dimension - 1} (x_{\Dimension - 1} \oplus y_{\Dimension - 1}).\]</div>
 <p>It is non-zero when the sum of the most-significant qubits (plus carry) “wraps around” (due to the modular arithmetic), and so represents the case where the total resulting sum is too big to be encoded with just <span class="math notranslate nohighlight">\(\Dimension\)</span> qubits, a situation known as <em>integer overflow</em>. If the value of this qubit is not required, then the circuit can be simplified by removing the last CARRY, the lone CNOT, and the qubit itself.</p>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>In this implementation, the dimensionality of the input state can be decreased by removing the overflow qubit (via <code class="code highlight python docutils literal highlight-python"><span class="n">overflow_qubit</span> <span class="o">=</span> <span class="kc">False</span></code>), thereby reducing the execution time of the algorithm.</p>
 <div class="literal-block-wrapper docutils container" id="code-adder-lookahead">
-<div class="code-block-caption"><span class="caption-number">Code Block 21 </span><span class="caption-text">/text/examples/algorithms/adder_lookahead.py</span><a class="headerlink" href="#code-adder-lookahead" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 22 </span><span class="caption-text">/text/examples/algorithms/adder_lookahead.py</span><a class="headerlink" href="#code-adder-lookahead" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
@@ -570,24 +570,36 @@
 
 <span class="c1"># Input</span>
 <span class="n">augend_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
-    <span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="n">augend_integer</span><span class="p">,</span> <span class="n">num_systems</span><span class="o">=</span><span class="n">encoding_depth</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">integer</span><span class="o">=</span><span class="n">augend_integer</span><span class="p">,</span>
+        <span class="n">num_systems</span><span class="o">=</span><span class="n">encoding_depth</span><span class="p">,</span>
+        <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">),</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">addend_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
-    <span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="n">addend_integer</span><span class="p">,</span> <span class="n">num_systems</span><span class="o">=</span><span class="n">encoding_depth</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">integer</span><span class="o">=</span><span class="n">addend_integer</span><span class="p">,</span>
+        <span class="n">num_systems</span><span class="o">=</span><span class="n">encoding_depth</span><span class="p">,</span>
+        <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">),</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">zero_state</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">if</span> <span class="n">overflow_qubit</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">zero_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+    <span class="n">zero_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
+        <span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
 
 <span class="n">augend_states</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">addend_states</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">carry_states</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">encoding_depth</span><span class="p">):</span>
     <span class="n">target_bit</span> <span class="o">=</span> <span class="n">i</span>
-    <span class="n">complement_bits</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">encoding_depth</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">target_bit</span><span class="p">]</span>
-
+    <span class="n">complement_bits</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">encoding_depth</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">target_bit</span>
+    <span class="p">]</span>
     <span class="n">augend_state</span><span class="o">.</span><span class="n">partial_trace</span><span class="p">(</span><span class="n">complement_bits</span><span class="p">)</span>
     <span class="n">addend_state</span><span class="o">.</span><span class="n">partial_trace</span><span class="p">(</span><span class="n">complement_bits</span><span class="p">)</span>
 
@@ -616,14 +628,16 @@
 
 <span class="n">input_spec</span> <span class="o">=</span> <span class="n">flatten_list</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="p">[</span><span class="n">carry_states</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">augend_states</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">addend_states</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+        <span class="p">[</span>
+            <span class="n">carry_states</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">augend_states</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">addend_states</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="p">]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">encoding_depth</span><span class="p">)</span>
     <span class="p">]</span>
     <span class="o">+</span> <span class="p">[</span><span class="n">zero_state</span><span class="p">]</span>
 <span class="p">)</span>
-
 <span class="c1"># Gates</span>
-
 <span class="c1"># Construct sequence of CARRY gates</span>
 <span class="n">carries</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">encoding_depth</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">overflow_qubit</span><span class="p">)):</span>
@@ -710,9 +724,13 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">encoding_depth</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">overflow_qubit</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sum_registers</span>
 <span class="p">]</span>
+
 <span class="n">sum_state</span> <span class="o">=</span> <span class="n">adder</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">traces</span><span class="o">=</span><span class="n">sum_registers_complement</span><span class="p">)</span>
 <span class="n">sum_integer</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">sum_state</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sum_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="n">sum_integer</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+<span class="n">sum_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
+    <span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="n">sum_integer</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">final_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="c1"># Results</span>
@@ -720,10 +738,10 @@
 <span class="n">addend_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="n">sum_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 
-<span class="n">computation</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Computation: </span><span class="si">{</span><span class="n">augend_integer</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">addend_integer</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">sum_integer</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">duration</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">final_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">initial_time</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> seconds&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">computation</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+<span class="n">computation</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">augend_integer</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">addend_integer</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">sum_integer</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">final_time</span> <span class="o">-</span> <span class="n">initial_time</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Computation: </span><span class="si">{</span><span class="n">computation</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -770,27 +788,27 @@
 </section>
 <section id="results">
 <h3>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">computation</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Computation: </span><span class="si">{</span><span class="n">computation</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="go">Computation: 1 + 1 = 2</span>
 </pre></div>
 </div>
 <p>When <code class="code highlight python docutils literal highlight-python"><span class="n">overflow_qubit</span> <span class="o">=</span> <span class="kc">True</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
 <span class="go">Duration: 2.596 seconds</span>
 </pre></div>
 </div>
 <p>When <code class="code highlight python docutils literal highlight-python"><span class="n">overflow_qubit</span> <span class="o">=</span> <span class="kc">False</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
 <span class="go">Duration: 0.507 seconds</span>
 </pre></div>
 </div>
-<p>This version of a multi-qubit full adder is evidently much faster than the <a class="reference internal" href="adder_ripple.html#eg-adder-ripple"><span class="std std-ref">Ripple-carry adder</span></a> for the equivalent number of qubits, which highlights the efficiency advantage of using fewer qubits to achieve the same computation.</p>
+<p>This version of a multi-qubit full adder is evidently much faster than the <code class="xref std std-numref docutils literal notranslate"><span class="pre">eg:adder_ripple</span></code> <a class="reference internal" href="adder_ripple.html#eg-adder-ripple"><span class="std std-ref">Ripple-carry adder</span></a> for the equivalent number of qubits, which highlights the efficiency advantage of using fewer qubits to achieve the same computation.</p>
 <p class="bibliography rubric"><span class="classbibliography">References</span></p>
 <div class="bibliography docutils container" id="bibliography-1">
 <div role="list" class="citation-list">
 <div class="citation" id="cite-1-vedral-quantum-1996" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>V. Vedral, A. Barenco, and A. Ekert, “Quantum networks for elementary arithmetic operations”, <em>Physical Review A</em>, 54(1):147–153, July 1996. <a class="reference external" href="https://doi.org/10.1103/PhysRevA.54.147">doi:10.1103/PhysRevA.54.147</a></p>
+<p>V. Vedral, A. Barenco, and A. Ekert, “Quantum networks for elementary arithmetic operations”, <em>Physical Review A</em>, 54(1):147–153, July 1996. DOI: <a class="reference external" href="https://doi.org/10.1103/PhysRevA.54.147">10.1103/PhysRevA.54.147</a></p>
 </div>
 </div>
 </div>

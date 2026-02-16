@@ -186,7 +186,7 @@ def entropy(
 
     .. math:: \\Entropy(\\op{\\rho}) = \\trace[\\op{\\rho}\\log_\\Base\\op{\\rho}].
 
-    Here, :math:`\\Base` represents :python:`base`, which is the dimensionality of the unit of information with which the entropy is measured.
+    Here, :math:`\\Base` represents :python:`base`, which is the dimensionality of the unit of information in which the entropy is measured.
 
     Arguments
     ---------
@@ -195,7 +195,7 @@ def entropy(
     state_B : mat | QuantumObject
         The matrix representation of the second input state.
     base : num | expr | str
-        The dimensionality of the unit of information with which the entropy is measured.
+        The dimensionality of the unit of information in which the entropy is measured.
         Defaults to :python:`2`.
 
     Returns
@@ -272,7 +272,7 @@ def mutual(
         Must be a non-negative integer.
         Defaults to :python:`2`.
     base : num | expr | str
-        The dimensionality of the unit of information with which the mutual information is measured.
+        The dimensionality of the unit of information in which the mutual information is measured.
         Defaults to the value of :python:`dim`.
 
     Returns
@@ -322,7 +322,7 @@ class QuantitiesMixin:
 
     Note
     ----
-    The :py:class:`~qhronology.mechanics.quantities.QuantitiesMixin` mixin is used exclusively by the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding section (:ref:`sec:docs_states_quantities`) for documentation on its methods.
+    The :py:class:`~qhronology.mechanics.quantities.QuantitiesMixin` mixin is used exclusively by the :py:class:`~qhronology.quantum.states.QuantumState` class---please see :numref:`sec:docs_states_quantities` :ref:`sec:docs_states_quantities` for documentation on its methods.
     """
 
     def trace(self) -> num | expr:
@@ -388,7 +388,9 @@ class QuantitiesMixin:
         return fidelity(state_A=self, state_B=state)
 
     def entropy(
-        self, state: mat | QuantumObject = None, base: num | expr | str | None = None
+        self,
+        state: mat | QuantumObject | None = None,
+        base: num | expr | str | None = None,
     ) -> num | expr:
         """Calculate the relative von Neumann entropy (:math:`\\Entropy`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):
 
@@ -401,14 +403,14 @@ class QuantitiesMixin:
 
         .. math:: \\Entropy(\\op{\\rho}) = \\trace[\\op{\\rho}\\log_\\Base\\op{\\rho}].
 
-        Here, :math:`\\Base` represents :python:`base`, which is the dimensionality of the unit of information with which the entropy is measured.
+        Here, :math:`\\Base` represents :python:`base`, which is the dimensionality of the unit of information in which the entropy is measured.
 
         Arguments
         ---------
         state : mat | QuantumObject
             The given state.
         base : num | expr | str
-            The dimensionality of the unit of information with which the entropy is measured.
+            The dimensionality of the unit of information in which the entropy is measured.
             Defaults to :python:`2`.
 
         Returns
@@ -443,7 +445,7 @@ class QuantitiesMixin:
             The indices of the second subsystem.
             Defaults to the complement of :python:`systems_A` with respect to the entire composition of the subsystems of :python:`state`.
         base : num | expr | str
-            The dimensionality of the unit of information with which the mutual information is measured.
+            The dimensionality of the unit of information in which the mutual information is measured.
             Defaults to the value of :python:`self.dim`.
 
         Returns

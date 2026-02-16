@@ -26,7 +26,10 @@ third_state = VectorState(
 CCN = Not(targets=[2], controls=[0, 1], num_systems=3)
 
 # Circuit
-circuit = QuantumCircuit(inputs=[first_state, second_state, third_state], gates=[CCN])
+circuit = QuantumCircuit(
+    inputs=[first_state, second_state, third_state],
+    gates=[CCN],
+)
 circuit.diagram()
 
 # Output

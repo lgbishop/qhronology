@@ -56,7 +56,6 @@ include_patterns = [
     "index.rst",
     "index_latex.rst",
     "README.rst",
-    "mathematics.rst",
     "text/**.rst",
     "art/output/**.png",
     "figures/output/**",
@@ -81,10 +80,22 @@ default_role = "py:obj"
 
 maximum_signature_line_length = 10
 
+smartquotes = True
+smartquotes_action = 'qBDe'
+
+type_aliases = {
+    "num": "num",
+    "sym": "sym",
+    "expr": "expr",
+    "mat": "mat",
+    "arr": "arr",
+}
+
 add_module_names = False
 autodoc_preserve_defaults = False
 # autodoc_typehints = "both"
 # autodoc_typehints_description_target = "all"
+autodoc_type_aliases = type_aliases
 
 napoleon_google_docstring = False
 napoleon_numpy_docstring = True
@@ -98,7 +109,7 @@ napoleon_use_ivar = False
 napoleon_use_param = True
 napoleon_use_rtype = False
 napoleon_preprocess_types = True
-napoleon_type_aliases = None
+napoleon_type_aliases = type_aliases
 napoleon_attr_annotations = True
 
 autosummary_generate = True  # Enable sphinx.ext.autosummary.
@@ -152,14 +163,14 @@ numfig = True
 numfig_format = {
     "code-block": "Code Block %s",
     "figure": "Figure %s",
-    "section": "Section %s",
+    "section": "§%s",
     "table": "Table %s",
 }
 numfig_secnum_depth = 1
 
 pygments_style = "pygments_style.QhronologyLightStyle"
 
-# pygments_style = "borland" # https://pygments.org/styles/
+# pygments_style = "borland" # https://pygments.org/styles
 source_suffix = {
     ".rst": "restructuredtext",
     ".txt": "restructuredtext",
@@ -212,7 +223,7 @@ latex_engine = "pdflatex"
 latex_additional_files = ["./preamble/header.tex.txt", "./preamble/macros.tex.txt"]
 latex_elements = {
     "papersize": "a4paper",
-    "pointsize": "10pt",
+    "pointsize": "11pt",
     # "pxunit": "0.5bp",
     "figure_align": "H",
     "releasename": "Version",
@@ -233,6 +244,7 @@ First published in June 2025 as version 1.0.0
 
 Latest documentation PDF version available online:
 
+% \mbox{\texttt{\url{https://github.com/lgbishop/qhronology/blob/latest/docs/_build/latex/Qhronology.pdf}}}
 \texttt{\url{https://github.com/lgbishop/qhronology/blob/latest/docs/_build/latex/Qhronology.pdf}}
 
 Official website:
@@ -271,6 +283,8 @@ Read the full license here:
 
 \widowpenalty=10000
 
+\linespread{0.98}
+
 \usepackage{fvextra}
 
 % \definecolor{accentcolor}{HTML}{224499}
@@ -288,6 +302,7 @@ Read the full license here:
     runcolor = accentcolor,
     urlcolor = accentcolor,
 }
+\def\UrlBreaks{\do\/}
 
 % \renewcommand{\mathbb}[1]{\mathbb{#1}}
 % % \renewcommand{\mathbb}{\mathds}
@@ -315,7 +330,7 @@ Read the full license here:
 \usepackage{mlmodern}
 
 % ttfamily (code, monospace, verbatim)
-\usepackage[scaled=0.84]{sourcecodepro}
+\usepackage[scaled=0.9]{sourcecodepro}
 %\usepackage[scaled=0.85,lining]{FiraMono}
 %\usepackage[scaled=0.85]{beramono}
 %\usepackage{ascii}
@@ -490,11 +505,14 @@ Read the full license here:
 \usepackage[skins,breakable]{tcolorbox}
 \usepackage{adjustbox}
 
+\let\tablecontinued\sphinxtablecontinued
+\renewcommand{\sphinxtablecontinued}[1]{\tablecontinued{\small\textsf{#1}}}
+
 \let\startsig\pysigstartsignatures
-\renewcommand{\pysigstartsignatures}{\startsig\fontsize{11}{12}\selectfont\ttfamily}
+\renewcommand{\pysigstartsignatures}{\startsig\linespread{1.05}\fontsize{11}{12}\selectfont\ttfamily}
 
 \let\stopsig\pysigstopsignatures
-\renewcommand{\pysigstopsignatures}{\stopsig\normalsize\rmfamily}
+\renewcommand{\pysigstopsignatures}{\stopsig\linespread{0.98}\normalsize\rmfamily}
 
 \let\lineitem\sphinxlineitem
 \renewcommand{\sphinxlineitem}[1]{\lineitem{\textsf{#1}}}
@@ -543,16 +561,35 @@ Read the full license here:
       \ifthenelse{\equal{#1}{n}}{\textup{\textcolor{color_names}{#2}}}{% names
       \ifthenelse{\equal{#1}{o}}{\textcolor{color_operators}{#2}}{% operators
       \ifthenelse{\equal{#1}{p}}{\textup{\textcolor{color_punctuation}{#2}}}{% punctuation
-      \ifthenelse{\equal{#1}{std}}{\textcolor{color_standard}{#2}}{% standard text
+      % \ifthenelse{\equal{#1}{std}}{\textsection\textcolor{color_code}{#2}}{% standard text
+      \ifthenelse{\equal{#1}{std}}{\textcolor{color_code}{#2}}{% standard text
+      \ifthenelse{\equal{#1}{std-ref}}{\textit{\textcolor{color_code}{#2}}}{% standard text
       \ifthenelse{\equal{#1}{w}}{#2}{% whitespace
-      \textcolor{black}{#2}}}}}}}}% Default color if #1 doesn't match any case
+      \textcolor{black}{#2}}}}}}}}}% Default color if #1 doesn't match any case
     \fi
   \fi
 }
 \makeatother
 
+\let\newurl\url
+\renewcommand{\url}[1]{\texttt{\newurl{#1}}}
+
+\let\newsphinxhref\sphinxhref
+\renewcommand{\sphinxhref}[2]{\newsphinxhref{#1}{\texttt{#2}}}
+\newcommand{\sphinxhrefnott}[2]{\newsphinxhref{#1}{#2}}
+
+% \let\newsphinxurl\sphinxurl
+% \renewcommand{\sphinxurl}[1]{\texttt{\newsphinxurl{#1}}}
+
+\let\newsphinxnolinkurl\sphinxnolinkurl
+\renewcommand{\sphinxnolinkurl}[1]{\texttt{\newsphinxnolinkurl{#1}}}
+% \renewcommand{\sphinxnolinkurl}[1]{\mbox{\texttt{\newsphinxnolinkurl{#1}}}}
+
 \let\newsphinxcode\sphinxcode
 \renewcommand{\sphinxcode}[1]{\newsphinxcode{\textcolor{color_code}{#1}}}
+
+\let\newsphinxcrossref\sphinxcrossref
+\renewcommand{\sphinxcrossref}[1]{\newsphinxcrossref{\textup{\textcolor{color_code}{#1}}}}
 
 % \fboxsep=0.15em
 % \let\newsphinxupquote\sphinxupquote
@@ -576,15 +613,31 @@ Read the full license here:
 \makeatother
 
 \makeatletter
-\def\hrulefillthick{{\color{fontcolor}\leavevmode\leaders\hrule height 0.85pt\hfill\kern\z@}}
+\def\hrulefillthick{\vspace*{-0.35\baselineskip}{\color{fontcolor}\leavevmode\leaders\hrule height 1pt\hfill\kern\z@}}
 \def\hrulefillverythick{{\color{fontcolor}\leavevmode\leaders\hrule height 2.5pt\hfill\kern\z@}}
-\def\hrulefillinvisible{{\color{white}\leavevmode\leaders\hrule height 0.85pt\hfill\kern\z@}}
+\def\hrulefillinvisible{{\color{white}\leavevmode\leaders\hrule height 1pt\hfill\kern\z@}}
 \makeatother
 
-\setlength{\headsep}{0.5cm}
+\setlength{\headsep}{0.65cm}
 
 \usepackage[bottom]{footmisc}
-\setlength{\skip\footins}{0.5cm}
+
+\makeatletter%%
+\newcommand\@mymakefnmark{\normalfont\@thefnmark\hfill}
+\renewcommand\@makefntext[1]{%
+    \parindent 1em%
+    \noindent
+    \hb@xt@2.0em{\hss\@mymakefnmark}\hspace{0.35em}\RaggedRight#1}
+
+\makeatother
+
+\renewcommand{\thefootnote}{\footnotesize\texttt{(\arabic{footnote})\hspace{-0.15em}}}
+\renewcommand{\footnotesize}{\fontsize{9pt}{11pt}\selectfont}
+\setlength{\footnotemargin}{0em}
+\setlength{\skip\footins}{0.0em}
+
+\renewcommand{\hangfootparskip}{0em}
+\renewcommand{\hangfootparindent}{1em}
 
 %%% \enlargethispageonce macro
 \usepackage{etoolbox} % for robust booleans (optional)
@@ -623,6 +676,7 @@ Read the full license here:
 \usepackage{tocloft}
 
 \addto\captionsenglish{
+    \enlargethispage{\baselineskip}
     \renewcommand{\contentsname}
     {\vspace{-2cm}\huge\sffamily{Contents}\newline\hrulefillverythick\vspace{-1.35cm}} % ToC will show "CONTENTS" instead of "Content"
 }
@@ -642,9 +696,10 @@ Read the full license here:
 \renewcommand{\cftsubsubsecpagefont}{\fontsize{9}{11}\sffamily\bfseries}
 \renewcommand{\cftparapagefont}{\fontsize{9}{11}\sffamily\bfseries}
 
+\renewcommand{\cftbeforepartskip}{1.5em}
 \renewcommand{\cftbeforesecskip}{0.05em}
-\renewcommand{\cftchapafterpnum}{\vskip0.25em}
-\renewcommand{\cftsecafterpnum}{\vskip0.00em}
+\renewcommand{\cftchapafterpnum}{\vskip0.10em}
+\renewcommand{\cftsecafterpnum}{\vskip-0.10em}
 % \renewcommand{\cftbeforesubsecskip}{0.35em}
 \renewcommand{\cftsubsecafterpnum}{\vskip0.00em}
 \renewcommand{\cftsubsubsecafterpnum}{\vskip0.00em}
@@ -663,7 +718,7 @@ Read the full license here:
 
 \renewcommand\sphinxcaption{\caption}
 
-\newcommand{\py}[1]{\textcolor{color_keywords}{\textbf{\texttt{#1}}}}
+\newcommand{\py}[1]{\textcolor{color_code}{\textmd{\texttt{#1}}}}
 
 \definecolor{colorbackground}{HTML}{F5F5F5}
 \definecolor{colorcomment}{HTML}{699ADA}
@@ -686,9 +741,10 @@ breakable,
 segmentation at break=true,
 before skip balanced=0.35\baselineskip + 2pt,
 after skip balanced=0.35\baselineskip + 2pt,
+pad at break=0.5\baselineskip,
 arc=0mm,
 outer arc=0mm,
-boxrule=0.2mm,
+boxrule=0.25mm,
 boxsep=0cm,
 toptitle=0.1cm,
 bottomtitle=0.1cm,
@@ -705,16 +761,18 @@ colframe=colorprimary,
 colbacktitle=colorprimary,
 coltitle=white,
 fonttitle=\ttfamily,
+fontupper=\linespread{1.12}\fontsize{10.25}{12},
+fontlower=\linespread{1.12}\fontsize{10.25}{12},
 attach boxed title to top right={yshift=-\tcboxedtitleheight},
 boxed title style={
 arc=0mm,
 outer arc=0mm,
 boxrule=0mm,
 boxsep=0cm,
-top=0.125cm,
+top=0.125cm + 0.125mm,
 bottom=0.125cm,
-left=0.075cm,
-right=0.075cm,
+left=0.075cm + 0.125mm,
+right=0.075cm + 0.125mm,
 opacityframe=0,
 },
 segmentation style={
@@ -730,7 +788,7 @@ line width=0.4mm,
 % },
 % decorate,
 postaction={decoration={text effects along path, text align={left indent=0em}, text color=colorprimary, text format delimiters={[}{]}, text={OUTPUT},
-text effects/.cd, path from text, group letters, every word separator/.style={fill=none}, characters={fill=colorprimary, xshift=0em, yshift=-0.2cm, font=\ttfamily\bfseries\color{colorbackground}},
+text effects/.cd, path from text, group letters, every word separator/.style={fill=none}, characters={fill=colorprimary, xshift=-0.125mm, yshift=-0.25cm, font=\ttfamily\bfseries\color{colorbackground}},
 }, decorate},
 },
 % underlay first={
@@ -768,7 +826,7 @@ label={#2},
 \appto\tcb@use@after@lastbox{\@endparenv\@doendpe}
 \makeatother
 
-\newcommand{\tcblowerspaced}{\vspace{0.00\tcbtextheight}\tcblower\vspace{10.00\tcbtextheight}}
+\newcommand{\tcblowerspaced}{\vspace{2.50\tcbtextheight}\tcblower\vspace{15.00\tcbtextheight}}
 
 \usepackage{changepage}
 
@@ -782,15 +840,14 @@ label={#2},
 """,
     # \PassOptionsToPackage{footskip=0.75cm}{geometry}
     "sphinxsetup": "TitleColor=black, \
-    hmargin=2.5cm, \
-    vmargin=2.5cm, \
+    hmargin=3.1cm, \
+    vmargin=4.0cm, \
     marginpar=0cm, \
     TableRowColorHeader={HTML}{D8E9FF}, \
     TableRowColorOdd={HTML}{F7F7F7}, \
     TableRowColorEven={HTML}{EEEEEE}, \
-    div.note_border-radius=0px, \
     pre_border-radius=0px, \
-    pre_border-width=0.02mm, \
+    pre_border-width=0.25mm, \
     pre_border-TeXcolor={HTML}{F5F5F5}, \
     pre_background-TeXcolor=red, \
     pre_padding-top=0.2cm, \
@@ -798,20 +855,23 @@ label={#2},
     pre_padding-left=0.0cm, \
     pre_padding-right=0.0cm, \
     pre_TeXextras=, \
-    noteBorderColor={HTML}{2266C0}, \
+    div.note_border-width=0.25mm, \
+    div.note_border-radius=0px, \
+    div.note_padding=0.3cm, \
     div.note_title-foreground-TeXcolor={HTML}{2266C0}, \
     div.note_title-background-TeXcolor={HTML}{D8E9FF}, \
+    noteBorderColor={HTML}{2266C0}, \
     verbatimvisiblespace=\\textcolor{color_types}{\\textvisiblespace}, \
     verbatimcontinued=\\makebox[2\\fontcharwd\\font`\\x][r]{\\textcolor{color_types}{\\tiny$\\hookrightarrow$}}, \
     verbatimwithframe=false, \
-    AtStartFootnote=\\mbox{ }, \
-    BeforeFootnote=\\leavevmode\\unskip\\enlargethispageonce{0.9\\baselineskip}",
+    AtStartFootnote=\\mbox{}, \
+    BeforeFootnote=\\leavevmode\\unskip\\enlargethispageonce{0.75\\baselineskip}",
     "fncychap": r"",
     # "printindex": r'\footnotesize\raggedright\printindex',
     "printindex": r"\def\twocolumn[#1]{#1}\printindex",
 }
 latex_show_urls = "footnote"
-latex_show_pagerefs = True
+latex_show_pagerefs = False
 latex_table_style = ["booktabs", "colorrows"]
 
 # -- Options for HTML output -------------------------------------------------
@@ -920,7 +980,7 @@ html_theme_options = {
     "navigation_depth": 4,
     "collapse_navigation": True,
     "show_toc_level": 4,
-    # https://pygments.org/styles/
+    # https://pygments.org/styles
     "pygments_light_style": "borland",
     "pygments_dark_style": "rrt",
     # "custom_template": "layout.html",

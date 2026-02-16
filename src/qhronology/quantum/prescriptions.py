@@ -23,7 +23,7 @@ import sympy as sp
 from sympy.physics.quantum import TensorProduct
 from sympy.physics.quantum.dagger import Dagger
 
-from qhronology.utilities.classification import num, sym, mat, Forms, Kinds, matrix_form
+from qhronology.utilities.classification import num, sym, expr, mat, Forms, Kinds, matrix_form
 from qhronology.utilities.helpers import (
     adjust_targets,
     count_systems,
@@ -69,6 +69,16 @@ class QuantumCTC(QuantumCircuit):
 
     Note
     ----
+    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance. Any such mergers override the values of the attributes associated with the other arguments specified in the constructor. It is therefore best practice to specify the circuit via either of the following two ways:
+
+    - the :python:`circuit` argument
+
+    - :python:`*args` and :python:`**kwargs` like a typical initialization of a :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance (without using :python:`circuit`)
+
+    Note that this is in addition to specifying either of :python:`systems_respecting` or :python:`systems_violating`.
+
+    Note
+    ----
     The lists of indices specified in :python:`systems_respecting` and :python:`systems_violating` must both be contiguous.
     Additionally, the circuit's inputs (:python:`inputs`) are treated as one contiguous total state, with the indices of its subsystems exactly matching those specified in :python:`systems_respecting`.
 
@@ -76,14 +86,6 @@ class QuantumCTC(QuantumCircuit):
     ----
     It is best practice to specify only one of either :python:`systems_violating` or :python:`systems_violating`, never both.
     The properties associated with both of these constructor arguments automatically ensure that they are always complementary (with respect to the entire system space), and so only one needs to be specified.
-
-    Note
-    ----
-    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance. Any such mergers override the values of the attributes associated with the other arguments specified in the constructor. It is best practice to specify either of:
-
-    - only :python:`circuit` and one of either :python:`systems_respecting` or :python:`systems_violating`
-
-    - :python:`*args` and :python:`**kwargs` (like a typical initialization of a :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance) without specifying :python:`circuit`
 
     Note
     ----
@@ -1068,7 +1070,7 @@ def pctc_violating(
 
        \\MapPCTCsCV_{\\Unitary}[\\StateCR]
            = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\tfrac{1}{\\Dimension}\\Identity)
-           \\Unitary^\\dagger\\bigr],
+           \\Unitary^\\dagger\\bigr]
 
     given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`) and interaction described by :python:`gate` (:math:`\\Unitary`).
     Here, :math:`\\Dimension` is the dimensionality of the CV Hilbert space (assumed to be equivalent to that of its CR counterpart), while :math:`\\Identity` is the :math:`\\Dimension \\times \\Dimension` identity matrix.

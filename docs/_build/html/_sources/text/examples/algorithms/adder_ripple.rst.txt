@@ -6,11 +6,11 @@ Ripple-carry adder
 Description
 -----------
 
-In this example, we use the single quantum adder circuit described in :ref:`eg:adder_full` to construct a quantum *ripple-carry* adder. Given two (non-negative) integers :math:`x` and :math:`y` (encoded using qubits) as input, a ripple-carry adder computes the (encoded) arithmetic sum :math:`s` of these integers, that is, :math:`s = x + y`. In this form, the two integers are known as *summands*, and are also specifically called *augend* (:math:`x`) and *addend* (:math:`y`) according to the order in which they appear in the addition operation.
+In this example, we use the single quantum adder circuit described in :numref:`eg:adder_full` :ref:`eg:adder_full` to construct a quantum *ripple-carry* adder. Given two (non-negative) integers :math:`x` and :math:`y` (encoded using qubits) as input, a ripple-carry adder computes the (encoded) arithmetic sum :math:`s` of these integers, that is, :math:`s = x + y`. In this form, the two integers are known as *summands*, and are also specifically called *augend* (:math:`x`) and *addend* (:math:`y`) according to the order in which they appear in the addition operation.
 
 In the case of a single adder, the magnitudes of the summands and their sum are confined to being within the dimensionality (e.g., binary) of their single-unit (e.g., bit) encoding. Integers larger than this limit therefore require multiple units of information to be encoded. For example, a non-negative integer :math:`z` can be encoded with a number :math:`\Number` of :math:`\Dimension`-dimensional unit values provided :math:`z \leq \Dimension^\Number - 1`. Under this encoding, the integer can be represented using an ordered array (or set or string) of such values,
 
-.. math:: z \equiv (z_{\Number - 1}, z_{\Number - 2}, \ldots, z_1, z_0) = (z_n)_{n = 0}^{\Number - 1}
+.. math:: z \equiv (z_{\Number - 1}, z_{\Number - 2}, \ldots, z_1, z_0) = (z_n)_{n = 0}^{\Number - 1},
    :label: eq:encoding
 
 which collectively reconstruct the (decimal) value of the integer with the unique decoding expansion
@@ -67,7 +67,7 @@ From this circuit, the general output values of the summation qubits can be comp
    s_i =
        \begin{cases}
            x_0 \oplus y_0 \oplus c_0, & \text{if } i = 0; \\
-           x_i \oplus y_i \oplus c_i \oplus c^\prime_{i - 1}, & \text{if } i > 0; \\
+           x_i \oplus y_i \oplus c_i \oplus c^\prime_{i - 1}, & \text{if } i > 0, \\
        \end{cases}
 
 while the carry values are
@@ -102,12 +102,16 @@ can be decoded, using :eq:`eq:decoding`, to be
 
 .. raw:: latex
 
-   \vspace*{-\baselineskip}
+   \newpage
 
 Implementation
 --------------
 
-Due to performance constraints, this example sums two 2-bit integers. Increasing the :python:`encoding_depth` *greatly* increases the calculation time as a result of having to perform operations on larger matrices. The decimal :python:`augend_integer` and :python:`addend_integer` variables can be freely changed, provided their summation is within the encodable range.
+Due to performance limitations, this example sums just 2-bit integers. Increasing the :python:`encoding_depth` *greatly* increases the calculation time as a result of having to perform operations on larger matrices. The :python:`augend_integer` and :python:`addend_integer` variables can be freely changed, provided their summation is within the encodable range.
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -121,10 +125,6 @@ Due to performance constraints, this example sums two 2-bit integers. Increasing
 .. raw:: latex
 
    \end{codetitled}
-
-.. raw:: latex
-
-   \newpage
 
 Output
 ------
@@ -142,7 +142,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_ripple.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_ripple.pdf}
    \vspace{-1\baselineskip}
 
 ..
@@ -207,6 +207,10 @@ States
 
    \end{code}
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 Results
 ^^^^^^^
 
@@ -216,7 +220,7 @@ Results
 
 .. code:: python
 
-   >>> print(computation)
+   >>> print(f"Computation: {computation}")
    Computation: 1 + 1 = 2
 
 .. raw:: latex
@@ -229,7 +233,7 @@ Results
 
 .. code:: python
 
-   >>> print(duration)
+   >>> print(f"Duration: {duration} seconds")
    Duration: 8.151 seconds
 
 .. raw:: latex

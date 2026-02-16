@@ -25,6 +25,7 @@ from sympy.physics.quantum.dagger import Dagger
 from qhronology.utilities.classification import (
     num,
     sym,
+    expr,
     mat,
     arr,
     Forms,
@@ -103,7 +104,7 @@ class QuantumCircuit(SymbolicsProperties):
 
     Note
     ----
-    All states, gates, postselections, and measurement operators recorded in the instance must share the same dimensionality (i.e., the value of the :python:`dim` property).
+    All states, gates, and postselections recorded in the instance must share the same dimensionality (i.e., the value of the :python:`dim` property).
 
     Note
     ----
@@ -871,14 +872,14 @@ class QuantumCircuit(SymbolicsProperties):
 
           - When :python:`observable` is :python:`False`:
 
-          .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger.
+          .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger
 
           - When :python:`observable` is :python:`True`:
 
           .. math::
 
              \\op{\\rho}^\\prime
-                 = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.
+                 = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i
 
         In the case where :python:`operators` contains only a single item (:math:`\\Kraus`), and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule
 
@@ -980,8 +981,7 @@ class QuantumCircuit(SymbolicsProperties):
 
         Note
         ----
-        The quality of the visualization depends greatly on the output's configuration.
-        For best results, the terminal should have a monospace font with good Unicode coverage.
+        The quality of the semigraphical diagrams depends greatly on the typeface with which they are visualized. For best results, monospace (fixed-width) fonts with good Unicode coverage should be used.
         """
         pad = (0, 0) if pad is None else pad
         sep = (1, 1) if sep is None else sep

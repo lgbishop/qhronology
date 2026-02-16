@@ -36,6 +36,10 @@ Note that in the process of teleporting the state, the original is destroyed, an
 
    A quantum teleportation protocol.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 Implementation
 --------------
 
@@ -68,7 +72,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_teleportation.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_teleportation.pdf}
    \vspace{-1\baselineskip}
 
 ..

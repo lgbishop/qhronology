@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9e158f31" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -70,7 +70,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
   </head>
   
   
@@ -511,7 +511,7 @@
 <span id="eg-adder-ripple-iterative"></span><h1>Ripple-carry adder (iterative)<a class="headerlink" href="#ripple-carry-adder-iterative" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>This example builds upon the four-qubit ripple-carry adder in <a class="reference internal" href="adder_ripple.html#eg-adder-ripple"><span class="std std-ref">Ripple-carry adder</span></a>. The implementation here simplifies the algorithm by instead applying copies of the circuit successively to a tetrapartite input state, which is a composition of the augend, addend, carry, and zero states. As a result, the sequence of trace operations (necessary to isolate the output sum and carry states) mixes the pure (vector) input composition, thereby destroying linearity of the evolution in the input states. This means that only mixed states for each qubit in the output sum state can be recovered, and so we can only sum single integers, not <em>superpositions</em> of integers. However, keeping the Hilbert space to a smaller total dimensionality at any one time makes the computations <em>much</em> faster, and so we can work with significantly larger integers.</p>
+<p>This example builds upon the four-qubit ripple-carry adder in <code class="xref std std-numref docutils literal notranslate"><span class="pre">eg:adder_ripple</span></code> <a class="reference internal" href="adder_ripple.html#eg-adder-ripple"><span class="std std-ref">Ripple-carry adder</span></a>. The implementation here simplifies the algorithm by instead applying copies of the circuit successively to a tetrapartite input state, which is a composition of the augend, addend, carry, and zero states. As a result, the sequence of trace operations (necessary to isolate the output sum and carry states) mixes the pure (vector) input composition, thereby destroying linearity of the evolution in the input states. This means that only mixed states for each qubit in the output sum state can be recovered, and so we can only sum single integers, not <em>superpositions</em> of integers. However, keeping the Hilbert space to a smaller total dimensionality at any one time makes the computations <em>much</em> faster, and so we can work with significantly larger integers.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_ripple_iterative-dark.png"><img alt="A quantum circuit diagram of one iteration of a multi-qubit quantum ripple-carry adder." src="../../../_images/circuit_algorithm_adder_ripple_iterative-dark.png" style="width: 481.44000000000005px; height: 148.24px;" />
 </a>
@@ -532,7 +532,7 @@
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>In this example, each qubit in the uppermost set on the diagram corresponds to the leftmost (most-significant) qubit in their respective encoded state, while each qubit in the lowermost set similarly corresponds to the rightmost (least-significant) qubit.</p>
 <div class="literal-block-wrapper docutils container" id="code-adder-ripple-iterative">
-<div class="code-block-caption"><span class="caption-number">Code Block 20 </span><span class="caption-text">/text/examples/algorithms/adder_ripple_iterative.py</span><a class="headerlink" href="#code-adder-ripple-iterative" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 21 </span><span class="caption-text">/text/examples/algorithms/adder_ripple_iterative.py</span><a class="headerlink" href="#code-adder-ripple-iterative" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumState</span><span class="p">,</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
@@ -570,11 +570,11 @@
 <span class="n">initial_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">encoding_depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">target_system</span> <span class="o">=</span> <span class="n">i</span>
-    <span class="n">complement_systems</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">encoding_depth</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">target_system</span><span class="p">]</span>
-
+    <span class="n">complement_systems</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">encoding_depth</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">target_system</span>
+    <span class="p">]</span>
     <span class="n">augend_state</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
     <span class="n">addend_state</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-
     <span class="n">augend_state</span><span class="o">.</span><span class="n">partial_trace</span><span class="p">(</span><span class="n">complement_systems</span><span class="p">)</span>
     <span class="n">addend_state</span><span class="o">.</span><span class="n">partial_trace</span><span class="p">(</span><span class="n">complement_systems</span><span class="p">)</span>
 
@@ -582,13 +582,15 @@
         <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">augend_state</span><span class="p">,</span> <span class="n">addend_state</span><span class="p">,</span> <span class="n">carry_state</span><span class="p">,</span> <span class="n">zero_state</span><span class="p">],</span>
         <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">CCIN</span><span class="p">,</span> <span class="n">CNII</span><span class="p">,</span> <span class="n">ICCN</span><span class="p">,</span> <span class="n">ICNI</span><span class="p">,</span> <span class="n">CNII</span><span class="p">],</span>
     <span class="p">)</span>
-
     <span class="n">sum_qubit</span> <span class="o">=</span> <span class="n">adder</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">traces</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
     <span class="n">carry_state</span> <span class="o">=</span> <span class="n">adder</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;c_i&quot;</span><span class="p">,</span> <span class="n">traces</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
     <span class="n">sum_qubits</span> <span class="o">=</span> <span class="p">[</span><span class="n">sum_qubit</span><span class="o">.</span><span class="n">output</span><span class="p">()]</span> <span class="o">+</span> <span class="n">sum_qubits</span>
 
 <span class="c1"># Output</span>
-<span class="n">sum_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">TensorProduct</span><span class="p">(</span><span class="o">*</span><span class="n">sum_qubits</span><span class="p">)),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+<span class="n">sum_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
+    <span class="n">spec</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">TensorProduct</span><span class="p">(</span><span class="o">*</span><span class="n">sum_qubits</span><span class="p">)),</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">sum_integer</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span><span class="n">sum_state</span><span class="o">.</span><span class="n">output</span><span class="p">())</span>
 <span class="n">sum_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">encode</span><span class="p">(</span><span class="n">sum_integer</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
 <span class="n">final_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -597,7 +599,6 @@
 
 <span class="n">augend_state</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 <span class="n">addend_state</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-
 <span class="n">augend_state</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span>
 <span class="n">addend_state</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span>
 
@@ -606,10 +607,10 @@
 <span class="n">addend_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="n">sum_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 
-<span class="n">computation</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Computation: </span><span class="si">{</span><span class="n">augend_integer</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">addend_integer</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">sum_integer</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">duration</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">final_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">initial_time</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> seconds&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">computation</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+<span class="n">computation</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">augend_integer</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">addend_integer</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">sum_integer</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">final_time</span> <span class="o">-</span> <span class="n">initial_time</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Computation: </span><span class="si">{</span><span class="n">computation</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -645,15 +646,15 @@
 </section>
 <section id="results">
 <h3>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">computation</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Computation: </span><span class="si">{</span><span class="n">computation</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="go">Computation: 31 + 217 = 248</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
 <span class="go">Duration: 2.709 seconds</span>
 </pre></div>
 </div>
-<p>Much faster and for much larger numbers than the linear implementation in <a class="reference internal" href="adder_ripple.html#eg-adder-ripple"><span class="std std-ref">Ripple-carry adder</span></a>.</p>
+<p>This is evidently much faster (even for significantly larger numbers) than the linear, non-iterative implementation in <code class="xref std std-numref docutils literal notranslate"><span class="pre">eg:adder_ripple</span></code> <a class="reference internal" href="adder_ripple.html#eg-adder-ripple"><span class="std std-ref">Ripple-carry adder</span></a>.</p>
 </section>
 </section>
 </section>

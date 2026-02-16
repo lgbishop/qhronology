@@ -36,10 +36,14 @@ An iSWAP (imaginary-SWAP) gate is a simply a SWAP gate in which any pair of stat
 
 .. raw:: latex
 
-   \enlargethispage{-1\baselineskip}
+   \vspace*{-\baselineskip}
 
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 .. raw:: latex
 
@@ -70,7 +74,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_iswap.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_iswap.pdf}
    \vspace{-1\baselineskip}
 
 ..

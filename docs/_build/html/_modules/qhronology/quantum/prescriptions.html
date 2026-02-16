@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9e158f31" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
   </head>
   
   
@@ -489,7 +489,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">TensorProduct</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum.dagger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dagger</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">num</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">Forms</span><span class="p">,</span> <span class="n">Kinds</span><span class="p">,</span> <span class="n">matrix_form</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">num</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">Forms</span><span class="p">,</span> <span class="n">Kinds</span><span class="p">,</span> <span class="n">matrix_form</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">adjust_targets</span><span class="p">,</span>
     <span class="n">count_systems</span><span class="p">,</span>
@@ -537,6 +537,16 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
+<span class="sd">    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance. Any such mergers override the values of the attributes associated with the other arguments specified in the constructor. It is therefore best practice to specify the circuit via either of the following two ways:</span>
+
+<span class="sd">    - the :python:`circuit` argument</span>
+
+<span class="sd">    - :python:`*args` and :python:`**kwargs` like a typical initialization of a :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance (without using :python:`circuit`)</span>
+
+<span class="sd">    Note that this is in addition to specifying either of :python:`systems_respecting` or :python:`systems_violating`.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
 <span class="sd">    The lists of indices specified in :python:`systems_respecting` and :python:`systems_violating` must both be contiguous.</span>
 <span class="sd">    Additionally, the circuit&#39;s inputs (:python:`inputs`) are treated as one contiguous total state, with the indices of its subsystems exactly matching those specified in :python:`systems_respecting`.</span>
 
@@ -544,14 +554,6 @@
 <span class="sd">    ----</span>
 <span class="sd">    It is best practice to specify only one of either :python:`systems_violating` or :python:`systems_violating`, never both.</span>
 <span class="sd">    The properties associated with both of these constructor arguments automatically ensure that they are always complementary (with respect to the entire system space), and so only one needs to be specified.</span>
-
-<span class="sd">    Note</span>
-<span class="sd">    ----</span>
-<span class="sd">    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance. Any such mergers override the values of the attributes associated with the other arguments specified in the constructor. It is best practice to specify either of:</span>
-
-<span class="sd">    - only :python:`circuit` and one of either :python:`systems_respecting` or :python:`systems_violating`</span>
-
-<span class="sd">    - :python:`*args` and :python:`**kwargs` (like a typical initialization of a :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance) without specifying :python:`circuit`</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
@@ -1566,7 +1568,7 @@
 
 <span class="sd">       \\MapPCTCsCV_{\\Unitary}[\\StateCR]</span>
 <span class="sd">           = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\tfrac{1}{\\Dimension}\\Identity)</span>
-<span class="sd">           \\Unitary^\\dagger\\bigr],</span>
+<span class="sd">           \\Unitary^\\dagger\\bigr]</span>
 
 <span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`) and interaction described by :python:`gate` (:math:`\\Unitary`).</span>
 <span class="sd">    Here, :math:`\\Dimension` is the dimensionality of the CV Hilbert space (assumed to be equivalent to that of its CR counterpart), while :math:`\\Identity` is the :math:`\\Dimension \\times \\Dimension` identity matrix.</span>

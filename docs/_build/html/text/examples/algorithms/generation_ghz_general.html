@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9e158f31" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
   </head>
   
   
@@ -515,12 +515,12 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>The circuit in <a class="reference internal" href="#fig-circuit-algorithm-generation-ghz-general"><span class="std std-numref">Figure 10</span></a> illustrates an algorithm for the generation of an entangled <span class="math notranslate nohighlight">\(\Number\)</span>-qudit state,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-generation-ghz-general-0">
-<span class="eqno">(335)<a class="headerlink" href="#equation-text-examples-algorithms-generation-ghz-general-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(338)<a class="headerlink" href="#equation-text-examples-algorithms-generation-ghz-general-0" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \ket{\mathrm{GHZ}} &amp;= \frac{1}{\sqrt{\Dimension}} \sum_{k=0}^{\Dimension - 1} \bigotimes_{n=1}^{\Number} \ket{k} \\
     &amp;= \frac{1}{\sqrt{\Dimension}} \sum_{k=0}^{\Dimension - 1} \ket{k}^{\otimes \Number} \\
     &amp;= \frac{1}{\sqrt{\Dimension}} \sum_{k=0}^{\Dimension - 1} \ket{k} \otimes \ldots \otimes \ket{k},
 \end{aligned}\end{split}\]</div>
-<p>from primitive <span class="math notranslate nohighlight">\(\ket{0}\)</span> states. This is also known as the <em>generalized</em> GHZ state (see <a class="reference internal" href="generation_ghz.html#eg-generation-ghz"><span class="std std-ref">Generation of the GHZ state</span></a>).</p>
+<p>from primitive <span class="math notranslate nohighlight">\(\ket{0}\)</span> states. This is a generalized version of the GHZ state (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">eg:generation_ghz</span></code> <a class="reference internal" href="generation_ghz.html#eg-generation-ghz"><span class="std std-ref">Generation of the GHZ state</span></a>).</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_generation_ghz_general-dark.png"><img alt="A quantum circuit diagram depicting the generation of a generalized GHZ state." src="../../../_images/circuit_algorithm_generation_ghz_general-dark.png" style="width: 411.40000000000003px; height: 162.86px;" />
 </a>
@@ -538,7 +538,7 @@
 </figure>
 <p>The complete unitary transformation described by this circuit is the product</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-generation-ghz-general-1">
-<span class="eqno">(336)<a class="headerlink" href="#equation-text-examples-algorithms-generation-ghz-general-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(339)<a class="headerlink" href="#equation-text-examples-algorithms-generation-ghz-general-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Unitary &amp;= \Control^{\Number - 2} \SUM^{\Number - 1} \cdot \ldots \cdot \Control^1 \SUM^2 \cdot \Control^0 \SUM^1 \cdot \Hadamard^0 \\
     &amp;= \Biggl(\prod_{n = \Number - 1}^{1} \Control^{n - 1} \SUM^{n} \Biggr) \Hadamard^0.
 \end{aligned}\end{split}\]</div>
@@ -546,7 +546,7 @@
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-generation-ghz-general">
-<div class="code-block-caption"><span class="caption-number">Code Block 11 </span><span class="caption-text">/text/examples/algorithms/generation_ghz_general.py</span><a class="headerlink" href="#code-generation-ghz-general" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 12 </span><span class="caption-text">/text/examples/algorithms/generation_ghz_general.py</span><a class="headerlink" href="#code-generation-ghz-general" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Summation</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
@@ -561,7 +561,12 @@
 <span class="c1"># Gates</span>
 <span class="n">HII</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="n">num_systems</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
 <span class="n">CNOTs</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">Summation</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="n">num_systems</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+    <span class="n">Summation</span><span class="p">(</span>
+        <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">num_systems</span><span class="o">=</span><span class="n">num_systems</span><span class="p">,</span>
+        <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_systems</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 <span class="p">]</span>
 

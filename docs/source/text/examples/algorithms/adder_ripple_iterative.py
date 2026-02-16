@@ -35,11 +35,11 @@ sum_qubits = []
 initial_time = time.time()
 for i in range(encoding_depth - 1, -1, -1):
     target_system = i
-    complement_systems = [n for n in range(0, encoding_depth) if n != target_system]
-
+    complement_systems = [
+        n for n in range(0, encoding_depth) if n != target_system
+    ]
     augend_state.reset()
     addend_state.reset()
-
     augend_state.partial_trace(complement_systems)
     addend_state.partial_trace(complement_systems)
 
@@ -47,13 +47,15 @@ for i in range(encoding_depth - 1, -1, -1):
         inputs=[augend_state, addend_state, carry_state, zero_state],
         gates=[CCIN, CNII, ICCN, ICNI, CNII],
     )
-
     sum_qubit = adder.state(label="s", traces=[0, 1, 3])
     carry_state = adder.state(label="c_i", traces=[0, 1, 2])
     sum_qubits = [sum_qubit.output()] + sum_qubits
 
 # Output
-sum_state = QuantumState(spec=sp.Matrix(TensorProduct(*sum_qubits)), label="s")
+sum_state = QuantumState(
+    spec=sp.Matrix(TensorProduct(*sum_qubits)),
+    label="s",
+)
 sum_integer = decode(sum_state.output())
 sum_state = VectorState(spec=encode(sum_integer), label="s")
 final_time = time.time()
@@ -62,7 +64,6 @@ adder.diagram()
 
 augend_state.reset()
 addend_state.reset()
-
 augend_state.label = "x"
 addend_state.label = "y"
 
@@ -71,7 +72,7 @@ augend_state.print()
 addend_state.print()
 sum_state.print()
 
-computation = f"Computation: {augend_integer} + {addend_integer} = {sum_integer}"
-duration = f"Duration: {sp.N(final_time - initial_time,8).round(3)} seconds"
-print(computation)
-print(duration)
+computation = f"{augend_integer} + {addend_integer} = {sum_integer}"
+duration = sp.N(final_time - initial_time, n=8).round(3)
+print(f"Computation: {computation}")
+print(f"Duration: {duration} seconds")

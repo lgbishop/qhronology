@@ -34,6 +34,10 @@ The circuit in :numref:`fig:circuit_algorithm_generation_ghz` illustrates an alg
 
    Generation of the GHZ state.
 
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
+
 The complete unitary transformation described by this circuit is the product
 
 .. math:: \Unitary = \Control^1 \NOT^2 \cdot \Control^0 \NOT^1 \cdot \Hadamard^0.
@@ -74,7 +78,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_generation_ghz.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_generation_ghz.pdf}
    \vspace{-1\baselineskip}
 
 ..

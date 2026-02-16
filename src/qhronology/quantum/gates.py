@@ -22,7 +22,7 @@ import sympy as sp
 from sympy.physics.quantum import TensorProduct
 from sympy.physics.quantum.dagger import Dagger
 
-from qhronology.utilities.classification import num, sym, mat, arr, Forms
+from qhronology.utilities.classification import num, sym, expr, mat, arr, Forms
 from qhronology.utilities.diagrams import Families
 from qhronology.utilities.helpers import (
     flatten_list,
@@ -60,9 +60,9 @@ class QuantumGate(QuantumObject):
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
-        - a list of lists of numerical, symbolic, or string expressions that collectively specify a matrix (:python:`list[list[num | expr | str]]`)
+        - a list of lists of numerical, symbolic, or string expressions that collectively describe a matrix (:python:`list[list[num | expr | str]]`)
 
-        Defaults to the single-system :python:`dim`-dimensional Identity operator.
+        Defaults to the single-system :python:`dim`-dimensional identity operator.
     targets : list[int]
         The numerical indices of the subsystems on which the gate elements reside.
         Defaults to :python:`[0]` (if :python:`num_systems` is :python:`None`) or :python:`[i for i in range(num_systems)]` (if :python:`num_systems` is not :python:`None`).
@@ -314,9 +314,9 @@ class QuantumGate(QuantumObject):
 
         .. math::
 
-           \\exp[\\eye x \\op{A}] = \\cos(x)\\Identity + \\eye\\sin(x)\\op{A},
+           \\exp[\\eye z \\op{A}] = \\cos(z)\\Identity + \\eye\\sin(z)\\op{A},
 
-        for any :math:`x \\in \\Complexes`. In the case of :math:`x = -\\frac{\\pi}{2}`, this becomes
+        for any :math:`z \\in \\Complexes`. In the case of :math:`z = -\\frac{\\pi}{2}`, this becomes
 
         .. math::
 
@@ -469,12 +469,12 @@ class Pauli(QuantumGate):
     .. math::
 
         \\begin{aligned}
-            \\Pauli_1 = \\Pauli_x \\equiv \\ket{0}\\bra{1} + \\ket{1}\\bra{0}
-                &= \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}, \\\\
-            \\Pauli_2 = \\Pauli_y \\equiv -\\eye \\ket{0}\\bra{1} + \\eye \\ket{1}\\bra{0}
-                &= \\begin{bmatrix} 0 & -\\eye \\\\ \\eye & 0 \\end{bmatrix}, \\\\
-            \\Pauli_3 = \\Pauli_z \\equiv \\ket{0}\\bra{0} - \\ket{1}\\bra{1}
-                &= \\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \\end{bmatrix},
+            \\Pauli_1 &= \\Pauli_x \\equiv \\ket{0}\\bra{1} + \\ket{1}\\bra{0}
+                = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}, \\\\
+            \\Pauli_2 &= \\Pauli_y \\equiv -\\eye \\ket{0}\\bra{1} + \\eye \\ket{1}\\bra{0}
+                = \\begin{bmatrix} 0 & -\\eye \\\\ \\eye & 0 \\end{bmatrix}, \\\\
+            \\Pauli_3 &= \\Pauli_z \\equiv \\ket{0}\\bra{0} - \\ket{1}\\bra{1}
+                = \\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \\end{bmatrix},
         \\end{aligned}
 
     indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`2`-dimensional identity matrix for :math:`i=0`.
@@ -562,6 +562,12 @@ class GellMann(QuantumGate):
 
     The *Gell-Mann matrices* :math:`\\GellMann_i` are a set of eight :math:`3 \\times 3` matrices,
 
+    .. raw:: latex
+
+        \\enlargethispage{\\baselineskip}
+        \\vspace*{-2\\baselineskip}
+        \\begin{adjustwidth}{-2.5em}{0cm}
+
     .. math::
 
         \\begin{aligned}
@@ -574,7 +580,7 @@ class GellMann(QuantumGate):
             &\\GellMann_7 \\equiv -\\eye\\ket{2}\\bra{3} + \\eye\\ket{3}\\bra{2}
                 = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & -\\eye \\\\ 0 & \\eye & 0 \\end{bmatrix},
         \\end{aligned}
-        \\quad\\:\\:
+        \\quad
         \\begin{aligned}
             &\\GellMann_2 \\equiv -\\eye\\ket{0}\\bra{1} + \\eye \\ket{1}\\bra{0}
                 = \\begin{bmatrix} 0 & -\\eye & 0 \\\\ \\eye & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}, \\\\
@@ -585,6 +591,10 @@ class GellMann(QuantumGate):
             &\\GellMann_8 \\equiv \\frac{1}{\\sqrt{3}}\\bigl(\\ket{0}\\bra{0} + \\ket{1}\\bra{1} - 2\\ket{2}\\bra{2}\\bigr)
                 = \\frac{1}{\\sqrt{3}}\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -2 \\end{bmatrix},
         \\end{aligned}
+
+    .. raw:: latex
+
+        \\end{adjustwidth}
 
     indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`3`-dimensional identity matrix for :math:`i=0`.
 
@@ -696,13 +706,13 @@ class Rotation(QuantumGate):
        \\begin{aligned}
            \\Rotation_x &= \\e^{-\\eye\\Pauli_{x}\\theta/2} =
                \\begin{bmatrix} \\cos(\\theta/2) & -\\eye\\sin(\\theta/2) \\\\
-               -\\eye\\sin(\\theta/2) & \\cos(\\theta/2)  \\end{bmatrix} \\\\
+               -\\eye\\sin(\\theta/2) & \\cos(\\theta/2)  \\end{bmatrix}, \\\\
            \\Rotation_y &= \\e^{-\\eye\\Pauli_{y}\\theta/2} =
                \\begin{bmatrix} \\cos(\\theta/2) & -\\sin(\\theta/2) \\\\
-               \\sin(\\theta/2) & \\cos(\\theta/2) \\end{bmatrix} \\\\
+               \\sin(\\theta/2) & \\cos(\\theta/2) \\end{bmatrix}, \\\\
            \\Rotation_z &= \\e^{-\\eye\\Pauli_{z}\\theta/2} =
                \\begin{bmatrix} \\e^{-\\eye\\theta/2} & 0 \\\\
-               0 & \\e^{\\eye\\theta/2} \\end{bmatrix}
+               0 & \\e^{\\eye\\theta/2} \\end{bmatrix},
        \\end{aligned}
 
     where :math:`\\theta` is the *rotation angle* (:python:`angle`).
@@ -726,6 +736,10 @@ class Rotation(QuantumGate):
         Defaults to :python:`0`.
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+
+      .. raw:: latex
+
+         \\vspace*{-0.5\\baselineskip}
 
     Note
     ----
@@ -827,7 +841,7 @@ class Phase(QuantumGate):
                0 & 0 & \\omega^2 & \\ldots & 0 \\\\
                \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\
                0 & 0 & 0 & \\ldots & \\omega^{\\Dimension - 1}
-           \\end{bmatrix}.
+           \\end{bmatrix}
        \\end{aligned}
 
     where :math:`\\omega` is the *phase factor* (:python:`phase`).
@@ -999,7 +1013,7 @@ class Swap(QuantumGate):
 
        \\Swap^{A,B} =
            \\sum\\limits_{j,k=0}^{\\Dimension - 1}
-           {\\ket{j}\\bra{k}}^A \\otimes {\\ket{k}\\bra{j}}^B,
+           {\\ket{j}\\bra{k}}^A \\otimes {\\ket{k}\\bra{j}}^B
 
     where the identity operator acts on all other systems.
 
@@ -1406,12 +1420,12 @@ class Measurement(QuantumGate):
     - When :python:`observable` is :python:`False`
       (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`):
 
-    .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger.
+    .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger
 
     - When :python:`observable` is :python:`True`
       (:python:`operators` is a list of observables :math:`\\Observable_i`):
 
-    .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.
+    .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i
 
     The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding matrix representation (e.g., :math:`\\Kraus_i = \\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurement(s).
 
@@ -1434,11 +1448,11 @@ class Measurement(QuantumGate):
 
     Note
     ----
-    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s) to be measured. These indices must be consecutive, and their number must match the number of systems spanned by all given operators.
+    In quantum mechanics, measurement operations constitute (in general) non-linear and non-unitary transformations of (normalized) state vectors and density operators. As such, they cannot be represented by matrices, and so the :python:`matrix` property therefore does not return a valid representation of the measurement operation.
 
     Note
     ----
-    Measurement operations in quantum physics are, in general, non-linear and non-unitary operations on (normalized) state vectors and density operators. As such, they cannot be represented by matrices, and so the :python:`matrix` property therefore does not return a valid representation of the measurement operation.
+    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s) to be measured. These indices must be consecutive, and their number must match the number of systems spanned by all given operators.
     """
 
     def __init__(

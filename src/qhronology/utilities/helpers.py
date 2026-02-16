@@ -26,7 +26,7 @@ import sympy as sp
 from sympy.physics.quantum import TensorProduct
 from sympy.physics.quantum.dagger import Dagger
 
-from qhronology.utilities.classification import mat, arr, num, sym, Shapes, matrix_shape
+from qhronology.utilities.classification import mat, arr, num, sym, expr, Shapes, matrix_shape
 
 
 def flatten_list(nested_list: list) -> list:

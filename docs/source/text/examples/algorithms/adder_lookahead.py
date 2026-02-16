@@ -15,24 +15,36 @@ overflow_qubit = True
 
 # Input
 augend_state = VectorState(
-    spec=encode(integer=augend_integer, num_systems=encoding_depth, reverse=True),
+    spec=encode(
+        integer=augend_integer,
+        num_systems=encoding_depth,
+        reverse=True,
+    ),
     label="x",
 )
 addend_state = VectorState(
-    spec=encode(integer=addend_integer, num_systems=encoding_depth, reverse=True),
+    spec=encode(
+        integer=addend_integer,
+        num_systems=encoding_depth,
+        reverse=True,
+    ),
     label="y",
 )
 zero_state = []
 if overflow_qubit is True:
-    zero_state = VectorState(spec=encode(integer=0, num_systems=1), label="0")
+    zero_state = VectorState(
+        spec=encode(integer=0, num_systems=1),
+        label="0",
+    )
 
 augend_states = []
 addend_states = []
 carry_states = []
 for i in range(0, encoding_depth):
     target_bit = i
-    complement_bits = [n for n in range(0, encoding_depth) if n != target_bit]
-
+    complement_bits = [
+        n for n in range(0, encoding_depth) if n != target_bit
+    ]
     augend_state.partial_trace(complement_bits)
     addend_state.partial_trace(complement_bits)
 
@@ -61,14 +73,16 @@ for i in range(0, encoding_depth):
 
 input_spec = flatten_list(
     [
-        [carry_states[i], augend_states[i], addend_states[i]]
+        [
+            carry_states[i],
+            augend_states[i],
+            addend_states[i],
+        ]
         for i in range(0, encoding_depth)
     ]
     + [zero_state]
 )
-
 # Gates
-
 # Construct sequence of CARRY gates
 carries = []
 for i in range(0, encoding_depth - 1 + int(overflow_qubit)):
@@ -155,9 +169,13 @@ sum_registers_complement = [
     for i in range(0, 3 * encoding_depth + int(overflow_qubit))
     if i not in sum_registers
 ]
+
 sum_state = adder.state(label="s", traces=sum_registers_complement)
 sum_integer = decode(matrix=sum_state.output(), reverse=True)
-sum_state = VectorState(spec=encode(integer=sum_integer, reverse=True), label="s")
+sum_state = VectorState(
+    spec=encode(integer=sum_integer, reverse=True),
+    label="s",
+)
 final_time = time.time()
 
 # Results
@@ -165,7 +183,7 @@ augend_state.print()
 addend_state.print()
 sum_state.print()
 
-computation = f"Computation: {augend_integer} + {addend_integer} = {sum_integer}"
-duration = f"Duration: {sp.N(final_time - initial_time,8).round(3)} seconds"
-print(computation)
-print(duration)
+computation = f"{augend_integer} + {addend_integer} = {sum_integer}"
+duration = sp.N(final_time - initial_time, n=8).round(3)
+print(f"Computation: {computation}")
+print(f"Duration: {duration} seconds")

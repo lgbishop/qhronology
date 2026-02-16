@@ -6,7 +6,7 @@ Half adder
 Description
 -----------
 
-An *adder* is a circuit that sums the values of two quantum vector states in some basis. For instance, this could be the states :math:`\ket{x}` and :math:`\ket{y}` in a :math:`\Dimension`-dimensional number basis :math:`\{\ket{n}\}_{n=0}^{\Dimension - 1}`. As described in :ref:`eg:cnot`, this can be accomplished with just a CNOT (controlled-NOT) gate, which produces the sum state :math:`\ket{x \oplus y}`.
+An *adder* is a circuit that sums the values of two quantum vector states in some basis. For instance, this could be the states :math:`\ket{x}` and :math:`\ket{y}` in a :math:`\Dimension`-dimensional number basis :math:`\{\ket{n}\}_{n=0}^{\Dimension - 1}`. As described in :numref:`eg:cnot` :ref:`eg:cnot`, this can be accomplished with just a CNOT (controlled-NOT) gate, which produces the sum state :math:`\ket{x \oplus y}`.
 
 We consider here perhaps the simplest form of a quantum adder: a *half* adder (see :numref:`fig:circuit_algorithm_adder_simple`). In addition to producing a *summation* output value
 
@@ -43,6 +43,10 @@ which represents the *overflow* of the summation. This is simply the value by wh
    :figclass: light-dark hidden
 
    A quantum half adder.
+
+.. raw:: latex
+
+   \vspace*{-\baselineskip}
 
 A truth table for this circuit in the context of qubits appears in :numref:`table:adder_half`.
 
@@ -89,6 +93,10 @@ Implementation
 
    \end{codetitled}
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 Output
 ------
 
@@ -105,7 +113,7 @@ Diagram
 
 .. raw:: latex
    
-   \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.10cm]{text_examples_algorithms_adder_half.pdf}
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_half.pdf}
    \vspace{-1\baselineskip}
 
 ..
