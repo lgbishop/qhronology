@@ -1775,6 +1775,10 @@ A better understanding of quantum circuitry notation can be gained by studying a
 
    .. raw:: latex
       
+      \begin{adjustwidth}{1em}{0em}
+
+   .. raw:: latex
+      
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1795,11 +1799,19 @@ A better understanding of quantum circuitry notation can be gained by studying a
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+      
+      \end{adjustwidth}
 
 As there are no operations (such as gates or measurements) on the wire, the explicitly labelled output state :math:`\StateDensity^\prime` is identically equal to the input state :math:`\StateDensity` (since the quantum wire directly connects the two).
 
 If we were to place a gate corresponding to an arbitrary unitary operator :math:`\Unitary` upon the intermediary wire, the resulting action is the standard transformation of a matrix by a linear operator:
+
+   .. raw:: latex
+      
+      \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
       
@@ -1823,9 +1835,17 @@ If we were to place a gate corresponding to an arbitrary unitary operator :math:
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+      
+      \end{adjustwidth}
 
 For a pure (vector) input state, the circuit is simply:
+
+   .. raw:: latex
+      
+      \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
       
@@ -1849,15 +1869,19 @@ For a pure (vector) input state, the circuit is simply:
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
 
-.. raw:: latex
-
-   \newpage
+   .. raw:: latex
+      
+      \end{adjustwidth}
 
 In this case, we could, without loss of generality, denote the output state with a vector state (such as :math:`\ket{\StateVector^\prime} = \Unitary\ket{\StateVector}`, equivalent to :math:`\StateDensity^\prime = \ket{\StateVector^\prime}\bra{\StateVector^\prime}`), since the action of the (linear transformation) unitary gate preserves the purity of the systems on which it acts. Note that this is not true in general for all circuits; (non-unitary) operations like the (partial) trace do not necessarily preserve the purity of a particular system, and so the output states cannot always be denoted by vector states, even if the input states are pure.
 
 More interesting cases are those of multipartite systems. For instance, the evolution of a bipartite input state under a composite unitary gate is:
+
+   .. raw:: latex
+      
+      \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
       
@@ -1881,9 +1905,17 @@ More interesting cases are those of multipartite systems. For instance, the evol
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+      
+      \end{adjustwidth}
 
 The evolution of the same state under parallel operations appears as:
+
+   .. raw:: latex
+      
+      \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
       
@@ -1907,9 +1939,17 @@ The evolution of the same state under parallel operations appears as:
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+      
+      \end{adjustwidth}
 
 In the case where the input state is explicitly separable, we write:
+
+   .. raw:: latex
+      
+      \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
       
@@ -1933,9 +1973,17 @@ In the case where the input state is explicitly separable, we write:
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+      
+      \end{adjustwidth}
 
 Due to the input state's separability, the mathematics corresponding to parallel operations on these systems may be greatly simplified:
+
+   .. raw:: latex
+      
+      \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
       
@@ -1959,15 +2007,15 @@ Due to the input state's separability, the mathematics corresponding to parallel
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+      
+      \end{adjustwidth}
 
 This is, of course, simply equivalent to two distinct subcircuits with the outputs :math:`\StateDensity^\prime_A = \Unitary_A \StateDensity_A \Unitary_A^\dagger` and :math:`\StateDensity^\prime_B = \Unitary_B \StateDensity_B \Unitary_B^\dagger`, respectively.
 
 .. note:: For more examples, see the :ref:`Examples <part:examples>` section.
-
-.. raw:: latex
-
-   \newpage
 
 Remarks
 =======
@@ -1976,6 +2024,10 @@ Matrix vs. vector circuits
 --------------------------
 
 Note that our description of quantum circuits thus far has considered quantum processes involving both matrix states (such as mixed states and matrix representations of pure states) and vector states. Traditionally however, quantum circuit diagrams were used exclusively to visualize completely vector processes: all inputs are vector states, all intermediate operations are linear transformations, and so accordingly all outputs are vectors (up until any non-linear operations such as measurement). In such a paradigm, the mathematics corresponding to any given quantum circuit is necessarily always expressible as (linear and unitary) operations on *vectors*. It is therefore not necessary to express the circuit output using density matrices (such as outer products like :math:`\ket{\StateVector^\prime}\bra{\StateVector^\prime}`) in the case of exclusively purity-preserving operations. For example, we may write
+
+   .. raw:: latex
+      
+      \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
       
@@ -1999,9 +2051,17 @@ Note that our description of quantum circuits thus far has considered quantum pr
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+      
+      \end{adjustwidth}
 
 which is purely a vector description. In our combined matrix and vector formalism, we can equivalently express the above circuit as
+
+   .. raw:: latex
+      
+      \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
       
@@ -2025,7 +2085,11 @@ which is purely a vector description. In our combined matrix and vector formalis
    .. raw:: latex
       
       \end{mdframed}
-      \vspace{1em}
+      % \vspace{1em}
+
+   .. raw:: latex
+      
+      \end{adjustwidth}
 
 where, despite the vector input and linear transformation, the output is given as a (density) matrix. The circuit formalism presented here is thus a more general one, such that the quantum circuits describe operations on (density) *matrix* states, not just vector states. This additionally means that both purity-preserving and purity-non-preserving operations (such as the partial trace) are completely captured by our methodology. Note however that in cases where a pure state output is obtained, it is often useful to specify such output in vector form (this being the most compact way of expressing pure states).
 
