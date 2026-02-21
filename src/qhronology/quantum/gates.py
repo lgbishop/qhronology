@@ -606,7 +606,7 @@ class GellMann(QuantumGate):
             &\\GellMann_7 \\equiv -\\eye\\ket{2}\\bra{3} + \\eye\\ket{3}\\bra{2}
                 = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & -\\eye \\\\ 0 & \\eye & 0 \\end{bmatrix},
         \\end{aligned}
-        \\quad\:\:
+        \\quad\\:\\:
         \\begin{aligned}
             &\\GellMann_2 \\equiv -\\eye\\ket{0}\\bra{1} + \\eye \\ket{1}\\bra{0}
                 = \\begin{bmatrix} 0 & -\\eye & 0 \\\\ \\eye & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}, \\\\
