@@ -523,9 +523,9 @@ Normal operators arise in many special forms, including:
 
    which is to say that :math:`\op{\Pi}` is both idempotent and Hermitian.
 
--  *Involutory* operators :math:`\op{Q}`, defined by
+-  *Involutory* operators :math:`\op{A}`, defined by
 
-   .. math:: \op{Q}^2 = \Identity.
+   .. math:: \op{A}^2 = \Identity.
 
    Involutory operators include those which are both Hermitian and unitary.
 
