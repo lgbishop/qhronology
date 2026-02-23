@@ -521,8 +521,8 @@ Constructor argument properties
    - :py:attr:`~qhronology.quantum.states.QuantumState.form` is :python:`"vector"`: :math:`\alpha\ket{0,0} + \beta\ket{1,1}`
    - :py:attr:`~qhronology.quantum.states.QuantumState.form` is :python:`"matrix"`:
 
-   - :py:attr:`~qhronology.quantum.states.QuantumState.kind` is :python:`"pure"`: :math:`\abs{\alpha}^2\ket{0,0}\bra{0,0} + \alpha\beta^*\ket{0,0}\bra{1,1} + \alpha^*\beta\ket{1,1}\bra{0,0} + \abs{\beta}^2\ket{1,1}\bra{1,1}`
-   - :py:attr:`~qhronology.quantum.states.QuantumState.kind` is :python:`"mixed"`: :math:`\alpha\ket{0,0}\bra{0,0} + \beta\ket{1,1}\bra{1,1}`
+     - :py:attr:`~qhronology.quantum.states.QuantumState.kind` is :python:`"pure"`: :math:`\abs{\alpha}^2\ket{0,0}\bra{0,0} + \alpha\beta^*\ket{0,0}\bra{1,1} + \alpha^*\beta\ket{1,1}\bra{0,0} + \abs{\beta}^2\ket{1,1}\bra{1,1}`
+     - :py:attr:`~qhronology.quantum.states.QuantumState.kind` is :python:`"mixed"`: :math:`\alpha\ket{0,0}\bra{0,0} + \beta\ket{1,1}\bra{1,1}`
 
 .. raw:: latex
 
