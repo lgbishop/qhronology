@@ -180,6 +180,7 @@ class QuantumCTC(QuantumCircuit):
 
     def input(
         self,
+        merge: bool | None = None,
         conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -197,6 +198,11 @@ class QuantumCTC(QuantumCircuit):
 
         Arguments
         ---------
+        merge : bool
+            Whether to merge the labels of the individual quantum states into a single product,
+            separated by :python:`"⊗"` operators, prior to any notational processing.
+            Only relevant when all states are vectors.
+            Defaults to :python:`True`.
         conditions : list[tuple[num | sym | str, num | sym | str]]
             Algebraic conditions to be applied to the state.
             If :python:`False`, does not substitute the conditions.
@@ -221,7 +227,10 @@ class QuantumCTC(QuantumCircuit):
             When not :python:`None`, overrides the value passed to :python:`label`.
             Must have a non-zero length.
             Not intended to be set by the user in most cases.
-            Defaults to :python:`None`.
+            Defaults to :python:`"⊗".join([state.notation for state in self.inputs])`
+            if :python:`label` is :python:`None`
+            and either :python:`merge` is :python:`False` or the input states are all vectors,
+            else :python:`None`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
             Defaults to :python:`False`.
@@ -230,11 +239,29 @@ class QuantumCTC(QuantumCircuit):
         -------
         mat
             The total input state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+
+        Note
+        ----
+        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation`
+        is fixed and incompatible with any subsequent changes (including densification).
+        This behaviour may be improved in the future.
         """
+        merge = True if merge is None else merge
         conditions = self.conditions if conditions is None else conditions
+
+        if label is None and (
+            (merge is False and self.input_is_vector is True)
+            or self.input_is_vector is False
+        ):
+            notation = (
+                "⊗".join([state.notation for state in self.inputs])
+                if notation is None
+                else notation
+            )
         label = (
             "⊗".join([state.label for state in self.inputs]) if label is None else label
         )
+
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
         if self.input_is_vector is True:

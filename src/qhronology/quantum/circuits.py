@@ -467,7 +467,7 @@ class QuantumCircuit(SymbolicsProperties):
             Not intended to be set by the user in most cases.
             Defaults to :python:`"⊗".join([state.notation for state in self.inputs])`
             if :python:`label` is :python:`None`
-            and (:python:`merge` is :python:`False` or the input states are all vectors),
+            and either :python:`merge` is :python:`False` or the input states are all vectors,
             else :python:`None`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
@@ -496,7 +496,8 @@ class QuantumCircuit(SymbolicsProperties):
             for state in inputs:
                 state.densify()
 
-        # TODO: This is the only place where such label/notation combining occurs for states,
+        # TODO: This is one of only two places (the other being QuantumCTC's input() method)
+        # where such label/notation combining occurs for states,
         # and it does not extend properly to cases where states are combined further or
         # densification is performed.
         # Therefore, need to upgrade QuantumObject functionality to allow for multiple labels to be
