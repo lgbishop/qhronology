@@ -173,11 +173,9 @@ class QuantumCTC(QuantumCircuit):
     @property
     def input_is_vector(self) -> bool:
         """Whether all states in :python:`inputs` are vector states."""
-        is_vector = True
-        if any(
-            form != Forms.VECTOR.value for form in [state.form for state in self.inputs]
-        ):
-            is_vector = False
+        is_vector = False
+        if all(state.is_vector for state in self.inputs):
+            is_vector = True
         return is_vector
 
     def input(

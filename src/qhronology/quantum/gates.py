@@ -205,6 +205,10 @@ class QuantumGate(QuantumObject):
         self.coefficient = coefficient
 
     @property
+    def is_vector(self) -> bool:
+        return False
+
+    @property
     def spec(self) -> mat | arr | list[list[num | sym | str]]:
         """The matrix representation of the quantum gate's operator.
         Provides a complete description of the operator in a standard :python:`dim`-dimensional basis.

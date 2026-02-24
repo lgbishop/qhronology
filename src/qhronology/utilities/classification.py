@@ -83,12 +83,12 @@ COMPATIBILITIES = KIND_FORM | FORM_KIND
 
 def matrix_form(matrix: mat) -> str | None:
     """Describe the form of :python:`matrix` using the terminology of mathematics."""
-    if matrix.shape[0] != 1 and matrix.shape[1] == 1:
-        return Forms.VECTOR.value
-    elif matrix.shape[0] == 1 and matrix.shape[1] != 1:
-        return Forms.VECTOR.value
-    elif matrix.shape[0] == matrix.shape[1]:
+    N = matrix.shape[0]
+    M = matrix.shape[1]
+    if N == M and N != 1:
         return Forms.MATRIX.value
+    elif (N == 1 and M != 1) or (N != 1 and M == 1):
+        return Forms.VECTOR.value
     else:
         raise ValueError(
             "The given :python:`matrix` is invalid for describing either a vector or matrix state."
