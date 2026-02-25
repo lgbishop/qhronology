@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 23, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
   </head>
   
   
@@ -567,7 +567,9 @@
 <span class="sd">    symbols : dict[sym | str, dict[str, Any]]</span>
 <span class="sd">        A dictionary in which the keys are individual symbols and the values are dictionaries</span>
 <span class="sd">        of their respective SymPy keyword-argument :python:`assumptions`.</span>
-<span class="sd">        The value of the :python:`symbols` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance&#39;s corresponding :python:`symbols` property.</span>
+<span class="sd">        The value of the :python:`symbols` property of all states in :python:`inputs` and</span>
+<span class="sd">        gates in :python:`gates` are automatically merged into the instance&#39;s corresponding</span>
+<span class="sd">        :python:`symbols` property.</span>
 <span class="sd">        Defaults to :python:`{}`.</span>
 <span class="sd">    conditions : list[tuple[num | sym | str, num | sym | str]]</span>
 <span class="sd">        A list of :math:`2`-tuples of conditions to be applied to all objects (such as states and</span>
@@ -576,8 +578,9 @@
 <span class="sd">        expression in the respective second element.</span>
 <span class="sd">        This uses the same format as the SymPy :python:`subs()` method.</span>
 <span class="sd">        The order in which they are applied is simply their order in the list.</span>
-<span class="sd">        The value of the :python:`conditions` property of all states in :python:`inputs` and gates in :python:`gates`</span>
-<span class="sd">        are automatically merged into the instance&#39;s corresponding :python:`conditions` property.</span>
+<span class="sd">        The value of the :python:`conditions` property of all states in :python:`inputs` and</span>
+<span class="sd">        gates in :python:`gates` are automatically merged into the instance&#39;s corresponding</span>
+<span class="sd">        :python:`conditions` property.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
 
 <span class="sd">    Note</span>
@@ -587,8 +590,8 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The sum of the :python:`num_systems` properties of the quantum states in :python:`inputs` should match</span>
-<span class="sd">    that of each of the gates in :python:`gates`.</span>
+<span class="sd">    The sum of the :python:`num_systems` properties of the quantum states in :python:`inputs`</span>
+<span class="sd">    should match that of each of the gates in :python:`gates`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -836,11 +839,9 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">input_is_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether all states in :python:`inputs` are vector states.&quot;&quot;&quot;</span>
-        <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
-            <span class="n">form</span> <span class="o">!=</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">form</span> <span class="ow">in</span> <span class="p">[</span><span class="n">state</span><span class="o">.</span><span class="n">form</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">]</span>
-        <span class="p">):</span>
-            <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">is_vector</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">):</span>
+            <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems_inputs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="n">is_vector</span>
@@ -939,7 +940,7 @@
 <span class="sd">            Not intended to be set by the user in most cases.</span>
 <span class="sd">            Defaults to :python:`&quot;⊗&quot;.join([state.notation for state in self.inputs])`</span>
 <span class="sd">            if :python:`label` is :python:`None`</span>
-<span class="sd">            and (:python:`merge` is :python:`False` or the input states are all vectors),</span>
+<span class="sd">            and either :python:`merge` is :python:`False` or the input states are all vectors,</span>
 <span class="sd">            else :python:`None`.</span>
 <span class="sd">        debug : bool</span>
 <span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
@@ -952,9 +953,9 @@
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation`</span>
-<span class="sd">        is fixed and incompatible with any subsequent changes (including densification).</span>
-<span class="sd">        This behaviour may be improved in the future.</span>
+<span class="sd">        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose</span>
+<span class="sd">        :python:`notation` is fixed and incompatible with any subsequent changes</span>
+<span class="sd">        (including densification). This behaviour may be improved in the future.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">merge</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">merge</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">merge</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span>
@@ -968,7 +969,8 @@
             <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
                 <span class="n">state</span><span class="o">.</span><span class="n">densify</span><span class="p">()</span>
 
-        <span class="c1"># TODO: This is the only place where such label/notation combining occurs for states,</span>
+        <span class="c1"># TODO: This is one of only two places (the other being QuantumCTC&#39;s input() method)</span>
+        <span class="c1"># where such label/notation combining occurs for states,</span>
         <span class="c1"># and it does not extend properly to cases where states are combined further or</span>
         <span class="c1"># densification is performed.</span>
         <span class="c1"># Therefore, need to upgrade QuantumObject functionality to allow for multiple labels to be</span>

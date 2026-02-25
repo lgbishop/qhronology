@@ -85,10 +85,6 @@ Methods
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. automethod:: qhronology.quantum.prescriptions.DCTC.state_violating
 
 .. raw:: latex

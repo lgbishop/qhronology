@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 23, 2026"/>
+    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
   </head>
   
   
@@ -545,7 +545,9 @@ Must all have the same value of the <code class="code highlight python docutils 
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[]</span></code>.</p></li>
 <li><p><strong>symbols</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[sym</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict[str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Any]]</span></code>) – A dictionary in which the keys are individual symbols and the values are dictionaries
 of their respective SymPy keyword-argument <code class="code highlight python docutils literal highlight-python"><span class="n">assumptions</span></code>.
-The value of the <code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> property of all states in <code class="code highlight python docutils literal highlight-python"><span class="n">inputs</span></code> and gates in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code> are automatically merged into the instance’s corresponding <code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> property.
+The value of the <code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> property of all states in <code class="code highlight python docutils literal highlight-python"><span class="n">inputs</span></code> and
+gates in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code> are automatically merged into the instance’s corresponding
+<code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> property.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">{}</span></code>.</p></li>
 <li><p><strong>conditions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">sym</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">sym</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – A list of <span class="math notranslate nohighlight">\(2\)</span>-tuples of conditions to be applied to all objects (such as states and
 gates) computed from the circuit.
@@ -553,8 +555,9 @@ All instances of the expression in each tuple’s first element are replaced by 
 expression in the respective second element.
 This uses the same format as the SymPy <code class="code highlight python docutils literal highlight-python"><span class="n">subs</span><span class="p">()</span></code> method.
 The order in which they are applied is simply their order in the list.
-The value of the <code class="code highlight python docutils literal highlight-python"><span class="n">conditions</span></code> property of all states in <code class="code highlight python docutils literal highlight-python"><span class="n">inputs</span></code> and gates in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code>
-are automatically merged into the instance’s corresponding <code class="code highlight python docutils literal highlight-python"><span class="n">conditions</span></code> property.
+The value of the <code class="code highlight python docutils literal highlight-python"><span class="n">conditions</span></code> property of all states in <code class="code highlight python docutils literal highlight-python"><span class="n">inputs</span></code> and
+gates in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code> are automatically merged into the instance’s corresponding
+<code class="code highlight python docutils literal highlight-python"><span class="n">conditions</span></code> property.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[]</span></code>.</p></li>
 </ul>
 </dd>
@@ -566,8 +569,8 @@ share the same dimensionality (i.e., the value of the <code class="code highligh
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The sum of the <code class="code highlight python docutils literal highlight-python"><span class="n">num_systems</span></code> properties of the quantum states in <code class="code highlight python docutils literal highlight-python"><span class="n">inputs</span></code> should match
-that of each of the gates in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code>.</p>
+<p>The sum of the <code class="code highlight python docutils literal highlight-python"><span class="n">num_systems</span></code> properties of the quantum states in <code class="code highlight python docutils literal highlight-python"><span class="n">inputs</span></code>
+should match that of each of the gates in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code>.</p>
 </div>
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="literal-block-wrapper docutils container" id="id1">
@@ -1156,7 +1159,7 @@ Must have a non-zero length.
 Not intended to be set by the user in most cases.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;⊗&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">state</span><span class="o">.</span><span class="n">notation</span> <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">])</span></code>
 if <code class="code highlight python docutils literal highlight-python"><span class="n">label</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">None</span></code>
-and (<code class="code highlight python docutils literal highlight-python"><span class="n">merge</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code> or the input states are all vectors),
+and either <code class="code highlight python docutils literal highlight-python"><span class="n">merge</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code> or the input states are all vectors,
 else <code class="code highlight python docutils literal highlight-python"><span class="kc">None</span></code>.</p></li>
 <li><p><strong>debug</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to print the internal state (held in <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code>) on change.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
@@ -1168,9 +1171,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Passing a value of <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code> to the <code class="code highlight python docutils literal highlight-python"><span class="n">merge</span></code> argument results in a state whose <code class="code highlight python docutils literal highlight-python"><span class="n">notation</span></code>
-is fixed and incompatible with any subsequent changes (including densification).
-This behaviour may be improved in the future.</p>
+<p>Passing a value of <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code> to the <code class="code highlight python docutils literal highlight-python"><span class="n">merge</span></code> argument results in a state whose
+<code class="code highlight python docutils literal highlight-python"><span class="n">notation</span></code> is fixed and incompatible with any subsequent changes
+(including densification). This behaviour may be improved in the future.</p>
 </div>
 </dd></dl>
 

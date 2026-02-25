@@ -185,6 +185,15 @@ Constructor argument properties
 
    \hrulefillthick
 
+Read-only properties
+--------------------
+
+.. autoproperty:: qhronology.quantum.prescriptions.QuantumCTC.matrix
+
+.. raw:: latex
+
+   \hrulefillthick
+
 .. _`sec:docs_prescriptions_methods`:
 
 Methods
@@ -237,10 +246,6 @@ Methods
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \newpage
 
 Subclasses
 ==========
