@@ -150,6 +150,22 @@ class QuantumCTC(QuantumCircuit):
 
             self.systems_respecting = systems_respecting
 
+    def __repr__(self) -> str:
+        return repr(self.output_respecting())
+
+    @property
+    def matrix(self) -> mat:
+        """The matrix representation of the total CTC-circuit output state (both CR and CV systems)
+        prior to any post-processing."""
+        return QuantumCircuit(
+            inputs=self.inputs,
+            gates=self.gates,
+            traces=self.traces,
+            postselections=self.postselections,
+            symbols=self.symbols,
+            conditions=self.conditions,
+        ).matrix
+
     @property
     def systems_respecting(self) -> list[int]:
         """The numerical indices of the chronology-respecting (CR) subsystems."""
@@ -242,9 +258,9 @@ class QuantumCTC(QuantumCircuit):
 
         Note
         ----
-        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation`
-        is fixed and incompatible with any subsequent changes (including densification).
-        This behaviour may be improved in the future.
+        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose
+        :python:`notation` is fixed and incompatible with any subsequent changes
+        (including densification). This behaviour may be improved in the future.
         """
         merge = True if merge is None else merge
         conditions = self.conditions if conditions is None else conditions
@@ -313,19 +329,55 @@ class QuantumCTC(QuantumCircuit):
 
         return input_state
 
-    # The four methods below merely output the reduced states, so the :python:`systems_respective` and
-    # :python:`systems_violating` of the base class acts just like extra traces.
+    # The four methods below merely output the reduced states, so the :python:`systems_respective`
+    # and :python:`systems_violating` of the base class acts just like extra traces.
     def output_violating(self) -> mat:
-        return self.state(traces=self.systems_respecting).output()
+        return (
+            QuantumCircuit(
+                inputs=self.inputs,
+                gates=self.gates,
+                traces=self.traces,
+                postselections=self.postselections,
+                symbols=self.symbols,
+                conditions=self.conditions,
+            )
+            .state(traces=self.systems_respecting)
+            .output()
+        )
 
     def output_respecting(self) -> mat:
-        return self.state(traces=self.systems_violating).output()
+        return (
+            QuantumCircuit(
+                inputs=self.inputs,
+                gates=self.gates,
+                traces=self.traces,
+                postselections=self.postselections,
+                symbols=self.symbols,
+                conditions=self.conditions,
+            )
+            .state(traces=self.systems_violating)
+            .output()
+        )
 
     def state_violating(self) -> QuantumState:
-        return self.state(traces=self.systems_respecting)
+        return QuantumCircuit(
+            inputs=self.inputs,
+            gates=self.gates,
+            traces=self.traces,
+            postselections=self.postselections,
+            symbols=self.symbols,
+            conditions=self.conditions,
+        ).state(traces=self.systems_respecting)
 
     def state_respecting(self) -> QuantumState:
-        return self.state(traces=self.systems_violating)
+        return QuantumCircuit(
+            inputs=self.inputs,
+            gates=self.gates,
+            traces=self.traces,
+            postselections=self.postselections,
+            symbols=self.symbols,
+            conditions=self.conditions,
+        ).state(traces=self.systems_violating)
 
 
 def dctc_violating(
@@ -1242,8 +1294,8 @@ class PCTC(QuantumCTC):
 
     @property
     def matrix(self) -> mat:
-        """The matrix representation of the total P-CTC CR output state prior to any
-        post-processing."""
+        """The matrix representation of the total P-CTC chronology-respecting (CR) output state
+        prior to any post-processing."""
         output_respecting = pctc_respecting(
             input_respecting=self.input(conditions=[]),
             gate=self.gate(conditions=[]),

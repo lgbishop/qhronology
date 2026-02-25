@@ -99,7 +99,9 @@ class QuantumCircuit(SymbolicsProperties):
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols and the values are dictionaries
         of their respective SymPy keyword-argument :python:`assumptions`.
-        The value of the :python:`symbols` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`symbols` property.
+        The value of the :python:`symbols` property of all states in :python:`inputs` and
+        gates in :python:`gates` are automatically merged into the instance's corresponding
+        :python:`symbols` property.
         Defaults to :python:`{}`.
     conditions : list[tuple[num | sym | str, num | sym | str]]
         A list of :math:`2`-tuples of conditions to be applied to all objects (such as states and
@@ -108,8 +110,9 @@ class QuantumCircuit(SymbolicsProperties):
         expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
         The order in which they are applied is simply their order in the list.
-        The value of the :python:`conditions` property of all states in :python:`inputs` and gates in :python:`gates`
-        are automatically merged into the instance's corresponding :python:`conditions` property.
+        The value of the :python:`conditions` property of all states in :python:`inputs` and
+        gates in :python:`gates` are automatically merged into the instance's corresponding
+        :python:`conditions` property.
         Defaults to :python:`[]`.
 
     Note
@@ -119,8 +122,8 @@ class QuantumCircuit(SymbolicsProperties):
 
     Note
     ----
-    The sum of the :python:`num_systems` properties of the quantum states in :python:`inputs` should match
-    that of each of the gates in :python:`gates`.
+    The sum of the :python:`num_systems` properties of the quantum states in :python:`inputs`
+    should match that of each of the gates in :python:`gates`.
     """
 
     def __init__(
@@ -480,9 +483,9 @@ class QuantumCircuit(SymbolicsProperties):
 
         Note
         ----
-        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation`
-        is fixed and incompatible with any subsequent changes (including densification).
-        This behaviour may be improved in the future.
+        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose
+        :python:`notation` is fixed and incompatible with any subsequent changes
+        (including densification). This behaviour may be improved in the future.
         """
         merge = True if merge is None else merge
         inputs = copy.deepcopy(self.inputs)
