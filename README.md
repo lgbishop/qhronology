@@ -388,7 +388,7 @@ Contributions to Qhronology (both the package and its documentation), including 
 
 ## Citation
 
-- The package:
+- The package itself:
 ```bibtex
 @software{bishop_qhronology-software_2025,
   title = {Qhronology: {{A Python}} package for studying quantum models of closed timelike curves and simulating general quantum information processing \& computation},
@@ -400,7 +400,7 @@ Contributions to Qhronology (both the package and its documentation), including 
 }
 ```
 
-- The project documentation:
+- The project's documentation:
 ```bibtex
 @misc{bishop_qhronology-documentation_2025,
   title = {Qhronology: {{Documentation}}, {{Examples}}, and {{Theory}}},
@@ -412,7 +412,7 @@ Contributions to Qhronology (both the package and its documentation), including 
 }
 ```
 
-- The [paper](https://arxiv.org/abs/2601.17459):
+- The project's [technical paper](https://arxiv.org/abs/2601.17459):
 ```bibtex
 @misc{bishop_qhronology_2026,
   title = {Qhronology: {{A Python}} package for studying quantum models of closed timelike curves},
