@@ -221,7 +221,7 @@ When :python:`overflow_qubit = True`:
 .. code:: python
 
    >>> print(duration)
-   Duration: 4.036 seconds
+   Duration: 2.596 seconds
 
 .. raw:: latex
 
@@ -240,7 +240,7 @@ When :python:`overflow_qubit = False`:
 .. code:: python
 
    >>> print(duration)
-   Duration: 1.070 seconds
+   Duration: 0.507 seconds
 
 .. raw:: latex
 

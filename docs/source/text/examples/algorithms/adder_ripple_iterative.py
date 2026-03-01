@@ -8,8 +8,6 @@ from sympy.physics.quantum import TensorProduct
 
 import time
 
-initial_time = time.time()
-
 augend_integer = 31
 addend_integer = 217
 encoding_depth = 8
@@ -34,15 +32,16 @@ ICNI = Not(targets=[2], controls=[1], num_systems=4)
 
 # Circuits
 sum_qubits = []
+initial_time = time.time()
 for i in range(encoding_depth - 1, -1, -1):
-    target_bit = i
-    complement_bits = [n for n in range(0, encoding_depth) if n != target_bit]
+    target_system = i
+    complement_systems = [n for n in range(0, encoding_depth) if n != target_system]
 
     augend_state.reset()
     addend_state.reset()
 
-    augend_state.partial_trace(complement_bits)
-    addend_state.partial_trace(complement_bits)
+    augend_state.partial_trace(complement_systems)
+    addend_state.partial_trace(complement_systems)
 
     adder = QuantumCircuit(
         inputs=[augend_state, addend_state, carry_state, zero_state],
@@ -53,12 +52,13 @@ for i in range(encoding_depth - 1, -1, -1):
     carry_state = adder.state(label="c_i", traces=[0, 1, 2])
     sum_qubits = [sum_qubit.output()] + sum_qubits
 
-adder.diagram()
-
 # Output
 sum_state = QuantumState(spec=sp.Matrix(TensorProduct(*sum_qubits)), label="s")
 sum_integer = decode(sum_state.output())
 sum_state = VectorState(spec=encode(sum_integer), label="s")
+final_time = time.time()
+
+adder.diagram()
 
 augend_state.reset()
 addend_state.reset()
@@ -71,7 +71,6 @@ augend_state.print()
 addend_state.print()
 sum_state.print()
 
-final_time = time.time()
 computation = f"Computation: {augend_integer} + {addend_integer} = {sum_integer}"
 duration = f"Duration: {sp.N(final_time - initial_time,8).round(3)} seconds"
 print(computation)

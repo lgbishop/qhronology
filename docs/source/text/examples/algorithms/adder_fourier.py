@@ -8,8 +8,6 @@ import sympy as sp
 
 import time
 
-initial_time = time.time()
-
 augend_integer = 1
 addend_integer = 1
 encoding_depth = 2
@@ -94,19 +92,20 @@ adder = QuantumCircuit(inputs=[augend_state, addend_state], gates=gates)
 adder.diagram()
 
 # Output
+initial_time = time.time()
 sum_registers = [(i + encoding_depth) for i in range(0, encoding_depth)]
 sum_registers_complement = [
     i for i in range(0, 2 * encoding_depth) if i not in sum_registers
 ]
 sum_state = adder.state(label="s", traces=sum_registers_complement)
 sum_integer = decode(sum_state.output())
+final_time = time.time()
 
 # Results
 augend_state.print()
 addend_state.print()
 sum_state.print()
 
-final_time = time.time()
 computation = f"Computation: {augend_integer} + {addend_integer} = {sum_integer}"
 duration = f"Duration: {sp.N(final_time - initial_time,8).round(3)} seconds"
 print(computation)
