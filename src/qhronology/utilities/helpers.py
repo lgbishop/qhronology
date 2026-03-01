@@ -55,8 +55,7 @@ def list_depth(nested_list: list) -> int:
 
 
 def count_systems(matrix: mat, dim: int) -> int:
-    """Count the number of :python:`dim`-dimensional subsystems which constitute the (composite) system
-    represented by :python:`matrix`."""
+    """Count the number of :python:`dim`-dimensional subsystems which constitute the (composite) system represented by :python:`matrix`."""
     return int(np.emath.logn(dim, sp.shape(to_density(matrix))[0]))
 
 
@@ -74,8 +73,7 @@ def check_systems_conflicts(*subsystems: list[int]) -> bool:
 
 
 def adjust_targets(targets: list[int], removed: list[int]) -> list[int]:
-    """Adjust the specified system indices (:python:`targets`) according to those which have been
-    removed (:python:`removed`) from the total set."""
+    """Adjust the specified system indices (:python:`targets`) according to those which have been removed (:python:`removed`) from the total set."""
     targets = sorted(list(set(flatten_list([targets]))))
     removed = sorted(list(set(flatten_list([removed]))))
 
@@ -89,12 +87,9 @@ def adjust_targets(targets: list[int], removed: list[int]) -> list[int]:
 
 
 def arrange(positions: list[list[int]], items: list[Any]) -> list[Any]:
-    """Arranges the elements of :python:`items` the according to the respective locations
-    (e.g., system indices) in :python:`positions`.
+    """Arranges the elements of :python:`items` the according to the respective locations (e.g., system indices) in :python:`positions`.
     The main use case would be to arrange gates in a multipartite system.
-
-    The lengths of both :python:`positions` and :python:`items` must be the same, and :python:`positions` must not
-    contain any missing system indices.
+    The lengths of both :python:`positions` and :python:`items` must be the same, and :python:`positions` must not contain any missing system indices.
 
     Examples
     --------
@@ -103,7 +98,7 @@ def arrange(positions: list[list[int]], items: list[Any]) -> list[Any]:
     """
     if len(positions) != len(items):
         raise ValueError(
-            "The number of items in :python:`positions` and :python:`items` do not match."
+            """The number of items in :python:`positions` and :python:`items` do not match."""
         )
 
     arranged = []
@@ -116,8 +111,7 @@ def arrange(positions: list[list[int]], items: list[Any]) -> list[Any]:
 
 
 def to_density(vector: mat) -> mat:
-    """Compute the outer product of :python:`vector` with itself, thereby converting any vector state
-    into density matrix form.
+    """Compute the outer product of :python:`vector` with itself, thereby converting any vector state into density matrix form.
     Leaves square matrices unaffected, and raises an error for non-square matrices."""
     if matrix_shape(vector) == Shapes.COLUMN.value:
         return vector * Dagger(vector)
@@ -127,7 +121,7 @@ def to_density(vector: mat) -> mat:
         return vector
     else:
         raise ValueError(
-            "A non-square matrix cannot be converted to a density matrix form."
+            """A non-square matrix cannot be converted to a density matrix form."""
         )
 
 
@@ -140,7 +134,7 @@ def to_column(vector: mat) -> mat:
     elif matrix_shape(vector) == Shapes.SQUARE.value:
         return vector
     else:
-        raise ValueError("Cannot convert a non-square matrix to a column vector.")
+        raise ValueError("""Cannot convert a non-square matrix to a column vector.""")
 
 
 def stringify(
@@ -191,7 +185,7 @@ def stringify(
                         )
                 else:
                     raise ValueError(
-                        "The given matrix must be either a square, a column, or a row."
+                        """The given matrix must be either a square, a column, or a row."""
                     )
                 coefficient = matrix[n, m]
                 if isinstance(sp.sympify(coefficient), sp.core.add.Add) is True:
@@ -206,8 +200,7 @@ def symbolize_expression(
     expression: mat | arr | num | sym | str,
     symbols: dict[sym | str, dict[str, Any]] | list[sym] | None = None,
 ) -> mat | arr | num | sym:
-    """Sympify a numerical, symbolic, or string expression,
-    and replace the symbols with given counterparts."""
+    """Sympify a numerical, symbolic, or string expression, and replace the symbols with given counterparts."""
     symbols = [] if symbols is None else symbols
     if isinstance(symbols, dict) is True:
         symbols_list = []
@@ -227,7 +220,7 @@ def symbolize_expression(
                 expression = sp.sympify(str(expression))
             except:
                 raise TypeError(
-                    "The given :python:`expression` cannot be converted to a symbolic representation."
+                    """The given :python:`expression` cannot be converted to a symbolic representation."""
                 )
 
         for symbol in symbols:
@@ -237,7 +230,7 @@ def symbolize_expression(
                 try:
                     expression = expression.subs(sp.sympify(str(symbol)), symbol)
                 except:
-                    raise ValueError("One of more of the given symbols is invalid.")
+                    raise ValueError("""One of more of the given symbols is invalid.""")
         expressions[i] = expression
     if isinstance(expressions, list) is True:
         expressions = expressions[0]
@@ -247,8 +240,7 @@ def symbolize_expression(
 def symbolize_tuples(
     conditions: list[tuple[num | sym | str, num | sym | str]], symbols_list: list[sym]
 ) -> list[tuple[num | sym, num | sym]]:
-    """Sympify the numerical, symbolic, or string expression pairs within tuples of the
-    list :python:`conditions` and replace the symbols with given counterparts."""
+    """Sympify the numerical, symbolic, or string expression pairs within tuples of the list :python:`conditions` and replace the symbols with given counterparts."""
     for n in range(0, len(conditions)):
         conditions[n] = list(conditions[n])
         conditions[n][0] = symbolize_expression(conditions[n][0], symbols_list)
@@ -265,10 +257,8 @@ def recursively_simplify(
     comprehensive: bool | None = None,
 ) -> mat | arr | num | sym:
     """Simplify :python:`expression` recursively using the substitutions given in :python:`conditions`.
-    Runs until :python:`expression` is unchanged from the previous iteration,
-    or until the :python:`limit` number of iterations is reached.
-    If :python:`comprehensive` is :python:`False`, the algorithm uses a relatively efficient subset of
-    simplifying operations, otherwise it uses a larger, more powerful (but slower) set.
+    Runs until :python:`expression` is unchanged from the previous iteration, or until the :python:`limit` number of iterations is reached.
+    If :python:`comprehensive` is :python:`False`, the algorithm uses a relatively efficient subset of simplifying operations, otherwise it uses a larger, more powerful (but slower) set.
     """
     conditions = [] if conditions is None else conditions
     limit = 2 if limit is None else limit
@@ -295,7 +285,7 @@ def recursively_simplify(
                 functions += [sp.cos, sp.exp]
             # functions = [sp.simplify] # Simple version for testing/comparison.
 
-            # Generate all (sub-)permutations of the list :python:`functions`
+            # Generate all (sub-)permutations of the list :python:`functions`.
             permutations = []
             for n in range(1, len(functions) + 1):
                 permutations += list(itertools.permutations(functions, r=n))
@@ -320,7 +310,7 @@ def recursively_simplify(
                 if length_after < length_before:
                     expression_before = copy.deepcopy(expression_after)
 
-            # Do not try another iteration if no change
+            # Do not try another iteration if no change.
             if expression_after == expression_previous:
                 break
             counter += 1
@@ -348,14 +338,13 @@ def extract_matrix(operator: mat | arr | QuantumObject) -> mat:
         matrix = sp.Matrix(matrix)
     except:
         raise ValueError(
-            "A valid SymPy matrix cannot be extracted from :python:`operator`."
+            """A valid SymPy matrix cannot be extracted from :python:`operator`."""
         )
     return matrix
 
 
 def extract_conditions(*states) -> list[tuple[num | sym, num | sym]]:
-    """Extract any substitution conditions accessible via the :python:`conditions` property
-    from the objects in :python:`states`."""
+    """Extract any substitution conditions accessible via the :python:`conditions` property from the objects in :python:`states`."""
     conditions = []
     symbols_list = []
     for state in states:
@@ -370,8 +359,7 @@ def extract_conditions(*states) -> list[tuple[num | sym, num | sym]]:
 
 
 def extract_symbols(*states) -> list[sym]:
-    """Extract any SymPy symbols accessible via the :python:`symbols` property
-    from the objects in :python:`states`."""
+    """Extract any SymPy symbols accessible via the :python:`symbols` property from the objects in :python:`states`."""
     symbols = dict()
     for state in states:
         try:
@@ -384,10 +372,7 @@ def extract_symbols(*states) -> list[sym]:
 def apply_function(
     matrix: mat, function: Callable, arguments: list[Any] | None = None
 ) -> mat:
-    """Applies a function to a matrix. This is accomplished using eigendecomposition,
-    in which the specified matrix is assumed to be normal
-    (i.e., :python:`matrix * Dagger(matrix) = Dagger(matrix) * matrix`,
-    which holds true for density operators)."""
+    """Applies a function to a matrix. This is accomplished using eigendecomposition, in which the specified matrix is assumed to be normal (i.e., :python:`matrix * Dagger(matrix) = Dagger(matrix) * matrix`, which holds true for density operators)."""
     arguments = [] if arguments is None else arguments
     eigentriple = matrix.eigenvects()
     transformed = sp.zeros(len(eigentriple[0][2][0]))
@@ -407,7 +392,7 @@ def default_arguments(
     arguments, kwarguments, class_object, arg_pairs: list[tuple[str, Any]]
 ):
     """Change the default value of an argument in a subclass's constructor.
-    :python:`class_object` is the class whose :python:`__init__` signature is to be targeted.
+    The argument :python:`class_object` is the class whose :python:`__init__` signature is to be targeted.
     """
     arg_strs, arg_defaults = zip(*arg_pairs)
     sig = inspect.signature(class_object.__init__)

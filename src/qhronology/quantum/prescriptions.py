@@ -44,27 +44,19 @@ from qhronology.mechanics.quantities import trace
 
 
 class QuantumCTC(QuantumCircuit):
-    """A class for creating quantum circuit models of quantum interactions near
-    closed timelike curves and storing their metadata.
+    """A class for creating quantum circuit models of quantum interactions near closed timelike curves and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class, and so inherits all of its attributes, properties, and methods.
 
-    Instances provide complete descriptions of quantum circuits involving antichronological time
-    travel. The class however does not possess any ability to compute the output state
-    (e.g., resolve temporal paradoxes) of the circuit;
-    that functionality is associated with the specific prescriptions of quantum time travel,
-    which are implemented as subclasses.
+    Instances provide complete descriptions of quantum circuits involving antichronological time travel. The class however does not possess any ability to compute the output state (e.g., resolve temporal paradoxes) of the circuit; that functionality is associated with the specific prescriptions of quantum time travel, which are implemented as subclasses.
 
     Arguments
     ---------
     *args
-        Variable length argument list, passed directly to the constructor :python:`__init__`  of the
-        superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.
+        Variable length argument list, passed directly to the constructor :python:`__init__`  of the superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.
     circuit : QuantumCircuit
         An instance of the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class.
-        The values of its attributes override any other values specified in :python:`*args` and
-        :python:`**kwargs`.
+        The values of its attributes override any other values specified in :python:`*args` and :python:`**kwargs`.
         Defaults to :python:`None`.
     systems_respecting : int | list[int]
         The numerical indices of the chronology-respecting (CR) subsystems.
@@ -73,49 +65,33 @@ class QuantumCTC(QuantumCircuit):
         The numerical indices of the chronology-violating (CV) subsystems.
         Defaults to :python:`[]`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.
 
     Note
     ----
-    The lists of indices specified in :python:`systems_respecting` and :python:`systems_violating` must both be
-    contiguous.
-    Additionally, the circuit's inputs (:python:`inputs`) are treated as one contiguous total state,
-    with the indices of its subsystems exactly matching those specified in :python:`systems_respecting`.
+    The lists of indices specified in :python:`systems_respecting` and :python:`systems_violating` must both be contiguous.
+    Additionally, the circuit's inputs (:python:`inputs`) are treated as one contiguous total state, with the indices of its subsystems exactly matching those specified in :python:`systems_respecting`.
 
     Note
     ----
-    It is best practice to specify only one of either :python:`systems_violating` or
-    :python:`systems_violating`, never both.
-    The properties associated with both of these constructor arguments automatically ensure that
-    they are always complementary (with respect to the entire system space), and so only one needs
-    to be specified.
+    It is best practice to specify only one of either :python:`systems_violating` or :python:`systems_violating`, never both.
+    The properties associated with both of these constructor arguments automatically ensure that they are always complementary (with respect to the entire system space), and so only one needs to be specified.
 
     Note
     ----
-    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing
-    :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the
-    :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance.
-    Any such mergers override the values of the attributes associated with the other arguments
-    specified in the constructor. It is best practice to specify either of:
+    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance. Any such mergers override the values of the attributes associated with the other arguments specified in the constructor. It is best practice to specify either of:
 
     - only :python:`circuit` and one of either :python:`systems_respecting` or :python:`systems_violating`
 
-    - :python:`*args` and :python:`**kwargs` (like a typical initialization of a
-      :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance)
-      without specifying :python:`circuit`
+    - :python:`*args` and :python:`**kwargs` (like a typical initialization of a :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance) without specifying :python:`circuit`
 
     Note
     ----
-    The total interaction between the CR and CV systems is expected to be unitary,
-    and so the sequence of gates in :python:`gates` cannot contain any non-unitary gates
-    (e.g., measurement operations).
+    The total interaction between the CR and CV systems is expected to be unitary, and so the sequence of gates in :python:`gates` cannot contain any non-unitary gates (e.g., measurement operations).
 
     Note
     ----
-    Post-processing (e.g., traces and postselections) cannot be performed on any
-    chronology-violating (CV) systems (i.e., those corresponding to indices specified in
-    :python:`systems_violating`).
+    Post-processing (e.g., traces and postselections) cannot be performed on any chronology-violating (CV) systems (i.e., those corresponding to indices specified in :python:`systems_violating`).
     """
 
     def __init__(
@@ -137,15 +113,14 @@ class QuantumCTC(QuantumCircuit):
             systems_violating = [] if systems_violating is None else systems_violating
             if len(systems_respecting) == 0 and len(systems_violating) == 0:
                 raise ValueError(
-                    "Either :python:`systems_respecting` or :python:`systems_violating` must be set."
+                    """Either :python:`systems_respecting` or :python:`systems_violating` must be set."""
                 )
             if len(systems_respecting) != 0 and len(systems_violating) != 0:
                 if set(self.systems) != set(systems_respecting) | set(
                     systems_violating
                 ):
                     raise ValueError(
-                        """The union of :python:`systems_respecting` and :python:`systems_violating` is
-                        inequivalent to the entire system's structure."""
+                        """The union of :python:`systems_respecting` and :python:`systems_violating` is inequivalent to the entire system's structure."""
                     )
 
             self.systems_respecting = systems_respecting
@@ -155,8 +130,7 @@ class QuantumCTC(QuantumCircuit):
 
     @property
     def matrix(self) -> mat:
-        """The matrix representation of the total CTC-circuit output state (both CR and CV systems)
-        prior to any post-processing."""
+        """The matrix representation of the total CTC-circuit output state (both CR and CV systems) prior to any post-processing."""
         return QuantumCircuit(
             inputs=self.inputs,
             gates=self.gates,
@@ -205,18 +179,16 @@ class QuantumCTC(QuantumCircuit):
         notation: str | None = None,
         debug: bool | None = None,
     ) -> QuantumState:
-        """Construct the composite chronology-respecting (CR) input state of the closed timelike
-        curve as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.
+        """Construct the composite chronology-respecting (CR) input state of the closed timelike curve as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.
 
-        This is computed as the tensor product of the individual gates in the order in which they
-        appear in the :python:`inputs` property.
+        This is computed as the tensor product of the individual gates in the order in which they appear in the :python:`inputs` property.
+
         Is a vector state only when all of the component states are vectors.
 
         Arguments
         ---------
         merge : bool
-            Whether to merge the labels of the individual quantum states into a single product,
-            separated by :python:`"⊗"` operators, prior to any notational processing.
+            Whether to merge the labels of the individual quantum states into a single product, separated by :python:`"⊗"` operators, prior to any notational processing.
             Only relevant when all states are vectors.
             Defaults to :python:`True`.
         conditions : list[tuple[num | sym | str, num | sym | str]]
@@ -243,10 +215,7 @@ class QuantumCTC(QuantumCircuit):
             When not :python:`None`, overrides the value passed to :python:`label`.
             Must have a non-zero length.
             Not intended to be set by the user in most cases.
-            Defaults to :python:`"⊗".join([state.notation for state in self.inputs])`
-            if :python:`label` is :python:`None`
-            and either :python:`merge` is :python:`False` or the input states are all vectors,
-            else :python:`None`.
+            Defaults to :python:`"⊗".join([state.notation for state in self.inputs])` if :python:`label` is :python:`None` and either :python:`merge` is :python:`False` or the input states are all vectors, else :python:`None`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
             Defaults to :python:`False`.
@@ -258,9 +227,8 @@ class QuantumCTC(QuantumCircuit):
 
         Note
         ----
-        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose
-        :python:`notation` is fixed and incompatible with any subsequent changes
-        (including densification). This behaviour may be improved in the future.
+        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation` is fixed and incompatible with any subsequent changes (including densification).
+        This behaviour may be improved in the future.
         """
         merge = True if merge is None else merge
         conditions = self.conditions if conditions is None else conditions
@@ -290,8 +258,7 @@ class QuantumCTC(QuantumCircuit):
 
         if count_systems(input_state, self.dim) != len(self.systems_respecting):
             raise ValueError(
-                """The size of the given input state(s) does not match that specified by the
-                property :python:`systems_respecting`."""
+                """The size of the given input state(s) does not match that specified by the property :python:`systems_respecting`."""
             )
 
         input_state = QuantumState(
@@ -329,8 +296,7 @@ class QuantumCTC(QuantumCircuit):
 
         return input_state
 
-    # The four methods below merely output the reduced states, so the :python:`systems_respective`
-    # and :python:`systems_violating` of the base class acts just like extra traces.
+    # The four methods below merely output the reduced states, so the :python:`systems_respective` and :python:`systems_violating` of the base class acts just like extra traces.
     def output_violating(self) -> mat:
         return (
             QuantumCircuit(
@@ -387,31 +353,27 @@ def dctc_violating(
     systems_violating: list[int],
     free_symbol: sym | str | None = None,
 ) -> mat:
-    """Calculate the chronology-violating (CV) state(s) according to the D-CTC prescription by
-    computing fixed points of the map
+    """Calculate the chronology-violating (CV) state(s) according to the D-CTC prescription by computing fixed points of the map
 
     .. math::
 
         \\MapDCTCsCV_{\\Unitary}[\\StateCR,\\StateCV]
             = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\StateCV)\\Unitary^\\dagger\\bigr]
 
-    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)
-    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
+    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`) and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
 
     Arguments
     ---------
     input_respecting : mat | QuantumState
         The matrix representation of the chronology-respecting (CR) input state.
     gate : mat | QuantumGate
-        The matrix representation of the gate describing the (unitary) interaction between the
-        CR and CV systems.
+        The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.
     systems_respecting : list[int]
         The numerical indices of the chronology-respecting (CR) subsystems.
     systems_violating : list[int]
         The numerical indices of the chronology-violating (CV) subsystems.
     free_symbol : sym | str
-        The representation of the algebraic symbol to be used as the free parameter in the case
-        where the CV map has a multiplicity of fixed points.
+        The representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
         Defaults to :python:`"g"`.
 
     Returns
@@ -470,7 +432,7 @@ def dctc_violating(
         equations += [sp.Eq(trace(input_respecting), 1, evaluate=False)]
         equations += [sp.Eq(trace(input_violating), 1, evaluate=False)]
 
-    # Designed to loop twice: once without the trace equation, then once with it
+    # Designed to loop twice: once without the trace equation, then once with it.
     counter = 0
     while True:
         solutions = sp.solve(equations, unknowns, set=True)
@@ -484,26 +446,24 @@ def dctc_violating(
         if len(solutions[1]) == 1:
             break
         elif len(solutions[1]) == 0:
-            # Remove final equation (possibly trace condition) and try again
+            # Remove final equation (possibly trace condition) and try again.
             del equations[-1]
         else:
             raise NotImplementedError(
-                """Support for multiple non-parametrized D-CTC CV solutions has not yet been
-                implemented."""
+                """Support for multiple non-parametrized D-CTC CV solutions has not yet been implemented."""
             )
         counter += 1
         if counter == 2:
             raise NotImplementedError(
-                """The D-CTC CV algorithm was unable to determine a solution (fixed point)
-                to the CV map. If you are certain that your circuit does indeed have a solution,
-                you are welcome to file a bug report."""
+                """The D-CTC CV algorithm was unable to determine a solution (fixed point) to the CV map.
+                If you are certain that your circuit does indeed have a solution, you are welcome to file a bug report."""
             )
 
     solutions = list(solutions[1])[0]
     solutions = {key: value for key, value in zip(unknowns, solutions)}
 
-    # Check for all zeroes solution and replace with CR input state if so
-    # This assumes that a zero solution corresponds to the CR input
+    # Check for all zeroes solution and, if found, replace it with the CR input state.
+    # This assumes that a zero solution corresponds to the CR input.
     if any(value != 0 for value in solutions.values()) is False:
         pairs = {
             key: value
@@ -513,8 +473,7 @@ def dctc_violating(
             solutions[key] = pairs[key]
         solutions = list(solutions.values())
     else:
-        # Invert solution about τ_00 in the case of a single free parameter
-        # so that the final result is consistent with the analytical approach
+        # Invert solution about τ_00 in the case of a single free parameter so that the final result is consistent with the analytical approach.
         if len(solutions[input_violating[0]].free_symbols) == 1:
             inverting_symbol = list(solutions[input_violating[0]].free_symbols)[0]
             if inverting_symbol in solutions.keys():
@@ -578,17 +537,14 @@ def dctc_respecting(
     systems_respecting: list[int],
     systems_violating: list[int],
 ) -> mat:
-    """Calculate the chronology-respecting (CR) state(s) according to the D-CTC prescription's
-    CR map
+    """Calculate the chronology-respecting (CR) state(s) according to the D-CTC prescription's CR map
 
     .. math::
 
        \\MapDCTCsCR_{\\Unitary}[\\StateCR,\\StateCV]
            = \\trace_\\CV\\bigl[\\Unitary(\\StateCR \\otimes \\StateCV)\\Unitary^\\dagger\\bigr]
 
-    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`),
-    chronology-violating (CV) solution state :python:`input_violating` (:math:`\\StateCV`),
-    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
+    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`), chronology-violating (CV) solution state :python:`input_violating` (:math:`\\StateCV`), and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
 
     Arguments
     ---------
@@ -597,8 +553,7 @@ def dctc_respecting(
     input_violating : mat | QuantumState
         The matrix representation of the chronology-violating (CR) solution state.
     gate : mat | QuantumGate
-        The matrix representation of the gate describing the (unitary) interaction between the
-        CR and CV systems.
+        The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.
     systems_respecting : list[int]
         The numerical indices of the chronology-respecting (CR) subsystems.
     systems_violating : list[int]
@@ -635,24 +590,19 @@ def dctc_respecting(
 
 
 class DCTC(QuantumCTC):
-    """A subclass for creating closed timelike curves described by Deutsch's prescription (D-CTCs)
-    of quantum time travel.
+    """A subclass for creating closed timelike curves described by Deutsch's prescription (D-CTCs) of quantum time travel.
 
-    This is built upon the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class, and so inherits all of its attributes, properties, and methods.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     free_symbol : sym | str
-        The representation of the algebraic symbol to be used as the free parameter in the case
-        where the CV map has a multiplicity of fixed points.
+        The representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
         Defaults to :python:`"g"`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
 
     def __init__(self, *args, free_symbol: sym | str | None = None, **kwargs):
@@ -662,8 +612,7 @@ class DCTC(QuantumCTC):
 
     @property
     def free_symbol(self) -> sym | str:
-        """The representation of the algebraic symbol to be used as the free parameter in the case
-        where the CV map has a multiplicity of fixed points."""
+        """The representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points."""
         return self._free_symbol
 
     @free_symbol.setter
@@ -682,8 +631,7 @@ class DCTC(QuantumCTC):
 
     @property
     def matrix(self) -> mat:
-        """The matrix representation of the total D-CTC chronology-respecting (CR) output state
-        prior to any post-processing."""
+        """The matrix representation of the total D-CTC chronology-respecting (CR) output state prior to any post-processing."""
         output_respecting = dctc_respecting(
             input_respecting=self.input(conditions=[]),
             input_violating=self.state_violating(free_symbol=self.free_symbol),
@@ -714,8 +662,7 @@ class DCTC(QuantumCTC):
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
         free_symbol : str
-            The string representation of the algebraic symbol to be used as the free parameter
-            in the case where the CV map has a multiplicity of fixed points.
+            The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
 
         Returns
@@ -784,8 +731,7 @@ class DCTC(QuantumCTC):
         postprocess: bool | None = None,
         free_symbol: sym | str | None = None,
     ) -> mat:
-        """Compute the matrix representation of the D-CTC chronology-respecting (CR) state(s)
-        (including any post-processing).
+        """Compute the matrix representation of the D-CTC chronology-respecting (CR) state(s) (including any post-processing).
 
         Arguments
         ---------
@@ -799,12 +745,10 @@ class DCTC(QuantumCTC):
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
         postprocess : bool
-            Whether to post-process the state
-            (i.e., perform the circuit's traces and postselections).
+            Whether to post-process the state (i.e., perform the circuit's traces and postselections).
             Defaults to :python:`True`.
         free_symbol : str
-            The string representation of the algebraic symbol to be used as the free parameter
-            in the case where the CV map has a multiplicity of fixed points.
+            The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
 
         Returns
@@ -893,8 +837,7 @@ class DCTC(QuantumCTC):
         postprocess: bool | None = None,
         free_symbol: sym | str | None = None,
     ) -> mat:
-        """An alias for the :py:meth:`~qhronology.quantum.prescriptions.DCTC.output_respecting`
-        method.
+        """An alias for the :py:meth:`~qhronology.quantum.prescriptions.DCTC.output_respecting` method.
 
         Useful for polymorphism.
 
@@ -910,12 +853,10 @@ class DCTC(QuantumCTC):
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
         postprocess : bool
-            Whether to post-process the state
-            (i.e., perform the circuit's traces and postselections).
+            Whether to post-process the state (i.e., perform the circuit's traces and postselections).
             Defaults to :python:`True`.
         free_symbol : str
-            The string representation of the algebraic symbol to be used as the free parameter
-            in the case where the CV map has a multiplicity of fixed points.
+            The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
 
         Returns
@@ -943,8 +884,7 @@ class DCTC(QuantumCTC):
         debug: bool | None = None,
         free_symbol: sym | str | None = None,
     ) -> QuantumState:
-        """Compute the D-CTC chronology-violating (CV) state(s) as a
-        :py:class:`~qhronology.quantum.states.QuantumState` instance.
+        """Compute the D-CTC chronology-violating (CV) state(s) as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Arguments
         ---------
@@ -952,8 +892,7 @@ class DCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state before committing it to the
-            :python:`matrix` property.
+            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -974,12 +913,10 @@ class DCTC(QuantumCTC):
             Not intended to be set by the user in most cases.
             Defaults to :python:`None`.
         traces : list[int]
-            A list of indices of the CV systems (relative to the entire circuit) on which to
-            perform partial traces.
+            A list of indices of the CV systems (relative to the entire circuit) on which to perform partial traces.
             Defaults to :python:`[]`.
         free_symbol : str
-            The string representation of the algebraic symbol to be used as the free parameter
-            in the case where the CV map has a multiplicity of fixed points.
+            The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
@@ -1032,8 +969,7 @@ class DCTC(QuantumCTC):
         debug: bool | None = None,
         free_symbol: sym | str | None = None,
     ) -> QuantumState:
-        """Compute the D-CTC chronology-respecting (CR) state(s) as a
-        :py:class:`~qhronology.quantum.states.QuantumState` instance.
+        """Compute the D-CTC chronology-respecting (CR) state(s) as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Arguments
         ---------
@@ -1041,8 +977,7 @@ class DCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state before committing it to the
-            :python:`matrix` property.
+            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -1063,17 +998,14 @@ class DCTC(QuantumCTC):
             Not intended to be set by the user in most cases.
             Defaults to :python:`None`.
         traces : list[int]
-            A list of indices of the CR systems (relative to the entire circuit) on which to
-            perform partial traces.
+            A list of indices of the CR systems (relative to the entire circuit) on which to perform partial traces.
             Performed regardless of the value of :python:`postprocess`.
             Defaults to :python:`[]`.
         postprocess : bool
-            Whether to post-process the state
-            (i.e., perform the circuit's traces and postselections).
+            Whether to post-process the state (i.e., perform the circuit's traces and postselections).
             Defaults to :python:`True`.
         free_symbol : str
-            The string representation of the algebraic symbol to be used as the free parameter
-            in the case where the CV map has a multiplicity of fixed points.
+            The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
@@ -1082,8 +1014,7 @@ class DCTC(QuantumCTC):
         Returns
         -------
         QuantumState
-            The (post-processed) CR output state as a
-            :py:class:`~qhronology.quantum.states.QuantumState` instance.
+            The (post-processed) CR output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
         """
         conditions = self.conditions if conditions is None else conditions
         traces = [] if traces is None else traces
@@ -1131,8 +1062,7 @@ def pctc_violating(
     systems_respecting: list[int],
     systems_violating: list[int],
 ) -> mat:
-    """Calculate the chronology-violating (CV) state according to the P-CTC weak-measurement
-    tomography expression for the prescription's CV map
+    """Calculate the chronology-violating (CV) state according to the P-CTC weak-measurement tomography expression for the prescription's CV map
 
     .. math::
 
@@ -1140,19 +1070,15 @@ def pctc_violating(
            = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\tfrac{1}{\\Dimension}\\Identity)
            \\Unitary^\\dagger\\bigr],
 
-    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)
-    and interaction described by :python:`gate` (:math:`\\Unitary`).
-    Here, :math:`\\Dimension` is the dimensionality of the CV Hilbert space
-    (assumed to be equivalent to that of its CR counterpart), while :math:`\\Identity` is the
-    :math:`\\Dimension \\times \\Dimension` identity matrix.
+    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`) and interaction described by :python:`gate` (:math:`\\Unitary`).
+    Here, :math:`\\Dimension` is the dimensionality of the CV Hilbert space (assumed to be equivalent to that of its CR counterpart), while :math:`\\Identity` is the :math:`\\Dimension \\times \\Dimension` identity matrix.
 
     Arguments
     ---------
     input_respecting : mat | QuantumState
         The matrix representation of the chronology-respecting (CR) input state.
     gate : mat | QuantumGate
-        The matrix representation of the gate describing the (unitary) interaction between the
-        CR and CV systems.
+        The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.
     systems_respecting : list[int]
         The numerical indices of the chronology-respecting (CR) subsystems.
     systems_violating : list[int]
@@ -1165,9 +1091,7 @@ def pctc_violating(
 
     Note
     ----
-    The validity of the expression used in this function to compute the P-CTC CV state for
-    *non-qubit* systems has not been proven.
-
+    The validity of the expression used in this function to compute the P-CTC CV state for *non-qubit* systems has not been proven.
     """
     systems_respecting = list(set(systems_respecting))
     systems_violating = list(set(systems_violating))
@@ -1202,16 +1126,14 @@ def pctc_respecting(
     systems_respecting: list[int],
     systems_violating: list[int],
 ) -> mat:
-    """Calculate the (non-renormalized) chronology-respecting (CR) state according to the
-    P-CTC prescription's non-renormalizing CR map
+    """Calculate the (non-renormalized) chronology-respecting (CR) state according to the P-CTC prescription's non-renormalizing CR map
 
     .. math::
 
        \\MapPCTCsCR_{\\Unitary}[\\StateCR]
            \\propto \\OperatorPCTC \\StateCR \\OperatorPCTC^\\dagger
 
-    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)
-    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
+    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`) and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).
     Here,
 
     .. math:: \\OperatorPCTC \\equiv \\trace_\\CV[\\Unitary]
@@ -1233,8 +1155,7 @@ def pctc_respecting(
     input_respecting : mat | QuantumState
         The matrix representation of the chronology-respecting (CR) input state.
     gate : mat | QuantumGate
-        The matrix representation of the gate describing the (unitary) interaction between the
-        CR and CV systems.
+        The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.
     systems_respecting : list[int]
         The numerical indices of the chronology-respecting (CR) subsystems.
     systems_violating : list[int]
@@ -1244,7 +1165,6 @@ def pctc_respecting(
     -------
     mat
         The solution of the P-CTC CR map.
-
     """
     systems_respecting = list(set(systems_respecting))
     systems_violating = list(set(systems_violating))
@@ -1273,20 +1193,16 @@ def pctc_respecting(
 
 
 class PCTC(QuantumCTC):
-    """A subclass for creating closed timelike curves described by the postselected
-    teleportation prescription (P-CTCs) of quantum time travel.
+    """A subclass for creating closed timelike curves described by the postselected teleportation prescription (P-CTCs) of quantum time travel.
 
-    This is built upon the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class, and so inherits all of its attributes, properties, and methods.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
 
     def __init__(self, *args, **kwargs):
@@ -1294,8 +1210,7 @@ class PCTC(QuantumCTC):
 
     @property
     def matrix(self) -> mat:
-        """The matrix representation of the total P-CTC chronology-respecting (CR) output state
-        prior to any post-processing."""
+        """The matrix representation of the total P-CTC chronology-respecting (CR) output state prior to any post-processing."""
         output_respecting = pctc_respecting(
             input_respecting=self.input(conditions=[]),
             gate=self.gate(conditions=[]),
@@ -1331,8 +1246,7 @@ class PCTC(QuantumCTC):
 
         Note
         ----
-        The validity of the expression used in this method to compute the P-CTC CV state for
-        *non-qubit* systems has not been proven.
+        The validity of the expression used in this method to compute the P-CTC CV state for *non-qubit* systems has not been proven.
         """
         output_violating = pctc_violating(
             input_respecting=self.input(conditions=[]),
@@ -1391,8 +1305,7 @@ class PCTC(QuantumCTC):
         conjugate: bool | None = None,
         postprocess: bool | None = None,
     ) -> mat:
-        """Compute the matrix representation of the P-CTC chronology-respecting (CR) state
-        (including any post-processing).
+        """Compute the matrix representation of the P-CTC chronology-respecting (CR) state (including any post-processing).
 
         Arguments
         ---------
@@ -1406,8 +1319,7 @@ class PCTC(QuantumCTC):
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
         postprocess : bool
-            Whether to post-process the state
-            (i.e., perform the circuit's traces and postselections).
+            Whether to post-process the state (i.e., perform the circuit's traces and postselections).
             Defaults to :python:`True`.
 
         Returns
@@ -1519,8 +1431,7 @@ class PCTC(QuantumCTC):
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
         postprocess : bool
-            Whether to post-process the state
-            (i.e., perform the circuit's traces and postselections).
+            Whether to post-process the state (i.e., perform the circuit's traces and postselections).
             Defaults to :python:`True`.
 
         Returns
@@ -1550,8 +1461,7 @@ class PCTC(QuantumCTC):
         traces: list[int] | None = None,
         debug: bool | None = None,
     ) -> QuantumState:
-        """Compute the P-CTC chronology-violating (CV) state as a
-        :py:class:`~qhronology.quantum.states.QuantumState` instance.
+        """Compute the P-CTC chronology-violating (CV) state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Arguments
         ---------
@@ -1559,8 +1469,7 @@ class PCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state before committing it in the
-            :python:`matrix` property.
+            Whether to perform algebraic simplification on the state before committing it in the :python:`matrix` property.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -1581,8 +1490,7 @@ class PCTC(QuantumCTC):
             Not intended to be set by the user in most cases.
             Defaults to :python:`None`.
         traces : list[int]
-            A list of indices of the CV systems (relative to the entire circuit) on which to
-            perform partial traces.
+            A list of indices of the CV systems (relative to the entire circuit) on which to perform partial traces.
             Defaults to :python:`[]`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
@@ -1595,8 +1503,7 @@ class PCTC(QuantumCTC):
 
         Note
         ----
-        The validity of the expression used in this method to compute the P-CTC CV state for
-        *non-qubit* systems has not been proven.
+        The validity of the expression used in this method to compute the P-CTC CV state for *non-qubit* systems has not been proven.
         """
         traces = [] if traces is None else traces
 
@@ -1635,8 +1542,7 @@ class PCTC(QuantumCTC):
         postprocess: bool | None = None,
         debug: bool | None = None,
     ) -> QuantumState:
-        """Compute the P-CTC chronology-respecting (CR) state as a
-        :py:class:`~qhronology.quantum.states.QuantumState` instance.
+        """Compute the P-CTC chronology-respecting (CR) state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Arguments
         ---------
@@ -1644,8 +1550,7 @@ class PCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state before committing it to the
-            :python:`matrix` property.
+            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -1666,13 +1571,11 @@ class PCTC(QuantumCTC):
             Not intended to be set by the user in most cases.
             Defaults to :python:`None`.
         traces : list[int]
-            A list of indices of the CR systems (relative to the entire circuit) on which to
-            perform partial traces.
+            A list of indices of the CR systems (relative to the entire circuit) on which to perform partial traces.
             Performed regardless of the value of :python:`postprocess`.
             Defaults to :python:`[]`.
         postprocess : bool
-            Whether to post-process the state
-            (i.e., perform the circuit's traces and postselections).
+            Whether to post-process the state (i.e., perform the circuit's traces and postselections).
             Defaults to :python:`True`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
@@ -1681,8 +1584,7 @@ class PCTC(QuantumCTC):
         Returns
         -------
         QuantumState
-            The (post-processed) CR output state as a
-            :py:class:`~qhronology.quantum.states.QuantumState` instance.
+            The (post-processed) CR output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Note
         ----

@@ -26,8 +26,8 @@ from qhronology.utilities.classification import num, sym
 class SymbolicsProperties:
     """A mixin for endowing derived classes with algebraic symbolism.
 
-    Not intended to be instantiated itself, but rather indirectly via the constructor
-    in its child classes."""
+    Not intended to be instantiated itself, but rather indirectly via the constructor in its child classes.
+    """
 
     def __init__(
         self,
@@ -41,9 +41,7 @@ class SymbolicsProperties:
 
     @property
     def symbols(self) -> dict[sym | str, dict[str, Any]]:
-        """A dictionary in which the keys are individual symbols (contained within the object's
-        matrix representation) and the values are dictionaries of their respective SymPy
-        keyword-argument :python:`assumptions` ("predicates").
+        """A dictionary in which the keys are individual symbols (contained within the object's matrix representation) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions` ("predicates").
         A full list of currently supported predicates, and their defaults, is as follows:
 
         - :python:`"algebraic"`: :python:`True`
@@ -89,8 +87,7 @@ class SymbolicsProperties:
 
     @property
     def conditions(self) -> list[tuple[num | sym | str, num | sym | str]]:
-        """A list of :math:`2`-tuples of conditions to be applied to the object's matrix
-        representation."""
+        """A list of :math:`2`-tuples of conditions to be applied to the object's matrix representation."""
         return list(self._conditions)
 
     @conditions.setter

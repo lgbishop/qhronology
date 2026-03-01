@@ -42,8 +42,7 @@ from qhronology.mechanics.operations import densify, columnify, partial_trace
 
 
 def vector_basis(dim: int) -> list[mat]:
-    """Creates an ordered list of column vectors that form an orthonormal basis for a
-    :python:`dim`-dimensional Hilbert space.
+    """Creates an ordered list of column vectors that form an orthonormal basis for a :python:`dim`-dimensional Hilbert space.
 
     Arguments
     ---------
@@ -60,12 +59,9 @@ def vector_basis(dim: int) -> list[mat]:
 
 
 def ket(spec: int | list[int], dim: int | None = None) -> mat:
-    """Creates a normalized ket (column) basis vector corresponding to the (multipartite)
-    computational-basis value(s) of :python:`spec` in a :python:`dim`-dimensional Hilbert space.
+    """Creates a normalized ket (column) basis vector corresponding to the (multipartite) computational-basis value(s) of :python:`spec` in a :python:`dim`-dimensional Hilbert space.
 
-    In mathematical notation, :python:`spec` describes the value of the ket vector, e.g., a :python:`spec` of
-    :python:`[i,j,k]` corresponds to the ket vector :math:`\\ket{i,j,k}`
-    (for some non-negative integers :python:`i`, :python:`j`, and :python:`k`).
+    In mathematical notation, :python:`spec` describes the value of the ket vector, e.g., a :python:`spec` of :python:`[i,j,k]` corresponds to the ket vector :math:`\\ket{i,j,k}` (for some non-negative integers :python:`i`, :python:`j`, and :python:`k`).
 
     Arguments
     ---------
@@ -88,12 +84,9 @@ def ket(spec: int | list[int], dim: int | None = None) -> mat:
 
 
 def bra(spec: int | list[int], dim: int | None = None) -> mat:
-    """Creates a normalized bra (row) basis vector corresponding to the (multipartite)
-    computational-basis value(s) of :python:`spec` in a :python:`dim`-dimensional dual Hilbert space.
+    """Creates a normalized bra (row) basis vector corresponding to the (multipartite) computational-basis value(s) of :python:`spec` in a :python:`dim`-dimensional dual Hilbert space.
 
-    In mathematical notation, :python:`spec` describes the value of the bra vector, e.g., a :python:`spec` of
-    :python:`[i,j,k]` corresponds to the bra vector :math:`\\bra{i,j,k}`
-    (for some non-negative integers :python:`i`, :python:`j`, and :python:`k`).
+    In mathematical notation, :python:`spec` describes the value of the bra vector, e.g., a :python:`spec` of :python:`[i,j,k]` corresponds to the bra vector :math:`\\bra{i,j,k}` (for some non-negative integers :python:`i`, :python:`j`, and :python:`k`).
 
     Arguments
     ---------
@@ -125,21 +118,17 @@ def quantum_state(
     kind: str | None = None,
     dim: int | None = None,
 ) -> mat:
-    """Constructs a :python:`dim`-dimensional matrix or vector representation of a quantum state from a
-    given specification :python:`spec`.
+    """Constructs a :python:`dim`-dimensional matrix or vector representation of a quantum state from a given specification :python:`spec`.
 
     Arguments
     ---------
     spec
-        The specification of the quantum state. Provides a complete description of the state's
-        values in a standard :python:`dim`-dimensional basis. Can be one of:
+        The specification of the quantum state. Provides a complete description of the state's values in a standard :python:`dim`-dimensional basis. Can be one of:
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
-        - a list of lists of numerical, symbolic, or string expressions that collectively specify
-          a vector or (square) matrix (:python:`list[list[num | sym | str]]`)
-        - a list of 2-tuples of numerical, symbolic, or string coefficients paired their
-          respective number-basis specification (:python:`list[tuple[num | sym | str, int | list[int]]]`)
+        - a list of lists of numerical, symbolic, or string expressions that collectively specify a vector or (square) matrix (:python:`list[list[num | sym | str]]`)
+        - a list of 2-tuples of numerical, symbolic, or string coefficients paired their respective number-basis specification (:python:`list[tuple[num | sym | str, int | list[int]]]`)
 
     form : str
         A string specifying the *form* for the quantum state to take.
@@ -165,12 +154,12 @@ def quantum_state(
     dim = 2 if dim is None else dim
 
     if form not in FORMS:
-        raise ValueError(f"The given :python:`form` ('{form}') is invalid.")
+        raise ValueError(f"""The given :python:`form` ('{form}') is invalid.""")
     if kind not in KINDS:
-        raise ValueError(f"The given :python:`kind` ('{kind}') is invalid.")
+        raise ValueError(f"""The given :python:`kind` ('{kind}') is invalid.""")
     if form not in COMPATIBILITIES[kind]:
         raise ValueError(
-            f"The given :python:`kind` ('{kind}') is incompatible with the given :python:`form` ('{form}')."
+            f"""The given :python:`kind` ('{kind}') is incompatible with the given :python:`form` ('{form}')."""
         )
 
     if isinstance(spec, mat | arr | sp.matrices.immutable.ImmutableDenseMatrix) is True:
@@ -178,7 +167,7 @@ def quantum_state(
     elif isinstance(spec, list) is True:
         if any(isinstance(item, list | tuple) is False for item in spec):
             raise ValueError(
-                "The state's :python:`spec` list must contain only lists or tuples."
+                """The state's :python:`spec` list must contain only lists or tuples."""
             )
         elif any(isinstance(item, list) is False for item in spec) is False:
             state = sp.Matrix(spec)
@@ -186,8 +175,7 @@ def quantum_state(
             for twotuple in spec:
                 if len(twotuple) != 2:
                     raise ValueError(
-                        """One or more of the tuples in the given :python:`spec` does not have exactly
-                        two (2) elements."""
+                        """One or more of the tuples in the given :python:`spec` does not have exactly two (2) elements."""
                     )
             coefficients = sp.Matrix([twotuple[0] for twotuple in spec])
             levels = [twotuple[1] for twotuple in spec]
@@ -204,20 +192,19 @@ def quantum_state(
                         levels[n], dim
                     )
         else:
-            raise ValueError("The given :python:`spec` list is invalid.")
+            raise ValueError("""The given :python:`spec` list is invalid.""")
     else:
-        raise ValueError("The given :python:`spec` is invalid.")
+        raise ValueError("""The given :python:`spec` is invalid.""")
 
     if matrix_shape(state) == "INVALID":
         raise ValueError(
-            "The given :python:`spec` does not correspond to either a square matrix or a vector."
+            """The given :python:`spec` does not correspond to either a square matrix or a vector."""
         )
 
     if form == Forms.VECTOR.value:
         if matrix_shape(state) == "SQUARE":
             raise ValueError(
-                """The given :python:`spec` describes a square matrix and so cannot be cast into a
-                vector form."""
+                """The given :python:`spec` describes a square matrix and so cannot be cast into a vector form."""
             )
         else:
             state = columnify(state)
@@ -240,10 +227,8 @@ def encode(
 ) -> mat:
     """Encodes a non-negative integer as a single quantum state vector (ket).
 
-    This is a kind of unsigned integer encoding. It creates a base-:python:`dim` numeral system
-    representation of :python:`integer` as an (ordered) list of encoded digits.
-    Returns this list if :python:`output_list` is :python:`True`, otherwise returns the corresponding
-    ket vector (i.e., a ket vector with a spec of these digits).
+    This is a kind of unsigned integer encoding. It creates a base-:python:`dim` numeral system representation of :python:`integer` as an (ordered) list of encoded digits.
+    Returns this list if :python:`output_list` is :python:`True`, otherwise returns the corresponding ket vector (i.e., a ket vector with a spec of these digits).
 
     Arguments
     ---------
@@ -252,8 +237,7 @@ def encode(
     num_systems : int
         The number of systems (e.g., qubits) necessary to represent the integer in the encoding.
         Must be a non-negative integer.
-        If :python:`None`, it automatically increases to the smallest possible number of systems
-        with which the given :python:`integer` can be encoded.
+        If :python:`None`, it automatically increases to the smallest possible number of systems with which the given :python:`integer` can be encoded.
     dim : int
         The dimensionality (or base) of the encoding.
         Must be a non-negative integer.
@@ -261,10 +245,8 @@ def encode(
     reverse : str
         Whether to reverse the ordering of the resulting encoded state.
 
-        - If :python:`reverse` is :python:`False`, the significance of the digits *decreases* along the
-          list (i.e., the least-significant digit is last).
-        - If :python:`reverse` is :python:`True`, the significance of the digits *increases* along the
-          list (i.e., the least-significant digit is first).
+        - If :python:`reverse` is :python:`False`, the significance of the digits *decreases* along the list (i.e., the least-significant digit is last).
+        - If :python:`reverse` is :python:`True`, the significance of the digits *increases* along the list (i.e., the least-significant digit is first).
 
         Defaults to :python:`False`.
     output_list : bool
@@ -286,7 +268,7 @@ def encode(
     integer = int(integer)
     if integer < 0:
         raise ValueError(
-            f"The given :python:`integer` ({integer}) cannot be less than zero."
+            f"""The given :python:`integer` ({integer}) cannot be less than zero."""
         )
     if integer != 0:
         while integer != 0:
@@ -299,8 +281,7 @@ def encode(
     num_systems = len(digits) if num_systems is None else num_systems
     if len(digits) > num_systems:
         raise ValueError(
-            f"""The given :python:`num_systems` ({num_systems}) is too few to encode the
-            :python:`integer` ({integer}) with dimensionality :python:`dim` ({dim})."""
+            f"""The given :python:`num_systems` ({num_systems}) is too few to encode the :python:`integer` ({integer}) with dimensionality :python:`dim` ({dim})."""
         )
 
     padding = [0] * num_systems
@@ -342,10 +323,8 @@ def decode_slow(
     reverse : str
         Whether to reverse the digit ordering of the encoded state prior to decoding.
 
-        - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the
-          list (i.e., the least-significant digit is last).
-        - If :python:`reverse` is :python:`True`, the significance of the digits should *increase* along the
-          list (i.e., the least-significant digit is first).
+        - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the list (i.e., the least-significant digit is last).
+        - If :python:`reverse` is :python:`True`, the significance of the digits should *increase* along the list (i.e., the least-significant digit is first).
 
         Defaults to :python:`False`.
 
@@ -392,10 +371,8 @@ def decode_fast(matrix: mat | QuantumObject, dim: int | None = None) -> int:
 
     Note
     ----
-    The current method by which this particular implementation operates is fast but may be
-    inaccurate (due to some computational shortcuts that may not work in all cases).
-    For a slower but accurate algorithm, use the
-    :py:func:`~qhronology.mechanics.matrices.decode_slow` function.
+    The current method by which this particular implementation operates is fast but may be inaccurate (due to some computational shortcuts that may not work in all cases).
+    For a slower but accurate algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_slow` function.
 
     Note
     ----
@@ -425,7 +402,7 @@ def decode_fast(matrix: mat | QuantumObject, dim: int | None = None) -> int:
 
     if len(decoded) > 1:
         raise ValueError(
-            "The given :python:`matrix` encodes more than a single non-negative integer."
+            """The given :python:`matrix` encodes more than a single non-negative integer."""
         )
 
     decoded = decoded[0]
@@ -448,18 +425,15 @@ def decode_multiple(
     reverse : str
         Whether to reverse the digit ordering of the encoded state prior to decoding.
 
-        - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the
-          list (i.e., the least-significant digit is last).
-        - If :python:`reverse` is :python:`True`, the significance of the digits should *increase* along the
-          list (i.e., the least-significant digit is first).
+        - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the list (i.e., the least-significant digit is last).
+        - If :python:`reverse` is :python:`True`, the significance of the digits should *increase* along the list (i.e., the least-significant digit is first).
 
         Defaults to :python:`False`.
 
     Returns
     -------
     list[tuple[int, num | sym]]
-        The list of tuples of pairs of decoded (unsigned) integers and their corresponding
-        probabilities.
+        The list of tuples of pairs of decoded (unsigned) integers and their corresponding probabilities.
     """
     dim = 2 if dim is None else dim
     reverse = False if reverse is None else reverse

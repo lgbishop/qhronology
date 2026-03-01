@@ -105,9 +105,7 @@ def simplify(matrix: mat | QuantumObject, comprehensive: bool | None = None) -> 
     matrix : mat | QuantumObject
         The matrix to be simplified.
     comprehensive : bool
-        Whether the simplifying algorithm should use a relatively efficient subset of
-        simplifying operations (:python:`False`),
-        or alternatively use a larger, more powerful (but slower) set (:python:`True`).
+        Whether the simplifying algorithm should use a relatively efficient subset of simplifying operations (:python:`False`), or alternatively use a larger, more powerful (but slower) set (:python:`True`).
         Defaults to :python:`False`.
 
     Returns
@@ -117,8 +115,7 @@ def simplify(matrix: mat | QuantumObject, comprehensive: bool | None = None) -> 
 
     Note
     ----
-    If :python:`comprehensive` is :python:`True`, the simplification algorithm will likely take *far*
-    longer to execute than if :python:`comprehensive` were :python:`False`.
+    If :python:`comprehensive` is :python:`True`, the simplification algorithm will likely take *far* longer to execute than if :python:`comprehensive` were :python:`False`.
     """
     conditions = extract_conditions(matrix)
     symbols = extract_symbols(matrix)
@@ -159,11 +156,9 @@ def apply(
         The matrix to be transformed.
     function : Callable
         A Python function.
-        Its first non-keyword argument must be able to take a mathematical expression or
-        a matrix/array of such types.
+        Its first non-keyword argument must be able to take a mathematical expression or a matrix/array of such types.
     arguments : dict[str, str]
-        A dictionary of keyword arguments (both keys and values as strings) to pass to
-        the :python:`function` call.
+        A dictionary of keyword arguments (both keys and values as strings) to pass to the :python:`function` call.
         Defaults to :python:`{}`.
 
     Returns
@@ -185,7 +180,7 @@ def apply(
             matrix = function(matrix, **arguments)
         except:
             raise ValueError(
-                f"Unable to apply the specified function (:python:`{function.__name__}()`) to the matrix."
+                f"""Unable to apply the specified function (:python:`{function.__name__}()`) to the matrix."""
             )
 
     return matrix
@@ -224,8 +219,7 @@ def rewrite(matrix: mat | QuantumObject, function: Callable) -> mat:
             matrix[index] = entry
     except:
         raise ValueError(
-            f"""The specified function (:python:`{function.__name__}()`) cannot be used to rewrite
-            the matrix."""
+            f"""The specified function (:python:`{function.__name__}()`) cannot be used to rewrite the matrix."""
         )
 
     return matrix
@@ -332,8 +326,7 @@ def partial_trace(
         The numerical index/indices of the subsystem(s) to be partially traced over.
         Defaults to :python:`[]`.
     discard : bool
-        Whether the systems corresponding to the indices given in :python:`targets` are to be
-        discarded (:python:`True`) or kept (:python:`False`).
+        Whether the systems corresponding to the indices given in :python:`targets` are to be discarded (:python:`True`) or kept (:python:`False`).
         Defaults to :python:`True`.
     dim : int
         The dimensionality of the matrix.
@@ -341,8 +334,7 @@ def partial_trace(
         Defaults to :python:`2`.
     optimize : bool
         Whether to optimize the implementation's algorithm.
-        Can greatly increase the computational efficiency at the cost of a larger memory footprint
-        during computation.
+        Can greatly increase the computational efficiency at the cost of a larger memory footprint during computation.
         Defaults to :python:`True`.
 
     Returns
@@ -394,16 +386,12 @@ def measure(
     statistics: bool | None = None,
     dim: int | None = None,
 ) -> mat | list[num | sym]:
-    """Perform a quantum measurement on one or more systems (indicated in :python:`targets`)
-    of :python:`matrix`.
+    """Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of :python:`matrix`.
 
     This function has two main modes of operation:
 
-    - When :python:`statistics` is :python:`True`,
-      the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`)
-      is measured and the set of resulting statistics is returned.
-      This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each
-      given operator, where:
+    - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured, and the set of resulting statistics is returned.
+      This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:
 
       - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)
         when :python:`observable` is :python:`False`
@@ -412,10 +400,7 @@ def measure(
         when :python:`observable` is :python:`True`
         (:python:`operators` is a list of observables :math:`\\Observable_i`)
 
-    - When :python:`statistics` is :python:`False`,
-      the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`)
-      is measured and mutated it according to its predicted post-measurement form
-      (i.e., the sum of all possible measurement outcomes).
+    - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
       This yields the transformed states:
 
       - When :python:`observable` is :python:`False`:
@@ -426,21 +411,16 @@ def measure(
 
       .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.
 
-    In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the
-    current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state
-    is in accordance with the rule
+    In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule
 
     .. math::
 
        \\ket{\\psi^\\prime} = \\frac{\\Kraus \\ket{\\psi}}
            {\\sqrt{\\bra{\\psi} \\Kraus^\\dagger \\Kraus \\ket{\\psi}}}
 
-    when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state
-    is a matrix, even if the pre-measurement state was a vector.
+    when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state is a matrix, even if the pre-measurement state was a vector.
 
-    The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),
-    in which case each is converted into its corresponding operator matrix representation
-    (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.
+    The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding operator matrix representation (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.
 
     Arguments
     ---------
@@ -453,17 +433,14 @@ def measure(
         or a set of observables constituting a complete basis for the relevant state space.
     targets : int | list[int]
         The numerical indices of the subsystem(s) to be measured.
-        They must be consecutive, and their number must match the number of systems spanned
-        by all given operators.
+        They must be consecutive, and their number must match the number of systems spanned by all given operators.
         Indexing begins at :python:`0`.
         All other systems are discarded (traced over) in the course of performing the measurement.
     observable: bool
-        Whether to treat the items in :python:`operators` as observables instead of Kraus operators
-        or projectors.
+        Whether to treat the items in :python:`operators` as observables instead of Kraus operators or projectors.
         Defaults to :python:`False`.
     statistics: bool
-        Whether to return a list of probabilities (:python:`True`) or transform :python:`matrix` into a
-        post-measurement probabilistic sum of all outcomes (:python:`False`).
+        Whether to return a list of probabilities (:python:`True`) or transform :python:`matrix` into a post-measurement probabilistic sum of all outcomes (:python:`False`).
         Defaults to :python:`False`.
     dim : int
         The dimensionality of :python:`matrix` and the item(s) of :python:`operators`.
@@ -481,8 +458,7 @@ def measure(
 
     Note
     ----
-    This method does not check for validity of supplied POVMs or the completeness of sets of
-    observables, nor does it renormalize the post-measurement state.
+    This method does not verify the validity of supplied POVMs or the completeness of sets of observables, nor does it renormalize the post-measurement state.
     """
     observable = False if observable is None else observable
     statistics = False if statistics is None else statistics
@@ -559,31 +535,27 @@ def postselect(
 ) -> mat | list[num | sym]:
     """Perform postselection on :python:`matrix` against the operator(s) specified in :python:`postselections`.
 
-    The postselections can be given in either vector or matrix form. For the former,
-    the transformation of the vector :math:`\\ket{\\Psi}` follows the standard rule
+    The postselections can be given in either vector or matrix form.
+    For the former, the transformation of the vector :math:`\\ket{\\Psi}` follows the standard rule
 
     .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi}
 
     where :math:`\\ket{\\phi}` is the postselection vector.
-    In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of a
-    matrix :math:`\\op{\\rho}` naturally generalizes to
+    In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of a matrix :math:`\\op{\\rho}` naturally generalizes to
 
     .. math:: \\op{\\rho}^\\prime = \\trace_{\\{i\\}}[\\op{\\omega} \\op{\\rho}]
 
-    where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which
-    the postselection is performed.
+    where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which the postselection is performed.
 
-    If multiple postselections are supplied, :python:`matrix` will be successively postselected in
-    the order in which they are given. If a vector :python:`matrix` is postselected against a matrix form,
-    it will automatically be transformed into its matrix form via the outer product as necessary.
+    If multiple postselections are supplied, :python:`matrix` will be successively postselected in the order in which they are given.
+    If a vector :python:`matrix` is postselected against a matrix form, it will automatically be transformed into its matrix form via the outer product as necessary.
 
     Arguments
     ---------
     matrix : mat | QuantumObject
         The matrix to be measured.
     postselections: list[tuple[mat | arr | QuantumObject, int]]
-        A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index
-        of their postselection target systems.
+        A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.
     dim : int
         The dimensionality of :python:`matrix` and the item(s) of :python:`postselections`.
         Must be a non-negative integer.
@@ -651,14 +623,11 @@ def postselect(
 
 
 class OperationsMixin:
-    """A mixin for endowing classes with the ability to have their :python:`matrix` property mutated
-    by various quantum operations.
+    """A mixin for endowing classes with the ability to have their :python:`matrix` property mutated by various quantum operations.
 
     Note
     ----
-    The :py:class:`~qhronology.mechanics.operations.OperationsMixin` mixin is used exclusively by
-    the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding
-    section (:ref:`sec:docs_states_operations`) for documentation on its methods.
+    The :py:class:`~qhronology.mechanics.operations.OperationsMixin` mixin is used exclusively by the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding section (:ref:`sec:docs_states_operations`) for documentation on its methods.
     """
 
     def densify(self):
@@ -673,24 +642,19 @@ class OperationsMixin:
         self.matrix = dagger(self)
 
     def simplify(self, comprehensive: bool | None = None):
-        """Apply a forced simplification to the state using the values of its :python:`symbols` and
-        :python:`conditions` properties.
+        """Apply a forced simplification to the state using the values of its :python:`symbols` and :python:`conditions` properties.
 
-        Useful if intermediate simplification is required during a sequence of mutating operations
-        in order to process the state into a more desirable form.
+        Useful if intermediate simplification is required during a sequence of mutating operations in order to process the state into a more desirable form.
 
         Arguments
         ---------
         comprehensive : bool
-            Whether the simplifying algorithm should use a relatively efficient subset of
-            simplifying operations (:python:`False`),
-            or alternatively use a larger, more powerful (but slower) set (:python:`True`).
+            Whether the simplifying algorithm should use a relatively efficient subset of simplifying operations (:python:`False`), or alternatively use a larger, more powerful (but slower) set (:python:`True`).
             Defaults to :python:`False`.
 
         Note
         ----
-        If :python:`comprehensive` is :python:`True`, the simplification algorithm will likely take *far*
-        longer to execute than if :python:`comprehensive` were :python:`False`.
+        If :python:`comprehensive` is :python:`True`, the simplification algorithm will likely take *far* longer to execute than if :python:`comprehensive` were :python:`False`.
         """
         self.matrix = simplify(self, comprehensive=comprehensive)
 
@@ -715,11 +679,9 @@ class OperationsMixin:
         ---------
         function : Callable
             A Python function.
-            Its first non-keyword argument must be able to take a mathematical expression or
-            a matrix/array of such types.
+            Its first non-keyword argument must be able to take a mathematical expression or a matrix/array of such types.
         arguments : dict[str, str]
-            A dictionary of keyword arguments (with the keywords as strings) to pass
-            to the :python:`function` call.
+            A dictionary of keyword arguments (with the keywords as strings) to pass to the :python:`function` call.
             Defaults to :python:`{}`.
         """
         self.matrix = apply(self, function=function, arguments=arguments)
@@ -744,9 +706,7 @@ class OperationsMixin:
     def normalize(self, norm: num | sym | str | None = None):
         """Perform a forced (re)normalization on the state to the value specified (:python:`norm`).
 
-        Useful when applied to a quantum state both before and after mutating operations,
-        prior to any simplification (such as renormalization) performed on its processed output
-        (obtained via the :python:`state()` method).
+        Useful when applied to a quantum state both before and after mutating operations, prior to any simplification (such as renormalization) performed on its processed output (obtained via the :python:`state()` method).
 
         Arguments
         ---------
@@ -786,13 +746,11 @@ class OperationsMixin:
             Indexing begins at :python:`0`.
             Defaults to :python:`[]`.
         discard : bool
-            Whether the systems corresponding to the indices given in :python:`targets` are to be
-            discarded (:python:`True`) or kept (:python:`False`).
+            Whether the systems corresponding to the indices given in :python:`targets` are to be discarded (:python:`True`) or kept (:python:`False`).
             Defaults to :python:`True`.
         optimize : bool
             Whether to optimize the partial trace implementation's algorithm.
-            Can greatly increase the computational efficiency at the cost of a larger memory
-            footprint during computation.
+            Can greatly increase the computational efficiency at the cost of a larger memory footprint during computation.
             Defaults to :python:`True`.
         """
         self.matrix = partial_trace(
@@ -810,30 +768,21 @@ class OperationsMixin:
         observable: bool | None = None,
         statistics: bool | None = None,
     ) -> None | list[num | sym]:
-        """Perform a quantum measurement on one or more systems (indicated in :python:`targets`)
-        of the state.
+        """Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of the state.
 
         This method has two main modes of operation:
 
-        - When :python:`statistics` is :python:`True`,
-          the (reduced) state (:math:`\\op{\\rho}`)
-          (residing on the systems indicated in :python:`targets`)
-          is measured and the set of resulting statistics is returned.
-          This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with
-          each given operator, where:
+        - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured, and the set of resulting statistics is returned.
+          This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:
 
-          - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]`
-            (measurement probabilities) when :python:`observable` is :python:`False`
+          - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)
+            when :python:`observable` is :python:`False`
             (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
-          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]`
-            (expectation values) when :python:`observable` is :python:`True`
+          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)
+            when :python:`observable` is :python:`True`
             (:python:`operators` is a list of observables :math:`\\Observable_i`)
 
-        - When :python:`statistics` is :python:`False`,
-          the (reduced) state (:math:`\\op{\\rho}`)
-          (residing on the systems indicated in :python:`targets`)
-          is measured and mutated it according to its predicted post-measurement form
-          (i.e., the sum of all possible measurement outcomes).
+        - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
           This yields the transformed states:
 
           - When :python:`observable` is :python:`False`:
@@ -844,21 +793,16 @@ class OperationsMixin:
 
           .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}]\\Observable_i.
 
-        In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and
-        the current state (:math:`\\ket{\\psi}`) is a vector form,
-        the transformation of the state is in accordance with the rule
+        In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule
 
         .. math::
 
            \\ket{\\psi^\\prime} = \\frac{\\Kraus \\ket{\\psi}}
                {\\sqrt{\\bra{\\psi} \\Kraus^\\dagger \\Kraus \\ket{\\psi}}}
 
-        when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state
-        is a matrix, even if the pre-measurement state was a vector.
+        when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state is a matrix, even if the pre-measurement state was a vector.
 
-        The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),
-        in which case each is converted into its corresponding operator matrix representation
-        (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.
+        The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding operator matrix representation (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.
 
         Arguments
         ---------
@@ -869,18 +813,15 @@ class OperationsMixin:
             or a set of observables constituting a complete basis for the relevant state space.
         targets : int | list[int]
             The numerical indices of the subsystem(s) to be measured.
-            They must be consecutive, and their number must match the number of systems spanned
-            by all given operators.
+            They must be consecutive, and their number must match the number of systems spanned by all given operators.
             Indexing begins at :python:`0`.
             All other systems are discarded (traced over) in the course of performing the measurement.
             Defaults to the value of :python:`self.systems`.
         observable: bool
-            Whether to treat the items in :python:`operators` as observables instead of Kraus operators
-            or projectors.
+            Whether to treat the items in :python:`operators` as observables instead of Kraus operators or projectors.
             Defaults to :python:`False`.
         statistics: bool
-            Whether to return a list of probabilities (:python:`True`) or mutate the state into a
-            post-measurement probabilistic sum of all outcomes (:python:`False`).
+            Whether to return a list of probabilities (:python:`True`) or mutate the state into a post-measurement probabilistic sum of all outcomes (:python:`False`).
             Defaults to :python:`False`.
 
         Returns
@@ -893,8 +834,7 @@ class OperationsMixin:
 
         Note
         ----
-        This method does not check for validity of supplied POVMs or the completeness of
-        sets of observables, nor does it renormalize the post-measurement state.
+        This method does not verify the validity of supplied POVMs or the completeness of sets of observables, nor does it renormalize the post-measurement state.
         """
         targets = self.systems if targets is None else targets
         observable = False if observable is None else observable
@@ -919,42 +859,31 @@ class OperationsMixin:
             )
 
     def postselect(self, postselections: list[tuple[mat | arr | QuantumObject, int]]):
-        """Perform postselection on the state against the operators(s)
-        specified in :python:`postselections`.
+        """Perform postselection on the state against the operators(s) specified in :python:`postselections`.
 
         The postselections can be given in either vector or matrix form.
-        For the former, the transformation of the vector state :math:`\\ket{\\Psi}` follows
-        the standard rule
+        For the former, the transformation of the vector state :math:`\\ket{\\Psi}` follows the standard rule
 
         .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi}
 
         where :math:`\\ket{\\phi}` is the postselection vector.
-        In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of
-        a density matrix state :math:`\\op{\\rho}` naturally generalizes to
+        In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of a density matrix state :math:`\\op{\\rho}` naturally generalizes to
 
         .. math:: \\op{\\rho}^\\prime = \\trace_{\\{i\\}}[\\op{\\omega} \\op{\\rho}]
 
-        where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which
-        the postselection is performed.
+        where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which the postselection is performed.
 
-        If multiple postselections are supplied, the state will be successively postselected in the
-        order in which they are specified. If a vector state is postselected against a matrix form,
-        it will automatically be transformed into its matrix form as necessary.
+        If multiple postselections are supplied, the state will be successively postselected in the order in which they are specified.
+        If a vector state is postselected against a matrix form, it will automatically be transformed into its matrix form as necessary.
 
         Arguments
         ---------
         postselections: list[tuple[mat | arr | QuantumObject, int]]
-            A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index
-            of their postselection target systems.
+            A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.
 
         Note
         ----
-        Any classes given in :python:`postselections` that are derived from the
-        :py:class:`~qhronology.utilities.objects.QuantumObject` base class
-        (such as :py:class:`~qhronology.quantum.states.QuantumState`
-        and :py:class:`~qhronology.quantum.gates.QuantumGate`)
-        will have their :python:`symbols` and :python:`conditions` properties merged into the current
-        :py:class:`~qhronology.quantum.states.QuantumState` instance.
+        Any classes given in :python:`postselections` that are derived from the :py:class:`~qhronology.utilities.objects.QuantumObject` base class (such as :py:class:`~qhronology.quantum.states.QuantumState` and :py:class:`~qhronology.quantum.gates.QuantumGate`) will have their :python:`symbols` and :python:`conditions` properties merged into the current :py:class:`~qhronology.quantum.states.QuantumState` instance.
         """
         # Add the postselection(s) symbols and conditions to the current instance.
         for twotuple in postselections:

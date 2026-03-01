@@ -47,35 +47,25 @@ class QuantumGate(QuantumObject):
     """A class for creating quantum gates and storing their metadata.
 
     This class forms the base upon which all quantum gates are built.
-    Instances of this base class and its derivatives (subclasses) provide complete descriptions of
-    quantum gates.
-    This means that they describe a complete vertical column (or "slice") in the quantum
-    circuitry picturalism, including control nodes, anticontrol nodes, empty wires, and the
-    (unitary) gate operator itself.
-    The details of any algebraic symbols, mathematical conditions, and visualization labels are
-    also recorded.
-    Note that, unlike the internal matrix representations contained within instances of the
-    :py:class:`~qhronology.quantum.states.QuantumState` class (and its derivatives),
-    the matrix representations of subclass instances of
-    :py:class:`~qhronology.quantum.gates.QuantumGate` are *not* mutable.
+    Instances of this base class and its derivatives (subclasses) provide complete descriptions of quantum gates.
+    This means that they describe a complete vertical column (or "slice") in the quantum circuitry picturalism, including control nodes, anticontrol nodes, empty wires, and the (unitary) gate operator itself.
+    The details of any algebraic symbols, mathematical conditions, and visualization labels are also recorded.
+    Note that, unlike the internal matrix representations contained within instances of the :py:class:`~qhronology.quantum.states.QuantumState` class (and its derivatives), the matrix representations of subclass instances of :py:class:`~qhronology.quantum.gates.QuantumGate` are *not* mutable.
 
     Arguments
     ---------
     spec : mat | arr | list[list[num | sym | str]]
-        The specification of the quantum gate's matrix representation in a standard
-        :python:`dim`-dimensional basis.
+        The specification of the quantum gate's matrix representation in a standard :python:`dim`-dimensional basis.
         Can be one of:
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
-        - a list of lists of numerical, symbolic, or string expressions that collectively specify
-          a matrix (:python:`list[list[num | sym | str]]`)
+        - a list of lists of numerical, symbolic, or string expressions that collectively specify a matrix (:python:`list[list[num | sym | str]]`)
 
         Defaults to the single-system :python:`dim`-dimensional Identity operator.
     targets : list[int]
         The numerical indices of the subsystems on which the gate elements reside.
-        Defaults to :python:`[0]` (if :python:`num_systems` is :python:`None`)
-        or :python:`[i for i in range(num_systems)]` (if :python:`num_systems` is not :python:`None`).
+        Defaults to :python:`[0]` (if :python:`num_systems` is :python:`None`) or :python:`[i for i in range(num_systems)]` (if :python:`num_systems` is not :python:`None`).
     controls : list[int]
         The numerical indices of the subsystems on which control nodes reside.
         Defaults to :python:`[]`.
@@ -85,21 +75,17 @@ class QuantumGate(QuantumObject):
     num_systems : int
         The (total) number of systems which the gate spans.
         Must be a non-negative integer.
-        Defaults to
-        :python:`max(targets + controls + anticontrols + [count_systems(sp.Matrix(spec), dim)]) + 1`.
+        Defaults to :python:`max(targets + controls + anticontrols + [count_systems(sp.Matrix(spec), dim)]) + 1`.
     dim : int
         The dimensionality of the quantum gate's Hilbert space.
         Must be a non-negative integer.
         Defaults to :python:`2`.
     symbols : dict[sym | str, dict[str, Any]]
-        A dictionary in which the keys are individual symbols (usually found within the gate
-        specification :python:`spec`) and the values are dictionaries of their respective SymPy
-        keyword-argument :python:`assumptions`.
+        A dictionary in which the keys are individual symbols (usually found within the gate specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         Defaults to :python:`{}`.
     conditions : list[tuple[num | sym | str, num | sym | str]]
         A list of :math:`2`-tuples of conditions to be applied to the gate.
-        All instances of the expression in each tuple's first element are replaced by the
-        expression in the respective second element.
+        All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
         The order in which they are applied is simply their order in the list.
         Defaults to :python:`[]`.
@@ -107,16 +93,12 @@ class QuantumGate(QuantumObject):
         Whether to perform Hermitian conjugation on the gate when it is called.
         Defaults to :python:`False`.
     exponent : num | sym | str
-        A numerical or string representation of a scalar value to which gate's operator (residing
-        on :python:`targets`) is exponentiated.
+        A numerical or string representation of a scalar value to which gate's operator (residing on :python:`targets`) is exponentiated.
         Must be a non-negative integer.
-        Useful for computing powers of gates (such as PSWAP), but is only guaranteed to return a
-        valid power of a gate if its corresponding matrix representation (e.g., :math:`\\op{A}`)
-        is involutory (i.e., :math:`\\op{A}^2 = \\Identity`).
+        Useful for computing powers of gates (such as PSWAP), but is only guaranteed to return a valid power of a gate if its corresponding matrix representation (e.g., :math:`\\op{A}`) is involutory (i.e., :math:`\\op{A}^2 = \\Identity`).
         Defaults to :python:`1`.
     coefficient : num | sym | str
-        A numerical or string representation of a scalar value by which the gate's matrix
-        (occupying :python:`targets`) is multiplied.
+        A numerical or string representation of a scalar value by which the gate's matrix (occupying :python:`targets`) is multiplied.
         Performed after exponentiation.
         Useful for multiplying the gate by a phase factor.
         Defaults to :python:`1`.
@@ -253,8 +235,7 @@ class QuantumGate(QuantumObject):
                 is True
             ):
                 raise ValueError(
-                    """The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any
-                    elements in common."""
+                    """The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any elements in common."""
                 )
         self._targets = targets
 
@@ -262,8 +243,7 @@ class QuantumGate(QuantumObject):
     def controls(self) -> list[int]:
         """The numerical indices of the subsystems on which control nodes reside.
         
-        For example, a controlled-:math:`\\Unitary` gate in :math:`\\Dimension` dimensions
-        takes the form
+        For example, a controlled-:math:`\\Unitary` gate in :math:`\\Dimension` dimensions takes the form
 
         .. math::
 
@@ -285,8 +265,7 @@ class QuantumGate(QuantumObject):
             self._anticontrols = []
         if check_systems_conflicts(self.targets, controls, self.anticontrols) is True:
             raise ValueError(
-                """The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any
-                elements in common."""
+                """The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any elements in common."""
             )
         self._controls = sorted(list(set(controls)))
 
@@ -294,8 +273,7 @@ class QuantumGate(QuantumObject):
     def anticontrols(self) -> list[int]:
         """The numerical indices of the subsystems on which anticontrol nodes reside.
 
-        For example, an anticontrolled-:math:`\\Unitary` gate in :math:`\\Dimension` dimensions
-        takes the form
+        For example, an anticontrolled-:math:`\\Unitary` gate in :math:`\\Dimension` dimensions takes the form
 
         .. math::
 
@@ -317,8 +295,7 @@ class QuantumGate(QuantumObject):
             self._anticontrols = []
         if check_systems_conflicts(self.targets, self.controls, anticontrols) is True:
             raise ValueError(
-                """The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any
-                elements in common."""
+                """The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any elements in common."""
             )
         self._anticontrols = sorted(list(set(anticontrols)))
 
@@ -330,12 +307,10 @@ class QuantumGate(QuantumObject):
 
     @property
     def exponent(self) -> num | sym | str:
-        """A numerical or string representation of a scalar value specifying the value to which
-        the gate's matrix representation is exponentiated.
+        """A numerical or string representation of a scalar value specifying the value to which the gate's matrix representation is exponentiated.
         Is guaranteed to produce valid powers only for involutory matrices.
 
-        For an involutory matrix :math:`\\op{A}`, that is :math:`\\op{A}^2 = \\Identity` (where
-        :math:`\\Identity` is the identity matrix), we have the identity,
+        For an involutory matrix :math:`\\op{A}`, that is :math:`\\op{A}^2 = \\Identity` (where :math:`\\Identity` is the identity matrix), we have the identity,
 
         .. math::
 
@@ -357,8 +332,7 @@ class QuantumGate(QuantumObject):
                    \\exp\\Bigl[-\\eye\\frac{\\pi}{2}\\op{A}\\Bigr].
            \\end{aligned}
 
-        Simply taking this expression to an arbitrary power :math:`p \\in \\mathbb{C}` thus yields
-        the identity
+        Simply taking this expression to an arbitrary power :math:`p \\in \\mathbb{C}` thus yields the identity
 
         .. math::
 
@@ -380,8 +354,7 @@ class QuantumGate(QuantumObject):
 
     @property
     def coefficient(self) -> num | sym | str:
-        """A numerical or string representation of a scalar value by which the gate's matrix
-        (occupying :python:`targets`) is multiplied."""
+        """A numerical or string representation of a scalar value by which the gate's matrix (occupying :python:`targets`) is multiplied."""
         return self._coefficient
 
     @coefficient.setter
@@ -489,11 +462,9 @@ class QuantumGate(QuantumObject):
 class Pauli(QuantumGate):
     """A subclass for creating Pauli gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The *Pauli matrices* :math:`\\Pauli_i` are a set of three :math:`2 \\times 2`
-    matrices,
+    The *Pauli matrices* :math:`\\Pauli_i` are a set of three :math:`2 \\times 2` matrices,
 
     .. math::
 
@@ -506,17 +477,14 @@ class Pauli(QuantumGate):
                 &= \\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \\end{bmatrix},
         \\end{aligned}
 
-    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`2`-dimensional
-    identity matrix for :math:`i=0`.
+    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`2`-dimensional identity matrix for :math:`i=0`.
 
-    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems
-    corresponding to the indices in the :python:`targets` property.
+    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     index : int
         The index of the desired Pauli matrix. Can take the following values:
 
@@ -526,14 +494,12 @@ class Pauli(QuantumGate):
         - :python:`3` (Pauli-:math:`Z` :math:`\\Pauli_z`)
 
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
 
     Note
     ----
     The Pauli gates are defined only for :math:`2`-dimensional (i.e., binary/qubit) systems.
-    This means that the constructor does not take :python:`dim` as an argument, nor can the associated
-    property be set.
+    This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.
     """
 
     DIM = 2
@@ -592,11 +558,9 @@ PAULI = Pauli
 class GellMann(QuantumGate):
     """A subclass for creating Gell-Mann gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The *Gell-Mann matrices* :math:`\\GellMann_i` are a set of eight :math:`3 \\times 3`
-    matrices,
+    The *Gell-Mann matrices* :math:`\\GellMann_i` are a set of eight :math:`3 \\times 3` matrices,
 
     .. math::
 
@@ -622,17 +586,14 @@ class GellMann(QuantumGate):
                 = \\frac{1}{\\sqrt{3}}\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -2 \\end{bmatrix},
         \\end{aligned}
 
-    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`3`-dimensional
-    identity matrix for :math:`i=0`.
+    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`3`-dimensional identity matrix for :math:`i=0`.
 
-    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems
-    corresponding to the indices in the :python:`targets` property.
+    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     index : int
         The index of the desired Gell-Mann matrix. Can take the following values:
 
@@ -647,14 +608,12 @@ class GellMann(QuantumGate):
         - :python:`8` (:math:`\\GellMann_8`)
 
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
 
     Note
     ----
     The Gell-Mann gates are defined only for :math:`3`-dimensional (i.e., ternary/qutrit) systems.
-    This means that the constructor does not take :python:`dim` as an argument, nor can the associated
-    property be set.
+    This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.
     """
 
     DIM = 3
@@ -728,11 +687,9 @@ GM = GellMann
 class Rotation(QuantumGate):
     """A subclass for creating rotation gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The elementary *rotation matrices* :math:`\\Rotation_i` are a set of three :math:`2 \\times 2`
-    matrices,
+    The elementary *rotation matrices* :math:`\\Rotation_i` are a set of three :math:`2 \\times 2` matrices,
 
     .. math::
 
@@ -750,14 +707,12 @@ class Rotation(QuantumGate):
 
     where :math:`\\theta` is the *rotation angle* (:python:`angle`).
 
-    These are fundamentally single-system gates, and so a copy of the specified gate is placed on
-    each of the subsystems corresponding to the indices in the :python:`targets` property.
+    These are fundamentally single-system gates, and so a copy of the specified gate is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     axis : int
         The index corresponding to the axis of the desired rotation matrix.
         Can take the following values:
@@ -770,14 +725,12 @@ class Rotation(QuantumGate):
         The scalar value to be used as the rotation angle.
         Defaults to :python:`0`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
 
     Note
     ----
     The rotation gates are defined only for :math:`2`-dimensional (i.e., binary/qubit) systems.
-    This means that the constructor does not take :python:`dim` as an argument, nor can the associated
-    property be set.
+    This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.
     """
 
     DIM = 2
@@ -859,35 +812,37 @@ ROT = Rotation
 class Phase(QuantumGate):
     """A subclass for creating phase gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    In :math:`\\Dimension` dimensions, a *phase operator* :math:`\\Phase` may be represented as a
-    :math:`\\Dimension \\times \\Dimension` diagonal matrix
+    In :math:`\\Dimension` dimensions, a *phase operator* :math:`\\Phase` may be represented as a :math:`\\Dimension \\times \\Dimension` diagonal matrix
 
     .. math::
 
        \\begin{aligned}
            \\Phase(\\omega) &= \\sum\\limits_{k=0}^{\\Dimension - 1} \\omega^k \\ket{k}\\bra{k} \\\\
-           &= \\begin{bmatrix} 1 & 0 & 0 & \\ldots & 0 \\\\ 0 & \\omega & 0 & \\ldots & 0 \\\\ 0 & 0 & \\omega^2 & \\ldots & 0 \\\\ \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & 0 & \\ldots & \\omega^{\\Dimension - 1} \\end{bmatrix}.
+           &=
+           \\begin{bmatrix}
+               1 & 0 & 0 & \\ldots & 0 \\\\
+               0 & \\omega & 0 & \\ldots & 0 \\\\
+               0 & 0 & \\omega^2 & \\ldots & 0 \\\\
+               \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\
+               0 & 0 & 0 & \\ldots & \\omega^{\\Dimension - 1}
+           \\end{bmatrix}.
        \\end{aligned}
 
     where :math:`\\omega` is the *phase factor* (:python:`phase`).
 
-    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems
-    corresponding to the indices in the :python:`targets` property.
+    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     phase : num | sym | str
         The phase factor.
         Defaults to the unit root given by :python:`sp.exp(2 * sp.pi * sp.I / self.dim)`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
 
     def __init__(
@@ -935,44 +890,44 @@ PHS = Phase
 class Diagonal(QuantumGate):
     """A subclass for creating diagonal gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    In :math:`\\Dimension` dimensions, a *diagonal operator* :math:`\\Diagonal` may be represented
-    as a :math:`\\Dimension \\times \\Dimension` diagonal matrix
+    In :math:`\\Dimension` dimensions, a *diagonal operator* :math:`\\Diagonal` may be represented as a :math:`\\Dimension \\times \\Dimension` diagonal matrix
 
     .. math::
 
        \\begin{aligned}
-           \\Diagonal(\\lambda_0, \\lambda_1, \\ldots, \\lambda_{\\Dimension - 1}) &=
-                \\sum\\limits_{k=0}^{\\Dimension - 1} \\lambda_k\\ket{k}\\bra{k}, \\\\
-           &= \\begin{bmatrix} \\lambda_0 & 0 & 0 & \\ldots & 0 \\\\ 0 & \\lambda_1 & 0 & \\ldots & 0 \\\\ 0 & 0 & \\lambda_2 & \\ldots & 0 \\\\ \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & 0 & \\ldots & \\lambda_{\\Dimension - 1} \\end{bmatrix}
+           \\Diagonal(\\lambda_0, \\lambda_1, \\ldots, \\lambda_{\\Dimension - 1})
+           &= \\sum\\limits_{k=0}^{\\Dimension - 1} \\lambda_k\\ket{k}\\bra{k}, \\\\
+           &=
+           \\begin{bmatrix}
+               \\lambda_0 & 0 & 0 & \\ldots & 0 \\\\
+               0 & \\lambda_1 & 0 & \\ldots & 0 \\\\
+               0 & 0 & \\lambda_2 & \\ldots & 0 \\\\
+               \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\
+               0 & 0 & 0 & \\ldots & \\lambda_{\\Dimension - 1}
+           \\end{bmatrix}
        \\end{aligned}
 
     where :math:`\\{\\lambda_k : \\lambda_k \\in \\Complexes, \\; \\abs{\\lambda_k} = 1\\}_{k=0}^{\\Dimension - 1}` are the main diagonal *entries* (:python:`entries`).
 
-    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems
-    corresponding to the indices in the :python:`targets` property.
+    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     entries : dict[int | list[int], num | sym | str]
-        A dictionary in which the keys are level specifications (integer or list of integers) and
-        the values are scalars.
+        A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.
     exponentiation : bool
         Whether to exponentiate (with imaginary unit) the values given in :python:`entries`.
         Defaults to :python:`False`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
 
     Note
     ----
-    Levels that are unspecified in the :python:`entries` argument all have a corresponding matrix
-    element of :python:`1`, regardless of the value of :python:`exponentiation`.
+    Levels that are unspecified in the :python:`entries` argument all have a corresponding matrix element of :python:`1`, regardless of the value of :python:`exponentiation`.
     """
 
     def __init__(
@@ -991,8 +946,7 @@ class Diagonal(QuantumGate):
 
     @property
     def entries(self) -> dict[int | list[int], num | sym | str]:
-        """A dictionary in which the keys are level specifications (integer or list of integers)
-        and the values are scalars."""
+        """A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars."""
         return self._entries
 
     @entries.setter
@@ -1034,88 +988,12 @@ class Diagonal(QuantumGate):
 DIAG = Diagonal
 
 
-class Permutation(QuantumGate):
-    """A subclass for creating permutation gates and storing their metadata.
-
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
-
-    TODO
-    ----
-    Change this gate such that permutations can be defined on subsets of the total system space
-    and so do not have to contain the index of every subsystem. This means that the gates should
-    also be controllable.
-
-    Arguments
-    ---------
-    *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
-    permutation : int
-        A list of system indices representing the positional arrangement of the systems as a
-        result of the transformation. Must contain all of the system indices.
-    **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
-
-    Note
-    ----
-    When specifying a value for the :python:`permutation` argument at instantiation, a value for the
-    :python:`targets` argument need not be supplied as the associated property will automatically be set.
-    """
-
-    def __init__(self, *args, permutation: list[int], **kwargs):
-        self.permutation = permutation
-        args, kwargs = default_arguments(args, kwargs, QuantumGate, [("label", "P")])
-        args, kwargs = fix_arguments(args, kwargs, QuantumGate, [("spec", None)])
-        super().__init__(*args, **kwargs)
-
-    @property
-    def permutation(self) -> list[int]:
-        return self._permutation
-
-    @permutation.setter
-    def permutation(self, permutation: list[int]):
-        self._permutation = permutation
-        self.targets = list(set(flatten_list(permutation)))
-
-    @property
-    def targets(self) -> list[int]:
-        return list(set(flatten_list(self.permutation)))
-
-    @targets.setter
-    def targets(self, targets: list[int]):
-        pass
-
-    @property
-    def matrix(self) -> mat:
-        possibility = [k for k in range(0, self.dim)]
-        possibilities = [possibility for k in self.systems]
-        combinations = list(itertools.product(*possibilities))
-        matrix = sp.zeros(self.dim**self.num_systems)
-        for n in range(0, self.dim**self.num_systems):
-            level = list(combinations[n])
-            permuted = [level[self.permutation[k]] for k in self.targets]
-            matrix = matrix + ket(permuted, self.dim) * bra(level, self.dim)
-        return matrix
-
-    @matrix.setter
-    def matrix(self, matrix: mat):
-        pass
-
-
-PERM = Permutation
-
-
 class Swap(QuantumGate):
     """A subclass for creating SWAP (exchange) gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    In :math:`\\Dimension` dimensions, a *SWAP operator* :math:`\\Swap` between two
-    systems :math:`A` and :math:`B` may be represented as a
-    :math:`\\Dimension^2 \\times \\Dimension^2` matrix
+    In :math:`\\Dimension` dimensions, a *SWAP operator* :math:`\\Swap` between two systems :math:`A` and :math:`B` may be represented as a :math:`\\Dimension^2 \\times \\Dimension^2` matrix
 
     .. math::
 
@@ -1128,15 +1006,13 @@ class Swap(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     targets : list[int, int]
         A list of exactly two indices corresponding to the systems to be swapped.
-        Is an argument of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`,
-        so can be specified positionally in :python:`*args`.
+        Is an argument of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`, so can be specified positionally in :python:`*args`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`."""
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+    """
 
     def __init__(self, *args, **kwargs):
         args, kwargs = default_arguments(
@@ -1146,7 +1022,7 @@ class Swap(QuantumGate):
         super().__init__(*args, **kwargs)
         if len(self.targets) != 2:
             raise ValueError(
-                "A :python:`targets` list of exactly two (2) system indices must be provided."
+                """A :python:`targets` list of exactly two (2) system indices must be provided."""
             )
 
     @property
@@ -1177,35 +1053,29 @@ SWAP = Swap
 class Summation(QuantumGate):
     """A subclass for creating SUM (summation) gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The *SUM gate* is essentially a generalization of the NOT gate. In :math:`\\Dimension` dimensions,
-    it is defined as the operator
+    The *SUM gate* is essentially a generalization of the NOT gate. In :math:`\\Dimension` dimensions, it is defined as the operator
 
     .. math:: \\SUM(n) = \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k \\oplus n}\\bra{k}
 
-    where :math:`n \\in \\Integers_{\\geq 0}` (:python:`shift`) is the *shift* parameter,
-    and :math:`k \\oplus n \\equiv k + n \\mathrel{\\mathrm{mod}} \\Dimension`.
+    where :math:`n \\in \\Integers_{\\geq 0}` (:python:`shift`) is the *shift* parameter, and :math:`k \\oplus n \\equiv k + n \\mathrel{\\mathrm{mod}} \\Dimension`.
 
-    The case of :math:`n = 1` is known as the *shift* operator, and represents a (non-Hermitian)
-    generalization of the Pauli-:math:`X` :math:`\\Pauli_x` operator to :math:`\\Dimension` dimensions.
+    The case of :math:`n = 1` is known as the *shift* operator, and represents a (non-Hermitian) generalization of the Pauli-:math:`X` :math:`\\Pauli_x` operator to :math:`\\Dimension` dimensions.
 
-    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems
-    corresponding to the indices in the :python:`targets` property.
+    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     shift : int
         The summation shift parameter.
         Must be a non-negative integer.
         Defaults to :python:`1`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`."""
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+    """
 
     def __init__(self, *args, shift: int | None = None, **kwargs):
         shift = 1 if shift is None else shift
@@ -1249,12 +1119,9 @@ SUM = Summation
 class Not(Summation):
     """A subclass for creating NOT (logical *negation* or "bit-flip") gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems,
-    and is exactly equivalent to the Pauli-:math:`X` gate, having the matrix
-    representation
+    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems, and is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation
 
     .. math::
        
@@ -1265,23 +1132,20 @@ class Not(Summation):
 
     As such, this class exists purely to simplify access to this operation.
 
-    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems
-    corresponding to the indices in the :python:`targets` property.
+    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
 
     Note
     ----
     NOT gates are defined only for :math:`2`-dimensional (i.e., binary/qubit) systems.
-    This means that the constructor does not take :python:`dim` as an argument,
-    nor can the associated property be set."""
+    This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.
+    """
 
     DIM = 2
 
@@ -1309,11 +1173,9 @@ NOT = Not
 class Hadamard(QuantumGate):
     """A subclass for creating Hadamard gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The elementary *Hadamard gate* :math:`\\Hadamard` (for qubits) corresponds to the
-    :math:`2 \\times 2` *Hadamard matrix*
+    The elementary *Hadamard gate* :math:`\\Hadamard` (for qubits) corresponds to the :math:`2 \\times 2` *Hadamard matrix*
 
     .. math::
        
@@ -1329,26 +1191,26 @@ class Hadamard(QuantumGate):
        \\begin{aligned}
            \\Hadamard_\\Dimension &= \\frac{1}{\\sqrt{\\Dimension}}\\sum\\limits_{j,k=0}^{\\Dimension - 1}
                \\omega_\\Dimension^{k(\\Dimension - j)} \\ket{j}\\bra{k} \\\\
-           &= \\begin{bmatrix} 1 & 1 & 1 & \\ldots & 1 \\\\
+           &=
+           \\begin{bmatrix}
+               1 & 1 & 1 & \\ldots & 1 \\\\
                1 & \\omega^{\\Dimension - 1} & \\omega^{2(\\Dimension - 1)} & \\ldots & \\omega^{(\\Dimension - 1)^2} \\\\
                1 & \\omega^{\\Dimension - 2} & \\omega^{2(\\Dimension - 2)} & \\ldots & \\omega^{(\\Dimension - 1)(\\Dimension - 2)} \\\\
                \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\
-               1 & \\omega & \\omega^{2} & \\ldots & \\omega^{\\Dimension - 1} \\end{bmatrix}
+               1 & \\omega & \\omega^{2} & \\ldots & \\omega^{\\Dimension - 1}
+           \\end{bmatrix}
        \\end{aligned}
 
     where :math:`\\omega_\\Dimension \\equiv \\e^{\\frac{2\\pi\\eye}{\\Dimension}}`.
 
-    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems
-    corresponding to the indices in the :python:`targets` property.
+    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
 
     def __init__(self, *args, **kwargs):
@@ -1384,38 +1246,31 @@ HAD = Hadamard
 
 
 class Fourier(QuantumGate):
-    """A subclass for creating Fourier (quantum discrete Fourier transform [QDFT]) gates and
-    storing their metadata.
+    """A subclass for creating Fourier (quantum discrete Fourier transform [QDFT]) gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The elementary *Fourier operator* :math:`\\QFT` for a single :math:`\\Dimension`-dimensional
-    qudit may be represented as the :math:`\\Dimension \\times \\Dimension` matrix
+    The elementary *Fourier operator* :math:`\\QFT` for a single :math:`\\Dimension`-dimensional qudit may be represented as the :math:`\\Dimension \\times \\Dimension` matrix
 
     .. math::
         
         \\begin{aligned}
             \\QFT &= \\frac{1}{\\sqrt{\\Dimension}} \\sum\\limits_{j,k=0}^{\\Dimension - 1}
                 \\omega_{\\Dimension}^{jk} \\ket{j}\\bra{k} \\\\
-            &= \\frac{1}{\\sqrt{\\Dimension}} \\begin{bmatrix} 1 & 1 & 1 & 1 & \\ldots & 1 \\\\
-            1 & \\omega & \\omega^2 & \\omega^3 & \\ldots & \\omega^{\\Dimension - 1} \\\\
-            1 & \\omega^2 & \\omega^4 & \\omega^6 & \\ldots & \\omega^{2(\\Dimension - 1)} \\\\
-            1 & \\omega^3 & \\omega^6 & \\omega^9 & \\ldots & \\omega^{3(\\Dimension - 1)} \\\\
-            \\vdots & \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\
-            1 & \\omega^{\\Dimension - 1} & \\omega^{2(\\Dimension - 1)}
-                & \\omega^{3(\\Dimension - 1)} & \\ldots
-                & \\omega^{(\\Dimension - 1)(\\Dimension - 1)} \\\\
+            &= \\frac{1}{\\sqrt{\\Dimension}}
+            \\begin{bmatrix}
+                1 & 1 & 1 & 1 & \\ldots & 1 \\\\
+                1 & \\omega & \\omega^2 & \\omega^3 & \\ldots & \\omega^{\\Dimension - 1} \\\\
+                1 & \\omega^2 & \\omega^4 & \\omega^6 & \\ldots & \\omega^{2(\\Dimension - 1)} \\\\
+                1 & \\omega^3 & \\omega^6 & \\omega^9 & \\ldots & \\omega^{3(\\Dimension - 1)} \\\\
+                \\vdots & \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\
+                1 & \\omega^{\\Dimension - 1} & \\omega^{2(\\Dimension - 1)} & \\omega^{3(\\Dimension - 1)} & \\ldots & \\omega^{(\\Dimension - 1)(\\Dimension - 1)} \\\\
             \\end{bmatrix}
         \\end{aligned}
 
     where :math:`\\omega_{\\Dimension} = \\e^{\\frac{2\\pi\\eye}{\\Dimension}} = \\omega`.
 
-    In the case of :math:`N` qudits, it is easier to characterize the *multipartite Fourier operator*
-    :math:`\\QFT_N` not by its matrix form but by the transformation it imposes, to which its action
-    on the basis state
-    :math:`\\bigotimes\\limits_{\\ell=1}^{N} \\ket{j_\\ell} \\equiv \\ket{j_1, \\ldots, j_N}`
-    (where :math:`j_\\ell \\in \\Integers_{0}^{\\Dimension - 1}`) is
+    In the case of :math:`N` qudits, it is easier to characterize the *multipartite Fourier operator* :math:`\\QFT_N` not by its matrix form but by the transformation it imposes, to which its action on the basis state :math:`\\bigotimes\\limits_{\\ell=1}^{N} \\ket{j_\\ell} \\equiv \\ket{j_1, \\ldots, j_N}` (where :math:`j_\\ell \\in \\Integers_{0}^{\\Dimension - 1}`) is
 
     .. math::
         
@@ -1427,32 +1282,27 @@ class Fourier(QuantumGate):
     
     where :math:`j \\equiv \\sum\\limits_{\\ell=1}^{N} j_\\ell \\Dimension^{N - \\ell}`.
 
-    If :python:`composite` is :python:`True`, the composite form :math:`\\QFT_N` is applied to the subsystems
-    specified by :python:`targets` in:
+    If :python:`composite` is :python:`True`, the composite form :math:`\\QFT_N` is applied to the subsystems specified by :python:`targets` in:
     
     - *ascending* order if :python:`reverse` is :python:`False`
     - *descending* order if :python:`reverse` is :python:`True`
 
-    If :python:`composite` is :python:`False`, a copy of the elementary form :math:`\\QFT` is placed on
-    each of the subsystems corresponding to the indices in the :python:`targets` property.
+    If :python:`composite` is :python:`False`, a copy of the elementary form :math:`\\QFT` is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     composite : bool
         Whether the composite (multipartite) Fourier gate is to be used.
-        If :python:`False`, copies of the elementary Fourier gate are placed on each index specified in
-        :python:`targets`.
+        If :python:`False`, copies of the elementary Fourier gate are placed on each index specified in :python:`targets`.
         Defaults to :python:`True`.
     reverse : bool
         Whether to reverse the order in which the composite (multipartite) Fourier gate is applied.
         Only applies when :python:`composite` is :python:`False`.
         Defaults to :python:`False`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
 
     def __init__(
@@ -1481,8 +1331,7 @@ class Fourier(QuantumGate):
 
     @property
     def reverse(self) -> bool:
-        """Whether to reverse the order in which the composite (multipartite) Fourier gate is
-        applied.
+        """Whether to reverse the order in which the composite (multipartite) Fourier gate is applied.
         Has no effect when :python:`self.composite` is :python:`False`.
         """
         return self._reverse
@@ -1550,13 +1399,9 @@ QDFT = Fourier
 class Measurement(QuantumGate):
     """A subclass for creating measurement gates and storing their metadata.
 
-    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so inherits all of its attributes, properties, and methods.
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    Instances of this class each describe a (non-linear) operation in which the input state
-    (:math:`\\op{\\rho}`) is quantum-mechanically *measured* (against the forms in specified in
-    :python:`operators`) and subsequently mutated according to its predicted post-measurement form
-    (i.e., the sum of all possible measurement outcomes). This yields the transformed states:
+    Instances of this class each describe a (non-linear) operation in which the input state (:math:`\\op{\\rho}`) is quantum-mechanically *measured* (against the forms in specified in :python:`operators`) and subsequently mutated according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes). This yields the transformed states:
 
     - When :python:`observable` is :python:`False`
       (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`):
@@ -1568,42 +1413,33 @@ class Measurement(QuantumGate):
 
     .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.
 
-    The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),
-    in which case each is converted into its corresponding matrix representation
-    (e.g., :math:`\\Kraus_i = \\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurement(s).
-    Note also that this method does not check for validity of supplied POVMs or the completeness
-    of sets of observables, nor does it renormalize the post-measurement state.
+    The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding matrix representation (e.g., :math:`\\Kraus_i = \\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurement(s).
+
+    Note also that this method does not check for validity of supplied POVMs or the completeness of sets of observables, nor does it renormalize the post-measurement state.
 
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     operators : list[mat | arr | QuantumObject]
         The operator(s) with which to perform the measurement.
         These would typically be a (complete) set of Kraus operators forming a POVM,
         a (complete) set of (orthogonal) projectors forming a PVM,
         or a set of observables constituting a complete basis for the relevant state space.
     observable : bool
-        Whether to treat the items in :python:`operators` as observables (as opposed to Kraus operators
-        or projectors).
+        Whether to treat the items in :python:`operators` as observables (as opposed to Kraus operators or projectors).
         Defaults to :python:`False`.
     **kwargs
-        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the
-        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
 
     Note
     ----
-    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s)
-    to be measured. These indices must be consecutive, and their number must match the number of
-    systems spanned by all given operators.
+    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s) to be measured. These indices must be consecutive, and their number must match the number of systems spanned by all given operators.
 
     Note
     ----
-    Measurement operations in quantum physics are, in general, non-linear and non-unitary
-    operations on (normalized) state vectors and density operators. As such, they cannot be
-    represented by matrices, and so the :python:`matrix` property therefore does not return a valid
-    representation of the measurement operation."""
+    Measurement operations in quantum physics are, in general, non-linear and non-unitary operations on (normalized) state vectors and density operators. As such, they cannot be represented by matrices, and so the :python:`matrix` property therefore does not return a valid representation of the measurement operation.
+    """
 
     def __init__(
         self,
@@ -1635,8 +1471,7 @@ class Measurement(QuantumGate):
 
     @property
     def observable(self) -> bool:
-        """Whether to treat the items in the :python:`operators` property as observables (as opposed to
-        Kraus operators or projectors)."""
+        """Whether to treat the items in the :python:`operators` property as observables (as opposed to Kraus operators or projectors)."""
         return self._observable
 
     @observable.setter
@@ -1649,9 +1484,7 @@ class Measurement(QuantumGate):
 
         Is a read-only property.
 
-        This is used specifically in the :py:class:`~qhronology.quantum.circuits.QuantumCircuit`
-        class when instances of it contain :python:`Measurement` gate instances in their :python:`gates`
-        property.
+        This is used specifically in the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class when instances of it contain :python:`Measurement` gate instances in their :python:`gates` property.
         """
         matrices = []
         identity = sp.eye(self.dim)
@@ -1686,27 +1519,20 @@ METER = Measurement
 
 
 class GateInterleave(QuantumGate):
-    """Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together
-    by interleaving them.
+    """Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together by interleaving them.
 
-    This is achieved by multiplying the gates' matrix representations. For example,
-    for gates described by the multipartite operators :math:`\\op{A} \\otimes \\Identity`
-    and :math:`\\Identity \\otimes \\op{B}`, their interleaved composition is
+    This is achieved by multiplying the gates' matrix representations. For example, for gates described by the multipartite operators :math:`\\op{A} \\otimes \\Identity` and :math:`\\Identity \\otimes \\op{B}`, their interleaved composition is
 
     .. math::
 
        (\\op{A} \\otimes \\Identity) \\cdot (\\Identity \\otimes \\op{B}) = \\op{A} \\otimes \\op{B}.
 
-    While this is a subclass of :py:class:`~qhronology.quantum.gates.QuantumGate`,
-    all of its inherited properties, except for those corresponding to arguments in its constructor,
-    are read-only. This is because they are calculated from their corresponding properties in the
-    individual instances contained within the :python:`gates` property.
+    While this is a subclass of :py:class:`~qhronology.quantum.gates.QuantumGate`, all of its inherited properties, except for those corresponding to arguments in its constructor, are read-only. This is because they are calculated from their corresponding properties in the individual instances contained within the :python:`gates` property.
 
     Arguments
     ---------
     *gates : QuantumGate
-        Variable-length argument list of :py:class:`~qhronology.quantum.gates.QuantumGate`
-        instances to be interleaved.
+        Variable-length argument list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances to be interleaved.
     merge : bool
         Whether to merge the gates together diagrammatically.
         Defaults to :python:`False`.
@@ -1714,13 +1540,11 @@ class GateInterleave(QuantumGate):
         Whether to perform Hermitian conjugation on the composite gate when it is called.
         Defaults to :python:`False`.
     exponent : num | sym | str
-        A numerical or string representation of a scalar value to which composite gate's total
-        matrix representation is exponentiated.
+        A numerical or string representation of a scalar value to which composite gate's total matrix representation is exponentiated.
         Must be a non-negative integer.
         Defaults to :python:`1`.
     coefficient : num | sym | str
-        A numerical or string representation of a scalar value by which the composite gate's
-        matrix representation is multiplied.
+        A numerical or string representation of a scalar value by which the composite gate's matrix representation is multiplied.
         Performed after exponentiation.
         Defaults to :python:`1`.
     label : str
@@ -1734,15 +1558,11 @@ class GateInterleave(QuantumGate):
 
     Note
     ----
-    Care should be taken to ensure that gates passed to this class all have the same :python:`num_systems`
-    value and do not have overlapping :python:`targets`, :python:`controls`, and :python:`anticontrols` properties.
+    Care should be taken to ensure that gates passed to this class all have the same :python:`num_systems` value and do not have overlapping :python:`targets`, :python:`controls`, and :python:`anticontrols` properties.
 
     Note
     ----
-    The resulting visualization (using the inherited
-    :py:meth:`~qhronology.quantum.gates.QuantumGate.diagram` method or in
-    circuit diagrams) may not be accurate in every case.
-    However, the composed matrix should still be correct.
+    The resulting visualization (using the inherited :py:meth:`~qhronology.quantum.gates.QuantumGate.diagram` method or in circuit diagrams) may not be accurate in every case. However, the composed matrix should still be correct.
     """
 
     def __init__(
@@ -1800,8 +1620,7 @@ class GateInterleave(QuantumGate):
 
     @property
     def gates(self) -> list[QuantumGate]:
-        """Variable-length list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances
-        to be composited."""
+        """Variable-length list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances to be composited."""
         return self._gates
 
     @gates.setter
@@ -1854,7 +1673,9 @@ class GateInterleave(QuantumGate):
     def num_systems(self) -> int:
         num_systems = list(set(flatten_list([gate.num_systems for gate in self.gates])))
         if len(num_systems) != 1:
-            raise ValueError("Mismatch between one or more of the number of systems.")
+            raise ValueError(
+                """Mismatch between one or more of the number of systems."""
+            )
         return num_systems[0]
 
     @num_systems.setter
@@ -1877,7 +1698,7 @@ class GateInterleave(QuantumGate):
     def dim(self) -> int:
         dim = list(set(flatten_list([gate.dim for gate in self.gates])))
         if len(dim) != 1:
-            raise ValueError("Mismatch between one or more of the dimensions.")
+            raise ValueError("""Mismatch between one or more of the dimensions.""")
         return dim[0]
 
     @dim.setter
@@ -1986,27 +1807,22 @@ INTERLEAVE = GateInterleave
 
 
 class GateStack(GateInterleave):
-    """Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together
-    by "stacking" them vertically.
+    """Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together by "stacking" them vertically.
 
     This is achieved by computing the tensor product of the gates' matrix representations.
-    For example, for gates described by the multipartite operators
-    :math:`\\op{A} \\otimes \\Identity` and :math:`\\Identity \\otimes \\op{B}`,
-    their stacked composition is
+    For example, for gates described by the multipartite operators :math:`\\op{A} \\otimes \\Identity` and :math:`\\Identity \\otimes \\op{B}`, their stacked composition is
 
     .. math::
 
        (\\op{A} \\otimes \\Identity) \\otimes (\\Identity \\otimes \\op{B})
        = \\op{A} \\otimes \\Identity \\otimes \\Identity \\otimes \\op{B}.
 
-    This class is derived from the :py:class:`~qhronology.quantum.gates.QuantumGate` class,
-    and so should be used in much the same way.
+    This class is derived from the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so should be used in much the same way.
 
     Arguments
     ---------
     *gates : QuantumGate
-        Variable-length argument list of :py:class:`~qhronology.quantum.gates.QuantumGate`
-        instances to be stacked.
+        Variable-length argument list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances to be stacked.
     merge : bool
         Whether to merge the gates together diagrammatically.
         Defaults to :python:`False`.
@@ -2014,12 +1830,10 @@ class GateStack(GateInterleave):
         Whether to perform Hermitian conjugation on the composite gate when it is called.
         Defaults to :python:`False`.
     exponent : num | sym | str
-        A numerical or string representation of a scalar value to which composite gate's total
-        matrix representation is exponentiated.
+        A numerical or string representation of a scalar value to which composite gate's total matrix representation is exponentiated.
         Defaults to :python:`1`.
     coefficient : num | sym | str
-        A numerical or string representation of a scalar value by which the composite gate's
-        matrix representation is multiplied.
+        A numerical or string representation of a scalar value by which the composite gate's matrix representation is multiplied.
         Performed after exponentiation.
         Defaults to :python:`1`.
     label : str
@@ -2029,7 +1843,8 @@ class GateStack(GateInterleave):
         The formatted string used to represent the gate in mathematical expressions.
         When not :python:`None`, overrides the value passed to :python:`label`.
         Not intended to be set by the user in most cases.
-        Defaults to :python:`None`."""
+        Defaults to :python:`None`.
+    """
 
     def __init__(
         self,
@@ -2130,10 +1945,10 @@ STACK = GateStack
 
 
 class _Single(QuantumGate):
-    """A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell
-    abstract quantum gates.
+    """A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell abstract quantum gates.
 
-    Used internally exclusively for visualization purposes."""
+    Used exclusively internally (for visualization purposes).
+    """
 
     def __init__(
         self, *args, family: str | None = None, label: str | None = None, **kwargs
@@ -2160,10 +1975,10 @@ class _Single(QuantumGate):
 
 
 class _Empty(QuantumGate):
-    """A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell
-    empty quantum gates.
+    """A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell empty quantum gates.
 
-    Used internally exclusively for visualization purposes."""
+    Used exclusively internally (for visualization purposes).
+    """
 
     def __init__(self, *args, family: str | None = None, **kwargs):
         family = Families.TERM.value if family is None else family
@@ -2181,10 +1996,9 @@ class _Empty(QuantumGate):
 
 
 class _Wormhole(QuantumGate):
-    """A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell
-    wormhole (mouth) quantum gates.
+    """A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell wormhole (mouth) quantum gates.
 
-    Used internally exclusively for visualization purposes.
+    Used exclusively internally (for visualization purposes).
     """
 
     def __init__(self, *args, family: str | None = None, **kwargs):

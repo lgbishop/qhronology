@@ -137,7 +137,7 @@ CELL_TEMPLATE = np.array(
     dtype="object",
 )
 
-# "STYLES": assign the actual text characters to each component of the template.
+# The dictionary for assigning the actual text characters to each component of the template.
 STYLES = {
     "GATE_SINGLE": {
         "block_connector_left_lower": {
@@ -1880,8 +1880,7 @@ class VisualizationProperties:
 
 
 class DiagramCell(VisualizationProperties):
-    """A class for visualizing individual "cells" (the smallest indivisible units) of
-    quantum circuit diagrams and storing their metadata."""
+    """A class for visualizing individual "cells" (the smallest indivisible units) of quantum circuit diagrams and storing their metadata."""
 
     def __init__(
         self,
@@ -2025,13 +2024,12 @@ class DiagramCell(VisualizationProperties):
         ]
 
         # Label padding for the *STICK family so that they are left-aligned or right-aligned.
-        # This removes the small padding sticks for STICK cells which do not have a label,
-        # e.g., the bottom cell (*STICK_LOWER).
+        # This removes the small padding sticks for STICK cells which do not have a label, e.g., the bottom cell (*STICK_LOWER).
         # This also connects any cells with non-empty labels to the circuit with a wire.
         label = self.label
         if "STICK" in self.family:
 
-            # Check for empty labels. For non-labelled *STICK_* variants.
+            # Check for empty labels. (For non-labelled *STICK_* variants.)
             if label.isspace() is True:
 
                 if "LSTICK" in self.family:
@@ -2162,7 +2160,7 @@ class DiagramCell(VisualizationProperties):
             height_extra = 0
         if height_extra < 0:
             raise ValueError(
-                "The current cell cannot be as short as the specified height."
+                """The current cell cannot be as short as the specified height."""
             )
 
         rows = [n for n in range(0, cell.shape[0])]
@@ -2450,7 +2448,7 @@ class DiagramCircuit(VisualizationProperties):
             num_rows.append(len(column.cells))
         num_rows = list(set(num_rows))
         if len(num_rows) != 1:
-            raise ValueError("The provided columns have an unequal number of rows.")
+            raise ValueError("""The provided columns have an unequal number of rows.""")
         return num_rows[0]
 
     def height_min(self, row_num):
@@ -2654,7 +2652,7 @@ class DiagramCircuit(VisualizationProperties):
                     ]
                 )
 
-                # Trimming
+                # Trimming.
                 trim_left = 0
                 trim_right = 0
 
@@ -2688,7 +2686,7 @@ class DiagramCircuit(VisualizationProperties):
                     if index_column != max(range(0, self.num_columns)):
                         trim_right += math.floor(sep["right"] / 2)
 
-                # Trim inputs and outputs when no gates
+                # Trim inputs and outputs when no gates.
                 if self.columns[index_column].section == Sections.INPUTS.value:
                     if (
                         index_column != max(range(0, self.num_columns))
@@ -2725,7 +2723,7 @@ class DiagramCircuit(VisualizationProperties):
                     ):
                         trim_right += math.floor((sep["right"] + 1) / 2)
 
-                # :python:`force_separation` argument
+                # :python:`force_separation` argument.
                 if force_separation is True:
                     uniform_spacing = True
                     if self.columns[index_column].section == Sections.GATES.value:
@@ -2736,7 +2734,7 @@ class DiagramCircuit(VisualizationProperties):
                             )
                             is False
                         ):
-                            # +1 accounts for edge of block gate:
+                            # +1 accounts for edge of block gate.
                             trim_left += pad_cell[0] + 1
                             trim_right += pad_cell[0] + 1
                     if self.columns[index_column].section == Sections.INPUTS.value:
@@ -2794,7 +2792,7 @@ class DiagramCircuit(VisualizationProperties):
                             family in family_wide_gates
                             for family in column_family_current
                         ):
-                            # +1 accounts for edge of block gate:
+                            # +1 accounts for edge of block gate.
                             trim_left += math.ceil(pad_cell[0] / 2) + 1
 
                 for k in range(0, trim_left):
@@ -2812,9 +2810,9 @@ class DiagramCircuit(VisualizationProperties):
 
         styles = copy.deepcopy(STYLES)
 
-        # Blending and other hacky fixes
+        # Blending and other hacky fixes.
         # (Ideally should be fixed properly elsewhere in future).
-        if style != "ascii":  # Blending not needed for ASCII
+        if style != "ascii":  # Blending not needed for ASCII.
             blend_targets_left = {
                 styles["GATE_SINGLE"]["edge_connector_left_classical"][style],
                 styles["GATE_SINGLE"]["edge_connector_left_quantum"][style],
@@ -2829,7 +2827,7 @@ class DiagramCircuit(VisualizationProperties):
             }
             for n in range(0, grid.shape[0]):
                 for m in range(0, grid.shape[1]):
-                    # Vertically separated block gates together if they are overlapping
+                    # Vertically separated block gates together if they are overlapping.
                     if (
                         grid[n, m]
                         == styles["GATE_SINGLE"]["edge_corner_left_lower"][style]
@@ -2847,7 +2845,7 @@ class DiagramCircuit(VisualizationProperties):
                                 style
                             ]
 
-                    # LSTICK and RSTICK smoothing when no label
+                    # LSTICK and RSTICK smoothing when no label.
                     if (
                         grid[n, m]
                         == styles["LSTICK_MIDDLE"]["edge_connector_right_quantum"][
@@ -2994,9 +2992,7 @@ def assign_connections(systems, targets, controls, anticontrols, boundaries):
 
 
 class VisualizationMixin:
-    """A mixin for endowing classes derived from the base class
-    :py:class:`~qhronology.utilities.objects.QuantumObject` the ability to be visualized as
-    quantum circuit diagram elements."""
+    """A mixin for endowing classes derived from the base class :py:class:`~qhronology.utilities.objects.QuantumObject` the ability to be visualized as quantum circuit diagram elements."""
 
     def diagram_column(
         self,
@@ -3081,14 +3077,10 @@ class VisualizationMixin:
         Arguments
         ---------
         pad : tuple[int, int]
-            A two-tuple of non-negative integers specifying intra-gate padding
-            (i.e., the horizontal and vertical interior paddings between the content at the centre
-            of each gate (e.g., label) and its outer edge (e.g., block border).
-            Defaults to :python:`(0, 0)`.
+            A two-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border)).
+            Defaults to :python:`(1, 0)`.
         sep : tuple[int, int]
-            A two-tuple of non-negative integers specifying inter-gate separation
-            (i.e., the horizontal and vertical exterior separation distances between the edges of
-            neighbouring gates.
+            A two-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates).
             Defaults to :python:`(1, 1)`.
         style : str
             A string specifying the style for the circuit visualization to take.

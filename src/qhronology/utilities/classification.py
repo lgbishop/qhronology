@@ -56,8 +56,7 @@ SHAPES = {
     Shapes.INVALID.value,
 }
 
-# Conversion dictionaries
-# Useful for determining compatibilities between the various values
+# Conversion dictionaries (useful for determining compatibilities between the various values):
 FORM_SHAPE = {
     Forms.VECTOR.value: {Shapes.ROW.value, Shapes.COLUMN.value},
     Forms.MATRIX.value: {Shapes.SQUARE.value},
@@ -91,7 +90,7 @@ def matrix_form(matrix: mat) -> str | None:
         return Forms.VECTOR.value
     else:
         raise ValueError(
-            "The given :python:`matrix` is invalid for describing either a vector or matrix state."
+            """The given :python:`matrix` is invalid for describing either a vector or matrix state."""
         )
 
 
@@ -105,5 +104,5 @@ def matrix_shape(matrix: mat) -> str | None:
         return Shapes.SQUARE.value
     else:
         raise ValueError(
-            "The given :python:`matrix` is invalid for describing either a vector or matrix state."
+            """The given :python:`matrix` is invalid for describing either a vector or matrix state."""
         )

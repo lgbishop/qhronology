@@ -46,11 +46,9 @@ from qhronology.mechanics.quantities import QuantitiesMixin
 class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     """A class for creating quantum states and storing their metadata.
 
-    Instances provide complete descriptions of both vector and matrix quantum states, along with
-    various associated attributes (such as mathematical conditions, including normalization).
-    The internal state of the class is expressly mutable, and a selection of useful methods are
-    provided with which the state can be manipulated and otherwise transformed in various
-    quantum-mechanically significant ways. This includes:
+    Instances provide complete descriptions of both vector and matrix quantum states, along with various associated attributes (such as mathematical conditions, including normalization).
+    The internal state of the class is expressly mutable, and a selection of useful methods are provided with which the state can be manipulated and otherwise transformed in various quantum-mechanically significant ways.
+    This includes:
 
     - normalization
     - (partial) trace
@@ -60,15 +58,13 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     Arguments
     ---------
     spec
-        The specification of the quantum state. Provides a complete description of the state's
-        values in a standard :python:`dim`-dimensional basis. Can be one of:
+        The specification of the quantum state. Provides a complete description of the state's values in a standard :python:`dim`-dimensional basis.
+        Can be one of:
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
-        - a list of lists of numerical, symbolic, or string expressions (that collectively specify
-          a matrix) (:python:`list[list[num | sym | str]]`)
-        - a list of 2-tuples of numerical, symbolic, or string coefficients and their respective
-          number-basis specifications (:python:`list[tuple[num | sym | str, int | list[int]]]`)
+        - a list of lists of numerical, symbolic, or string expressions (that collectively specify a matrix) (:python:`list[list[num | sym | str]]`)
+        - a list of 2-tuples of numerical, symbolic, or string coefficients and their respective number-basis specifications (:python:`list[tuple[num | sym | str, int | list[int]]]`)
 
     form : str
         A string specifying the *form* for the quantum state to take.
@@ -83,14 +79,11 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         Must be a non-negative integer.
         Defaults to :python:`2`.
     symbols : dict[sym | str, dict[str, Any]]
-        A dictionary in which the keys are individual symbols (usually found within the state
-        specification :python:`spec`) and the values are dictionaries of their respective SymPy
-        keyword-argument :python:`assumptions`.
+        A dictionary in which the keys are individual symbols (usually found within the state specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         Defaults to :python:`{}`.
     conditions : list[tuple[num | sym | str, num | sym | str]]
         A list of :math:`2`-tuples of conditions to be applied to the state.
-        All instances of the expression in each tuple's first element are replaced by the
-        expression in the respective second element.
+        All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
         The order in which they are applied is simply their order in the list.
         Defaults to :python:`[]`.
@@ -183,8 +176,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         if hasattr(self, "_form"):
             if kind not in COMPATIBILITIES[self.form]:
                 raise AttributeError(
-                    f"""The given :python:`kind` ('{kind}') is incompatible with the given :python:`form`
-                    ('{self.form}')."""
+                    f"""The given :python:`kind` ('{kind}') is incompatible with the given :python:`form` ('{self.form}')."""
                 )
         self._kind = kind
 
@@ -235,8 +227,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     @property
     def num_systems(self) -> int:
         """Read-only property containing the number of systems which the state spans.
-        The current value is calculated from the state's matrix representation and its
-        dimensionality :python:`dim`.
+        The current value is calculated from the state's matrix representation and its dimensionality :python:`dim`.
         """
         return count_systems(self.matrix, self.dim)
 
@@ -251,8 +242,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         conjugate: bool | None = None,
         norm: bool | num | sym | str | None = None,
     ) -> mat:
-        """Construct the state's matrix representation, perform any necessary transformations on it,
-        and return it.
+        """Construct the state's matrix representation, perform any necessary transformations on it, and return it.
 
         Arguments
         ---------
@@ -303,8 +293,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         return state
 
     def reset(self):
-        """Reset the quantum state's internal matrix state (specifically its :python:`matrix` property)
-        to its original value at instantiation.
+        """Reset the quantum state's internal matrix state (specifically its :python:`matrix` property) to its original value at instantiation.
 
         Note
         ----
@@ -319,10 +308,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
 class VectorState(QuantumState):
     """A specialized subclass for creating *vector* states and storing their metadata.
 
-    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,
-    and so inherits all of its attributes, properties, and methods.
-    The distinction is that this :python:`VectorState` class fixes both the :python:`form` and :python:`kind`
-    arguments to the values of :python:`"vector"` and :python:`"pure"`, respectively, at instantiation.
+    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.
+    The distinction is that this :python:`VectorState` class fixes both the :python:`form` and :python:`kind` arguments to the values of :python:`"vector"` and :python:`"pure"`, respectively, at instantiation.
     This means that neither :python:`*args` or :python:`**kwargs` must contain these arguments.
     """
 
@@ -339,10 +326,8 @@ class VectorState(QuantumState):
 class MatrixState(QuantumState):
     """A specialized subclass for creating *matrix* states and storing their metadata.
 
-    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,
-    and so inherits all of its attributes, properties, and methods.
-    The distinction is that this :python:`MatrixState` class fixes the :python:`form` argument to a value of
-    :python:`"matrix"` at instantiation.
+    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.
+    The distinction is that this :python:`MatrixState` class fixes the :python:`form` argument to a value of :python:`"matrix"` at instantiation.
     This means that neither :python:`*args` or :python:`**kwargs` must contain this argument.
     """
 
@@ -356,9 +341,8 @@ class MatrixState(QuantumState):
 class PureState(QuantumState):
     """A specialized subclass for creating *pure* states and storing their metadata.
 
-    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,
-    and so inherits all of its attributes, properties, and methods. The distinction is that
-    this :python:`PureState` class fixes the :python:`kind` argument to a value of :python:`"pure"` at instantiation.
+    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.
+    The distinction is that this :python:`PureState` class fixes the :python:`kind` argument to a value of :python:`"pure"` at instantiation.
     This means that neither :python:`*args` or :python:`**kwargs` must contain this argument.
     """
 
@@ -372,10 +356,8 @@ class PureState(QuantumState):
 class MixedState(QuantumState):
     """A specialized subclass for creating *mixed* states and storing their metadata.
 
-    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class,
-    and so inherits all of its attributes, properties, and methods. The distinction is that
-    this :python:`MixedState` class fixes both the :python:`form` and :python:`kind` arguments to the values of
-    :python:`"matrix"` and :python:`"mixed"`, respectively, at instantiation.
+    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.
+    The distinction is that this :python:`MixedState` class fixes both the :python:`form` and :python:`kind` arguments to the values of :python:`"matrix"` and :python:`"mixed"`, respectively, at instantiation.
     This means that neither :python:`*args` or :python:`**kwargs` must contain these arguments.
     """
 

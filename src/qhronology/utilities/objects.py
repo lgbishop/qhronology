@@ -39,8 +39,8 @@ from qhronology.utilities.symbolics import SymbolicsProperties
 class QuantumObject(VisualizationMixin, SymbolicsProperties):
     """A base class forming the backbone of the QuantumState and QuantumGate classes.
 
-    Not intended to be instantiated directly itself, but rather indirectly via the constructors
-    of its derived classes."""
+    Not intended to be instantiated directly itself, but rather indirectly via the constructors of its derived classes.
+    """
 
     def __init__(
         self,
@@ -102,8 +102,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         Arguments
         ---------
         delimiter : str
-            A string containing the character(s) with which to delimit (i.e., separate) the values
-            in the ket and/or bra terms in the mathematical expression.
+            A string containing the character(s) with which to delimit (i.e., separate) the values in the ket and/or bra terms in the mathematical expression.
             Defaults to :python:`","`.
         product : bool
             Whether to represent the mathematical expression using tensor products.
@@ -185,6 +184,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     @property
     def form(self) -> str:
         """The *form* of the object.
+
         Can be either of :python:`"vector"` or :python:`"matrix"`.
         Only :py:class:`~qhronology.quantum.states.QuantumState` objects can be :python:`"vector"`.
         """
@@ -195,7 +195,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         if hasattr(self, "_kind"):
             if form == Forms.VECTOR.value and self.kind == Kinds.MIXED.value:
                 raise AttributeError(
-                    f"The given :python:`form` ('{form}') is incompatible with the given :python:`kind` ('{self.kind}')."
+                    f"""The given :python:`form` ('{form}') is incompatible with the given :python:`kind` ('{self.kind}')."""
                 )
         self._form = form
 
@@ -218,7 +218,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     def dim(self, dim: int):
         if hasattr(self, "_dim") is True:
             raise AttributeError(
-                "The :python:`dim` attribute cannot be set after instancing."
+                """The :python:`dim` attribute cannot be set after instancing."""
             )
         self._dim = dim
 
@@ -306,8 +306,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     @property
     def systems(self) -> list[int]:
-        """Read-only property containing an ordered list of the numerical indices
-        of the object's systems."""
+        """Read-only property containing an ordered list of the numerical indices of the object's systems."""
         return [k for k in range(0, self.num_systems)]
 
     @property
@@ -328,11 +327,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     @property
     def matrix(self) -> mat:
         """The matrix representation of the object.
-
-        Considered read-only (this is strictly enforced by
-        :py:class:`~qhronology.quantum.gates.QuantumGate` class and its derivatives),
-        though can be (indirectly) mutated by some derived classes
-        (such as :py:class:`~qhronology.quantum.states.QuantumState`).
+        Considered read-only (this is strictly enforced by :py:class:`~qhronology.quantum.gates.QuantumGate` class and its derivatives), though can be (indirectly) mutated by some derived classes (such as :py:class:`~qhronology.quantum.states.QuantumState`).
         Not intended to be set directly by the user."""
         return sp.Matrix(self._matrix)
 
@@ -354,8 +349,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     @property
     def debug(self) -> bool:
-        """Whether to print the object's matrix representation (stored in the :python:`matrix` property)
-        on mutation."""
+        """Whether to print the object's matrix representation (stored in the :python:`matrix` property) on mutation."""
         return self._debug
 
     @debug.setter
