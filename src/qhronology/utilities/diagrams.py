@@ -1831,7 +1831,7 @@ class VisualizationProperties:
         if isinstance(sep, tuple) is True:
             sep = {"upper": sep[1], "lower": sep[1], "left": sep[0], "right": sep[0]}
         dimensions = (0, 0) if dimensions is None else dimensions
-        style = "unicode" if style is None else style
+        style = Styles.UNICODE.value if style is None else style
 
         self.pad = pad
         self.sep = sep
@@ -2058,9 +2058,9 @@ class DiagramCell(VisualizationProperties):
                     "unicode": "empty",
                     "unicode_alt": "empty",
                 }
-        if any(family in self.family for family in {"LSTICK"}) is True:
+        if any(family in self.family for family in {"LSTICK"}):
             label = label + styles[self.family]["label_connector"][style]
-        if any(family in self.family for family in {"RSTICK"}) is True:
+        if any(family in self.family for family in {"RSTICK"}):
             label = styles[self.family]["label_connector"][style] + label
 
         if any(family in self.family for family in {"WORMHOLE_PAST"}):
@@ -2180,12 +2180,9 @@ class DiagramCell(VisualizationProperties):
         # Adjust width
         trim_left = math.ceil((len(label) - 1) / 2)
         trim_right = math.floor((len(label) - 1) / 2)
-        if (
-            any(
-                family in self.family
-                for family in {"RSTICK", "TRACE", "TERM", "WORMHOLE_FUTURE"}
-            )
-            is True
+        if any(
+            family in self.family
+            for family in {"RSTICK", "TRACE", "TERM", "WORMHOLE_FUTURE"}
         ):
             trim_left = math.floor((len(label) - 1) / 2)
             trim_right = math.ceil((len(label) - 1) / 2)
@@ -2668,21 +2665,13 @@ class DiagramCircuit(VisualizationProperties):
 
                 # Account for the padding difference between singlemode and multimode LSTICKs and RSTICK.
                 if self.columns[index_column].section == Sections.INPUTS.value:
-                    if (
-                        any(
-                            family in family_wide_sticks
-                            for family in column_family_current
-                        )
-                        is False
+                    if not any(
+                        family in family_wide_sticks for family in column_family_current
                     ):
                         trim_right += 3
                 if self.columns[index_column].section == Sections.OUTPUTS.value:
-                    if (
-                        any(
-                            family in family_wide_sticks
-                            for family in column_family_current
-                        )
-                        is False
+                    if not any(
+                        family in family_wide_sticks for family in column_family_current
                     ):
                         trim_left += 3
 
@@ -2767,23 +2756,17 @@ class DiagramCircuit(VisualizationProperties):
                         ):
                             trim_left -= pad_cell_original + 1
                         else:
-                            if (
-                                any(
-                                    family in family_wide_gates
-                                    for family in column_family_current
-                                )
-                                is False
+                            if not any(
+                                family in family_wide_gates
+                                for family in column_family_current
                             ):
                                 trim_left += max(pad_cell_original - 2, 0)
 
                 else:
-                    if (
-                        self.columns[index_column].section == Sections.GATES.value
-                        and any(
-                            family in family_wide_gates
-                            for family in column_family_current
-                        )
-                        is False
+                    if self.columns[
+                        index_column
+                    ].section == Sections.GATES.value and not any(
+                        family in family_wide_gates for family in column_family_current
                     ):
                         if (
                             index_column != max(range(0, self.num_columns))
@@ -2797,30 +2780,19 @@ class DiagramCircuit(VisualizationProperties):
                         self.columns[index_column].section == Sections.GATES.value
                         and len(self.columns) > 1
                     ):
-                        if (
-                            any(
-                                family in family_wide_gates
-                                for family in column_family_current
-                            )
-                            is False
-                            and any(
-                                family in family_wide_gates
-                                for family in column_family_next
-                            )
-                            is False
+                        if not any(
+                            family in family_wide_gates
+                            for family in column_family_current
+                        ) and not any(
+                            family in family_wide_gates for family in column_family_next
                         ):
                             trim_right += math.floor(pad_cell[0] / 2)
-                        if (
-                            any(
-                                family in family_wide_gates
-                                for family in column_family_previous
-                            )
-                            is False
-                            and any(
-                                family in family_wide_gates
-                                for family in column_family_current
-                            )
-                            is False
+                        if not any(
+                            family in family_wide_gates
+                            for family in column_family_previous
+                        ) and not any(
+                            family in family_wide_gates
+                            for family in column_family_current
                         ):
                             # +1 accounts for edge of block gate:
                             trim_left += math.ceil(pad_cell[0] / 2) + 1
@@ -3140,11 +3112,10 @@ class VisualizationMixin:
         """
         pad = (1, 0) if pad is None else pad
         sep = (1, 1) if sep is None else sep
-        style = "unicode" if style is None else style
-        return_string = False if return_string is None else return_string
-
+        style = Styles.UNICODE.value if style is None else style
         uniform_spacing = False
         force_separation = True
+        return_string = False if return_string is None else return_string
 
         section = Sections.GATES.value
         if "STICK" in self.family:

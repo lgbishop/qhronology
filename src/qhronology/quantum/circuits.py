@@ -382,10 +382,7 @@ class QuantumCircuit(SymbolicsProperties):
     def gate_is_linear(self) -> bool:
         """Whether all gates are linear (i.e., not measurement operations)."""
         is_linear = True
-        if any(
-            family == Families.METER.value
-            for family in [gate.family for gate in self.gates]
-        ):
+        if any(gate.family == Families.METER.value for gate in self.gates):
             is_linear = False
         return is_linear
 
@@ -407,8 +404,8 @@ class QuantumCircuit(SymbolicsProperties):
         """Whether or not the output from the entire circuit is a vector state."""
         is_vector = True
         if (
-            not any(
-                not boolean
+            all(
+                boolean is True
                 for boolean in [
                     self.input_is_vector,
                     self.gate_is_linear,
@@ -1059,10 +1056,9 @@ class QuantumCircuit(SymbolicsProperties):
         """
         pad = (0, 0) if pad is None else pad
         sep = (1, 1) if sep is None else sep
-        if isinstance(sep, tuple) is True:
-            sep = {"upper": sep[1], "lower": sep[1], "left": sep[0], "right": sep[0]}
+        # if isinstance(sep, tuple) is True:
+        #     sep = {"upper": sep[1], "lower": sep[1], "left": sep[0], "right": sep[0]}
         style = Styles.UNICODE.value if style is None else style
-
         uniform_spacing = False if uniform_spacing is None else uniform_spacing
         force_separation = False if force_separation is None else force_separation
         return_string = False if return_string is None else return_string

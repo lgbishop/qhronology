@@ -614,7 +614,7 @@ def postselect(
         except:
             if matrix_form(twotuple[0]) == Forms.VECTOR.value:
                 are_vector[n] = True
-    postselection_is_vector = not any(boolean != True for boolean in are_vector)
+    postselection_is_vector = all(boolean is True for boolean in are_vector)
 
     matrices = []
     targets = []
