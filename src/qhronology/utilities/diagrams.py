@@ -2994,7 +2994,7 @@ def assign_connections(systems, targets, controls, anticontrols, boundaries):
 class VisualizationMixin:
     """A mixin for endowing classes derived from the base class :py:class:`~qhronology.utilities.objects.QuantumObject` the ability to be visualized as quantum circuit diagram elements."""
 
-    def diagram_column(
+    def _diagram_column(
         self,
         pad: tuple[int, int] | None = None,
         sep: tuple[int, int] | None = None,
@@ -3113,7 +3113,7 @@ class VisualizationMixin:
         if "STICK" in self.family:
             section = Sections.INPUTS.value
         pad_sections = {Sections.INPUTS.value: (2, 0), Sections.GATES.value: (0, 0)}
-        cells = [*self.diagram_column(pad=pad, sep=sep, style=style).cells]
+        cells = [*self._diagram_column(pad=pad, sep=sep, style=style).cells]
         column = DiagramColumn(
             cells=flatten_list(cells), pad=pad_sections[section], section=section
         )

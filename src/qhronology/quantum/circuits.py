@@ -999,21 +999,25 @@ class QuantumCircuit(SymbolicsProperties):
                 if system == min(self.systems_respecting):
                     for state in self.inputs:
                         cells_input.append(
-                            [*state.diagram_column(pad=pad, sep=sep, style=style).cells]
+                            [
+                                *state._diagram_column(
+                                    pad=pad, sep=sep, style=style
+                                ).cells
+                            ]
                         )
                 else:
                     if system in self.systems_violating:
                         cells_input.append(
                             [
                                 _Single(family=Families.WORMHOLE.value + "_PAST")
-                                .diagram_column(pad=pad, sep=sep, style=style)
+                                ._diagram_column(pad=pad, sep=sep, style=style)
                                 .cells
                             ]
                         )
         else:
             for state in self.inputs:
                 cells_input.append(
-                    [*state.diagram_column(pad=pad, sep=sep, style=style).cells]
+                    [*state._diagram_column(pad=pad, sep=sep, style=style).cells]
                 )
             if self.num_systems_inputs != 0:
                 for _ in range(0, self.num_systems - self.num_systems_inputs):
@@ -1031,7 +1035,7 @@ class QuantumCircuit(SymbolicsProperties):
                         debug=False,
                     )
                     cells_input.append(
-                        [identity.diagram_column(pad=pad, sep=sep, style=style).cells]
+                        [identity._diagram_column(pad=pad, sep=sep, style=style).cells]
                     )
 
         column_input = []
@@ -1046,7 +1050,7 @@ class QuantumCircuit(SymbolicsProperties):
         for index_column, gate in enumerate(self.gates):
             gate = copy.deepcopy(gate)
             gate.num_systems = self.num_systems_gross
-            columns_gate.append(gate.diagram_column(pad=pad, sep=sep, style=style))
+            columns_gate.append(gate._diagram_column(pad=pad, sep=sep, style=style))
 
         cells_output = []
         for system in self.systems:
@@ -1057,7 +1061,7 @@ class QuantumCircuit(SymbolicsProperties):
                 cells_output.append(
                     [
                         _Single(family=Families.WORMHOLE.value + "_FUTURE")
-                        .diagram_column(pad=pad, sep=sep, style=style)
+                        ._diagram_column(pad=pad, sep=sep, style=style)
                         .cells
                     ]
                 )
@@ -1065,7 +1069,7 @@ class QuantumCircuit(SymbolicsProperties):
                 cells_output.append(
                     [
                         _Single(family=Families.TRACE.value)
-                        .diagram_column(pad=pad, sep=sep, style=style)
+                        ._diagram_column(pad=pad, sep=sep, style=style)
                         .cells
                     ]
                 )
@@ -1100,7 +1104,7 @@ class QuantumCircuit(SymbolicsProperties):
                             )
                         cells_output.append(
                             [
-                                Postselection.diagram_column(
+                                Postselection._diagram_column(
                                     pad=pad, sep=sep, style=style
                                 ).cells
                             ]
@@ -1109,7 +1113,7 @@ class QuantumCircuit(SymbolicsProperties):
                 cells_output.append(
                     [
                         _Single(family=Families.TERM.value)
-                        .diagram_column(pad=pad, sep=sep, style=style)
+                        ._diagram_column(pad=pad, sep=sep, style=style)
                         .cells
                     ]
                 )
