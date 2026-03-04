@@ -171,10 +171,10 @@ class QuantumCTC(QuantumCircuit):
     def input(
         self,
         merge: bool | None = None,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        norm: bool | num | sym | str | None = None,
+        norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
         debug: bool | None = None,
@@ -191,7 +191,7 @@ class QuantumCTC(QuantumCircuit):
             Whether to merge the labels of the individual quantum states into a single product, separated by :python:`"⊗"` operators, prior to any notational processing.
             Only relevant when all states are vectors.
             Defaults to :python:`True`.
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             If :python:`False`, does not substitute the conditions.
             Defaults to the value of :python:`self.conditions`.
@@ -201,7 +201,7 @@ class QuantumCTC(QuantumCircuit):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
-        norm : bool | num | sym | str
+        norm : bool | num | expr | str
             The value to which the state is normalized.
             If :python:`True`, normalizes to a value of :math:`1`.
             If :python:`False`, does not normalize.
@@ -643,7 +643,7 @@ class DCTC(QuantumCTC):
 
     def output_violating(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         free_symbol: sym | str | None = None,
@@ -652,7 +652,7 @@ class DCTC(QuantumCTC):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -725,7 +725,7 @@ class DCTC(QuantumCTC):
 
     def output_respecting(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         postprocess: bool | None = None,
@@ -735,7 +735,7 @@ class DCTC(QuantumCTC):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -831,7 +831,7 @@ class DCTC(QuantumCTC):
 
     def output(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         postprocess: bool | None = None,
@@ -843,7 +843,7 @@ class DCTC(QuantumCTC):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -874,10 +874,10 @@ class DCTC(QuantumCTC):
 
     def state_violating(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        norm: bool | num | sym | str | None = None,
+        norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
         traces: list[int] | None = None,
@@ -888,7 +888,7 @@ class DCTC(QuantumCTC):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -897,7 +897,7 @@ class DCTC(QuantumCTC):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
-        norm : bool | num | sym | str
+        norm : bool | num | expr | str
             The value to which the state is normalized.
             If :python:`True`, normalizes to a value of :math:`1`.
             If :python:`False`, does not normalize.
@@ -958,10 +958,10 @@ class DCTC(QuantumCTC):
 
     def state_respecting(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        norm: bool | num | sym | str | None = None,
+        norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
         traces: list[int] | None = None,
@@ -973,7 +973,7 @@ class DCTC(QuantumCTC):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -982,7 +982,7 @@ class DCTC(QuantumCTC):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
-        norm : bool | num | sym | str
+        norm : bool | num | expr | str
             The value to which the state is normalized.
             If :python:`True`, normalizes to a value of :math:`1`.
             If :python:`False`, does not normalize.
@@ -1221,7 +1221,7 @@ class PCTC(QuantumCTC):
 
     def output_violating(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
     ) -> mat:
@@ -1229,7 +1229,7 @@ class PCTC(QuantumCTC):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -1300,7 +1300,7 @@ class PCTC(QuantumCTC):
 
     def output_respecting(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         postprocess: bool | None = None,
@@ -1309,7 +1309,7 @@ class PCTC(QuantumCTC):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -1410,7 +1410,7 @@ class PCTC(QuantumCTC):
 
     def output(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         postprocess: bool | None = None,
@@ -1421,7 +1421,7 @@ class PCTC(QuantumCTC):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -1452,10 +1452,10 @@ class PCTC(QuantumCTC):
 
     def state_violating(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        norm: bool | num | sym | str | None = None,
+        norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
         traces: list[int] | None = None,
@@ -1465,7 +1465,7 @@ class PCTC(QuantumCTC):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -1474,7 +1474,7 @@ class PCTC(QuantumCTC):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
-        norm : bool | num | sym | str
+        norm : bool | num | expr | str
             The value to which the state is normalized.
             If :python:`True`, normalizes to a value of :math:`1`.
             If :python:`False`, does not normalize.
@@ -1532,10 +1532,10 @@ class PCTC(QuantumCTC):
 
     def state_respecting(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        norm: bool | num | sym | str | None = None,
+        norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
         traces: list[int] | None = None,
@@ -1546,7 +1546,7 @@ class PCTC(QuantumCTC):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -1555,7 +1555,7 @@ class PCTC(QuantumCTC):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
-        norm : bool | num | sym | str
+        norm : bool | num | expr | str
             The value to which the state is normalized.
             If :python:`True`, normalizes to a value of :math:`1`.
             If :python:`False`, does not normalize.

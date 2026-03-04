@@ -197,9 +197,9 @@ def stringify(
 
 
 def symbolize_expression(
-    expression: mat | arr | num | sym | str,
+    expression: mat | arr | num | expr | str,
     symbols: dict[sym | str, dict[str, Any]] | list[sym] | None = None,
-) -> mat | arr | num | sym:
+) -> mat | arr | num | expr:
     """Sympify a numerical, symbolic, or string expression, and replace the symbols with given counterparts."""
     symbols = [] if symbols is None else symbols
     if isinstance(symbols, dict) is True:
@@ -238,8 +238,8 @@ def symbolize_expression(
 
 
 def symbolize_tuples(
-    conditions: list[tuple[num | sym | str, num | sym | str]], symbols_list: list[sym]
-) -> list[tuple[num | sym, num | sym]]:
+    conditions: list[tuple[num | expr | str, num | expr | str]], symbols_list: list[sym]
+) -> list[tuple[num | expr, num | expr]]:
     """Sympify the numerical, symbolic, or string expression pairs within tuples of the list :python:`conditions` and replace the symbols with given counterparts."""
     for n in range(0, len(conditions)):
         conditions[n] = list(conditions[n])
@@ -251,11 +251,11 @@ def symbolize_tuples(
 
 
 def recursively_simplify(
-    expression: mat | arr | num | sym,
-    conditions: list[tuple[num | sym, num | sym]] | None = None,
+    expression: mat | arr | num | expr,
+    conditions: list[tuple[num | expr, num | expr]] | None = None,
     limit: int | None = None,
     comprehensive: bool | None = None,
-) -> mat | arr | num | sym:
+) -> mat | arr | num | expr:
     """Simplify :python:`expression` recursively using the substitutions given in :python:`conditions`.
     Runs until :python:`expression` is unchanged from the previous iteration, or until the :python:`limit` number of iterations is reached.
     If :python:`comprehensive` is :python:`False`, the algorithm uses a relatively efficient subset of simplifying operations, otherwise it uses a larger, more powerful (but slower) set.
@@ -343,7 +343,7 @@ def extract_matrix(operator: mat | arr | QuantumObject) -> mat:
     return matrix
 
 
-def extract_conditions(*states) -> list[tuple[num | sym, num | sym]]:
+def extract_conditions(*states) -> list[tuple[num | expr, num | expr]]:
     """Extract any substitution conditions accessible via the :python:`conditions` property from the objects in :python:`states`."""
     conditions = []
     symbols_list = []

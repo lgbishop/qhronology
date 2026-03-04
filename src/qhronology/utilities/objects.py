@@ -49,7 +49,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         dim: int | None = None,
         num_systems: int | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         conjugate: bool | None = None,
         label: str | None = None,
         notation: str | None = None,
@@ -136,7 +136,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     def output(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
     ) -> mat:
@@ -144,7 +144,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool

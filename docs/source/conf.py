@@ -182,6 +182,7 @@ nitpicky = True
 nitpick_ignore = [
     ("py:class", "num"),
     ("py:class", "sym"),
+    ("py:class", "expr"),
     ("py:class", "mat"),
     ("py:class", "arr"),
     ("py:class", "numbers.Number"),
@@ -190,6 +191,7 @@ nitpick_ignore = [
     ("py:class", "sympy.matrices.expressions.matexpr.MatrixSymbol"),
     ("py:class", "sympy.matrices.expressions.matexpr.MatrixElement"),
     ("py:class", "sympy.core.symbol.Symbol"),
+    ("py:class", "sympy.core.expr.Expr"),
     ("py:class", "sympy.matrices.dense.MutableDenseMatrix"),
     ("py:class", "numpy.ndarray"),
 ]

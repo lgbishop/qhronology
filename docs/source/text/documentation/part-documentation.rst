@@ -230,14 +230,19 @@ Qhronology's underlying functionality takes advantage of a few bespoke type alia
      - Scalar numerical numbers
      - :python:`numbers.Number | numpy.generic | sympy.Basic`
    * - :python:`sym`
-     - SymPy symbolic scalar expressions and symbols
+     - SymPy scalar symbols
      - :python:`sympy.matrices.expressions.matexpr.MatrixSymbol | sympy.matrices.expressions.matexpr.MatrixElement | sympy.core.symbol.Symbol`
+   * - :python:`expr`
+     - SymPy scalar expressions
+     - :python:`sp.core.expr.Expr`
    * - :python:`mat`
      - SymPy (mutable) dense matrices
      - :python:`sympy.matrices.dense.MutableDenseMatrix`
    * - :python:`arr`
      - NumPy arrays
      - :python:`numpy.ndarray`
+
+It may be useful to know that, as defined above, the set of all :python:`sym`-type objects is a proper subset of the set of all :python:`expr`-type objects.
 
 .. raw:: html
 

@@ -63,8 +63,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
-        - a list of lists of numerical, symbolic, or string expressions (that collectively specify a matrix) (:python:`list[list[num | sym | str]]`)
-        - a list of 2-tuples of numerical, symbolic, or string coefficients and their respective number-basis specifications (:python:`list[tuple[num | sym | str, int | list[int]]]`)
+        - a list of lists of numerical, symbolic, or string expressions (that collectively specify a matrix) (:python:`list[list[num | expr | str]]`)
+        - a list of 2-tuples of numerical, symbolic, or string coefficients and their respective number-basis specifications (:python:`list[tuple[num | expr | str, int | list[int]]]`)
 
     form : str
         A string specifying the *form* for the quantum state to take.
@@ -81,7 +81,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols (usually found within the state specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         Defaults to :python:`{}`.
-    conditions : list[tuple[num | sym | str, num | sym | str]]
+    conditions : list[tuple[num | expr | str, num | expr | str]]
         A list of :math:`2`-tuples of conditions to be applied to the state.
         All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
@@ -90,7 +90,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     conjugate : bool
         Whether to perform Hermitian conjugation on the state when it is called.
         Defaults to :python:`False`.
-    norm : bool | num | sym | str
+    norm : bool | num | expr | str
         The value to which the state is normalized.
         If :python:`True`, normalizes to a value of :math:`1`.
         If :python:`False`, does not normalize.
@@ -119,16 +119,16 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         spec: (
             mat
             | arr
-            | list[list[num | sym | str]]
-            | list[tuple[num | sym | str, int | list[int]]]
+            | list[list[num | expr | str]]
+            | list[tuple[num | expr | str, int | list[int]]]
         ),
         form: str | None = None,
         kind: str | None = None,
         dim: int | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         conjugate: bool | None = None,
-        norm: bool | num | sym | str | None = None,
+        norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
         family: str | None = None,
@@ -186,8 +186,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     ) -> (
         mat
         | arr
-        | list[list[num | sym | str]]
-        | list[tuple[num | sym | str, int | list[int]]]
+        | list[list[num | expr | str]]
+        | list[tuple[num | expr | str, int | list[int]]]
     ):
         """The matrix representation of the quantum state.
         Provides a complete description of the state in a standard :python:`dim`-dimensional basis.
@@ -200,14 +200,14 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         spec: (
             mat
             | arr
-            | list[list[num | sym | str]]
-            | list[tuple[num | sym | str, int | list[int]]]
+            | list[list[num | expr | str]]
+            | list[tuple[num | expr | str, int | list[int]]]
         ),
     ):
         self._spec = spec
 
     @property
-    def norm(self) -> bool | num | sym | str:
+    def norm(self) -> bool | num | expr | str:
         """The value to which the state is normalized.
         If :python:`True`, normalizes to a value of :math:`1`.
         If :python:`False`, does not normalize.
@@ -221,7 +221,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         return self._norm
 
     @norm.setter
-    def norm(self, norm: bool | num | sym | str):
+    def norm(self, norm: bool | num | expr | str):
         self._norm = norm
 
     @property
@@ -237,16 +237,16 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
 
     def output(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        norm: bool | num | sym | str | None = None,
+        norm: bool | num | expr | str | None = None,
     ) -> mat:
         """Construct the state's matrix representation, perform any necessary transformations on it, and return it.
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -256,7 +256,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             Whether to perform Hermitian conjugation on the state.
             If :python:`False`, does not conjugate.
             Defaults to the value of :python:`self.conjugate`.
-        norm : bool | num | sym | str
+        norm : bool | num | expr | str
             The value to which the state is normalized.
             If :python:`False`, does not normalize.
             Defaults to the value of :python:`self.norm`.

@@ -24,6 +24,7 @@ sym = (
     | sp.matrices.expressions.matexpr.MatrixElement
     | sp.core.symbol.Symbol
 )
+expr = sp.core.expr.Expr
 mat = sp.matrices.dense.MutableDenseMatrix
 arr = np.ndarray
 

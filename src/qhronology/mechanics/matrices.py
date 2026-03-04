@@ -23,7 +23,7 @@ from qhronology.utilities.classification import (
     mat,
     arr,
     num,
-    sym,
+    expr,
     Forms,
     Kinds,
     FORMS,
@@ -111,8 +111,8 @@ def quantum_state(
     spec: (
         mat
         | arr
-        | list[list[num | sym | str]]
-        | list[tuple[num | sym | str, int | list[int]]]
+        | list[list[num | expr | str]]
+        | list[tuple[num | expr | str, int | list[int]]]
     ),
     form: str | None = None,
     kind: str | None = None,
@@ -127,8 +127,8 @@ def quantum_state(
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
-        - a list of lists of numerical, symbolic, or string expressions that collectively specify a vector or (square) matrix (:python:`list[list[num | sym | str]]`)
-        - a list of 2-tuples of numerical, symbolic, or string coefficients paired their respective number-basis specification (:python:`list[tuple[num | sym | str, int | list[int]]]`)
+        - a list of lists of numerical, symbolic, or string expressions that collectively specify a vector or (square) matrix (:python:`list[list[num | expr | str]]`)
+        - a list of 2-tuples of numerical, symbolic, or string coefficients paired their respective number-basis specification (:python:`list[tuple[num | expr | str, int | list[int]]]`)
 
     form : str
         A string specifying the *form* for the quantum state to take.
@@ -411,7 +411,7 @@ def decode_fast(matrix: mat | QuantumObject, dim: int | None = None) -> int:
 
 def decode_multiple(
     matrix: mat | QuantumObject, dim: int | None = None, reverse: bool | None = None
-) -> list[tuple[int, num | sym]]:
+) -> list[tuple[int, num | expr]]:
     """Decodes a quantum matrix or vector state to one or more unsigned integers with their respective probabilities.
 
     Arguments
@@ -432,7 +432,7 @@ def decode_multiple(
 
     Returns
     -------
-    list[tuple[int, num | sym]]
+    list[tuple[int, num | expr]]
         The list of tuples of pairs of decoded (unsigned) integers and their corresponding probabilities.
     """
     dim = 2 if dim is None else dim

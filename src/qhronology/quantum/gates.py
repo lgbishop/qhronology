@@ -54,13 +54,13 @@ class QuantumGate(QuantumObject):
 
     Arguments
     ---------
-    spec : mat | arr | list[list[num | sym | str]]
+    spec : mat | arr | list[list[num | expr | str]]
         The specification of the quantum gate's matrix representation in a standard :python:`dim`-dimensional basis.
         Can be one of:
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
-        - a list of lists of numerical, symbolic, or string expressions that collectively specify a matrix (:python:`list[list[num | sym | str]]`)
+        - a list of lists of numerical, symbolic, or string expressions that collectively specify a matrix (:python:`list[list[num | expr | str]]`)
 
         Defaults to the single-system :python:`dim`-dimensional Identity operator.
     targets : list[int]
@@ -83,7 +83,7 @@ class QuantumGate(QuantumObject):
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols (usually found within the gate specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         Defaults to :python:`{}`.
-    conditions : list[tuple[num | sym | str, num | sym | str]]
+    conditions : list[tuple[num | expr | str, num | expr | str]]
         A list of :math:`2`-tuples of conditions to be applied to the gate.
         All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
@@ -92,12 +92,12 @@ class QuantumGate(QuantumObject):
     conjugate : bool
         Whether to perform Hermitian conjugation on the gate when it is called.
         Defaults to :python:`False`.
-    exponent : num | sym | str
+    exponent : num | expr | str
         A numerical or string representation of a scalar value to which gate's operator (residing on :python:`targets`) is exponentiated.
         Must be a non-negative integer.
         Useful for computing powers of gates (such as PSWAP), but is only guaranteed to return a valid power of a gate if its corresponding matrix representation (e.g., :math:`\\op{A}`) is involutory (i.e., :math:`\\op{A}^2 = \\Identity`).
         Defaults to :python:`1`.
-    coefficient : num | sym | str
+    coefficient : num | expr | str
         A numerical or string representation of a scalar value by which the gate's matrix (occupying :python:`targets`) is multiplied.
         Performed after exponentiation.
         Useful for multiplying the gate by a phase factor.
@@ -122,17 +122,17 @@ class QuantumGate(QuantumObject):
 
     def __init__(
         self,
-        spec: mat | arr | list[list[num | sym | str]] | None,
+        spec: mat | arr | list[list[num | expr | str]] | None,
         targets: list[int] | None = None,
         controls: list[int] | None = None,
         anticontrols: list[int] | None = None,
         num_systems: int | None = None,
         dim: int | None = None,
         symbols: dict | None = None,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         conjugate: bool | None = None,
-        exponent: num | sym | str | None = None,
-        coefficient: num | sym | str | None = None,
+        exponent: num | expr | str | None = None,
+        coefficient: num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
         family: str | None = None,
@@ -191,14 +191,14 @@ class QuantumGate(QuantumObject):
         return False
 
     @property
-    def spec(self) -> mat | arr | list[list[num | sym | str]]:
+    def spec(self) -> mat | arr | list[list[num | expr | str]]:
         """The matrix representation of the quantum gate's operator.
         Provides a complete description of the operator in a standard :python:`dim`-dimensional basis.
         """
         return self._spec
 
     @spec.setter
-    def spec(self, spec: mat | arr | list[list[num | sym | str]]):
+    def spec(self, spec: mat | arr | list[list[num | expr | str]]):
         self._spec = spec
 
     @property
@@ -306,7 +306,7 @@ class QuantumGate(QuantumObject):
         return [max(flatten_list([self.targets, self.controls, self.anticontrols]))]
 
     @property
-    def exponent(self) -> num | sym | str:
+    def exponent(self) -> num | expr | str:
         """A numerical or string representation of a scalar value specifying the value to which the gate's matrix representation is exponentiated.
         Is guaranteed to produce valid powers only for involutory matrices.
 
@@ -349,31 +349,31 @@ class QuantumGate(QuantumObject):
         return self._exponent
 
     @exponent.setter
-    def exponent(self, exponent: num | sym | str):
+    def exponent(self, exponent: num | expr | str):
         self._exponent = exponent
 
     @property
-    def coefficient(self) -> num | sym | str:
+    def coefficient(self) -> num | expr | str:
         """A numerical or string representation of a scalar value by which the gate's matrix (occupying :python:`targets`) is multiplied."""
         return self._coefficient
 
     @coefficient.setter
-    def coefficient(self, coefficient: num | sym | str):
+    def coefficient(self, coefficient: num | expr | str):
         self._coefficient = coefficient
 
     def output(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        exponent: bool | num | sym | str | None = None,
-        coefficient: bool | num | sym | str | None = None,
+        exponent: bool | num | expr | str | None = None,
+        coefficient: bool | num | expr | str | None = None,
     ) -> mat:
         """Construct the gate and return its matrix representation.
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the gate.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -383,11 +383,11 @@ class QuantumGate(QuantumObject):
             Whether to perform Hermitian conjugation on the gate.
             If :python:`False`, does not conjugate.
             Defaults to the value of :python:`self.conjugate`.
-        exponent : bool | num | sym | str
+        exponent : bool | num | expr | str
             The scalar value by which the gate's matrix representation is exponentiated.
             If :python:`False`, does not exponentiate.
             Defaults to the value of :python:`self.exponent`.
-        coefficient : num | sym | str
+        coefficient : num | expr | str
             The scalar value by which the gate's matrix representation is multiplied.
             If :python:`False`, does not multiply the gate by the coefficient.
             Defaults to the value of :python:`self.coefficient`.
@@ -721,7 +721,7 @@ class Rotation(QuantumGate):
         - :python:`2` (:math:`y`-rotation :math:`\\Rotation_y`)
         - :python:`3` (:math:`z`-rotation :math:`\\Rotation_z`)
 
-    angle : num | sym | str
+    angle : num | expr | str
         The scalar value to be used as the rotation angle.
         Defaults to :python:`0`.
     **kwargs
@@ -736,7 +736,7 @@ class Rotation(QuantumGate):
     DIM = 2
 
     def __init__(
-        self, *args, axis: int, angle: num | sym | str | None = None, **kwargs
+        self, *args, axis: int, angle: num | expr | str | None = None, **kwargs
     ):
         angle = 0 if angle is None else angle
         self.axis = axis
@@ -765,12 +765,12 @@ class Rotation(QuantumGate):
         self._axis = axis
 
     @property
-    def angle(self) -> num | sym | str:
+    def angle(self) -> num | expr | str:
         """The scalar value to be used as the rotation angle."""
         return self._angle
 
     @angle.setter
-    def angle(self, angle: num | sym | str):
+    def angle(self, angle: num | expr | str):
         self._angle = angle
 
     @property
@@ -838,7 +838,7 @@ class Phase(QuantumGate):
     ---------
     *args
         Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
-    phase : num | sym | str
+    phase : num | expr | str
         The phase factor.
         Defaults to the unit root given by :python:`sp.exp(2 * sp.pi * sp.I / self.dim)`.
     **kwargs
@@ -848,7 +848,7 @@ class Phase(QuantumGate):
     def __init__(
         self,
         *args,
-        phase: num | sym | str | None = None,
+        phase: num | expr | str | None = None,
         **kwargs,
     ):
         args, kwargs = default_arguments(args, kwargs, QuantumGate, [("label", "P")])
@@ -858,12 +858,12 @@ class Phase(QuantumGate):
         self.phase = phase
 
     @property
-    def phase(self) -> num | sym | str:
+    def phase(self) -> num | expr | str:
         """The phase value."""
         return self._phase
 
     @phase.setter
-    def phase(self, phase: num | sym | str):
+    def phase(self, phase: num | expr | str):
         self._phase = phase
 
     @property
@@ -917,7 +917,7 @@ class Diagonal(QuantumGate):
     ---------
     *args
         Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
-    entries : dict[int | list[int], num | sym | str]
+    entries : dict[int | list[int], num | expr | str]
         A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.
     exponentiation : bool
         Whether to exponentiate (with imaginary unit) the values given in :python:`entries`.
@@ -933,7 +933,7 @@ class Diagonal(QuantumGate):
     def __init__(
         self,
         *args,
-        entries: dict[int | list[int], num | sym | str],
+        entries: dict[int | list[int], num | expr | str],
         exponentiation: bool | None = None,
         **kwargs,
     ):
@@ -945,12 +945,12 @@ class Diagonal(QuantumGate):
         super().__init__(*args, **kwargs)
 
     @property
-    def entries(self) -> dict[int | list[int], num | sym | str]:
+    def entries(self) -> dict[int | list[int], num | expr | str]:
         """A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars."""
         return self._entries
 
     @entries.setter
-    def entries(self, entries: dict[int | list[int], num | sym | str]):
+    def entries(self, entries: dict[int | list[int], num | expr | str]):
         self._entries = entries
 
     @property
@@ -1539,11 +1539,11 @@ class GateInterleave(QuantumGate):
     conjugate : bool
         Whether to perform Hermitian conjugation on the composite gate when it is called.
         Defaults to :python:`False`.
-    exponent : num | sym | str
+    exponent : num | expr | str
         A numerical or string representation of a scalar value to which composite gate's total matrix representation is exponentiated.
         Must be a non-negative integer.
         Defaults to :python:`1`.
-    coefficient : num | sym | str
+    coefficient : num | expr | str
         A numerical or string representation of a scalar value by which the composite gate's matrix representation is multiplied.
         Performed after exponentiation.
         Defaults to :python:`1`.
@@ -1570,8 +1570,8 @@ class GateInterleave(QuantumGate):
         *gates: QuantumGate,
         merge: bool | None = None,
         conjugate: bool | None = None,
-        exponent: num | sym | str | None = None,
-        coefficient: num | sym | str | None = None,
+        exponent: num | expr | str | None = None,
+        coefficient: num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
     ):
@@ -1706,7 +1706,7 @@ class GateInterleave(QuantumGate):
         pass
 
     @property
-    def conditions(self) -> list[tuple[num | sym | str, num | sym | str]]:
+    def conditions(self) -> list[tuple[num | expr | str, num | expr | str]]:
         conditions = []
         for gate in self.gates:
             conditions += gate.conditions
@@ -1731,17 +1731,17 @@ class GateInterleave(QuantumGate):
 
     def output(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        exponent: bool | num | sym | str | None = None,
-        coefficient: bool | num | sym | str | None = None,
+        exponent: bool | num | expr | str | None = None,
+        coefficient: bool | num | expr | str | None = None,
     ) -> mat:
         """Construct the composite gate and return its matrix representation.
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the gate.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -1751,11 +1751,11 @@ class GateInterleave(QuantumGate):
             Whether to perform Hermitian conjugation on the gate.
             If :python:`False`, does not conjugate.
             Defaults to the value of :python:`self.conjugate`.
-        exponent : bool | num | sym | str
+        exponent : bool | num | expr | str
             The scalar value by which the gate's matrix representation is exponentiated.
             If :python:`False`, does not exponentiate.
             Defaults to the value of :python:`self.exponent`.
-        coefficient : num | sym | str
+        coefficient : num | expr | str
             The scalar value by which the gate's matrix representation is multiplied.
             If :python:`False`, does not multiply the gate by the coefficient.
             Defaults to the value of :python:`self.coefficient`.
@@ -1829,10 +1829,10 @@ class GateStack(GateInterleave):
     conjugate : bool
         Whether to perform Hermitian conjugation on the composite gate when it is called.
         Defaults to :python:`False`.
-    exponent : num | sym | str
+    exponent : num | expr | str
         A numerical or string representation of a scalar value to which composite gate's total matrix representation is exponentiated.
         Defaults to :python:`1`.
-    coefficient : num | sym | str
+    coefficient : num | expr | str
         A numerical or string representation of a scalar value by which the composite gate's matrix representation is multiplied.
         Performed after exponentiation.
         Defaults to :python:`1`.
@@ -1851,8 +1851,8 @@ class GateStack(GateInterleave):
         *gates: QuantumGate,
         merge: bool | None = None,
         conjugate: bool | None = None,
-        exponent: num | sym | str | None = None,
-        coefficient: num | sym | str | None = None,
+        exponent: num | expr | str | None = None,
+        coefficient: num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
     ):

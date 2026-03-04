@@ -18,7 +18,7 @@ from __future__ import annotations
 import sympy as sp
 from sympy.physics.quantum.dagger import Dagger
 
-from qhronology.utilities.classification import mat, num, sym
+from qhronology.utilities.classification import mat, num, expr
 from qhronology.utilities.helpers import (
     count_systems,
     extract_matrix,
@@ -33,7 +33,7 @@ from qhronology.utilities.helpers import (
 from qhronology.mechanics.operations import densify, partial_trace
 
 
-def trace(matrix: mat | QuantumObject) -> num | sym:
+def trace(matrix: mat | QuantumObject) -> num | expr:
     """Calculate the (complete) trace :math:`\\trace[\\op{\\rho}]` of :python:`matrix` (:math:`\\op{\\rho}`).
 
     Arguments
@@ -43,7 +43,7 @@ def trace(matrix: mat | QuantumObject) -> num | sym:
 
     Returns
     -------
-    num | sym
+    num | expr
         The trace of the input :python:`matrix`.
     """
     symbols = extract_symbols(matrix)
@@ -58,7 +58,7 @@ def trace(matrix: mat | QuantumObject) -> num | sym:
     return trace
 
 
-def purity(state: mat | QuantumObject) -> num | sym:
+def purity(state: mat | QuantumObject) -> num | expr:
     """Calculate the purity (:math:`\\Purity`) of :python:`state` (:math:`\\op{\\rho}`):
 
     .. math:: \\Purity(\\op{\\rho}) = \\trace[\\op{\\rho}^2].
@@ -70,7 +70,7 @@ def purity(state: mat | QuantumObject) -> num | sym:
 
     Returns
     -------
-    num | sym
+    num | expr
         The purity of the input :python:`state`.
     """
     symbols = extract_symbols(state)
@@ -85,7 +85,7 @@ def purity(state: mat | QuantumObject) -> num | sym:
     return purity
 
 
-def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num | sym:
+def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num | expr:
     """Calculate the trace distance (:math:`\\TraceDistance`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):
 
     .. math::
@@ -102,7 +102,7 @@ def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
 
     Returns
     -------
-    num | sym
+    num | expr
         The trace distance between the inputs :python:`state_A` and :python:`state_B`.
     """
     symbols = extract_symbols(state_A, state_B)
@@ -128,7 +128,7 @@ def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
     return distance
 
 
-def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num | sym:
+def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num | expr:
     """Calculate the fidelity (:math:`\\Fidelity`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):
 
     .. math::
@@ -145,7 +145,7 @@ def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
 
     Returns
     -------
-    num | sym
+    num | expr
         The fidelity between the inputs :python:`state_A` and :python:`state_B`.
     """
     symbols = extract_symbols(state_A, state_B)
@@ -173,8 +173,8 @@ def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
 def entropy(
     state_A: mat | QuantumObject,
     state_B: mat | QuantumObject | None = None,
-    base: num | sym | str | None = None,
-) -> num | sym:
+    base: num | expr | str | None = None,
+) -> num | expr:
     """Calculate the relative von Neumann entropy (:math:`\\Entropy`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):
 
     .. math::
@@ -194,13 +194,13 @@ def entropy(
         The matrix representation of the first input state.
     state_B : mat | QuantumObject
         The matrix representation of the second input state.
-    base : num | sym | str
+    base : num | expr | str
         The dimensionality of the unit of information with which the entropy is measured.
         Defaults to :python:`2`.
 
     Returns
     -------
-    num | sym
+    num | expr
         The von Neumann entropy of the input :python:`state_A` (if :python:`state_B` is :python:`None`) or the relative entropy between :python:`state_A` and :python:`state_B` (if :python:`state_B` is not :python:`None`).
     """
     symbols = extract_symbols(state_A)
@@ -246,8 +246,8 @@ def mutual(
     systems_A: int | list[int] | None = None,
     systems_B: int | list[int] | None = None,
     dim: int | None = None,
-    base: num | sym | str | None = None,
-) -> num | sym:
+    base: num | expr | str | None = None,
+) -> num | expr:
     """Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of a composite quantum system represented by :python:`state` (:math:`\\rho^{A,B}`):
 
     .. math::
@@ -271,13 +271,13 @@ def mutual(
         The dimensionality of the composite quantum system (and its subsystems).
         Must be a non-negative integer.
         Defaults to :python:`2`.
-    base : num | sym | str
+    base : num | expr | str
         The dimensionality of the unit of information with which the mutual information is measured.
         Defaults to the value of :python:`dim`.
 
     Returns
     -------
-    num | sym
+    num | expr
         The mutual information between the subsystems :python:`systems_A` and :python:`systems_B` of the composite input :python:`state`.
     """
     systems_A = [0] if systems_A is None else systems_A
@@ -325,29 +325,29 @@ class QuantitiesMixin:
     The :py:class:`~qhronology.mechanics.quantities.QuantitiesMixin` mixin is used exclusively by the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding section (:ref:`sec:docs_states_quantities`) for documentation on its methods.
     """
 
-    def trace(self) -> num | sym:
+    def trace(self) -> num | expr:
         """Calculate the (complete) trace :math:`\\trace[\\op{\\rho}]` of the internal state (:math:`\\op{\\rho}`).
 
         Returns
         -------
-        num | sym
+        num | expr
             The trace of the internal state.
         """
         return trace(matrix=self)
 
-    def purity(self) -> num | sym:
+    def purity(self) -> num | expr:
         """Calculate the purity (:math:`\\Purity`) of the internal state (:math:`\\op{\\rho}`):
 
         .. math:: \\Purity(\\op{\\rho}) = \\trace[\\op{\\rho}^2].
 
         Returns
         -------
-        num | sym
+        num | expr
             The purity of the internal state.
         """
         return purity(state=self)
 
-    def distance(self, state: mat | QuantumObject) -> num | sym:
+    def distance(self, state: mat | QuantumObject) -> num | expr:
         """Calculate the trace distance (:math:`\\TraceDistance`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):
 
         .. math::
@@ -362,12 +362,12 @@ class QuantitiesMixin:
 
         Returns
         -------
-        num | sym
+        num | expr
             The trace distance between the internal state and :python:`state`.
         """
         return distance(state_A=self, state_B=state)
 
-    def fidelity(self, state: mat | QuantumObject) -> num | sym:
+    def fidelity(self, state: mat | QuantumObject) -> num | expr:
         """Calculate the fidelity (:math:`\\Fidelity`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):
 
         .. math::
@@ -382,14 +382,14 @@ class QuantitiesMixin:
 
         Returns
         -------
-        num | sym
+        num | expr
             The fidelity between the internal state and :python:`state`.
         """
         return fidelity(state_A=self, state_B=state)
 
     def entropy(
-        self, state: mat | QuantumObject = None, base: num | sym | str | None = None
-    ) -> num | sym:
+        self, state: mat | QuantumObject = None, base: num | expr | str | None = None
+    ) -> num | expr:
         """Calculate the relative von Neumann entropy (:math:`\\Entropy`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):
 
         .. math::
@@ -407,13 +407,13 @@ class QuantitiesMixin:
         ---------
         state : mat | QuantumObject
             The given state.
-        base : num | sym | str
+        base : num | expr | str
             The dimensionality of the unit of information with which the entropy is measured.
             Defaults to :python:`2`.
 
         Returns
         -------
-        num | sym
+        num | expr
             The (relative) von Neumann entropy.
         """
         return entropy(state_A=self, state_B=state, base=base)
@@ -422,8 +422,8 @@ class QuantitiesMixin:
         self,
         systems_A: int | list[int],
         systems_B: int | list[int] | None = None,
-        base: num | sym | str | None = None,
-    ) -> num | sym:
+        base: num | expr | str | None = None,
+    ) -> num | expr:
         """Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of the internal state (:math:`\\rho^{A,B}`):
 
         .. math::
@@ -442,13 +442,13 @@ class QuantitiesMixin:
         systems_B : int | list[int]
             The indices of the second subsystem.
             Defaults to the complement of :python:`systems_A` with respect to the entire composition of the subsystems of :python:`state`.
-        base : num | sym | str
+        base : num | expr | str
             The dimensionality of the unit of information with which the mutual information is measured.
             Defaults to the value of :python:`self.dim`.
 
         Returns
         -------
-        num | sym
+        num | expr
             The mutual information between the subsystems :python:`systems_A` and :python:`systems_B` of the internal state.
         """
         return mutual(

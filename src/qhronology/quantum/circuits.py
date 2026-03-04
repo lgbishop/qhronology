@@ -93,7 +93,7 @@ class QuantumCircuit(SymbolicsProperties):
         A dictionary in which the keys are individual symbols and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         The value of the :python:`symbols` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`symbols` property.
         Defaults to :python:`{}`.
-    conditions : list[tuple[num | sym | str, num | sym | str]]
+    conditions : list[tuple[num | expr | str, num | expr | str]]
         A list of :math:`2`-tuples of conditions to be applied to all objects (such as states and gates) computed from the circuit.
         All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
@@ -119,7 +119,7 @@ class QuantumCircuit(SymbolicsProperties):
             list[tuple[mat | arr | QuantumObject, int | list[int]]] | None
         ) = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
     ):
         SymbolicsProperties.__init__(self, symbols=symbols, conditions=conditions)
         inputs = [] if inputs is None else inputs
@@ -391,10 +391,10 @@ class QuantumCircuit(SymbolicsProperties):
     def input(
         self,
         merge: bool | None = None,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        norm: bool | num | sym | str | None = None,
+        norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
         debug: bool | None = None,
@@ -411,7 +411,7 @@ class QuantumCircuit(SymbolicsProperties):
             Whether to merge the labels of the individual quantum states into a single product, separated by :python:`"⊗"` operators, prior to any notational processing.
             Only relevant when all states are vectors.
             Defaults to :python:`True`.
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -420,7 +420,7 @@ class QuantumCircuit(SymbolicsProperties):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
-        norm : bool | num | sym | str
+        norm : bool | num | expr | str
             The value to which the state is normalized.
             If :python:`True`, normalizes to a value of :math:`1`.
             If :python:`False`, does not normalize.
@@ -518,10 +518,10 @@ class QuantumCircuit(SymbolicsProperties):
 
     def gate(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        exponent: num | sym | str | None = None,
+        exponent: num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
     ) -> QuantumGate:
@@ -531,7 +531,7 @@ class QuantumCircuit(SymbolicsProperties):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the gate.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -540,7 +540,7 @@ class QuantumCircuit(SymbolicsProperties):
         conjugate : bool
             Whether to perform Hermitian conjugation on the gate when it is called.
             Defaults to :python:`False`.
-        exponent : num | sym | str
+        exponent : num | expr | str
             A numerical or string representation of a scalar value to which gate's operator (residing on :python:`targets`) is exponentiated.
             Must be a non-negative integer.
             Defaults to :python:`1`.
@@ -637,7 +637,7 @@ class QuantumCircuit(SymbolicsProperties):
 
     def output(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         postprocess: bool | None = None,
@@ -646,7 +646,7 @@ class QuantumCircuit(SymbolicsProperties):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -741,10 +741,10 @@ class QuantumCircuit(SymbolicsProperties):
 
     def state(
         self,
-        conditions: list[tuple[num | sym | str, num | sym | str]] | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-        norm: bool | num | sym | str | None = None,
+        norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
         traces: list[int] | None = None,
@@ -755,7 +755,7 @@ class QuantumCircuit(SymbolicsProperties):
 
         Arguments
         ---------
-        conditions : list[tuple[num | sym | str, num | sym | str]]
+        conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
@@ -764,7 +764,7 @@ class QuantumCircuit(SymbolicsProperties):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
-        norm : bool | num | sym | str
+        norm : bool | num | expr | str
             The value to which the state is normalized.
             If :python:`True`, normalizes to a value of :math:`1`.
             If :python:`False`, does not normalize.
@@ -849,7 +849,7 @@ class QuantumCircuit(SymbolicsProperties):
         targets: int | list[int] | None = None,
         observable: bool | None = None,
         statistics: bool | None = None,
-    ) -> QuantumState | list[num | sym]:
+    ) -> QuantumState | list[num | expr]:
         """Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of the circuit's total output state.
 
         This occurs prior to any post-processing (i.e., traces and postselections).
@@ -912,7 +912,7 @@ class QuantumCircuit(SymbolicsProperties):
 
         Returns
         -------
-        list[num | sym]
+        list[num | expr]
             A list of probabilities corresponding to each operator given in :python:`operators`.
             Returned if :python:`statistics` is :python:`True`.
         QuantumState

@@ -26,7 +26,7 @@ from qhronology.utilities.classification import (
     mat,
     arr,
     num,
-    sym,
+    expr,
     Forms,
     matrix_form,
 )
@@ -225,14 +225,14 @@ def rewrite(matrix: mat | QuantumObject, function: Callable) -> mat:
     return matrix
 
 
-def normalize(matrix: mat | QuantumObject, norm: num | sym | str | None = None) -> mat:
+def normalize(matrix: mat | QuantumObject, norm: num | expr | str | None = None) -> mat:
     """Normalize :python:`matrix` to the value specified (:python:`norm`).
 
     Arguments
     ---------
     matrix : mat | QuantumObject
         The matrix to be normalized.
-    norm : num | sym | str
+    norm : num | expr | str
         The value to which the matrix is normalized.
         Defaults to :python:`1`.
 
@@ -276,7 +276,7 @@ def normalize(matrix: mat | QuantumObject, norm: num | sym | str | None = None) 
 
 
 def coefficient(
-    matrix: mat | QuantumObject, scalar: num | sym | str | None = None
+    matrix: mat | QuantumObject, scalar: num | expr | str | None = None
 ) -> mat:
     """Multiply :python:`matrix` by a scalar value (:python:`scalar`).
 
@@ -284,7 +284,7 @@ def coefficient(
     ---------
     matrix : mat | QuantumObject
         The matrix to be scaled.
-    scalar : num | sym | str
+    scalar : num | expr | str
         The value by which the state is multiplied.
         Defaults to :python:`1`.
 
@@ -315,7 +315,7 @@ def partial_trace(
     discard: bool | None = None,
     dim: int | None = None,
     optimize: bool | None = None,
-) -> num | sym | mat:
+) -> num | expr | mat:
     """Compute and return the partial trace of a matrix.
 
     Arguments
@@ -385,7 +385,7 @@ def measure(
     observable: bool | None = None,
     statistics: bool | None = None,
     dim: int | None = None,
-) -> mat | list[num | sym]:
+) -> mat | list[num | expr]:
     """Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of :python:`matrix`.
 
     This function has two main modes of operation:
@@ -452,7 +452,7 @@ def measure(
     mat
         The post-measurement :python:`matrix`.
         Returned if :python:`statistics` is :python:`False`.
-    num | sym | list[num | sym]
+    num | expr | list[num | expr]
         A list of probabilities corresponding to each operator given in :python:`operators`.
         Returned if :python:`statistics` is :python:`True`.
 
@@ -532,7 +532,7 @@ def postselect(
     matrix: mat | QuantumObject,
     postselections: list[tuple[mat | arr | QuantumObject, int]],
     dim: int | None = None,
-) -> mat | list[num | sym]:
+) -> mat | list[num | expr]:
     """Perform postselection on :python:`matrix` against the operator(s) specified in :python:`postselections`.
 
     The postselections can be given in either vector or matrix form.
@@ -703,28 +703,28 @@ class OperationsMixin:
         """
         self.matrix = rewrite(self, function=function)
 
-    def normalize(self, norm: num | sym | str | None = None):
+    def normalize(self, norm: num | expr | str | None = None):
         """Perform a forced (re)normalization on the state to the value specified (:python:`norm`).
 
         Useful when applied to a quantum state both before and after mutating operations, prior to any simplification (such as renormalization) performed on its processed output (obtained via the :python:`state()` method).
 
         Arguments
         ---------
-        norm : num | sym | str
+        norm : num | expr | str
             The value to which the state is normalized.
             Defaults to :python:`1`.
         """
         norm = 1 if norm is None else norm
         self.matrix = normalize(self, norm=norm)
 
-    def coefficient(self, scalar: num | sym | str | None = None):
+    def coefficient(self, scalar: num | expr | str | None = None):
         """Multiply the state by a scalar value (:python:`scalar`).
 
         Can be useful to manually (re)normalize states, or introduce a phase factor.
 
         Arguments
         ---------
-        scalar : num | sym | str
+        scalar : num | expr | str
             The value by which the state is multiplied.
             Defaults to :python:`1`.
         """
@@ -767,7 +767,7 @@ class OperationsMixin:
         targets: int | list[int] | None = None,
         observable: bool | None = None,
         statistics: bool | None = None,
-    ) -> None | list[num | sym]:
+    ) -> None | list[num | expr]:
         """Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of the state.
 
         This method has two main modes of operation:
@@ -828,7 +828,7 @@ class OperationsMixin:
         -------
         None
             Returned if :python:`statistics` is :python:`False`.
-        num | sym | list[num | sym]
+        num | expr | list[num | expr]
             A list of probabilities corresponding to each operator given in :python:`operators`.
             Returned if :python:`statistics` is :python:`True`.
 
