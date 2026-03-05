@@ -205,7 +205,7 @@
    
    .. rst-class:: centered
       
-      **Latest Version:** 1.0.2 | **Date:** 24th January 2026
+      **Latest Version:** 1.0.3 | **Date:** 5th March 2026
    
       .. QHRONOLOGY_VERSION_NUMBER
 
