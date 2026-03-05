@@ -29,11 +29,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a0dcfd21" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d009206a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
+    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
+  <meta name="docsearch:version" content="1.0.3" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -512,27 +512,19 @@
 <div class="viewcode-block" id="QuantumCTC">
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions.html#qhronology.quantum.prescriptions.QuantumCTC">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">QuantumCTC</span><span class="p">(</span><span class="n">QuantumCircuit</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for creating quantum circuit models of quantum interactions near</span>
-<span class="sd">    closed timelike curves and storing their metadata.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for creating quantum circuit models of quantum interactions near closed timelike curves and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    Instances provide complete descriptions of quantum circuits involving antichronological time</span>
-<span class="sd">    travel. The class however does not possess any ability to compute the output state</span>
-<span class="sd">    (e.g., resolve temporal paradoxes) of the circuit;</span>
-<span class="sd">    that functionality is associated with the specific prescriptions of quantum time travel,</span>
-<span class="sd">    which are implemented as subclasses.</span>
+<span class="sd">    Instances provide complete descriptions of quantum circuits involving antichronological time travel. The class however does not possess any ability to compute the output state (e.g., resolve temporal paradoxes) of the circuit; that functionality is associated with the specific prescriptions of quantum time travel, which are implemented as subclasses.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable length argument list, passed directly to the constructor :python:`__init__`  of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.</span>
+<span class="sd">        Variable length argument list, passed directly to the constructor :python:`__init__`  of the superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.</span>
 <span class="sd">    circuit : QuantumCircuit</span>
 <span class="sd">        An instance of the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class.</span>
-<span class="sd">        The values of its attributes override any other values specified in :python:`*args` and</span>
-<span class="sd">        :python:`**kwargs`.</span>
+<span class="sd">        The values of its attributes override any other values specified in :python:`*args` and :python:`**kwargs`.</span>
 <span class="sd">        Defaults to :python:`None`.</span>
 <span class="sd">    systems_respecting : int | list[int]</span>
 <span class="sd">        The numerical indices of the chronology-respecting (CR) subsystems.</span>
@@ -541,49 +533,33 @@
 <span class="sd">        The numerical indices of the chronology-violating (CV) subsystems.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.circuits.QuantumCircuit`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The lists of indices specified in :python:`systems_respecting` and :python:`systems_violating` must both be</span>
-<span class="sd">    contiguous.</span>
-<span class="sd">    Additionally, the circuit&#39;s inputs (:python:`inputs`) are treated as one contiguous total state,</span>
-<span class="sd">    with the indices of its subsystems exactly matching those specified in :python:`systems_respecting`.</span>
+<span class="sd">    The lists of indices specified in :python:`systems_respecting` and :python:`systems_violating` must both be contiguous.</span>
+<span class="sd">    Additionally, the circuit&#39;s inputs (:python:`inputs`) are treated as one contiguous total state, with the indices of its subsystems exactly matching those specified in :python:`systems_respecting`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    It is best practice to specify only one of either :python:`systems_violating` or</span>
-<span class="sd">    :python:`systems_violating`, never both.</span>
-<span class="sd">    The properties associated with both of these constructor arguments automatically ensure that</span>
-<span class="sd">    they are always complementary (with respect to the entire system space), and so only one needs</span>
-<span class="sd">    to be specified.</span>
+<span class="sd">    It is best practice to specify only one of either :python:`systems_violating` or :python:`systems_violating`, never both.</span>
+<span class="sd">    The properties associated with both of these constructor arguments automatically ensure that they are always complementary (with respect to the entire system space), and so only one needs to be specified.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing</span>
-<span class="sd">    :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the</span>
-<span class="sd">    :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance.</span>
-<span class="sd">    Any such mergers override the values of the attributes associated with the other arguments</span>
-<span class="sd">    specified in the constructor. It is best practice to specify either of:</span>
+<span class="sd">    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance. Any such mergers override the values of the attributes associated with the other arguments specified in the constructor. It is best practice to specify either of:</span>
 
 <span class="sd">    - only :python:`circuit` and one of either :python:`systems_respecting` or :python:`systems_violating`</span>
 
-<span class="sd">    - :python:`*args` and :python:`**kwargs` (like a typical initialization of a</span>
-<span class="sd">      :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance)</span>
-<span class="sd">      without specifying :python:`circuit`</span>
+<span class="sd">    - :python:`*args` and :python:`**kwargs` (like a typical initialization of a :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance) without specifying :python:`circuit`</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The total interaction between the CR and CV systems is expected to be unitary,</span>
-<span class="sd">    and so the sequence of gates in :python:`gates` cannot contain any non-unitary gates</span>
-<span class="sd">    (e.g., measurement operations).</span>
+<span class="sd">    The total interaction between the CR and CV systems is expected to be unitary, and so the sequence of gates in :python:`gates` cannot contain any non-unitary gates (e.g., measurement operations).</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    Post-processing (e.g., traces and postselections) cannot be performed on any</span>
-<span class="sd">    chronology-violating (CV) systems (i.e., those corresponding to indices specified in</span>
-<span class="sd">    :python:`systems_violating`).</span>
+<span class="sd">    Post-processing (e.g., traces and postselections) cannot be performed on any chronology-violating (CV) systems (i.e., those corresponding to indices specified in :python:`systems_violating`).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -605,15 +581,14 @@
             <span class="n">systems_violating</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">systems_violating</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">systems_violating</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">systems_respecting</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">systems_violating</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;Either :python:`systems_respecting` or :python:`systems_violating` must be set.&quot;</span>
+<span class="w">                    </span><span class="sd">&quot;&quot;&quot;Either :python:`systems_respecting` or :python:`systems_violating` must be set.&quot;&quot;&quot;</span>
                 <span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">systems_respecting</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">systems_violating</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="n">systems_respecting</span><span class="p">)</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span>
                     <span class="n">systems_violating</span>
                 <span class="p">):</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                        </span><span class="sd">&quot;&quot;&quot;The union of :python:`systems_respecting` and :python:`systems_violating` is</span>
-<span class="sd">                        inequivalent to the entire system&#39;s structure.&quot;&quot;&quot;</span>
+<span class="w">                        </span><span class="sd">&quot;&quot;&quot;The union of :python:`systems_respecting` and :python:`systems_violating` is inequivalent to the entire system&#39;s structure.&quot;&quot;&quot;</span>
                     <span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">systems_respecting</span> <span class="o">=</span> <span class="n">systems_respecting</span>
@@ -623,8 +598,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the total CTC-circuit output state (both CR and CV systems)</span>
-<span class="sd">        prior to any post-processing.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the total CTC-circuit output state (both CR and CV systems) prior to any post-processing.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">QuantumCircuit</span><span class="p">(</span>
             <span class="n">inputs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">,</span>
             <span class="n">gates</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">,</span>
@@ -667,29 +641,27 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">input</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumState</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct the composite chronology-respecting (CR) input state of the closed timelike</span>
-<span class="sd">        curve as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct the composite chronology-respecting (CR) input state of the closed timelike curve as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.</span>
 
-<span class="sd">        This is computed as the tensor product of the individual gates in the order in which they</span>
-<span class="sd">        appear in the :python:`inputs` property.</span>
+<span class="sd">        This is computed as the tensor product of the individual gates in the order in which they appear in the :python:`inputs` property.</span>
+
 <span class="sd">        Is a vector state only when all of the component states are vectors.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
 <span class="sd">        merge : bool</span>
-<span class="sd">            Whether to merge the labels of the individual quantum states into a single product,</span>
-<span class="sd">            separated by :python:`&quot;⊗&quot;` operators, prior to any notational processing.</span>
+<span class="sd">            Whether to merge the labels of the individual quantum states into a single product, separated by :python:`&quot;⊗&quot;` operators, prior to any notational processing.</span>
 <span class="sd">            Only relevant when all states are vectors.</span>
 <span class="sd">            Defaults to :python:`True`.</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            If :python:`False`, does not substitute the conditions.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
@@ -699,7 +671,7 @@
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        norm : bool | num | sym | str</span>
+<span class="sd">        norm : bool | num | expr | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
 <span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
 <span class="sd">            If :python:`False`, does not normalize.</span>
@@ -713,10 +685,7 @@
 <span class="sd">            When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">            Must have a non-zero length.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to :python:`&quot;⊗&quot;.join([state.notation for state in self.inputs])`</span>
-<span class="sd">            if :python:`label` is :python:`None`</span>
-<span class="sd">            and either :python:`merge` is :python:`False` or the input states are all vectors,</span>
-<span class="sd">            else :python:`None`.</span>
+<span class="sd">            Defaults to :python:`&quot;⊗&quot;.join([state.notation for state in self.inputs])` if :python:`label` is :python:`None` and either :python:`merge` is :python:`False` or the input states are all vectors, else :python:`None`.</span>
 <span class="sd">        debug : bool</span>
 <span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
@@ -728,9 +697,8 @@
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose</span>
-<span class="sd">        :python:`notation` is fixed and incompatible with any subsequent changes</span>
-<span class="sd">        (including densification). This behaviour may be improved in the future.</span>
+<span class="sd">        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation` is fixed and incompatible with any subsequent changes (including densification).</span>
+<span class="sd">        This behaviour may be improved in the future.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">merge</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">merge</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">merge</span>
         <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conditions</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
@@ -760,8 +728,7 @@
 
         <span class="k">if</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">input_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_respecting</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;The size of the given input state(s) does not match that specified by the</span>
-<span class="sd">                property :python:`systems_respecting`.&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;The size of the given input state(s) does not match that specified by the property :python:`systems_respecting`.&quot;&quot;&quot;</span>
             <span class="p">)</span>
 
         <span class="n">input_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -800,8 +767,7 @@
         <span class="k">return</span> <span class="n">input_state</span></div>
 
 
-    <span class="c1"># The four methods below merely output the reduced states, so the :python:`systems_respective`</span>
-    <span class="c1"># and :python:`systems_violating` of the base class acts just like extra traces.</span>
+    <span class="c1"># The four methods below merely output the reduced states, so the :python:`systems_respective` and :python:`systems_violating` of the base class acts just like extra traces.</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">output_violating</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="n">QuantumCircuit</span><span class="p">(</span>
@@ -861,31 +827,27 @@
     <span class="n">systems_violating</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="n">free_symbol</span><span class="p">:</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the chronology-violating (CV) state(s) according to the D-CTC prescription by</span>
-<span class="sd">    computing fixed points of the map</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the chronology-violating (CV) state(s) according to the D-CTC prescription by computing fixed points of the map</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">        \\MapDCTCsCV_{\\Unitary}[\\StateCR,\\StateCV]</span>
 <span class="sd">            = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\StateCV)\\Unitary^\\dagger\\bigr]</span>
 
-<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)</span>
-<span class="sd">    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).</span>
+<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`) and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    input_respecting : mat | QuantumState</span>
 <span class="sd">        The matrix representation of the chronology-respecting (CR) input state.</span>
 <span class="sd">    gate : mat | QuantumGate</span>
-<span class="sd">        The matrix representation of the gate describing the (unitary) interaction between the</span>
-<span class="sd">        CR and CV systems.</span>
+<span class="sd">        The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.</span>
 <span class="sd">    systems_respecting : list[int]</span>
 <span class="sd">        The numerical indices of the chronology-respecting (CR) subsystems.</span>
 <span class="sd">    systems_violating : list[int]</span>
 <span class="sd">        The numerical indices of the chronology-violating (CV) subsystems.</span>
 <span class="sd">    free_symbol : sym | str</span>
-<span class="sd">        The representation of the algebraic symbol to be used as the free parameter in the case</span>
-<span class="sd">        where the CV map has a multiplicity of fixed points.</span>
+<span class="sd">        The representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.</span>
 <span class="sd">        Defaults to :python:`&quot;g&quot;`.</span>
 
 <span class="sd">    Returns</span>
@@ -944,7 +906,7 @@
         <span class="n">equations</span> <span class="o">+=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">trace</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
         <span class="n">equations</span> <span class="o">+=</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">trace</span><span class="p">(</span><span class="n">input_violating</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
 
-    <span class="c1"># Designed to loop twice: once without the trace equation, then once with it</span>
+    <span class="c1"># Designed to loop twice: once without the trace equation, then once with it.</span>
     <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">solutions</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">equations</span><span class="p">,</span> <span class="n">unknowns</span><span class="p">,</span> <span class="nb">set</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -958,26 +920,24 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">solutions</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">break</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">solutions</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="c1"># Remove final equation (possibly trace condition) and try again</span>
+            <span class="c1"># Remove final equation (possibly trace condition) and try again.</span>
             <span class="k">del</span> <span class="n">equations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;Support for multiple non-parametrized D-CTC CV solutions has not yet been</span>
-<span class="sd">                implemented.&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;Support for multiple non-parametrized D-CTC CV solutions has not yet been implemented.&quot;&quot;&quot;</span>
             <span class="p">)</span>
         <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;The D-CTC CV algorithm was unable to determine a solution (fixed point)</span>
-<span class="sd">                to the CV map. If you are certain that your circuit does indeed have a solution,</span>
-<span class="sd">                you are welcome to file a bug report.&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;The D-CTC CV algorithm was unable to determine a solution (fixed point) to the CV map.</span>
+<span class="sd">                If you are certain that your circuit does indeed have a solution, you are welcome to file a bug report.&quot;&quot;&quot;</span>
             <span class="p">)</span>
 
     <span class="n">solutions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">solutions</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">solutions</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unknowns</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)}</span>
 
-    <span class="c1"># Check for all zeroes solution and replace with CR input state if so</span>
-    <span class="c1"># This assumes that a zero solution corresponds to the CR input</span>
+    <span class="c1"># Check for all zeroes solution and, if found, replace it with the CR input state.</span>
+    <span class="c1"># This assumes that a zero solution corresponds to the CR input.</span>
     <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">value</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">solutions</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
         <span class="n">pairs</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
@@ -987,8 +947,7 @@
             <span class="n">solutions</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">pairs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
         <span class="n">solutions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">solutions</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># Invert solution about τ_00 in the case of a single free parameter</span>
-        <span class="c1"># so that the final result is consistent with the analytical approach</span>
+        <span class="c1"># Invert solution about τ_00 in the case of a single free parameter so that the final result is consistent with the analytical approach.</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">solutions</span><span class="p">[</span><span class="n">input_violating</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">inverting_symbol</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">solutions</span><span class="p">[</span><span class="n">input_violating</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">inverting_symbol</span> <span class="ow">in</span> <span class="n">solutions</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -1055,17 +1014,14 @@
     <span class="n">systems_respecting</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="n">systems_violating</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the chronology-respecting (CR) state(s) according to the D-CTC prescription&#39;s</span>
-<span class="sd">    CR map</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the chronology-respecting (CR) state(s) according to the D-CTC prescription&#39;s CR map</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">       \\MapDCTCsCR_{\\Unitary}[\\StateCR,\\StateCV]</span>
 <span class="sd">           = \\trace_\\CV\\bigl[\\Unitary(\\StateCR \\otimes \\StateCV)\\Unitary^\\dagger\\bigr]</span>
 
-<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`),</span>
-<span class="sd">    chronology-violating (CV) solution state :python:`input_violating` (:math:`\\StateCV`),</span>
-<span class="sd">    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).</span>
+<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`), chronology-violating (CV) solution state :python:`input_violating` (:math:`\\StateCV`), and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -1074,8 +1030,7 @@
 <span class="sd">    input_violating : mat | QuantumState</span>
 <span class="sd">        The matrix representation of the chronology-violating (CR) solution state.</span>
 <span class="sd">    gate : mat | QuantumGate</span>
-<span class="sd">        The matrix representation of the gate describing the (unitary) interaction between the</span>
-<span class="sd">        CR and CV systems.</span>
+<span class="sd">        The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.</span>
 <span class="sd">    systems_respecting : list[int]</span>
 <span class="sd">        The numerical indices of the chronology-respecting (CR) subsystems.</span>
 <span class="sd">    systems_violating : list[int]</span>
@@ -1115,24 +1070,19 @@
 <div class="viewcode-block" id="DCTC">
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/D-CTCs.html#qhronology.quantum.prescriptions.DCTC">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DCTC</span><span class="p">(</span><span class="n">QuantumCTC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating closed timelike curves described by Deutsch&#39;s prescription (D-CTCs)</span>
-<span class="sd">    of quantum time travel.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating closed timelike curves described by Deutsch&#39;s prescription (D-CTCs) of quantum time travel.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class, and so inherits all of its attributes, properties, and methods.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    free_symbol : sym | str</span>
-<span class="sd">        The representation of the algebraic symbol to be used as the free parameter in the case</span>
-<span class="sd">        where the CV map has a multiplicity of fixed points.</span>
+<span class="sd">        The representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.</span>
 <span class="sd">        Defaults to :python:`&quot;g&quot;`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">free_symbol</span><span class="p">:</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1142,8 +1092,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">free_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The representation of the algebraic symbol to be used as the free parameter in the case</span>
-<span class="sd">        where the CV map has a multiplicity of fixed points.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_free_symbol</span>
 
     <span class="nd">@free_symbol</span><span class="o">.</span><span class="n">setter</span>
@@ -1162,8 +1111,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the total D-CTC chronology-respecting (CR) output state</span>
-<span class="sd">        prior to any post-processing.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the total D-CTC chronology-respecting (CR) output state prior to any post-processing.&quot;&quot;&quot;</span>
         <span class="n">output_respecting</span> <span class="o">=</span> <span class="n">dctc_respecting</span><span class="p">(</span>
             <span class="n">input_respecting</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">conditions</span><span class="o">=</span><span class="p">[]),</span>
             <span class="n">input_violating</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state_violating</span><span class="p">(</span><span class="n">free_symbol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">free_symbol</span><span class="p">),</span>
@@ -1177,7 +1125,7 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/D-CTCs.html#qhronology.quantum.prescriptions.DCTC.output_violating">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">output_violating</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">free_symbol</span><span class="p">:</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1186,7 +1134,7 @@
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -1196,8 +1144,7 @@
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        free_symbol : str</span>
-<span class="sd">            The string representation of the algebraic symbol to be used as the free parameter</span>
-<span class="sd">            in the case where the CV map has a multiplicity of fixed points.</span>
+<span class="sd">            The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.</span>
 <span class="sd">            Defaults to the value of :python:`self.free_symbol`.</span>
 
 <span class="sd">        Returns</span>
@@ -1263,18 +1210,17 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/D-CTCs.html#qhronology.quantum.prescriptions.DCTC.output_respecting">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">output_respecting</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">postprocess</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">free_symbol</span><span class="p">:</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the matrix representation of the D-CTC chronology-respecting (CR) state(s)</span>
-<span class="sd">        (including any post-processing).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the matrix representation of the D-CTC chronology-respecting (CR) state(s) (including any post-processing).</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -1284,12 +1230,10 @@
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        postprocess : bool</span>
-<span class="sd">            Whether to post-process the state</span>
-<span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
+<span class="sd">            Whether to post-process the state (i.e., perform the circuit&#39;s traces and postselections).</span>
 <span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        free_symbol : str</span>
-<span class="sd">            The string representation of the algebraic symbol to be used as the free parameter</span>
-<span class="sd">            in the case where the CV map has a multiplicity of fixed points.</span>
+<span class="sd">            The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.</span>
 <span class="sd">            Defaults to the value of :python:`self.free_symbol`.</span>
 
 <span class="sd">        Returns</span>
@@ -1375,20 +1319,19 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/D-CTCs.html#qhronology.quantum.prescriptions.DCTC.output">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">postprocess</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">free_symbol</span><span class="p">:</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;An alias for the :py:meth:`~qhronology.quantum.prescriptions.DCTC.output_respecting`</span>
-<span class="sd">        method.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;An alias for the :py:meth:`~qhronology.quantum.prescriptions.DCTC.output_respecting` method.</span>
 
 <span class="sd">        Useful for polymorphism.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -1398,12 +1341,10 @@
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        postprocess : bool</span>
-<span class="sd">            Whether to post-process the state</span>
-<span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
+<span class="sd">            Whether to post-process the state (i.e., perform the circuit&#39;s traces and postselections).</span>
 <span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        free_symbol : str</span>
-<span class="sd">            The string representation of the algebraic symbol to be used as the free parameter</span>
-<span class="sd">            in the case where the CV map has a multiplicity of fixed points.</span>
+<span class="sd">            The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.</span>
 <span class="sd">            Defaults to the value of :python:`self.free_symbol`.</span>
 
 <span class="sd">        Returns</span>
@@ -1424,32 +1365,30 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/D-CTCs.html#qhronology.quantum.prescriptions.DCTC.state_violating">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">state_violating</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">traces</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">free_symbol</span><span class="p">:</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumState</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the D-CTC chronology-violating (CV) state(s) as a</span>
-<span class="sd">        :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the D-CTC chronology-violating (CV) state(s) as a :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
-<span class="sd">            Whether to perform algebraic simplification on the state before committing it to the</span>
-<span class="sd">            :python:`matrix` property.</span>
+<span class="sd">            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        norm : bool | num | sym | str</span>
+<span class="sd">        norm : bool | num | expr | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
 <span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
 <span class="sd">            If :python:`False`, does not normalize.</span>
@@ -1465,12 +1404,10 @@
 <span class="sd">            Not intended to be set by the user in most cases.</span>
 <span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        traces : list[int]</span>
-<span class="sd">            A list of indices of the CV systems (relative to the entire circuit) on which to</span>
-<span class="sd">            perform partial traces.</span>
+<span class="sd">            A list of indices of the CV systems (relative to the entire circuit) on which to perform partial traces.</span>
 <span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        free_symbol : str</span>
-<span class="sd">            The string representation of the algebraic symbol to be used as the free parameter</span>
-<span class="sd">            in the case where the CV map has a multiplicity of fixed points.</span>
+<span class="sd">            The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.</span>
 <span class="sd">            Defaults to the value of :python:`self.free_symbol`.</span>
 <span class="sd">        debug : bool</span>
 <span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
@@ -1515,10 +1452,10 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/D-CTCs.html#qhronology.quantum.prescriptions.DCTC.state_respecting">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">state_respecting</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">traces</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1526,22 +1463,20 @@
         <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">free_symbol</span><span class="p">:</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumState</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the D-CTC chronology-respecting (CR) state(s) as a</span>
-<span class="sd">        :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the D-CTC chronology-respecting (CR) state(s) as a :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
-<span class="sd">            Whether to perform algebraic simplification on the state before committing it to the</span>
-<span class="sd">            :python:`matrix` property.</span>
+<span class="sd">            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        norm : bool | num | sym | str</span>
+<span class="sd">        norm : bool | num | expr | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
 <span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
 <span class="sd">            If :python:`False`, does not normalize.</span>
@@ -1557,17 +1492,14 @@
 <span class="sd">            Not intended to be set by the user in most cases.</span>
 <span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        traces : list[int]</span>
-<span class="sd">            A list of indices of the CR systems (relative to the entire circuit) on which to</span>
-<span class="sd">            perform partial traces.</span>
+<span class="sd">            A list of indices of the CR systems (relative to the entire circuit) on which to perform partial traces.</span>
 <span class="sd">            Performed regardless of the value of :python:`postprocess`.</span>
 <span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        postprocess : bool</span>
-<span class="sd">            Whether to post-process the state</span>
-<span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
+<span class="sd">            Whether to post-process the state (i.e., perform the circuit&#39;s traces and postselections).</span>
 <span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        free_symbol : str</span>
-<span class="sd">            The string representation of the algebraic symbol to be used as the free parameter</span>
-<span class="sd">            in the case where the CV map has a multiplicity of fixed points.</span>
+<span class="sd">            The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.</span>
 <span class="sd">            Defaults to the value of :python:`self.free_symbol`.</span>
 <span class="sd">        debug : bool</span>
 <span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
@@ -1576,8 +1508,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        QuantumState</span>
-<span class="sd">            The (post-processed) CR output state as a</span>
-<span class="sd">            :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
+<span class="sd">            The (post-processed) CR output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conditions</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
         <span class="n">traces</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">traces</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">traces</span>
@@ -1629,8 +1560,7 @@
     <span class="n">systems_respecting</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="n">systems_violating</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the chronology-violating (CV) state according to the P-CTC weak-measurement</span>
-<span class="sd">    tomography expression for the prescription&#39;s CV map</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the chronology-violating (CV) state according to the P-CTC weak-measurement tomography expression for the prescription&#39;s CV map</span>
 
 <span class="sd">    .. math::</span>
 
@@ -1638,19 +1568,15 @@
 <span class="sd">           = \\trace_\\CR\\bigl[\\Unitary(\\StateCR \\otimes \\tfrac{1}{\\Dimension}\\Identity)</span>
 <span class="sd">           \\Unitary^\\dagger\\bigr],</span>
 
-<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)</span>
-<span class="sd">    and interaction described by :python:`gate` (:math:`\\Unitary`).</span>
-<span class="sd">    Here, :math:`\\Dimension` is the dimensionality of the CV Hilbert space</span>
-<span class="sd">    (assumed to be equivalent to that of its CR counterpart), while :math:`\\Identity` is the</span>
-<span class="sd">    :math:`\\Dimension \\times \\Dimension` identity matrix.</span>
+<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`) and interaction described by :python:`gate` (:math:`\\Unitary`).</span>
+<span class="sd">    Here, :math:`\\Dimension` is the dimensionality of the CV Hilbert space (assumed to be equivalent to that of its CR counterpart), while :math:`\\Identity` is the :math:`\\Dimension \\times \\Dimension` identity matrix.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    input_respecting : mat | QuantumState</span>
 <span class="sd">        The matrix representation of the chronology-respecting (CR) input state.</span>
 <span class="sd">    gate : mat | QuantumGate</span>
-<span class="sd">        The matrix representation of the gate describing the (unitary) interaction between the</span>
-<span class="sd">        CR and CV systems.</span>
+<span class="sd">        The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.</span>
 <span class="sd">    systems_respecting : list[int]</span>
 <span class="sd">        The numerical indices of the chronology-respecting (CR) subsystems.</span>
 <span class="sd">    systems_violating : list[int]</span>
@@ -1663,9 +1589,7 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The validity of the expression used in this function to compute the P-CTC CV state for</span>
-<span class="sd">    *non-qubit* systems has not been proven.</span>
-
+<span class="sd">    The validity of the expression used in this function to compute the P-CTC CV state for *non-qubit* systems has not been proven.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">systems_respecting</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">systems_respecting</span><span class="p">))</span>
     <span class="n">systems_violating</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">systems_violating</span><span class="p">))</span>
@@ -1703,16 +1627,14 @@
     <span class="n">systems_respecting</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="n">systems_violating</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the (non-renormalized) chronology-respecting (CR) state according to the</span>
-<span class="sd">    P-CTC prescription&#39;s non-renormalizing CR map</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the (non-renormalized) chronology-respecting (CR) state according to the P-CTC prescription&#39;s non-renormalizing CR map</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">       \\MapPCTCsCR_{\\Unitary}[\\StateCR]</span>
 <span class="sd">           \\propto \\OperatorPCTC \\StateCR \\OperatorPCTC^\\dagger</span>
 
-<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`)</span>
-<span class="sd">    and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).</span>
+<span class="sd">    given the chronology-respecting (CR) input state :python:`input_respecting` (:math:`\\StateCR`) and (unitary) interaction described by :python:`gate` (:math:`\\Unitary`).</span>
 <span class="sd">    Here,</span>
 
 <span class="sd">    .. math:: \\OperatorPCTC \\equiv \\trace_\\CV[\\Unitary]</span>
@@ -1734,8 +1656,7 @@
 <span class="sd">    input_respecting : mat | QuantumState</span>
 <span class="sd">        The matrix representation of the chronology-respecting (CR) input state.</span>
 <span class="sd">    gate : mat | QuantumGate</span>
-<span class="sd">        The matrix representation of the gate describing the (unitary) interaction between the</span>
-<span class="sd">        CR and CV systems.</span>
+<span class="sd">        The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.</span>
 <span class="sd">    systems_respecting : list[int]</span>
 <span class="sd">        The numerical indices of the chronology-respecting (CR) subsystems.</span>
 <span class="sd">    systems_violating : list[int]</span>
@@ -1745,7 +1666,6 @@
 <span class="sd">    -------</span>
 <span class="sd">    mat</span>
 <span class="sd">        The solution of the P-CTC CR map.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">systems_respecting</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">systems_respecting</span><span class="p">))</span>
     <span class="n">systems_violating</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">systems_violating</span><span class="p">))</span>
@@ -1777,20 +1697,16 @@
 <div class="viewcode-block" id="PCTC">
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/P-CTCs.html#qhronology.quantum.prescriptions.PCTC">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">PCTC</span><span class="p">(</span><span class="n">QuantumCTC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating closed timelike curves described by the postselected</span>
-<span class="sd">    teleportation prescription (P-CTCs) of quantum time travel.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating closed timelike curves described by the postselected teleportation prescription (P-CTCs) of quantum time travel.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class, and so inherits all of its attributes, properties, and methods.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1798,8 +1714,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the total P-CTC chronology-respecting (CR) output state</span>
-<span class="sd">        prior to any post-processing.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the total P-CTC chronology-respecting (CR) output state prior to any post-processing.&quot;&quot;&quot;</span>
         <span class="n">output_respecting</span> <span class="o">=</span> <span class="n">pctc_respecting</span><span class="p">(</span>
             <span class="n">input_respecting</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">conditions</span><span class="o">=</span><span class="p">[]),</span>
             <span class="n">gate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">gate</span><span class="p">(</span><span class="n">conditions</span><span class="o">=</span><span class="p">[]),</span>
@@ -1812,7 +1727,7 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/P-CTCs.html#qhronology.quantum.prescriptions.PCTC.output_violating">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">output_violating</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
@@ -1820,7 +1735,7 @@
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -1837,8 +1752,7 @@
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        The validity of the expression used in this method to compute the P-CTC CV state for</span>
-<span class="sd">        *non-qubit* systems has not been proven.</span>
+<span class="sd">        The validity of the expression used in this method to compute the P-CTC CV state for *non-qubit* systems has not been proven.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">output_violating</span> <span class="o">=</span> <span class="n">pctc_violating</span><span class="p">(</span>
             <span class="n">input_respecting</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">conditions</span><span class="o">=</span><span class="p">[]),</span>
@@ -1895,17 +1809,16 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/P-CTCs.html#qhronology.quantum.prescriptions.PCTC.output_respecting">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">output_respecting</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">postprocess</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the matrix representation of the P-CTC chronology-respecting (CR) state</span>
-<span class="sd">        (including any post-processing).</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the matrix representation of the P-CTC chronology-respecting (CR) state (including any post-processing).</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -1915,8 +1828,7 @@
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        postprocess : bool</span>
-<span class="sd">            Whether to post-process the state</span>
-<span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
+<span class="sd">            Whether to post-process the state (i.e., perform the circuit&#39;s traces and postselections).</span>
 <span class="sd">            Defaults to :python:`True`.</span>
 
 <span class="sd">        Returns</span>
@@ -2010,7 +1922,7 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/P-CTCs.html#qhronology.quantum.prescriptions.PCTC.output">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">postprocess</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2021,7 +1933,7 @@
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -2031,8 +1943,7 @@
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        postprocess : bool</span>
-<span class="sd">            Whether to post-process the state</span>
-<span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
+<span class="sd">            Whether to post-process the state (i.e., perform the circuit&#39;s traces and postselections).</span>
 <span class="sd">            Defaults to :python:`True`.</span>
 
 <span class="sd">        Returns</span>
@@ -2056,31 +1967,29 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/P-CTCs.html#qhronology.quantum.prescriptions.PCTC.state_violating">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">state_violating</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">traces</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumState</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the P-CTC chronology-violating (CV) state as a</span>
-<span class="sd">        :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the P-CTC chronology-violating (CV) state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
-<span class="sd">            Whether to perform algebraic simplification on the state before committing it in the</span>
-<span class="sd">            :python:`matrix` property.</span>
+<span class="sd">            Whether to perform algebraic simplification on the state before committing it in the :python:`matrix` property.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        norm : bool | num | sym | str</span>
+<span class="sd">        norm : bool | num | expr | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
 <span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
 <span class="sd">            If :python:`False`, does not normalize.</span>
@@ -2096,8 +2005,7 @@
 <span class="sd">            Not intended to be set by the user in most cases.</span>
 <span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        traces : list[int]</span>
-<span class="sd">            A list of indices of the CV systems (relative to the entire circuit) on which to</span>
-<span class="sd">            perform partial traces.</span>
+<span class="sd">            A list of indices of the CV systems (relative to the entire circuit) on which to perform partial traces.</span>
 <span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        debug : bool</span>
 <span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
@@ -2110,8 +2018,7 @@
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        The validity of the expression used in this method to compute the P-CTC CV state for</span>
-<span class="sd">        *non-qubit* systems has not been proven.</span>
+<span class="sd">        The validity of the expression used in this method to compute the P-CTC CV state for *non-qubit* systems has not been proven.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">traces</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">traces</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">traces</span>
 
@@ -2143,32 +2050,30 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/prescriptions/P-CTCs.html#qhronology.quantum.prescriptions.PCTC.state_respecting">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">state_respecting</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">traces</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">postprocess</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumState</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the P-CTC chronology-respecting (CR) state as a</span>
-<span class="sd">        :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the P-CTC chronology-respecting (CR) state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
-<span class="sd">            Whether to perform algebraic simplification on the state before committing it to the</span>
-<span class="sd">            :python:`matrix` property.</span>
+<span class="sd">            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        norm : bool | num | sym | str</span>
+<span class="sd">        norm : bool | num | expr | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
 <span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
 <span class="sd">            If :python:`False`, does not normalize.</span>
@@ -2184,13 +2089,11 @@
 <span class="sd">            Not intended to be set by the user in most cases.</span>
 <span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        traces : list[int]</span>
-<span class="sd">            A list of indices of the CR systems (relative to the entire circuit) on which to</span>
-<span class="sd">            perform partial traces.</span>
+<span class="sd">            A list of indices of the CR systems (relative to the entire circuit) on which to perform partial traces.</span>
 <span class="sd">            Performed regardless of the value of :python:`postprocess`.</span>
 <span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        postprocess : bool</span>
-<span class="sd">            Whether to post-process the state</span>
-<span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
+<span class="sd">            Whether to post-process the state (i.e., perform the circuit&#39;s traces and postselections).</span>
 <span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        debug : bool</span>
 <span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
@@ -2199,8 +2102,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        QuantumState</span>
-<span class="sd">            The (post-processed) CR output state as a</span>
-<span class="sd">            :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
+<span class="sd">            The (post-processed) CR output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>

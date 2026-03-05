@@ -56,8 +56,8 @@ Overview
 
 - simulation of general quantum information processing and computation
 
-  - numerical and symbolic calculations involving any number of variables and parameters
-  - (classical) replication of quantum experiments
+  - symbolic calculations involving any number of variables and parameters
+  - numerical (classical) replication of quantum experiments
 
 - visualization of quantum circuit diagrams
 

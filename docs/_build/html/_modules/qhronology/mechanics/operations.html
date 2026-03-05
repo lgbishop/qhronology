@@ -29,11 +29,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a0dcfd21" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d009206a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
+    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
+  <meta name="docsearch:version" content="1.0.3" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -492,7 +492,7 @@
     <span class="n">mat</span><span class="p">,</span>
     <span class="n">arr</span><span class="p">,</span>
     <span class="n">num</span><span class="p">,</span>
-    <span class="n">sym</span><span class="p">,</span>
+    <span class="n">expr</span><span class="p">,</span>
     <span class="n">Forms</span><span class="p">,</span>
     <span class="n">matrix_form</span><span class="p">,</span>
 <span class="p">)</span>
@@ -582,9 +582,7 @@
 <span class="sd">    matrix : mat | QuantumObject</span>
 <span class="sd">        The matrix to be simplified.</span>
 <span class="sd">    comprehensive : bool</span>
-<span class="sd">        Whether the simplifying algorithm should use a relatively efficient subset of</span>
-<span class="sd">        simplifying operations (:python:`False`),</span>
-<span class="sd">        or alternatively use a larger, more powerful (but slower) set (:python:`True`).</span>
+<span class="sd">        Whether the simplifying algorithm should use a relatively efficient subset of simplifying operations (:python:`False`), or alternatively use a larger, more powerful (but slower) set (:python:`True`).</span>
 <span class="sd">        Defaults to :python:`False`.</span>
 
 <span class="sd">    Returns</span>
@@ -594,8 +592,7 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    If :python:`comprehensive` is :python:`True`, the simplification algorithm will likely take *far*</span>
-<span class="sd">    longer to execute than if :python:`comprehensive` were :python:`False`.</span>
+<span class="sd">    If :python:`comprehensive` is :python:`True`, the simplification algorithm will likely take *far* longer to execute than if :python:`comprehensive` were :python:`False`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
@@ -639,11 +636,9 @@
 <span class="sd">        The matrix to be transformed.</span>
 <span class="sd">    function : Callable</span>
 <span class="sd">        A Python function.</span>
-<span class="sd">        Its first non-keyword argument must be able to take a mathematical expression or</span>
-<span class="sd">        a matrix/array of such types.</span>
+<span class="sd">        Its first non-keyword argument must be able to take a mathematical expression or a matrix/array of such types.</span>
 <span class="sd">    arguments : dict[str, str]</span>
-<span class="sd">        A dictionary of keyword arguments (both keys and values as strings) to pass to</span>
-<span class="sd">        the :python:`function` call.</span>
+<span class="sd">        A dictionary of keyword arguments (both keys and values as strings) to pass to the :python:`function` call.</span>
 <span class="sd">        Defaults to :python:`{}`.</span>
 
 <span class="sd">    Returns</span>
@@ -665,7 +660,7 @@
             <span class="n">matrix</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="o">**</span><span class="n">arguments</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Unable to apply the specified function (:python:`</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()`) to the matrix.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Unable to apply the specified function (:python:`</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()`) to the matrix.&quot;&quot;&quot;</span>
             <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">matrix</span></div>
@@ -707,8 +702,7 @@
             <span class="n">matrix</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The specified function (:python:`</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()`) cannot be used to rewrite</span>
-<span class="s2">            the matrix.&quot;&quot;&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The specified function (:python:`</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()`) cannot be used to rewrite the matrix.&quot;&quot;&quot;</span>
         <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">matrix</span></div>
@@ -717,14 +711,14 @@
 
 <div class="viewcode-block" id="normalize">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.normalize">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">norm</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">norm</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalize :python:`matrix` to the value specified (:python:`norm`).</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    matrix : mat | QuantumObject</span>
 <span class="sd">        The matrix to be normalized.</span>
-<span class="sd">    norm : num | sym | str</span>
+<span class="sd">    norm : num | expr | str</span>
 <span class="sd">        The value to which the matrix is normalized.</span>
 <span class="sd">        Defaults to :python:`1`.</span>
 
@@ -771,7 +765,7 @@
 <div class="viewcode-block" id="coefficient">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.coefficient">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">coefficient</span><span class="p">(</span>
-    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">scalar</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">scalar</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Multiply :python:`matrix` by a scalar value (:python:`scalar`).</span>
 
@@ -779,7 +773,7 @@
 <span class="sd">    ---------</span>
 <span class="sd">    matrix : mat | QuantumObject</span>
 <span class="sd">        The matrix to be scaled.</span>
-<span class="sd">    scalar : num | sym | str</span>
+<span class="sd">    scalar : num | expr | str</span>
 <span class="sd">        The value by which the state is multiplied.</span>
 <span class="sd">        Defaults to :python:`1`.</span>
 
@@ -813,7 +807,7 @@
     <span class="n">discard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">optimize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="n">mat</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="n">mat</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute and return the partial trace of a matrix.</span>
 
 <span class="sd">    Arguments</span>
@@ -824,8 +818,7 @@
 <span class="sd">        The numerical index/indices of the subsystem(s) to be partially traced over.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    discard : bool</span>
-<span class="sd">        Whether the systems corresponding to the indices given in :python:`targets` are to be</span>
-<span class="sd">        discarded (:python:`True`) or kept (:python:`False`).</span>
+<span class="sd">        Whether the systems corresponding to the indices given in :python:`targets` are to be discarded (:python:`True`) or kept (:python:`False`).</span>
 <span class="sd">        Defaults to :python:`True`.</span>
 <span class="sd">    dim : int</span>
 <span class="sd">        The dimensionality of the matrix.</span>
@@ -833,8 +826,7 @@
 <span class="sd">        Defaults to :python:`2`.</span>
 <span class="sd">    optimize : bool</span>
 <span class="sd">        Whether to optimize the implementation&#39;s algorithm.</span>
-<span class="sd">        Can greatly increase the computational efficiency at the cost of a larger memory footprint</span>
-<span class="sd">        during computation.</span>
+<span class="sd">        Can greatly increase the computational efficiency at the cost of a larger memory footprint during computation.</span>
 <span class="sd">        Defaults to :python:`True`.</span>
 
 <span class="sd">    Returns</span>
@@ -888,17 +880,13 @@
     <span class="n">observable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">statistics</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform a quantum measurement on one or more systems (indicated in :python:`targets`)</span>
-<span class="sd">    of :python:`matrix`.</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of :python:`matrix`.</span>
 
 <span class="sd">    This function has two main modes of operation:</span>
 
-<span class="sd">    - When :python:`statistics` is :python:`True`,</span>
-<span class="sd">      the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`)</span>
-<span class="sd">      is measured and the set of resulting statistics is returned.</span>
-<span class="sd">      This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each</span>
-<span class="sd">      given operator, where:</span>
+<span class="sd">    - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured, and the set of resulting statistics is returned.</span>
+<span class="sd">      This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:</span>
 
 <span class="sd">      - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)</span>
 <span class="sd">        when :python:`observable` is :python:`False`</span>
@@ -907,10 +895,7 @@
 <span class="sd">        when :python:`observable` is :python:`True`</span>
 <span class="sd">        (:python:`operators` is a list of observables :math:`\\Observable_i`)</span>
 
-<span class="sd">    - When :python:`statistics` is :python:`False`,</span>
-<span class="sd">      the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`)</span>
-<span class="sd">      is measured and mutated it according to its predicted post-measurement form</span>
-<span class="sd">      (i.e., the sum of all possible measurement outcomes).</span>
+<span class="sd">    - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).</span>
 <span class="sd">      This yields the transformed states:</span>
 
 <span class="sd">      - When :python:`observable` is :python:`False`:</span>
@@ -921,21 +906,16 @@
 
 <span class="sd">      .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.</span>
 
-<span class="sd">    In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the</span>
-<span class="sd">    current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state</span>
-<span class="sd">    is in accordance with the rule</span>
+<span class="sd">    In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">       \\ket{\\psi^\\prime} = \\frac{\\Kraus \\ket{\\psi}}</span>
 <span class="sd">           {\\sqrt{\\bra{\\psi} \\Kraus^\\dagger \\Kraus \\ket{\\psi}}}</span>
 
-<span class="sd">    when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state</span>
-<span class="sd">    is a matrix, even if the pre-measurement state was a vector.</span>
+<span class="sd">    when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state is a matrix, even if the pre-measurement state was a vector.</span>
 
-<span class="sd">    The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),</span>
-<span class="sd">    in which case each is converted into its corresponding operator matrix representation</span>
-<span class="sd">    (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
+<span class="sd">    The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding operator matrix representation (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -948,17 +928,14 @@
 <span class="sd">        or a set of observables constituting a complete basis for the relevant state space.</span>
 <span class="sd">    targets : int | list[int]</span>
 <span class="sd">        The numerical indices of the subsystem(s) to be measured.</span>
-<span class="sd">        They must be consecutive, and their number must match the number of systems spanned</span>
-<span class="sd">        by all given operators.</span>
+<span class="sd">        They must be consecutive, and their number must match the number of systems spanned by all given operators.</span>
 <span class="sd">        Indexing begins at :python:`0`.</span>
 <span class="sd">        All other systems are discarded (traced over) in the course of performing the measurement.</span>
 <span class="sd">    observable: bool</span>
-<span class="sd">        Whether to treat the items in :python:`operators` as observables instead of Kraus operators</span>
-<span class="sd">        or projectors.</span>
+<span class="sd">        Whether to treat the items in :python:`operators` as observables instead of Kraus operators or projectors.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    statistics: bool</span>
-<span class="sd">        Whether to return a list of probabilities (:python:`True`) or transform :python:`matrix` into a</span>
-<span class="sd">        post-measurement probabilistic sum of all outcomes (:python:`False`).</span>
+<span class="sd">        Whether to return a list of probabilities (:python:`True`) or transform :python:`matrix` into a post-measurement probabilistic sum of all outcomes (:python:`False`).</span>
 <span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    dim : int</span>
 <span class="sd">        The dimensionality of :python:`matrix` and the item(s) of :python:`operators`.</span>
@@ -970,14 +947,13 @@
 <span class="sd">    mat</span>
 <span class="sd">        The post-measurement :python:`matrix`.</span>
 <span class="sd">        Returned if :python:`statistics` is :python:`False`.</span>
-<span class="sd">    num | sym | list[num | sym]</span>
+<span class="sd">    num | expr | list[num | expr]</span>
 <span class="sd">        A list of probabilities corresponding to each operator given in :python:`operators`.</span>
 <span class="sd">        Returned if :python:`statistics` is :python:`True`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    This method does not check for validity of supplied POVMs or the completeness of sets of</span>
-<span class="sd">    observables, nor does it renormalize the post-measurement state.</span>
+<span class="sd">    This method does not verify the validity of supplied POVMs or the completeness of sets of observables, nor does it renormalize the post-measurement state.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">observable</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">observable</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">observable</span>
     <span class="n">statistics</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">statistics</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">statistics</span>
@@ -1054,34 +1030,30 @@
     <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
     <span class="n">postselections</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span>
     <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform postselection on :python:`matrix` against the operator(s) specified in :python:`postselections`.</span>
 
-<span class="sd">    The postselections can be given in either vector or matrix form. For the former,</span>
-<span class="sd">    the transformation of the vector :math:`\\ket{\\Psi}` follows the standard rule</span>
+<span class="sd">    The postselections can be given in either vector or matrix form.</span>
+<span class="sd">    For the former, the transformation of the vector :math:`\\ket{\\Psi}` follows the standard rule</span>
 
 <span class="sd">    .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi}</span>
 
 <span class="sd">    where :math:`\\ket{\\phi}` is the postselection vector.</span>
-<span class="sd">    In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of a</span>
-<span class="sd">    matrix :math:`\\op{\\rho}` naturally generalizes to</span>
+<span class="sd">    In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of a matrix :math:`\\op{\\rho}` naturally generalizes to</span>
 
 <span class="sd">    .. math:: \\op{\\rho}^\\prime = \\trace_{\\{i\\}}[\\op{\\omega} \\op{\\rho}]</span>
 
-<span class="sd">    where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which</span>
-<span class="sd">    the postselection is performed.</span>
+<span class="sd">    where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which the postselection is performed.</span>
 
-<span class="sd">    If multiple postselections are supplied, :python:`matrix` will be successively postselected in</span>
-<span class="sd">    the order in which they are given. If a vector :python:`matrix` is postselected against a matrix form,</span>
-<span class="sd">    it will automatically be transformed into its matrix form via the outer product as necessary.</span>
+<span class="sd">    If multiple postselections are supplied, :python:`matrix` will be successively postselected in the order in which they are given.</span>
+<span class="sd">    If a vector :python:`matrix` is postselected against a matrix form, it will automatically be transformed into its matrix form via the outer product as necessary.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    matrix : mat | QuantumObject</span>
 <span class="sd">        The matrix to be measured.</span>
 <span class="sd">    postselections: list[tuple[mat | arr | QuantumObject, int]]</span>
-<span class="sd">        A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index</span>
-<span class="sd">        of their postselection target systems.</span>
+<span class="sd">        A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.</span>
 <span class="sd">    dim : int</span>
 <span class="sd">        The dimensionality of :python:`matrix` and the item(s) of :python:`postselections`.</span>
 <span class="sd">        Must be a non-negative integer.</span>
@@ -1112,7 +1084,7 @@
         <span class="k">except</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">matrix_form</span><span class="p">(</span><span class="n">twotuple</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
                 <span class="n">are_vector</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">postselection_is_vector</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">boolean</span> <span class="o">!=</span> <span class="kc">True</span> <span class="k">for</span> <span class="n">boolean</span> <span class="ow">in</span> <span class="n">are_vector</span><span class="p">)</span>
+    <span class="n">postselection_is_vector</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">boolean</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">for</span> <span class="n">boolean</span> <span class="ow">in</span> <span class="n">are_vector</span><span class="p">)</span>
 
     <span class="n">matrices</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1152,14 +1124,11 @@
 <div class="viewcode-block" id="OperationsMixin">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/operations.html#qhronology.mechanics.operations.OperationsMixin">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">OperationsMixin</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A mixin for endowing classes with the ability to have their :python:`matrix` property mutated</span>
-<span class="sd">    by various quantum operations.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A mixin for endowing classes with the ability to have their :python:`matrix` property mutated by various quantum operations.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The :py:class:`~qhronology.mechanics.operations.OperationsMixin` mixin is used exclusively by</span>
-<span class="sd">    the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding</span>
-<span class="sd">    section (:ref:`sec:docs_states_operations`) for documentation on its methods.</span>
+<span class="sd">    The :py:class:`~qhronology.mechanics.operations.OperationsMixin` mixin is used exclusively by the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding section (:ref:`sec:docs_states_operations`) for documentation on its methods.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">densify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1174,24 +1143,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">dagger</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comprehensive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a forced simplification to the state using the values of its :python:`symbols` and</span>
-<span class="sd">        :python:`conditions` properties.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a forced simplification to the state using the values of its :python:`symbols` and :python:`conditions` properties.</span>
 
-<span class="sd">        Useful if intermediate simplification is required during a sequence of mutating operations</span>
-<span class="sd">        in order to process the state into a more desirable form.</span>
+<span class="sd">        Useful if intermediate simplification is required during a sequence of mutating operations in order to process the state into a more desirable form.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
 <span class="sd">        comprehensive : bool</span>
-<span class="sd">            Whether the simplifying algorithm should use a relatively efficient subset of</span>
-<span class="sd">            simplifying operations (:python:`False`),</span>
-<span class="sd">            or alternatively use a larger, more powerful (but slower) set (:python:`True`).</span>
+<span class="sd">            Whether the simplifying algorithm should use a relatively efficient subset of simplifying operations (:python:`False`), or alternatively use a larger, more powerful (but slower) set (:python:`True`).</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        If :python:`comprehensive` is :python:`True`, the simplification algorithm will likely take *far*</span>
-<span class="sd">        longer to execute than if :python:`comprehensive` were :python:`False`.</span>
+<span class="sd">        If :python:`comprehensive` is :python:`True`, the simplification algorithm will likely take *far* longer to execute than if :python:`comprehensive` were :python:`False`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comprehensive</span><span class="o">=</span><span class="n">comprehensive</span><span class="p">)</span>
 
@@ -1216,11 +1180,9 @@
 <span class="sd">        ---------</span>
 <span class="sd">        function : Callable</span>
 <span class="sd">            A Python function.</span>
-<span class="sd">            Its first non-keyword argument must be able to take a mathematical expression or</span>
-<span class="sd">            a matrix/array of such types.</span>
+<span class="sd">            Its first non-keyword argument must be able to take a mathematical expression or a matrix/array of such types.</span>
 <span class="sd">        arguments : dict[str, str]</span>
-<span class="sd">            A dictionary of keyword arguments (with the keywords as strings) to pass</span>
-<span class="sd">            to the :python:`function` call.</span>
+<span class="sd">            A dictionary of keyword arguments (with the keywords as strings) to pass to the :python:`function` call.</span>
 <span class="sd">            Defaults to :python:`{}`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">)</span>
@@ -1242,30 +1204,28 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a forced (re)normalization on the state to the value specified (:python:`norm`).</span>
 
-<span class="sd">        Useful when applied to a quantum state both before and after mutating operations,</span>
-<span class="sd">        prior to any simplification (such as renormalization) performed on its processed output</span>
-<span class="sd">        (obtained via the :python:`state()` method).</span>
+<span class="sd">        Useful when applied to a quantum state both before and after mutating operations, prior to any simplification (such as renormalization) performed on its processed output (obtained via the :python:`state()` method).</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        norm : num | sym | str</span>
+<span class="sd">        norm : num | expr | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
 <span class="sd">            Defaults to :python:`1`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">norm</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">norm</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">norm</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">coefficient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scalar</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">coefficient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scalar</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiply the state by a scalar value (:python:`scalar`).</span>
 
 <span class="sd">        Can be useful to manually (re)normalize states, or introduce a phase factor.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        scalar : num | sym | str</span>
+<span class="sd">        scalar : num | expr | str</span>
 <span class="sd">            The value by which the state is multiplied.</span>
 <span class="sd">            Defaults to :python:`1`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1287,13 +1247,11 @@
 <span class="sd">            Indexing begins at :python:`0`.</span>
 <span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        discard : bool</span>
-<span class="sd">            Whether the systems corresponding to the indices given in :python:`targets` are to be</span>
-<span class="sd">            discarded (:python:`True`) or kept (:python:`False`).</span>
+<span class="sd">            Whether the systems corresponding to the indices given in :python:`targets` are to be discarded (:python:`True`) or kept (:python:`False`).</span>
 <span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        optimize : bool</span>
 <span class="sd">            Whether to optimize the partial trace implementation&#39;s algorithm.</span>
-<span class="sd">            Can greatly increase the computational efficiency at the cost of a larger memory</span>
-<span class="sd">            footprint during computation.</span>
+<span class="sd">            Can greatly increase the computational efficiency at the cost of a larger memory footprint during computation.</span>
 <span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span>
@@ -1310,31 +1268,22 @@
         <span class="n">targets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">observable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">statistics</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a quantum measurement on one or more systems (indicated in :python:`targets`)</span>
-<span class="sd">        of the state.</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of the state.</span>
 
 <span class="sd">        This method has two main modes of operation:</span>
 
-<span class="sd">        - When :python:`statistics` is :python:`True`,</span>
-<span class="sd">          the (reduced) state (:math:`\\op{\\rho}`)</span>
-<span class="sd">          (residing on the systems indicated in :python:`targets`)</span>
-<span class="sd">          is measured and the set of resulting statistics is returned.</span>
-<span class="sd">          This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with</span>
-<span class="sd">          each given operator, where:</span>
+<span class="sd">        - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured, and the set of resulting statistics is returned.</span>
+<span class="sd">          This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:</span>
 
-<span class="sd">          - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]`</span>
-<span class="sd">            (measurement probabilities) when :python:`observable` is :python:`False`</span>
+<span class="sd">          - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)</span>
+<span class="sd">            when :python:`observable` is :python:`False`</span>
 <span class="sd">            (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)</span>
-<span class="sd">          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]`</span>
-<span class="sd">            (expectation values) when :python:`observable` is :python:`True`</span>
+<span class="sd">          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)</span>
+<span class="sd">            when :python:`observable` is :python:`True`</span>
 <span class="sd">            (:python:`operators` is a list of observables :math:`\\Observable_i`)</span>
 
-<span class="sd">        - When :python:`statistics` is :python:`False`,</span>
-<span class="sd">          the (reduced) state (:math:`\\op{\\rho}`)</span>
-<span class="sd">          (residing on the systems indicated in :python:`targets`)</span>
-<span class="sd">          is measured and mutated it according to its predicted post-measurement form</span>
-<span class="sd">          (i.e., the sum of all possible measurement outcomes).</span>
+<span class="sd">        - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).</span>
 <span class="sd">          This yields the transformed states:</span>
 
 <span class="sd">          - When :python:`observable` is :python:`False`:</span>
@@ -1345,21 +1294,16 @@
 
 <span class="sd">          .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}]\\Observable_i.</span>
 
-<span class="sd">        In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and</span>
-<span class="sd">        the current state (:math:`\\ket{\\psi}`) is a vector form,</span>
-<span class="sd">        the transformation of the state is in accordance with the rule</span>
+<span class="sd">        In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule</span>
 
 <span class="sd">        .. math::</span>
 
 <span class="sd">           \\ket{\\psi^\\prime} = \\frac{\\Kraus \\ket{\\psi}}</span>
 <span class="sd">               {\\sqrt{\\bra{\\psi} \\Kraus^\\dagger \\Kraus \\ket{\\psi}}}</span>
 
-<span class="sd">        when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state</span>
-<span class="sd">        is a matrix, even if the pre-measurement state was a vector.</span>
+<span class="sd">        when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state is a matrix, even if the pre-measurement state was a vector.</span>
 
-<span class="sd">        The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),</span>
-<span class="sd">        in which case each is converted into its corresponding operator matrix representation</span>
-<span class="sd">        (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
+<span class="sd">        The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding operator matrix representation (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1370,32 +1314,28 @@
 <span class="sd">            or a set of observables constituting a complete basis for the relevant state space.</span>
 <span class="sd">        targets : int | list[int]</span>
 <span class="sd">            The numerical indices of the subsystem(s) to be measured.</span>
-<span class="sd">            They must be consecutive, and their number must match the number of systems spanned</span>
-<span class="sd">            by all given operators.</span>
+<span class="sd">            They must be consecutive, and their number must match the number of systems spanned by all given operators.</span>
 <span class="sd">            Indexing begins at :python:`0`.</span>
 <span class="sd">            All other systems are discarded (traced over) in the course of performing the measurement.</span>
 <span class="sd">            Defaults to the value of :python:`self.systems`.</span>
 <span class="sd">        observable: bool</span>
-<span class="sd">            Whether to treat the items in :python:`operators` as observables instead of Kraus operators</span>
-<span class="sd">            or projectors.</span>
+<span class="sd">            Whether to treat the items in :python:`operators` as observables instead of Kraus operators or projectors.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        statistics: bool</span>
-<span class="sd">            Whether to return a list of probabilities (:python:`True`) or mutate the state into a</span>
-<span class="sd">            post-measurement probabilistic sum of all outcomes (:python:`False`).</span>
+<span class="sd">            Whether to return a list of probabilities (:python:`True`) or mutate the state into a post-measurement probabilistic sum of all outcomes (:python:`False`).</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        None</span>
 <span class="sd">            Returned if :python:`statistics` is :python:`False`.</span>
-<span class="sd">        num | sym | list[num | sym]</span>
+<span class="sd">        num | expr | list[num | expr]</span>
 <span class="sd">            A list of probabilities corresponding to each operator given in :python:`operators`.</span>
 <span class="sd">            Returned if :python:`statistics` is :python:`True`.</span>
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        This method does not check for validity of supplied POVMs or the completeness of</span>
-<span class="sd">        sets of observables, nor does it renormalize the post-measurement state.</span>
+<span class="sd">        This method does not verify the validity of supplied POVMs or the completeness of sets of observables, nor does it renormalize the post-measurement state.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">targets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems</span> <span class="k">if</span> <span class="n">targets</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">targets</span>
         <span class="n">observable</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">observable</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">observable</span>
@@ -1420,42 +1360,31 @@
             <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">postselect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">postselections</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform postselection on the state against the operators(s)</span>
-<span class="sd">        specified in :python:`postselections`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform postselection on the state against the operators(s) specified in :python:`postselections`.</span>
 
 <span class="sd">        The postselections can be given in either vector or matrix form.</span>
-<span class="sd">        For the former, the transformation of the vector state :math:`\\ket{\\Psi}` follows</span>
-<span class="sd">        the standard rule</span>
+<span class="sd">        For the former, the transformation of the vector state :math:`\\ket{\\Psi}` follows the standard rule</span>
 
 <span class="sd">        .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi}</span>
 
 <span class="sd">        where :math:`\\ket{\\phi}` is the postselection vector.</span>
-<span class="sd">        In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of</span>
-<span class="sd">        a density matrix state :math:`\\op{\\rho}` naturally generalizes to</span>
+<span class="sd">        In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of a density matrix state :math:`\\op{\\rho}` naturally generalizes to</span>
 
 <span class="sd">        .. math:: \\op{\\rho}^\\prime = \\trace_{\\{i\\}}[\\op{\\omega} \\op{\\rho}]</span>
 
-<span class="sd">        where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which</span>
-<span class="sd">        the postselection is performed.</span>
+<span class="sd">        where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which the postselection is performed.</span>
 
-<span class="sd">        If multiple postselections are supplied, the state will be successively postselected in the</span>
-<span class="sd">        order in which they are specified. If a vector state is postselected against a matrix form,</span>
-<span class="sd">        it will automatically be transformed into its matrix form as necessary.</span>
+<span class="sd">        If multiple postselections are supplied, the state will be successively postselected in the order in which they are specified.</span>
+<span class="sd">        If a vector state is postselected against a matrix form, it will automatically be transformed into its matrix form as necessary.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
 <span class="sd">        postselections: list[tuple[mat | arr | QuantumObject, int]]</span>
-<span class="sd">            A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index</span>
-<span class="sd">            of their postselection target systems.</span>
+<span class="sd">            A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.</span>
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        Any classes given in :python:`postselections` that are derived from the</span>
-<span class="sd">        :py:class:`~qhronology.utilities.objects.QuantumObject` base class</span>
-<span class="sd">        (such as :py:class:`~qhronology.quantum.states.QuantumState`</span>
-<span class="sd">        and :py:class:`~qhronology.quantum.gates.QuantumGate`)</span>
-<span class="sd">        will have their :python:`symbols` and :python:`conditions` properties merged into the current</span>
-<span class="sd">        :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
+<span class="sd">        Any classes given in :python:`postselections` that are derived from the :py:class:`~qhronology.utilities.objects.QuantumObject` base class (such as :py:class:`~qhronology.quantum.states.QuantumState` and :py:class:`~qhronology.quantum.gates.QuantumGate`) will have their :python:`symbols` and :python:`conditions` properties merged into the current :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Add the postselection(s) symbols and conditions to the current instance.</span>
         <span class="k">for</span> <span class="n">twotuple</span> <span class="ow">in</span> <span class="n">postselections</span><span class="p">:</span>

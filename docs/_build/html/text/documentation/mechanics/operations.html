@@ -30,11 +30,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a0dcfd21" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d009206a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
+    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,8 +71,8 @@
     <link rel="prev" title="Quantities" href="quantities.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
+  <meta name="docsearch:version" content="1.0.3" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -607,9 +607,7 @@ If <code class="code highlight python docutils literal highlight-python"><span c
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>matrix</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The matrix to be simplified.</p></li>
-<li><p><strong>comprehensive</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether the simplifying algorithm should use a relatively efficient subset of
-simplifying operations (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>),
-or alternatively use a larger, more powerful (but slower) set (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>).
+<li><p><strong>comprehensive</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether the simplifying algorithm should use a relatively efficient subset of simplifying operations (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>), or alternatively use a larger, more powerful (but slower) set (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 </ul>
 </dd>
@@ -619,8 +617,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If <code class="code highlight python docutils literal highlight-python"><span class="n">comprehensive</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, the simplification algorithm will likely take <em>far</em>
-longer to execute than if <code class="code highlight python docutils literal highlight-python"><span class="n">comprehensive</span></code> were <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p>
+<p>If <code class="code highlight python docutils literal highlight-python"><span class="n">comprehensive</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, the simplification algorithm will likely take <em>far</em> longer to execute than if <code class="code highlight python docutils literal highlight-python"><span class="n">comprehensive</span></code> were <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p>
 </div>
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span>
@@ -677,10 +674,8 @@ longer to execute than if <code class="code highlight python docutils literal hi
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>matrix</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The matrix to be transformed.</p></li>
 <li><p><strong>function</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code>) – A Python function.
-Its first non-keyword argument must be able to take a mathematical expression or
-a matrix/array of such types.</p></li>
-<li><p><strong>arguments</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str]</span></code>) – A dictionary of keyword arguments (both keys and values as strings) to pass to
-the <code class="code highlight python docutils literal highlight-python"><span class="n">function</span></code> call.
+Its first non-keyword argument must be able to take a mathematical expression or a matrix/array of such types.</p></li>
+<li><p><strong>arguments</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str]</span></code>) – A dictionary of keyword arguments (both keys and values as strings) to pass to the <code class="code highlight python docutils literal highlight-python"><span class="n">function</span></code> call.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">{}</span></code>.</p></li>
 </ul>
 </dd>
@@ -753,7 +748,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 
 <dl>
 <dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.normalize" title="Link to this definition">#</a></dt>
@@ -762,7 +757,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>matrix</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The matrix to be normalized.</p></li>
-<li><p><strong>norm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">sym</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The value to which the matrix is normalized.
+<li><p><strong>norm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The value to which the matrix is normalized.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">1</span></code>.</p></li>
 </ul>
 </dd>
@@ -793,7 +788,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 
 <dl>
 <dd><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">scalar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">scalar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#coefficient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.coefficient" title="Link to this definition">#</a></dt>
@@ -802,7 +797,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>matrix</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The matrix to be scaled.</p></li>
-<li><p><strong>scalar</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">sym</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The value by which the state is multiplied.
+<li><p><strong>scalar</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The value by which the state is multiplied.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">1</span></code>.</p></li>
 </ul>
 </dd>
@@ -839,7 +834,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dd><em class="sig-param"><span class="n"><span class="pre">optimize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#partial_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.partial_trace" title="Link to this definition">#</a></dt>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#partial_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.partial_trace" title="Link to this definition">#</a></dt>
 <dd><p>Compute and return the partial trace of a matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -847,15 +842,13 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <li><p><strong>matrix</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span></code>) – The matrix on which to perform the partial trace operation.</p></li>
 <li><p><strong>targets</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">list[int]</span></code>) – The numerical index/indices of the subsystem(s) to be partially traced over.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[]</span></code>.</p></li>
-<li><p><strong>discard</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether the systems corresponding to the indices given in <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code> are to be
-discarded (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or kept (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+<li><p><strong>discard</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether the systems corresponding to the indices given in <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code> are to be discarded (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or kept (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
 <li><p><strong>dim</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The dimensionality of the matrix.
 Must be a non-negative integer.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">2</span></code>.</p></li>
 <li><p><strong>optimize</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to optimize the implementation’s algorithm.
-Can greatly increase the computational efficiency at the cost of a larger memory footprint
-during computation.
+Can greatly increase the computational efficiency at the cost of a larger memory footprint during computation.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
 </ul>
 </dd>
@@ -906,16 +899,12 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.measure" title="Link to this definition">#</a></dt>
-<dd><p>Perform a quantum measurement on one or more systems (indicated in <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code>)
-of <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code>.</p>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.measure" title="Link to this definition">#</a></dt>
+<dd><p>Perform a quantum measurement on one or more systems (indicated in <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code>) of <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code>.</p>
 <p>This function has two main modes of operation:</p>
 <ul>
-<li><p>When <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>,
-the (reduced) state (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) (residing on the systems indicated in <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code>)
-is measured and the set of resulting statistics is returned.
-This takes the form of an ordered list of values <span class="math notranslate nohighlight">\(\{p_i\}_i\)</span> associated with each
-given operator, where:</p>
+<li><p>When <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, the (reduced) state (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) (residing on the systems indicated in <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code>) is measured, and the set of resulting statistics is returned.
+This takes the form of an ordered list of values <span class="math notranslate nohighlight">\(\{p_i\}_i\)</span> associated with each given operator, where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p_i = \trace[\Kraus_i^\dagger \Kraus_i \op{\rho}]\)</span> (measurement probabilities)
 when <code class="code highlight python docutils literal highlight-python"><span class="n">observable</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>
@@ -925,10 +914,7 @@ when <code class="code highlight python docutils literal highlight-python"><span
 (<code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> is a list of observables <span class="math notranslate nohighlight">\(\Observable_i\)</span>)</p></li>
 </ul>
 </li>
-<li><p>When <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>,
-the (reduced) state (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) (residing on the systems indicated in <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code>)
-is measured and mutated it according to its predicted post-measurement form
-(i.e., the sum of all possible measurement outcomes).
+<li><p>When <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, the (reduced) state (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) (residing on the systems indicated in <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code>) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
 This yields the transformed states:</p>
 <ul class="simple">
 <li><p>When <code class="code highlight python docutils literal highlight-python"><span class="n">observable</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>:</p></li>
@@ -942,17 +928,12 @@ This yields the transformed states:</p>
 <span class="eqno">(329)<a class="headerlink" href="#equation-text-documentation-mechanics-operations-1" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \trace[\Observable_i \op{\rho}] \Observable_i.\]</div>
 </li>
 </ul>
-<p>In the case where <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> contains only a single item (<span class="math notranslate nohighlight">\(\Kraus\)</span>) and the
-current state (<span class="math notranslate nohighlight">\(\ket{\psi}\)</span>) is a vector form, the transformation of the state
-is in accordance with the rule</p>
+<p>In the case where <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> contains only a single item (<span class="math notranslate nohighlight">\(\Kraus\)</span>) and the current state (<span class="math notranslate nohighlight">\(\ket{\psi}\)</span>) is a vector form, the transformation of the state is in accordance with the rule</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-operations-2">
 <span class="eqno">(330)<a class="headerlink" href="#equation-text-documentation-mechanics-operations-2" title="Link to this equation">#</a></span>\[\ket{\psi^\prime} = \frac{\Kraus \ket{\psi}}
     {\sqrt{\bra{\psi} \Kraus^\dagger \Kraus \ket{\psi}}}\]</div>
-<p>when <code class="code highlight python docutils literal highlight-python"><span class="n">observable</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>. In all other mutation cases, the post-measurement state
-is a matrix, even if the pre-measurement state was a vector.</p>
-<p>The items in the list <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> can also be vectors (e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\)</span>),
-in which case each is converted into its corresponding operator matrix representation
-(e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\bra{\xi_i}\)</span>) prior to any measurements.</p>
+<p>when <code class="code highlight python docutils literal highlight-python"><span class="n">observable</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>. In all other mutation cases, the post-measurement state is a matrix, even if the pre-measurement state was a vector.</p>
+<p>The items in the list <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> can also be vectors (e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\)</span>), in which case each is converted into its corresponding operator matrix representation (e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\bra{\xi_i}\)</span>) prior to any measurements.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -962,15 +943,12 @@ These would typically be a (complete) set of Kraus operators forming a POVM,
 a (complete) set of (orthogonal) projectors forming a PVM,
 or a set of observables constituting a complete basis for the relevant state space.</p></li>
 <li><p><strong>targets</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">list[int]</span></code>) – The numerical indices of the subsystem(s) to be measured.
-They must be consecutive, and their number must match the number of systems spanned
-by all given operators.
+They must be consecutive, and their number must match the number of systems spanned by all given operators.
 Indexing begins at <code class="code highlight python docutils literal highlight-python"><span class="mi">0</span></code>.
 All other systems are discarded (traced over) in the course of performing the measurement.</p></li>
-<li><p><strong>observable</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to treat the items in <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> as observables instead of Kraus operators
-or projectors.
+<li><p><strong>observable</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to treat the items in <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> as observables instead of Kraus operators or projectors.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
-<li><p><strong>statistics</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to return a list of probabilities (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or transform <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> into a
-post-measurement probabilistic sum of all outcomes (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+<li><p><strong>statistics</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to return a list of probabilities (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or transform <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> into a post-measurement probabilistic sum of all outcomes (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>dim</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The dimensionality of <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> and the item(s) of <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code>.
 Must be a non-negative integer.
@@ -981,7 +959,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dd class="field-even"><p><ul class="simple">
 <li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span></code> – The post-measurement <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code>.
 Returned if <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">sym</span> <span class="pre">|</span> <span class="pre">list[num</span> <span class="pre">|</span> <span class="pre">sym]</span></code> – A list of probabilities corresponding to each operator given in <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code>.
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">list[num</span> <span class="pre">|</span> <span class="pre">expr]</span></code> – A list of probabilities corresponding to each operator given in <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code>.
 Returned if <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
 </ul>
 </p>
@@ -989,8 +967,7 @@ Returned if <code class="code highlight python docutils literal highlight-python
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method does not check for validity of supplied POVMs or the completeness of sets of
-observables, nor does it renormalize the post-measurement state.</p>
+<p>This method does not verify the validity of supplied POVMs or the completeness of sets of observables, nor does it renormalize the post-measurement state.</p>
 </div>
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]])</span>
@@ -1057,28 +1034,24 @@ observables, nor does it renormalize the post-measurement state.</p>
 <dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#postselect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.postselect" title="Link to this definition">#</a></dt>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#postselect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.postselect" title="Link to this definition">#</a></dt>
 <dd><p>Perform postselection on <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> against the operator(s) specified in <code class="code highlight python docutils literal highlight-python"><span class="n">postselections</span></code>.</p>
-<p>The postselections can be given in either vector or matrix form. For the former,
-the transformation of the vector <span class="math notranslate nohighlight">\(\ket{\Psi}\)</span> follows the standard rule</p>
+<p>The postselections can be given in either vector or matrix form.
+For the former, the transformation of the vector <span class="math notranslate nohighlight">\(\ket{\Psi}\)</span> follows the standard rule</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-operations-3">
 <span class="eqno">(331)<a class="headerlink" href="#equation-text-documentation-mechanics-operations-3" title="Link to this equation">#</a></span>\[\ket{\Psi^\prime} = \braket{\phi}{\Psi}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\ket{\phi}\)</span> is the postselection vector.
-In the case of a matrix form <span class="math notranslate nohighlight">\(\op{\omega}\)</span>, the notion of postselection of a
-matrix <span class="math notranslate nohighlight">\(\op{\rho}\)</span> naturally generalizes to</p>
+In the case of a matrix form <span class="math notranslate nohighlight">\(\op{\omega}\)</span>, the notion of postselection of a matrix <span class="math notranslate nohighlight">\(\op{\rho}\)</span> naturally generalizes to</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-operations-4">
 <span class="eqno">(332)<a class="headerlink" href="#equation-text-documentation-mechanics-operations-4" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \trace_{\{i\}}[\op{\omega} \op{\rho}]\]</div>
-<p>where <span class="math notranslate nohighlight">\(\{i\}\)</span> is the set of indices corresponding to the subsystem(s) upon which
-the postselection is performed.</p>
-<p>If multiple postselections are supplied, <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> will be successively postselected in
-the order in which they are given. If a vector <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> is postselected against a matrix form,
-it will automatically be transformed into its matrix form via the outer product as necessary.</p>
+<p>where <span class="math notranslate nohighlight">\(\{i\}\)</span> is the set of indices corresponding to the subsystem(s) upon which the postselection is performed.</p>
+<p>If multiple postselections are supplied, <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> will be successively postselected in the order in which they are given.
+If a vector <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> is postselected against a matrix form, it will automatically be transformed into its matrix form via the outer product as necessary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>matrix</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The matrix to be measured.</p></li>
-<li><p><strong>postselections</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[mat</span> <span class="pre">|</span> <span class="pre">arr</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]]</span></code>) – A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index
-of their postselection target systems.</p></li>
+<li><p><strong>postselections</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[mat</span> <span class="pre">|</span> <span class="pre">arr</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]]</span></code>) – A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.</p></li>
 <li><p><strong>dim</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The dimensionality of <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> and the item(s) of <code class="code highlight python docutils literal highlight-python"><span class="n">postselections</span></code>.
 Must be a non-negative integer.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">2</span></code>.</p></li>
@@ -1110,13 +1083,10 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dl class="py class">
 <dt class="sig sig-object py" id="qhronology.mechanics.operations.OperationsMixin">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OperationsMixin</span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/operations.html#OperationsMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.operations.OperationsMixin" title="Link to this definition">#</a></dt>
-<dd><p>A mixin for endowing classes with the ability to have their <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> property mutated
-by various quantum operations.</p>
+<dd><p>A mixin for endowing classes with the ability to have their <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> property mutated by various quantum operations.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <a class="reference internal" href="#qhronology.mechanics.operations.OperationsMixin" title="qhronology.mechanics.operations.OperationsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperationsMixin</span></code></a> mixin is used exclusively by
-the <a class="reference internal" href="../quantum/states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> class—please see the corresponding
-section (<a class="reference internal" href="../quantum/states.html#sec-docs-states-operations"><span class="std std-ref">Operations</span></a>) for documentation on its methods.</p>
+<p>The <a class="reference internal" href="#qhronology.mechanics.operations.OperationsMixin" title="qhronology.mechanics.operations.OperationsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperationsMixin</span></code></a> mixin is used exclusively by the <a class="reference internal" href="../quantum/states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> class—please see the corresponding section (<a class="reference internal" href="../quantum/states.html#sec-docs-states-operations"><span class="std std-ref">Operations</span></a>) for documentation on its methods.</p>
 </div>
 </dd></dl>
 

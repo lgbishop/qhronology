@@ -29,11 +29,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a0dcfd21" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d009206a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
+    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
+  <meta name="docsearch:version" content="1.0.3" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -534,64 +534,48 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">QuantumCircuit</span><span class="p">(</span><span class="n">SymbolicsProperties</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for creating quantum circuits and storing their metadata.</span>
 
-<span class="sd">    Instances provide complete descriptions of quantum circuits, along with various associated</span>
-<span class="sd">    attributes (such as mathematical conditions, including normalization).</span>
-<span class="sd">    The circuit&#39;s input is recorded as a list of :py:class:`~qhronology.quantum.states.QuantumState`</span>
-<span class="sd">    objects, with the composition of the elements of this forming the total input.</span>
-<span class="sd">    Similarly, the circuit&#39;s transformation on its input is recorded as a list of</span>
-<span class="sd">    :py:class:`~qhronology.quantum.gates.QuantumGate` objects, with the product of the (linear)</span>
-<span class="sd">    elements of this list forming the total transformation (e.g., unitary matrix).</span>
+<span class="sd">    Instances provide complete descriptions of quantum circuits, along with various associated attributes (such as mathematical conditions, including normalization).</span>
+<span class="sd">    The circuit&#39;s input is recorded as a list of :py:class:`~qhronology.quantum.states.QuantumState` objects, with the composition of the elements of this forming the total input.</span>
+<span class="sd">    Similarly, the circuit&#39;s transformation on its input is recorded as a list of :py:class:`~qhronology.quantum.gates.QuantumGate` objects, with the product of the (linear) elements of this list forming the total transformation (e.g., unitary matrix).</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    inputs : list[QuantumState]</span>
 <span class="sd">        An ordered list of :py:class:`~qhronology.quantum.states.QuantumState` instances.</span>
-<span class="sd">        The total input state is the tensor product of these individual states in the order</span>
-<span class="sd">        in which they appear in :python:`inputs`.</span>
+<span class="sd">        The total input state is the tensor product of these individual states in the order in which they appear in :python:`inputs`.</span>
 <span class="sd">        Must all have the same value of the :python:`dim` property.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    gates : list[QuantumGate]</span>
 <span class="sd">        An ordered list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances.</span>
-<span class="sd">        The total gate is the product of these individual gates in the order in which they appear</span>
-<span class="sd">        in :python:`gates`.</span>
+<span class="sd">        The total gate is the product of these individual gates in the order in which they appear in :python:`gates`.</span>
 <span class="sd">        Must all have the same values of the :python:`dim` and :python:`num_systems` properties.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    traces : list[int]</span>
 <span class="sd">        The numerical indices of the subsystems to be traced over.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    postselections: list[tuple[mat | arr | QuantumObject, int | list[int]]]</span>
-<span class="sd">        A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index</span>
-<span class="sd">        of their postselection target systems.</span>
+<span class="sd">        A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.</span>
 <span class="sd">        Must all have the same value of the :python:`dim` property.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    symbols : dict[sym | str, dict[str, Any]]</span>
-<span class="sd">        A dictionary in which the keys are individual symbols and the values are dictionaries</span>
-<span class="sd">        of their respective SymPy keyword-argument :python:`assumptions`.</span>
-<span class="sd">        The value of the :python:`symbols` property of all states in :python:`inputs` and</span>
-<span class="sd">        gates in :python:`gates` are automatically merged into the instance&#39;s corresponding</span>
-<span class="sd">        :python:`symbols` property.</span>
+<span class="sd">        A dictionary in which the keys are individual symbols and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.</span>
+<span class="sd">        The value of the :python:`symbols` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance&#39;s corresponding :python:`symbols` property.</span>
 <span class="sd">        Defaults to :python:`{}`.</span>
-<span class="sd">    conditions : list[tuple[num | sym | str, num | sym | str]]</span>
-<span class="sd">        A list of :math:`2`-tuples of conditions to be applied to all objects (such as states and</span>
-<span class="sd">        gates) computed from the circuit.</span>
-<span class="sd">        All instances of the expression in each tuple&#39;s first element are replaced by the</span>
-<span class="sd">        expression in the respective second element.</span>
+<span class="sd">    conditions : list[tuple[num | expr | str, num | expr | str]]</span>
+<span class="sd">        A list of :math:`2`-tuples of conditions to be applied to all objects (such as states and gates) computed from the circuit.</span>
+<span class="sd">        All instances of the expression in each tuple&#39;s first element are replaced by the expression in the respective second element.</span>
 <span class="sd">        This uses the same format as the SymPy :python:`subs()` method.</span>
 <span class="sd">        The order in which they are applied is simply their order in the list.</span>
-<span class="sd">        The value of the :python:`conditions` property of all states in :python:`inputs` and</span>
-<span class="sd">        gates in :python:`gates` are automatically merged into the instance&#39;s corresponding</span>
-<span class="sd">        :python:`conditions` property.</span>
+<span class="sd">        The value of the :python:`conditions` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance&#39;s corresponding :python:`conditions` property.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    All states, gates, postselections, and measurement operators recorded in the instance must</span>
-<span class="sd">    share the same dimensionality (i.e., the value of the :python:`dim` property).</span>
+<span class="sd">    All states, gates, postselections, and measurement operators recorded in the instance must share the same dimensionality (i.e., the value of the :python:`dim` property).</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The sum of the :python:`num_systems` properties of the quantum states in :python:`inputs`</span>
-<span class="sd">    should match that of each of the gates in :python:`gates`.</span>
+<span class="sd">    The sum of the :python:`num_systems` properties of the quantum states in :python:`inputs` should match that of each of the gates in :python:`gates`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -603,7 +587,7 @@
             <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span> <span class="o">|</span> <span class="kc">None</span>
         <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">symbols</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="n">SymbolicsProperties</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="n">conditions</span><span class="p">)</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">inputs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">inputs</span>
@@ -625,11 +609,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">QuantumState</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;An ordered list of :py:class:`~qhronology.quantum.states.QuantumState` instances.</span>
 
-<span class="sd">        The total input state is the tensor product of these individual states in the order</span>
-<span class="sd">        in which they appear in the list.</span>
+<span class="sd">        The total input state is the tensor product of these individual states in the order in which they appear in the list.</span>
 
-<span class="sd">        Each state&#39;s :python:`symbols` and :python:`conditions` properties are merged into their counterparts</span>
-<span class="sd">        in the instance upon their addition to the :python:`gates` property.</span>
+<span class="sd">        Each state&#39;s :python:`symbols` and :python:`conditions` properties are merged into their counterparts in the instance upon their addition to the :python:`gates` property.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span>
 
@@ -645,13 +627,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">gates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">QuantumGate</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;An ordered list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances.</span>
 
-<span class="sd">        The total gate is the product of these individual gates in the order in which they appear</span>
-<span class="sd">        in the list.</span>
+<span class="sd">        The total gate is the product of these individual gates in the order in which they appear in the list.</span>
 
 <span class="sd">        Must all have the same :python:`num_systems` property.</span>
 
-<span class="sd">        Each gate&#39;s :python:`symbols` and :python:`conditions` properties are merged into their counterparts</span>
-<span class="sd">        in the instance upon their addition to the :python:`gates` property.</span>
+<span class="sd">        Each gate&#39;s :python:`symbols` and :python:`conditions` properties are merged into their counterparts in the instance upon their addition to the :python:`gates` property.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gates</span>
 
@@ -665,11 +645,9 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">postselections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;A list of 2-tuples of vectors or matrix operators paired with the first (smallest)</span>
-<span class="sd">        index of their postselection target systems.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.</span>
 
-<span class="sd">        Any :python:`symbols` and :python:`conditions` properties of each postselection are merged into their</span>
-<span class="sd">        counterparts in the instance upon their addition to the :python:`postselections` property.</span>
+<span class="sd">        Any :python:`symbols` and :python:`conditions` properties of each postselection are merged into their counterparts in the instance upon their addition to the :python:`postselections` property.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postselections</span>
 
@@ -686,15 +664,14 @@
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">listed</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                     <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">systems</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="n">listed</span><span class="p">):</span>
                         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                            </span><span class="sd">&quot;&quot;&quot;Mismatch between the postselection&#39;s specified targets and its</span>
-<span class="sd">                            calculated size.&quot;&quot;&quot;</span>
+<span class="w">                            </span><span class="sd">&quot;&quot;&quot;Mismatch between the postselection&#39;s specified targets and its calculated size.&quot;&quot;&quot;</span>
                         <span class="p">)</span>
                 <span class="n">systems_postselections</span> <span class="o">+=</span> <span class="n">systems</span>
             <span class="n">systems_postselections</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">systems_postselections</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">systems_postselections</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                        <span class="s2">&quot;At least one of the postselection&#39;s target systems does not exist.&quot;</span>
+<span class="w">                        </span><span class="sd">&quot;&quot;&quot;At least one of the postselection&#39;s target systems does not exist.&quot;&quot;&quot;</span>
                     <span class="p">)</span>
             <span class="n">check_systems_conflicts</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">systems_traces</span><span class="p">,</span> <span class="n">systems_postselections</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems_postselections</span>
@@ -717,7 +694,7 @@
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">systems_traces</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;At least one of the partial trace target systems does not exist.&quot;</span>
+<span class="w">                    </span><span class="sd">&quot;&quot;&quot;At least one of the partial trace target systems does not exist.&quot;&quot;&quot;</span>
                 <span class="p">)</span>
         <span class="n">check_systems_conflicts</span><span class="p">(</span>
             <span class="n">systems_traces</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems_traces</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems_postselections</span>
@@ -742,8 +719,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">systems_removed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The indices of all of the systems targeted by the :python:`traces` and :python:`postselections`</span>
-<span class="sd">        properties.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The indices of all of the systems targeted by the :python:`traces` and :python:`postselections` properties.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">flatten_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_traces</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems_postselections</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -763,7 +739,7 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_systems_gates</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">num_systems_gates</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;One or more of the gates in the circuit has mismatching :python:`num_systems`.&quot;</span>
+<span class="w">                    </span><span class="sd">&quot;&quot;&quot;One or more of the gates in the circuit has mismatching :python:`num_systems`.&quot;&quot;&quot;</span>
                 <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">num_systems_gates</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -771,15 +747,13 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems_gross</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The total number of systems spanned by the circuit&#39;s states and gates prior to any</span>
-<span class="sd">        system reduction (post-processing, i.e., traces and postselections]).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The total number of systems spanned by the circuit&#39;s states and gates prior to any system reduction (post-processing, i.e., traces and postselections]).&quot;&quot;&quot;</span>
         <span class="n">num_systems_gross</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">num_systems_inputs</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">num_systems_gates</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">num_systems_gross</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems_net</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The total number of systems spanned by the circuit&#39;s states and gates after any</span>
-<span class="sd">        system reduction (post-processing, i.e., traces and postselections]).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The total number of systems spanned by the circuit&#39;s states and gates after any system reduction (post-processing, i.e., traces and postselections]).&quot;&quot;&quot;</span>
         <span class="n">num_systems_net</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems_gross</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_removed</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">num_systems_net</span>
 
@@ -790,8 +764,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems_removed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The total number of systems removed via system reduction (post-processing,</span>
-<span class="sd">        i.e., traces and postselections]).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The total number of systems removed via system reduction (post-processing, i.e., traces and postselections]).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_removed</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -812,7 +785,7 @@
             <span class="n">dim_input</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dims_input</span><span class="p">))</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dim_input</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;One or more of the input states has mismatching dimensionality.&quot;</span>
+<span class="w">                    </span><span class="sd">&quot;&quot;&quot;One or more of the input states has mismatching dimensionality.&quot;&quot;&quot;</span>
                 <span class="p">)</span>
             <span class="n">dim_input</span> <span class="o">=</span> <span class="n">dim_input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">dim</span> <span class="o">=</span> <span class="n">dim_input</span>
@@ -824,15 +797,14 @@
             <span class="n">dim_gate</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dims_gates</span><span class="p">))</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dim_gate</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">&quot;One or more of the gates has mismatching dimensionality.&quot;</span>
+<span class="w">                    </span><span class="sd">&quot;&quot;&quot;One or more of the gates has mismatching dimensionality.&quot;&quot;&quot;</span>
                 <span class="p">)</span>
             <span class="n">dim_gate</span> <span class="o">=</span> <span class="n">dim_gate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">dim</span> <span class="o">=</span> <span class="n">dim_gate</span>
         <span class="k">if</span> <span class="n">dim_input</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">dim_gate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">dim_input</span> <span class="o">!=</span> <span class="n">dim_gate</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                    </span><span class="sd">&quot;&quot;&quot;One or more of the gates has dimensionality different to that of the</span>
-<span class="sd">                    input state(s).&quot;&quot;&quot;</span>
+<span class="w">                    </span><span class="sd">&quot;&quot;&quot;One or more of the gates has dimensionality different to that of the input state(s).&quot;&quot;&quot;</span>
                 <span class="p">)</span>
         <span class="k">return</span> <span class="n">dim</span>
 
@@ -850,17 +822,13 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">gate_is_linear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether all gates are linear (i.e., not measurement operations).&quot;&quot;&quot;</span>
         <span class="n">is_linear</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
-            <span class="n">family</span> <span class="o">==</span> <span class="n">Families</span><span class="o">.</span><span class="n">METER</span><span class="o">.</span><span class="n">value</span>
-            <span class="k">for</span> <span class="n">family</span> <span class="ow">in</span> <span class="p">[</span><span class="n">gate</span><span class="o">.</span><span class="n">family</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">]</span>
-        <span class="p">):</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">gate</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="n">Families</span><span class="o">.</span><span class="n">METER</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">):</span>
             <span class="n">is_linear</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="n">is_linear</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">post_is_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether any traces or non-vector postselections exist in the circuit&#39;s post-processing</span>
-<span class="sd">        (trace and postselection) stage.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether any traces or non-vector postselections exist in the circuit&#39;s post-processing (trace and postselection) stage.&quot;&quot;&quot;</span>
         <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_traces</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">False</span>
@@ -875,8 +843,8 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether or not the output from the entire circuit is a vector state.&quot;&quot;&quot;</span>
         <span class="n">is_vector</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="p">(</span>
-            <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span>
-                <span class="ow">not</span> <span class="n">boolean</span>
+            <span class="nb">all</span><span class="p">(</span>
+                <span class="n">boolean</span> <span class="ow">is</span> <span class="kc">True</span>
                 <span class="k">for</span> <span class="n">boolean</span> <span class="ow">in</span> <span class="p">[</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">input_is_vector</span><span class="p">,</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">gate_is_linear</span><span class="p">,</span>
@@ -893,29 +861,27 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">input</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumState</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct the composite input state of the quantum circuit as a</span>
-<span class="sd">        :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct the composite input state of the quantum circuit as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.</span>
 
-<span class="sd">        This is computed as the tensor product of the individual states in the order in which</span>
-<span class="sd">        they appear in the :python:`inputs` property.</span>
+<span class="sd">        This is computed as the tensor product of the individual states in the order in which they appear in the :python:`inputs` property.</span>
+
 <span class="sd">        Is a vector state only when all of the component states are vectors.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
 <span class="sd">        merge : bool</span>
-<span class="sd">            Whether to merge the labels of the individual quantum states into a single product,</span>
-<span class="sd">            separated by :python:`&quot;⊗&quot;` operators, prior to any notational processing.</span>
+<span class="sd">            Whether to merge the labels of the individual quantum states into a single product, separated by :python:`&quot;⊗&quot;` operators, prior to any notational processing.</span>
 <span class="sd">            Only relevant when all states are vectors.</span>
 <span class="sd">            Defaults to :python:`True`.</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -924,7 +890,7 @@
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        norm : bool | num | sym | str</span>
+<span class="sd">        norm : bool | num | expr | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
 <span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
 <span class="sd">            If :python:`False`, does not normalize.</span>
@@ -938,10 +904,7 @@
 <span class="sd">            When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">            Must have a non-zero length.</span>
 <span class="sd">            Not intended to be set by the user in most cases.</span>
-<span class="sd">            Defaults to :python:`&quot;⊗&quot;.join([state.notation for state in self.inputs])`</span>
-<span class="sd">            if :python:`label` is :python:`None`</span>
-<span class="sd">            and either :python:`merge` is :python:`False` or the input states are all vectors,</span>
-<span class="sd">            else :python:`None`.</span>
+<span class="sd">            Defaults to :python:`&quot;⊗&quot;.join([state.notation for state in self.inputs])` if :python:`label` is :python:`None` and either :python:`merge` is :python:`False` or the input states are all vectors, else :python:`None`.</span>
 <span class="sd">        debug : bool</span>
 <span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
@@ -953,9 +916,8 @@
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose</span>
-<span class="sd">        :python:`notation` is fixed and incompatible with any subsequent changes</span>
-<span class="sd">        (including densification). This behaviour may be improved in the future.</span>
+<span class="sd">        Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation` is fixed and incompatible with any subsequent changes (including densification).</span>
+<span class="sd">        This behaviour may be improved in the future.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">merge</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">merge</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">merge</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span>
@@ -969,12 +931,9 @@
             <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
                 <span class="n">state</span><span class="o">.</span><span class="n">densify</span><span class="p">()</span>
 
-        <span class="c1"># TODO: This is one of only two places (the other being QuantumCTC&#39;s input() method)</span>
-        <span class="c1"># where such label/notation combining occurs for states,</span>
-        <span class="c1"># and it does not extend properly to cases where states are combined further or</span>
-        <span class="c1"># densification is performed.</span>
-        <span class="c1"># Therefore, need to upgrade QuantumObject functionality to allow for multiple labels to be</span>
-        <span class="c1"># stored, each with their own form/kind specification.</span>
+        <span class="c1"># TODO:</span>
+        <span class="c1"># This is one of only two places (the other being QuantumCTC&#39;s input() method) where such label/notation combining occurs for states, and it does not extend properly to cases where states are combined further or densification is performed.</span>
+        <span class="c1"># Therefore, need to upgrade QuantumObject functionality to allow for multiple labels to be stored, each with their own form/kind specification.</span>
         <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span>
             <span class="p">(</span><span class="n">merge</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_is_vector</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">)</span>
             <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_is_vector</span> <span class="ow">is</span> <span class="kc">False</span>
@@ -1032,22 +991,20 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.gate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">gate</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">exponent</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">exponent</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumGate</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct the combined gate describing the total sequence of gates in the quantum circuit</span>
-<span class="sd">        as a :py:class:`~qhronology.quantum.gates.QuantumGate` instance and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct the combined gate describing the total sequence of gates in the quantum circuit as a :py:class:`~qhronology.quantum.gates.QuantumGate` instance and return it.</span>
 
-<span class="sd">        This is computed as the matrix product of the individual gates in the reverse order</span>
-<span class="sd">        in which they appear in the :python:`gates` property.</span>
+<span class="sd">        This is computed as the matrix product of the individual gates in the reverse order in which they appear in the :python:`gates` property.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the gate.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -1056,9 +1013,8 @@
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the gate when it is called.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        exponent : num | sym | str</span>
-<span class="sd">            A numerical or string representation of a scalar value to which gate&#39;s operator</span>
-<span class="sd">            (residing on :python:`targets`) is exponentiated.</span>
+<span class="sd">        exponent : num | expr | str</span>
+<span class="sd">            A numerical or string representation of a scalar value to which gate&#39;s operator (residing on :python:`targets`) is exponentiated.</span>
 <span class="sd">            Must be a non-negative integer.</span>
 <span class="sd">            Defaults to :python:`1`.</span>
 <span class="sd">        label : str</span>
@@ -1077,8 +1033,7 @@
 
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
-<span class="sd">        This construction excludes measurement gates as they do not have a corresponding</span>
-<span class="sd">        matrix representation.</span>
+<span class="sd">        This construction excludes measurement gates as they do not have a corresponding matrix representation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">spec</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">num_systems_gross</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">:</span>
@@ -1119,8 +1074,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the total output state prior to any post-processing</span>
-<span class="sd">        (i.e., traces and postselections).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the total output state prior to any post-processing (i.e., traces and postselections).&quot;&quot;&quot;</span>
         <span class="n">input_state</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">()</span><span class="o">.</span><span class="n">output</span><span class="p">())</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gate_is_linear</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">gate_total</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gate</span><span class="p">()</span><span class="o">.</span><span class="n">output</span><span class="p">())</span>
@@ -1128,7 +1082,7 @@
                 <span class="n">output_state</span> <span class="o">=</span> <span class="n">gate_total</span> <span class="o">*</span> <span class="n">input_state</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">output_state</span> <span class="o">=</span> <span class="n">gate_total</span> <span class="o">*</span> <span class="n">input_state</span> <span class="o">*</span> <span class="n">Dagger</span><span class="p">(</span><span class="n">gate_total</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Gate in nonlinear and nonunitary so destroys any vector purity.</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Gate in non-linear and non-unitary, so any vector purity is destroyed.</span>
             <span class="n">output_state</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">input_state</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">:</span>
                 <span class="n">gate</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">gate</span><span class="p">)</span>
@@ -1159,17 +1113,16 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.output">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">postprocess</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the matrix representation of the total output state of the circuit</span>
-<span class="sd">        (including any post-processing, i.e., traces and postselections) and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the matrix representation of the total output state of the circuit (including any post-processing, i.e., traces and postselections) and return it.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -1179,8 +1132,7 @@
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        postprocess : bool</span>
-<span class="sd">            Whether to post-process the state</span>
-<span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
+<span class="sd">            Whether to post-process the state (i.e., perform the circuit&#39;s traces and postselections).</span>
 <span class="sd">            Defaults to :python:`True`.</span>
 
 <span class="sd">        Returns</span>
@@ -1268,33 +1220,30 @@
 <a class="viewcode-back" href="../../../text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.state">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">state</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">traces</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">postprocess</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumState</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the total output state of the circuit (including any post-processing,</span>
-<span class="sd">        i.e., traces and postselections) as a :py:class:`~qhronology.quantum.states.QuantumState`</span>
-<span class="sd">        instance and return it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the total output state of the circuit (including any post-processing, i.e., traces and postselections) as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
-<span class="sd">            Whether to perform algebraic simplification on the state before committing it to the</span>
-<span class="sd">            :python:`matrix` property.</span>
+<span class="sd">            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        conjugate : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        norm : bool | num | sym | str</span>
+<span class="sd">        norm : bool | num | expr | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
 <span class="sd">            If :python:`True`, normalizes to a value of :math:`1`.</span>
 <span class="sd">            If :python:`False`, does not normalize.</span>
@@ -1310,13 +1259,11 @@
 <span class="sd">            Not intended to be set by the user in most cases.</span>
 <span class="sd">            Defaults to :python:`None`.</span>
 <span class="sd">        traces : list[int]</span>
-<span class="sd">            A list of indices of the systems (relative to the entire circuit) on which to perform</span>
-<span class="sd">            partial traces.</span>
+<span class="sd">            A list of indices of the systems (relative to the entire circuit) on which to perform partial traces.</span>
 <span class="sd">            Performed regardless of the value of :python:`postprocess`.</span>
 <span class="sd">            Defaults to :python:`[]`.</span>
 <span class="sd">        postprocess : bool</span>
-<span class="sd">            Whether to post-process the state</span>
-<span class="sd">            (i.e., perform the circuit&#39;s traces and postselections).</span>
+<span class="sd">            Whether to post-process the state (i.e., perform the circuit&#39;s traces and postselections).</span>
 <span class="sd">            Defaults to :python:`True`.</span>
 <span class="sd">        debug : bool</span>
 <span class="sd">            Whether to print the internal state (held in :python:`matrix`) on change.</span>
@@ -1325,8 +1272,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        QuantumState</span>
-<span class="sd">            The (post-processed) output state as a</span>
-<span class="sd">            :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
+<span class="sd">            The (post-processed) output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conditions</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
         <span class="n">simplify</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">simplify</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">simplify</span>
@@ -1385,29 +1331,25 @@
         <span class="n">targets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">observable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">statistics</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumState</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a quantum measurement on one or more systems (indicated in :python:`targets`)</span>
-<span class="sd">        of the circuit&#39;s total output state.</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumState</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of the circuit&#39;s total output state.</span>
+
 <span class="sd">        This occurs prior to any post-processing (i.e., traces and postselections).</span>
 
 <span class="sd">        This method has two main modes of operation:</span>
 
-<span class="sd">        - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`)</span>
-<span class="sd">          (residing on the systems indicated in :python:`targets`) is measured and the set of resulting</span>
-<span class="sd">          statistics is returned. This takes the form of an ordered list of values</span>
-<span class="sd">          :math:`\\{p_i\\}_i` associated with each given operator, where:</span>
+<span class="sd">        - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured, and the set of resulting statistics is returned.</span>
+<span class="sd">          This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:</span>
 
-<span class="sd">          - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]`</span>
-<span class="sd">            (measurement probabilities) when :python:`observable` is :python:`False`</span>
+<span class="sd">          - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)</span>
+<span class="sd">            when :python:`observable` is :python:`False`</span>
 <span class="sd">            (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)</span>
-<span class="sd">          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]`</span>
-<span class="sd">            (expectation values) when :python:`observable` is :python:`True`</span>
+<span class="sd">          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)</span>
+<span class="sd">            when :python:`observable` is :python:`True`</span>
 <span class="sd">            (:python:`operators` is a list of observables :math:`\\Observable_i`)</span>
 
-<span class="sd">        - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`)</span>
-<span class="sd">          (residing on the systems indicated in :python:`targets`) is measured and mutated it according</span>
-<span class="sd">          to its predicted post-measurement form (i.e., the sum of all possible measurement</span>
-<span class="sd">          outcomes). This yields the transformed states:</span>
+<span class="sd">        - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).</span>
+<span class="sd">          This yields the transformed states:</span>
 
 <span class="sd">          - When :python:`observable` is :python:`False`:</span>
 
@@ -1420,21 +1362,16 @@
 <span class="sd">             \\op{\\rho}^\\prime</span>
 <span class="sd">                 = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.</span>
 
-<span class="sd">        In the case where :python:`operators` contains only a single item (:math:`\\Kraus`),</span>
-<span class="sd">        and the current state (:math:`\\ket{\\psi}`) is a vector form,</span>
-<span class="sd">        the transformation of the state is in accordance with the rule</span>
+<span class="sd">        In the case where :python:`operators` contains only a single item (:math:`\\Kraus`), and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule</span>
 
 <span class="sd">        .. math::</span>
 
 <span class="sd">           \\ket{\\psi^\\prime} = \\frac{\\Kraus \\ket{\\psi}}</span>
 <span class="sd">               {\\sqrt{\\bra{\\psi} \\Kraus^\\dagger \\Kraus \\ket{\\psi}}}</span>
 
-<span class="sd">        when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state</span>
-<span class="sd">        is a matrix, even if the pre-measurement state was a vector.</span>
+<span class="sd">        when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state is a matrix, even if the pre-measurement state was a vector.</span>
 
-<span class="sd">        The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),</span>
-<span class="sd">        in which case each is converted into its corresponding operator matrix representation</span>
-<span class="sd">        (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
+<span class="sd">        The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding operator matrix representation (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -1445,28 +1382,23 @@
 <span class="sd">            or a set of observables constituting a complete basis for the relevant state space.</span>
 <span class="sd">        targets : int | list[int]</span>
 <span class="sd">            The numerical indices of the system(s) to be measured.</span>
-<span class="sd">            They must be consecutive, and their number must match the number of systems spanned</span>
-<span class="sd">            by all given operators.</span>
+<span class="sd">            They must be consecutive, and their number must match the number of systems spanned by all given operators.</span>
 <span class="sd">            Indexing begins at :python:`0`.</span>
-<span class="sd">            All other systems are discarded (traced over) in the course of performing the</span>
-<span class="sd">            measurement.</span>
+<span class="sd">            All other systems are discarded (traced over) in the course of performing the measurement.</span>
 <span class="sd">        observable : bool</span>
-<span class="sd">            Whether to treat the items in :python:`operators` as observables</span>
-<span class="sd">            (as opposed to Kraus operators or projectors).</span>
+<span class="sd">            Whether to treat the items in :python:`operators` as observables (as opposed to Kraus operators or projectors).</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        statistics : bool</span>
-<span class="sd">            Whether to return a list of probabilities (:python:`True`)</span>
-<span class="sd">            or the post-measurement state (:python:`False`).</span>
+<span class="sd">            Whether to return a list of probabilities (:python:`True`) or the post-measurement state (:python:`False`).</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        list[num | sym]</span>
+<span class="sd">        list[num | expr]</span>
 <span class="sd">            A list of probabilities corresponding to each operator given in :python:`operators`.</span>
 <span class="sd">            Returned if :python:`statistics` is :python:`True`.</span>
 <span class="sd">        QuantumState</span>
-<span class="sd">            A quantum state that takes the form of the post-measurement probabilistic sum</span>
-<span class="sd">            of all outcomes of measurements corresponding to each operator given in :python:`operators`.</span>
+<span class="sd">            A quantum state that takes the form of the post-measurement probabilistic sum of all outcomes of measurements corresponding to each operator given in :python:`operators`.</span>
 <span class="sd">            Returned if :python:`statistics` is :python:`False`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">statistics</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">statistics</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">statistics</span>
@@ -1504,22 +1436,16 @@
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
 <span class="sd">        pad : tuple[int, int]</span>
-<span class="sd">            A two-tuple of non-negative integers specifying intra-gate padding</span>
-<span class="sd">            (i.e., the horizontal and vertical interior paddings between the content at the centre</span>
-<span class="sd">            of each gate (e.g., label) and its outer edge (e.g., block border).</span>
+<span class="sd">            A two-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border).</span>
 <span class="sd">            Defaults to :python:`(0, 0)`.</span>
 <span class="sd">        sep : tuple[int, int]</span>
-<span class="sd">            A two-tuple of non-negative integers specifying inter-gate separation</span>
-<span class="sd">            (i.e., the horizontal and vertical exterior separation distances between the edges of</span>
-<span class="sd">            neighbouring gates.</span>
+<span class="sd">            A two-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates.</span>
 <span class="sd">            Defaults to :python:`(1, 1)`.</span>
 <span class="sd">        uniform_spacing : bool</span>
-<span class="sd">            Whether to uniformly space the gates horizontally such that the midpoint of each</span>
-<span class="sd">            is equidistant from those of its neighbours.</span>
+<span class="sd">            Whether to uniformly space the gates horizontally such that the midpoint of each is equidistant from those of its neighbours.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        force_separation : bool</span>
-<span class="sd">            Whether to force the horizontal gate separation to be exactly the value given</span>
-<span class="sd">            in :python:`sep` for all gates in the circuit.</span>
+<span class="sd">            Whether to force the horizontal gate separation to be exactly the value given in :python:`sep` for all gates in the circuit.</span>
 <span class="sd">            When not :python:`False`, the value of :python:`uniform_spacing` is ignored.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
 <span class="sd">        style : str</span>
@@ -1544,10 +1470,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pad</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">pad</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">pad</span>
         <span class="n">sep</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">sep</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">sep</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sep</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">sep</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;upper&quot;</span><span class="p">:</span> <span class="n">sep</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;lower&quot;</span><span class="p">:</span> <span class="n">sep</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="n">sep</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;right&quot;</span><span class="p">:</span> <span class="n">sep</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span>
+        <span class="c1"># if isinstance(sep, tuple) is True:</span>
+        <span class="c1">#     sep = {&quot;upper&quot;: sep[1], &quot;lower&quot;: sep[1], &quot;left&quot;: sep[0], &quot;right&quot;: sep[0]}</span>
         <span class="n">style</span> <span class="o">=</span> <span class="n">Styles</span><span class="o">.</span><span class="n">UNICODE</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="n">style</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">style</span>
-
         <span class="n">uniform_spacing</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">uniform_spacing</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">uniform_spacing</span>
         <span class="n">force_separation</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">force_separation</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">force_separation</span>
         <span class="n">return_string</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">return_string</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">return_string</span>
@@ -1559,21 +1484,25 @@
                 <span class="k">if</span> <span class="n">system</span> <span class="o">==</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_respecting</span><span class="p">):</span>
                     <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
                         <span class="n">cells_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                            <span class="p">[</span><span class="o">*</span><span class="n">state</span><span class="o">.</span><span class="n">diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span><span class="o">.</span><span class="n">cells</span><span class="p">]</span>
+                            <span class="p">[</span>
+                                <span class="o">*</span><span class="n">state</span><span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span>
+                                    <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span>
+                                <span class="p">)</span><span class="o">.</span><span class="n">cells</span>
+                            <span class="p">]</span>
                         <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">system</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems_violating</span><span class="p">:</span>
                         <span class="n">cells_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                             <span class="p">[</span>
                                 <span class="n">_Single</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">Families</span><span class="o">.</span><span class="n">WORMHOLE</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="s2">&quot;_PAST&quot;</span><span class="p">)</span>
-                                <span class="o">.</span><span class="n">diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+                                <span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
                                 <span class="o">.</span><span class="n">cells</span>
                             <span class="p">]</span>
                         <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
                 <span class="n">cells_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                    <span class="p">[</span><span class="o">*</span><span class="n">state</span><span class="o">.</span><span class="n">diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span><span class="o">.</span><span class="n">cells</span><span class="p">]</span>
+                    <span class="p">[</span><span class="o">*</span><span class="n">state</span><span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span><span class="o">.</span><span class="n">cells</span><span class="p">]</span>
                 <span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems_inputs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems_inputs</span><span class="p">):</span>
@@ -1591,7 +1520,7 @@
                         <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                     <span class="p">)</span>
                     <span class="n">cells_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                        <span class="p">[</span><span class="n">identity</span><span class="o">.</span><span class="n">diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span><span class="o">.</span><span class="n">cells</span><span class="p">]</span>
+                        <span class="p">[</span><span class="n">identity</span><span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span><span class="o">.</span><span class="n">cells</span><span class="p">]</span>
                     <span class="p">)</span>
 
         <span class="n">column_input</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1606,7 +1535,7 @@
         <span class="k">for</span> <span class="n">index_column</span><span class="p">,</span> <span class="n">gate</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">):</span>
             <span class="n">gate</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">gate</span><span class="p">)</span>
             <span class="n">gate</span><span class="o">.</span><span class="n">num_systems</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems_gross</span>
-            <span class="n">columns_gate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gate</span><span class="o">.</span><span class="n">diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">))</span>
+            <span class="n">columns_gate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gate</span><span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">))</span>
 
         <span class="n">cells_output</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">system</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems</span><span class="p">:</span>
@@ -1617,7 +1546,7 @@
                 <span class="n">cells_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                     <span class="p">[</span>
                         <span class="n">_Single</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">Families</span><span class="o">.</span><span class="n">WORMHOLE</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="s2">&quot;_FUTURE&quot;</span><span class="p">)</span>
-                        <span class="o">.</span><span class="n">diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
                         <span class="o">.</span><span class="n">cells</span>
                     <span class="p">]</span>
                 <span class="p">)</span>
@@ -1625,7 +1554,7 @@
                 <span class="n">cells_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                     <span class="p">[</span>
                         <span class="n">_Single</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">Families</span><span class="o">.</span><span class="n">TRACE</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-                        <span class="o">.</span><span class="n">diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
                         <span class="o">.</span><span class="n">cells</span>
                     <span class="p">]</span>
                 <span class="p">)</span>
@@ -1660,7 +1589,7 @@
                             <span class="p">)</span>
                         <span class="n">cells_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                             <span class="p">[</span>
-                                <span class="n">Postselection</span><span class="o">.</span><span class="n">diagram_column</span><span class="p">(</span>
+                                <span class="n">Postselection</span><span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span>
                                     <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span>
                                 <span class="p">)</span><span class="o">.</span><span class="n">cells</span>
                             <span class="p">]</span>
@@ -1669,7 +1598,7 @@
                 <span class="n">cells_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                     <span class="p">[</span>
                         <span class="n">_Single</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="n">Families</span><span class="o">.</span><span class="n">TERM</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-                        <span class="o">.</span><span class="n">diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
                         <span class="o">.</span><span class="n">cells</span>
                     <span class="p">]</span>
                 <span class="p">)</span>

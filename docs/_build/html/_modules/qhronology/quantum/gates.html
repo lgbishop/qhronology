@@ -29,11 +29,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a0dcfd21" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d009206a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
+    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
+  <meta name="docsearch:version" content="1.0.3" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -515,35 +515,25 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for creating quantum gates and storing their metadata.</span>
 
 <span class="sd">    This class forms the base upon which all quantum gates are built.</span>
-<span class="sd">    Instances of this base class and its derivatives (subclasses) provide complete descriptions of</span>
-<span class="sd">    quantum gates.</span>
-<span class="sd">    This means that they describe a complete vertical column (or &quot;slice&quot;) in the quantum</span>
-<span class="sd">    circuitry picturalism, including control nodes, anticontrol nodes, empty wires, and the</span>
-<span class="sd">    (unitary) gate operator itself.</span>
-<span class="sd">    The details of any algebraic symbols, mathematical conditions, and visualization labels are</span>
-<span class="sd">    also recorded.</span>
-<span class="sd">    Note that, unlike the internal matrix representations contained within instances of the</span>
-<span class="sd">    :py:class:`~qhronology.quantum.states.QuantumState` class (and its derivatives),</span>
-<span class="sd">    the matrix representations of subclass instances of</span>
-<span class="sd">    :py:class:`~qhronology.quantum.gates.QuantumGate` are *not* mutable.</span>
+<span class="sd">    Instances of this base class and its derivatives (subclasses) provide complete descriptions of quantum gates.</span>
+<span class="sd">    This means that they describe a complete vertical column (or &quot;slice&quot;) in the quantum circuitry picturalism, including control nodes, anticontrol nodes, empty wires, and the (unitary) gate operator itself.</span>
+<span class="sd">    The details of any algebraic symbols, mathematical conditions, and visualization labels are also recorded.</span>
+<span class="sd">    Note that, unlike the internal matrix representations contained within instances of the :py:class:`~qhronology.quantum.states.QuantumState` class (and its derivatives), the matrix representations of subclass instances of :py:class:`~qhronology.quantum.gates.QuantumGate` are *not* mutable.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    spec : mat | arr | list[list[num | sym | str]]</span>
-<span class="sd">        The specification of the quantum gate&#39;s matrix representation in a standard</span>
-<span class="sd">        :python:`dim`-dimensional basis.</span>
+<span class="sd">    spec : mat | arr | list[list[num | expr | str]]</span>
+<span class="sd">        The specification of the quantum gate&#39;s matrix representation in a standard :python:`dim`-dimensional basis.</span>
 <span class="sd">        Can be one of:</span>
 
 <span class="sd">        - a SymPy matrix (:python:`mat`)</span>
 <span class="sd">        - a NumPy array (:python:`arr`)</span>
-<span class="sd">        - a list of lists of numerical, symbolic, or string expressions that collectively specify</span>
-<span class="sd">          a matrix (:python:`list[list[num | sym | str]]`)</span>
+<span class="sd">        - a list of lists of numerical, symbolic, or string expressions that collectively specify a matrix (:python:`list[list[num | expr | str]]`)</span>
 
 <span class="sd">        Defaults to the single-system :python:`dim`-dimensional Identity operator.</span>
 <span class="sd">    targets : list[int]</span>
 <span class="sd">        The numerical indices of the subsystems on which the gate elements reside.</span>
-<span class="sd">        Defaults to :python:`[0]` (if :python:`num_systems` is :python:`None`)</span>
-<span class="sd">        or :python:`[i for i in range(num_systems)]` (if :python:`num_systems` is not :python:`None`).</span>
+<span class="sd">        Defaults to :python:`[0]` (if :python:`num_systems` is :python:`None`) or :python:`[i for i in range(num_systems)]` (if :python:`num_systems` is not :python:`None`).</span>
 <span class="sd">    controls : list[int]</span>
 <span class="sd">        The numerical indices of the subsystems on which control nodes reside.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
@@ -553,38 +543,30 @@
 <span class="sd">    num_systems : int</span>
 <span class="sd">        The (total) number of systems which the gate spans.</span>
 <span class="sd">        Must be a non-negative integer.</span>
-<span class="sd">        Defaults to</span>
-<span class="sd">        :python:`max(targets + controls + anticontrols + [count_systems(sp.Matrix(spec), dim)]) + 1`.</span>
+<span class="sd">        Defaults to :python:`max(targets + controls + anticontrols + [count_systems(sp.Matrix(spec), dim)]) + 1`.</span>
 <span class="sd">    dim : int</span>
 <span class="sd">        The dimensionality of the quantum gate&#39;s Hilbert space.</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`2`.</span>
 <span class="sd">    symbols : dict[sym | str, dict[str, Any]]</span>
-<span class="sd">        A dictionary in which the keys are individual symbols (usually found within the gate</span>
-<span class="sd">        specification :python:`spec`) and the values are dictionaries of their respective SymPy</span>
-<span class="sd">        keyword-argument :python:`assumptions`.</span>
+<span class="sd">        A dictionary in which the keys are individual symbols (usually found within the gate specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.</span>
 <span class="sd">        Defaults to :python:`{}`.</span>
-<span class="sd">    conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">    conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">        A list of :math:`2`-tuples of conditions to be applied to the gate.</span>
-<span class="sd">        All instances of the expression in each tuple&#39;s first element are replaced by the</span>
-<span class="sd">        expression in the respective second element.</span>
+<span class="sd">        All instances of the expression in each tuple&#39;s first element are replaced by the expression in the respective second element.</span>
 <span class="sd">        This uses the same format as the SymPy :python:`subs()` method.</span>
 <span class="sd">        The order in which they are applied is simply their order in the list.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
 <span class="sd">    conjugate : bool</span>
 <span class="sd">        Whether to perform Hermitian conjugation on the gate when it is called.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
-<span class="sd">    exponent : num | sym | str</span>
-<span class="sd">        A numerical or string representation of a scalar value to which gate&#39;s operator (residing</span>
-<span class="sd">        on :python:`targets`) is exponentiated.</span>
+<span class="sd">    exponent : num | expr | str</span>
+<span class="sd">        A numerical or string representation of a scalar value to which gate&#39;s operator (residing on :python:`targets`) is exponentiated.</span>
 <span class="sd">        Must be a non-negative integer.</span>
-<span class="sd">        Useful for computing powers of gates (such as PSWAP), but is only guaranteed to return a</span>
-<span class="sd">        valid power of a gate if its corresponding matrix representation (e.g., :math:`\\op{A}`)</span>
-<span class="sd">        is involutory (i.e., :math:`\\op{A}^2 = \\Identity`).</span>
+<span class="sd">        Useful for computing powers of gates (such as PSWAP), but is only guaranteed to return a valid power of a gate if its corresponding matrix representation (e.g., :math:`\\op{A}`) is involutory (i.e., :math:`\\op{A}^2 = \\Identity`).</span>
 <span class="sd">        Defaults to :python:`1`.</span>
-<span class="sd">    coefficient : num | sym | str</span>
-<span class="sd">        A numerical or string representation of a scalar value by which the gate&#39;s matrix</span>
-<span class="sd">        (occupying :python:`targets`) is multiplied.</span>
+<span class="sd">    coefficient : num | expr | str</span>
+<span class="sd">        A numerical or string representation of a scalar value by which the gate&#39;s matrix (occupying :python:`targets`) is multiplied.</span>
 <span class="sd">        Performed after exponentiation.</span>
 <span class="sd">        Useful for multiplying the gate by a phase factor.</span>
 <span class="sd">        Defaults to :python:`1`.</span>
@@ -608,17 +590,17 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">spec</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">spec</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">targets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">controls</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">anticontrols</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">num_systems</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">symbols</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">exponent</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">coefficient</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">exponent</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">coefficient</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">family</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -677,14 +659,14 @@
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">spec</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">spec</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the quantum gate&#39;s operator.</span>
 <span class="sd">        Provides a complete description of the operator in a standard :python:`dim`-dimensional basis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span>
 
     <span class="nd">@spec</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span> <span class="o">=</span> <span class="n">spec</span>
 
     <span class="nd">@property</span>
@@ -721,8 +703,7 @@
                 <span class="ow">is</span> <span class="kc">True</span>
             <span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                    </span><span class="sd">&quot;&quot;&quot;The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any</span>
-<span class="sd">                    elements in common.&quot;&quot;&quot;</span>
+<span class="w">                    </span><span class="sd">&quot;&quot;&quot;The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any elements in common.&quot;&quot;&quot;</span>
                 <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_targets</span> <span class="o">=</span> <span class="n">targets</span>
 
@@ -730,8 +711,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The numerical indices of the subsystems on which control nodes reside.</span>
 <span class="sd">        </span>
-<span class="sd">        For example, a controlled-:math:`\\Unitary` gate in :math:`\\Dimension` dimensions</span>
-<span class="sd">        takes the form</span>
+<span class="sd">        For example, a controlled-:math:`\\Unitary` gate in :math:`\\Dimension` dimensions takes the form</span>
 
 <span class="sd">        .. math::</span>
 
@@ -753,8 +733,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_anticontrols</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">check_systems_conflicts</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="n">controls</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">anticontrols</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any</span>
-<span class="sd">                elements in common.&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any elements in common.&quot;&quot;&quot;</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_controls</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">controls</span><span class="p">)))</span>
 
@@ -762,8 +741,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">anticontrols</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The numerical indices of the subsystems on which anticontrol nodes reside.</span>
 
-<span class="sd">        For example, an anticontrolled-:math:`\\Unitary` gate in :math:`\\Dimension` dimensions</span>
-<span class="sd">        takes the form</span>
+<span class="sd">        For example, an anticontrolled-:math:`\\Unitary` gate in :math:`\\Dimension` dimensions takes the form</span>
 
 <span class="sd">        .. math::</span>
 
@@ -785,8 +763,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_anticontrols</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">check_systems_conflicts</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">controls</span><span class="p">,</span> <span class="n">anticontrols</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any</span>
-<span class="sd">                elements in common.&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any elements in common.&quot;&quot;&quot;</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_anticontrols</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">anticontrols</span><span class="p">)))</span>
 
@@ -797,13 +774,11 @@
         <span class="k">return</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">controls</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">anticontrols</span><span class="p">]))]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">exponent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;A numerical or string representation of a scalar value specifying the value to which</span>
-<span class="sd">        the gate&#39;s matrix representation is exponentiated.</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">exponent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A numerical or string representation of a scalar value specifying the value to which the gate&#39;s matrix representation is exponentiated.</span>
 <span class="sd">        Is guaranteed to produce valid powers only for involutory matrices.</span>
 
-<span class="sd">        For an involutory matrix :math:`\\op{A}`, that is :math:`\\op{A}^2 = \\Identity` (where</span>
-<span class="sd">        :math:`\\Identity` is the identity matrix), we have the identity,</span>
+<span class="sd">        For an involutory matrix :math:`\\op{A}`, that is :math:`\\op{A}^2 = \\Identity` (where :math:`\\Identity` is the identity matrix), we have the identity,</span>
 
 <span class="sd">        .. math::</span>
 
@@ -825,8 +800,7 @@
 <span class="sd">                   \\exp\\Bigl[-\\eye\\frac{\\pi}{2}\\op{A}\\Bigr].</span>
 <span class="sd">           \\end{aligned}</span>
 
-<span class="sd">        Simply taking this expression to an arbitrary power :math:`p \\in \\mathbb{C}` thus yields</span>
-<span class="sd">        the identity</span>
+<span class="sd">        Simply taking this expression to an arbitrary power :math:`p \\in \\mathbb{C}` thus yields the identity</span>
 
 <span class="sd">        .. math::</span>
 
@@ -843,34 +817,33 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exponent</span>
 
     <span class="nd">@exponent</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">exponent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exponent</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">exponent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exponent</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_exponent</span> <span class="o">=</span> <span class="n">exponent</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">coefficient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;A numerical or string representation of a scalar value by which the gate&#39;s matrix</span>
-<span class="sd">        (occupying :python:`targets`) is multiplied.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">coefficient</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A numerical or string representation of a scalar value by which the gate&#39;s matrix (occupying :python:`targets`) is multiplied.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coefficient</span>
 
     <span class="nd">@coefficient</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">coefficient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coefficient</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">coefficient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coefficient</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_coefficient</span> <span class="o">=</span> <span class="n">coefficient</span>
 
 <div class="viewcode-block" id="QuantumGate.output">
 <a class="viewcode-back" href="../../../text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.output">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">exponent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">coefficient</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">exponent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">coefficient</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct the gate and return its matrix representation.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the gate.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -880,11 +853,11 @@
 <span class="sd">            Whether to perform Hermitian conjugation on the gate.</span>
 <span class="sd">            If :python:`False`, does not conjugate.</span>
 <span class="sd">            Defaults to the value of :python:`self.conjugate`.</span>
-<span class="sd">        exponent : bool | num | sym | str</span>
+<span class="sd">        exponent : bool | num | expr | str</span>
 <span class="sd">            The scalar value by which the gate&#39;s matrix representation is exponentiated.</span>
 <span class="sd">            If :python:`False`, does not exponentiate.</span>
 <span class="sd">            Defaults to the value of :python:`self.exponent`.</span>
-<span class="sd">        coefficient : num | sym | str</span>
+<span class="sd">        coefficient : num | expr | str</span>
 <span class="sd">            The scalar value by which the gate&#39;s matrix representation is multiplied.</span>
 <span class="sd">            If :python:`False`, does not multiply the gate by the coefficient.</span>
 <span class="sd">            Defaults to the value of :python:`self.coefficient`.</span>
@@ -963,11 +936,9 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">Pauli</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating Pauli gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    The *Pauli matrices* :math:`\\Pauli_i` are a set of three :math:`2 \\times 2`</span>
-<span class="sd">    matrices,</span>
+<span class="sd">    The *Pauli matrices* :math:`\\Pauli_i` are a set of three :math:`2 \\times 2` matrices,</span>
 
 <span class="sd">    .. math::</span>
 
@@ -980,17 +951,14 @@
 <span class="sd">                &amp;= \\begin{bmatrix} 1 &amp; 0 \\\\ 0 &amp; -1 \\end{bmatrix},</span>
 <span class="sd">        \\end{aligned}</span>
 
-<span class="sd">    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`2`-dimensional</span>
-<span class="sd">    identity matrix for :math:`i=0`.</span>
+<span class="sd">    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`2`-dimensional identity matrix for :math:`i=0`.</span>
 
-<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems</span>
-<span class="sd">    corresponding to the indices in the :python:`targets` property.</span>
+<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    index : int</span>
 <span class="sd">        The index of the desired Pauli matrix. Can take the following values:</span>
 
@@ -1000,14 +968,12 @@
 <span class="sd">        - :python:`3` (Pauli-:math:`Z` :math:`\\Pauli_z`)</span>
 
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    The Pauli gates are defined only for :math:`2`-dimensional (i.e., binary/qubit) systems.</span>
-<span class="sd">    This means that the constructor does not take :python:`dim` as an argument, nor can the associated</span>
-<span class="sd">    property be set.</span>
+<span class="sd">    This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">DIM</span> <span class="o">=</span> <span class="mi">2</span>
@@ -1069,11 +1035,9 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">GellMann</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating Gell-Mann gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    The *Gell-Mann matrices* :math:`\\GellMann_i` are a set of eight :math:`3 \\times 3`</span>
-<span class="sd">    matrices,</span>
+<span class="sd">    The *Gell-Mann matrices* :math:`\\GellMann_i` are a set of eight :math:`3 \\times 3` matrices,</span>
 
 <span class="sd">    .. math::</span>
 
@@ -1099,17 +1063,14 @@
 <span class="sd">                = \\frac{1}{\\sqrt{3}}\\begin{bmatrix} 1 &amp; 0 &amp; 0 \\\\ 0 &amp; 1 &amp; 0 \\\\ 0 &amp; 0 &amp; -2 \\end{bmatrix},</span>
 <span class="sd">        \\end{aligned}</span>
 
-<span class="sd">    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`3`-dimensional</span>
-<span class="sd">    identity matrix for :math:`i=0`.</span>
+<span class="sd">    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`3`-dimensional identity matrix for :math:`i=0`.</span>
 
-<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems</span>
-<span class="sd">    corresponding to the indices in the :python:`targets` property.</span>
+<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    index : int</span>
 <span class="sd">        The index of the desired Gell-Mann matrix. Can take the following values:</span>
 
@@ -1124,14 +1085,12 @@
 <span class="sd">        - :python:`8` (:math:`\\GellMann_8`)</span>
 
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    The Gell-Mann gates are defined only for :math:`3`-dimensional (i.e., ternary/qutrit) systems.</span>
-<span class="sd">    This means that the constructor does not take :python:`dim` as an argument, nor can the associated</span>
-<span class="sd">    property be set.</span>
+<span class="sd">    This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">DIM</span> <span class="o">=</span> <span class="mi">3</span>
@@ -1208,11 +1167,9 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">Rotation</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating rotation gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    The elementary *rotation matrices* :math:`\\Rotation_i` are a set of three :math:`2 \\times 2`</span>
-<span class="sd">    matrices,</span>
+<span class="sd">    The elementary *rotation matrices* :math:`\\Rotation_i` are a set of three :math:`2 \\times 2` matrices,</span>
 
 <span class="sd">    .. math::</span>
 
@@ -1230,14 +1187,12 @@
 
 <span class="sd">    where :math:`\\theta` is the *rotation angle* (:python:`angle`).</span>
 
-<span class="sd">    These are fundamentally single-system gates, and so a copy of the specified gate is placed on</span>
-<span class="sd">    each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
+<span class="sd">    These are fundamentally single-system gates, and so a copy of the specified gate is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    axis : int</span>
 <span class="sd">        The index corresponding to the axis of the desired rotation matrix.</span>
 <span class="sd">        Can take the following values:</span>
@@ -1246,24 +1201,22 @@
 <span class="sd">        - :python:`2` (:math:`y`-rotation :math:`\\Rotation_y`)</span>
 <span class="sd">        - :python:`3` (:math:`z`-rotation :math:`\\Rotation_z`)</span>
 
-<span class="sd">    angle : num | sym | str</span>
+<span class="sd">    angle : num | expr | str</span>
 <span class="sd">        The scalar value to be used as the rotation angle.</span>
 <span class="sd">        Defaults to :python:`0`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    The rotation gates are defined only for :math:`2`-dimensional (i.e., binary/qubit) systems.</span>
-<span class="sd">    This means that the constructor does not take :python:`dim` as an argument, nor can the associated</span>
-<span class="sd">    property be set.</span>
+<span class="sd">    This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">DIM</span> <span class="o">=</span> <span class="mi">2</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
     <span class="p">):</span>
         <span class="n">angle</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">angle</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">angle</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="n">axis</span>
@@ -1292,12 +1245,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_axis</span> <span class="o">=</span> <span class="n">axis</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">angle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">angle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The scalar value to be used as the rotation angle.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_angle</span>
 
     <span class="nd">@angle</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_angle</span> <span class="o">=</span> <span class="n">angle</span>
 
     <span class="nd">@property</span>
@@ -1342,41 +1295,43 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">Phase</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating phase gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    In :math:`\\Dimension` dimensions, a *phase operator* :math:`\\Phase` may be represented as a</span>
-<span class="sd">    :math:`\\Dimension \\times \\Dimension` diagonal matrix</span>
+<span class="sd">    In :math:`\\Dimension` dimensions, a *phase operator* :math:`\\Phase` may be represented as a :math:`\\Dimension \\times \\Dimension` diagonal matrix</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">       \\begin{aligned}</span>
 <span class="sd">           \\Phase(\\omega) &amp;= \\sum\\limits_{k=0}^{\\Dimension - 1} \\omega^k \\ket{k}\\bra{k} \\\\</span>
-<span class="sd">           &amp;= \\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; \\ldots &amp; 0 \\\\ 0 &amp; \\omega &amp; 0 &amp; \\ldots &amp; 0 \\\\ 0 &amp; 0 &amp; \\omega^2 &amp; \\ldots &amp; 0 \\\\ \\vdots &amp; \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\ 0 &amp; 0 &amp; 0 &amp; \\ldots &amp; \\omega^{\\Dimension - 1} \\end{bmatrix}.</span>
+<span class="sd">           &amp;=</span>
+<span class="sd">           \\begin{bmatrix}</span>
+<span class="sd">               1 &amp; 0 &amp; 0 &amp; \\ldots &amp; 0 \\\\</span>
+<span class="sd">               0 &amp; \\omega &amp; 0 &amp; \\ldots &amp; 0 \\\\</span>
+<span class="sd">               0 &amp; 0 &amp; \\omega^2 &amp; \\ldots &amp; 0 \\\\</span>
+<span class="sd">               \\vdots &amp; \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
+<span class="sd">               0 &amp; 0 &amp; 0 &amp; \\ldots &amp; \\omega^{\\Dimension - 1}</span>
+<span class="sd">           \\end{bmatrix}.</span>
 <span class="sd">       \\end{aligned}</span>
 
 <span class="sd">    where :math:`\\omega` is the *phase factor* (:python:`phase`).</span>
 
-<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems</span>
-<span class="sd">    corresponding to the indices in the :python:`targets` property.</span>
+<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
-<span class="sd">    phase : num | sym | str</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">    phase : num | expr | str</span>
 <span class="sd">        The phase factor.</span>
 <span class="sd">        Defaults to the unit root given by :python:`sp.exp(2 * sp.pi * sp.I / self.dim)`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">,</span>
-        <span class="n">phase</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">phase</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">default_arguments</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">QuantumGate</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">)])</span>
@@ -1386,12 +1341,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">phase</span> <span class="o">=</span> <span class="n">phase</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The phase value.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phase</span>
 
     <span class="nd">@phase</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_phase</span> <span class="o">=</span> <span class="n">phase</span>
 
     <span class="nd">@property</span>
@@ -1421,50 +1376,50 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">Diagonal</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating diagonal gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    In :math:`\\Dimension` dimensions, a *diagonal operator* :math:`\\Diagonal` may be represented</span>
-<span class="sd">    as a :math:`\\Dimension \\times \\Dimension` diagonal matrix</span>
+<span class="sd">    In :math:`\\Dimension` dimensions, a *diagonal operator* :math:`\\Diagonal` may be represented as a :math:`\\Dimension \\times \\Dimension` diagonal matrix</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">       \\begin{aligned}</span>
-<span class="sd">           \\Diagonal(\\lambda_0, \\lambda_1, \\ldots, \\lambda_{\\Dimension - 1}) &amp;=</span>
-<span class="sd">                \\sum\\limits_{k=0}^{\\Dimension - 1} \\lambda_k\\ket{k}\\bra{k}, \\\\</span>
-<span class="sd">           &amp;= \\begin{bmatrix} \\lambda_0 &amp; 0 &amp; 0 &amp; \\ldots &amp; 0 \\\\ 0 &amp; \\lambda_1 &amp; 0 &amp; \\ldots &amp; 0 \\\\ 0 &amp; 0 &amp; \\lambda_2 &amp; \\ldots &amp; 0 \\\\ \\vdots &amp; \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\ 0 &amp; 0 &amp; 0 &amp; \\ldots &amp; \\lambda_{\\Dimension - 1} \\end{bmatrix}</span>
+<span class="sd">           \\Diagonal(\\lambda_0, \\lambda_1, \\ldots, \\lambda_{\\Dimension - 1})</span>
+<span class="sd">           &amp;= \\sum\\limits_{k=0}^{\\Dimension - 1} \\lambda_k\\ket{k}\\bra{k}, \\\\</span>
+<span class="sd">           &amp;=</span>
+<span class="sd">           \\begin{bmatrix}</span>
+<span class="sd">               \\lambda_0 &amp; 0 &amp; 0 &amp; \\ldots &amp; 0 \\\\</span>
+<span class="sd">               0 &amp; \\lambda_1 &amp; 0 &amp; \\ldots &amp; 0 \\\\</span>
+<span class="sd">               0 &amp; 0 &amp; \\lambda_2 &amp; \\ldots &amp; 0 \\\\</span>
+<span class="sd">               \\vdots &amp; \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
+<span class="sd">               0 &amp; 0 &amp; 0 &amp; \\ldots &amp; \\lambda_{\\Dimension - 1}</span>
+<span class="sd">           \\end{bmatrix}</span>
 <span class="sd">       \\end{aligned}</span>
 
 <span class="sd">    where :math:`\\{\\lambda_k : \\lambda_k \\in \\Complexes, \\; \\abs{\\lambda_k} = 1\\}_{k=0}^{\\Dimension - 1}` are the main diagonal *entries* (:python:`entries`).</span>
 
-<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems</span>
-<span class="sd">    corresponding to the indices in the :python:`targets` property.</span>
+<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
-<span class="sd">    entries : dict[int | list[int], num | sym | str]</span>
-<span class="sd">        A dictionary in which the keys are level specifications (integer or list of integers) and</span>
-<span class="sd">        the values are scalars.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">    entries : dict[int | list[int], num | expr | str]</span>
+<span class="sd">        A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.</span>
 <span class="sd">    exponentiation : bool</span>
 <span class="sd">        Whether to exponentiate (with imaginary unit) the values given in :python:`entries`.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    Levels that are unspecified in the :python:`entries` argument all have a corresponding matrix</span>
-<span class="sd">    element of :python:`1`, regardless of the value of :python:`exponentiation`.</span>
+<span class="sd">    Levels that are unspecified in the :python:`entries` argument all have a corresponding matrix element of :python:`1`, regardless of the value of :python:`exponentiation`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">,</span>
-        <span class="n">entries</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span>
+        <span class="n">entries</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span>
         <span class="n">exponentiation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
@@ -1476,13 +1431,12 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">entries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;A dictionary in which the keys are level specifications (integer or list of integers)</span>
-<span class="sd">        and the values are scalars.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entries</span>
 
     <span class="nd">@entries</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">entries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entries</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entries</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_entries</span> <span class="o">=</span> <span class="n">entries</span>
 
     <span class="nd">@property</span>
@@ -1521,90 +1475,14 @@
 <span class="n">DIAG</span> <span class="o">=</span> <span class="n">Diagonal</span>
 
 
-<span class="k">class</span><span class="w"> </span><span class="nc">Permutation</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating permutation gates and storing their metadata.</span>
-
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
-
-<span class="sd">    TODO</span>
-<span class="sd">    ----</span>
-<span class="sd">    Change this gate such that permutations can be defined on subsets of the total system space</span>
-<span class="sd">    and so do not have to contain the index of every subsystem. This means that the gates should</span>
-<span class="sd">    also be controllable.</span>
-
-<span class="sd">    Arguments</span>
-<span class="sd">    ---------</span>
-<span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
-<span class="sd">    permutation : int</span>
-<span class="sd">        A list of system indices representing the positional arrangement of the systems as a</span>
-<span class="sd">        result of the transformation. Must contain all of the system indices.</span>
-<span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
-
-<span class="sd">    Note</span>
-<span class="sd">    ----</span>
-<span class="sd">    When specifying a value for the :python:`permutation` argument at instantiation, a value for the</span>
-<span class="sd">    :python:`targets` argument need not be supplied as the associated property will automatically be set.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">permutation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">permutation</span> <span class="o">=</span> <span class="n">permutation</span>
-        <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">default_arguments</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">QuantumGate</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">)])</span>
-        <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">fix_arguments</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">QuantumGate</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;spec&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)])</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">permutation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_permutation</span>
-
-    <span class="nd">@permutation</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">permutation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">permutation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_permutation</span> <span class="o">=</span> <span class="n">permutation</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">(</span><span class="n">permutation</span><span class="p">)))</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">targets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">permutation</span><span class="p">)))</span>
-
-    <span class="nd">@targets</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">targets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">targets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-        <span class="k">pass</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-        <span class="n">possibility</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)]</span>
-        <span class="n">possibilities</span> <span class="o">=</span> <span class="p">[</span><span class="n">possibility</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">systems</span><span class="p">]</span>
-        <span class="n">combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">possibilities</span><span class="p">))</span>
-        <span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">num_systems</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">num_systems</span><span class="p">):</span>
-            <span class="n">level</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
-            <span class="n">permuted</span> <span class="o">=</span> <span class="p">[</span><span class="n">level</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">permutation</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">]</span>
-            <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span> <span class="o">+</span> <span class="n">ket</span><span class="p">(</span><span class="n">permuted</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span> <span class="o">*</span> <span class="n">bra</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">matrix</span>
-
-    <span class="nd">@matrix</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">):</span>
-        <span class="k">pass</span>
-
-
-<span class="n">PERM</span> <span class="o">=</span> <span class="n">Permutation</span>
-
-
 <div class="viewcode-block" id="Swap">
 <a class="viewcode-back" href="../../../text/documentation/quantum/gates.html#qhronology.quantum.gates.Swap">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Swap</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating SWAP (exchange) gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    In :math:`\\Dimension` dimensions, a *SWAP operator* :math:`\\Swap` between two</span>
-<span class="sd">    systems :math:`A` and :math:`B` may be represented as a</span>
-<span class="sd">    :math:`\\Dimension^2 \\times \\Dimension^2` matrix</span>
+<span class="sd">    In :math:`\\Dimension` dimensions, a *SWAP operator* :math:`\\Swap` between two systems :math:`A` and :math:`B` may be represented as a :math:`\\Dimension^2 \\times \\Dimension^2` matrix</span>
 
 <span class="sd">    .. math::</span>
 
@@ -1617,15 +1495,13 @@
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    targets : list[int, int]</span>
 <span class="sd">        A list of exactly two indices corresponding to the systems to be swapped.</span>
-<span class="sd">        Is an argument of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`,</span>
-<span class="sd">        so can be specified positionally in :python:`*args`.</span>
+<span class="sd">        Is an argument of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`, so can be specified positionally in :python:`*args`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.&quot;&quot;&quot;</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">default_arguments</span><span class="p">(</span>
@@ -1635,7 +1511,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;A :python:`targets` list of exactly two (2) system indices must be provided.&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;A :python:`targets` list of exactly two (2) system indices must be provided.&quot;&quot;&quot;</span>
             <span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -1669,35 +1545,29 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">Summation</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating SUM (summation) gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    The *SUM gate* is essentially a generalization of the NOT gate. In :math:`\\Dimension` dimensions,</span>
-<span class="sd">    it is defined as the operator</span>
+<span class="sd">    The *SUM gate* is essentially a generalization of the NOT gate. In :math:`\\Dimension` dimensions, it is defined as the operator</span>
 
 <span class="sd">    .. math:: \\SUM(n) = \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k \\oplus n}\\bra{k}</span>
 
-<span class="sd">    where :math:`n \\in \\Integers_{\\geq 0}` (:python:`shift`) is the *shift* parameter,</span>
-<span class="sd">    and :math:`k \\oplus n \\equiv k + n \\mathrel{\\mathrm{mod}} \\Dimension`.</span>
+<span class="sd">    where :math:`n \\in \\Integers_{\\geq 0}` (:python:`shift`) is the *shift* parameter, and :math:`k \\oplus n \\equiv k + n \\mathrel{\\mathrm{mod}} \\Dimension`.</span>
 
-<span class="sd">    The case of :math:`n = 1` is known as the *shift* operator, and represents a (non-Hermitian)</span>
-<span class="sd">    generalization of the Pauli-:math:`X` :math:`\\Pauli_x` operator to :math:`\\Dimension` dimensions.</span>
+<span class="sd">    The case of :math:`n = 1` is known as the *shift* operator, and represents a (non-Hermitian) generalization of the Pauli-:math:`X` :math:`\\Pauli_x` operator to :math:`\\Dimension` dimensions.</span>
 
-<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems</span>
-<span class="sd">    corresponding to the indices in the :python:`targets` property.</span>
+<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    shift : int</span>
 <span class="sd">        The summation shift parameter.</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`1`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.&quot;&quot;&quot;</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">shift</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">shift</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">shift</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">shift</span>
@@ -1744,12 +1614,9 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">Not</span><span class="p">(</span><span class="n">Summation</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating NOT (logical *negation* or &quot;bit-flip&quot;) gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems,</span>
-<span class="sd">    and is exactly equivalent to the Pauli-:math:`X` gate, having the matrix</span>
-<span class="sd">    representation</span>
+<span class="sd">    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems, and is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">       </span>
@@ -1760,23 +1627,20 @@
 
 <span class="sd">    As such, this class exists purely to simplify access to this operation.</span>
 
-<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems</span>
-<span class="sd">    corresponding to the indices in the :python:`targets` property.</span>
+<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    NOT gates are defined only for :math:`2`-dimensional (i.e., binary/qubit) systems.</span>
-<span class="sd">    This means that the constructor does not take :python:`dim` as an argument,</span>
-<span class="sd">    nor can the associated property be set.&quot;&quot;&quot;</span>
+<span class="sd">    This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">DIM</span> <span class="o">=</span> <span class="mi">2</span>
 
@@ -1807,11 +1671,9 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">Hadamard</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating Hadamard gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    The elementary *Hadamard gate* :math:`\\Hadamard` (for qubits) corresponds to the</span>
-<span class="sd">    :math:`2 \\times 2` *Hadamard matrix*</span>
+<span class="sd">    The elementary *Hadamard gate* :math:`\\Hadamard` (for qubits) corresponds to the :math:`2 \\times 2` *Hadamard matrix*</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">       </span>
@@ -1827,26 +1689,26 @@
 <span class="sd">       \\begin{aligned}</span>
 <span class="sd">           \\Hadamard_\\Dimension &amp;= \\frac{1}{\\sqrt{\\Dimension}}\\sum\\limits_{j,k=0}^{\\Dimension - 1}</span>
 <span class="sd">               \\omega_\\Dimension^{k(\\Dimension - j)} \\ket{j}\\bra{k} \\\\</span>
-<span class="sd">           &amp;= \\begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; \\ldots &amp; 1 \\\\</span>
+<span class="sd">           &amp;=</span>
+<span class="sd">           \\begin{bmatrix}</span>
+<span class="sd">               1 &amp; 1 &amp; 1 &amp; \\ldots &amp; 1 \\\\</span>
 <span class="sd">               1 &amp; \\omega^{\\Dimension - 1} &amp; \\omega^{2(\\Dimension - 1)} &amp; \\ldots &amp; \\omega^{(\\Dimension - 1)^2} \\\\</span>
 <span class="sd">               1 &amp; \\omega^{\\Dimension - 2} &amp; \\omega^{2(\\Dimension - 2)} &amp; \\ldots &amp; \\omega^{(\\Dimension - 1)(\\Dimension - 2)} \\\\</span>
 <span class="sd">               \\vdots &amp; \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
-<span class="sd">               1 &amp; \\omega &amp; \\omega^{2} &amp; \\ldots &amp; \\omega^{\\Dimension - 1} \\end{bmatrix}</span>
+<span class="sd">               1 &amp; \\omega &amp; \\omega^{2} &amp; \\ldots &amp; \\omega^{\\Dimension - 1}</span>
+<span class="sd">           \\end{bmatrix}</span>
 <span class="sd">       \\end{aligned}</span>
 
 <span class="sd">    where :math:`\\omega_\\Dimension \\equiv \\e^{\\frac{2\\pi\\eye}{\\Dimension}}`.</span>
 
-<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems</span>
-<span class="sd">    corresponding to the indices in the :python:`targets` property.</span>
+<span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1885,38 +1747,31 @@
 <div class="viewcode-block" id="Fourier">
 <a class="viewcode-back" href="../../../text/documentation/quantum/gates.html#qhronology.quantum.gates.Fourier">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Fourier</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating Fourier (quantum discrete Fourier transform [QDFT]) gates and</span>
-<span class="sd">    storing their metadata.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating Fourier (quantum discrete Fourier transform [QDFT]) gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    The elementary *Fourier operator* :math:`\\QFT` for a single :math:`\\Dimension`-dimensional</span>
-<span class="sd">    qudit may be represented as the :math:`\\Dimension \\times \\Dimension` matrix</span>
+<span class="sd">    The elementary *Fourier operator* :math:`\\QFT` for a single :math:`\\Dimension`-dimensional qudit may be represented as the :math:`\\Dimension \\times \\Dimension` matrix</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">        </span>
 <span class="sd">        \\begin{aligned}</span>
 <span class="sd">            \\QFT &amp;= \\frac{1}{\\sqrt{\\Dimension}} \\sum\\limits_{j,k=0}^{\\Dimension - 1}</span>
 <span class="sd">                \\omega_{\\Dimension}^{jk} \\ket{j}\\bra{k} \\\\</span>
-<span class="sd">            &amp;= \\frac{1}{\\sqrt{\\Dimension}} \\begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 &amp; \\ldots &amp; 1 \\\\</span>
-<span class="sd">            1 &amp; \\omega &amp; \\omega^2 &amp; \\omega^3 &amp; \\ldots &amp; \\omega^{\\Dimension - 1} \\\\</span>
-<span class="sd">            1 &amp; \\omega^2 &amp; \\omega^4 &amp; \\omega^6 &amp; \\ldots &amp; \\omega^{2(\\Dimension - 1)} \\\\</span>
-<span class="sd">            1 &amp; \\omega^3 &amp; \\omega^6 &amp; \\omega^9 &amp; \\ldots &amp; \\omega^{3(\\Dimension - 1)} \\\\</span>
-<span class="sd">            \\vdots &amp; \\vdots &amp; \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
-<span class="sd">            1 &amp; \\omega^{\\Dimension - 1} &amp; \\omega^{2(\\Dimension - 1)}</span>
-<span class="sd">                &amp; \\omega^{3(\\Dimension - 1)} &amp; \\ldots</span>
-<span class="sd">                &amp; \\omega^{(\\Dimension - 1)(\\Dimension - 1)} \\\\</span>
+<span class="sd">            &amp;= \\frac{1}{\\sqrt{\\Dimension}}</span>
+<span class="sd">            \\begin{bmatrix}</span>
+<span class="sd">                1 &amp; 1 &amp; 1 &amp; 1 &amp; \\ldots &amp; 1 \\\\</span>
+<span class="sd">                1 &amp; \\omega &amp; \\omega^2 &amp; \\omega^3 &amp; \\ldots &amp; \\omega^{\\Dimension - 1} \\\\</span>
+<span class="sd">                1 &amp; \\omega^2 &amp; \\omega^4 &amp; \\omega^6 &amp; \\ldots &amp; \\omega^{2(\\Dimension - 1)} \\\\</span>
+<span class="sd">                1 &amp; \\omega^3 &amp; \\omega^6 &amp; \\omega^9 &amp; \\ldots &amp; \\omega^{3(\\Dimension - 1)} \\\\</span>
+<span class="sd">                \\vdots &amp; \\vdots &amp; \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
+<span class="sd">                1 &amp; \\omega^{\\Dimension - 1} &amp; \\omega^{2(\\Dimension - 1)} &amp; \\omega^{3(\\Dimension - 1)} &amp; \\ldots &amp; \\omega^{(\\Dimension - 1)(\\Dimension - 1)} \\\\</span>
 <span class="sd">            \\end{bmatrix}</span>
 <span class="sd">        \\end{aligned}</span>
 
 <span class="sd">    where :math:`\\omega_{\\Dimension} = \\e^{\\frac{2\\pi\\eye}{\\Dimension}} = \\omega`.</span>
 
-<span class="sd">    In the case of :math:`N` qudits, it is easier to characterize the *multipartite Fourier operator*</span>
-<span class="sd">    :math:`\\QFT_N` not by its matrix form but by the transformation it imposes, to which its action</span>
-<span class="sd">    on the basis state</span>
-<span class="sd">    :math:`\\bigotimes\\limits_{\\ell=1}^{N} \\ket{j_\\ell} \\equiv \\ket{j_1, \\ldots, j_N}`</span>
-<span class="sd">    (where :math:`j_\\ell \\in \\Integers_{0}^{\\Dimension - 1}`) is</span>
+<span class="sd">    In the case of :math:`N` qudits, it is easier to characterize the *multipartite Fourier operator* :math:`\\QFT_N` not by its matrix form but by the transformation it imposes, to which its action on the basis state :math:`\\bigotimes\\limits_{\\ell=1}^{N} \\ket{j_\\ell} \\equiv \\ket{j_1, \\ldots, j_N}` (where :math:`j_\\ell \\in \\Integers_{0}^{\\Dimension - 1}`) is</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">        </span>
@@ -1928,32 +1783,27 @@
 <span class="sd">    </span>
 <span class="sd">    where :math:`j \\equiv \\sum\\limits_{\\ell=1}^{N} j_\\ell \\Dimension^{N - \\ell}`.</span>
 
-<span class="sd">    If :python:`composite` is :python:`True`, the composite form :math:`\\QFT_N` is applied to the subsystems</span>
-<span class="sd">    specified by :python:`targets` in:</span>
+<span class="sd">    If :python:`composite` is :python:`True`, the composite form :math:`\\QFT_N` is applied to the subsystems specified by :python:`targets` in:</span>
 <span class="sd">    </span>
 <span class="sd">    - *ascending* order if :python:`reverse` is :python:`False`</span>
 <span class="sd">    - *descending* order if :python:`reverse` is :python:`True`</span>
 
-<span class="sd">    If :python:`composite` is :python:`False`, a copy of the elementary form :math:`\\QFT` is placed on</span>
-<span class="sd">    each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
+<span class="sd">    If :python:`composite` is :python:`False`, a copy of the elementary form :math:`\\QFT` is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    composite : bool</span>
 <span class="sd">        Whether the composite (multipartite) Fourier gate is to be used.</span>
-<span class="sd">        If :python:`False`, copies of the elementary Fourier gate are placed on each index specified in</span>
-<span class="sd">        :python:`targets`.</span>
+<span class="sd">        If :python:`False`, copies of the elementary Fourier gate are placed on each index specified in :python:`targets`.</span>
 <span class="sd">        Defaults to :python:`True`.</span>
 <span class="sd">    reverse : bool</span>
 <span class="sd">        Whether to reverse the order in which the composite (multipartite) Fourier gate is applied.</span>
 <span class="sd">        Only applies when :python:`composite` is :python:`False`.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -1982,8 +1832,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to reverse the order in which the composite (multipartite) Fourier gate is</span>
-<span class="sd">        applied.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to reverse the order in which the composite (multipartite) Fourier gate is applied.</span>
 <span class="sd">        Has no effect when :python:`self.composite` is :python:`False`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reverse</span>
@@ -2054,13 +1903,9 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">Measurement</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating measurement gates and storing their metadata.</span>
 
-<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so inherits all of its attributes, properties, and methods.</span>
+<span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    Instances of this class each describe a (non-linear) operation in which the input state</span>
-<span class="sd">    (:math:`\\op{\\rho}`) is quantum-mechanically *measured* (against the forms in specified in</span>
-<span class="sd">    :python:`operators`) and subsequently mutated according to its predicted post-measurement form</span>
-<span class="sd">    (i.e., the sum of all possible measurement outcomes). This yields the transformed states:</span>
+<span class="sd">    Instances of this class each describe a (non-linear) operation in which the input state (:math:`\\op{\\rho}`) is quantum-mechanically *measured* (against the forms in specified in :python:`operators`) and subsequently mutated according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes). This yields the transformed states:</span>
 
 <span class="sd">    - When :python:`observable` is :python:`False`</span>
 <span class="sd">      (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`):</span>
@@ -2072,42 +1917,33 @@
 
 <span class="sd">    .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i.</span>
 
-<span class="sd">    The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`),</span>
-<span class="sd">    in which case each is converted into its corresponding matrix representation</span>
-<span class="sd">    (e.g., :math:`\\Kraus_i = \\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurement(s).</span>
-<span class="sd">    Note also that this method does not check for validity of supplied POVMs or the completeness</span>
-<span class="sd">    of sets of observables, nor does it renormalize the post-measurement state.</span>
+<span class="sd">    The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding matrix representation (e.g., :math:`\\Kraus_i = \\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurement(s).</span>
+
+<span class="sd">    Note also that this method does not check for validity of supplied POVMs or the completeness of sets of observables, nor does it renormalize the post-measurement state.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *args</span>
-<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    operators : list[mat | arr | QuantumObject]</span>
 <span class="sd">        The operator(s) with which to perform the measurement.</span>
 <span class="sd">        These would typically be a (complete) set of Kraus operators forming a POVM,</span>
 <span class="sd">        a (complete) set of (orthogonal) projectors forming a PVM,</span>
 <span class="sd">        or a set of observables constituting a complete basis for the relevant state space.</span>
 <span class="sd">    observable : bool</span>
-<span class="sd">        Whether to treat the items in :python:`operators` as observables (as opposed to Kraus operators</span>
-<span class="sd">        or projectors).</span>
+<span class="sd">        Whether to treat the items in :python:`operators` as observables (as opposed to Kraus operators or projectors).</span>
 <span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    **kwargs</span>
-<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the</span>
-<span class="sd">        superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
+<span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s)</span>
-<span class="sd">    to be measured. These indices must be consecutive, and their number must match the number of</span>
-<span class="sd">    systems spanned by all given operators.</span>
+<span class="sd">    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s) to be measured. These indices must be consecutive, and their number must match the number of systems spanned by all given operators.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    Measurement operations in quantum physics are, in general, non-linear and non-unitary</span>
-<span class="sd">    operations on (normalized) state vectors and density operators. As such, they cannot be</span>
-<span class="sd">    represented by matrices, and so the :python:`matrix` property therefore does not return a valid</span>
-<span class="sd">    representation of the measurement operation.&quot;&quot;&quot;</span>
+<span class="sd">    Measurement operations in quantum physics are, in general, non-linear and non-unitary operations on (normalized) state vectors and density operators. As such, they cannot be represented by matrices, and so the :python:`matrix` property therefore does not return a valid representation of the measurement operation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -2139,8 +1975,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">observable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to treat the items in the :python:`operators` property as observables (as opposed to</span>
-<span class="sd">        Kraus operators or projectors).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to treat the items in the :python:`operators` property as observables (as opposed to Kraus operators or projectors).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_observable</span>
 
     <span class="nd">@observable</span><span class="o">.</span><span class="n">setter</span>
@@ -2153,9 +1988,7 @@
 
 <span class="sd">        Is a read-only property.</span>
 
-<span class="sd">        This is used specifically in the :py:class:`~qhronology.quantum.circuits.QuantumCircuit`</span>
-<span class="sd">        class when instances of it contain :python:`Measurement` gate instances in their :python:`gates`</span>
-<span class="sd">        property.</span>
+<span class="sd">        This is used specifically in the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class when instances of it contain :python:`Measurement` gate instances in their :python:`gates` property.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">matrices</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">identity</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
@@ -2193,41 +2026,32 @@
 <div class="viewcode-block" id="GateInterleave">
 <a class="viewcode-back" href="../../../text/documentation/quantum/gates.html#qhronology.quantum.gates.GateInterleave">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GateInterleave</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together</span>
-<span class="sd">    by interleaving them.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together by interleaving them.</span>
 
-<span class="sd">    This is achieved by multiplying the gates&#39; matrix representations. For example,</span>
-<span class="sd">    for gates described by the multipartite operators :math:`\\op{A} \\otimes \\Identity`</span>
-<span class="sd">    and :math:`\\Identity \\otimes \\op{B}`, their interleaved composition is</span>
+<span class="sd">    This is achieved by multiplying the gates&#39; matrix representations. For example, for gates described by the multipartite operators :math:`\\op{A} \\otimes \\Identity` and :math:`\\Identity \\otimes \\op{B}`, their interleaved composition is</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">       (\\op{A} \\otimes \\Identity) \\cdot (\\Identity \\otimes \\op{B}) = \\op{A} \\otimes \\op{B}.</span>
 
-<span class="sd">    While this is a subclass of :py:class:`~qhronology.quantum.gates.QuantumGate`,</span>
-<span class="sd">    all of its inherited properties, except for those corresponding to arguments in its constructor,</span>
-<span class="sd">    are read-only. This is because they are calculated from their corresponding properties in the</span>
-<span class="sd">    individual instances contained within the :python:`gates` property.</span>
+<span class="sd">    While this is a subclass of :py:class:`~qhronology.quantum.gates.QuantumGate`, all of its inherited properties, except for those corresponding to arguments in its constructor, are read-only. This is because they are calculated from their corresponding properties in the individual instances contained within the :python:`gates` property.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *gates : QuantumGate</span>
-<span class="sd">        Variable-length argument list of :py:class:`~qhronology.quantum.gates.QuantumGate`</span>
-<span class="sd">        instances to be interleaved.</span>
+<span class="sd">        Variable-length argument list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances to be interleaved.</span>
 <span class="sd">    merge : bool</span>
 <span class="sd">        Whether to merge the gates together diagrammatically.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    conjugate : bool</span>
 <span class="sd">        Whether to perform Hermitian conjugation on the composite gate when it is called.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
-<span class="sd">    exponent : num | sym | str</span>
-<span class="sd">        A numerical or string representation of a scalar value to which composite gate&#39;s total</span>
-<span class="sd">        matrix representation is exponentiated.</span>
+<span class="sd">    exponent : num | expr | str</span>
+<span class="sd">        A numerical or string representation of a scalar value to which composite gate&#39;s total matrix representation is exponentiated.</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`1`.</span>
-<span class="sd">    coefficient : num | sym | str</span>
-<span class="sd">        A numerical or string representation of a scalar value by which the composite gate&#39;s</span>
-<span class="sd">        matrix representation is multiplied.</span>
+<span class="sd">    coefficient : num | expr | str</span>
+<span class="sd">        A numerical or string representation of a scalar value by which the composite gate&#39;s matrix representation is multiplied.</span>
 <span class="sd">        Performed after exponentiation.</span>
 <span class="sd">        Defaults to :python:`1`.</span>
 <span class="sd">    label : str</span>
@@ -2241,15 +2065,11 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    Care should be taken to ensure that gates passed to this class all have the same :python:`num_systems`</span>
-<span class="sd">    value and do not have overlapping :python:`targets`, :python:`controls`, and :python:`anticontrols` properties.</span>
+<span class="sd">    Care should be taken to ensure that gates passed to this class all have the same :python:`num_systems` value and do not have overlapping :python:`targets`, :python:`controls`, and :python:`anticontrols` properties.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The resulting visualization (using the inherited</span>
-<span class="sd">    :py:meth:`~qhronology.quantum.gates.QuantumGate.diagram` method or in</span>
-<span class="sd">    circuit diagrams) may not be accurate in every case.</span>
-<span class="sd">    However, the composed matrix should still be correct.</span>
+<span class="sd">    The resulting visualization (using the inherited :py:meth:`~qhronology.quantum.gates.QuantumGate.diagram` method or in circuit diagrams) may not be accurate in every case. However, the composed matrix should still be correct.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -2257,8 +2077,8 @@
         <span class="o">*</span><span class="n">gates</span><span class="p">:</span> <span class="n">QuantumGate</span><span class="p">,</span>
         <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">exponent</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">coefficient</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">exponent</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">coefficient</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
@@ -2307,8 +2127,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">gates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">QuantumGate</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Variable-length list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances</span>
-<span class="sd">        to be composited.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Variable-length list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances to be composited.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gates</span>
 
     <span class="nd">@gates</span><span class="o">.</span><span class="n">setter</span>
@@ -2361,7 +2180,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="n">num_systems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">gate</span><span class="o">.</span><span class="n">num_systems</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">])))</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_systems</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mismatch between one or more of the number of systems.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;Mismatch between one or more of the number of systems.&quot;&quot;&quot;</span>
+            <span class="p">)</span>
         <span class="k">return</span> <span class="n">num_systems</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@num_systems</span><span class="o">.</span><span class="n">setter</span>
@@ -2384,7 +2205,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">dim</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="n">dim</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">gate</span><span class="o">.</span><span class="n">dim</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">])))</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mismatch between one or more of the dimensions.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Mismatch between one or more of the dimensions.&quot;&quot;&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">dim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@dim</span><span class="o">.</span><span class="n">setter</span>
@@ -2392,7 +2213,7 @@
         <span class="k">pass</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]:</span>
         <span class="n">conditions</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">:</span>
             <span class="n">conditions</span> <span class="o">+=</span> <span class="n">gate</span><span class="o">.</span><span class="n">conditions</span>
@@ -2417,17 +2238,17 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">exponent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">coefficient</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">exponent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">coefficient</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct the composite gate and return its matrix representation.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | sym | str, num | sym | str]]</span>
+<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic conditions to be applied to the gate.</span>
 <span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
 <span class="sd">        simplify : bool</span>
@@ -2437,11 +2258,11 @@
 <span class="sd">            Whether to perform Hermitian conjugation on the gate.</span>
 <span class="sd">            If :python:`False`, does not conjugate.</span>
 <span class="sd">            Defaults to the value of :python:`self.conjugate`.</span>
-<span class="sd">        exponent : bool | num | sym | str</span>
+<span class="sd">        exponent : bool | num | expr | str</span>
 <span class="sd">            The scalar value by which the gate&#39;s matrix representation is exponentiated.</span>
 <span class="sd">            If :python:`False`, does not exponentiate.</span>
 <span class="sd">            Defaults to the value of :python:`self.exponent`.</span>
-<span class="sd">        coefficient : num | sym | str</span>
+<span class="sd">        coefficient : num | expr | str</span>
 <span class="sd">            The scalar value by which the gate&#39;s matrix representation is multiplied.</span>
 <span class="sd">            If :python:`False`, does not multiply the gate by the coefficient.</span>
 <span class="sd">            Defaults to the value of :python:`self.coefficient`.</span>
@@ -2496,40 +2317,33 @@
 <div class="viewcode-block" id="GateStack">
 <a class="viewcode-back" href="../../../text/documentation/quantum/gates.html#qhronology.quantum.gates.GateStack">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GateStack</span><span class="p">(</span><span class="n">GateInterleave</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together</span>
-<span class="sd">    by &quot;stacking&quot; them vertically.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compose two or more :py:class:`~qhronology.quantum.gates.QuantumGate` instances together by &quot;stacking&quot; them vertically.</span>
 
 <span class="sd">    This is achieved by computing the tensor product of the gates&#39; matrix representations.</span>
-<span class="sd">    For example, for gates described by the multipartite operators</span>
-<span class="sd">    :math:`\\op{A} \\otimes \\Identity` and :math:`\\Identity \\otimes \\op{B}`,</span>
-<span class="sd">    their stacked composition is</span>
+<span class="sd">    For example, for gates described by the multipartite operators :math:`\\op{A} \\otimes \\Identity` and :math:`\\Identity \\otimes \\op{B}`, their stacked composition is</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">       (\\op{A} \\otimes \\Identity) \\otimes (\\Identity \\otimes \\op{B})</span>
 <span class="sd">       = \\op{A} \\otimes \\Identity \\otimes \\Identity \\otimes \\op{B}.</span>
 
-<span class="sd">    This class is derived from the :py:class:`~qhronology.quantum.gates.QuantumGate` class,</span>
-<span class="sd">    and so should be used in much the same way.</span>
+<span class="sd">    This class is derived from the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so should be used in much the same way.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    *gates : QuantumGate</span>
-<span class="sd">        Variable-length argument list of :py:class:`~qhronology.quantum.gates.QuantumGate`</span>
-<span class="sd">        instances to be stacked.</span>
+<span class="sd">        Variable-length argument list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances to be stacked.</span>
 <span class="sd">    merge : bool</span>
 <span class="sd">        Whether to merge the gates together diagrammatically.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    conjugate : bool</span>
 <span class="sd">        Whether to perform Hermitian conjugation on the composite gate when it is called.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
-<span class="sd">    exponent : num | sym | str</span>
-<span class="sd">        A numerical or string representation of a scalar value to which composite gate&#39;s total</span>
-<span class="sd">        matrix representation is exponentiated.</span>
+<span class="sd">    exponent : num | expr | str</span>
+<span class="sd">        A numerical or string representation of a scalar value to which composite gate&#39;s total matrix representation is exponentiated.</span>
 <span class="sd">        Defaults to :python:`1`.</span>
-<span class="sd">    coefficient : num | sym | str</span>
-<span class="sd">        A numerical or string representation of a scalar value by which the composite gate&#39;s</span>
-<span class="sd">        matrix representation is multiplied.</span>
+<span class="sd">    coefficient : num | expr | str</span>
+<span class="sd">        A numerical or string representation of a scalar value by which the composite gate&#39;s matrix representation is multiplied.</span>
 <span class="sd">        Performed after exponentiation.</span>
 <span class="sd">        Defaults to :python:`1`.</span>
 <span class="sd">    label : str</span>
@@ -2539,15 +2353,16 @@
 <span class="sd">        The formatted string used to represent the gate in mathematical expressions.</span>
 <span class="sd">        When not :python:`None`, overrides the value passed to :python:`label`.</span>
 <span class="sd">        Not intended to be set by the user in most cases.</span>
-<span class="sd">        Defaults to :python:`None`.&quot;&quot;&quot;</span>
+<span class="sd">        Defaults to :python:`None`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">gates</span><span class="p">:</span> <span class="n">QuantumGate</span><span class="p">,</span>
         <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">exponent</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">coefficient</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">exponent</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">coefficient</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
@@ -2641,10 +2456,10 @@
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_Single</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell</span>
-<span class="sd">    abstract quantum gates.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell abstract quantum gates.</span>
 
-<span class="sd">    Used internally exclusively for visualization purposes.&quot;&quot;&quot;</span>
+<span class="sd">    Used exclusively internally (for visualization purposes).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">family</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
@@ -2671,10 +2486,10 @@
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_Empty</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell</span>
-<span class="sd">    empty quantum gates.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell empty quantum gates.</span>
 
-<span class="sd">    Used internally exclusively for visualization purposes.&quot;&quot;&quot;</span>
+<span class="sd">    Used exclusively internally (for visualization purposes).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">family</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">family</span> <span class="o">=</span> <span class="n">Families</span><span class="o">.</span><span class="n">TERM</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="n">family</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">family</span>
@@ -2692,10 +2507,9 @@
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_Wormhole</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell</span>
-<span class="sd">    wormhole (mouth) quantum gates.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A :py:class:`~qhronology.quantum.gates.QuantumGate` subclass for creating single-cell wormhole (mouth) quantum gates.</span>
 
-<span class="sd">    Used internally exclusively for visualization purposes.</span>
+<span class="sd">    Used exclusively internally (for visualization purposes).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">family</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>

@@ -134,6 +134,10 @@ Main class
 
    .. raw:: latex
 
+      \enlargethispage{-\baselineskip}
+
+   .. raw:: latex
+
       \begin{codetitled}{CNOTs equivalent to SWAP}{}
 
    .. literalinclude:: /text/examples/docstrings/circuit_swapcnots.py
@@ -447,10 +451,6 @@ Read-only properties
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{2\baselineskip}
-
 .. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.num_systems_gross
 
 .. raw:: latex
@@ -548,7 +548,7 @@ Methods
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.diagram
 
@@ -704,10 +704,6 @@ Methods
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \newpage
 
    .. raw:: latex
 

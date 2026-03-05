@@ -735,6 +735,10 @@ Methods
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -798,6 +802,10 @@ Methods
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.diagram
 
@@ -895,6 +903,10 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.simplify
 
@@ -1203,7 +1215,7 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \enlargethispage{-2\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.measure
 
@@ -1823,10 +1835,6 @@ Subclasses
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
 
 .. autoclass:: qhronology.quantum.states.MatrixState
 

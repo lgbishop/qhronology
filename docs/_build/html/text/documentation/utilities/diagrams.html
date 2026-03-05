@@ -30,11 +30,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a0dcfd21" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d009206a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
+    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -67,8 +67,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
+  <meta name="docsearch:version" content="1.0.3" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -543,8 +543,7 @@ Not intended to be used directly by the user.</p>
 </dl>
 
 <span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/qhronology/utilities/diagrams.html#DiagramCell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.utilities.diagrams.DiagramCell" title="Link to this definition">#</a></dt>
-<dd><p>A class for visualizing individual “cells” (the smallest indivisible units) of
-quantum circuit diagrams and storing their metadata.</p>
+<dd><p>A class for visualizing individual “cells” (the smallest indivisible units) of quantum circuit diagrams and storing their metadata.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -579,9 +578,7 @@ quantum circuit diagrams and storing their metadata.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="qhronology.utilities.diagrams.VisualizationMixin">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VisualizationMixin</span></span><a class="reference internal" href="../../../_modules/qhronology/utilities/diagrams.html#VisualizationMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.utilities.diagrams.VisualizationMixin" title="Link to this definition">#</a></dt>
-<dd><p>A mixin for endowing classes derived from the base class
-<a class="reference internal" href="objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumObject</span></code></a> the ability to be visualized as
-quantum circuit diagram elements.</p>
+<dd><p>A mixin for endowing classes derived from the base class <a class="reference internal" href="objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumObject</span></code></a> the ability to be visualized as quantum circuit diagram elements.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qhronology.utilities.diagrams.VisualizationMixin.diagram">
 <span class="sig-name descname"><span class="pre">diagram</span></span><span class="sig-paren">(</span>
@@ -598,13 +595,9 @@ quantum circuit diagram elements.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pad</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying intra-gate padding
-(i.e., the horizontal and vertical interior paddings between the content at the centre
-of each gate (e.g., label) and its outer edge (e.g., block border).
-Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>.</p></li>
-<li><p><strong>sep</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying inter-gate separation
-(i.e., the horizontal and vertical exterior separation distances between the edges of
-neighbouring gates.
+<li><p><strong>pad</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border)).
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>.</p></li>
+<li><p><strong>sep</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></code>.</p></li>
 <li><p><strong>style</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string specifying the style for the circuit visualization to take.
 Can be any of <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;ascii&quot;</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;unicode&quot;</span></code>, or <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;unicode_alt&quot;</span></code>.

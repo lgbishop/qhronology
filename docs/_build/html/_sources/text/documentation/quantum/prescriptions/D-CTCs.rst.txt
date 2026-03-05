@@ -28,6 +28,10 @@ Class
 
    .. raw:: latex
 
+      \enlargethispage{3\baselineskip}
+
+   .. raw:: latex
+
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
@@ -37,6 +41,10 @@ Class
    .. raw:: latex
 
       \end{adjustwidth}
+
+.. raw:: latex
+
+   \newpage
 
 .. raw:: latex
 

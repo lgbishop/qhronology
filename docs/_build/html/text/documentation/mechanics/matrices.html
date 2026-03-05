@@ -30,11 +30,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a0dcfd21" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d009206a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
+    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,8 +71,8 @@
     <link rel="prev" title="Postselected teleportation (P-CTCs)" href="../quantum/prescriptions/P-CTCs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
+  <meta name="docsearch:version" content="1.0.3" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -509,8 +509,7 @@
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableDenseMatrix</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/matrices.html#vector_basis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.matrices.vector_basis" title="Link to this definition">#</a></dt>
-<dd><p>Creates an ordered list of column vectors that form an orthonormal basis for a
-<code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional Hilbert space.</p>
+<dd><p>Creates an ordered list of column vectors that form an orthonormal basis for a <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional Hilbert space.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>dim</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The dimensionality of the vector basis.
@@ -557,11 +556,8 @@ Must be a non-negative integer.</p>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableDenseMatrix</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/matrices.html#ket"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.matrices.ket" title="Link to this definition">#</a></dt>
-<dd><p>Creates a normalized ket (column) basis vector corresponding to the (multipartite)
-computational-basis value(s) of <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> in a <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional Hilbert space.</p>
-<p>In mathematical notation, <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> describes the value of the ket vector, e.g., a <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> of
-<code class="code highlight python docutils literal highlight-python"><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span></code> corresponds to the ket vector <span class="math notranslate nohighlight">\(\ket{i,j,k}\)</span>
-(for some non-negative integers <code class="code highlight python docutils literal highlight-python"><span class="n">i</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="n">j</span></code>, and <code class="code highlight python docutils literal highlight-python"><span class="n">k</span></code>).</p>
+<dd><p>Creates a normalized ket (column) basis vector corresponding to the (multipartite) computational-basis value(s) of <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> in a <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional Hilbert space.</p>
+<p>In mathematical notation, <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> describes the value of the ket vector, e.g., a <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> of <code class="code highlight python docutils literal highlight-python"><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span></code> corresponds to the ket vector <span class="math notranslate nohighlight">\(\ket{i,j,k}\)</span> (for some non-negative integers <code class="code highlight python docutils literal highlight-python"><span class="n">i</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="n">j</span></code>, and <code class="code highlight python docutils literal highlight-python"><span class="n">k</span></code>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -613,11 +609,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableDenseMatrix</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/matrices.html#bra"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.matrices.bra" title="Link to this definition">#</a></dt>
-<dd><p>Creates a normalized bra (row) basis vector corresponding to the (multipartite)
-computational-basis value(s) of <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> in a <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional dual Hilbert space.</p>
-<p>In mathematical notation, <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> describes the value of the bra vector, e.g., a <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> of
-<code class="code highlight python docutils literal highlight-python"><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span></code> corresponds to the bra vector <span class="math notranslate nohighlight">\(\bra{i,j,k}\)</span>
-(for some non-negative integers <code class="code highlight python docutils literal highlight-python"><span class="n">i</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="n">j</span></code>, and <code class="code highlight python docutils literal highlight-python"><span class="n">k</span></code>).</p>
+<dd><p>Creates a normalized bra (row) basis vector corresponding to the (multipartite) computational-basis value(s) of <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> in a <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional dual Hilbert space.</p>
+<p>In mathematical notation, <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> describes the value of the bra vector, e.g., a <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> of <code class="code highlight python docutils literal highlight-python"><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span></code> corresponds to the bra vector <span class="math notranslate nohighlight">\(\bra{i,j,k}\)</span> (for some non-negative integers <code class="code highlight python docutils literal highlight-python"><span class="n">i</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="n">j</span></code>, and <code class="code highlight python docutils literal highlight-python"><span class="n">k</span></code>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -651,27 +644,23 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="sig-name descname"><span class="pre">quantum_state</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MutableDenseMatrix</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Number</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">generic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Basic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixSymbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixElement</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Symbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Number</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">generic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Basic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixSymbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MatrixElement</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Symbol</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MutableDenseMatrix</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Number</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">generic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Basic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Number</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">generic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Basic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableDenseMatrix</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/matrices.html#quantum_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.matrices.quantum_state" title="Link to this definition">#</a></dt>
-<dd><p>Constructs a <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional matrix or vector representation of a quantum state from a
-given specification <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code>.</p>
+<dd><p>Constructs a <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional matrix or vector representation of a quantum state from a given specification <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>spec</strong> – <p>The specification of the quantum state. Provides a complete description of the state’s
-values in a standard <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional basis. Can be one of:</p>
+<li><p><strong>spec</strong> – <p>The specification of the quantum state. Provides a complete description of the state’s values in a standard <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional basis. Can be one of:</p>
 <ul>
 <li><p>a SymPy matrix (<code class="code highlight python docutils literal highlight-python"><span class="n">mat</span></code>)</p></li>
 <li><p>a NumPy array (<code class="code highlight python docutils literal highlight-python"><span class="n">arr</span></code>)</p></li>
-<li><p>a list of lists of numerical, symbolic, or string expressions that collectively specify
-a vector or (square) matrix (<code class="code highlight python docutils literal highlight-python"><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span></code>)</p></li>
-<li><p>a list of 2-tuples of numerical, symbolic, or string coefficients paired their
-respective number-basis specification (<code class="code highlight python docutils literal highlight-python"><span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span></code>)</p></li>
+<li><p>a list of lists of numerical, symbolic, or string expressions that collectively specify a vector or (square) matrix (<code class="code highlight python docutils literal highlight-python"><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span></code>)</p></li>
+<li><p>a list of 2-tuples of numerical, symbolic, or string coefficients paired their respective number-basis specification (<code class="code highlight python docutils literal highlight-python"><span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span></code>)</p></li>
 </ul>
 </p></li>
 <li><p><strong>form</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string specifying the <em>form</em> for the quantum state to take.
@@ -787,27 +776,22 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MutableDenseMatrix</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/matrices.html#encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.matrices.encode" title="Link to this definition">#</a></dt>
 <dd><p>Encodes a non-negative integer as a single quantum state vector (ket).</p>
-<p>This is a kind of unsigned integer encoding. It creates a base-<code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code> numeral system
-representation of <code class="code highlight python docutils literal highlight-python"><span class="n">integer</span></code> as an (ordered) list of encoded digits.
-Returns this list if <code class="code highlight python docutils literal highlight-python"><span class="n">output_list</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, otherwise returns the corresponding
-ket vector (i.e., a ket vector with a spec of these digits).</p>
+<p>This is a kind of unsigned integer encoding. It creates a base-<code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code> numeral system representation of <code class="code highlight python docutils literal highlight-python"><span class="n">integer</span></code> as an (ordered) list of encoded digits.
+Returns this list if <code class="code highlight python docutils literal highlight-python"><span class="n">output_list</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, otherwise returns the corresponding ket vector (i.e., a ket vector with a spec of these digits).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>integer</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The non-negative integer to be encoded.</p></li>
 <li><p><strong>num_systems</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The number of systems (e.g., qubits) necessary to represent the integer in the encoding.
 Must be a non-negative integer.
-If <code class="code highlight python docutils literal highlight-python"><span class="kc">None</span></code>, it automatically increases to the smallest possible number of systems
-with which the given <code class="code highlight python docutils literal highlight-python"><span class="n">integer</span></code> can be encoded.</p></li>
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">None</span></code>, it automatically increases to the smallest possible number of systems with which the given <code class="code highlight python docutils literal highlight-python"><span class="n">integer</span></code> can be encoded.</p></li>
 <li><p><strong>dim</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The dimensionality (or base) of the encoding.
 Must be a non-negative integer.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">2</span></code>.</p></li>
 <li><p><strong>reverse</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – <p>Whether to reverse the ordering of the resulting encoded state.</p>
 <ul>
-<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, the significance of the digits <em>decreases</em> along the
-list (i.e., the least-significant digit is last).</p></li>
-<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, the significance of the digits <em>increases</em> along the
-list (i.e., the least-significant digit is first).</p></li>
+<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, the significance of the digits <em>decreases</em> along the list (i.e., the least-significant digit is last).</p></li>
+<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, the significance of the digits <em>increases</em> along the list (i.e., the least-significant digit is first).</p></li>
 </ul>
 <p>Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p>
 </p></li>
@@ -889,10 +873,8 @@ Must be a non-negative integer.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">2</span></code>.</p></li>
 <li><p><strong>reverse</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – <p>Whether to reverse the digit ordering of the encoded state prior to decoding.</p>
 <ul>
-<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, the significance of the digits should <em>decrease</em> along the
-list (i.e., the least-significant digit is last).</p></li>
-<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, the significance of the digits should <em>increase</em> along the
-list (i.e., the least-significant digit is first).</p></li>
+<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, the significance of the digits should <em>decrease</em> along the list (i.e., the least-significant digit is last).</p></li>
+<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, the significance of the digits should <em>increase</em> along the list (i.e., the least-significant digit is first).</p></li>
 </ul>
 <p>Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p>
 </p></li>
@@ -941,10 +923,8 @@ list (i.e., the least-significant digit is first).</p></li>
 <dd><p>Decodes a quantum matrix or vector state to an unsigned integer.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The current method by which this particular implementation operates is fast but may be
-inaccurate (due to some computational shortcuts that may not work in all cases).
-For a slower but accurate algorithm, use the
-<a class="reference internal" href="#qhronology.mechanics.matrices.decode_slow" title="qhronology.mechanics.matrices.decode_slow"><code class="xref py py-func docutils literal notranslate"><span class="pre">decode_slow()</span></code></a> function.</p>
+<p>The current method by which this particular implementation operates is fast but may be inaccurate (due to some computational shortcuts that may not work in all cases).
+For a slower but accurate algorithm, use the <a class="reference internal" href="#qhronology.mechanics.matrices.decode_slow" title="qhronology.mechanics.matrices.decode_slow"><code class="xref py py-func docutils literal notranslate"><span class="pre">decode_slow()</span></code></a> function.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -985,7 +965,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dd><em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sym</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/matrices.html#decode_multiple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.matrices.decode_multiple" title="Link to this definition">#</a></dt>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/matrices.html#decode_multiple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.matrices.decode_multiple" title="Link to this definition">#</a></dt>
 <dd><p>Decodes a quantum matrix or vector state to one or more unsigned integers with their respective probabilities.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -996,18 +976,15 @@ Must be a non-negative integer.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">2</span></code>.</p></li>
 <li><p><strong>reverse</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – <p>Whether to reverse the digit ordering of the encoded state prior to decoding.</p>
 <ul>
-<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, the significance of the digits should <em>decrease</em> along the
-list (i.e., the least-significant digit is last).</p></li>
-<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, the significance of the digits should <em>increase</em> along the
-list (i.e., the least-significant digit is first).</p></li>
+<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, the significance of the digits should <em>decrease</em> along the list (i.e., the least-significant digit is last).</p></li>
+<li><p>If <code class="code highlight python docutils literal highlight-python"><span class="n">reverse</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, the significance of the digits should <em>increase</em> along the list (i.e., the least-significant digit is first).</p></li>
 </ul>
 <p>Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p>
 </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">sym]]</span></code> – The list of tuples of pairs of decoded (unsigned) integers and their corresponding
-probabilities.</p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr]]</span></code> – The list of tuples of pairs of decoded (unsigned) integers and their corresponding probabilities.</p>
 </dd>
 </dl>
 <p class="rubric"><span class="classheader6">Examples</span></p>

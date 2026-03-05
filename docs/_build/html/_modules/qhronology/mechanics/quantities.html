@@ -29,11 +29,11 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=ea780ccc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a0dcfd21" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=d009206a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=4f16c007" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=1ed6394b"></script>
+    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.2" />
-    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
+  <meta name="docsearch:version" content="1.0.3" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -484,7 +484,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum.dagger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dagger</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">mat</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">sym</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">mat</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">expr</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">count_systems</span><span class="p">,</span>
     <span class="n">extract_matrix</span><span class="p">,</span>
@@ -501,9 +501,8 @@
 
 <div class="viewcode-block" id="trace">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.trace">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the (complete) trace :math:`\\trace[\\op{\\rho}]`</span>
-<span class="sd">    of :python:`matrix` (:math:`\\op{\\rho}`).</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the (complete) trace :math:`\\trace[\\op{\\rho}]` of :python:`matrix` (:math:`\\op{\\rho}`).</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -512,7 +511,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    num | sym</span>
+<span class="sd">    num | expr</span>
 <span class="sd">        The trace of the input :python:`matrix`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
@@ -530,7 +529,7 @@
 
 <div class="viewcode-block" id="purity">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.purity">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">purity</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">purity</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the purity (:math:`\\Purity`) of :python:`state` (:math:`\\op{\\rho}`):</span>
 
 <span class="sd">    .. math:: \\Purity(\\op{\\rho}) = \\trace[\\op{\\rho}^2].</span>
@@ -542,7 +541,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    num | sym</span>
+<span class="sd">    num | expr</span>
 <span class="sd">        The purity of the input :python:`state`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
@@ -560,9 +559,8 @@
 
 <div class="viewcode-block" id="distance">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.distance">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the trace distance (:math:`\\TraceDistance`) between two states</span>
-<span class="sd">    :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the trace distance (:math:`\\TraceDistance`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):</span>
 
 <span class="sd">    .. math::</span>
 
@@ -578,7 +576,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    num | sym</span>
+<span class="sd">    num | expr</span>
 <span class="sd">        The trace distance between the inputs :python:`state_A` and :python:`state_B`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
@@ -607,9 +605,8 @@
 
 <div class="viewcode-block" id="fidelity">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.fidelity">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">fidelity</span><span class="p">(</span><span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the fidelity (:math:`\\Fidelity`) between two states</span>
-<span class="sd">    :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fidelity</span><span class="p">(</span><span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the fidelity (:math:`\\Fidelity`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):</span>
 
 <span class="sd">    .. math::</span>
 
@@ -625,7 +622,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    num | sym</span>
+<span class="sd">    num | expr</span>
 <span class="sd">        The fidelity between the inputs :python:`state_A` and :python:`state_B`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
@@ -656,23 +653,20 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">entropy</span><span class="p">(</span>
     <span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
     <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the relative von Neumann entropy (:math:`\\Entropy`) between two states</span>
-<span class="sd">    :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):</span>
+    <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the relative von Neumann entropy (:math:`\\Entropy`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">       \\Entropy(\\op{\\rho} \\Vert \\op{\\tau})</span>
 <span class="sd">           = \\trace\\bigl[\\op{\\rho} (\\log_\\Base\\op{\\rho} - \\log_\\Base\\op{\\tau})\\bigr].</span>
 
-<span class="sd">    If :python:`state_B` is not specified (i.e., :python:`None`), calculate the ordinary von Neumann entropy</span>
-<span class="sd">    of :python:`state_A` (:math:`\\op{\\rho}`) instead:</span>
+<span class="sd">    If :python:`state_B` is not specified (i.e., :python:`None`), calculate the ordinary von Neumann entropy of :python:`state_A` (:math:`\\op{\\rho}`) instead:</span>
 
 <span class="sd">    .. math:: \\Entropy(\\op{\\rho}) = \\trace[\\op{\\rho}\\log_\\Base\\op{\\rho}].</span>
 
-<span class="sd">    Here, :math:`\\Base` represents :python:`base`, which is the dimensionality of the unit</span>
-<span class="sd">    of information with which the entropy is measured.</span>
+<span class="sd">    Here, :math:`\\Base` represents :python:`base`, which is the dimensionality of the unit of information with which the entropy is measured.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
@@ -680,15 +674,14 @@
 <span class="sd">        The matrix representation of the first input state.</span>
 <span class="sd">    state_B : mat | QuantumObject</span>
 <span class="sd">        The matrix representation of the second input state.</span>
-<span class="sd">    base : num | sym | str</span>
+<span class="sd">    base : num | expr | str</span>
 <span class="sd">        The dimensionality of the unit of information with which the entropy is measured.</span>
 <span class="sd">        Defaults to :python:`2`.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    num | sym</span>
-<span class="sd">        The von Neumann entropy of the input :python:`state_A` (if :python:`state_B` is :python:`None`) or</span>
-<span class="sd">        the relative entropy between :python:`state_A` and :python:`state_B` (if :python:`state_B` is not :python:`None`).</span>
+<span class="sd">    num | expr</span>
+<span class="sd">        The von Neumann entropy of the input :python:`state_A` (if :python:`state_B` is :python:`None`) or the relative entropy between :python:`state_A` and :python:`state_B` (if :python:`state_B` is not :python:`None`).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_A</span><span class="p">)</span>
     <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state_A</span><span class="p">)</span>
@@ -720,7 +713,7 @@
             <span class="p">)</span>
         <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># von Neumann entropy.</span>
+        <span class="c1"># von Neumann entropy</span>
         <span class="n">entropy</span> <span class="o">=</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
             <span class="n">matrix_A</span> <span class="o">*</span> <span class="n">apply_function</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="n">base</span><span class="p">])</span>
         <span class="p">)</span>
@@ -736,11 +729,9 @@
     <span class="n">systems_A</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">systems_B</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems</span>
-<span class="sd">    :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of a composite quantum system</span>
-<span class="sd">    represented by :python:`state` (:math:`\\rho^{A,B}`):</span>
+    <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of a composite quantum system represented by :python:`state` (:math:`\\rho^{A,B}`):</span>
 
 <span class="sd">    .. math::</span>
 
@@ -758,21 +749,19 @@
 <span class="sd">        Defaults to :python:`[0]`.</span>
 <span class="sd">    systems_B : int | list[int]</span>
 <span class="sd">        The indices of the second subsystem.</span>
-<span class="sd">        Defaults to the complement of :python:`systems_A` with respect to the entire composition of</span>
-<span class="sd">        subsystems of :python:`state`.</span>
+<span class="sd">        Defaults to the complement of :python:`systems_A` with respect to the entire composition of subsystems of :python:`state`.</span>
 <span class="sd">    dim : int</span>
 <span class="sd">        The dimensionality of the composite quantum system (and its subsystems).</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`2`.</span>
-<span class="sd">    base : num | sym | str</span>
+<span class="sd">    base : num | expr | str</span>
 <span class="sd">        The dimensionality of the unit of information with which the mutual information is measured.</span>
 <span class="sd">        Defaults to the value of :python:`dim`.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    num | sym</span>
-<span class="sd">        The mutual information between the subsystems :python:`systems_A` and :python:`systems_B` of</span>
-<span class="sd">        the composite input :python:`state`.</span>
+<span class="sd">    num | expr</span>
+<span class="sd">        The mutual information between the subsystems :python:`systems_A` and :python:`systems_B` of the composite input :python:`state`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">systems_A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">systems_A</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">systems_A</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
@@ -815,42 +804,37 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">QuantitiesMixin</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A mixin for endowing classes with the ability to calculate various quantum quantities.</span>
 
-<span class="sd">    Any inheriting class must possess a matrix representation that can be accessed by either</span>
-<span class="sd">    an :python:`output()` method or a :python:`matrix` property.</span>
+<span class="sd">    Any inheriting class must possess a matrix representation that can be accessed by either an :python:`output()` method or a :python:`matrix` property.</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    The :py:class:`~qhronology.mechanics.quantities.QuantitiesMixin` mixin is used exclusively by</span>
-<span class="sd">    the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding</span>
-<span class="sd">    section (:ref:`sec:docs_states_quantities`) for documentation on its methods.</span>
+<span class="sd">    The :py:class:`~qhronology.mechanics.quantities.QuantitiesMixin` mixin is used exclusively by the :py:class:`~qhronology.quantum.states.QuantumState` class---please see the corresponding section (:ref:`sec:docs_states_quantities`) for documentation on its methods.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">trace</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the (complete) trace :math:`\\trace[\\op{\\rho}]`</span>
-<span class="sd">        of the internal state (:math:`\\op{\\rho}`).</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">trace</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the (complete) trace :math:`\\trace[\\op{\\rho}]` of the internal state (:math:`\\op{\\rho}`).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        num | sym</span>
+<span class="sd">        num | expr</span>
 <span class="sd">            The trace of the internal state.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">purity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">purity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the purity (:math:`\\Purity`) of the internal state (:math:`\\op{\\rho}`):</span>
 
 <span class="sd">        .. math:: \\Purity(\\op{\\rho}) = \\trace[\\op{\\rho}^2].</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        num | sym</span>
+<span class="sd">        num | expr</span>
 <span class="sd">            The purity of the internal state.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">purity</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the trace distance (:math:`\\TraceDistance`) between</span>
-<span class="sd">        the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the trace distance (:math:`\\TraceDistance`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):</span>
 
 <span class="sd">        .. math::</span>
 
@@ -864,14 +848,13 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        num | sym</span>
+<span class="sd">        num | expr</span>
 <span class="sd">            The trace distance between the internal state and :python:`state`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">distance</span><span class="p">(</span><span class="n">state_A</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_B</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">fidelity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the fidelity (:math:`\\Fidelity`) between</span>
-<span class="sd">        the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fidelity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the fidelity (:math:`\\Fidelity`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):</span>
 
 <span class="sd">        .. math::</span>
 
@@ -885,41 +868,38 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        num | sym</span>
+<span class="sd">        num | expr</span>
 <span class="sd">            The fidelity between the internal state and :python:`state`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">fidelity</span><span class="p">(</span><span class="n">state_A</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_B</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">entropy</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the relative von Neumann entropy (:math:`\\Entropy`) between</span>
-<span class="sd">        the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the relative von Neumann entropy (:math:`\\Entropy`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):</span>
 
 <span class="sd">        .. math::</span>
 
 <span class="sd">           \\Entropy(\\op{\\rho} \\Vert \\op{\\tau})</span>
 <span class="sd">               = \\trace\\bigl[\\op{\\rho} (\\log_\\Base\\op{\\rho} - \\log_\\Base\\op{\\tau})\\bigr].</span>
 
-<span class="sd">        If :python:`state` is not specified (i.e., :python:`None`), calculate the ordinary von Neumann entropy</span>
-<span class="sd">        of the internal state (:math:`\\op{\\rho}`) instead:</span>
+<span class="sd">        If :python:`state` is not specified (i.e., :python:`None`), calculate the ordinary von Neumann entropy of the internal state (:math:`\\op{\\rho}`) instead:</span>
 
 <span class="sd">        .. math:: \\Entropy(\\op{\\rho}) = \\trace[\\op{\\rho}\\log_\\Base\\op{\\rho}].</span>
 
-<span class="sd">        Here, :math:`\\Base` represents :python:`base`, which is the dimensionality of the unit</span>
-<span class="sd">        of information with which the entropy is measured.</span>
+<span class="sd">        Here, :math:`\\Base` represents :python:`base`, which is the dimensionality of the unit of information with which the entropy is measured.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
 <span class="sd">        state : mat | QuantumObject</span>
 <span class="sd">            The given state.</span>
-<span class="sd">        base : num | sym | str</span>
+<span class="sd">        base : num | expr | str</span>
 <span class="sd">            The dimensionality of the unit of information with which the entropy is measured.</span>
 <span class="sd">            Defaults to :python:`2`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        num | sym</span>
+<span class="sd">        num | expr</span>
 <span class="sd">            The (relative) von Neumann entropy.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">entropy</span><span class="p">(</span><span class="n">state_A</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_B</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">)</span>
@@ -928,11 +908,9 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">systems_A</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
         <span class="n">systems_B</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">sym</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems</span>
-<span class="sd">        :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`)</span>
-<span class="sd">        of the internal state (:math:`\\rho^{A,B}`):</span>
+        <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of the internal state (:math:`\\rho^{A,B}`):</span>
 
 <span class="sd">        .. math::</span>
 
@@ -949,17 +927,15 @@
 <span class="sd">            Defaults to :python:`[0]`.</span>
 <span class="sd">        systems_B : int | list[int]</span>
 <span class="sd">            The indices of the second subsystem.</span>
-<span class="sd">            Defaults to the complement of :python:`systems_A` with respect to the entire composition</span>
-<span class="sd">            of the subsystems of :python:`state`.</span>
-<span class="sd">        base : num | sym | str</span>
+<span class="sd">            Defaults to the complement of :python:`systems_A` with respect to the entire composition of the subsystems of :python:`state`.</span>
+<span class="sd">        base : num | expr | str</span>
 <span class="sd">            The dimensionality of the unit of information with which the mutual information is measured.</span>
 <span class="sd">            Defaults to the value of :python:`self.dim`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        num | sym</span>
-<span class="sd">            The mutual information between the subsystems :python:`systems_A` and :python:`systems_B`</span>
-<span class="sd">            of the internal state.</span>
+<span class="sd">        num | expr</span>
+<span class="sd">            The mutual information between the subsystems :python:`systems_A` and :python:`systems_B` of the internal state.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">mutual</span><span class="p">(</span>
             <span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>

@@ -27,7 +27,7 @@ Similarly, given some scalars :math:`a,b,c \in \Fields`, closure under (scalar) 
 .. math::
 
    \begin{aligned}
-       \text{(i) } &\text{(distributivity over }\SpaceHilbert\text{):} &c(\psi + \phi) &= c\phi + c\psi,\\
+       \text{(i) } &\text{(distributivity in }\SpaceVector\text{):} &c(\psi + \phi) &= c\phi + c\psi,\\
        \text{(ii) } &\text{(distributivity in }\Fields\text{):} &(a+b)\psi &= a\psi + b\psi,\\
        \text{(iii) } &\text{(identity):} &\exists! \ 1 \in \Fields \quad \text{such that} \quad 1\psi &= \psi.
    \end{aligned}
@@ -70,7 +70,7 @@ Let :math:`\SpaceVector` be a vector space over :math:`\Complexes`. Such a vecto
 .. math:: \inner{{}\cdot{}}{{}\cdot{}} : \SpaceVector \times \SpaceVector \rightarrow \Complexes.
    :label: eq:inner_map
 
-that by definition obeys
+By definition, such a map possesses the following properties:
 
 .. math::
    :label: eq:inner_axioms
