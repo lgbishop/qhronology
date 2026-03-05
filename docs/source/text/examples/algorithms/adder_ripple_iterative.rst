@@ -34,6 +34,10 @@ This example builds upon the four-qubit ripple-carry adder in :ref:`eg:adder_rip
 
    One iteration of a multi-qubit quantum ripple-carry adder.
 
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
+
 Implementation
 --------------
 

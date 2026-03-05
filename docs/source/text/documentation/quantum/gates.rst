@@ -186,6 +186,10 @@ Main class
 
    .. raw:: latex
 
+      \enlargethispage{-\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -347,6 +351,10 @@ Main class
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -635,6 +643,10 @@ Methods
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -681,6 +693,10 @@ Methods
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \newpage
 
 .. _`sec:docs_gates_subclasses`:
 
@@ -1454,6 +1470,10 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
+      \enlargethispage{-\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1753,6 +1773,10 @@ Please note that the documentation of these subclasses includes only properties 
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 

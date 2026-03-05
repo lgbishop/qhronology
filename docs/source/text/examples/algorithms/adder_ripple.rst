@@ -104,10 +104,6 @@ can be decoded, using :eq:`eq:decoding`, to be
 
    \vspace*{-\baselineskip}
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 Implementation
 --------------
 
