@@ -812,6 +812,15 @@ a.reference.internal > span.std.std-ref {
 
 a.reference.internal {
     color: var(--pst-color-primary) !important;
+}
+
+ul.nav.bd-sidenav {
+    color: var(--pst-color-primary) !important;
+    font-weight: bold;
+}
+
+nav.bd-toc-nav.page-toc {
+    color: var(--pst-color-primary) !important;
     font-weight: bold;
 }
 
