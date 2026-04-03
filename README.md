@@ -32,9 +32,9 @@ Designed to provide a powerful set of features with a simple and intuitive synta
 
 <p align="center">
   <picture>
-    <source width="500" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_algorithm_teleportation-dark.png">
-    <source width="500" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_algorithm_teleportation-light.png">
-    <img width="500" alt="Quantum teleportation" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_algorithm_teleportation-light.png">
+    <source width="420" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_algorithm_teleportation-dark.png">
+    <source width="420" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_algorithm_teleportation-light.png">
+    <img width="420" alt="Quantum teleportation" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_algorithm_teleportation-light.png">
   </picture>
 </p>
 
@@ -44,9 +44,9 @@ The fundamental indeterminism of quantum mechanics can be leveraged to provide r
 
 <p align="center">
   <picture>
-    <source width="300" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc-dark.png">
-    <source width="300" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc-light.png">
-    <img width="300" alt="Quantum closed timelike curve" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc-light.png">
+    <source width="250" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc-dark.png">
+    <source width="250" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc-light.png">
+    <img width="250" alt="Quantum closed timelike curve" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc-light.png">
   </picture>
 </p>
 
@@ -56,9 +56,9 @@ Quantum circuit diagrams provide a powerful picturalism through which any quantu
 
 <p align="center">
   <picture>
-    <source width="350" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_w-dark.png">
-    <source width="350" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_w-light.png">
-    <img width="350" alt="W state generation" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_w-light.png">
+    <source width="300" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_w-dark.png">
+    <source width="300" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_w-light.png">
+    <img width="300" alt="W state generation" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_w-light.png">
   </picture>
 </p>
 
@@ -68,9 +68,9 @@ Bundled with the project is a small collection of complete examples that showcas
 
 <p align="center">
   <picture>
-    <source width="300" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc_grandfather-dark.png">
-    <source width="300" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc_grandfather-light.png">
-    <img width="300" alt="Quantum grandfather paradox" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc_grandfather-light.png">
+    <source width="250" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc_grandfather-dark.png">
+    <source width="250" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc_grandfather-light.png">
+    <img width="250" alt="Quantum grandfather paradox" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/circuit_ctc_grandfather-light.png">
   </picture>
 </p>
 
@@ -80,9 +80,9 @@ All of the functions, classes, and methods in each of the various submodules hav
 
 <p align="center">
   <picture>
-    <source width="250" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_bloch_sphere-dark.png">
-    <source width="250" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_bloch_sphere-light.png">
-    <img width="250" alt="Bloch sphere" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_bloch_sphere-light.png">
+    <source width="220" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_bloch_sphere-dark.png">
+    <source width="220" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_bloch_sphere-light.png">
+    <img width="220" alt="Bloch sphere" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_bloch_sphere-light.png">
   </picture>
 </p>
 
@@ -94,15 +94,15 @@ The aim of this theory is to serve as a comprehensive and complete reference for
 
 <p align="center">
   <picture>
-    <source width="400" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_spacetime_minkowski-dark.png">
-    <source width="400" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_spacetime_minkowski-light.png">
-    <img width="400" alt="Minkowski spacetime" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_spacetime_minkowski-light.png">
+    <source width="350" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_spacetime_minkowski-dark.png">
+    <source width="350" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_spacetime_minkowski-light.png">
+    <img width="350" alt="Minkowski spacetime" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/diagram_spacetime_minkowski-light.png">
   </picture>
 </p>
 
 ## Package installation and structure
 
-Local installation of Qhronology from [PyPI](https://pypi.org/project/qhronology/) can be accomplished using `pip` ([website](https://pip.pypa.io/), [repository](https://github.com/pypa/pip)) via your operating system's command line, e.g.,
+Local installation of Qhronology from [PyPI](https://pypi.org/project/qhronology) can be accomplished using `pip` ([website](https://pip.pypa.io), [repository](https://github.com/pypa/pip)) via your operating system's command line, e.g.,
 
 ```sh
 $ pip install qhronology
@@ -195,9 +195,9 @@ phi_plus.print()
 
 > <p align="left">
 >   <picture>
->     <source width="175" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_bell-dark.png">
->     <source width="175" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_bell-light.png">
->     <img width="175" alt="Bell state generation" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_bell-light.png">
+>     <source width="155" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_bell-dark.png">
+>     <source width="155" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_bell-light.png">
+>     <img width="155" alt="Bell state generation" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_generation_bell-light.png">
 >   </picture>
 > </p>
 
@@ -270,9 +270,9 @@ print(teleporting_state.fidelity(teleported_state))
 
 > <p align="left">
 >   <picture>
->     <source width="470" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_teleportation-dark.png">
->     <source width="470" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_teleportation-light.png">
->     <img width="470" alt="Quantum teleportation" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_teleportation-light.png">
+>     <source width="420" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_teleportation-dark.png">
+>     <source width="420" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_teleportation-light.png">
+>     <img width="420" alt="Quantum teleportation" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_algorithms_teleportation-light.png">
 >   </picture>
 > </p>
 
@@ -347,9 +347,9 @@ unproven_PCTC_CV.print()
 
 > <p align="left">
 >   <picture>
->     <source width="175" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_ctcs_unproven-dark.png">
->     <source width="175" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_ctcs_unproven-light.png">
->     <img width="175" alt="Unproven-theorem paradox" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_ctcs_unproven-light.png">
+>     <source width="165" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_ctcs_unproven-dark.png">
+>     <source width="165" media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_ctcs_unproven-light.png">
+>     <img width="165" alt="Unproven-theorem paradox" src="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/source/figures/output/text_examples_ctcs_unproven-light.png">
 >   </picture>
 > </p>
 
