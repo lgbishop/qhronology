@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9e158f31" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=dbd491fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 04, 2026"/>
   </head>
   
   
@@ -429,7 +429,9 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Architecture</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/structure.html">Package structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/classes.html">Classes and their relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/types.html">Types</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum</span></p>
 <ul class="current nav bd-sidenav">
@@ -611,9 +613,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_u-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_u-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_u-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_u-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_u-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_u-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_u-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_u-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_u-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_u-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_u-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_u-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
@@ -627,9 +629,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_u3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_u3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_u3-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_u3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_u3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_u3-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_u3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_u3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_u3-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_u3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_u3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_u3-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
@@ -649,9 +651,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_ui-dark.png" style="width: 70.92px; height: 44.28px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ui-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ui-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_ui-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ui-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ui-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_ui-light.png" style="width: 70.92px; height: 44.28px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
@@ -671,9 +673,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_iu-dark.png" style="width: 70.92px; height: 44.28px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_iu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_iu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_iu-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_iu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_iu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_iu-light.png" style="width: 70.92px; height: 44.28px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
@@ -693,9 +695,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png" style="width: 78.80000000000001px; height: 65.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_uu-dark.png" style="width: 70.92px; height: 58.68px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_uu-light.png" style="width: 78.80000000000001px; height: 65.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_uu-light.png" style="width: 70.92px; height: 58.68px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
@@ -715,9 +717,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_cu-dark.png" style="width: 70.92px; height: 47.16px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_cu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_cu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_cu-light.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_cu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_cu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_cu-light.png" style="width: 70.92px; height: 47.16px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
@@ -737,9 +739,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_uc-dark.png" style="width: 70.92px; height: 47.16px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uc-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uc-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_uc-light.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_uc-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_uc-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_uc-light.png" style="width: 70.92px; height: 47.16px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
@@ -759,9 +761,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_au-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_au-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_au-dark.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_au-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_au-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_au-dark.png" style="width: 70.92px; height: 47.16px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_au-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_au-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_au-light.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_au-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_au-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_au-light.png" style="width: 70.92px; height: 47.16px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
@@ -785,9 +787,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png" style="width: 78.80000000000001px; height: 84.0px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_ccu-dark.png" style="width: 70.92px; height: 75.6px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png" style="width: 78.80000000000001px; height: 84.0px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_ccu-light.png" style="width: 70.92px; height: 75.6px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
@@ -812,9 +814,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png" style="width: 78.80000000000001px; height: 71.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_custom_auc-dark.png" style="width: 70.92px; height: 64.08px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_auc-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_auc-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_auc-light.png" style="width: 78.80000000000001px; height: 71.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_custom_auc-light.png"><img alt="../../../_images/text_examples_docstrings_gate_custom_auc-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_custom_auc-light.png" style="width: 70.92px; height: 64.08px;" />
 </a>
 </div></blockquote>
 </dd></dl>
@@ -1154,7 +1156,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </section>
 <section id="subclasses">
 <span id="sec-docs-gates-subclasses"></span><h2>Subclasses<a class="headerlink" href="#subclasses" title="Link to this heading">#</a></h2>
-<p>Most of the canonical gates used in standard quantum computing theory are implemented in Qhronology as an assortment of subclasses of the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class. It is important to be aware of how, even though they share many of the same arguments and properties, the usage of these classes can differ greatly. This is especially true among a few distinct categorizations of gates, namely <em>dimensionality</em> and <em>compositionality</em>, which are summarized in the tables below:</p>
+<p>Most of the canonical gates used in standard quantum computing theory are implemented in Qhronology as an assortment of subclasses of the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class. It is important to be aware of how, even though they share many of the same arguments and properties, the usage of these classes can differ greatly. This is especially true among a few distinct categorizations of gates, namely <em>dimensionality</em> and <em>compositionality</em>, which are summarized below:</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
 <caption><span class="caption-number">Table 4 </span><span class="caption-text">Classifications and aliases of Qhronology’s <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> subclasses.</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
@@ -1292,9 +1294,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_x-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_x-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_x-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_x-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_x-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_x-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_x-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_x-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_x-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_x-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_x-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_x-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -1306,9 +1308,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_y-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_y-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_y-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_y-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_y-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_y-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_y-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1320,9 +1322,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_z-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_z-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_z-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_z-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_z-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_z-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_z-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1334,9 +1336,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_i-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_i-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_i-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_i-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_i-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_i-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_i-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_i-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_i-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_i-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_i-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_i-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ZZ</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Z⊗Z&quot;</span><span class="p">)</span>
@@ -1350,9 +1352,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_zz-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_zz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_zz-dark.png" style="width: 101.2px; height: 65.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_zz-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_zz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_zz-dark.png" style="width: 91.08px; height: 58.68px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_zz-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_zz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_zz-light.png" style="width: 101.2px; height: 65.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_zz-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_zz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_zz-light.png" style="width: 91.08px; height: 58.68px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CZ</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1366,9 +1368,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_cz-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_cz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_cz-dark.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_cz-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_cz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_cz-dark.png" style="width: 70.92px; height: 47.16px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_cz-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_cz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_cz-light.png" style="width: 78.80000000000001px; height: 52.400000000000006px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_cz-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_cz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_cz-light.png" style="width: 70.92px; height: 47.16px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">R_xx</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span>
@@ -1388,9 +1390,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_rxx-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_rxx-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_rxx-dark.png" style="width: 145.6px; height: 65.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_rxx-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_rxx-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_pauli_rxx-dark.png" style="width: 131.04px; height: 58.68px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_rxx-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_rxx-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_rxx-light.png" style="width: 145.6px; height: 65.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_pauli_rxx-light.png"><img alt="../../../_images/text_examples_docstrings_gate_pauli_rxx-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_pauli_rxx-light.png" style="width: 131.04px; height: 58.68px;" />
 </a>
 </div></blockquote>
 <dl class="py property">
@@ -1477,9 +1479,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_gellmann_l-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_gellmann_l-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_gellmann_l-dark.png" style="width: 101.2px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_gellmann_l-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_gellmann_l-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_gellmann_l-dark.png" style="width: 91.08px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_gellmann_l-light.png"><img alt="../../../_images/text_examples_docstrings_gate_gellmann_l-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_gellmann_l-light.png" style="width: 101.2px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_gellmann_l-light.png"><img alt="../../../_images/text_examples_docstrings_gate_gellmann_l-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_gellmann_l-light.png" style="width: 91.08px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">GellMann</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1492,9 +1494,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_gellmann_i-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_gellmann_i-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_gellmann_i-dark.png" style="width: 101.2px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_gellmann_i-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_gellmann_i-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_gellmann_i-dark.png" style="width: 91.08px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_gellmann_i-light.png"><img alt="../../../_images/text_examples_docstrings_gate_gellmann_i-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_gellmann_i-light.png" style="width: 101.2px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_gellmann_i-light.png"><img alt="../../../_images/text_examples_docstrings_gate_gellmann_i-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_gellmann_i-light.png" style="width: 91.08px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <dl class="py property">
@@ -1569,9 +1571,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_x-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_x-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_rotation_x-dark.png" style="width: 101.2px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_x-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_x-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_rotation_x-dark.png" style="width: 91.08px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_x-light.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_x-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_rotation_x-light.png" style="width: 101.2px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_x-light.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_x-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_rotation_x-light.png" style="width: 91.08px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">R_y</span> <span class="o">=</span> <span class="n">Rotation</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="s2">&quot;φ&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R_y&quot;</span><span class="p">)</span>
@@ -1583,9 +1585,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_y-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_y-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_rotation_y-dark.png" style="width: 101.2px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_y-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_y-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_rotation_y-dark.png" style="width: 91.08px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_y-light.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_y-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_rotation_y-light.png" style="width: 101.2px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_y-light.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_y-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_rotation_y-light.png" style="width: 91.08px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">R_z</span> <span class="o">=</span> <span class="n">Rotation</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R_z&quot;</span><span class="p">)</span>
@@ -1597,9 +1599,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_z-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_z-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_rotation_z-dark.png" style="width: 101.2px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_z-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_z-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_rotation_z-dark.png" style="width: 91.08px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_z-light.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_z-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_rotation_z-light.png" style="width: 101.2px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_rotation_z-light.png"><img alt="../../../_images/text_examples_docstrings_gate_rotation_z-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_rotation_z-light.png" style="width: 91.08px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <dl class="py property">
@@ -1665,9 +1667,9 @@ Defaults to the unit root given by <code class="code highlight python docutils l
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_p-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_p-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_phase_p-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_p-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_p-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_phase_p-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_p-light.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_p-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_phase_p-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_p-light.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_p-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_phase_p-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">S</span> <span class="o">=</span> <span class="n">Phase</span><span class="p">(</span><span class="n">exponent</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
@@ -1679,9 +1681,9 @@ Defaults to the unit root given by <code class="code highlight python docutils l
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_s-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_s-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_phase_s-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_s-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_s-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_phase_s-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_s-light.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_s-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_phase_s-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_s-light.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_s-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_phase_s-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span> <span class="o">=</span> <span class="n">Phase</span><span class="p">(</span><span class="n">exponent</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
@@ -1693,9 +1695,9 @@ Defaults to the unit root given by <code class="code highlight python docutils l
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_t-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_t-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_phase_t-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_t-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_t-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_phase_t-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_t-light.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_t-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_phase_t-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_t-light.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_t-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_phase_t-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">P3</span> <span class="o">=</span> <span class="n">Phase</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1708,9 +1710,9 @@ Defaults to the unit root given by <code class="code highlight python docutils l
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_p3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_p3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_phase_p3-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_p3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_p3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_phase_p3-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_p3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_p3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_phase_p3-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_p3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_p3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_phase_p3-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">W</span> <span class="o">=</span> <span class="n">Phase</span><span class="p">(</span><span class="n">phase</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;W&quot;</span><span class="p">)</span>
@@ -1723,9 +1725,9 @@ Defaults to the unit root given by <code class="code highlight python docutils l
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_w-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_w-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_phase_w-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_w-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_w-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_phase_w-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_w-light.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_w-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_phase_w-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_phase_w-light.png"><img alt="../../../_images/text_examples_docstrings_gate_phase_w-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_phase_w-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <dl class="py property">
@@ -1792,9 +1794,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_d-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_d-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_d-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_d-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_d-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_d-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_d-light.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_d-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_d-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_d-light.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_d-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_d-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">D3</span> <span class="o">=</span> <span class="n">Diagonal</span><span class="p">(</span>
@@ -1810,9 +1812,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_d3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_d3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_d3-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_d3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_d3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_d3-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_d3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_d3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_d3-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_d3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_d3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_d3-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">P</span> <span class="o">=</span> <span class="n">Diagonal</span><span class="p">(</span>
@@ -1829,9 +1831,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_p-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_p-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_p-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_p-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_p-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_p-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_p-light.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_p-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_p-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_diagonal_p-light.png"><img alt="../../../_images/text_examples_docstrings_gate_diagonal_p-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_diagonal_p-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <dl class="py property">
@@ -1889,9 +1891,9 @@ Is an argument of the superclass <a class="reference internal" href="#qhronology
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_s-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_s-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_s-dark.png" style="width: 34.800000000000004px; height: 47.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_s-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_s-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_s-dark.png" style="width: 31.32px; height: 42.48px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_s-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_s-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_s-light.png" style="width: 34.800000000000004px; height: 47.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_s-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_s-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_s-light.png" style="width: 31.32px; height: 42.48px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">S3</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1910,9 +1912,9 @@ Is an argument of the superclass <a class="reference internal" href="#qhronology
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_s3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_s3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_s3-dark.png" style="width: 34.800000000000004px; height: 47.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_s3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_s3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_s3-dark.png" style="width: 31.32px; height: 42.48px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_s3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_s3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_s3-light.png" style="width: 34.800000000000004px; height: 47.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_s3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_s3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_s3-light.png" style="width: 31.32px; height: 42.48px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SIS</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
@@ -1930,9 +1932,9 @@ Is an argument of the superclass <a class="reference internal" href="#qhronology
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_sis-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_sis-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_sis-dark.png" style="width: 34.800000000000004px; height: 78.80000000000001px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_sis-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_sis-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_sis-dark.png" style="width: 31.32px; height: 70.92px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_sis-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_sis-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_sis-light.png" style="width: 34.800000000000004px; height: 78.80000000000001px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_sis-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_sis-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_sis-light.png" style="width: 31.32px; height: 70.92px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CSWAP</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1950,9 +1952,9 @@ Is an argument of the superclass <a class="reference internal" href="#qhronology
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_cswap-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_cswap-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_cswap-dark.png" style="width: 34.800000000000004px; height: 75.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_cswap-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_cswap-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_cswap-dark.png" style="width: 31.32px; height: 67.67999999999999px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_cswap-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_cswap-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_cswap-light.png" style="width: 34.800000000000004px; height: 75.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_cswap-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_cswap-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_cswap-light.png" style="width: 31.32px; height: 67.67999999999999px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SCS</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -1970,9 +1972,9 @@ Is an argument of the superclass <a class="reference internal" href="#qhronology
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_scs-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_scs-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_scs-dark.png" style="width: 34.800000000000004px; height: 78.80000000000001px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_scs-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_scs-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_scs-dark.png" style="width: 31.32px; height: 70.92px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_scs-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_scs-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_scs-light.png" style="width: 34.800000000000004px; height: 78.80000000000001px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_scs-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_scs-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_scs-light.png" style="width: 31.32px; height: 70.92px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">RSWAP</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span>
@@ -1991,9 +1993,9 @@ Is an argument of the superclass <a class="reference internal" href="#qhronology
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_rswap-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_rswap-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_rswap-dark.png" style="width: 123.2px; height: 65.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_rswap-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_rswap-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_rswap-dark.png" style="width: 110.88px; height: 58.68px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_rswap-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_rswap-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_rswap-light.png" style="width: 123.2px; height: 65.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_rswap-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_rswap-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_rswap-light.png" style="width: 110.88px; height: 58.68px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PSWAP</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span>
@@ -2013,9 +2015,9 @@ Is an argument of the superclass <a class="reference internal" href="#qhronology
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_pswap-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_pswap-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_pswap-dark.png" style="width: 145.6px; height: 65.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_pswap-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_pswap-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_swap_pswap-dark.png" style="width: 131.04px; height: 58.68px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_pswap-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_pswap-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_pswap-light.png" style="width: 145.6px; height: 65.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_swap_pswap-light.png"><img alt="../../../_images/text_examples_docstrings_gate_swap_pswap-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_swap_pswap-light.png" style="width: 131.04px; height: 58.68px;" />
 </a>
 </div></blockquote>
 </dd></dl>
@@ -2061,9 +2063,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_summation_sum-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_summation_sum-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_summation_sum-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_summation_sum-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_summation_sum-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_summation_sum-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_summation_sum-light.png"><img alt="../../../_images/text_examples_docstrings_gate_summation_sum-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_summation_sum-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_summation_sum-light.png"><img alt="../../../_images/text_examples_docstrings_gate_summation_sum-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_summation_sum-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SUM3</span> <span class="o">=</span> <span class="n">Summation</span><span class="p">(</span><span class="n">shift</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -2076,9 +2078,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_summation_sum3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_summation_sum3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_summation_sum3-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_summation_sum3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_summation_sum3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_summation_sum3-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_summation_sum3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_summation_sum3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_summation_sum3-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_summation_sum3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_summation_sum3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_summation_sum3-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <dl class="py property">
@@ -2133,9 +2135,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_n-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_n-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_n-dark.png" style="width: 34.800000000000004px; height: 14.8px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_n-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_n-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_n-dark.png" style="width: 31.32px; height: 13.32px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_n-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_n-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_n-light.png" style="width: 34.800000000000004px; height: 14.8px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_n-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_n-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_n-light.png" style="width: 31.32px; height: 13.32px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -2149,9 +2151,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_cnot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_cnot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_cnot-dark.png" style="width: 34.800000000000004px; height: 43.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_cnot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_cnot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_cnot-dark.png" style="width: 31.32px; height: 38.879999999999995px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_cnot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_cnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_cnot-light.png" style="width: 34.800000000000004px; height: 43.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_cnot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_cnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_cnot-light.png" style="width: 31.32px; height: 38.879999999999995px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ANOT</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">anticontrols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -2165,9 +2167,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_anot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_anot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_anot-dark.png" style="width: 34.800000000000004px; height: 43.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_anot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_anot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_anot-dark.png" style="width: 31.32px; height: 38.879999999999995px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_anot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_anot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_anot-light.png" style="width: 34.800000000000004px; height: 43.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_anot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_anot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_anot-light.png" style="width: 31.32px; height: 38.879999999999995px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CCNOT</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
@@ -2185,9 +2187,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_ccnot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_ccnot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_ccnot-dark.png" style="width: 34.800000000000004px; height: 74.8px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_ccnot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_ccnot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_ccnot-dark.png" style="width: 31.32px; height: 67.32px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_ccnot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_ccnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_ccnot-light.png" style="width: 34.800000000000004px; height: 74.8px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_ccnot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_ccnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_ccnot-light.png" style="width: 31.32px; height: 67.32px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">RNOT</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span>
@@ -2203,9 +2205,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png" style="width: 123.2px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_rnot-dark.png" style="width: 110.88px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_rnot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_rnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_rnot-light.png" style="width: 123.2px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_rnot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_rnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_rnot-light.png" style="width: 110.88px; height: 30.24px;" />
 </a>
 </div></blockquote>
 </dd></dl>
@@ -2263,9 +2265,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_h-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_h-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_h-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_h-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_h-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_h-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_h-light.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_h-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_h-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_h-light.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_h-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_h-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">HH</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;H⊗H&quot;</span><span class="p">)</span>
@@ -2279,9 +2281,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_hh-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_hh-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_hh-dark.png" style="width: 101.2px; height: 65.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_hh-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_hh-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_hh-dark.png" style="width: 91.08px; height: 58.68px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_hh-light.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_hh-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_hh-light.png" style="width: 101.2px; height: 65.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_hh-light.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_hh-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_hh-light.png" style="width: 91.08px; height: 58.68px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">H3</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -2294,9 +2296,9 @@ This means that the constructor does not take <code class="code highlight python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_h3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_h3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_h3-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_h3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_h3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_h3-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_h3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_h3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_h3-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_hadamard_h3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_hadamard_h3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_hadamard_h3-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 </dd></dl>
@@ -2370,9 +2372,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_f-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_f-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_fourier_f-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_f-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_f-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_fourier_f-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_f-light.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_f-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_fourier_f-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_f-light.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_f-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_fourier_f-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">F3</span> <span class="o">=</span> <span class="n">Fourier</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -2385,9 +2387,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_f3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_f3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_fourier_f3-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_f3-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_f3-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_fourier_f3-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_f3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_f3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_fourier_f3-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_f3-light.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_f3-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_fourier_f3-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">FF</span> <span class="o">=</span> <span class="n">Fourier</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
@@ -2401,9 +2403,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_ff-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_ff-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_fourier_ff-dark.png" style="width: 78.80000000000001px; height: 65.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_ff-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_ff-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_fourier_ff-dark.png" style="width: 70.92px; height: 58.68px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_ff-light.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_ff-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_fourier_ff-light.png" style="width: 78.80000000000001px; height: 65.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_fourier_ff-light.png"><img alt="../../../_images/text_examples_docstrings_gate_fourier_ff-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_fourier_ff-light.png" style="width: 70.92px; height: 58.68px;" />
 </a>
 </div></blockquote>
 <dl class="py property">
@@ -2481,9 +2483,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_basis-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_basis-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_measurement_basis-dark.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_basis-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_basis-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_measurement_basis-dark.png" style="width: 70.92px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_basis-light.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_basis-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_measurement_basis-light.png" style="width: 78.80000000000001px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_basis-light.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_basis-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_measurement_basis-light.png" style="width: 70.92px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pauli_matrices</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
@@ -2497,9 +2499,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_pauli-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_pauli-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_measurement_pauli-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_pauli-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_pauli-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_measurement_pauli-dark.png" style="width: 70.92px; height: 44.28px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_pauli-light.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_pauli-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_measurement_pauli-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_pauli-light.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_pauli-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_measurement_pauli-light.png" style="width: 70.92px; height: 44.28px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.matrices</span><span class="w"> </span><span class="kn">import</span> <span class="n">ket</span>
@@ -2515,9 +2517,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_pm-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_pm-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_measurement_pm-dark.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_pm-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_pm-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_measurement_pm-dark.png" style="width: 70.92px; height: 44.28px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_pm-light.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_pm-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_measurement_pm-light.png" style="width: 78.80000000000001px; height: 49.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_measurement_pm-light.png"><img alt="../../../_images/text_examples_docstrings_gate_measurement_pm-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_measurement_pm-light.png" style="width: 70.92px; height: 44.28px;" />
 </a>
 </div></blockquote>
 <dl class="py property">
@@ -2603,9 +2605,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_hh-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_hh-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_composition_hh-dark.png" style="width: 101.2px; height: 81.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_hh-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_hh-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_composition_hh-dark.png" style="width: 91.08px; height: 73.08px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_hh-light.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_hh-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_composition_hh-light.png" style="width: 101.2px; height: 81.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_hh-light.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_hh-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_composition_hh-light.png" style="width: 91.08px; height: 73.08px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">XII</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -2626,9 +2628,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_xyz-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_xyz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_composition_xyz-dark.png" style="width: 78.80000000000001px; height: 128.4px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_xyz-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_xyz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_composition_xyz-dark.png" style="width: 70.92px; height: 115.56px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_xyz-light.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_xyz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_composition_xyz-light.png" style="width: 78.80000000000001px; height: 128.4px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_xyz-light.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_xyz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_composition_xyz-light.png" style="width: 70.92px; height: 115.56px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CNII</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -2638,9 +2640,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_cncn-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_cncn-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_composition_cncn-dark.png" style="width: 34.800000000000004px; height: 103.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_cncn-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_cncn-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_composition_cncn-dark.png" style="width: 31.32px; height: 92.88px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_cncn-light.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_cncn-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_composition_cncn-light.png" style="width: 34.800000000000004px; height: 103.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_composition_cncn-light.png"><img alt="../../../_images/text_examples_docstrings_gate_composition_cncn-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_composition_cncn-light.png" style="width: 31.32px; height: 92.88px;" />
 </a>
 </div></blockquote>
 <dl class="py property">
@@ -2721,9 +2723,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_xyz-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_xyz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_stack_xyz-dark.png" style="width: 78.80000000000001px; height: 128.4px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_xyz-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_xyz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_stack_xyz-dark.png" style="width: 70.92px; height: 115.56px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_xyz-light.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_xyz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_stack_xyz-light.png" style="width: 78.80000000000001px; height: 128.4px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_xyz-light.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_xyz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_stack_xyz-light.png" style="width: 70.92px; height: 115.56px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gates</span> <span class="o">=</span> <span class="p">[</span>
@@ -2737,9 +2739,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_cnots-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_cnots-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_stack_cnots-dark.png" style="width: 34.800000000000004px; height: 229.60000000000002px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_cnots-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_cnots-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_stack_cnots-dark.png" style="width: 31.32px; height: 206.64px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_cnots-light.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_cnots-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_stack_cnots-light.png" style="width: 34.800000000000004px; height: 229.60000000000002px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_cnots-light.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_cnots-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_stack_cnots-light.png" style="width: 31.32px; height: 206.64px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">GellMann</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
@@ -2748,9 +2750,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_gellmann-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_gellmann-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_stack_gellmann-dark.png" style="width: 101.2px; height: 255.20000000000002px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_gellmann-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_gellmann-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_stack_gellmann-dark.png" style="width: 91.08px; height: 229.67999999999998px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_gellmann-light.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_gellmann-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_stack_gellmann-light.png" style="width: 101.2px; height: 255.20000000000002px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_gellmann-light.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_gellmann-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_stack_gellmann-light.png" style="width: 91.08px; height: 229.67999999999998px;" />
 </a>
 </div></blockquote>
 </dd></dl>

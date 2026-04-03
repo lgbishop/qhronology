@@ -96,14 +96,14 @@ Main class
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_qubit_vector-dark.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-dark
 
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_qubit_vector-light.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-light
 
@@ -151,14 +151,14 @@ Main class
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_qutrit_vector-dark.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-dark
 
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_qutrit_vector-light.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-light
 
@@ -199,14 +199,14 @@ Main class
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_qubit_pure-dark.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-dark
 
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_qubit_pure-light.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-light
 
@@ -246,14 +246,14 @@ Main class
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_qubit_mixed-dark.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-dark
 
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_qubit_mixed-light.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-light
 
@@ -294,14 +294,14 @@ Main class
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_custom_vector-dark.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-dark
 
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_custom_vector-light.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-light
 
@@ -338,14 +338,14 @@ Main class
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_custom_matrix-dark.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-dark
 
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_unipartite_custom_matrix-light.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-light
 
@@ -385,14 +385,14 @@ Main class
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_bipartite_bell-dark.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-dark
 
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_bipartite_bell-light.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-light
 
@@ -440,14 +440,14 @@ Main class
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_tripartite_ghz-dark.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-dark
 
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_tripartite_ghz-light.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-light
 
@@ -495,14 +495,14 @@ Main class
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_tripartite_w-dark.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-dark
 
       .. only:: html
 
          .. image:: /figures/output/text_examples_docstrings_state_tripartite_w-light.png
-            :scale: 40 %
+            :scale: 36 %
             :align: left
             :class: only-light
 
@@ -913,10 +913,6 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.dagger
 

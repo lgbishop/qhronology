@@ -209,12 +209,12 @@ Quantum circuit diagrams provide a powerful picturalism through which any quantu
 .. only:: html
 
    .. image:: /figures/output/text_examples_algorithms_generation_w-dark.png
-      :scale: 44 %
+      :scale: 40 %
       :align: center
       :class: only-dark
 
    .. image:: /figures/output/text_examples_algorithms_generation_w-light.png
-      :scale: 44 %
+      :scale: 40 %
       :align: center
       :class: only-light
 
@@ -487,7 +487,7 @@ Within the package and documentation, SymPy and NumPy are imported in their conv
 
    \end{code}
 
-Qhronology is compatible with the following versions (from `requirements.txt <https://github.com/lgbishop/qhronology/src/branch/latest/requirements.txt>`_):
+Qhronology is compatible with the following versions (from `requirements.txt <https://github.com/lgbishop/qhronology/blob/latest/requirements.txt>`_):
 
 .. raw:: latex
 
@@ -546,14 +546,14 @@ Generation of the :math:`\ket{\Bell^+}` Bell state from primitive :math:`\ket{0}
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_generation_bell-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_generation_bell-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 
@@ -601,14 +601,14 @@ Quantum teleportation of an arbitrary qubit :math:`\ket{\psi} = a\ket{0} + b\ket
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_teleportation-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_teleportation-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 
@@ -660,14 +660,14 @@ Computing resolutions to the unproven-theorem paradox according to various presc
    .. only:: html
 
       .. image:: /figures/output/text_examples_ctcs_unproven-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_ctcs_unproven-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 
@@ -705,9 +705,9 @@ Documentation
 The latest version of the documentation for the package is available at:
 
 - The official website: https://qhronology.org
-- The official PDF document: `Qhronology.pdf <https://github.com/lgbishop/qhronology/src/branch/latest/docs/_build/latex/Qhronology.pdf>`_
+- The official PDF document: `Qhronology.pdf <https://github.com/lgbishop/qhronology/blob/latest/docs/_build/latex/Qhronology.pdf>`_
 
-Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repository <https://github.com/sphinx-doc/sphinx>`_), with their shared source files residing within the ``docs`` directory at the root of the project's repository. This includes all project text and artwork. Please see `shell-sphinx.nix <https://github.com/lgbishop/qhronology/src/branch/latest/docs/shell-sphinx.nix>`_ within that directory for a list of dependencies required to build both documentation targets. Note that a full LaTeX system installation from 2024 or later is required to build the project's PDF documentation, figures, and artwork (including the logo). Also note that the documentation's rendered circuit diagrams (generated from the package itself) were created using a custom LaTeX template (`render-text.tex <https://github.com/lgbishop/qhronology/src/branch/latest/docs/source/figures/render-text.tex>`_) and associated shell script :inlinelatex:`\linebreak` (`render-text.sh <https://github.com/lgbishop/qhronology/src/branch/latest/docs/source/figures/render-text.sh>`_).
+Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repository <https://github.com/sphinx-doc/sphinx>`_), with their shared source files residing within the ``docs`` directory at the root of the project's repository. This includes all project text and artwork. Please see `shell-sphinx.nix <https://github.com/lgbishop/qhronology/blob/latest/docs/shell-sphinx.nix>`_ within that directory for a list of dependencies required to build both documentation targets. Note that a full LaTeX system installation from 2024 or later is required to build the project's PDF documentation, figures, and artwork (including the logo). Also note that the documentation's rendered circuit diagrams (generated from the package itself) were created using a custom LaTeX template (`render-text.tex <https://github.com/lgbishop/qhronology/blob/latest/docs/source/figures/render-text.tex>`_) and associated shell script :inlinelatex:`\linebreak` (`render-text.sh <https://github.com/lgbishop/qhronology/blob/latest/docs/source/figures/render-text.sh>`_).
 
 .. include:: ./../../LICENSE
 
@@ -750,7 +750,7 @@ Citation
      author = {Bishop, Lachlan G.},
      year = 2025,
      month = jun,
-     url = {https://github.com/lgbishop/qhronology/src/branch/latest/docs/_build/latex/Qhronology.pdf},
+     url = {https://github.com/lgbishop/qhronology/blob/latest/docs/_build/latex/Qhronology.pdf},
      addendum = {Available online: \url{https://qhronology.org}}
    }
 

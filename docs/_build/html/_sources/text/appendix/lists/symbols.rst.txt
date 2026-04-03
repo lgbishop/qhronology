@@ -19,7 +19,7 @@ List of symbols
    ":math:`\dim({}\cdot{})`", "dimension"
    ":math:`\Span({}\cdot{})`", "(linear) span"
    ":math:`\overline{{}\cdot{}}`", "complex conjugate (the mathematician's notation)"
-   ":math:`\conj{{}\cdot{}}`", "complex conjugate (the physicist's notation)"
+   ":math:`\conj{{}\cdot{}}{}`", "complex conjugate (the physicist's notation)"
    ":math:`{{}\cdot{}}^\transpose`", "transpose"
    ":math:`{{}\cdot{}}^\dagger`", "Hermitian conjugate (conjugate transpose)"
    ":math:`\norm{{}\cdot{}}_p`", "vector :math:`p`-norm"

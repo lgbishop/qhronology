@@ -1,0 +1,687 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Classes and their relationships &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a0dcfd21" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=dbd491fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/documentation/architecture/classes';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Types" href="types.html" />
+    <link rel="prev" title="Package structure" href="structure.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0.3" />
+    <meta name="docbuild:last-update" content="Apr 04, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../live/part-live.html">
+    Live
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://arxiv.org/abs/2601.17459" title="arXiv Paper" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/arxiv-logomark-small-square.svg" class="icon-link-image" alt="arXiv Paper"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../live/part-live.html">
+    Live
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://arxiv.org/abs/2601.17459" title="arXiv Paper" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/arxiv-logomark-small-square.svg" class="icon-link-image" alt="arXiv Paper"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Architecture</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="structure.html">Package structure</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Classes and their relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../quantum/states.html">States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum/gates.html">Gates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum/circuits.html">Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quantum/prescriptions.html">Prescriptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mechanics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mechanics/matrices.html">Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mechanics/quantities.html">Quantities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mechanics/operations.html">Operations</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../part-documentation.html" class="nav-link">Documentation</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Classes and their relationships</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="classes-and-their-relationships">
+<span id="sec-docs-architecture-classes"></span><h1>Classes and their relationships<a class="headerlink" href="#classes-and-their-relationships" title="Link to this heading">#</a></h1>
+<p>Qhronology presents an innovative approach to describing both simulations of quantum mechanics and the various associated mathematical constructs and processes which collectively form the foundation of contemporary quantum physics. While this is not novel in the world of quantum libraries and toolkits, Qhronology is unique in how it places great emphasis on modularity in its descriptions of quantum states, gates, and circuits. Perhaps the best way by which this aspect can be appreciated is to gain a deeper understanding of the package’s interface, specifically that manifested by its user-facing classes.</p>
+<p><a class="reference internal" href="#fig-diagram-classes"><span class="std std-numref">Figure 7</span></a> contains a simplified UML class diagram, depicting the majority of the package’s class objects and the relationships (including inheritance and composition) between them. As shown in this diagram, the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> class is central to Qhronology’s functionality. Being an <em>abstract</em> base class (and so is not meant to be instantiated itself), <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> constitutes the common substructure upon which all primitive quantum-mechanical objects are built. Specifically, this consists of the two main classes:</p>
+<ul class="simple">
+<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">QuantumState</span></code>: for creating quantum states. Instances provide complete descriptions of specific states and have <em>mutable</em> internal states.</p></li>
+<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">QuantumGate</span></code>: for creating quantum gates. Instances provide complete descriptions of specific gates and have <em>immutable</em> internal states.</p></li>
+</ul>
+<p>These are implemented as <em>extending</em> subclasses, where each adds to and modifies the functionality of the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> base class primarily through class properties and methods. Instances of these derived classes exhaustively describe their corresponding quantum constructs: in addition to containing a precise mathematical specification (including metadata regarding symbols and their associated constraints), they can be inspected, visualized, and, in the case of quantum states, transformed (mutated) via quantum operations. Here, <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> provides the core matrix, symbolic, and visualization machinery, in addition to all other internal implementation details required by Qhronology’s programmatic description of fundamental quantum objects. Thus, as both states and gates are simply just specific types of such objects, then using the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> class as a shared foundation is a natural arrangement—one which greatly simplifies the project’s source code by directly reducing redundancy.</p>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/diagram_classes-dark.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../../_images/diagram_classes-dark.png" style="width: 575.2800000000001px; height: 972.7400000000001px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/diagram_classes-light.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../../_images/diagram_classes-light.png" style="width: 575.2800000000001px; height: 972.7400000000001px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-diagram-classes" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/diagram_classes-light.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../../_images/diagram_classes-light.png" style="width: 609.12px; height: 1029.96px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 7 </span><span class="caption-text">A simplified UML (Unified Modeling Language) class diagram depicting the relationships between Qhronology’s core classes.</span><a class="headerlink" href="#fig-diagram-classes" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="circuit-composition">
+<span id="sec-docs-architecture-composition"></span><h2>Circuit composition<a class="headerlink" href="#circuit-composition" title="Link to this heading">#</a></h2>
+<p>Having gained an appreciation for Qhronology’s implementation of quantum states and gates, we now turn our attention to that of quantum circuits. In standard quantum theory, a circuit can be thought of as being essentially an assembly of states and gates that corresponds to a mathematical description of some specific quantum-mechanical process. This ontology is reflected in Qhronology’s circuit construction—facilitated by the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCircuit</span></code> class—whereby circuit instances are created by passing <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumState</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumGate</span></code> objects to the appropriate arguments in the class constructor (or, alternatively, to the appropriate properties post-instantiation). In a pragmatic (albeit reductive) sense, <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCircuit</span></code> objects are merely containers for their various elementary components (while also possessing other necessary functionality). Of all the class’s abilities, the most defining is the computation of the output state (of the circuit assembled from its state and gate components), which may be returned as either a SymPy matrix or a <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumState</span></code> instance.</p>
+<p>Building upon <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCircuit</span></code>, Qhronology’s <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCTC</span></code> class provides the core scaffolding by which quantum circuits that possess CTCs are described. As far as the programmatic specification of such circuits is concerned, the main practical difference between them and their CTC-free counterparts is that the quantum systems of the former are not exclusively chronology-respecting—those which comprise the CTC subsystem are, by definition, chronology-violating. Qhronology recognizes this sentiment, and accordingly <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCTC</span></code> extends the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCircuit</span></code> class only by the addition of the <code class="code highlight python docutils literal highlight-python"><span class="n">systems_respecting</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">systems_violating</span></code> constructor arguments (along with homonymous class properties).</p>
+<p>Instances of the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCTC</span></code> class, constructed in much the same way as <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCircuit</span></code> instances (e.g., the passing of states and gates to the class constructor’s relevant arguments), provide descriptions of specific interactions (defined by the given gates) between the CR and CV subsystems (with input state given on the former). By itself however, the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCTC</span></code> class is unable to compute the output states on these subsystems, as this can only be accomplished within the context of a particular quantum prescription. Such models can be implemented simply as subclasses of <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCTC</span></code>, wherein the appropriate machinery is granted to the class methods which require it. Indeed, Qhronology provides the two foremost prescriptions, D-CTCs and P-CTCs, as the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumDCTC</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumPCTC</span></code> classes, respectively. It is these subclasses which provide the capabilities for calculating the specific predictions of their associated quantum prescription of antichronological time travel.</p>
+</section>
+<section id="modularity-and-design-patterns">
+<span id="sec-docs-architecture-design"></span><h2>Modularity and design patterns<a class="headerlink" href="#modularity-and-design-patterns" title="Link to this heading">#</a></h2>
+<p>Qhronology provides a flexible domain-specific framework for theoretical quantum mechanics, with the usage pattern of its circuit creation in particular being a highly modular procedure. As part of this, the program places great emphasis on the ability to define quantum primitives outside of the context of any circuit description. In other words, Qhronology treats individual states and gates as complete, fundamental, and independent objects.</p>
+<p>The standard pattern of Qhronology’s circuit instantiation (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec:docs_circuits</span></code> <a class="reference internal" href="../quantum/circuits.html#sec-docs-circuits"><span class="std std-ref">Circuits</span></a>) consists primarily of the passing of pre-existing state (<code class="code highlight python docutils literal highlight-python"><span class="n">QuantumState</span></code>) and gate (<code class="code highlight python docutils literal highlight-python"><span class="n">QuantumGate</span></code>) instances to the circuit (<code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCircuit</span></code>) constructor’s arguments. With an assembled circuit, one can then extract its total (composite) input and output states as <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumState</span></code> instances, as well as the entire gate sequence as a single amalgamated <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumGate</span></code> instance. These extracted objects are no different from any other user-created states or gates in Qhronology, and so can be inspected, modified, and incorporated into other circuits. Qhronology’s claim to extensive modularity stems primarily from its ability to both assemble and extract elementary objects, which themselves can be subsequently used in a variety of contexts.</p>
+<p>Although the typical procedure of creating circuits within the framework does not precisely resemble any single design pattern, it does possess some traits from what is canonically known as the <em>composite pattern</em>—a software-engineering design pattern <span id="id1">[<a class="reference internal" href="#cite-1-gamma-design-1994" title="E. Gamma, R. Helm, R. Johnson, and J. Vlissides, Design Patterns: Elements of Reusable Object-Oriented Software, Addison-Wesley Professional, 1994.">1</a>]</span> characterized by the aggregation of elementary objects into a single, more complex object. Qhronology’s particular structure however diverges from this pattern in one important way: while the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumCircuit</span></code> class facilitates the composition of fundamental objects (states and gates) into a more complex container (from which both all kinds of fundamental objects can be obtained), it itself cannot be further composed into other objects, nor does it share the same interface as its constituent objects. Nonetheless, the program’s process of creating circuits (almost) completely from pre-defined primitives at instantiation is a distinctly novel approach, one that is in stark contrast with the <em>builder pattern</em>—quantum circuits constructed via a succession of methods called on an initially empty quantum circuit class instance—used in other Python-based quantum projects, including IBM’s <em>Qiskit</em> <span id="id2">[<a class="reference internal" href="#cite-1-ibm-qiskit-2017" title="IBM and the Qiskit Community, “Qiskit”, 2017. URL: https://www.ibm.com/quantum/qiskit, Source code: https://github.com/Qiskit/qiskit">2</a>, <a class="reference internal" href="#cite-1-javadi-abhari-quantum-2024" title="A. Javadi-Abhari, M. Treinish, K. Krsulich, C. J. Wood, J. Lishman, J. Gacon, S. Martiel, P. D. Nation, L. S. Bishop, A. W. Cross, B. R. Johnson, and J. M. Gambetta, “Quantum computing with Qiskit”, arXiv [quant-ph], June 2024. DOI: 10.48550/arXiv.2405.08810">3</a>]</span>, Google’s <em>Cirq</em> <span id="id3">[<a class="reference internal" href="#cite-1-google-cirq-2018" title="Google and the Cirq Community, “Cirq”, 2018. URL: https://quantumai.google/cirq, Source code: https://github.com/quantumlib/Cirq">4</a>]</span>, Xanadu’s <em>PennyLane</em> <span id="id4">[<a class="reference internal" href="#cite-1-xanadu-pennylane-2018" title="Xanadu and the PennyLane Community, “PennyLane”, 2018. URL: https://pennylane.ai, Source code: https://github.com/PennyLaneAI/pennylane">5</a>, <a class="reference internal" href="#cite-1-bergholm-pennylane-2022" title="V. Bergholm, J. Izaac, M. Schuld, C. Gogolin, S. Ahmed, V. Ajith, M. S. Alam, G. Alonso-Linaje, B. AkashNarayanan, A. Asadi, J. M. Arrazola, U. Azad, S. Banning, C. Blank, T. R. Bromley, B. A. Cordier, J. Ceroni, A. Delgado, O. D. Matteo, A. Dusko, et al., “PennyLane: Automatic differentiation of hybrid quantum-classical computations”, arXiv [quant-ph], July 2022. DOI: 10.48550/arXiv.1811.04968">6</a>]</span>, and the community-run <em>QuTiP</em> <span id="id5">[<a class="reference internal" href="#cite-1-the-qutip-community-qutip-2012" title="The QuTiP Community, “QuTiP”, 2012. URL: https://qutip.org, Source code: https://github.com/qutip/qutip">7</a>, <a class="reference internal" href="#cite-1-lambert-qutip-2026" title="N. Lambert, E. Giguère, P. Menczel, B. Li, P. Hopf, G. Suárez, M. Gali, J. Lishman, R. Gadhvi, R. Agarwal, A. Galicia, N. Shammah, P. Nation, J. R. Johansson, S. Ahmed, S. Cross, A. Pitchford, and F. Nori, “QuTiP 5: The Quantum Toolbox in Python”, Physics Reports, 1153:1–62, January 2026. DOI: 10.1016/j.physrep.2025.10.001">8</a>]</span>.</p>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-gamma-design-1994" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>E. Gamma, R. Helm, R. Johnson, and J. Vlissides, <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>, Addison-Wesley Professional, 1994.</p>
+</div>
+<div class="citation" id="cite-1-ibm-qiskit-2017" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>IBM and the Qiskit Community, “Qiskit”, 2017. URL: <a class="reference external" href="https://www.ibm.com/quantum/qiskit">https://www.ibm.com/quantum/qiskit</a>, Source code: <a class="github reference external" href="https://github.com/Qiskit/qiskit">Qiskit/qiskit</a></p>
+</div>
+<div class="citation" id="cite-1-javadi-abhari-quantum-2024" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">3</a><span class="fn-bracket">]</span></span>
+<p>A. Javadi-Abhari, M. Treinish, K. Krsulich, C. J. Wood, J. Lishman, J. Gacon, S. Martiel, P. D. Nation, L. S. Bishop, A. W. Cross, B. R. Johnson, and J. M. Gambetta, “Quantum computing with Qiskit”, <em>arXiv</em> [quant-ph], June 2024. DOI: <a class="reference external" href="https://doi.org/10.48550/arXiv.2405.08810">10.48550/arXiv.2405.08810</a></p>
+</div>
+<div class="citation" id="cite-1-google-cirq-2018" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">4</a><span class="fn-bracket">]</span></span>
+<p>Google and the Cirq Community, “Cirq”, 2018. URL: <a class="reference external" href="https://quantumai.google/cirq">https://quantumai.google/cirq</a>, Source code: <a class="github reference external" href="https://github.com/quantumlib/Cirq">quantumlib/Cirq</a></p>
+</div>
+<div class="citation" id="cite-1-xanadu-pennylane-2018" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">5</a><span class="fn-bracket">]</span></span>
+<p>Xanadu and the PennyLane Community, “PennyLane”, 2018. URL: <a class="reference external" href="https://pennylane.ai">https://pennylane.ai</a>, Source code: <a class="github reference external" href="https://github.com/PennyLaneAI/pennylane">PennyLaneAI/pennylane</a></p>
+</div>
+<div class="citation" id="cite-1-bergholm-pennylane-2022" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">6</a><span class="fn-bracket">]</span></span>
+<p>V. Bergholm, J. Izaac, M. Schuld, C. Gogolin, S. Ahmed, V. Ajith, M. S. Alam, G. Alonso-Linaje, B. AkashNarayanan, A. Asadi, J. M. Arrazola, U. Azad, S. Banning, C. Blank, T. R. Bromley, B. A. Cordier, J. Ceroni, A. Delgado, O. D. Matteo, A. Dusko, et al., “PennyLane: Automatic differentiation of hybrid quantum-classical computations”, <em>arXiv</em> [quant-ph], July 2022. DOI: <a class="reference external" href="https://doi.org/10.48550/arXiv.1811.04968">10.48550/arXiv.1811.04968</a></p>
+</div>
+<div class="citation" id="cite-1-the-qutip-community-qutip-2012" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">7</a><span class="fn-bracket">]</span></span>
+<p>The QuTiP Community, “QuTiP”, 2012. URL: <a class="reference external" href="https://qutip.org">https://qutip.org</a>, Source code: <a class="github reference external" href="https://github.com/qutip/qutip">qutip/qutip</a></p>
+</div>
+<div class="citation" id="cite-1-lambert-qutip-2026" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">8</a><span class="fn-bracket">]</span></span>
+<p>N. Lambert, E. Giguère, P. Menczel, B. Li, P. Hopf, G. Suárez, M. Gali, J. Lishman, R. Gadhvi, R. Agarwal, A. Galicia, N. Shammah, P. Nation, J. R. Johansson, S. Ahmed, S. Cross, A. Pitchford, and F. Nori, “QuTiP 5: The Quantum Toolbox in Python”, <em>Physics Reports</em>, 1153:1–62, January 2026. DOI: <a class="reference external" href="https://doi.org/10.1016/j.physrep.2025.10.001">10.1016/j.physrep.2025.10.001</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="structure.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Package structure</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="types.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Types</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-composition">Circuit composition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modularity-and-design-patterns">Modularity and design patterns</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

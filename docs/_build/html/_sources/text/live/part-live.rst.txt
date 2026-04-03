@@ -30,12 +30,11 @@
    .. rubric:: :styleheader0:`Live Qhronology testing environment`
 
 Insert your Python code into the text box below, then click the **Run** button.
-Don't forget to import SymPy, NumPy, and/or Qhronology, as required.
-Try copying one of the examples from :ref:`part:examples`.
+The Qhonology, SymPy, NumPy, and SciPy packages are available within the environment.
+Don't forget to import them, as required.
+Try copying one of the examples from the :ref:`Examples <part:examples>` section.
 
 Python in the web browser is made possible using `Pyodide <https://pyodide.org>`_ (`repository <https://github.com/pyodide/pyodide>`_).
-Note that Python computations performed here can be slower than in local environments.
-
-Please note that downloading the environment (including its packages and fonts) may take a while.
+Please note that the execution of code here can be slower than in local environments. Also note that downloading the environment (including its packages and fonts) may take a while.
 
 .. include:: pyodide.rst

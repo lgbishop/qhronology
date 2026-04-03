@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9e158f31" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=dbd491fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 04, 2026"/>
   </head>
   
   
@@ -429,7 +429,9 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Architecture</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/structure.html">Package structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/classes.html">Classes and their relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/types.html">Types</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum</span></p>
 <ul class="current nav bd-sidenav">
@@ -592,9 +594,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_bitflip-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_bitflip-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_bitflip-dark.png" style="width: 106.80000000000001px; height: 18.8px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_bitflip-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_bitflip-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_bitflip-dark.png" style="width: 96.11999999999999px; height: 16.919999999999998px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_bitflip-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_bitflip-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_bitflip-light.png" style="width: 106.80000000000001px; height: 18.8px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_bitflip-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_bitflip-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_bitflip-light.png" style="width: 96.11999999999999px; height: 16.919999999999998px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
@@ -643,9 +645,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_arbitrary-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_arbitrary-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_arbitrary-dark.png" style="width: 328.40000000000003px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_arbitrary-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_arbitrary-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_arbitrary-dark.png" style="width: 295.56px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_arbitrary-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_arbitrary-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_arbitrary-light.png" style="width: 328.40000000000003px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_arbitrary-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_arbitrary-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_arbitrary-light.png" style="width: 295.56px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arbitrary_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
@@ -712,9 +714,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_swapcnots-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_swapcnots-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_swapcnots-dark.png" style="width: 173.20000000000002px; height: 50.800000000000004px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_swapcnots-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_swapcnots-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_swapcnots-dark.png" style="width: 155.88px; height: 45.72px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_swapcnots-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_swapcnots-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_swapcnots-light.png" style="width: 173.20000000000002px; height: 50.800000000000004px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_swapcnots-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_swapcnots-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_swapcnots-light.png" style="width: 155.88px; height: 45.72px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">swapcnots</span><span class="o">.</span><span class="n">gate</span><span class="p">()))</span>
@@ -780,9 +782,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_postselection-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_postselection-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_postselection-dark.png" style="width: 190.0px; height: 83.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_postselection-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_postselection-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_postselection-dark.png" style="width: 171.0px; height: 74.88px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_postselection-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_postselection-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_postselection-light.png" style="width: 190.0px; height: 83.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_postselection-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_postselection-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_postselection-light.png" style="width: 171.0px; height: 74.88px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
@@ -841,9 +843,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_unitarity-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_unitarity-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_unitarity-dark.png" style="width: 123.2px; height: 33.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_unitarity-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_unitarity-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_unitarity-dark.png" style="width: 110.88px; height: 30.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_unitarity-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_unitarity-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_unitarity-light.png" style="width: 123.2px; height: 33.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_unitarity-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_unitarity-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_unitarity-light.png" style="width: 110.88px; height: 30.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">U</span><span class="p">))</span>
@@ -914,9 +916,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_fourier-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_fourier-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_fourier-dark.png" style="width: 421.20000000000005px; height: 128.4px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_fourier-dark.png"><img alt="../../../_images/text_examples_docstrings_circuit_fourier-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_circuit_fourier-dark.png" style="width: 379.08px; height: 115.56px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_fourier-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_fourier-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_fourier-light.png" style="width: 421.20000000000005px; height: 128.4px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_circuit_fourier-light.png"><img alt="../../../_images/text_examples_docstrings_circuit_fourier-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_circuit_fourier-light.png" style="width: 379.08px; height: 115.56px;" />
 </a>
 </div></blockquote>
 <section id="constructor-argument-properties">
@@ -1455,90 +1457,90 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_unicode-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_unicode-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_unicode-dark.png" style="width: 443.6px; height: 96.80000000000001px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_unicode-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_unicode-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_unicode-dark.png" style="width: 399.24px; height: 87.11999999999999px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_unicode-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_unicode-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_unicode-light.png" style="width: 443.6px; height: 96.80000000000001px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_unicode-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_unicode-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_unicode-light.png" style="width: 399.24px; height: 87.11999999999999px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;unicode_alt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_shaded-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_shaded-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_shaded-dark.png" style="width: 443.6px; height: 115.60000000000001px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_shaded-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_shaded-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_shaded-dark.png" style="width: 399.24px; height: 104.03999999999999px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_shaded-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_shaded-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_shaded-light.png" style="width: 443.6px; height: 115.60000000000001px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_shaded-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_shaded-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_shaded-light.png" style="width: 399.24px; height: 104.03999999999999px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_ascii-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_ascii-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_ascii-dark.png" style="width: 436.40000000000003px; height: 103.60000000000001px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_ascii-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_ascii-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_ascii-dark.png" style="width: 392.76px; height: 93.24px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_ascii-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_ascii-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_ascii-light.png" style="width: 436.40000000000003px; height: 103.60000000000001px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_ascii-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_ascii-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_ascii-light.png" style="width: 392.76px; height: 93.24px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-dark.png" style="width: 388.40000000000003px; height: 96.80000000000001px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-dark.png" style="width: 349.56px; height: 87.11999999999999px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-light.png" style="width: 388.40000000000003px; height: 96.80000000000001px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_forceseparation-light.png" style="width: 349.56px; height: 87.11999999999999px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">uniform_spacing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-dark.png" style="width: 454.8px; height: 96.80000000000001px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-dark.png" style="width: 409.32px; height: 87.11999999999999px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-light.png" style="width: 454.8px; height: 96.80000000000001px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_uniformspacing-light.png" style="width: 409.32px; height: 87.11999999999999px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-dark.png" style="width: 477.20000000000005px; height: 96.80000000000001px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-dark.png" style="width: 429.47999999999996px; height: 87.11999999999999px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-light.png" style="width: 477.20000000000005px; height: 96.80000000000001px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_increase-light.png" style="width: 429.47999999999996px; height: 87.11999999999999px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-dark.png" style="width: 299.6px; height: 96.80000000000001px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-dark.png" style="width: 269.64px; height: 87.11999999999999px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-light.png" style="width: 299.6px; height: 96.80000000000001px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_horizontal_decrease-light.png" style="width: 269.64px; height: 87.11999999999999px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-dark.png" style="width: 388.40000000000003px; height: 128.4px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-dark.png" style="width: 349.56px; height: 115.56px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-light.png" style="width: 388.40000000000003px; height: 128.4px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_separation_vertical_increase-light.png" style="width: 349.56px; height: 115.56px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-dark.png" style="width: 499.20000000000005px; height: 96.80000000000001px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-dark.png" style="width: 449.28px; height: 87.11999999999999px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-light.png" style="width: 499.20000000000005px; height: 96.80000000000001px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_padding_horizontal_increase-light.png" style="width: 449.28px; height: 87.11999999999999px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">circuit</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-dark.png" style="width: 388.40000000000003px; height: 192.0px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-dark.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-dark.png" style="width: 349.56px; height: 172.79999999999998px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-light.png" style="width: 388.40000000000003px; height: 192.0px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-light.png"><img alt="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_diagram_circuit_padding_vertical_increase-light.png" style="width: 349.56px; height: 172.79999999999998px;" />
 </a>
 </div></blockquote>
 </dd></dl>

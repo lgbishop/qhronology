@@ -108,14 +108,14 @@ When :python:`overflow_qubit = True`:
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_lookahead-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_lookahead-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 
@@ -143,14 +143,14 @@ When :python:`overflow_qubit = False`:
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_lookahead_false-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_lookahead_false-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 

@@ -154,14 +154,14 @@ Diagram
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_full-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_adder_full-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 

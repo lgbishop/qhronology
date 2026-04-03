@@ -19,6 +19,9 @@ mv -f ./pyodide-temp/mpmath-*.whl ./pyodide
 mv -f ./pyodide-temp/mpmath-*.metadata ./pyodide
 mv -f ./pyodide-temp/numpy-*.whl ./pyodide
 mv -f ./pyodide-temp/numpy-*.metadata ./pyodide
+mv -f ./pyodide-temp/scipy-*.whl ./pyodide
+mv -f ./pyodide-temp/scipy-*.metadata ./pyodide
+mv -f ./pyodide-temp/libopenblas-*.zip ./pyodide
 mv -f ./pyodide-temp/micropip-*.whl ./pyodide
 mv -f ./pyodide-temp/micropip-*.metadata ./pyodide
 mv -f ./pyodide-temp/packaging-*.whl ./pyodide

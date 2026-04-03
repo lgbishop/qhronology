@@ -45,11 +45,17 @@
 
 In this part, detailed documentation of the Qhronology package is presented. This includes in-depth descriptions of the package's various submodules and their respective functions and classes (including all methods and properties). Numerous usage examples of many of the most important objects are also provided. Note however that only the components of the package which are intended to be used by the end user are included here. For the other, undocumented modules, please see the relevant parts of the package's source code.
 
-.. toctree::
-   :caption: Architecture
-   :maxdepth: 2
 
-   architecture.rst
+
+.. only:: html
+
+   .. toctree::
+      :maxdepth: 2
+      :caption: Architecture
+
+      architecture/structure.rst
+      architecture/classes.rst
+      architecture/types.rst
 
 .. toctree::
    :caption: Quantum

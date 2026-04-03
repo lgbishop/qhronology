@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9e158f31" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=dbd491fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -68,11 +68,11 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Gates" href="gates.html" />
-    <link rel="prev" title="Architecture" href="../architecture.html" />
+    <link rel="prev" title="Types" href="../architecture/types.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Apr 03, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 04, 2026"/>
   </head>
   
   
@@ -429,7 +429,9 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Architecture</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/structure.html">Package structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/classes.html">Classes and their relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/types.html">Types</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum</span></p>
 <ul class="current nav bd-sidenav">
@@ -617,9 +619,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-dark.png" style="width: 51.2px; height: 18.8px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-dark.png" style="width: 46.08px; height: 16.919999999999998px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-light.png" style="width: 51.2px; height: 18.8px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_vector-light.png" style="width: 46.08px; height: 16.919999999999998px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">qutrit_vector</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -648,9 +650,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-dark.png" style="width: 51.2px; height: 18.8px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-dark.png" style="width: 46.08px; height: 16.919999999999998px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-light.png" style="width: 51.2px; height: 18.8px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qutrit_vector-light.png" style="width: 46.08px; height: 16.919999999999998px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_pure</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -672,9 +674,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-dark.png" style="width: 95.60000000000001px; height: 18.8px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-dark.png" style="width: 86.03999999999999px; height: 16.919999999999998px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-light.png" style="width: 95.60000000000001px; height: 18.8px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_pure-light.png" style="width: 86.03999999999999px; height: 16.919999999999998px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_mixed</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -695,9 +697,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-dark.png" style="width: 31.6px; height: 8.8px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-dark.png" style="width: 28.439999999999998px; height: 7.92px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-light.png" style="width: 31.6px; height: 8.8px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_qubit_mixed-light.png" style="width: 28.439999999999998px; height: 7.92px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">custom_vector</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -715,9 +717,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-dark.png" style="width: 32.0px; height: 14.0px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-dark.png" style="width: 28.799999999999997px; height: 12.6px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-light.png" style="width: 32.0px; height: 14.0px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_custom_vector-light.png" style="width: 28.799999999999997px; height: 12.6px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">custom_matrix</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -735,9 +737,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-dark.png" style="width: 33.6px; height: 8.8px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-dark.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-dark.png" style="width: 30.24px; height: 7.92px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-light.png" style="width: 33.6px; height: 8.8px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-light.png"><img alt="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_unipartite_custom_matrix-light.png" style="width: 30.24px; height: 7.92px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bell_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -758,9 +760,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_bipartite_bell-dark.png"><img alt="../../../_images/text_examples_docstrings_state_bipartite_bell-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_bipartite_bell-dark.png" style="width: 84.4px; height: 51.6px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_bipartite_bell-dark.png"><img alt="../../../_images/text_examples_docstrings_state_bipartite_bell-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_bipartite_bell-dark.png" style="width: 75.96px; height: 46.44px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_bipartite_bell-light.png"><img alt="../../../_images/text_examples_docstrings_state_bipartite_bell-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_bipartite_bell-light.png" style="width: 84.4px; height: 51.6px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_bipartite_bell-light.png"><img alt="../../../_images/text_examples_docstrings_state_bipartite_bell-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_bipartite_bell-light.png" style="width: 75.96px; height: 46.44px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ghz_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -785,9 +787,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_tripartite_ghz-dark.png"><img alt="../../../_images/text_examples_docstrings_state_tripartite_ghz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_tripartite_ghz-dark.png" style="width: 106.80000000000001px; height: 83.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_tripartite_ghz-dark.png"><img alt="../../../_images/text_examples_docstrings_state_tripartite_ghz-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_tripartite_ghz-dark.png" style="width: 96.11999999999999px; height: 74.88px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_tripartite_ghz-light.png"><img alt="../../../_images/text_examples_docstrings_state_tripartite_ghz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_tripartite_ghz-light.png" style="width: 106.80000000000001px; height: 83.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_tripartite_ghz-light.png"><img alt="../../../_images/text_examples_docstrings_state_tripartite_ghz-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_tripartite_ghz-light.png" style="width: 96.11999999999999px; height: 74.88px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -812,9 +814,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_tripartite_w-dark.png"><img alt="../../../_images/text_examples_docstrings_state_tripartite_w-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_tripartite_w-dark.png" style="width: 84.4px; height: 83.2px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_state_tripartite_w-dark.png"><img alt="../../../_images/text_examples_docstrings_state_tripartite_w-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_state_tripartite_w-dark.png" style="width: 75.96px; height: 74.88px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_tripartite_w-light.png"><img alt="../../../_images/text_examples_docstrings_state_tripartite_w-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_tripartite_w-light.png" style="width: 84.4px; height: 83.2px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_state_tripartite_w-light.png"><img alt="../../../_images/text_examples_docstrings_state_tripartite_w-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_state_tripartite_w-light.png" style="width: 75.96px; height: 74.88px;" />
 </a>
 </div></blockquote>
 </dd></dl>
@@ -2255,12 +2257,12 @@ This means that neither <code class="code highlight python docutils literal high
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../architecture.html"
+       href="../architecture/types.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Architecture</p>
+        <p class="prev-next-title">Types</p>
       </div>
     </a>
     <a class="right-next"

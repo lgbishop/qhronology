@@ -961,6 +961,10 @@ div.notranslate div pre {
     font-size: 0.9em;
 }
 
+div.literal-block-wrapper {
+    border-radius: 0.0rem;
+}
+
 code.literal {
     border-radius: 0.0rem;
     background-color: var(--pst-color-surface) !important;
