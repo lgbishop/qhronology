@@ -914,10 +914,6 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. automethod:: qhronology.quantum.states.QuantumState.dagger
 
    .. raw:: latex
