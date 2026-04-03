@@ -440,14 +440,14 @@ Diagram
    .. only:: html
 
       .. image:: /figures/output/text_examples_ctcs_billiards-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_ctcs_billiards-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 

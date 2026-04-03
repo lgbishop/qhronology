@@ -209,12 +209,12 @@ Quantum circuit diagrams provide a powerful picturalism through which any quantu
 .. only:: html
 
    .. image:: /figures/output/text_examples_algorithms_generation_w-dark.png
-      :scale: 44 %
+      :scale: 40 %
       :align: center
       :class: only-dark
 
    .. image:: /figures/output/text_examples_algorithms_generation_w-light.png
-      :scale: 44 %
+      :scale: 40 %
       :align: center
       :class: only-light
 
@@ -546,14 +546,14 @@ Generation of the :math:`\ket{\Bell^+}` Bell state from primitive :math:`\ket{0}
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_generation_bell-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_generation_bell-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 
@@ -601,14 +601,14 @@ Quantum teleportation of an arbitrary qubit :math:`\ket{\psi} = a\ket{0} + b\ket
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_teleportation-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_teleportation-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 
@@ -660,14 +660,14 @@ Computing resolutions to the unproven-theorem paradox according to various presc
    .. only:: html
 
       .. image:: /figures/output/text_examples_ctcs_unproven-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_ctcs_unproven-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 

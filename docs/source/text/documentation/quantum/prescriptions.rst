@@ -82,14 +82,14 @@ Please note that the documentation of this class includes only properties and me
    .. only:: html
 
       .. image:: /figures/output/text_examples_docstrings_prescription_swap-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_docstrings_prescription_swap-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 
@@ -138,14 +138,14 @@ Please note that the documentation of this class includes only properties and me
    .. only:: html
 
       .. image:: /figures/output/text_examples_docstrings_prescription_cnot-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_docstrings_prescription_cnot-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 

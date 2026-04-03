@@ -270,14 +270,14 @@ Diagram
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_tomography_weak-dark.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-dark
 
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_tomography_weak-light.png
-         :scale: 40 %
+         :scale: 36 %
          :align: left
          :class: only-light
 
