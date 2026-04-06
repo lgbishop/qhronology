@@ -76,12 +76,12 @@ margin=0cm
 \end{umlsystem}
 
 % Relationships
-\umlunicompo[geometry=|-, draw=relationcolor, line width=\relationwidth]{DiagramCell}{VisualizationProperties}
-\umlunicompo[draw=relationcolor, line width=\relationwidth]{DiagramColumn}{VisualizationProperties}
-\umlunicompo[geometry=|-, draw=relationcolor, line width=\relationwidth]{DiagramCircuit}{VisualizationProperties}
+\umlinherit[geometry=|-, draw=relationcolor, line width=\relationwidth]{DiagramCell}{VisualizationProperties}
+\umlinherit[draw=relationcolor, line width=\relationwidth]{DiagramColumn}{VisualizationProperties}
+\umlinherit[geometry=|-, draw=relationcolor, line width=\relationwidth]{DiagramCircuit}{VisualizationProperties}
 
-\umldep[geometry=-|, anchor2=-30, draw=relationcolor, line width=\relationwidth]{DiagramColumn}{DiagramCell}
-\umldep[geometry=-|, anchor2=-30, draw=relationcolor, line width=\relationwidth]{DiagramCircuit}{DiagramColumn}
+\umluniaggreg[geometry=-|, anchor2=-30, draw=relationcolor, line width=\relationwidth]{DiagramColumn}{DiagramCell}
+\umluniaggreg[geometry=-|, anchor2=-30, draw=relationcolor, line width=\relationwidth]{DiagramCircuit}{DiagramColumn}
 
 \umldep[geometry=-|, draw=relationcolor, line width=\relationwidth]{VisualizationMixin}{DiagramCell}
 \umldep[draw=relationcolor, line width=\relationwidth]{VisualizationMixin}{DiagramColumn}
@@ -90,13 +90,13 @@ margin=0cm
 \umlHVHdep[arm1=1.0, anchor1=-5, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{DiagramColumn}
 \umlHVHdep[arm1=0.75, anchor1=5, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{DiagramCircuit}
 
-\umlunicompo[geometry=|-|, anchor1=20, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumObject}{VisualizationMixin}
-\umlunicompo[geometry=-|, anchor2=-160, draw=relationcolor, line width=\relationwidth]{QuantumObject}{SymbolicsProperties}
+\umlVHVdep[geometry=|-|, anchor1=20, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumObject}{VisualizationMixin}
+\umlinherit[geometry=-|, anchor2=-160, draw=relationcolor, line width=\relationwidth]{QuantumObject}{SymbolicsProperties}
 
-\umlunicompo[geometry=|-|, arm1=2.5, anchor1=90, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{SymbolicsProperties}
+\umlinherit[geometry=|-|, arm1=2.5, anchor1=90, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{SymbolicsProperties}
 
-\umlreal[geometry=|-|, weight=0.35, anchor1=90, anchor2=-160, draw=relationcolor, line width=\relationwidth]{QuantumState}{QuantumObject}
-\umlreal[geometry=|-|, weight=0.35, anchor1=168.75, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumGate}{QuantumObject}
+\umlinherit[geometry=|-|, weight=0.35, anchor1=90, anchor2=-160, draw=relationcolor, line width=\relationwidth]{QuantumState}{QuantumObject}
+\umlinherit[geometry=|-|, weight=0.35, anchor1=168.75, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumGate}{QuantumObject}
 
 \umlHVHdep[anchor1=-175, arm2=-1.0, anchor2=180, draw=relationcolor, line width=\relationwidth]{QuantumState}{QuantitiesMixin}
 \umlHVHdep[anchor1=175, arm2=-0.75, anchor2=180, draw=relationcolor, line width=\relationwidth]{QuantumState}{OperationsMixin}
