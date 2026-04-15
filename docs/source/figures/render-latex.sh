@@ -13,6 +13,7 @@ done
 # rm -f ./jobs-latex.txt
 # touch ./jobs-latex.txt
 # echo "./latex/diagram_spacetime_minkowski.tex" >> ./jobs-latex.txt
+# echo "./latex/diagram_classes.tex" >> ./jobs-latex.txt
 
 mapfile -t jobs < ./jobs-latex.txt
 

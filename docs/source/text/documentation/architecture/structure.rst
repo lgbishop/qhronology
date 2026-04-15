@@ -151,22 +151,6 @@ The :python:`mechanics` subpackage contains Qhronology's core logic for creating
        | :py:func:`~qhronology.mechanics.matrices.decode_multiple`
        | :inlinelatex:`\vspace*{-1.85\baselineskip}`
    * - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
-       | :python:`quantities.py`
-     - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
-       | Functions for computing quantum quantities from matrices.
-       | A mixin for endowing compatible classes with the ability to calculate these quantities.
-     - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
-       | **Functions:**
-       | :py:func:`~qhronology.mechanics.quantities.trace`
-       | :py:func:`~qhronology.mechanics.quantities.purity`
-       | :py:func:`~qhronology.mechanics.quantities.distance`
-       | :py:func:`~qhronology.mechanics.quantities.fidelity`
-       | :py:func:`~qhronology.mechanics.quantities.entropy`
-       | :py:func:`~qhronology.mechanics.quantities.mutual`
-       | **Mixin:**
-       | :py:class:`~qhronology.mechanics.quantities.QuantitiesMixin`
-       | :inlinelatex:`\vspace*{-1.85\baselineskip}`
-   * - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
        | :python:`operations.py`
      - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
        | Functions for performing quantum operations on matrices.
@@ -186,6 +170,22 @@ The :python:`mechanics` subpackage contains Qhronology's core logic for creating
        | :py:func:`~qhronology.mechanics.operations.postselect`
        | **Mixin:**
        | :py:class:`~qhronology.mechanics.operations.OperationsMixin`
+       | :inlinelatex:`\vspace*{-1.85\baselineskip}`
+   * - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
+       | :python:`quantities.py`
+     - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
+       | Functions for computing quantum quantities from matrices.
+       | A mixin for endowing compatible classes with the ability to calculate these quantities.
+     - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
+       | **Functions:**
+       | :py:func:`~qhronology.mechanics.quantities.trace`
+       | :py:func:`~qhronology.mechanics.quantities.purity`
+       | :py:func:`~qhronology.mechanics.quantities.distance`
+       | :py:func:`~qhronology.mechanics.quantities.fidelity`
+       | :py:func:`~qhronology.mechanics.quantities.entropy`
+       | :py:func:`~qhronology.mechanics.quantities.mutual`
+       | **Mixin:**
+       | :py:class:`~qhronology.mechanics.quantities.QuantitiesMixin`
        | :inlinelatex:`\vspace*{-1.85\baselineskip}`
 
 .. raw:: latex

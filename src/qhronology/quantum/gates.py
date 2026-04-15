@@ -715,7 +715,7 @@ class Rotation(QuantumGate):
                0 & \\e^{\\eye\\theta/2} \\end{bmatrix},
        \\end{aligned}
 
-    where :math:`\\theta` is the *rotation angle* (:python:`angle`).
+    where :math:`\\theta \\in \\Reals` is the *rotation angle* (:python:`angle`).
 
     These are fundamentally single-system gates, and so a copy of the specified gate is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
@@ -844,7 +844,7 @@ class Phase(QuantumGate):
            \\end{bmatrix}
        \\end{aligned}
 
-    where :math:`\\omega` is the *phase factor* (:python:`phase`).
+    where :math:`\\omega \\in \\Complexes` is the *phase factor* (:python:`phase`).
 
     This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
@@ -912,7 +912,7 @@ class Diagonal(QuantumGate):
 
        \\begin{aligned}
            \\Diagonal(\\lambda_0, \\lambda_1, \\ldots, \\lambda_{\\Dimension - 1})
-           &= \\sum\\limits_{k=0}^{\\Dimension - 1} \\lambda_k\\ket{k}\\bra{k}, \\\\
+           &= \\sum\\limits_{k=0}^{\\Dimension - 1} \\lambda_k\\ket{k}\\bra{k} \\\\
            &=
            \\begin{bmatrix}
                \\lambda_0 & 0 & 0 & \\ldots & 0 \\\\
@@ -1282,7 +1282,7 @@ class Fourier(QuantumGate):
             \\end{bmatrix}
         \\end{aligned}
 
-    where :math:`\\omega_{\\Dimension} = \\e^{\\frac{2\\pi\\eye}{\\Dimension}} = \\omega`.
+    where :math:`\\omega \\equiv \\omega_{\\Dimension} \\equiv \\e^{\\frac{2\\pi\\eye}{\\Dimension}}`.
 
     In the case of :math:`N` qudits, it is easier to characterize the *multipartite Fourier operator* :math:`\\QFT_N` not by its matrix form but by the transformation it imposes, to which its action on the basis state :math:`\\bigotimes\\limits_{\\ell=1}^{N} \\ket{j_\\ell} \\equiv \\ket{j_1, \\ldots, j_N}` (where :math:`j_\\ell \\in \\Integers_{0}^{\\Dimension - 1}`) is
 

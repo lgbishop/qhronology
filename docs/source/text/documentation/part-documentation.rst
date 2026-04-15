@@ -78,5 +78,5 @@ In this part, detailed documentation of the Qhronology package is presented. Thi
    :maxdepth: 2
 
    mechanics/matrices.rst
-   mechanics/quantities.rst
    mechanics/operations.rst
+   mechanics/quantities.rst

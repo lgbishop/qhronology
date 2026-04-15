@@ -2,12 +2,17 @@
 List of symbols
 ***************
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. csv-table:: List of symbols.
    :header: "**Symbol**", "**Description**"
    :widths: 18, 82
 
    ":math:`\eye`", "imaginary unit"
-   ":math:`\e`", "Euler's number (:math:`\approx 2.718\ldots`)"
+   ":math:`\pi`", "mathematical constant *pi* (:math:`\approx 3.14159\ldots`)"
+   ":math:`\e`", "Euler's number (:math:`\approx 2.71828\ldots`)"
    ":math:`\Reals`", "set of real numbers"
    ":math:`\Integers`", "set of integers"
    ":math:`\Naturals`", "set of natural numbers"
