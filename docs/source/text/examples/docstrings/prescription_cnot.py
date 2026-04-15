@@ -21,18 +21,18 @@ CNOT = QuantumCircuit(
     inputs=[input_state],
     gates=[CN],
 )
-CNOT = QuantumCTC(circuit=CNOT, systems_respecting=[1])
-CNOT.diagram()
+CNOT_CTC = QuantumCTC(circuit=CNOT, systems_respecting=[1])
+CNOT_CTC.diagram()
 
 # Output
 # D-CTCs
-CNOT_DCTC = DCTC(circuit=CNOT)
+CNOT_DCTC = DCTC(circuit=CNOT_CTC)
 CNOT_DCTC_CR = CNOT_DCTC.state_respecting(label="ρ_D")
 CNOT_DCTC_CV = CNOT_DCTC.state_violating(label="τ_D")
 CNOT_DCTC_CR.conditions = [(1 - rho[0, 0], rho[1, 1])]
 
 # P-CTCs
-CNOT_PCTC = PCTC(circuit=CNOT)
+CNOT_PCTC = PCTC(circuit=CNOT_CTC)
 CNOT_PCTC_CR = CNOT_PCTC.state_respecting(norm=1, label="ρ_P")
 CNOT_PCTC_CV = CNOT_PCTC.state_violating(label="τ_P")
 

@@ -63,11 +63,11 @@ The set of physical pure states :math:`\SpacePure(\SpaceHilbert)` on a Hilbert s
 Mixed states
 ------------
 
-States which are not pure are termed *mixed*, and cannot be expressed in the form :eq:`eq:state_pure`. A mixed state characterized by a uniform probability distribution :math:`\SetProbability` is called *maximally mixed* and takes the form
+States which are not pure are termed *mixed*, and cannot be expressed in the form :eq:`eq:state_pure`. A mixed state characterized by a uniform probability distribution :math:`\SetProbability` is said to be *maximally mixed* and takes the form
 
 .. math:: \StateDensity = \frac{1}{\Dimension}\Identity_{\Dimension}
 
-where :math:`\Identity_{\Dimension}` is the :math:`\Dimension \times \Dimension` identity operator. It is useful to think of linear combinations such as that in :eq:`eq:state_combination_pure` as "classical" superpositions in the sense that they involve the correspondingly classical mixing of otherwise fully quantum-mechanical states :math:`\StateDensity_i = \ket{\psi_i}\bra{\psi_i}`. In other words, a mixed quantum state is a *statistical ensemble* of pure states, and is also known simply as a *mixed ensemble*. Importantly, this contrasts with the physically distinct notion of *quantum superposition*, which is encapsulated by :eq:`eq:state_superposition`.
+where :math:`\Identity_{\Dimension}` is the :math:`\Dimension`-dimensional identity operator. It is useful to think of linear combinations such as that in :eq:`eq:state_combination_pure` as "classical" superpositions in the sense that they involve the correspondingly classical mixing of otherwise fully quantum-mechanical states :math:`\StateDensity_i = \ket{\psi_i}\bra{\psi_i}`. In other words, a mixed quantum state is a *statistical ensemble* of pure states, and is also known simply as a *mixed ensemble*. Importantly, this contrasts with the physically distinct notion of *quantum superposition*, which is encapsulated by :eq:`eq:state_superposition`.
 
 Unlike pure states, mixed states cannot be represented as a state vector (e.g., :math:`\ket{\psi}`). Both objects however may be described as a density operator (e.g., :math:`\StateDensity`), which serves as a generalization of the concept of state vectors (wave functions). The set of physical density operators (including both pure and mixed states) on a Hilbert space :math:`\SpaceHilbert` is the set of all Hermitian trace-one (linear) operators on :math:`\SpaceHilbert`, and we denote this as
 
@@ -123,9 +123,9 @@ where :math:`\{\Pauli_k\}_{k=1}^{3}` are the *Pauli matrices*, which are defined
    :label: eq:Pauli
 
    \begin{aligned}
-       \Pauli_1 &= \Pauli_x \equiv \ket{0}\bra{1} + \ket{1}\bra{0} \!\!\!\!\!\! & &= \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}, \\
-       \Pauli_2 &= \Pauli_y \equiv -\eye \ket{0}\bra{1} + \eye \ket{1}\bra{0} \!\!\!\!\!\! & &= \begin{bmatrix} 0 & -\eye \\ \eye & 0 \end{bmatrix}, \\
-       \Pauli_3 &= \Pauli_z \equiv \ket{0}\bra{0} - \ket{1}\bra{1} \!\!\!\!\!\! & &= \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}.
+       \Pauli_1 &= \Pauli_x \equiv \ket{0}\bra{1} + \ket{1}\bra{0} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}, \\
+       \Pauli_2 &= \Pauli_y \equiv -\eye \ket{0}\bra{1} + \eye \ket{1}\bra{0} = \begin{bmatrix} 0 & -\eye \\ \eye & 0 \end{bmatrix}, \\
+       \Pauli_3 &= \Pauli_z \equiv \ket{0}\bra{0} - \ket{1}\bra{1} = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}.
    \end{aligned}
 
 .. raw:: latex
@@ -172,7 +172,7 @@ The Pauli matrices are Hermitian, and so represent observables in the context of
 Qutrits
 -------
 
-Quantum states realized by :math:`3`-dimensional systems are commonly known as *qutrits*. These objects are analogous to the "trit" unit of information in classical computing and so are useful for performing calculations with ternary logic. Such systems are typically described using a set of orthonormal (basis) vectors :math:`3`-dimensional :math:`\{\ket{0},\ket{1},\ket{2}\}`, with which a qutrit can in general be expressed as
+Quantum states realized by :math:`3`-dimensional systems are commonly known as *qutrits*. These objects are analogous to the *trit* unit of information in classical computing and so are useful for performing calculations with ternary logic. Such systems are typically described using a set of orthonormal (basis) vectors :math:`3`-dimensional :math:`\{\ket{0},\ket{1},\ket{2}\}`, with which a qutrit can in general be expressed as
 
 .. math:: \ket{\StateVector} = \alpha\ket{0} + \beta\ket{1} + \gamma\ket{2}, \quad \abs{\alpha}^2 + \abs{\beta}^2 + \abs{\gamma}^2 = 1, \quad \alpha,\beta,\gamma \in \Complexes.
    :label: eq:vector_qutrit
@@ -371,7 +371,7 @@ This definition can be equivalently expressed as
 .. math:: \Entropy(\StateDensity) = -\sum_{k} \lambda_k \log_\Base \lambda_k
    :label: eq:entropy_eigenvalues
 
-where :math:`\lambda_k` denote the non-zero eigenvalues in the spectrum of :math:`\StateDensity`. Here, the matrix logarithm is taken to base :math:`\Base`, which is the dimensionality of the unit of information in which the entropy is measured. For example, if :math:`\Base = 2`, then :math:`\Entropy(\StateDensity)` will be measured in "bits". Many definitions of the von Neumann entropy alternatively specify :math:`\Base = \e`, for which the entropy is measured in so-called "nats".
+where :math:`\lambda_k` denote the non-zero eigenvalues in the spectrum of :math:`\StateDensity`. Here, the matrix logarithm is taken to base :math:`\Base`, which is the dimensionality of the unit of information in which the entropy is measured. For example, if :math:`\Base = 2`, then :math:`\Entropy(\StateDensity)` will be measured in *bits*. Many definitions of the von Neumann entropy alternatively specify :math:`\Base = \e`, for which the entropy is measured in so-called *nats*.
 
 The von Neumann entropy is the quantum counterpart of the *Shannon entropy* in classical information theory. For a pure state, it is always zero, while for a mixed state, it is strictly positive with an upper bound of :math:`\log_\Base \Dimension` (achieved with a maximally mixed state) in a unipartite :math:`\Dimension`-dimensional Hilbert space. Mathematically, we can write
 
@@ -576,7 +576,7 @@ A quantum observable :math:`\SetObservable = \{\op{\Pi}_i\}_i` is said to be *sh
 
 .. math:: \op{H} = \sum_i \lambda_i \op{\Pi}_i
 
-with eigenvalues :math:`\{\lambda_i\}_i`. This means that the entire observable :math:`\SetObservable` is representable by the single Hermitian operator :math:`\op{H}`, which is why such operators are typically referred to simply as *observables* in standard quantum theory. Given this expression, the probability of measuring an eigenvalue :math:`\lambda_i` is given by
+with eigenvalues :math:`\{\lambda_i\}_i`. This means that the entire observable :math:`\SetObservable` is representable by the single Hermitian operator :math:`\op{H}`, which is exactly why such operators are themselves typically referred to simply as *observables* in standard quantum theory. Given this expression, the probability of measuring an eigenvalue :math:`\lambda_i` is given by
 
 .. math:: p_i = \trace[\StateDensity \op{\Pi}_i],
    :label: eq:Born_rule_discrete

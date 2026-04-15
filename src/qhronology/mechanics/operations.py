@@ -398,10 +398,10 @@ def measure(
 
       - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)
         when :python:`observable` is :python:`False`
-        (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
+        :inlinelatex:`\\newline` (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
       - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)
         when :python:`observable` is :python:`True`
-        (:python:`operators` is a list of observables :math:`\\Observable_i`)
+        :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\Observable_i`)
 
     - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
       This yields the transformed states:
@@ -788,10 +788,10 @@ class OperationsMixin:
 
           - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)
             when :python:`observable` is :python:`False`
-            (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
+            :inlinelatex:`\\newline` (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
           - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)
             when :python:`observable` is :python:`True`
-            (:python:`operators` is a list of observables :math:`\\Observable_i`)
+            :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\Observable_i`)
 
         .. raw:: latex
 

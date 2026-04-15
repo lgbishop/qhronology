@@ -87,7 +87,7 @@ Diagram
 
 .. code:: python
 
-   >>> iteration.diagram()
+   >>> iteration.diagram(pad=(1, 0), sep=(0, 1), style="unicode")
 
 .. raw:: latex
    

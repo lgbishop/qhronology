@@ -52,7 +52,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     This includes:
 
     - normalization
-    - (partial) trace
+    - partial trace
     - measurement
     - postselection
 

@@ -70,7 +70,7 @@ Please note that the documentation of this class includes only properties and me
 
 .. code:: python
 
-   >>> SWAP.diagram()
+   >>> SWAP_CTC.diagram()
 
 .. raw:: latex
    
@@ -126,7 +126,7 @@ Please note that the documentation of this class includes only properties and me
 
 .. code:: python
 
-   >>> CNOT.diagram()
+   >>> CNOT_CTC.diagram()
 
 .. raw:: latex
    

@@ -23,10 +23,10 @@ The search for alternatives to D-CTCs and P-CTCs that possess fewer pathological
 
 .. _`sec:WD-CTCs`:
 
-Weighted D-CTCs (WD-CTCs)
--------------------------
+Weighted D-CTCs
+---------------
 
-Perhaps the simplest "improved" prescription is that of *weighted D-CTCs* :cite:p:`allen_treating_2014`, which merely represents an extension of the ordinary D-CTCs model. The premise is simple: associate to each valid D-CTC fixed-point density operator :math:`\StateCV_\alpha` a weight :math:`w_\alpha \geq 0`, using which the unique, "correct" D-CTC CV state is then given by the integral over the space of all D-CTC fixed points, that is,
+Perhaps the simplest "improved" prescription is that of *weighted* D-CTCs :cite:p:`allen_treating_2014`, which merely represents an extension of the ordinary D-CTCs model. The premise is simple: associate to each valid D-CTC fixed-point density operator :math:`\StateCV_\alpha` a weight :math:`w_\alpha \geq 0`, using which the unique, "correct" D-CTC CV state is then given by the integral over the space of all D-CTC fixed points, that is,
 
 .. math:: \StateCV = \frac{\int \diff{\alpha} \, w_\alpha \StateCV_\alpha}{\int \diff{\alpha} \, w_\alpha}.
    :label: eq:WD-CTCs_CV

@@ -18,6 +18,7 @@ html {
     --pst-font-size-h4: 1.25rem;
     --pst-font-size-h5: 1.15rem;
     --pst-font-size-h6: 1rem;
+    --pst-admonition-font-weight-heading: 500;
 }
 
 html[data-theme="dark"] {
@@ -665,6 +666,11 @@ a.sd-btn > span.std-ref {
 }
 
 /* Links. */
+
+.nav-link {
+    font-weight: 500;
+}
+
 .bd-header ul.navbar-nav > li.nav-item {
     margin-inline: 0px;
     font-weight: 500;
@@ -814,6 +820,10 @@ p.prev-next-title, a {
     text-decoration: none !important;
 }
 
+p.prev-next-title {
+    font-weight: 500;
+}
+
 a.reference.internal > span.std.std-ref {
     font-style: italic;
 }
@@ -824,7 +834,7 @@ a.reference.internal {
 
 ul.nav.bd-sidenav {
     color: var(--pst-color-primary) !important;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 nav.bd-toc-nav.page-toc {

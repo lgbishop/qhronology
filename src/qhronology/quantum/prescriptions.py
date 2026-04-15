@@ -69,7 +69,7 @@ class QuantumCTC(QuantumCircuit):
 
     Note
     ----
-    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance. Any such mergers override the values of the attributes associated with the other arguments specified in the constructor. It is therefore best practice to specify the circuit via either of the following two ways:
+    The :python:`circuit` argument can be used to merge the value of every attribute from a pre-existing :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance into the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` instance. Any such merges override the values of the attributes associated with the other arguments specified in the constructor. It is therefore best practice to specify the circuit via either of the following two ways:
 
     - the :python:`circuit` argument
 
@@ -79,7 +79,7 @@ class QuantumCTC(QuantumCircuit):
 
     Note
     ----
-    The lists of indices specified in :python:`systems_respecting` and :python:`systems_violating` must both be contiguous.
+    The lists of indices specified in either of :python:`systems_respecting` or :python:`systems_violating` must be contiguous.
     Additionally, the circuit's inputs (:python:`inputs`) are treated as one contiguous total state, with the indices of its subsystems exactly matching those specified in :python:`systems_respecting`.
 
     Note

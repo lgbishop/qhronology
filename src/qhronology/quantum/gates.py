@@ -704,13 +704,13 @@ class Rotation(QuantumGate):
     .. math::
 
        \\begin{aligned}
-           \\Rotation_x &= \\e^{-\\eye\\Pauli_{x}\\theta/2} =
+           \\Rotation_1 &= \\Rotation_x = \\e^{-\\eye\\Pauli_{x}\\theta/2} =
                \\begin{bmatrix} \\cos(\\theta/2) & -\\eye\\sin(\\theta/2) \\\\
                -\\eye\\sin(\\theta/2) & \\cos(\\theta/2)  \\end{bmatrix}, \\\\
-           \\Rotation_y &= \\e^{-\\eye\\Pauli_{y}\\theta/2} =
+           \\Rotation_2 &= \\Rotation_y = \\e^{-\\eye\\Pauli_{y}\\theta/2} =
                \\begin{bmatrix} \\cos(\\theta/2) & -\\sin(\\theta/2) \\\\
                \\sin(\\theta/2) & \\cos(\\theta/2) \\end{bmatrix}, \\\\
-           \\Rotation_z &= \\e^{-\\eye\\Pauli_{z}\\theta/2} =
+           \\Rotation_3 &= \\Rotation_z = \\e^{-\\eye\\Pauli_{z}\\theta/2} =
                \\begin{bmatrix} \\e^{-\\eye\\theta/2} & 0 \\\\
                0 & \\e^{\\eye\\theta/2} \\end{bmatrix},
        \\end{aligned}

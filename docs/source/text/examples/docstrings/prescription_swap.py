@@ -17,22 +17,22 @@ S = Swap(targets=[0, 1], num_systems=2)
 I = Pauli(index=0, targets=[0, 1], num_systems=2)
 
 # CTC
-SWAP = QuantumCTC(
+SWAP_CTC = QuantumCTC(
     inputs=[input_state],
     gates=[S],
     systems_respecting=[0],
 )
-SWAP.diagram()
+SWAP_CTC.diagram()
 
 # Output
 # D-CTCs
-SWAP_DCTC = DCTC(circuit=SWAP)
+SWAP_DCTC = DCTC(circuit=SWAP_CTC)
 SWAP_DCTC_CR = SWAP_DCTC.state_respecting(norm=1, label="ρ_D")
 SWAP_DCTC_CV = SWAP_DCTC.state_violating(norm=1, label="τ_D")
 SWAP_DCTC_CR.simplify()
 
 # P-CTCs
-SWAP_PCTC = PCTC(circuit=SWAP)
+SWAP_PCTC = PCTC(circuit=SWAP_CTC)
 SWAP_PCTC_CR = SWAP_PCTC.state_respecting(label="ρ_P")
 SWAP_PCTC_CV = SWAP_PCTC.state_violating(label="τ_P")
 
