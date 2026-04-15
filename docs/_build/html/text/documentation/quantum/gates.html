@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=dbd491fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Apr 06, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 15, 2026"/>
   </head>
   
   
@@ -443,8 +443,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mechanics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../mechanics/matrices.html">Matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mechanics/quantities.html">Quantities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mechanics/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mechanics/quantities.html">Quantities</a></li>
 </ul>
 </div>
 </nav></div>
@@ -1525,17 +1525,17 @@ This means that the constructor does not take <code class="code highlight python
 <p>The elementary <em>rotation matrices</em> <span class="math notranslate nohighlight">\(\Rotation_i\)</span> are a set of three <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrices,</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-8">
 <span class="eqno">(302)<a class="headerlink" href="#equation-text-documentation-quantum-gates-8" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
-    \Rotation_x &amp;= \e^{-\eye\Pauli_{x}\theta/2} =
+    \Rotation_1 &amp;= \Rotation_x = \e^{-\eye\Pauli_{x}\theta/2} =
         \begin{bmatrix} \cos(\theta/2) &amp; -\eye\sin(\theta/2) \\
         -\eye\sin(\theta/2) &amp; \cos(\theta/2)  \end{bmatrix}, \\
-    \Rotation_y &amp;= \e^{-\eye\Pauli_{y}\theta/2} =
+    \Rotation_2 &amp;= \Rotation_y = \e^{-\eye\Pauli_{y}\theta/2} =
         \begin{bmatrix} \cos(\theta/2) &amp; -\sin(\theta/2) \\
         \sin(\theta/2) &amp; \cos(\theta/2) \end{bmatrix}, \\
-    \Rotation_z &amp;= \e^{-\eye\Pauli_{z}\theta/2} =
+    \Rotation_3 &amp;= \Rotation_z = \e^{-\eye\Pauli_{z}\theta/2} =
         \begin{bmatrix} \e^{-\eye\theta/2} &amp; 0 \\
         0 &amp; \e^{\eye\theta/2} \end{bmatrix},
 \end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\theta\)</span> is the <em>rotation angle</em> (<code class="code highlight python docutils literal highlight-python"><span class="n">angle</span></code>).</p>
+<p>where <span class="math notranslate nohighlight">\(\theta \in \Reals\)</span> is the <em>rotation angle</em> (<code class="code highlight python docutils literal highlight-python"><span class="n">angle</span></code>).</p>
 <p>These are fundamentally single-system gates, and so a copy of the specified gate is placed on each of the subsystems corresponding to the indices in the <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code> property.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1645,7 +1645,7 @@ This means that the constructor does not take <code class="code highlight python
         0 &amp; 0 &amp; 0 &amp; \ldots &amp; \omega^{\Dimension - 1}
     \end{bmatrix}
 \end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\omega\)</span> is the <em>phase factor</em> (<code class="code highlight python docutils literal highlight-python"><span class="n">phase</span></code>).</p>
+<p>where <span class="math notranslate nohighlight">\(\omega \in \Complexes\)</span> is the <em>phase factor</em> (<code class="code highlight python docutils literal highlight-python"><span class="n">phase</span></code>).</p>
 <p>This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code> property.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1757,7 +1757,7 @@ Defaults to the unit root given by <code class="code highlight python docutils l
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-10">
 <span class="eqno">(304)<a class="headerlink" href="#equation-text-documentation-quantum-gates-10" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Diagonal(\lambda_0, \lambda_1, \ldots, \lambda_{\Dimension - 1})
-    &amp;= \sum\limits_{k=0}^{\Dimension - 1} \lambda_k\ket{k}\bra{k}, \\
+    &amp;= \sum\limits_{k=0}^{\Dimension - 1} \lambda_k\ket{k}\bra{k} \\
     &amp;=
     \begin{bmatrix}
         \lambda_0 &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
@@ -2333,7 +2333,7 @@ This means that the constructor does not take <code class="code highlight python
         1 &amp; \omega^{\Dimension - 1} &amp; \omega^{2(\Dimension - 1)} &amp; \omega^{3(\Dimension - 1)} &amp; \ldots &amp; \omega^{(\Dimension - 1)(\Dimension - 1)} \\
     \end{bmatrix}
 \end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\omega_{\Dimension} = \e^{\frac{2\pi\eye}{\Dimension}} = \omega\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\omega \equiv \omega_{\Dimension} \equiv \e^{\frac{2\pi\eye}{\Dimension}}\)</span>.</p>
 <p>In the case of <span class="math notranslate nohighlight">\(N\)</span> qudits, it is easier to characterize the <em>multipartite Fourier operator</em> <span class="math notranslate nohighlight">\(\QFT_N\)</span> not by its matrix form but by the transformation it imposes, to which its action on the basis state <span class="math notranslate nohighlight">\(\bigotimes\limits_{\ell=1}^{N} \ket{j_\ell} \equiv \ket{j_1, \ldots, j_N}\)</span> (where <span class="math notranslate nohighlight">\(j_\ell \in \Integers_{0}^{\Dimension - 1}\)</span>) is</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-17">
 <span class="eqno">(311)<a class="headerlink" href="#equation-text-documentation-quantum-gates-17" title="Link to this equation">#</a></span>\[\ket{j_1, \ldots, j_N} \stackrel{\QFT_N}{\longrightarrow}

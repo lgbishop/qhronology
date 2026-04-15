@@ -18,6 +18,8 @@ html {
     --pst-font-size-h4: 1.25rem;
     --pst-font-size-h5: 1.15rem;
     --pst-font-size-h6: 1rem;
+    /* --pst-admonition-font-weight-heading: 500; */
+    /* --pst-font-weight-caption: 500; */
 }
 
 html[data-theme="dark"] {
@@ -264,6 +266,7 @@ p.centered {
 dt {
     border-bottom: 1px solid var(--pst-color-border);
     margin-bottom: 0.5rem;
+    font-size: 0.9rem;
 }
 /* Docstrings */
 dd > p {
@@ -273,6 +276,10 @@ dd > p {
 /* dd > :first-child {
     font-style: italic;
 } */
+
+.sig-paren {
+    font-size: inherit;
+}
 
 em.sig-param {
     font-style: normal;
@@ -307,6 +314,12 @@ em.sig-param > span.n > a.reference > span.pre {
 
 dd.field-odd > ul > li > p > strong {
     font-family: var(--pst-font-family-monospace);
+    font-size: 0.9rem;
+}
+
+dd.field-odd > p > strong {
+    font-family: var(--pst-font-family-monospace);
+    font-size: 0.9rem;
 }
 
 dd.field-odd > ul > li > p {
@@ -665,6 +678,11 @@ a.sd-btn > span.std-ref {
 }
 
 /* Links. */
+
+.nav-link {
+    font-weight: 500;
+}
+
 .bd-header ul.navbar-nav > li.nav-item {
     margin-inline: 0px;
     font-weight: 500;
@@ -814,6 +832,10 @@ p.prev-next-title, a {
     text-decoration: none !important;
 }
 
+p.prev-next-title {
+    font-weight: 500 !important;
+}
+
 a.reference.internal > span.std.std-ref {
     font-style: italic;
 }
@@ -824,7 +846,7 @@ a.reference.internal {
 
 ul.nav.bd-sidenav {
     color: var(--pst-color-primary) !important;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 nav.bd-toc-nav.page-toc {
@@ -841,7 +863,8 @@ p > a.reference.internal {
 }
 
 span > a.reference.internal {
-    font-weight: normal;
+    /* font-weight: normal; */
+    font-weight: 600;
 }
 
 a.reference.internal.sd-btn {
@@ -963,6 +986,11 @@ div.notranslate div pre {
 
 div.literal-block-wrapper {
     border-radius: 0.0rem;
+}
+
+div.literal-block-wrapper div.code-block-caption {
+	font-size: 0.9rem;
+	font-weight: 400;
 }
 
 code.literal {

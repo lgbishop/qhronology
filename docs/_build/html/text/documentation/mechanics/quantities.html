@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=dbd491fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -67,12 +67,12 @@
     <link rel="icon" href="../../../_static/icon.svg"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Operations" href="operations.html" />
-    <link rel="prev" title="Matrices" href="matrices.html" />
+    <link rel="next" title="Examples" href="../../examples/part-examples.html" />
+    <link rel="prev" title="Operations" href="operations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Apr 06, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 15, 2026"/>
   </head>
   
   
@@ -443,8 +443,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mechanics</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="matrices.html">Matrices</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantities</a></li>
 </ul>
 </div>
 </nav></div>
@@ -549,7 +549,7 @@
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/quantities.html#purity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.quantities.purity" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the purity (<span class="math notranslate nohighlight">\(\Purity\)</span>) of <code class="code highlight python docutils literal highlight-python"><span class="n">state</span></code> (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-0">
-<span class="eqno">(325)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-0" title="Link to this equation">#</a></span>\[\Purity(\op{\rho}) = \trace[\op{\rho}^2].\]</div>
+<span class="eqno">(330)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-0" title="Link to this equation">#</a></span>\[\Purity(\op{\rho}) = \trace[\op{\rho}^2].\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>state</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The matrix representation of the input state.</p>
@@ -586,7 +586,7 @@
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/quantities.html#distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.quantities.distance" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the trace distance (<span class="math notranslate nohighlight">\(\TraceDistance\)</span>) between two states <code class="code highlight python docutils literal highlight-python"><span class="n">state_A</span></code> (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) and <code class="code highlight python docutils literal highlight-python"><span class="n">state_B</span></code> (<span class="math notranslate nohighlight">\(\op{\tau}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-1">
-<span class="eqno">(326)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-1" title="Link to this equation">#</a></span>\[\TraceDistance(\op{\rho}, \op{\tau})
+<span class="eqno">(331)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-1" title="Link to this equation">#</a></span>\[\TraceDistance(\op{\rho}, \op{\tau})
     = \frac{1}{2}\trace{\abs{\op{\rho} - \op{\tau}}}.\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -631,7 +631,7 @@
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/quantities.html#fidelity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.quantities.fidelity" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the fidelity (<span class="math notranslate nohighlight">\(\Fidelity\)</span>) between two states <code class="code highlight python docutils literal highlight-python"><span class="n">state_A</span></code> (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) and <code class="code highlight python docutils literal highlight-python"><span class="n">state_B</span></code> (<span class="math notranslate nohighlight">\(\op{\tau}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-2">
-<span class="eqno">(327)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-2" title="Link to this equation">#</a></span>\[\Fidelity(\op{\rho}, \op{\tau})
+<span class="eqno">(332)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-2" title="Link to this equation">#</a></span>\[\Fidelity(\op{\rho}, \op{\tau})
     = \left(\trace{\sqrt{\sqrt{\op{\rho}}\,\op{\tau}\sqrt{\op{\rho}}}}\right)^2.\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -682,11 +682,11 @@
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/quantities.html#entropy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.quantities.entropy" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the relative von Neumann entropy (<span class="math notranslate nohighlight">\(\Entropy\)</span>) between two states <code class="code highlight python docutils literal highlight-python"><span class="n">state_A</span></code> (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) and <code class="code highlight python docutils literal highlight-python"><span class="n">state_B</span></code> (<span class="math notranslate nohighlight">\(\op{\tau}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-3">
-<span class="eqno">(328)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-3" title="Link to this equation">#</a></span>\[\Entropy(\op{\rho} \Vert \op{\tau})
+<span class="eqno">(333)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-3" title="Link to this equation">#</a></span>\[\Entropy(\op{\rho} \Vert \op{\tau})
     = \trace\bigl[\op{\rho} (\log_\Base\op{\rho} - \log_\Base\op{\tau})\bigr].\]</div>
 <p>If <code class="code highlight python docutils literal highlight-python"><span class="n">state_B</span></code> is not specified (i.e., <code class="code highlight python docutils literal highlight-python"><span class="kc">None</span></code>), calculate the ordinary von Neumann entropy of <code class="code highlight python docutils literal highlight-python"><span class="n">state_A</span></code> (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) instead:</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-4">
-<span class="eqno">(329)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-4" title="Link to this equation">#</a></span>\[\Entropy(\op{\rho}) = \trace[\op{\rho}\log_\Base\op{\rho}].\]</div>
+<span class="eqno">(334)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-4" title="Link to this equation">#</a></span>\[\Entropy(\op{\rho}) = \trace[\op{\rho}\log_\Base\op{\rho}].\]</div>
 <p>Here, <span class="math notranslate nohighlight">\(\Base\)</span> represents <code class="code highlight python docutils literal highlight-python"><span class="n">base</span></code>, which is the dimensionality of the unit of information in which the entropy is measured.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -746,7 +746,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/mechanics/quantities.html#mutual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.mechanics.quantities.mutual" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the mutual information (<span class="math notranslate nohighlight">\(\MutualInformation\)</span>) between two subsystems <code class="code highlight python docutils literal highlight-python"><span class="n">systems_A</span></code> (<span class="math notranslate nohighlight">\(A\)</span>) and <code class="code highlight python docutils literal highlight-python"><span class="n">systems_B</span></code> (<span class="math notranslate nohighlight">\(B\)</span>) of a composite quantum system represented by <code class="code highlight python docutils literal highlight-python"><span class="n">state</span></code> (<span class="math notranslate nohighlight">\(\rho^{A,B}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-mechanics-quantities-5">
-<span class="eqno">(330)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-5" title="Link to this equation">#</a></span>\[\MutualInformation(A : B)
+<span class="eqno">(335)<a class="headerlink" href="#equation-text-documentation-mechanics-quantities-5" title="Link to this equation">#</a></span>\[\MutualInformation(A : B)
     = \Entropy(\op{\rho}^A) + \Entropy(\op{\rho}^B) - \Entropy(\op{\rho}^{A,B})\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Entropy(\op{\rho})\)</span> is the von Neumann entropy of a state <span class="math notranslate nohighlight">\(\op{\rho}\)</span>.</p>
 <dl class="field-list simple">
@@ -819,20 +819,20 @@ Defaults to the value of <code class="code highlight python docutils literal hig
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="matrices.html"
+       href="operations.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Matrices</p>
+        <p class="prev-next-title">Operations</p>
       </div>
     </a>
     <a class="right-next"
-       href="operations.html"
+       href="../../examples/part-examples.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Operations</p>
+        <p class="prev-next-title">Examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

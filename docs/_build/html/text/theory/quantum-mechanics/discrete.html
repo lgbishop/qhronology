@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=dbd491fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Apr 06, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 15, 2026"/>
   </head>
   
   
@@ -526,10 +526,10 @@
 </section>
 <section id="mixed-states">
 <h3>Mixed states<a class="headerlink" href="#mixed-states" title="Link to this heading">#</a></h3>
-<p>States which are not pure are termed <em>mixed</em>, and cannot be expressed in the form <a class="reference internal" href="#equation-eq-state-pure">(123)</a>. A mixed state characterized by a uniform probability distribution <span class="math notranslate nohighlight">\(\SetProbability\)</span> is called <em>maximally mixed</em> and takes the form</p>
+<p>States which are not pure are termed <em>mixed</em>, and cannot be expressed in the form <a class="reference internal" href="#equation-eq-state-pure">(123)</a>. A mixed state characterized by a uniform probability distribution <span class="math notranslate nohighlight">\(\SetProbability\)</span> is said to be <em>maximally mixed</em> and takes the form</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-2">
 <span class="eqno">(127)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-2" title="Link to this equation">#</a></span>\[\StateDensity = \frac{1}{\Dimension}\Identity_{\Dimension}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\Identity_{\Dimension}\)</span> is the <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> identity operator. It is useful to think of linear combinations such as that in <a class="reference internal" href="#equation-eq-state-combination-pure">(122)</a> as “classical” superpositions in the sense that they involve the correspondingly classical mixing of otherwise fully quantum-mechanical states <span class="math notranslate nohighlight">\(\StateDensity_i = \ket{\psi_i}\bra{\psi_i}\)</span>. In other words, a mixed quantum state is a <em>statistical ensemble</em> of pure states, and is also known simply as a <em>mixed ensemble</em>. Importantly, this contrasts with the physically distinct notion of <em>quantum superposition</em>, which is encapsulated by <a class="reference internal" href="#equation-eq-state-superposition">(124)</a>.</p>
+<p>where <span class="math notranslate nohighlight">\(\Identity_{\Dimension}\)</span> is the <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional identity operator. It is useful to think of linear combinations such as that in <a class="reference internal" href="#equation-eq-state-combination-pure">(122)</a> as “classical” superpositions in the sense that they involve the correspondingly classical mixing of otherwise fully quantum-mechanical states <span class="math notranslate nohighlight">\(\StateDensity_i = \ket{\psi_i}\bra{\psi_i}\)</span>. In other words, a mixed quantum state is a <em>statistical ensemble</em> of pure states, and is also known simply as a <em>mixed ensemble</em>. Importantly, this contrasts with the physically distinct notion of <em>quantum superposition</em>, which is encapsulated by <a class="reference internal" href="#equation-eq-state-superposition">(124)</a>.</p>
 <p>Unlike pure states, mixed states cannot be represented as a state vector (e.g., <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>). Both objects however may be described as a density operator (e.g., <span class="math notranslate nohighlight">\(\StateDensity\)</span>), which serves as a generalization of the concept of state vectors (wave functions). The set of physical density operators (including both pure and mixed states) on a Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span> is the set of all Hermitian trace-one (linear) operators on <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, and we denote this as</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-3">
 <span class="eqno">(128)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-3" title="Link to this equation">#</a></span>\[\SpaceMixed(\SpaceHilbert) \equiv \bigl\{ \StateDensity \in \SpaceLinear(\SpaceHilbert) : \StateDensity^\dagger = \StateDensity, \, \trace[\StateDensity] = 1 \bigr\}.\]</div>
@@ -565,9 +565,9 @@
 <p>where <span class="math notranslate nohighlight">\(\{\Pauli_k\}_{k=1}^{3}\)</span> are the <em>Pauli matrices</em>, which are defined as</p>
 <div class="math notranslate nohighlight" id="equation-eq-pauli">
 <span class="eqno">(136)<a class="headerlink" href="#equation-eq-pauli" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
-    \Pauli_1 &amp;= \Pauli_x \equiv \ket{0}\bra{1} + \ket{1}\bra{0} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}, \\
-    \Pauli_2 &amp;= \Pauli_y \equiv -\eye \ket{0}\bra{1} + \eye \ket{1}\bra{0} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 0 &amp; -\eye \\ \eye &amp; 0 \end{bmatrix}, \\
-    \Pauli_3 &amp;= \Pauli_z \equiv \ket{0}\bra{0} - \ket{1}\bra{1} \!\!\!\!\!\! &amp; &amp;= \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}.
+    \Pauli_1 &amp;= \Pauli_x \equiv \ket{0}\bra{1} + \ket{1}\bra{0} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}, \\
+    \Pauli_2 &amp;= \Pauli_y \equiv -\eye \ket{0}\bra{1} + \eye \ket{1}\bra{0} = \begin{bmatrix} 0 &amp; -\eye \\ \eye &amp; 0 \end{bmatrix}, \\
+    \Pauli_3 &amp;= \Pauli_z \equiv \ket{0}\bra{0} - \ket{1}\bra{1} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}.
 \end{aligned}\end{split}\]</div>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/diagram_bloch_sphere-dark.png"><img alt="A diagram of the Bloch sphere." src="../../../_images/diagram_bloch_sphere-dark.png" style="width: 236.98000000000002px; height: 231.88000000000002px;" />
@@ -590,7 +590,7 @@
 </section>
 <section id="qutrits">
 <span id="sec-qutrits"></span><h3>Qutrits<a class="headerlink" href="#qutrits" title="Link to this heading">#</a></h3>
-<p>Quantum states realized by <span class="math notranslate nohighlight">\(3\)</span>-dimensional systems are commonly known as <em>qutrits</em>. These objects are analogous to the “trit” unit of information in classical computing and so are useful for performing calculations with ternary logic. Such systems are typically described using a set of orthonormal (basis) vectors <span class="math notranslate nohighlight">\(3\)</span>-dimensional <span class="math notranslate nohighlight">\(\{\ket{0},\ket{1},\ket{2}\}\)</span>, with which a qutrit can in general be expressed as</p>
+<p>Quantum states realized by <span class="math notranslate nohighlight">\(3\)</span>-dimensional systems are commonly known as <em>qutrits</em>. These objects are analogous to the <em>trit</em> unit of information in classical computing and so are useful for performing calculations with ternary logic. Such systems are typically described using a set of orthonormal (basis) vectors <span class="math notranslate nohighlight">\(3\)</span>-dimensional <span class="math notranslate nohighlight">\(\{\ket{0},\ket{1},\ket{2}\}\)</span>, with which a qutrit can in general be expressed as</p>
 <div class="math notranslate nohighlight" id="equation-eq-vector-qutrit">
 <span class="eqno">(138)<a class="headerlink" href="#equation-eq-vector-qutrit" title="Link to this equation">#</a></span>\[\ket{\StateVector} = \alpha\ket{0} + \beta\ket{1} + \gamma\ket{2}, \quad \abs{\alpha}^2 + \abs{\beta}^2 + \abs{\gamma}^2 = 1, \quad \alpha,\beta,\gamma \in \Complexes.\]</div>
 <p>In the <span class="math notranslate nohighlight">\(\Complexes^3\)</span>-representation, the basis vectors often take the forms</p>
@@ -729,7 +729,7 @@
 <p>This definition can be equivalently expressed as</p>
 <div class="math notranslate nohighlight" id="equation-eq-entropy-eigenvalues">
 <span class="eqno">(164)<a class="headerlink" href="#equation-eq-entropy-eigenvalues" title="Link to this equation">#</a></span>\[\Entropy(\StateDensity) = -\sum_{k} \lambda_k \log_\Base \lambda_k\]</div>
-<p>where <span class="math notranslate nohighlight">\(\lambda_k\)</span> denote the non-zero eigenvalues in the spectrum of <span class="math notranslate nohighlight">\(\StateDensity\)</span>. Here, the matrix logarithm is taken to base <span class="math notranslate nohighlight">\(\Base\)</span>, which is the dimensionality of the unit of information in which the entropy is measured. For example, if <span class="math notranslate nohighlight">\(\Base = 2\)</span>, then <span class="math notranslate nohighlight">\(\Entropy(\StateDensity)\)</span> will be measured in “bits”. Many definitions of the von Neumann entropy alternatively specify <span class="math notranslate nohighlight">\(\Base = \e\)</span>, for which the entropy is measured in so-called “nats”.</p>
+<p>where <span class="math notranslate nohighlight">\(\lambda_k\)</span> denote the non-zero eigenvalues in the spectrum of <span class="math notranslate nohighlight">\(\StateDensity\)</span>. Here, the matrix logarithm is taken to base <span class="math notranslate nohighlight">\(\Base\)</span>, which is the dimensionality of the unit of information in which the entropy is measured. For example, if <span class="math notranslate nohighlight">\(\Base = 2\)</span>, then <span class="math notranslate nohighlight">\(\Entropy(\StateDensity)\)</span> will be measured in <em>bits</em>. Many definitions of the von Neumann entropy alternatively specify <span class="math notranslate nohighlight">\(\Base = \e\)</span>, for which the entropy is measured in so-called <em>nats</em>.</p>
 <p>The von Neumann entropy is the quantum counterpart of the <em>Shannon entropy</em> in classical information theory. For a pure state, it is always zero, while for a mixed state, it is strictly positive with an upper bound of <span class="math notranslate nohighlight">\(\log_\Base \Dimension\)</span> (achieved with a maximally mixed state) in a unipartite <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional Hilbert space. Mathematically, we can write</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-19">
 <span class="eqno">(165)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-19" title="Link to this equation">#</a></span>\[0 \leq \Entropy(\StateDensity) \leq \log_\Base \Dimension\]</div>
@@ -874,7 +874,7 @@
 <p>A quantum observable <span class="math notranslate nohighlight">\(\SetObservable = \{\op{\Pi}_i\}_i\)</span> is said to be <em>sharp</em> if, in addition to having positive operators, each operator <span class="math notranslate nohighlight">\(\op{\Pi}_i\)</span> is a projector, that is, <span class="math notranslate nohighlight">\(\op{\Pi}_i = \op{\Pi}^2_i\)</span>. According to the spectral theorem <a class="reference internal" href="mathematics.html#equation-eq-spectral-theorem">(66)</a>, every Hermitian operator <span class="math notranslate nohighlight">\(\op{H}\)</span> may be expressed as</p>
 <div class="math notranslate nohighlight" id="equation-text-theory-quantum-mechanics-discrete-42">
 <span class="eqno">(195)<a class="headerlink" href="#equation-text-theory-quantum-mechanics-discrete-42" title="Link to this equation">#</a></span>\[\op{H} = \sum_i \lambda_i \op{\Pi}_i\]</div>
-<p>with eigenvalues <span class="math notranslate nohighlight">\(\{\lambda_i\}_i\)</span>. This means that the entire observable <span class="math notranslate nohighlight">\(\SetObservable\)</span> is representable by the single Hermitian operator <span class="math notranslate nohighlight">\(\op{H}\)</span>, which is why such operators are typically referred to simply as <em>observables</em> in standard quantum theory. Given this expression, the probability of measuring an eigenvalue <span class="math notranslate nohighlight">\(\lambda_i\)</span> is given by</p>
+<p>with eigenvalues <span class="math notranslate nohighlight">\(\{\lambda_i\}_i\)</span>. This means that the entire observable <span class="math notranslate nohighlight">\(\SetObservable\)</span> is representable by the single Hermitian operator <span class="math notranslate nohighlight">\(\op{H}\)</span>, which is exactly why such operators are themselves typically referred to simply as <em>observables</em> in standard quantum theory. Given this expression, the probability of measuring an eigenvalue <span class="math notranslate nohighlight">\(\lambda_i\)</span> is given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-born-rule-discrete">
 <span class="eqno">(196)<a class="headerlink" href="#equation-eq-born-rule-discrete" title="Link to this equation">#</a></span>\[p_i = \trace[\StateDensity \op{\Pi}_i],\]</div>
 <p>which is known as the <em>Born rule</em>, and is one of the key principles of quantum mechanics. Accordingly, the <em>expected value</em> of the associated observable is simply</p>

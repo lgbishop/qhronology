@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=dbd491fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -70,7 +70,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Apr 06, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 15, 2026"/>
   </head>
   
   
@@ -441,8 +441,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mechanics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../mechanics/matrices.html">Matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mechanics/quantities.html">Quantities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mechanics/operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mechanics/quantities.html">Quantities</a></li>
 </ul>
 </div>
 </nav></div>
@@ -501,10 +501,10 @@
 <p>Qhronology presents an innovative approach to describing both simulations of quantum mechanics and the various associated mathematical constructs and processes which collectively form the foundation of contemporary quantum physics. While this is not novel in the world of quantum libraries and toolkits, Qhronology is unique in how it places great emphasis on modularity in its descriptions of quantum states, gates, and circuits. Perhaps the best way by which this aspect can be appreciated is to gain a deeper understanding of the package’s interface, specifically that manifested by its user-facing classes.</p>
 <p><a class="reference internal" href="#fig-diagram-classes"><span class="std std-numref">Figure 7</span></a> contains a simplified UML class diagram, depicting the majority of the package’s class objects and the relationships (including inheritance and composition) between them. As shown in this diagram, the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> class is central to Qhronology’s functionality. Being an <em>abstract</em> base class (and so is not meant to be instantiated itself), <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> constitutes the common substructure upon which all primitive quantum-mechanical objects are built. Specifically, this consists of the two main classes:</p>
 <ul class="simple">
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">QuantumState</span></code>: for creating quantum states. Instances provide complete descriptions of specific states and have <em>mutable</em> internal states.</p></li>
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">QuantumGate</span></code>: for creating quantum gates. Instances provide complete descriptions of specific gates and have <em>immutable</em> internal states.</p></li>
+<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">QuantumState</span></code>: for creating quantum states. Instances have <em>mutable</em> internal states.</p></li>
+<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">QuantumGate</span></code>: for creating quantum gates. Instances have <em>immutable</em> internal states.</p></li>
 </ul>
-<p>These are implemented as <em>extending</em> subclasses, where each adds to and modifies the functionality of the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> base class primarily through class properties and methods. Instances of these derived classes exhaustively describe their corresponding quantum constructs: in addition to containing a precise mathematical specification (including metadata regarding symbols and their associated constraints), they can be inspected, visualized, and, in the case of quantum states, transformed (mutated) via quantum operations. Here, <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> provides the core matrix, symbolic, and visualization machinery, in addition to all other internal implementation details required by Qhronology’s programmatic description of fundamental quantum objects. Thus, as both states and gates are simply just specific types of such objects, then using the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> class as a shared foundation is a natural arrangement—one which greatly simplifies the project’s source code by directly reducing redundancy.</p>
+<p>These are implemented as <em>extending</em> subclasses, where each adds to and modifies the functionality of the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> base class primarily through class properties and methods.Instances of these derived classes provide exhaustive descriptions of their corresponding quantum constructs: in addition to containing a precise mathematical specification (including metadata regarding symbols and their associated constraints), they can be inspected, visualized, and, in the case of quantum states, transformed (mutated) via quantum operations. Here, <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> provides the core matrix, symbolic, and visualization machinery (in addition to all other internal implementation details) required by Qhronology’s programmatic description of fundamental quantum objects. Thus, as both states and gates are simply just specific types of such objects, then using the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> class as a shared foundation is a natural arrangement—one which greatly simplifies the project’s source code by directly reducing redundancy.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/diagram_classes-dark.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../../_images/diagram_classes-dark.png" style="width: 575.2800000000001px; height: 972.7400000000001px;" />
 </a>

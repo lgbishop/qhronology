@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=dbd491fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
@@ -67,7 +67,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Apr 06, 2026"/>
+    <meta name="docbuild:last-update" content="Apr 15, 2026"/>
   </head>
   
   
@@ -1184,18 +1184,18 @@
 <span class="sd">    .. math::</span>
 
 <span class="sd">       \\begin{aligned}</span>
-<span class="sd">           \\Rotation_x &amp;= \\e^{-\\eye\\Pauli_{x}\\theta/2} =</span>
+<span class="sd">           \\Rotation_1 &amp;= \\Rotation_x = \\e^{-\\eye\\Pauli_{x}\\theta/2} =</span>
 <span class="sd">               \\begin{bmatrix} \\cos(\\theta/2) &amp; -\\eye\\sin(\\theta/2) \\\\</span>
 <span class="sd">               -\\eye\\sin(\\theta/2) &amp; \\cos(\\theta/2)  \\end{bmatrix}, \\\\</span>
-<span class="sd">           \\Rotation_y &amp;= \\e^{-\\eye\\Pauli_{y}\\theta/2} =</span>
+<span class="sd">           \\Rotation_2 &amp;= \\Rotation_y = \\e^{-\\eye\\Pauli_{y}\\theta/2} =</span>
 <span class="sd">               \\begin{bmatrix} \\cos(\\theta/2) &amp; -\\sin(\\theta/2) \\\\</span>
 <span class="sd">               \\sin(\\theta/2) &amp; \\cos(\\theta/2) \\end{bmatrix}, \\\\</span>
-<span class="sd">           \\Rotation_z &amp;= \\e^{-\\eye\\Pauli_{z}\\theta/2} =</span>
+<span class="sd">           \\Rotation_3 &amp;= \\Rotation_z = \\e^{-\\eye\\Pauli_{z}\\theta/2} =</span>
 <span class="sd">               \\begin{bmatrix} \\e^{-\\eye\\theta/2} &amp; 0 \\\\</span>
 <span class="sd">               0 &amp; \\e^{\\eye\\theta/2} \\end{bmatrix},</span>
 <span class="sd">       \\end{aligned}</span>
 
-<span class="sd">    where :math:`\\theta` is the *rotation angle* (:python:`angle`).</span>
+<span class="sd">    where :math:`\\theta \\in \\Reals` is the *rotation angle* (:python:`angle`).</span>
 
 <span class="sd">    These are fundamentally single-system gates, and so a copy of the specified gate is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
@@ -1327,7 +1327,7 @@
 <span class="sd">           \\end{bmatrix}</span>
 <span class="sd">       \\end{aligned}</span>
 
-<span class="sd">    where :math:`\\omega` is the *phase factor* (:python:`phase`).</span>
+<span class="sd">    where :math:`\\omega \\in \\Complexes` is the *phase factor* (:python:`phase`).</span>
 
 <span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
@@ -1398,7 +1398,7 @@
 
 <span class="sd">       \\begin{aligned}</span>
 <span class="sd">           \\Diagonal(\\lambda_0, \\lambda_1, \\ldots, \\lambda_{\\Dimension - 1})</span>
-<span class="sd">           &amp;= \\sum\\limits_{k=0}^{\\Dimension - 1} \\lambda_k\\ket{k}\\bra{k}, \\\\</span>
+<span class="sd">           &amp;= \\sum\\limits_{k=0}^{\\Dimension - 1} \\lambda_k\\ket{k}\\bra{k} \\\\</span>
 <span class="sd">           &amp;=</span>
 <span class="sd">           \\begin{bmatrix}</span>
 <span class="sd">               \\lambda_0 &amp; 0 &amp; 0 &amp; \\ldots &amp; 0 \\\\</span>
@@ -1783,7 +1783,7 @@
 <span class="sd">            \\end{bmatrix}</span>
 <span class="sd">        \\end{aligned}</span>
 
-<span class="sd">    where :math:`\\omega_{\\Dimension} = \\e^{\\frac{2\\pi\\eye}{\\Dimension}} = \\omega`.</span>
+<span class="sd">    where :math:`\\omega \\equiv \\omega_{\\Dimension} \\equiv \\e^{\\frac{2\\pi\\eye}{\\Dimension}}`.</span>
 
 <span class="sd">    In the case of :math:`N` qudits, it is easier to characterize the *multipartite Fourier operator* :math:`\\QFT_N` not by its matrix form but by the transformation it imposes, to which its action on the basis state :math:`\\bigotimes\\limits_{\\ell=1}^{N} \\ket{j_\\ell} \\equiv \\ket{j_1, \\ldots, j_N}` (where :math:`j_\\ell \\in \\Integers_{0}^{\\Dimension - 1}`) is</span>
 
