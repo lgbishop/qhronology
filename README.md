@@ -52,7 +52,7 @@ The fundamental indeterminism of quantum mechanics can be leveraged to provide r
 
 ### Quantum circuit visualization
 
-Quantum circuit diagrams provide a powerful picturalism through which any quantum process can be visualized as a network of quantum logic gates connected by wires. Qhronology provides this functionality for any quantum process constructed using its built-in classes.
+Quantum circuit diagrams provide a powerful picturalism through which a quantum process can be visualized as a network of quantum logic gates connected by wires. Qhronology provides this functionality for any such processes constructed using its built-in classes.
 
 <p align="center">
   <picture>

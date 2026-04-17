@@ -159,7 +159,7 @@ States
 .. code:: python
 
    >>> addend_state.print()
-   |y⟩ = |1⟩
+   |y⟩ = u|0⟩ + v|1⟩
 
 .. raw:: latex
 
