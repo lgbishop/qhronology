@@ -473,9 +473,9 @@ Read the full license here:
   }%
 }
 {0pt}
-{\huge\sffamily\bfseries%\vrule width 1pt height 72pt depth 0pt \enspace%
+{\huge\sffamily\bfseries %\vrule width 1pt height 72pt depth 0pt \enspace%
  \parbox[b][][b]{\textwidth-\widthof{\LARGE\sffamily\MakeUppercase{\chaptername}\enspace} * \real{0.85}}{\filleft \hspace{12pt} $\qquad$ #1}%
-}[{\color{fontcolor}\titlerule[2.5pt]}]
+}[{\color{fontcolor}\titlerule[3pt]}]
 \titlespacing*{\chapter}{0pt}{20pt}{12pt}
 
 \titleformat{\section}
