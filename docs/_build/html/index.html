@@ -69,7 +69,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="Apr 20, 2026"/>
+    <meta name="docbuild:last-update" content="May 13, 2026"/>
   </head>
   
   
@@ -492,6 +492,15 @@
 
    .sd-bg-white {
       padding-right: calc(50vw - (88rem / 2)); /* + 20px); */
+   }
+
+   @media (max-width: 800px){
+      .sd-row{
+         flex-direction: column;
+      }
+      .sd-col{
+         width: 100%;
+      }
    }
 </style><style>
    html[data-theme="dark"] .sd-bg-black, .sd-bg-white, .sd-bg-transparent {

@@ -66,6 +66,15 @@
       .sd-bg-white {
          padding-right: calc(50vw - (88rem / 2)); /* + 20px); */
       }
+
+      @media (max-width: 800px){
+         .sd-row{
+            flex-direction: column;
+         }
+         .sd-col{
+            width: 100%;
+         }
+      }
    </style>
 
 .. raw:: html
