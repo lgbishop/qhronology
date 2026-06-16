@@ -281,7 +281,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         return notation
 
     @notation.setter
-    def notation(self, notation: str):
+    def notation(self, notation: str | None):
         self._notation = notation
 
     @property
