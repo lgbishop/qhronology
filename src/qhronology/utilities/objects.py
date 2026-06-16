@@ -33,7 +33,13 @@ from qhronology.utilities.classification import (
     matrix_shape,
 )
 from qhronology.utilities.diagrams import VisualizationMixin
-from qhronology.utilities.helpers import count_systems, stringify
+from qhronology.utilities.helpers import (
+    count_systems,
+    stringify,
+    symbolize_expression,
+    symbolize_tuples,
+    recursively_simplify,
+)
 from qhronology.utilities.symbolics import SymbolicsProperties
 
 
