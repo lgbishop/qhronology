@@ -23,7 +23,15 @@ import sympy as sp
 from sympy.physics.quantum import TensorProduct
 from sympy.physics.quantum.dagger import Dagger
 
-from qhronology.utilities.classification import num, sym, expr, mat, Forms, Kinds, matrix_form
+from qhronology.utilities.classification import (
+    num,
+    sym,
+    expr,
+    mat,
+    Forms,
+    Kinds,
+    matrix_form,
+)
 from qhronology.utilities.helpers import (
     adjust_targets,
     count_systems,
