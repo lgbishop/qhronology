@@ -36,6 +36,7 @@ from qhronology.utilities.helpers import (
     recursively_simplify,
     count_systems,
     fix_arguments,
+    stringify,
 )
 from qhronology.utilities.objects import QuantumObject
 
@@ -90,6 +91,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         Defaults to :python:`[]`.
     conjugate : bool
         Whether to perform Hermitian conjugation on the state when it is called.
+        If :python:`False`, does not conjugate.
         Defaults to :python:`False`.
     norm : bool | num | expr | str
         The value to which the state is normalized.
@@ -251,7 +253,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state.
+            Whether to perform mathematical simplification on the state.
+            If :python:`False`, does not simplify.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -282,7 +285,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         state = state.subs(conditions)
 
         # Simplification
-        simplify = False if simplify is None else simplify
+        simplify = self.simplify if simplify is None else simplify
         if simplify is True:
             state = recursively_simplify(state, conditions)
 
@@ -292,6 +295,75 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             state = Dagger(state)
 
         return state
+
+    def print(
+        self,
+        delimiter: str | None = None,
+        product: bool | None = None,
+        return_string: bool | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        simplify: bool | None = None,
+        conjugate: bool | None = None,
+        norm: bool | num | expr | str | None = None,
+    ) -> None | str:
+        """Print or return a mathematical expression of the quantum state as a string.
+
+        Note that this method is essentially a wrapper on the :py:meth:`~qhronology.quantum.states.QuantumState.output` method, and so includes its arguments.
+
+        Arguments
+        ---------
+        delimiter : str
+            A string containing the character(s) with which to delimit (i.e., separate) the values in the ket and/or bra terms in the mathematical expression.
+            Defaults to :python:`","`.
+        product : bool
+            Whether to represent the mathematical expression using tensor products.
+            Only applies if the state is a multipartite composition.
+            Defaults to :python:`False`.
+        return_string : bool
+            Whether to return the mathematical expression as a string.
+            Defaults to :python:`False`.
+        conditions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic conditions to be applied to the state.
+            Defaults to the value of :python:`self.conditions`.
+        simplify : bool
+            Whether to perform mathematical simplification on the state.
+            If :python:`False`, does not simplify.
+            Defaults to :python:`False`.
+        conjugate : bool
+            Whether to perform Hermitian conjugation on the state.
+            If :python:`False`, does not conjugate.
+            Defaults to the value of :python:`self.conjugate`.
+        norm : bool | num | expr | str
+            The value to which the state is normalized.
+            If :python:`False`, does not normalize.
+            Defaults to the value of :python:`self.norm`.
+
+        Returns
+        -------
+        None
+            Returned if :python:`return_string` is :python:`False`.
+        str
+            The constructed mathematical expression. Returned if :python:`return_string` is :python:`True`.
+        """
+        expression = (
+            str(self.notation)
+            + " = "
+            + stringify(
+                self.output(
+                    conditions=conditions,
+                    simplify=simplify,
+                    conjugate=conjugate,
+                    norm=norm,
+                ),
+                dim=self.dim,
+                delimiter=delimiter,
+                product=product,
+            )
+        )
+        if return_string is True:
+            return expression
+        else:
+            print(expression)
 
     def reset(self):
         """Reset the quantum state's internal matrix state (specifically its :python:`matrix` property) to its original value at instantiation.

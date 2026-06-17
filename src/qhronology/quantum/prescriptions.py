@@ -206,10 +206,12 @@ class QuantumCTC(QuantumCircuit):
             If :python:`False`, does not substitute the conditions.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state.
+            Whether to perform mathematical simplification on the state.
+            If :python:`False`, does not simplify.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
+            If :python:`False`, does not conjugate.
             Defaults to :python:`False`.
         norm : bool | num | expr | str
             The value to which the state is normalized.
@@ -666,7 +668,7 @@ class DCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state.
+            Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -749,7 +751,7 @@ class DCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state.
+            Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -857,7 +859,7 @@ class DCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state.
+            Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -902,10 +904,12 @@ class DCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.
+            Whether to perform mathematical simplification on the state before committing it to the :python:`matrix` property.
+            If :python:`False`, does not simplify.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
+            If :python:`False`, does not conjugate.
             Defaults to :python:`False`.
         norm : bool | num | expr | str
             The value to which the state is normalized.
@@ -987,10 +991,12 @@ class DCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.
+            Whether to perform mathematical simplification on the state before committing it to the :python:`matrix` property.
+            If :python:`False`, does not simplify.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
+            If :python:`False`, does not conjugate.
             Defaults to :python:`False`.
         norm : bool | num | expr | str
             The value to which the state is normalized.
@@ -1243,7 +1249,7 @@ class PCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state.
+            Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -1323,7 +1329,7 @@ class PCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state.
+            Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -1435,7 +1441,7 @@ class PCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state.
+            Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -1479,10 +1485,12 @@ class PCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state before committing it in the :python:`matrix` property.
+            Whether to perform mathematical simplification on the state before committing it in the :python:`matrix` property.
+            If :python:`False`, does not simplify.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
+            If :python:`False`, does not conjugate.
             Defaults to :python:`False`.
         norm : bool | num | expr | str
             The value to which the state is normalized.
@@ -1560,10 +1568,12 @@ class PCTC(QuantumCTC):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.
+            Whether to perform mathematical simplification on the state before committing it to the :python:`matrix` property.
+            If :python:`False`, does not simplify.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
+            If :python:`False`, does not conjugate.
             Defaults to :python:`False`.
         norm : bool | num | expr | str
             The value to which the state is normalized.

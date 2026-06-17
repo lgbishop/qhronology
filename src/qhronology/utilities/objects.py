@@ -90,49 +90,6 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     def __repr__(self) -> str:
         return repr(self.output())
 
-    def print(
-        self,
-        delimiter: str | None = None,
-        product: bool | None = None,
-        return_string: bool | None = None,
-    ) -> None | str:
-        """Print or return a mathematical expression of the quantum object as a string.
-
-        Arguments
-        ---------
-        delimiter : str
-            A string containing the character(s) with which to delimit (i.e., separate) the values in the ket and/or bra terms in the mathematical expression.
-            Defaults to :python:`","`.
-        product : bool
-            Whether to represent the mathematical expression using tensor products.
-            Only applies if the object is a multipartite composition.
-            Defaults to :python:`False`.
-        return_string : bool
-            Whether to return the mathematical expression as a string.
-            Defaults to :python:`False`.
-
-        Returns
-        -------
-        None
-            Returned if :python:`return_string` is :python:`False`.
-        str
-            The constructed mathematical expression. Returned if :python:`return_string` is :python:`True`.
-        """
-        expression = (
-            str(self.notation)
-            + " = "
-            + stringify(
-                self.output(),
-                dim=self.dim,
-                delimiter=delimiter,
-                product=product,
-            )
-        )
-        if return_string is True:
-            return expression
-        else:
-            print(expression)
-
     def output(
         self,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
@@ -147,7 +104,8 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the object.
+            Whether to perform mathematical simplification on the object.
+            If :python:`False`, does not simplify.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the object.
@@ -179,6 +137,69 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             output = Dagger(output)
 
         return output
+
+    def print(
+        self,
+        delimiter: str | None = None,
+        product: bool | None = None,
+        return_string: bool | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        simplify: bool | None = None,
+        conjugate: bool | None = None,
+    ) -> None | str:
+        """Print or return a mathematical expression of the quantum object as a string.
+
+        Note that this method is essentially a wrapper on the :py:meth:`~qhronology.utilities.objects.QuantumObject.output` method, and so includes all of its arguments.
+
+        Arguments
+        ---------
+        delimiter : str
+            A string containing the character(s) with which to delimit (i.e., separate) the values in the ket and/or bra terms in the mathematical expression.
+            Defaults to :python:`","`.
+        product : bool
+            Whether to represent the mathematical expression using tensor products.
+            Only applies if the object is a multipartite composition.
+            Defaults to :python:`False`.
+        return_string : bool
+            Whether to return the mathematical expression as a string.
+            Defaults to :python:`False`.
+        conditions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic conditions to be applied to the state.
+            Defaults to the value of :python:`self.conditions`.
+        simplify : bool
+            Whether to perform mathematical simplification on the object.
+            If :python:`False`, does not simplify.
+            Defaults to :python:`False`.
+        conjugate : bool
+            Whether to perform Hermitian conjugation on the object.
+            If :python:`False`, does not conjugate.
+            Defaults to the value of :python:`self.conjugate`.
+
+        Returns
+        -------
+        None
+            Returned if :python:`return_string` is :python:`False`.
+        str
+            The constructed mathematical expression. Returned if :python:`return_string` is :python:`True`.
+        """
+        expression = (
+            str(self.notation)
+            + " = "
+            + stringify(
+                self.output(
+                    conditions=conditions,
+                    simplify=simplify,
+                    conjugate=conjugate,
+                ),
+                dim=self.dim,
+                delimiter=delimiter,
+                product=product,
+            )
+        )
+        if return_string is True:
+            return expression
+        else:
+            print(expression)
 
     @property
     def form(self) -> str:

@@ -377,7 +377,8 @@ class QuantumGate(QuantumObject):
             Algebraic conditions to be applied to the gate.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the gate.
+            Whether to perform mathematical simplification on the gate.
+            If :python:`False`, does not simplify.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the gate.
@@ -387,7 +388,7 @@ class QuantumGate(QuantumObject):
             The scalar value by which the gate's matrix representation is exponentiated.
             If :python:`False`, does not exponentiate.
             Defaults to the value of :python:`self.exponent`.
-        coefficient : num | expr | str
+        coefficient : bool | num | expr | str
             The scalar value by which the gate's matrix representation is multiplied.
             If :python:`False`, does not multiply the gate by the coefficient.
             Defaults to the value of :python:`self.coefficient`.
@@ -459,6 +460,81 @@ class QuantumGate(QuantumObject):
             gate = Dagger(gate)
 
         return gate
+
+    def print(
+        self,
+        delimiter: str | None = None,
+        product: bool | None = None,
+        return_string: bool | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        simplify: bool | None = None,
+        conjugate: bool | None = None,
+        exponent: bool | num | expr | str | None = None,
+        coefficient: bool | num | expr | str | None = None,
+    ) -> None | str:
+        """Print or return a mathematical expression of the quantum gate as a string.
+
+        Note that this method is essentially a wrapper on the :py:meth:`~qhronology.quantum.gates.QuantumGate.output` method, and so includes its arguments.
+
+        Arguments
+        ---------
+        delimiter : str
+            A string containing the character(s) with which to delimit (i.e., separate) the values in the ket and/or bra terms in the mathematical expression.
+            Defaults to :python:`","`.
+        product : bool
+            Whether to represent the mathematical expression using tensor products.
+            Only applies if the gate is a multipartite composition.
+            Defaults to :python:`False`.
+        return_string : bool
+            Whether to return the mathematical expression as a string.
+            Defaults to :python:`False`.
+        conditions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic conditions to be applied to the gate.
+            Defaults to the value of :python:`self.conditions`.
+        simplify : bool
+            Whether to perform mathematical simplification on the gate.
+            If :python:`False`, does not simplify.
+            Defaults to :python:`False`.
+        conjugate : bool
+            Whether to perform Hermitian conjugation on the gate.
+            If :python:`False`, does not conjugate.
+            Defaults to the value of :python:`self.conjugate`.
+        exponent : bool | num | expr | str
+            The scalar value by which the gate is exponentiated.
+            If :python:`False`, does not exponentiate.
+            Defaults to the value of :python:`self.exponent`.
+        coefficient : bool | num | expr | str
+            The scalar value by which the gate is multiplied.
+            If :python:`False`, does not multiply the gate by the coefficient.
+            Defaults to the value of :python:`self.coefficient`.
+
+        Returns
+        -------
+        None
+            Returned if :python:`return_string` is :python:`False`.
+        str
+            The constructed mathematical expression. Returned if :python:`return_string` is :python:`True`.
+        """
+        expression = (
+            str(self.notation)
+            + " = "
+            + stringify(
+                self.output(
+                    conditions=conditions,
+                    simplify=simplify,
+                    conjugate=conjugate,
+                    exponent=exponent,
+                    coefficient=coefficient,
+                ),
+                dim=self.dim,
+                delimiter=delimiter,
+                product=product,
+            )
+        )
+        if return_string is True:
+            return expression
+        else:
+            print(expression)
 
 
 class Pauli(QuantumGate):
@@ -1755,7 +1831,8 @@ class GateInterleave(QuantumGate):
             Algebraic conditions to be applied to the gate.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the gate.
+            Whether to perform mathematical simplification on the gate.
+            If :python:`False`, does not simplify.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the gate.

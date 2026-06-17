@@ -416,7 +416,7 @@ class QuantumCircuit(SymbolicsProperties):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state.
+            Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -536,7 +536,7 @@ class QuantumCircuit(SymbolicsProperties):
             Algebraic conditions to be applied to the gate.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the gate.
+            Whether to perform mathematical simplification on the gate.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the gate when it is called.
@@ -651,7 +651,7 @@ class QuantumCircuit(SymbolicsProperties):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state.
+            Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
@@ -760,7 +760,7 @@ class QuantumCircuit(SymbolicsProperties):
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
-            Whether to perform algebraic simplification on the state before committing it to the :python:`matrix` property.
+            Whether to perform mathematical simplification on the state before committing it to the :python:`matrix` property.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
