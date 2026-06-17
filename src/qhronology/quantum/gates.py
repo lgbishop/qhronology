@@ -412,7 +412,9 @@ class QuantumGate(QuantumObject):
         if coefficient is None or coefficient is True:
             coefficient = self.coefficient
         if coefficient is not False:
-            coefficient = symbolize_expression(self.coefficient, self.symbols_list)
+            coefficient = symbolize_expression(coefficient, self.symbols_list)
+        else:
+            coefficient = 1
         gate *= coefficient
 
         gate = symbolize_expression(gate, self.symbols_list)
