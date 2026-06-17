@@ -1,0 +1,26 @@
+      ┏━┓                              
+   ⎧╶─┨H┠─●──●──●───────────────────── 
+   ⎪  ┗━┛┏┷┓ │  │ ┏━┓                  
+ρ╶─⎨╶────┨2┠─┼──┼─┨H┠─●──●──────────── 
+   ⎪     ┗━┛┏┷┓ │ ┗━┛┏┷┓ │ ┏━┓         
+   ⎪╶───────┨4┠─┼────┨2┠─┼─┨H┠─●────── 
+   ⎪        ┗━┛┏┷┓   ┗━┛┏┷┓┗━┛┏┷┓┏━┓   
+   ⎩╶──────────┨8┠──────┨4┠───┨2┠┨H┠── 
+               ┗━┛      ┗━┛   ┗━┛┗━┛   
+Matrix([
+[1/4,                1/4,              1/4,                1/4,  1/4,                1/4,              1/4,                1/4,  1/4,                1/4,              1/4,                1/4,  1/4,                1/4,              1/4,                1/4],
+[1/4,               -1/4,              1/4,               -1/4,  1/4,               -1/4,              1/4,               -1/4,  1/4,               -1/4,              1/4,               -1/4,  1/4,               -1/4,              1/4,               -1/4],
+[1/4,                I/4,             -1/4,               -I/4,  1/4,                I/4,             -1/4,               -I/4,  1/4,                I/4,             -1/4,               -I/4,  1/4,                I/4,             -1/4,               -I/4],
+[1/4,               -I/4,             -1/4,                I/4,  1/4,               -I/4,             -1/4,                I/4,  1/4,               -I/4,             -1/4,                I/4,  1/4,               -I/4,             -1/4,                I/4],
+[1/4,      exp(I*pi/4)/4,              I/4,    I*exp(I*pi/4)/4, -1/4,     -exp(I*pi/4)/4,             -I/4,   -I*exp(I*pi/4)/4,  1/4,      exp(I*pi/4)/4,              I/4,    I*exp(I*pi/4)/4, -1/4,     -exp(I*pi/4)/4,             -I/4,   -I*exp(I*pi/4)/4],
+[1/4,     -exp(I*pi/4)/4,              I/4,   -I*exp(I*pi/4)/4, -1/4,      exp(I*pi/4)/4,             -I/4,    I*exp(I*pi/4)/4,  1/4,     -exp(I*pi/4)/4,              I/4,   -I*exp(I*pi/4)/4, -1/4,      exp(I*pi/4)/4,             -I/4,    I*exp(I*pi/4)/4],
+[1/4,    I*exp(I*pi/4)/4,             -I/4,      exp(I*pi/4)/4, -1/4,   -I*exp(I*pi/4)/4,              I/4,     -exp(I*pi/4)/4,  1/4,    I*exp(I*pi/4)/4,             -I/4,      exp(I*pi/4)/4, -1/4,   -I*exp(I*pi/4)/4,              I/4,     -exp(I*pi/4)/4],
+[1/4,   -I*exp(I*pi/4)/4,             -I/4,     -exp(I*pi/4)/4, -1/4,    I*exp(I*pi/4)/4,              I/4,      exp(I*pi/4)/4,  1/4,   -I*exp(I*pi/4)/4,             -I/4,     -exp(I*pi/4)/4, -1/4,    I*exp(I*pi/4)/4,              I/4,      exp(I*pi/4)/4],
+[1/4,      exp(I*pi/8)/4,    exp(I*pi/4)/4,    exp(3*I*pi/8)/4,  I/4,    I*exp(I*pi/8)/4,  I*exp(I*pi/4)/4,  I*exp(3*I*pi/8)/4, -1/4,     -exp(I*pi/8)/4,   -exp(I*pi/4)/4,   -exp(3*I*pi/8)/4, -I/4,   -I*exp(I*pi/8)/4, -I*exp(I*pi/4)/4, -I*exp(3*I*pi/8)/4],
+[1/4,     -exp(I*pi/8)/4,    exp(I*pi/4)/4,   -exp(3*I*pi/8)/4,  I/4,   -I*exp(I*pi/8)/4,  I*exp(I*pi/4)/4, -I*exp(3*I*pi/8)/4, -1/4,      exp(I*pi/8)/4,   -exp(I*pi/4)/4,    exp(3*I*pi/8)/4, -I/4,    I*exp(I*pi/8)/4, -I*exp(I*pi/4)/4,  I*exp(3*I*pi/8)/4],
+[1/4,    I*exp(I*pi/8)/4,   -exp(I*pi/4)/4, -I*exp(3*I*pi/8)/4,  I/4,     -exp(I*pi/8)/4, -I*exp(I*pi/4)/4,    exp(3*I*pi/8)/4, -1/4,   -I*exp(I*pi/8)/4,    exp(I*pi/4)/4,  I*exp(3*I*pi/8)/4, -I/4,      exp(I*pi/8)/4,  I*exp(I*pi/4)/4,   -exp(3*I*pi/8)/4],
+[1/4,   -I*exp(I*pi/8)/4,   -exp(I*pi/4)/4,  I*exp(3*I*pi/8)/4,  I/4,      exp(I*pi/8)/4, -I*exp(I*pi/4)/4,   -exp(3*I*pi/8)/4, -1/4,    I*exp(I*pi/8)/4,    exp(I*pi/4)/4, -I*exp(3*I*pi/8)/4, -I/4,     -exp(I*pi/8)/4,  I*exp(I*pi/4)/4,    exp(3*I*pi/8)/4],
+[1/4,    exp(3*I*pi/8)/4,  I*exp(I*pi/4)/4,  I*exp(5*I*pi/8)/4, -I/4, -I*exp(3*I*pi/8)/4,    exp(I*pi/4)/4,    exp(5*I*pi/8)/4, -1/4,   -exp(3*I*pi/8)/4, -I*exp(I*pi/4)/4, -I*exp(5*I*pi/8)/4,  I/4,  I*exp(3*I*pi/8)/4,   -exp(I*pi/4)/4,   -exp(5*I*pi/8)/4],
+[1/4,   -exp(3*I*pi/8)/4,  I*exp(I*pi/4)/4, -I*exp(5*I*pi/8)/4, -I/4,  I*exp(3*I*pi/8)/4,    exp(I*pi/4)/4,   -exp(5*I*pi/8)/4, -1/4,    exp(3*I*pi/8)/4, -I*exp(I*pi/4)/4,  I*exp(5*I*pi/8)/4,  I/4, -I*exp(3*I*pi/8)/4,   -exp(I*pi/4)/4,    exp(5*I*pi/8)/4],
+[1/4,  I*exp(3*I*pi/8)/4, -I*exp(I*pi/4)/4,    exp(5*I*pi/8)/4, -I/4,    exp(3*I*pi/8)/4,   -exp(I*pi/4)/4, -I*exp(5*I*pi/8)/4, -1/4, -I*exp(3*I*pi/8)/4,  I*exp(I*pi/4)/4,   -exp(5*I*pi/8)/4,  I/4,   -exp(3*I*pi/8)/4,    exp(I*pi/4)/4,  I*exp(5*I*pi/8)/4],
+[1/4, -I*exp(3*I*pi/8)/4, -I*exp(I*pi/4)/4,   -exp(5*I*pi/8)/4, -I/4,   -exp(3*I*pi/8)/4,   -exp(I*pi/4)/4,  I*exp(5*I*pi/8)/4, -1/4,  I*exp(3*I*pi/8)/4,  I*exp(I*pi/4)/4,    exp(5*I*pi/8)/4,  I/4,    exp(3*I*pi/8)/4,    exp(I*pi/4)/4, -I*exp(5*I*pi/8)/4]])

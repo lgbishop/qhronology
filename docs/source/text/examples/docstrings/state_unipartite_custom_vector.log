@@ -1,0 +1,5 @@
+η╶─
+Matrix([
+[μ*conjugate(μ), μ*conjugate(ν)],
+[ν*conjugate(μ), ν*conjugate(ν)]])
+η = μ*conjugate(μ)|0⟩⟨0| + μ*conjugate(ν)|0⟩⟨1| + ν*conjugate(μ)|1⟩⟨0| + ν*conjugate(ν)|1⟩⟨1|

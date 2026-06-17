@@ -1,0 +1,6 @@
+|ψ⟩╶──╳─── 
+      │    
+|φ⟩╶──╳──⏚ 
+|(ψ⊗φ)′⟩ = a*c|0⟩⊗|0⟩ + b*c|0⟩⊗|1⟩ + a*d|1⟩⊗|0⟩ + b*d|1⟩⊗|1⟩
+|ψ⟩⟨ψ| = a*conjugate(a)|0⟩⟨0| + a*conjugate(b)|0⟩⟨1| + b*conjugate(a)|1⟩⟨0| + b*conjugate(b)|1⟩⟨1|
+|φ⟩⟨φ| = c*conjugate(c)|0⟩⟨0| + c*conjugate(d)|0⟩⟨1| + d*conjugate(c)|1⟩⟨0| + d*conjugate(d)|1⟩⟨1|

@@ -1,0 +1,12 @@
+|x⟩╶──●──●────────●─── 
+      │  │        │    
+|y⟩╶──●──⨁──●──●──⨁─── 
+      │     │  │       
+|c⟩╶──┼─────●──⨁────── 
+      │     │          
+|0⟩╶──⨁─────⨁───────── 
+|x⟩ = a|0⟩ + b|1⟩
+|y⟩ = u|0⟩ + v|1⟩
+|c⟩ = |1⟩
+s = (a*v*conjugate(a)*conjugate(v) + b*u*conjugate(b)*conjugate(u))|0⟩⟨0| + (a*u*conjugate(a)*conjugate(u) + b*v*conjugate(b)*conjugate(v))|1⟩⟨1|
+c′ = a*u*conjugate(a)*conjugate(u)|0⟩⟨0| + (a*v*conjugate(a)*conjugate(v) + b*conjugate(b))|1⟩⟨1|

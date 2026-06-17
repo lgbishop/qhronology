@@ -1,0 +1,5 @@
+|ξ⟩⟨ξ|╶──
+Matrix([
+[α*conjugate(α), α*conjugate(β)],
+[β*conjugate(α), β*conjugate(β)]])
+|ξ⟩⟨ξ| = α*conjugate(α)|0⟩⟨0| + α*conjugate(β)|0⟩⟨1| + β*conjugate(α)|1⟩⟨0| + β*conjugate(β)|1⟩⟨1|
