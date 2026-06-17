@@ -1603,12 +1603,6 @@ class GateInterleave(QuantumGate):
             notation=notation,
         )
 
-    def __str__(self) -> str:
-        return str(self.notation) + " = " + stringify(self.output(), self.dim)
-
-    def __repr__(self) -> str:
-        return repr(self.output())
-
     @property
     def merge(self) -> bool:
         """Whether to merge the gates together diagrammatically."""

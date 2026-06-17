@@ -85,15 +85,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         self.debug = debug
 
     def __str__(self) -> str:
-        expression = (
-            str(self.notation)
-            + " = "
-            + stringify(
-                self.output(),
-                dim=self.dim,
-            )
-        )
-        return expression
+        return str(self.notation) + " = " + stringify(self.output(), dim=self.dim)
 
     def __repr__(self) -> str:
         return repr(self.output())
