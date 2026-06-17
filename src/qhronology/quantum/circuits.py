@@ -945,6 +945,7 @@ class QuantumCircuit(SymbolicsProperties):
         uniform_spacing: bool | None = None,
         force_separation: bool | None = None,
         style: str | None = None,
+        visible: set[str] | None = None,
         return_string: bool | None = None,
     ) -> None | str:
         """Print or return a diagram of the quantum circuit as a multiline string.
@@ -968,6 +969,10 @@ class QuantumCircuit(SymbolicsProperties):
             A string specifying the style for the circuit visualization to take.
             Can be any of :python:`"ascii"`, :python:`"unicode"`, or :python:`"unicode_alt"`.
             Defaults to :python:`"unicode"`.
+        visible : set[str]
+            A set of strings specifying which components of the circuit to include in the visualization.
+            Can contain any of :python:`"inputs"`, :python:`"gates"`, or :python:`"outputs"`.
+            Defaults to :python:`{"inputs", "gates", "outputs"}`.
         return_string : bool
             Whether to return the assembled diagram as a multiline string.
             Defaults to :python:`False`.
@@ -987,9 +992,10 @@ class QuantumCircuit(SymbolicsProperties):
         sep = (1, 1) if sep is None else sep
         # if isinstance(sep, tuple) is True:
         #     sep = {"upper": sep[1], "lower": sep[1], "left": sep[0], "right": sep[0]}
-        style = Styles.UNICODE.value if style is None else style
         uniform_spacing = False if uniform_spacing is None else uniform_spacing
         force_separation = False if force_separation is None else force_separation
+        style = Styles.UNICODE.value if style is None else style
+        visible = {"inputs", "gates", "outputs"} if visible is None else visible
         return_string = False if return_string is None else return_string
 
         cells_input = []
@@ -1126,6 +1132,13 @@ class QuantumCircuit(SymbolicsProperties):
                     pad=(2, 0),
                     section=Sections.OUTPUTS.value,
                 )
+
+        if len({"inputs", "input"} & visible) == 0:
+            column_input = []
+        if len({"gates", "gate"} & visible) == 0:
+            columns_gate = []
+        if len({"outputs", "output"} & visible) == 0:
+            column_output = []
 
         grid = DiagramCircuit(
             columns=flatten_list([column_input, [*columns_gate], column_output])
