@@ -41,5 +41,5 @@ for i in range(0, size):
 fourier = QuantumCircuit(inputs=[input_state], gates=QFT)
 fourier.diagram(pad=(0, 0), sep=(0, 1), style="unicode")
 
-# # Output
+# Output
 print(repr(fourier.gate()))
