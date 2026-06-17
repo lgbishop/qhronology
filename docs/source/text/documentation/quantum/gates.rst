@@ -3216,27 +3216,28 @@ Combinations
 
    .. code:: python
 
-      >>> gates = [GellMann(index=i) for i in range(1, 9)]
-      >>> L = GateStack(*gates)
-      >>> L.diagram(sep=(1, 1))
+      >>> labels = ("x", "y", "z")
+      >>> gates = [Rotation(axis=i, angle="θ", label=f"R_{labels[i - 1]}") for i in range(1, 4)]
+      >>> Rotations = GateStack(*gates)
+      >>> Rotations.diagram(sep=(1, 1))
 
    .. raw:: latex
       
-      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_stack_gellmann.pdf}
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_stack_rotation.pdf}
       \vspace{-1\baselineskip}
 
    ..
 
       .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_gate_stack_gellmann-dark.png
+         .. image:: /figures/output/text_examples_docstrings_gate_stack_rotation-dark.png
             :scale: 36 %
             :align: left
             :class: only-dark
 
       .. only:: html
 
-         .. image:: /figures/output/text_examples_docstrings_gate_stack_gellmann-light.png
+         .. image:: /figures/output/text_examples_docstrings_gate_stack_rotation-light.png
             :scale: 36 %
             :align: left
             :class: only-light
