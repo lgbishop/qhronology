@@ -114,6 +114,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         Defaults to :python:`"LSTICK"`.
     debug : bool
         Whether to print the internal state (held in :python:`matrix`) on change.
+        If :python:`False`, does not print.
         Defaults to :python:`False`.
     """
 

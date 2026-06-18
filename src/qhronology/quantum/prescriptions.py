@@ -203,7 +203,6 @@ class QuantumCTC(QuantumCircuit):
             Defaults to :python:`True`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
-            If :python:`False`, does not substitute the conditions.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
@@ -230,6 +229,7 @@ class QuantumCTC(QuantumCircuit):
             Defaults to :python:`"⊗".join([state.notation for state in self.inputs])` if :python:`label` is :python:`None` and either :python:`merge` is :python:`False` or the input states are all vectors, else :python:`None`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
+            If :python:`False`, does not print.
             Defaults to :python:`False`.
 
         Returns
@@ -242,71 +242,16 @@ class QuantumCTC(QuantumCircuit):
         Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation` is fixed and incompatible with any subsequent changes (including densification).
         This behaviour may be improved in the future.
         """
-        merge = True if merge is None else merge
-        conditions = self.conditions if conditions is None else conditions
-
-        if label is None and (
-            (merge is False and self.input_is_vector is True)
-            or self.input_is_vector is False
-        ):
-            notation = (
-                "⊗".join([state.notation for state in self.inputs])
-                if notation is None
-                else notation
-            )
-        label = (
-            "⊗".join([state.label for state in self.inputs]) if label is None else label
-        )
-
-        form = Forms.MATRIX.value
-        kind = Kinds.MIXED.value
-        if self.input_is_vector is True:
-            form = Forms.VECTOR.value
-            kind = Kinds.PURE.value
-        inputs = [state.output(conjugate=False) for state in self.inputs]
-        if self.input_is_vector is False:
-            inputs = [densify(state) for state in inputs]
-        input_state = sp.Matrix(TensorProduct(*inputs))
-
-        if count_systems(input_state, self.dim) != len(self.systems_respecting):
-            raise ValueError(
-                """The size of the given input state(s) does not match that specified by the property :python:`systems_respecting`."""
-            )
-
-        input_state = QuantumState(
-            spec=input_state,
-            form=form,
-            kind=kind,
-            symbols=self.symbols,
-            dim=self.dim,
+        return super().input(
+            merge=merge,
             conditions=conditions,
-            norm=False,
-            conjugate=False,
-            label=None,
-            notation=None,
-            debug=False,
-        )
-
-        # Simplification
-        simplify = False if simplify is None else simplify
-        if simplify is True:
-            input_state.simplify()
-
-        input_state = QuantumState(
-            form=form,
-            kind=kind,
-            spec=input_state.output(),
-            symbols=self.symbols,
-            dim=self.dim,
-            conditions=conditions,
+            simplify=simplify,
             conjugate=conjugate,
             norm=norm,
             label=label,
             notation=notation,
             debug=debug,
         )
-
-        return input_state
 
     # The four methods below merely output the reduced states, so the :python:`systems_respective` and :python:`systems_violating` of the base class acts just like extra traces.
     def output_violating(self) -> mat:
@@ -934,6 +879,7 @@ class DCTC(QuantumCTC):
             Defaults to the value of :python:`self.free_symbol`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
+            If :python:`False`, does not print.
             Defaults to :python:`False`.
 
         Returns
@@ -1025,6 +971,7 @@ class DCTC(QuantumCTC):
             Defaults to the value of :python:`self.free_symbol`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
+            If :python:`False`, does not print.
             Defaults to :python:`False`.
 
         Returns
@@ -1512,6 +1459,7 @@ class PCTC(QuantumCTC):
             Defaults to :python:`[]`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
+            If :python:`False`, does not print.
             Defaults to :python:`False`.
 
         Returns
@@ -1599,6 +1547,7 @@ class PCTC(QuantumCTC):
             Defaults to :python:`True`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
+            If :python:`False`, does not print.
             Defaults to :python:`False`.
 
         Returns

@@ -301,6 +301,15 @@ class QuantumCircuit(SymbolicsProperties):
         return len(self.systems_removed)
 
     @property
+    def num_systems_respecting(self) -> int:
+        """The total number of systems spanned by the circuit's chronology-respecting (CR) states and gates prior to any system reduction (post-processing, i.e., traces and postselections]).
+        Of course, in an ordinary quantum circuit (without CTCs), every system is technically chronology-respecting. This property is therefore used to simply provide compatibility with the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class (and its descendents)."""
+        num_systems_respecting = self.num_systems_gross
+        if hasattr(self, "_systems_respecting") is True:
+            num_systems_respecting = len(self.systems_respecting)
+        return num_systems_respecting
+
+    @property
     def systems(self) -> list[int]:
         """An ordered list of the numerical indices of the circuit's systems."""
         return [k for k in range(0, self.num_systems)]
@@ -347,8 +356,6 @@ class QuantumCircuit(SymbolicsProperties):
         is_vector = False
         if all(state.is_vector for state in self.inputs):
             is_vector = True
-        if self.num_systems - self.num_systems_inputs != 0:
-            is_vector = False
         return is_vector
 
     @property
@@ -417,9 +424,11 @@ class QuantumCircuit(SymbolicsProperties):
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
+            If :python:`False`, does not simplify.
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
+            If :python:`False`, does not conjugate.
             Defaults to :python:`False`.
         norm : bool | num | expr | str
             The value to which the state is normalized.
@@ -438,6 +447,7 @@ class QuantumCircuit(SymbolicsProperties):
             Defaults to :python:`"⊗".join([state.notation for state in self.inputs])` if :python:`label` is :python:`None` and either :python:`merge` is :python:`False` or the input states are all vectors, else :python:`None`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
+            If :python:`False`, does not print.
             Defaults to :python:`False`.
 
         Returns
@@ -450,8 +460,25 @@ class QuantumCircuit(SymbolicsProperties):
         Passing a value of :python:`False` to the :python:`merge` argument results in a state whose :python:`notation` is fixed and incompatible with any subsequent changes (including densification).
         This behaviour may be improved in the future.
         """
-        merge = True if merge is None else merge
         inputs = copy.deepcopy(self.inputs)
+        # Autofill with zero states as necessary.
+        zero_state = QuantumState(
+            form=Forms.VECTOR.value,
+            kind=Kinds.PURE.value,
+            spec=[(1, [0])],
+            symbols=dict(),
+            dim=self.dim,
+            conditions=[],
+            norm=1,
+            conjugate=False,
+            label="0",
+            notation=None,
+            debug=False,
+        )
+        for _ in range(0, self.num_systems_respecting - self.num_systems_inputs):
+            inputs.append(zero_state)
+
+        merge = True if merge is None else merge
         conditions = self.conditions if conditions is None else conditions
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
@@ -477,9 +504,6 @@ class QuantumCircuit(SymbolicsProperties):
         label = "⊗".join([state.label for state in inputs]) if label is None else label
 
         inputs = [state.output() for state in inputs]
-        identity = (sp.Rational(1, self.dim)) * sp.eye(self.dim)
-        for _ in range(0, self.num_systems_gross - self.num_systems_inputs):
-            inputs.append(identity)
         input_state = sp.Matrix(TensorProduct(*inputs))
 
         input_state = QuantumState(
@@ -789,6 +813,7 @@ class QuantumCircuit(SymbolicsProperties):
             Defaults to :python:`True`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
+            If :python:`False`, does not print.
             Defaults to :python:`False`.
 
         Returns
@@ -1011,6 +1036,23 @@ class QuantumCircuit(SymbolicsProperties):
                                 ).cells
                             ]
                         )
+                    for _ in range(0, len(self.systems_respecting) - self.num_systems_inputs):
+                        zero_state = QuantumState(
+                            form=Forms.VECTOR.value,
+                            kind=Kinds.PURE.value,
+                            spec=[(1, [0])],
+                            symbols=dict(),
+                            dim=self.dim,
+                            conditions=[],
+                            norm=1,
+                            conjugate=False,
+                            label="0",
+                            notation=None,
+                            debug=False,
+                        )
+                        cells_input.append(
+                            [zero_state._diagram_column(pad=pad, sep=sep, style=style).cells]
+                        )
                 else:
                     if system in self.systems_violating:
                         cells_input.append(
@@ -1025,32 +1067,29 @@ class QuantumCircuit(SymbolicsProperties):
                 cells_input.append(
                     [*state._diagram_column(pad=pad, sep=sep, style=style).cells]
                 )
-            if self.num_systems_inputs != 0:
-                for _ in range(0, self.num_systems - self.num_systems_inputs):
-                    identity = QuantumState(
-                        form=Forms.MATRIX.value,
-                        kind=Kinds.MIXED.value,
-                        spec=sp.eye(self.dim),
-                        symbols=dict(),
-                        dim=self.dim,
-                        conditions=[],
-                        norm=1,
-                        conjugate=False,
-                        label="I",
-                        notation=None,
-                        debug=False,
-                    )
-                    cells_input.append(
-                        [identity._diagram_column(pad=pad, sep=sep, style=style).cells]
-                    )
+            for _ in range(0, self.num_systems - self.num_systems_inputs):
+                zero_state = QuantumState(
+                    form=Forms.VECTOR.value,
+                    kind=Kinds.PURE.value,
+                    spec=[(1, [0])],
+                    symbols=dict(),
+                    dim=self.dim,
+                    conditions=[],
+                    norm=1,
+                    conjugate=False,
+                    label="0",
+                    notation=None,
+                    debug=False,
+                )
+                cells_input.append(
+                    [zero_state._diagram_column(pad=pad, sep=sep, style=style).cells]
+                )
 
-        column_input = []
-        if self.num_systems_inputs != 0:
-            column_input = DiagramColumn(
-                cells=flatten_list(cells_input),
-                pad=(2, 0),
-                section=Sections.INPUTS.value,
-            )
+        column_input = DiagramColumn(
+            cells=flatten_list(cells_input),
+            pad=(2, 0),
+            section=Sections.INPUTS.value,
+        )
 
         columns_gate = []
         for index_column, gate in enumerate(self.gates):
@@ -1125,13 +1164,12 @@ class QuantumCircuit(SymbolicsProperties):
                 )
 
         column_output = []
-        if len(self.inputs) != 0:
-            if len(self.gates) != 0 or self.num_systems_removed != 0:
-                column_output = DiagramColumn(
-                    cells=flatten_list(cells_output),
-                    pad=(2, 0),
-                    section=Sections.OUTPUTS.value,
-                )
+        if len(self.gates) != 0 or self.num_systems_removed != 0:
+            column_output = DiagramColumn(
+                cells=flatten_list(cells_output),
+                pad=(2, 0),
+                section=Sections.OUTPUTS.value,
+            )
 
         if len({"inputs", "input"} & visible) == 0:
             column_input = []
