@@ -48,7 +48,7 @@ from qhronology.quantum.gates import QuantumGate
 from qhronology.quantum.circuits import QuantumCircuit
 
 from qhronology.mechanics.operations import densify, columnify, partial_trace
-from qhronology.mechanics.quantities import trace
+from qhronology.mechanics.quantities import trace, entropy
 
 
 class QuantumCTC(QuantumCircuit):
@@ -309,6 +309,7 @@ def dctc_violating(
     systems_respecting: list[int],
     systems_violating: list[int],
     free_symbol: sym | str | None = None,
+    maximum_entropy: bool | None = None,
 ) -> mat:
     """Calculate the chronology-violating (CV) state(s) according to the D-CTC prescription by computing fixed points of the map
 
@@ -332,6 +333,10 @@ def dctc_violating(
     free_symbol : sym | str
         The representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
         Defaults to :python:`"g"`.
+    maximum_entropy : bool
+        Whether to, in the case of solution multiplicity, return the CV state that possesses the most (von Neumann) entropy, in accordance with Deutsch's original prescription.
+        If :python:`False`, simply returns the ordinary (single or parametrized) solution.
+        Defaults to :python:`False`.
 
     Returns
     -------
@@ -344,6 +349,7 @@ def dctc_violating(
 
     """
     free_symbol = "g" if free_symbol is None else free_symbol
+    maximum_entropy = False if maximum_entropy is None else maximum_entropy
     systems_respecting = list(set(systems_respecting))
     systems_violating = list(set(systems_violating))
     try:
@@ -419,6 +425,7 @@ def dctc_violating(
     solutions = list(solutions[1])[0]
     solutions = {key: value for key, value in zip(unknowns, solutions)}
 
+    free_variables = []
     # Check for all zeroes solution and, if found, replace it with the CR input state.
     # This assumes that a zero solution corresponds to the CR input.
     if any(value != 0 for value in solutions.values()) is False:
@@ -465,14 +472,13 @@ def dctc_violating(
             set().union(*[element.free_symbols for element in solutions])
         )
         unknowns_free = [symbol for symbol in free_symbols if symbol in unknowns]
-        free_variables = []
         if len(unknowns_free) == 1:
             free_variables = [sp.Symbol(f"{free_symbol}")]
         if len(unknowns_free) > 1:
             free_variables = [
                 sp.Symbol(f"{free_symbol}_{i}") for i in range(0, len(unknowns_free))
             ]
-        if len(free_variables) != 0:
+        if len(free_variables) > 0:
             solutions = [
                 solution.subs(dict(zip(unknowns_free, free_variables)))
                 for solution in solutions
@@ -483,6 +489,35 @@ def dctc_violating(
             dim ** len(systems_violating), dim ** len(systems_violating)
         )
     )
+
+    if maximum_entropy is True and len(free_variables) > 0:
+        S = entropy(output_violating, base=dim)
+        dS = [sp.diff(S, variable) for variable in free_variables]
+        ddS = [sp.diff(first, variable) for first in dS for variable in free_variables]
+        hessian_matrix = sp.Matrix(len(free_variables), len(free_variables), ddS)
+        stationary_points = sp.solve(dS, free_variables, set=False)
+        maxima = []
+        for point in stationary_points:
+            substitutions = [
+                (free_variables[n], point[n]) for n in range(0, len(point))
+            ]
+            hessian_matrix_point = hessian_matrix.subs(substitutions)
+            eigenvalues = list(hessian_matrix_point.eigenvals().keys())
+            if all(
+                eigenvalue < 0 for eigenvalue in eigenvalues
+            ):  # Check for a local maximum.
+                maxima.append(point)
+        if len(maxima) == 0:
+            print("No maximally entropic D-CTC CV state found.")
+        if len(maxima) > 1:
+            print("More than one maximally entropic D-CTC CV state found.")
+        if len(maxima) == 1:
+            output_violating = output_violating.subs(
+                [
+                    (free_variables[n], maxima[0][n])
+                    for n in range(0, len(free_variables))
+                ]
+            )
 
     return output_violating
 
@@ -558,14 +593,26 @@ class DCTC(QuantumCTC):
     free_symbol : sym | str
         The representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
         Defaults to :python:`"g"`.
+    maximum_entropy : bool
+        Whether to, in the case of solution multiplicity, return solutions that correspond to the maximally entropic CV state, in accordance with Deutsch's original prescription.
+        If :python:`False`, simply returns the ordinary (single or parametrized) solution.
+        Defaults to :python:`False`.
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
 
-    def __init__(self, *args, free_symbol: sym | str | None = None, **kwargs):
+    def __init__(
+        self,
+        *args,
+        free_symbol: sym | str | None = None,
+        maximum_entropy: bool | None = None,
+        **kwargs,
+    ):
         super().__init__(*args, **kwargs)
         free_symbol = "g" if free_symbol is None else free_symbol
+        maximum_entropy = False if maximum_entropy is None else maximum_entropy
         self.free_symbol = free_symbol
+        self.maximum_entropy = maximum_entropy
 
     @property
     def free_symbol(self) -> sym | str:
@@ -575,6 +622,15 @@ class DCTC(QuantumCTC):
     @free_symbol.setter
     def free_symbol(self, free_symbol: sym | str):
         self._free_symbol = free_symbol
+
+    @property
+    def maximum_entropy(self) -> bool:
+        """Whether to, in the case of solution multiplicity, return solutions that correspond to the maximally entropic CV state, in accordance with Deutsch's original prescription."""
+        return self._maximum_entropy
+
+    @maximum_entropy.setter
+    def maximum_entropy(self, maximum_entropy: bool):
+        self._maximum_entropy = maximum_entropy
 
     @property
     def input_is_vector(self) -> bool:
@@ -591,7 +647,10 @@ class DCTC(QuantumCTC):
         """The matrix representation of the total D-CTC chronology-respecting (CR) output state prior to any post-processing."""
         output_respecting = dctc_respecting(
             input_respecting=self.input(conditions=[]),
-            input_violating=self.state_violating(free_symbol=self.free_symbol),
+            input_violating=self.state_violating(
+                free_symbol=self.free_symbol,
+                maximum_entropy=self.maximum_entropy,
+            ),
             gate=self.gate(conditions=[]),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
@@ -604,6 +663,7 @@ class DCTC(QuantumCTC):
         simplify: bool | None = None,
         conjugate: bool | None = None,
         free_symbol: sym | str | None = None,
+        maximum_entropy: bool | None = None,
     ) -> mat:
         """Compute the matrix representation of the D-CTC chronology-violating (CV) state(s).
 
@@ -621,6 +681,10 @@ class DCTC(QuantumCTC):
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
+        maximum_entropy : bool
+            Whether to, in the case of solution multiplicity, return the CV state that possesses the most (von Neumann) entropy, in accordance with Deutsch's original prescription.
+            If :python:`False`, simply returns the ordinary (single or parametrized) solution.
+            Defaults to :python:`False`.
 
         Returns
         -------
@@ -628,6 +692,7 @@ class DCTC(QuantumCTC):
             The matrix representation of the CV output state.
         """
         free_symbol = self.free_symbol if free_symbol is None else free_symbol
+        maximum_entropy = self.maximum_entropy if maximum_entropy is None else maximum_entropy
 
         output_violating = dctc_violating(
             input_respecting=self.input(conditions=[]),
@@ -635,6 +700,7 @@ class DCTC(QuantumCTC):
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
             free_symbol=free_symbol,
+            maximum_entropy=maximum_entropy,
         )
 
         form = Forms.MATRIX.value
@@ -687,6 +753,7 @@ class DCTC(QuantumCTC):
         conjugate: bool | None = None,
         postprocess: bool | None = None,
         free_symbol: sym | str | None = None,
+        maximum_entropy: bool | None = None,
     ) -> mat:
         """Compute the matrix representation of the D-CTC chronology-respecting (CR) state(s) (including any post-processing).
 
@@ -707,6 +774,10 @@ class DCTC(QuantumCTC):
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
+        maximum_entropy : bool
+            Whether to, in the case of solution multiplicity, return the CR solution that corresponds to the maximally entropic CV state, in accordance with Deutsch's original prescription.
+            If :python:`False`, simply returns the ordinary (single or parametrized) solution.
+            Defaults to :python:`False`.
 
         Returns
         -------
@@ -715,10 +786,14 @@ class DCTC(QuantumCTC):
         """
         conditions = self.conditions if conditions is None else conditions
         free_symbol = self.free_symbol if free_symbol is None else free_symbol
+        maximum_entropy = self.maximum_entropy if maximum_entropy is None else maximum_entropy
 
         output_respecting = dctc_respecting(
             input_respecting=self.input(conditions=[]),
-            input_violating=self.state_violating(free_symbol=free_symbol),
+            input_violating=self.state_violating(
+                free_symbol=free_symbol,
+                maximum_entropy=maximum_entropy,
+            ),
             gate=self.gate(conditions=[]),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
@@ -793,6 +868,7 @@ class DCTC(QuantumCTC):
         conjugate: bool | None = None,
         postprocess: bool | None = None,
         free_symbol: sym | str | None = None,
+        maximum_entropy: bool | None = None,
     ) -> mat:
         """An alias for the :py:meth:`~qhronology.quantum.prescriptions.DCTC.output_respecting` method.
 
@@ -815,6 +891,11 @@ class DCTC(QuantumCTC):
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
+        maximum_entropy : bool
+            Whether to, in the case of solution multiplicity, return the CR solution that corresponds to the maximally entropic CV state, in accordance with Deutsch's original prescription.
+            If :python:`False`, simply returns the ordinary (single or parametrized) solution.
+            Defaults to :python:`False`.
+
 
         Returns
         -------
@@ -827,6 +908,7 @@ class DCTC(QuantumCTC):
             conjugate=conjugate,
             postprocess=postprocess,
             free_symbol=free_symbol,
+            maximum_entropy=maximum_entropy,
         )
 
     def state_violating(
@@ -840,6 +922,7 @@ class DCTC(QuantumCTC):
         traces: list[int] | None = None,
         debug: bool | None = None,
         free_symbol: sym | str | None = None,
+        maximum_entropy: bool | None = None,
     ) -> QuantumState:
         """Compute the D-CTC chronology-violating (CV) state(s) as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
@@ -877,6 +960,10 @@ class DCTC(QuantumCTC):
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
+        maximum_entropy : bool
+            Whether to, in the case of solution multiplicity, return the CV state that possesses the most (von Neumann) entropy, in accordance with Deutsch's original prescription.
+            If :python:`False`, simply returns the ordinary (single or parametrized) solution.
+            Defaults to :python:`False`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
             If :python:`False`, does not print.
@@ -901,6 +988,7 @@ class DCTC(QuantumCTC):
                     simplify=simplify,
                     conjugate=False,
                     free_symbol=free_symbol,
+                    maximum_entropy=maximum_entropy,
                 )
             ),
             symbols=self.symbols,
@@ -928,6 +1016,7 @@ class DCTC(QuantumCTC):
         postprocess: bool | None = None,
         debug: bool | None = None,
         free_symbol: sym | str | None = None,
+        maximum_entropy: bool | None = None,
     ) -> QuantumState:
         """Compute the D-CTC chronology-respecting (CR) state(s) as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
@@ -969,6 +1058,10 @@ class DCTC(QuantumCTC):
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
+        maximum_entropy : bool
+            Whether to, in the case of solution multiplicity, return the CR solution that corresponds to the maximally entropic CV state, in accordance with Deutsch's original prescription.
+            If :python:`False`, simply returns the ordinary (single or parametrized) solution.
+            Defaults to :python:`False`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
             If :python:`False`, does not print.
@@ -999,6 +1092,7 @@ class DCTC(QuantumCTC):
                 conjugate=False,
                 postprocess=postprocess,
                 free_symbol=free_symbol,
+                maximum_entropy=maximum_entropy,
             )
         )
 
