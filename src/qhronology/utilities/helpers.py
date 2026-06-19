@@ -388,10 +388,11 @@ def apply_function(
         eigenvalue = eigentriple[k][0]
         multiplicity = eigentriple[k][1]
         eigenvectors = eigentriple[k][2]
-        for n in range(0, multiplicity):
-            transformed += function(eigenvalue, *arguments) * to_density(
-                eigenvectors[n]
-            )
+        if not (function == sp.log and eigenvalue == 0):
+            for n in range(0, multiplicity):
+                transformed += function(eigenvalue, *arguments) * to_density(
+                    eigenvectors[n]
+                )
     return transformed
 
 
