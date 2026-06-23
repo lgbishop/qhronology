@@ -803,6 +803,12 @@ Possible future work
   - Implement the permutation (PERM) gate.
   - Add the ability for circuits to be optimized (to reduced gate depth).
   - Add the ability for circuits and/or gates to be decomposed (using a specified gate set).
+  - Add the ability to use custom styles in the circuit diagram visualization.
+  - Make the labelling/notation functionality more robust and extensible.
+  - Improve the performance of the quantum circuit simulation.
+
+    - Parallelize applicable linear algebra operations (e.g., matrix multiplication).
+    - Outsource all numerical computation to more performant libraries such as NumPy (particularly applicable to floating-point arithmetic).
 
 - Documentation:
 
