@@ -1278,6 +1278,7 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    .. code:: python
 
+      >>> from qhronology.quantum.gates import Pauli
       >>> psi = QuantumState(
       ...     spec=[("a", [0]), ("b", [1])],
       ...     form="vector",
@@ -1711,7 +1712,7 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    .. code:: python
 
-      >>> plus_state = QuantumState
+      >>> plus_state = QuantumState(
       ...     spec=[(1, [0]), (1, [1])],
       ...     form="vector",
       ...     norm=1,
@@ -1894,7 +1895,7 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
       ...     norm=1,
       ... )
       >>> state_ABC.mutual([0], [1])
-      (-a*log(a) - b*log(b) - c*log(c))/log(2)
+      -log((a**a*b**b*c**c)**(1/log(2)))
 
    .. raw:: latex
 
