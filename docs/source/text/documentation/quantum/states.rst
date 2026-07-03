@@ -78,11 +78,11 @@ Main class
       ...     norm=1,
       ...     label="ψ",
       ... )
-      >>> qubit_vector.output()
+      >>> qubit_vector.output(simplify=True)
       Matrix([
       [a],
       [b]])
-      >>> qubit_vector.print()
+      >>> qubit_vector.print(simplify=True)
       |ψ⟩ = a|0⟩ + b|1⟩
       >>> qubit_vector.diagram()
 
@@ -132,12 +132,12 @@ Main class
       ...     norm=1,
       ...     label="φ",
       ... )
-      >>> qutrit_vector.output()
+      >>> qutrit_vector.output(simplify=True)
       Matrix([
       [a],
       [b],
       [c]])
-      >>> qutrit_vector.print()
+      >>> qutrit_vector.print(simplify=True)
       |φ⟩ = a|0⟩ + b|1⟩ + c|2⟩
       >>> qutrit_vector.diagram()
 
@@ -181,11 +181,11 @@ Main class
       ...     norm=1,
       ...     label="ξ",
       ... )
-      >>> qubit_pure.output()
+      >>> qubit_pure.output(simplify=True)
       Matrix([
       [α*conjugate(α), α*conjugate(β)],
       [β*conjugate(α), β*conjugate(β)]])
-      >>> qubit_pure.print()
+      >>> qubit_pure.print(simplify=True)
       |ξ⟩⟨ξ| = α*conjugate(α)|0⟩⟨0| + α*conjugate(β)|0⟩⟨1| + β*conjugate(α)|1⟩⟨0| + β*conjugate(β)|1⟩⟨1|
       >>> qubit_pure.diagram()
 

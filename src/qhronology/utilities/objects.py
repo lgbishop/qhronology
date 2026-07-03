@@ -15,30 +15,34 @@ Not intended to be used directly by the user.
 # https://peps.python.org/pep-0649/
 # https://peps.python.org/pep-0749/
 from __future__ import annotations
-
 from typing import Any
 
 import sympy as sp
-from sympy.physics.quantum.dagger import Dagger
 
+from qhronology.mechanics.matrices import quantum_object
 from qhronology.utilities.classification import (
-    mat,
-    num,
-    sym,
-    expr,
+    COMPATIBILITIES,
     Forms,
     Kinds,
     Shapes,
+    arr,
+    expr,
+    mat,
     matrix_form,
     matrix_shape,
+    num,
+    sym,
 )
 from qhronology.utilities.diagrams import VisualizationMixin
 from qhronology.utilities.helpers import (
+    apply_conditions,
+    cast,
+    conjugate_transpose,
     count_systems,
-    stringify,
-    symbolize_expression,
-    symbolize_tuples,
     recursively_simplify,
+    stringify,
+    symbolize_conditions,
+    symbolize_expression,
 )
 from qhronology.utilities.symbolics import SymbolicsProperties
 
@@ -51,9 +55,18 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     def __init__(
         self,
+        spec: (
+            mat
+            | arr
+            | list[list[num | expr | str]]
+            | list[tuple[num | expr | str, int | list[int]]]
+            | None
+        ) = None,
         form: str | None = None,
-        matrix: mat | None = None,
+        kind: str | None = None,
         dim: int | None = None,
+        numerical: bool | None = None,
+        array: bool | None = None,
         num_systems: int | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
@@ -63,10 +76,16 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         family: str | None = None,
         debug: bool | None = None,
     ):
+        spec = sp.zeros(2) if spec is None else spec
         form = Forms.MATRIX.value if form is None else form
-        matrix = sp.zeros(2) if matrix is None else matrix
+        kind = Kinds.MIXED.value if kind is None else kind
         dim = 2 if dim is None else dim
+        numerical = False if numerical is None else numerical
+        array = False if array is None else array
         conjugate = False if conjugate is None else conjugate
+        matrix = quantum_object(
+            spec=spec, form=form, kind=kind, dim=dim, numerical=numerical, array=array
+        )
         num_systems = count_systems(matrix, dim) if num_systems is None else num_systems
         label = "A" if label is None else label
         notation = None if notation is None else notation
@@ -74,11 +93,14 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         debug = False if debug is None else debug
         SymbolicsProperties.__init__(self, symbols=symbols, conditions=conditions)
 
+        self.spec = spec
         self.form = form
-        self.matrix = matrix
+        self.kind = kind
         self.dim = dim
+        self.array = array
         self.num_systems = num_systems
         self.conjugate = conjugate
+        self.numerical = numerical
         self.label = label
         self.notation = notation
         self.family = family
@@ -90,16 +112,91 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     def __repr__(self) -> str:
         return repr(self.output())
 
-    def output(
+    @property
+    def spec(
         self,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
-    ) -> mat:
-        """Return the object's simplified matrix representation.
+    ) -> (
+        mat
+        | arr
+        | list[list[num | expr | str]]
+        | list[tuple[num | expr | str, int | list[int]]]
+    ):
+        """The specification of the quantum object.
+        Provides a complete description of the object in a standard :python:`dim`-dimensional basis.
+        """
+        return self._spec
+
+    @spec.setter
+    def spec(
+        self,
+        spec: (
+            mat
+            | arr
+            | list[list[num | expr | str]]
+            | list[tuple[num | expr | str, int | list[int]]]
+        ),
+    ):
+        self._spec = spec
+
+    @property
+    def current(self) -> mat | arr:
+        """The current (unprocessed) matrix representation of the quantum object."""
+        return self._current
+
+    @current.setter
+    def current(self, current: mat | arr):
+        self._current = current
+
+    def matrix(
+        self,
+        numerical: bool | None = None,
+        array: bool | None = None,
+    ) -> mat | arr:
+        """Compute the unprocessed matrix representation of the object.
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
+
+        Returns
+        -------
+        mat | arr
+            The unprocessed matrix representation of the object.
+        """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        return quantum_object(
+            spec=self.spec,
+            form=self.form,
+            kind=self.kind,
+            dim=self.dim,
+            numerical=numerical,
+            array=array,
+        )
+
+    def output(
+        self,
+        numerical: bool | None = None,
+        array: bool | None = None,
+        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        simplify: bool | None = None,
+        conjugate: bool | None = None,
+    ) -> mat | arr:
+        """Compute the processed matrix representation of the object.
+
+        Arguments
+        ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -114,17 +211,20 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
         Returns
         -------
-        mat
-            The object's simplified matrix representation.
+        mat | arr
+            The processed matrix representation of the object.
         """
-        output = self.matrix
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
 
+        output = self.matrix(numerical=numerical, array=array_intermediate)
         output = symbolize_expression(output, self.symbols_list)
 
         # Conditions
         conditions = self.conditions if conditions is None else conditions
-        conditions = symbolize_tuples(conditions, self.symbols_list)
-        output = output.subs(conditions)
+        conditions = symbolize_conditions(conditions, self.symbols_list)
+        output = apply_conditions(output, conditions)
 
         # Simplification
         simplify = False if simplify is None else simplify
@@ -134,15 +234,16 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         # Conjugation
         conjugate = self.conjugate if conjugate is None else conjugate
         if conjugate is True:
-            output = Dagger(output)
+            output = conjugate_transpose(output)
 
-        return output
+        return cast(output, numerical=numerical, array=array)
 
     def print(
         self,
         delimiter: str | None = None,
         product: bool | None = None,
         return_string: bool | None = None,
+        numerical: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -163,8 +264,11 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         return_string : bool
             Whether to return the mathematical expression as a string.
             Defaults to :python:`False`.
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
+            Algebraic conditions to be applied to the object.
             Defaults to the value of :python:`self.conditions`.
         simplify : bool
             Whether to perform mathematical simplification on the object.
@@ -187,6 +291,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             + " = "
             + stringify(
                 self.output(
+                    numerical=numerical,
                     conditions=conditions,
                     simplify=simplify,
                     conjugate=conjugate,
@@ -204,11 +309,10 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     @property
     def form(self) -> str:
         """The *form* of the object.
-
         Can be either of :python:`"vector"` or :python:`"matrix"`.
         Only :py:class:`~qhronology.quantum.states.QuantumState` objects can be :python:`"vector"`.
         """
-        return matrix_form(self.matrix)
+        return matrix_form(self.current)
 
     @form.setter
     def form(self, form: str):
@@ -218,6 +322,20 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
                     f"""The given :python:`form` ('{form}') is incompatible with the given :python:`kind` ('{self.kind}')."""
                 )
         self._form = form
+
+    @property
+    def kind(self) -> str:
+        """The *kind* of quantum object.
+        Can be either of :python:`"mixed"` or :python:`"pure"`."""
+        return self._kind
+
+    @kind.setter
+    def kind(self, kind: str):
+        if kind not in COMPATIBILITIES[self.form]:
+            raise AttributeError(
+                f"""The given :python:`kind` ('{kind}') is incompatible with the given :python:`form` ('{self.form}')."""
+            )
+        self._kind = kind
 
     @property
     def is_vector(self) -> bool:
@@ -267,18 +385,18 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         if self._notation is None:
             if self.is_vector is True:
                 if (
-                    matrix_shape(self.matrix) == Shapes.COLUMN.value
+                    matrix_shape(self.current) == Shapes.COLUMN.value
                     and self.conjugate == False
                 ) or (
-                    matrix_shape(self.matrix) == Shapes.ROW.value
+                    matrix_shape(self.current) == Shapes.ROW.value
                     and self.conjugate == True
                 ):
                     notation = "|" + self.label + "⟩"
                 elif (
-                    matrix_shape(self.matrix) == Shapes.ROW.value
+                    matrix_shape(self.current) == Shapes.ROW.value
                     and self.conjugate == False
                 ) or (
-                    matrix_shape(self.matrix) == Shapes.COLUMN.value
+                    matrix_shape(self.current) == Shapes.COLUMN.value
                     and self.conjugate == True
                 ):
                     notation = "⟨" + self.label + "|"
@@ -298,13 +416,13 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         self._notation = notation
 
     @property
-    def family(self) -> str:
+    def family(self) -> str | list[str]:
         """The code of the block element that the object is to be visualized as.
         Not intended to be set by the user."""
         return self._family
 
     @family.setter
-    def family(self, family: str):
+    def family(self, family: str | list[str]):
         self._family = family
 
     @property
@@ -345,20 +463,6 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         return []
 
     @property
-    def matrix(self) -> mat:
-        """The matrix representation of the object.
-        Considered read-only (this is strictly enforced by :py:class:`~qhronology.quantum.gates.QuantumGate` class and its derivatives), though can be (indirectly) mutated by some derived classes (such as :py:class:`~qhronology.quantum.states.QuantumState`).
-        Not intended to be set directly by the user."""
-        return sp.Matrix(self._matrix)
-
-    @matrix.setter
-    def matrix(self, matrix: mat):
-        self._matrix = matrix
-        if hasattr(self, "_debug"):
-            if self.debug is True:
-                print(repr(self._matrix))
-
-    @property
     def conjugate(self) -> bool:
         """Whether to perform Hermitian conjugation on the object when it is called."""
         return self._conjugate
@@ -366,6 +470,24 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     @conjugate.setter
     def conjugate(self, conjugate: bool):
         self._conjugate = conjugate
+
+    @property
+    def numerical(self) -> bool:
+        """Whether to cast the object's matrix elements as floating-point values or integer values."""
+        return self._numerical
+
+    @numerical.setter
+    def numerical(self, numerical: bool):
+        self._numerical = numerical
+
+    @property
+    def array(self) -> bool:
+        """Whether to cast the object's matrix as a NumPy array or SymPy matrix."""
+        return self._array
+
+    @array.setter
+    def array(self, array: bool):
+        self._array = array
 
     @property
     def debug(self) -> bool:

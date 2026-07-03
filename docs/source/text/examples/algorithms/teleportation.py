@@ -41,7 +41,7 @@ teleporter = QuantumCircuit(
 teleporter.diagram(force_separation=True)
 
 # Output
-teleported_state = teleporter.state(norm=1, label="ρ")
+teleported_state = teleporter.state(label="ρ")
 
 # Results
 teleporting_state.print()

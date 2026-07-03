@@ -14,35 +14,25 @@ Classes for the creation of quantum states.
 # https://peps.python.org/pep-0649/
 # https://peps.python.org/pep-0749/
 from __future__ import annotations
-
 from typing import Any
 
-from sympy.physics.quantum.dagger import Dagger
-
-from qhronology.utilities.classification import (
-    num,
-    sym,
-    expr,
-    mat,
-    arr,
-    Forms,
-    Kinds,
-    COMPATIBILITIES,
-)
+from qhronology.mechanics.matrices import quantum_object
+from qhronology.mechanics.operations import OperationsMixin, normalize
+from qhronology.mechanics.quantities import QuantitiesMixin
+from qhronology.utilities.classification import Forms, Kinds, arr, expr, mat, num, sym
 from qhronology.utilities.diagrams import Families
 from qhronology.utilities.helpers import (
-    symbolize_expression,
-    symbolize_tuples,
-    recursively_simplify,
+    apply_conditions,
+    cast,
+    conjugate_transpose,
     count_systems,
     fix_arguments,
+    recursively_simplify,
     stringify,
+    symbolize_conditions,
+    symbolize_expression,
 )
 from qhronology.utilities.objects import QuantumObject
-
-from qhronology.mechanics.matrices import quantum_state
-from qhronology.mechanics.operations import normalize, OperationsMixin
-from qhronology.mechanics.quantities import QuantitiesMixin
 
 
 class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
@@ -59,7 +49,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
 
     Arguments
     ---------
-    spec
+    spec : mat | arr | list[list[num | expr | str]] | list[tuple[num | expr | str, int | list[int]]]
         The specification of the quantum state. Provides a complete description of the state's values in a standard :python:`dim`-dimensional basis.
         Can be one of:
 
@@ -80,6 +70,12 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         The dimensionality of the quantum state's Hilbert space.
         Must be a non-negative integer.
         Defaults to :python:`2`.
+    numerical : bool
+        Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Defaults to :python:`False`.
+    array : bool
+        Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+        Defaults to :python:`False`.
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols (usually found within the state specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         Defaults to :python:`{}`.
@@ -129,6 +125,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         form: str | None = None,
         kind: str | None = None,
         dim: int | None = None,
+        numerical: bool | None = None,
+        array: bool | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         conjugate: bool | None = None,
@@ -149,17 +147,19 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         family = Families.LSTICK.value if family is None else family
         norm = False if norm is None else norm
 
-        self.kind = kind
-        self.spec = spec
         self.norm = norm
-
-        matrix = quantum_state(spec=spec, form=form, kind=kind, dim=dim)
+        self.current = quantum_object(
+            spec=spec, form=form, kind=kind, dim=dim, numerical=numerical, array=array
+        )
 
         QuantumObject.__init__(
             self,
+            spec=spec,
             form=form,
+            kind=kind,
             dim=dim,
-            matrix=matrix,
+            numerical=numerical,
+            array=array,
             symbols=symbols,
             conditions=conditions,
             conjugate=conjugate,
@@ -170,45 +170,13 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         )
 
     @property
-    def kind(self) -> str:
-        """The *kind* of quantum state.
-        Can be either of :python:`"mixed"` or :python:`"pure"`."""
-        return self._kind
+    def current(self) -> mat | arr:
+        """The current (unprocessed) matrix representation of the quantum state."""
+        return self._current
 
-    @kind.setter
-    def kind(self, kind: str):
-        if hasattr(self, "_form"):
-            if kind not in COMPATIBILITIES[self.form]:
-                raise AttributeError(
-                    f"""The given :python:`kind` ('{kind}') is incompatible with the given :python:`form` ('{self.form}')."""
-                )
-        self._kind = kind
-
-    @property
-    def spec(
-        self,
-    ) -> (
-        mat
-        | arr
-        | list[list[num | expr | str]]
-        | list[tuple[num | expr | str, int | list[int]]]
-    ):
-        """The matrix representation of the quantum state.
-        Provides a complete description of the state in a standard :python:`dim`-dimensional basis.
-        """
-        return self._spec
-
-    @spec.setter
-    def spec(
-        self,
-        spec: (
-            mat
-            | arr
-            | list[list[num | expr | str]]
-            | list[tuple[num | expr | str, int | list[int]]]
-        ),
-    ):
-        self._spec = spec
+    @current.setter
+    def current(self, current: mat | arr):
+        self._current = current
 
     @property
     def norm(self) -> bool | num | expr | str:
@@ -233,23 +201,56 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         """Read-only property containing the number of systems which the state spans.
         The current value is calculated from the state's matrix representation and its dimensionality :python:`dim`.
         """
-        return count_systems(self.matrix, self.dim)
+        return count_systems(self.current, self.dim)
 
     @num_systems.setter
     def num_systems(self, num_systems: int):
         pass
 
+    def matrix(
+        self,
+        numerical: bool | None = None,
+        array: bool | None = None,
+    ) -> mat | arr:
+        """Compute the unprocessed matrix representation of the state.
+
+        Arguments
+        ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
+
+        Returns
+        -------
+        mat | arr
+            The unprocessed matrix representation of the state.
+        """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        return cast(self.current, numerical=numerical, array=array)
+
     def output(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
-    ) -> mat:
-        """Construct the state's matrix representation, perform any necessary transformations on it, and return it.
+    ) -> mat | arr:
+        """Compute the processed matrix representation of the state.
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -268,10 +269,14 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
 
         Returns
         -------
-        mat
-            The matrix or vector representation of the quantum state.
+        mat | arr
+            The processed matrix representation of the object.
         """
-        state = self.matrix
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
+
+        state = self.matrix(numerical=numerical, array=array_intermediate)
         state = symbolize_expression(state, self.symbols_list)
 
         # Normalization
@@ -282,26 +287,27 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
 
         # Conditions
         conditions = self.conditions if conditions is None else conditions
-        conditions = symbolize_tuples(conditions, self.symbols_list)
-        state = state.subs(conditions)
+        conditions = symbolize_conditions(conditions, self.symbols_list)
+        state = apply_conditions(state, conditions)
 
         # Simplification
-        simplify = self.simplify if simplify is None else simplify
+        simplify = False if simplify is None else simplify
         if simplify is True:
             state = recursively_simplify(state, conditions)
 
         # Conjugation
         conjugate = self.conjugate if conjugate is None else conjugate
         if conjugate is True:
-            state = Dagger(state)
+            state = conjugate_transpose(state)
 
-        return state
+        return cast(state, numerical=numerical, array=array)
 
     def print(
         self,
         delimiter: str | None = None,
         product: bool | None = None,
         return_string: bool | None = None,
+        numerical: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -323,6 +329,9 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         return_string : bool
             Whether to return the mathematical expression as a string.
             Defaults to :python:`False`.
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -351,6 +360,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             + " = "
             + stringify(
                 self.output(
+                    numerical=numerical,
                     conditions=conditions,
                     simplify=simplify,
                     conjugate=conjugate,
@@ -367,15 +377,20 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             print(expression)
 
     def reset(self):
-        """Reset the quantum state's internal matrix state (specifically its :python:`matrix` property) to its original value at instantiation.
+        """Reset the quantum state's internal matrix state (specifically its :python:`current` property) to its original value at instantiation.
 
         Note
         ----
-        This resets only the :python:`matrix` property of the instance.
+        This resets only the :python:`current` property of the instance.
         All other attributes and properties are unchanged.
         """
-        self.matrix = quantum_state(
-            spec=self.spec, form=self._form, kind=self._kind, dim=self.dim
+        self.current = quantum_object(
+            spec=self.spec,
+            form=self._form,
+            kind=self._kind,
+            dim=self.dim,
+            numerical=self.numerical,
+            array=self.array,
         )
 
 

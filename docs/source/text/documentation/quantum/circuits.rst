@@ -327,7 +327,7 @@ Main class
    Matrix([
    [conjugate(U[0, 0]), conjugate(U[1, 0])],
    [conjugate(U[0, 1]), conjugate(U[1, 1])]])
-   >>> print(repr(unitarity.gate()))
+   >>> print(repr(unitarity.gate(simplify=True)))
    Matrix([
    [1, 0],
    [0, 1]])

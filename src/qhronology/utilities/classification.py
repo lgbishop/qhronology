@@ -25,7 +25,7 @@ sym = (
     | sp.core.symbol.Symbol
 )
 expr = sp.core.expr.Expr
-mat = sp.matrices.dense.MutableDenseMatrix
+mat = sp.matrices.dense.MutableDenseMatrix | sp.matrices.immutable.ImmutableDenseMatrix
 arr = np.ndarray
 
 
@@ -81,13 +81,34 @@ FORM_KIND = {
 COMPATIBILITIES = KIND_FORM | FORM_KIND
 
 
-def matrix_form(matrix: mat) -> str | None:
+def count_rows(matrix: mat | arr) -> int:
+    """Count the number of rows of :python:`matrix`."""
+    rows = matrix.shape[0]
+    try:
+        matrix.shape[1]
+    except:
+        rows = 1
+    return rows
+
+
+def count_columns(matrix: mat | arr) -> int:
+    """Count the number of columns of :python:`matrix`."""
+    columns = 1
+    try:
+        columns = matrix.shape[1]
+    except:
+        columns = matrix.shape[0]
+    finally:
+        return columns
+
+
+def matrix_form(matrix: mat | arr) -> str:
     """Describe the form of :python:`matrix` using the terminology of mathematics."""
-    N = matrix.shape[0]
-    M = matrix.shape[1]
-    if N == M and N != 1:
+    rows = count_rows(matrix)
+    columns = count_columns(matrix)
+    if rows == columns and rows != 1:
         return Forms.MATRIX.value
-    elif (N == 1 and M != 1) or (N != 1 and M == 1):
+    elif (rows == 1 and columns != 1) or (rows != 1 and columns == 1):
         return Forms.VECTOR.value
     else:
         raise ValueError(
@@ -95,13 +116,15 @@ def matrix_form(matrix: mat) -> str | None:
         )
 
 
-def matrix_shape(matrix: mat) -> str | None:
+def matrix_shape(matrix: mat | arr) -> str:
     """Describe the shape of :python:`matrix` using the terminology of mathematics."""
-    if matrix.shape[0] != 1 and matrix.shape[1] == 1:
+    rows = count_rows(matrix)
+    columns = count_columns(matrix)
+    if rows != 1 and columns == 1:
         return Shapes.COLUMN.value
-    elif matrix.shape[0] == 1 and matrix.shape[1] != 1:
+    elif rows == 1 and columns != 1:
         return Shapes.ROW.value
-    elif matrix.shape[0] == matrix.shape[1]:
+    elif rows == columns:
         return Shapes.SQUARE.value
     else:
         raise ValueError(

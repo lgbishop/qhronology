@@ -48,7 +48,6 @@ generator.diagram()
 
 # Output
 w_state = generator.state(label="W")
-w_state.simplify()
 
 # Results
 w_state.print()

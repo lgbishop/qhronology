@@ -16,29 +16,28 @@ Functions and a mixin for calculating quantum quantities.
 from __future__ import annotations
 
 import sympy as sp
-from sympy.physics.quantum.dagger import Dagger
-
-from qhronology.utilities.classification import mat, num, expr
-from qhronology.utilities.helpers import (
-    count_systems,
-    extract_matrix,
-    extract_symbols,
-    symbolize_expression,
-    symbolize_tuples,
-    extract_conditions,
-    recursively_simplify,
-    apply_function,
-)
 
 from qhronology.mechanics.operations import densify, partial_trace
+from qhronology.utilities.classification import arr, expr, mat, num
+from qhronology.utilities.helpers import (
+    apply_function,
+    conjugate_transpose,
+    count_systems,
+    extract_conditions,
+    extract_matrix,
+    extract_symbols,
+    recursively_simplify,
+    symbolize_conditions,
+    symbolize_expression,
+)
 
 
-def trace(matrix: mat | QuantumObject) -> num | expr:
+def trace(matrix: mat | arr | QuantumObject) -> num | expr:
     """Calculate the (complete) trace :math:`\\trace[\\op{\\rho}]` of :python:`matrix` (:math:`\\op{\\rho}`).
 
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The input matrix.
 
     Returns
@@ -48,7 +47,7 @@ def trace(matrix: mat | QuantumObject) -> num | expr:
     """
     symbols = extract_symbols(matrix)
     conditions = extract_conditions(matrix)
-    conditions = symbolize_tuples(conditions, symbols)
+    conditions = symbolize_conditions(conditions, symbols)
 
     matrix = densify(extract_matrix(matrix))
     matrix = symbolize_expression(matrix, symbols)
@@ -58,14 +57,14 @@ def trace(matrix: mat | QuantumObject) -> num | expr:
     return trace
 
 
-def purity(state: mat | QuantumObject) -> num | expr:
+def purity(state: mat | arr | QuantumObject) -> num | expr:
     """Calculate the purity (:math:`\\Purity`) of :python:`state` (:math:`\\op{\\rho}`):
 
     .. math:: \\Purity(\\op{\\rho}) = \\trace[\\op{\\rho}^2].
 
     Arguments
     ---------
-    state : mat | QuantumObject
+    state : mat | arr | QuantumObject
         The matrix representation of the input state.
 
     Returns
@@ -75,7 +74,7 @@ def purity(state: mat | QuantumObject) -> num | expr:
     """
     symbols = extract_symbols(state)
     conditions = extract_conditions(state)
-    conditions = symbolize_tuples(conditions, symbols)
+    conditions = symbolize_conditions(conditions, symbols)
 
     matrix = densify(extract_matrix(state))
     matrix = symbolize_expression(matrix, symbols)
@@ -85,7 +84,9 @@ def purity(state: mat | QuantumObject) -> num | expr:
     return purity
 
 
-def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num | expr:
+def distance(
+    state_A: mat | arr | QuantumObject, state_B: mat | arr | QuantumObject
+) -> num | expr:
     """Calculate the trace distance (:math:`\\TraceDistance`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):
 
     .. math::
@@ -95,9 +96,9 @@ def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
 
     Arguments
     ---------
-    state_A : mat | QuantumObject
+    state_A : mat | arr | QuantumObject
         The matrix representation of the first input state.
-    state_B : mat | QuantumObject
+    state_B : mat | arr | QuantumObject
         The matrix representation of the second input state.
 
     Returns
@@ -107,7 +108,7 @@ def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
     """
     symbols = extract_symbols(state_A, state_B)
     conditions = extract_conditions(state_A, state_B)
-    conditions = symbolize_tuples(conditions, symbols)
+    conditions = symbolize_conditions(conditions, symbols)
 
     matrix_A = densify(extract_matrix(state_A))
     matrix_B = densify(extract_matrix(state_B))
@@ -119,7 +120,7 @@ def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
     matrix_B = recursively_simplify(matrix_B, conditions)
 
     product = recursively_simplify(
-        Dagger(matrix_A - matrix_B) * (matrix_A - matrix_B), conditions
+        conjugate_transpose(matrix_A - matrix_B) * (matrix_A - matrix_B), conditions
     )
     root = recursively_simplify(sp.sqrt(product), conditions)
     trace = recursively_simplify(sp.trace(root) / 2, conditions)
@@ -128,7 +129,9 @@ def distance(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
     return distance
 
 
-def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num | expr:
+def fidelity(
+    state_A: mat | arr | QuantumObject, state_B: mat | arr | QuantumObject
+) -> num | expr:
     """Calculate the fidelity (:math:`\\Fidelity`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):
 
     .. math::
@@ -138,9 +141,9 @@ def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
 
     Arguments
     ---------
-    state_A : mat | QuantumObject
+    state_A : mat | arr | QuantumObject
         The matrix representation of the first input state.
-    state_B : mat | QuantumObject
+    state_B : mat | arr | QuantumObject
         The matrix representation of the second input state.
 
     Returns
@@ -150,7 +153,7 @@ def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
     """
     symbols = extract_symbols(state_A, state_B)
     conditions = extract_conditions(state_A, state_B)
-    conditions = symbolize_tuples(conditions, symbols)
+    conditions = symbolize_conditions(conditions, symbols)
 
     matrix_A = densify(extract_matrix(state_A))
     matrix_B = densify(extract_matrix(state_B))
@@ -171,8 +174,8 @@ def fidelity(state_A: mat | QuantumObject, state_B: mat | QuantumObject) -> num 
 
 
 def entropy(
-    state_A: mat | QuantumObject,
-    state_B: mat | QuantumObject | None = None,
+    state_A: mat | arr | QuantumObject,
+    state_B: mat | arr | QuantumObject | None = None,
     base: num | expr | str | None = None,
 ) -> num | expr:
     """Calculate the relative von Neumann entropy (:math:`\\Entropy`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):
@@ -190,9 +193,9 @@ def entropy(
 
     Arguments
     ---------
-    state_A : mat | QuantumObject
+    state_A : mat | arr | QuantumObject
         The matrix representation of the first input state.
-    state_B : mat | QuantumObject
+    state_B : mat | arr | QuantumObject
         The matrix representation of the second input state.
     base : num | expr | str
         The dimensionality of the unit of information in which the entropy is measured.
@@ -205,7 +208,7 @@ def entropy(
     """
     symbols = extract_symbols(state_A)
     conditions = extract_conditions(state_A)
-    conditions = symbolize_tuples(conditions, symbols)
+    conditions = symbolize_conditions(conditions, symbols)
 
     base = 2 if base is None else base
     base = symbolize_expression(base, symbols)
@@ -216,7 +219,7 @@ def entropy(
 
     if state_B is not None:
         symbols |= extract_symbols(state_B)
-        conditions += symbolize_tuples(extract_conditions(state_B), symbols)
+        conditions += symbolize_conditions(extract_conditions(state_B), symbols)
         matrix_B = densify(extract_matrix(state_B))
 
         matrix_B = symbolize_expression(matrix_B, symbols)
@@ -242,7 +245,7 @@ def entropy(
 
 
 def mutual(
-    state: mat | QuantumObject,
+    state: mat | arr | QuantumObject,
     systems_A: int | list[int] | None = None,
     systems_B: int | list[int] | None = None,
     dim: int | None = None,
@@ -259,7 +262,7 @@ def mutual(
 
     Arguments
     ---------
-    state : mat | QuantumObject
+    state : mat | arr | QuantumObject
         The matrix representation of the composite input state.
     systems_A : int | list[int]
         The indices of the first subsystem.
@@ -285,7 +288,7 @@ def mutual(
 
     symbols = extract_symbols(state)
     conditions = extract_conditions(state)
-    conditions = symbolize_tuples(conditions, symbols)
+    conditions = symbolize_conditions(conditions, symbols)
 
     base = dim if base is None else base
     base = symbolize_expression(base, symbols)
@@ -347,7 +350,7 @@ class QuantitiesMixin:
         """
         return purity(state=self)
 
-    def distance(self, state: mat | QuantumObject) -> num | expr:
+    def distance(self, state: mat | arr | QuantumObject) -> num | expr:
         """Calculate the trace distance (:math:`\\TraceDistance`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):
 
         .. math::
@@ -357,7 +360,7 @@ class QuantitiesMixin:
 
         Arguments
         ---------
-        state : mat | QuantumObject
+        state : mat | arr | QuantumObject
             The given state.
 
         Returns
@@ -367,7 +370,7 @@ class QuantitiesMixin:
         """
         return distance(state_A=self, state_B=state)
 
-    def fidelity(self, state: mat | QuantumObject) -> num | expr:
+    def fidelity(self, state: mat | arr | QuantumObject) -> num | expr:
         """Calculate the fidelity (:math:`\\Fidelity`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):
 
         .. math::
@@ -377,7 +380,7 @@ class QuantitiesMixin:
 
         Arguments
         ---------
-        state : mat | QuantumObject
+        state : mat | arr | QuantumObject
             The given state.
 
         Returns
@@ -389,7 +392,7 @@ class QuantitiesMixin:
 
     def entropy(
         self,
-        state: mat | QuantumObject | None = None,
+        state: mat | arr | QuantumObject | None = None,
         base: num | expr | str | None = None,
     ) -> num | expr:
         """Calculate the relative von Neumann entropy (:math:`\\Entropy`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):
@@ -407,7 +410,7 @@ class QuantitiesMixin:
 
         Arguments
         ---------
-        state : mat | QuantumObject
+        state : mat | arr | QuantumObject
             The given state.
         base : num | expr | str
             The dimensionality of the unit of information in which the entropy is measured.

@@ -27,16 +27,13 @@ grandfather.diagram()
 # Output
 # D-CTCs
 grandfather_DCTC = DCTC(circuit=grandfather)
-grandfather_DCTC_CR = grandfather_DCTC.state_respecting(label="ρ_D")
-grandfather_DCTC_CV = grandfather_DCTC.state_violating(label="τ_D")
-grandfather_DCTC_CR.apply(sp.factor)
+grandfather_DCTC_CR = grandfather_DCTC.state_respecting(norm=1, simplify=True, label="ρ_D")
+grandfather_DCTC_CV = grandfather_DCTC.state_violating(norm=1, simplify=True, label="τ_D")
 
 # P-CTCs
 grandfather_PCTC = PCTC(circuit=grandfather)
-grandfather_PCTC_CR = grandfather_PCTC.state_respecting(label="ρ_P")
-grandfather_PCTC_CV = grandfather_PCTC.state_violating(label="τ_P")
-grandfather_PCTC_CR.normalize()
-grandfather_PCTC_CR.simplify()
+grandfather_PCTC_CR = grandfather_PCTC.state_respecting(norm=1, simplify=True, label="ρ_P")
+grandfather_PCTC_CV = grandfather_PCTC.state_violating(norm=1, simplify=True, label="τ_P")
 
 # Results
 grandfather_DCTC_CR.print()

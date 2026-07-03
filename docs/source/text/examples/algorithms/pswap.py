@@ -37,8 +37,8 @@ pswap = QuantumCircuit(
 pswap.diagram()
 
 # Output
-input_state = pswap.input(label="ψ,φ")
-output_state = pswap.state(label="(ψ,φ)′")
+input_state = pswap.input(label="ψ,φ", simplify=True)
+output_state = pswap.state(label="(ψ,φ)′", simplify=True)
 
 # Results
 print(repr(pswap.gate()))

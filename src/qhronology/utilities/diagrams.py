@@ -15,7 +15,6 @@ Not intended to be used directly by the user.
 # https://peps.python.org/pep-0649/
 # https://peps.python.org/pep-0749/
 from __future__ import annotations
-
 import copy
 from enum import StrEnum
 import math

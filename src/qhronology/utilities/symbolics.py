@@ -15,12 +15,11 @@ Not intended to be used directly by the user.
 # https://peps.python.org/pep-0649/
 # https://peps.python.org/pep-0749/
 from __future__ import annotations
-
 from typing import Any
 
 import sympy as sp
 
-from qhronology.utilities.classification import num, sym, expr
+from qhronology.utilities.classification import expr, num, sym
 
 
 class SymbolicsProperties:
@@ -75,7 +74,6 @@ class SymbolicsProperties:
     @symbols.setter
     def symbols(self, symbols: dict[sym | str, dict[str, Any]]):
         self._symbols = symbols
-        # self.symbols_list = symbols_list
 
     @property
     def symbols_list(self) -> list[sym]:

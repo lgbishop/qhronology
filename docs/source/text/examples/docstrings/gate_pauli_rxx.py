@@ -9,4 +9,4 @@ R_xx = Pauli(
 )
 R_xx.diagram()
 print(repr(R_xx.output(simplify=True)))
-R_xx.print()
+R_xx.print(simplify=True)

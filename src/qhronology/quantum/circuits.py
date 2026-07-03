@@ -14,54 +14,51 @@ A class for the creation of quantum circuits.
 # https://peps.python.org/pep-0649/
 # https://peps.python.org/pep-0749/
 from __future__ import annotations
-
 import copy
 from typing import Any
 
-import sympy as sp
-from sympy.physics.quantum import TensorProduct
-from sympy.physics.quantum.dagger import Dagger
-
+from qhronology.mechanics.operations import densify
+from qhronology.quantum.gates import QuantumGate, _Single
+from qhronology.quantum.states import QuantumState
 from qhronology.utilities.classification import (
-    num,
-    sym,
-    expr,
-    mat,
-    arr,
     Forms,
     Kinds,
     Shapes,
+    arr,
+    expr,
+    mat,
     matrix_form,
     matrix_shape,
+    num,
+    sym,
 )
 from qhronology.utilities.diagrams import (
+    DiagramCircuit,
+    DiagramColumn,
     Families,
     Sections,
     Styles,
-    DiagramColumn,
-    DiagramCircuit,
 )
 from qhronology.utilities.helpers import (
-    flatten_list,
-    check_systems_conflicts,
     adjust_targets,
-    symbolize_expression,
-    symbolize_tuples,
-    extract_matrix,
-    recursively_simplify,
+    apply_conditions,
+    cast,
+    check_systems_conflicts,
+    conjugate_transpose,
     count_systems,
-    extract_matrix,
+    extract_representation,
+    extract_representation,
+    flatten_list,
+    generate_identity,
+    generate_zeros,
+    matrix_multiplication,
+    recursively_simplify,
+    symbolize_conditions,
+    symbolize_expression,
+    tensor_product,
 )
 from qhronology.utilities.objects import QuantumObject
 from qhronology.utilities.symbolics import SymbolicsProperties
-
-from qhronology.quantum.states import QuantumState
-from qhronology.quantum.gates import (
-    QuantumGate,
-    _Single,
-)
-
-from qhronology.mechanics.operations import densify
 
 
 class QuantumCircuit(SymbolicsProperties):
@@ -90,6 +87,12 @@ class QuantumCircuit(SymbolicsProperties):
         A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.
         Must all have the same value of the :python:`dim` property.
         Defaults to :python:`[]`.
+    numerical : bool
+        Whether to cast the elements of the circuit's output matrices as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Defaults to :python:`False`.
+    array : bool
+        Whether to cast the circuit's output matrices as NumPy arrays (:python:`True`) or SymPy matrices (:python:`False`).
+        Defaults to :python:`False`.
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         The value of the :python:`symbols` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`symbols` property.
@@ -119,6 +122,8 @@ class QuantumCircuit(SymbolicsProperties):
         postselections: (
             list[tuple[mat | arr | QuantumObject, int | list[int]]] | None
         ) = None,
+        numerical: bool | None = None,
+        array: bool | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
     ):
@@ -127,6 +132,8 @@ class QuantumCircuit(SymbolicsProperties):
         gates = [] if gates is None else gates
         postselections = [] if postselections is None else postselections
         traces = [] if traces is None else traces
+        numerical = False if numerical is None else numerical
+        array = False if array is None else array
 
         self.inputs = inputs
         self.gates = gates
@@ -134,6 +141,8 @@ class QuantumCircuit(SymbolicsProperties):
         self._traces = traces
         self.postselections = postselections
         self.traces = traces
+        self.numerical = numerical
+        self.array = array
 
     def __repr__(self) -> str:
         return repr(self.output())
@@ -191,7 +200,9 @@ class QuantumCircuit(SymbolicsProperties):
         if len(postselections) > 0:
             systems_postselections = []
             for postselection in postselections:
-                length = count_systems(extract_matrix(postselection[0]), self.dim)
+                length = count_systems(
+                    extract_representation(postselection[0]), self.dim
+                )
                 listed = flatten_list([postselection[1]])
                 systems = [(min(listed) + n) for n in range(0, length)]
                 if len(listed) > 1:
@@ -215,6 +226,24 @@ class QuantumCircuit(SymbolicsProperties):
                 if hasattr(operator, "_symbols") is True:
                     self.symbols |= dict(operator.symbols)
         self._postselections = postselections
+
+    @property
+    def numerical(self) -> bool:
+        """Whether to cast the elements of the circuit's output matrices as floating-point values or integer values."""
+        return self._numerical
+
+    @numerical.setter
+    def numerical(self, numerical: bool):
+        self._numerical = numerical
+
+    @property
+    def array(self) -> bool:
+        """Whether to cast the circuit's output matrices as NumPy arrays or SymPy matrices."""
+        return self._array
+
+    @array.setter
+    def array(self, array: bool):
+        self._array = array
 
     @property
     def traces(self) -> list[int]:
@@ -244,7 +273,7 @@ class QuantumCircuit(SymbolicsProperties):
         """The indices of the systems to be postselected."""
         systems_postselections = []
         for postselection in self.postselections:
-            length = count_systems(extract_matrix(postselection[0]), self.dim)
+            length = count_systems(extract_representation(postselection[0]), self.dim)
             listed = flatten_list([postselection[1]])
             systems = [(min(listed) + n) for n in range(0, length)]
             systems_postselections += systems
@@ -303,7 +332,8 @@ class QuantumCircuit(SymbolicsProperties):
     @property
     def num_systems_respecting(self) -> int:
         """The total number of systems spanned by the circuit's chronology-respecting (CR) states and gates prior to any system reduction (post-processing, i.e., traces and postselections]).
-        Of course, in an ordinary quantum circuit (without CTCs), every system is technically chronology-respecting. This property is therefore used to simply provide compatibility with the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class (and its descendents)."""
+        Of course, in an ordinary quantum circuit (without CTCs), every system is technically chronology-respecting. This property is therefore used to simply provide compatibility with the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class (and its descendents).
+        """
         num_systems_respecting = self.num_systems_gross
         if hasattr(self, "_systems_respecting") is True:
             num_systems_respecting = len(self.systems_respecting)
@@ -374,7 +404,10 @@ class QuantumCircuit(SymbolicsProperties):
             is_vector = False
         if len(self.systems_postselections) != 0:
             for postselection in self.postselections:
-                if matrix_form(extract_matrix(postselection[0])) != Forms.VECTOR.value:
+                if (
+                    matrix_form(extract_representation(postselection[0]))
+                    != Forms.VECTOR.value
+                ):
                     is_vector = False
         return is_vector
 
@@ -399,6 +432,8 @@ class QuantumCircuit(SymbolicsProperties):
     def input(
         self,
         merge: bool | None = None,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -407,7 +442,7 @@ class QuantumCircuit(SymbolicsProperties):
         notation: str | None = None,
         debug: bool | None = None,
     ) -> QuantumState:
-        """Construct the composite input state of the quantum circuit as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.
+        """Construct the composite input state of the quantum circuit as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         This is computed as the tensor product of the individual states in the order in which they appear in the :python:`inputs` property.
 
@@ -419,6 +454,12 @@ class QuantumCircuit(SymbolicsProperties):
             Whether to merge the labels of the individual quantum states into a single product, separated by :python:`"⊗"` operators, prior to any notational processing.
             Only relevant when all states are vectors.
             Defaults to :python:`True`.
+        numerical : bool
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -452,8 +493,8 @@ class QuantumCircuit(SymbolicsProperties):
 
         Returns
         -------
-        mat
-            The total input state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+        QuantumState
+            The circuit's total input state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Note
         ----
@@ -461,13 +502,19 @@ class QuantumCircuit(SymbolicsProperties):
         This behaviour may be improved in the future.
         """
         inputs = copy.deepcopy(self.inputs)
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
+
         # Autofill with zero states as necessary.
         zero_state = QuantumState(
             form=Forms.VECTOR.value,
             kind=Kinds.PURE.value,
             spec=[(1, [0])],
-            symbols=dict(),
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=dict(),
             conditions=[],
             norm=1,
             conjugate=False,
@@ -503,15 +550,20 @@ class QuantumCircuit(SymbolicsProperties):
             )
         label = "⊗".join([state.label for state in inputs]) if label is None else label
 
-        inputs = [state.output() for state in inputs]
-        input_state = sp.Matrix(TensorProduct(*inputs))
+        inputs = [
+            state.output(numerical=numerical, array=array_intermediate)
+            for state in inputs
+        ]
+        input_state = tensor_product(*inputs)
 
         input_state = QuantumState(
             spec=input_state,
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -528,9 +580,11 @@ class QuantumCircuit(SymbolicsProperties):
         input_state = QuantumState(
             form=form,
             kind=kind,
-            spec=input_state.output(),
-            symbols=self.symbols,
+            spec=input_state.output(numerical=numerical, array=array_intermediate),
+            numerical=numerical,
+            array=array,
             dim=self.dim,
+            symbols=self.symbols,
             conditions=conditions,
             conjugate=conjugate,
             norm=norm,
@@ -543,6 +597,8 @@ class QuantumCircuit(SymbolicsProperties):
 
     def gate(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -550,12 +606,18 @@ class QuantumCircuit(SymbolicsProperties):
         label: str | None = None,
         notation: str | None = None,
     ) -> QuantumGate:
-        """Construct the combined gate describing the total sequence of gates in the quantum circuit as a :py:class:`~qhronology.quantum.gates.QuantumGate` instance and return it.
+        """Construct the combined gate describing the total sequence of gates in the quantum circuit as a :py:class:`~qhronology.quantum.gates.QuantumGate` instance.
 
         This is computed as the matrix product of the individual gates in the reverse order in which they appear in the :python:`gates` property.
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the gate's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the gate's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the gate.
             Defaults to the value of :python:`self.conditions`.
@@ -580,25 +642,35 @@ class QuantumCircuit(SymbolicsProperties):
 
         Returns
         -------
-        mat
-            The matrix or vector representation of the total gate sequence.
+        QuantumGate
+            The matrix or vector representation of the circuit's total gate sequence.
 
         Note
         ----
         This construction excludes measurement gates as they do not have a corresponding matrix representation.
         """
-        spec = sp.eye(self.dim**self.num_systems_gross)
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
+
+        spec = generate_identity(
+            self.dim**self.num_systems_gross,
+            numerical=numerical,
+            array=array_intermediate,
+        )
         for gate in self.gates:
             gate = copy.deepcopy(gate)
             gate.num_systems = self.num_systems_gross
-            spec = gate.output() * spec
+            spec = matrix_multiplication(
+                gate.output(numerical=numerical, array=array_intermediate), spec
+            )
 
         spec = symbolize_expression(spec, self.symbols_list)
 
         # Conditions
         conditions = self.conditions if conditions is None else conditions
-        conditions = symbolize_tuples(conditions, self.symbols_list)
-        spec = spec.subs(conditions)
+        conditions = symbolize_conditions(conditions, self.symbols_list)
+        spec = apply_conditions(spec, conditions)
 
         # Simplification
         simplify = False if simplify is None else simplify
@@ -612,6 +684,8 @@ class QuantumCircuit(SymbolicsProperties):
             anticontrols=[],
             num_systems=self.num_systems,
             dim=self.dim,
+            numerical=numerical,
+            array=array,
             symbols=self.symbols,
             conditions=conditions,
             conjugate=conjugate,
@@ -623,16 +697,42 @@ class QuantumCircuit(SymbolicsProperties):
 
         return gate_total
 
-    @property
-    def matrix(self) -> mat:
-        """The matrix representation of the total output state prior to any post-processing (i.e., traces and postselections)."""
-        input_state = sp.Matrix(self.input().output())
+    def matrix(
+        self,
+        numerical: bool | None = None,
+        array: bool | None = None,
+    ) -> mat | arr:
+        """Compute the unprocessed matrix representation of the circuit's total output state.
+
+        Arguments
+        ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
+
+        Returns
+        -------
+        mat | arr
+            The unprocessed matrix representation of the circuit's output state.
+        """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
+
+        input_state = self.input(numerical=numerical, array=array_intermediate).output()
         if self.gate_is_linear is True:
-            gate_total = sp.Matrix(self.gate().output())
+            gate_total = self.gate(
+                numerical=numerical, array=array_intermediate
+            ).output()
             if self.input_is_vector is True:
-                output_state = gate_total * input_state
+                output_state = matrix_multiplication(gate_total, input_state)
             else:
-                output_state = gate_total * input_state * Dagger(gate_total)
+                output_state = matrix_multiplication(
+                    gate_total, input_state, conjugate_transpose(gate_total)
+                )
         else:  # Gate in non-linear and non-unitary, so any vector purity is destroyed.
             output_state = densify(input_state)
             for gate in self.gates:
@@ -640,37 +740,78 @@ class QuantumCircuit(SymbolicsProperties):
                 gate.num_systems = self.num_systems_gross
                 if hasattr(gate, "_observable") is True:
                     pre_measurement_state = output_state
-                    post_measurement_state = sp.zeros(self.dim**self.num_systems_gross)
+                    post_measurement_state = generate_zeros(
+                        self.dim**self.num_systems_gross,
+                        numerical=numerical,
+                        array=array_intermediate,
+                    )
                     if gate.observable is False:
-                        for matrix_measurement_operator in gate.matrices:
-                            post_measurement_state += (
-                                densify(matrix_measurement_operator)
-                                * pre_measurement_state
-                                * Dagger(densify(matrix_measurement_operator))
+                        for matrix_measurement_operator in gate.matrices(
+                            numerical=numerical, array=array_intermediate
+                        ):
+                            matrix_measurement_operator = cast(
+                                matrix_measurement_operator,
+                                numerical=numerical,
+                                array=array_intermediate,
+                            )
+                            post_measurement_state = (
+                                post_measurement_state
+                                + matrix_multiplication(
+                                    densify(matrix_measurement_operator),
+                                    pre_measurement_state,
+                                    conjugate_transpose(
+                                        densify(matrix_measurement_operator)
+                                    ),
+                                )
                             )
                     else:
-                        for matrix_measurement_operator in gate.matrices:
-                            post_measurement_state += sp.trace(
-                                densify(matrix_measurement_operator)
-                                * pre_measurement_state
-                            ) * densify(matrix_measurement_operator)
+                        for matrix_measurement_operator in gate.matrices(
+                            numerical=numerical, array=array_intermediate
+                        ):
+                            matrix_measurement_operator = cast(
+                                matrix_measurement_operator,
+                                numerical=numerical,
+                                array=array_intermediate,
+                            )
+                            post_measurement_state = (
+                                post_measurement_state
+                                + matrix_multiplication(
+                                    densify(matrix_measurement_operator),
+                                    pre_measurement_state,
+                                ).trace()
+                                * densify(matrix_measurement_operator)
+                            )
                     output_state = post_measurement_state
                 else:
-                    gate_matrix = sp.Matrix(gate.output(conditions=[]))
-                    output_state = gate_matrix * output_state * Dagger(gate_matrix)
-        return output_state
+                    gate_matrix = gate.output(
+                        conditions=[], numerical=numerical, array=array_intermediate
+                    )
+                    output_state = matrix_multiplication(
+                        gate_matrix, output_state, conjugate_transpose(gate_matrix)
+                    )
+
+        return cast(output_state, numerical=numerical, array=array)
 
     def output(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
+        norm: bool | num | expr | str | None = None,
         postprocess: bool | None = None,
-    ) -> mat:
-        """Compute the matrix representation of the total output state of the circuit (including any post-processing, i.e., traces and postselections) and return it.
+    ) -> mat | arr:
+        """Compute the matrix representation of the circuit's output state (including any post-processing, i.e., traces and postselections).
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -680,17 +821,26 @@ class QuantumCircuit(SymbolicsProperties):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
+        norm : bool | num | expr | str
+            The value to which the state is normalized.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         postprocess : bool
             Whether to post-process the state (i.e., perform the circuit's traces and postselections).
             Defaults to :python:`True`.
 
         Returns
         -------
-        mat
-            The matrix representation of the (post-processed) output state.
+        mat | arr
+            The processed matrix representation of the circuit's output state.
         """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
+
         conditions = self.conditions if conditions is None else conditions
-        output_state = self.matrix
+        output_state = self.matrix(numerical=numerical, array=array_intermediate)
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
         if self.input_is_vector is True:
@@ -704,8 +854,10 @@ class QuantumCircuit(SymbolicsProperties):
             spec=output_state,
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -725,7 +877,9 @@ class QuantumCircuit(SymbolicsProperties):
 
             # Postselections
             for postselection in self.postselections:
-                length = count_systems(extract_matrix(postselection[0]), self.dim)
+                length = count_systems(
+                    extract_representation(postselection[0]), self.dim
+                )
                 listed = flatten_list([postselection[1]])
                 systems = [(min(listed) + n) for n in range(0, length)]
                 targets_postselection = adjust_targets(systems, systems_removed)
@@ -738,6 +892,12 @@ class QuantumCircuit(SymbolicsProperties):
                 form = Forms.MATRIX.value
                 kind = Kinds.MIXED.value
 
+        # Normalization
+        norm = False if norm is None else norm
+        norm = 1 if norm is True else norm
+        if norm is not False:
+            output_state.normalize(norm)
+
         # Simplification
         simplify = False if simplify is None else simplify
         if simplify is True:
@@ -749,11 +909,13 @@ class QuantumCircuit(SymbolicsProperties):
             output_state.dagger()
 
         output_state = QuantumState(
-            spec=output_state.output(),
+            spec=output_state.output(numerical=numerical, array=array_intermediate),
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -762,10 +924,12 @@ class QuantumCircuit(SymbolicsProperties):
             debug=False,
         )
 
-        return sp.Matrix(output_state.output())
+        return output_state.output(numerical=numerical, array=array)
 
     def state(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -776,10 +940,16 @@ class QuantumCircuit(SymbolicsProperties):
         postprocess: bool | None = None,
         debug: bool | None = None,
     ) -> QuantumState:
-        """Compute the total output state of the circuit (including any post-processing, i.e., traces and postselections) as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.
+        """Compute the circuit's output state (including any post-processing, i.e., traces and postselections) as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -819,10 +989,12 @@ class QuantumCircuit(SymbolicsProperties):
         Returns
         -------
         QuantumState
-            The (post-processed) output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+            The circuit's output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
         """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
         conditions = self.conditions if conditions is None else conditions
-        simplify = False if simplify is None else simplify
         traces = [] if traces is None else traces
         postprocess = True if postprocess is None else postprocess
 
@@ -844,24 +1016,27 @@ class QuantumCircuit(SymbolicsProperties):
             form = Forms.MATRIX.value
             kind = Kinds.MIXED.value
 
-        matrix = sp.Matrix(
-            self.output(
-                conditions=conditions,
-                simplify=simplify,
-                conjugate=False,
-                postprocess=postprocess,
-            )
+        matrix = self.output(
+            numerical=numerical,
+            array=array,
+            conditions=conditions,
+            simplify=simplify,
+            conjugate=False,
+            norm=norm,
+            postprocess=postprocess,
         )
 
         state = QuantumState(
+            spec=matrix,
             form=form,
             kind=kind,
-            spec=matrix,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array,
+            symbols=self.symbols,
             conditions=conditions,
             conjugate=conjugate,
-            norm=norm,
+            norm=False,
             label=label,
             notation=notation,
             debug=debug,
@@ -875,6 +1050,8 @@ class QuantumCircuit(SymbolicsProperties):
         targets: int | list[int] | None = None,
         observable: bool | None = None,
         statistics: bool | None = None,
+        numerical: bool | None = None,
+        array: bool | None = None,
     ) -> QuantumState | list[num | expr]:
         """Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of the circuit's total output state.
 
@@ -935,6 +1112,12 @@ class QuantumCircuit(SymbolicsProperties):
         statistics : bool
             Whether to return a list of probabilities (:python:`True`) or the post-measurement state (:python:`False`).
             Defaults to :python:`False`.
+        numerical : bool
+            Whether to cast the elements of the output object (post-measurement state or measurement probabilities) as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the post-measurement state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
 
         Returns
         -------
@@ -946,7 +1129,10 @@ class QuantumCircuit(SymbolicsProperties):
             Returned if :python:`statistics` is :python:`False`.
         """
         statistics = False if statistics is None else statistics
-        state = self.state(postprocess=False)
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+
+        state = self.state(postprocess=False, numerical=numerical, array=array)
         if statistics is True:
             state = state.measure(
                 operators=operators,
@@ -1036,13 +1222,15 @@ class QuantumCircuit(SymbolicsProperties):
                                 ).cells
                             ]
                         )
-                    for _ in range(0, len(self.systems_respecting) - self.num_systems_inputs):
+                    for _ in range(
+                        0, len(self.systems_respecting) - self.num_systems_inputs
+                    ):
                         zero_state = QuantumState(
                             form=Forms.VECTOR.value,
                             kind=Kinds.PURE.value,
                             spec=[(1, [0])],
-                            symbols=dict(),
                             dim=self.dim,
+                            symbols=dict(),
                             conditions=[],
                             norm=1,
                             conjugate=False,
@@ -1051,7 +1239,11 @@ class QuantumCircuit(SymbolicsProperties):
                             debug=False,
                         )
                         cells_input.append(
-                            [zero_state._diagram_column(pad=pad, sep=sep, style=style).cells]
+                            [
+                                zero_state._diagram_column(
+                                    pad=pad, sep=sep, style=style
+                                ).cells
+                            ]
                         )
                 else:
                     if system in self.systems_violating:
@@ -1072,8 +1264,8 @@ class QuantumCircuit(SymbolicsProperties):
                     form=Forms.VECTOR.value,
                     kind=Kinds.PURE.value,
                     spec=[(1, [0])],
-                    symbols=dict(),
                     dim=self.dim,
+                    symbols=dict(),
                     conditions=[],
                     norm=1,
                     conjugate=False,
@@ -1125,20 +1317,20 @@ class QuantumCircuit(SymbolicsProperties):
                             Postselection = postselection[0]
                             Postselection.family = Families.RSTICK.value
                             if (
-                                matrix_shape(Postselection.matrix)
+                                matrix_shape(Postselection.matrix())
                                 == Shapes.COLUMN.value
                             ):
                                 Postselection.dagger()
                         else:
                             length = count_systems(
-                                extract_matrix(postselection[0]), self.dim
+                                extract_representation(postselection[0]), self.dim
                             )
                             Postselection = QuantumState(
                                 form=Forms.MATRIX.value,
                                 kind=Kinds.MIXED.value,
-                                spec=sp.eye(self.dim**length),
-                                symbols=dict(),
+                                spec=generate_identity(self.dim**length),
                                 dim=self.dim,
+                                symbols=dict(),
                                 conditions=[],
                                 norm=1,
                                 conjugate=False,

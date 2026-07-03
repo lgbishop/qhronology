@@ -10,5 +10,5 @@ qutrit_vector = QuantumState(
     label="φ",
 )
 qutrit_vector.diagram()
-print(repr(qutrit_vector.output()))
-qutrit_vector.print()
+print(repr(qutrit_vector.output(simplify=True)))
+qutrit_vector.print(simplify=True)

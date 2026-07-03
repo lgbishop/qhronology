@@ -8,8 +8,9 @@ import sympy as sp
 rho = sp.MatrixSymbol("ρ", 2, 2).as_mutable()
 input_state = MixedState(
     spec=rho,
-    conditions=[(1 - rho[0, 0], rho[1, 1])],  # For normalization
+    conditions=[(rho[0, 0] + rho[1, 1], 1)],  # For normalization
     label="ρ",
+    norm=1,
 )
 
 # Gate
@@ -27,14 +28,13 @@ SWAP_CTC.diagram()
 # Output
 # D-CTCs
 SWAP_DCTC = DCTC(circuit=SWAP_CTC)
-SWAP_DCTC_CR = SWAP_DCTC.state_respecting(norm=1, label="ρ_D")
-SWAP_DCTC_CV = SWAP_DCTC.state_violating(norm=1, label="τ_D")
-SWAP_DCTC_CR.simplify()
+SWAP_DCTC_CR = SWAP_DCTC.state_respecting(simplify=True, label="ρ_D")
+SWAP_DCTC_CV = SWAP_DCTC.state_violating(simplify=True, label="τ_D")
 
 # P-CTCs
 SWAP_PCTC = PCTC(circuit=SWAP_CTC)
-SWAP_PCTC_CR = SWAP_PCTC.state_respecting(label="ρ_P")
-SWAP_PCTC_CV = SWAP_PCTC.state_violating(label="τ_P")
+SWAP_PCTC_CR = SWAP_PCTC.state_respecting(simplify=True, label="ρ_P")
+SWAP_PCTC_CV = SWAP_PCTC.state_violating(simplify=True, label="τ_P")
 
 # Results
 SWAP_DCTC_CR.print()

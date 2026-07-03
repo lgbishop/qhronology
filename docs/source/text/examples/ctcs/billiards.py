@@ -44,14 +44,15 @@ IR = Diagonal(
 
 # Construct SWAP gate in clock subspace
 S = Swap(targets=[0, 1], num_systems=2, dim=3)
-S = sp.Matrix(9, 9, lambda i, j: 0 if i % 3 == 0 or j % 3 == 0 else S.matrix[i, j])
+S_matrix = S.matrix()
+S = sp.Matrix(9, 9, lambda i, j: 0 if i % 3 == 0 or j % 3 == 0 else S_matrix[i, j])
 
 # Construct vacuum-excluding SWAP gate
 S_vacuum = QuantumGate(
     spec=(
-        TensorProduct(I.matrix, zero.matrix)
-        + TensorProduct(zero.matrix, I.matrix)
-        - TensorProduct(zero.matrix, zero.matrix)
+        TensorProduct(I.matrix(), zero.matrix())
+        + TensorProduct(zero.matrix(), I.matrix())
+        - TensorProduct(zero.matrix(), zero.matrix())
         + S
     ),
     targets=[0, 1],

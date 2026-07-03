@@ -16,32 +16,38 @@ Core functions for constructing matrices in quantum mechanics.
 from __future__ import annotations
 
 import sympy as sp
-from sympy.physics.quantum import TensorProduct
-from sympy.physics.quantum.dagger import Dagger
 
+from qhronology.mechanics.operations import columnify, densify, partial_trace
 from qhronology.utilities.classification import (
-    mat,
-    arr,
-    num,
-    expr,
-    Forms,
-    Kinds,
-    FORMS,
-    KINDS,
     COMPATIBILITIES,
+    FORMS,
+    Forms,
+    KINDS,
+    Kinds,
+    arr,
+    expr,
+    mat,
     matrix_shape,
+    num,
 )
 from qhronology.utilities.helpers import (
-    flatten_list,
+    cast,
+    conjugate_transpose,
+    count_rows,
     count_systems,
-    extract_matrix,
+    dtype,
+    extract_representation,
+    flatten_list,
+    generate_zeros,
     symbolize_expression,
+    tensor_product,
+    to_numerical,
 )
 
-from qhronology.mechanics.operations import densify, columnify, partial_trace
 
-
-def vector_basis(dim: int) -> list[mat]:
+def vector_basis(
+    dim: int, numerical: bool | None = None, array: bool | None = None
+) -> list[mat | arr]:
     """Creates an ordered list of column vectors that form an orthonormal basis for a :python:`dim`-dimensional Hilbert space.
 
     Arguments
@@ -49,16 +55,30 @@ def vector_basis(dim: int) -> list[mat]:
     dim : int
         The dimensionality of the vector basis.
         Must be a non-negative integer.
+    numerical : bool
+        Whether to cast the vector elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Defaults to :python:`False`.
+    array : bool
+        Whether to cast the vectors as NumPy arrays (:python:`True`) or SymPy matrices (:python:`False`).
+        Defaults to :python:`False`.
 
     Returns
     -------
-    list[int]
+    list[mat | arr]
         An ordered list of basis vectors.
     """
-    return [sp.eye(dim).col(d) for d in range(0, dim)]
+    return [
+        cast(sp.eye(dim).col(d), numerical=numerical, array=array)
+        for d in range(0, dim)
+    ]
 
 
-def ket(spec: int | list[int], dim: int | None = None) -> mat:
+def ket(
+    spec: int | list[int],
+    dim: int | None = None,
+    numerical: bool | None = None,
+    array: bool | None = None,
+) -> mat | arr:
     """Creates a normalized ket (column) basis vector corresponding to the (multipartite) computational-basis value(s) of :python:`spec` in a :python:`dim`-dimensional Hilbert space.
 
     In mathematical notation, :python:`spec` describes the value of the ket vector, e.g., a :python:`spec` of :python:`[i,j,k]` corresponds to the ket vector :math:`\\ket{i,j,k}` (for some non-negative integers :python:`i`, :python:`j`, and :python:`k`).
@@ -71,19 +91,30 @@ def ket(spec: int | list[int], dim: int | None = None) -> mat:
         The dimensionality of the vector.
         Must be a non-negative integer.
         Defaults to :python:`2`.
+    numerical : bool
+        Whether to cast the vector elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Defaults to :python:`False`.
+    array : bool
+        Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+        Defaults to :python:`False`.
 
     Returns
     -------
-    mat
+    mat | arr
         A normalized column vector.
     """
     spec = flatten_list([spec])
     dim = 2 if dim is None else dim
-    basis = vector_basis(dim)
-    return TensorProduct(*[sp.Matrix(basis[spec[n]]) for n in range(0, len(spec))])
+    basis = vector_basis(dim=dim, numerical=numerical, array=array)
+    return tensor_product(*[basis[spec[n]] for n in range(0, len(spec))])
 
 
-def bra(spec: int | list[int], dim: int | None = None) -> mat:
+def bra(
+    spec: int | list[int],
+    dim: int | None = None,
+    numerical: bool | None = None,
+    array: bool | None = None,
+) -> mat | arr:
     """Creates a normalized bra (row) basis vector corresponding to the (multipartite) computational-basis value(s) of :python:`spec` in a :python:`dim`-dimensional dual Hilbert space.
 
     In mathematical notation, :python:`spec` describes the value of the bra vector, e.g., a :python:`spec` of :python:`[i,j,k]` corresponds to the bra vector :math:`\\bra{i,j,k}` (for some non-negative integers :python:`i`, :python:`j`, and :python:`k`).
@@ -96,18 +127,24 @@ def bra(spec: int | list[int], dim: int | None = None) -> mat:
         The dimensionality of the vector.
         Must be a non-negative integer.
         Defaults to :python:`2`.
+    numerical : bool
+        Whether to cast the vector elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Defaults to :python:`False`.
+    array : bool
+        Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+        Defaults to :python:`False`.
 
     Returns
     -------
-    mat
+    mat | arr
         A normalized row vector.
     """
     spec = flatten_list([spec])
     dim = 2 if dim is None else dim
-    return Dagger(ket(spec, dim))
+    return conjugate_transpose(ket(spec, dim, numerical=numerical, array=array))
 
 
-def quantum_state(
+def quantum_object(
     spec: (
         mat
         | arr
@@ -117,13 +154,15 @@ def quantum_state(
     form: str | None = None,
     kind: str | None = None,
     dim: int | None = None,
-) -> mat:
-    """Constructs a :python:`dim`-dimensional matrix or vector representation of a quantum state from a given specification :python:`spec`.
+    numerical: bool | None = None,
+    array: bool | None = None,
+) -> mat | arr:
+    """Constructs a :python:`dim`-dimensional matrix or vector representation of a quantum object from a given specification :python:`spec`.
 
     Arguments
     ---------
     spec
-        The specification of the quantum state. Provides a complete description of the state's values in a standard :python:`dim`-dimensional basis. Can be one of:
+        The specification of the quantum object. Provides a complete description of the object's values in a standard :python:`dim`-dimensional basis. Can be one of:
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
@@ -131,27 +170,35 @@ def quantum_state(
         - a list of 2-tuples of numerical, symbolic, or string coefficients paired their respective number-basis specification (:python:`list[tuple[num | expr | str, int | list[int]]]`)
 
     form : str
-        A string specifying the *form* for the quantum state to take.
+        A string specifying the *form* for the quantum object to take.
         Can be either of :python:`"vector"` or :python:`"matrix"`.
         Defaults to :python:`"matrix"`.
     kind : str
-        A string specifying the *kind* for the quantum state to take.
+        A string specifying the *kind* for the quantum object to take.
         Can be either of :python:`"mixed"` or :python:`"pure"`.
         Defaults to :python:`"mixed"`.
     dim : int
-        The dimensionality of the quantum state's Hilbert space.
+        The dimensionality of the quantum object's Hilbert space.
         Must be a non-negative integer.
         Defaults to :python:`2`.
+    numerical : bool
+        Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Defaults to :python:`False`.
+    array : bool
+        Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+        Defaults to :python:`False`.
 
     Returns
     -------
-    mat
-        The matrix or vector representation of the quantum state.
+    mat | arr
+        The matrix or vector representation of the quantum object.
     """
     form = Forms.MATRIX.value if form is None else form
     if kind is None:
         kind = Kinds.PURE.value if form == Forms.VECTOR.value else Kinds.MIXED.value
     dim = 2 if dim is None else dim
+    numerical = False if numerical is None else numerical
+    array = False if array is None else array
 
     if form not in FORMS:
         raise ValueError(f"""The given :python:`form` ('{form}') is invalid.""")
@@ -163,68 +210,82 @@ def quantum_state(
         )
 
     if isinstance(spec, mat | arr | sp.matrices.immutable.ImmutableDenseMatrix) is True:
-        state = sp.Matrix(spec)
+        matrix = cast(matrix=spec, numerical=numerical, array=array)
     elif isinstance(spec, list) is True:
         if any(isinstance(item, list | tuple) is False for item in spec):
             raise ValueError(
-                """The state's :python:`spec` list must contain only lists or tuples."""
+                """The object's :python:`spec` list must contain only lists or tuples."""
             )
         elif any(isinstance(item, list) is False for item in spec) is False:
-            state = sp.Matrix(spec)
+            matrix = cast(matrix=spec, numerical=numerical, array=array)
         elif any(isinstance(item, tuple) is False for item in spec) is False:
             for twotuple in spec:
                 if len(twotuple) != 2:
                     raise ValueError(
                         """One or more of the tuples in the given :python:`spec` does not have exactly two (2) elements."""
                     )
-            coefficients = sp.Matrix([twotuple[0] for twotuple in spec])
+            coefficients = cast(
+                matrix=[twotuple[0] for twotuple in spec],
+                numerical=numerical,
+                array=array,
+            )
             levels = [twotuple[1] for twotuple in spec]
 
             if form == Forms.VECTOR.value or kind == Kinds.PURE.value:
-                state = 0 * ket(levels[0], dim)
+                matrix = 0 * ket(levels[0], dim, numerical, array)
             else:
-                state = 0 * ket(levels[0], dim) * bra(levels[0], dim)
+                matrix = (
+                    0
+                    * ket(levels[0], dim, numerical, array)
+                    * bra(levels[0], dim, numerical, array)
+                )
             for n in range(0, len(spec)):
+                if isinstance(coefficients[n], str) is True:
+                    coefficients[n] = sp.sympify(coefficients[n])
                 if form == Forms.VECTOR.value or kind == Kinds.PURE.value:
-                    state = state + coefficients[n] * ket(levels[n], dim)
-                else:
-                    state = state + coefficients[n] * ket(levels[n], dim) * bra(
-                        levels[n], dim
+                    matrix = matrix + coefficients[n] * ket(
+                        levels[n], dim, numerical, array
                     )
+                else:
+                    matrix = matrix + coefficients[n] * ket(
+                        levels[n], dim, numerical, array
+                    ) * bra(levels[n], dim, numerical, array)
         else:
             raise ValueError("""The given :python:`spec` list is invalid.""")
     else:
         raise ValueError("""The given :python:`spec` is invalid.""")
 
-    if matrix_shape(state) == "INVALID":
+    if matrix_shape(matrix) == "INVALID":
         raise ValueError(
             """The given :python:`spec` does not correspond to either a square matrix or a vector."""
         )
 
     if form == Forms.VECTOR.value:
-        if matrix_shape(state) == "SQUARE":
+        if matrix_shape(matrix) == "SQUARE":
             raise ValueError(
                 """The given :python:`spec` describes a square matrix and so cannot be cast into a vector form."""
             )
         else:
-            state = columnify(state)
+            matrix = columnify(matrix)
     elif kind == Kinds.PURE.value:
-        state = densify(state)
+        matrix = densify(matrix)
     else:
-        state = densify(state)
+        matrix = densify(matrix)
 
-    state = symbolize_expression(state)
+    matrix = symbolize_expression(matrix)
 
-    return state
+    return cast(matrix, numerical=numerical, array=array)
 
 
 def encode(
     integer: int,
     num_systems: int | None = None,
     dim: int | None = None,
+    numerical: bool | None = None,
+    array: bool | None = None,
     reverse: bool | None = None,
     output_list: bool | None = None,
-) -> mat:
+) -> mat | arr:
     """Encodes a non-negative integer as a single quantum state vector (ket).
 
     This is a kind of unsigned integer encoding. It creates a base-:python:`dim` numeral system representation of :python:`integer` as an (ordered) list of encoded digits.
@@ -242,6 +303,12 @@ def encode(
         The dimensionality (or base) of the encoding.
         Must be a non-negative integer.
         Defaults to :python:`2`.
+    numerical : bool
+        Whether to cast the vector elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Defaults to :python:`False`.
+    array : bool
+        Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+        Defaults to :python:`False`.
     reverse : str
         Whether to reverse the ordering of the resulting encoded state.
 
@@ -255,7 +322,7 @@ def encode(
 
     Returns
     -------
-    mat
+    mat | arr
         A normalized column vector (if :python:`output_list` is :python:`False`).
     list[int]
         An ordered list of the encoded digits (if :python:`output_list` is :python:`True`).
@@ -293,19 +360,23 @@ def encode(
 
     encoded = digits
     if output_list is False:
-        encoded = ket(digits, dim)
+        encoded = ket(digits, dim=dim, numerical=numerical, array=array)
 
     return encoded
 
 
 def decode_slow(
-    matrix: mat | QuantumObject, dim: int | None = None, reverse: bool | None = None
+    matrix: mat | arr | QuantumObject,
+    dim: int | None = None,
+    reverse: bool | None = None,
 ) -> int:
     """Decodes a quantum matrix or vector state to an unsigned integer.
 
+    This only makes sense if the input state has exactly one non-zero entry.
+
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The quantum (matrix or vector) state to be decoded.
     dim : int
         The dimensionality (or base) of the encoding.
@@ -336,7 +407,7 @@ def decode_slow(
     dim = 2 if dim is None else dim
     reverse = False if reverse is None else reverse
 
-    matrix = densify(extract_matrix(matrix))
+    matrix = densify(extract_representation(matrix))
     num_systems = count_systems(matrix, dim)
 
     digits = []
@@ -346,7 +417,7 @@ def decode_slow(
         quantum_unit = partial_trace(
             matrix=matrix, targets=discard, dim=dim, optimize=True
         )
-        for m in range(0, quantum_unit.shape[0]):
+        for m in range(0, count_rows(quantum_unit)):
             if quantum_unit[m, m] != 0:
                 digits.append(m)
 
@@ -366,12 +437,14 @@ decode = decode_slow
 """An alias for the :py:func:`~qhronology.mechanics.matrices.decode_slow` function."""
 
 
-def decode_fast(matrix: mat | QuantumObject, dim: int | None = None) -> int:
+def decode_fast(matrix: mat | arr | QuantumObject, dim: int | None = None) -> int:
     """Decodes a quantum matrix or vector state to an unsigned integer.
+
+    This only makes sense if the input state has exactly one non-zero entry.
 
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The quantum (matrix or vector) state to be decoded.
     dim : int
         The dimensionality (or base) of the encoding.
@@ -393,10 +466,10 @@ def decode_fast(matrix: mat | QuantumObject, dim: int | None = None) -> int:
     The output cannot be reversed like in :py:func:`~qhronology.mechanics.matrices.decode_slow`.
     """
     dim = 2 if dim is None else dim
-    matrix = densify(extract_matrix(matrix))
+    matrix = densify(extract_representation(matrix))
 
     decoded = []
-    for n in range(0, matrix.shape[0]):
+    for n in range(0, count_rows(matrix)):
         if matrix[n, n] != 0:
             decoded.append(n)
 
@@ -410,13 +483,17 @@ def decode_fast(matrix: mat | QuantumObject, dim: int | None = None) -> int:
 
 
 def decode_multiple(
-    matrix: mat | QuantumObject, dim: int | None = None, reverse: bool | None = None
+    matrix: mat | arr | QuantumObject,
+    dim: int | None = None,
+    reverse: bool | None = None,
 ) -> list[tuple[int, num | expr]]:
     """Decodes a quantum matrix or vector state to one or more unsigned integers with their respective probabilities.
 
+    This only makes sense if the input state is both equiprobabilistic and non-symbolic.
+
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The quantum (matrix or vector) state to be decoded.
     dim : int
         The dimensionality (or base) of the encoding.
@@ -437,13 +514,18 @@ def decode_multiple(
     """
     dim = 2 if dim is None else dim
     reverse = False if reverse is None else reverse
-    matrix = densify(extract_matrix(matrix))
+    matrix = densify(extract_representation(matrix))
+
+    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_arr = True if isinstance(matrix, arr) is True else False
 
     decoded = []
-    for n in range(0, matrix.shape[0]):
+    for n in range(0, count_rows(matrix)):
         if matrix[n, n] != 0:
-            elementary = sp.zeros(matrix.shape[0])
-            elementary[n, n] = 1
+            elementary = generate_zeros(
+                count_rows(matrix), numerical=matrix_num, array=matrix_arr
+            )
+            elementary[n, n] = to_numerical(1, numerical=matrix_num)
             decoded.append(
                 (decode_slow(matrix=elementary, reverse=reverse), matrix[n, n])
             )

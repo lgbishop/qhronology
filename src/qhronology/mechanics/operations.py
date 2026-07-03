@@ -14,95 +14,121 @@ Functions and a mixin for performing quantum operations.
 # https://peps.python.org/pep-0649/
 # https://peps.python.org/pep-0749/
 from __future__ import annotations
-
 from typing import Any, Callable
 
 import numpy as np
 import sympy as sp
-from sympy.physics.quantum import TensorProduct
-from sympy.physics.quantum.dagger import Dagger
 
-from qhronology.utilities.classification import (
-    mat,
-    arr,
-    num,
-    expr,
-    Forms,
-    matrix_form,
-)
+from qhronology.utilities.classification import Forms, arr, expr, mat, matrix_form, num
 from qhronology.utilities.helpers import (
-    flatten_list,
+    cast,
+    conjugate_transpose,
     count_systems,
-    extract_matrix,
-    extract_symbols,
-    symbolize_expression,
-    symbolize_tuples,
+    dtype,
     extract_conditions,
+    extract_representation,
+    extract_symbols,
+    flatten_list,
+    generate_identity,
+    generate_zeros,
+    matrix_multiplication,
     recursively_simplify,
-    to_density,
+    symbolize_conditions,
+    symbolize_expression,
+    tensor_product,
     to_column,
+    to_density,
+    to_matrix,
+    to_numerical,
 )
 
 
-def densify(vector: mat | QuantumObject) -> mat:
+def densify(vector: mat | arr | QuantumObject) -> mat | arr:
     """Convert :python:`vector` to its corresponding matrix form via the outer product.
     If :python:`vector` is a square matrix, it is unmodified.
 
     Arguments
     ---------
-    vector : mat
+    vector : mat | arr
         The input vector.
 
     Returns
     -------
-    mat
+    mat | arr
         The outer product of :python:`vector` with itself.
     """
-    vector = extract_matrix(vector)
+    vector = extract_representation(vector)
     return to_density(vector)
 
 
-def columnify(vector: mat | QuantumObject) -> mat:
+def columnify(vector: mat | arr | QuantumObject) -> mat | arr:
     """Convert :python:`vector` to its corresponding column vector form via transposition.
     If :python:`vector` is a square matrix, it is unmodified.
 
     Arguments
     ---------
-    vector : mat
+    vector : mat | arr
         The input vector.
 
     Returns
     -------
-    mat
+    mat | arr
         The column form of :python:`vector`.
     """
-    vector = extract_matrix(vector)
+    vector = extract_representation(vector)
     return to_column(vector)
 
 
-def dagger(matrix: mat | QuantumObject) -> mat:
+def dagger(matrix: mat | arr | QuantumObject) -> mat | arr:
     """Perform conjugate transposition on :python:`matrix`.
 
     Arguments
     ---------
-    matrix : mat
+    matrix : mat | arr
         The input matrix.
 
     Returns
     -------
-    mat
+    mat | arr
         The conjugate transpose of :python:`matrix`.
     """
-    matrix = extract_matrix(matrix)
-    return sp.Matrix(Dagger(matrix))
+    matrix = extract_representation(matrix)
+    return conjugate_transpose(matrix)
 
 
-def simplify(matrix: mat | QuantumObject, comprehensive: bool | None = None) -> mat:
+def round(matrix: mat | arr | QuantumObject) -> mat | arr:
+    """Round the elements of :python:`matrix` to the nearest (real) integer.
+
+    Arguments
+    ---------
+    matrix : mat | arr
+        The input matrix.
+
+    Returns
+    -------
+    mat | arr
+        The rounded version of :python:`matrix`.
+    """
+    matrix = extract_representation(matrix)
+
+    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_arr = True if isinstance(matrix, arr) is True else False
+
+    matrix = np.rint(np.array(matrix, dtype=complex)).astype(int)
+    if matrix_arr is False:
+        matrix = to_matrix(matrix)
+
+    return matrix
+
+
+def simplify(
+    matrix: mat | arr | QuantumObject, comprehensive: bool | None = None
+) -> mat | arr:
     """Simplify :python:`matrix` using a powerful (albeit slow) algorithm.
 
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The matrix to be simplified.
     comprehensive : bool
         Whether the simplifying algorithm should use a relatively efficient subset of simplifying operations (:python:`False`), or alternatively use a larger, more powerful (but slower) set (:python:`True`).
@@ -110,7 +136,7 @@ def simplify(matrix: mat | QuantumObject, comprehensive: bool | None = None) -> 
 
     Returns
     -------
-    mat
+    mat | arr
         The simplified version of :python:`matrix`.
 
     Note
@@ -119,17 +145,17 @@ def simplify(matrix: mat | QuantumObject, comprehensive: bool | None = None) -> 
     """
     conditions = extract_conditions(matrix)
     symbols = extract_symbols(matrix)
-    matrix = extract_matrix(matrix)
+    matrix = extract_representation(matrix)
 
     matrix = symbolize_expression(matrix, symbols)
-    conditions = symbolize_tuples(conditions, symbols)
+    conditions = symbolize_conditions(conditions, symbols)
 
     matrix = recursively_simplify(matrix, conditions, comprehensive=comprehensive)
 
     return matrix
 
 
-def rewrite(matrix: mat | QuantumObject, function: Callable) -> mat:
+def rewrite(matrix: mat | arr | QuantumObject, function: Callable) -> mat | arr:
     """Rewrite the elements of :python:`matrix` using the given mathematical function (:python:`function`).
 
     Useful when used with SymPy's mathematical functions, such as:
@@ -142,39 +168,44 @@ def rewrite(matrix: mat | QuantumObject, function: Callable) -> mat:
 
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The matrix to be transformed.
     function : Callable
         A SymPy mathematical function.
 
     Returns
     -------
-    mat
+    mat | arr
         The transformed version of :python:`matrix`.
     """
     symbols = extract_symbols(matrix)
-    matrix = extract_matrix(matrix)
+    matrix = extract_representation(matrix)
 
     matrix = symbolize_expression(matrix, symbols)
 
-    try:
-        for index, entry in enumerate(matrix):
-            entry = entry.rewrite(function)
-            matrix[index] = entry
-    except:
-        raise ValueError(
-            f"""The specified function (:python:`{function.__name__}()`) cannot be used to rewrite the matrix."""
-        )
+    if dtype(matrix) is object:
+        matrix_num = True if issubclass(dtype(matrix), num) is True else False
+        matrix_arr = True if isinstance(matrix, arr) is True else False
+        matrix = to_matrix(matrix)
+        try:
+            for index, entry in np.ndenumerate(matrix):
+                entry = entry.rewrite(function)
+                matrix[index] = entry
+        except:
+            raise ValueError(
+                f"""The specified function (:python:`{function.__name__}()`) cannot be used to rewrite the matrix."""
+            )
+        matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
 
     return matrix
 
 
 def apply(
-    matrix: mat | QuantumObject,
+    matrix: mat | arr | QuantumObject,
     function: Callable,
     arguments: dict[str, Any] | None = None,
-) -> mat:
-    """Apply a Python function (:python:`function`) to :python:`matrix`.
+) -> mat | arr:
+    """Apply a Python function (:python:`function`) element-wise to :python:`matrix`.
 
     Useful when used with SymPy's symbolic-manipulation functions, such as:
 
@@ -194,7 +225,7 @@ def apply(
 
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The matrix to be transformed.
     function : Callable
         A Python function.
@@ -205,35 +236,45 @@ def apply(
 
     Returns
     -------
-    mat
+    mat | arr
         The transformed version of :python:`matrix`.
     """
     arguments = {} if arguments is None else arguments
     symbols = extract_symbols(matrix)
-    matrix = extract_matrix(matrix)
+    matrix = extract_representation(matrix)
+
+    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
 
+    matrix = to_matrix(matrix)
     try:
-        for index, entry in enumerate(matrix):
+        for index, entry in np.ndenumerate(matrix):
             matrix[index] = function(entry, **arguments)
     except:
         try:
-            matrix = function(matrix, **arguments)
+            for index, entry in np.ndenumerate(matrix):
+                matrix[index] = function(
+                    to_numerical(entry, numerical=True), **arguments
+                )
         except:
             raise ValueError(
                 f"""Unable to apply the specified function (:python:`{function.__name__}()`) to the matrix."""
             )
+    matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
 
     return matrix
 
 
-def normalize(matrix: mat | QuantumObject, norm: num | expr | str | None = None) -> mat:
+def normalize(
+    matrix: mat | arr | QuantumObject, norm: num | expr | str | None = None
+) -> mat | arr:
     """Normalize :python:`matrix` to the value specified (:python:`norm`).
 
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The matrix to be normalized.
     norm : num | expr | str
         The value to which the matrix is normalized.
@@ -241,7 +282,7 @@ def normalize(matrix: mat | QuantumObject, norm: num | expr | str | None = None)
 
     Returns
     -------
-    mat
+    mat | arr
         The normalized version of :python:`matrix`.
     """
     norm = 1 if norm is None else norm
@@ -255,12 +296,15 @@ def normalize(matrix: mat | QuantumObject, norm: num | expr | str | None = None)
 
     conditions = extract_conditions(matrix)
     symbols = extract_symbols(matrix)
-    matrix = extract_matrix(matrix)
+    matrix = extract_representation(matrix)
+
+    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
-    conditions = symbolize_tuples(conditions, symbols)
+    conditions = symbolize_conditions(conditions, symbols)
 
-    trace = sp.trace(densify(matrix))
+    trace = densify(matrix).trace()
 
     norm = symbolize_expression(norm, symbols)
     trace = symbolize_expression(trace, symbols)
@@ -275,17 +319,19 @@ def normalize(matrix: mat | QuantumObject, norm: num | expr | str | None = None)
     factor = recursively_simplify(factor, conditions)
     matrix = factor * matrix
 
+    matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
+
     return matrix
 
 
 def coefficient(
-    matrix: mat | QuantumObject, scalar: num | expr | str | None = None
-) -> mat:
+    matrix: mat | arr | QuantumObject, scalar: num | expr | str | None = None
+) -> mat | arr:
     """Multiply :python:`matrix` by a scalar value (:python:`scalar`).
 
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The matrix to be scaled.
     scalar : num | expr | str
         The value by which the state is multiplied.
@@ -293,37 +339,42 @@ def coefficient(
 
     Returns
     -------
-    mat
+    mat | arr
         The scaled version of :python:`matrix`.
     """
     scalar = 1 if scalar is None else scalar
 
     conditions = extract_conditions(matrix)
     symbols = extract_symbols(matrix)
-    matrix = extract_matrix(matrix)
+    matrix = extract_representation(matrix)
+
+    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
-    conditions = symbolize_tuples(conditions, symbols)
+    conditions = symbolize_conditions(conditions, symbols)
 
     scalar = symbolize_expression(scalar, symbols)
 
     matrix = scalar * matrix
 
+    matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
+
     return matrix
 
 
 def partial_trace(
-    matrix: mat | QuantumObject,
+    matrix: mat | arr | QuantumObject,
     targets: int | list[int] | None = None,
     discard: bool | None = None,
     dim: int | None = None,
     optimize: bool | None = None,
-) -> num | expr | mat:
+) -> num | expr | mat | arr:
     """Compute and return the partial trace of a matrix.
 
     Arguments
     ---------
-    matrix : mat
+    matrix : mat | arr
         The matrix on which to perform the partial trace operation.
     targets : int | list[int]
         The numerical index/indices of the subsystem(s) to be partially traced over.
@@ -342,15 +393,19 @@ def partial_trace(
 
     Returns
     -------
-    mat
-        The reduced matrix.
+    num | expr | mat | arr
+        The reduced matrix or scalar trace expression.
     """
     targets = [] if targets is None else targets
     discard = True if discard is None else discard
     dim = 2 if dim is None else dim
     optimize = True if optimize is None else optimize
 
-    matrix = extract_matrix(matrix)
+    matrix = extract_representation(matrix)
+
+    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_arr = True if isinstance(matrix, arr) is True else False
+
     targets = flatten_list(list([targets]))
     if len(targets) == 0 and discard is True:
         return matrix
@@ -378,17 +433,21 @@ def partial_trace(
     if isinstance(operator_reduced, num):
         return operator_reduced
     else:
-        return sp.Matrix(operator_reduced.reshape(num_keep + 1, num_keep + 1))
+        return cast(
+            operator_reduced.reshape(num_keep + 1, num_keep + 1),
+            numerical=matrix_num,
+            array=matrix_arr,
+        )
 
 
 def measure(
-    matrix: mat | QuantumObject,
+    matrix: mat | arr | QuantumObject,
     operators: list[mat | arr | QuantumObject],
     targets: int | list[int],
     observable: bool | None = None,
     statistics: bool | None = None,
     dim: int | None = None,
-) -> mat | list[num | expr]:
+) -> mat | arr | list[num | expr]:
     """Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of :python:`matrix`.
 
     This function has two main modes of operation:
@@ -427,7 +486,7 @@ def measure(
 
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The matrix to be measured.
     operators: list[mat | arr | QuantumObject]
         The operator(s) with which to perform the measurement.
@@ -452,7 +511,7 @@ def measure(
 
     Returns
     -------
-    mat
+    mat | arr
         The post-measurement :python:`matrix`.
         Returned if :python:`statistics` is :python:`False`.
     num | expr | list[num | expr]
@@ -475,10 +534,13 @@ def measure(
 
     conditions = extract_conditions(matrix)
     symbols = extract_symbols(matrix)
-    matrix = extract_matrix(matrix)
+    matrix = extract_representation(matrix)
+
+    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
-    conditions = symbolize_tuples(conditions, symbols)
+    conditions = symbolize_conditions(conditions, symbols)
 
     operators_initial = operators
     operators = flatten_list([operators])
@@ -487,39 +549,58 @@ def measure(
     matrix = partial_trace(matrix=matrix, targets=targets, discard=False, dim=dim)
     operator_matrices = []
     for operator in operators:
-        operator_matrices.append(extract_matrix(operator))
+        operator_matrices.append(
+            cast(
+                extract_representation(operator), numerical=matrix_num, array=matrix_arr
+            )
+        )
     if statistics is False:
-        matrix_post_measurement = sp.zeros(dim ** len(targets))
+        matrix_post_measurement = generate_zeros(
+            dim ** len(targets), numerical=matrix_num, array=matrix_arr
+        )
         if observable is False:
             if len(operator_matrices) == 1 and is_vector is True:
-                matrix_post_measurement = operator_matrices[0] * matrix
-                normalization = 1 / sp.sqrt(sp.trace(densify(matrix_post_measurement)))
+                matrix_post_measurement = matrix_multiplication(
+                    operator_matrices[0], matrix
+                )
+                normalization = 1 / sp.sqrt(densify(matrix_post_measurement).trace())
                 normalization = symbolize_expression(normalization, symbols)
                 normalization = recursively_simplify(normalization, conditions)
                 matrix_post_measurement = normalization * matrix_post_measurement
             else:
                 for operator in operator_matrices:
-                    matrix_post_measurement += (
-                        densify(operator) * densify(matrix) * Dagger(densify(operator))
+                    matrix_post_measurement = (
+                        matrix_post_measurement
+                        + matrix_multiplication(
+                            densify(operator),
+                            densify(matrix),
+                            conjugate_transpose(densify(operator)),
+                        )
                     )
         else:
             for operator in operator_matrices:
-                probability = sp.trace(densify(operator) * densify(matrix))
+                probability = matrix_multiplication(
+                    densify(operator), densify(matrix)
+                ).trace()
                 probability = symbolize_expression(probability, symbols)
                 probability = recursively_simplify(probability, conditions)
-                matrix_post_measurement += probability * densify(operator)
-        return matrix_post_measurement
+                matrix_post_measurement = (
+                    matrix_post_measurement + probability * densify(operator)
+                )
+        return cast(matrix_post_measurement, numerical=matrix_num, array=matrix_arr)
     else:
         if observable is False:
             probabilities = [
-                sp.trace(
-                    densify(operator) * densify(matrix) * Dagger(densify(operator))
-                )
+                matrix_multiplication(
+                    densify(operator),
+                    densify(matrix),
+                    conjugate_transpose(densify(operator)),
+                ).trace()
                 for operator in operator_matrices
             ]
         else:
             probabilities = [
-                sp.trace(densify(operator) * densify(matrix))
+                matrix_multiplication(densify(operator), densify(matrix)).trace()
                 for operator in operator_matrices
             ]
             for n, probability in enumerate(probabilities):
@@ -532,10 +613,10 @@ def measure(
 
 
 def postselect(
-    matrix: mat | QuantumObject,
+    matrix: mat | arr | QuantumObject,
     postselections: list[tuple[mat | arr | QuantumObject, int]],
     dim: int | None = None,
-) -> mat | list[num | expr]:
+) -> mat | arr | list[num | expr]:
     """Perform postselection on :python:`matrix` against the operator(s) specified in :python:`postselections`.
 
     The postselections can be given in either vector or matrix form.
@@ -555,7 +636,7 @@ def postselect(
 
     Arguments
     ---------
-    matrix : mat | QuantumObject
+    matrix : mat | arr | QuantumObject
         The matrix to be measured.
     postselections: list[tuple[mat | arr | QuantumObject, int]]
         A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.
@@ -566,12 +647,15 @@ def postselect(
 
     Returns
     -------
-    mat
+    mat | arr | list[num | expr]
         The postselected form of :python:`matrix`.
     """
     dim = 2 if dim is None else dim
 
-    matrix = extract_matrix(matrix)
+    matrix = extract_representation(matrix)
+    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_arr = True if isinstance(matrix, arr) is True else False
+
     num_systems = count_systems(matrix, dim)
     systems = [k for k in range(num_systems)]
 
@@ -594,9 +678,10 @@ def postselect(
     matrices = []
     targets = []
     for twotuple in postselections:
-        operator = extract_matrix(twotuple[0])
+        operator = extract_representation(twotuple[0])
         if matrix_form(operator) == Forms.VECTOR.value:
             operator = columnify(operator)
+        operator = cast(operator, numerical=matrix_num, array=matrix_arr)
         matrices.append(operator)
         num_systems = count_systems(operator, dim)
         targets.append(
@@ -604,7 +689,7 @@ def postselect(
         )
 
     operators = []
-    identity = sp.eye(dim)
+    identity = generate_identity(dim, numerical=matrix_num, array=matrix_arr)
     for system in systems:
         if system not in flatten_list(targets):
             operators.append(identity)
@@ -614,15 +699,15 @@ def postselect(
                 operators.append(matrices[min_targets.index(system)])
 
     if is_vector is True and postselection_is_vector is True:
-        operators_combined = TensorProduct(*operators)
-        matrix = Dagger(operators_combined) * matrix
+        operators_combined = tensor_product(*operators)
+        matrix = matrix_multiplication(conjugate_transpose(operators_combined), matrix)
     else:
         for i, operator in enumerate(operators):
             operators[i] = densify(operator)
-        operators_combined = TensorProduct(*operators)
-        matrix = densify(operators_combined) * densify(matrix)
+        operators_combined = tensor_product(*operators)
+        matrix = matrix_multiplication(densify(operators_combined), densify(matrix))
         matrix = partial_trace(matrix=matrix, targets=flatten_list(targets), dim=dim)
-    return matrix
+    return cast(matrix, numerical=matrix_num, array=matrix_arr)
 
 
 class OperationsMixin:
@@ -638,11 +723,15 @@ class OperationsMixin:
 
         States that are already in density matrix form are unmodified.
         """
-        self.matrix = densify(self)
+        self.current = densify(self)
 
     def dagger(self):
         """Perform conjugate transposition on the state."""
-        self.matrix = dagger(self)
+        self.current = dagger(self)
+
+    def round(self):
+        """Round the state's elements to the nearest (real) integer."""
+        self.current = round(self)
 
     def simplify(self, comprehensive: bool | None = None):
         """Apply a forced simplification to the state using the values of its :python:`symbols` and :python:`conditions` properties.
@@ -659,7 +748,7 @@ class OperationsMixin:
         ----
         If :python:`comprehensive` is :python:`True`, the simplification algorithm will likely take *far* longer to execute than if :python:`comprehensive` were :python:`False`.
         """
-        self.matrix = simplify(self, comprehensive=comprehensive)
+        self.current = simplify(self, comprehensive=comprehensive)
 
     def rewrite(self, function: Callable):
         """Rewrite the elements of the state using the given mathematical function (:python:`function`).
@@ -677,7 +766,7 @@ class OperationsMixin:
         function : Callable
             A SymPy mathematical function.
         """
-        self.matrix = rewrite(self, function=function)
+        self.current = rewrite(self, function=function)
 
     def apply(self, function: Callable, arguments: dict[str, Any] | None = None):
         """Apply a Python function (:python:`function`) to the state.
@@ -707,7 +796,7 @@ class OperationsMixin:
             A dictionary of keyword arguments (with the keywords as strings) to pass to the :python:`function` call.
             Defaults to :python:`{}`.
         """
-        self.matrix = apply(self, function=function, arguments=arguments)
+        self.current = apply(self, function=function, arguments=arguments)
 
     def normalize(self, norm: num | expr | str | None = None):
         """Perform a forced (re)normalization on the state to the value specified (:python:`norm`).
@@ -721,7 +810,7 @@ class OperationsMixin:
             Defaults to :python:`1`.
         """
         norm = 1 if norm is None else norm
-        self.matrix = normalize(self, norm=norm)
+        self.current = normalize(self, norm=norm)
 
     def coefficient(self, scalar: num | expr | str | None = None):
         """Multiply the state by a scalar value (:python:`scalar`).
@@ -735,7 +824,7 @@ class OperationsMixin:
             Defaults to :python:`1`.
         """
         scalar = 1 if scalar is None else scalar
-        self.matrix = coefficient(self, scalar=scalar)
+        self.current = coefficient(self, scalar=scalar)
 
     def partial_trace(
         self,
@@ -759,7 +848,7 @@ class OperationsMixin:
             Can greatly increase the computational efficiency at the cost of a larger memory footprint during computation.
             Defaults to :python:`True`.
         """
-        self.matrix = partial_trace(
+        self.current = partial_trace(
             matrix=self,
             targets=targets,
             discard=discard,
@@ -867,7 +956,7 @@ class OperationsMixin:
         observable = False if observable is None else observable
         statistics = False if statistics is None else statistics
         if statistics is False:
-            self.matrix = measure(
+            self.current = measure(
                 self,
                 operators=operators,
                 targets=targets,
@@ -922,4 +1011,4 @@ class OperationsMixin:
                 else:
                     self.symbols |= {symbol: symbols[symbol]}
 
-        self.matrix = postselect(self, postselections=postselections, dim=self.dim)
+        self.current = postselect(self, postselections=postselections, dim=self.dim)

@@ -10,5 +10,5 @@ qubit_pure = QuantumState(
     label="ξ",
 )
 qubit_pure.diagram()
-print(repr(qubit_pure.output()))
-qubit_pure.print()
+print(repr(qubit_pure.output(simplify=True)))
+qubit_pure.print(simplify=True)

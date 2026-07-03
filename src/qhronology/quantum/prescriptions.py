@@ -15,40 +15,40 @@ Classes and functions implementing quantum prescriptions of time travel.
 # https://peps.python.org/pep-0649/
 # https://peps.python.org/pep-0749/
 from __future__ import annotations
-
 import copy
 
 import numpy as np
 import sympy as sp
-from sympy.physics.quantum import TensorProduct
-from sympy.physics.quantum.dagger import Dagger
 
+from qhronology.mechanics.operations import columnify, densify, partial_trace
+from qhronology.mechanics.quantities import entropy, trace
+from qhronology.quantum.circuits import QuantumCircuit
+from qhronology.quantum.gates import QuantumGate
+from qhronology.quantum.states import QuantumState
 from qhronology.utilities.classification import (
-    num,
-    sym,
-    expr,
-    mat,
     Forms,
     Kinds,
+    arr,
+    expr,
+    mat,
     matrix_form,
+    num,
+    sym,
 )
 from qhronology.utilities.helpers import (
     adjust_targets,
-    count_systems,
-    count_dims,
-    extract_matrix,
-    extract_conditions,
-    flatten_list,
     assemble_composition,
+    cast,
+    conjugate_transpose,
+    count_dims,
+    count_systems,
+    dtype,
+    extract_conditions,
+    extract_matrix,
+    flatten_list,
+    matrix_multiplication,
     recursively_simplify,
 )
-
-from qhronology.quantum.states import QuantumState
-from qhronology.quantum.gates import QuantumGate
-from qhronology.quantum.circuits import QuantumCircuit
-
-from qhronology.mechanics.operations import densify, columnify, partial_trace
-from qhronology.mechanics.quantities import trace, entropy
 
 
 class QuantumCTC(QuantumCircuit):
@@ -140,17 +140,37 @@ class QuantumCTC(QuantumCircuit):
     def __repr__(self) -> str:
         return repr(self.output_respecting())
 
-    @property
-    def matrix(self) -> mat:
-        """The matrix representation of the total CTC-circuit output state (both CR and CV systems) prior to any post-processing."""
+    def matrix(
+        self,
+        numerical: bool | None = None,
+        array: bool | None = None,
+    ) -> mat | arr:
+        """Compute the unprocessed matrix representation of the circuit's total output state (combined CR and CV systems).
+
+        Arguments
+        ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
+
+        Returns
+        -------
+        mat | arr
+            The unprocessed matrix representation of the circuit's total output state.
+        """
         return QuantumCircuit(
             inputs=self.inputs,
             gates=self.gates,
             traces=self.traces,
             postselections=self.postselections,
+            numerical=self.numerical,
+            array=self.array,
             symbols=self.symbols,
             conditions=self.conditions,
-        ).matrix
+        ).matrix(numerical=numerical, array=array)
 
     @property
     def systems_respecting(self) -> list[int]:
@@ -183,6 +203,8 @@ class QuantumCTC(QuantumCircuit):
     def input(
         self,
         merge: bool | None = None,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -191,7 +213,7 @@ class QuantumCTC(QuantumCircuit):
         notation: str | None = None,
         debug: bool | None = None,
     ) -> QuantumState:
-        """Construct the composite chronology-respecting (CR) input state of the closed timelike curve as a :py:class:`~qhronology.quantum.states.QuantumState` instance and return it.
+        """Construct the composite chronology-respecting (CR) input state of the closed timelike curve as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         This is computed as the tensor product of the individual gates in the order in which they appear in the :python:`inputs` property.
 
@@ -203,6 +225,12 @@ class QuantumCTC(QuantumCircuit):
             Whether to merge the labels of the individual quantum states into a single product, separated by :python:`"⊗"` operators, prior to any notational processing.
             Only relevant when all states are vectors.
             Defaults to :python:`True`.
+        numerical : bool
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -236,8 +264,8 @@ class QuantumCTC(QuantumCircuit):
 
         Returns
         -------
-        mat
-            The total input state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+        QuantumState
+            The circuit's total input state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Note
         ----
@@ -246,6 +274,8 @@ class QuantumCTC(QuantumCircuit):
         """
         return super().input(
             merge=merge,
+            numerical=numerical,
+            array=array,
             conditions=conditions,
             simplify=simplify,
             conjugate=conjugate,
@@ -256,13 +286,15 @@ class QuantumCTC(QuantumCircuit):
         )
 
     # The four methods below merely output the reduced states, so the :python:`systems_respective` and :python:`systems_violating` of the base class acts just like extra traces.
-    def output_violating(self) -> mat:
+    def output_violating(self) -> mat | arr:
         return (
             QuantumCircuit(
                 inputs=self.inputs,
                 gates=self.gates,
                 traces=self.traces,
                 postselections=self.postselections,
+                numerical=self.numerical,
+                array=self.array,
                 symbols=self.symbols,
                 conditions=self.conditions,
             )
@@ -270,13 +302,15 @@ class QuantumCTC(QuantumCircuit):
             .output()
         )
 
-    def output_respecting(self) -> mat:
+    def output_respecting(self) -> mat | arr:
         return (
             QuantumCircuit(
                 inputs=self.inputs,
                 gates=self.gates,
                 traces=self.traces,
                 postselections=self.postselections,
+                numerical=self.numerical,
+                array=self.array,
                 symbols=self.symbols,
                 conditions=self.conditions,
             )
@@ -290,6 +324,8 @@ class QuantumCTC(QuantumCircuit):
             gates=self.gates,
             traces=self.traces,
             postselections=self.postselections,
+            numerical=self.numerical,
+            array=self.array,
             symbols=self.symbols,
             conditions=self.conditions,
         ).state(traces=self.systems_respecting)
@@ -300,20 +336,22 @@ class QuantumCTC(QuantumCircuit):
             gates=self.gates,
             traces=self.traces,
             postselections=self.postselections,
+            numerical=self.numerical,
+            array=self.array,
             symbols=self.symbols,
             conditions=self.conditions,
         ).state(traces=self.systems_violating)
 
 
 def dctc_violating(
-    input_respecting: mat | QuantumState,
-    gate: mat | QuantumGate,
+    input_respecting: mat | arr | QuantumState,
+    gate: mat | arr | QuantumGate,
     systems_respecting: list[int],
     systems_violating: list[int],
     free_symbol: sym | str | None = None,
     maximum_entropy: bool | None = None,
-) -> mat:
-    """Calculate the chronology-violating (CV) state(s) according to the D-CTC prescription by computing fixed points of the map
+) -> mat | arr:
+    """Calculate the chronology-violating (CV) state according to the D-CTC prescription by computing fixed points of the map
 
     .. math::
 
@@ -324,9 +362,9 @@ def dctc_violating(
 
     Arguments
     ---------
-    input_respecting : mat | QuantumState
+    input_respecting : mat | arr | QuantumState
         The matrix representation of the chronology-respecting (CR) input state.
-    gate : mat | QuantumGate
+    gate : mat | arr | QuantumGate
         The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.
     systems_respecting : list[int]
         The numerical indices of the chronology-respecting (CR) subsystems.
@@ -342,28 +380,48 @@ def dctc_violating(
 
     Returns
     -------
-    mat
+    mat | arr
         The fixed-point solution(s) of the D-CTC CV map.
 
     Note
     ----
     Please note that this function in its current form is considered to be *highly* experimental.
-
     """
     free_symbol = "g" if free_symbol is None else free_symbol
     maximum_entropy = False if maximum_entropy is None else maximum_entropy
+
+    if isinstance(input_respecting, mat | arr) is True:
+        matrix_num = True if issubclass(dtype(input_respecting), num) is True else False
+        matrix_arr = True if isinstance(input_respecting, arr) is True else False
+    else:
+        try:
+            matrix_num = (
+                True
+                if issubclass(dtype(input_respecting.output()), num) is True
+                else False
+            )
+            matrix_arr = (
+                True if isinstance(input_respecting.output(), arr) is True else False
+            )
+        except:
+            raise TypeError(
+                """A matrix or array cannot be extracted from the given input state."""
+            )
+
     systems_respecting = list(set(systems_respecting))
     systems_violating = list(set(systems_violating))
     try:
         dim = input_respecting.dim
     except:
         dim = count_dims(
-            matrix=densify(extract_matrix(input_respecting)), systems=systems_respecting
+            matrix=densify(extract_matrix(input_respecting)),
+            num_systems=len(systems_respecting),
         )
 
     conditions_respecting = extract_conditions(input_respecting)
-    trace_respecting = input_respecting.trace()
     input_respecting = densify(extract_matrix(input_respecting))
+    trace_respecting = input_respecting.trace()
+    gate = densify(extract_matrix(gate))
 
     # Use :python:`Symbol` for persistent (structurally bound) variables.
     # Use :python:`Dummy` for non-persistent (not structurally bound) variables.
@@ -379,8 +437,7 @@ def dctc_violating(
         (input_respecting, systems_respecting), (input_violating, systems_violating)
     )
 
-    gate = densify(extract_matrix(gate))
-    output_total = gate * input_total * Dagger(gate)
+    output_total = matrix_multiplication(gate, input_total, conjugate_transpose(gate))
     output_violating = partial_trace(
         matrix=output_total, targets=systems_respecting, dim=dim
     )
@@ -393,9 +450,8 @@ def dctc_violating(
     for n in range(0, (dim ** len(systems_violating)) ** 2):
         equations.append(sp.Eq(output_violating[n], input_violating[n], evaluate=False))
 
-    if trace_respecting == 1:
-        equations += [sp.Eq(trace(input_respecting), 1, evaluate=False)]
-        equations += [sp.Eq(trace(input_violating), 1, evaluate=False)]
+    equations += [sp.Eq(trace(input_respecting), trace_respecting, evaluate=False)]
+    equations += [sp.Eq(trace(input_violating), trace_respecting, evaluate=False)]
 
     # Designed to loop twice: once without the trace equation, then once with it.
     counter = 0
@@ -404,21 +460,23 @@ def dctc_violating(
         if solutions[1] == set() or solutions[1] == {tuple(0 for _ in unknowns)}:
             solutions = sp.nonlinsolve(equations, unknowns)
             if isinstance(solutions, sp.sets.sets.EmptySet) is True or solutions == {
-                tuple(0 for _ in unknowns)
+                tuple(0 for _ in unknowns) or tuple(0.0 for _ in unknowns)
             }:
                 solutions = set()
             solutions = (unknowns, solutions)
         if len(solutions[1]) == 1:
-            break
+            values = list(solutions[1])[0]
+            if not (len(set(values)) == 1 and values[0] in [0, 0.0]):
+                break
         elif len(solutions[1]) == 0:
-            # Remove final equation (possibly trace condition) and try again.
+            # Remove final equation (initially a trace condition) and try again.
             del equations[-1]
         else:
             raise NotImplementedError(
                 """Support for multiple non-parametrized D-CTC CV solutions has not yet been implemented."""
             )
         counter += 1
-        if counter == 2:
+        if counter == 4:
             raise NotImplementedError(
                 """The D-CTC CV algorithm was unable to determine a solution (fixed point) to the CV map.
                 If you are certain that your circuit does indeed have a solution, you are welcome to file a bug report."""
@@ -521,17 +579,17 @@ def dctc_violating(
                 ]
             )
 
-    return output_violating
+    return cast(output_violating, numerical=matrix_num, array=matrix_arr)
 
 
 def dctc_respecting(
-    input_respecting: mat | QuantumState,
-    input_violating: mat | QuantumState,
-    gate: mat | QuantumGate,
+    input_respecting: mat | arr | QuantumState,
+    input_violating: mat | arr | QuantumState,
+    gate: mat | arr | QuantumGate,
     systems_respecting: list[int],
     systems_violating: list[int],
-) -> mat:
-    """Calculate the chronology-respecting (CR) state(s) according to the D-CTC prescription's CR map
+) -> mat | arr:
+    """Calculate the chronology-respecting (CR) state according to the D-CTC prescription's CR map
 
     .. math::
 
@@ -542,11 +600,11 @@ def dctc_respecting(
 
     Arguments
     ---------
-    input_respecting : mat | QuantumState
+    input_respecting : mat | arr | QuantumState
         The matrix representation of the chronology-respecting (CR) input state.
-    input_violating : mat | QuantumState
+    input_violating : mat | arr | QuantumState
         The matrix representation of the chronology-violating (CR) solution state.
-    gate : mat | QuantumGate
+    gate : mat | arr | QuantumGate
         The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.
     systems_respecting : list[int]
         The numerical indices of the chronology-respecting (CR) subsystems.
@@ -555,17 +613,35 @@ def dctc_respecting(
 
     Returns
     -------
-    mat
+    mat | arr
         The solution(s) of the D-CTC CR map.
-
     """
+    if isinstance(input_respecting, mat | arr) is True:
+        matrix_num = True if issubclass(dtype(input_respecting), num) is True else False
+        matrix_arr = True if isinstance(input_respecting, arr) is True else False
+    else:
+        try:
+            matrix_num = (
+                True
+                if issubclass(dtype(input_respecting.output()), num) is True
+                else False
+            )
+            matrix_arr = (
+                True if isinstance(input_respecting.output(), arr) is True else False
+            )
+        except:
+            raise TypeError(
+                """A matrix or array cannot be extracted from the given input state."""
+            )
+
     systems_respecting = list(set(systems_respecting))
     systems_violating = list(set(systems_violating))
     try:
         dim = input_respecting.dim
     except:
         dim = count_dims(
-            matrix=densify(extract_matrix(input_respecting)), systems=systems_respecting
+            matrix=densify(extract_matrix(input_respecting)),
+            num_systems=len(systems_respecting),
         )
 
     input_respecting = densify(extract_matrix(input_respecting))
@@ -575,12 +651,12 @@ def dctc_respecting(
     )
 
     gate = densify(extract_matrix(gate))
-    output_total = gate * input_total * Dagger(gate)
+    output_total = matrix_multiplication(gate, input_total, conjugate_transpose(gate))
     output_respecting = partial_trace(
         matrix=output_total, targets=systems_violating, dim=dim
     )
 
-    return output_respecting
+    return cast(output_respecting, numerical=matrix_num, array=matrix_arr)
 
 
 class DCTC(QuantumCTC):
@@ -644,9 +720,30 @@ class DCTC(QuantumCTC):
         return False
         # The CR and CV maps of a D-CTC are non-linear, non-unitary (mixing) operations in general.
 
-    @property
-    def matrix(self) -> mat:
-        """The matrix representation of the total D-CTC chronology-respecting (CR) output state prior to any post-processing."""
+    def matrix(
+        self,
+        numerical: bool | None = None,
+        array: bool | None = None,
+    ) -> mat | arr:
+        """Compute the unprocessed matrix representation of the D-CTC chronology-respecting (CR) output state.
+
+        Arguments
+        ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
+
+        Returns
+        -------
+        mat | arr
+            The unprocessed matrix representation of the D-CTC CR output state.
+        """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+
         output_respecting = dctc_respecting(
             input_respecting=self.input(conditions=[]),
             input_violating=self.state_violating(
@@ -657,20 +754,29 @@ class DCTC(QuantumCTC):
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
         )
-        return output_respecting
+        return cast(output_respecting, numerical=numerical, array=array)
 
     def output_violating(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
+        norm: bool | num | expr | str | None = None,
         free_symbol: sym | str | None = None,
         maximum_entropy: bool | None = None,
-    ) -> mat:
-        """Compute the matrix representation of the D-CTC chronology-violating (CV) state(s).
+    ) -> mat | arr:
+        """Compute the processed matrix representation of the D-CTC chronology-violating (CV) state.
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -680,21 +786,32 @@ class DCTC(QuantumCTC):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
+        norm : bool | num | expr | str
+            The value to which the state is normalized.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         free_symbol : str
             The string representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
             Defaults to the value of :python:`self.free_symbol`.
         maximum_entropy : bool
             Whether to, in the case of solution multiplicity, return the CV state that possesses the most (von Neumann) entropy, in accordance with Deutsch's original prescription.
             If :python:`False`, simply returns the ordinary (single or parametrized) solution.
-            Defaults to :python:`False`.
+            Defaults to the value of :python:`self.maximum_entropy`.
 
         Returns
         -------
-        mat
-            The matrix representation of the CV output state.
+        mat | arr
+            The processed matrix representation of the D-CTC CV output state.
         """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
+
         free_symbol = self.free_symbol if free_symbol is None else free_symbol
-        maximum_entropy = self.maximum_entropy if maximum_entropy is None else maximum_entropy
+        maximum_entropy = (
+            self.maximum_entropy if maximum_entropy is None else maximum_entropy
+        )
 
         output_violating = dctc_violating(
             input_respecting=self.input(conditions=[]),
@@ -712,8 +829,10 @@ class DCTC(QuantumCTC):
             spec=output_violating,
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -721,6 +840,12 @@ class DCTC(QuantumCTC):
             notation=None,
             debug=False,
         )
+
+        # Normalization
+        norm = False if norm is None else norm
+        norm = 1 if norm is True else norm
+        if norm is not False:
+            output_violating.normalize(norm)
 
         # Simplification
         simplify = False if simplify is None else simplify
@@ -733,11 +858,13 @@ class DCTC(QuantumCTC):
             output_violating.dagger()
 
         output_violating = QuantumState(
-            spec=output_violating.output(),
+            spec=output_violating.output(numerical=numerical, array=array_intermediate),
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -746,21 +873,30 @@ class DCTC(QuantumCTC):
             debug=False,
         )
 
-        return sp.Matrix(output_violating.output())
+        return output_violating.output(numerical=numerical, array=array)
 
     def output_respecting(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
+        norm: bool | num | expr | str | None = None,
         postprocess: bool | None = None,
         free_symbol: sym | str | None = None,
         maximum_entropy: bool | None = None,
-    ) -> mat:
-        """Compute the matrix representation of the D-CTC chronology-respecting (CR) state(s) (including any post-processing).
+    ) -> mat | arr:
+        """Compute the matrix representation of the D-CTC chronology-respecting (CR) output state (including any post-processing, i.e., traces and postselections).
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -769,6 +905,11 @@ class DCTC(QuantumCTC):
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
+            Defaults to :python:`False`.
+        norm : bool | num | expr | str
+            The value to which the state is normalized.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
             Defaults to :python:`False`.
         postprocess : bool
             Whether to post-process the state (i.e., perform the circuit's traces and postselections).
@@ -779,36 +920,51 @@ class DCTC(QuantumCTC):
         maximum_entropy : bool
             Whether to, in the case of solution multiplicity, return the CR solution that corresponds to the maximally entropic CV state, in accordance with Deutsch's original prescription.
             If :python:`False`, simply returns the ordinary (single or parametrized) solution.
-            Defaults to :python:`False`.
+            Defaults to the value of :python:`maximum_entropy`.
 
         Returns
         -------
-        mat
-            The matrix representation of the (post-processed) CR output state.
+        mat | arr
+            The processed matrix representation of the D-CTC CR output state.
         """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
+
         conditions = self.conditions if conditions is None else conditions
         free_symbol = self.free_symbol if free_symbol is None else free_symbol
-        maximum_entropy = self.maximum_entropy if maximum_entropy is None else maximum_entropy
+        maximum_entropy = (
+            self.maximum_entropy if maximum_entropy is None else maximum_entropy
+        )
 
         output_respecting = dctc_respecting(
-            input_respecting=self.input(conditions=[]),
+            input_respecting=self.input(
+                numerical=numerical, array=array_intermediate, conditions=[]
+            ),
             input_violating=self.state_violating(
+                numerical=numerical,
+                array=array_intermediate,
                 free_symbol=free_symbol,
                 maximum_entropy=maximum_entropy,
             ),
-            gate=self.gate(conditions=[]),
+            gate=self.gate(
+                numerical=numerical, array=array_intermediate, conditions=[]
+            ),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
         )
 
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
+
         output_respecting = QuantumState(
             spec=output_respecting,
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -837,6 +993,12 @@ class DCTC(QuantumCTC):
                 )
                 systems_removed += systems
 
+        # Normalization
+        norm = False if norm is None else norm
+        norm = 1 if norm is True else norm
+        if norm is not False:
+            output_respecting.normalize(norm)
+
         # Simplification
         simplify = False if simplify is None else simplify
         if simplify is True:
@@ -848,11 +1010,15 @@ class DCTC(QuantumCTC):
             output_respecting.dagger()
 
         output_respecting = QuantumState(
-            spec=output_respecting.output(),
+            spec=output_respecting.output(
+                numerical=numerical, array=array_intermediate
+            ),
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -860,24 +1026,32 @@ class DCTC(QuantumCTC):
             notation=None,
             debug=False,
         )
-
-        return sp.Matrix(output_respecting.output())
+        return output_respecting.output(numerical=numerical, array=array)
 
     def output(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
+        norm: bool | num | expr | str | None = None,
         postprocess: bool | None = None,
         free_symbol: sym | str | None = None,
         maximum_entropy: bool | None = None,
-    ) -> mat:
+    ) -> mat | arr:
         """An alias for the :py:meth:`~qhronology.quantum.prescriptions.DCTC.output_respecting` method.
 
         Useful for polymorphism.
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -886,6 +1060,11 @@ class DCTC(QuantumCTC):
             Defaults to :python:`False`.
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
+            Defaults to :python:`False`.
+        norm : bool | num | expr | str
+            The value to which the state is normalized.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
             Defaults to :python:`False`.
         postprocess : bool
             Whether to post-process the state (i.e., perform the circuit's traces and postselections).
@@ -896,18 +1075,20 @@ class DCTC(QuantumCTC):
         maximum_entropy : bool
             Whether to, in the case of solution multiplicity, return the CR solution that corresponds to the maximally entropic CV state, in accordance with Deutsch's original prescription.
             If :python:`False`, simply returns the ordinary (single or parametrized) solution.
-            Defaults to :python:`False`.
-
+            Defaults to the value of :python:`self.maximum_entropy`.
 
         Returns
         -------
-        mat
-            The matrix representation of the (post-processed) CR output state.
+        mat | arr
+            The processed matrix representation of the D-CTC CR output state.
         """
         return self.output_respecting(
+            numerical=numerical,
+            array=array,
             conditions=conditions,
             simplify=simplify,
             conjugate=conjugate,
+            norm=norm,
             postprocess=postprocess,
             free_symbol=free_symbol,
             maximum_entropy=maximum_entropy,
@@ -915,6 +1096,8 @@ class DCTC(QuantumCTC):
 
     def state_violating(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -926,10 +1109,16 @@ class DCTC(QuantumCTC):
         free_symbol: sym | str | None = None,
         maximum_entropy: bool | None = None,
     ) -> QuantumState:
-        """Compute the D-CTC chronology-violating (CV) state(s) as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+        """Compute the D-CTC chronology-violating (CV) state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -965,7 +1154,7 @@ class DCTC(QuantumCTC):
         maximum_entropy : bool
             Whether to, in the case of solution multiplicity, return the CV state that possesses the most (von Neumann) entropy, in accordance with Deutsch's original prescription.
             If :python:`False`, simply returns the ordinary (single or parametrized) solution.
-            Defaults to :python:`False`.
+            Defaults to the value of :python:`self.maximum_entropy`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
             If :python:`False`, does not print.
@@ -974,30 +1163,37 @@ class DCTC(QuantumCTC):
         Returns
         -------
         QuantumState
-            The CV output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+            The D-CTC CV output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
         """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
         conditions = self.conditions if conditions is None else conditions
         traces = [] if traces is None else traces
 
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
+
         state = QuantumState(
             form=form,
             kind=kind,
-            spec=sp.Matrix(
-                self.output_violating(
-                    conditions=conditions,
-                    simplify=simplify,
-                    conjugate=False,
-                    free_symbol=free_symbol,
-                    maximum_entropy=maximum_entropy,
-                )
+            spec=self.output_violating(
+                numerical=numerical,
+                array=array_intermediate,
+                conditions=conditions,
+                simplify=simplify,
+                conjugate=False,
+                norm=norm,
+                free_symbol=free_symbol,
+                maximum_entropy=maximum_entropy,
             ),
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array,
+            symbols=self.symbols,
             conditions=conditions,
             conjugate=conjugate,
-            norm=norm,
+            norm=False,
             label=label,
             notation=notation,
             debug=debug,
@@ -1008,6 +1204,8 @@ class DCTC(QuantumCTC):
 
     def state_respecting(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -1020,10 +1218,16 @@ class DCTC(QuantumCTC):
         free_symbol: sym | str | None = None,
         maximum_entropy: bool | None = None,
     ) -> QuantumState:
-        """Compute the D-CTC chronology-respecting (CR) state(s) as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+        """Compute the D-CTC chronology-respecting (CR) state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -1063,7 +1267,7 @@ class DCTC(QuantumCTC):
         maximum_entropy : bool
             Whether to, in the case of solution multiplicity, return the CR solution that corresponds to the maximally entropic CV state, in accordance with Deutsch's original prescription.
             If :python:`False`, simply returns the ordinary (single or parametrized) solution.
-            Defaults to :python:`False`.
+            Defaults to the value of :python:`self.maximum_entropy`.
         debug : bool
             Whether to print the internal state (held in :python:`matrix`) on change.
             If :python:`False`, does not print.
@@ -1072,14 +1276,18 @@ class DCTC(QuantumCTC):
         Returns
         -------
         QuantumState
-            The (post-processed) CR output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+            The D-CTC CR output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
         """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
         conditions = self.conditions if conditions is None else conditions
         traces = [] if traces is None else traces
         postprocess = True if postprocess is None else postprocess
 
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
+
         if postprocess is True:
             traces = adjust_targets(
                 traces, self.systems_removed + self.systems_violating
@@ -1087,26 +1295,27 @@ class DCTC(QuantumCTC):
         else:
             traces = adjust_targets(traces, self.systems_violating)
 
-        matrix = sp.Matrix(
-            self.output_respecting(
+        state = QuantumState(
+            spec=self.output_respecting(
+                numerical=numerical,
+                array=array_intermediate,
                 conditions=conditions,
                 simplify=simplify,
                 conjugate=False,
+                norm=norm,
                 postprocess=postprocess,
                 free_symbol=free_symbol,
                 maximum_entropy=maximum_entropy,
-            )
-        )
-
-        state = QuantumState(
+            ),
             form=form,
             kind=kind,
-            spec=matrix,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array,
+            symbols=self.symbols,
             conditions=conditions,
             conjugate=conjugate,
-            norm=norm,
+            norm=False,
             label=label,
             notation=notation,
             debug=debug,
@@ -1116,11 +1325,11 @@ class DCTC(QuantumCTC):
 
 
 def pctc_violating(
-    input_respecting: mat | QuantumState,
-    gate: mat | QuantumGate,
+    input_respecting: mat | arr | QuantumState,
+    gate: mat | arr | QuantumGate,
     systems_respecting: list[int],
     systems_violating: list[int],
-) -> mat:
+) -> mat | arr:
     """Calculate the chronology-violating (CV) state according to the P-CTC weak-measurement tomography expression for the prescription's CV map
 
     .. math::
@@ -1134,9 +1343,9 @@ def pctc_violating(
 
     Arguments
     ---------
-    input_respecting : mat | QuantumState
+    input_respecting : mat | arr | QuantumState
         The matrix representation of the chronology-respecting (CR) input state.
-    gate : mat | QuantumGate
+    gate : mat | arr | QuantumGate
         The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.
     systems_respecting : list[int]
         The numerical indices of the chronology-respecting (CR) subsystems.
@@ -1146,19 +1355,38 @@ def pctc_violating(
     Returns
     -------
     mat
-        The weak-measurement tomography expression for the P-CTC's CV state.
+        The weak-measurement tomography expression for the P-CTC CV state.
 
     Note
     ----
     The validity of the expression used in this function to compute the P-CTC CV state for *non-qubit* systems has not been proven.
     """
+    if isinstance(input_respecting, mat | arr) is True:
+        matrix_num = True if issubclass(dtype(input_respecting), num) is True else False
+        matrix_arr = True if isinstance(input_respecting, arr) is True else False
+    else:
+        try:
+            matrix_num = (
+                True
+                if issubclass(dtype(input_respecting.output()), num) is True
+                else False
+            )
+            matrix_arr = (
+                True if isinstance(input_respecting.output(), arr) is True else False
+            )
+        except:
+            raise TypeError(
+                """A matrix or array cannot be extracted from the given input state."""
+            )
+
     systems_respecting = list(set(systems_respecting))
     systems_violating = list(set(systems_violating))
     try:
         dim = input_respecting.dim
     except:
         dim = count_dims(
-            matrix=densify(extract_matrix(input_respecting)), systems=systems_respecting
+            matrix=densify(extract_matrix(input_respecting)),
+            num_systems=len(systems_respecting),
         )
 
     input_respecting = densify(extract_matrix(input_respecting))
@@ -1171,20 +1399,19 @@ def pctc_violating(
     )
 
     gate = densify(extract_matrix(gate))
-    output_total = gate * input_total * Dagger(gate)
+    output_total = matrix_multiplication(gate, input_total, conjugate_transpose(gate))
     output_violating = partial_trace(
         matrix=output_total, targets=systems_respecting, dim=dim
     )
-
-    return output_violating
+    return cast(output_violating, numerical=matrix_num, array=matrix_arr)
 
 
 def pctc_respecting(
-    input_respecting: mat | QuantumState,
-    gate: mat | QuantumGate,
+    input_respecting: mat | arr | QuantumState,
+    gate: mat | arr | QuantumGate,
     systems_respecting: list[int],
     systems_violating: list[int],
-) -> mat:
+) -> mat | arr:
     """Calculate the (non-renormalized) chronology-respecting (CR) state according to the P-CTC prescription's non-renormalizing CR map
 
     .. math::
@@ -1211,9 +1438,9 @@ def pctc_respecting(
 
     Arguments
     ---------
-    input_respecting : mat | QuantumState
+    input_respecting : mat | arr | QuantumState
         The matrix representation of the chronology-respecting (CR) input state.
-    gate : mat | QuantumGate
+    gate : mat | arr | QuantumGate
         The matrix representation of the gate describing the (unitary) interaction between the CR and CV systems.
     systems_respecting : list[int]
         The numerical indices of the chronology-respecting (CR) subsystems.
@@ -1225,13 +1452,32 @@ def pctc_respecting(
     mat
         The solution of the P-CTC CR map.
     """
+    if isinstance(input_respecting, mat | arr) is True:
+        matrix_num = True if issubclass(dtype(input_respecting), num) is True else False
+        matrix_arr = True if isinstance(input_respecting, arr) is True else False
+    else:
+        try:
+            matrix_num = (
+                True
+                if issubclass(dtype(input_respecting.output()), num) is True
+                else False
+            )
+            matrix_arr = (
+                True if isinstance(input_respecting.output(), arr) is True else False
+            )
+        except:
+            raise TypeError(
+                """A matrix or array cannot be extracted from the given input state."""
+            )
+
     systems_respecting = list(set(systems_respecting))
     systems_violating = list(set(systems_violating))
     try:
         dim = input_respecting.dim
     except:
         dim = count_dims(
-            matrix=densify(extract_matrix(input_respecting)), systems=systems_respecting
+            matrix=densify(extract_matrix(input_respecting)),
+            num_systems=len(systems_respecting),
         )
 
     input_respecting = extract_matrix(input_respecting)
@@ -1242,13 +1488,14 @@ def pctc_respecting(
         input_respecting = columnify(input_respecting)
         output_respecting = gate_reduced * input_respecting
         # renormalization = recursively_simplify(sp.sqrt(1/trace(output_respecting)))
-        # output_respecting = renormalization*output_respecting
+        # output_respecting = renormalization * output_respecting
     else:
-        output_respecting = gate_reduced * input_respecting * Dagger(gate_reduced)
+        output_respecting = (
+            gate_reduced * densify(input_respecting) * conjugate_transpose(gate_reduced)
+        )
         # renormalization = recursively_simplify(1/trace(output_respecting))
-        # output_respecting = renormalization*output_respecting
-
-    return output_respecting
+        # output_respecting = renormalization * output_respecting
+    return cast(output_respecting, numerical=matrix_num, array=matrix_arr)
 
 
 class PCTC(QuantumCTC):
@@ -1267,27 +1514,57 @@ class PCTC(QuantumCTC):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    @property
-    def matrix(self) -> mat:
-        """The matrix representation of the total P-CTC chronology-respecting (CR) output state prior to any post-processing."""
+    def matrix(
+        self,
+        numerical: bool | None = None,
+        array: bool | None = None,
+    ) -> mat | arr:
+        """Compute the unprocessed matrix representation of the P-CTC chronology-respecting (CR) output state.
+
+        Arguments
+        ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
+
+        Returns
+        -------
+        mat | arr
+            The unprocessed matrix representation of the P-CTC CR output state.
+        """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+
         output_respecting = pctc_respecting(
             input_respecting=self.input(conditions=[]),
             gate=self.gate(conditions=[]),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
         )
-        return output_respecting
+        return cast(output_respecting, numerical=numerical, array=array)
 
     def output_violating(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
-    ) -> mat:
-        """Compute the matrix representation of the P-CTC chronology-violating (CV) state.
+        norm: bool | num | expr | str | None = None,
+    ) -> mat | arr:
+        """Compute the processed matrix representation of the P-CTC chronology-violating (CV) state.
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -1297,16 +1574,25 @@ class PCTC(QuantumCTC):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
+        norm : bool | num | expr | str
+            The value to which the state is normalized.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
 
         Returns
         -------
-        mat
-            The matrix representation of the CV output state.
+        mat | arr
+            The processed matrix representation of the D-CTC CV output state.
 
         Note
         ----
         The validity of the expression used in this method to compute the P-CTC CV state for *non-qubit* systems has not been proven.
         """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
+
         output_violating = pctc_violating(
             input_respecting=self.input(conditions=[]),
             gate=self.gate(conditions=[]),
@@ -1321,8 +1607,10 @@ class PCTC(QuantumCTC):
             spec=output_violating,
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -1330,6 +1618,12 @@ class PCTC(QuantumCTC):
             notation=None,
             debug=False,
         )
+
+        # Normalization
+        norm = False if norm is None else norm
+        norm = 1 if norm is True else norm
+        if norm is not False:
+            output_violating.normalize(norm)
 
         # Simplification
         simplify = False if simplify is None else simplify
@@ -1342,11 +1636,13 @@ class PCTC(QuantumCTC):
             output_violating.dagger()
 
         output_violating = QuantumState(
-            spec=output_violating.output(),
+            spec=output_violating.output(numerical=numerical, array=array_intermediate),
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -1354,20 +1650,28 @@ class PCTC(QuantumCTC):
             notation=None,
             debug=False,
         )
-
-        return sp.Matrix(output_violating.output())
+        return output_violating.output(numerical=numerical, array=array)
 
     def output_respecting(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
+        norm: bool | num | expr | str | None = None,
         postprocess: bool | None = None,
-    ) -> mat:
-        """Compute the matrix representation of the P-CTC chronology-respecting (CR) state (including any post-processing).
+    ) -> mat | arr:
+        """Compute the matrix representation of the P-CTC chronology-respecting (CR) output state (including any post-processing, i.e., traces and postselections).
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -1377,19 +1681,27 @@ class PCTC(QuantumCTC):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
+        norm : bool | num | expr | str
+            The value to which the state is normalized.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         postprocess : bool
             Whether to post-process the state (i.e., perform the circuit's traces and postselections).
             Defaults to :python:`True`.
 
         Returns
         -------
-        mat
-            The matrix representation of the (post-processed) CR output state.
+        mat | arr
+            The processed matrix representation of the P-CTC CR output state.
 
         Note
         ----
         The output state is not renormalized.
         """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
         conditions = self.conditions if conditions is None else conditions
 
         output_respecting = pctc_respecting(
@@ -1401,18 +1713,22 @@ class PCTC(QuantumCTC):
 
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
+
         if self.input_is_vector is True:
             form = Forms.VECTOR.value
             kind = Kinds.PURE.value
         if self.gate_is_linear is False:
             form = Forms.MATRIX.value
             kind = Kinds.MIXED.value
+
         output_respecting = QuantumState(
             spec=output_respecting,
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -1441,6 +1757,12 @@ class PCTC(QuantumCTC):
                 )
                 systems_removed += systems
 
+        # Normalization
+        norm = False if norm is None else norm
+        norm = 1 if norm is True else norm
+        if norm is not False:
+            output_respecting.normalize(norm)
+
         # Simplification
         simplify = False if simplify is None else simplify
         if simplify is True:
@@ -1452,11 +1774,15 @@ class PCTC(QuantumCTC):
             output_respecting.dagger()
 
         output_respecting = QuantumState(
-            spec=output_respecting.output(),
+            spec=output_respecting.output(
+                numerical=numerical, array=array_intermediate
+            ),
             form=form,
             kind=kind,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array_intermediate,
+            symbols=self.symbols,
             conditions=conditions,
             norm=False,
             conjugate=False,
@@ -1464,22 +1790,30 @@ class PCTC(QuantumCTC):
             notation=None,
             debug=False,
         )
-
-        return sp.Matrix(output_respecting.output())
+        return output_respecting.output(numerical=numerical, array=array)
 
     def output(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
+        norm: bool | num | expr | str | None = None,
         postprocess: bool | None = None,
-    ) -> mat:
+    ) -> mat | arr:
         """An alias for the :py:meth:`~qhronology.quantum.prescriptions.PCTC.output_respecting` method.
 
         Useful for polymorphism.
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -1489,28 +1823,38 @@ class PCTC(QuantumCTC):
         conjugate : bool
             Whether to perform Hermitian conjugation on the state.
             Defaults to :python:`False`.
+        norm : bool | num | expr | str
+            The value to which the state is normalized.
+            If :python:`True`, normalizes to a value of :math:`1`.
+            If :python:`False`, does not normalize.
+            Defaults to :python:`False`.
         postprocess : bool
             Whether to post-process the state (i.e., perform the circuit's traces and postselections).
             Defaults to :python:`True`.
 
         Returns
         -------
-        mat
-            The matrix representation of the (post-processed) CR output state.
+        mat | arr
+            The processed matrix representation of the P-CTC CR output state.
 
         Note
         ----
         The output state is not renormalized.
         """
         return self.output_respecting(
+            numerical=numerical,
+            array=array,
             conditions=conditions,
             simplify=simplify,
             conjugate=conjugate,
+            norm=norm,
             postprocess=postprocess,
         )
 
     def state_violating(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -1524,6 +1868,12 @@ class PCTC(QuantumCTC):
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -1561,29 +1911,39 @@ class PCTC(QuantumCTC):
         Returns
         -------
         QuantumState
-            The CV output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+            The P-CTC CV output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Note
         ----
         The validity of the expression used in this method to compute the P-CTC CV state for *non-qubit* systems has not been proven.
         """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
+        conditions = self.conditions if conditions is None else conditions
         traces = [] if traces is None else traces
 
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
+
         state = QuantumState(
             form=form,
             kind=kind,
-            spec=sp.Matrix(
-                self.output_violating(
-                    conditions=conditions, simplify=simplify, conjugate=False
-                )
+            spec=self.output_violating(
+                numerical=numerical,
+                array=array_intermediate,
+                conditions=conditions,
+                simplify=simplify,
+                conjugate=False,
+                norm=norm,
             ),
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array,
+            symbols=self.symbols,
             conditions=conditions,
             conjugate=conjugate,
-            norm=norm,
+            norm=False,
             label=label,
             notation=notation,
             debug=debug,
@@ -1594,6 +1954,8 @@ class PCTC(QuantumCTC):
 
     def state_respecting(
         self,
+        numerical: bool | None = None,
+        array: bool | None = None,
         conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
@@ -1608,6 +1970,12 @@ class PCTC(QuantumCTC):
 
         Arguments
         ---------
+        numerical : bool
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+            Defaults to the value of :python:`self.array`.
         conditions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic conditions to be applied to the state.
             Defaults to the value of :python:`self.conditions`.
@@ -1649,12 +2017,15 @@ class PCTC(QuantumCTC):
         Returns
         -------
         QuantumState
-            The (post-processed) CR output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
+            The P-CTC CR output state as a :py:class:`~qhronology.quantum.states.QuantumState` instance.
 
         Note
         ----
         The output state is not renormalized if :python:`norm` is :python:`False`.
         """
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
         conditions = self.conditions if conditions is None else conditions
         traces = [] if traces is None else traces
         postprocess = True if postprocess is None else postprocess
@@ -1679,24 +2050,25 @@ class PCTC(QuantumCTC):
                 kind = Kinds.PURE.value
             traces = adjust_targets(traces, self.systems_violating)
 
-        matrix = sp.Matrix(
-            self.output_respecting(
+        state = QuantumState(
+            spec=self.output_respecting(
+                numerical=numerical,
+                array=array_intermediate,
                 conditions=conditions,
                 simplify=simplify,
                 conjugate=False,
+                norm=norm,
                 postprocess=postprocess,
-            )
-        )
-
-        state = QuantumState(
+            ),
             form=form,
             kind=kind,
-            spec=matrix,
-            symbols=self.symbols,
             dim=self.dim,
+            numerical=numerical,
+            array=array,
+            symbols=self.symbols,
             conditions=conditions,
             conjugate=conjugate,
-            norm=norm,
+            norm=False,
             label=label,
             notation=notation,
             debug=debug,

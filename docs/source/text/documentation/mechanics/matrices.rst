@@ -13,7 +13,7 @@ This module provides core functions for constructing matrices in quantum mechani
 
 .. code:: python
 
-   from qhronology.mechanics.matrices import vector_basis, ket, bra, quantum_state, encode, decode_slow, decode, decode_fast, decode_multiple
+   from qhronology.mechanics.matrices import vector_basis, ket, bra, quantum_object, encode, decode_slow, decode, decode_fast, decode_multiple
 
 .. raw:: latex
 
@@ -23,7 +23,7 @@ Functions
 ---------
 
 .. .. automodule:: qhronology.mechanics.matrices
-..    :members: vector_basis, ket, bra, quantum_state, encode, decode_slow, decode, decode_fast, decode_multiple
+..    :members: vector_basis, ket, bra, quantum_object, encode, decode_slow, decode, decode_fast, decode_multiple
 ..    :member-order: bysource
 
 .. autofunction:: qhronology.mechanics.matrices.vector_basis
@@ -221,7 +221,7 @@ Functions
 
    \hrulefillthick
 
-.. autofunction:: qhronology.mechanics.matrices.quantum_state
+.. autofunction:: qhronology.mechanics.matrices.quantum_object
 
    .. raw:: latex
 
@@ -243,7 +243,7 @@ Functions
 
    .. code:: python
 
-      >>> quantum_state(
+      >>> quantum_object(
       ...     spec=[("a", [0]), ("b", [1])],
       ...     form="vector",
       ...     kind="pure",
@@ -263,7 +263,7 @@ Functions
 
    .. code:: python
 
-      >>> quantum_state(
+      >>> quantum_object(
       ...     spec=[("a", [0]), ("b", [1])],
       ...     form="matrix",
       ...     kind="pure",
@@ -283,7 +283,7 @@ Functions
 
    .. code:: python
 
-      >>> quantum_state(
+      >>> quantum_object(
       ...     spec=[("a", [0]), ("b", [1])],
       ...     form="matrix",
       ...     kind="mixed",
@@ -303,7 +303,7 @@ Functions
 
    .. code:: python
 
-      >>> quantum_state(
+      >>> quantum_object(
       ...     spec=[("a", [0]), ("b", [1]), ("c", [2])],
       ...     form="vector",
       ...     kind="pure",
@@ -324,7 +324,7 @@ Functions
 
    .. code:: python
 
-      >>> quantum_state(
+      >>> quantum_object(
       ...     spec=[("a", [0, 0]), ("b", [1, 1])],
       ...     form="vector",
       ...     kind="pure",
@@ -346,7 +346,7 @@ Functions
 
    .. code:: python
 
-      >>> quantum_state(
+      >>> quantum_object(
       ...     spec=[["a", "b"], ["c", "d"]],
       ...     form="matrix",
       ...     kind="mixed",
@@ -367,7 +367,7 @@ Functions
    .. code:: python
 
       >>> matrix = sp.Matrix([["a", "b"], ["c", "d"]])
-      >>> quantum_state(
+      >>> quantum_object(
       ...     spec=matrix,
       ...     form="matrix",
       ...     kind="mixed",
