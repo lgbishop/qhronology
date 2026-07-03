@@ -115,6 +115,8 @@ class QuantumCTC(QuantumCircuit):
         super().__init__(*args, **kwargs)
         if circuit is not None:
             self.__dict__ = copy.deepcopy(circuit.__dict__)
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
         if hasattr(self, "_systems_respecting") is False:
             systems_respecting = (
