@@ -9,7 +9,7 @@ import sympy as sp
 rho = sp.MatrixSymbol("ρ", 2, 2).as_mutable()
 input_state = MixedState(
     spec=rho,
-    conditions=[(rho[0, 0] + rho[1, 1], 1)],  # For normalization
+    substitutions=[(rho[0, 0] + rho[1, 1], 1)],  # For normalization
     label="ρ",
     norm=1,
 )

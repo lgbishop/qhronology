@@ -428,7 +428,7 @@ Constructor argument properties
 
    \hrulefillthick
 
-.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.conditions
+.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.substitutions
 
 .. raw:: latex
 

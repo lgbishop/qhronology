@@ -41,7 +41,7 @@ from qhronology.utilities.diagrams import (
 )
 from qhronology.utilities.helpers import (
     adjust_targets,
-    apply_conditions,
+    apply_substitutions,
     cast,
     check_systems_conflicts,
     conjugate_transpose,
@@ -53,7 +53,7 @@ from qhronology.utilities.helpers import (
     generate_zeros,
     matrix_multiplication,
     recursively_simplify,
-    symbolize_conditions,
+    symbolize_substitutions,
     symbolize_expression,
     tensor_product,
 )
@@ -97,12 +97,12 @@ class QuantumCircuit(SymbolicsProperties):
         A dictionary in which the keys are individual symbols and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         The value of the :python:`symbols` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`symbols` property.
         Defaults to :python:`{}`.
-    conditions : list[tuple[num | expr | str, num | expr | str]]
-        A list of :math:`2`-tuples of conditions to be applied to all objects (such as states and gates) computed from the circuit.
+    substitutions : list[tuple[num | expr | str, num | expr | str]]
+        A list of :math:`2`-tuples of substitutions to be applied to all objects (such as states and gates) computed from the circuit.
         All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
         The order in which they are applied is simply their order in the list.
-        The value of the :python:`conditions` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`conditions` property.
+        The value of the :python:`substitutions` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`substitutions` property.
         Defaults to :python:`[]`.
 
     Note
@@ -125,9 +125,9 @@ class QuantumCircuit(SymbolicsProperties):
         numerical: bool | None = None,
         array: bool | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
     ):
-        SymbolicsProperties.__init__(self, symbols=symbols, conditions=conditions)
+        SymbolicsProperties.__init__(self, symbols=symbols, substitutions=substitutions)
         inputs = [] if inputs is None else inputs
         gates = [] if gates is None else gates
         postselections = [] if postselections is None else postselections
@@ -153,7 +153,7 @@ class QuantumCircuit(SymbolicsProperties):
 
         The total input state is the tensor product of these individual states in the order in which they appear in the list.
 
-        Each state's :python:`symbols` and :python:`conditions` properties are merged into their counterparts in the instance upon their addition to the :python:`gates` property.
+        Each state's :python:`symbols` and :python:`substitutions` properties are merged into their counterparts in the instance upon their addition to the :python:`gates` property.
         """
         return self._inputs
 
@@ -161,7 +161,7 @@ class QuantumCircuit(SymbolicsProperties):
     def inputs(self, inputs: list[QuantumState]):
         inputs = flatten_list([copy.deepcopy(inputs)])
         for state in inputs:
-            self.conditions += list(state.conditions)
+            self.substitutions += list(state.substitutions)
             self.symbols |= dict(state.symbols)
         self._inputs = inputs
 
@@ -173,7 +173,7 @@ class QuantumCircuit(SymbolicsProperties):
 
         Must all have the same :python:`num_systems` property.
 
-        Each gate's :python:`symbols` and :python:`conditions` properties are merged into their counterparts in the instance upon their addition to the :python:`gates` property.
+        Each gate's :python:`symbols` and :python:`substitutions` properties are merged into their counterparts in the instance upon their addition to the :python:`gates` property.
         """
         return self._gates
 
@@ -181,7 +181,7 @@ class QuantumCircuit(SymbolicsProperties):
     def gates(self, gates: list[QuantumGate]):
         gates = flatten_list([copy.deepcopy(gates)])
         for gate in gates:
-            self.conditions += list(gate.conditions)
+            self.substitutions += list(gate.substitutions)
             self.symbols |= dict(gate.symbols)
         self._gates = gates
 
@@ -189,7 +189,7 @@ class QuantumCircuit(SymbolicsProperties):
     def postselections(self) -> list[tuple[mat | arr | QuantumObject, int | list[int]]]:
         """A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.
 
-        Any :python:`symbols` and :python:`conditions` properties of each postselection are merged into their counterparts in the instance upon their addition to the :python:`postselections` property.
+        Any :python:`symbols` and :python:`substitutions` properties of each postselection are merged into their counterparts in the instance upon their addition to the :python:`postselections` property.
         """
         return self._postselections
 
@@ -221,8 +221,8 @@ class QuantumCircuit(SymbolicsProperties):
                 self.systems_traces, systems_postselections, self.systems_postselections
             )
             for operator, targets in postselections:
-                if hasattr(operator, "_conditions") is True:
-                    self.conditions += list(operator.conditions)
+                if hasattr(operator, "_substitutions") is True:
+                    self.substitutions += list(operator.substitutions)
                 if hasattr(operator, "_symbols") is True:
                     self.symbols |= dict(operator.symbols)
         self._postselections = postselections
@@ -434,7 +434,7 @@ class QuantumCircuit(SymbolicsProperties):
         merge: bool | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -460,9 +460,9 @@ class QuantumCircuit(SymbolicsProperties):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
             If :python:`False`, does not simplify.
@@ -515,7 +515,7 @@ class QuantumCircuit(SymbolicsProperties):
             numerical=numerical,
             array=array_intermediate,
             symbols=dict(),
-            conditions=[],
+            substitutions=[],
             norm=1,
             conjugate=False,
             label="0",
@@ -526,7 +526,7 @@ class QuantumCircuit(SymbolicsProperties):
             inputs.append(zero_state)
 
         merge = True if merge is None else merge
-        conditions = self.conditions if conditions is None else conditions
+        substitutions = self.substitutions if substitutions is None else substitutions
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
         if self.input_is_vector is True:
@@ -564,7 +564,7 @@ class QuantumCircuit(SymbolicsProperties):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -585,7 +585,7 @@ class QuantumCircuit(SymbolicsProperties):
             array=array,
             dim=self.dim,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             conjugate=conjugate,
             norm=norm,
             label=label,
@@ -599,7 +599,7 @@ class QuantumCircuit(SymbolicsProperties):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         exponent: num | expr | str | None = None,
@@ -618,9 +618,9 @@ class QuantumCircuit(SymbolicsProperties):
         array : bool
             Whether to cast the gate's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the gate.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the gate.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the gate.
             Defaults to :python:`False`.
@@ -668,14 +668,14 @@ class QuantumCircuit(SymbolicsProperties):
         spec = symbolize_expression(spec, self.symbols_list)
 
         # Conditions
-        conditions = self.conditions if conditions is None else conditions
-        conditions = symbolize_conditions(conditions, self.symbols_list)
-        spec = apply_conditions(spec, conditions)
+        substitutions = self.substitutions if substitutions is None else substitutions
+        substitutions = symbolize_substitutions(substitutions, self.symbols_list)
+        spec = apply_substitutions(spec, substitutions)
 
         # Simplification
         simplify = False if simplify is None else simplify
         if simplify is True:
-            spec = recursively_simplify(spec, conditions)
+            spec = recursively_simplify(spec, substitutions)
 
         gate_total = QuantumGate(
             spec=spec,
@@ -687,7 +687,7 @@ class QuantumCircuit(SymbolicsProperties):
             numerical=numerical,
             array=array,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             conjugate=conjugate,
             exponent=exponent,
             coefficient=1,
@@ -784,7 +784,7 @@ class QuantumCircuit(SymbolicsProperties):
                     output_state = post_measurement_state
                 else:
                     gate_matrix = gate.output(
-                        conditions=[], numerical=numerical, array=array_intermediate
+                        substitutions=[], numerical=numerical, array=array_intermediate
                     )
                     output_state = matrix_multiplication(
                         gate_matrix, output_state, conjugate_transpose(gate_matrix)
@@ -796,7 +796,7 @@ class QuantumCircuit(SymbolicsProperties):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -812,9 +812,9 @@ class QuantumCircuit(SymbolicsProperties):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
@@ -839,7 +839,7 @@ class QuantumCircuit(SymbolicsProperties):
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
 
-        conditions = self.conditions if conditions is None else conditions
+        substitutions = self.substitutions if substitutions is None else substitutions
         output_state = self.matrix(numerical=numerical, array=array_intermediate)
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
@@ -858,7 +858,7 @@ class QuantumCircuit(SymbolicsProperties):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -916,7 +916,7 @@ class QuantumCircuit(SymbolicsProperties):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -930,7 +930,7 @@ class QuantumCircuit(SymbolicsProperties):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -950,9 +950,9 @@ class QuantumCircuit(SymbolicsProperties):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state before committing it to the :python:`matrix` property.
             Defaults to :python:`False`.
@@ -994,7 +994,7 @@ class QuantumCircuit(SymbolicsProperties):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
-        conditions = self.conditions if conditions is None else conditions
+        substitutions = self.substitutions if substitutions is None else substitutions
         traces = [] if traces is None else traces
         postprocess = True if postprocess is None else postprocess
 
@@ -1019,7 +1019,7 @@ class QuantumCircuit(SymbolicsProperties):
         matrix = self.output(
             numerical=numerical,
             array=array,
-            conditions=conditions,
+            substitutions=substitutions,
             simplify=simplify,
             conjugate=False,
             norm=norm,
@@ -1034,7 +1034,7 @@ class QuantumCircuit(SymbolicsProperties):
             numerical=numerical,
             array=array,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             conjugate=conjugate,
             norm=False,
             label=label,
@@ -1231,7 +1231,7 @@ class QuantumCircuit(SymbolicsProperties):
                             spec=[(1, [0])],
                             dim=self.dim,
                             symbols=dict(),
-                            conditions=[],
+                            substitutions=[],
                             norm=1,
                             conjugate=False,
                             label="0",
@@ -1266,7 +1266,7 @@ class QuantumCircuit(SymbolicsProperties):
                     spec=[(1, [0])],
                     dim=self.dim,
                     symbols=dict(),
-                    conditions=[],
+                    substitutions=[],
                     norm=1,
                     conjugate=False,
                     label="0",
@@ -1331,7 +1331,7 @@ class QuantumCircuit(SymbolicsProperties):
                                 spec=generate_identity(self.dim**length),
                                 dim=self.dim,
                                 symbols=dict(),
-                                conditions=[],
+                                substitutions=[],
                                 norm=1,
                                 conjugate=False,
                                 label="?",

@@ -25,7 +25,7 @@ from qhronology.mechanics.operations import densify
 from qhronology.utilities.classification import Forms, Kinds, arr, expr, mat, num, sym
 from qhronology.utilities.diagrams import Families
 from qhronology.utilities.helpers import (
-    apply_conditions,
+    apply_substitutions,
     arrange,
     cast,
     check_systems_conflicts,
@@ -40,7 +40,7 @@ from qhronology.utilities.helpers import (
     matrix_multiplication,
     recursively_simplify,
     stringify,
-    symbolize_conditions,
+    symbolize_substitutions,
     symbolize_expression,
     tensor_product,
     to_matrix,
@@ -55,7 +55,7 @@ class QuantumGate(QuantumObject):
     This class forms the base upon which all quantum gates are built.
     Instances of this base class and its derivatives (subclasses) provide complete descriptions of quantum gates.
     This means that they describe a complete vertical column (or "slice") in the quantum circuitry picturalism, including control nodes, anticontrol nodes, empty wires, and the (unitary) gate operator itself.
-    The details of any algebraic symbols, mathematical conditions, and visualization labels are also recorded.
+    The details of any algebraic symbols, mathematical substitutions, and visualization labels are also recorded.
     Note that, unlike the internal matrix representations contained within instances of the :py:class:`~qhronology.quantum.states.QuantumState` class (and its derivatives), the matrix representations of subclass instances of :py:class:`~qhronology.quantum.gates.QuantumGate` are *not* mutable.
 
     Arguments
@@ -95,8 +95,8 @@ class QuantumGate(QuantumObject):
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols (usually found within the gate specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         Defaults to :python:`{}`.
-    conditions : list[tuple[num | expr | str, num | expr | str]]
-        A list of :math:`2`-tuples of conditions to be applied to the gate.
+    substitutions : list[tuple[num | expr | str, num | expr | str]]
+        A list of :math:`2`-tuples of substitutions to be applied to the gate.
         All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
         The order in which they are applied is simply their order in the list.
@@ -143,7 +143,7 @@ class QuantumGate(QuantumObject):
         numerical: bool | None = None,
         array: bool | None = None,
         symbols: dict | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         conjugate: bool | None = None,
         exponent: num | expr | str | None = None,
         coefficient: num | expr | str | None = None,
@@ -189,7 +189,7 @@ class QuantumGate(QuantumObject):
             numerical=numerical,
             array=array,
             symbols=symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             conjugate=conjugate,
             label=label,
             notation=notation,
@@ -415,7 +415,7 @@ class QuantumGate(QuantumObject):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         exponent: bool | num | expr | str | None = None,
@@ -431,9 +431,9 @@ class QuantumGate(QuantumObject):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the gate.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the gate.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the gate.
             If :python:`False`, does not simplify.
@@ -557,14 +557,14 @@ class QuantumGate(QuantumObject):
             gate = matrix
 
         # Conditions
-        conditions = self.conditions if conditions is None else conditions
-        conditions = symbolize_conditions(conditions, self.symbols_list)
-        gate = apply_conditions(gate, conditions)
+        substitutions = self.substitutions if substitutions is None else substitutions
+        substitutions = symbolize_substitutions(substitutions, self.symbols_list)
+        gate = apply_substitutions(gate, substitutions)
 
         # Simplification
         simplify = False if simplify is None else simplify
         if simplify is True:
-            gate = recursively_simplify(gate, conditions)
+            gate = recursively_simplify(gate, substitutions)
 
         # Conjugation
         conjugate = self.conjugate if conjugate is None else conjugate
@@ -579,7 +579,7 @@ class QuantumGate(QuantumObject):
         product: bool | None = None,
         return_string: bool | None = None,
         numerical: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         exponent: bool | num | expr | str | None = None,
@@ -604,9 +604,9 @@ class QuantumGate(QuantumObject):
         numerical : bool
             Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the gate.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the gate.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the gate.
             If :python:`False`, does not simplify.
@@ -637,7 +637,7 @@ class QuantumGate(QuantumObject):
             + stringify(
                 self.output(
                     numerical=numerical,
-                    conditions=conditions,
+                    substitutions=substitutions,
                     simplify=simplify,
                     conjugate=conjugate,
                     exponent=exponent,
@@ -2025,14 +2025,14 @@ class GateInterleave(QuantumGate):
         pass
 
     @property
-    def conditions(self) -> list[tuple[num | expr | str, num | expr | str]]:
-        conditions = []
+    def substitutions(self) -> list[tuple[num | expr | str, num | expr | str]]:
+        substitutions = []
         for gate in self.gates:
-            conditions += gate.conditions
-        return conditions
+            substitutions += gate.substitutions
+        return substitutions
 
-    @conditions.setter
-    def conditions(self, conditions):
+    @substitutions.setter
+    def substitutions(self, substitutions):
         pass
 
     def matrix(
@@ -2057,7 +2057,7 @@ class GateInterleave(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         exponent: bool | num | expr | str | None = None,
@@ -2101,14 +2101,14 @@ class GateInterleave(QuantumGate):
         gate = symbolize_expression(gate, self.symbols_list)
 
         # Conditions
-        conditions = self.conditions if conditions is None else conditions
-        conditions = symbolize_conditions(conditions, self.symbols_list)
-        gate = apply_conditions(gate, conditions)
+        substitutions = self.substitutions if substitutions is None else substitutions
+        substitutions = symbolize_substitutions(substitutions, self.symbols_list)
+        gate = apply_substitutions(gate, substitutions)
 
         # Simplification
         simplify = False if simplify is None else simplify
         if simplify is True:
-            gate = recursively_simplify(gate, conditions)
+            gate = recursively_simplify(gate, substitutions)
 
         # Conjugation
         conjugate = self.conjugate if conjugate is None else conjugate

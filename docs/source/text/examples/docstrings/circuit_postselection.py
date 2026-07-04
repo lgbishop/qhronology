@@ -4,7 +4,7 @@ from qhronology.quantum.circuits import QuantumCircuit
 # Input
 input_state = VectorState(
     spec=[("a", [0]), ("b", [1])],
-    conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+    substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
     label="ψ",
 )
 bell = VectorState(

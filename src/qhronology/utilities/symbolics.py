@@ -31,12 +31,12 @@ class SymbolicsProperties:
     def __init__(
         self,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
     ):
         symbols = {} if symbols is None else symbols
-        conditions = [] if conditions is None else conditions
+        substitutions = [] if substitutions is None else substitutions
         self.symbols = symbols
-        self.conditions = conditions
+        self.substitutions = substitutions
 
     @property
     def symbols(self) -> dict[sym | str, dict[str, Any]]:
@@ -84,10 +84,10 @@ class SymbolicsProperties:
         return list(symbols_list)
 
     @property
-    def conditions(self) -> list[tuple[num | expr | str, num | expr | str]]:
-        """A list of :math:`2`-tuples of conditions to be applied to the object's matrix representation."""
-        return list(self._conditions)
+    def substitutions(self) -> list[tuple[num | expr | str, num | expr | str]]:
+        """A list of :math:`2`-tuples of substitutions to be applied to the object's matrix representation."""
+        return list(self._substitutions)
 
-    @conditions.setter
-    def conditions(self, conditions):
-        self._conditions = conditions
+    @substitutions.setter
+    def substitutions(self, substitutions):
+        self._substitutions = substitutions

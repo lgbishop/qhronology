@@ -5,7 +5,7 @@ qubit_pure = QuantumState(
     form="matrix",
     kind="pure",
     symbols={"a": {"complex": True}, "b": {"complex": True}},
-    conditions=[("α*conjugate(α) + β*conjugate(β)", 1)],
+    substitutions=[("α*conjugate(α) + β*conjugate(β)", 1)],
     norm=1,
     label="ξ",
 )

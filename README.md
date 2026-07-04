@@ -220,7 +220,7 @@ from qhronology.mechanics.matrices import ket
 teleporting_state = VectorState(
     spec=[["a", "b"]],
     symbols={"a": {"complex": True}, "b": {"complex": True}},
-    conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+    substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
     label="ψ",
 )
 zero_state = VectorState(spec=[(1, [0, 0])], label="0,0")

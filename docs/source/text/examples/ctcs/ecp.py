@@ -13,7 +13,7 @@ rho = sp.MatrixSymbol("ρ", dimensionality, dimensionality).as_mutable()
 respecting_state = MixedState(
     spec=rho,
     dim=dimensionality,
-    conditions=[(sp.trace(rho), 1)],
+    substitutions=[(sp.trace(rho), 1)],
     label="ρ",
 )
 seed_state = MixedState(
@@ -36,13 +36,13 @@ U = QuantumGate(
     dim=dimensionality,
 )
 
-# Construct conditions
-conditions_CR = [(sp.trace(rho), 1)]
-conditions_unitary = [
+# Construct substitutions
+substitutions_CR = [(sp.trace(rho), 1)]
+substitutions_unitary = [
     ((unitary * Dagger(unitary))[n], (sp.eye(dimensionality**2))[n])
     for n in range(0, len(unitary))
 ]
-conditions = conditions_CR + conditions_unitary
+substitutions = substitutions_CR + substitutions_unitary
 
 # Circuit
 violating_state = seed_state
@@ -50,7 +50,7 @@ for n in range(1, iterations + 1):
     iteration = QuantumCircuit(
         inputs=[respecting_state, violating_state],
         gates=[U],
-        conditions=conditions,
+        substitutions=substitutions,
         traces=[0],
     )
     iteration.diagram(pad=(1, 0), sep=(0, 1), style="unicode")

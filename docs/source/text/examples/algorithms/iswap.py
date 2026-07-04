@@ -6,13 +6,13 @@ from qhronology.quantum.circuits import QuantumCircuit
 input_upper = VectorState(
     spec=[("a", [0]), ("b", [1])],
     symbols={"a": {"complex": True}, "b": {"complex": True}},
-    conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+    substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
     label="ψ",
 )
 input_lower = VectorState(
     spec=[("c", [0]), ("d", [1])],
     symbols={"c": {"complex": True}, "d": {"complex": True}},
-    conditions=[("c*conjugate(c) + d*conjugate(d)", 1)],
+    substitutions=[("c*conjugate(c) + d*conjugate(d)", 1)],
     label="φ",
 )
 

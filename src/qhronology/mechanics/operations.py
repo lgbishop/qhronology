@@ -25,7 +25,7 @@ from qhronology.utilities.helpers import (
     conjugate_transpose,
     count_systems,
     dtype,
-    extract_conditions,
+    extract_substitutions,
     extract_representation,
     extract_symbols,
     flatten_list,
@@ -33,7 +33,7 @@ from qhronology.utilities.helpers import (
     generate_zeros,
     matrix_multiplication,
     recursively_simplify,
-    symbolize_conditions,
+    symbolize_substitutions,
     symbolize_expression,
     tensor_product,
     to_column,
@@ -143,14 +143,14 @@ def simplify(
     ----
     If :python:`comprehensive` is :python:`True`, the simplification algorithm will likely take *far* longer to execute than if :python:`comprehensive` were :python:`False`.
     """
-    conditions = extract_conditions(matrix)
+    substitutions = extract_substitutions(matrix)
     symbols = extract_symbols(matrix)
     matrix = extract_representation(matrix)
 
     matrix = symbolize_expression(matrix, symbols)
-    conditions = symbolize_conditions(conditions, symbols)
+    substitutions = symbolize_substitutions(substitutions, symbols)
 
-    matrix = recursively_simplify(matrix, conditions, comprehensive=comprehensive)
+    matrix = recursively_simplify(matrix, substitutions, comprehensive=comprehensive)
 
     return matrix
 
@@ -294,7 +294,7 @@ def normalize(
         if matrix_form(matrix) == Forms.VECTOR.value:
             is_vector = True
 
-    conditions = extract_conditions(matrix)
+    substitutions = extract_substitutions(matrix)
     symbols = extract_symbols(matrix)
     matrix = extract_representation(matrix)
 
@@ -302,21 +302,21 @@ def normalize(
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
-    conditions = symbolize_conditions(conditions, symbols)
+    substitutions = symbolize_substitutions(substitutions, symbols)
 
     trace = densify(matrix).trace()
 
     norm = symbolize_expression(norm, symbols)
     trace = symbolize_expression(trace, symbols)
-    norm = recursively_simplify(norm, conditions)
-    trace = recursively_simplify(trace, conditions)
+    norm = recursively_simplify(norm, substitutions)
+    trace = recursively_simplify(trace, substitutions)
 
     factor = norm / trace
-    factor = recursively_simplify(factor, conditions)
+    factor = recursively_simplify(factor, substitutions)
 
     if is_vector is True:
         factor = sp.sqrt(factor)
-    factor = recursively_simplify(factor, conditions)
+    factor = recursively_simplify(factor, substitutions)
     matrix = factor * matrix
 
     matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
@@ -344,7 +344,7 @@ def coefficient(
     """
     scalar = 1 if scalar is None else scalar
 
-    conditions = extract_conditions(matrix)
+    substitutions = extract_substitutions(matrix)
     symbols = extract_symbols(matrix)
     matrix = extract_representation(matrix)
 
@@ -352,7 +352,7 @@ def coefficient(
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
-    conditions = symbolize_conditions(conditions, symbols)
+    substitutions = symbolize_substitutions(substitutions, symbols)
 
     scalar = symbolize_expression(scalar, symbols)
 
@@ -532,7 +532,7 @@ def measure(
         if matrix_form(matrix) == Forms.VECTOR.value:
             is_vector = True
 
-    conditions = extract_conditions(matrix)
+    substitutions = extract_substitutions(matrix)
     symbols = extract_symbols(matrix)
     matrix = extract_representation(matrix)
 
@@ -540,7 +540,7 @@ def measure(
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
-    conditions = symbolize_conditions(conditions, symbols)
+    substitutions = symbolize_substitutions(substitutions, symbols)
 
     operators_initial = operators
     operators = flatten_list([operators])
@@ -565,7 +565,7 @@ def measure(
                 )
                 normalization = 1 / sp.sqrt(densify(matrix_post_measurement).trace())
                 normalization = symbolize_expression(normalization, symbols)
-                normalization = recursively_simplify(normalization, conditions)
+                normalization = recursively_simplify(normalization, substitutions)
                 matrix_post_measurement = normalization * matrix_post_measurement
             else:
                 for operator in operator_matrices:
@@ -583,7 +583,7 @@ def measure(
                     densify(operator), densify(matrix)
                 ).trace()
                 probability = symbolize_expression(probability, symbols)
-                probability = recursively_simplify(probability, conditions)
+                probability = recursively_simplify(probability, substitutions)
                 matrix_post_measurement = (
                     matrix_post_measurement + probability * densify(operator)
                 )
@@ -605,7 +605,7 @@ def measure(
             ]
             for n, probability in enumerate(probabilities):
                 probability = symbolize_expression(probability, symbols)
-                probability = recursively_simplify(probability, conditions)
+                probability = recursively_simplify(probability, substitutions)
                 probabilities[n] = probability
         if isinstance(operators_initial, list) is False:
             probabilities = probabilities[0]
@@ -734,7 +734,7 @@ class OperationsMixin:
         self.current = round(self)
 
     def simplify(self, comprehensive: bool | None = None):
-        """Apply a forced simplification to the state using the values of its :python:`symbols` and :python:`conditions` properties.
+        """Apply a forced simplification to the state using the values of its :python:`symbols` and :python:`substitutions` properties.
 
         Useful if intermediate simplification is required during a sequence of mutating operations in order to process the state into a more desirable form.
 
@@ -999,11 +999,11 @@ class OperationsMixin:
 
         Note
         ----
-        Any classes given in :python:`postselections` that are derived from the :py:class:`~qhronology.utilities.objects.QuantumObject` base class (such as :py:class:`~qhronology.quantum.states.QuantumState` and :py:class:`~qhronology.quantum.gates.QuantumGate`) will have their :python:`symbols` and :python:`conditions` properties merged into the current :py:class:`~qhronology.quantum.states.QuantumState` instance.
+        Any classes given in :python:`postselections` that are derived from the :py:class:`~qhronology.utilities.objects.QuantumObject` base class (such as :py:class:`~qhronology.quantum.states.QuantumState` and :py:class:`~qhronology.quantum.gates.QuantumGate`) will have their :python:`symbols` and :python:`substitutions` properties merged into the current :py:class:`~qhronology.quantum.states.QuantumState` instance.
         """
-        # Add the postselection(s) symbols and conditions to the current instance.
+        # Add the postselection(s) symbols and substitutions to the current instance.
         for twotuple in postselections:
-            self.conditions += extract_conditions(twotuple[0])
+            self.substitutions += extract_substitutions(twotuple[0])
             symbols = extract_symbols(twotuple[0])
             for symbol in symbols.keys():
                 if symbol in self.symbols.keys():

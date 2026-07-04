@@ -360,30 +360,30 @@ def symbolize_expression(
     return expressions
 
 
-def symbolize_conditions(
-    conditions: list[tuple[num | expr | str, num | expr | str]], symbols_list: list[sym]
+def symbolize_substitutions(
+    substitutions: list[tuple[num | expr | str, num | expr | str]], symbols_list: list[sym]
 ) -> list[tuple[num | expr, num | expr]]:
-    """Sympify the numerical, symbolic, or string expression pairs within tuples of the list :python:`conditions` and replace the symbols with given counterparts."""
-    for n in range(0, len(conditions)):
-        conditions[n] = list(conditions[n])
-        conditions[n][0] = symbolize_expression(conditions[n][0], symbols_list)
-        conditions[n][1] = symbolize_expression(conditions[n][1], symbols_list)
-        conditions[n] = tuple(conditions[n])
+    """Sympify the numerical, symbolic, or string expression pairs within tuples of the list :python:`substitutions` and replace the symbols with given counterparts."""
+    for n in range(0, len(substitutions)):
+        substitutions[n] = list(substitutions[n])
+        substitutions[n][0] = symbolize_expression(substitutions[n][0], symbols_list)
+        substitutions[n][1] = symbolize_expression(substitutions[n][1], symbols_list)
+        substitutions[n] = tuple(substitutions[n])
 
-    return conditions
+    return substitutions
 
 
 def recursively_simplify(
     expression: mat | arr | num | expr,
-    conditions: list[tuple[num | expr, num | expr]] | None = None,
+    substitutions: list[tuple[num | expr, num | expr]] | None = None,
     limit: int | None = None,
     comprehensive: bool | None = None,
 ) -> mat | arr | num | expr:
-    """Simplify :python:`expression` recursively using the substitutions given in :python:`conditions`.
+    """Simplify :python:`expression` recursively using the substitutions given in :python:`substitutions`.
     Runs until :python:`expression` is unchanged from the previous iteration, or until the :python:`limit` number of iterations is reached.
     If :python:`comprehensive` is :python:`False`, the algorithm uses a relatively efficient subset of simplifying operations, otherwise it uses a larger, more powerful (but slower) set.
     """
-    conditions = [] if conditions is None else conditions
+    substitutions = [] if substitutions is None else substitutions
     limit = 2 if limit is None else limit
     comprehensive = False if comprehensive is None else comprehensive
 
@@ -425,7 +425,7 @@ def recursively_simplify(
                         expression_after = copy.deepcopy(expression_before)
 
                         for function in permutation:
-                            expression_after = expression_after.subs(conditions)
+                            expression_after = expression_after.subs(substitutions)
                             if function == sp.cos:
                                 expression_after = expression_after.rewrite(sp.cos)
                             elif function == sp.exp:
@@ -436,7 +436,7 @@ def recursively_simplify(
                                 )
                             else:
                                 expression_after = function(expression_after)
-                        expression_after = expression_after.subs(conditions)
+                        expression_after = expression_after.subs(substitutions)
 
                         length_after = expression_after.count_ops()
                         if length_after < length_before:
@@ -457,17 +457,17 @@ def recursively_simplify(
     return expressions
 
 
-def apply_conditions(
+def apply_substitutions(
     matrix: mat | arr,
-    conditions: list[tuple[num | expr | str, num | expr | str]],
+    substitutions: list[tuple[num | expr | str, num | expr | str]],
 ) -> mat | arr:
-    """Make the substitutions as specified in :python:`conditions` to the given :python:`matrix`."""
+    """Make the substitutions as specified in :python:`substitutions` to the given :python:`matrix`."""
     if isinstance(matrix, mat) is True:
-        matrix.subs(conditions)
+        matrix.subs(substitutions)
     elif issubclass(dtype(matrix), num) is False:
         for index, value in np.ndenumerate(matrix):
             try:
-                matrix[index] = value.subs(conditions)
+                matrix[index] = value.subs(substitutions)
             except:
                 pass
     return matrix
@@ -520,19 +520,19 @@ def extract_representation(operator: mat | arr | QuantumObject) -> mat | arr:
     return matrix
 
 
-def extract_conditions(*states) -> list[tuple[num | expr, num | expr]]:
-    """Extract any substitution conditions accessible via the :python:`conditions` property from the objects in :python:`states`."""
-    conditions = []
+def extract_substitutions(*states) -> list[tuple[num | expr, num | expr]]:
+    """Extract any substitution conditions accessible via the :python:`substitutions` property from the objects in :python:`states`."""
+    substitutions = []
     symbols_list = []
     for state in states:
         try:
-            conditions += state.conditions
+            substitutions += state.substitutions
             symbols_list += state.symbols_list
         except:
             pass
     symbols_list = list(set(flatten_list(symbols_list)))
-    conditions = symbolize_conditions(conditions, symbols_list)
-    return conditions
+    substitutions = symbolize_substitutions(substitutions, symbols_list)
+    return substitutions
 
 
 def extract_symbols(*states) -> list[sym]:

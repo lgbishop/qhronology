@@ -43,7 +43,7 @@ from qhronology.utilities.helpers import (
     count_dims,
     count_systems,
     dtype,
-    extract_conditions,
+    extract_substitutions,
     extract_matrix,
     flatten_list,
     matrix_multiplication,
@@ -169,7 +169,7 @@ class QuantumCTC(QuantumCircuit):
             numerical=self.numerical,
             array=self.array,
             symbols=self.symbols,
-            conditions=self.conditions,
+            substitutions=self.substitutions,
         ).matrix(numerical=numerical, array=array)
 
     @property
@@ -205,7 +205,7 @@ class QuantumCTC(QuantumCircuit):
         merge: bool | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -231,9 +231,9 @@ class QuantumCTC(QuantumCircuit):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
             If :python:`False`, does not simplify.
@@ -276,7 +276,7 @@ class QuantumCTC(QuantumCircuit):
             merge=merge,
             numerical=numerical,
             array=array,
-            conditions=conditions,
+            substitutions=substitutions,
             simplify=simplify,
             conjugate=conjugate,
             norm=norm,
@@ -296,7 +296,7 @@ class QuantumCTC(QuantumCircuit):
                 numerical=self.numerical,
                 array=self.array,
                 symbols=self.symbols,
-                conditions=self.conditions,
+                substitutions=self.substitutions,
             )
             .state(traces=self.systems_respecting)
             .output()
@@ -312,7 +312,7 @@ class QuantumCTC(QuantumCircuit):
                 numerical=self.numerical,
                 array=self.array,
                 symbols=self.symbols,
-                conditions=self.conditions,
+                substitutions=self.substitutions,
             )
             .state(traces=self.systems_violating)
             .output()
@@ -327,7 +327,7 @@ class QuantumCTC(QuantumCircuit):
             numerical=self.numerical,
             array=self.array,
             symbols=self.symbols,
-            conditions=self.conditions,
+            substitutions=self.substitutions,
         ).state(traces=self.systems_respecting)
 
     def state_respecting(self) -> QuantumState:
@@ -339,7 +339,7 @@ class QuantumCTC(QuantumCircuit):
             numerical=self.numerical,
             array=self.array,
             symbols=self.symbols,
-            conditions=self.conditions,
+            substitutions=self.substitutions,
         ).state(traces=self.systems_violating)
 
 
@@ -418,7 +418,7 @@ def dctc_violating(
             num_systems=len(systems_respecting),
         )
 
-    conditions_respecting = extract_conditions(input_respecting)
+    substitutions_respecting = extract_substitutions(input_respecting)
     input_respecting = densify(extract_matrix(input_respecting))
     trace_respecting = input_respecting.trace()
     gate = densify(extract_matrix(gate))
@@ -441,7 +441,7 @@ def dctc_violating(
     output_violating = partial_trace(
         matrix=output_total, targets=systems_respecting, dim=dim
     )
-    output_violating = recursively_simplify(output_violating, conditions_respecting)
+    output_violating = recursively_simplify(output_violating, substitutions_respecting)
 
     equations = []
     unknowns_violating = [*input_violating]
@@ -745,12 +745,12 @@ class DCTC(QuantumCTC):
         array = self.array if array is None else array
 
         output_respecting = dctc_respecting(
-            input_respecting=self.input(conditions=[]),
+            input_respecting=self.input(substitutions=[]),
             input_violating=self.state_violating(
                 free_symbol=self.free_symbol,
                 maximum_entropy=self.maximum_entropy,
             ),
-            gate=self.gate(conditions=[]),
+            gate=self.gate(substitutions=[]),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
         )
@@ -760,7 +760,7 @@ class DCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -777,9 +777,9 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
@@ -814,8 +814,8 @@ class DCTC(QuantumCTC):
         )
 
         output_violating = dctc_violating(
-            input_respecting=self.input(conditions=[]),
-            gate=self.gate(conditions=[]),
+            input_respecting=self.input(substitutions=[]),
+            gate=self.gate(substitutions=[]),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
             free_symbol=free_symbol,
@@ -833,7 +833,7 @@ class DCTC(QuantumCTC):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -865,7 +865,7 @@ class DCTC(QuantumCTC):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -879,7 +879,7 @@ class DCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -897,9 +897,9 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
@@ -931,7 +931,7 @@ class DCTC(QuantumCTC):
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
 
-        conditions = self.conditions if conditions is None else conditions
+        substitutions = self.substitutions if substitutions is None else substitutions
         free_symbol = self.free_symbol if free_symbol is None else free_symbol
         maximum_entropy = (
             self.maximum_entropy if maximum_entropy is None else maximum_entropy
@@ -939,7 +939,7 @@ class DCTC(QuantumCTC):
 
         output_respecting = dctc_respecting(
             input_respecting=self.input(
-                numerical=numerical, array=array_intermediate, conditions=[]
+                numerical=numerical, array=array_intermediate, substitutions=[]
             ),
             input_violating=self.state_violating(
                 numerical=numerical,
@@ -948,7 +948,7 @@ class DCTC(QuantumCTC):
                 maximum_entropy=maximum_entropy,
             ),
             gate=self.gate(
-                numerical=numerical, array=array_intermediate, conditions=[]
+                numerical=numerical, array=array_intermediate, substitutions=[]
             ),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
@@ -965,7 +965,7 @@ class DCTC(QuantumCTC):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -1019,7 +1019,7 @@ class DCTC(QuantumCTC):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -1032,7 +1032,7 @@ class DCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -1052,9 +1052,9 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
@@ -1085,7 +1085,7 @@ class DCTC(QuantumCTC):
         return self.output_respecting(
             numerical=numerical,
             array=array,
-            conditions=conditions,
+            substitutions=substitutions,
             simplify=simplify,
             conjugate=conjugate,
             norm=norm,
@@ -1098,7 +1098,7 @@ class DCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -1119,9 +1119,9 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state before committing it to the :python:`matrix` property.
             If :python:`False`, does not simplify.
@@ -1168,7 +1168,7 @@ class DCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
-        conditions = self.conditions if conditions is None else conditions
+        substitutions = self.substitutions if substitutions is None else substitutions
         traces = [] if traces is None else traces
 
         form = Forms.MATRIX.value
@@ -1180,7 +1180,7 @@ class DCTC(QuantumCTC):
             spec=self.output_violating(
                 numerical=numerical,
                 array=array_intermediate,
-                conditions=conditions,
+                substitutions=substitutions,
                 simplify=simplify,
                 conjugate=False,
                 norm=norm,
@@ -1191,7 +1191,7 @@ class DCTC(QuantumCTC):
             numerical=numerical,
             array=array,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             conjugate=conjugate,
             norm=False,
             label=label,
@@ -1206,7 +1206,7 @@ class DCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -1228,9 +1228,9 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state before committing it to the :python:`matrix` property.
             If :python:`False`, does not simplify.
@@ -1281,7 +1281,7 @@ class DCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
-        conditions = self.conditions if conditions is None else conditions
+        substitutions = self.substitutions if substitutions is None else substitutions
         traces = [] if traces is None else traces
         postprocess = True if postprocess is None else postprocess
 
@@ -1299,7 +1299,7 @@ class DCTC(QuantumCTC):
             spec=self.output_respecting(
                 numerical=numerical,
                 array=array_intermediate,
-                conditions=conditions,
+                substitutions=substitutions,
                 simplify=simplify,
                 conjugate=False,
                 norm=norm,
@@ -1313,7 +1313,7 @@ class DCTC(QuantumCTC):
             numerical=numerical,
             array=array,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             conjugate=conjugate,
             norm=False,
             label=label,
@@ -1539,8 +1539,8 @@ class PCTC(QuantumCTC):
         array = self.array if array is None else array
 
         output_respecting = pctc_respecting(
-            input_respecting=self.input(conditions=[]),
-            gate=self.gate(conditions=[]),
+            input_respecting=self.input(substitutions=[]),
+            gate=self.gate(substitutions=[]),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
         )
@@ -1550,7 +1550,7 @@ class PCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -1565,9 +1565,9 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
@@ -1594,8 +1594,8 @@ class PCTC(QuantumCTC):
         array_intermediate = True if numerical is True else False
 
         output_violating = pctc_violating(
-            input_respecting=self.input(conditions=[]),
-            gate=self.gate(conditions=[]),
+            input_respecting=self.input(substitutions=[]),
+            gate=self.gate(substitutions=[]),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
         )
@@ -1611,7 +1611,7 @@ class PCTC(QuantumCTC):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -1643,7 +1643,7 @@ class PCTC(QuantumCTC):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -1656,7 +1656,7 @@ class PCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -1672,9 +1672,9 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
@@ -1702,11 +1702,11 @@ class PCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
-        conditions = self.conditions if conditions is None else conditions
+        substitutions = self.substitutions if substitutions is None else substitutions
 
         output_respecting = pctc_respecting(
-            input_respecting=self.input(conditions=[]),
-            gate=self.gate(conditions=[]),
+            input_respecting=self.input(substitutions=[]),
+            gate=self.gate(substitutions=[]),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
         )
@@ -1729,7 +1729,7 @@ class PCTC(QuantumCTC):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -1783,7 +1783,7 @@ class PCTC(QuantumCTC):
             numerical=numerical,
             array=array_intermediate,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             norm=False,
             conjugate=False,
             label=None,
@@ -1796,7 +1796,7 @@ class PCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -1814,9 +1814,9 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state.
             Defaults to :python:`False`.
@@ -1844,7 +1844,7 @@ class PCTC(QuantumCTC):
         return self.output_respecting(
             numerical=numerical,
             array=array,
-            conditions=conditions,
+            substitutions=substitutions,
             simplify=simplify,
             conjugate=conjugate,
             norm=norm,
@@ -1855,7 +1855,7 @@ class PCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -1874,9 +1874,9 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state before committing it in the :python:`matrix` property.
             If :python:`False`, does not simplify.
@@ -1920,7 +1920,7 @@ class PCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
-        conditions = self.conditions if conditions is None else conditions
+        substitutions = self.substitutions if substitutions is None else substitutions
         traces = [] if traces is None else traces
 
         form = Forms.MATRIX.value
@@ -1932,7 +1932,7 @@ class PCTC(QuantumCTC):
             spec=self.output_violating(
                 numerical=numerical,
                 array=array_intermediate,
-                conditions=conditions,
+                substitutions=substitutions,
                 simplify=simplify,
                 conjugate=False,
                 norm=norm,
@@ -1941,7 +1941,7 @@ class PCTC(QuantumCTC):
             numerical=numerical,
             array=array,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             conjugate=conjugate,
             norm=False,
             label=label,
@@ -1956,7 +1956,7 @@ class PCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
         norm: bool | num | expr | str | None = None,
@@ -1976,9 +1976,9 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the state before committing it to the :python:`matrix` property.
             If :python:`False`, does not simplify.
@@ -2026,7 +2026,7 @@ class PCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
-        conditions = self.conditions if conditions is None else conditions
+        substitutions = self.substitutions if substitutions is None else substitutions
         traces = [] if traces is None else traces
         postprocess = True if postprocess is None else postprocess
 
@@ -2054,7 +2054,7 @@ class PCTC(QuantumCTC):
             spec=self.output_respecting(
                 numerical=numerical,
                 array=array_intermediate,
-                conditions=conditions,
+                substitutions=substitutions,
                 simplify=simplify,
                 conjugate=False,
                 norm=norm,
@@ -2066,7 +2066,7 @@ class PCTC(QuantumCTC):
             numerical=numerical,
             array=array,
             symbols=self.symbols,
-            conditions=conditions,
+            substitutions=substitutions,
             conjugate=conjugate,
             norm=False,
             label=label,

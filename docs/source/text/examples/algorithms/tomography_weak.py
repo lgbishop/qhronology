@@ -12,7 +12,7 @@ unknown_state = MatrixState(spec=tau, label="τ")
 probe_state = VectorState(
     spec=[("sqrt((1 + ε)/2)", [0]), ("sqrt((1 - ε)/2)", [1])],
     symbols={"ε": {"real": True, "nonnegative": True}},
-    conditions=[
+    substitutions=[
         ("ε", "1 - ε"),
         ("ε", "1 - ε"),
     ],  # Describes the fact that ε is between 0 and 1 (inclusive)
@@ -73,7 +73,7 @@ for i in range(0, 4):
     spec += expectations[i] * pauli_matrices[i]
 reconstructed_state = MatrixState(
     spec=sp.Matrix(spec),
-    conditions=[(tau[1, 1], 1 - tau[0, 0]), (1 - tau[0, 0], tau[1, 1])],
+    substitutions=[(tau[1, 1], 1 - tau[0, 0]), (1 - tau[0, 0], tau[1, 1])],
     label="τ",
 )
 reconstructed_state.coefficient(sp.Rational(1, 2))  # Manually normalize

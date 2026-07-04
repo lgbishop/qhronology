@@ -74,7 +74,7 @@ Main class
       ...     spec=[("a", [0]), ("b", [1])],
       ...     form="vector",
       ...     symbols={"a": {"complex": True}, "b": {"complex": True}},
-      ...     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+      ...     substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
       ...     norm=1,
       ...     label="ψ",
       ... )
@@ -126,7 +126,7 @@ Main class
       ...         "b": {"complex": True},
       ...         "c": {"complex": True},
       ...     },
-      ...     conditions=[
+      ...     substitutions=[
       ...         ("a*conjugate(a) + b*conjugate(b) + c*conjugate(c)", 1),
       ...     ],
       ...     norm=1,
@@ -177,7 +177,7 @@ Main class
       ...     form="matrix",
       ...     kind="pure",
       ...     symbols={"a": {"complex": True}, "b": {"complex": True}},
-      ...     conditions=[("α*conjugate(α) + β*conjugate(β)", 1)],
+      ...     substitutions=[("α*conjugate(α) + β*conjugate(β)", 1)],
       ...     norm=1,
       ...     label="ξ",
       ... )
@@ -570,7 +570,7 @@ Constructor argument properties
 
    \hrulefillthick
 
-.. autoproperty:: qhronology.quantum.states.QuantumState.conditions
+.. autoproperty:: qhronology.quantum.states.QuantumState.substitutions
 
 .. raw:: latex
 
@@ -1211,7 +1211,7 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
       ...         ("b*v", [1, 1]),
       ...     ],
       ...     form="vector",
-      ...     conditions=[
+      ...     substitutions=[
       ...         ("a*conjugate(a) + b*conjugate(b)", 1),
       ...         ("u*conjugate(u) + v*conjugate(v)", 1),
       ...     ],
@@ -1452,7 +1452,7 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
       ...     spec=[("a", [0]), ("b", [1])],
       ...     form="vector",
       ...     symbols={"a": {"complex": True}, "b": {"complex": True}},
-      ...     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+      ...     substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
       ...     norm=1,
       ... )
       >>> state.trace()
@@ -1507,7 +1507,7 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
       ...     spec=[("a", [0]), ("b", [1])],
       ...     form="vector",
       ...     symbols={"a": {"complex": True}, "b": {"complex": True}},
-      ...     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+      ...     substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
       ...     norm=1,
       ... )
       >>> state.purity()
@@ -1561,14 +1561,14 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
       ...     spec=[("a", [0]), ("b", [1])],
       ...     form="vector",
       ...     symbols={"a": {"complex": True}, "b": {"complex": True}},
-      ...     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+      ...     substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
       ...     norm=1,
       ... )
       >>> state_B = QuantumState(
       ...     spec=[("c", [0]), ("d", [1])],
       ...     form="vector",
       ...     symbols={"c": {"complex": True}, "d": {"complex": True}},
-      ...     conditions=[("c*conjugate(c) + d*conjugate(d)", 1)],
+      ...     substitutions=[("c*conjugate(c) + d*conjugate(d)", 1)],
       ...     norm=1,
       ... )
       >>> state_A.distance(state_A)
@@ -1656,14 +1656,14 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
       ...     spec=[("a", [0]), ("b", [1])],
       ...     form="vector",
       ...     symbols={"a": {"complex": True}, "b": {"complex": True}},
-      ...     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+      ...     substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
       ...     norm=1,
       ... )
       >>> state_B = QuantumState(
       ...     spec=[("c", [0]), ("d", [1])],
       ...     form="vector",
       ...     symbols={"c": {"complex": True}, "d": {"complex": True}},
-      ...     conditions=[("c*conjugate(c) + d*conjugate(d)", 1)],
+      ...     substitutions=[("c*conjugate(c) + d*conjugate(d)", 1)],
       ...     norm=1,
       ... )
       >>> state_A.fidelity(state_A)
@@ -1759,14 +1759,14 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
       ...     spec=[("a", [0]), ("b", [1])],
       ...     form="vector",
       ...     symbols={"a": {"complex": True}, "b": {"complex": True}},
-      ...     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+      ...     substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
       ...     norm=1,
       ... )
       >>> state_B = QuantumState(
       ...     spec=[("c", [0]), ("d", [1])],
       ...     form="vector",
       ...     symbols={"c": {"complex": True}, "d": {"complex": True}},
-      ...     conditions=[("c*conjugate(c) + d*conjugate(d)", 1)],
+      ...     substitutions=[("c*conjugate(c) + d*conjugate(d)", 1)],
       ...     norm=1,
       ... )
       >>> state_A.entropy()
@@ -1847,7 +1847,7 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
       ...     spec=[("a", [0, 0]), ("b", [1, 1])],
       ...     form="vector",
       ...     symbols={"a": {"complex": True}, "b": {"complex": True}},
-      ...     conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+      ...     substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
       ...     norm=1,
       ... )
       >>> state_AB.mutual([0], [1])
@@ -1867,7 +1867,7 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
       ...     spec=[("a", [0, 0]), ("b", [1, 1])],
       ...     kind="mixed",
       ...     symbols={"a": {"positive": True}, "b": {"positive": True}},
-      ...     conditions=[("a + b", 1)],
+      ...     substitutions=[("a + b", 1)],
       ...     norm=1,
       ... )
       >>> state_AB.mutual([0], [1], base="d")
@@ -1891,7 +1891,7 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
       ...         "b": {"positive": True},
       ...         "c": {"positive": True},
       ...     },
-      ...     conditions=[("a + b + c", 1)],
+      ...     substitutions=[("a + b + c", 1)],
       ...     norm=1,
       ... )
       >>> state_ABC.mutual([0], [1])

@@ -8,7 +8,7 @@ import sympy as sp
 rho = sp.MatrixSymbol("ρ", 2, 2).as_mutable()
 input_state = MixedState(
     spec=rho,
-    conditions=[(rho[0, 0], 1 - rho[1, 1])],
+    substitutions=[(rho[0, 0], 1 - rho[1, 1])],
     label="ρ",
 )
 

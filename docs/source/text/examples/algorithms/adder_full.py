@@ -6,12 +6,12 @@ import sympy as sp
 # Input
 augend_state = VectorState(
     spec=[("a", [0]), ("b", [1])],
-    conditions=[("a*conjugate(a) + b*conjugate(b)", 1)],
+    substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
     label="x",
 )
 addend_state = VectorState(
     spec=[("u", [0]), ("v", [1])],
-    conditions=[("u*conjugate(u) + v*conjugate(v)", 1)],
+    substitutions=[("u*conjugate(u) + v*conjugate(v)", 1)],
     label="y",
 )
 carry_input_state = VectorState(spec=[(1, [1])], label="c")

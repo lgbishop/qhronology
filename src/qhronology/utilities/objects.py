@@ -35,13 +35,13 @@ from qhronology.utilities.classification import (
 )
 from qhronology.utilities.diagrams import VisualizationMixin
 from qhronology.utilities.helpers import (
-    apply_conditions,
+    apply_substitutions,
     cast,
     conjugate_transpose,
     count_systems,
     recursively_simplify,
     stringify,
-    symbolize_conditions,
+    symbolize_substitutions,
     symbolize_expression,
 )
 from qhronology.utilities.symbolics import SymbolicsProperties
@@ -69,7 +69,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         array: bool | None = None,
         num_systems: int | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         conjugate: bool | None = None,
         label: str | None = None,
         notation: str | None = None,
@@ -91,7 +91,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         notation = None if notation is None else notation
         family = "PUSH" if family is None else family
         debug = False if debug is None else debug
-        SymbolicsProperties.__init__(self, symbols=symbols, conditions=conditions)
+        SymbolicsProperties.__init__(self, symbols=symbols, substitutions=substitutions)
 
         self.spec = spec
         self.form = form
@@ -183,7 +183,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
     ) -> mat | arr:
@@ -197,9 +197,9 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the state.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the state.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the object.
             If :python:`False`, does not simplify.
@@ -222,14 +222,14 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         output = symbolize_expression(output, self.symbols_list)
 
         # Conditions
-        conditions = self.conditions if conditions is None else conditions
-        conditions = symbolize_conditions(conditions, self.symbols_list)
-        output = apply_conditions(output, conditions)
+        substitutions = self.substitutions if substitutions is None else substitutions
+        substitutions = symbolize_substitutions(substitutions, self.symbols_list)
+        output = apply_substitutions(output, substitutions)
 
         # Simplification
         simplify = False if simplify is None else simplify
         if simplify is True:
-            output = recursively_simplify(output, conditions)
+            output = recursively_simplify(output, substitutions)
 
         # Conjugation
         conjugate = self.conjugate if conjugate is None else conjugate
@@ -244,7 +244,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         product: bool | None = None,
         return_string: bool | None = None,
         numerical: bool | None = None,
-        conditions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplify: bool | None = None,
         conjugate: bool | None = None,
     ) -> None | str:
@@ -267,9 +267,9 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         numerical : bool
             Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
-        conditions : list[tuple[num | expr | str, num | expr | str]]
-            Algebraic conditions to be applied to the object.
-            Defaults to the value of :python:`self.conditions`.
+        substitutions : list[tuple[num | expr | str, num | expr | str]]
+            Algebraic substitutions to be applied to the object.
+            Defaults to the value of :python:`self.substitutions`.
         simplify : bool
             Whether to perform mathematical simplification on the object.
             If :python:`False`, does not simplify.
@@ -292,7 +292,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             + stringify(
                 self.output(
                     numerical=numerical,
-                    conditions=conditions,
+                    substitutions=substitutions,
                     simplify=simplify,
                     conjugate=conjugate,
                 ),

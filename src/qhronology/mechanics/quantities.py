@@ -23,11 +23,11 @@ from qhronology.utilities.helpers import (
     apply_function,
     conjugate_transpose,
     count_systems,
-    extract_conditions,
+    extract_substitutions,
     extract_matrix,
     extract_symbols,
     recursively_simplify,
-    symbolize_conditions,
+    symbolize_substitutions,
     symbolize_expression,
 )
 
@@ -46,14 +46,14 @@ def trace(matrix: mat | arr | QuantumObject) -> num | expr:
         The trace of the input :python:`matrix`.
     """
     symbols = extract_symbols(matrix)
-    conditions = extract_conditions(matrix)
-    conditions = symbolize_conditions(conditions, symbols)
+    substitutions = extract_substitutions(matrix)
+    substitutions = symbolize_substitutions(substitutions, symbols)
 
     matrix = densify(extract_matrix(matrix))
     matrix = symbolize_expression(matrix, symbols)
 
     trace = sp.trace(matrix)
-    trace = recursively_simplify(trace, conditions)
+    trace = recursively_simplify(trace, substitutions)
     return trace
 
 
@@ -73,14 +73,14 @@ def purity(state: mat | arr | QuantumObject) -> num | expr:
         The purity of the input :python:`state`.
     """
     symbols = extract_symbols(state)
-    conditions = extract_conditions(state)
-    conditions = symbolize_conditions(conditions, symbols)
+    substitutions = extract_substitutions(state)
+    substitutions = symbolize_substitutions(substitutions, symbols)
 
     matrix = densify(extract_matrix(state))
     matrix = symbolize_expression(matrix, symbols)
 
     purity = sp.trace(matrix**2)
-    purity = recursively_simplify(purity, conditions)
+    purity = recursively_simplify(purity, substitutions)
     return purity
 
 
@@ -107,8 +107,8 @@ def distance(
         The trace distance between the inputs :python:`state_A` and :python:`state_B`.
     """
     symbols = extract_symbols(state_A, state_B)
-    conditions = extract_conditions(state_A, state_B)
-    conditions = symbolize_conditions(conditions, symbols)
+    substitutions = extract_substitutions(state_A, state_B)
+    substitutions = symbolize_substitutions(substitutions, symbols)
 
     matrix_A = densify(extract_matrix(state_A))
     matrix_B = densify(extract_matrix(state_B))
@@ -116,16 +116,16 @@ def distance(
     matrix_A = symbolize_expression(matrix_A, symbols)
     matrix_B = symbolize_expression(matrix_B, symbols)
 
-    matrix_A = recursively_simplify(matrix_A, conditions)
-    matrix_B = recursively_simplify(matrix_B, conditions)
+    matrix_A = recursively_simplify(matrix_A, substitutions)
+    matrix_B = recursively_simplify(matrix_B, substitutions)
 
     product = recursively_simplify(
-        conjugate_transpose(matrix_A - matrix_B) * (matrix_A - matrix_B), conditions
+        conjugate_transpose(matrix_A - matrix_B) * (matrix_A - matrix_B), substitutions
     )
-    root = recursively_simplify(sp.sqrt(product), conditions)
-    trace = recursively_simplify(sp.trace(root) / 2, conditions)
+    root = recursively_simplify(sp.sqrt(product), substitutions)
+    trace = recursively_simplify(sp.trace(root) / 2, substitutions)
     distance = trace
-    distance = recursively_simplify(trace, conditions)
+    distance = recursively_simplify(trace, substitutions)
     return distance
 
 
@@ -152,8 +152,8 @@ def fidelity(
         The fidelity between the inputs :python:`state_A` and :python:`state_B`.
     """
     symbols = extract_symbols(state_A, state_B)
-    conditions = extract_conditions(state_A, state_B)
-    conditions = symbolize_conditions(conditions, symbols)
+    substitutions = extract_substitutions(state_A, state_B)
+    substitutions = symbolize_substitutions(substitutions, symbols)
 
     matrix_A = densify(extract_matrix(state_A))
     matrix_B = densify(extract_matrix(state_B))
@@ -161,15 +161,15 @@ def fidelity(
     matrix_A = symbolize_expression(matrix_A, symbols)
     matrix_B = symbolize_expression(matrix_B, symbols)
 
-    matrix_A = recursively_simplify(matrix_A, conditions)
-    matrix_B = recursively_simplify(matrix_B, conditions)
+    matrix_A = recursively_simplify(matrix_A, substitutions)
+    matrix_B = recursively_simplify(matrix_B, substitutions)
 
-    product = recursively_simplify(matrix_A * matrix_B, conditions)
-    root = recursively_simplify(sp.sqrt(product), conditions)
-    trace = recursively_simplify(sp.trace(root), conditions)
-    square = recursively_simplify(trace**2, conditions)
+    product = recursively_simplify(matrix_A * matrix_B, substitutions)
+    root = recursively_simplify(sp.sqrt(product), substitutions)
+    trace = recursively_simplify(sp.trace(root), substitutions)
+    square = recursively_simplify(trace**2, substitutions)
     fidelity = square
-    fidelity = recursively_simplify(fidelity, conditions)
+    fidelity = recursively_simplify(fidelity, substitutions)
     return fidelity
 
 
@@ -207,25 +207,25 @@ def entropy(
         The von Neumann entropy of the input :python:`state_A` (if :python:`state_B` is :python:`None`) or the relative entropy between :python:`state_A` and :python:`state_B` (if :python:`state_B` is not :python:`None`).
     """
     symbols = extract_symbols(state_A)
-    conditions = extract_conditions(state_A)
-    conditions = symbolize_conditions(conditions, symbols)
+    substitutions = extract_substitutions(state_A)
+    substitutions = symbolize_substitutions(substitutions, symbols)
 
     base = 2 if base is None else base
     base = symbolize_expression(base, symbols)
 
     matrix_A = densify(extract_matrix(state_A))
     matrix_A = symbolize_expression(matrix_A, symbols)
-    matrix_A = recursively_simplify(matrix_A, conditions)
+    matrix_A = recursively_simplify(matrix_A, substitutions)
 
     if state_B is not None:
         symbols |= extract_symbols(state_B)
-        conditions += symbolize_conditions(extract_conditions(state_B), symbols)
+        substitutions += symbolize_substitutions(extract_substitutions(state_B), symbols)
         matrix_B = densify(extract_matrix(state_B))
 
         matrix_B = symbolize_expression(matrix_B, symbols)
 
-        matrix_A = recursively_simplify(matrix_A, conditions)
-        matrix_B = recursively_simplify(matrix_B, conditions)
+        matrix_A = recursively_simplify(matrix_A, substitutions)
+        matrix_B = recursively_simplify(matrix_B, substitutions)
 
         # Relative entropy
         entropy = sp.trace(
@@ -240,7 +240,7 @@ def entropy(
         entropy = -sp.trace(
             matrix_A * apply_function(matrix_A, sp.log, arguments=[base])
         )
-    entropy = recursively_simplify(entropy, conditions)
+    entropy = recursively_simplify(entropy, substitutions)
     return entropy
 
 
@@ -287,15 +287,15 @@ def mutual(
     dim = 2 if dim is None else dim
 
     symbols = extract_symbols(state)
-    conditions = extract_conditions(state)
-    conditions = symbolize_conditions(conditions, symbols)
+    substitutions = extract_substitutions(state)
+    substitutions = symbolize_substitutions(substitutions, symbols)
 
     base = dim if base is None else base
     base = symbolize_expression(base, symbols)
 
     matrix_AB = densify(extract_matrix(state))
     matrix_AB = symbolize_expression(matrix_AB, symbols)
-    matrix_AB = recursively_simplify(matrix_AB, conditions)
+    matrix_AB = recursively_simplify(matrix_AB, substitutions)
 
     num_systems = count_systems(matrix_AB, dim)
     systems_AB = [k for k in range(0, num_systems)]
@@ -314,7 +314,7 @@ def mutual(
         + entropy(matrix_B, base=base)
         - entropy(matrix_AB, base=base)
     )
-    mutual = recursively_simplify(mutual, conditions)
+    mutual = recursively_simplify(mutual, substitutions)
     return mutual
 
 
