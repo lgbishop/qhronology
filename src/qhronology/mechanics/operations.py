@@ -114,7 +114,7 @@ def round(matrix: mat | arr | QuantumObject) -> mat | arr:
     matrix_num = True if issubclass(dtype(matrix), num) is True else False
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
-    matrix = np.rint(np.array(matrix, dtype=complex)).astype(int)
+    matrix = np.rint(np.real(np.array(matrix, dtype=complex))).astype(int)
     if matrix_arr is False:
         matrix = to_matrix(matrix)
 
