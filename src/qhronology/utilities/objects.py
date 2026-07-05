@@ -157,7 +157,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -192,7 +192,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -265,7 +265,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             Whether to return the mathematical expression as a string.
             Defaults to :python:`False`.
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the object.
@@ -473,7 +473,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     @property
     def numerical(self) -> bool:
-        """Whether to cast the object's matrix elements as floating-point values or integer values."""
+        """Whether to cast the object's matrix elements as floating-point values or exact values."""
         return self._numerical
 
     @numerical.setter

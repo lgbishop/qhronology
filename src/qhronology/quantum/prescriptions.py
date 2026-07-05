@@ -150,7 +150,7 @@ class QuantumCTC(QuantumCircuit):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -226,7 +226,7 @@ class QuantumCTC(QuantumCircuit):
             Only relevant when all states are vectors.
             Defaults to :python:`True`.
         numerical : bool
-            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -730,7 +730,7 @@ class DCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -772,7 +772,7 @@ class DCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -892,7 +892,7 @@ class DCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -1047,7 +1047,7 @@ class DCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -1114,7 +1114,7 @@ class DCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -1223,7 +1223,7 @@ class DCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -1524,7 +1524,7 @@ class PCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -1560,7 +1560,7 @@ class PCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -1667,7 +1667,7 @@ class PCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -1809,7 +1809,7 @@ class PCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -1869,7 +1869,7 @@ class PCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -1971,7 +1971,7 @@ class PCTC(QuantumCTC):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).

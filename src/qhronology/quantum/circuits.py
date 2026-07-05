@@ -88,7 +88,7 @@ class QuantumCircuit(SymbolicsProperties):
         Must all have the same value of the :python:`dim` property.
         Defaults to :python:`[]`.
     numerical : bool
-        Whether to cast the elements of the circuit's output matrices as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Whether to cast the elements of the circuit's output matrices as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
         Defaults to :python:`False`.
     array : bool
         Whether to cast the circuit's output matrices as NumPy arrays (:python:`True`) or SymPy matrices (:python:`False`).
@@ -229,7 +229,7 @@ class QuantumCircuit(SymbolicsProperties):
 
     @property
     def numerical(self) -> bool:
-        """Whether to cast the elements of the circuit's output matrices as floating-point values or integer values."""
+        """Whether to cast the elements of the circuit's output matrices as floating-point values or exact values."""
         return self._numerical
 
     @numerical.setter
@@ -456,7 +456,7 @@ class QuantumCircuit(SymbolicsProperties):
             Only relevant when all states are vectors.
             Defaults to :python:`True`.
         numerical : bool
-            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -614,7 +614,7 @@ class QuantumCircuit(SymbolicsProperties):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the gate's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the gate's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the gate's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -708,7 +708,7 @@ class QuantumCircuit(SymbolicsProperties):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -808,7 +808,7 @@ class QuantumCircuit(SymbolicsProperties):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -946,7 +946,7 @@ class QuantumCircuit(SymbolicsProperties):
         Arguments
         ---------
         numerical : bool
-            Whether to cast the state's matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the state's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -1114,7 +1114,7 @@ class QuantumCircuit(SymbolicsProperties):
             Whether to return a list of probabilities (:python:`True`) or the post-measurement state (:python:`False`).
             Defaults to :python:`False`.
         numerical : bool
-            Whether to cast the elements of the output object (post-measurement state or measurement probabilities) as floating-point values (:python:`True`) or integer values (:python:`False`).
+            Whether to cast the elements of the output object (post-measurement state or measurement probabilities) as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
         array : bool
             Whether to cast the post-measurement state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).

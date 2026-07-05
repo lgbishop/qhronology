@@ -56,7 +56,7 @@ def vector_basis(
         The dimensionality of the vector basis.
         Must be a non-negative integer.
     numerical : bool
-        Whether to cast the vector elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Whether to cast the vector elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
         Defaults to :python:`False`.
     array : bool
         Whether to cast the vectors as NumPy arrays (:python:`True`) or SymPy matrices (:python:`False`).
@@ -92,7 +92,7 @@ def ket(
         Must be a non-negative integer.
         Defaults to :python:`2`.
     numerical : bool
-        Whether to cast the vector elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Whether to cast the vector elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
         Defaults to :python:`False`.
     array : bool
         Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -128,7 +128,7 @@ def bra(
         Must be a non-negative integer.
         Defaults to :python:`2`.
     numerical : bool
-        Whether to cast the vector elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Whether to cast the vector elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
         Defaults to :python:`False`.
     array : bool
         Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -182,7 +182,7 @@ def quantum_object(
         Must be a non-negative integer.
         Defaults to :python:`2`.
     numerical : bool
-        Whether to cast the matrix elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
         Defaults to :python:`False`.
     array : bool
         Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
@@ -304,7 +304,7 @@ def encode(
         Must be a non-negative integer.
         Defaults to :python:`2`.
     numerical : bool
-        Whether to cast the vector elements as floating-point values (:python:`True`) or integer values (:python:`False`).
+        Whether to cast the vector elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
         Defaults to :python:`False`.
     array : bool
         Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
