@@ -667,7 +667,7 @@ class DCTC(QuantumCTC):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     free_symbol : sym | str
         The representation of the algebraic symbol to be used as the free parameter in the case where the CV map has a multiplicity of fixed points.
         Defaults to :python:`"g"`.
@@ -1506,7 +1506,7 @@ class PCTC(QuantumCTC):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """

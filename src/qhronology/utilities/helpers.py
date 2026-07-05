@@ -72,7 +72,7 @@ def count_dims(matrix: mat | arr, num_systems: int) -> int:
     return int((count_rows(to_density(matrix))) ** (1 / num_systems))
 
 
-def check_systems_conflicts(*subsystems: *tuple[list[int]]) -> bool:
+def check_systems_conflicts(*subsystems: list[int]) -> bool:
     """Check for conflicts (common element(s)) in the given (unpacked) tuple of lists.
     Returns :python:`True` if any are found, otherwise :python:`False`."""
     subsystems_list = flatten_list([*subsystems])
@@ -647,7 +647,7 @@ def fix_arguments(
     return arguments, kwarguments
 
 
-def tensor_product(*matrices: *tuple[mat | arr]) -> mat | arr:
+def tensor_product(*matrices: mat | arr) -> mat | arr:
     """Compute the tensor (or Kronecker) product of the items in :python:`matrices`."""
     if isinstance(matrices[0], arr) is True:
         product = np.ones(1, dtype=dtype(matrices[0]))
@@ -658,7 +658,7 @@ def tensor_product(*matrices: *tuple[mat | arr]) -> mat | arr:
     return product
 
 
-def assemble_composition(*pairs: *tuple[mat | arr, list[int]]) -> mat | arr:
+def assemble_composition(*pairs: tuple[mat | arr, list[int]]) -> mat | arr:
     """Assemble a composite state from constituent subsystems described by the items in :python:`pairs`.
     For each pair:
     - The first element is the subsystem's state matrix.
@@ -667,7 +667,7 @@ def assemble_composition(*pairs: *tuple[mat | arr, list[int]]) -> mat | arr:
     return tensor_product(*[pair[0] for pair in pairs_sorted])
 
 
-def matrix_multiplication(*matrices: *tuple[mat | arr]):
+def matrix_multiplication(*matrices: mat | arr):
     types = list(set([type(matrix) for matrix in matrices]))
     if len(types) != 1:
         if all(issubclass(value, mat) for value in types) is False:

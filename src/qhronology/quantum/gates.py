@@ -691,7 +691,7 @@ class Pauli(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     index : int
         The index of the desired Pauli matrix. Can take the following values:
 
@@ -817,7 +817,7 @@ class GellMann(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     index : int
         The index of the desired Gell-Mann matrix. Can take the following values:
 
@@ -943,7 +943,7 @@ class Rotation(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     axis : int
         The index corresponding to the axis of the desired rotation matrix.
         Can take the following values:
@@ -1080,7 +1080,7 @@ class Phase(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     phase : num | expr | str
         The phase factor.
         Defaults to the unit root given by :python:`sp.exp(2 * sp.pi * sp.I / self.dim)`.
@@ -1169,7 +1169,7 @@ class Diagonal(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     entries : dict[int | list[int], num | expr | str]
         A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.
     exponentiation : bool
@@ -1269,7 +1269,7 @@ class Swap(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     targets : list[int, int]
         A list of exactly two indices corresponding to the systems to be swapped.
         Is an argument of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`, so can be specified positionally in :python:`*args`.
@@ -1339,7 +1339,7 @@ class Summation(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     shift : int
         The summation shift parameter.
         Must be a non-negative integer.
@@ -1417,7 +1417,7 @@ class Not(Summation):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
 
@@ -1488,7 +1488,7 @@ class Hadamard(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
@@ -1583,7 +1583,7 @@ class Fourier(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     composite : bool
         Whether the composite (multipartite) Fourier gate is to be used.
         If :python:`False`, copies of the elementary Fourier gate are placed on each index specified in :python:`targets`.
@@ -1744,7 +1744,7 @@ class Measurement(QuantumGate):
     Arguments
     ---------
     *args
-        Variable-length argument list, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     operators : list[mat | arr | QuantumObject]
         The operator(s) with which to perform the measurement.
         These would typically be a (complete) set of Kraus operators forming a POVM,
@@ -1858,8 +1858,8 @@ class GateInterleave(QuantumGate):
 
     Arguments
     ---------
-    *gates : *tuple[QuantumGate]
-        Variable-length argument list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances to be interleaved.
+    *gates : QuantumGate
+        :py:class:`~qhronology.quantum.gates.QuantumGate` instances to be interleaved.
     merge : bool
         Whether to merge the gates together diagrammatically.
         Defaults to :python:`False`.
@@ -1900,7 +1900,7 @@ class GateInterleave(QuantumGate):
 
     def __init__(
         self,
-        *gates: *tuple[QuantumGate],
+        *gates: QuantumGate,
         merge: bool | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
@@ -2148,8 +2148,8 @@ class GateStack(GateInterleave):
 
     Arguments
     ---------
-    *gates : *tuple[QuantumGate]
-        Variable-length argument list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances to be stacked.
+    *gates : QuantumGate
+        :py:class:`~qhronology.quantum.gates.QuantumGate` instances to be stacked.
     merge : bool
         Whether to merge the gates together diagrammatically.
         Defaults to :python:`False`.
@@ -2181,7 +2181,7 @@ class GateStack(GateInterleave):
 
     def __init__(
         self,
-        *gates: *tuple[QuantumGate],
+        *gates: QuantumGate,
         merge: bool | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
