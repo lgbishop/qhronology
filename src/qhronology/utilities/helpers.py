@@ -215,7 +215,7 @@ def cast(
 
 def to_numerical(
     expression: num | expr | str, numerical: bool | None = None
-) -> num | expr | str:  # TODO
+) -> num | expr | str:
     """Converts :python:`expression` to a numerical value, if possible."""
     numerical = False if numerical is None else numerical
     if numerical is True:
