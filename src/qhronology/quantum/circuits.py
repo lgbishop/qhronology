@@ -299,10 +299,11 @@ class QuantumCircuit(SymbolicsProperties):
         for gate in self.gates:
             num_systems_gates.append(gate.num_systems)
         if len(num_systems_gates) > 0:
-            if len(set(num_systems_gates)) != 1:
-                raise ValueError(
-                    """One or more of the gates in the circuit has mismatching :python:`num_systems`."""
-                )
+            num_systems_gates = [max(num_systems_gates)]
+            # if len(set(num_systems_gates)) != 1:
+            #     raise ValueError(
+            #         """One or more of the gates in the circuit has mismatching :python:`num_systems`."""
+            #     )
         else:
             num_systems_gates = [0]
         return num_systems_gates[0]
