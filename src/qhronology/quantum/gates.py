@@ -179,14 +179,20 @@ class QuantumGate(QuantumObject):
         # Automatically resize.
         num_systems = max(flatten_list([num_systems, targets, controls, anticontrols]))
 
+        self.targets = targets
+        self.controls = controls
+        self.anticontrols = anticontrols
+        self.exponent = exponent
+        self.coefficient = coefficient
+
         QuantumObject.__init__(
             self,
             spec=spec,
             form=Forms.MATRIX.value,
             kind=Kinds.MIXED.value,
             dim=dim,
-            num_systems=num_systems,
             numerical=numerical,
+            num_systems=num_systems,
             array=array,
             symbols=symbols,
             substitutions=substitutions,
@@ -196,12 +202,6 @@ class QuantumGate(QuantumObject):
             family=family,
             debug=False,
         )
-
-        self.targets = targets
-        self.controls = controls
-        self.anticontrols = anticontrols
-        self.exponent = exponent
-        self.coefficient = coefficient
 
     @property
     def is_vector(self) -> bool:
@@ -310,6 +310,18 @@ class QuantumGate(QuantumObject):
                 """The :python:`targets`, :python:`controls`, and :python:`anticontrols` lists cannot have any elements in common."""
             )
         self._anticontrols = sorted(list(set(anticontrols)))
+
+    @property
+    def num_systems(self) -> int:
+        """The number of systems that the gate spans.
+        Must be a non-negative integer."""
+        return self._num_systems
+
+    @num_systems.setter
+    def num_systems(self, num_systems: int):
+        if num_systems < max(self.targets + self.controls + self.anticontrols) + 1:
+            raise ValueError(f"""The specified number of systems ({num_systems}) is smaller than the largest index given in the targets, controls, and anticontrols.""")
+        self._num_systems = num_systems
 
     @property
     def boundaries(self) -> list[int]:
