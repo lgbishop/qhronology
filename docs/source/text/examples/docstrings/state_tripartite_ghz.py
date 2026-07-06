@@ -8,4 +8,5 @@ ghz_state = QuantumState(
 )
 ghz_state.diagram()
 print(repr(ghz_state.output()))
+print(repr(ghz_state.output(numerical=True, array=True)))
 ghz_state.print()

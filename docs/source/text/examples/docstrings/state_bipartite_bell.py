@@ -8,4 +8,5 @@ bell_state = QuantumState(
 )
 bell_state.diagram()
 print(repr(bell_state.output()))
+print(repr(bell_state.output(numerical=True, array=True)))
 bell_state.print()

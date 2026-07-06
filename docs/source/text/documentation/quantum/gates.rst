@@ -28,7 +28,7 @@ and its derivatives (subclasses),
 
 .. code:: python
 
-   from qhronology.quantum.gates import Pauli, GellMann, Rotation, Phase, Diagonal, Swap, Summation, Not, Hadamard, Fourier, Measurement
+   from qhronology.quantum.gates import Unitary, Pauli, GellMann, Rotation, Phase, Diagonal, Swap, Summation, Not, Hadamard, Fourier, Measurement
 
 .. raw:: latex
 
@@ -770,7 +770,7 @@ Most of the canonical gates used in standard quantum computing theory are implem
    \begin{NiceTabular}{*{4}{c}}[corners,hvlines]
    & & \Block[c, fill=lightblue]{1-2}{\textbf{\textsf{Compositionality}}} \\
    & & \textit{\textsf{Unipartite}} & \textit{\textsf{Multipartite}} \\
-   \Block[c, fill=lightblue]{2-1}{\textbf{\textsf{Dimensionality}}} & \textit{\textsf{Fixed}} &  \Block[l, respect-arraystretch]{}{\py{Pauli} \\ \py{GellMann} \\ \py{Rotation} \\ \py{Not}} & {\small \textsf{(none)}} \\
+   \Block[c, fill=lightblue]{2-1}{\textbf{\textsf{Dimensionality}}} & \textit{\textsf{Fixed}} &  \Block[l, respect-arraystretch]{}{\py{Unitary} \\ \py{Pauli} \\ \py{GellMann} \\ \py{Rotation} \\ \py{Not}} & {\small \textsf{(none)}} \\
    & \textit{\textsf{Variable}} & \Block[l, respect-arraystretch]{}{\py{Phase} \\ \py{Diagonal} \\ \py{Hadamard} \\ \py{Summation}} & \Block[l, respect-arraystretch]{}{\py{Swap} \\ \py{Fourier} \\ \py{Measurement}} \\
    \end{NiceTabular}
    \captionof{table}{Classification of Qhronology's \py{QuantumGate} subclasses. Note that the \py{Swap} class can only describe bipartite gates, and so is not multipartite for any general number of systems. Also note that gates of the \py{Measurement} class can act on systems of any dimension but do not themselves possess a dimensionality.}\label{tbl:gate_classes}
@@ -793,6 +793,10 @@ Most of the canonical gates used in standard quantum computing theory are implem
      - **Alias**
      - **Dimensionality**
      - **Compositionality**
+   * - :py:class:`~qhronology.quantum.gates.Unitary`
+     - :python:`UNI`
+     - fixed (qubits)
+     - unipartite
    * - :py:class:`~qhronology.quantum.gates.Pauli`
      - :python:`PAULI`
      - fixed (qubits)
@@ -845,6 +849,144 @@ Please note that the documentation of these subclasses includes only properties 
 .. note::
 
    In all of these subclasses, the :python:`spec` property should not be set.
+
+.. autoclass:: qhronology.quantum.gates.Unitary
+   :show-inheritance:
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{0.00cm}{0cm}
+
+   .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> U = Unitary(parameters=("θ", "φ", "λ"))
+      >>> U.output()
+      Matrix([
+      [         cos(θ/2),      -exp(I*λ)*sin(θ/2)],
+      [exp(I*φ)*sin(θ/2), exp(I*(λ + φ))*cos(θ/2)]])
+      >>> U.diagram()
+
+   .. raw:: latex
+      
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_unitary_u.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_unitary_u-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_unitary_u-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> I = Unitary(parameters=(0, 0, 0), label="I")
+      >>> I.output()
+      Matrix([
+      [1, 0],
+      [0, 1]])
+      >>> I.diagram()
+
+   .. raw:: latex
+      
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_unitary_i.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_unitary_i-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_unitary_i-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> H = Unitary(parameters=(sp.pi/2, 0, sp.pi), label="H")
+      >>> H.output()
+      Matrix([
+      [sqrt(2)/2,  sqrt(2)/2],
+      [sqrt(2)/2, -sqrt(2)/2]])
+      >>> H.diagram()
+
+   .. raw:: latex
+      
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_unitary_h.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_unitary_h-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_unitary_h-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+   .. raw:: latex
+
+      \hrulefillthick
+
+   .. autoproperty:: qhronology.quantum.gates.Unitary.parameters
+      :no-index:
+
+.. raw:: latex
+
+   \hrulefillthick
 
 .. autoclass:: qhronology.quantum.gates.Pauli
    :show-inheritance:

@@ -71,6 +71,7 @@ The :python:`quantum` subpackage contains most of Qhronology's underlying mathem
        | **Main class:**
        | :py:class:`~qhronology.quantum.gates.QuantumGate`
        | **Subclasses:**
+       | :py:class:`~qhronology.quantum.gates.Unitary`
        | :py:class:`~qhronology.quantum.gates.Pauli`
        | :py:class:`~qhronology.quantum.gates.GellMann`
        | :py:class:`~qhronology.quantum.gates.Rotation`

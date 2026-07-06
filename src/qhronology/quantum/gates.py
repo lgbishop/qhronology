@@ -666,6 +666,126 @@ class QuantumGate(QuantumObject):
             print(expression)
 
 
+class Unitary(QuantumGate):
+    """A subclass for creating unitary gates and storing their metadata.
+
+    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
+
+    A square matrix :math:`\\Unitary` is said to be *unitary* if its matrix inverse is equal to its conjugate tranpose (Hermitian conjugate). Mathematically, this is the condition
+
+    .. math:: \\Unitary^\\dagger = \\Unitary^{-1},
+
+    which equivalently means that any unitary matrix satisfies
+
+    .. math:: \\Unitary^\\dagger \\Unitary = \\Unitary \\Unitary^\\dagger = \\Identity,
+
+    where :math:`\\Identity` is the identity matrix. Evidently, the inverse of a unitary matrix is another unitary matrix. Additionally, the product of any two unitary matrices is unitary, and so the set of all unitary matrices consitutes a group, called the *unitary group* (written :math:`\\GroupUnitary(n)` for the group of :math:`n \\times n` unitary matrices), with the group operation being matrix multiplication.
+
+    Unitary gates for qubits correspond to :math:`2 \\times 2` unitary matrices, with one parametrization of such matrices being
+
+    .. math::
+
+       \\Unitary(\\theta,\\phi,\\lambda) =
+           \\begin{bmatrix} \\cos(\\theta/2) & -\\e^{\\eye\\lambda}\\sin(\\theta/2) \\\\
+           \\e^{\\eye\\phi}\\sin(\\theta/2) & \\e^{\\eye(\\phi + \\lambda)}\\cos(\\theta/2) \\end{bmatrix},
+
+    where the *parameters* (:python:`parameters`) :math:`\\theta, \\phi, \\lambda \\in \\Reals` can be interpreted as angles. Note that this form is :math:`2\\pi`-periodic in each of its three parameters, and specifies any element of :math:`\\GroupUnitary(2)` (up to a global phase).
+
+    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
+
+    Arguments
+    ---------
+    *args
+        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+    parameters : tuple[num | expr | str, num | expr | str, num | expr | str]
+        A 3-tuple of scalar values corresponding to the parameters :math:`(\\theta, \\phi, \\lambda)` in the given definition.
+        Defaults to :python:`(0, 0, 0)`.
+    **kwargs
+        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
+
+    Note
+    ----
+    The unitary gate is defined only for :math:`2`-dimensional (i.e., binary/qubit) systems.
+    This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.
+    """
+
+    DIM = 2
+
+    def __init__(
+        self,
+        *args,
+        parameters: (
+            tuple[num | expr | str, num | expr | str, num | expr | str] | None
+        ) = None,
+        **kwargs,
+    ):
+        parameters = (0, 0, 0) if parameters is None else parameters
+        self.parameters = parameters
+        args, kwargs = default_arguments(args, kwargs, QuantumGate, [("label", "U")])
+        args, kwargs = fix_arguments(
+            args, kwargs, QuantumGate, [("dim", 2), ("spec", None)]
+        )
+        super().__init__(*args, **kwargs)
+
+    @property
+    def dim(self) -> int:
+        return Unitary.DIM
+
+    @dim.setter
+    def dim(self, dim: int):
+        pass
+
+    @property
+    def parameters(self) -> tuple[num | expr | str, num | expr | str, num | expr | str]:
+        """The 3-tuple of scalar values to be used as the parameter values."""
+        return self._parameters
+
+    @parameters.setter
+    def parameters(
+        self, parameters: tuple[num | expr | str, num | expr | str, num | expr | str]
+    ):
+        self._parameters = parameters
+
+    def matrix(
+        self,
+        numerical: bool | None = None,
+        array: bool | None = None,
+    ) -> mat | arr:
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+        array_intermediate = True if numerical is True else False
+
+        operator = generate_identity(
+            self.dim, numerical=numerical, array=array_intermediate
+        )
+        param_theta = symbolize_expression(self.parameters[0], self.symbols_list)
+        param_phi = symbolize_expression(self.parameters[1], self.symbols_list)
+        param_lambda = symbolize_expression(self.parameters[2], self.symbols_list)
+        operator = sp.Matrix(
+            [
+                [
+                    sp.cos(param_theta / 2),
+                    -sp.exp(sp.I * param_lambda) * sp.sin(param_theta / 2),
+                ],
+                [
+                    sp.exp(sp.I * param_phi) * sp.sin(param_theta / 2),
+                    sp.exp(sp.I * (param_phi + param_lambda)) * sp.cos(param_theta / 2),
+                ],
+            ]
+        )
+        operator = cast(operator, numerical=numerical, array=array_intermediate)
+        identity = generate_identity(
+            self.dim, numerical=numerical, array=array_intermediate
+        )
+        targets_compliment = list(set(self.systems) ^ set(self.targets))
+        ordered = arrange([targets_compliment, self.targets], [identity] + [operator])
+        matrix = tensor_product(*ordered)
+        return cast(matrix, numerical=numerical, array=array)
+
+
+UNI = Unitary
+
+
 class Pauli(QuantumGate):
     """A subclass for creating Pauli gates and storing their metadata.
 

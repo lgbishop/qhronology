@@ -8,4 +8,5 @@ w_state = QuantumState(
 )
 w_state.diagram()
 print(repr(w_state.output()))
+print(repr(w_state.output(numerical=True, array=True)))
 w_state.print()
