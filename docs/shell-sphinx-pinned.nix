@@ -24,6 +24,7 @@ in pkgs.mkShell {
     ]))
     pkgs.pdftk # Command-line tool for working with PDFs
     pkgs.exiftool # Tool to read, write and edit EXIF meta information
+    pkgs.texliveFull # Pin this due to build issues with latest LaTeX.
   ];
 
   shellHook = ''
