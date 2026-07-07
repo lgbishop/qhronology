@@ -234,13 +234,13 @@ Results
 .. code:: python
 
    >>> print(f"Duration: {duration} seconds")
-   Duration: 8.151 seconds
+   Duration: 0.642 seconds
 
 .. raw:: latex
 
    \end{code}
 
-This is of course *extremely* slow, mainly due to the computations involving relatively large matrices in the underlying calculation. Optimization of Qhronology's linear algebra algorithms, particularly the partial trace implementation, should improve both efficiency and speed.
+.. This is of course *extremely* slow, mainly due to the computations involving relatively large matrices in the underlying calculation. Optimization of Qhronology's linear algebra algorithms, particularly the partial trace implementation, should improve both efficiency and speed.
 
 .. raw:: latex
    

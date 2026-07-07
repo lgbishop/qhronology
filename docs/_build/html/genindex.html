@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=baaebd52"></script>
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -459,6 +459,7 @@
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
  
 </div>
@@ -479,12 +480,24 @@
         <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.apply">(QuantumState method)</a>
 </li>
       </ul></li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.apply_function">apply_function() (in module qhronology.utilities.helpers)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.apply_function">apply_function() (in module qhronology.utilities.helpers)</a>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.apply_substitutions">apply_substitutions() (in module qhronology.utilities.helpers)</a>
 </li>
       <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.arrange">arrange() (in module qhronology.utilities.helpers)</a>
 </li>
+      <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.array">array (QuantumCircuit property)</a>
+
+      <ul>
+        <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.array">(QuantumGate property)</a>
+</li>
+        <li><a href="text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.array">(QuantumObject property)</a>
+</li>
+        <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.array">(QuantumState property)</a>
+</li>
+      </ul></li>
       <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.assemble_composition">assemble_composition() (in module qhronology.utilities.helpers)</a>
 </li>
   </ul></td>
@@ -505,6 +518,8 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.cast">cast() (in module qhronology.utilities.helpers)</a>
+</li>
       <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.check_systems_conflicts">check_systems_conflicts() (in module qhronology.utilities.helpers)</a>
 </li>
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.coefficient">coefficient (QuantumGate property)</a>
@@ -517,18 +532,6 @@
       </ul></li>
       <li><a href="text/documentation/mechanics/operations.html#qhronology.mechanics.operations.columnify">columnify() (in module qhronology.mechanics.operations)</a>
 </li>
-      <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.conditions">conditions (QuantumCircuit property)</a>
-
-      <ul>
-        <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.conditions">(QuantumGate property)</a>
-</li>
-        <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.conditions">(QuantumState property)</a>
-</li>
-        <li><a href="text/documentation/utilities/symbolics.html#qhronology.utilities.symbolics.SymbolicsProperties.conditions">(SymbolicsProperties property)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.conjugate">conjugate (QuantumGate property)</a>
 
       <ul>
@@ -537,6 +540,10 @@
         <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.conjugate">(QuantumState property)</a>
 </li>
       </ul></li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.conjugate_transpose">conjugate_transpose() (in module qhronology.utilities.helpers)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/utilities/diagrams.html#qhronology.utilities.diagrams.Connections">Connections (class in qhronology.utilities.diagrams)</a>
 </li>
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.controls">controls (QuantumGate property)</a>
@@ -545,10 +552,22 @@
         <li><a href="text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.controls">(QuantumObject property)</a>
 </li>
       </ul></li>
+      <li><a href="text/documentation/utilities/classification.html#qhronology.utilities.classification.count_columns">count_columns() (in module qhronology.utilities.classification)</a>
+</li>
       <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.count_dims">count_dims() (in module qhronology.utilities.helpers)</a>
+</li>
+      <li><a href="text/documentation/utilities/classification.html#qhronology.utilities.classification.count_rows">count_rows() (in module qhronology.utilities.classification)</a>
 </li>
       <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.count_systems">count_systems() (in module qhronology.utilities.helpers)</a>
 </li>
+      <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.current">current (QuantumGate property)</a>
+
+      <ul>
+        <li><a href="text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.current">(QuantumObject property)</a>
+</li>
+        <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.current">(QuantumState property)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -629,6 +648,8 @@
         <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.distance">(QuantumState method)</a>
 </li>
       </ul></li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.dtype">dtype() (in module qhronology.utilities.helpers)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -643,13 +664,17 @@
         <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.entropy">(QuantumState method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.exponent">exponent (QuantumGate property)</a>
 </li>
-      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_conditions">extract_conditions() (in module qhronology.utilities.helpers)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_array">extract_array() (in module qhronology.utilities.helpers)</a>
 </li>
       <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_matrix">extract_matrix() (in module qhronology.utilities.helpers)</a>
+</li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_representation">extract_representation() (in module qhronology.utilities.helpers)</a>
+</li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_substitutions">extract_substitutions() (in module qhronology.utilities.helpers)</a>
 </li>
       <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.extract_symbols">extract_symbols() (in module qhronology.utilities.helpers)</a>
 </li>
@@ -705,13 +730,17 @@
 </li>
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.GateInterleave">GateInterleave (class in qhronology.quantum.gates)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.gates">gates (QuantumCircuit property)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.GateStack">GateStack (class in qhronology.quantum.gates)</a>
 </li>
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.GellMann">GellMann (class in qhronology.quantum.gates)</a>
+</li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.generate_identity">generate_identity() (in module qhronology.utilities.helpers)</a>
+</li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.generate_zeros">generate_zeros() (in module qhronology.utilities.helpers)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -753,10 +782,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.ket">ket() (in module qhronology.mechanics.matrices)</a>
 </li>
+      <li><a href="text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.kind">kind (QuantumObject property)</a>
+
+      <ul>
+        <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.kind">(QuantumState property)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.kind">kind (QuantumState property)</a>
-</li>
       <li><a href="text/documentation/utilities/classification.html#qhronology.utilities.classification.Kinds">Kinds (class in qhronology.utilities.classification)</a>
 </li>
   </ul></td>
@@ -785,20 +818,18 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="text/documentation/quantum/prescriptions/D-CTCs.html#qhronology.quantum.prescriptions.DCTC.matrix">matrix (DCTC property)</a>
+      <li><a href="text/documentation/quantum/prescriptions/D-CTCs.html#qhronology.quantum.prescriptions.DCTC.matrix">matrix() (DCTC method)</a>
 
       <ul>
-        <li><a href="text/documentation/quantum/prescriptions/P-CTCs.html#qhronology.quantum.prescriptions.PCTC.matrix">(PCTC property)</a>
+        <li><a href="text/documentation/quantum/prescriptions/P-CTCs.html#qhronology.quantum.prescriptions.PCTC.matrix">(PCTC method)</a>
 </li>
-        <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.matrix">(QuantumCircuit property)</a>
+        <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.matrix">(QuantumCircuit method)</a>
 </li>
-        <li><a href="text/documentation/quantum/prescriptions.html#qhronology.quantum.prescriptions.QuantumCTC.matrix">(QuantumCTC property)</a>
+        <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.matrix">(QuantumGate method)</a>
 </li>
-        <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.matrix">(QuantumGate property)</a>
+        <li><a href="text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.matrix">(QuantumObject method)</a>
 </li>
-        <li><a href="text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.matrix">(QuantumObject property)</a>
-</li>
-        <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.matrix">(QuantumState property)</a>
+        <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.matrix">(QuantumState method)</a>
 </li>
       </ul></li>
       <li><a href="text/documentation/utilities/classification.html#qhronology.utilities.classification.matrix_form">matrix_form() (in module qhronology.utilities.classification)</a>
@@ -806,6 +837,8 @@
       <li><a href="text/documentation/utilities/classification.html#qhronology.utilities.classification.matrix_shape">matrix_shape() (in module qhronology.utilities.classification)</a>
 </li>
       <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.MatrixState">MatrixState (class in qhronology.quantum.states)</a>
+</li>
+      <li><a href="text/documentation/quantum/prescriptions/D-CTCs.html#qhronology.quantum.prescriptions.DCTC.maximum_entropy">maximum_entropy (DCTC property)</a>
 </li>
       <li><a href="text/documentation/mechanics/operations.html#qhronology.mechanics.operations.measure">measure() (in module qhronology.mechanics.operations)</a>
 
@@ -888,6 +921,16 @@
 </li>
       <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.num_systems_removed">num_systems_removed (QuantumCircuit property)</a>
 </li>
+      <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.numerical">numerical (QuantumCircuit property)</a>
+
+      <ul>
+        <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.numerical">(QuantumGate property)</a>
+</li>
+        <li><a href="text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.numerical">(QuantumObject property)</a>
+</li>
+        <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.numerical">(QuantumState property)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -1021,7 +1064,7 @@
       </ul></li>
       <li><a href="text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.QuantitiesMixin">QuantitiesMixin (class in qhronology.mechanics.quantities)</a>
 </li>
-      <li><a href="text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.quantum_state">quantum_state() (in module qhronology.mechanics.matrices)</a>
+      <li><a href="text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.quantum_object">quantum_object() (in module qhronology.mechanics.matrices)</a>
 </li>
       <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit">QuantumCircuit (class in qhronology.quantum.circuits)</a>
 </li>
@@ -1043,16 +1086,22 @@
 </li>
       <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.reset">reset() (QuantumState method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/mechanics/operations.html#qhronology.mechanics.operations.rewrite">rewrite() (in module qhronology.mechanics.operations)</a>
 
       <ul>
         <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.rewrite">(QuantumState method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.Rotation">Rotation (class in qhronology.quantum.gates)</a>
 </li>
+      <li><a href="text/documentation/mechanics/operations.html#qhronology.mechanics.operations.round">round() (in module qhronology.mechanics.operations)</a>
+
+      <ul>
+        <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.round">(QuantumState method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -1072,6 +1121,8 @@
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.spec">spec (QuantumGate property)</a>
 
       <ul>
+        <li><a href="text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.spec">(QuantumObject property)</a>
+</li>
         <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.spec">(QuantumState property)</a>
 </li>
       </ul></li>
@@ -1093,17 +1144,27 @@
 </li>
       <li><a href="text/documentation/utilities/diagrams.html#qhronology.utilities.diagrams.Styles">Styles (class in qhronology.utilities.diagrams)</a>
 </li>
+      <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.substitutions">substitutions (QuantumCircuit property)</a>
+
+      <ul>
+        <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.QuantumGate.substitutions">(QuantumGate property)</a>
+</li>
+        <li><a href="text/documentation/quantum/states.html#qhronology.quantum.states.QuantumState.substitutions">(QuantumState property)</a>
+</li>
+        <li><a href="text/documentation/utilities/symbolics.html#qhronology.utilities.symbolics.SymbolicsProperties.substitutions">(SymbolicsProperties property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.Summation">Summation (class in qhronology.quantum.gates)</a>
 </li>
       <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.Swap">Swap (class in qhronology.quantum.gates)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/utilities/symbolics.html#qhronology.utilities.symbolics.SymbolicsProperties">SymbolicsProperties (class in qhronology.utilities.symbolics)</a>
 </li>
       <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.symbolize_expression">symbolize_expression() (in module qhronology.utilities.helpers)</a>
 </li>
-      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.symbolize_tuples">symbolize_tuples() (in module qhronology.utilities.helpers)</a>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.symbolize_substitutions">symbolize_substitutions() (in module qhronology.utilities.helpers)</a>
 </li>
       <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.symbols">symbols (QuantumCircuit property)</a>
 
@@ -1147,11 +1208,19 @@
         <li><a href="text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.targets">(QuantumObject property)</a>
 </li>
       </ul></li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.tensor_product">tensor_product() (in module qhronology.utilities.helpers)</a>
+</li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_array">to_array() (in module qhronology.utilities.helpers)</a>
+</li>
       <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_column">to_column() (in module qhronology.utilities.helpers)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_density">to_density() (in module qhronology.utilities.helpers)</a>
+</li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_matrix">to_matrix() (in module qhronology.utilities.helpers)</a>
+</li>
+      <li><a href="text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_numerical">to_numerical() (in module qhronology.utilities.helpers)</a>
 </li>
       <li><a href="text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.trace">trace() (in module qhronology.mechanics.quantities)</a>
 
@@ -1160,6 +1229,14 @@
 </li>
       </ul></li>
       <li><a href="text/documentation/quantum/circuits.html#qhronology.quantum.circuits.QuantumCircuit.traces">traces (QuantumCircuit property)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="text/documentation/quantum/gates.html#qhronology.quantum.gates.Unitary">Unitary (class in qhronology.quantum.gates)</a>
 </li>
   </ul></td>
 </tr></table>

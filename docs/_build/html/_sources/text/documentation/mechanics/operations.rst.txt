@@ -13,7 +13,7 @@ This module provides functions and a mixin for performing quantum operations.
 
 .. code:: python
 
-   from qhronology.mechanics.operations import densify, columnify, dagger, simplify, rewrite, apply, normalize, coefficient, partial_trace, measure, postselect
+   from qhronology.mechanics.operations import densify, columnify, dagger, round, simplify, rewrite, apply, normalize, coefficient, partial_trace, measure, postselect
    from qhronology.mechanics.operations import OperationsMixin
 
 .. raw:: latex
@@ -24,7 +24,7 @@ Functions
 ---------
 
 .. .. automodule:: qhronology.mechanics.operations
-..    :members: densify, columnify, dagger, simplify, apply, rewrite, normalize, coefficient, partial_trace, measure, postselect
+..    :members: densify, columnify, dagger, round, simplify, apply, rewrite, normalize, coefficient, partial_trace, measure, postselect
 ..    :member-order: bysource
 
 .. autofunction:: qhronology.mechanics.operations.densify
@@ -137,9 +137,53 @@ Functions
 
    \hrulefillthick
 
+.. autofunction:: qhronology.mechanics.operations.round
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{0.00cm}{0cm}
+
+   .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> matrix = sp.Matrix([[sp.I, 1/sp.sqrt(2)], [sp.exp(sp.Rational(1,2)), sp.pi]])
+      >>> round(matrix)
+      Matrix([
+      [0, 1],
+      [2, 3]])
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> matrix = np.eye(2) + sp.I*np.fliplr(np.eye(2))
+      >>> round(matrix)
+      array([[1, 0],
+             [0, 1]])
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
 .. raw:: latex
 
-   \enlargethispage{-2\baselineskip}
+   \hrulefillthick
+
 
 .. autofunction:: qhronology.mechanics.operations.simplify
 
@@ -196,10 +240,6 @@ Functions
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
-
 .. autofunction:: qhronology.mechanics.operations.rewrite
 
    .. raw:: latex
@@ -231,10 +271,6 @@ Functions
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
 
 .. autofunction:: qhronology.mechanics.operations.apply
 
@@ -278,10 +314,6 @@ Functions
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \newpage
 
 .. autofunction:: qhronology.mechanics.operations.normalize
 
@@ -379,10 +411,6 @@ Functions
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
-
 .. autofunction:: qhronology.mechanics.operations.partial_trace
 
    .. raw:: latex
@@ -410,6 +438,10 @@ Functions
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \newpage
 
    .. raw:: latex
 
@@ -445,10 +477,6 @@ Functions
    \hrulefillthick
 
 .. autofunction:: qhronology.mechanics.operations.measure
-
-   .. raw:: latex
-
-      \enlargethispage{2\baselineskip}
 
    .. raw:: latex
 
@@ -533,6 +561,10 @@ Functions
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. autofunction:: qhronology.mechanics.operations.postselect
 

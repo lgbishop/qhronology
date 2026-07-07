@@ -67,19 +67,19 @@ In the absence of physical CTCs on which to perform experiments, one of the more
 
 Born out of the desire for a way to programmatically compute the states of the CR and CV systems according to the foremost quantum prescriptions of antichronological time travel, :inlinelatex:`\hspace{-0.35em}\emph{` `Qhronology <https://qhronology.org>`_ :inlinelatex:`}\hspace{-0.5em}` :cite:p:`bishop_qhronology-software_2025` was created as a unified computational environment for defining, simulating, and analyzing quantum information processes that incorporate CTCs. Notably, the package can be used to calculate quantum resolutions to any given temporal paradox, thereby enabling users to explore foundational questions regarding the quantum mechanics of time travel. By providing a unique approach to describing general quantum objects (such as states and gates), Qhronology can also operate as a complete quantum circuit simulator, of which a prominent component is its engine for the visualization of quantum circuit diagrams. Its main features include:
 
-- calculation of the states of the CR and CV quantum systems according to quantum-mechanical prescriptions of closed timelike curves
+- Calculation of the states of the CR and CV quantum systems according to quantum-mechanical prescriptions of closed timelike curves
 
   - Deutsch's model (D-CTCs)
-  - postselected teleportation (P-CTCs)
+  - Postselected teleportation (P-CTCs)
 
-- simulation of general quantum information processing and computation
+- Simulation of general quantum information processing and computation
 
-  - symbolic calculations involving any number of variables and parameters
-  - numerical (classical) replication of quantum experiments
+  - Symbolic calculations involving any number of variables and parameters
+  - Numerical (classical) replication of quantum experiments
 
-- visualization of quantum circuit diagrams
+- Visualization of quantum circuit diagrams
 
-  - text-based semigraphical diagrams constructed from fixed-width typefaces
+  - Text-based semigraphical diagrams constructed from fixed-width typefaces
 
 The primary purpose of Qhronology is to facilitate the study of quantum models of antichronological time travel and quantum algorithms of quantum computing in both educational and research capacities. As part of this, the project aims to make the expression of quantum states, gates, circuits, and models of CTCs near-limitlessly possible within a framework that is syntactically simple yet computationally powerful. Qhronology therefore provides a sufficiently complete and self-contained set of tools with the intention that needing to use external packages and libraries to perform transformations on its quantum constructs should not (usually) be necessary. Its underlying mathematical system accomplishes this using the standard :math:`\Dimension`-dimensional matrix mechanics of discrete-variable quantum theory in a general :math:`\Complexes^\Dimension`-representation.
 
@@ -803,6 +803,9 @@ Possible future work
   - Implement the permutation (PERM) gate.
   - Add the ability for circuits to be optimized (to reduced gate depth).
   - Add the ability for circuits and/or gates to be decomposed (using a specified gate set).
+  - Add the ability to use custom styles in the circuit diagram visualization.
+  - Make the labelling/notation functionality more robust and extensible.
+  - Investigate the addition of an ability to compile simple Qhronology programs to OpenQASM.
 
 - Documentation:
 

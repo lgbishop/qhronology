@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=baaebd52"></script>
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,8 +71,8 @@
     <link rel="prev" title="Home" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -480,21 +480,21 @@
 <p>In the absence of physical CTCs on which to perform experiments, one of the more effective ways to investigate the various quantum models of time travel is to compare their theoretical predictions for the states of the quantum systems both internal (<em>chronology-violating</em>, or CV) and external (<em>chronology-respecting</em>, or CR) to a CTC in the context of specific inter-system interactions. Doing so however can prove to be both tedious and error-prone, especially in cases where the interactions are complex. For example, <em>Deutsch’s model</em> (giving <em>Deutschian</em> CTCs, or D-CTCs) necessitates the solving of a fixed-point condition for which there is often a parametrized spectrum of (non-unique) CV solutions (and, accordingly, a corresponding spectrum of CR solutions). Similarly, the theory of <em>postselected teleportation</em> (giving <em>postselected</em> CTCs, or P-CTCs) requires one to non-unitarily evolve input states and subsequently renormalize the results. Needless to say, the procedures for computing the predictions of these prescriptions are highly involved, and so must be performed with great care.</p>
 <p>Born out of the desire for a way to programmatically compute the states of the CR and CV systems according to the foremost quantum prescriptions of antichronological time travel,  <a class="reference external" href="https://qhronology.org">Qhronology</a>  <span id="id1">[<a class="reference internal" href="#cite-1-bishop-qhronology-software-2025" title="L. G. Bishop, “Qhronology: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing &amp; computation”, 2025. URL: https://qhronology.org, Source code: https://github.com/lgbishop/qhronology">1</a>]</span> was created as a unified computational environment for defining, simulating, and analyzing quantum information processes that incorporate CTCs. Notably, the package can be used to calculate quantum resolutions to any given temporal paradox, thereby enabling users to explore foundational questions regarding the quantum mechanics of time travel. By providing a unique approach to describing general quantum objects (such as states and gates), Qhronology can also operate as a complete quantum circuit simulator, of which a prominent component is its engine for the visualization of quantum circuit diagrams. Its main features include:</p>
 <ul class="simple">
-<li><p>calculation of the states of the CR and CV quantum systems according to quantum-mechanical prescriptions of closed timelike curves</p>
+<li><p>Calculation of the states of the CR and CV quantum systems according to quantum-mechanical prescriptions of closed timelike curves</p>
 <ul>
 <li><p>Deutsch’s model (D-CTCs)</p></li>
-<li><p>postselected teleportation (P-CTCs)</p></li>
+<li><p>Postselected teleportation (P-CTCs)</p></li>
 </ul>
 </li>
-<li><p>simulation of general quantum information processing and computation</p>
+<li><p>Simulation of general quantum information processing and computation</p>
 <ul>
-<li><p>symbolic calculations involving any number of variables and parameters</p></li>
-<li><p>numerical (classical) replication of quantum experiments</p></li>
+<li><p>Symbolic calculations involving any number of variables and parameters</p></li>
+<li><p>Numerical (classical) replication of quantum experiments</p></li>
 </ul>
 </li>
-<li><p>visualization of quantum circuit diagrams</p>
+<li><p>Visualization of quantum circuit diagrams</p>
 <ul>
-<li><p>text-based semigraphical diagrams constructed from fixed-width typefaces</p></li>
+<li><p>Text-based semigraphical diagrams constructed from fixed-width typefaces</p></li>
 </ul>
 </li>
 </ul>
@@ -659,7 +659,7 @@
 <span class="n">teleporting_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]],</span>
     <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">zero_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;0,0&quot;</span><span class="p">)</span>
@@ -693,7 +693,7 @@
 <span class="n">teleporter</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Output</span>
-<span class="n">teleported_state</span> <span class="o">=</span> <span class="n">teleporter</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ&quot;</span><span class="p">)</span>
+<span class="n">teleported_state</span> <span class="o">=</span> <span class="n">teleporter</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ&quot;</span><span class="p">)</span>
 
 <span class="c1"># Results</span>
 <span class="n">teleporting_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
@@ -934,6 +934,9 @@
 <li><p>Implement the permutation (PERM) gate.</p></li>
 <li><p>Add the ability for circuits to be optimized (to reduced gate depth).</p></li>
 <li><p>Add the ability for circuits and/or gates to be decomposed (using a specified gate set).</p></li>
+<li><p>Add the ability to use custom styles in the circuit diagram visualization.</p></li>
+<li><p>Make the labelling/notation functionality more robust and extensible.</p></li>
+<li><p>Investigate the addition of an ability to compile simple Qhronology programs to OpenQASM.</p></li>
 </ul>
 </li>
 <li><p>Documentation:</p>

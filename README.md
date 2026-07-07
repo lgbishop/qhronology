@@ -8,14 +8,14 @@
 
 *Qhronology* is a Python package for computing the states of the chronology-respecting (CR) and chronology-violating (CV) quantum systems according to the foremost quantum prescriptions of closed timelike curves (CTCs). By providing a unique approach to describing general quantum objects (such as states and gates), Qhronology can also operate as a complete quantum circuit simulator, of which a prominent component is its engine for the visualization of quantum circuit diagrams. Its main features include:
 
-- calculation of the states of the CR and CV quantum systems according to quantum-mechanical prescriptions of closed timelike curves
+- Calculation of the states of the CR and CV quantum systems according to quantum-mechanical prescriptions of closed timelike curves
   - Deutsch's model (D-CTCs)
-  - postselected teleportation (P-CTCs)
-- simulation of general quantum information processing and computation
-  - symbolic calculations involving any number of variables and parameters
-  - numerical (classical) replication of quantum experiments
-- visualization of quantum circuit diagrams
-  - text-based semigraphical diagrams constructed using glyphs from monospace fonts
+  - Postselected teleportation (P-CTCs)
+- Simulation of general quantum information processing and computation
+  - Symbolic calculations involving any number of variables and parameters
+  - Numerical (classical) replication of quantum experiments
+- Visualization of quantum circuit diagrams
+  - Text-based semigraphical diagrams constructed using glyphs from monospace fonts
 
 The primary purpose of Qhronology is to facilitate the study of quantum models of antichronological time travel and quantum algorithms of quantum computing in both educational and research capacities. As part of this, the project aims to make the expression of quantum states, gates, circuits, and models of CTCs near-limitlessly possible within a framework that is syntactically simple, informationally dense, mathematically powerful, extremely flexible, and easily extensible. Qhronology therefore provides a sufficiently complete and self-contained set of tools with the intention that using external packages and libraries to perform transformations on its quantum constructs should not be necessary (at least in most cases). Its underlying mathematical system accomplishes this using the standard $d$-dimensional matrix mechanics of discrete-variable quantum theory in a general $\mathbb{C}^d$-representation.
 

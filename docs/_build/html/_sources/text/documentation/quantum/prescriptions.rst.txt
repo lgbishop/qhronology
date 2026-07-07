@@ -54,10 +54,6 @@ Please note that the documentation of this class includes only properties and me
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
-
-.. raw:: latex
-
    \begin{codetitled}{SWAP interaction with a CTC}{}
 
 .. literalinclude:: /text/examples/docstrings/prescription_swap.py
@@ -95,13 +91,13 @@ Please note that the documentation of this class includes only properties and me
 
 .. code:: python
 
-   >>> SWAP_DCTC_CR.print()
+   >>> SWAP_DCTC_CR.print(simplify=True)
    ρ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> SWAP_DCTC_CV.print()
+   >>> SWAP_DCTC_CV.print(simplify=True)
    τ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> SWAP_PCTC_CR.print()
+   >>> SWAP_PCTC_CR.print(simplify=True)
    ρ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> SWAP_PCTC_CV.print()
+   >>> SWAP_PCTC_CV.print(simplify=True)
    τ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
 
 .. raw:: latex
@@ -151,13 +147,13 @@ Please note that the documentation of this class includes only properties and me
 
 .. code:: python
 
-   >>> CNOT_DCTC_CR.print()
+   >>> CNOT_DCTC_CR.print(simplify=True)
    ρ_D = ρ[0, 0]|0⟩⟨0| + 2*g*ρ[0, 1]|0⟩⟨1| + 2*g*ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> CNOT_DCTC_CV.print()
+   >>> CNOT_DCTC_CV.print(simplify=True)
    τ_D = 1/2|0⟩⟨0| + g|0⟩⟨1| + g|1⟩⟨0| + 1/2|1⟩⟨1|
-   >>> CNOT_PCTC_CR.print()
+   >>> CNOT_PCTC_CR.print(simplify=True)
    ρ_P = |0⟩⟨0|
-   >>> CNOT_PCTC_CV.print()
+   >>> CNOT_PCTC_CV.print(simplify=True)
    τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
 
 .. raw:: latex
@@ -201,18 +197,12 @@ Constructor argument properties
 
    \vspace*{-0.25\baselineskip}
 
-Read-only properties
---------------------
+.. Read-only properties
+.. --------------------
 
-.. autoproperty:: qhronology.quantum.prescriptions.QuantumCTC.matrix
+.. .. raw:: latex
 
-.. raw:: latex
-
-   \hrulefillthick
-
-.. raw:: latex
-
-   \vspace*{-0.25\baselineskip}
+..    \vspace*{-0.25\baselineskip}
 
 .. _`sec:docs_prescriptions_methods`:
 
@@ -222,6 +212,12 @@ Methods
 .. raw:: latex
 
    \enlargethispage{\baselineskip}
+
+.. .. automethod:: qhronology.quantum.prescriptions.QuantumCTC.matrix
+
+.. .. raw:: latex
+
+..    \hrulefillthick
 
 .. automethod:: qhronology.quantum.prescriptions.QuantumCTC.input
 
@@ -257,11 +253,23 @@ Methods
 
    .. raw:: latex
 
+      \vspace*{-0.5\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{3\baselineskip}
+
+   .. raw:: latex
+
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
          
    Please see the examples of the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class itself. For advanced usage examples, see the corresponding :py:meth:`~qhronology.quantum.circuits.QuantumCircuit.diagram` method of the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class.
+
+   .. raw:: latex
+
+      \newpage
 
    .. raw:: latex
 

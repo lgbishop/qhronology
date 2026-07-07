@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,8 +71,8 @@
     <link rel="prev" title="Manual P-CTC" href="postselected.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -513,7 +513,7 @@
 <span id="eg-ecp"></span><h1>Equivalent-circuit picture of D-CTCs<a class="headerlink" href="#equivalent-circuit-picture-of-d-ctcs" title="Link to this heading">#</a></h1>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>This algorithm implements the equivalent-circuit picture (ECP, see <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec:ECP</span></code> <a class="reference internal" href="../../theory/time-travel/quantum/D-CTCs.html#sec-ecp"><span class="std std-ref">Iterative picture: The equivalent circuit</span></a>) of D-CTCs. In its current form, it is not a particularly useful example, having very general input state and unitary matrix symbolic representations that make any subsequent analysis infeasible. Instead, the algorithm is included simply because it is an interesting demonstration of advanced usage of Qhronology. Note that the larger the number of algebraic symbols (and associated conditions) that are contained within the states and gates, the higher the complexity of the internal calculations, resulting in correspondingly longer computation times.</p>
+<p>This algorithm implements the equivalent-circuit picture (ECP, see <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec:ECP</span></code> <a class="reference internal" href="../../theory/time-travel/quantum/D-CTCs.html#sec-ecp"><span class="std std-ref">Iterative picture: The equivalent circuit</span></a>) of D-CTCs. In its current form, it is not a particularly useful example, having very general input state and unitary matrix symbolic representations that make any subsequent analysis infeasible. Instead, the algorithm is included simply because it is an interesting demonstration of advanced usage of Qhronology. Note that the larger the number of algebraic symbols (and associated substitutions) that are contained within the states and gates, the higher the complexity of the internal calculations, resulting in correspondingly longer computation times.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_ctc_dctc_ecp-dark.png"><img alt="A quantum circuit diagram of the equivalent-circuit picture of a D-CTC." src="../../../_images/circuit_ctc_dctc_ecp-dark.png" style="width: 798.6600000000001px; height: 77.18px;" />
 </a>
@@ -540,9 +540,9 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">MixedState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumGate</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">dagger</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum.dagger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dagger</span>
 
 <span class="n">iterations</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">dimensionality</span> <span class="o">=</span> <span class="mi">2</span>
@@ -552,7 +552,7 @@
 <span class="n">respecting_state</span> <span class="o">=</span> <span class="n">MixedState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="n">rho</span><span class="p">,</span>
     <span class="n">dim</span><span class="o">=</span><span class="n">dimensionality</span><span class="p">,</span>
-    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">rho</span><span class="p">),</span> <span class="mi">1</span><span class="p">)],</span>
+    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">rho</span><span class="p">),</span> <span class="mi">1</span><span class="p">)],</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ρ&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">seed_state</span> <span class="o">=</span> <span class="n">MixedState</span><span class="p">(</span>
@@ -575,13 +575,13 @@
     <span class="n">dim</span><span class="o">=</span><span class="n">dimensionality</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="c1"># Construct conditions</span>
-<span class="n">conditions_CR</span> <span class="o">=</span> <span class="p">[(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">rho</span><span class="p">),</span> <span class="mi">1</span><span class="p">)]</span>
-<span class="n">conditions_unitary</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">((</span><span class="n">unitary</span> <span class="o">*</span> <span class="n">Dagger</span><span class="p">(</span><span class="n">unitary</span><span class="p">))[</span><span class="n">n</span><span class="p">],</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dimensionality</span><span class="o">**</span><span class="mi">2</span><span class="p">))[</span><span class="n">n</span><span class="p">])</span>
+<span class="c1"># Construct substitutions</span>
+<span class="n">substitutions_CR</span> <span class="o">=</span> <span class="p">[(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">rho</span><span class="p">),</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">substitutions_unitary</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">((</span><span class="n">unitary</span> <span class="o">*</span> <span class="n">dagger</span><span class="p">(</span><span class="n">unitary</span><span class="p">))[</span><span class="n">n</span><span class="p">],</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dimensionality</span><span class="o">**</span><span class="mi">2</span><span class="p">))[</span><span class="n">n</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unitary</span><span class="p">))</span>
 <span class="p">]</span>
-<span class="n">conditions</span> <span class="o">=</span> <span class="n">conditions_CR</span> <span class="o">+</span> <span class="n">conditions_unitary</span>
+<span class="n">substitutions</span> <span class="o">=</span> <span class="n">substitutions_CR</span> <span class="o">+</span> <span class="n">substitutions_unitary</span>
 
 <span class="c1"># Circuit</span>
 <span class="n">violating_state</span> <span class="o">=</span> <span class="n">seed_state</span>
@@ -589,7 +589,7 @@
     <span class="n">iteration</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span>
         <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">respecting_state</span><span class="p">,</span> <span class="n">violating_state</span><span class="p">],</span>
         <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">U</span><span class="p">],</span>
-        <span class="n">conditions</span><span class="o">=</span><span class="n">conditions</span><span class="p">,</span>
+        <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
         <span class="n">traces</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
     <span class="p">)</span>
     <span class="n">iteration</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;unicode&quot;</span><span class="p">)</span>

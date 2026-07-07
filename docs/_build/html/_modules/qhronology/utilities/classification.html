@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -491,7 +491,7 @@
     <span class="o">|</span> <span class="n">sp</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">symbol</span><span class="o">.</span><span class="n">Symbol</span>
 <span class="p">)</span>
 <span class="n">expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">expr</span><span class="o">.</span><span class="n">Expr</span>
-<span class="n">mat</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">matrices</span><span class="o">.</span><span class="n">dense</span><span class="o">.</span><span class="n">MutableDenseMatrix</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">matrices</span><span class="o">.</span><span class="n">dense</span><span class="o">.</span><span class="n">MutableDenseMatrix</span> <span class="o">|</span> <span class="n">sp</span><span class="o">.</span><span class="n">matrices</span><span class="o">.</span><span class="n">immutable</span><span class="o">.</span><span class="n">ImmutableDenseMatrix</span>
 <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 
 
@@ -556,15 +556,42 @@
 <span class="n">COMPATIBILITIES</span> <span class="o">=</span> <span class="n">KIND_FORM</span> <span class="o">|</span> <span class="n">FORM_KIND</span>
 
 
+<div class="viewcode-block" id="count_rows">
+<a class="viewcode-back" href="../../../text/documentation/utilities/classification.html#qhronology.utilities.classification.count_rows">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">count_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Count the number of rows of :python:`matrix`.&quot;&quot;&quot;</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">rows</span></div>
+
+
+
+<div class="viewcode-block" id="count_columns">
+<a class="viewcode-back" href="../../../text/documentation/utilities/classification.html#qhronology.utilities.classification.count_columns">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">count_columns</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Count the number of columns of :python:`matrix`.&quot;&quot;&quot;</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">columns</span></div>
+
+
+
 <div class="viewcode-block" id="matrix_form">
 <a class="viewcode-back" href="../../../text/documentation/utilities/classification.html#qhronology.utilities.classification.matrix_form">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">matrix_form</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">matrix_form</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Describe the form of :python:`matrix` using the terminology of mathematics.&quot;&quot;&quot;</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="n">M</span> <span class="ow">and</span> <span class="n">N</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">count_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rows</span> <span class="o">==</span> <span class="n">columns</span> <span class="ow">and</span> <span class="n">rows</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Forms</span><span class="o">.</span><span class="n">MATRIX</span><span class="o">.</span><span class="n">value</span>
-    <span class="k">elif</span> <span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">M</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">N</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">M</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">rows</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">columns</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">rows</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">columns</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
@@ -575,13 +602,15 @@
 
 <div class="viewcode-block" id="matrix_shape">
 <a class="viewcode-back" href="../../../text/documentation/utilities/classification.html#qhronology.utilities.classification.matrix_shape">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">matrix_shape</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">matrix_shape</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Describe the shape of :python:`matrix` using the terminology of mathematics.&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">count_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rows</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">columns</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">COLUMN</span><span class="o">.</span><span class="n">value</span>
-    <span class="k">elif</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">rows</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">columns</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">ROW</span><span class="o">.</span><span class="n">value</span>
-    <span class="k">elif</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="k">elif</span> <span class="n">rows</span> <span class="o">==</span> <span class="n">columns</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">SQUARE</span><span class="o">.</span><span class="n">value</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>

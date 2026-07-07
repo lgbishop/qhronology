@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,8 +71,8 @@
     <link rel="prev" title="CNOT (controlled-NOT)" href="cnot.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -515,7 +515,7 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>A CCNOT (controlled-controlled-NOT) gate, also known as a <em>Toffoli gate</em>, is a simple extension to a CNOT gate (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">eg:cnot</span></code> <a class="reference internal" href="cnot.html#eg-cnot"><span class="std std-ref">CNOT (controlled-NOT)</span></a>). It is useful as a method of multiplying the values of two qubits (e.g., <span class="math notranslate nohighlight">\(\ket{x}\)</span> and <span class="math notranslate nohighlight">\(\ket{y}\)</span>), and imprinting this result onto a third qubit (e.g., <span class="math notranslate nohighlight">\(\ket{z}\)</span>), e.g.,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-ccnot-0">
-<span class="eqno">(346)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-0" title="Link to this equation">#</a></span>\[\ket{x} \otimes \ket{y} \otimes \ket{z} \rightarrow \ket{x} \otimes \ket{y} \otimes \ket{z \oplus xy}.\]</div>
+<span class="eqno">(349)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-0" title="Link to this equation">#</a></span>\[\ket{x} \otimes \ket{y} \otimes \ket{z} \rightarrow \ket{x} \otimes \ket{y} \otimes \ket{z \oplus xy}.\]</div>
 <p><a class="reference internal" href="#fig-circuit-algorithm-csum"><span class="std std-numref">Figure 14</span></a> visualizes this operation.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_ccnot-dark.png"><img alt="A quantum circuit diagram of a CCNOT (controlled-controlled-NOT) gate." src="../../../_images/circuit_algorithm_ccnot-dark.png" style="width: 172.04000000000002px; height: 104.72000000000001px;" />
@@ -534,13 +534,13 @@
 </figure>
 <p>As the input states are both vectors, the action of the (linear) CCNOT gate, described by the unitary</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-ccnot-1">
-<span class="eqno">(347)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(350)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Unitary &amp;= \Control^{0,1} \NOT^2 \\
     &amp;= \Identity \otimes \Identity \otimes \Identity + {\ket{1}\bra{1}} \otimes {\ket{1}\bra{1}} \otimes (\Pauli_{x} - \Identity),
 \end{aligned}\end{split}\]</div>
 <p>on the tripartite input <span class="math notranslate nohighlight">\(\ket{x} \otimes \ket{y} \otimes \ket{z}\)</span> yields a vector state:</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-ccnot-2">
-<span class="eqno">(348)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(351)<a class="headerlink" href="#equation-text-examples-algorithms-ccnot-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \MapGeneral_{\Unitary} \bigl[\ket{x} \otimes \ket{y} \oplus \ket{z}\bigr] &amp;= \Control^{0,1} \NOT^2 \ket{x} \otimes \ket{y} \oplus \ket{z} \\
     &amp;= \ket{x} \otimes \ket{y} \otimes \ket{z \oplus x y}.
 \end{aligned}\end{split}\]</div>
@@ -617,19 +617,19 @@
 <span class="n">first_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
     <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">second_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
     <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">third_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
     <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;u&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;v&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;u*conjugate(u) + v*conjugate(v)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;u*conjugate(u) + v*conjugate(v)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 

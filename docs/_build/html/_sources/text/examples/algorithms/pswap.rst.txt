@@ -144,7 +144,7 @@ States
 .. code:: python
 
    >>> output_state.print()
-   |(ψ,φ)′⟩ = a*c|0,0⟩ + (a*d*(exp(I*pi*p)/2 + 1/2) + b*c*(1/2 - exp(I*pi*p)/2))|0,1⟩ + (a*d*(1/2 - exp(I*pi*p)/2) + b*c*(exp(I*pi*p)/2 + 1/2))|1,0⟩ + b*d|1,1⟩
+   |(ψ,φ)′⟩ = a*c|0,0⟩ + (a*d*(exp(I*pi*p) + 1)/2 + b*c*(1 - exp(I*pi*p))/2)|0,1⟩ + (a*d*(1 - exp(I*pi*p))/2 + b*c*(exp(I*pi*p) + 1)/2)|1,0⟩ + b*d|1,1⟩
 
 .. raw:: latex
 

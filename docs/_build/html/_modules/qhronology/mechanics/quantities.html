@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -482,31 +482,30 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum.dagger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dagger</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">mat</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">expr</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">count_systems</span><span class="p">,</span>
-    <span class="n">extract_matrix</span><span class="p">,</span>
-    <span class="n">extract_symbols</span><span class="p">,</span>
-    <span class="n">symbolize_expression</span><span class="p">,</span>
-    <span class="n">symbolize_tuples</span><span class="p">,</span>
-    <span class="n">extract_conditions</span><span class="p">,</span>
-    <span class="n">recursively_simplify</span><span class="p">,</span>
-    <span class="n">apply_function</span><span class="p">,</span>
-<span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">densify</span><span class="p">,</span> <span class="n">partial_trace</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">arr</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">num</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">apply_function</span><span class="p">,</span>
+    <span class="n">conjugate_transpose</span><span class="p">,</span>
+    <span class="n">count_systems</span><span class="p">,</span>
+    <span class="n">extract_substitutions</span><span class="p">,</span>
+    <span class="n">extract_matrix</span><span class="p">,</span>
+    <span class="n">extract_symbols</span><span class="p">,</span>
+    <span class="n">recursively_simplify</span><span class="p">,</span>
+    <span class="n">symbolize_substitutions</span><span class="p">,</span>
+    <span class="n">symbolize_expression</span><span class="p">,</span>
+<span class="p">)</span>
 
 
 <div class="viewcode-block" id="trace">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.trace">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the (complete) trace :math:`\\trace[\\op{\\rho}]` of :python:`matrix` (:math:`\\op{\\rho}`).</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">    matrix : mat | arr | QuantumObject</span>
 <span class="sd">        The input matrix.</span>
 
 <span class="sd">    Returns</span>
@@ -515,28 +514,28 @@
 <span class="sd">        The trace of the input :python:`matrix`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">extract_substitutions</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">symbolize_substitutions</span><span class="p">(</span><span class="n">substitutions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">trace</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">trace</span></div>
 
 
 
 <div class="viewcode-block" id="purity">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.purity">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">purity</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">purity</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the purity (:math:`\\Purity`) of :python:`state` (:math:`\\op{\\rho}`):</span>
 
 <span class="sd">    .. math:: \\Purity(\\op{\\rho}) = \\trace[\\op{\\rho}^2].</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    state : mat | QuantumObject</span>
+<span class="sd">    state : mat | arr | QuantumObject</span>
 <span class="sd">        The matrix representation of the input state.</span>
 
 <span class="sd">    Returns</span>
@@ -545,21 +544,23 @@
 <span class="sd">        The purity of the input :python:`state`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">extract_substitutions</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">symbolize_substitutions</span><span class="p">(</span><span class="n">substitutions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">purity</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">purity</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">purity</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">purity</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">purity</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">purity</span></div>
 
 
 
 <div class="viewcode-block" id="distance">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.distance">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span>
+    <span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the trace distance (:math:`\\TraceDistance`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):</span>
 
 <span class="sd">    .. math::</span>
@@ -569,9 +570,9 @@
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    state_A : mat | QuantumObject</span>
+<span class="sd">    state_A : mat | arr | QuantumObject</span>
 <span class="sd">        The matrix representation of the first input state.</span>
-<span class="sd">    state_B : mat | QuantumObject</span>
+<span class="sd">    state_B : mat | arr | QuantumObject</span>
 <span class="sd">        The matrix representation of the second input state.</span>
 
 <span class="sd">    Returns</span>
@@ -580,8 +581,8 @@
 <span class="sd">        The trace distance between the inputs :python:`state_A` and :python:`state_B`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">extract_substitutions</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">symbolize_substitutions</span><span class="p">(</span><span class="n">substitutions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_A</span><span class="p">))</span>
     <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_B</span><span class="p">))</span>
@@ -589,23 +590,25 @@
     <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
     <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
-    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
-    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
+    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
 
     <span class="n">product</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span>
-        <span class="n">Dagger</span><span class="p">(</span><span class="n">matrix_A</span> <span class="o">-</span> <span class="n">matrix_B</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">matrix_A</span> <span class="o">-</span> <span class="n">matrix_B</span><span class="p">),</span> <span class="n">conditions</span>
+        <span class="n">conjugate_transpose</span><span class="p">(</span><span class="n">matrix_A</span> <span class="o">-</span> <span class="n">matrix_B</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">matrix_A</span> <span class="o">-</span> <span class="n">matrix_B</span><span class="p">),</span> <span class="n">substitutions</span>
     <span class="p">)</span>
-    <span class="n">root</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">product</span><span class="p">),</span> <span class="n">conditions</span><span class="p">)</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">product</span><span class="p">),</span> <span class="n">substitutions</span><span class="p">)</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
     <span class="n">distance</span> <span class="o">=</span> <span class="n">trace</span>
-    <span class="n">distance</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">distance</span></div>
 
 
 
 <div class="viewcode-block" id="fidelity">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.fidelity">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">fidelity</span><span class="p">(</span><span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fidelity</span><span class="p">(</span>
+    <span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the fidelity (:math:`\\Fidelity`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):</span>
 
 <span class="sd">    .. math::</span>
@@ -615,9 +618,9 @@
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    state_A : mat | QuantumObject</span>
+<span class="sd">    state_A : mat | arr | QuantumObject</span>
 <span class="sd">        The matrix representation of the first input state.</span>
-<span class="sd">    state_B : mat | QuantumObject</span>
+<span class="sd">    state_B : mat | arr | QuantumObject</span>
 <span class="sd">        The matrix representation of the second input state.</span>
 
 <span class="sd">    Returns</span>
@@ -626,8 +629,8 @@
 <span class="sd">        The fidelity between the inputs :python:`state_A` and :python:`state_B`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">extract_substitutions</span><span class="p">(</span><span class="n">state_A</span><span class="p">,</span> <span class="n">state_B</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">symbolize_substitutions</span><span class="p">(</span><span class="n">substitutions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_A</span><span class="p">))</span>
     <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_B</span><span class="p">))</span>
@@ -635,15 +638,15 @@
     <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
     <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
-    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
-    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
+    <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
 
-    <span class="n">product</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span> <span class="o">*</span> <span class="n">matrix_B</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
-    <span class="n">root</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">product</span><span class="p">),</span> <span class="n">conditions</span><span class="p">)</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="n">conditions</span><span class="p">)</span>
-    <span class="n">square</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">trace</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span> <span class="o">*</span> <span class="n">matrix_B</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">product</span><span class="p">),</span> <span class="n">substitutions</span><span class="p">)</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="n">substitutions</span><span class="p">)</span>
+    <span class="n">square</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">trace</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
     <span class="n">fidelity</span> <span class="o">=</span> <span class="n">square</span>
-    <span class="n">fidelity</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">fidelity</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">fidelity</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">fidelity</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fidelity</span></div>
 
 
@@ -651,8 +654,8 @@
 <div class="viewcode-block" id="entropy">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.entropy">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">entropy</span><span class="p">(</span>
-    <span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
-    <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">state_A</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
+    <span class="n">state_B</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the relative von Neumann entropy (:math:`\\Entropy`) between two states :python:`state_A` (:math:`\\op{\\rho}`) and :python:`state_B` (:math:`\\op{\\tau}`):</span>
@@ -670,9 +673,9 @@
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    state_A : mat | QuantumObject</span>
+<span class="sd">    state_A : mat | arr | QuantumObject</span>
 <span class="sd">        The matrix representation of the first input state.</span>
-<span class="sd">    state_B : mat | QuantumObject</span>
+<span class="sd">    state_B : mat | arr | QuantumObject</span>
 <span class="sd">        The matrix representation of the second input state.</span>
 <span class="sd">    base : num | expr | str</span>
 <span class="sd">        The dimensionality of the unit of information in which the entropy is measured.</span>
@@ -684,25 +687,25 @@
 <span class="sd">        The von Neumann entropy of the input :python:`state_A` (if :python:`state_B` is :python:`None`) or the relative entropy between :python:`state_A` and :python:`state_B` (if :python:`state_B` is not :python:`None`).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_A</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state_A</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">extract_substitutions</span><span class="p">(</span><span class="n">state_A</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">symbolize_substitutions</span><span class="p">(</span><span class="n">substitutions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">base</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">base</span>
     <span class="n">base</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_A</span><span class="p">))</span>
     <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
-    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">state_B</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">symbols</span> <span class="o">|=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state_B</span><span class="p">)</span>
-        <span class="n">conditions</span> <span class="o">+=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">extract_conditions</span><span class="p">(</span><span class="n">state_B</span><span class="p">),</span> <span class="n">symbols</span><span class="p">)</span>
+        <span class="n">substitutions</span> <span class="o">+=</span> <span class="n">symbolize_substitutions</span><span class="p">(</span><span class="n">extract_substitutions</span><span class="p">(</span><span class="n">state_B</span><span class="p">),</span> <span class="n">symbols</span><span class="p">)</span>
         <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state_B</span><span class="p">))</span>
 
         <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
-        <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
-        <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+        <span class="n">matrix_A</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
+        <span class="n">matrix_B</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
 
         <span class="c1"># Relative entropy</span>
         <span class="n">entropy</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
@@ -717,7 +720,7 @@
         <span class="n">entropy</span> <span class="o">=</span> <span class="o">-</span><span class="n">sp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
             <span class="n">matrix_A</span> <span class="o">*</span> <span class="n">apply_function</span><span class="p">(</span><span class="n">matrix_A</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="n">base</span><span class="p">])</span>
         <span class="p">)</span>
-    <span class="n">entropy</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">entropy</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">entropy</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">entropy</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">entropy</span></div>
 
 
@@ -725,7 +728,7 @@
 <div class="viewcode-block" id="mutual">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.mutual">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">mutual</span><span class="p">(</span>
-    <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
+    <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
     <span class="n">systems_A</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">systems_B</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -742,7 +745,7 @@
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    state : mat | QuantumObject</span>
+<span class="sd">    state : mat | arr | QuantumObject</span>
 <span class="sd">        The matrix representation of the composite input state.</span>
 <span class="sd">    systems_A : int | list[int]</span>
 <span class="sd">        The indices of the first subsystem.</span>
@@ -767,15 +770,15 @@
     <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
 
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">extract_symbols</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">extract_conditions</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
-    <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">extract_substitutions</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="n">substitutions</span> <span class="o">=</span> <span class="n">symbolize_substitutions</span><span class="p">(</span><span class="n">substitutions</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">base</span> <span class="o">=</span> <span class="n">dim</span> <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">base</span>
     <span class="n">base</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">matrix_AB</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>
     <span class="n">matrix_AB</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix_AB</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
-    <span class="n">matrix_AB</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_AB</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">matrix_AB</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">matrix_AB</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
 
     <span class="n">num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">matrix_AB</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
     <span class="n">systems_AB</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_systems</span><span class="p">)]</span>
@@ -794,7 +797,7 @@
         <span class="o">+</span> <span class="n">entropy</span><span class="p">(</span><span class="n">matrix_B</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">)</span>
         <span class="o">-</span> <span class="n">entropy</span><span class="p">(</span><span class="n">matrix_AB</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">base</span><span class="p">)</span>
     <span class="p">)</span>
-    <span class="n">mutual</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">mutual</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="n">mutual</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">mutual</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mutual</span></div>
 
 
@@ -833,7 +836,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">purity</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the trace distance (:math:`\\TraceDistance`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):</span>
 
 <span class="sd">        .. math::</span>
@@ -843,7 +846,7 @@
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        state : mat | QuantumObject</span>
+<span class="sd">        state : mat | arr | QuantumObject</span>
 <span class="sd">            The given state.</span>
 
 <span class="sd">        Returns</span>
@@ -853,7 +856,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">distance</span><span class="p">(</span><span class="n">state_A</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_B</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">fidelity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fidelity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the fidelity (:math:`\\Fidelity`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):</span>
 
 <span class="sd">        .. math::</span>
@@ -863,7 +866,7 @@
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        state : mat | QuantumObject</span>
+<span class="sd">        state : mat | arr | QuantumObject</span>
 <span class="sd">            The given state.</span>
 
 <span class="sd">        Returns</span>
@@ -875,7 +878,7 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">entropy</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the relative von Neumann entropy (:math:`\\Entropy`) between the internal state (:math:`\\op{\\rho}`) and the given :python:`state` (:math:`\\op{\\tau}`):</span>
@@ -893,7 +896,7 @@
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        state : mat | QuantumObject</span>
+<span class="sd">        state : mat | arr | QuantumObject</span>
 <span class="sd">            The given state.</span>
 <span class="sd">        base : num | expr | str</span>
 <span class="sd">            The dimensionality of the unit of information in which the entropy is measured.</span>

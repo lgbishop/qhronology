@@ -36,6 +36,10 @@ Main class
 
 .. raw:: latex
 
+   \enlargethispage{\baselineskip}
+
+.. raw:: latex
+
    \begin{adjustwidth}{2.5em}{0cm}
 
 .. rubric:: :styleheader6:`Examples`
@@ -90,14 +94,6 @@ Main class
 
 .. raw:: latex
 
-   \vspace*{0.35\baselineskip}
-
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
-
-.. raw:: latex
-
    \begin{codetitled}{Arbitrary state generation}{}
 
 .. literalinclude:: /text/examples/docstrings/circuit_arbitrary.py
@@ -148,7 +144,7 @@ Main class
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -226,6 +222,10 @@ Main class
 
 .. raw:: latex
 
+   \enlargethispage{\baselineskip}
+
+.. raw:: latex
+
    \begin{codetitled}{Bell postselection}{}
 
 .. literalinclude:: /text/examples/docstrings/circuit_postselection.py
@@ -294,7 +294,12 @@ Main class
 
 .. code:: python
 
-   >>> unitarity.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
+   >>> unitarity.diagram(
+   ...     pad=(0, 0),
+   ...     sep=(1, 1),
+   ...     style="unicode",
+   ...     visible={"gates"},
+   ... )
 
 .. raw:: latex
 
@@ -327,7 +332,7 @@ Main class
    Matrix([
    [conjugate(U[0, 0]), conjugate(U[1, 0])],
    [conjugate(U[0, 1]), conjugate(U[1, 1])]])
-   >>> print(repr(unitarity.gate()))
+   >>> print(repr(unitarity.gate(simplify=True)))
    Matrix([
    [1, 0],
    [0, 1]])
@@ -387,10 +392,6 @@ Main class
 
 .. raw:: latex
 
-   \vspace*{0.5\baselineskip}
-
-.. raw:: latex
-
    \hrulefillthick
 
 .. _`sec:docs_circuits_properties`:
@@ -422,13 +423,25 @@ Constructor argument properties
 
    \hrulefillthick
 
+.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.numerical
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.array
+
+.. raw:: latex
+
+   \hrulefillthick
+
 .. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.symbols
 
 .. raw:: latex
 
    \hrulefillthick
 
-.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.conditions
+.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.substitutions
 
 .. raw:: latex
 
@@ -521,13 +534,11 @@ Read-only properties
 
    \hrulefillthick
 
-.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.output_is_vector
-
 .. raw:: latex
 
-   \hrulefillthick
+   \enlargethispage{\baselineskip}
 
-.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.matrix
+.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.output_is_vector
 
 .. raw:: latex
 
@@ -538,6 +549,10 @@ Read-only properties
 Methods
 -------
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.input
 
 .. raw:: latex
@@ -546,13 +561,23 @@ Methods
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.gate
 
 .. raw:: latex
 
    \hrulefillthick
+
+.. automethod:: qhronology.quantum.circuits.QuantumCircuit.matrix
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.output
 
@@ -562,7 +587,7 @@ Methods
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.state
 
@@ -570,11 +595,15 @@ Methods
 
    \hrulefillthick
 
-.. automethod:: qhronology.quantum.circuits.QuantumCircuit.measure
+.. raw:: latex
+
+   \newpage
 
 .. raw:: latex
 
-   \vspace*{-0.15\baselineskip}
+   \enlargethispage{\baselineskip}
+
+.. automethod:: qhronology.quantum.circuits.QuantumCircuit.measure
 
 .. raw:: latex
 
@@ -582,17 +611,13 @@ Methods
 
 .. raw:: latex
 
-   \vspace*{-0.15\baselineskip}
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
+   \enlargethispage{-2\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.diagram
 
    .. raw:: latex
 
-      \enlargethispage{-3\baselineskip}
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -691,7 +716,7 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.15\baselineskip}
+      \vspace*{0.25\baselineskip}
 
    .. raw:: latex
 
@@ -728,7 +753,7 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.15\baselineskip}
+      \vspace*{0.25\baselineskip}
 
    .. raw:: latex
 
@@ -765,7 +790,7 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.15\baselineskip}
+      \vspace*{0.25\baselineskip}
 
    .. raw:: latex
 
@@ -802,7 +827,7 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.15\baselineskip}
+      \vspace*{0.25\baselineskip}
 
    .. raw:: latex
 
@@ -876,7 +901,7 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.15\baselineskip}
+      \vspace*{0.25\baselineskip}
 
    .. raw:: latex
 
@@ -913,7 +938,7 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.15\baselineskip}
+      \vspace*{0.25\baselineskip}
 
    .. raw:: latex
 
@@ -950,7 +975,7 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.15\baselineskip}
+      \vspace*{0.25\baselineskip}
 
    .. raw:: latex
 

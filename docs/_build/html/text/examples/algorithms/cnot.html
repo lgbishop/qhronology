@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,8 +71,8 @@
     <link rel="prev" title="Generation of the generalized W state" href="generation_w_general.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -515,7 +515,7 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>A CNOT (controlled-NOT) gate is a useful gate for performing a (qu)bit-wise sum of the state values of two quantum systems. For instance, given the states <span class="math notranslate nohighlight">\(\ket{x}\)</span> and <span class="math notranslate nohighlight">\(\ket{y}\)</span> in a <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional basis <span class="math notranslate nohighlight">\(\{\ket{n}\}_{n=0}^{\Dimension - 1}\)</span>, a CNOT operation has the action</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-cnot-0">
-<span class="eqno">(343)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-0" title="Link to this equation">#</a></span>\[\ket{x} \otimes \ket{y} \rightarrow \ket{x} \otimes \ket{x \oplus y}.\]</div>
+<span class="eqno">(346)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-0" title="Link to this equation">#</a></span>\[\ket{x} \otimes \ket{y} \rightarrow \ket{x} \otimes \ket{x \oplus y}.\]</div>
 <p>A circuit diagram of a CNOT gate appears in <a class="reference internal" href="#fig-circuit-algorithm-cnot"><span class="std std-numref">Figure 13</span></a>.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_cnot-dark.png"><img alt="A quantum circuit diagram of a CNOT (controlled-NOT) gate." src="../../../_images/circuit_algorithm_cnot-dark.png" style="width: 162.52px; height: 61.88px;" />
@@ -534,13 +534,13 @@
 </figure>
 <p>As the input states are both vectors, the application of the CNOT gate</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-cnot-1">
-<span class="eqno">(344)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(347)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-1" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Unitary &amp;= \Control^0 \NOT^1 \\
     &amp;= \Identity \otimes \Identity + {\ket{1}\bra{1}} \otimes (\Pauli_{x} - \Identity),
 \end{aligned}\end{split}\]</div>
 <p>on the bipartite input <span class="math notranslate nohighlight">\(\ket{x} \otimes \ket{y}\)</span> simply produces a vector state:</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-cnot-2">
-<span class="eqno">(345)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(348)<a class="headerlink" href="#equation-text-examples-algorithms-cnot-2" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \MapGeneral_{\Unitary} \bigl[\ket{x} \otimes \ket{y}\bigr] &amp;= \Control^0 \NOT^1 \ket{x} \otimes \ket{y} \\
     % &amp;= \sum\limits_{a,b=0}^{1} {\ket{a}\braket{a}{x}} \otimes {\ket{b \oplus a}\braket{b}{y}}, \\
     &amp;= \ket{x} \otimes \ket{x \oplus y}.
@@ -592,13 +592,13 @@
 <span class="n">first_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
     <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">second_state</span> <span class="o">=</span> <span class="n">VectorState</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
     <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 

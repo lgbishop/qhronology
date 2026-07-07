@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -482,34 +482,40 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">TensorProduct</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum.dagger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dagger</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">columnify</span><span class="p">,</span> <span class="n">densify</span><span class="p">,</span> <span class="n">partial_trace</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">mat</span><span class="p">,</span>
-    <span class="n">arr</span><span class="p">,</span>
-    <span class="n">num</span><span class="p">,</span>
-    <span class="n">expr</span><span class="p">,</span>
-    <span class="n">Forms</span><span class="p">,</span>
-    <span class="n">Kinds</span><span class="p">,</span>
-    <span class="n">FORMS</span><span class="p">,</span>
-    <span class="n">KINDS</span><span class="p">,</span>
     <span class="n">COMPATIBILITIES</span><span class="p">,</span>
+    <span class="n">FORMS</span><span class="p">,</span>
+    <span class="n">Forms</span><span class="p">,</span>
+    <span class="n">KINDS</span><span class="p">,</span>
+    <span class="n">Kinds</span><span class="p">,</span>
+    <span class="n">arr</span><span class="p">,</span>
+    <span class="n">expr</span><span class="p">,</span>
+    <span class="n">mat</span><span class="p">,</span>
     <span class="n">matrix_shape</span><span class="p">,</span>
+    <span class="n">num</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">flatten_list</span><span class="p">,</span>
+    <span class="n">cast</span><span class="p">,</span>
+    <span class="n">conjugate_transpose</span><span class="p">,</span>
+    <span class="n">count_rows</span><span class="p">,</span>
     <span class="n">count_systems</span><span class="p">,</span>
-    <span class="n">extract_matrix</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="p">,</span>
+    <span class="n">extract_representation</span><span class="p">,</span>
+    <span class="n">flatten_list</span><span class="p">,</span>
+    <span class="n">generate_zeros</span><span class="p">,</span>
     <span class="n">symbolize_expression</span><span class="p">,</span>
+    <span class="n">tensor_product</span><span class="p">,</span>
+    <span class="n">to_numerical</span><span class="p">,</span>
 <span class="p">)</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">densify</span><span class="p">,</span> <span class="n">columnify</span><span class="p">,</span> <span class="n">partial_trace</span>
 
 
 <div class="viewcode-block" id="vector_basis">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.vector_basis">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">vector_basis</span><span class="p">(</span><span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">mat</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">vector_basis</span><span class="p">(</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates an ordered list of column vectors that form an orthonormal basis for a :python:`dim`-dimensional Hilbert space.</span>
 
 <span class="sd">    Arguments</span>
@@ -517,19 +523,33 @@
 <span class="sd">    dim : int</span>
 <span class="sd">        The dimensionality of the vector basis.</span>
 <span class="sd">        Must be a non-negative integer.</span>
+<span class="sd">    numerical : bool</span>
+<span class="sd">        Whether to cast the vector elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).</span>
+<span class="sd">        Defaults to :python:`False`.</span>
+<span class="sd">    array : bool</span>
+<span class="sd">        Whether to cast the vectors as NumPy arrays (:python:`True`) or SymPy matrices (:python:`False`).</span>
+<span class="sd">        Defaults to :python:`False`.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    list[int]</span>
+<span class="sd">    list[mat | arr]</span>
 <span class="sd">        An ordered list of basis vectors.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="p">)]</span></div>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">cast</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+    <span class="p">]</span></div>
 
 
 
 <div class="viewcode-block" id="ket">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.ket">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">ket</span><span class="p">(</span><span class="n">spec</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ket</span><span class="p">(</span>
+    <span class="n">spec</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a normalized ket (column) basis vector corresponding to the (multipartite) computational-basis value(s) of :python:`spec` in a :python:`dim`-dimensional Hilbert space.</span>
 
 <span class="sd">    In mathematical notation, :python:`spec` describes the value of the ket vector, e.g., a :python:`spec` of :python:`[i,j,k]` corresponds to the ket vector :math:`\\ket{i,j,k}` (for some non-negative integers :python:`i`, :python:`j`, and :python:`k`).</span>
@@ -542,22 +562,33 @@
 <span class="sd">        The dimensionality of the vector.</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`2`.</span>
+<span class="sd">    numerical : bool</span>
+<span class="sd">        Whether to cast the vector elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).</span>
+<span class="sd">        Defaults to :python:`False`.</span>
+<span class="sd">    array : bool</span>
+<span class="sd">        Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
+<span class="sd">        Defaults to :python:`False`.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    mat</span>
+<span class="sd">    mat | arr</span>
 <span class="sd">        A normalized column vector.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">spec</span> <span class="o">=</span> <span class="n">flatten_list</span><span class="p">([</span><span class="n">spec</span><span class="p">])</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
-    <span class="n">basis</span> <span class="o">=</span> <span class="n">vector_basis</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">TensorProduct</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">basis</span><span class="p">[</span><span class="n">spec</span><span class="p">[</span><span class="n">n</span><span class="p">]])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">spec</span><span class="p">))])</span></div>
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">vector_basis</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tensor_product</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">basis</span><span class="p">[</span><span class="n">spec</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">spec</span><span class="p">))])</span></div>
 
 
 
 <div class="viewcode-block" id="bra">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.bra">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">bra</span><span class="p">(</span><span class="n">spec</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bra</span><span class="p">(</span>
+    <span class="n">spec</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a normalized bra (row) basis vector corresponding to the (multipartite) computational-basis value(s) of :python:`spec` in a :python:`dim`-dimensional dual Hilbert space.</span>
 
 <span class="sd">    In mathematical notation, :python:`spec` describes the value of the bra vector, e.g., a :python:`spec` of :python:`[i,j,k]` corresponds to the bra vector :math:`\\bra{i,j,k}` (for some non-negative integers :python:`i`, :python:`j`, and :python:`k`).</span>
@@ -570,21 +601,27 @@
 <span class="sd">        The dimensionality of the vector.</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`2`.</span>
+<span class="sd">    numerical : bool</span>
+<span class="sd">        Whether to cast the vector elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).</span>
+<span class="sd">        Defaults to :python:`False`.</span>
+<span class="sd">    array : bool</span>
+<span class="sd">        Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
+<span class="sd">        Defaults to :python:`False`.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    mat</span>
+<span class="sd">    mat | arr</span>
 <span class="sd">        A normalized row vector.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">spec</span> <span class="o">=</span> <span class="n">flatten_list</span><span class="p">([</span><span class="n">spec</span><span class="p">])</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
-    <span class="k">return</span> <span class="n">Dagger</span><span class="p">(</span><span class="n">ket</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span></div>
+    <span class="k">return</span> <span class="n">conjugate_transpose</span><span class="p">(</span><span class="n">ket</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">))</span></div>
 
 
 
-<div class="viewcode-block" id="quantum_state">
-<a class="viewcode-back" href="../../../text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.quantum_state">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">quantum_state</span><span class="p">(</span>
+<div class="viewcode-block" id="quantum_object">
+<a class="viewcode-back" href="../../../text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.quantum_object">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">quantum_object</span><span class="p">(</span>
     <span class="n">spec</span><span class="p">:</span> <span class="p">(</span>
         <span class="n">mat</span>
         <span class="o">|</span> <span class="n">arr</span>
@@ -594,13 +631,15 @@
     <span class="n">form</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Constructs a :python:`dim`-dimensional matrix or vector representation of a quantum state from a given specification :python:`spec`.</span>
+    <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Constructs a :python:`dim`-dimensional matrix or vector representation of a quantum object from a given specification :python:`spec`.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
 <span class="sd">    spec</span>
-<span class="sd">        The specification of the quantum state. Provides a complete description of the state&#39;s values in a standard :python:`dim`-dimensional basis. Can be one of:</span>
+<span class="sd">        The specification of the quantum object. Provides a description of the object&#39;s values in a standard :python:`dim`-dimensional basis. Can be one of:</span>
 
 <span class="sd">        - a SymPy matrix (:python:`mat`)</span>
 <span class="sd">        - a NumPy array (:python:`arr`)</span>
@@ -608,27 +647,35 @@
 <span class="sd">        - a list of 2-tuples of numerical, symbolic, or string coefficients paired their respective number-basis specification (:python:`list[tuple[num | expr | str, int | list[int]]]`)</span>
 
 <span class="sd">    form : str</span>
-<span class="sd">        A string specifying the *form* for the quantum state to take.</span>
+<span class="sd">        A string specifying the *form* for the quantum object to take.</span>
 <span class="sd">        Can be either of :python:`&quot;vector&quot;` or :python:`&quot;matrix&quot;`.</span>
 <span class="sd">        Defaults to :python:`&quot;matrix&quot;`.</span>
 <span class="sd">    kind : str</span>
-<span class="sd">        A string specifying the *kind* for the quantum state to take.</span>
+<span class="sd">        A string specifying the *kind* for the quantum object to take.</span>
 <span class="sd">        Can be either of :python:`&quot;mixed&quot;` or :python:`&quot;pure&quot;`.</span>
 <span class="sd">        Defaults to :python:`&quot;mixed&quot;`.</span>
 <span class="sd">    dim : int</span>
-<span class="sd">        The dimensionality of the quantum state&#39;s Hilbert space.</span>
+<span class="sd">        The dimensionality of the quantum object&#39;s Hilbert space.</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`2`.</span>
+<span class="sd">    numerical : bool</span>
+<span class="sd">        Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).</span>
+<span class="sd">        Defaults to :python:`False`.</span>
+<span class="sd">    array : bool</span>
+<span class="sd">        Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
+<span class="sd">        Defaults to :python:`False`.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    mat</span>
-<span class="sd">        The matrix or vector representation of the quantum state.</span>
+<span class="sd">    mat | arr</span>
+<span class="sd">        The matrix or vector representation of the quantum object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">form</span> <span class="o">=</span> <span class="n">Forms</span><span class="o">.</span><span class="n">MATRIX</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="n">form</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">form</span>
     <span class="k">if</span> <span class="n">kind</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">kind</span> <span class="o">=</span> <span class="n">Kinds</span><span class="o">.</span><span class="n">PURE</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="n">form</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span> <span class="k">else</span> <span class="n">Kinds</span><span class="o">.</span><span class="n">MIXED</span><span class="o">.</span><span class="n">value</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
+    <span class="n">numerical</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
 
     <span class="k">if</span> <span class="n">form</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">FORMS</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;The given :python:`form` (&#39;</span><span class="si">{</span><span class="n">form</span><span class="si">}</span><span class="s2">&#39;) is invalid.&quot;&quot;&quot;</span><span class="p">)</span>
@@ -640,59 +687,71 @@
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">sp</span><span class="o">.</span><span class="n">matrices</span><span class="o">.</span><span class="n">immutable</span><span class="o">.</span><span class="n">ImmutableDenseMatrix</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">state</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">spec</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;The state&#39;s :python:`spec` list must contain only lists or tuples.&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;The object&#39;s :python:`spec` list must contain only lists or tuples.&quot;&quot;&quot;</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">state</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+            <span class="n">matrix</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">spec</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">twotuple</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">twotuple</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 <span class="w">                        </span><span class="sd">&quot;&quot;&quot;One or more of the tuples in the given :python:`spec` does not have exactly two (2) elements.&quot;&quot;&quot;</span>
                     <span class="p">)</span>
-            <span class="n">coefficients</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">twotuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">twotuple</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">])</span>
+            <span class="n">coefficients</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
+                <span class="n">matrix</span><span class="o">=</span><span class="p">[</span><span class="n">twotuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">twotuple</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">],</span>
+                <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
+                <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
+            <span class="p">)</span>
             <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="n">twotuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">twotuple</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">]</span>
 
             <span class="k">if</span> <span class="n">form</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span> <span class="ow">or</span> <span class="n">kind</span> <span class="o">==</span> <span class="n">Kinds</span><span class="o">.</span><span class="n">PURE</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
-                <span class="n">state</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">ket</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="p">)</span>
+                <span class="n">matrix</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">ket</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">state</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">ket</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="p">)</span> <span class="o">*</span> <span class="n">bra</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="p">)</span>
+                <span class="n">matrix</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="mi">0</span>
+                    <span class="o">*</span> <span class="n">ket</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="p">)</span>
+                    <span class="o">*</span> <span class="n">bra</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="p">)</span>
+                <span class="p">)</span>
             <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">spec</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coefficients</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                    <span class="n">coefficients</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="n">coefficients</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
                 <span class="k">if</span> <span class="n">form</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span> <span class="ow">or</span> <span class="n">kind</span> <span class="o">==</span> <span class="n">Kinds</span><span class="o">.</span><span class="n">PURE</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
-                    <span class="n">state</span> <span class="o">=</span> <span class="n">state</span> <span class="o">+</span> <span class="n">coefficients</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">ket</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">dim</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">state</span> <span class="o">=</span> <span class="n">state</span> <span class="o">+</span> <span class="n">coefficients</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">ket</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">dim</span><span class="p">)</span> <span class="o">*</span> <span class="n">bra</span><span class="p">(</span>
-                        <span class="n">levels</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">dim</span>
+                    <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span> <span class="o">+</span> <span class="n">coefficients</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">ket</span><span class="p">(</span>
+                        <span class="n">levels</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="p">,</span> <span class="n">array</span>
                     <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span> <span class="o">+</span> <span class="n">coefficients</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">ket</span><span class="p">(</span>
+                        <span class="n">levels</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="p">,</span> <span class="n">array</span>
+                    <span class="p">)</span> <span class="o">*</span> <span class="n">bra</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;The given :python:`spec` list is invalid.&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;The given :python:`spec` is invalid.&quot;&quot;&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;INVALID&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;INVALID&quot;</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;The given :python:`spec` does not correspond to either a square matrix or a vector.&quot;&quot;&quot;</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">form</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;SQUARE&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">matrix_shape</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;SQUARE&quot;</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
 <span class="w">                </span><span class="sd">&quot;&quot;&quot;The given :python:`spec` describes a square matrix and so cannot be cast into a vector form.&quot;&quot;&quot;</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">state</span> <span class="o">=</span> <span class="n">columnify</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+            <span class="n">matrix</span> <span class="o">=</span> <span class="n">columnify</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="n">Kinds</span><span class="o">.</span><span class="n">PURE</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
-        <span class="n">state</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">state</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
 
-    <span class="n">state</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">state</span></div>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span></div>
 
 
 
@@ -702,9 +761,11 @@
     <span class="n">integer</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">num_systems</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">output_list</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Encodes a non-negative integer as a single quantum state vector (ket).</span>
 
 <span class="sd">    This is a kind of unsigned integer encoding. It creates a base-:python:`dim` numeral system representation of :python:`integer` as an (ordered) list of encoded digits.</span>
@@ -722,7 +783,13 @@
 <span class="sd">        The dimensionality (or base) of the encoding.</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`2`.</span>
-<span class="sd">    reverse : str</span>
+<span class="sd">    numerical : bool</span>
+<span class="sd">        Whether to cast the vector elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).</span>
+<span class="sd">        Defaults to :python:`False`.</span>
+<span class="sd">    array : bool</span>
+<span class="sd">        Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
+<span class="sd">        Defaults to :python:`False`.</span>
+<span class="sd">    reverse : bool</span>
 <span class="sd">        Whether to reverse the ordering of the resulting encoded state.</span>
 
 <span class="sd">        - If :python:`reverse` is :python:`False`, the significance of the digits *decreases* along the list (i.e., the least-significant digit is last).</span>
@@ -735,7 +802,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    mat</span>
+<span class="sd">    mat | arr</span>
 <span class="sd">        A normalized column vector (if :python:`output_list` is :python:`False`).</span>
 <span class="sd">    list[int]</span>
 <span class="sd">        An ordered list of the encoded digits (if :python:`output_list` is :python:`True`).</span>
@@ -773,7 +840,7 @@
 
     <span class="n">encoded</span> <span class="o">=</span> <span class="n">digits</span>
     <span class="k">if</span> <span class="n">output_list</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="n">encoded</span> <span class="o">=</span> <span class="n">ket</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+        <span class="n">encoded</span> <span class="o">=</span> <span class="n">ket</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">encoded</span></div>
 
@@ -782,19 +849,23 @@
 <div class="viewcode-block" id="decode_slow">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.decode_slow">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">decode_slow</span><span class="p">(</span>
-    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decodes a quantum matrix or vector state to an unsigned integer.</span>
 
+<span class="sd">    This only makes sense if the input state has exactly one non-zero entry.</span>
+
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">    matrix : mat | arr | QuantumObject</span>
 <span class="sd">        The quantum (matrix or vector) state to be decoded.</span>
 <span class="sd">    dim : int</span>
 <span class="sd">        The dimensionality (or base) of the encoding.</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`2`.</span>
-<span class="sd">    reverse : str</span>
+<span class="sd">    reverse : bool</span>
 <span class="sd">        Whether to reverse the digit ordering of the encoded state prior to decoding.</span>
 
 <span class="sd">        - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the list (i.e., the least-significant digit is last).</span>
@@ -819,7 +890,7 @@
     <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
     <span class="n">reverse</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">reverse</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">reverse</span>
 
-    <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_representation</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
     <span class="n">num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
 
     <span class="n">digits</span> <span class="o">=</span> <span class="p">[]</span>
@@ -829,7 +900,7 @@
         <span class="n">quantum_unit</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span>
             <span class="n">matrix</span><span class="o">=</span><span class="n">matrix</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">discard</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">optimize</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
-        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">quantum_unit</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">count_rows</span><span class="p">(</span><span class="n">quantum_unit</span><span class="p">)):</span>
             <span class="k">if</span> <span class="n">quantum_unit</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">digits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 
@@ -852,12 +923,14 @@
 
 <div class="viewcode-block" id="decode_fast">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.decode_fast">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">decode_fast</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">decode_fast</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decodes a quantum matrix or vector state to an unsigned integer.</span>
+
+<span class="sd">    This only makes sense if the input state has exactly one non-zero entry.</span>
 
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">    matrix : mat | arr | QuantumObject</span>
 <span class="sd">        The quantum (matrix or vector) state to be decoded.</span>
 <span class="sd">    dim : int</span>
 <span class="sd">        The dimensionality (or base) of the encoding.</span>
@@ -879,10 +952,10 @@
 <span class="sd">    The output cannot be reversed like in :py:func:`~qhronology.mechanics.matrices.decode_slow`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
-    <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_representation</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
 
     <span class="n">decoded</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">count_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">)):</span>
         <span class="k">if</span> <span class="n">matrix</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">decoded</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
@@ -899,19 +972,23 @@
 <div class="viewcode-block" id="decode_multiple">
 <a class="viewcode-back" href="../../../text/documentation/mechanics/matrices.html#qhronology.mechanics.matrices.decode_multiple">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">decode_multiple</span><span class="p">(</span>
-    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decodes a quantum matrix or vector state to one or more unsigned integers with their respective probabilities.</span>
 
+<span class="sd">    This only makes sense if the input state is both equiprobabilistic and non-symbolic.</span>
+
 <span class="sd">    Arguments</span>
 <span class="sd">    ---------</span>
-<span class="sd">    matrix : mat | QuantumObject</span>
+<span class="sd">    matrix : mat | arr | QuantumObject</span>
 <span class="sd">        The quantum (matrix or vector) state to be decoded.</span>
 <span class="sd">    dim : int</span>
 <span class="sd">        The dimensionality (or base) of the encoding.</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`2`.</span>
-<span class="sd">    reverse : str</span>
+<span class="sd">    reverse : bool</span>
 <span class="sd">        Whether to reverse the digit ordering of the encoded state prior to decoding.</span>
 
 <span class="sd">        - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the list (i.e., the least-significant digit is last).</span>
@@ -926,13 +1003,18 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
     <span class="n">reverse</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">reverse</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">reverse</span>
-    <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">densify</span><span class="p">(</span><span class="n">extract_representation</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+
+    <span class="n">matrix_num</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">matrix</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+    <span class="n">matrix_arr</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
 
     <span class="n">decoded</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">count_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">)):</span>
         <span class="k">if</span> <span class="n">matrix</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">elementary</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="n">elementary</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">elementary</span> <span class="o">=</span> <span class="n">generate_zeros</span><span class="p">(</span>
+                <span class="n">count_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">),</span> <span class="n">numerical</span><span class="o">=</span><span class="n">matrix_num</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">matrix_arr</span>
+            <span class="p">)</span>
+            <span class="n">elementary</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_numerical</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">matrix_num</span><span class="p">)</span>
             <span class="n">decoded</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="p">(</span><span class="n">decode_slow</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">elementary</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">),</span> <span class="n">matrix</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
             <span class="p">)</span>

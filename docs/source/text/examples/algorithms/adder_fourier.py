@@ -1,5 +1,5 @@
 from qhronology.quantum.states import VectorState
-from qhronology.quantum.gates import Hadamard, Phase, Fourier
+from qhronology.quantum.gates import Hadamard, Phase
 from qhronology.quantum.circuits import QuantumCircuit
 from qhronology.utilities.helpers import flatten_list
 from qhronology.mechanics.matrices import encode, decode

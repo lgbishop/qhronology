@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -481,25 +481,35 @@
 <span class="c1"># https://peps.python.org/pep-0649/</span>
 <span class="c1"># https://peps.python.org/pep-0749/</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
-
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum.dagger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dagger</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.matrices</span><span class="w"> </span><span class="kn">import</span> <span class="n">quantum_object</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">mat</span><span class="p">,</span>
-    <span class="n">num</span><span class="p">,</span>
-    <span class="n">sym</span><span class="p">,</span>
-    <span class="n">expr</span><span class="p">,</span>
+    <span class="n">COMPATIBILITIES</span><span class="p">,</span>
     <span class="n">Forms</span><span class="p">,</span>
     <span class="n">Kinds</span><span class="p">,</span>
     <span class="n">Shapes</span><span class="p">,</span>
+    <span class="n">arr</span><span class="p">,</span>
+    <span class="n">expr</span><span class="p">,</span>
+    <span class="n">mat</span><span class="p">,</span>
     <span class="n">matrix_form</span><span class="p">,</span>
     <span class="n">matrix_shape</span><span class="p">,</span>
+    <span class="n">num</span><span class="p">,</span>
+    <span class="n">sym</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.diagrams</span><span class="w"> </span><span class="kn">import</span> <span class="n">VisualizationMixin</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">count_systems</span><span class="p">,</span> <span class="n">stringify</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">apply_substitutions</span><span class="p">,</span>
+    <span class="n">cast</span><span class="p">,</span>
+    <span class="n">conjugate_transpose</span><span class="p">,</span>
+    <span class="n">count_systems</span><span class="p">,</span>
+    <span class="n">recursively_simplify</span><span class="p">,</span>
+    <span class="n">stringify</span><span class="p">,</span>
+    <span class="n">symbolize_substitutions</span><span class="p">,</span>
+    <span class="n">symbolize_expression</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.symbolics</span><span class="w"> </span><span class="kn">import</span> <span class="n">SymbolicsProperties</span>
 
 
@@ -513,52 +523,194 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
+        <span class="n">spec</span><span class="p">:</span> <span class="p">(</span>
+            <span class="n">mat</span>
+            <span class="o">|</span> <span class="n">arr</span>
+            <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span>
+            <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span>
+            <span class="o">|</span> <span class="kc">None</span>
+        <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">form</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">num_systems</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">symbols</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">family</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
+        <span class="n">spec</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">spec</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">spec</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">Forms</span><span class="o">.</span><span class="n">MATRIX</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="n">form</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">form</span>
-        <span class="n">matrix</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">matrix</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">matrix</span>
+        <span class="n">kind</span> <span class="o">=</span> <span class="n">Kinds</span><span class="o">.</span><span class="n">MIXED</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="n">kind</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">kind</span>
         <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
+        <span class="n">numerical</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
         <span class="n">conjugate</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">conjugate</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conjugate</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">quantum_object</span><span class="p">(</span>
+            <span class="n">spec</span><span class="o">=</span><span class="n">spec</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span>
+        <span class="p">)</span>
         <span class="n">num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span> <span class="k">if</span> <span class="n">num_systems</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">num_systems</span>
         <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span> <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">label</span>
         <span class="n">notation</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">notation</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">notation</span>
         <span class="n">family</span> <span class="o">=</span> <span class="s2">&quot;PUSH&quot;</span> <span class="k">if</span> <span class="n">family</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">family</span>
         <span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">debug</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">debug</span>
-        <span class="n">SymbolicsProperties</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="n">conditions</span><span class="p">)</span>
+        <span class="n">SymbolicsProperties</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">spec</span> <span class="o">=</span> <span class="n">spec</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">form</span> <span class="o">=</span> <span class="n">form</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="n">kind</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="o">=</span> <span class="n">array</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_systems</span> <span class="o">=</span> <span class="n">num_systems</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conjugate</span> <span class="o">=</span> <span class="n">conjugate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="o">=</span> <span class="n">numerical</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">notation</span> <span class="o">=</span> <span class="n">notation</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">=</span> <span class="n">family</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">debug</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="n">expression</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notation</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s2">&quot; = &quot;</span>
-            <span class="o">+</span> <span class="n">stringify</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span>
-                <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">expression</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notation</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; = &quot;</span> <span class="o">+</span> <span class="n">stringify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">spec</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
+        <span class="n">mat</span>
+        <span class="o">|</span> <span class="n">arr</span>
+        <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span>
+        <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The specification of the quantum object.</span>
+<span class="sd">        Provides a description of the object&#39;s values in a standard :python:`dim`-dimensional basis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span>
+
+    <span class="nd">@spec</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">spec</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">spec</span><span class="p">:</span> <span class="p">(</span>
+            <span class="n">mat</span>
+            <span class="o">|</span> <span class="n">arr</span>
+            <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span>
+            <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span>
+        <span class="p">),</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spec</span> <span class="o">=</span> <span class="n">spec</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">current</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The current (unprocessed) matrix representation of the quantum object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current</span>
+
+    <span class="nd">@current</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current</span> <span class="o">=</span> <span class="n">current</span>
+
+<div class="viewcode-block" id="QuantumObject.matrix">
+<a class="viewcode-back" href="../../../text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.matrix">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the unprocessed matrix representation of the object.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        numerical : bool</span>
+<span class="sd">            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).</span>
+<span class="sd">            Defaults to the value of :python:`self.numerical`.</span>
+<span class="sd">        array : bool</span>
+<span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
+<span class="sd">            Defaults to the value of :python:`self.array`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        mat | arr</span>
+<span class="sd">            The unprocessed matrix representation of the object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
+        <span class="k">return</span> <span class="n">quantum_object</span><span class="p">(</span>
+            <span class="n">spec</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="p">,</span>
+            <span class="n">form</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kind</span><span class="p">,</span>
+            <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
+            <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
+            <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuantumObject.output">
+<a class="viewcode-back" href="../../../text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.output">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the processed matrix representation of the object.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        numerical : bool</span>
+<span class="sd">            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).</span>
+<span class="sd">            Defaults to the value of :python:`self.numerical`.</span>
+<span class="sd">        array : bool</span>
+<span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
+<span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
+<span class="sd">            Algebraic substitutions to be applied to the state.</span>
+<span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
+<span class="sd">        simplify : bool</span>
+<span class="sd">            Whether to perform mathematical simplification on the object.</span>
+<span class="sd">            If :python:`False`, does not simplify.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
+<span class="sd">        conjugate : bool</span>
+<span class="sd">            Whether to perform Hermitian conjugation on the object.</span>
+<span class="sd">            If :python:`False`, does not conjugate.</span>
+<span class="sd">            Defaults to the value of :python:`self.conjugate`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        mat | arr</span>
+<span class="sd">            The processed matrix representation of the object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
+        <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
+        <span class="n">array_intermediate</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols_list</span><span class="p">)</span>
+
+        <span class="c1"># Conditions</span>
+        <span class="n">substitutions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span> <span class="k">if</span> <span class="n">substitutions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">substitutions</span>
+        <span class="n">substitutions</span> <span class="o">=</span> <span class="n">symbolize_substitutions</span><span class="p">(</span><span class="n">substitutions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols_list</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">apply_substitutions</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
+
+        <span class="c1"># Simplification</span>
+        <span class="n">simplify</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">simplify</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">simplify</span>
+        <span class="k">if</span> <span class="n">simplify</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
+
+        <span class="c1"># Conjugation</span>
+        <span class="n">conjugate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conjugate</span> <span class="k">if</span> <span class="n">conjugate</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conjugate</span>
+        <span class="k">if</span> <span class="n">conjugate</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">conjugate_transpose</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="QuantumObject.print">
 <a class="viewcode-back" href="../../../text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.print">[docs]</a>
@@ -567,8 +719,14 @@
         <span class="n">delimiter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">product</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">return_string</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Print or return a mathematical expression of the quantum object as a string.</span>
+
+<span class="sd">        Note that this method is essentially a wrapper on the :py:meth:`~qhronology.utilities.objects.QuantumObject.output` method, and so includes all of its arguments.</span>
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
@@ -582,6 +740,20 @@
 <span class="sd">        return_string : bool</span>
 <span class="sd">            Whether to return the mathematical expression as a string.</span>
 <span class="sd">            Defaults to :python:`False`.</span>
+<span class="sd">        numerical : bool</span>
+<span class="sd">            Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).</span>
+<span class="sd">            Defaults to the value of :python:`self.numerical`.</span>
+<span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
+<span class="sd">            Algebraic substitutions to be applied to the object.</span>
+<span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
+<span class="sd">        simplify : bool</span>
+<span class="sd">            Whether to perform mathematical simplification on the object.</span>
+<span class="sd">            If :python:`False`, does not simplify.</span>
+<span class="sd">            Defaults to :python:`False`.</span>
+<span class="sd">        conjugate : bool</span>
+<span class="sd">            Whether to perform Hermitian conjugation on the object.</span>
+<span class="sd">            If :python:`False`, does not conjugate.</span>
+<span class="sd">            Defaults to the value of :python:`self.conjugate`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -594,7 +766,12 @@
             <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notation</span><span class="p">)</span>
             <span class="o">+</span> <span class="s2">&quot; = &quot;</span>
             <span class="o">+</span> <span class="n">stringify</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span>
+                    <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
+                    <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
+                    <span class="n">simplify</span><span class="o">=</span><span class="n">simplify</span><span class="p">,</span>
+                    <span class="n">conjugate</span><span class="o">=</span><span class="n">conjugate</span><span class="p">,</span>
+                <span class="p">),</span>
                 <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
                 <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span>
                 <span class="n">product</span><span class="o">=</span><span class="n">product</span><span class="p">,</span>
@@ -606,64 +783,13 @@
             <span class="nb">print</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="QuantumObject.output">
-<a class="viewcode-back" href="../../../text/documentation/utilities/objects.html#qhronology.utilities.objects.QuantumObject.output">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">output</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the object&#39;s simplified matrix representation.</span>
-
-<span class="sd">        Arguments</span>
-<span class="sd">        ---------</span>
-<span class="sd">        conditions : list[tuple[num | expr | str, num | expr | str]]</span>
-<span class="sd">            Algebraic conditions to be applied to the state.</span>
-<span class="sd">            Defaults to the value of :python:`self.conditions`.</span>
-<span class="sd">        simplify : bool</span>
-<span class="sd">            Whether to perform algebraic simplification on the object.</span>
-<span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        conjugate : bool</span>
-<span class="sd">            Whether to perform Hermitian conjugation on the object.</span>
-<span class="sd">            If :python:`False`, does not conjugate.</span>
-<span class="sd">            Defaults to the value of :python:`self.conjugate`.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        mat</span>
-<span class="sd">            The object&#39;s simplified matrix representation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span>
-
-        <span class="n">output</span> <span class="o">=</span> <span class="n">symbolize_expression</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols_list</span><span class="p">)</span>
-
-        <span class="c1"># Conditions</span>
-        <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conditions</span> <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conditions</span>
-        <span class="n">conditions</span> <span class="o">=</span> <span class="n">symbolize_tuples</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols_list</span><span class="p">)</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span>
-
-        <span class="c1"># Simplification</span>
-        <span class="n">simplify</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">simplify</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">simplify</span>
-        <span class="k">if</span> <span class="n">simplify</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">output</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
-
-        <span class="c1"># Conjugation</span>
-        <span class="n">conjugate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conjugate</span> <span class="k">if</span> <span class="n">conjugate</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conjugate</span>
-        <span class="k">if</span> <span class="n">conjugate</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">output</span> <span class="o">=</span> <span class="n">Dagger</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">output</span></div>
-
-
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">form</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The *form* of the object.</span>
-
 <span class="sd">        Can be either of :python:`&quot;vector&quot;` or :python:`&quot;matrix&quot;`.</span>
 <span class="sd">        Only :py:class:`~qhronology.quantum.states.QuantumState` objects can be :python:`&quot;vector&quot;`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">matrix_form</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">matrix_form</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
 
     <span class="nd">@form</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">form</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -673,6 +799,20 @@
                     <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The given :python:`form` (&#39;</span><span class="si">{</span><span class="n">form</span><span class="si">}</span><span class="s2">&#39;) is incompatible with the given :python:`kind` (&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">kind</span><span class="si">}</span><span class="s2">&#39;).&quot;&quot;&quot;</span>
                 <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_form</span> <span class="o">=</span> <span class="n">form</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">kind</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The *kind* of quantum object.</span>
+<span class="sd">        Can be either of :python:`&quot;mixed&quot;` or :python:`&quot;pure&quot;`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kind</span>
+
+    <span class="nd">@kind</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">kind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">kind</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">COMPATIBILITIES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The given :python:`kind` (&#39;</span><span class="si">{</span><span class="n">kind</span><span class="si">}</span><span class="s2">&#39;) is incompatible with the given :python:`form` (&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">form</span><span class="si">}</span><span class="s2">&#39;).&quot;&quot;&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kind</span> <span class="o">=</span> <span class="n">kind</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -722,18 +862,18 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_notation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_vector</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="k">if</span> <span class="p">(</span>
-                    <span class="n">matrix_shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">COLUMN</span><span class="o">.</span><span class="n">value</span>
+                    <span class="n">matrix_shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">COLUMN</span><span class="o">.</span><span class="n">value</span>
                     <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">conjugate</span> <span class="o">==</span> <span class="kc">False</span>
                 <span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
-                    <span class="n">matrix_shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">ROW</span><span class="o">.</span><span class="n">value</span>
+                    <span class="n">matrix_shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">ROW</span><span class="o">.</span><span class="n">value</span>
                     <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">conjugate</span> <span class="o">==</span> <span class="kc">True</span>
                 <span class="p">):</span>
                     <span class="n">notation</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;⟩&quot;</span>
                 <span class="k">elif</span> <span class="p">(</span>
-                    <span class="n">matrix_shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">ROW</span><span class="o">.</span><span class="n">value</span>
+                    <span class="n">matrix_shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">ROW</span><span class="o">.</span><span class="n">value</span>
                     <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">conjugate</span> <span class="o">==</span> <span class="kc">False</span>
                 <span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
-                    <span class="n">matrix_shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">COLUMN</span><span class="o">.</span><span class="n">value</span>
+                    <span class="n">matrix_shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">)</span> <span class="o">==</span> <span class="n">Shapes</span><span class="o">.</span><span class="n">COLUMN</span><span class="o">.</span><span class="n">value</span>
                     <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">conjugate</span> <span class="o">==</span> <span class="kc">True</span>
                 <span class="p">):</span>
                     <span class="n">notation</span> <span class="o">=</span> <span class="s2">&quot;⟨&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;|&quot;</span>
@@ -749,17 +889,17 @@
         <span class="k">return</span> <span class="n">notation</span>
 
     <span class="nd">@notation</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">notation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">notation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_notation</span> <span class="o">=</span> <span class="n">notation</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">family</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">family</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The code of the block element that the object is to be visualized as.</span>
 <span class="sd">        Not intended to be set by the user.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_family</span>
 
     <span class="nd">@family</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">family</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">family</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_family</span> <span class="o">=</span> <span class="n">family</span>
 
     <span class="nd">@property</span>
@@ -800,20 +940,6 @@
         <span class="k">return</span> <span class="p">[]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The matrix representation of the object.</span>
-<span class="sd">        Considered read-only (this is strictly enforced by :py:class:`~qhronology.quantum.gates.QuantumGate` class and its derivatives), though can be (indirectly) mutated by some derived classes (such as :py:class:`~qhronology.quantum.states.QuantumState`).</span>
-<span class="sd">        Not intended to be set directly by the user.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_matrix</span><span class="p">)</span>
-
-    <span class="nd">@matrix</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_matrix</span> <span class="o">=</span> <span class="n">matrix</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_debug&quot;</span><span class="p">):</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_matrix</span><span class="p">))</span>
-
-    <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">conjugate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to perform Hermitian conjugation on the object when it is called.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conjugate</span>
@@ -821,6 +947,24 @@
     <span class="nd">@conjugate</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">conjugate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_conjugate</span> <span class="o">=</span> <span class="n">conjugate</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">numerical</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to cast the object&#39;s matrix elements as floating-point values or exact values.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_numerical</span>
+
+    <span class="nd">@numerical</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">numerical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_numerical</span> <span class="o">=</span> <span class="n">numerical</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">array</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to cast the object&#39;s matrix as a NumPy array or SymPy matrix.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_array</span>
+
+    <span class="nd">@array</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_array</span> <span class="o">=</span> <span class="n">array</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>

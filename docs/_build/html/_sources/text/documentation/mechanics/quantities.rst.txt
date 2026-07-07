@@ -118,7 +118,15 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. autofunction:: qhronology.mechanics.quantities.distance
+
+   .. raw:: latex
+
+      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -387,5 +395,9 @@ Functions
 
 Mixin
 -----
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 .. autoclass:: qhronology.mechanics.quantities.QuantitiesMixin

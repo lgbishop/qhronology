@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,8 +71,8 @@
     <link rel="prev" title="States" href="states.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -505,10 +505,10 @@
 </pre></div>
 </div>
 <p>and its derivatives (subclasses),</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pauli</span><span class="p">,</span> <span class="n">GellMann</span><span class="p">,</span> <span class="n">Rotation</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Diagonal</span><span class="p">,</span> <span class="n">Swap</span><span class="p">,</span> <span class="n">Summation</span><span class="p">,</span> <span class="n">Not</span><span class="p">,</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Fourier</span><span class="p">,</span> <span class="n">Measurement</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Unitary</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">,</span> <span class="n">GellMann</span><span class="p">,</span> <span class="n">Rotation</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Diagonal</span><span class="p">,</span> <span class="n">Swap</span><span class="p">,</span> <span class="n">Summation</span><span class="p">,</span> <span class="n">Not</span><span class="p">,</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Fourier</span><span class="p">,</span> <span class="n">Measurement</span>
 </pre></div>
 </div>
-<p>These objects describe a distinct vertical “slice” in the quantum circuit picturalism, and so include information about the locations of both control and anticontrol nodes, in addition to the presence of any empty wires. They also possess other metadata associated with the gate such as parameter values, symbolic assumptions, and algebraic conditions.</p>
+<p>These objects describe a distinct vertical “slice” in the quantum circuit picturalism, and so include information about the locations of both control and anticontrol nodes, in addition to the presence of any empty wires. They also possess other metadata associated with the gate such as parameter values, symbolic assumptions, and algebraic substitutions.</p>
 <p>Facilities to combine gates together are also provided by the package and take two forms: “interleaved” compositions via the <a class="reference internal" href="#qhronology.quantum.gates.GateInterleave" title="qhronology.quantum.gates.GateInterleave"><code class="xref py py-class docutils literal notranslate"><span class="pre">GateInterleave</span></code></a> class, and “stacked” compositions via the <a class="reference internal" href="#qhronology.quantum.gates.GateStack" title="qhronology.quantum.gates.GateStack"><code class="xref py py-class docutils literal notranslate"><span class="pre">GateStack</span></code></a> class:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">GateInterleave</span><span class="p">,</span> <span class="n">GateStack</span>
 </pre></div>
@@ -527,8 +527,10 @@
 <dd><em class="sig-param"><span class="n"><span class="pre">anticontrols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">num_systems</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">substitutions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">conjugate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">exponent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">coefficient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -543,7 +545,7 @@
 <p>This class forms the base upon which all quantum gates are built.
 Instances of this base class and its derivatives (subclasses) provide complete descriptions of quantum gates.
 This means that they describe a complete vertical column (or “slice”) in the quantum circuitry picturalism, including control nodes, anticontrol nodes, empty wires, and the (unitary) gate operator itself.
-The details of any algebraic symbols, mathematical conditions, and visualization labels are also recorded.
+The details of any algebraic symbols, mathematical substitutions, and visualization labels are also recorded.
 Note that, unlike the internal matrix representations contained within instances of the <a class="reference internal" href="states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> class (and its derivatives), the matrix representations of subclass instances of <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> are <em>not</em> mutable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -569,12 +571,15 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <li><p><strong>dim</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The dimensionality of the quantum gate’s Hilbert space.
 Must be a non-negative integer.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">2</span></code>.</p></li>
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the gate’s matrix elements as floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the gate’s matrix as a NumPy array (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or SymPy matrix (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>symbols</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[sym</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict[str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Any]]</span></code>) – A dictionary in which the keys are individual symbols (usually found within the gate specification <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code>) and the values are dictionaries of their respective SymPy keyword-argument <code class="code highlight python docutils literal highlight-python"><span class="n">assumptions</span></code>.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">{}</span></code>.</p></li>
-<li><p><strong>conditions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – A list of <span class="math notranslate nohighlight">\(2\)</span>-tuples of conditions to be applied to the gate.
+<li><p><strong>substitutions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – A list of 2-tuples of substitutions to be applied to the gate.
 All instances of the expression in each tuple’s first element are replaced by the expression in the respective second element.
 This uses the same format as the SymPy <code class="code highlight python docutils literal highlight-python"><span class="n">subs</span><span class="p">()</span></code> method.
-The order in which they are applied is simply their order in the list.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[]</span></code>.</p></li>
 <li><p><strong>conjugate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the gate when it is called.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
@@ -825,9 +830,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span id="sec-docs-gates-properties"></span><h3>Constructor argument properties<a class="headerlink" href="#constructor-argument-properties" title="Link to this heading">#</a></h3>
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.spec">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">spec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.spec" title="Link to this definition">#</a></dt>
-<dd><p>The matrix representation of the quantum gate’s operator.
-Provides a complete description of the operator in a standard <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional basis.</p>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">spec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.spec" title="Link to this definition">#</a></dt>
+<dd><p>The specification of the quantum object.
+Provides a description of the object’s values in a standard <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional basis.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -867,9 +872,8 @@ Provides a complete description of the operator in a standard <code class="code 
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.num_systems">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">num_systems</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.num_systems" title="Link to this definition">#</a></dt>
-<dd><p>The number of systems that the object spans.
-Must be a non-negative integer.
-Should not be set for states.</p>
+<dd><p>The number of systems that the gate spans.
+Must be a non-negative integer.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -877,6 +881,18 @@ Should not be set for states.</p>
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.dim" title="Link to this definition">#</a></dt>
 <dd><p>The dimensionality of the quantum object.
 Must be a non-negative integer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.numerical">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">numerical</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.numerical" title="Link to this definition">#</a></dt>
+<dd><p>Whether to cast the object’s matrix elements as floating-point values or exact values.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.array">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">array</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.array" title="Link to this definition">#</a></dt>
+<dd><p>Whether to cast the object’s matrix as a NumPy array or SymPy matrix.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -914,9 +930,9 @@ A full list of currently supported predicates, and their defaults, is as follows
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.conditions">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">conditions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.conditions" title="Link to this definition">#</a></dt>
-<dd><p>A list of <span class="math notranslate nohighlight">\(2\)</span>-tuples of conditions to be applied to the object’s matrix representation.</p>
+<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.substitutions">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">substitutions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.substitutions" title="Link to this definition">#</a></dt>
+<dd><p>A list of 2-tuples of substitutions to be applied to the object’s matrix representation.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -980,7 +996,7 @@ Not intended to be set by the user in most cases.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.family">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">family</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.family" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">family</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.family" title="Link to this definition">#</a></dt>
 <dd><p>The code of the block element that the object is to be visualized as.
 Not intended to be set by the user.</p>
 </dd></dl>
@@ -989,40 +1005,73 @@ Not intended to be set by the user.</p>
 <section id="read-only-properties">
 <h3>Read-only properties<a class="headerlink" href="#read-only-properties" title="Link to this heading">#</a></h3>
 <dl class="py property">
-<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.systems">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">systems</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.systems" title="Link to this definition">#</a></dt>
-<dd><p>Read-only property containing an ordered list of the numerical indices of the object’s systems.</p>
+<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.current">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">current</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.current" title="Link to this definition">#</a></dt>
+<dd><p>The current (unprocessed) matrix representation of the quantum gate.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.matrix">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">mat</span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.matrix" title="Link to this definition">#</a></dt>
-<dd><p>The matrix representation of the total gate across all of its systems.</p>
+<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.systems">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">systems</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.systems" title="Link to this definition">#</a></dt>
+<dd><p>Read-only property containing an ordered list of the numerical indices of the object’s systems.</p>
 </dd></dl>
 
 </section>
 <section id="methods">
 <span id="sec-docs-gates-methods"></span><h3>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h3>
 <dl class="py method">
+<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.matrix">
+<span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">matrix</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/quantum/gates.html#QuantumGate.matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.matrix" title="Link to this definition">#</a></dt>
+<dd><p>Compute the unprocessed matrix representation of the gate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the matrix elements as floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span></code>.</p></li>
+<li><p><strong>array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the matrix as a NumPy array (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or SymPy matrix (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">array</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">arr</span></code> – The unprocessed matrix representation of the gate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.output">
 <span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">output</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">substitutions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">simplify</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">conjugate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">exponent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">coefficient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/quantum/gates.html#QuantumGate.output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.output" title="Link to this definition">#</a></dt>
-<dd><p>Construct the gate and return its matrix representation.</p>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/quantum/gates.html#QuantumGate.output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.output" title="Link to this definition">#</a></dt>
+<dd><p>Compute the processed matrix representation of the constructed gate (including any controls, anticontrols, and empty systems).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>conditions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – Algebraic conditions to be applied to the gate.
-Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">conditions</span></code>.</p></li>
-<li><p><strong>simplify</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform algebraic simplification on the gate.
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the matrix elements as floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span></code>.</p></li>
+<li><p><strong>array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the matrix as a NumPy array (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or SymPy matrix (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">array</span></code>.</p></li>
+<li><p><strong>substitutions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – Algebraic substitutions to be applied to the gate.
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span></code>.</p></li>
+<li><p><strong>simplify</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform mathematical simplification on the gate.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not simplify.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>conjugate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the gate.
 If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not conjugate.
@@ -1030,13 +1079,13 @@ Defaults to the value of <code class="code highlight python docutils literal hig
 <li><p><strong>exponent</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span> <span class="pre">|</span> <span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The scalar value by which the gate’s matrix representation is exponentiated.
 If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not exponentiate.
 Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">exponent</span></code>.</p></li>
-<li><p><strong>coefficient</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The scalar value by which the gate’s matrix representation is multiplied.
+<li><p><strong>coefficient</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span> <span class="pre">|</span> <span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The scalar value by which the gate’s matrix representation is multiplied.
 If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not multiply the gate by the coefficient.
 Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">coefficient</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span></code> – The constructed quantum gate.</p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">arr</span></code> – The processed matrix representation of the constructed gate.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1049,20 +1098,43 @@ Defaults to the value of <code class="code highlight python docutils literal hig
 <dd><em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">return_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">substitutions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">simplify</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">conjugate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">exponent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">coefficient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.print" title="Link to this definition">#</a></dt>
-<dd><p>Print or return a mathematical expression of the quantum object as a string.</p>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/qhronology/quantum/gates.html#QuantumGate.print"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.print" title="Link to this definition">#</a></dt>
+<dd><p>Print or return a mathematical expression of the quantum gate as a string.</p>
+<p>Note that this method is essentially a wrapper on the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate.output" title="qhronology.quantum.gates.QuantumGate.output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">output()</span></code></a> method, and so includes its arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>delimiter</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string containing the character(s) with which to delimit (i.e., separate) the values in the ket and/or bra terms in the mathematical expression.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;,&quot;</span></code>.</p></li>
 <li><p><strong>product</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to represent the mathematical expression using tensor products.
-Only applies if the object is a multipartite composition.
+Only applies if the gate is a multipartite composition.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>return_string</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to return the mathematical expression as a string.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the matrix elements as floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span></code>.</p></li>
+<li><p><strong>substitutions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – Algebraic substitutions to be applied to the gate.
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span></code>.</p></li>
+<li><p><strong>simplify</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform mathematical simplification on the gate.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not simplify.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>conjugate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the gate.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not conjugate.
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">conjugate</span></code>.</p></li>
+<li><p><strong>exponent</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span> <span class="pre">|</span> <span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The scalar value by which the gate is exponentiated.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not exponentiate.
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">exponent</span></code>.</p></li>
+<li><p><strong>coefficient</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span> <span class="pre">|</span> <span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The scalar value by which the gate is multiplied.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not multiply the gate by the coefficient.
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">coefficient</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1125,9 +1197,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pad</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border)).
+<li><p><strong>pad</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A 2-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border)).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>.</p></li>
-<li><p><strong>sep</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates).
+<li><p><strong>sep</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A 2-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></code>.</p></li>
 <li><p><strong>style</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string specifying the style for the circuit visualization to take.
 Can be any of <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;ascii&quot;</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;unicode&quot;</span></code>, or <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;unicode_alt&quot;</span></code>.
@@ -1173,57 +1245,62 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Pauli" title="qhronology.quantum.gates.Pauli"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pauli</span></code></a></p></th>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Unitary" title="qhronology.quantum.gates.Unitary"><code class="xref py py-class docutils literal notranslate"><span class="pre">Unitary</span></code></a></p></th>
+<td><p><code class="code highlight python docutils literal highlight-python"><span class="n">UNI</span></code></p></td>
+<td><p>fixed (qubits)</p></td>
+<td><p>unipartite</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Pauli" title="qhronology.quantum.gates.Pauli"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pauli</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">PAULI</span></code></p></td>
 <td><p>fixed (qubits)</p></td>
 <td><p>unipartite</p></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.GellMann" title="qhronology.quantum.gates.GellMann"><code class="xref py py-class docutils literal notranslate"><span class="pre">GellMann</span></code></a></p></th>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.GellMann" title="qhronology.quantum.gates.GellMann"><code class="xref py py-class docutils literal notranslate"><span class="pre">GellMann</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">GM</span></code></p></td>
 <td><p>fixed (qutrits)</p></td>
 <td><p>unipartite</p></td>
 </tr>
-<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Rotation" title="qhronology.quantum.gates.Rotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rotation</span></code></a></p></th>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Rotation" title="qhronology.quantum.gates.Rotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rotation</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">ROT</span></code></p></td>
 <td><p>fixed (qubits)</p></td>
 <td><p>unipartite</p></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Phase" title="qhronology.quantum.gates.Phase"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phase</span></code></a></p></th>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Phase" title="qhronology.quantum.gates.Phase"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phase</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">PHS</span></code></p></td>
 <td><p>variable (qudits)</p></td>
 <td><p>unipartite</p></td>
 </tr>
-<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Diagonal" title="qhronology.quantum.gates.Diagonal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Diagonal</span></code></a></p></th>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Diagonal" title="qhronology.quantum.gates.Diagonal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Diagonal</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">DIAG</span></code></p></td>
 <td><p>variable (qudits)</p></td>
 <td><p>unipartite</p></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Swap" title="qhronology.quantum.gates.Swap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Swap</span></code></a></p></th>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Swap" title="qhronology.quantum.gates.Swap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Swap</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">SWAP</span></code></p></td>
 <td><p>variable (qudits)</p></td>
 <td><p>bipartite</p></td>
 </tr>
-<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Summation" title="qhronology.quantum.gates.Summation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Summation</span></code></a></p></th>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Summation" title="qhronology.quantum.gates.Summation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Summation</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">SUM</span></code></p></td>
 <td><p>variable (qudits)</p></td>
 <td><p>unipartite</p></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Not" title="qhronology.quantum.gates.Not"><code class="xref py py-class docutils literal notranslate"><span class="pre">Not</span></code></a></p></th>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Not" title="qhronology.quantum.gates.Not"><code class="xref py py-class docutils literal notranslate"><span class="pre">Not</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">NOT</span></code></p></td>
 <td><p>fixed (qubits)</p></td>
 <td><p>unipartite</p></td>
 </tr>
-<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Hadamard" title="qhronology.quantum.gates.Hadamard"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hadamard</span></code></a></p></th>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Hadamard" title="qhronology.quantum.gates.Hadamard"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hadamard</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">HAD</span></code></p></td>
 <td><p>variable (qudits)</p></td>
 <td><p>unipartite, multipartite</p></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Fourier" title="qhronology.quantum.gates.Fourier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fourier</span></code></a></p></th>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Fourier" title="qhronology.quantum.gates.Fourier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fourier</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">QDFT</span></code></p></td>
 <td><p>variable (qudits)</p></td>
 <td><p>unipartite, multipartite</p></td>
 </tr>
-<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Measurement" title="qhronology.quantum.gates.Measurement"><code class="xref py py-class docutils literal notranslate"><span class="pre">Measurement</span></code></a></p></th>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#qhronology.quantum.gates.Measurement" title="qhronology.quantum.gates.Measurement"><code class="xref py py-class docutils literal notranslate"><span class="pre">Measurement</span></code></a></p></th>
 <td><p><code class="code highlight python docutils literal highlight-python"><span class="n">METER</span></code></p></td>
 <td><p>variable (qudits)</p></td>
 <td><p>multipartite</p></td>
@@ -1237,6 +1314,100 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <p class="admonition-title">Note</p>
 <p>In all of these subclasses, the <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> property should not be set.</p>
 </div>
+<dl class="py class">
+<dt class="sig sig-object py" id="qhronology.quantum.gates.Unitary">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Unitary</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/qhronology/quantum/gates.html#Unitary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.gates.Unitary" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a></p>
+<p>A subclass for creating unitary gates and storing their metadata.</p>
+<p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
+<p>A square matrix <span class="math notranslate nohighlight">\(\Unitary\)</span> is said to be <em>unitary</em> if its matrix inverse is equal to its conjugate tranpose (Hermitian conjugate). Mathematically, this is the condition</p>
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-6">
+<span class="eqno">(300)<a class="headerlink" href="#equation-text-documentation-quantum-gates-6" title="Link to this equation">#</a></span>\[\Unitary^\dagger = \Unitary^{-1},\]</div>
+<p>which equivalently means that any unitary matrix satisfies</p>
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-7">
+<span class="eqno">(301)<a class="headerlink" href="#equation-text-documentation-quantum-gates-7" title="Link to this equation">#</a></span>\[\Unitary^\dagger \Unitary = \Unitary \Unitary^\dagger = \Identity,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Identity\)</span> is the identity matrix. Evidently, the inverse of a unitary matrix is another unitary matrix. Additionally, the product of any two unitary matrices is unitary, and so the set of all unitary matrices consitutes a group, called the <em>unitary group</em> (written <span class="math notranslate nohighlight">\(\GroupUnitary(n)\)</span> for the group of <span class="math notranslate nohighlight">\(n \times n\)</span> unitary matrices), with the group operation being matrix multiplication.</p>
+<p>Unitary gates for qubits correspond to <span class="math notranslate nohighlight">\(2 \times 2\)</span> unitary matrices, with one parametrization of such matrices being</p>
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-8">
+<span class="eqno">(302)<a class="headerlink" href="#equation-text-documentation-quantum-gates-8" title="Link to this equation">#</a></span>\[\begin{split}\Unitary(\theta,\phi,\lambda) =
+    \begin{bmatrix} \cos(\theta/2) &amp; -\e^{\eye\lambda}\sin(\theta/2) \\
+    \e^{\eye\phi}\sin(\theta/2) &amp; \e^{\eye(\phi + \lambda)}\cos(\theta/2) \end{bmatrix},\end{split}\]</div>
+<p>where the <em>parameters</em> (<code class="code highlight python docutils literal highlight-python"><span class="n">parameters</span></code>) <span class="math notranslate nohighlight">\(\theta, \phi, \lambda \in \Reals\)</span> can be interpreted as angles. Note that this form is <span class="math notranslate nohighlight">\(2\pi\)</span>-periodic in each of its three parameters, and specifies any element of <span class="math notranslate nohighlight">\(\GroupUnitary(2)\)</span> (up to a global phase).</p>
+<p>This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code> property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>parameters</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]</span></code>) – A 3-tuple of scalar values corresponding to the parameters <span class="math notranslate nohighlight">\((\theta, \phi, \lambda)\)</span> in the given definition.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Arbitrary keyword arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The unitary gate is defined only for <span class="math notranslate nohighlight">\(2\)</span>-dimensional (i.e., binary/qubit) systems.
+This means that the constructor does not take <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code> as an argument, nor can the associated property be set.</p>
+</div>
+<p class="rubric"><span class="classheader6">Examples</span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">U</span> <span class="o">=</span> <span class="n">Unitary</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;θ&quot;</span><span class="p">,</span> <span class="s2">&quot;φ&quot;</span><span class="p">,</span> <span class="s2">&quot;λ&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">U</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[         cos(θ/2),      -exp(I*λ)*sin(θ/2)],</span>
+<span class="go">[exp(I*φ)*sin(θ/2), exp(I*(λ + φ))*cos(θ/2)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">U</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_unitary_u-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_unitary_u-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_unitary_u-dark.png" style="width: 70.92px; height: 30.24px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_unitary_u-light.png"><img alt="../../../_images/text_examples_docstrings_gate_unitary_u-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_unitary_u-light.png" style="width: 70.92px; height: 30.24px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">Unitary</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[1, 0],</span>
+<span class="go">[0, 1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_unitary_i-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_unitary_i-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_unitary_i-dark.png" style="width: 70.92px; height: 30.24px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_unitary_i-light.png"><img alt="../../../_images/text_examples_docstrings_gate_unitary_i-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_unitary_i-light.png" style="width: 70.92px; height: 30.24px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">Unitary</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;H&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[sqrt(2)/2,  sqrt(2)/2],</span>
+<span class="go">[sqrt(2)/2, -sqrt(2)/2]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_unitary_h-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_unitary_h-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_unitary_h-dark.png" style="width: 70.92px; height: 30.24px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_unitary_h-light.png"><img alt="../../../_images/text_examples_docstrings_gate_unitary_h-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_unitary_h-light.png" style="width: 70.92px; height: 30.24px;" />
+</a>
+</div></blockquote>
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd><p>The 3-tuple of scalar values to be used as the parameter values.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="qhronology.quantum.gates.Pauli">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Pauli</span></span><span class="sig-paren">(</span>
@@ -1252,8 +1423,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <p>A subclass for creating Pauli gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
 <p>The <em>Pauli matrices</em> <span class="math notranslate nohighlight">\(\Pauli_i\)</span> are a set of three <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrices,</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-6">
-<span class="eqno">(300)<a class="headerlink" href="#equation-text-documentation-quantum-gates-6" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-9">
+<span class="eqno">(303)<a class="headerlink" href="#equation-text-documentation-quantum-gates-9" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Pauli_1 &amp;= \Pauli_x \equiv \ket{0}\bra{1} + \ket{1}\bra{0}
         = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}, \\
     \Pauli_2 &amp;= \Pauli_y \equiv -\eye \ket{0}\bra{1} + \eye \ket{1}\bra{0}
@@ -1266,7 +1437,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>index</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – <p>The index of the desired Pauli matrix. Can take the following values:</p>
 <ul>
 <li><p><code class="code highlight python docutils literal highlight-python"><span class="mi">0</span></code> (<span class="math notranslate nohighlight">\(2\)</span>-dimensional identity matrix <span class="math notranslate nohighlight">\(\Identity\)</span>)</p></li>
@@ -1418,8 +1589,8 @@ This means that the constructor does not take <code class="code highlight python
 <p>A subclass for creating Gell-Mann gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
 <p>The <em>Gell-Mann matrices</em> <span class="math notranslate nohighlight">\(\GellMann_i\)</span> are a set of eight <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrices,</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-7">
-<span class="eqno">(301)<a class="headerlink" href="#equation-text-documentation-quantum-gates-7" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-10">
+<span class="eqno">(304)<a class="headerlink" href="#equation-text-documentation-quantum-gates-10" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     &amp;\GellMann_1 \equiv \ket{0}\bra{1} + \ket{1}\bra{0}
         = \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}, \\
     &amp;\GellMann_3 \equiv \ket{0}\bra{0} - \ket{1}\bra{1}
@@ -1445,7 +1616,7 @@ This means that the constructor does not take <code class="code highlight python
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>index</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – <p>The index of the desired Gell-Mann matrix. Can take the following values:</p>
 <ul>
 <li><p><code class="code highlight python docutils literal highlight-python"><span class="mi">0</span></code> (<span class="math notranslate nohighlight">\(3\)</span>-dimensional identity matrix <span class="math notranslate nohighlight">\(\Identity\)</span>)</p></li>
@@ -1523,8 +1694,8 @@ This means that the constructor does not take <code class="code highlight python
 <p>A subclass for creating rotation gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
 <p>The elementary <em>rotation matrices</em> <span class="math notranslate nohighlight">\(\Rotation_i\)</span> are a set of three <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrices,</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-8">
-<span class="eqno">(302)<a class="headerlink" href="#equation-text-documentation-quantum-gates-8" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-11">
+<span class="eqno">(305)<a class="headerlink" href="#equation-text-documentation-quantum-gates-11" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Rotation_1 &amp;= \Rotation_x = \e^{-\eye\Pauli_{x}\theta/2} =
         \begin{bmatrix} \cos(\theta/2) &amp; -\eye\sin(\theta/2) \\
         -\eye\sin(\theta/2) &amp; \cos(\theta/2)  \end{bmatrix}, \\
@@ -1540,7 +1711,7 @@ This means that the constructor does not take <code class="code highlight python
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>axis</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – <p>The index corresponding to the axis of the desired rotation matrix.
 Can take the following values:</p>
 <ul>
@@ -1633,8 +1804,8 @@ This means that the constructor does not take <code class="code highlight python
 <p>A subclass for creating phase gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
 <p>In <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions, a <em>phase operator</em> <span class="math notranslate nohighlight">\(\Phase\)</span> may be represented as a <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> diagonal matrix</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-9">
-<span class="eqno">(303)<a class="headerlink" href="#equation-text-documentation-quantum-gates-9" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-12">
+<span class="eqno">(306)<a class="headerlink" href="#equation-text-documentation-quantum-gates-12" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Phase(\omega) &amp;= \sum\limits_{k=0}^{\Dimension - 1} \omega^k \ket{k}\bra{k} \\
     &amp;=
     \begin{bmatrix}
@@ -1650,7 +1821,7 @@ This means that the constructor does not take <code class="code highlight python
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>phase</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The phase factor.
 Defaults to the unit root given by <code class="code highlight python docutils literal highlight-python"><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">I</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span></code>.</p></li>
 <li><p><strong>**kwargs</strong> – Arbitrary keyword arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
@@ -1754,8 +1925,8 @@ Defaults to the unit root given by <code class="code highlight python docutils l
 <p>A subclass for creating diagonal gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
 <p>In <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions, a <em>diagonal operator</em> <span class="math notranslate nohighlight">\(\Diagonal\)</span> may be represented as a <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> diagonal matrix</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-10">
-<span class="eqno">(304)<a class="headerlink" href="#equation-text-documentation-quantum-gates-10" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-13">
+<span class="eqno">(307)<a class="headerlink" href="#equation-text-documentation-quantum-gates-13" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Diagonal(\lambda_0, \lambda_1, \ldots, \lambda_{\Dimension - 1})
     &amp;= \sum\limits_{k=0}^{\Dimension - 1} \lambda_k\ket{k}\bra{k} \\
     &amp;=
@@ -1772,7 +1943,7 @@ Defaults to the unit root given by <code class="code highlight python docutils l
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>entries</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[int</span> <span class="pre">|</span> <span class="pre">list[int]</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]</span></code>) – A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.</p></li>
 <li><p><strong>exponentiation</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to exponentiate (with imaginary unit) the values given in <code class="code highlight python docutils literal highlight-python"><span class="n">entries</span></code>.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
@@ -1864,15 +2035,15 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <p>A subclass for creating SWAP (exchange) gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
 <p>In <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions, a <em>SWAP operator</em> <span class="math notranslate nohighlight">\(\Swap\)</span> between two systems <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> may be represented as a <span class="math notranslate nohighlight">\(\Dimension^2 \times \Dimension^2\)</span> matrix</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-11">
-<span class="eqno">(305)<a class="headerlink" href="#equation-text-documentation-quantum-gates-11" title="Link to this equation">#</a></span>\[\Swap^{A,B} =
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-14">
+<span class="eqno">(308)<a class="headerlink" href="#equation-text-documentation-quantum-gates-14" title="Link to this equation">#</a></span>\[\Swap^{A,B} =
     \sum\limits_{j,k=0}^{\Dimension - 1}
     {\ket{j}\bra{k}}^A \otimes {\ket{k}\bra{j}}^B\]</div>
 <p>where the identity operator acts on all other systems.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>targets</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A list of exactly two indices corresponding to the systems to be swapped.
 Is an argument of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>, so can be specified positionally in <code class="code highlight python docutils literal highlight-python"><span class="o">*</span><span class="n">args</span></code>.</p></li>
 <li><p><strong>**kwargs</strong> – Arbitrary keyword arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
@@ -2037,15 +2208,15 @@ Is an argument of the superclass <a class="reference internal" href="#qhronology
 <p>A subclass for creating SUM (summation) gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
 <p>The <em>SUM gate</em> is essentially a generalization of the NOT gate. In <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions, it is defined as the operator</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-12">
-<span class="eqno">(306)<a class="headerlink" href="#equation-text-documentation-quantum-gates-12" title="Link to this equation">#</a></span>\[\SUM(n) = \sum\limits_{k=0}^{\Dimension - 1} \ket{k \oplus n}\bra{k}\]</div>
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-15">
+<span class="eqno">(309)<a class="headerlink" href="#equation-text-documentation-quantum-gates-15" title="Link to this equation">#</a></span>\[\SUM(n) = \sum\limits_{k=0}^{\Dimension - 1} \ket{k \oplus n}\bra{k}\]</div>
 <p>where <span class="math notranslate nohighlight">\(n \in \Integers_{\geq 0}\)</span> (<code class="code highlight python docutils literal highlight-python"><span class="n">shift</span></code>) is the <em>shift</em> parameter, and <span class="math notranslate nohighlight">\(k \oplus n \equiv k + n \mathrel{\mathrm{mod}} \Dimension\)</span>.</p>
 <p>The case of <span class="math notranslate nohighlight">\(n = 1\)</span> is known as the <em>shift</em> operator, and represents a (non-Hermitian) generalization of the Pauli-<span class="math notranslate nohighlight">\(X\)</span> <span class="math notranslate nohighlight">\(\Pauli_x\)</span> operator to <span class="math notranslate nohighlight">\(\Dimension\)</span> dimensions.</p>
 <p>This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code> property.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>shift</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The summation shift parameter.
 Must be a non-negative integer.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">1</span></code>.</p></li>
@@ -2105,8 +2276,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <p>A subclass for creating NOT (logical <em>negation</em> or “bit-flip”) gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
 <p>The <em>NOT gate</em> is essentially a specialization of the SUM gate to <span class="math notranslate nohighlight">\(2\)</span>-dimensional systems, and is exactly equivalent to the Pauli-<span class="math notranslate nohighlight">\(X\)</span> gate, having the matrix representation</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-13">
-<span class="eqno">(307)<a class="headerlink" href="#equation-text-documentation-quantum-gates-13" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-16">
+<span class="eqno">(310)<a class="headerlink" href="#equation-text-documentation-quantum-gates-16" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \NOT &amp;= \ket{0}\bra{1} + \ket{1}\bra{0} \\
     &amp;= \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}.
 \end{aligned}\end{split}\]</div>
@@ -2115,7 +2286,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>**kwargs</strong> – Arbitrary keyword arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 </ul>
 </dd>
@@ -2138,6 +2309,22 @@ This means that the constructor does not take <code class="code highlight python
 <div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_n-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_n-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_n-dark.png" style="width: 31.32px; height: 13.32px;" />
 </a>
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_n-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_n-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_n-light.png" style="width: 31.32px; height: 13.32px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">NN</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">NN</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="go">Matrix([</span>
+<span class="go">[0, 0, 0, 1],</span>
+<span class="go">[0, 0, 1, 0],</span>
+<span class="go">[0, 1, 0, 0],</span>
+<span class="go">[1, 0, 0, 0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">NN</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_nn-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_not_nn-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_not_nn-dark.png" style="width: 31.32px; height: 41.76px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_not_nn-light.png"><img alt="../../../_images/text_examples_docstrings_gate_not_nn-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_not_nn-light.png" style="width: 31.32px; height: 41.76px;" />
 </a>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -2226,14 +2413,14 @@ This means that the constructor does not take <code class="code highlight python
 <p>A subclass for creating Hadamard gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
 <p>The elementary <em>Hadamard gate</em> <span class="math notranslate nohighlight">\(\Hadamard\)</span> (for qubits) corresponds to the <span class="math notranslate nohighlight">\(2 \times 2\)</span> <em>Hadamard matrix</em></p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-14">
-<span class="eqno">(308)<a class="headerlink" href="#equation-text-documentation-quantum-gates-14" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-17">
+<span class="eqno">(311)<a class="headerlink" href="#equation-text-documentation-quantum-gates-17" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Hadamard &amp;= \frac{1}{\sqrt{2}}\sum\limits_{j,k=0}^{1} (-1)^{jk} \ket{j}\bra{k} \\
     &amp;= \frac{1}{\sqrt{2}}\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{bmatrix}.
 \end{aligned}\end{split}\]</div>
 <p>This can be generalized to the following <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional form for qudits,</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-15">
-<span class="eqno">(309)<a class="headerlink" href="#equation-text-documentation-quantum-gates-15" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-18">
+<span class="eqno">(312)<a class="headerlink" href="#equation-text-documentation-quantum-gates-18" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Hadamard_\Dimension &amp;= \frac{1}{\sqrt{\Dimension}}\sum\limits_{j,k=0}^{\Dimension - 1}
         \omega_\Dimension^{k(\Dimension - j)} \ket{j}\bra{k} \\
     &amp;=
@@ -2250,7 +2437,7 @@ This means that the constructor does not take <code class="code highlight python
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>**kwargs</strong> – Arbitrary keyword arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 </ul>
 </dd>
@@ -2319,8 +2506,8 @@ This means that the constructor does not take <code class="code highlight python
 <p>A subclass for creating Fourier (quantum discrete Fourier transform [QDFT]) gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
 <p>The elementary <em>Fourier operator</em> <span class="math notranslate nohighlight">\(\QFT\)</span> for a single <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional qudit may be represented as the <span class="math notranslate nohighlight">\(\Dimension \times \Dimension\)</span> matrix</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-16">
-<span class="eqno">(310)<a class="headerlink" href="#equation-text-documentation-quantum-gates-16" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-19">
+<span class="eqno">(313)<a class="headerlink" href="#equation-text-documentation-quantum-gates-19" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \QFT &amp;= \frac{1}{\sqrt{\Dimension}} \sum\limits_{j,k=0}^{\Dimension - 1}
         \omega_{\Dimension}^{jk} \ket{j}\bra{k} \\
     &amp;= \frac{1}{\sqrt{\Dimension}}
@@ -2335,8 +2522,8 @@ This means that the constructor does not take <code class="code highlight python
 \end{aligned}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega \equiv \omega_{\Dimension} \equiv \e^{\frac{2\pi\eye}{\Dimension}}\)</span>.</p>
 <p>In the case of <span class="math notranslate nohighlight">\(N\)</span> qudits, it is easier to characterize the <em>multipartite Fourier operator</em> <span class="math notranslate nohighlight">\(\QFT_N\)</span> not by its matrix form but by the transformation it imposes, to which its action on the basis state <span class="math notranslate nohighlight">\(\bigotimes\limits_{\ell=1}^{N} \ket{j_\ell} \equiv \ket{j_1, \ldots, j_N}\)</span> (where <span class="math notranslate nohighlight">\(j_\ell \in \Integers_{0}^{\Dimension - 1}\)</span>) is</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-17">
-<span class="eqno">(311)<a class="headerlink" href="#equation-text-documentation-quantum-gates-17" title="Link to this equation">#</a></span>\[\ket{j_1, \ldots, j_N} \stackrel{\QFT_N}{\longrightarrow}
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-20">
+<span class="eqno">(314)<a class="headerlink" href="#equation-text-documentation-quantum-gates-20" title="Link to this equation">#</a></span>\[\ket{j_1, \ldots, j_N} \stackrel{\QFT_N}{\longrightarrow}
     \frac{1}{\sqrt{\Dimension^N}}
     \bigotimes\limits_{\ell=1}^{N}
     \sum\limits_{k_\ell=0}^{\Dimension - 1}
@@ -2351,7 +2538,7 @@ This means that the constructor does not take <code class="code highlight python
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>composite</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether the composite (multipartite) Fourier gate is to be used.
 If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, copies of the elementary Fourier gate are placed on each index specified in <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code>.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
@@ -2443,20 +2630,20 @@ Has no effect when <code class="code highlight python docutils literal highlight
 <li><p>When <code class="code highlight python docutils literal highlight-python"><span class="n">observable</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>
 (<code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> is a list of Kraus operators or projectors <span class="math notranslate nohighlight">\(\Kraus_i\)</span>):</p></li>
 </ul>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-18">
-<span class="eqno">(312)<a class="headerlink" href="#equation-text-documentation-quantum-gates-18" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \Kraus_i \op{\rho} \Kraus_i^\dagger\]</div>
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-21">
+<span class="eqno">(315)<a class="headerlink" href="#equation-text-documentation-quantum-gates-21" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \Kraus_i \op{\rho} \Kraus_i^\dagger\]</div>
 <ul class="simple">
 <li><p>When <code class="code highlight python docutils literal highlight-python"><span class="n">observable</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>
 (<code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> is a list of observables <span class="math notranslate nohighlight">\(\Observable_i\)</span>):</p></li>
 </ul>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-19">
-<span class="eqno">(313)<a class="headerlink" href="#equation-text-documentation-quantum-gates-19" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \trace[\Observable_i \op{\rho}] \Observable_i\]</div>
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-22">
+<span class="eqno">(316)<a class="headerlink" href="#equation-text-documentation-quantum-gates-22" title="Link to this equation">#</a></span>\[\op{\rho}^\prime = \sum_i \trace[\Observable_i \op{\rho}] \Observable_i\]</div>
 <p>The items in the list <code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> can also be vectors (e.g., <span class="math notranslate nohighlight">\(\ket{\xi_i}\)</span>), in which case each is converted into its corresponding matrix representation (e.g., <span class="math notranslate nohighlight">\(\Kraus_i = \ket{\xi_i}\bra{\xi_i}\)</span>) prior to any measurement(s).</p>
 <p>Note also that this method does not check for validity of supplied POVMs or the completeness of sets of observables, nor does it renormalize the post-measurement state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – Variable-length argument list, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>operators</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[mat</span> <span class="pre">|</span> <span class="pre">arr</span> <span class="pre">|</span> <span class="pre">QuantumObject]</span></code>) – The operator(s) with which to perform the measurement.
 These would typically be a (complete) set of Kraus operators forming a POVM,
 a (complete) set of (orthogonal) projectors forming a PVM,
@@ -2546,6 +2733,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dl>
 <dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">gates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><span class="pre">QuantumGate</span></a></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">merge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">conjugate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">exponent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">coefficient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -2557,14 +2746,18 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dd><p>Bases: <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a></p>
 <p>Compose two or more <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> instances together by interleaving them.</p>
 <p>This is achieved by multiplying the gates’ matrix representations. For example, for gates described by the multipartite operators <span class="math notranslate nohighlight">\(\op{A} \otimes \Identity\)</span> and <span class="math notranslate nohighlight">\(\Identity \otimes \op{B}\)</span>, their interleaved composition is</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-20">
-<span class="eqno">(314)<a class="headerlink" href="#equation-text-documentation-quantum-gates-20" title="Link to this equation">#</a></span>\[(\op{A} \otimes \Identity) \cdot (\Identity \otimes \op{B}) = \op{A} \otimes \op{B}.\]</div>
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-23">
+<span class="eqno">(317)<a class="headerlink" href="#equation-text-documentation-quantum-gates-23" title="Link to this equation">#</a></span>\[(\op{A} \otimes \Identity) \cdot (\Identity \otimes \op{B}) = \op{A} \otimes \op{B}.\]</div>
 <p>While this is a subclass of <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>, all of its inherited properties, except for those corresponding to arguments in its constructor, are read-only. This is because they are calculated from their corresponding properties in the individual instances contained within the <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code> property.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*gates</strong> (<a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>) – Variable-length argument list of <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> instances to be interleaved.</p></li>
+<li><p><strong>*gates</strong> (<a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>) – <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> instances to be interleaved.</p></li>
 <li><p><strong>merge</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to merge the gates together diagrammatically.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the gate’s matrix elements as floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the gate’s matrix as a NumPy array (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or SymPy matrix (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>conjugate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the composite gate when it is called.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
@@ -2666,6 +2859,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dl>
 <dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">gates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><span class="pre">QuantumGate</span></a></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">merge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">conjugate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">exponent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">coefficient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -2678,15 +2873,19 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <p>Compose two or more <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> instances together by “stacking” them vertically.</p>
 <p>This is achieved by computing the tensor product of the gates’ matrix representations.
 For example, for gates described by the multipartite operators <span class="math notranslate nohighlight">\(\op{A} \otimes \Identity\)</span> and <span class="math notranslate nohighlight">\(\Identity \otimes \op{B}\)</span>, their stacked composition is</p>
-<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-21">
-<span class="eqno">(315)<a class="headerlink" href="#equation-text-documentation-quantum-gates-21" title="Link to this equation">#</a></span>\[(\op{A} \otimes \Identity) \otimes (\Identity \otimes \op{B})
+<div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-24">
+<span class="eqno">(318)<a class="headerlink" href="#equation-text-documentation-quantum-gates-24" title="Link to this equation">#</a></span>\[(\op{A} \otimes \Identity) \otimes (\Identity \otimes \op{B})
 = \op{A} \otimes \Identity \otimes \Identity \otimes \op{B}.\]</div>
 <p>This class is derived from the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so should be used in much the same way.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*gates</strong> (<a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>) – Variable-length argument list of <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> instances to be stacked.</p></li>
+<li><p><strong>*gates</strong> (<a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>) – <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> instances to be stacked.</p></li>
 <li><p><strong>merge</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to merge the gates together diagrammatically.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the gate’s matrix elements as floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the gate’s matrix as a NumPy array (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or SymPy matrix (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>conjugate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the composite gate when it is called.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
@@ -2744,15 +2943,16 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_cnots-light.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_cnots-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_stack_cnots-light.png" style="width: 31.32px; height: 206.64px;" />
 </a>
 </div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">GellMann</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="n">GateStack</span><span class="p">(</span><span class="o">*</span><span class="n">gates</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">L</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Rotation</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="s2">&quot;θ&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;R_</span><span class="si">{</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Rotations</span> <span class="o">=</span> <span class="n">GateStack</span><span class="p">(</span><span class="o">*</span><span class="n">gates</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Rotations</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 <blockquote>
-<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_gellmann-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_gellmann-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_stack_gellmann-dark.png" style="width: 91.08px; height: 229.67999999999998px;" />
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_rotation-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_rotation-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_stack_rotation-dark.png" style="width: 91.08px; height: 87.11999999999999px;" />
 </a>
-<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_gellmann-light.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_gellmann-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_stack_gellmann-light.png" style="width: 91.08px; height: 229.67999999999998px;" />
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_stack_rotation-light.png"><img alt="../../../_images/text_examples_docstrings_gate_stack_rotation-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_stack_rotation-light.png" style="width: 91.08px; height: 87.11999999999999px;" />
 </a>
 </div></blockquote>
 </dd></dl>
@@ -2816,8 +3016,10 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.anticontrols"><code class="docutils literal notranslate"><span class="pre">QuantumGate.anticontrols</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.num_systems"><code class="docutils literal notranslate"><span class="pre">QuantumGate.num_systems</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.dim"><code class="docutils literal notranslate"><span class="pre">QuantumGate.dim</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.numerical"><code class="docutils literal notranslate"><span class="pre">QuantumGate.numerical</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.array"><code class="docutils literal notranslate"><span class="pre">QuantumGate.array</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.symbols"><code class="docutils literal notranslate"><span class="pre">QuantumGate.symbols</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.conditions"><code class="docutils literal notranslate"><span class="pre">QuantumGate.conditions</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.substitutions"><code class="docutils literal notranslate"><span class="pre">QuantumGate.substitutions</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.conjugate"><code class="docutils literal notranslate"><span class="pre">QuantumGate.conjugate</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.exponent"><code class="docutils literal notranslate"><span class="pre">QuantumGate.exponent</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.coefficient"><code class="docutils literal notranslate"><span class="pre">QuantumGate.coefficient</span></code></a></li>
@@ -2827,11 +3029,12 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-only-properties">Read-only properties</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.current"><code class="docutils literal notranslate"><span class="pre">QuantumGate.current</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.systems"><code class="docutils literal notranslate"><span class="pre">QuantumGate.systems</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.matrix"><code class="docutils literal notranslate"><span class="pre">QuantumGate.matrix</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.matrix"><code class="docutils literal notranslate"><span class="pre">QuantumGate.matrix()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.output"><code class="docutils literal notranslate"><span class="pre">QuantumGate.output()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.print"><code class="docutils literal notranslate"><span class="pre">QuantumGate.print()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.diagram"><code class="docutils literal notranslate"><span class="pre">QuantumGate.diagram()</span></code></a></li>
@@ -2840,6 +3043,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subclasses">Subclasses</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.Unitary"><code class="docutils literal notranslate"><span class="pre">Unitary</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.Pauli"><code class="docutils literal notranslate"><span class="pre">Pauli</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.GellMann"><code class="docutils literal notranslate"><span class="pre">GellMann</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.Rotation"><code class="docutils literal notranslate"><span class="pre">Rotation</span></code></a></li>

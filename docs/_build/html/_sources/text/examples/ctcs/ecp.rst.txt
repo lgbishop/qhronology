@@ -6,7 +6,7 @@ Equivalent-circuit picture of D-CTCs
 Description
 -----------
 
-This algorithm implements the equivalent-circuit picture (ECP, see :numref:`sec:ECP` :ref:`sec:ECP`) of D-CTCs. In its current form, it is not a particularly useful example, having very general input state and unitary matrix symbolic representations that make any subsequent analysis infeasible. Instead, the algorithm is included simply because it is an interesting demonstration of advanced usage of Qhronology. Note that the larger the number of algebraic symbols (and associated conditions) that are contained within the states and gates, the higher the complexity of the internal calculations, resulting in correspondingly longer computation times.
+This algorithm implements the equivalent-circuit picture (ECP, see :numref:`sec:ECP` :ref:`sec:ECP`) of D-CTCs. In its current form, it is not a particularly useful example, having very general input state and unitary matrix symbolic representations that make any subsequent analysis infeasible. Instead, the algorithm is included simply because it is an interesting demonstration of advanced usage of Qhronology. Note that the larger the number of algebraic symbols (and associated substitutions) that are contained within the states and gates, the higher the complexity of the internal calculations, resulting in correspondingly longer computation times.
 
 .. only:: html
 

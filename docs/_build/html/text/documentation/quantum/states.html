@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=baaebd52"></script>
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,8 +71,8 @@
     <link rel="prev" title="Types" href="../architecture/types.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0.3" />
-    <meta name="docbuild:last-update" content="May 13, 2026"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -528,8 +528,10 @@
 <dd><em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">sym</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">substitutions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">conjugate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -553,7 +555,7 @@ This includes:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>spec</strong> – <p>The specification of the quantum state. Provides a complete description of the state’s values in a standard <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional basis.
+<li><p><strong>spec</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">arr</span> <span class="pre">|</span> <span class="pre">list[list[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span> <span class="pre">|</span> <span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">list[int]]]</span></code>) – <p>The specification of the quantum state. Provides a description of the state’s values in a standard <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional basis.
 Can be one of:</p>
 <ul>
 <li><p>a SymPy matrix (<code class="code highlight python docutils literal highlight-python"><span class="n">mat</span></code>)</p></li>
@@ -571,14 +573,18 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <li><p><strong>dim</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The dimensionality of the quantum state’s Hilbert space.
 Must be a non-negative integer.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">2</span></code>.</p></li>
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the state’s matrix elements as floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the state’s matrix as a NumPy array (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or SymPy matrix (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>symbols</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[sym</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict[str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Any]]</span></code>) – A dictionary in which the keys are individual symbols (usually found within the state specification <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code>) and the values are dictionaries of their respective SymPy keyword-argument <code class="code highlight python docutils literal highlight-python"><span class="n">assumptions</span></code>.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">{}</span></code>.</p></li>
-<li><p><strong>conditions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – A list of <span class="math notranslate nohighlight">\(2\)</span>-tuples of conditions to be applied to the state.
+<li><p><strong>substitutions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – A list of 2-tuples of substitutions to be applied to the state.
 All instances of the expression in each tuple’s first element are replaced by the expression in the respective second element.
 This uses the same format as the SymPy <code class="code highlight python docutils literal highlight-python"><span class="n">subs</span><span class="p">()</span></code> method.
-The order in which they are applied is simply their order in the list.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[]</span></code>.</p></li>
 <li><p><strong>conjugate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the state when it is called.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not conjugate.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>norm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span> <span class="pre">|</span> <span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The value to which the state is normalized.
 If <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>, normalizes to a value of <span class="math notranslate nohighlight">\(1\)</span>.
@@ -596,6 +602,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 Not intended to be set by the user.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;LSTICK&quot;</span></code>.</p></li>
 <li><p><strong>debug</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to print the internal state (held in <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code>) on change.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not print.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 </ul>
 </dd>
@@ -605,15 +612,15 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_vector</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_vector</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">Matrix([</span>
 <span class="go">[a],</span>
 <span class="go">[b]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_vector</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_vector</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">|ψ⟩ = a|0⟩ + b|1⟩</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_vector</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 </pre></div>
@@ -633,18 +640,18 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="gp">... </span>        <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
 <span class="gp">... </span>        <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
 <span class="gp">... </span>    <span class="p">},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[</span>
 <span class="gp">... </span>        <span class="p">(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b) + c*conjugate(c)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="p">],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;φ&quot;</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">qutrit_vector</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qutrit_vector</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">Matrix([</span>
 <span class="go">[a],</span>
 <span class="go">[b],</span>
 <span class="go">[c]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">qutrit_vector</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qutrit_vector</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">|φ⟩ = a|0⟩ + b|1⟩ + c|2⟩</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">qutrit_vector</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 </pre></div>
@@ -660,15 +667,15 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;matrix&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;pure&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;α*conjugate(α) + β*conjugate(β)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;α*conjugate(α) + β*conjugate(β)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ξ&quot;</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_pure</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_pure</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">Matrix([</span>
 <span class="go">[α*conjugate(α), α*conjugate(β)],</span>
 <span class="go">[β*conjugate(α), β*conjugate(β)]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_pure</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_pure</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">|ξ⟩⟨ξ| = α*conjugate(α)|0⟩⟨0| + α*conjugate(β)|0⟩⟨1| + β*conjugate(α)|1⟩⟨0| + β*conjugate(β)|1⟩⟨1|</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">qubit_pure</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 </pre></div>
@@ -754,6 +761,11 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="go">[        0],</span>
 <span class="go">[        0],</span>
 <span class="go">[sqrt(2)/2]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bell_state</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">array([[0.70710678+0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.70710678+0.j]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bell_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="go">|Φ⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bell_state</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
@@ -781,6 +793,15 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="go">[        0],</span>
 <span class="go">[        0],</span>
 <span class="go">[sqrt(2)/2]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ghz_state</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">array([[0.70710678+0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.70710678+0.j]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ghz_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="go">|GHZ⟩ = sqrt(2)/2|0,0,0⟩ + sqrt(2)/2|1,1,1⟩</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ghz_state</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
@@ -808,6 +829,15 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="go">[        0],</span>
 <span class="go">[        0],</span>
 <span class="go">[        0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w_state</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">array([[0.        +0.j],</span>
+<span class="go">       [0.57735027+0.j],</span>
+<span class="go">       [0.57735027+0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.57735027+0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.        +0.j],</span>
+<span class="go">       [0.        +0.j]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="go">|W⟩ = sqrt(3)/3|0,0,1⟩ + sqrt(3)/3|0,1,0⟩ + sqrt(3)/3|1,0,0⟩</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w_state</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
@@ -826,8 +856,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.spec">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">spec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.spec" title="Link to this definition">#</a></dt>
-<dd><p>The matrix representation of the quantum state.
-Provides a complete description of the state in a standard <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional basis.</p>
+<dd><p>The specification of the quantum object.
+Provides a description of the object’s values in a standard <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional basis.</p>
 <p>The object passed to <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> can be any of the following four types:</p>
 <ul class="simple">
 <li><p>a SymPy matrix</p></li>
@@ -851,15 +881,15 @@ Provides a complete description of the state in a standard <code class="code hig
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.form">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">form</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.form" title="Link to this definition">#</a></dt>
-<dd><p>The <em>form</em> of the object.</p>
-<p>Can be either of <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;vector&quot;</span></code> or <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;matrix&quot;</span></code>.
+<dd><p>The <em>form</em> of the object.
+Can be either of <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;vector&quot;</span></code> or <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;matrix&quot;</span></code>.
 Only <a class="reference internal" href="#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> objects can be <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;vector&quot;</span></code>.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.kind">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.kind" title="Link to this definition">#</a></dt>
-<dd><p>The <em>kind</em> of quantum state.
+<dd><p>The <em>kind</em> of quantum object.
 Can be either of <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;mixed&quot;</span></code> or <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;pure&quot;</span></code>.</p>
 </dd></dl>
 
@@ -868,6 +898,18 @@ Can be either of <code class="code highlight python docutils literal highlight-p
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.dim" title="Link to this definition">#</a></dt>
 <dd><p>The dimensionality of the quantum object.
 Must be a non-negative integer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.numerical">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">numerical</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.numerical" title="Link to this definition">#</a></dt>
+<dd><p>Whether to cast the object’s matrix elements as floating-point values or exact values.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.array">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">array</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.array" title="Link to this definition">#</a></dt>
+<dd><p>Whether to cast the object’s matrix as a NumPy array or SymPy matrix.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -905,9 +947,9 @@ A full list of currently supported predicates, and their defaults, is as follows
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.conditions">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">conditions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.conditions" title="Link to this definition">#</a></dt>
-<dd><p>A list of <span class="math notranslate nohighlight">\(2\)</span>-tuples of conditions to be applied to the object’s matrix representation.</p>
+<dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.substitutions">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">substitutions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.substitutions" title="Link to this definition">#</a></dt>
+<dd><p>A list of 2-tuples of substitutions to be applied to the object’s matrix representation.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -948,7 +990,7 @@ Not intended to be set by the user in most cases.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.family">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">family</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.family" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">family</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.family" title="Link to this definition">#</a></dt>
 <dd><p>The code of the block element that the object is to be visualized as.
 Not intended to be set by the user.</p>
 </dd></dl>
@@ -962,6 +1004,12 @@ Not intended to be set by the user.</p>
 </section>
 <section id="read-only-properties">
 <h3>Read-only properties<a class="headerlink" href="#read-only-properties" title="Link to this heading">#</a></h3>
+<dl class="py property">
+<dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.current">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">current</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.current" title="Link to this definition">#</a></dt>
+<dd><p>The current (unprocessed) matrix representation of the quantum state.</p>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.systems">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">systems</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.systems" title="Link to this definition">#</a></dt>
@@ -982,36 +1030,61 @@ The current value is calculated from the state’s matrix representation and its
 Returns <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code> if so, otherwise <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.matrix">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">mat</span></em><a class="headerlink" href="#qhronology.quantum.states.QuantumState.matrix" title="Link to this definition">#</a></dt>
-<dd><p>The matrix representation of the object.
-Considered read-only (this is strictly enforced by <a class="reference internal" href="gates.html#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class and its derivatives), though can be (indirectly) mutated by some derived classes (such as <a class="reference internal" href="#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a>).
-Not intended to be set directly by the user.</p>
-</dd></dl>
-
 </section>
 <section id="methods">
 <span id="sec-docs-states-methods"></span><h3>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.matrix">
+<span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">matrix</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/quantum/states.html#QuantumState.matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.states.QuantumState.matrix" title="Link to this definition">#</a></dt>
+<dd><p>Compute the unprocessed matrix representation of the state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the matrix elements as floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span></code>.</p></li>
+<li><p><strong>array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the matrix as a NumPy array (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or SymPy matrix (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">array</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">arr</span></code> – The unprocessed matrix representation of the state.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.output">
 <span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">output</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">substitutions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">simplify</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">conjugate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span></span></span><a class="reference internal" href="../../../_modules/qhronology/quantum/states.html#QuantumState.output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.states.QuantumState.output" title="Link to this definition">#</a></dt>
-<dd><p>Construct the state’s matrix representation, perform any necessary transformations on it, and return it.</p>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/quantum/states.html#QuantumState.output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.states.QuantumState.output" title="Link to this definition">#</a></dt>
+<dd><p>Compute the processed matrix representation of the state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>conditions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – Algebraic conditions to be applied to the state.
-Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">conditions</span></code>.</p></li>
-<li><p><strong>simplify</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform algebraic simplification on the state.
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the matrix elements as floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span></code>.</p></li>
+<li><p><strong>array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the matrix as a NumPy array (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or SymPy matrix (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">array</span></code>.</p></li>
+<li><p><strong>substitutions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – Algebraic substitutions to be applied to the state.
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span></code>.</p></li>
+<li><p><strong>simplify</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform mathematical simplification on the state.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not simplify.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>conjugate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the state.
 If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not conjugate.
@@ -1022,7 +1095,7 @@ Defaults to the value of <code class="code highlight python docutils literal hig
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span></code> – The matrix or vector representation of the quantum state.</p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">arr</span></code> – The processed matrix representation of the object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1035,20 +1108,39 @@ Defaults to the value of <code class="code highlight python docutils literal hig
 <dd><em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">return_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">substitutions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">simplify</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">conjugate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="headerlink" href="#qhronology.quantum.states.QuantumState.print" title="Link to this definition">#</a></dt>
-<dd><p>Print or return a mathematical expression of the quantum object as a string.</p>
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/qhronology/quantum/states.html#QuantumState.print"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.states.QuantumState.print" title="Link to this definition">#</a></dt>
+<dd><p>Print or return a mathematical expression of the quantum state as a string.</p>
+<p>Note that this method is essentially a wrapper on the <a class="reference internal" href="#qhronology.quantum.states.QuantumState.output" title="qhronology.quantum.states.QuantumState.output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">output()</span></code></a> method, and so includes its arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>delimiter</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string containing the character(s) with which to delimit (i.e., separate) the values in the ket and/or bra terms in the mathematical expression.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;,&quot;</span></code>.</p></li>
 <li><p><strong>product</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to represent the mathematical expression using tensor products.
-Only applies if the object is a multipartite composition.
+Only applies if the state is a multipartite composition.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>return_string</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to return the mathematical expression as a string.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to cast the matrix elements as floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span></code>.</p></li>
+<li><p><strong>substitutions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – Algebraic substitutions to be applied to the state.
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span></code>.</p></li>
+<li><p><strong>simplify</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform mathematical simplification on the state.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not simplify.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>conjugate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the state.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not conjugate.
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">conjugate</span></code>.</p></li>
+<li><p><strong>norm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span> <span class="pre">|</span> <span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The value to which the state is normalized.
+If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not normalize.
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">norm</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1178,9 +1270,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pad</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border)).
+<li><p><strong>pad</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A 2-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border)).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>.</p></li>
-<li><p><strong>sep</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A two-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates).
+<li><p><strong>sep</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A 2-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></code>.</p></li>
 <li><p><strong>style</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string specifying the style for the circuit visualization to take.
 Can be any of <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;ascii&quot;</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;unicode&quot;</span></code>, or <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;unicode_alt&quot;</span></code>.
@@ -1212,10 +1304,10 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dl class="py method">
 <dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.reset">
 <span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/qhronology/quantum/states.html#QuantumState.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.states.QuantumState.reset" title="Link to this definition">#</a></dt>
-<dd><p>Reset the quantum state’s internal matrix state (specifically its <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> property) to its original value at instantiation.</p>
+<dd><p>Reset the quantum state’s internal matrix state (specifically its <code class="code highlight python docutils literal highlight-python"><span class="n">current</span></code> property) to its original value at instantiation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This resets only the <code class="code highlight python docutils literal highlight-python"><span class="n">matrix</span></code> property of the instance.
+<p>This resets only the <code class="code highlight python docutils literal highlight-python"><span class="n">current</span></code> property of the instance.
 All other attributes and properties are unchanged.</p>
 </div>
 </dd></dl>
@@ -1260,6 +1352,26 @@ All other attributes and properties are unchanged.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.round">
+<span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">round</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qhronology.quantum.states.QuantumState.round" title="Link to this definition">#</a></dt>
+<dd><p>Round the state’s elements to the nearest (real) integer.</p>
+<p class="rubric"><span class="classheader6">Examples</span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[((</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
+<span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;matrix&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;pure&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ⟩⟨ψ| = (1/2 - I)*(1/2 + I)|0⟩⟨0| + (1/2 + I)**2|0⟩⟨1| + (1/2 - I)**2|1⟩⟨0| + (1/2 - I)*(1/2 + I)|1⟩⟨1|</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+<span class="go">|ψ⟩⟨ψ| = |0⟩⟨0| + -1|0⟩⟨1| + -1|1⟩⟨0| + |1⟩⟨1|</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qhronology.quantum.states.QuantumState.simplify">
 <span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">simplify</span></span><span class="sig-paren">(</span>
 
@@ -1268,7 +1380,7 @@ All other attributes and properties are unchanged.</p>
 </dl>
 
 <span class="sig-paren">)</span><a class="headerlink" href="#qhronology.quantum.states.QuantumState.simplify" title="Link to this definition">#</a></dt>
-<dd><p>Apply a forced simplification to the state using the values of its <code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">conditions</span></code> properties.</p>
+<dd><p>Apply a forced simplification to the state using the values of its <code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">substitutions</span></code> properties.</p>
 <p>Useful if intermediate simplification is required during a sequence of mutating operations in order to process the state into a more desirable form.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1515,7 +1627,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="gp">... </span>        <span class="p">(</span><span class="s2">&quot;b*v&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
 <span class="gp">... </span>    <span class="p">],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[</span>
 <span class="gp">... </span>        <span class="p">(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="p">(</span><span class="s2">&quot;u*conjugate(u) + v*conjugate(v)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="p">],</span>
@@ -1572,8 +1684,6 @@ when <code class="code highlight python docutils literal highlight-python"><span
  (<code class="code highlight python docutils literal highlight-python"><span class="n">operators</span></code> is a list of observables <span class="math notranslate nohighlight">\(\Observable_i\)</span>)</p></li>
 </ul>
 </li>
-</ul>
-<ul>
 <li><p>When <code class="code highlight python docutils literal highlight-python"><span class="n">statistics</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, the (reduced) state (<span class="math notranslate nohighlight">\(\op{\rho}\)</span>) (residing on the systems indicated in <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code>) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
 This yields the transformed states:</p>
 <ul class="simple">
@@ -1626,7 +1736,8 @@ Returned if <code class="code highlight python docutils literal highlight-python
 <p>This method does not verify the validity of supplied POVMs or the completeness of sets of observables, nor does it renormalize the post-measurement state.</p>
 </div>
 <p class="rubric"><span class="classheader6">Examples</span></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pauli</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ψ&quot;</span><span class="p">,</span>
@@ -1712,7 +1823,7 @@ If a vector state is postselected against a matrix form, it will automatically b
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Any classes given in <code class="code highlight python docutils literal highlight-python"><span class="n">postselections</span></code> that are derived from the <a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumObject</span></code></a> base class (such as <a class="reference internal" href="#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> and <a class="reference internal" href="gates.html#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>) will have their <code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">conditions</span></code> properties merged into the current <a class="reference internal" href="#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> instance.</p>
+<p>Any classes given in <code class="code highlight python docutils literal highlight-python"><span class="n">postselections</span></code> that are derived from the <a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumObject</span></code></a> base class (such as <a class="reference internal" href="#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> and <a class="reference internal" href="gates.html#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>) will have their <code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">substitutions</span></code> properties merged into the current <a class="reference internal" href="#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> instance.</p>
 </div>
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">psi</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -1773,7 +1884,7 @@ If a vector state is postselected against a matrix form, it will automatically b
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
@@ -1808,7 +1919,7 @@ If a vector state is postselected against a matrix form, it will automatically b
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span><span class="o">.</span><span class="n">purity</span><span class="p">()</span>
@@ -1831,7 +1942,7 @@ If a vector state is postselected against a matrix form, it will automatically b
 <span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span></span></span><a class="headerlink" href="#qhronology.quantum.states.QuantumState.distance" title="Link to this definition">#</a></dt>
@@ -1841,7 +1952,7 @@ If a vector state is postselected against a matrix form, it will automatically b
     = \frac{1}{2}\trace{\abs{\op{\rho} - \op{\tau}}}.\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>state</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The given state.</p>
+<dd class="field-odd"><p><strong>state</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">arr</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The given state.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span></code> – The trace distance between the internal state and <code class="code highlight python docutils literal highlight-python"><span class="n">state</span></code>.</p>
@@ -1852,14 +1963,14 @@ If a vector state is postselected against a matrix form, it will automatically b
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state_B</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state_A</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">state_A</span><span class="p">)</span>
@@ -1907,7 +2018,7 @@ If a vector state is postselected against a matrix form, it will automatically b
 <span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">fidelity</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span></span></span><a class="headerlink" href="#qhronology.quantum.states.QuantumState.fidelity" title="Link to this definition">#</a></dt>
@@ -1917,7 +2028,7 @@ If a vector state is postselected against a matrix form, it will automatically b
     = \left(\trace{\sqrt{\sqrt{\op{\rho}}\,\op{\tau}\sqrt{\op{\rho}}}}\right)^2.\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>state</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The given state.</p>
+<dd class="field-odd"><p><strong>state</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">arr</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The given state.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span></code> – The fidelity between the internal state and <code class="code highlight python docutils literal highlight-python"><span class="n">state</span></code>.</p>
@@ -1928,14 +2039,14 @@ If a vector state is postselected against a matrix form, it will automatically b
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state_B</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state_A</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">state_A</span><span class="p">)</span>
@@ -1962,7 +2073,7 @@ If a vector state is postselected against a matrix form, it will automatically b
 <span class="go">(sqrt(p)*sqrt(q) + sqrt((1 - p)*(1 - q)))**2</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plus_state</span> <span class="o">=</span> <span class="n">QuantumState</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plus_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -1983,7 +2094,7 @@ If a vector state is postselected against a matrix form, it will automatically b
 <span class="sig-prename descclassname"><span class="pre">QuantumState.</span></span><span class="sig-name descname"><span class="pre">entropy</span></span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
@@ -1999,7 +2110,7 @@ If a vector state is postselected against a matrix form, it will automatically b
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>state</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The given state.</p></li>
+<li><p><strong>state</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">arr</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The given state.</p></li>
 <li><p><strong>base</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The dimensionality of the unit of information in which the entropy is measured.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">2</span></code>.</p></li>
 </ul>
@@ -2013,14 +2124,14 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state_B</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;c*conjugate(c) + d*conjugate(d)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state_A</span><span class="o">.</span><span class="n">entropy</span><span class="p">()</span>
@@ -2090,7 +2201,7 @@ Defaults to the value of <code class="code highlight python docutils literal hig
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">form</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;complex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a*conjugate(a) + b*conjugate(b)&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state_AB</span><span class="o">.</span><span class="n">mutual</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -2101,7 +2212,7 @@ Defaults to the value of <code class="code highlight python docutils literal hig
 <span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span>
 <span class="gp">... </span>    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;mixed&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">symbols</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a + b&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a + b&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state_AB</span><span class="o">.</span><span class="n">mutual</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">base</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">)</span>
@@ -2116,11 +2227,11 @@ Defaults to the value of <code class="code highlight python docutils literal hig
 <span class="gp">... </span>        <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
 <span class="gp">... </span>        <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
 <span class="gp">... </span>    <span class="p">},</span>
-<span class="gp">... </span>    <span class="n">conditions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a + b + c&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">substitutions</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a + b + c&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
 <span class="gp">... </span>    <span class="n">norm</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state_ABC</span><span class="o">.</span><span class="n">mutual</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="go">(-a*log(a) - b*log(b) - c*log(c))/log(2)</span>
+<span class="go">-log((a**a*b**b*c**c)**(1/log(2)))</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2300,8 +2411,10 @@ This means that neither <code class="code highlight python docutils literal high
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.form"><code class="docutils literal notranslate"><span class="pre">QuantumState.form</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.kind"><code class="docutils literal notranslate"><span class="pre">QuantumState.kind</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.dim"><code class="docutils literal notranslate"><span class="pre">QuantumState.dim</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.numerical"><code class="docutils literal notranslate"><span class="pre">QuantumState.numerical</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.array"><code class="docutils literal notranslate"><span class="pre">QuantumState.array</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.symbols"><code class="docutils literal notranslate"><span class="pre">QuantumState.symbols</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.conditions"><code class="docutils literal notranslate"><span class="pre">QuantumState.conditions</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.substitutions"><code class="docutils literal notranslate"><span class="pre">QuantumState.substitutions</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.norm"><code class="docutils literal notranslate"><span class="pre">QuantumState.norm</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.conjugate"><code class="docutils literal notranslate"><span class="pre">QuantumState.conjugate</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.label"><code class="docutils literal notranslate"><span class="pre">QuantumState.label</span></code></a></li>
@@ -2311,13 +2424,14 @@ This means that neither <code class="code highlight python docutils literal high
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-only-properties">Read-only properties</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.current"><code class="docutils literal notranslate"><span class="pre">QuantumState.current</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.systems"><code class="docutils literal notranslate"><span class="pre">QuantumState.systems</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.num_systems"><code class="docutils literal notranslate"><span class="pre">QuantumState.num_systems</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.is_vector"><code class="docutils literal notranslate"><span class="pre">QuantumState.is_vector</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.matrix"><code class="docutils literal notranslate"><span class="pre">QuantumState.matrix</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.matrix"><code class="docutils literal notranslate"><span class="pre">QuantumState.matrix()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.output"><code class="docutils literal notranslate"><span class="pre">QuantumState.output()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.print"><code class="docutils literal notranslate"><span class="pre">QuantumState.print()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.diagram"><code class="docutils literal notranslate"><span class="pre">QuantumState.diagram()</span></code></a></li>
@@ -2327,6 +2441,7 @@ This means that neither <code class="code highlight python docutils literal high
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.reset"><code class="docutils literal notranslate"><span class="pre">QuantumState.reset()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.densify"><code class="docutils literal notranslate"><span class="pre">QuantumState.densify()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.dagger"><code class="docutils literal notranslate"><span class="pre">QuantumState.dagger()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.round"><code class="docutils literal notranslate"><span class="pre">QuantumState.round()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.simplify"><code class="docutils literal notranslate"><span class="pre">QuantumState.simplify()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.rewrite"><code class="docutils literal notranslate"><span class="pre">QuantumState.rewrite()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.states.QuantumState.apply"><code class="docutils literal notranslate"><span class="pre">QuantumState.apply()</span></code></a></li>

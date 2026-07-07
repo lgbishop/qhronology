@@ -42,16 +42,16 @@ Class
 
    \hrulefillthick
 
-.. _`sec:docs_P-CTCs_properties`:
+.. .. _`sec:docs_P-CTCs_properties`:
 
-Read-only properties
-^^^^^^^^^^^^^^^^^^^^
+.. Read-only properties
+.. ^^^^^^^^^^^^^^^^^^^^
 
-.. autoproperty:: qhronology.quantum.prescriptions.PCTC.matrix
+.. .. autoproperty:: qhronology.quantum.prescriptions.PCTC.matrix
 
-.. raw:: latex
+.. .. raw:: latex
 
-   \hrulefillthick
+..    \hrulefillthick
 
 .. _`sec:docs_P-CTCs_methods`:
 
@@ -61,6 +61,24 @@ Methods
 .. raw:: latex
 
    \enlargethispage{-\baselineskip}
+
+.. automethod:: qhronology.quantum.prescriptions.PCTC.matrix
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. automethod:: qhronology.quantum.prescriptions.PCTC.output
+
+.. raw:: latex
+
+   \newpage
+   \null
+   \vspace*{-2.35\baselineskip}
+
+.. raw:: latex
+
+   \hrulefillthick
 
 .. automethod:: qhronology.quantum.prescriptions.PCTC.output_violating
 
@@ -78,17 +96,13 @@ Methods
 
    \enlargethispage{\baselineskip}
 
-.. automethod:: qhronology.quantum.prescriptions.PCTC.output
-
-.. raw:: latex
-
-   \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. automethod:: qhronology.quantum.prescriptions.PCTC.state_violating
+
+.. raw:: latex
+
+   \newpage
+   \null
+   \vspace*{-1.50\baselineskip}
 
 .. raw:: latex
 
