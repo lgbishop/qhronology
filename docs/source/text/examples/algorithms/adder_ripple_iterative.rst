@@ -6,7 +6,7 @@ Ripple-carry adder (iterative)
 Description
 -----------
 
-This example builds upon the four-qubit ripple-carry adder in :numref:`eg:adder_ripple` :ref:`eg:adder_ripple`. The implementation here simplifies the algorithm by instead applying copies of the circuit successively to a tetrapartite input state, which is a composition of the augend, addend, carry, and zero states. As a result, the sequence of trace operations (necessary to isolate the output sum and carry states) mixes the pure (vector) input composition, thereby destroying linearity of the evolution in the input states. This means that only mixed states for each qubit in the output sum state can be recovered, and so we can only sum single integers, not *superpositions* of integers. However, keeping the Hilbert space to a smaller total dimensionality at any one time makes the computations *much* faster, and so we can work with significantly larger integers.
+This example builds upon the four-qubit ripple-carry adder in :numref:`eg:adder_ripple` :ref:`eg:adder_ripple`. The implementation here simplifies the algorithm by instead applying copies of the circuit successively to a tetrapartite input state, which is a composition of the augend, addend, carry, and zero states. As a result, the sequence of trace operations (necessary to isolate the output sum and carry states) mixes the pure (vector) input composition, thereby destroying linearity of the evolution in the input states. This means that only mixed states for each qubit in the output sum state can be recovered, and so we can only sum single integers, not *superpositions* of integers. However, keeping the Hilbert space small at any one time makes the computations *much* faster, and so we can work with significantly larger integers.
 
 .. only:: html
 
@@ -164,13 +164,15 @@ Results
 .. code:: python
 
    >>> print(f"Duration: {duration} seconds")
-   Duration: 2.709 seconds
+   Duration: 1.584 seconds
 
 .. raw:: latex
 
    \end{code}
 
-This is evidently much faster (even for significantly larger numbers) than the linear, non-iterative implementation in :numref:`eg:adder_ripple` :ref:`eg:adder_ripple`.
+This is evidently much faster (especially for larger numbers) than the linear, non-iterative implementation in :numref:`eg:adder_ripple` :ref:`eg:adder_ripple`.
+
+.. This is evidently much faster (even for significantly larger numbers) than the linear, non-iterative implementation in :numref:`eg:adder_ripple` :ref:`eg:adder_ripple`.
 
 .. raw:: latex
    

@@ -3076,10 +3076,10 @@ class VisualizationMixin:
         Arguments
         ---------
         pad : tuple[int, int]
-            A two-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border)).
+            A 2-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border)).
             Defaults to :python:`(1, 0)`.
         sep : tuple[int, int]
-            A two-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates).
+            A 2-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates).
             Defaults to :python:`(1, 1)`.
         style : str
             A string specifying the style for the circuit visualization to take.

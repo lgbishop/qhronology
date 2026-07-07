@@ -581,6 +581,18 @@ Constructor argument properties
 
    \hrulefillthick
 
+.. autoproperty:: qhronology.quantum.gates.QuantumGate.numerical
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. autoproperty:: qhronology.quantum.gates.QuantumGate.array
+
+.. raw:: latex
+
+   \hrulefillthick
+
 .. autoproperty:: qhronology.quantum.gates.QuantumGate.symbols
 
 .. raw:: latex
@@ -600,10 +612,6 @@ Constructor argument properties
    \hrulefillthick
 
 .. autoproperty:: qhronology.quantum.gates.QuantumGate.exponent
-
-.. raw:: latex
-
-   \newpage
 
 .. raw:: latex
 
@@ -636,26 +644,32 @@ Constructor argument properties
 Read-only properties
 --------------------
 
+.. autoproperty:: qhronology.quantum.gates.QuantumGate.current
+
+.. raw:: latex
+
+   \hrulefillthick
+
 .. autoproperty:: qhronology.quantum.gates.QuantumGate.systems
 
 .. raw:: latex
 
    \hrulefillthick
 
-.. autoproperty:: qhronology.quantum.gates.QuantumGate.matrix
-
 .. raw:: latex
 
-   \hrulefillthick
+   \newpage
 
 .. _`sec:docs_gates_methods`:
 
 Methods
 -------
 
+.. automethod:: qhronology.quantum.gates.QuantumGate.matrix
+
 .. raw:: latex
 
-   \enlargethispage{-2\baselineskip}
+   \hrulefillthick
 
 .. automethod:: qhronology.quantum.gates.QuantumGate.output
 
@@ -664,6 +678,10 @@ Methods
    \hrulefillthick
 
 .. automethod:: qhronology.quantum.gates.QuantumGate.print
+
+   .. raw:: latex
+
+      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -748,10 +766,6 @@ Methods
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \newpage
-
 .. _`sec:docs_gates_subclasses`:
 
 Subclasses
@@ -761,28 +775,7 @@ Most of the canonical gates used in standard quantum computing theory are implem
 
 .. raw:: latex
 
-   \renewcommand{\arraystretch}{1}
-   \renewcommand\cellgape{\Gape[2pt]}
-   \renewcommand\cellset{\renewcommand\arraystretch{1}
-   \setlength\extrarowheight{2pt}}
-   \begin{center}
-   \vspace{0.5cm}
-   \begin{NiceTabular}{*{4}{c}}[corners,hvlines]
-   & & \Block[c, fill=lightblue]{1-2}{\textbf{\textsf{Compositionality}}} \\
-   & & \textit{\textsf{Unipartite}} & \textit{\textsf{Multipartite}} \\
-   \Block[c, fill=lightblue]{2-1}{\textbf{\textsf{Dimensionality}}} & \textit{\textsf{Fixed}} &  \Block[l, respect-arraystretch]{}{\py{Unitary} \\ \py{Pauli} \\ \py{GellMann} \\ \py{Rotation} \\ \py{Not}} & {\small \textsf{(none)}} \\
-   & \textit{\textsf{Variable}} & \Block[l, respect-arraystretch]{}{\py{Phase} \\ \py{Diagonal} \\ \py{Hadamard} \\ \py{Summation}} & \Block[l, respect-arraystretch]{}{\py{Swap} \\ \py{Fourier} \\ \py{Measurement}} \\
-   \end{NiceTabular}
-   \captionof{table}{Classification of Qhronology's \py{QuantumGate} subclasses. Note that the \py{Swap} class can only describe bipartite gates, and so is not multipartite for any general number of systems. Also note that gates of the \py{Measurement} class can act on systems of any dimension but do not themselves possess a dimensionality.}\label{tbl:gate_classes}
-   \end{center}
-
-.. raw:: latex
-
    \renewcommand{\arraystretch}{1.25}
-
-.. raw:: latex
-
-   \vspace*{\baselineskip}
 
 .. list-table:: Classifications and aliases of Qhronology's :py:class:`~qhronology.quantum.gates.QuantumGate` subclasses.
    :widths: 9 7 11 13
@@ -841,6 +834,27 @@ Most of the canonical gates used in standard quantum computing theory are implem
      - :python:`METER`
      - variable (qudits)
      - multipartite
+
+.. raw:: latex
+
+   \newpage
+
+.. raw:: latex
+
+   \renewcommand{\arraystretch}{1}
+   \renewcommand\cellgape{\Gape[2pt]}
+   \renewcommand\cellset{\renewcommand\arraystretch{1}
+   \setlength\extrarowheight{2pt}}
+   \begin{center}
+   \vspace{0.5cm}
+   \begin{NiceTabular}{*{4}{c}}[corners,hvlines]
+   & & \Block[c, fill=lightblue]{1-2}{\textbf{\textsf{Compositionality}}} \\
+   & & \textit{\textsf{Unipartite}} & \textit{\textsf{Multipartite}} \\
+   \Block[c, fill=lightblue]{2-1}{\textbf{\textsf{Dimensionality}}} & \textit{\textsf{Fixed}} &  \Block[l, respect-arraystretch]{}{\py{Unitary} \\ \py{Pauli} \\ \py{GellMann} \\ \py{Rotation} \\ \py{Not}} & {\small \textsf{(none)}} \\
+   & \textit{\textsf{Variable}} & \Block[l, respect-arraystretch]{}{\py{Phase} \\ \py{Diagonal} \\ \py{Hadamard} \\ \py{Summation}} & \Block[l, respect-arraystretch]{}{\py{Swap} \\ \py{Fourier} \\ \py{Measurement}} \\
+   \end{NiceTabular}
+   \captionof{table}{Classification of Qhronology's \py{QuantumGate} subclasses. Note that the \py{Swap} class can only describe bipartite gates, and so is not multipartite for any general number of systems. Also note that gates of the \py{Measurement} class can act on systems of any dimension but do not themselves possess a dimensionality.}\label{tbl:gate_classes}
+   \end{center}
 
 For the classes of fixed dimensionality, their constructors do not take :python:`dim` as an argument, nor can the associated property be set. For the classes describing unipartite gates, more than one system can still be targeted, in which case the gate's elementary matrix will simply be duplicated onto each system.
 
@@ -993,6 +1007,10 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
+      \enlargethispage{-2\baselineskip}
+
+   .. raw:: latex
+
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
@@ -1075,10 +1093,6 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -1152,6 +1166,10 @@ Please note that the documentation of these subclasses includes only properties 
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -1235,10 +1253,6 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
-      \enlargethispage{-\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -1298,16 +1312,12 @@ Please note that the documentation of these subclasses includes only properties 
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \newpage
+
 .. autoclass:: qhronology.quantum.gates.GellMann
    :show-inheritance:
-
-   .. raw:: latex
-
-      \vspace*{-\baselineskip}
-
-   .. raw:: latex
-
-      \enlargethispage{2\baselineskip}
 
    .. raw:: latex
 
@@ -1791,7 +1801,7 @@ Please note that the documentation of these subclasses includes only properties 
 
 .. raw:: latex
 
-   \enlargethispage{-2\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.Diagonal
    :show-inheritance:
@@ -1947,12 +1957,16 @@ Please note that the documentation of these subclasses includes only properties 
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. autoclass:: qhronology.quantum.gates.Swap
    :show-inheritance:
 
    .. raw:: latex
 
-      \vspace*{-0.35\baselineskip}
+      \vspace*{-0.5\baselineskip}
 
    .. raw:: latex
 
@@ -2047,7 +2061,7 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
+      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -2095,6 +2109,14 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
+      \vspace*{-0.35\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -2136,10 +2158,6 @@ Please note that the documentation of these subclasses includes only properties 
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -2283,10 +2301,6 @@ Please note that the documentation of these subclasses includes only properties 
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.Summation
    :show-inheritance:
@@ -2436,45 +2450,45 @@ Please note that the documentation of these subclasses includes only properties 
 
       \end{code}
 
-   .. .. raw:: latex
+   .. raw:: latex
 
-   ..    \begin{code}
+      \begin{code}
 
-   .. .. code:: python
+   .. code:: python
 
-   ..    >>> NN = Not(targets=[0, 1])
-   ..    >>> NN.output()
-   ..    Matrix([
-   ..    [0, 0, 0, 1],
-   ..    [0, 0, 1, 0],
-   ..    [0, 1, 0, 0],
-   ..    [1, 0, 0, 0]])
-   ..    >>> NN.diagram()
+      >>> NN = Not(targets=[0, 1])
+      >>> NN.output()
+      Matrix([
+      [0, 0, 0, 1],
+      [0, 0, 1, 0],
+      [0, 1, 0, 0],
+      [1, 0, 0, 0]])
+      >>> NN.diagram()
 
-   .. .. raw:: latex
+   .. raw:: latex
       
-   ..    \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_not_nn.pdf}
-   ..    \vspace{-1\baselineskip}
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_not_nn.pdf}
+      \vspace{-1\baselineskip}
 
-   .. ..
+   ..
 
-   ..    .. only:: html
+      .. only:: html
 
-   ..       .. image:: /figures/output/text_examples_docstrings_gate_not_nn-dark.png
-   ..          :scale: 36 %
-   ..          :align: left
-   ..          :class: only-dark
+         .. image:: /figures/output/text_examples_docstrings_gate_not_nn-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
 
-   ..    .. only:: html
+      .. only:: html
 
-   ..       .. image:: /figures/output/text_examples_docstrings_gate_not_nn-light.png
-   ..          :scale: 36 %
-   ..          :align: left
-   ..          :class: only-light
+         .. image:: /figures/output/text_examples_docstrings_gate_not_nn-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
 
-   .. .. raw:: latex
+   .. raw:: latex
 
-   ..    \end{code}
+      \end{code}
 
    .. raw:: latex
 
@@ -2700,10 +2714,6 @@ Please note that the documentation of these subclasses includes only properties 
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \enlargethispage{-3\baselineskip}
 
    .. raw:: latex
 
@@ -3145,7 +3155,7 @@ Combinations
 
    .. raw:: latex
 
-      \newpage
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -3251,10 +3261,6 @@ Combinations
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \newpage
 
 .. autoclass:: qhronology.quantum.gates.GateStack
    :show-inheritance:

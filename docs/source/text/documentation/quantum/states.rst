@@ -355,6 +355,10 @@ Main class
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -371,6 +375,11 @@ Main class
       [        0],
       [        0],
       [sqrt(2)/2]])
+      >>> bell_state.output(numerical=True, array=True)
+      array([[0.70710678+0.j],
+             [0.        +0.j],
+             [0.        +0.j],
+             [0.70710678+0.j]])
       >>> bell_state.print()
       |Φ⟩ = sqrt(2)/2|0,0⟩ + sqrt(2)/2|1,1⟩
       >>> bell_state.diagram()
@@ -426,6 +435,15 @@ Main class
       [        0],
       [        0],
       [sqrt(2)/2]])
+      >>> ghz_state.output(numerical=True, array=True)
+      array([[0.70710678+0.j],
+             [0.        +0.j],
+             [0.        +0.j],
+             [0.        +0.j],
+             [0.        +0.j],
+             [0.        +0.j],
+             [0.        +0.j],
+             [0.70710678+0.j]])
       >>> ghz_state.print()
       |GHZ⟩ = sqrt(2)/2|0,0,0⟩ + sqrt(2)/2|1,1,1⟩
       >>> ghz_state.diagram()
@@ -481,6 +499,15 @@ Main class
       [        0],
       [        0],
       [        0]])
+      >>> w_state.output(numerical=True, array=True)
+      array([[0.        +0.j],
+             [0.57735027+0.j],
+             [0.57735027+0.j],
+             [0.        +0.j],
+             [0.57735027+0.j],
+             [0.        +0.j],
+             [0.        +0.j],
+             [0.        +0.j]])
       >>> w_state.print()
       |W⟩ = sqrt(3)/3|0,0,1⟩ + sqrt(3)/3|0,1,0⟩ + sqrt(3)/3|1,0,0⟩
       >>> w_state.diagram()
@@ -545,7 +572,7 @@ Constructor argument properties
 .. raw:: latex
 
    \hrulefillthick
-   
+
 .. autoproperty:: qhronology.quantum.states.QuantumState.form
 
 .. raw:: latex
@@ -559,6 +586,18 @@ Constructor argument properties
    \hrulefillthick
 
 .. autoproperty:: qhronology.quantum.states.QuantumState.dim
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. autoproperty:: qhronology.quantum.states.QuantumState.numerical
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. autoproperty:: qhronology.quantum.states.QuantumState.array
 
 .. raw:: latex
 
@@ -615,6 +654,12 @@ Constructor argument properties
 Read-only properties
 --------------------
 
+.. autoproperty:: qhronology.quantum.states.QuantumState.current
+
+.. raw:: latex
+
+   \hrulefillthick
+
 .. autoproperty:: qhronology.quantum.states.QuantumState.systems
 
 .. raw:: latex
@@ -633,22 +678,26 @@ Read-only properties
 
    \hrulefillthick
 
-.. autoproperty:: qhronology.quantum.states.QuantumState.matrix
-
-.. raw:: latex
-
-   \hrulefillthick
-
 .. _`sec:docs_states_methods`:
 
 Methods
 -------
+
+.. automethod:: qhronology.quantum.states.QuantumState.matrix
+
+.. raw:: latex
+
+   \hrulefillthick
 
 .. automethod:: qhronology.quantum.states.QuantumState.output
 
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.print
 
@@ -826,15 +875,9 @@ Methods
 
 .. raw:: latex
 
-   \newpage
-   \null
-   \vspace*{-2\baselineskip}
+   \enlargethispage{-\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.diagram
-
-   .. raw:: latex
-
-      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -850,19 +893,7 @@ Methods
 
 .. raw:: latex
 
-   \vspace*{-0.25\baselineskip}
-
-.. raw:: latex
-
    \hrulefillthick
-
-.. raw:: latex
-
-   \vspace*{-0.25\baselineskip}
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
 
 .. _`sec:docs_states_operations`:
 
@@ -951,6 +982,52 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
+.. automethod:: qhronology.quantum.states.QuantumState.round
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{0.00cm}{0cm}
+
+   .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> psi = QuantumState(
+      ...     spec=[((1 + 2*sp.exp(sp.pi*sp.I/2))/2, [0]), ((1 - 2*sp.exp(sp.pi*sp.I/2))/2, [1])],
+      ...     form="matrix",
+      ...     kind="pure",
+      ...     label="ψ",
+      ... )
+      >>> psi.print()
+      |ψ⟩⟨ψ| = (1/2 - I)*(1/2 + I)|0⟩⟨0| + (1/2 + I)**2|0⟩⟨1| + (1/2 - I)**2|1⟩⟨0| + (1/2 - I)*(1/2 + I)|1⟩⟨1|
+      >>> psi.round()
+      >>> psi.print()
+      |ψ⟩⟨ψ| = |0⟩⟨0| + -1|0⟩⟨1| + -1|1⟩⟨0| + |1⟩⟨1|
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. automethod:: qhronology.quantum.states.QuantumState.simplify
 
    .. raw:: latex
@@ -1028,6 +1105,10 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.apply
 
@@ -1355,7 +1436,15 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{-3\baselineskip}
+
 .. automethod:: qhronology.quantum.states.QuantumState.postselect
+
+   .. raw:: latex
+
+      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -1543,7 +1632,15 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \newpage
+
 .. automethod:: qhronology.quantum.states.QuantumState.distance
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -1642,6 +1739,10 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
@@ -1676,10 +1777,6 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \newpage
 
    .. raw:: latex
 
@@ -1741,7 +1838,7 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    .. raw:: latex
 
-      \enlargethispage{-\baselineskip}
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -1815,21 +1912,9 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
 .. raw:: latex
 
-   \vspace*{-0.25\baselineskip}
-
-.. raw:: latex
-
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. automethod:: qhronology.quantum.states.QuantumState.mutual
-
-   .. raw:: latex
-
-      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -1909,10 +1994,6 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \vspace*{-0.35\baselineskip}
-
 .. _`sec:docs_states_subclasses`:
 
 Subclasses
@@ -1920,13 +2001,9 @@ Subclasses
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \enlargethispage{-\baselineskip}
 
 .. autoclass:: qhronology.quantum.states.VectorState
-
-   .. raw:: latex
-
-      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -2059,6 +2136,10 @@ Subclasses
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. autoclass:: qhronology.quantum.states.MixedState
 

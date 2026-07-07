@@ -53,19 +53,41 @@ Constructor argument properties
 
    \hrulefillthick
 
-Read-only properties
-^^^^^^^^^^^^^^^^^^^^
-
-.. autoproperty:: qhronology.quantum.prescriptions.DCTC.matrix
+.. autoproperty:: qhronology.quantum.prescriptions.DCTC.maximum_entropy
 
 .. raw:: latex
 
    \hrulefillthick
 
+.. Read-only properties
+.. ^^^^^^^^^^^^^^^^^^^^
+
+.. .. autoproperty:: qhronology.quantum.prescriptions.DCTC.matrix
+
+.. .. raw:: latex
+
+..    \hrulefillthick
+
 .. _`sec:docs_D-CTCs_methods`:
 
 Methods
 ^^^^^^^
+
+.. automethod:: qhronology.quantum.prescriptions.DCTC.matrix
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. automethod:: qhronology.quantum.prescriptions.DCTC.output
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.prescriptions.DCTC.output_violating
 
@@ -81,17 +103,7 @@ Methods
 
 .. raw:: latex
 
-   \newpage
-
-.. automethod:: qhronology.quantum.prescriptions.DCTC.output
-
-.. raw:: latex
-
-   \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.prescriptions.DCTC.state_violating
 

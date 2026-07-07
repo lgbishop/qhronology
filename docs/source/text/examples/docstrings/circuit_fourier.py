@@ -1,5 +1,5 @@
 from qhronology.quantum.states import MatrixState
-from qhronology.quantum.gates import Hadamard, Phase, Fourier
+from qhronology.quantum.gates import Hadamard, Phase
 from qhronology.quantum.circuits import QuantumCircuit
 
 import sympy as sp

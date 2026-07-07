@@ -2,10 +2,9 @@ from qhronology.quantum.states import QuantumState, VectorState
 from qhronology.quantum.gates import Not
 from qhronology.quantum.circuits import QuantumCircuit
 from qhronology.mechanics.matrices import encode, decode
+from qhronology.utilities.helpers import tensor_product
 
 import sympy as sp
-from sympy.physics.quantum import TensorProduct
-
 import time
 
 augend_integer = 31
@@ -38,6 +37,7 @@ for i in range(encoding_depth - 1, -1, -1):
     complement_systems = [
         n for n in range(0, encoding_depth) if n != target_system
     ]
+
     augend_state.reset()
     addend_state.reset()
     augend_state.partial_trace(complement_systems)
@@ -46,6 +46,8 @@ for i in range(encoding_depth - 1, -1, -1):
     adder = QuantumCircuit(
         inputs=[augend_state, addend_state, carry_state, zero_state],
         gates=[CCIN, CNII, ICCN, ICNI, CNII],
+        numerical=True,
+        array=False,
     )
     sum_qubit = adder.state(label="s", traces=[0, 1, 3])
     carry_state = adder.state(label="c_i", traces=[0, 1, 2])
@@ -53,7 +55,7 @@ for i in range(encoding_depth - 1, -1, -1):
 
 # Output
 sum_state = QuantumState(
-    spec=sp.Matrix(TensorProduct(*sum_qubits)),
+    spec=sp.Matrix(tensor_product(*sum_qubits)),
     label="s",
 )
 sum_integer = decode(sum_state.output())

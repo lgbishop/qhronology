@@ -1,14 +1,12 @@
 from qhronology.quantum.states import VectorState
 from qhronology.quantum.gates import QuantumGate
 from qhronology.quantum.circuits import QuantumCircuit
-
 from qhronology.quantum.prescriptions import pctc_respecting
 
 import sympy as sp
 
 # Input
 unitary = sp.MatrixSymbol("U", 4, 4).as_mutable()
-
 input_state = VectorState(spec=[("a", [0]), ("b", [1])], label="ψ")
 bell_state = VectorState(
     spec=[(1, [0, 0]), (1, [1, 1])],

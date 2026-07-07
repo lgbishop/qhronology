@@ -1,9 +1,9 @@
 from qhronology.quantum.states import VectorState
 from qhronology.quantum.gates import QuantumGate, Swap, Diagonal
 from qhronology.quantum.prescriptions import QuantumCTC, DCTC, PCTC
+from qhronology.utilities.helpers import tensor_product
 
 import sympy as sp
-from sympy.physics.quantum import TensorProduct
 
 # Input
 clock_state_unevolved = VectorState(
@@ -50,9 +50,9 @@ S = sp.Matrix(9, 9, lambda i, j: 0 if i % 3 == 0 or j % 3 == 0 else S_matrix[i, 
 # Construct vacuum-excluding SWAP gate
 S_vacuum = QuantumGate(
     spec=(
-        TensorProduct(I.matrix(), zero.matrix())
-        + TensorProduct(zero.matrix(), I.matrix())
-        - TensorProduct(zero.matrix(), zero.matrix())
+        tensor_product(I.matrix(), zero.matrix())
+        + tensor_product(zero.matrix(), I.matrix())
+        - tensor_product(zero.matrix(), zero.matrix())
         + S
     ),
     targets=[0, 1],

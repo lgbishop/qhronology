@@ -36,10 +36,10 @@ Qhronology's underlying functionality takes advantage of a few bespoke type alia
    * - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
        | :python:`mat`
      - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
-       | SymPy dense matrices :inlinelatex:`\linebreak` (mutable)
+       | SymPy matrices :inlinelatex:`\linebreak`
        | :inlinelatex:`\vspace*{-1.85\baselineskip}`
      - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
-       | :python:`sympy.matrices.dense.MutableDenseMatrix`
+       | :python:`sympy.matrices.dense.MutableDenseMatrix | sympy.matrices.immutable.ImmutableDenseMatrix`
    * - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
        | :python:`arr`
      - | :inlinelatex:`\vspace*{-1.75\baselineskip}`

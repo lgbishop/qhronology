@@ -637,7 +637,7 @@ def postselect(
     Arguments
     ---------
     matrix : mat | arr | QuantumObject
-        The matrix to be measured.
+        The matrix to be postselected.
     postselections: list[tuple[mat | arr | QuantumObject, int]]
         A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.
     dim : int
@@ -870,22 +870,12 @@ class OperationsMixin:
         - When :python:`statistics` is :python:`True`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured, and the set of resulting statistics is returned.
           This takes the form of an ordered list of values :math:`\\{p_i\\}_i` associated with each given operator, where:
 
-          .. raw:: latex
-
-             \\null
-             \\vspace*{-2.5\\baselineskip}
-
           - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)
             when :python:`observable` is :python:`False`
             :inlinelatex:`\\newline` (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
           - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)
             when :python:`observable` is :python:`True`
             :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\Observable_i`)
-
-        .. raw:: latex
-
-           \\null
-           \\vspace*{-1.75\\baselineskip}
 
         - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
           This yields the transformed states:
@@ -898,11 +888,6 @@ class OperationsMixin:
 
           .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}]\\Observable_i
 
-        .. raw:: latex
-
-           \\null
-           \\vspace*{-1.25\\baselineskip}
-
         In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule
 
         .. math::
@@ -913,12 +898,6 @@ class OperationsMixin:
         when :python:`observable` is :python:`False`. In all other mutation cases, the post-measurement state is a matrix, even if the pre-measurement state was a vector.
 
         The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding operator matrix representation (e.g., :math:`\\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurements.
-
-        .. raw:: latex
-
-           \\enlargethispage{\\baselineskip}
-           \\null
-           \\vspace*{-1.25\\baselineskip}
 
         Arguments
         ---------

@@ -50,7 +50,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     Arguments
     ---------
     spec : mat | arr | list[list[num | expr | str]] | list[tuple[num | expr | str, int | list[int]]]
-        The specification of the quantum state. Provides a complete description of the state's values in a standard :python:`dim`-dimensional basis.
+        The specification of the quantum state. Provides a description of the state's values in a standard :python:`dim`-dimensional basis.
         Can be one of:
 
         - a SymPy matrix (:python:`mat`)
@@ -80,10 +80,9 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         A dictionary in which the keys are individual symbols (usually found within the state specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         Defaults to :python:`{}`.
     substitutions : list[tuple[num | expr | str, num | expr | str]]
-        A list of :math:`2`-tuples of substitutions to be applied to the state.
+        A list of 2-tuples of substitutions to be applied to the state.
         All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
-        The order in which they are applied is simply their order in the list.
         Defaults to :python:`[]`.
     conjugate : bool
         Whether to perform Hermitian conjugation on the state when it is called.

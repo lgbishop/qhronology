@@ -96,10 +96,9 @@ class QuantumGate(QuantumObject):
         A dictionary in which the keys are individual symbols (usually found within the gate specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         Defaults to :python:`{}`.
     substitutions : list[tuple[num | expr | str, num | expr | str]]
-        A list of :math:`2`-tuples of substitutions to be applied to the gate.
+        A list of 2-tuples of substitutions to be applied to the gate.
         All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
-        The order in which they are applied is simply their order in the list.
         Defaults to :python:`[]`.
     conjugate : bool
         Whether to perform Hermitian conjugation on the gate when it is called.
@@ -320,7 +319,9 @@ class QuantumGate(QuantumObject):
     @num_systems.setter
     def num_systems(self, num_systems: int):
         if num_systems < max(self.targets + self.controls + self.anticontrols) + 1:
-            raise ValueError(f"""The specified number of systems ({num_systems}) is smaller than the largest index given in the targets, controls, and anticontrols.""")
+            raise ValueError(
+                f"""The specified number of systems ({num_systems}) is smaller than the largest index given in the targets, controls, and anticontrols."""
+            )
         self._num_systems = num_systems
 
     @property
@@ -898,8 +899,6 @@ class GellMann(QuantumGate):
 
     .. raw:: latex
 
-        \\enlargethispage{\\baselineskip}
-        \\vspace*{-2\\baselineskip}
         \\begin{adjustwidth}{-2.5em}{0cm}
 
     .. math::
@@ -1157,7 +1156,10 @@ class Rotation(QuantumGate):
             )
         if self.axis == 3:
             operator = sp.Matrix(
-                [[sp.exp(-sp.I * angle / 2), 0], [0, sp.exp(sp.I * angle / 2)]]
+                [
+                    [sp.exp(-sp.I * angle / 2), 0],
+                    [0, sp.exp(sp.I * angle / 2)],
+                ]
             )
         operator = cast(operator, numerical=numerical, array=array_intermediate)
         identity = generate_identity(

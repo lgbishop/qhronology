@@ -108,6 +108,7 @@ The :python:`quantum` subpackage contains most of Qhronology's underlying mathem
        | **Subclasses:**
        | :py:class:`~qhronology.quantum.prescriptions.DCTC`
        | :py:class:`~qhronology.quantum.prescriptions.PCTC`
+       | :inlinelatex:`\vspace*{-1.85\baselineskip}`
 
 .. raw:: latex
    
@@ -144,7 +145,7 @@ The :python:`mechanics` subpackage contains Qhronology's core logic for creating
        | :py:func:`~qhronology.mechanics.matrices.vector_basis`
        | :py:func:`~qhronology.mechanics.matrices.ket`
        | :py:func:`~qhronology.mechanics.matrices.bra`
-       | :py:func:`~qhronology.mechanics.matrices.quantum_state`
+       | :py:func:`~qhronology.mechanics.matrices.quantum_object`
        | :py:func:`~qhronology.mechanics.matrices.encode`
        | :py:func:`~qhronology.mechanics.matrices.decode_slow`
        | :py:func:`~qhronology.mechanics.matrices.decode`
@@ -161,6 +162,7 @@ The :python:`mechanics` subpackage contains Qhronology's core logic for creating
        | :py:func:`~qhronology.mechanics.operations.densify`
        | :py:func:`~qhronology.mechanics.operations.columnify`
        | :py:func:`~qhronology.mechanics.operations.dagger`
+       | :py:func:`~qhronology.mechanics.operations.round`
        | :py:func:`~qhronology.mechanics.operations.simplify`
        | :py:func:`~qhronology.mechanics.operations.rewrite`
        | :py:func:`~qhronology.mechanics.operations.apply`

@@ -28,16 +28,16 @@ SWAP_CTC.diagram()
 # Output
 # D-CTCs
 SWAP_DCTC = DCTC(circuit=SWAP_CTC)
-SWAP_DCTC_CR = SWAP_DCTC.state_respecting(simplify=True, label="ρ_D")
-SWAP_DCTC_CV = SWAP_DCTC.state_violating(simplify=True, label="τ_D")
+SWAP_DCTC_CR = SWAP_DCTC.state_respecting(label="ρ_D")
+SWAP_DCTC_CV = SWAP_DCTC.state_violating(label="τ_D")
 
 # P-CTCs
 SWAP_PCTC = PCTC(circuit=SWAP_CTC)
-SWAP_PCTC_CR = SWAP_PCTC.state_respecting(simplify=True, label="ρ_P")
-SWAP_PCTC_CV = SWAP_PCTC.state_violating(simplify=True, label="τ_P")
+SWAP_PCTC_CR = SWAP_PCTC.state_respecting(label="ρ_P")
+SWAP_PCTC_CV = SWAP_PCTC.state_violating(label="τ_P")
 
 # Results
-SWAP_DCTC_CR.print()
-SWAP_DCTC_CV.print()
-SWAP_PCTC_CR.print()
-SWAP_PCTC_CV.print()
+SWAP_DCTC_CR.print(simplify=True)
+SWAP_DCTC_CV.print(simplify=True)
+SWAP_PCTC_CR.print(simplify=True)
+SWAP_PCTC_CV.print(simplify=True)

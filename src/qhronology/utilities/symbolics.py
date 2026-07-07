@@ -85,7 +85,7 @@ class SymbolicsProperties:
 
     @property
     def substitutions(self) -> list[tuple[num | expr | str, num | expr | str]]:
-        """A list of :math:`2`-tuples of substitutions to be applied to the object's matrix representation."""
+        """A list of 2-tuples of substitutions to be applied to the object's matrix representation."""
         return list(self._substitutions)
 
     @substitutions.setter

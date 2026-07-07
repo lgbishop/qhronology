@@ -16,7 +16,7 @@ These are implemented as *extending* subclasses, where each adds to and modifies
 
 .. raw:: latex
    
-   \newpage
+   % \newpage
    \null
    \vspace*{-1.25\baselineskip}
    \enlargethispage{\baselineskip}

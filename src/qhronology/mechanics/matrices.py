@@ -162,7 +162,7 @@ def quantum_object(
     Arguments
     ---------
     spec
-        The specification of the quantum object. Provides a complete description of the object's values in a standard :python:`dim`-dimensional basis. Can be one of:
+        The specification of the quantum object. Provides a description of the object's values in a standard :python:`dim`-dimensional basis. Can be one of:
 
         - a SymPy matrix (:python:`mat`)
         - a NumPy array (:python:`arr`)
@@ -309,7 +309,7 @@ def encode(
     array : bool
         Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
-    reverse : str
+    reverse : bool
         Whether to reverse the ordering of the resulting encoded state.
 
         - If :python:`reverse` is :python:`False`, the significance of the digits *decreases* along the list (i.e., the least-significant digit is last).
@@ -382,7 +382,7 @@ def decode_slow(
         The dimensionality (or base) of the encoding.
         Must be a non-negative integer.
         Defaults to :python:`2`.
-    reverse : str
+    reverse : bool
         Whether to reverse the digit ordering of the encoded state prior to decoding.
 
         - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the list (i.e., the least-significant digit is last).
@@ -499,7 +499,7 @@ def decode_multiple(
         The dimensionality (or base) of the encoding.
         Must be a non-negative integer.
         Defaults to :python:`2`.
-    reverse : str
+    reverse : bool
         Whether to reverse the digit ordering of the encoded state prior to decoding.
 
         - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the list (i.e., the least-significant digit is last).

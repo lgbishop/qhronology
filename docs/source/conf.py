@@ -204,6 +204,7 @@ nitpick_ignore = [
     ("py:class", "sympy.core.symbol.Symbol"),
     ("py:class", "sympy.core.expr.Expr"),
     ("py:class", "sympy.matrices.dense.MutableDenseMatrix"),
+    ("py:class", "sympy.matrices.immutable.ImmutableDenseMatrix"),
     ("py:class", "numpy.ndarray"),
 ]
 

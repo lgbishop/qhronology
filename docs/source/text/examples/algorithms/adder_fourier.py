@@ -5,7 +5,6 @@ from qhronology.utilities.helpers import flatten_list
 from qhronology.mechanics.matrices import encode, decode
 
 import sympy as sp
-
 import time
 
 augend_integer = 1
@@ -91,6 +90,8 @@ gates = flatten_list(QFT + CPHASE + IQFT)
 adder = QuantumCircuit(
     inputs=[augend_state, addend_state],
     gates=gates,
+    numerical=True,
+    array=True,
 )
 adder.diagram(sep=(0, 1))
 
@@ -101,6 +102,7 @@ sum_registers_complement = [
     i for i in range(0, 2 * encoding_depth) if i not in sum_registers
 ]
 sum_state = adder.state(label="s", traces=sum_registers_complement)
+sum_state.round()
 sum_integer = decode(sum_state.output())
 final_time = time.time()
 

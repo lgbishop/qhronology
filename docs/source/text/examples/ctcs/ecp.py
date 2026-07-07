@@ -1,9 +1,9 @@
 from qhronology.quantum.states import MixedState
 from qhronology.quantum.gates import QuantumGate
 from qhronology.quantum.circuits import QuantumCircuit
+from qhronology.mechanics.operations import dagger
 
 import sympy as sp
-from sympy.physics.quantum.dagger import Dagger
 
 iterations = 1
 dimensionality = 2
@@ -39,7 +39,7 @@ U = QuantumGate(
 # Construct substitutions
 substitutions_CR = [(sp.trace(rho), 1)]
 substitutions_unitary = [
-    ((unitary * Dagger(unitary))[n], (sp.eye(dimensionality**2))[n])
+    ((unitary * dagger(unitary))[n], (sp.eye(dimensionality**2))[n])
     for n in range(0, len(unitary))
 ]
 substitutions = substitutions_CR + substitutions_unitary

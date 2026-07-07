@@ -5,7 +5,6 @@ from qhronology.utilities.helpers import flatten_list
 from qhronology.mechanics.matrices import encode, decode
 
 import sympy as sp
-
 import time
 
 augend_integer = 1
@@ -82,6 +81,7 @@ input_spec = flatten_list(
     ]
     + [zero_state]
 )
+
 # Gates
 # Construct sequence of CARRY gates
 carries = []
@@ -103,7 +103,6 @@ for i in range(0, encoding_depth - 1 + int(overflow_qubit)):
         controls=[system_shift + 0, system_shift + 2],
         num_systems=3 * encoding_depth + int(overflow_qubit),
     )
-
     carry = [ICCN, ICNI, CICN]
     carries.append(carry)
 
@@ -137,7 +136,6 @@ for i in range(0, encoding_depth):
             controls=[system_shift + 1, system_shift + 2],
             num_systems=3 * encoding_depth + int(overflow_qubit),
         )
-
         anticarry = [CICN, ICNI, ICCN]
         anticarries_sums.append(anticarry)
 
@@ -151,22 +149,25 @@ for i in range(0, encoding_depth):
         controls=[system_shift + 0],
         num_systems=3 * encoding_depth + int(overflow_qubit),
     )
-
     summation = [ICNI, CINI]
     anticarries_sums.append(summation)
 
 gates = flatten_list(carries + [CNOT] + anticarries_sums)
 
 # Circuit
-adder = QuantumCircuit(inputs=input_spec, gates=gates)
+adder = QuantumCircuit(
+    inputs=input_spec,
+    gates=gates,
+    numerical=True,
+    array=True,
+)
 adder.diagram()
 
 # Output
 initial_time = time.time()
 sum_registers = [3 * i + 2 for i in range(0, encoding_depth)]
 sum_registers_complement = [
-    i
-    for i in range(0, 3 * encoding_depth + int(overflow_qubit))
+    i for i in range(0, 3 * encoding_depth + int(overflow_qubit))
     if i not in sum_registers
 ]
 

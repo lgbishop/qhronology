@@ -29,16 +29,16 @@ CNOT_CTC.diagram()
 # Output
 # D-CTCs
 CNOT_DCTC = DCTC(circuit=CNOT_CTC)
-CNOT_DCTC_CR = CNOT_DCTC.state_respecting(simplify=True, label="ρ_D")
-CNOT_DCTC_CV = CNOT_DCTC.state_violating(simplify=True, label="τ_D")
+CNOT_DCTC_CR = CNOT_DCTC.state_respecting(label="ρ_D")
+CNOT_DCTC_CV = CNOT_DCTC.state_violating(label="τ_D")
 
 # P-CTCs
 CNOT_PCTC = PCTC(circuit=CNOT_CTC)
-CNOT_PCTC_CR = CNOT_PCTC.state_respecting(simplify=True, norm=1, label="ρ_P")
-CNOT_PCTC_CV = CNOT_PCTC.state_violating(simplify=True, label="τ_P")
+CNOT_PCTC_CR = CNOT_PCTC.state_respecting(norm=1, label="ρ_P")
+CNOT_PCTC_CV = CNOT_PCTC.state_violating(label="τ_P")
 
 # Results
-CNOT_DCTC_CR.print()
-CNOT_DCTC_CV.print()
-CNOT_PCTC_CR.print()
-CNOT_PCTC_CV.print()
+CNOT_DCTC_CR.print(simplify=True)
+CNOT_DCTC_CV.print(simplify=True)
+CNOT_PCTC_CR.print(simplify=True)
+CNOT_PCTC_CV.print(simplify=True)

@@ -5,7 +5,6 @@ from qhronology.utilities.helpers import flatten_list
 from qhronology.mechanics.matrices import encode, decode, decode_fast
 
 import sympy as sp
-
 import time
 
 augend_integer = 1
@@ -112,7 +111,12 @@ for i in range(0, encoding_depth):
 gates = flatten_list(gates)
 
 # Circuit
-adder = QuantumCircuit(inputs=input_spec, gates=gates)
+adder = QuantumCircuit(
+    inputs=input_spec,
+    gates=gates,
+    numerical=True,
+    array=True,
+)
 adder.diagram()
 
 # Output

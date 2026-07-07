@@ -71,6 +71,10 @@ In this implementation, the dimensionality of the input state can be decreased b
 
 .. raw:: latex
 
+   \enlargethispage{-\baselineskip}
+
+.. raw:: latex
+
    \begin{codetitled}{Carry-lookahead adder}{}
 
 .. literalinclude:: /text/examples/algorithms/adder_lookahead.py
@@ -122,6 +126,10 @@ When :python:`overflow_qubit = True`:
 .. raw:: latex
    
    \end{code}
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 When :python:`overflow_qubit = False`:
 
@@ -225,7 +233,7 @@ When :python:`overflow_qubit = True`:
 .. code:: python
 
    >>> print(f"Duration: {duration} seconds")
-   Duration: 2.596 seconds
+   Duration: 0.192 seconds
 
 .. raw:: latex
 
@@ -240,7 +248,7 @@ When :python:`overflow_qubit = False`:
 .. code:: python
 
    >>> print(f"Duration: {duration} seconds")
-   Duration: 0.507 seconds
+   Duration: 0.068 seconds
 
 .. raw:: latex
 

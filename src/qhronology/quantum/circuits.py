@@ -98,10 +98,9 @@ class QuantumCircuit(SymbolicsProperties):
         The value of the :python:`symbols` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`symbols` property.
         Defaults to :python:`{}`.
     substitutions : list[tuple[num | expr | str, num | expr | str]]
-        A list of :math:`2`-tuples of substitutions to be applied to all objects (such as states and gates) computed from the circuit.
+        A list of 2-tuples of substitutions to be applied to all objects (such as states and gates) computed from the circuit.
         All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
-        The order in which they are applied is simply their order in the list.
         The value of the :python:`substitutions` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`substitutions` property.
         Defaults to :python:`[]`.
 
@@ -112,6 +111,14 @@ class QuantumCircuit(SymbolicsProperties):
     Note
     ----
     The sum of the :python:`num_systems` properties of the quantum states in :python:`inputs` should match that of each of the gates in :python:`gates`.
+
+    Note
+    ----
+    For convenience, each gate in a circuit automatically expands (with empty wires) to match either the one with the most systems or the number of systems spanned by the input states, whichever is largest.
+
+    Note
+    ----
+    If the circuit's gates span more systems than the input states, then zero states (matching the dimensionality of the gates or other states) are automatically appended to the list of inputs.
     """
 
     def __init__(
@@ -1165,10 +1172,10 @@ class QuantumCircuit(SymbolicsProperties):
         Arguments
         ---------
         pad : tuple[int, int]
-            A two-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border).
+            A 2-tuple of non-negative integers specifying intra-gate padding (i.e., the horizontal and vertical interior paddings between the content at the centre of each gate (e.g., label) and its outer edge (e.g., block border).
             Defaults to :python:`(0, 0)`.
         sep : tuple[int, int]
-            A two-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates.
+            A 2-tuple of non-negative integers specifying inter-gate separation (i.e., the horizontal and vertical exterior separation distances between the edges of neighbouring gates.
             Defaults to :python:`(1, 1)`.
         uniform_spacing : bool
             Whether to uniformly space the gates horizontally such that the midpoint of each is equidistant from those of its neighbours.

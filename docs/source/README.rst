@@ -805,10 +805,7 @@ Possible future work
   - Add the ability for circuits and/or gates to be decomposed (using a specified gate set).
   - Add the ability to use custom styles in the circuit diagram visualization.
   - Make the labelling/notation functionality more robust and extensible.
-  - Improve the performance of the quantum circuit simulation.
-
-    - Parallelize applicable linear algebra operations (e.g., matrix multiplication).
-    - Outsource all numerical computation to more performant libraries such as NumPy (particularly applicable to floating-point arithmetic).
+  - Investigate the addition of an ability to compile simple Qhronology programs to OpenQASM.
 
 - Documentation:
 

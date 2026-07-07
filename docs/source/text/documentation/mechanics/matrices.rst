@@ -54,10 +54,6 @@ Functions
 
    .. raw:: latex
 
-      \enlargethispage{-\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -87,6 +83,10 @@ Functions
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 .. autofunction:: qhronology.mechanics.matrices.ket
 
@@ -125,10 +125,6 @@ Functions
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \newpage
 
    .. raw:: latex
 
@@ -213,29 +209,23 @@ Functions
 
 .. raw:: latex
 
-   \newpage
-   \null
-   \vspace*{-2\baselineskip}
+   \hrulefillthick
 
 .. raw:: latex
 
-   \hrulefillthick
+   \enlargethispage{\baselineskip}
 
 .. autofunction:: qhronology.mechanics.matrices.quantum_object
 
    .. raw:: latex
 
-      \vspace*{-0.25\baselineskip}
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
-
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -383,6 +373,53 @@ Functions
 
    .. raw:: latex
 
+      \begin{code}
+
+   .. code:: python
+
+      >>> quantum_object(
+      ...     spec=[(1/sp.sqrt(2), [0]), (1/sp.sqrt(2), [1])],
+      ...     form="vector",
+      ...     kind="pure",
+      ...     dim=2,
+      ...     numerical=True,
+      ...     array=True,
+      ... )
+      array([[0.70710678+0.j],
+             [0.70710678+0.j]])
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> quantum_object(
+      ...     spec=[
+      ...         (sp.Rational(1, 3), [0]),
+      ...         (sp.Rational(1, 3), [1]),
+      ...         (sp.Rational(1, 3), [2]),
+      ...     ],
+      ...     form="matrix",
+      ...     kind="mixed",
+      ...     dim=3,
+      ...     numerical=True,
+      ...     array=True,
+      ... )
+      array([[0.33333333+0.j, 0.        +0.j, 0.        +0.j],
+             [0.        +0.j, 0.33333333+0.j, 0.        +0.j],
+             [0.        +0.j, 0.        +0.j, 0.33333333+0.j]])
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
       \end{adjustwidth}
 
 .. raw:: latex
@@ -390,6 +427,14 @@ Functions
    \hrulefillthick
 
 .. autofunction:: qhronology.mechanics.matrices.encode
+
+   .. raw:: latex
+
+      \enlargethispage{2\baselineskip}
+
+   .. raw:: latex
+
+      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -485,7 +530,7 @@ Functions
 
 .. raw:: latex
 
-   \enlargethispage{2\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. autofunction:: qhronology.mechanics.matrices.decode_slow
 
@@ -538,13 +583,9 @@ Functions
 
 .. raw:: latex
 
-   \enlargethispage{2\baselineskip}
+   \enlargethispage{-\baselineskip}
 
 .. autofunction:: qhronology.mechanics.matrices.decode_fast
-
-   .. raw:: latex
-
-      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -586,6 +627,10 @@ Functions
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. autofunction:: qhronology.mechanics.matrices.decode_multiple
 

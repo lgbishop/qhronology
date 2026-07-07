@@ -122,7 +122,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         | list[tuple[num | expr | str, int | list[int]]]
     ):
         """The specification of the quantum object.
-        Provides a complete description of the object in a standard :python:`dim`-dimensional basis.
+        Provides a description of the object's values in a standard :python:`dim`-dimensional basis.
         """
         return self._spec
 
