@@ -65,7 +65,7 @@ for FILE in "${jobs[@]}"; do
       }
 
       printing {
-        if (index($0, ".diagram(")) next
+        if (index($0, ".diagram")) $0 = $0 "  # doctest: +SKIP"
         sub(/^[[:space:]]+/, "", $0)
         if (index($0, "from ") == 1) $0 = ">>> " $0
         if (index($0, "import ") == 1) $0 = ">>> " $0
