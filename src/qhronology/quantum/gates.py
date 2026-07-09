@@ -1712,7 +1712,7 @@ class Fourier(QuantumGate):
         Defaults to :python:`True`.
     reverse : bool
         Whether to reverse the order in which the composite (multipartite) Fourier gate is applied.
-        Only applies when :python:`composite` is :python:`False`.
+        Has no effect when :python:`composite` is :python:`False`.
         Defaults to :python:`False`.
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
