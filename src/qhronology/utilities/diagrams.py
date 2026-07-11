@@ -3045,6 +3045,7 @@ class VisualizationMixin:
         partitions = partition_systems(self.systems, self.boundaries)
         for k, partition in enumerate(partitions):
             partition_targets = list(set(partition) & set(self.targets))
+            partition_targets.sort()
             partition_target_middle_index = math.floor((len(partition_targets) - 1) / 2)
             label_list[partition_targets[partition_target_middle_index]] = labels[k]
 
