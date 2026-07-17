@@ -284,12 +284,12 @@ def encode(
     numerical: bool | None = None,
     array: bool | None = None,
     reverse: bool | None = None,
-    output_list: bool | None = None,
-) -> mat | arr:
+    return_type: list | tuple | str | None = None,
+) -> mat | arr | list[int] | tuple[int] | str:
     """Encodes a non-negative integer as a single quantum state vector (ket).
 
-    This is a kind of unsigned integer encoding. It creates a base-:python:`dim` numeral system representation of :python:`integer` as an (ordered) list of encoded digits.
-    Returns this list if :python:`output_list` is :python:`True`, otherwise returns the corresponding ket vector (i.e., a ket vector with a spec of these digits).
+    This is a kind of unsigned integer encoding. It creates a base-:python:`dim` numeral system representation of :python:`integer` as an (ordered) list, tuple, or string of encoded digits.
+    Returns this output format if :python:`return_type` is not :python:`None`, otherwise returns the corresponding ket vector (i.e., a ket vector with a :python:`spec` of these digits).
 
     Arguments
     ---------
@@ -316,20 +316,20 @@ def encode(
         - If :python:`reverse` is :python:`True`, the significance of the digits *increases* along the list (i.e., the least-significant digit is first).
 
         Defaults to :python:`False`.
-    output_list : bool
-        Whether to output a list of encoded digits instead of an encoded state.
-        Defaults to :python:`False`.
+    return_type: list | tuple | str
+        The desired output format as a list, tuple, or string of encoded digits (instead of an encoded vector state).
+        If :python:`None`, returns the encoded ket vector.
+        Defaults to :python:`None`.
 
     Returns
     -------
     mat | arr
-        A normalized column vector (if :python:`output_list` is :python:`False`).
-    list[int]
-        An ordered list of the encoded digits (if :python:`output_list` is :python:`True`).
+        A normalized column vector (if :python:`return_type` is :python:`None`).
+    list[int] | tuple[int] | str
+        An ordered list, tuple, or string of the encoded digits (if :python:`return_type` is not :python:`None`).
     """
     dim = 2 if dim is None else dim
     reverse = False if reverse is None else reverse
-    output_list = False if output_list is None else output_list
 
     digits = []
     integer = int(integer)
@@ -359,8 +359,16 @@ def encode(
         digits.reverse()
 
     encoded = digits
-    if output_list is False:
+    if return_type is None:
         encoded = ket(digits, dim=dim, numerical=numerical, array=array)
+    else:
+        if return_type == list:
+            encoded = list(encoded)
+        if return_type == tuple:
+            encoded = tuple(encoded)
+        if return_type == str:
+            encoded = [str(digit) for digit in encoded]
+            encoded = ''.join(encoded)
 
     return encoded
 

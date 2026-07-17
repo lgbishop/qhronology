@@ -487,7 +487,7 @@ Functions
 
    .. code:: python
 
-      >>> encode(264, num_systems=3, dim=10, output_list=True)
+      >>> encode(264, num_systems=3, dim=10, return_type=list)
       [2, 6, 4]
 
    .. raw:: latex
@@ -500,8 +500,8 @@ Functions
 
    .. code:: python
 
-      >>> encode(115, num_systems=8, output_list=True)
-      [0, 1, 1, 1, 0, 0, 1, 1]
+      >>> encode(115, num_systems=8, return_type=tuple)
+      (0, 1, 1, 1, 0, 0, 1, 1)
 
    .. raw:: latex
 
@@ -513,8 +513,8 @@ Functions
 
    .. code:: python
 
-      >>> encode(115, num_systems=8, output_list=True, reverse=True)
-      [1, 1, 0, 0, 1, 1, 1, 0]
+      >>> encode(115, num_systems=8, return_type=str, reverse=True)
+      '11001110'
 
    .. raw:: latex
 
