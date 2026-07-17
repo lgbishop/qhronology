@@ -368,7 +368,7 @@ def encode(
             encoded = tuple(encoded)
         if return_type == str:
             encoded = [str(digit) for digit in encoded]
-            encoded = ''.join(encoded)
+            encoded = "".join(encoded)
 
     return encoded
 
@@ -537,5 +537,44 @@ def decode_multiple(
             decoded.append(
                 (decode_slow(matrix=elementary, reverse=reverse), matrix[n, n])
             )
+
+    return decoded
+
+
+def decode_bitstring(
+    bitstring: list[int] | tuple[int] | str,
+    dim: int | None = None,
+    reverse: bool | None = None,
+) -> int:
+    """Decodes a bitstring to an unsigned integer.
+
+    Arguments
+    ---------
+    bitstring : list[int] | tuple[int] | str
+        The bitstring to be decoded.
+    dim : int
+        The dimensionality (or base) of the encoding.
+        Must be a non-negative integer.
+        Defaults to :python:`2`.
+    reverse : bool
+        Whether to reverse the digit ordering of the encoded state prior to decoding.
+
+        - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the list (i.e., the least-significant digit is last).
+        - If :python:`reverse` is :python:`True`, the significance of the digits should *increase* along the list (i.e., the least-significant digit is first).
+
+        Defaults to :python:`False`.
+
+    Returns
+    -------
+    int
+        The decoded (unsigned) integer.
+    """
+    dim = 2 if dim is None else dim
+    reverse = False if reverse is None else reverse
+    bitstring = list(bitstring)
+    if reverse is False:
+        bitstring.reverse()
+
+    decoded = sum([int(bitstring[i]) * (dim ** (i)) for i in range(0, len(bitstring))])
 
     return decoded
