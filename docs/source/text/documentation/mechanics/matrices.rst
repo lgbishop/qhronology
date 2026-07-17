@@ -13,7 +13,7 @@ This module provides core functions for constructing matrices in quantum mechani
 
 .. code:: python
 
-   from qhronology.mechanics.matrices import vector_basis, ket, bra, quantum_object, encode, decode_slow, decode, decode_fast, decode_multiple
+   from qhronology.mechanics.matrices import vector_basis, ket, bra, quantum_object, encode, decode, decode_fast, decode_multiple, decode_bitstring
 
 .. raw:: latex
 
@@ -23,7 +23,7 @@ Functions
 ---------
 
 .. .. automodule:: qhronology.mechanics.matrices
-..    :members: vector_basis, ket, bra, quantum_object, encode, decode_slow, decode, decode_fast, decode_multiple
+..    :members: vector_basis, ket, bra, quantum_object, encode, decode, decode, decode_fast, decode_multiple, decode_bitstring
 ..    :member-order: bysource
 
 .. autofunction:: qhronology.mechanics.matrices.vector_basis
@@ -532,7 +532,7 @@ Functions
 
    \enlargethispage{\baselineskip}
 
-.. autofunction:: qhronology.mechanics.matrices.decode_slow
+.. autofunction:: qhronology.mechanics.matrices.decode
 
    .. raw:: latex
 
@@ -546,7 +546,7 @@ Functions
 
    .. code:: python
 
-      >>> decode_slow(encode(64))
+      >>> decode(encode(64))
       64
 
    .. raw:: latex
@@ -560,7 +560,7 @@ Functions
    .. code:: python
 
       >>> matrix = sp.Matrix([0, 0, 0, 0, 1, 0, 0, 0])
-      >>> decode_slow(matrix)
+      >>> decode(matrix)
       4
 
    .. raw:: latex
@@ -570,12 +570,6 @@ Functions
    .. raw:: latex
 
       \end{adjustwidth}
-
-.. raw:: latex
-
-   \hrulefillthick
-
-.. autofunction:: qhronology.mechanics.matrices.decode
 
 .. raw:: latex
 
@@ -664,6 +658,48 @@ Functions
       >>> matrix = sp.Matrix(["x", 0, 0, "y"])
       >>> decode_multiple(matrix)
       [(0, x*conjugate(x)), (3, y*conjugate(y))]
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. autofunction:: qhronology.mechanics.matrices.decode_bitstring
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{0.00cm}{0cm}
+
+   .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> decode_bitstring([1, 0, 1, 0, 1])
+      21
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> decode_bitstring('1110011')
+      115
 
    .. raw:: latex
 

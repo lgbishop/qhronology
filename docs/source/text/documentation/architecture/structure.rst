@@ -147,10 +147,10 @@ The :python:`mechanics` subpackage contains Qhronology's core logic for creating
        | :py:func:`~qhronology.mechanics.matrices.bra`
        | :py:func:`~qhronology.mechanics.matrices.quantum_object`
        | :py:func:`~qhronology.mechanics.matrices.encode`
-       | :py:func:`~qhronology.mechanics.matrices.decode_slow`
        | :py:func:`~qhronology.mechanics.matrices.decode`
        | :py:func:`~qhronology.mechanics.matrices.decode_fast`
        | :py:func:`~qhronology.mechanics.matrices.decode_multiple`
+       | :py:func:`~qhronology.mechanics.matrices.decode_bitstring`
        | :inlinelatex:`\vspace*{-1.85\baselineskip}`
    * - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
        | :python:`operations.py`

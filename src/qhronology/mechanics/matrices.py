@@ -373,7 +373,7 @@ def encode(
     return encoded
 
 
-def decode_slow(
+def decode(
     matrix: mat | arr | QuantumObject,
     dim: int | None = None,
     reverse: bool | None = None,
@@ -407,10 +407,6 @@ def decode_slow(
     ----
     The current method by which this particular implementation operates is accurate but slow.
     For a faster algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_fast` function.
-
-    Note
-    ----
-    This function can also be called using the alias :py:func:`~qhronology.mechanics.matrices.decode`.
     """
     dim = 2 if dim is None else dim
     reverse = False if reverse is None else reverse
@@ -419,7 +415,6 @@ def decode_slow(
     num_systems = count_systems(matrix, dim)
 
     digits = []
-    decoding = [str(k) for k in range(0, dim)]
     for n in range(0, num_systems):
         discard = [k for k in range(0, num_systems) if k != n]
         quantum_unit = partial_trace(
@@ -439,10 +434,6 @@ def decode_slow(
         ]
     )
     return decoded
-
-
-decode = decode_slow
-"""An alias for the :py:func:`~qhronology.mechanics.matrices.decode_slow` function."""
 
 
 def decode_fast(matrix: mat | arr | QuantumObject, dim: int | None = None) -> int:
@@ -467,11 +458,11 @@ def decode_fast(matrix: mat | arr | QuantumObject, dim: int | None = None) -> in
     Note
     ----
     The current method by which this particular implementation operates is fast but may be inaccurate (due to some computational shortcuts that may not work in all cases).
-    For a slower but accurate algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_slow` function.
+    For a slower but accurate algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode` function.
 
     Note
     ----
-    The output cannot be reversed like in :py:func:`~qhronology.mechanics.matrices.decode_slow`.
+    The output cannot be reversed like in :py:func:`~qhronology.mechanics.matrices.decode`.
     """
     dim = 2 if dim is None else dim
     matrix = densify(extract_representation(matrix))
@@ -535,7 +526,7 @@ def decode_multiple(
             )
             elementary[n, n] = to_numerical(1, numerical=matrix_num)
             decoded.append(
-                (decode_slow(matrix=elementary, reverse=reverse), matrix[n, n])
+                (decode(matrix=elementary, reverse=reverse), matrix[n, n])
             )
 
     return decoded
