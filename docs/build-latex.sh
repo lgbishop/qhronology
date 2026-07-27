@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 rm -rf ./_build/latex
+rm -rf ./source_latex
 
 cp -r ./source ./source_latex
 REMOVAL='.. only:: html
