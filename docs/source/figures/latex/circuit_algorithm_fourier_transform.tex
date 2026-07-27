@@ -5,7 +5,7 @@
 
 \usepackage{geometry}
 \geometry{
-paperwidth=20cm,
+paperwidth=25cm,
 paperheight=5cm,
 margin=0cm
 }
@@ -19,10 +19,10 @@ margin=0cm
 \usetikzlibrary{quantikz2}
 \begin{document}
 \begin{quantikz}[row sep={0.85*\QuantikzSeparationRow cm, between origins}, column sep=1em, wire types={q,q,n,q,q}]%[transparent]
-    \lstick{$\ket{x_0}$} &[-2em] \qw &[-0.5em] \gate{\Hadamard}\gategroup[5,steps=5,style={thin,rounded corners,fill=none, inner xsep=2pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{$\Unitary_{0}$} & \gate{\Phase} & \push{\ \dots\ } & \gate{\Phase} & \gate{\Phase} &[0.5em] \gategroup[5,steps=4,style={thin,rounded corners,fill=none, inner xsep=2pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{$\Unitary_{1}$} & \push{\ \dots\ } &&&[0.5em] \push{\ \dots\ } &[0.5em] \gategroup[5,steps=2,style={thin,rounded corners,fill=none, inner xsep=2pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{$\Unitary_{N-2}$} &&[0.5em] \gategroup[5,steps=1,style={thin,rounded corners,fill=none, inner xsep=2pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{$\Unitary_{N-1}$} &[0.5em] \meter{} \\
-    \lstick{$\ket{x_1}$} & & & \ctrl{-1} & \push{\ \dots\ } & & & \gate{\Hadamard} & \push{\ \dots\ } & \gate{\Phase} &\gate{\Phase} & \push{\ \dots\ } &&& & \meter{} \\
+    \lstick{$\ket{x_0}$} &[-2em] \qw &[-0.5em] \gate{\Hadamard}\gategroup[5,steps=5,style={thin,rounded corners,fill=none, inner xsep=2pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{$\Unitary_{0}$} & \gate{\Phase^{d^{-1}}} & \push{\ \dots\ } & \gate{\Phase^{d^{-(N-2)}}} & \gate{\Phase^{d^{-(N-1)}}} &[0.5em] \gategroup[5,steps=4,style={thin,rounded corners,fill=none, inner xsep=2pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{$\Unitary_{1}$} & \push{\ \dots\ } &&&[0.5em] \push{\ \dots\ } &[0.5em] \gategroup[5,steps=2,style={thin,rounded corners,fill=none, inner xsep=2pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{$\Unitary_{N-2}$} &&[0.5em] \gategroup[5,steps=1,style={thin,rounded corners,fill=none, inner xsep=2pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{$\Unitary_{N-1}$} &[-0.25em] \\
+    \lstick{$\ket{x_1}$} & & & \ctrl{-1} & \push{\ \dots\ } & & & \gate{\Hadamard} & \push{\ \dots\ } & \gate{\Phase^{d^{-(N-3)}}} &\gate{\Phase^{d^{-(N-2)}}} & \push{\ \dots\ } &&& & \\
     & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} & & & \push{\raisebox{0.215cm}{$\ \ddots\ $}} & & & & \push{\raisebox{0.215cm}{$\ \ddots\ $}} &&&&&& & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} \\
-    \lstick{$\ket{x_{N-2}}$} & & & & \push{\ \dots\ } & \ctrl{-3} & & & \push{\ \dots\ } & \ctrl{-2} && \push{\ \dots\ } & \gate{\Hadamard} & \gate{\Phase} & & \meter{} \\
-    \lstick{$\ket{x_{N-1}}$} & & & & \push{\ \dots\ } & & \ctrl{-4} & & \push{\ \dots\ } && \ctrl{-3} & \push{\ \dots\ } && \ctrl{-1} & \gate{\Hadamard} & \meter{}
+    \lstick{$\ket{x_{N-2}}$} & & & & \push{\ \dots\ } & \ctrl{-3} & & & \push{\ \dots\ } & \ctrl{-2} && \push{\ \dots\ } & \gate{\Hadamard} & \gate{\Phase^{d^{-1}}} & & \\
+    \lstick{$\ket{x_{N-1}}$} & & & & \push{\ \dots\ } & & \ctrl{-4} & & \push{\ \dots\ } && \ctrl{-3} & \push{\ \dots\ } && \ctrl{-1} & \gate{\Hadamard} &
 \end{quantikz}
 \end{document}

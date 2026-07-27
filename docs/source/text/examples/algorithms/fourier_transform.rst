@@ -6,19 +6,19 @@ Fourier transform decomposition
 Description
 -----------
 
-A canonical decomposition of the multipartite (composite) quantum Fourier transform :math:`\QFT_N` (over :math:`N`-qudits) consists of a succession of sequences of Hadamard and phase gates. Depicted in figure ??, this can be written mathematically as
+A canonical decomposition of the multipartite (composite) quantum Fourier transform :math:`\QFT_N` (over :math:`N`-qudits) consists of a succession of sequences of Hadamard and phase gates. Depicted in :numref:`fig:circuit_algorithm_fourier_transform`, this can be written mathematically as
 
 .. math:: \QFT_N = \prod_{n = 0}^{N - 1} U_n
 
 where
 
-.. math:: U_n = \left(\prod_{k = 1}^{N - 1 - n} \Control^{\indices{n + k}} \Phase_{2^k}^{\indices{n}} \right) \cdot \Hadamard^{\indices{n}}
+.. math:: U_n = \left(\prod_{j = 1}^{N - 1 - n} \Control^{\indices{n + j}} \bigl(\Phase^{d^{-j}}\bigr)^{\indices{n}} \right) \cdot \Hadamard^{\indices{n}}
 
 Here,
 
-.. math:: \Phase_j = \ket{0}\bra{0} + \e^{2\pi\eye/j} \ket{1}\bra{1}.
+.. math:: \Phase = \sum_{k=0}^{d-1} \omega^{k} \ket{k}\bra{k}.
 
-is a phase gate which can interpreted to be the :math:`2^j`-root of the Pauli-:math:`Z` gate.
+is the :math:`d`-dimensional phase gate with :math:`\omega \equiv \e^{2\pi\eye/d}`.
 
 .. only:: html
 
