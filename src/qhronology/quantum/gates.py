@@ -1786,8 +1786,8 @@ class Fourier(QuantumGate):
                     else:
                         QFT.append(
                             Phase(
-                                targets=[targets[i + j]],
-                                controls=[t],
+                                targets=[t],
+                                controls=[targets[i + j]],
                                 num_systems=self.num_systems,
                                 dim=self.dim,
                                 numerical=numerical,
