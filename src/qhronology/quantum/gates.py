@@ -158,7 +158,10 @@ class QuantumGate(QuantumObject):
         if spec is None:
             spec = sp.eye(dim)
         else:
-            spec_num_systems = count_systems(spec, dim)
+            if isinstance(spec, list) is True:
+                spec_num_systems = count_systems(to_matrix(spec), dim)
+            else:
+                spec_num_systems = count_systems(spec, dim)
         num_systems = (
             (max(spec_num_systems, max(targets + controls + anticontrols) + 1))
             if num_systems is None
