@@ -64,7 +64,7 @@ Quantum circuit diagrams provide a powerful picturalism through which a quantum 
 
 ### Numerous examples
 
-Bundled with the project is a small collection of complete examples that showcase its capabilities and syntax. These are divided into two categories: *Quantum algorithms and protocols* and *Quantum closed timelike curves*. The former contains implementations of canonical algorithms in quantum computing, while the latter consists of more exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.
+Bundled with the project is a collection of complete examples that showcase its capabilities and syntax. This includes both implementations of canonical quantum algorithms and exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.
 
 <p align="center">
   <picture>

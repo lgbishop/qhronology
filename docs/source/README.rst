@@ -254,7 +254,7 @@ Numerous examples
 
 ..    \begin{tabular}{M{0.65\textwidth}  C{0.35\textwidth}}
 
-Bundled with the project is a small collection of complete examples that showcase its capabilities and syntax. These are divided into two categories: :numref:`sec:examples_algorithms` :ref:`sec:examples_algorithms` and :numref:`sec:examples_ctc` :ref:`sec:examples_ctc`. The former contains implementations of canonical algorithms in quantum computing, while the latter consists of exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.
+Bundled with the project is a collection of complete examples that showcase its capabilities and syntax. This includes both implementations of canonical quantum algorithms and exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.
 
 .. .. raw:: latex
 
@@ -377,7 +377,7 @@ All of the underlying mathematics upon which Qhronology is built is presented as
 .. only:: latex
 
    .. image:: /figures/output/diagram_spacetime_minkowski.pdf
-      :scale: 90 %
+      :scale: 100 %
       :align: center
       :class: light-dark hidden
 
