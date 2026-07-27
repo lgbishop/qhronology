@@ -251,12 +251,12 @@ def mutual(
     dim: int | None = None,
     base: num | expr | str | None = None,
 ) -> num | expr:
-    """Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of a composite quantum system represented by :python:`state` (:math:`\\rho^{A,B}`):
+    """Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of a composite quantum system represented by :python:`state` (:math:`\\rho^{\\indices{A,B}}`):
 
     .. math::
 
        \\MutualInformation(A : B)
-           = \\Entropy(\\op{\\rho}^A) + \\Entropy(\\op{\\rho}^B) - \\Entropy(\\op{\\rho}^{A,B})
+           = \\Entropy(\\op{\\rho}^{\\indices{A}}) + \\Entropy(\\op{\\rho}^{\\indices{B}}) - \\Entropy(\\op{\\rho}^{\\indices{A,B}})
 
     where :math:`\\Entropy(\\op{\\rho})` is the von Neumann entropy of a state :math:`\\op{\\rho}`.
 
@@ -429,12 +429,12 @@ class QuantitiesMixin:
         systems_B: int | list[int] | None = None,
         base: num | expr | str | None = None,
     ) -> num | expr:
-        """Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of the internal state (:math:`\\rho^{A,B}`):
+        """Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of the internal state (:math:`\\rho^{\\indices{A,B}}`):
 
         .. math::
 
            \\MutualInformation(A : B)
-               = \\Entropy(\\op{\\rho}^A) + \\Entropy(\\op{\\rho}^B) - \\Entropy(\\op{\\rho}^{A,B})
+               = \\Entropy(\\op{\\rho}^{\\indices{A}}) + \\Entropy(\\op{\\rho}^{\\indices{B}}) - \\Entropy(\\op{\\rho}^{\\indices{A,B}})
 
         where :math:`\\Entropy(\\op{\\rho})` is the von Neumann entropy of
         a state :math:`\\op{\\rho}`.

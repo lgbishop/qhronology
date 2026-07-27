@@ -925,7 +925,7 @@ Control
   .. math::
 
      \begin{aligned}
-         \Control^{0} \Unitary^{1} &= \sum\limits_{k=0}^{\Dimension - 1} \ket{k}\bra{k}\otimes\Unitary^{k} \\
+         \Control^{\indices{0}} \Unitary^{\indices{1}} &= \sum\limits_{k=0}^{\Dimension - 1} \ket{k}\bra{k}\otimes\Unitary^{k} \\
          &= \ket{0}\bra{0}\otimes\Identity + \ket{1}\bra{1}\otimes\Unitary
              + \ket{2}\bra{2}\otimes\Unitary^{2} + \ldots
              + \ket{\Dimension - 1}\bra{\Dimension - 1}\otimes\Unitary^{\Dimension - 1},
@@ -934,7 +934,7 @@ Control
   .. math::
 
      \begin{aligned}
-         \Anticontrol^{0} \Unitary^{1} &= \sum\limits_{k=0}^{\Dimension - 1} \ket{k}\bra{k}\otimes\Unitary^{\Dimension - 1 - k} \\
+         \Anticontrol^{\indices{0}} \Unitary^{\indices{1}} &= \sum\limits_{k=0}^{\Dimension - 1} \ket{k}\bra{k}\otimes\Unitary^{\Dimension - 1 - k} \\
          &= \ket{0}\bra{0}\otimes\Unitary^{\Dimension - 1} + \ket{1}\bra{1}\otimes\Unitary^{\Dimension - 2}
              + \ket{2}\bra{2}\otimes\Unitary^{\Dimension - 3} + \ldots
              + \ket{\Dimension - 1}\bra{\Dimension - 1}\otimes\Identity.

@@ -40,7 +40,7 @@ The *unproven-theorem paradox* :cite:p:`deutsch_quantum_1991, lloyd_closed_2011,
 
 Described by the unitary
 
-.. math:: \Unitary = \Swap^{1,2} \cdot \Control^0 \NOT^1 \cdot \Control^2 \NOT^0,
+.. math:: \Unitary = \Swap^{\indices{1,2}} \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \cdot \Control^{\indices{2}} \NOT^{\indices{0}},
    :label: eq:unproven_unitary
 
 the unproven-theorem paradox encapsulates the scenario in which the proof of a theorem that a mathematician reads in the past is the very same proof which they write down in the future book (with the book having travelled back in time). We therefore denote the absence and presence of the proof in each subsystem intuitively by :math:`\ket{0}` and :math:`\ket{1}`, respectively. Under this interpretation, when the mathematician and/or the book are in the state :math:`\ket{1}`, they possess a "correct" proof, while being in the state :math:`\ket{0}` means that they do not. (Alternatively, one can think of these qubit levels as denoting different answers to some problem the mathematician is working on. They can then encode their proof of some theorem into an :math:`\Number`-bit binary string by using :math:`\Number` copies of the circuit :cite:p:`allen_treating_2014`.) Thus, we will use the CR input state
@@ -62,15 +62,15 @@ To find the D-CTC solutions, we first compute the standard evolution through the
 
    \begin{aligned}
        \MapGeneral_{\Unitary} [\StateCR \otimes \StateCV] &= \Unitary \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \StateCV\bigr) \Unitary^\dagger \\
-       &= \Swap^{1,2} \cdot \Control^0 \NOT^1 \cdot \Control^2 \NOT^0 \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \StateCV\bigr) \Control^2 \NOT^{\dagger 0} \cdot \Control^0 \NOT^{\dagger 1} \cdot \Swap^{\dagger 1,2} \\
-       &= \Swap^{1,2} \cdot \Control^0 \NOT^1 \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
+       &= \Swap^{\indices{1,2}} \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \cdot \Control^{\indices{2}} \NOT^{\indices{0}} \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \StateCV\bigr) \Control^{\indices{2}} \NOT^{\dagger \indices{0}} \cdot \Control^{\indices{0}} \NOT^{\dagger \indices{1}} \cdot \Swap^{\dagger \indices{1,2}} \\
+       &= \Swap^{\indices{1,2}} \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
        & \qquad\qquad\qquad\;\; + \ket{0}\bra{1}\otimes\ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \\
        & \qquad\qquad\qquad\;\; + \ket{1}\bra{0}\otimes\ket{0}\bra{0} \otimes \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \\
        & \qquad\qquad\qquad\;\; + \ket{1}\bra{1}\otimes\ket{0}\bra{0} \otimes \ket{1}\bra{1}\StateCV\ket{1}\bra{1}\bigr) \Control^0 \NOT^{\dagger 1} \cdot \Swap^{\dagger 1,2} \\
-       &= \Swap^{1,2} \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
+       &= \Swap^{\indices{1,2}} \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
        & \qquad\quad\;\; + \ket{0}\bra{1}\otimes\ket{0}\bra{1} \otimes \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \\
        & \qquad\quad\;\; + \ket{1}\bra{0}\otimes\ket{1}\bra{0} \otimes \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \\
-       & \qquad\quad\;\; + \ket{1}\bra{1}\otimes\ket{1}\bra{1} \otimes \ket{1}\bra{1}\StateCV\ket{1}\bra{1}\bigr) \Swap^{\dagger 1,2} \\
+       & \qquad\quad\;\; + \ket{1}\bra{1}\otimes\ket{1}\bra{1} \otimes \ket{1}\bra{1}\StateCV\ket{1}\bra{1}\bigr) \Swap^{\dagger \indices{1,2}} \\
        &= \ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \otimes \ket{0}\bra{0} \\
        & \quad\; + \ket{0}\bra{1} \otimes \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \otimes \ket{0}\bra{1} \\
        & \quad\; + \ket{1}\bra{0} \otimes \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \otimes \ket{1}\bra{0} \\
@@ -147,13 +147,13 @@ To compute the P-CTC CR solution, we first calculate the P-CTC operator,
 
    \begin{aligned}
        \OperatorPCTC &\equiv \trace_\CV[\Unitary] \\
-       &= \trace_2\bigl[\Swap^{1,2} \cdot \Control^0 \NOT^1 \cdot \Control^2 \NOT^0\bigr] \\
-       &= \trace_2\bigl[\Swap^{1,2} \cdot \bigl(\ket{0}\bra{0} \otimes \Identity \otimes \Identity + \ket{1}\bra{1} \otimes \Pauli_x \otimes \Identity\bigr) \cdot \bigl(\Identity \otimes \Identity \otimes \ket{0}\bra{0} + \Pauli_x \otimes \Identity \otimes \ket{1}\bra{1}\bigr)\bigr] \\
-       &= \trace_2\bigl[\Swap^{1,2} \cdot \bigl(\ket{0}\bra{0} \otimes \Identity \otimes \ket{0}\bra{0} \\
+       &= \trace_2\bigl[\Swap^{\indices{1,2}} \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \cdot \Control^{\indices{2}} \NOT^{\indices{0}}\bigr] \\
+       &= \trace_2\bigl[\Swap^{\indices{1,2}} \cdot \bigl(\ket{0}\bra{0} \otimes \Identity \otimes \Identity + \ket{1}\bra{1} \otimes \Pauli_x \otimes \Identity\bigr) \cdot \bigl(\Identity \otimes \Identity \otimes \ket{0}\bra{0} + \Pauli_x \otimes \Identity \otimes \ket{1}\bra{1}\bigr)\bigr] \\
+       &= \trace_2\bigl[\Swap^{\indices{1,2}} \cdot \bigl(\ket{0}\bra{0} \otimes \Identity \otimes \ket{0}\bra{0} \\
        &\qquad\qquad\quad\;\;\; + \ket{1}\bra{1} \otimes \Pauli_x \otimes \ket{0}\bra{0} \\
        &\qquad\qquad\quad\;\;\; + \ket{0}\bra{1} \otimes \Identity \otimes \ket{1}\bra{1} \\
        &\qquad\qquad\quad\;\;\; + \ket{1}\bra{0} \otimes \Pauli_x \otimes \ket{1}\bra{1}\bigr)\bigr] \\
-       &= \trace_2\bigl[\Swap^{1,2} \cdot \bigl(\ket{0}\bra{0} \otimes \ket{0}\bra{0} \otimes \ket{0}\bra{0} \\
+       &= \trace_2\bigl[\Swap^{\indices{1,2}} \cdot \bigl(\ket{0}\bra{0} \otimes \ket{0}\bra{0} \otimes \ket{0}\bra{0} \\
        &\qquad\qquad\quad\;\;\; + \ket{0}\bra{0} \otimes \ket{1}\bra{1} \otimes \ket{0}\bra{0} \\
        &\qquad\qquad\quad\;\;\; + \ket{1}\bra{1} \otimes \ket{0}\bra{1} \otimes \ket{0}\bra{0} \\
        &\qquad\qquad\quad\;\;\; + \ket{1}\bra{1} \otimes \ket{1}\bra{0} \otimes \ket{0}\bra{0} \\

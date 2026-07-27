@@ -398,22 +398,22 @@ for any two density matrices :math:`\op{\rho}` and :math:`\op{\tau}`, with equal
 Mutual information
 ------------------
 
-The quantum *mutual information* is a measure of correlation between the subsystems of a multipartite quantum system. Let :math:`\op{\rho}^{A,B}` be a bipartite state for a composite system with Hilbert space :math:`\SpaceHilbert_A \otimes \SpaceHilbert_B`, and let
+The quantum *mutual information* is a measure of correlation between the subsystems of a multipartite quantum system. Let :math:`\op{\rho}^{\indices{A,B}}` be a bipartite state for a composite system with Hilbert space :math:`\SpaceHilbert_A \otimes \SpaceHilbert_B`, and let
 
 .. math::
 
    \begin{aligned}
-       \op{\rho}^{A} &\equiv \trace_B[\op{\rho}^{A,B}], \\
-       \op{\rho}^{B} &\equiv \trace_A[\op{\rho}^{A,B}],
+       \op{\rho}^{\indices{A}} &\equiv \trace_B[\op{\rho}^{\indices{A,B}}], \\
+       \op{\rho}^{\indices{B}} &\equiv \trace_A[\op{\rho}^{\indices{A,B}}],
    \end{aligned}
 
 be the reduced states on subsystems :math:`A` and :math:`B`, respectively. Using these, we can define the mutual information between these subsystems as
 
-.. math:: \MutualInformation(A : B) \equiv \Entropy(\op{\rho}^{A}) + \Entropy(\op{\rho}^{B}) - \Entropy(\op{\rho}^{A,B}),
+.. math:: \MutualInformation(A : B) \equiv \Entropy(\op{\rho}^{\indices{A}}) + \Entropy(\op{\rho}^{\indices{B}}) - \Entropy(\op{\rho}^{\indices{A,B}}),
 
 where :math:`\Entropy(\op{\rho})` is the von Neumann entropy of a state :math:`\op{\rho}` as defined in :eq:`eq:entropy`. An equivalent expression uses the relative entropy :eq:`eq:entropy_relative` to write
 
-.. math:: \MutualInformation(A : B) = \Entropy(\op{\rho}^{A,B} \Vert \op{\rho}^{A} \otimes \op{\rho}^{B}).
+.. math:: \MutualInformation(A : B) = \Entropy(\op{\rho}^{\indices{A,B}} \Vert \op{\rho}^{\indices{A}} \otimes \op{\rho}^{\indices{B}}).
 
 The quantum mutual information is analogous to the *Shannon mutual information* in classical information theory. It is a non-negative quantity, i.e.,
 
@@ -438,11 +438,11 @@ where :math:`\ket{\psi_n} \in \SpacePure(\SpaceHilbert_n)` is a vector state on 
 .. math::
 
    \begin{aligned}
-       \StateDensity &= \sum_{k} p_k \StateDensity_k^0 \otimes \StateDensity_k^1 \otimes \ldots \otimes \StateDensity_k^{N - 1} \\
-       &= \sum_{k} p_k \bigotimes_{n=0}^{N - 1} \StateDensity_k^n,
+       \StateDensity &= \sum_{k} p_k \StateDensity_k^{\indices{0}} \otimes \StateDensity_k^{\indices{1}} \otimes \ldots \otimes \StateDensity_k^{\indices{N - 1}} \\
+       &= \sum_{k} p_k \bigotimes_{n=0}^{N - 1} \StateDensity_k^{\indices{n}},
    \end{aligned}
 
-where :math:`\StateDensity_k^n \in \SpaceMixed(\SpaceHilbert_n)` are density operators representing the :math:`n`-th subsystem, and the coefficients :math:`p_k` are non-negative real numbers that collectively satisfy :math:`\sum_{k} p_k = 1`. If there exists only a single non-zero :math:`p_k`, then the state is called *simply separable* or, similarly to the separable vector state case, a *product state*.
+where :math:`\StateDensity_k^{\indices{n}} \in \SpaceMixed(\SpaceHilbert_n)` is a density operator on the :math:`n`-th subsystem, and the coefficients :math:`\{p_k\}_k` are non-negative real numbers that collectively satisfy :math:`\sum_{k} p_k = 1`. If there exists only a single non-zero :math:`p_k`, then the state is called *simply separable* or, similarly to the separable vector state case, a *product state*.
 
 A quantum state that is not separable (termed *non-separable*) is said to be *entangled*. The corresponding phenomenon, *quantum entanglement*, is one of the most fascinating features of quantum mechanics. It manifests physically as quantum correlations (of various quantum properties such as observable quantities) between the individual subsystems of a composite quantum system. For example, a group of particles is entangled when the quantum state of each individual particle cannot be described independently of the state of the other particles in a collective description. This behaviour is realized to varying degrees in many different kinds of physical situations, including most interestingly when the particles are spacelike separated.
 
@@ -531,11 +531,11 @@ where the Kraus operators are given by
 
 This form, which is sometimes called the *operator-sum representation*, describes the evolution of some system in the Hilbert space :math:`\SpaceHilbert_\mathrm{S}` that interacts with an environment system (a separate system with Hilbert space :math:`\SpaceHilbert_\mathrm{E}`) via some unitary :math:`\Unitary`. In this bipartite setup, the environment is initially in the state :math:`\ket{\psi}` (with :math:`\{\ket{\Basis_i}\}_i` denoting an orthonormal basis). Dropping the assumption that the environment is initially pure, we may in general write
 
-.. math:: \MapGeneral[\StateDensity] = \trace_\mathrm{E} \bigl[\Unitary(\StateDensity^\mathrm{S} \otimes \op{\tau}^\mathrm{E})\Unitary^\dagger\bigr]
+.. math:: \MapGeneral[\StateDensity] = \trace_\mathrm{E} \bigl[\Unitary(\StateDensity^{\indices{\mathrm{S}}} \otimes \op{\tau}^{\indices{\mathrm{E}}})\Unitary^\dagger\bigr]
 
 where :math:`\op{\tau}` is the environment state. The output of the environment under this evolution is complementarily given by
 
-.. math:: \tilde{\MapGeneral}[\op{\tau}] = \trace_\mathrm{S} \bigl[\Unitary(\StateDensity^\mathrm{S} \otimes \op{\tau}^\mathrm{E})\Unitary^\dagger\bigr].
+.. math:: \tilde{\MapGeneral}[\op{\tau}] = \trace_\mathrm{S} \bigl[\Unitary(\StateDensity^{\indices{\mathrm{S}}} \otimes \op{\tau}^{\indices{\mathrm{E}}})\Unitary^\dagger\bigr].
 
 Quantum operations of this kind, i.e., those which are both completely positive (CP) and trace-preserving (TP), are known as *CPTP maps* or, more popularly, *quantum channels*. Note however that there is no loss in generality in making the assumption that the environment is in a pure state, since it can always be purified via the introduction of an additional system.
 

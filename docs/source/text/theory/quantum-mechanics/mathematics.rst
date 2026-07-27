@@ -755,8 +755,8 @@ The Schmidt decomposition :eq:`eq:schmidt_decomposition` is simply a way of expr
 .. math::
 
    \begin{aligned}
-       \StateDensity^A &\equiv \trace_B\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_A}\bra{k_A}, \\
-       \StateDensity^B &\equiv \trace_A\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_B}\bra{k_B}.
+       \StateDensity^{\indices{A}} &\equiv \trace_B\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_A}\bra{k_A}, \\
+       \StateDensity^{\indices{B}} &\equiv \trace_A\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_B}\bra{k_B}.
    \end{aligned}
 
 The fact that the eigenvalues of both of these operators are identical (simply equal to :math:`\lambda_k^2`) is highly significant, as many of the important properties of operators are completely determined by their eigenvalues. Consequently, such properties of the reduced operators of a vector on a composite system will automatically be the same, regardless of the structure of the composite vector.
