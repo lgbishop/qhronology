@@ -171,7 +171,7 @@ sum_registers_complement = [
 ]
 
 sum_state = adder.state(label="s", traces=sum_registers_complement)
-sum_integer = decode(matrix=sum_state.output(), reverse=True)
+sum_integer = decode(sum_state.output(), reverse=True)
 sum_state = VectorState(
     spec=encode(integer=sum_integer, reverse=True),
     label="s",

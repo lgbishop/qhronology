@@ -374,24 +374,24 @@ def encode(
 
 
 def decode(
-    matrix: mat | arr | QuantumObject,
+    encoded: mat | arr | QuantumObject | list[int] | tuple[int] | str,
     dim: int | None = None,
     reverse: bool | None = None,
 ) -> int:
-    """Decodes a quantum matrix or vector state to an unsigned integer.
+    """Decodes a matrix state, vector state, or bitstring to an unsigned integer.
 
     This only makes sense if the input state has exactly one non-zero entry.
 
     Arguments
     ---------
-    matrix : mat | arr | QuantumObject
-        The quantum (matrix or vector) state to be decoded.
+    encoded : mat | arr | QuantumObject | list[int] | tuple[int] | str
+        The object to be decoded.
     dim : int
         The dimensionality (or base) of the encoding.
         Must be a non-negative integer.
         Defaults to :python:`2`.
     reverse : bool
-        Whether to reverse the digit ordering of the encoded state prior to decoding.
+        Whether to reverse the digit ordering of the encoded object prior to decoding.
 
         - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the list (i.e., the least-significant digit is last).
         - If :python:`reverse` is :python:`True`, the significance of the digits should *increase* along the list (i.e., the least-significant digit is first).
@@ -406,44 +406,54 @@ def decode(
     Note
     ----
     The current method by which this particular implementation operates is accurate but slow.
-    For a faster algorithm, use the :py:func:`~qhronology.mechanics.matrices.decode_fast` function.
+    For a faster algorithm (that only works for states), use the :py:func:`~qhronology.mechanics.matrices.decode_fast` function.
     """
     dim = 2 if dim is None else dim
     reverse = False if reverse is None else reverse
 
-    matrix = densify(extract_representation(matrix))
-    num_systems = count_systems(matrix, dim)
+    if isinstance(encoded, list | tuple | str) is True:
+        bitstring = list(encoded)
 
-    digits = []
-    for n in range(0, num_systems):
-        discard = [k for k in range(0, num_systems) if k != n]
-        quantum_unit = partial_trace(
-            matrix=matrix, targets=discard, dim=dim, optimize=True
+        if reverse is False:
+            bitstring.reverse()
+
+        decoded = sum(
+            [int(bitstring[i]) * (dim ** (i)) for i in range(0, len(bitstring))]
         )
-        for m in range(0, count_rows(quantum_unit)):
-            if quantum_unit[m, m] != 0:
-                digits.append(m)
+    else:
+        matrix = densify(extract_representation(encoded))
+        num_systems = count_systems(matrix, dim)
 
-    if reverse is True:
-        digits.reverse()
+        digits = []
+        for n in range(0, num_systems):
+            discard = [k for k in range(0, num_systems) if k != n]
+            quantum_unit = partial_trace(
+                matrix=matrix, targets=discard, dim=dim, optimize=True
+            )
+            for m in range(0, count_rows(quantum_unit)):
+                if quantum_unit[m, m] != 0:
+                    digits.append(m)
 
-    decoded = sum(
-        [
-            digits[n] * dim ** ((len(digits) - 1) - n)
-            for n in range(len(digits) - 1, 0 - 1, -1)
-        ]
-    )
+        if reverse is True:
+            digits.reverse()
+
+        decoded = sum(
+            [
+                digits[n] * dim ** ((len(digits) - 1) - n)
+                for n in range(len(digits) - 1, 0 - 1, -1)
+            ]
+        )
     return decoded
 
 
-def decode_fast(matrix: mat | arr | QuantumObject, dim: int | None = None) -> int:
+def decode_fast(encoded: mat | arr | QuantumObject, dim: int | None = None) -> int:
     """Decodes a quantum matrix or vector state to an unsigned integer.
 
     This only makes sense if the input state has exactly one non-zero entry.
 
     Arguments
     ---------
-    matrix : mat | arr | QuantumObject
+    encoded : mat | arr | QuantumObject
         The quantum (matrix or vector) state to be decoded.
     dim : int
         The dimensionality (or base) of the encoding.
@@ -465,7 +475,7 @@ def decode_fast(matrix: mat | arr | QuantumObject, dim: int | None = None) -> in
     The output cannot be reversed like in :py:func:`~qhronology.mechanics.matrices.decode`.
     """
     dim = 2 if dim is None else dim
-    matrix = densify(extract_representation(matrix))
+    matrix = densify(extract_representation(encoded))
 
     decoded = []
     for n in range(0, count_rows(matrix)):
@@ -482,7 +492,7 @@ def decode_fast(matrix: mat | arr | QuantumObject, dim: int | None = None) -> in
 
 
 def decode_multiple(
-    matrix: mat | arr | QuantumObject,
+    encoded: mat | arr | QuantumObject,
     dim: int | None = None,
     reverse: bool | None = None,
 ) -> list[tuple[int, num | expr]]:
@@ -492,7 +502,7 @@ def decode_multiple(
 
     Arguments
     ---------
-    matrix : mat | arr | QuantumObject
+    encoded : mat | arr | QuantumObject
         The quantum (matrix or vector) state to be decoded.
     dim : int
         The dimensionality (or base) of the encoding.
@@ -513,7 +523,7 @@ def decode_multiple(
     """
     dim = 2 if dim is None else dim
     reverse = False if reverse is None else reverse
-    matrix = densify(extract_representation(matrix))
+    matrix = densify(extract_representation(encoded))
 
     matrix_num = True if issubclass(dtype(matrix), num) is True else False
     matrix_arr = True if isinstance(matrix, arr) is True else False
@@ -526,46 +536,7 @@ def decode_multiple(
             )
             elementary[n, n] = to_numerical(1, numerical=matrix_num)
             decoded.append(
-                (decode(matrix=elementary, reverse=reverse), matrix[n, n])
+                (decode(elementary, reverse=reverse), matrix[n, n])
             )
-
-    return decoded
-
-
-def decode_bitstring(
-    bitstring: list[int] | tuple[int] | str,
-    dim: int | None = None,
-    reverse: bool | None = None,
-) -> int:
-    """Decodes a bitstring to an unsigned integer.
-
-    Arguments
-    ---------
-    bitstring : list[int] | tuple[int] | str
-        The bitstring to be decoded.
-    dim : int
-        The dimensionality (or base) of the encoding.
-        Must be a non-negative integer.
-        Defaults to :python:`2`.
-    reverse : bool
-        Whether to reverse the digit ordering of the encoded state prior to decoding.
-
-        - If :python:`reverse` is :python:`False`, the significance of the digits should *decrease* along the list (i.e., the least-significant digit is last).
-        - If :python:`reverse` is :python:`True`, the significance of the digits should *increase* along the list (i.e., the least-significant digit is first).
-
-        Defaults to :python:`False`.
-
-    Returns
-    -------
-    int
-        The decoded (unsigned) integer.
-    """
-    dim = 2 if dim is None else dim
-    reverse = False if reverse is None else reverse
-    bitstring = list(bitstring)
-    if reverse is False:
-        bitstring.reverse()
-
-    decoded = sum([int(bitstring[i]) * (dim ** (i)) for i in range(0, len(bitstring))])
 
     return decoded
