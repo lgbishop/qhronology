@@ -33,9 +33,10 @@ CNOT = QuantumCircuit(
 CNOT.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
 
 # Output
-print(repr(CNOT.gate(simplify=True)))
 output = CNOT.state(label="(ψ⊗φ)′")
 output.simplify()
 
+# Results
+print(repr(CNOT.gate(simplify=True)))
 CNOT.input().print()
 output.print()

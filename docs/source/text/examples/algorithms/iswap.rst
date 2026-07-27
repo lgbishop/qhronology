@@ -6,7 +6,7 @@ iSWAP (imaginary-SWAP)
 Description
 -----------
 
-An iSWAP (imaginary-SWAP) gate is a simply a SWAP gate in which any pair of states that are exchanged are also multiplied by a phase factor of :math:`\e^{\tfrac{\eye\pi}{2}} = \eye` (the imaginary unit). It can be constructed from :math:`\op{S}` (:math:`\op{Z}^{\tfrac{1}{2}}`) gates, :math:`\Hadamard` (Hadamard) gates, and CNOT gates, as depicted in :numref:`fig:circuit_algorithm_iswap`.
+An iSWAP (imaginary-SWAP) gate is a simply a SWAP gate in which any pair of states that are exchanged are also multiplied by a phase factor of :math:`\e^{\eye\pi/2} = \eye` (the imaginary unit). It can be constructed from :math:`\op{S}` (:math:`\op{Z}^{1/2}`) gates, :math:`\Hadamard` (Hadamard) gates, and CNOT gates, as depicted in :numref:`fig:circuit_algorithm_iswap`.
 
 .. only:: html
 

@@ -22,5 +22,7 @@ postselection.diagram(pad=(0, 0), sep=(4, 1), style="unicode")
 
 # Output
 output_state = postselection.state(label="ψ′")
+
+# Results
 input_state.print()
 output_state.print()

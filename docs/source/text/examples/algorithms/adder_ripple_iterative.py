@@ -53,6 +53,8 @@ for i in range(encoding_depth - 1, -1, -1):
     carry_state = adder.state(label="c_i", traces=[0, 1, 2])
     sum_qubits = [sum_qubit.output()] + sum_qubits
 
+adder.diagram()
+
 # Output
 sum_state = QuantumState(
     spec=sp.Matrix(tensor_product(*sum_qubits)),
@@ -62,7 +64,8 @@ sum_integer = decode(sum_state.output())
 sum_state = VectorState(spec=encode(sum_integer), label="s")
 final_time = time.time()
 
-adder.diagram()
+computation = f"{augend_integer} + {addend_integer} = {sum_integer}"
+duration = sp.N(final_time - initial_time).round(3)
 
 augend_state.reset()
 addend_state.reset()
@@ -73,8 +76,5 @@ addend_state.label = "y"
 augend_state.print()
 addend_state.print()
 sum_state.print()
-
-computation = f"{augend_integer} + {addend_integer} = {sum_integer}"
-duration = sp.N(final_time - initial_time, n=8).round(3)
 print(f"Computation: {computation}")
 print(f"Duration: {duration} seconds")

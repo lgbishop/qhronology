@@ -47,7 +47,7 @@ As the input states are both vectors, the application of the CNOT gate
 .. math::
 
    \begin{aligned}
-       \Unitary &= \Control^0 \NOT^1 \\
+       \Unitary &= \Control^{\indices{0}} \NOT^{\indices{1}} \\
        &= \Identity \otimes \Identity + {\ket{1}\bra{1}} \otimes (\Pauli_{x} - \Identity),
    \end{aligned}
 
@@ -56,7 +56,7 @@ on the bipartite input :math:`\ket{x} \otimes \ket{y}` simply produces a vector 
 .. math::
 
    \begin{aligned}
-       \MapGeneral_{\Unitary} \bigl[\ket{x} \otimes \ket{y}\bigr] &= \Control^0 \NOT^1 \ket{x} \otimes \ket{y} \\
+       \MapGeneral_{\Unitary} \bigl[\ket{x} \otimes \ket{y}\bigr] &= \Control^{\indices{0}} \NOT^{\indices{1}} \ket{x} \otimes \ket{y} \\
        % &= \sum\limits_{a,b=0}^{1} {\ket{a}\braket{a}{x}} \otimes {\ket{b \oplus a}\braket{b}{y}}, \\
        &= \ket{x} \otimes \ket{x \oplus y}.
    \end{aligned}

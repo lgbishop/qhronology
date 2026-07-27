@@ -46,8 +46,8 @@ for i in range(0, encoding_depth):
         else:
             QFT.append(
                 Phase(
-                    targets=[i + j + encoding_depth],
-                    controls=[i + encoding_depth],
+                    targets=[i + encoding_depth],
+                    controls=[i + j + encoding_depth],
                     exponent=sp.Rational(1, (2**j)),
                     num_systems=2 * encoding_depth,
                     conjugate=False,
@@ -57,8 +57,8 @@ for i in range(0, encoding_depth):
             )
             IQFT.append(
                 Phase(
-                    targets=[i + j + encoding_depth],
-                    controls=[i + encoding_depth],
+                    targets=[i + encoding_depth],
+                    controls=[i + j + encoding_depth],
                     exponent=sp.Rational(1, (2**j)),
                     num_systems=2 * encoding_depth,
                     conjugate=True,
@@ -106,12 +106,12 @@ sum_state.round()
 sum_integer = decode(sum_state.output())
 final_time = time.time()
 
+computation = f"{augend_integer} + {addend_integer} = {sum_integer}"
+duration = sp.N(final_time - initial_time).round(3)
+
 # Results
 augend_state.print()
 addend_state.print()
 sum_state.print()
-
-computation = f"{augend_integer} + {addend_integer} = {sum_integer}"
-duration = sp.N(final_time - initial_time, n=8).round(3)
 print(f"Computation: {computation}")
 print(f"Duration: {duration} seconds")

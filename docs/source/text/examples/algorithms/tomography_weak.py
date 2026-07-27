@@ -73,7 +73,10 @@ for i in range(0, 4):
     spec += expectations[i] * pauli_matrices[i]
 reconstructed_state = MatrixState(
     spec=sp.Matrix(spec),
-    substitutions=[(tau[1, 1], 1 - tau[0, 0]), (1 - tau[0, 0], tau[1, 1])],
+    substitutions=[
+        (tau[1, 1], 1 - tau[0, 0]),
+        (1 - tau[0, 0], tau[1, 1]),
+    ],
     label="τ",
 )
 reconstructed_state.coefficient(sp.Rational(1, 2))  # Manually normalize

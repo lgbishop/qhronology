@@ -70,6 +70,8 @@ for FILE in "${jobs[@]}"; do
         if (index($0, "from ") == 1) $0 = ">>> " $0
         if (index($0, "import ") == 1) $0 = ">>> " $0
         if (index($0, "Duration:")) $0 = $0 "  # doctest: +SKIP"
+        if (index($0, "The function:")) $0 = $0 "  # doctest: +SKIP"
+        if (index($0, "The Deutsch-Jozsa result:")) $0 = $0 "  # doctest: +SKIP"
         print $0
         print > out
       }
@@ -83,8 +85,21 @@ for f in $(find "./examples" -type f -name "*.py"); do
     NAME=$(basename $f)  # Remove directories
     NAME="${NAME%.*}"  # Remove extension
     sed -i '/\.diagram(/d' "${PATH_SNIPPETS}/${NAME}.py"
-    sed -i '/\.print(/d' "${PATH_SNIPPETS}/${NAME}.py"
-    sed -i '/print(/d' "${PATH_SNIPPETS}/${NAME}.py"
+    # sed -i '/\.print(/d' "${PATH_SNIPPETS}/${NAME}.py"
+    # sed -i '/print(/d' "${PATH_SNIPPETS}/${NAME}.py"
+
+    sed -n '1,/\# Results/p' "${PATH_SNIPPETS}/${NAME}.py" > "${PATH_SNIPPETS}/${NAME}.py.preresults"
+    sed -n '/\# Results/,$p' "${PATH_SNIPPETS}/${NAME}.py" > "${PATH_SNIPPETS}/${NAME}.py.postresults"
+
+    sed -i 's/^/    /' "${PATH_SNIPPETS}/${NAME}.py.postresults"
+    sed -i '1s/^/    print\(\"\"\)\n/' "${PATH_SNIPPETS}/${NAME}.py.postresults"
+    sed -i '1s/^/def main\(\)\:\n/' "${PATH_SNIPPETS}/${NAME}.py.postresults"
+    echo "" >> "${PATH_SNIPPETS}/${NAME}.py.postresults"
+    echo "if __name__ == '__main__':" >> "${PATH_SNIPPETS}/${NAME}.py.postresults"
+    echo "    main()" >> "${PATH_SNIPPETS}/${NAME}.py.postresults"
+
+    cat "${PATH_SNIPPETS}/${NAME}.py.preresults" "${PATH_SNIPPETS}/${NAME}.py.postresults" > "${PATH_SNIPPETS}/${NAME}.py"
+
 done
 
 rm -f ./jobs-snippets.txt

@@ -40,7 +40,7 @@ The circuit in :numref:`fig:circuit_algorithm_generation_w` illustrates an algor
 
 The complete unitary transformation described by this circuit is the product
 
-.. math:: \Unitary = \NOT^0 \cdot \Control^0 \NOT^1 \cdot \Control^1 \NOT^2 \cdot \Control^0 \Hadamard^1 \cdot \Rotation_{y}^0(\theta)
+.. math:: \Unitary = \NOT^{\indices{0}} \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \cdot \Control^{\indices{1}} \NOT^{\indices{2}} \cdot \Control^{\indices{0}} \Hadamard^{\indices{1}} \cdot \Rotation_{y}^{\indices{0}}(\theta)
 
 where the :math:`y`-rotation angle is :math:`\theta = 2 \arccos\left(\tfrac{1}{\sqrt{3}}\right)`.
 

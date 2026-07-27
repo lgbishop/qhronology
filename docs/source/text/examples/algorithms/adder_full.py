@@ -34,11 +34,11 @@ adder.diagram()
 # Output
 sum_state = adder.state(label="s", traces=[0, 1, 3])
 carry_output_state = adder.state(label="c′", traces=[0, 1, 2])
+carry_output_state.apply(sp.collect, arguments={"syms": ["b*conjugate(b)"]})
 
 # Results
 augend_state.print()
 addend_state.print()
 carry_input_state.print()
 sum_state.print()
-carry_output_state.apply(sp.collect, arguments={"syms": ["b*conjugate(b)"]})
 carry_output_state.print(simplify=True)

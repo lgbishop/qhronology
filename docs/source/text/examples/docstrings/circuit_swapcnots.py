@@ -26,7 +26,6 @@ swapcnots = QuantumCircuit(
 swapcnots.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
 
 # Output
-print(repr(swapcnots.gate()))
 output_total = swapcnots.state(label="(ψ⊗φ)′")
 output_upper = swapcnots.state(traces=[1], label="ψ′")
 output_lower = swapcnots.state(traces=[0], label="φ′")
@@ -36,6 +35,8 @@ output_upper.simplify()
 output_lower.simplify()
 
 # Results
+print(repr(swapcnots.gate()))
+
 input_upper.print()
 input_lower.print()
 swapcnots.input().print()

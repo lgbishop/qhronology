@@ -1,28 +1,7 @@
-from qhronology.quantum.states import VectorState
 from qhronology.quantum.gates import Hadamard, Phase, Not, GateInterleave
 from qhronology.quantum.circuits import QuantumCircuit
 
 import sympy as sp
-
-# Input
-first_state = VectorState(
-    spec=[("a", [0]), ("b", [1])],
-    symbols={"a": {"complex": True}, "b": {"complex": True}},
-    substitutions=[("a*conjugate(a) + b*conjugate(b)", 1)],
-    label="x",
-)
-second_state = VectorState(
-    spec=[("c", [0]), ("d", [1])],
-    symbols={"c": {"complex": True}, "d": {"complex": True}},
-    substitutions=[("c*conjugate(c) + d*conjugate(d)", 1)],
-    label="y",
-)
-third_state = VectorState(
-    spec=[("u", [0]), ("v", [1])],
-    symbols={"u": {"complex": True}, "v": {"complex": True}},
-    substitutions=[("u*conjugate(u) + v*conjugate(v)", 1)],
-    label="z",
-)
 
 # Gates
 IIH = Hadamard(targets=[2], num_systems=3)
@@ -67,19 +46,10 @@ ttT = GateInterleave(tII, ItI, IIT)
 NCH = GateInterleave(NCI, IIH)
 
 # Circuit
-decomposition = QuantumCircuit(
-    inputs=[first_state, second_state, third_state],
+toffoli = QuantumCircuit(
     gates=[IIH, TTT, NCI, INC, CIN, ItI, CNI, ttT, INC, CIN, NCH],
 )
-decomposition.diagram(force_separation=True)
-
-# Output
-output_state = decomposition.state(label="x, y, z ⊕ xy")
+toffoli.diagram(force_separation=True, visible={"gates"})
 
 # Results
-print(repr(decomposition.gate()))
-
-first_state.print()
-second_state.print()
-third_state.print()
-output_state.print()
+print(repr(toffoli.gate()))

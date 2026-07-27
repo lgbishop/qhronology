@@ -8,6 +8,9 @@ Description
 
 The quantum state tomography methodology presented in :numref:`eg:tomography_strong` :ref:`eg:tomography_strong` is a standard scheme that uses ordinary ("strong") measurements---those which by necessity disturb (i.e., collapse the wave function of) the quantum system under consideration. Thus, in order to perform state tomography without (significantly) disrupting the unknown system, we can use so-called *weak measurements*, that is, quantum measurements which minimize disturbance by leaving the measured state unaffected (to first order in the strength of the measurement). The idea of performing quantum state tomography using weak measurements constitutes a powerful technique that has been used with great success in a plethora of past experimental applications :cite:p:`knight_weak_1990, hosten_observation_2008, lundeen_experimental_2009, dixon_ultrasensitive_2009, kim_reversing_2009, cho_weak_2010, goggin_violation_2011, zilberberg_charge_2011, lundeen_direct_2011, kocsis_observing_2011, feizpour_amplifying_2011, kim_protecting_2012, rozema_violation_2012, vijay_stabilizing_2012, hatridge_quantum_2013, salvail_full_2013, groen_partial-measurement_2013, malik_direct_2014, blok_manipulating_2014, magana-loaiza_amplification_2014, denkmayr_observation_2014, mirhosseini_compressive_2014, shi_scan-free_2015, mahler_experimental_2016, thekkadath_direct_2016, piacentini_measuring_2016, hallaji_weak-value_2017, kim_direct_2018, nirala_measuring_2019`.
 
+Procedure
+---------
+
 The scheme presented here follows the work in :cite:p:`bishop_quantum_2025`. It is limited to *qubits*, though is it thought to be generalizable to qudits without too much difficulty. Note that while most treatments consider weak measurements characterized by weakly coupled interactions (that is, unitary operators close to identity), this formalism is based on :cite:p:`pryde_measuring_2004, pryde_measurement_2005`, in which a near eigenstate of the NOT (Pauli-:math:`X`) gate is perturbed *weakly* by a control state via the standard CNOT interaction. See, e.g., :cite:p:`wu_weak_2009, kofman_nonperturbative_2012, wu_state_2013, svensson_pedagogical_2013, tamir_introduction_2013, dressel_colloquium_2014` for pedagogical exposition of weak measurements and the associated weak values, and :cite:p:`story_weak_1991, wu_state_2013, kim_direct_2018, botero_weak_2018` for good examples of weak-measurement tomography.
 
 At the heart of this methodology is an ancillary qubit, which is also known as the *target* or *probe*. In the :math:`z`-basis :math:`\left\{\ket{0},\ket{1}\right\}`, it may be expressed as
@@ -19,7 +22,11 @@ Its function is to transform in response to the state of an unknown system :math
 
 Perhaps the simplest coupling between an unknown state and the probe that will permit this tomography scheme is the CNOT gate, which we write as
 
-.. math:: \Control^0 \NOT^1 \equiv {\ket{0}\bra{0}}^0 \otimes \Identity^1 + {\ket{1}\bra{1}}^0 \otimes \Pauli_x^1.
+.. math:: \Control^{\indices{0}} \NOT^{\indices{1}} \equiv {\ket{0}\bra{0}}^{\indices{0}} \otimes \Identity^{\indices{1}} + {\ket{1}\bra{1}}^{\indices{0}} \otimes \Pauli_x^{\indices{1}}.
+
+.. raw:: latex
+
+   \newline
 
 As we wish to measure along each of three Bloch axes, this can be combined with basis transformation gates :math:`\UnitaryBasis^{(\dagger)}_k`, yielding the system-probe unitary interaction
 
@@ -27,7 +34,7 @@ As we wish to measure along each of three Bloch axes, this can be combined with 
    :label: eq:unitary_tomography_weak
 
    \begin{aligned}
-      \Tomography &= \bigl(\UnitaryBasis^{\dagger}_k \otimes \Identity\bigr) \cdot \Control^0 \NOT^1 \cdot \bigl(\UnitaryBasis_k \otimes \Identity\bigr) \\
+      \Tomography &= \bigl(\UnitaryBasis^{\dagger}_k \otimes \Identity\bigr) \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \cdot \bigl(\UnitaryBasis_k \otimes \Identity\bigr) \\
       &= \ket{0_k}\bra{0_k} \otimes \Identity + \ket{1_k}\bra{1_k} \otimes \Pauli_x.
    \end{aligned}
 
@@ -96,10 +103,6 @@ is a phase gate.
    :figclass: light-dark hidden
 
    A quantum state weak-measurement tomography algorithm.
-
-.. raw:: latex
-
-   \vspace*{-\baselineskip}
 
 With these definitions in mind, a weak measurement can be easily computed in a number of steps. First, given the unknown system :math:`\StateCV`, the ancilla :math:`\ket{\Probe}`, and the weak-measurement unitary :eq:`eq:unitary_tomography_weak`, the evolution of the product state :math:`\StateCV\otimes\ket{\Probe}\bra{\Probe}` is the standard unitary map
 

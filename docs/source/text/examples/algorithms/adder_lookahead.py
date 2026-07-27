@@ -41,7 +41,9 @@ addend_states = []
 carry_states = []
 for i in range(0, encoding_depth):
     target_bit = i
-    complement_bits = [n for n in range(0, encoding_depth) if n != target_bit]
+    complement_bits = [
+        n for n in range(0, encoding_depth) if n != target_bit
+    ]
     augend_state.partial_trace(complement_bits)
     addend_state.partial_trace(complement_bits)
 
@@ -76,8 +78,7 @@ input_spec = flatten_list(
             addend_states[i],
         ]
         for i in range(0, encoding_depth)
-    ]
-    + [zero_state]
+    ] + [zero_state]
 )
 
 # Gates
@@ -177,12 +178,12 @@ sum_state = VectorState(
 )
 final_time = time.time()
 
+computation = f"{augend_integer} + {addend_integer} = {sum_integer}"
+duration = sp.N(final_time - initial_time).round(3)
+
 # Results
 augend_state.print()
 addend_state.print()
 sum_state.print()
-
-computation = f"{augend_integer} + {addend_integer} = {sum_integer}"
-duration = sp.N(final_time - initial_time, n=8).round(3)
 print(f"Computation: {computation}")
 print(f"Duration: {duration} seconds")
