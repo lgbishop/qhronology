@@ -343,51 +343,6 @@ Main class
 
 .. raw:: latex
 
-   \vspace*{0.35\baselineskip}
-
-.. raw:: latex
-
-   \begin{codetitled}{Fourier transform decomposition}{}
-
-.. literalinclude:: /text/examples/docstrings/circuit_fourier.py
-   :language: python
-   :caption: Fourier transform decomposition
-
-.. raw:: latex
-
-   \tcblowerspaced
-
-.. code:: python
-
-   >>> fourier.diagram(pad=(0, 0), sep=(0, 1), style="unicode")
-
-.. raw:: latex
-   
-   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.10cm]{text_examples_docstrings_circuit_fourier.pdf}
-   \vspace{-1\baselineskip}
-
-..
-
-   .. only:: html
-
-      .. image:: /figures/output/text_examples_docstrings_circuit_fourier-dark.png
-         :scale: 36 %
-         :align: left
-         :class: only-dark
-
-   .. only:: html
-
-      .. image:: /figures/output/text_examples_docstrings_circuit_fourier-light.png
-         :scale: 36 %
-         :align: left
-         :class: only-light
-
-.. raw:: latex
-
-   \end{codetitled}
-
-.. raw:: latex
-
    \end{adjustwidth}
 
 .. raw:: latex

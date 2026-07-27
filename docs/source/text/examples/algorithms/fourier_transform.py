@@ -7,10 +7,6 @@ import sympy as sp
 size = 4  # The number of qudits
 dim = 2  # The dimensionality of the Fourier transform
 
-# Input
-rho = sp.MatrixSymbol("ρ", dim**size, dim**size).as_mutable()
-input_state = MatrixState(spec=rho, dim=dim, label="ρ")
-
 # Gates
 QFT = []
 for i in range(0, size):
@@ -27,8 +23,8 @@ for i in range(0, size):
         else:
             QFT.append(
                 Phase(
-                    targets=[i + j],
-                    controls=[i],
+                    targets=[i],
+                    controls=[i + j],
                     exponent=sp.Rational(1, dim**j),
                     num_systems=size,
                     dim=dim,
@@ -38,8 +34,8 @@ for i in range(0, size):
             )
 
 # Circuit
-fourier = QuantumCircuit(inputs=[input_state], gates=QFT)
-fourier.diagram(pad=(0, 0), sep=(0, 1), style="unicode")
+fourier = QuantumCircuit(gates=QFT)
+fourier.diagram(sep=(0, 1), visible={"gates"})
 
-# Output
+# Results
 print(repr(fourier.gate()))
