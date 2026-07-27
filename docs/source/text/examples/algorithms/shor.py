@@ -23,7 +23,7 @@ systems_targets = [k + num_controls for k in range(0, num_targets)]
 # Gates
 HX = GateStack(
     *[Hadamard()] * num_controls,
-    Pauli(index=1, num_systems=num_targets),
+    Pauli(index=1),
 )
 
 

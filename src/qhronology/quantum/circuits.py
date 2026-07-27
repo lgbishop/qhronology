@@ -1265,7 +1265,7 @@ class QuantumCircuit(SymbolicsProperties):
         else:
             for state in self.inputs:
                 cells_input.append(
-                    [*state._diagram_column(pad=pad, sep=sep, style=style).cells]
+                    state._diagram_column(pad=pad, sep=sep, style=style).cells
                 )
             for _ in range(0, self.num_systems - self.num_systems_inputs):
                 zero_state = QuantumState(
@@ -1379,7 +1379,7 @@ class QuantumCircuit(SymbolicsProperties):
             column_output = []
 
         grid = DiagramCircuit(
-            columns=flatten_list([column_input, [*columns_gate], column_output])
+            columns=flatten_list([column_input, columns_gate, column_output])
         )
         if return_string is True:
             return grid.diagram(

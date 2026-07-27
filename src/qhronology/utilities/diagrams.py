@@ -2078,7 +2078,7 @@ class DiagramCell(VisualizationProperties):
                 "unicode_alt": "replacement",
             }
 
-        codes = list(set(flatten_list([*styles[self.family].keys()] + [unsets])))
+        codes = list(set(flatten_list(list(styles[self.family].keys()) + [unsets])))
 
         # Replacement of self-referencing components.
         for n in range(0, cell.shape[0]):
@@ -3112,7 +3112,7 @@ class VisualizationMixin:
         if "STICK" in self.family:
             section = Sections.INPUTS.value
         pad_sections = {Sections.INPUTS.value: (2, 0), Sections.GATES.value: (0, 0)}
-        cells = [*self._diagram_column(pad=pad, sep=sep, style=style).cells]
+        cells = self._diagram_column(pad=pad, sep=sep, style=style).cells
         column = DiagramColumn(
             cells=flatten_list(cells), pad=pad_sections[section], section=section
         )

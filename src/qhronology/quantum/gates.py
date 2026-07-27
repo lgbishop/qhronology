@@ -14,6 +14,7 @@ Classes for the creation of quantum gates.
 # https://peps.python.org/pep-0649/
 # https://peps.python.org/pep-0749/
 from __future__ import annotations
+import copy
 import itertools
 from typing import Any
 
@@ -1988,6 +1989,10 @@ class GateInterleave(QuantumGate):
     merge : bool
         Whether to merge the gates together diagrammatically.
         Defaults to :python:`False`.
+    num_systems : int
+        The (total) number of systems which the gate spans.
+        Must be a non-negative integer.
+        Defaults to :python:`max([gate.num_systems for gate in gates])`.
     numerical : bool
         Whether to cast the gate's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
         Defaults to :python:`False`.
@@ -2007,7 +2012,7 @@ class GateInterleave(QuantumGate):
         Defaults to :python:`1`.
     label : str
         The unformatted string used to represent the gate in mathematical expressions.
-        Defaults to :python:`"⊗".join([gate.label for gate in [*gates]])`.
+        Defaults to :python:`"⊗".join([gate.label for gate in gates])`.
     notation : str
         The formatted string used to represent the gate in mathematical expressions.
         When not :python:`None`, overrides the value passed to :python:`label`.
@@ -2027,6 +2032,7 @@ class GateInterleave(QuantumGate):
         self,
         *gates: QuantumGate,
         merge: bool | None = None,
+        num_systems: int | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
         conjugate: bool | None = None,
@@ -2035,13 +2041,15 @@ class GateInterleave(QuantumGate):
         label: str | None = None,
         notation: str | None = None,
     ):
-        self.gates = [*gates]
+        self.gates = [copy.deepcopy(gate) for gate in gates]
         merge = False if merge is None else merge
         self.merge = merge
-        label = "⊗".join([gate.label for gate in [*gates]]) if label is None else label
+        label = "⊗".join([gate.label for gate in gates]) if label is None else label
+        num_systems = max([gate.num_systems for gate in gates]) if num_systems is None else num_systems
 
         super().__init__(
             spec=None,
+            num_systems=num_systems,
             numerical=numerical,
             array=array,
             conjugate=conjugate,
@@ -2127,16 +2135,26 @@ class GateInterleave(QuantumGate):
 
     @property
     def num_systems(self) -> int:
-        num_systems = list(set(flatten_list([gate.num_systems for gate in self.gates])))
-        if len(num_systems) != 1:
-            raise ValueError(
-                """Mismatch between one or more of the number of systems."""
-            )
-        return num_systems[0]
+        """The number of systems that the gate spans.
+        Must be a non-negative integer."""
+        return self._num_systems
 
     @num_systems.setter
     def num_systems(self, num_systems: int):
-        pass
+        num_systems_min = max(
+            [
+                max(gate.targets + gate.controls + gate.anticontrols) + 1
+                for gate in self.gates
+            ]
+        )
+        if num_systems < num_systems_min:
+            raise ValueError(
+                f"""One or more of the interleaved gates cannot have its number of systems set to {num_systems}."""
+            )
+        else:
+            for index, gate in enumerate(self.gates):
+                self.gates[index].num_systems = num_systems
+        self._num_systems = num_systems
 
     @property
     def symbols(self) -> dict[sym | str, dict[str, Any]]:
@@ -2278,6 +2296,10 @@ class GateStack(GateInterleave):
     merge : bool
         Whether to merge the gates together diagrammatically.
         Defaults to :python:`False`.
+    num_systems : int
+        The (total) number of systems which the gate spans.
+        Must be a non-negative integer.
+        Defaults to :python:`sum([gate.num_systems for gate in gates])`.
     numerical : bool
         Whether to cast the gate's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
         Defaults to :python:`False`.
@@ -2296,7 +2318,7 @@ class GateStack(GateInterleave):
         Defaults to :python:`1`.
     label : str
         The unformatted string used to represent the gate in mathematical expressions.
-        Defaults to :python:`"⊗".join([gate.label for gate in [*gates]])`.
+        Defaults to :python:`"⊗".join([gate.label for gate in gates])`.
     notation : str
         The formatted string used to represent the gate in mathematical expressions.
         When not :python:`None`, overrides the value passed to :python:`label`.
@@ -2308,6 +2330,7 @@ class GateStack(GateInterleave):
         self,
         *gates: QuantumGate,
         merge: bool | None = None,
+        num_systems: int | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
         conjugate: bool | None = None,
@@ -2316,9 +2339,11 @@ class GateStack(GateInterleave):
         label: str | None = None,
         notation: str | None = None,
     ):
+        num_systems = sum([gate.num_systems for gate in gates]) if num_systems is None else num_systems
         super().__init__(
             *gates,
             merge=merge,
+            num_systems=num_systems,
             numerical=numerical,
             array=array,
             conjugate=conjugate,
@@ -2384,11 +2409,29 @@ class GateStack(GateInterleave):
 
     @property
     def num_systems(self) -> int:
-        return sum([gate.num_systems for gate in self.gates])
+        """The number of systems that the gate spans.
+        Must be a non-negative integer."""
+        return self._num_systems
 
     @num_systems.setter
     def num_systems(self, num_systems: int):
-        pass
+        gate_last = self.gates[-1]
+        num_systems_last_min = (
+            max(gate_last.targets + gate_last.controls + gate_last.anticontrols) + 1
+        )
+        num_systems_except_last = max(
+            0, sum([gate.num_systems for gate in self.gates[0:-1]])
+        )
+        num_systems_total_min = num_systems_last_min + num_systems_except_last
+        if num_systems < num_systems_total_min:
+            raise ValueError(
+                f"""The number of systems of the stack of gates ({num_systems_total_min}) cannot be less than the number of systems specified ({num_systems})."""
+            )
+        else:
+            self.gates[-1].num_systems = num_systems_last_min + (
+                num_systems - num_systems_total_min
+            )
+        self._num_systems = num_systems
 
     def matrix(
         self,

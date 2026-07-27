@@ -16,7 +16,10 @@ systems_controls = list(range(0, num_controls))
 systems_targets = [m + num_controls for m in range(0, num_targets)]
 
 # Gates
-HX = GateStack(*[Hadamard()] * num_controls, Pauli(index=1))
+HX = GateStack(
+    *[Hadamard()] * num_controls,
+    Pauli(index=1),
+)
 
 unitaries = [
     Phase(

@@ -37,7 +37,7 @@ from qhronology.utilities.classification import (
 )
 
 
-def flatten_list(nested_list: list) -> list:
+def flatten_list(nested_list: list | tuple) -> list:
     """Flatten a list of any nesting depth and structure, e.g.:
 
     Examples
@@ -75,7 +75,7 @@ def count_dims(matrix: mat | arr, num_systems: int) -> int:
 def check_systems_conflicts(*subsystems: list[int]) -> bool:
     """Check for conflicts (common element(s)) in the given (unpacked) tuple of lists.
     Returns :python:`True` if any are found, otherwise :python:`False`."""
-    subsystems_list = flatten_list([*subsystems])
+    subsystems_list = flatten_list(subsystems)
     subsystems_set = set(subsystems_list)
     return len(subsystems_list) != len(subsystems_set)
 

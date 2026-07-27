@@ -47,7 +47,7 @@ O = QuantumGate(
     label=" O ",
 )
 
-HI = GateStack(*[Hadamard()] * n, Pauli(index=0, family="WIRE_QN"))
+HI = GateStack(*[Hadamard()] * n)
 
 # Circuit
 deutsch_jozsa = QuantumCircuit(
