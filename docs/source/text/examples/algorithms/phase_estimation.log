@@ -1,0 +1,29 @@
+     ┏━━━┓                                 ┏━━━━━━━┓   
+|0⟩╶─┨ H ┠────●────────────────────────────┨       ┠── 
+     ┣━━━┫    │                            ┃       ┃   
+|0⟩╶─┨ H ┠────┼───────●────────────────────┨ QFT^† ┠── 
+     ┣━━━┫    │       │                    ┃       ┃   
+|0⟩╶─┨ H ┠────┼───────┼───────●────────────┨       ┠── 
+     ┣━━━┫    │       │       │            ┃       ┃   
+|0⟩╶─┨ H ┠────┼───────┼───────┼───────●────┨       ┠── 
+     ┣━━━┫ ┏━━┷━━┓ ┏━━┷━━┓ ┏━━┷━━┓ ┏━━┷━━┓ ┗━━━━━━━┛   
+|0⟩╶─┨ X ┠─┨ U^1 ┠─┨ U^2 ┠─┨ U^4 ┠─┨ U^8 ┠──────────── 
+     ┗━━━┛ ┗━━━━━┛ ┗━━━━━┛ ┗━━━━━┛ ┗━━━━━┛             
+Input phase: 0.64
+Bitstring=0000, Probability=0.002, Phase=0
+Bitstring=0001, Probability=0.002, Phase=0.0625
+Bitstring=0010, Probability=0.002, Phase=0.1250
+Bitstring=0011, Probability=0.002, Phase=0.1875
+Bitstring=0100, Probability=0.002, Phase=0.2500
+Bitstring=0101, Probability=0.002, Phase=0.3125
+Bitstring=0110, Probability=0.003, Phase=0.3750
+Bitstring=0111, Probability=0.005, Phase=0.4375
+Bitstring=1000, Probability=0.010, Phase=0.5000
+Bitstring=1001, Probability=0.031, Phase=0.5625
+Bitstring=1010, Probability=0.825, Phase=0.6250 (most probable)
+Bitstring=1011, Probability=0.083, Phase=0.6875
+Bitstring=1100, Probability=0.016, Phase=0.7500
+Bitstring=1101, Probability=0.007, Phase=0.8125
+Bitstring=1110, Probability=0.004, Phase=0.8750
+Bitstring=1111, Probability=0.003, Phase=0.9375
+Expectation (weighted average): 0.6245
