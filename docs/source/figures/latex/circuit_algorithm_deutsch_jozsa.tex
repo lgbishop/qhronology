@@ -1,0 +1,28 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+\usepackage{geometry}
+\geometry{
+paperwidth=10cm,
+paperheight=5cm,
+margin=0cm
+}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+% \usetikzlibrary{quantikz}
+\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={0.9*\QuantikzSeparationRow cm, between origins}, column sep=1em, wire types={q,q,n,q,q}]%[transparent]
+    \lstick[4]{$\ket{0}^{\otimes n}$} &[-2em] \qw &[-1em] & \gate{\Hadamard} & \gate[5]{\Oracle_f} \hphantom{\qquad} & \gate{\Hadamard} & \meter{} \\
+    & \qw & \qw & \gate{\Hadamard} & \qw & \gate{\Hadamard} & \meter{} \\
+    & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} & & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} & & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} \\
+    & \qw & \qw & \gate{\Hadamard} & \qw & \gate{\Hadamard} & \meter{} \\[0.4*\QuantikzSeparationRow cm]
+    \lstick{$\ket{0}$} & & \gate{\PauliX} & \gate{\Hadamard} & \qw & \qw & \qw
+\end{quantikz}
+\end{document}
