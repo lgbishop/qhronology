@@ -30,11 +30,11 @@ The order-finding problem
 
 Given the set of integers :math:`\Integers`, we can, using a positive integer :math:`N \in \IntegersPositive`, define a subset as
 
-.. math:: \Integers_N = \{ n \in \IntegersPositive : n < N \}.
+.. math:: \Integers_N = \{ n \in \Integers : 0 \leq n \leq N - 1 \}.
 
 If we only include elements in this set which are coprime to :math:`N,` (which necessarily satisfy :math:`\gcd(N, n) = 1`), then we obtain
 
-.. math:: \Integers_N^* = \{ n \in \IntegersPositive \, : \, n < N, \; \gcd(N, n) = 1 \}.
+.. math:: \Integers_N^* = \{ n \in \Integers \, : \, 0 \leq n \leq N - 1, \; \gcd(N, n) = 1 \}.
 
 Under the operation of (modular) multiplication, this set forms a *group*, and is sometimes written as :math:`(\Integers \setminus n\Integers)^\times`.
 

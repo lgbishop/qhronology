@@ -11,13 +11,13 @@ Description
 Algorithm
 ---------
 
-In Grover's algorithm, we have two inputs: the input size :math:`N \leq 1` and marked value :math:`\tilde{x} \geq 0`, both decimal integers with :math:`\tilde{x} \leq N`. The task is to, given the set of inputs,
+In Grover's algorithm, we have two inputs: the input size :math:`N \geq 1` and marked value :math:`\tilde{x} \geq 0`, both decimal integers with :math:`\tilde{x} < N`. The task is to, given the set of inputs,
 
-.. math:: \Integers_N = \{ x \in \IntegersPositive \, : \, x \leq N \},
+.. math:: \Integers_N = \{ x \in \Integers \, : \, 0 \leq x \leq N - 1 \},
 
-find the marked value :math:`\tilde{x} \in \Integers_N`. Note however that, as at least :math:`n = \lceil \log_{2}(N + 1) \rceil` qubits are required to encode the entire input set, then the search will necessarily be conducted on the (larger) domain
+find the marked value :math:`\tilde{x} \in \Integers_N`. Note however that, as at least :math:`n = \lceil \log_{2}(N) \rceil` qubits are required to encode the entire input set, then the search will necessarily be conducted on the (larger) domain
 
-.. math:: \Integers_{2^n} = \{ x \in \IntegersPositive \, : \, x \leq 2^n - 1 \}.
+.. math:: \Integers_{2^n} = \{ x \in \Integers \, : \, 0 \leq x \leq 2^n - 1 \}.
 
 The quantum circuit representation of Grover's algorithm appears in :numref:`fig:circuit_algorithm_grover`. Here, the circuit's register is initialized in the state
 

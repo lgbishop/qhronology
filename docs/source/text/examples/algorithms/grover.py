@@ -10,7 +10,7 @@ import numpy as np
 N = 10  # The size of the input space (domain)
 marked = 4  # The value to find (should be smaller than N)
 
-n = int(math.ceil(math.log(N + 1, 2)))  # Encoding depth
+n = int(math.ceil(math.log(N, 2)))  # Encoding depth
 iterations = int(math.pi * math.sqrt(2**n) / 4)
 
 # Gates
