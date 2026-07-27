@@ -46,6 +46,5 @@ teleported_state = teleporter.state(label="ρ")
 # Results
 teleporting_state.print()
 teleported_state.print()
-
 print(teleporting_state.distance(teleported_state))
 print(teleporting_state.fidelity(teleported_state))
