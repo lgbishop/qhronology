@@ -28,7 +28,7 @@
 \end{minipage}%
 \begin{minipage}{0.5\linewidth}
 \begin{align}
-\quad \iff \quad \Controlled{\Unitary}[0][1][2] &= {\ket{0}\bra{0}}^0 \otimes \Identity^{1,2} + {\ket{1}\bra{1}}^0 \otimes \Controlled{\Unitary}[][1][2] \nonumber\\
+\quad \iff \quad \Controlled{\Unitary}[0][1][2] &= {\ket{0}\bra{0}}^{\indices{0}} \otimes \Identity^{\indices{1,2}} + {\ket{1}\bra{1}}^{\indices{0}} \otimes \Controlled{\Unitary}[][1][2] \nonumber\\
 %&= \ket{0}\bra{0} \otimes \Identity \otimes \Identity + \ket{1}\bra{1} \otimes \ket{1}\bra{1} \otimes \Identity + \ket{1}\bra{1} \otimes \ket{0}\bra{0} \otimes \Unitary \nonumber \\
 &= \Identity \otimes \Identity \otimes \Identity + \ket{1}\bra{1} \otimes \ket{0}\bra{0} \otimes (\Unitary - \Identity) \nonumber
 \end{align}

@@ -19,12 +19,12 @@
 \usetikzlibrary{quantikz2}
 \begin{document}
 \begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
-    \lstick{$\ldots$} & \rstick[2]{$\hspace{0.75em}\StateDensity^{\dagger 0,1}$} \\
+    \lstick{$\ldots$} & \rstick[2]{$\hspace{0.75em}\StateDensity\indices{0,1}}$} \\
     \lstick{$\ldots$} &
 \end{quantikz}
 $\quad = \quad$\begin{quantikz}[row sep={\QuantikzSeparationRow cm,between origins}, align equals at=1.5]
-    \lstick{$\ldots$} & \meterD{} \rstick[2]{$\hspace{0.75em}\StateDensity^{0,1}$} \\
+    \lstick{$\ldots$} & \meterD{} \rstick[2]{$\hspace{0.75em}\StateDensity^{\indices{0,1}}$} \\
     \lstick{$\ldots$} & \meterD{}
 \end{quantikz}
-$\quad \iff \quad \trace[\StateDensity^{0,1}(\ldots)]$
+$\quad \iff \quad \trace[\StateDensity^{\indices{0,1}}(\ldots)]$
 \end{document}

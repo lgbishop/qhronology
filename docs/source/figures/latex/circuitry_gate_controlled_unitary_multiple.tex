@@ -29,8 +29,8 @@ $\quad \iff \quad$
 \end{minipage}%
 \begin{minipage}{0.5\linewidth}
 \begin{align}
-\Controlled{\Unitary}[0,2][][1] &= {\ket{0}\bra{0}}^0 \otimes \Identity^{1,2} + {\ket{1}\bra{1}}^0 \otimes \Controlled{\Unitary}[2][][1] \nonumber\\\
-&= \Identity^{0,1} \otimes {\ket{0}\bra{0}}^2 + \Controlled{\Unitary}[0][][1] \otimes {\ket{1}\bra{1}}^2 \nonumber\\
+\Controlled{\Unitary}[0,2][][1] &= {\ket{0}\bra{0}}^{\indices{0}} \otimes \Identity^{\indices{1,2}} + {\ket{1}\bra{1}}^{\indices{0}} \otimes \Controlled{\Unitary}[2][][1] \nonumber\\\
+&= \Identity^{\indices{0,1}} \otimes {\ket{0}\bra{0}}^{\indices{2}} + \Controlled{\Unitary}[0][][1] \otimes {\ket{1}\bra{1}}^{\indices{2}} \nonumber\\
 %&= \ket{0}\bra{0} \otimes \Identity \otimes \Identity + \ket{1}\bra{1} \otimes \Identity \otimes \ket{0}\bra{0} + \ket{1}\bra{1} \otimes \Unitary \otimes \ket{1}\bra{1} \nonumber \\
 &= \Identity \otimes \Identity \otimes \Identity + \ket{1}\bra{1} \otimes (\Unitary - \Identity) \otimes \ket{1}\bra{1} \nonumber
 \end{align}
