@@ -1,0 +1,27 @@
+\documentclass{article}
+\pagenumbering{gobble}
+\input{./../../preamble/header.tex}
+\input{./../../preamble/macros.tex}
+
+\usepackage{geometry}
+\geometry{
+paperwidth=16cm,
+paperheight=6cm,
+margin=0cm
+}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings}
+\usetikzlibrary{shapes}
+% \usetikzlibrary{quantikz}
+\usetikzlibrary{quantikz2}
+\begin{document}
+\begin{quantikz}[row sep={0.9*\QuantikzSeparationRow cm, between origins}, column sep=1em, wire types={q,q,n,q}]%[transparent]
+    \lstick[4]{$\ket{0}^{\otimes n}$} &[-2em] \qw &[-2em] & \gate{\Hadamard} & \gate[4]{\Oracle_{\tilde{x}}}\gategroup[4,steps=4,style={draw=none,fill=none},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{$\stackrel{\underbrace{\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad}}{\text{Repeated } \Bigl\lceil\frac{\pi}{4}\sqrt{N}\Bigr\rceil \text{ times}}$} \hphantom{\qquad} &[0.5em] \gate{\Hadamard}\gategroup[4,steps=3,style={thin,rounded corners,fill=none, inner xsep=2pt},background]{$\Diffusion$} & \gate[4]{2 \ket{0}\bra{0}^{\otimes n}- \Identity^{\otimes n}} \hphantom{\quad} & \gate{\Hadamard} & \push{\ \dots\ } & \meter{} \\
+    & \qw & \qw & \gate{\Hadamard} & \qw & \gate{\Hadamard} & \qw & \gate{\Hadamard} & \push{\ \dots\ } & \meter{} \\
+    & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} & & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} & & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} & & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} & & \push{\raisebox{0.215cm}{$\quad\vdots\quad$}} \\
+    & \qw & \qw & \gate{\Hadamard} & \qw & \gate{\Hadamard} & \qw & \gate{\Hadamard} & \push{\ \dots\ } & \meter{}
+\end{quantikz}
+\end{document}

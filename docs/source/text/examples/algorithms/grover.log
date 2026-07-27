@@ -1,0 +1,31 @@
+     ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓   
+|0⟩╶─┨ H ┠─┨   ┠─┨   ┠─┨   ┠─┨   ┠─┨   ┠─┨   ┠── 
+     ┗━━━┛ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃   
+     ┏━━━┓ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃   
+|0⟩╶─┨ H ┠─┨ O ┠─┨ D ┠─┨ O ┠─┨ D ┠─┨ O ┠─┨ D ┠── 
+     ┗━━━┛ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃   
+     ┏━━━┓ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃   
+|0⟩╶─┨ H ┠─┨   ┠─┨   ┠─┨   ┠─┨   ┠─┨   ┠─┨   ┠── 
+     ┗━━━┛ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃   
+     ┏━━━┓ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃ ┃   ┃   
+|0⟩╶─┨ H ┠─┨   ┠─┨   ┠─┨   ┠─┨   ┠─┨   ┠─┨   ┠── 
+     ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛   
+Input size: 10
+Marked value: 4
+Bitstring=0000, Probability=0.003, Value=0
+Bitstring=0001, Probability=0.003, Value=1
+Bitstring=0010, Probability=0.003, Value=2
+Bitstring=0011, Probability=0.003, Value=3
+Bitstring=0100, Probability=0.961, Value=4 (most probable)
+Bitstring=0101, Probability=0.003, Value=5
+Bitstring=0110, Probability=0.003, Value=6
+Bitstring=0111, Probability=0.003, Value=7
+Bitstring=1000, Probability=0.003, Value=8
+Bitstring=1001, Probability=0.003, Value=9
+Bitstring=1010, Probability=0.003, Value=10
+Bitstring=1011, Probability=0.003, Value=11
+Bitstring=1100, Probability=0.003, Value=12
+Bitstring=1101, Probability=0.003, Value=13
+Bitstring=1110, Probability=0.003, Value=14
+Bitstring=1111, Probability=0.003, Value=15
+Expectation (weighted average): 4.144
