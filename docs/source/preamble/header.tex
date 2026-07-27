@@ -124,9 +124,9 @@
 % \input{macros.tex}
 
 \DeclareDocumentCommand\Controlled{ m o o o }{
-    \IfNoValueOrEmptyTF{#2}{}{\Control^{#2}}
-    \IfNoValueOrEmptyTF{#3}{}{\Anticontrol^{#3}}
-    \IfNoValueTF{#4}{#1}{{#1}^{#4}}
+    \IfNoValueOrEmptyTF{#2}{}{\Control^{\indices{#2}}}
+    \IfNoValueOrEmptyTF{#3}{}{\Anticontrol^{\indices{#3}}}
+    \IfNoValueTF{#4}{#1}{{#1}^{\indices{#4}}}
 }
 \tikzstyle{phantomhelper} = [
     rectangle,
