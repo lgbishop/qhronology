@@ -430,7 +430,7 @@ Functions
 
    .. raw:: latex
 
-      \enlargethispage{2\baselineskip}
+      \newpage
 
    .. raw:: latex
 

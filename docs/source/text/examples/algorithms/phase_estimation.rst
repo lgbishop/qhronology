@@ -158,10 +158,6 @@ In this implementation, the target register consists of a single qubit :math:`\k
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
-
-.. raw:: latex
-
    \begin{codetitled}{Quantum phase estimation}{}
 
 .. literalinclude:: /text/examples/algorithms/phase_estimation.py

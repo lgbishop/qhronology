@@ -203,7 +203,7 @@ Diagram
    \end{code}
 
 Results
-^^^^^^
+^^^^^^^
 
 If :python:`constant` is :python:`True`:
 

@@ -49,6 +49,7 @@ for i in range(encoding_depth - 1, -1, -1):
         numerical=True,
         array=False,
     )
+
     sum_qubit = adder.state(label="s", traces=[0, 1, 3])
     carry_state = adder.state(label="c_i", traces=[0, 1, 2])
     sum_qubits = [sum_qubit.output()] + sum_qubits

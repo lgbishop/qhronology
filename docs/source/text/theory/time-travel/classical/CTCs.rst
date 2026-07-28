@@ -14,9 +14,13 @@ In some locally unobjectionable exact solutions to the Einstein field equations,
 Wormhole-based time machines
 ----------------------------
 
-In popular culture, wormholes (either artificially constructed or naturally occurring) commonly provide a means of interstellar (or even intergalactic) transportation. They accomplish this by allowing spaceships to quickly traverse their short, tubiform interiors and emerge at distant locations far sooner than any alternative non-wormhole routes would allow. Alternatively, if two separate moments in time were to be linked by wormhole instead of two separate locations, one would possess a *time machine* :cite:p:`morris_wormholes_1988-2, novikov_analysis_1989, thorne_laws_1991, lossev_jinn_1992, ralph_relativistic_2012`, i.e., a mechanism which can produce CTCs. Thus, wormholes are theoretically able to facilitate both long-distance space travel and antichronological time travel. It is this basis on which many of the studies involving wormhole-based time machines is established.
+In popular culture, wormholes (either artificially constructed or naturally occurring) commonly provide a means of interstellar (or even intergalactic) transportation. They accomplish this by allowing spaceships to quickly traverse their short, tubiform interiors and emerge at distant locations far sooner than any non-wormhole routes would allow. Alternatively, if two separate moments in time were to be linked by wormhole instead of two separate locations, one would possess a *time machine* :cite:p:`morris_wormholes_1988-2, novikov_analysis_1989-eng, thorne_laws_1991, lossev_jinn_1992, ralph_relativistic_2012`, i.e., a mechanism which can produce CTCs. Thus, wormholes are theoretically able to facilitate both long-distance space travel and antichronological time travel. It is this basis on which many of the studies involving wormhole-based time machines are established.
 
 In essence, a wormhole is an exotic, theoretical object that connects two distant regions in space. The simplest version of a topological wormhole :cite:p:`friedman_cauchy_1990, friedman_cauchy_1991, friedman_existence_1997, friedman_cauchy_2004` can be constructed by "cutting out" two spatially separated balls (denoted by :math:`\Mouth^\pm`, representing the two ends of the wormhole) in flat three-dimensional space and subsequently "gluing" (connecting) the surfaces (denoted by :math:`\partial\Mouth^\pm`) of these holes together. The resulting *mouths* (entrances) into the wormhole are thus *identified*, which is to say that entering into one results in simultaneous emergence from the other. See :numref:`fig:diagram_wormhole_mouths` for a visual depiction of such geometry. Note that the resulting spacetime is topologically and geometrically non-trivial since the space is not simply connected and the identified surfaces are not flat.
+
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
 
 .. only:: html
 
@@ -46,7 +50,7 @@ In essence, a wormhole is an exotic, theoretical object that connects two distan
 
 .. raw:: latex
 
-   \vspace*{-0.75\baselineskip}
+   \vspace*{-\baselineskip}
 
 .. raw:: latex
 

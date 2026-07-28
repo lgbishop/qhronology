@@ -43,7 +43,7 @@ Implementation
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{-2\baselineskip}
 
 .. raw:: latex
 

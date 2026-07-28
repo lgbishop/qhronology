@@ -23,7 +23,7 @@ HX = GateStack(
 
 unitaries = [
     Phase(
-        phase=f"exp(2*I*pi*{phase}*2**{n})",
+        phase=sp.exp(2 * sp.I * sp.pi * phase * 2**n),
         targets=systems_targets,
         controls=[systems_controls[n]],
         num_systems=num_total,

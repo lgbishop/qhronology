@@ -144,7 +144,11 @@ Main class
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \newpage
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 .. raw:: latex
 
@@ -275,6 +279,10 @@ Main class
 .. raw:: latex
 
    \vspace*{0.35\baselineskip}
+
+.. raw:: latex
+
+   \newpage
 
 .. raw:: latex
 

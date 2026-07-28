@@ -1527,7 +1527,7 @@ class Not(Summation):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems, and is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation
+    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems. In other words, this means that it is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation
 
     .. math::
        
@@ -1607,7 +1607,7 @@ class Hadamard(QuantumGate):
            \\end{bmatrix}
        \\end{aligned}
 
-    where :math:`\\omega_\\Dimension \\equiv \\e^{\\frac{2\\pi\\eye}{\\Dimension}}`.
+    where :math:`\\omega_\\Dimension \\equiv \\e^{2\\pi\\eye/\\Dimension}`.
 
     This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
@@ -1663,7 +1663,7 @@ HAD = Hadamard
 
 
 class Fourier(QuantumGate):
-    """A subclass for creating Fourier (quantum discrete Fourier transform [QDFT]) gates and storing their metadata.
+    """A subclass for creating Fourier (quantum [discrete] Fourier transform [QFT]) gates and storing their metadata.
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
@@ -1685,7 +1685,7 @@ class Fourier(QuantumGate):
             \\end{bmatrix}
         \\end{aligned}
 
-    where :math:`\\omega \\equiv \\omega_{\\Dimension} \\equiv \\e^{\\frac{2\\pi\\eye}{\\Dimension}}`.
+    where :math:`\\omega \\equiv \\omega_{\\Dimension} \\equiv \\e^{2\\pi\\eye/\\Dimension}`.
 
     In the case of :math:`N` qudits, it is easier to characterize the *multipartite Fourier operator* :math:`\\QFT_N` not by its matrix form but by the transformation it imposes, to which its action on the basis state :math:`\\bigotimes\\limits_{\\ell=1}^{N} \\ket{j_\\ell} \\equiv \\ket{j_1, \\ldots, j_N}` (where :math:`j_\\ell \\in \\Integers_{0}^{\\Dimension - 1}`) is
 
@@ -1843,7 +1843,7 @@ class Fourier(QuantumGate):
         return cast(matrix, numerical=numerical, array=array)
 
 
-QDFT = Fourier
+QFT = Fourier
 
 
 class Measurement(QuantumGate):
@@ -2135,8 +2135,6 @@ class GateInterleave(QuantumGate):
 
     @property
     def num_systems(self) -> int:
-        """The number of systems that the gate spans.
-        Must be a non-negative integer."""
         return self._num_systems
 
     @num_systems.setter
@@ -2409,8 +2407,6 @@ class GateStack(GateInterleave):
 
     @property
     def num_systems(self) -> int:
-        """The number of systems that the gate spans.
-        Must be a non-negative integer."""
         return self._num_systems
 
     @num_systems.setter

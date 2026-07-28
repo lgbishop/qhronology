@@ -64,7 +64,7 @@ Due to its modularity, :math:`f` is periodic, with :math:`r` serving as its *per
 for any positive integer :math:`k`. The *order-finding problem* (or *period-finding problem*) is to, given positive integers :math:`N` and :math:`a` that satisfy :math:`\gcd(N, a) = 1`, find the smallest possible integer :math:`r` such that :eq:`eq:multiplicative_order` holds true.
 
 Factorization by period-finding
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Solving the problem of period-finding is useful because it can be used to factorize an integer. This is achieved by first assigning the number to be factorized :math:`N` as the modulus of the associated multiplicative group of integers. The period :math:`r` is then calculated given an element :math:`a \in \Integers_N^* \setminus \{1\}` (so :math:`N` and :math:`a` are coprime). Since :eq:`eq:multiplicative_order` is satisfied for such values of :math:`a`, then :math:`N` divides :math:`a^{r} - 1`, which is often written as
 

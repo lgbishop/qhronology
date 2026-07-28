@@ -47,10 +47,6 @@ Implementation
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
-
-.. raw:: latex
-
    \begin{codetitled}{Generation of a Bell state}{}
 
 .. literalinclude:: /text/examples/algorithms/generation_bell.py

@@ -827,7 +827,7 @@ Most of the canonical gates used in standard quantum computing theory are implem
      - variable (qudits)
      - unipartite, multipartite
    * - :py:class:`~qhronology.quantum.gates.Fourier`
-     - :python:`QDFT`
+     - :python:`QFT`
      - variable (qudits)
      - unipartite, multipartite
    * - :py:class:`~qhronology.quantum.gates.Measurement`
@@ -1704,10 +1704,6 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -1792,8 +1788,17 @@ Please note that the documentation of these subclasses includes only properties 
 
       \hrulefillthick
 
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
+
    .. autoproperty:: qhronology.quantum.gates.Phase.phase
       :no-index:
+
+.. raw:: latex
+
+   \newpage
+   \vspace*{-1.75em}
 
 .. raw:: latex
 
@@ -3328,7 +3333,8 @@ Combinations
       ...     Not(
       ...         targets=[(i + 1) % 2],
       ...         controls=[i % 2],
-      ...     ) for i in range(0, 4)
+      ...     )
+      ...     for i in range(0, 4)
       ... ]
       >>> CNOTs = GateStack(*gates)
       >>> CNOTS.diagram()
@@ -3365,7 +3371,14 @@ Combinations
    .. code:: python
 
       >>> labels = ("x", "y", "z")
-      >>> gates = [Rotation(axis=i, angle="θ", label=f"R_{labels[i - 1]}") for i in range(1, 4)]
+      >>> gates = [
+      ...     Rotation(
+      ...         axis=i,
+      ...         angle="θ",
+      ...         label=f"R_{labels[i - 1]}",
+      ...     )
+      ...     for i in range(1, 4)
+      ... ]
       >>> Rotations = GateStack(*gates)
       >>> Rotations.diagram(sep=(1, 1))
 
