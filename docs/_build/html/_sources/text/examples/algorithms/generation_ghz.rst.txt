@@ -40,7 +40,7 @@ The circuit in :numref:`fig:circuit_algorithm_generation_ghz` illustrates an alg
 
 The complete unitary transformation described by this circuit is the product
 
-.. math:: \Unitary = \Control^1 \NOT^2 \cdot \Control^0 \NOT^1 \cdot \Hadamard^0.
+.. math:: \Unitary = \Control^{\indices{1}} \NOT^{\indices{2}} \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \cdot \Hadamard^{\indices{0}}.
 
 Implementation
 --------------

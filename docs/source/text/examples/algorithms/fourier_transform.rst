@@ -55,6 +55,10 @@ Implementation
 
 .. raw:: latex
 
+   \enlargethispage{-\baselineskip}
+
+.. raw:: latex
+
    \begin{codetitled}{Fourier transform decomposition}{}
 
 .. literalinclude:: /text/examples/algorithms/fourier_transform.py

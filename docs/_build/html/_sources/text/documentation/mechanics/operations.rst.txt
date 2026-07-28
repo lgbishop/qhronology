@@ -151,7 +151,7 @@ Functions
 
    .. code:: python
 
-      >>> matrix = sp.Matrix([[sp.I, 1/sp.sqrt(2)], [sp.exp(sp.Rational(1,2)), sp.pi]])
+      >>> matrix = sp.Matrix([[sp.I, 1/sp.sqrt(2)], [sp.exp(sp.Rational(1, 2)), sp.pi]])
       >>> round(matrix)
       Matrix([
       [0, 1],

@@ -53,8 +53,8 @@ The complete unitary transformation described by this circuit is the product
 .. math::
    
    \begin{aligned}
-       \Unitary &= \Control^{\Number - 2} \SUM^{\Number - 1} \cdot \ldots \cdot \Control^1 \SUM^2 \cdot \Control^0 \SUM^1 \cdot \Hadamard^0 \\
-       &= \Biggl(\prod_{n = \Number - 1}^{1} \Control^{n - 1} \SUM^{n} \Biggr) \Hadamard^0.
+       \Unitary &= \Control^{\indices{\Number - 2}} \SUM^{\indices{\Number - 1}} \cdot \ldots \cdot \Control^{\indices{1}} \SUM^{\indices{2}} \cdot \Control^{\indices{0}} \SUM^{\indices{1}} \cdot \Hadamard^{\indices{0}} \\
+       &= \Biggl(\prod_{n = \Number - 1}^{1} \Control^{\indices{n - 1}} \SUM^{\indices{n}} \Biggr) \Hadamard^{\indices{0}}.
    \end{aligned}
 
 Implementation

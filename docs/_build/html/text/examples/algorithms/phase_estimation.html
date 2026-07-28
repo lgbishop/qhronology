@@ -1,0 +1,888 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quantum phase estimation &#8212; Qhronology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a0dcfd21" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=68e7c09d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"tex": {"macros": {"ten": ["{\\times10^{#1}}", 1], "im": "{\\text{Im}}", "re": "{\\text{Re}}", "inner": ["{\\left\\langle #1 , #2 \\right\\rangle}", 2], "innerprod": ["{\\mbox{}_{#3}\\langle #1 \\vert #2 \\rangle_{#4}}", 4], "tr": "{\\text{tr}}", "trace": "{\\text{tr}}", "Span": "{\\text{span}}", "Domain": "{\\text{dom}}", "Range": "{\\text{ran}}", "Arg": "{\\text{Arg}}", "diag": "{\\text{diag}}", "sn": "{\\text{sn}}", "eye": "{{\\mathrm{i}\\mkern1mu}}", "op": ["{\\hat{#1}}", 1], "indices": ["{\\left[#1\\right]}", 1], "conj": ["{#1^*#2}", 2], "dual": ["{#1^*#2}", 2], "transpose": "{\\text{T}}", "classical": ["{\\tilde{#1}}", 1], "map": ["{\\mathbf{#1}}", 1], "textgate": ["{\\text{\\textsc{#1}}}", 1], "vac": ["{\\mathbf{#1}} % \\mathcal{}, \\mathfrak{} or \\mathbf{} or \\tilde{}", 1], "normalized": ["{\\overline{#1}}", 1], "e": "{{\\mkern1mu\\mathrm{e}\\mkern1mu}}", "aket": ["{\\big| #1 \\big>}", 1], "abra": ["{\\big< #1 \\big|}", 1], "ket": ["{\\left| #1 \\right\\rangle}", 1], "bra": ["{\\left\\langle #1 \\right|}", 1], "abraket": ["{\\big< #1 \\vphantom{#2} \\big| \\big. #2 \\vphantom{#1} \\big>}", 2], "braket": ["{\\left\\langle #1 \\vphantom{#2} \\vphantom{#2} \\vert #2 \\vphantom{#1} \\right\\rangle}", 2], "vec": ["{\\mathbf{#1}}", 1], "gv": ["{\\bm{#1}}", 1], "uv": ["{\\mathbf{\\hat{#1}}}", 1], "abs": ["{\\left| #1 \\right|}", 1], "norm": ["{\\left| \\left| #1 \\right| \\right|}", 1], "avg": ["{\\left< #1 \\right>}", 1], "diff": "{\\text{d}}", "matrixel": ["{\\left< #1 \\vphantom{#2#3}", 3], "grad": ["{\\vec{\\nabla} #1}", 1], "div": ["{\\vec{\\nabla} \\cdot #1}", 1], "curl": ["{\\vec{\\nabla} \\times #1}", 1], "MapBracket": ["{\\big[ #1 \\big]}", 1], "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2], "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1], "divides": "{\\mid}", "BigO": "{O}", "LittleO": "{o}", "BigOmega": "{\\Omega}", "LittleOmega": "{\\omega}", "Time": "{t}", "TimeDelta": "{\\Delta t}", "TimeInitial": "{t'}", "TimeFinal": "{t''}", "TimeFuture": "{t^+}", "TimePast": "{t^-}", "TimeCollision": "{t^*}", "TimeOrthogonalization": "{t_\\perp}", "TimeInbound": "{t_\\text{in}}", "TimeOutbound": "{t_\\text{out}}", "TimeDelay": "{\\Delta \\tau}", "Space": "{x}", "SpaceDelta": "{w}", "PositionInitial": "{x'}", "PositionFinal": "{x''}", "PositionFuture": "{x^+}", "PositionPast": "{x^-}", "PositionCollision": "{x^*}", "MouthFuture": "{\\mathcal{W}^+}", "MouthPast": "{\\mathcal{W}^-}", "Position": "{x}", "Momentum": "{p}", "MomentumInitial": "{p'}", "MomentumFinal": "{p''}", "Coordinate": "{x}", "Dimension": "{d}", "Base": "{b}", "Radial": "{r}", "NullPlus": "{a}", "NullMinus": "{b}", "Affine": "{\\lambda}", "TimePenrose": "{v}", "SpacePenrose": "{u}", "PastTimelikeInfinity": "{i^-}", "FutureTimelikeInfinity": "{i^+}", "SpacelikeInfinity": "{i^0}", "PastLightlikeInfinity": "{\\mathcal{I}^-}", "FutureLightlikeInfinity": "{\\mathcal{I}^+}", "EvolutionNoninteracting": "{\\alpha}", "EvolutionInteracting": "{\\beta}", "EvolutionFuture": "{\\mu}", "EvolutionPast": "{\\nu}", "ClassNoninteracting": "{\\text{\\RomanNumeralCaps{1}}}", "ClassInteracting": "{\\text{\\RomanNumeralCaps{2}}}", "ClassFuture": "{\\text{\\RomanNumeralCaps{3}_+}}", "ClassPast": "{\\text{\\RomanNumeralCaps{3}_-}}", "Mass": "{m}", "Speed": "{c}", "Energy": "{E}", "EnergyScaled": "{\\Lambda}", "EnergyDelta": "{\\Delta E}", "Coupling": "{\\lambda}", "Probability": "{\\mathbb{P}}", "Expected": "{\\mathbb{E}}", "Action": "{S}", "Propagator": "{K}", "Green": "{G}", "Laplacian": "{\\vec{\\nabla}^2}", "Covariant": "{\\nabla}", "BoxOperator": "{\\square}", "Variation": "{\\delta}", "Transition": "{T}", "Transformation": "{\\Upsilon}", "Endomorphism": "{\\text{End}}", "PDENonLinear": "{F}", "PDELinear": "{P}", "PDELinearAdjoint": "{Q}", "Derivative": "{D}", "PDENonHomogeneous": "{J}", "FunctionExample": "{f}", "FunctionExampleTwo": "{g}", "FunctionExampleThree": "{h}", "FunctionTest": "{\\varphi}", "Functional": "{J}", "Distribution": "{T}", "FT": ["{\\tilde{#1}}", 1], "Fourier": "{\\mathcal{F}}", "Number": "{N}", "Fields": "{\\mathbb{F}}", "Reals": "{\\mathbb{R}}", "Complexes": "{\\mathbb{C}}", "Integers": "{\\mathbb{Z}}", "IntegersPositive": "{\\mathbb{Z}^+}", "Naturals": "{\\mathbb{N}}", "Basis": "{e}", "Element": "{v}", "SetField": "{F}", "SetSub": "{X}", "SetSubTwo": "{V}", "Chart": "{\\psi}", "Integral": "{I}", "Differentiability": "{C}", "Test": "{D}", "SpaceLebesgue": "{L}", "SpaceVector": "{\\mathcal{V}}", "SpaceSubset": "{\\mathcal{U}}", "SpaceHilbert": "{\\mathcal{H}}", "SpacePure": "{\\mathcal{P}}", "SpaceMixed": "{\\mathcal{D}}", "SpaceLinear": "{\\mathcal{L}}", "SpaceBounded": "{\\mathcal{B}}", "TestDistributions": "{\\mathcal{D}'}", "Schwartz": "{S}", "SchwartzDistributions": "{S'}", "Sobolev": "{W}", "Measure": "{\\mu}", "MeasureArea": "{\\sigma}", "Configuration": "{\\mathcal{Q}}", "WaveFunction": "{\\psi}", "WaveFunctionInitial": "{\\psi_\\text{i}}", "WaveFunctionFinal": "{\\psi_\\text{f}}", "WaveFunctionCTC": "{\\phi}", "WaveFunctionCTCInitial": "{\\phi_\\text{i}}", "WaveFunctionCTCFinal": "{\\phi_\\text{f}}", "StateVector": "{\\phi}", "StatePure": "{\\psi}", "StateMatrix": "{\\rho}", "StateDensity": "{\\op{\\StateMatrix}}", "Lagrangian": "{L}", "Hamiltonian": "{H}", "Kinetic": "{T}", "Potential": "{V}", "OperatorLagrangian": "{\\op{L}}", "OperatorHamiltonian": "{\\op{H}}", "OperatorKinetic": "{\\op{T}}", "OperatorPotential": "{\\op{V}}", "DifferentialPath": "{\\mathcal{D}}", "CR": "{\\text{CR}}", "CV": "{\\text{CV}}", "Teleportation": "{\\text{T}}", "Clock": "{\\text{c}}", "StateCR": "{\\op{\\rho}}", "StateCV": "{\\op{\\tau}}", "MapGeneral": "{\\vec{E}}", "MapDCTCsCR": "{\\vec{D}}", "MapDCTCsMix": "{\\vec{d}}", "MapDCTCsCV": "{\\vec{d}}", "MapPCTCsCR": "{\\vec{P}}", "MapPCTCsCV": "{\\vec{p}}", "MapWDCTCsCR": "{\\vec{W}}", "MapWDCTCsCV": "{\\vec{w}}", "MapTCTCsCR": "{\\vec{T}}", "MapTCTCsCV": "{\\vec{t}}", "OperatorPCTC": "{\\op{\\mathcal{P}}}", "Decoherence": "{\\mathscr{D}}", "Depolarization": "{\\mathscr{N}}", "Purity": "{\\gamma}", "Entropy": "{S}", "MutualInformation": "{I}", "TraceDistance": "{D}", "Fidelity": "{F}", "NumberLevels": "{N}", "NumberModes": "{M}", "Normalization": "{\\mathcal{N}}", "Unitary": "{\\op{U}}", "UnitaryVacuum": "{\\op{U}}", "UnitaryMultimode": "{\\op{U}}", "UnitaryTraced": "{\\op{P}}", "UnitaryTime": "{\\op{U}}", "Kraus": "{\\op{K}}", "Observable": "{\\op{O}}", "Identity": "{\\op{I}}", "Seed": "{\\op{\\varrho}}", "Rotation": "{\\op{R}}", "Phase": "{\\op{P}}", "Diagonal": "{\\op{D}}", "Swap": "{\\op{S}}", "OperatorPartial": "{\\op{V}}", "Control": "{C}", "Anticontrol": "{\\bar{C}}", "SUM": "{\\op{\\Sigma}}", "Pauli": "{\\op{\\sigma}}", "GellMann": "{\\op{\\lambda}}", "GellMannGeneralized": "{\\op{\\lambda}}", "NOT": "{\\op{N}}", "PauliX": "{\\op{X}}", "PauliY": "{\\op{Y}}", "PauliZ": "{\\op{Z}}", "QFT": "{\\op{F}}", "Oracle": "{\\op{O}}", "Diffusion": "{\\op{D}}", "VacuumSwap": "{\\op{\\vac{S}}}", "VacuumIdentity": "{\\op{\\vac{I}}}", "VacuumRotation": "{\\op{\\vac{R}}}", "qclock": "{\\theta}", "qClock": "{\\Theta}", "Bell": "{\\Phi}", "CoefficientWeight": "{c}", "ParameterVacuum": "{\\Omega}", "ParameterFree": "{g}", "ParameterScaled": "{q}", "ParameterIncomplete": "{h}", "ParameterPower": "{p}", "ProbabilisticFalse": "{\\alpha}", "ProbabilisticTrue": "{\\beta}", "ProbabilisticTrueScaled": "{r}", "EigenValue": "{\\xi}", "Probe": "{\\chi}", "StateProbe": "{\\op{\\omega}}", "StateIntermediate": "{\\op{\\kappa}}", "Strength": "{\\epsilon}", "Measurement": "{M}", "POVM": "{\\Pi}", "Connection": "{Q}", "Expectation": "{r}", "UnitaryTotal": "{\\op{W}}", "Tomography": "{\\op{T}}", "UnitaryInteraction": "{\\op{U}}", "UnitaryExpansion": "{\\op{A}}", "UnitaryBasis": "{\\op{V}}", "Hadamard": "{\\op{H}}", "GroupUnitary": "{U}", "GroupUnitarySpecial": "{SU}", "GroupOrthogonal": "{O}", "GroupOrthogonalSpecial": "{SO}", "SetProbability": "{\\mathbb{P}}", "SetKraus": "{\\mathbb{K}}", "SetUnitary": "{\\mathbb{U}}", "SetObservable": "{\\mathbb{M}}", "FieldGeneral": "{\\Phi}", "FieldGeneralData": "{\\chi}", "FieldScalar": "{\\phi}", "FieldSpinor": "{\\psi}", "FieldVector": "{B}", "FieldDataPosition": "{\\chi}", "FieldDataMomentum": "{\\dot{\\chi}}", "FieldTerm": "{\\psi}", "HamiltonianDensity": "{\\mathcal{H}}", "LagrangianDensity": "{\\mathcal{L}}", "NonLinear": "{\\LagrangianDensity_{\\text{int}}}", "FunctionPositive": "{A}", "FunctionNegative": "{B}", "FunctionIntermediate": "{J}", "Wave": "{\\psi}", "WaveDataPosition": "{\\Psi}", "WaveDataMomentum": "{\\dot{\\Psi}}", "Train": "{\\theta}", "ConstantOne": "{C_1}", "ConstantTwo": "{C_2}", "RootsPM": "{R_\\pm}", "RootsMP": "{R_\\mp}", "RootPositive": "{R_+}", "RootNegative": "{R_-}", "LorentzFactor": "{\\gamma}", "Velocity": "{u}", "FourVelocity": "{u}", "Wavevector": "{k}", "FourWavevector": "{k}", "FrequencyAngular": "{\\omega}", "Frequency": "{\\Omega}", "MetricMinkowski": "{\\eta}", "MetricGeneral": "{g}", "ManifoldGeneral": "{\\mathcal{M}}", "ManifoldTarget": "{\\mathcal{T}}", "ManifoldMinkowski": "{\\mathcal{M}}", "ManifoldTimeMachine": "{\\mathcal{N}}", "ManifoldThreeWormhole": "{\\mathcal{W}}", "Submanifold": "{\\Omega}", "DifferentialForm": "{\\omega}", "Inclusion": "{\\iota}", "Mouth": "{\\mathcal{W}}", "Sphere": "{\\mathcal{S}}", "Cylinder": "{\\mathcal{C}}", "SurfaceGeneral": "{\\mathcal{Z}}", "SurfaceCauchy": "{\\Sigma}", "Region": "{\\mathcal{R}}", "Horizon": "{\\mathcal{H}}", "Development": "{D}", "TensorGeneral": "{F}", "TensorStressEnergy": "{T}"}}}</script>
+    <script defer="defer" src="../../../_static/./js/MathJax/es5/tex-chtml.js?v=20daa33d"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'text/examples/algorithms/phase_estimation';</script>
+    <script src="../../../_static/backgrounds/three.min.js?v=d3735a76"></script>
+    <link rel="icon" href="../../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Shor’s factorization algorithm" href="shor.html" />
+    <link rel="prev" title="Deutsch-Jozsa algorithm" href="deutsch_jozsa.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.1.1" />
+    <meta name="docbuild:last-update" content="Jul 28, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo-text-bold-light.svg" class="logo__image only-light" alt="Qhronology documentation - home"/>
+    <img src="../../../_static/logo-text-bold-dark.svg" class="logo__image only-dark pst-js-only" alt="Qhronology documentation - home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../live/part-live.html">
+    Live
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://arxiv.org/abs/2601.17459" title="arXiv Paper" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/arxiv-logomark-small-square.svg" class="icon-link-image" alt="arXiv Paper"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../theory/part-theory.html">
+    Theory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation/part-documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../part-examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../live/part-live.html">
+    Live
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../appendix/part-appendix.html">
+    Appendix
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/lgbishop/qhronology" title="Git Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Git Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://arxiv.org/abs/2601.17459" title="arXiv Paper" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/arxiv-logomark-small-square.svg" class="icon-link-image" alt="arXiv Paper"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://raw.githubusercontent.com/lgbishop/qhronology/latest/docs/_build/latex/Qhronology.pdf" title="PDF Documentation" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-file-pdf fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF Documentation</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum state generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generation_bell.html">Generation of a Bell state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_ghz.html">Generation of the GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_ghz_general.html">Generation of the generalized GHZ state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_w.html">Generation of the W state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generation_w_general.html">Generation of the generalized W state</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum gate decomposition and construction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="iswap.html">iSWAP (imaginary-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pswap.html">PSWAP (power-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toffoli.html">Toffoli decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fourier_transform.html">Fourier transform decomposition</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum logic and arithmetic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cnot.html">CNOT (controlled-NOT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_half.html">Half adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_full.html">Full adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_ripple.html">Ripple-carry adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_ripple_iterative.html">Ripple-carry adder (iterative)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_lookahead.html">Carry-lookahead adder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adder_fourier.html">Fourier transform adder</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum algorithms, protocols, and procedures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="teleportation.html">Quantum teleportation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deutsch_jozsa.html">Deutsch-Jozsa algorithm</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantum phase estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shor.html">Shor’s factorization algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grover.html">Grover’s algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tomography_strong.html">Quantum state tomography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tomography_weak.html">Quantum state tomography via weak measurements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum closed timelike curves and temporal paradoxes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/grandfather.html">Grandfather paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/unproven.html">Unproven-theorem paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/billiards.html">Billiard-ball paradox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/postselected.html">Manual P-CTC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ctcs/ecp.html">Equivalent-circuit picture of D-CTCs</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../part-examples.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quantum phase estimation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="quantum-phase-estimation">
+<span id="eg-phase-estimation"></span><h1>Quantum phase estimation<a class="headerlink" href="#quantum-phase-estimation" title="Link to this heading">#</a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
+<p>If <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of a given unitary operator <span class="math notranslate nohighlight">\(\Unitary\)</span> corresponding to a given eigenvector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, then we have</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-0">
+<span class="eqno">(387)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-0" title="Link to this equation">#</a></span>\[\Unitary\ket{\psi} = \lambda\ket{\psi}.\]</div>
+<p>Since unitary operators represent transformations around the unit circle, then their eigenvalues necessarily have unit modulus, i.e., <span class="math notranslate nohighlight">\(\abs{\lambda} = 1\)</span>. This means that any such eigenvalue can be written in the form</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-1">
+<span class="eqno">(388)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-1" title="Link to this equation">#</a></span>\[\lambda = \e^{2\pi\eye\theta},\]</div>
+<p>and so is characterized completely by its phase <span class="math notranslate nohighlight">\(\theta \in \Reals\)</span>. Note that, due to the peridocity of the complex exponential, this may be taken on the restricted domain <span class="math notranslate nohighlight">\(0 \leq \theta &lt; 1\)</span>. <em>Quantum phase estimation</em> is then simply a procedure for estimating this phase <span class="math notranslate nohighlight">\(\theta\)</span> given both a unitary operator <span class="math notranslate nohighlight">\(\Unitary\)</span> and an eigenvector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>.</p>
+</section>
+<section id="algorithm">
+<h2>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h2>
+<p>In the canonical quantum phase estimation algorithm, introduced by Kitaev <span id="id1">[<a class="reference internal" href="#cite-1-kitaev-quantum-1995" title="A. Y. Kitaev, “Quantum measurements and the Abelian Stabilizer Problem”, arXiv, November 1995. DOI: 10.48550/arXiv.quant-ph/9511026">1</a>]</span> and depicted in <a class="reference internal" href="#fig-circuit-algorithm-phase-estimation"><span class="std std-numref">Figure 28</span></a>, we require two registers. The first (upper), called the <em>estimation</em> (or <em>control</em>) register, consists of <span class="math notranslate nohighlight">\(n\)</span> qubits (on the Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_2^{\otimes n}\)</span>), with each initialized to <span class="math notranslate nohighlight">\(\ket{0}\)</span>. The second (lower), called the <em>eigenvector</em> (or <em>target</em>) register, is in the state of a eigenvector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> of the given <span class="math notranslate nohighlight">\(\Unitary\)</span> over <span class="math notranslate nohighlight">\(m\)</span> qubits (on Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_2^{\otimes m}\)</span>). The total initial state may therefore be written as</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-2">
+<span class="eqno">(389)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-2" title="Link to this equation">#</a></span>\[\ket{\Psi_0} = \ket{0}^{\otimes n} \otimes \ket{\psi}.\]</div>
+<p>The first step consists of transforming the estimation register to an equal superposition state. This is achieved via an <span class="math notranslate nohighlight">\(n\)</span>-qubit Hadamard gate operation <span class="math notranslate nohighlight">\(\Hadamard^{\otimes n}\)</span>, which gives</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-3">
+<span class="eqno">(390)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-3" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\Psi_1} &amp;= (\Hadamard^{\otimes n} \otimes \Identity^{\otimes m})\ket{\Psi_0} \\
+    &amp;= \ket{+}^{\otimes n} \otimes \ket{\psi} \\
+    &amp;= \frac{1}{2^{n/2}}\sum_{x=0}^{2^n - 1} \ket{x} \otimes \ket{\psi}.
+\end{aligned}\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\ket{x}\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-ary representation of states in the <span class="math notranslate nohighlight">\(n\)</span>-qubit register, e.g.,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-4">
+<span class="eqno">(391)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-4" title="Link to this equation">#</a></span>\[\ket{x} = \bigotimes_{\ell = 0}^{n - 1} \ket{x_\ell},\]</div>
+<p>where the binary decomposition of <span class="math notranslate nohighlight">\(x\)</span> is simply</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-5">
+<span class="eqno">(392)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-5" title="Link to this equation">#</a></span>\[x = \sum_{\ell = 0}^{n - 1} x_\ell 2^\ell.\]</div>
+<figure class="only-dark align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_phase_estimation-dark.png"><img alt="A quantum circuit diagram of a quantum phase estimation algorithm." src="../../../_images/circuit_algorithm_phase_estimation-dark.png" style="width: 598.0600000000001px; height: 207.74px;" />
+</a>
+</figure>
+<figure class="only-light align-center" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_phase_estimation-light.png"><img alt="A quantum circuit diagram of a quantum phase estimation algorithm." src="../../../_images/circuit_algorithm_phase_estimation-light.png" style="width: 598.0600000000001px; height: 207.74px;" />
+</a>
+</figure>
+<figure class="light-dark hidden align-center" id="fig-circuit-algorithm-phase-estimation" style="width: 100%">
+<a class="reference internal image-reference" href="../../../_images/circuit_algorithm_phase_estimation-light.png"><img alt="A quantum circuit diagram of a quantum phase estimation algorithm." src="../../../_images/circuit_algorithm_phase_estimation-light.png" style="width: 598.0600000000001px; height: 207.74px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 28 </span><span class="caption-text">A quantum phase estimation algorithm.</span><a class="headerlink" href="#fig-circuit-algorithm-phase-estimation" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A sequence of controlled-<span class="math notranslate nohighlight">\(\Unitary\)</span> operations, each of the form,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-6">
+<span class="eqno">(393)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-6" title="Link to this equation">#</a></span>\[\Control^{\indices{\ell}} \Unitary^{2^\ell} = \sum_{k=0}^{1} {\ket{k}\bra{k}}^{\indices{\ell}} \otimes \bigl(\Unitary^{2^\ell}\bigr)^k\]</div>
+<p>is then applied, where <span class="math notranslate nohighlight">\(\ell\)</span> is the index of the system in the estimation register. The total transformation incurred by this sequence may be written as</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-7">
+<span class="eqno">(394)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-7" title="Link to this equation">#</a></span>\[\Unitary_\Control = \prod_{\ell = 0}^{n - 1} \Control^{\indices{\ell}} \Unitary = \sum_{k=0}^{2^n - 1} \ket{k}\bra{k} \otimes \Unitary^k,\]</div>
+<p>under which the circuit’s state becomes</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-8">
+<span class="eqno">(395)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-8" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\Psi_2} &amp;= \Unitary_\Control \ket{\Psi_1} \\
+    &amp;= \frac{1}{\sqrt{2^n}} \sum_{k=0}^{2^n - 1} \e^{2\pi\eye\theta k} \ket{k} \otimes \ket{\psi}.
+\end{aligned}\end{split}\]</div>
+<p>Note that here we introduced the eigenvalue of <span class="math notranslate nohighlight">\(\Unitary\)</span> as <span class="math notranslate nohighlight">\(\lambda = \e^{2\pi\eye\theta}\)</span> (corresponding to the eigenvector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>), and subsequently used the fact that</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-9">
+<span class="eqno">(396)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-9" title="Link to this equation">#</a></span>\[\Unitary^{k} \ket{\psi} = \e^{2\pi\eye\theta k} \ket{\psi}.\]</div>
+<p>Performing an <span class="math notranslate nohighlight">\(n\)</span>-qubit inverse Fourier transform <span class="math notranslate nohighlight">\(\QFT_n^\dagger\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-10">
+<span class="eqno">(397)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-10" title="Link to this equation">#</a></span>\[\ket{k} \stackrel{\QFT_n^\dagger}{\longrightarrow} \frac{1}{\sqrt{2^n}} \sum\limits_{x=0}^{2^n - 1} \e^{-2\pi\eye k x 2^{-n}} \ket{x},\]</div>
+<p>on the estimation register then yields the output state</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-11">
+<span class="eqno">(398)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-11" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    \ket{\Psi_3} &amp;= (\QFT_n^\dagger \otimes \Identity) \ket{\Psi_2} \\
+    &amp;= \frac{1}{\sqrt{2^n}} \sum_{k=0}^{2^n - 1} \e^{2\pi\eye\theta k} \left(\frac{1}{\sqrt{2^n}} \sum\limits_{x=0}^{2^n - 1} \e^{-2\pi\eye k x 2^{-n}} \ket{x}\right) \otimes \ket{\psi} \\
+    &amp;= \frac{1}{2^{n}} \sum_{k=0}^{2^n - 1} \sum\limits_{x=0}^{2^n - 1} \e^{2\pi\eye k (\theta - x 2^{-n})} \ket{x} \otimes \ket{\psi}.
+\end{aligned}\end{split}\]</div>
+<p>By inspection, the amplitude associated with each <span class="math notranslate nohighlight">\(\ket{x}\)</span> simply takes the form</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-12">
+<span class="eqno">(399)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-12" title="Link to this equation">#</a></span>\[c_x = \frac{1}{2^{n}} \sum_{k = 0}^{2^n - 1} \e^{2\pi\eye k (\theta - x 2^{-n})},\]</div>
+<p>and so performing a measurement in the computational basis on the estimation register yields the outcome <span class="math notranslate nohighlight">\(\ket{y}\)</span> with probability</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-13">
+<span class="eqno">(400)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-13" title="Link to this equation">#</a></span>\[p_y = |c_y|^2 = \frac{1}{2^{2n}} \abs{\sum_{k = 0}^{2^n - 1} \e^{2\pi\eye k (\theta - y 2^{-n})}}^2.\]</div>
+<p>With foresight, we can define the substitution</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-14">
+<span class="eqno">(401)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-14" title="Link to this equation">#</a></span>\[\theta = \frac{z}{2^{n}} + \delta\]</div>
+<p>where <span class="math notranslate nohighlight">\(z/2^{n}\)</span> is the nearest integer to <span class="math notranslate nohighlight">\(\theta\)</span>, and the discrepancy <span class="math notranslate nohighlight">\(\delta\)</span> satisfies <span class="math notranslate nohighlight">\(0 \leq \abs{\delta} \leq 1/2\)</span>. In effect, this approximates <span class="math notranslate nohighlight">\(\theta \in [0, 1]\)</span> by rounding its value to the nearest integer. With this, the probabilities take the form</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-15">
+<span class="eqno">(402)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-15" title="Link to this equation">#</a></span>\[p_y = \frac{1}{2^{2n}} \abs{\sum_{k = 0}^{2^n - 1} \e^{\frac{2\pi\eye k}{2^n} (z - y)} \e^{2\pi\eye k \delta}}^2.\]</div>
+<p>If <span class="math notranslate nohighlight">\(\delta = 0\)</span>, the corresponding probability to find such a value <span class="math notranslate nohighlight">\(z\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-16">
+<span class="eqno">(403)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-16" title="Link to this equation">#</a></span>\[p_z = \frac{1}{2^{2n}} \abs{\sum_{k = 0}^{2^n - 1} 1}^2 = 1.\]</div>
+<p>Evidently, in such a case, the outcome is always found to be <span class="math notranslate nohighlight">\(y = z\)</span>, and so the phase can decoded as <span class="math notranslate nohighlight">\(\theta = z / 2^n\)</span>. Alternatively, if <span class="math notranslate nohighlight">\(\delta \neq 0\)</span>, then the probability to find <span class="math notranslate nohighlight">\(z\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-17">
+<span class="eqno">(404)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-17" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+    p_z &amp;= \frac{1}{2^{2n}} \abs{\sum_{k = 0}^{2^n - 1} \e^{2\pi\eye k \delta}}^2 \\
+    &amp;= \frac{1}{2^{2n}} \abs{\frac{1 - \e^{2\pi\eye 2^n \delta}}{1 - \e^{2\pi\eye \delta}}}^2
+\end{aligned}\end{split}\]</div>
+<p>where we used the identity</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-18">
+<span class="eqno">(405)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-18" title="Link to this equation">#</a></span>\[\sum_{n = 0}^{N - 1} a^n = \frac{1 - a^N}{1 - a}, \quad a \neq 1.\]</div>
+<p>With a little effort, it can be shown that</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-19">
+<span class="eqno">(406)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-19" title="Link to this equation">#</a></span>\[p_z \geq \frac{4}{\pi^2} \approx 0.405\]</div>
+<p>for any <span class="math notranslate nohighlight">\(\delta \neq 0\)</span>, from which we can conclude that the algorithm provides an estimate of <span class="math notranslate nohighlight">\(\theta\)</span> (to within <span class="math notranslate nohighlight">\(1/2^n\)</span> of the actual value) with a probability of at least <span class="math notranslate nohighlight">\(4/\pi^2\)</span>.</p>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<p>In this implementation, the target register consists of a single qubit <span class="math notranslate nohighlight">\(\ket{\psi} = \ket{1}\)</span>, with which the unitary operator is the phase gate, specifically,</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-20">
+<span class="eqno">(407)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-20" title="Link to this equation">#</a></span>\[\Unitary(\theta) = \ket{0}\bra{0} + \e^{2\pi\eye\theta} \ket{1}\bra{1}.\]</div>
+<div class="literal-block-wrapper docutils container" id="code-phase-estimation">
+<div class="code-block-caption"><span class="caption-number">Code Block 28 </span><span class="caption-text">/text/examples/algorithms/phase_estimation.py</span><a class="headerlink" href="#code-phase-estimation" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">GateStack</span><span class="p">,</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Fourier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.matrices</span><span class="w"> </span><span class="kn">import</span> <span class="n">encode</span><span class="p">,</span> <span class="n">decode</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">phase</span> <span class="o">=</span> <span class="mf">0.64</span>  <span class="c1"># The phase to be estimated</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># The number of qubits used by the estimation</span>
+
+<span class="n">num_controls</span> <span class="o">=</span> <span class="n">precision</span>
+<span class="n">num_targets</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">num_total</span> <span class="o">=</span> <span class="n">num_targets</span> <span class="o">+</span> <span class="n">num_controls</span>
+
+<span class="n">systems_controls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_controls</span><span class="p">))</span>
+<span class="n">systems_targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="o">+</span> <span class="n">num_controls</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_targets</span><span class="p">)]</span>
+
+<span class="c1"># Gates</span>
+<span class="n">HX</span> <span class="o">=</span> <span class="n">GateStack</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">[</span><span class="n">Hadamard</span><span class="p">()]</span> <span class="o">*</span> <span class="n">num_controls</span><span class="p">,</span>
+    <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">unitaries</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Phase</span><span class="p">(</span>
+        <span class="n">phase</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">I</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">phase</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">),</span>
+        <span class="n">targets</span><span class="o">=</span><span class="n">systems_targets</span><span class="p">,</span>
+        <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="n">systems_controls</span><span class="p">[</span><span class="n">n</span><span class="p">]],</span>
+        <span class="n">num_systems</span><span class="o">=</span><span class="n">num_total</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;U^</span><span class="si">{</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_controls</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">IQFT</span> <span class="o">=</span> <span class="n">Fourier</span><span class="p">(</span>
+    <span class="n">targets</span><span class="o">=</span><span class="n">systems_controls</span><span class="p">,</span>
+    <span class="n">num_systems</span><span class="o">=</span><span class="n">num_total</span><span class="p">,</span>
+    <span class="n">composite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">conjugate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;QFT^†&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Circuit</span>
+<span class="n">phase_estimator</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span>
+    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">HX</span><span class="p">]</span> <span class="o">+</span> <span class="n">unitaries</span> <span class="o">+</span> <span class="p">[</span><span class="n">IQFT</span><span class="p">],</span>
+    <span class="n">numerical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">array</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">phase_estimator</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Measurement</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="p">[</span><span class="n">encode</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">num_controls</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">num_controls</span><span class="p">)]</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">phase_estimator</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span>
+    <span class="n">operators</span><span class="o">=</span><span class="n">basis</span><span class="p">,</span>
+    <span class="n">targets</span><span class="o">=</span><span class="n">systems_controls</span><span class="p">,</span>
+    <span class="n">observable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">statistics</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">probability</span><span class="p">)</span> <span class="k">for</span> <span class="n">probability</span> <span class="ow">in</span> <span class="n">probabilities</span><span class="p">]</span>
+
+<span class="c1"># Results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input phase: </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">expectation</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">probability</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">probabilities</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span><span class="n">basis</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="o">**</span><span class="n">num_controls</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">precision</span><span class="p">)</span>
+    <span class="n">bitstring</span> <span class="o">=</span> <span class="n">encode</span><span class="p">(</span><span class="n">decode</span><span class="p">(</span><span class="n">basis</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span> <span class="n">num_controls</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">expectation</span> <span class="o">+=</span> <span class="n">probability</span> <span class="o">*</span> <span class="n">value</span>
+
+    <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">probability</span> <span class="o">==</span> <span class="nb">max</span><span class="p">(</span><span class="n">probabilities</span><span class="p">):</span>
+        <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot; (most probable)&quot;</span>
+    <span class="k">if</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="ow">or</span> <span class="n">probability</span> <span class="o">==</span> <span class="nb">max</span><span class="p">(</span><span class="n">probabilities</span><span class="p">):</span>
+        <span class="n">probability</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">probability</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Bitstring=</span><span class="si">{</span><span class="n">bitstring</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;Probability=</span><span class="si">{</span><span class="n">probability</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;Phase=</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+<span class="n">expectation</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">expectation</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">precision</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expectation (weighted average): </span><span class="si">{</span><span class="n">expectation</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h2>
+<section id="diagram">
+<h3>Diagram<a class="headerlink" href="#diagram" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phase_estimator</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_algorithms_phase_estimation-dark.png"><img alt="../../../_images/text_examples_algorithms_phase_estimation-dark.png" class="only-dark align-left" src="../../../_images/text_examples_algorithms_phase_estimation-dark.png" style="width: 534.96px; height: 144.35999999999999px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_algorithms_phase_estimation-light.png"><img alt="../../../_images/text_examples_algorithms_phase_estimation-light.png" class="only-light align-left" src="../../../_images/text_examples_algorithms_phase_estimation-light.png" style="width: 534.96px; height: 144.35999999999999px;" />
+</a>
+</div></blockquote>
+</section>
+<section id="results">
+<h3>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h3>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Input phase: 0.64</span>
+<span class="go">Bitstring=0000, Probability=0.002, Phase=0</span>
+<span class="go">Bitstring=0001, Probability=0.002, Phase=0.0625</span>
+<span class="go">Bitstring=0010, Probability=0.002, Phase=0.1250</span>
+<span class="go">Bitstring=0011, Probability=0.002, Phase=0.1875</span>
+<span class="go">Bitstring=0100, Probability=0.002, Phase=0.2500</span>
+<span class="go">Bitstring=0101, Probability=0.002, Phase=0.3125</span>
+<span class="go">Bitstring=0110, Probability=0.003, Phase=0.3750</span>
+<span class="go">Bitstring=0111, Probability=0.005, Phase=0.4375</span>
+<span class="go">Bitstring=1000, Probability=0.010, Phase=0.5000</span>
+<span class="go">Bitstring=1001, Probability=0.031, Phase=0.5625</span>
+<span class="go">Bitstring=1010, Probability=0.825, Phase=0.6250 (most probable)</span>
+<span class="go">Bitstring=1011, Probability=0.083, Phase=0.6875</span>
+<span class="go">Bitstring=1100, Probability=0.016, Phase=0.7500</span>
+<span class="go">Bitstring=1101, Probability=0.007, Phase=0.8125</span>
+<span class="go">Bitstring=1110, Probability=0.004, Phase=0.8750</span>
+<span class="go">Bitstring=1111, Probability=0.003, Phase=0.9375</span>
+<span class="go">Expectation (weighted average): 0.6245</span>
+</pre></div>
+</div>
+<p class="bibliography rubric"><span class="classbibliography">References</span></p>
+<div class="bibliography docutils container" id="bibliography-1">
+<div role="list" class="citation-list">
+<div class="citation" id="cite-1-kitaev-quantum-1995" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>A. Y. Kitaev, “Quantum measurements and the Abelian Stabilizer Problem”, <em>arXiv</em>, November 1995. DOI: <a class="reference external" href="https://doi.org/10.48550/arXiv.quant-ph/9511026">10.48550/arXiv.quant-ph/9511026</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="deutsch_jozsa.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Deutsch-Jozsa algorithm</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="shor.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Shor’s factorization algorithm</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagram">Diagram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Lachlan G. Bishop.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -750,13 +750,13 @@ Here, :math:`k \leq \text{min}(\Dimension_A, \Dimension_B)`, and :math:`\{\lambd
 
 The number of (non-zero) Schmidt coefficients is called the *Schmidt number* of the vector :math:`\ket{\psi}`. Importantly, the sets of states :math:`\{\ket{k_A}\}_k` and :math:`\{\ket{k_B}\}_k` (sometimes called *Schmidt bases*) are merely orthonormal within their respective spaces and do not (and need not) in general constitute bases for them.
 
-The Schmidt decomposition :eq:`eq:schmidt_decomposition` is simply a way of expressing a vector in the tensor product of two inner product spaces (such as Hilbert spaces), and our ability to do so is a very powerful result. For example, given a normalized bipartite vector :math:`\ket{\psi}` with decomposition :eq:`eq:schmidt_decomposition`, the reduced operators for each system can be calculated to be
+The Schmidt decomposition :eq:`eq:schmidt_decomposition` is simply a way of expressing a vector in the tensor product of two inner product spaces (such as Hilbert spaces), and our ability to do so is a very powerful result. For example, given a normalized bipartite vector :math:`\ket{\psi}` with decomposition :eq:`eq:schmidt_decomposition`, the reduced operators on each system can be calculated to be
 
 .. math::
 
    \begin{aligned}
-       \StateDensity^A &\equiv \trace_B\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_A}\bra{k_A}, \\
-       \StateDensity^B &\equiv \trace_A\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_B}\bra{k_B}.
+       \StateDensity^{\indices{A}} &\equiv \trace_B\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_A}\bra{k_A}, \\
+       \StateDensity^{\indices{B}} &\equiv \trace_A\bigl[\ket{\psi}\bra{\psi}\bigr] = \sum_k \lambda_k^2 \ket{k_B}\bra{k_B}.
    \end{aligned}
 
 The fact that the eigenvalues of both of these operators are identical (simply equal to :math:`\lambda_k^2`) is highly significant, as many of the important properties of operators are completely determined by their eigenvalues. Consequently, such properties of the reduced operators of a vector on a composite system will automatically be the same, regardless of the structure of the composite vector.
@@ -805,7 +805,7 @@ for any probability distribution :math:`\SetProbability = \{p_i\}_i`. If this do
 
 is said to be convex if
 
-.. math:: f\biggl(\sum_{i} p_i \op{A}_i\biggr) \leq \sum_{i} p_i f(\op{A}_i)
+.. math:: f\biggl(\sum_{i} p_i \op{A}_i\biggr) \leq \sum_{i} p_i f(\op{A}_i),
 
 and concave if
 

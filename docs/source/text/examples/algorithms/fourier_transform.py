@@ -1,4 +1,3 @@
-from qhronology.quantum.states import MatrixState
 from qhronology.quantum.gates import Hadamard, Phase
 from qhronology.quantum.circuits import QuantumCircuit
 

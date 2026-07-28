@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+  <meta name="docsearch:version" content="1.1.1" />
+    <meta name="docbuild:last-update" content="Jul 28, 2026"/>
   </head>
   
   
@@ -1753,7 +1753,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
                 <span class="n">cells_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                    <span class="p">[</span><span class="o">*</span><span class="n">state</span><span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span><span class="o">.</span><span class="n">cells</span><span class="p">]</span>
+                    <span class="n">state</span><span class="o">.</span><span class="n">_diagram_column</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span><span class="o">.</span><span class="n">cells</span>
                 <span class="p">)</span>
             <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_systems_inputs</span><span class="p">):</span>
                 <span class="n">zero_state</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
@@ -1867,7 +1867,7 @@
             <span class="n">column_output</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="n">grid</span> <span class="o">=</span> <span class="n">DiagramCircuit</span><span class="p">(</span>
-            <span class="n">columns</span><span class="o">=</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">column_input</span><span class="p">,</span> <span class="p">[</span><span class="o">*</span><span class="n">columns_gate</span><span class="p">],</span> <span class="n">column_output</span><span class="p">])</span>
+            <span class="n">columns</span><span class="o">=</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">column_input</span><span class="p">,</span> <span class="n">columns_gate</span><span class="p">,</span> <span class="n">column_output</span><span class="p">])</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">return_string</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">grid</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>

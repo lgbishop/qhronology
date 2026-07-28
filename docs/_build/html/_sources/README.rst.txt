@@ -254,7 +254,7 @@ Numerous examples
 
 ..    \begin{tabular}{M{0.65\textwidth}  C{0.35\textwidth}}
 
-Bundled with the project is a small collection of complete examples that showcase its capabilities and syntax. These are divided into two categories: :numref:`sec:examples_algorithms` :ref:`sec:examples_algorithms` and :numref:`sec:examples_ctc` :ref:`sec:examples_ctc`. The former contains implementations of canonical algorithms in quantum computing, while the latter consists of exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.
+Bundled with the project is a collection of complete examples that showcase its capabilities and syntax. This includes both implementations of canonical quantum algorithms and exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.
 
 .. .. raw:: latex
 
@@ -377,7 +377,7 @@ All of the underlying mathematics upon which Qhronology is built is presented as
 .. only:: latex
 
    .. image:: /figures/output/diagram_spacetime_minkowski.pdf
-      :scale: 90 %
+      :scale: 100 %
       :align: center
       :class: light-dark hidden
 
@@ -709,7 +709,23 @@ The latest version of the documentation for the package is available at:
 
 Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repository <https://github.com/sphinx-doc/sphinx>`_), with their shared source files residing within the ``docs`` directory at the root of the project's repository. This includes all project text and artwork. Please see `shell-sphinx.nix <https://github.com/lgbishop/qhronology/blob/latest/docs/shell-sphinx.nix>`_ within that directory for a list of dependencies required to build both documentation targets. Note that a full LaTeX system installation from 2024 or later is required to build the project's PDF documentation, figures, and artwork (including the logo). Also note that the documentation's rendered circuit diagrams (generated from the package itself) were created using a custom LaTeX template (`render-text.tex <https://github.com/lgbishop/qhronology/blob/latest/docs/source/figures/render-text.tex>`_) and associated shell script :inlinelatex:`\linebreak` (`render-text.sh <https://github.com/lgbishop/qhronology/blob/latest/docs/source/figures/render-text.sh>`_).
 
+.. raw:: latex
+
+   \vspace*{\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
+
 .. include:: ./../../LICENSE
+
+.. raw:: latex
+
+   \vspace*{\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 .. include:: ./../../CONTRIBUTING
 

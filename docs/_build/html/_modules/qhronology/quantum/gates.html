@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+  <meta name="docsearch:version" content="1.1.1" />
+    <meta name="docbuild:last-update" content="Jul 28, 2026"/>
   </head>
   
   
@@ -480,6 +480,7 @@
 <span class="c1"># https://peps.python.org/pep-0649/</span>
 <span class="c1"># https://peps.python.org/pep-0749/</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
@@ -626,7 +627,10 @@
         <span class="k">if</span> <span class="n">spec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">spec</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">spec_num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">to_matrix</span><span class="p">(</span><span class="n">spec</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">spec_num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">to_matrix</span><span class="p">(</span><span class="n">spec</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">spec_num_systems</span> <span class="o">=</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
         <span class="n">num_systems</span> <span class="o">=</span> <span class="p">(</span>
             <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">spec_num_systems</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">targets</span> <span class="o">+</span> <span class="n">controls</span> <span class="o">+</span> <span class="n">anticontrols</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">num_systems</span> <span class="ow">is</span> <span class="kc">None</span>
@@ -727,7 +731,7 @@
 <span class="sd">        .. math::</span>
 
 <span class="sd">           \\begin{aligned}</span>
-<span class="sd">               \\Control^{0} \\Unitary^{1} &amp;= \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k}\\bra{k}\\otimes\\Unitary^{k} \\\\</span>
+<span class="sd">               \\Control^{\\indices{0}} \\Unitary^{\\indices{1}} &amp;= \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k}\\bra{k}\\otimes\\Unitary^{k} \\\\</span>
 <span class="sd">               &amp;= \\ket{0}\\bra{0}\\otimes\\Identity + \\ket{1}\\bra{1}\\otimes\\Unitary</span>
 <span class="sd">                   + \\ket{2}\\bra{2}\\otimes\\Unitary^{2} + \\ldots</span>
 <span class="sd">                   + \\ket{\\Dimension - 1}\\bra{\\Dimension - 1}\\otimes\\Unitary^{\\Dimension - 1}</span>
@@ -757,7 +761,7 @@
 <span class="sd">        .. math::</span>
 
 <span class="sd">           \\begin{aligned}</span>
-<span class="sd">               \\Anticontrol^{0} \\Unitary^{1} &amp;= \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k}\\bra{k}\\otimes\\Unitary^{\\Dimension - 1 - k} \\\\</span>
+<span class="sd">               \\Anticontrol^{\\indices{0}} \\Unitary^{\\indices{1}} &amp;= \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k}\\bra{k}\\otimes\\Unitary^{\\Dimension - 1 - k} \\\\</span>
 <span class="sd">               &amp;= \\ket{0}\\bra{0}\\otimes\\Unitary^{\\Dimension - 1} + \\ket{1}\\bra{1}\\otimes\\Unitary^{\\Dimension - 2}</span>
 <span class="sd">                   + \\ket{2}\\bra{2}\\otimes\\Unitary^{\\Dimension - 3} + \\ldots</span>
 <span class="sd">                   + \\ket{\\Dimension - 1}\\bra{\\Dimension - 1}\\otimes\\Identity</span>
@@ -1880,9 +1884,9 @@
 
 <span class="sd">    .. math::</span>
 
-<span class="sd">       \\Swap^{A,B} =</span>
+<span class="sd">       \\Swap^{\\indices{A,B}} =</span>
 <span class="sd">           \\sum\\limits_{j,k=0}^{\\Dimension - 1}</span>
-<span class="sd">           {\\ket{j}\\bra{k}}^A \\otimes {\\ket{k}\\bra{j}}^B</span>
+<span class="sd">           {\\ket{j}\\bra{k}}^{\\indices{A}} \\otimes {\\ket{k}\\bra{j}}^{\\indices{B}}</span>
 
 <span class="sd">    where the identity operator acts on all other systems.</span>
 
@@ -2027,7 +2031,7 @@
 
 <span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems, and is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation</span>
+<span class="sd">    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems. In other words, this means that it is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">       </span>
@@ -2110,7 +2114,7 @@
 <span class="sd">           \\end{bmatrix}</span>
 <span class="sd">       \\end{aligned}</span>
 
-<span class="sd">    where :math:`\\omega_\\Dimension \\equiv \\e^{\\frac{2\\pi\\eye}{\\Dimension}}`.</span>
+<span class="sd">    where :math:`\\omega_\\Dimension \\equiv \\e^{2\\pi\\eye/\\Dimension}`.</span>
 
 <span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
@@ -2169,7 +2173,7 @@
 <div class="viewcode-block" id="Fourier">
 <a class="viewcode-back" href="../../../text/documentation/quantum/gates.html#qhronology.quantum.gates.Fourier">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Fourier</span><span class="p">(</span><span class="n">QuantumGate</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating Fourier (quantum discrete Fourier transform [QDFT]) gates and storing their metadata.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating Fourier (quantum [discrete] Fourier transform [QFT]) gates and storing their metadata.</span>
 
 <span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
@@ -2191,7 +2195,7 @@
 <span class="sd">            \\end{bmatrix}</span>
 <span class="sd">        \\end{aligned}</span>
 
-<span class="sd">    where :math:`\\omega \\equiv \\omega_{\\Dimension} \\equiv \\e^{\\frac{2\\pi\\eye}{\\Dimension}}`.</span>
+<span class="sd">    where :math:`\\omega \\equiv \\omega_{\\Dimension} \\equiv \\e^{2\\pi\\eye/\\Dimension}`.</span>
 
 <span class="sd">    In the case of :math:`N` qudits, it is easier to characterize the *multipartite Fourier operator* :math:`\\QFT_N` not by its matrix form but by the transformation it imposes, to which its action on the basis state :math:`\\bigotimes\\limits_{\\ell=1}^{N} \\ket{j_\\ell} \\equiv \\ket{j_1, \\ldots, j_N}` (where :math:`j_\\ell \\in \\Integers_{0}^{\\Dimension - 1}`) is</span>
 
@@ -2222,7 +2226,7 @@
 <span class="sd">        Defaults to :python:`True`.</span>
 <span class="sd">    reverse : bool</span>
 <span class="sd">        Whether to reverse the order in which the composite (multipartite) Fourier gate is applied.</span>
-<span class="sd">        Only applies when :python:`composite` is :python:`False`.</span>
+<span class="sd">        Has no effect when :python:`composite` is :python:`False`.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
 <span class="sd">    **kwargs</span>
 <span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
@@ -2293,8 +2297,8 @@
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">QFT</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                             <span class="n">Phase</span><span class="p">(</span>
-                                <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="n">targets</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]],</span>
-                                <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="n">t</span><span class="p">],</span>
+                                <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="n">t</span><span class="p">],</span>
+                                <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="n">targets</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]],</span>
                                 <span class="n">num_systems</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_systems</span><span class="p">,</span>
                                 <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
                                 <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
@@ -2350,7 +2354,7 @@
 
 
 
-<span class="n">QDFT</span> <span class="o">=</span> <span class="n">Fourier</span>
+<span class="n">QFT</span> <span class="o">=</span> <span class="n">Fourier</span>
 
 
 <div class="viewcode-block" id="Measurement">
@@ -2501,6 +2505,10 @@
 <span class="sd">    merge : bool</span>
 <span class="sd">        Whether to merge the gates together diagrammatically.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
+<span class="sd">    num_systems : int</span>
+<span class="sd">        The (total) number of systems which the gate spans.</span>
+<span class="sd">        Must be a non-negative integer.</span>
+<span class="sd">        Defaults to :python:`max([gate.num_systems for gate in gates])`.</span>
 <span class="sd">    numerical : bool</span>
 <span class="sd">        Whether to cast the gate&#39;s matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).</span>
 <span class="sd">        Defaults to :python:`False`.</span>
@@ -2520,7 +2528,7 @@
 <span class="sd">        Defaults to :python:`1`.</span>
 <span class="sd">    label : str</span>
 <span class="sd">        The unformatted string used to represent the gate in mathematical expressions.</span>
-<span class="sd">        Defaults to :python:`&quot;⊗&quot;.join([gate.label for gate in [*gates]])`.</span>
+<span class="sd">        Defaults to :python:`&quot;⊗&quot;.join([gate.label for gate in gates])`.</span>
 <span class="sd">    notation : str</span>
 <span class="sd">        The formatted string used to represent the gate in mathematical expressions.</span>
 <span class="sd">        When not :python:`None`, overrides the value passed to :python:`label`.</span>
@@ -2540,6 +2548,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">gates</span><span class="p">:</span> <span class="n">QuantumGate</span><span class="p">,</span>
         <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">num_systems</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2548,13 +2557,15 @@
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">gates</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">gate</span><span class="p">)</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">]</span>
         <span class="n">merge</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">merge</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">merge</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">merge</span> <span class="o">=</span> <span class="n">merge</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;⊗&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">gate</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="p">[</span><span class="o">*</span><span class="n">gates</span><span class="p">]])</span> <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">label</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;⊗&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">gate</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">])</span> <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">label</span>
+        <span class="n">num_systems</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">gate</span><span class="o">.</span><span class="n">num_systems</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">])</span> <span class="k">if</span> <span class="n">num_systems</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">num_systems</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">spec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">num_systems</span><span class="o">=</span><span class="n">num_systems</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
             <span class="n">conjugate</span><span class="o">=</span><span class="n">conjugate</span><span class="p">,</span>
@@ -2640,16 +2651,24 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="n">num_systems</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">gate</span><span class="o">.</span><span class="n">num_systems</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">])))</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_systems</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;Mismatch between one or more of the number of systems.&quot;&quot;&quot;</span>
-            <span class="p">)</span>
-        <span class="k">return</span> <span class="n">num_systems</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_systems</span>
 
     <span class="nd">@num_systems</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_systems</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">pass</span>
+        <span class="n">num_systems_min</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="nb">max</span><span class="p">(</span><span class="n">gate</span><span class="o">.</span><span class="n">targets</span> <span class="o">+</span> <span class="n">gate</span><span class="o">.</span><span class="n">controls</span> <span class="o">+</span> <span class="n">gate</span><span class="o">.</span><span class="n">anticontrols</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">num_systems</span> <span class="o">&lt;</span> <span class="n">num_systems_min</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;&quot;&quot;One or more of the interleaved gates cannot have its number of systems set to </span><span class="si">{</span><span class="n">num_systems</span><span class="si">}</span><span class="s2">.&quot;&quot;&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">gate</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">num_systems</span> <span class="o">=</span> <span class="n">num_systems</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_systems</span> <span class="o">=</span> <span class="n">num_systems</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
@@ -2794,6 +2813,10 @@
 <span class="sd">    merge : bool</span>
 <span class="sd">        Whether to merge the gates together diagrammatically.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
+<span class="sd">    num_systems : int</span>
+<span class="sd">        The (total) number of systems which the gate spans.</span>
+<span class="sd">        Must be a non-negative integer.</span>
+<span class="sd">        Defaults to :python:`sum([gate.num_systems for gate in gates])`.</span>
 <span class="sd">    numerical : bool</span>
 <span class="sd">        Whether to cast the gate&#39;s matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).</span>
 <span class="sd">        Defaults to :python:`False`.</span>
@@ -2812,7 +2835,7 @@
 <span class="sd">        Defaults to :python:`1`.</span>
 <span class="sd">    label : str</span>
 <span class="sd">        The unformatted string used to represent the gate in mathematical expressions.</span>
-<span class="sd">        Defaults to :python:`&quot;⊗&quot;.join([gate.label for gate in [*gates]])`.</span>
+<span class="sd">        Defaults to :python:`&quot;⊗&quot;.join([gate.label for gate in gates])`.</span>
 <span class="sd">    notation : str</span>
 <span class="sd">        The formatted string used to represent the gate in mathematical expressions.</span>
 <span class="sd">        When not :python:`None`, overrides the value passed to :python:`label`.</span>
@@ -2824,6 +2847,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">gates</span><span class="p">:</span> <span class="n">QuantumGate</span><span class="p">,</span>
         <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">num_systems</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2832,9 +2856,11 @@
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
+        <span class="n">num_systems</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">gate</span><span class="o">.</span><span class="n">num_systems</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">])</span> <span class="k">if</span> <span class="n">num_systems</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">num_systems</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="o">*</span><span class="n">gates</span><span class="p">,</span>
             <span class="n">merge</span><span class="o">=</span><span class="n">merge</span><span class="p">,</span>
+            <span class="n">num_systems</span><span class="o">=</span><span class="n">num_systems</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
             <span class="n">conjugate</span><span class="o">=</span><span class="n">conjugate</span><span class="p">,</span>
@@ -2900,11 +2926,27 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">gate</span><span class="o">.</span><span class="n">num_systems</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_systems</span>
 
     <span class="nd">@num_systems</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_systems</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">pass</span>
+        <span class="n">gate_last</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">num_systems_last_min</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">max</span><span class="p">(</span><span class="n">gate_last</span><span class="o">.</span><span class="n">targets</span> <span class="o">+</span> <span class="n">gate_last</span><span class="o">.</span><span class="n">controls</span> <span class="o">+</span> <span class="n">gate_last</span><span class="o">.</span><span class="n">anticontrols</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">)</span>
+        <span class="n">num_systems_except_last</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="n">gate</span><span class="o">.</span><span class="n">num_systems</span> <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="p">)</span>
+        <span class="n">num_systems_total_min</span> <span class="o">=</span> <span class="n">num_systems_last_min</span> <span class="o">+</span> <span class="n">num_systems_except_last</span>
+        <span class="k">if</span> <span class="n">num_systems</span> <span class="o">&lt;</span> <span class="n">num_systems_total_min</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The number of systems of the stack of gates (</span><span class="si">{</span><span class="n">num_systems_total_min</span><span class="si">}</span><span class="s2">) cannot be less than the number of systems specified (</span><span class="si">{</span><span class="n">num_systems</span><span class="si">}</span><span class="s2">).&quot;&quot;&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">num_systems</span> <span class="o">=</span> <span class="n">num_systems_last_min</span> <span class="o">+</span> <span class="p">(</span>
+                <span class="n">num_systems</span> <span class="o">-</span> <span class="n">num_systems_total_min</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_systems</span> <span class="o">=</span> <span class="n">num_systems</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

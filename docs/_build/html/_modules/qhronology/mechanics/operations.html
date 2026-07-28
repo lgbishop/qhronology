@@ -48,7 +48,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+  <meta name="docsearch:version" content="1.1.1" />
+    <meta name="docbuild:last-update" content="Jul 28, 2026"/>
   </head>
   
   
@@ -1121,16 +1121,14 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform postselection on :python:`matrix` against the operator(s) specified in :python:`postselections`.</span>
 
 <span class="sd">    The postselections can be given in either vector or matrix form.</span>
-<span class="sd">    For the former, the transformation of the vector :math:`\\ket{\\Psi}` follows the standard rule</span>
+<span class="sd">    For the former, the transformation of the vector :math:`\\ket{\\Psi}` (residing in some composite Hilbert space :math:`\\SpaceHilbert`) follows the standard rule</span>
 
 <span class="sd">    .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi}</span>
 
-<span class="sd">    where :math:`\\ket{\\phi}` is the postselection vector.</span>
-<span class="sd">    In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of a matrix :math:`\\op{\\rho}` naturally generalizes to</span>
+<span class="sd">    where :math:`\\ket{\\phi} \\in \\tilde{\\SpaceHilbert}` is the postselection vector (which resides in a proper subsystem :math:`\\tilde{\\SpaceHilbert}` of :math:`\\SpaceHilbert`).</span>
+<span class="sd">    In the case of a matrix form :math:`\\op{\\omega}` on :math:`\\tilde{\\SpaceHilbert}`, the notion of postselection of a density matrix :math:`\\op{\\rho}` on :math:`\\SpaceHilbert` naturally generalizes to</span>
 
-<span class="sd">    .. math:: \\op{\\rho}^\\prime = \\trace_{\\{i\\}}[\\op{\\omega} \\op{\\rho}]</span>
-
-<span class="sd">    where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which the postselection is performed.</span>
+<span class="sd">    .. math:: \\op{\\rho}^\\prime = \\trace_{\\tilde{\\SpaceHilbert}}[\\op{\\omega} \\op{\\rho}].</span>
 
 <span class="sd">    If multiple postselections are supplied, :python:`matrix` will be successively postselected in the order in which they are given.</span>
 <span class="sd">    If a vector :python:`matrix` is postselected against a matrix form, it will automatically be transformed into its matrix form via the outer product as necessary.</span>
@@ -1461,16 +1459,14 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform postselection on the state against the operators(s) specified in :python:`postselections`.</span>
 
 <span class="sd">        The postselections can be given in either vector or matrix form.</span>
-<span class="sd">        For the former, the transformation of the vector state :math:`\\ket{\\Psi}` follows the standard rule</span>
+<span class="sd">        For the former, the transformation of the vector :math:`\\ket{\\Psi}` (residing in some composite Hilbert space :math:`\\SpaceHilbert`) follows the standard rule</span>
 
 <span class="sd">        .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi}</span>
 
-<span class="sd">        where :math:`\\ket{\\phi}` is the postselection vector.</span>
-<span class="sd">        In the case of a matrix form :math:`\\op{\\omega}`, the notion of postselection of a density matrix state :math:`\\op{\\rho}` naturally generalizes to</span>
+<span class="sd">        where :math:`\\ket{\\phi} \\in \\tilde{\\SpaceHilbert}` is the postselection vector (which resides in a proper subsystem :math:`\\tilde{\\SpaceHilbert}` of :math:`\\SpaceHilbert`).</span>
+<span class="sd">        In the case of a matrix form :math:`\\op{\\omega}` on :math:`\\tilde{\\SpaceHilbert}`, the notion of postselection of a density matrix :math:`\\op{\\rho}` on :math:`\\SpaceHilbert` naturally generalizes to</span>
 
-<span class="sd">        .. math:: \\op{\\rho}^\\prime = \\trace_{\\{i\\}}[\\op{\\omega} \\op{\\rho}]</span>
-
-<span class="sd">        where :math:`\\{i\\}` is the set of indices corresponding to the subsystem(s) upon which the postselection is performed.</span>
+<span class="sd">        .. math:: \\op{\\rho}^\\prime = \\trace_{\\tilde{\\SpaceHilbert}}[\\op{\\omega} \\op{\\rho}].</span>
 
 <span class="sd">        If multiple postselections are supplied, the state will be successively postselected in the order in which they are specified.</span>
 <span class="sd">        If a vector state is postselected against a matrix form, it will automatically be transformed into its matrix form as necessary.</span>

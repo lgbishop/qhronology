@@ -194,7 +194,7 @@ Results
 .. code:: python
 
    >>> print(f"Duration: {duration} seconds")
-   Duration: 0.014 seconds
+   Duration: 0.011 seconds
 
 .. raw:: latex
 

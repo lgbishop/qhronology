@@ -44,7 +44,7 @@ Here, we have two systems: the first (upper) is the *chronology-respecting* (CR)
    :label: eq:grandfather_unitary
 
    \begin{aligned}
-       \Unitary = \Swap^{0,1} \cdot \Control^1 \NOT^0.
+       \Unitary = \Swap^{\indices{0,1}} \cdot \Control^{\indices{1}} \NOT^{\indices{0}}.
    \end{aligned}
 
 As this is a quantum temporal paradox, there are multiple prescriptions (see :numref:`sec:literature_quantum` :ref:`sec:literature_quantum`) by which resolutions can be computed.
@@ -61,11 +61,11 @@ In Deutsch's model (D-CTCs), we necessarily have to calculate fixed-point soluti
 
    \begin{aligned}
        \MapGeneral_{\Unitary} [\StateCR \otimes \StateCV] &= \Unitary (\StateCR \otimes \StateCV) \Unitary^\dagger \\
-       &= \Swap^{0,1} \cdot \Control^1 \NOT^0 (\StateCR \otimes \StateCV) \Control^1 \NOT^{\dagger 0} \cdot \Swap^{\dagger 0,1} \\
-       &= \Swap^{0,1} \bigl(\StateCR \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
+       &= \Swap^{\indices{0,1}} \cdot \Control^{\indices{1}} \NOT^{\indices{0}} (\StateCR \otimes \StateCV) \Control^{\indices{1}} \NOT^{\dagger \indices{0}} \cdot \Swap^{\dagger \indices{0,1}} \\
+       &= \Swap^{\indices{0,1}} \bigl(\StateCR \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
        & \qquad\quad\; + \StateCR\Pauli_x^\dagger \otimes \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \\
        & \qquad\quad\; + \Pauli_x\StateCR \otimes \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \\
-       & \qquad\quad\; + \Pauli_x\StateCR\Pauli_x^\dagger \otimes \ket{1}\bra{1}\StateCV\ket{1}\bra{1}\bigr) \Swap^{\dagger 0,1} \\
+       & \qquad\quad\; + \Pauli_x\StateCR\Pauli_x^\dagger \otimes \ket{1}\bra{1}\StateCV\ket{1}\bra{1}\bigr) \Swap^{\dagger \indices{0,1}} \\
        &= \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \otimes \StateCR \\
        & \quad + \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \otimes \StateCR\Pauli_x^\dagger \\
        & \quad + \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \otimes \Pauli_x\StateCR \\
@@ -124,9 +124,9 @@ To compute the resolution to the grandfather paradox according to the postselect
 
    \begin{aligned}
        \OperatorPCTC &\equiv \trace_\CV[\Unitary] \\
-       &= \trace_1[\Swap^{0,1} \cdot \Control^1 \NOT^0] \\
-       &= \trace_1\bigl[\Swap^{0,1} \bigl(\Identity \otimes \ket{0}\bra{0} + \Pauli_x \otimes \ket{1}\bra{1}\bigr)\bigr] \\
-       &= \trace_1\bigl[\Swap^{0,1} \bigl((\ket{0}\bra{0} + \ket{1}\bra{1}) \otimes \ket{0}\bra{0} + (\ket{0}\bra{1} + \ket{1}\bra{0}) \otimes \ket{1}\bra{1}\bigr)\bigr] \\
+       &= \trace_1[\Swap^{\indices{0,1}} \cdot \Control^{\indices{1}} \NOT^{\indices{0}}] \\
+       &= \trace_1\bigl[\Swap^{\indices{0,1}} \bigl(\Identity \otimes \ket{0}\bra{0} + \Pauli_x \otimes \ket{1}\bra{1}\bigr)\bigr] \\
+       &= \trace_1\bigl[\Swap^{\indices{0,1}} \bigl((\ket{0}\bra{0} + \ket{1}\bra{1}) \otimes \ket{0}\bra{0} + (\ket{0}\bra{1} + \ket{1}\bra{0}) \otimes \ket{1}\bra{1}\bigr)\bigr] \\
        &= \trace_1\bigl[\ket{0}\bra{0} \otimes \ket{0}\bra{0} + \ket{0}\bra{1} \otimes \ket{1}\bra{0} + \ket{1}\bra{1} \otimes \ket{0}\bra{1} + \ket{1}\bra{0} \otimes \ket{1}\bra{1}\bigr] \\
        &= \ket{0}\bra{0} + \ket{1}\bra{0} \\
        &= \ket{+}\bra{0}.

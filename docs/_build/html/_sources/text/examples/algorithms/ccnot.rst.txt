@@ -47,7 +47,7 @@ As the input states are both vectors, the action of the (linear) CCNOT gate, des
 .. math::
 
    \begin{aligned}
-       \Unitary &= \Control^{0,1} \NOT^2 \\
+       \Unitary &= \Control^{\indices{0,1}} \NOT^{\indices{2}} \\
        &= \Identity \otimes \Identity \otimes \Identity + {\ket{1}\bra{1}} \otimes {\ket{1}\bra{1}} \otimes (\Pauli_{x} - \Identity),
    \end{aligned}
 
@@ -56,7 +56,7 @@ on the tripartite input :math:`\ket{x} \otimes \ket{y} \otimes \ket{z}` yields a
 .. math::
 
    \begin{aligned}
-       \MapGeneral_{\Unitary} \bigl[\ket{x} \otimes \ket{y} \oplus \ket{z}\bigr] &= \Control^{0,1} \NOT^2 \ket{x} \otimes \ket{y} \oplus \ket{z} \\
+       \MapGeneral_{\Unitary} \bigl[\ket{x} \otimes \ket{y} \oplus \ket{z}\bigr] &= \Control^{\indices{0,1}} \NOT^{\indices{2}} \ket{x} \otimes \ket{y} \oplus \ket{z} \\
        &= \ket{x} \otimes \ket{y} \otimes \ket{z \oplus x y}.
    \end{aligned}
 

@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../_static/documentation_options.js?v=58fbf978"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -69,8 +69,8 @@
     <link rel="prev" title="Quantities" href="../documentation/mechanics/quantities.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+  <meta name="docsearch:version" content="1.1.1" />
+    <meta name="docbuild:last-update" content="Jul 28, 2026"/>
   </head>
   
   
@@ -421,29 +421,43 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum algorithms and protocols</span></p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum state generation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="algorithms/generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/generation_ghz.html">Generation of the GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/generation_ghz_general.html">Generation of the generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/generation_w.html">Generation of the W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/generation_w_general.html">Generation of the generalized W state</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum gate decomposition and construction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="algorithms/iswap.html">iSWAP (imaginary-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/pswap.html">PSWAP (power-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/toffoli.html">Toffoli decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/fourier_transform.html">Fourier transform decomposition</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum logic and arithmetic</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="algorithms/cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms/toffoli.html">Toffoli decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_half.html">Half adder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_full.html">Full adder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_ripple.html">Ripple-carry adder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_ripple_iterative.html">Ripple-carry adder (iterative)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_lookahead.html">Carry-lookahead adder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_fourier.html">Fourier transform adder</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum algorithms, protocols, and procedures</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="algorithms/teleportation.html">Quantum teleportation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms/pswap.html">PSWAP (power-SWAP)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms/iswap.html">iSWAP (imaginary-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/deutsch_jozsa.html">Deutsch-Jozsa algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/phase_estimation.html">Quantum phase estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/shor.html">Shor’s factorization algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/grover.html">Grover’s algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/tomography_strong.html">Quantum state tomography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/tomography_weak.html">Quantum state tomography via weak measurements</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum closed timelike curves</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum closed timelike curves and temporal paradoxes</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ctcs/grandfather.html">Grandfather paradox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ctcs/unproven.html">Unproven-theorem paradox</a></li>
@@ -504,38 +518,75 @@
 <h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h1>
 </div><p class="rubric"><span class="classheader0">Examples</span></p>
 </section>
-<p>A small collection of examples that demonstrate the various uses and functionality of the package. It is divided into two chapters. The first is <em>Quantum algorithms and protocols</em>, which consists of standard processes and circuits that are significant to the fields of quantum computing and quantum information science. The second chapter is <em>Quantum closed timelike curves</em>, which contains more exotic circuits involving antichronological time travel, particularly in the presence of physically interesting unitary interactions.</p>
-<div style="display: none; visibility: hidden;"><section id="quantum-algorithms-and-protocols">
-<span id="sec-examples-algorithms"></span><h1>Quantum algorithms and protocols<a class="headerlink" href="#quantum-algorithms-and-protocols" title="Link to this heading">#</a></h1>
+<p>A collection of examples that demonstrate the various uses and functionality of the package. It is divided into five chapters:</p>
+<ul class="simple">
+<li><p><code class="xref std std-numref docutils literal notranslate"><span class="pre">part:examples_states</span></code> <a class="reference internal" href="#part-examples-states"><span class="std std-ref">Quantum state generation</span></a></p></li>
+<li><p><code class="xref std std-numref docutils literal notranslate"><span class="pre">part:examples_gates</span></code> <a class="reference internal" href="#part-examples-gates"><span class="std std-ref">Quantum gate decomposition and construction</span></a></p></li>
+<li><p><code class="xref std std-numref docutils literal notranslate"><span class="pre">part:examples_arithmetic</span></code> <a class="reference internal" href="#part-examples-arithmetic"><span class="std std-ref">Quantum logic and arithmetic</span></a></p></li>
+<li><p><code class="xref std std-numref docutils literal notranslate"><span class="pre">part:examples_algorithms</span></code> <a class="reference internal" href="#part-examples-algorithms"><span class="std std-ref">Quantum algorithms, protocols, and procedures</span></a></p></li>
+<li><p><code class="xref std std-numref docutils literal notranslate"><span class="pre">part:examples_ctcs</span></code> <a class="reference internal" href="#part-examples-ctcs"><span class="std std-ref">Quantum closed timelike curves and temporal paradoxes</span></a></p></li>
+</ul>
+<p>The first four of these consist of standard processes and circuits that are significant to the fields of quantum computing and quantum information science. The last chapter contains more exotic circuits involving antichronological time travel, particularly in the presence of physically interesting unitary interactions.</p>
+<div style="display: none; visibility: hidden;"><section id="quantum-state-generation">
+<span id="part-examples-states"></span><h1>Quantum state generation<a class="headerlink" href="#quantum-state-generation" title="Link to this heading">#</a></h1>
 </div><div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum algorithms and protocols</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum state generation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/generation_bell.html">Generation of a Bell state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/generation_ghz.html">Generation of the GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/generation_ghz_general.html">Generation of the generalized GHZ state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/generation_w.html">Generation of the W state</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/generation_w_general.html">Generation of the generalized W state</a></li>
+</ul>
+</div>
+<div style="display: none; visibility: hidden;"></section>
+<section id="quantum-gate-decomposition-and-construction">
+<span id="part-examples-gates"></span><h1>Quantum gate decomposition and construction<a class="headerlink" href="#quantum-gate-decomposition-and-construction" title="Link to this heading">#</a></h1>
+</div><div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum gate decomposition and construction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/iswap.html">iSWAP (imaginary-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/pswap.html">PSWAP (power-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/toffoli.html">Toffoli decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/fourier_transform.html">Fourier transform decomposition</a></li>
+</ul>
+</div>
+<div style="display: none; visibility: hidden;"></section>
+<section id="quantum-logic-and-arithmetic">
+<span id="part-examples-arithmetic"></span><h1>Quantum logic and arithmetic<a class="headerlink" href="#quantum-logic-and-arithmetic" title="Link to this heading">#</a></h1>
+</div><div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum logic and arithmetic</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/cnot.html">CNOT (controlled-NOT)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/ccnot.html">CCNOT (controlled-controlled-NOT)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms/toffoli.html">Toffoli decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_half.html">Half adder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_full.html">Full adder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_ripple.html">Ripple-carry adder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_ripple_iterative.html">Ripple-carry adder (iterative)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_lookahead.html">Carry-lookahead adder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/adder_fourier.html">Fourier transform adder</a></li>
+</ul>
+</div>
+<div style="display: none; visibility: hidden;"></section>
+<section id="quantum-algorithms-protocols-and-procedures">
+<span id="part-examples-algorithms"></span><h1>Quantum algorithms, protocols, and procedures<a class="headerlink" href="#quantum-algorithms-protocols-and-procedures" title="Link to this heading">#</a></h1>
+</div><div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum algorithms, protocols, and procedures</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/teleportation.html">Quantum teleportation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms/pswap.html">PSWAP (power-SWAP)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms/iswap.html">iSWAP (imaginary-SWAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/deutsch_jozsa.html">Deutsch-Jozsa algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/phase_estimation.html">Quantum phase estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/shor.html">Shor’s factorization algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms/grover.html">Grover’s algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/tomography_strong.html">Quantum state tomography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms/tomography_weak.html">Quantum state tomography via weak measurements</a></li>
 </ul>
 </div>
 <div style="display: none; visibility: hidden;"></section>
-<section id="quantum-closed-timelike-curves">
-<span id="sec-examples-ctc"></span><h1>Quantum closed timelike curves<a class="headerlink" href="#quantum-closed-timelike-curves" title="Link to this heading">#</a></h1>
+<section id="quantum-closed-timelike-curves-and-temporal-paradoxes">
+<span id="part-examples-ctcs"></span><h1>Quantum closed timelike curves and temporal paradoxes<a class="headerlink" href="#quantum-closed-timelike-curves-and-temporal-paradoxes" title="Link to this heading">#</a></h1>
 </div><div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum closed timelike curves</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quantum closed timelike curves and temporal paradoxes</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="ctcs/grandfather.html">Grandfather paradox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ctcs/unproven.html">Unproven-theorem paradox</a></li>

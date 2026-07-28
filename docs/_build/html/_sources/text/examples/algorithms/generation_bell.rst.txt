@@ -40,14 +40,10 @@ The circuit in :numref:`fig:circuit_algorithm_generation_bell` illustrates an al
 
 The complete unitary transformation described by this circuit is the product
 
-.. math:: \Unitary = \Control^0 \NOT^1 \cdot \Hadamard^0.
+.. math:: \Unitary = \Control^{\indices{0}} \NOT^{\indices{1}} \cdot \Hadamard^{\indices{0}}.
 
 Implementation
 --------------
-
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
 
 .. raw:: latex
 

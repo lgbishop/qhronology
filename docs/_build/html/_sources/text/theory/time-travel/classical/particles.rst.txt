@@ -14,11 +14,7 @@ Indeterministic dynamics and evolution multiplicity
 
 Studies :cite:p:`friedman_cauchy_1990, echeverria_billiard_1991, lossev_jinn_1992, novikov_time_1992, mikheeva_inelastic_1993, mensky_three-dimensional_1996, dolansky_billiard_2010` involving time-travelling billiard balls have shown that, given the same initial data posed in the presence of CTCs, there can be multiple self-consistent solutions which satisfy the equations of motion. :numref:`fig:diagram_billiard-ball_paradox` illustrates a prominent example in which there are (at least) two distinct histories through which the billiard ball may evolve in a CTC-wormhole spacetime. This scenario is the foremost example of the *billiard-ball paradox*, and will hereafter be referred to as such. It is important to note that while the motivating formulation of this problem explicitly involves a wormhole-based time machine, the essence of the paradox is contingent only on the presence of CTCs that exactly facilitate the required function. In other words, while wormhole-based time machines make for perhaps the simplest conceptual model of CTCs, the physical mechanism behind the antichronological time travel in the billiard-ball paradox is irrelevant.
 
-.. raw:: latex
-
-   \newpage
-   \null
-   \vspace*{-1.5\baselineskip}
+Unlike in the case of the grandfather paradox, the paradoxical issue here is not of self-inconsistent trajectories but is of the indeterminism in the self-consistent ones. This is to say that solutions always exist because they self-adjust themselves (thereby providing consistency), but we now have a different issue, that of solution multiplicity. This new problem is an interesting one, as the existence of more than one solution to the equations of motion contrasts with the determinism typically associated with classical mechanics.
 
 .. only:: html
 
@@ -48,9 +44,7 @@ Studies :cite:p:`friedman_cauchy_1990, echeverria_billiard_1991, lossev_jinn_199
 
 .. raw:: latex
 
-   \vspace*{-0.5\baselineskip}
-
-Unlike in the case of the grandfather paradox, the paradoxical issue here is not of self-inconsistent trajectories but is of the indeterminism in the self-consistent ones. This is to say that solutions always exist because they self-adjust themselves (thereby providing consistency), but we now have a different issue, that of solution multiplicity. This new problem is an interesting one, as the existence of more than one solution to the equations of motion contrasts with the determinism typically associated with classical mechanics.
+   \vspace*{-0.75\baselineskip}
 
 Quantum resolutions to classical indeterminism
 ----------------------------------------------
