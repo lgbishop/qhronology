@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.1.1](https://github.com/lgbishop/qhronology/tree/1.1.1) (2026-07-28)
+
+[Full Changelog](https://github.com/lgbishop/qhronology/compare/1.1.0...1.1.1)
+
+### Package:
+
+- Change the `output_list` argument to `return_type` in the `encode` function. ([36e944f](https://github.com/lgbishop/qhronology/commit/36e944f192ba6b24400f6c0105433e5fe44fb44b))
+- Add `decode_bitstring` function. ([71efd4c](https://github.com/lgbishop/qhronology/commit/71efd4c74b22c4c7ebaf418c147a9bbd62d75f78)) (Note: This function has since been removed - see below.)
+- Change `decode_slow` function to `decode`, add `decode_bitstring` documentation. ([bd24f3a](https://github.com/lgbishop/qhronology/commit/bd24f3ac309bb0336f78386ac3e857808e56e2a7))
+- Fix `QuantumGate` to correctly count the systems of list `spec` arguments. ([754b3be](https://github.com/lgbishop/qhronology/commit/754b3be6c9049facb9c32a3829056a4eca0449bc))
+- Change `Fourier` gate's decomposition construction to follow updated convention. ([556b8dc](https://github.com/lgbishop/qhronology/commit/556b8dccb12379e46bb8cba5bcf2af8293c2aebe))
+- Add `num_systems` argument and property to `GateInterleave` and `GateStack`. ([28f1a34](https://github.com/lgbishop/qhronology/commit/28f1a34a1714582062269d879124f81883fea166))
+- Remove the `decode_bitstring` function and merge its functionality into `decode`. ([cac2dc7](https://github.com/lgbishop/qhronology/commit/cac2dc70ad18c6f40f32e35311e6702da718761e))
+
+### Documentation:
+
+- Add square brackets to system indices. ([0a28357](https://github.com/lgbishop/qhronology/commit/0a28357c6ca755172e345bcbe6d1e56b092ab847))
+- Move Fourier transform decomposition circuit to examples. ([06a5694](https://github.com/lgbishop/qhronology/commit/06a569421afe4e3587ec86a66115d56c7dab1a7d))
+- Update and add theory to teleportation example. ([9cfa103](https://github.com/lgbishop/qhronology/commit/9cfa103f2ec9fa1daaa1e2b7f06793767bfb0cfe))
+- Add a Deutsch-Jozsa algorithm example. ([7b0c1be](https://github.com/lgbishop/qhronology/commit/7b0c1be8cd92fb9d0cdb79a2bb07682ee2a6e1e4))
+- Add a quantum phase estimation example. ([3d46a61](https://github.com/lgbishop/qhronology/commit/3d46a61819faad700e48f25b2f0a0a1e432cd1ce))
+- Add a Shor's algorithm example. ([ba0a392](https://github.com/lgbishop/qhronology/commit/ba0a392858f5262343027e82c36e1d56f5c89101))
+- Add a Grover's algorithm example. ([d259c04](https://github.com/lgbishop/qhronology/commit/d259c04a34e4f2c97f90dd98eaefa7e3c494bc3c))
+- Change chapter structure of examples part. ([28910f7](https://github.com/lgbishop/qhronology/commit/28910f79365972880decddf00713fddb50e59859))
+
 ## [1.1.0](https://github.com/lgbishop/qhronology/tree/1.1.0) (2026-07-07)
 
 [Full Changelog](https://github.com/lgbishop/qhronology/compare/1.0.3...1.1.0)
