@@ -134,11 +134,11 @@ Implementation
 
 It is useful to note that, given the action of the Deutsch-Jozsa oracle as per :eq:`eq:deutsch_jozsa_oracle_action`, a defintion of the oracle as an operator is simply
 
-.. math:: \Oracle_f = \bigl(1 - f(x)\bigr) \ket{x}\bra{x} \otimes \ket{y}\bra{y} + f(x) \ket{x}\bra{x} \otimes \ket{y \oplus 1}\bra{y}.
+.. math:: \Oracle_f = \sum_{x,y = 0}^{2^n - 1} \Bigl[\bigl(1 - f(x)\bigr) \ket{x}\bra{x} \otimes \ket{y}\bra{y} + f(x) \ket{x}\bra{x} \otimes \ket{y \oplus 1}\bra{y}\Bigr].
 
 This may alternatively be written equivalently as
 
-.. math:: \Oracle_f = \bigoplus_{x = 0}^{2^n - 1} \left(\bigl(1 - f(x)\bigr) \Identity + f(x) \PauliX \right),
+.. math:: \Oracle_f = \bigoplus_{x = 0}^{2^n - 1} \left[\bigl(1 - f(x)\bigr) \Identity + f(x) \PauliX \right],
 
 which is the definition we use in the implementation here.
 

@@ -611,10 +611,10 @@ p_0 &amp;= \abs{\frac{1}{2^n} \sum_{x = 0}^{2^n - 1} (-1)^{f(x)}}^2 \\
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>It is useful to note that, given the action of the Deutsch-Jozsa oracle as per <a class="reference internal" href="#equation-eq-deutsch-jozsa-oracle-action">(375)</a>, a defintion of the oracle as an operator is simply</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-deutsch-jozsa-10">
-<span class="eqno">(385)<a class="headerlink" href="#equation-text-examples-algorithms-deutsch-jozsa-10" title="Link to this equation">#</a></span>\[\Oracle_f = \bigl(1 - f(x)\bigr) \ket{x}\bra{x} \otimes \ket{y}\bra{y} + f(x) \ket{x}\bra{x} \otimes \ket{y \oplus 1}\bra{y}.\]</div>
+<span class="eqno">(385)<a class="headerlink" href="#equation-text-examples-algorithms-deutsch-jozsa-10" title="Link to this equation">#</a></span>\[\Oracle_f = \sum_{x,y = 0}^{2^n - 1} \Bigl[\bigl(1 - f(x)\bigr) \ket{x}\bra{x} \otimes \ket{y}\bra{y} + f(x) \ket{x}\bra{x} \otimes \ket{y \oplus 1}\bra{y}\Bigr].\]</div>
 <p>This may alternatively be written equivalently as</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-deutsch-jozsa-11">
-<span class="eqno">(386)<a class="headerlink" href="#equation-text-examples-algorithms-deutsch-jozsa-11" title="Link to this equation">#</a></span>\[\Oracle_f = \bigoplus_{x = 0}^{2^n - 1} \left(\bigl(1 - f(x)\bigr) \Identity + f(x) \PauliX \right),\]</div>
+<span class="eqno">(386)<a class="headerlink" href="#equation-text-examples-algorithms-deutsch-jozsa-11" title="Link to this equation">#</a></span>\[\Oracle_f = \bigoplus_{x = 0}^{2^n - 1} \left[\bigl(1 - f(x)\bigr) \Identity + f(x) \PauliX \right],\]</div>
 <p>which is the definition we use in the implementation here.</p>
 <div class="literal-block-wrapper docutils container" id="code-deutsch-jozsa">
 <div class="code-block-caption"><span class="caption-number">Code Block 27 </span><span class="caption-text">/text/examples/algorithms/deutsch_jozsa.py</span><a class="headerlink" href="#code-deutsch-jozsa" title="Link to this code">#</a></div>
