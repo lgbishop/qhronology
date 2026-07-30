@@ -18,7 +18,7 @@ postselection = QuantumCircuit(
     inputs=[input_state, bell],
     postselections=[(bell, [0, 1])],
 )
-postselection.diagram(pad=(0, 0), sep=(4, 1), style="unicode")
+postselection.diagram(sep=(4, 1))
 
 # Output
 output_state = postselection.state(label="ψ′")

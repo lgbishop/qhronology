@@ -30,7 +30,7 @@ Ud = QuantumGate(
 
 # Circuit
 unitarity = QuantumCircuit(gates=[U, Ud])
-unitarity.diagram(pad=(0, 0), sep=(1, 1), style="unicode", visible={"gates"})
+unitarity.diagram(visible={"gates"})
 
 # Results
 print(repr(U))

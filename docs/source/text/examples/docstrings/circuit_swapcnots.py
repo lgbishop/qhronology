@@ -23,7 +23,7 @@ swapcnots = QuantumCircuit(
     inputs=[input_upper, input_lower],
     gates=[CN, NC, CN],
 )
-swapcnots.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
+swapcnots.diagram()
 
 # Output
 output_total = swapcnots.state(label="(ψ⊗φ)′")

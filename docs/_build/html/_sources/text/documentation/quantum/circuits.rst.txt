@@ -58,7 +58,7 @@ Main class
 
 .. code:: python
 
-   >>> bitflip.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
+   >>> bitflip.diagram()
 
 .. raw:: latex
    
@@ -106,7 +106,7 @@ Main class
 
 .. code:: python
 
-   >>> generator.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
+   >>> generator.diagram(force_separation=True)
 
 .. raw:: latex
    
@@ -144,11 +144,67 @@ Main class
 
 .. raw:: latex
 
-   \newpage
+   \begin{codetitled}{Unitarity of general symbolic gates}{}
+
+.. literalinclude:: /text/examples/docstrings/circuit_unitarity.py
+   :language: python
+   :caption: Unitarity of general symbolic gates
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \tcblowerspaced
+
+.. code:: python
+
+   >>> unitarity.diagram(visible={"gates"})
+
+.. raw:: latex
+
+   \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_unitarity.pdf}
+   \vspace{-1\baselineskip}
+
+..
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_unitarity-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_unitarity-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+.. code:: python
+
+   >>> print(repr(U))
+   Matrix([
+   [U[0, 0], U[0, 1]],
+   [U[1, 0], U[1, 1]]])
+   >>> print(repr(Ud))
+   Matrix([
+   [conjugate(U[0, 0]), conjugate(U[1, 0])],
+   [conjugate(U[0, 1]), conjugate(U[1, 1])]])
+   >>> print(repr(unitarity.gate(simplify=True)))
+   Matrix([
+   [1, 0],
+   [0, 1]])
+
+.. raw:: latex
+
+   \end{codetitled}
+
+.. raw:: latex
+
+   \vspace*{0.35\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -164,7 +220,7 @@ Main class
 
 .. code:: python
 
-   >>> swapcnots.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
+   >>> swapcnots.diagram()
 
 .. raw:: latex
    
@@ -242,7 +298,7 @@ Main class
 
 .. code:: python
 
-   >>> postselection.diagram(pad=(0, 0), sep=(4, 1), style="unicode")
+   >>> postselection.diagram(sep=(4, 1))
 
 .. raw:: latex
    
@@ -278,84 +334,15 @@ Main class
 
 .. raw:: latex
 
-   \vspace*{0.35\baselineskip}
-
-.. raw:: latex
-
-   \newpage
-
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
-.. raw:: latex
-
-   \begin{codetitled}{Unitarity of general symbolic gates}{}
-
-.. literalinclude:: /text/examples/docstrings/circuit_unitarity.py
-   :language: python
-   :caption: Unitarity of general symbolic gates
-
-.. raw:: latex
-
-   \tcblowerspaced
-
-.. code:: python
-
-   >>> unitarity.diagram(
-   ...     pad=(0, 0),
-   ...     sep=(1, 1),
-   ...     style="unicode",
-   ...     visible={"gates"},
-   ... )
-
-.. raw:: latex
-
-   \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_unitarity.pdf}
-   \vspace{-1\baselineskip}
-
-..
-
-   .. only:: html
-
-      .. image:: /figures/output/text_examples_docstrings_circuit_unitarity-dark.png
-         :scale: 36 %
-         :align: left
-         :class: only-dark
-
-   .. only:: html
-
-      .. image:: /figures/output/text_examples_docstrings_circuit_unitarity-light.png
-         :scale: 36 %
-         :align: left
-         :class: only-light
-
-.. code:: python
-
-   >>> print(repr(U))
-   Matrix([
-   [U[0, 0], U[0, 1]],
-   [U[1, 0], U[1, 1]]])
-   >>> print(repr(Ud))
-   Matrix([
-   [conjugate(U[0, 0]), conjugate(U[1, 0])],
-   [conjugate(U[0, 1]), conjugate(U[1, 1])]])
-   >>> print(repr(unitarity.gate(simplify=True)))
-   Matrix([
-   [1, 0],
-   [0, 1]])
-
-.. raw:: latex
-
-   \end{codetitled}
-
-.. raw:: latex
-
    \end{adjustwidth}
 
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{0.5\baselineskip}
 
 .. _`sec:docs_circuits_properties`:
 
@@ -396,7 +383,15 @@ Constructor argument properties
 
 .. raw:: latex
 
+   \newpage
+
+.. raw:: latex
+
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.symbols
 
@@ -497,10 +492,6 @@ Read-only properties
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.output_is_vector
 
 .. raw:: latex
@@ -512,11 +503,11 @@ Read-only properties
 Methods
 -------
 
+.. automethod:: qhronology.quantum.circuits.QuantumCircuit.input
+
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
-
-.. automethod:: qhronology.quantum.circuits.QuantumCircuit.input
+   \newpage
 
 .. raw:: latex
 
@@ -538,10 +529,6 @@ Methods
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.output
 
 .. raw:: latex
@@ -560,10 +547,6 @@ Methods
 
 .. raw:: latex
 
-   \newpage
-
-.. raw:: latex
-
    \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.measure
@@ -571,10 +554,6 @@ Methods
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{-2\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.diagram
 
@@ -638,14 +617,6 @@ Methods
 
    .. raw:: latex
 
-      \newpage
-
-   .. raw:: latex
-
-      \vspace*{0.25\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -679,7 +650,7 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.25\baselineskip}
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -716,10 +687,6 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.25\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -750,10 +717,6 @@ Methods
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \vspace*{0.25\baselineskip}
 
    .. raw:: latex
 
@@ -790,10 +753,6 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.25\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -824,10 +783,6 @@ Methods
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \newpage
 
    .. raw:: latex
 
@@ -864,10 +819,6 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.25\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -898,10 +849,6 @@ Methods
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \vspace*{0.25\baselineskip}
 
    .. raw:: latex
 
@@ -938,7 +885,7 @@ Methods
 
    .. raw:: latex
 
-      \vspace*{0.25\baselineskip}
+      \newpage
 
    .. raw:: latex
 

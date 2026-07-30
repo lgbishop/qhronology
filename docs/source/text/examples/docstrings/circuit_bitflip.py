@@ -10,7 +10,7 @@ NOT = Not()
 
 # Circuit
 bitflip = QuantumCircuit(inputs=[input_state], gates=[NOT])
-bitflip.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
+bitflip.diagram()
 
 # Output
 output_state = bitflip.state(label="ψ′")

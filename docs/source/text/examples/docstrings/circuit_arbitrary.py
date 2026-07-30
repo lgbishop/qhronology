@@ -21,7 +21,7 @@ P = Diagonal(
 
 # Circuit
 generator = QuantumCircuit(inputs=[zero_state], gates=[R, P])
-generator.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
+generator.diagram(force_separation=True)
 
 # Output
 arbitrary_state = generator.state(label="ψ")
