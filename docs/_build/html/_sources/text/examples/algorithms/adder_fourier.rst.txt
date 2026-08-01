@@ -38,20 +38,20 @@ The version of a quantum adder presented here sums two multi-qubit integers esse
 
    \vspace*{-\baselineskip}
 
-An example of this algorithm for :math:`3`-qubit integers appears in :numref:`fig:circuit_algorithm_adder_fourier_three`.
+An example of this algorithm for three-qubit integers appears in :numref:`fig:circuit_algorithm_adder_fourier_three`.
 
 .. only:: html
 
    .. figure:: /figures/output/circuit_algorithm_adder_fourier_three-dark.png
       :scale: 34 %
-      :alt: A quantum circuit diagram of a QFT-based adder for :math:`3`-qubit states.
+      :alt: A quantum circuit diagram of a QFT-based adder for three-qubit states.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/circuit_algorithm_adder_fourier_three-light.png
       :scale: 34 %
-      :alt: A quantum circuit diagram of a QFT-based adder for :math:`3`-qubit states.
+      :alt: A quantum circuit diagram of a QFT-based adder for three-qubit states.
       :align: center
       :figwidth: 100 %
       :figclass: only-light
@@ -59,12 +59,12 @@ An example of this algorithm for :math:`3`-qubit integers appears in :numref:`fi
 .. figure:: /figures/output/circuit_algorithm_adder_fourier_three-light.png
    :name: fig:circuit_algorithm_adder_fourier_three
    :scale: 34 %
-   :alt: A quantum circuit diagram of a QFT-based adder for :math:`3`-qubit states.
+   :alt: A quantum circuit diagram of a QFT-based adder for three-qubit states.
    :align: center
    :figwidth: 100 %
    :figclass: light-dark hidden
 
-   A QFT-based adder for :math:`3`-qubit states.
+   A QFT-based adder for three-qubit states.
 
 .. raw:: latex
 

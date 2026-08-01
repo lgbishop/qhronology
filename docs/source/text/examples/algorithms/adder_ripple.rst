@@ -32,7 +32,7 @@ This is a type of *unsigned* integer encoding: all units of information are used
        \ket{y} &\equiv \bigotimes_{n = \Number - 1}^{0}\ket{y_n} = \ket{y_{\Number - 1},y_{\Number - 2},\ldots,y_1,y_0},
    \end{aligned}
 
-can then be accomplished by a succession of exactly :math:`\Number` quantum ripple-carry adders. Each of these adders is applied to a different pair of subsystems in the encoded integers' states---the first acts on the least significant qubit (:math:`n = 0`), with the carry qubit from the previous adder being used as input to the next one. An example of this for a :math:`2`-qubit encoding (:math:`\Number = 2`) is depicted in :numref:`fig:circuit_algorithm_adder_ripple`.
+can then be accomplished by a succession of exactly :math:`\Number` quantum ripple-carry adders. Each of these adders is applied to a different pair of subsystems in the encoded integers' states---the first acts on the least significant qubit (:math:`n = 0`), with the carry qubit from the previous adder being used as input to the next one. An example of this for a two-qubit encoding (:math:`\Number = 2`) is depicted in :numref:`fig:circuit_algorithm_adder_ripple`.
 
 .. only:: html
 
@@ -58,7 +58,7 @@ can then be accomplished by a succession of exactly :math:`\Number` quantum ripp
    :figwidth: 100 %
    :figclass: light-dark hidden
 
-   A :math:`2`-qubit quantum ripple-carry adder. The CNOT operation between the FULL ADDER subcircuits transfers the value of the previous iteration's carry output to the carry input of the next iteration.
+   A two-qubit quantum ripple-carry adder. The CNOT operation between the FULL ADDER subcircuits transfers the value of the previous iteration's carry output to the carry input of the next iteration.
 
 From this circuit, the general output values of the summation qubits can be computed to be
 

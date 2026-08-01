@@ -132,7 +132,7 @@ Evidently, in such a case, the outcome is always found to be :math:`y = z`, and 
 
    \begin{aligned}
        p_z &= \frac{1}{2^{2n}} \abs{\sum_{k = 0}^{2^n - 1} \e^{2\pi\eye k \delta}}^2 \\
-       &= \frac{1}{2^{2n}} \abs{\frac{1 - \e^{2\pi\eye 2^n \delta}}{1 - \e^{2\pi\eye \delta}}}^2
+       &= \frac{1}{2^{2n}} \abs{\frac{1 - \e^{2\pi\eye 2^n \delta}}{1 - \e^{2\pi\eye \delta}}}^2,
    \end{aligned}
 
 where we used the identity

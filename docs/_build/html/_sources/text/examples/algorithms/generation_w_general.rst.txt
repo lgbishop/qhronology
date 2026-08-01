@@ -58,7 +58,7 @@ The complete unitary transformation described by this circuit is the product
    \begin{aligned}
        \Unitary &= \NOT^{\indices{0}} \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \cdot \Control^{\indices{1}} \NOT^{\indices{2}} \cdot \ldots \cdot \Control^{\indices{\Number - 2}} \NOT^{\indices{\Number - 1}} \\
        &\quad \cdot \; \Control^{\indices{\Number - 3}} \Rotation_{y}^{\indices{\Number - 2}}(\theta_{\Number - 2}) \cdot \ldots \cdot \Control^{\indices{1}} \Rotation_{y}^{\indices{2}}(\theta_{2}) \cdot \Control^{\indices{0}} \Rotation_{y}^{\indices{1}}(\theta_{1}) \cdot \Rotation_{y}^{\indices{0}}(\theta_{0}) \\
-       &= \NOT^{\indices{0}} \cdot \Biggl(\prod_{n = 1}^{\Number - 1} \Control^{\indices{n - 1}} \NOT^{\indices{n}} \Biggr) \cdot \Biggl(\prod_{n = \Number - 2}^{1} \Control^{\indices{n - 1}} \Rotation_{y}^{\indices{n}}(\theta_{n})  \Biggr) \cdot \Rotation_{y}^{\indices{0}}(\theta_{0})
+       &= \NOT^{\indices{0}} \cdot \Biggl(\prod_{n = 1}^{\Number - 1} \Control^{\indices{n - 1}} \NOT^{\indices{n}} \Biggr) \cdot \Biggl(\prod_{n = \Number - 2}^{1} \Control^{\indices{n - 1}} \Rotation_{y}^{\indices{n}}(\theta_{n})  \Biggr) \cdot \Rotation_{y}^{\indices{0}}(\theta_{0}),
    \end{aligned}
 
 where the :math:`y`-rotation angles are given by :math:`\theta_n = 2 \arccos\left(\tfrac{1}{\sqrt{\Number - n}}\right)`.

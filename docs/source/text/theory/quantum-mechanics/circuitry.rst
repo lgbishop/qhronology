@@ -2135,7 +2135,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
 
       \vspace*{-0.15\baselineskip}
 
-- CCNOT (controlled-controlled-NOT gate, doubly-controlled-NOT gate, also known as the *Toffoli* gate):
+- CCNOT (controlled-controlled-NOT, doubly-controlled-NOT, also known as the *Toffoli* gate):
 
    .. raw:: latex
 

@@ -32,7 +32,7 @@ A quantum *carry-lookahead* adder, proposed by Vedral et al. :cite:p:`vedral_qua
    :figwidth: 100 %
    :figclass: light-dark hidden
 
-   A :math:`2`-qubit quantum carry-lookahead adder.
+   A two-qubit quantum carry-lookahead adder.
 
 .. raw:: latex
 

@@ -180,7 +180,7 @@ to be the CR input along the trajectories illustrated in :numref:`fig:diagram_bi
 
 Here, the elastic self-collision of the clock between its past and future selves may be represented by the SWAP gate,
 
-.. math:: \Swap = \sum_{j,k=1}^{\Dimension}{\ket{j}\bra{k}}_\CR\otimes{\ket{k}\bra{j}}_\CV.
+.. math:: \Swap = \sum_{j,k=1}^{\Dimension}{\ket{j}\bra{k}}^{\indices{\CR}} \otimes {\ket{k}\bra{j}}^{\indices{\CV}}.
    :label: eq:swap
 
 In effect, this exchange of the CV (trapped CTC) and CR (incoming system) quantum states mimics the momentum-exchange collision interaction between the billiard ball's past and future selves [which necessarily occurs in :math:`(1+1)` dimensions]. (Note that here, the basis states correspond to those from which the particle's wave function is constructed. This means that, in the case of a quantum clock, these basis states represent the number states of the clock's Hilbert space.) This is because the complete transference of momentum between two particles (here, the past and future versions of the billiard ball) is necessarily an exchange of quantum clock state, provided the associated particles are otherwise identical. To clarify, in a particle's quantum description, the clock degree of freedom is the identifying attribute, while momentum performs the same function in its classical description. As such, the two necessarily correspond such that when a pair of classically indistinguishable particles trade momentum, they exchange their clocks, i.e., :math:`\Swap \ket{\qclock(\Time_A)} \otimes \ket{\qclock(\Time_B)} = \ket{\qclock(\Time_B)} \otimes \ket{\qclock(\Time_A)}`.
@@ -191,7 +191,7 @@ Next, in order to combine the two separate subcircuits of :numref:`fig:circuit_c
 
 In order to model the paradox faithfully, we mandate that the vacuum and clock cannot "collide" with each other. This effect will be enforced by modifying the SWAP gate to the form
 
-.. math:: \VacuumSwap = \VacuumIdentity_\CR\otimes\ket{0}\bra{0}_\CV + \ket{0}\bra{0}_\CR\otimes\VacuumIdentity_\CV - \ket{0}\bra{0}_\CR\otimes\ket{0}\bra{0}_\CV + \Swap
+.. math:: \VacuumSwap = \VacuumIdentity^{\indices{\CR}} \otimes \ket{0}\bra{0}^{\indices{\CV}} + \ket{0}\bra{0}^{\indices{\CR}} \otimes \VacuumIdentity^{\indices{\CV}} - \ket{0}\bra{0}^{\indices{\CR}} \otimes \ket{0}\bra{0}^{\indices{\CV}} + \Swap
    :label: eq:swap_vacuum
 
 where :math:`\VacuumIdentity = \Identity + \ket{0}\bra{0}` is the identity matrix in a vacuum-inclusive Hilbert space. This altered SWAP simply excludes the vacuum from swapping with the non-vacuous states, e.g.,
@@ -219,7 +219,7 @@ This form describes the special case where, without loss of generality in the mo
 
 With this in mind, the corresponding vacuum-modified unitary operator is
 
-.. math:: \UnitaryVacuum = \bigl[\VacuumIdentity_\CR\otimes\VacuumRotation_\CV(\TimeDelta)\bigr]\VacuumSwap.
+.. math:: \UnitaryVacuum = \bigl[\VacuumIdentity^{\indices{\CR}} \otimes \VacuumRotation^{\indices{\CV}}(\TimeDelta)\bigr] \cdot \VacuumSwap.
    :label: eq:unitary_vacuum
 
 Under this, the input state may either self-consistently interact with the CTC, or it may pass straight through the circuit, thus allowing it to evolve through the circuit in the two paths of :numref:`fig:diagram_billiard-ball_clocks`.
@@ -374,21 +374,21 @@ After renormalization, the corresponding P-CTC output is then, of course, simply
 
 To answer this question, we can use the vacuum-including entangled state
 
-.. math:: \ket{\StatePure}_{\text{rec},\CR} = \sqrt{\ParameterVacuum}\ket{0}_\text{rec}\otimes\ket{0}_\CR + \sqrt{1 - \ParameterVacuum}\ket{\qclock(0)}_\text{rec}\otimes\ket{\qclock(0)}_\CR, \quad 0 \leq \ParameterVacuum \leq 1,
+.. math:: \ket{\StatePure}^{\indices{\text{rec},\CR}} = \sqrt{\ParameterVacuum}\ket{0}^{\indices{\text{rec}}} \otimes \ket{0}^{\indices{\CR}} + \sqrt{1 - \ParameterVacuum}\ket{\qclock(0)}^{\indices{\text{rec}}} \otimes \ket{\qclock(0)}^{\indices{\CR}}, \quad 0 \leq \ParameterVacuum \leq 1,
    :label: eq:billiards_P-CTCs_entangled
 
-as input to our circuit. Here, the state existing in the first system may be interpreted as a record of what we send into the CR system. With this entanglement, we find the P-CTC unnormalized pure-state output, corresponding to our circuit's ordinary operator :math:`\VacuumIdentity_\text{rec}\otimes\OperatorPCTC_\CR` from :eq:`eq:billiards_P-CTCs_operator`, to be
+as input to our circuit. Here, the state existing in the first system may be interpreted as a record of what we send into the CR system. With this entanglement, we find the P-CTC unnormalized pure-state output, corresponding to our circuit's ordinary operator :math:`\VacuumIdentity^{\indices{\text{rec}}} \otimes \OperatorPCTC^{\indices{\CR}}` from :eq:`eq:billiards_P-CTCs_operator`, to be
 
 .. math::
 
    \begin{aligned}
-      \bigl(\VacuumIdentity_\text{rec}\otimes\OperatorPCTC_\CR\bigr)\ket{\StatePure}_{\text{rec},\CR} &\propto \sqrt{\ParameterVacuum}\,\trace[\VacuumRotation(\TimeDelta)]\,\ket{0}_\text{rec}\otimes\ket{0}_\CR \\
-      &\quad + \sqrt{1 - \ParameterVacuum}\,\ket{\qclock(0)}_\text{rec}\otimes\bigl[\ket{\qclock(0)}_\CR + \ket{\qclock(\TimeDelta)}_\CR\bigr].
+      \bigl(\VacuumIdentity^{\indices{\text{rec}}} \otimes \OperatorPCTC^{\indices{\CR}}\bigr) \ket{\StatePure}^{\indices{\text{rec},\CR}} &\propto \sqrt{\ParameterVacuum}\,\trace[\VacuumRotation(\TimeDelta)]\,\ket{0}^{\indices{\text{rec}}} \otimes \ket{0}^{\indices{\CR}} \\
+      &\quad + \sqrt{1 - \ParameterVacuum}\,\ket{\qclock(0)}^{\indices{\text{rec}}} \otimes \bigl[\ket{\qclock(0)}^{\indices{\CR}} + \ket{\qclock(\TimeDelta)}^{\indices{\CR}}\bigr].
    \end{aligned}
 
 The persistence of the entanglement means that when the record indicates that we did not send in a clock, we will not observe a clock in the CR output. Conversely, when we definitely did send in a clock, we must observe a clock exiting the CTC region, which is exactly what one intuitively expects. However, under the conditions :eq:`eq:orthogonalization_time_multiple` and :eq:`eq:billiards_P-CTCs_energy_vanish` which yield the operator :eq:`eq:billiards_P-CTCs_operator_constrained`, the entanglement of our input state :eq:`eq:billiards_P-CTCs_entangled` breaks,
 
-.. math:: \bigl(\VacuumIdentity_\text{rec}\otimes\OperatorPCTC'_\CR\bigr)\ket{\StatePure}_{\text{rec},\CR} \propto \ket{0}_\text{rec}\otimes\ket{0}_\CR,
+.. math:: \bigl(\VacuumIdentity^{\indices{\text{rec}}}\otimes\OperatorPCTC^{\prime \indices{\CR}}\bigr) \ket{\StatePure}^{\indices{\text{rec},\CR}} \propto \ket{0}^{\indices{\text{rec}}} \otimes \ket{0}^{\indices{\CR}},
 
 regardless of the value of :math:`\ParameterVacuum` (provided it is non-zero). Thus, the mere presence of the interaction with the CTC in the future implies that the record subsystem will show that no clock was ever prepared, even though the initial state :eq:`eq:billiards_P-CTCs_entangled` included the possibility that a clock was there (which would show up in the record if the future interaction with the CTC was avoided).
 

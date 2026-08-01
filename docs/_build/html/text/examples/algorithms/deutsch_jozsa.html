@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Jul 30, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 01, 2026"/>
   </head>
   
   
@@ -579,7 +579,7 @@
 <span class="eqno">(379)<a class="headerlink" href="#equation-text-examples-algorithms-deutsch-jozsa-4" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \ket{\Psi_3} &amp;= \Oracle_f \ket{\Psi_2} \\
     &amp;= \frac{1}{\sqrt{2^{n+1}}} \sum_{x = 0}^{2^n - 1} \ket{x} \otimes \bigl(\ket{0 \oplus f(x)} - \ket{1 \oplus f(x)}\bigr) \\
-    &amp;= \frac{1}{\sqrt{2^{n+1}}} \sum_{x = 0}^{2^n - 1} (-1)^{f(x)} \ket{x} \otimes \bigl(\ket{0} - \ket{1}\bigr)
+    &amp;= \frac{1}{\sqrt{2^{n+1}}} \sum_{x = 0}^{2^n - 1} (-1)^{f(x)} \ket{x} \otimes \bigl(\ket{0} - \ket{1}\bigr),
 \end{aligned}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\oplus\)</span> denotes addition (modulo <span class="math notranslate nohighlight">\(2\)</span>). Finally, transforming the address register with Hadamard gates results in the final output state</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-deutsch-jozsa-5">
@@ -601,8 +601,8 @@
 <span class="eqno">(384)<a class="headerlink" href="#equation-text-examples-algorithms-deutsch-jozsa-9" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
 p_0 &amp;= \abs{\frac{1}{2^n} \sum_{x = 0}^{2^n - 1} (-1)^{f(x)}}^2 \\
     &amp;= \begin{cases}
-        0, &amp; \text{if } f \text{ is balanced}; \\
-        1, &amp; \text{if } f \text{ is constant}.
+        1, &amp; \text{if } f \text{ is constant}; \\
+        0, &amp; \text{if } f \text{ is balanced}.
     \end{cases}
 \end{aligned}\end{split}\]</div>
 <p>The bifurcation in this result—the forking of the output into two distinct, discrete values—is due to inteference in the summation: constructive interference when <span class="math notranslate nohighlight">\(f\)</span> is constant and destructive interference when <span class="math notranslate nohighlight">\(f\)</span> is balanced. This means that, when we measure the output state to be <span class="math notranslate nohighlight">\(\ket{0}^{\otimes n}\)</span>, the function <span class="math notranslate nohighlight">\(f\)</span> must be constant, while obtaining any other output state signifies that <span class="math notranslate nohighlight">\(f\)</span> must be balanced.</p>

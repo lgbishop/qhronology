@@ -164,15 +164,15 @@ P-CTC restrictions on initial data
 
 The grandfather paradox is particularly interesting because it exhibits pathological behaviour under the P-CTC prescription. Indeed, its antichronological effect on a general qubit can be observed by analyzing the evolution of the entangled state,
 
-.. math:: \ket{\phi}_{\mathrm{rec},\CR} = \sqrt{\Omega} \ket{0}_\mathrm{rec} \otimes \ket{0}_\CR + \sqrt{1 - \Omega} \ket{1}_\mathrm{rec} \otimes \ket{1}_\CR,
+.. math:: \ket{\phi}^{\indices{\mathrm{rec},\CR}} = \sqrt{\Omega} \ket{0}^{\indices{\mathrm{rec}}} \otimes \ket{0}^{\indices{\CR}} + \sqrt{1 - \Omega} \ket{1}^{\indices{\mathrm{rec}}} \otimes \ket{1}^{\indices{\CR}},
 
 where :math:`0 \leq \Omega \leq 1` controls the balance of the entanglement. Here, measurement of the first subsystem---the *record* subsystem---reveals (due to the entanglement) which CR state interacted with the P-CTC. Accordingly, by using the bipartite unitary
 
-.. math:: \Identity_\mathrm{rec}\otimes\trace_\CV[\Unitary] = \Identity_\mathrm{rec}\otimes\ket{+}\bra{0}_\CR,
+.. math:: \Identity^{\indices{\mathrm{rec}}} \otimes \OperatorPCTC^{\indices{\CR}} = \Identity^{\indices{\mathrm{rec}}}\otimes\ket{+}\bra{0}^{\indices{\CR}},
 
 where :math:`\OperatorPCTC = \trace_\CV[\Unitary]` is the P-CTC operator, we obtain the evolution
 
-.. math:: \bigl(\Identity_\mathrm{rec}\otimes\trace_\CV[\Unitary]\bigr)\ket{\phi} = \sqrt{2\Omega}\ket{0}_\mathrm{rec}\otimes\ket{+}_\CR.
+.. math:: \bigl(\Identity^{\indices{\mathrm{rec}}} \otimes \OperatorPCTC^{\indices{\CR}}\bigr)\ket{\phi} = \sqrt{2\Omega}\ket{0}^{\indices{\mathrm{rec}}}\otimes\ket{+}^{\indices{\CR}}.
 
 Renormalization vanishes the coefficient :math:`\sqrt{2\Omega}`, leaving the record to consist of only the state :math:`\ket{0}` regardless of the value of :math:`\Omega`. This suggests that the CR input was likewise only :math:`\ket{0}` even if :math:`\Omega \neq 1`, indicating that the entanglement was broken.
 

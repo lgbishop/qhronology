@@ -91,7 +91,7 @@ where each :math:`x` represents a number from :math:`0` to :math:`2^n - 1` encod
    \begin{aligned}
        \ket{\Psi_3} &= \Oracle_f \ket{\Psi_2} \\
        &= \frac{1}{\sqrt{2^{n+1}}} \sum_{x = 0}^{2^n - 1} \ket{x} \otimes \bigl(\ket{0 \oplus f(x)} - \ket{1 \oplus f(x)}\bigr) \\
-       &= \frac{1}{\sqrt{2^{n+1}}} \sum_{x = 0}^{2^n - 1} (-1)^{f(x)} \ket{x} \otimes \bigl(\ket{0} - \ket{1}\bigr)
+       &= \frac{1}{\sqrt{2^{n+1}}} \sum_{x = 0}^{2^n - 1} (-1)^{f(x)} \ket{x} \otimes \bigl(\ket{0} - \ket{1}\bigr),
    \end{aligned}
 
 where :math:`\oplus` denotes addition (modulo :math:`2`). Finally, transforming the address register with Hadamard gates results in the final output state
@@ -122,8 +122,8 @@ The probability of measuring an outcome of :math:`z = 0`, corresponding to :math
    \begin{aligned}
    p_0 &= \abs{\frac{1}{2^n} \sum_{x = 0}^{2^n - 1} (-1)^{f(x)}}^2 \\
        &= \begin{cases}
-           0, & \text{if } f \text{ is balanced}; \\
-           1, & \text{if } f \text{ is constant}.
+           1, & \text{if } f \text{ is constant}; \\
+           0, & \text{if } f \text{ is balanced}.
        \end{cases}
    \end{aligned}
 

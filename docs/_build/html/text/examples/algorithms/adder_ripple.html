@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Jul 30, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 01, 2026"/>
   </head>
   
   
@@ -543,7 +543,7 @@
     \ket{x} &amp;\equiv \bigotimes_{n = \Number - 1}^{0}\ket{x_n} = \ket{x_{\Number - 1},x_{\Number - 2},\ldots,x_1,x_0}, \\
     \ket{y} &amp;\equiv \bigotimes_{n = \Number - 1}^{0}\ket{y_n} = \ket{y_{\Number - 1},y_{\Number - 2},\ldots,y_1,y_0},
 \end{aligned}\end{split}\]</div>
-<p>can then be accomplished by a succession of exactly <span class="math notranslate nohighlight">\(\Number\)</span> quantum ripple-carry adders. Each of these adders is applied to a different pair of subsystems in the encoded integers’ states—the first acts on the least significant qubit (<span class="math notranslate nohighlight">\(n = 0\)</span>), with the carry qubit from the previous adder being used as input to the next one. An example of this for a <span class="math notranslate nohighlight">\(2\)</span>-qubit encoding (<span class="math notranslate nohighlight">\(\Number = 2\)</span>) is depicted in <a class="reference internal" href="#fig-circuit-algorithm-adder-ripple"><span class="std std-numref">Figure 21</span></a>.</p>
+<p>can then be accomplished by a succession of exactly <span class="math notranslate nohighlight">\(\Number\)</span> quantum ripple-carry adders. Each of these adders is applied to a different pair of subsystems in the encoded integers’ states—the first acts on the least significant qubit (<span class="math notranslate nohighlight">\(n = 0\)</span>), with the carry qubit from the previous adder being used as input to the next one. An example of this for a two-qubit encoding (<span class="math notranslate nohighlight">\(\Number = 2\)</span>) is depicted in <a class="reference internal" href="#fig-circuit-algorithm-adder-ripple"><span class="std std-numref">Figure 21</span></a>.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_ripple-dark.png"><img alt="A quantum circuit diagram of a quantum ripple-carry adder." src="../../../_images/circuit_algorithm_adder_ripple-dark.png" style="width: 872.7800000000001px; height: 307.36px;" />
 </a>
@@ -556,7 +556,7 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_adder_ripple-light.png"><img alt="A quantum circuit diagram of a quantum ripple-carry adder." src="../../../_images/circuit_algorithm_adder_ripple-light.png" style="width: 872.7800000000001px; height: 307.36px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 21 </span><span class="caption-text">A <span class="math notranslate nohighlight">\(2\)</span>-qubit quantum ripple-carry adder. The CNOT operation between the FULL ADDER subcircuits transfers the value of the previous iteration’s carry output to the carry input of the next iteration.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-ripple" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 21 </span><span class="caption-text">A two-qubit quantum ripple-carry adder. The CNOT operation between the FULL ADDER subcircuits transfers the value of the previous iteration’s carry output to the carry input of the next iteration.</span><a class="headerlink" href="#fig-circuit-algorithm-adder-ripple" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From this circuit, the general output values of the summation qubits can be computed to be</p>

@@ -12,11 +12,11 @@ A canonical decomposition of the multipartite (composite) quantum Fourier transf
 
 where
 
-.. math:: U_n = \left(\prod_{j = 1}^{N - 1 - n} \Control^{\indices{n + j}} \bigl(\Phase^{d^{-j}}\bigr)^{\indices{n}} \right) \cdot \Hadamard^{\indices{n}}
+.. math:: U_n = \left(\prod_{j = 1}^{N - 1 - n} \Control^{\indices{n + j}} \bigl(\Phase^{d^{-j}}\bigr)^{\indices{n}} \right) \cdot \Hadamard^{\indices{n}}.
 
 Here,
 
-.. math:: \Phase = \sum_{k=0}^{d-1} \omega^{k} \ket{k}\bra{k}.
+.. math:: \Phase = \sum_{k=0}^{d-1} \omega^{k} \ket{k}\bra{k}
 
 is the :math:`d`-dimensional phase gate with :math:`\omega \equiv \e^{2\pi\eye/d}`.
 
