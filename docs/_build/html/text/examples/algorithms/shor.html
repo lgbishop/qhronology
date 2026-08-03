@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 01, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 03, 2026"/>
   </head>
   
   
@@ -528,7 +528,7 @@
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p><em>Shor’s factorization algorithm</em> <span id="id1">[<a class="reference internal" href="#cite-1-shor-algorithms-1994" title="P. W. Shor, “Algorithms for quantum computation: discrete logarithms and factoring”, Proceedings 35th Annual Symposium on Foundations of Computer Science, pages 124–134, November 1994. DOI: 10.1109/SFCS.1994.365700">1</a>, <a class="reference internal" href="#cite-1-shor-polynomial-time-1997" title="P. W. Shor, “Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer”, SIAM Journal on Computing, 26(5):1484–1509, October 1997. DOI: 10.1137/S0097539795293172">2</a>]</span>, often called just <em>Shor’s algorithm</em>, is an innovative quantum algorithm for the factorization of integers. An instance of the <em>hidden subgroup problem</em>, the algorithm’s significance lies in its ability to factor large integers in polynomial time, which is exponentially faster than any known classical algorithm.</p>
-<p>Shor’s algorithm is a notable example of a <em>hybrid algorithm</em>, in which both classical and quantum processing are employed in order to obtain the desired outcome. As part of the algorithm, the factorization problem is reduced down to the problem of <em>order-finding</em> (or <em>period-finding</em>), a process known as <em>classical reduction</em>. Solving the order-finding problem then forms the core of the algorithm, and is the only component which is performed quantum mechanically (via quantum phase estimation—see <code class="xref std std-numref docutils literal notranslate"><span class="pre">eg:phase_estimation</span></code> <a class="reference internal" href="phase_estimation.html#eg-phase-estimation"><span class="std std-ref">Quantum phase estimation</span></a>).</p>
+<p>Shor’s algorithm is a notable example of a <em>hybrid algorithm</em>, in which both classical and quantum processing are employed in order to obtain the desired outcome. As part of the algorithm, the factorization problem is reduced down to the problem of <em>order-finding</em>, a process known as <em>classical reduction</em>. Solving the order-finding problem then forms the core of the algorithm, and is the only component which is performed quantum mechanically (via quantum phase estimation—see <code class="xref std std-numref docutils literal notranslate"><span class="pre">eg:phase_estimation</span></code> <a class="reference internal" href="phase_estimation.html#eg-phase-estimation"><span class="std std-ref">Quantum phase estimation</span></a>).</p>
 <section id="integer-factorization">
 <h3>Integer factorization<a class="headerlink" href="#integer-factorization" title="Link to this heading">#</a></h3>
 <p>Formally, the factorization of an arbitrary positive integer <span class="math notranslate nohighlight">\(N\)</span> involves determining a pair of positive integers <span class="math notranslate nohighlight">\(p, q\)</span> such that</p>
@@ -558,39 +558,39 @@
 <span class="eqno">(412)<a class="headerlink" href="#equation-eq-multiplicative-order" title="Link to this equation">#</a></span>\[a^{r} = 1 \; (\mathrm{mod} \; N).\]</div>
 <p>Note that the value of <span class="math notranslate nohighlight">\(r\)</span> is specific to that combination of both the element <span class="math notranslate nohighlight">\(a\)</span> and the modulus <span class="math notranslate nohighlight">\(N\)</span>.</p>
 <p>Of course, if <span class="math notranslate nohighlight">\(r\)</span> satisfies <a class="reference internal" href="#equation-eq-multiplicative-order">(412)</a>, then so will any exponent of the form <span class="math notranslate nohighlight">\(r + k\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is a positive integer. The smallest possible non-zero value of <span class="math notranslate nohighlight">\(r\)</span> for which this holds true is called the <em>order</em> of the element <span class="math notranslate nohighlight">\(a\)</span>. This can be expressed more eloquently; by defining the <em>modular exponential function</em>,</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-4">
-<span class="eqno">(413)<a class="headerlink" href="#equation-text-examples-algorithms-shor-4" title="Link to this equation">#</a></span>\[f_{N, a}(k) \equiv a^k \; (\mathrm{mod} \; N),\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-modular-exponential-function">
+<span class="eqno">(413)<a class="headerlink" href="#equation-eq-modular-exponential-function" title="Link to this equation">#</a></span>\[f_{N, a}(k) \equiv a^k \; (\mathrm{mod} \; N),\]</div>
 <p>we can write</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-5">
-<span class="eqno">(414)<a class="headerlink" href="#equation-text-examples-algorithms-shor-5" title="Link to this equation">#</a></span>\[f_{N, a}(r) = 1.\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-modular-exponential-function-order">
+<span class="eqno">(414)<a class="headerlink" href="#equation-eq-modular-exponential-function-order" title="Link to this equation">#</a></span>\[f_{N, a}(r) = 1.\]</div>
 <p>Due to its modularity, <span class="math notranslate nohighlight">\(f\)</span> is periodic, with <span class="math notranslate nohighlight">\(r\)</span> serving as its <em>period</em>, i.e.,</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-6">
-<span class="eqno">(415)<a class="headerlink" href="#equation-text-examples-algorithms-shor-6" title="Link to this equation">#</a></span>\[f_{N, a}(k + r) = f_{N, a}(k)\]</div>
-<p>for any positive integer <span class="math notranslate nohighlight">\(k\)</span>. The <em>order-finding problem</em> (or <em>period-finding problem</em>) is to, given positive integers <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(a\)</span> that satisfy <span class="math notranslate nohighlight">\(\gcd(N, a) = 1\)</span>, find the smallest possible integer <span class="math notranslate nohighlight">\(r\)</span> such that <a class="reference internal" href="#equation-eq-multiplicative-order">(412)</a> holds true.</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-4">
+<span class="eqno">(415)<a class="headerlink" href="#equation-text-examples-algorithms-shor-4" title="Link to this equation">#</a></span>\[f_{N, a}(k + r) = f_{N, a}(k)\]</div>
+<p>for any positive integer <span class="math notranslate nohighlight">\(k\)</span>. Determining the smallest possible value(s) of <span class="math notranslate nohighlight">\(r\)</span> for which any given (univariate) function <span class="math notranslate nohighlight">\(f\)</span> is periodic, e.g., <span class="math notranslate nohighlight">\(f(x + r) = f(x)\)</span> (for all <span class="math notranslate nohighlight">\(x\)</span>), constitutes the problem of <em>period-finding</em>. In the special case of the modular exponent function <a class="reference internal" href="#equation-eq-modular-exponential-function">(413)</a>, determining such an integer <span class="math notranslate nohighlight">\(r\)</span> such that <a class="reference internal" href="#equation-eq-modular-exponential-function-order">(414)</a> holds true (given positive integers <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(a\)</span>, with <span class="math notranslate nohighlight">\(\gcd(N, a) = 1\)</span>) is called <em>order-finding</em>.</p>
 </section>
-<section id="factorization-by-period-finding">
-<h3>Factorization by period-finding<a class="headerlink" href="#factorization-by-period-finding" title="Link to this heading">#</a></h3>
-<p>Solving the problem of period-finding is useful because it can be used to factorize an integer. This is achieved by first assigning the number to be factorized <span class="math notranslate nohighlight">\(N\)</span> as the modulus of the associated multiplicative group of integers. The period <span class="math notranslate nohighlight">\(r\)</span> is then calculated given an element <span class="math notranslate nohighlight">\(a \in \Integers_N^* \setminus \{1\}\)</span> (so <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(a\)</span> are coprime). Since <a class="reference internal" href="#equation-eq-multiplicative-order">(412)</a> is satisfied for such values of <span class="math notranslate nohighlight">\(a\)</span>, then <span class="math notranslate nohighlight">\(N\)</span> divides <span class="math notranslate nohighlight">\(a^{r} - 1\)</span>, which is often written as</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-7">
-<span class="eqno">(416)<a class="headerlink" href="#equation-text-examples-algorithms-shor-7" title="Link to this equation">#</a></span>\[N \divides a^{r} - 1.\]</div>
+<section id="factorization-by-order-finding">
+<h3>Factorization by order-finding<a class="headerlink" href="#factorization-by-order-finding" title="Link to this heading">#</a></h3>
+<p>Solving the problem of order-finding is useful because it can be used to factorize an integer. This is achieved by first assigning the number to be factorized <span class="math notranslate nohighlight">\(N\)</span> as the modulus of the associated multiplicative group of integers. The period <span class="math notranslate nohighlight">\(r\)</span> is then calculated given an element <span class="math notranslate nohighlight">\(a \in \Integers_N^* \setminus \{1\}\)</span> (so <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(a\)</span> are coprime). Since <a class="reference internal" href="#equation-eq-multiplicative-order">(412)</a> is satisfied for such values of <span class="math notranslate nohighlight">\(a\)</span>, then <span class="math notranslate nohighlight">\(N\)</span> divides <span class="math notranslate nohighlight">\(a^{r} - 1\)</span>, which is often written as</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-5">
+<span class="eqno">(416)<a class="headerlink" href="#equation-text-examples-algorithms-shor-5" title="Link to this equation">#</a></span>\[N \divides a^{r} - 1.\]</div>
 <p>This simply means that there exists an integer <span class="math notranslate nohighlight">\(z\)</span> such that <span class="math notranslate nohighlight">\(a^{r} - 1 = zN\)</span>. By factorizing this expression algebraically, we obtain the product</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-8">
-<span class="eqno">(417)<a class="headerlink" href="#equation-text-examples-algorithms-shor-8" title="Link to this equation">#</a></span>\[a^{r} - 1 = (a^{r/2} - 1)(a^{r/2} + 1).\]</div>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-6">
+<span class="eqno">(417)<a class="headerlink" href="#equation-text-examples-algorithms-shor-6" title="Link to this equation">#</a></span>\[a^{r} - 1 = (a^{r/2} - 1)(a^{r/2} + 1).\]</div>
 <p>If <span class="math notranslate nohighlight">\(r\)</span> is odd, then the period should be recomputed using a different value for <span class="math notranslate nohighlight">\(a\)</span>. When <span class="math notranslate nohighlight">\(r\)</span> is determined to be even, then <span class="math notranslate nohighlight">\(r/2\)</span> is an integer, and so <span class="math notranslate nohighlight">\(a^{r/2}\)</span> is the non-trivial square root of <span class="math notranslate nohighlight">\(a^{r}\)</span>. Proceeding under this assumption, we have</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-9">
-<span class="eqno">(418)<a class="headerlink" href="#equation-text-examples-algorithms-shor-9" title="Link to this equation">#</a></span>\[N \divides (a^{r/2} - 1)(a^{r/2} + 1),\]</div>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-7">
+<span class="eqno">(418)<a class="headerlink" href="#equation-text-examples-algorithms-shor-7" title="Link to this equation">#</a></span>\[N \divides (a^{r/2} - 1)(a^{r/2} + 1),\]</div>
 <p>which may imply the following two statements:</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-10">
-<span class="eqno">(419)<a class="headerlink" href="#equation-text-examples-algorithms-shor-10" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-8">
+<span class="eqno">(419)<a class="headerlink" href="#equation-text-examples-algorithms-shor-8" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \text{(i)} \quad &amp;N \divides a^{r/2} - 1,\\
     \text{(ii)} \quad &amp;N \divides a^{r/2} + 1.
 \end{aligned}\end{split}\]</div>
-<p>If (i) holds, then we must have <span class="math notranslate nohighlight">\(a^{r/2} = 1 \; (\mathrm{mod} \; N)\)</span>. However, this contradicts the fact that <span class="math notranslate nohighlight">\(r\)</span> is the order of <span class="math notranslate nohighlight">\(a\)</span>, and so (i) is always false (provided a correct <span class="math notranslate nohighlight">\(r\)</span> was found). Thus, (i) cannot be true. We subsequently compute the value</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-11">
-<span class="eqno">(420)<a class="headerlink" href="#equation-text-examples-algorithms-shor-11" title="Link to this equation">#</a></span>\[d = \gcd(N, a^{r/2} - 1).\]</div>
-<p>If <span class="math notranslate nohighlight">\(d = 1\)</span>, then (ii) is true, and the factorization procedure has trivial factor (either <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(N\)</span>) and should be repeated with a different value for <span class="math notranslate nohighlight">\(a\)</span> (to attempt to find a non-trivial factor). Alternatively, if <span class="math notranslate nohighlight">\(d &gt; 1\)</span>, then</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-12">
-<span class="eqno">(421)<a class="headerlink" href="#equation-text-examples-algorithms-shor-12" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<p>Neither of these statements can be true if the factorization algorithm is to be successful. If (i) holds, then we must have <span class="math notranslate nohighlight">\(a^{r/2} = 1 \; (\mathrm{mod} \; N)\)</span>. However, this contradicts the fact that <span class="math notranslate nohighlight">\(r\)</span> is the order of <span class="math notranslate nohighlight">\(a\)</span>, and so (i) is always false (provided a correct <span class="math notranslate nohighlight">\(r\)</span> was found). Thus, (i) cannot be true. We subsequently compute the value</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-9">
+<span class="eqno">(420)<a class="headerlink" href="#equation-text-examples-algorithms-shor-9" title="Link to this equation">#</a></span>\[d = \gcd(N, a^{r/2} - 1).\]</div>
+<p>If <span class="math notranslate nohighlight">\(d = 1\)</span>, then statement (ii) is true, and the factorization procedure has trivial factor (either <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(N\)</span>) and should be repeated with a different value for <span class="math notranslate nohighlight">\(a\)</span> (to attempt to find a non-trivial factor). Alternatively, if <span class="math notranslate nohighlight">\(d &gt; 1\)</span>, then</p>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-10">
+<span class="eqno">(421)<a class="headerlink" href="#equation-text-examples-algorithms-shor-10" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     p &amp;= d,\\
     q &amp;= N/d,
 \end{aligned}\end{split}\]</div>
@@ -631,20 +631,20 @@
 <section id="order-finding-via-quantum-phase-estimation">
 <span id="eg-shor-estimation"></span><h3>Order-finding via quantum phase estimation<a class="headerlink" href="#order-finding-via-quantum-phase-estimation" title="Link to this heading">#</a></h3>
 <p>Quantum phase estimation (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">eg:phase_estimation</span></code> <a class="reference internal" href="phase_estimation.html#eg-phase-estimation"><span class="std std-ref">Quantum phase estimation</span></a>) presents an efficient method of order-finding that is unattainable through classical means. This is achieved through using operators that have the action</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-13">
-<span class="eqno">(422)<a class="headerlink" href="#equation-text-examples-algorithms-shor-13" title="Link to this equation">#</a></span>\[\Unitary_{N,a} \ket{z} = \left|ay \; (\mathrm{mod} \; N)\right\rangle\]</div>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-11">
+<span class="eqno">(422)<a class="headerlink" href="#equation-text-examples-algorithms-shor-11" title="Link to this equation">#</a></span>\[\Unitary_{N,a} \ket{z} = \left|ay \; (\mathrm{mod} \; N)\right\rangle\]</div>
 <p>as the base of the controlled-<span class="math notranslate nohighlight">\(\Unitary\)</span> gates in the phase estimation algorithm. Note that, given this definition, it is easy to verify that</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-14">
-<span class="eqno">(423)<a class="headerlink" href="#equation-text-examples-algorithms-shor-14" title="Link to this equation">#</a></span>\[\Unitary_{N,a}^k \ket{z} = |a^ky \; (\mathrm{mod} \; N)\rangle,\]</div>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-12">
+<span class="eqno">(423)<a class="headerlink" href="#equation-text-examples-algorithms-shor-12" title="Link to this equation">#</a></span>\[\Unitary_{N,a}^k \ket{z} = |a^ky \; (\mathrm{mod} \; N)\rangle,\]</div>
 <p>and so, in the case of <span class="math notranslate nohighlight">\(z = 1\)</span>, we have</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-15">
-<span class="eqno">(424)<a class="headerlink" href="#equation-text-examples-algorithms-shor-15" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-13">
+<span class="eqno">(424)<a class="headerlink" href="#equation-text-examples-algorithms-shor-13" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \Unitary_{N,a}^k \ket{1} &amp;= |a^k \; (\mathrm{mod} \; N)\rangle \\
     &amp;= |f_{N,a}(k)\rangle.
 \end{aligned}\end{split}\]</div>
 <p>The phase estimation procedure then simply determines the smallest integer value of <span class="math notranslate nohighlight">\(r\)</span> (i.e., the period) for which</p>
-<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-16">
-<span class="eqno">(425)<a class="headerlink" href="#equation-text-examples-algorithms-shor-16" title="Link to this equation">#</a></span>\[\Unitary_{N,a}^r \ket{1} = \left|1 \; (\mathrm{mod} \; N)\right\rangle,\]</div>
+<div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-14">
+<span class="eqno">(425)<a class="headerlink" href="#equation-text-examples-algorithms-shor-14" title="Link to this equation">#</a></span>\[\Unitary_{N,a}^r \ket{1} = \left|1 \; (\mathrm{mod} \; N)\right\rangle,\]</div>
 <p>thereby solving the order-finding problem. This is achieved by using the decoded phase value <span class="math notranslate nohighlight">\(\theta\)</span>, obtained from the phase estimation itself, to calculate the integer <span class="math notranslate nohighlight">\(r\)</span> via the relation <span class="math notranslate nohighlight">\(\theta = 1/r\)</span>. The quantum circuit depicting the phase estimation procedure in Shor’s algorithm appears in <a class="reference internal" href="#fig-circuit-algorithm-shor"><span class="std std-numref">Figure 29</span></a>.</p>
 <figure class="only-dark align-center" style="width: 100%">
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_shor-dark.png"><img alt="A quantum circuit diagram of Shor's algorithm." src="../../../_images/circuit_algorithm_shor-dark.png" style="width: 622.88px; height: 327.76000000000005px;" />
@@ -658,7 +658,7 @@
 <a class="reference internal image-reference" href="../../../_images/circuit_algorithm_shor-light.png"><img alt="A quantum circuit diagram of Shor's algorithm." src="../../../_images/circuit_algorithm_shor-light.png" style="width: 622.88px; height: 327.76000000000005px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Figure 29 </span><span class="caption-text">A quantum circuit of the order-finding phase in Shor’s algorithm.</span><a class="headerlink" href="#fig-circuit-algorithm-shor" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 29 </span><span class="caption-text">A quantum circuit of the order-finding step in Shor’s algorithm.</span><a class="headerlink" href="#fig-circuit-algorithm-shor" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -739,20 +739,15 @@
         <span class="p">)</span> <span class="o">*</span> <span class="n">dagger</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span>
             <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">))</span>
-
     <span class="n">operator</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">operator</span><span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">operator</span>
 
 
 <span class="c1"># Construct modular exponentiation gates</span>
-<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">mod_exp_gates</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">j</span> <span class="o">=</span> <span class="n">counter</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">systems_controls</span><span class="p">:</span>
     <span class="n">operator</span> <span class="o">=</span> <span class="n">mod_exp_operator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">j</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">systems_controls</span><span class="p">:</span>
-        <span class="k">break</span>
     <span class="k">if</span> <span class="p">(</span>
         <span class="n">mod_exp_function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span>
         <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">))</span> <span class="ow">is</span> <span class="kc">False</span>
@@ -766,8 +761,6 @@
                 <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;U[a^2^</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2"> % N]&quot;</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="p">)</span>
-
-    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
 
 <span class="n">IQFT</span> <span class="o">=</span> <span class="n">Fourier</span><span class="p">(</span>
     <span class="n">targets</span><span class="o">=</span><span class="n">systems_controls</span><span class="p">,</span>
@@ -922,7 +915,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-factorization">Integer factorization</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-finding-problem">The order-finding problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factorization-by-period-finding">Factorization by period-finding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factorization-by-order-finding">Factorization by order-finding</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">Algorithm</a><ul class="visible nav section-nav flex-column">

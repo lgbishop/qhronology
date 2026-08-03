@@ -8,7 +8,7 @@ Description
 
 *Shor's factorization algorithm* :cite:p:`shor_algorithms_1994, shor_polynomial-time_1997`, often called just *Shor's algorithm*, is an innovative quantum algorithm for the factorization of integers. An instance of the *hidden subgroup problem*, the algorithm's significance lies in its ability to factor large integers in polynomial time, which is exponentially faster than any known classical algorithm.
 
-Shor's algorithm is a notable example of a *hybrid algorithm*, in which both classical and quantum processing are employed in order to obtain the desired outcome. As part of the algorithm, the factorization problem is reduced down to the problem of *order-finding* (or *period-finding*), a process known as *classical reduction*. Solving the order-finding problem then forms the core of the algorithm, and is the only component which is performed quantum mechanically (via quantum phase estimation---see :numref:`eg:phase_estimation` :ref:`eg:phase_estimation`).
+Shor's algorithm is a notable example of a *hybrid algorithm*, in which both classical and quantum processing are employed in order to obtain the desired outcome. As part of the algorithm, the factorization problem is reduced down to the problem of *order-finding*, a process known as *classical reduction*. Solving the order-finding problem then forms the core of the algorithm, and is the only component which is performed quantum mechanically (via quantum phase estimation---see :numref:`eg:phase_estimation` :ref:`eg:phase_estimation`).
 
 Integer factorization
 ^^^^^^^^^^^^^^^^^^^^^
@@ -52,21 +52,23 @@ Note that the value of :math:`r` is specific to that combination of both the ele
 Of course, if :math:`r` satisfies :eq:`eq:multiplicative_order`, then so will any exponent of the form :math:`r + k`, where :math:`k` is a positive integer. The smallest possible non-zero value of :math:`r` for which this holds true is called the *order* of the element :math:`a`. This can be expressed more eloquently; by defining the *modular exponential function*,
 
 .. math:: f_{N, a}(k) \equiv a^k \; (\mathrm{mod} \; N),
+   :label: eq:modular_exponential_function
 
 we can write
 
 .. math:: f_{N, a}(r) = 1.
+   :label: eq:modular_exponential_function_order
 
 Due to its modularity, :math:`f` is periodic, with :math:`r` serving as its *period*, i.e.,
 
 .. math:: f_{N, a}(k + r) = f_{N, a}(k)
 
-for any positive integer :math:`k`. The *order-finding problem* (or *period-finding problem*) is to, given positive integers :math:`N` and :math:`a` that satisfy :math:`\gcd(N, a) = 1`, find the smallest possible integer :math:`r` such that :eq:`eq:multiplicative_order` holds true.
+for any positive integer :math:`k`. Determining the smallest possible value(s) of :math:`r` for which any given (univariate) function :math:`f` is periodic, e.g., :math:`f(x + r) = f(x)` (for all :math:`x`), constitutes the problem of *period-finding*. In the special case of the modular exponent function :eq:`eq:modular_exponential_function`, determining such an integer :math:`r` such that :eq:`eq:modular_exponential_function_order` holds true (given positive integers :math:`N` and :math:`a`, with :math:`\gcd(N, a) = 1`) is called *order-finding*.
 
-Factorization by period-finding
+Factorization by order-finding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Solving the problem of period-finding is useful because it can be used to factorize an integer. This is achieved by first assigning the number to be factorized :math:`N` as the modulus of the associated multiplicative group of integers. The period :math:`r` is then calculated given an element :math:`a \in \Integers_N^* \setminus \{1\}` (so :math:`N` and :math:`a` are coprime). Since :eq:`eq:multiplicative_order` is satisfied for such values of :math:`a`, then :math:`N` divides :math:`a^{r} - 1`, which is often written as
+Solving the problem of order-finding is useful because it can be used to factorize an integer. This is achieved by first assigning the number to be factorized :math:`N` as the modulus of the associated multiplicative group of integers. The period :math:`r` is then calculated given an element :math:`a \in \Integers_N^* \setminus \{1\}` (so :math:`N` and :math:`a` are coprime). Since :eq:`eq:multiplicative_order` is satisfied for such values of :math:`a`, then :math:`N` divides :math:`a^{r} - 1`, which is often written as
 
 .. math:: N \divides a^{r} - 1.
 
@@ -87,11 +89,11 @@ which may imply the following two statements:
        \text{(ii)} \quad &N \divides a^{r/2} + 1.
    \end{aligned}
 
-If (i) holds, then we must have :math:`a^{r/2} = 1 \; (\mathrm{mod} \; N)`. However, this contradicts the fact that :math:`r` is the order of :math:`a`, and so (i) is always false (provided a correct :math:`r` was found). Thus, (i) cannot be true. We subsequently compute the value
+Neither of these statements can be true if the factorization algorithm is to be successful. If (i) holds, then we must have :math:`a^{r/2} = 1 \; (\mathrm{mod} \; N)`. However, this contradicts the fact that :math:`r` is the order of :math:`a`, and so (i) is always false (provided a correct :math:`r` was found). Thus, (i) cannot be true. We subsequently compute the value
 
 .. math:: d = \gcd(N, a^{r/2} - 1).
 
-If :math:`d = 1`, then (ii) is true, and the factorization procedure has trivial factor (either :math:`1` or :math:`N`) and should be repeated with a different value for :math:`a` (to attempt to find a non-trivial factor). Alternatively, if :math:`d > 1`, then
+If :math:`d = 1`, then statement (ii) is true, and the factorization procedure has trivial factor (either :math:`1` or :math:`N`) and should be repeated with a different value for :math:`a` (to attempt to find a non-trivial factor). Alternatively, if :math:`d > 1`, then
 
 .. math::
 
@@ -196,7 +198,7 @@ thereby solving the order-finding problem. This is achieved by using the decoded
    :figwidth: 100 %
    :figclass: light-dark hidden
 
-   A quantum circuit of the order-finding phase in Shor's algorithm.
+   A quantum circuit of the order-finding step in Shor's algorithm.
 
 .. raw:: latex
 
@@ -218,7 +220,7 @@ It is also worth mentioning that while this implementation supports any valid (f
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{-7\baselineskip}
 
 .. raw:: latex
 

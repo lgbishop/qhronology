@@ -62,20 +62,15 @@ def mod_exp_operator(
         ) * dagger(encode(
             pair[0], num_systems, numerical=True, array=True
         ))
-
     operator[(0, -1)] = 0
     operator[(-1, -1)] = 1
     return operator
 
 
 # Construct modular exponentiation gates
-counter = 0
 mod_exp_gates = []
-while True:
-    j = counter
+for j in systems_controls:
     operator = mod_exp_operator(a, j, N)
-    if j not in systems_controls:
-        break
     if (
         mod_exp_function(a, j, N) != 1
         or np.array_equal(operator, np.eye(2**n, dtype=complex)) is False
@@ -89,8 +84,6 @@ while True:
                 label=f"U[a^2^{j} % N]",
             )
         )
-
-    counter += 1
 
 IQFT = Fourier(
     targets=systems_controls,
