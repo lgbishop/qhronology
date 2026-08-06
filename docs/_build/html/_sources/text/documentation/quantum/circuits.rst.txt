@@ -181,15 +181,15 @@ Main class
 
 .. code:: python
 
-   >>> print(repr(U))
+   >>> U
    Matrix([
    [U[0, 0], U[0, 1]],
    [U[1, 0], U[1, 1]]])
-   >>> print(repr(Ud))
+   >>> Ud
    Matrix([
    [conjugate(U[0, 0]), conjugate(U[1, 0])],
    [conjugate(U[0, 1]), conjugate(U[1, 1])]])
-   >>> print(repr(unitarity.gate(simplify=True)))
+   >>> unitarity.gate(simplify=True)
    Matrix([
    [1, 0],
    [0, 1]])
@@ -245,7 +245,7 @@ Main class
 
 .. code:: python
 
-   >>> print(repr(swapcnots.gate()))
+   >>> swapcnots.gate()
    Matrix([
    [1, 0, 0, 0],
    [0, 0, 1, 0],

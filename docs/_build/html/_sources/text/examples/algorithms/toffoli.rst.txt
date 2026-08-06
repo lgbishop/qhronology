@@ -104,7 +104,7 @@ Gate
 
 .. code:: python
 
-   >>> print(repr(toffoli.gate()))
+   >>> toffoli.gate()
    Matrix([
    [1, 0, 0, 0, 0, 0, 0, 0],
    [0, 1, 0, 0, 0, 0, 0, 0],
