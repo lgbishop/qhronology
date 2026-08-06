@@ -26,7 +26,7 @@ circuit_lower = QuantumCircuit(
     inputs=[input_upper, input_lower], gates=[SWAP], traces=[1]
 )
 
-circuit_upper.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
+circuit_upper.diagram()
 
 # Output
 output_total = circuit.state(label="(ψ⊗φ)′")

@@ -106,7 +106,7 @@ Gate
 
 .. code:: python
 
-   >>> print(repr(pswap.gate()))
+   >>> pswap.gate()
    Matrix([
    [1,                   0,                   0, 0],
    [0, exp(I*pi*p)/2 + 1/2, 1/2 - exp(I*pi*p)/2, 0],
