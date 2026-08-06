@@ -182,7 +182,7 @@ def entropy(
 
     .. math::
 
-       \\Entropy(\\op{\\rho} \\Vert \\op{\\tau})
+       \\Entropy(\\op{\\rho} \\mathbin{\\Vert} \\op{\\tau})
            = \\trace\\bigl[\\op{\\rho} (\\log_\\Base\\op{\\rho} - \\log_\\Base\\op{\\tau})\\bigr].
 
     If :python:`state_B` is not specified (i.e., :python:`None`), calculate the ordinary von Neumann entropy of :python:`state_A` (:math:`\\op{\\rho}`) instead:
@@ -399,7 +399,7 @@ class QuantitiesMixin:
 
         .. math::
 
-           \\Entropy(\\op{\\rho} \\Vert \\op{\\tau})
+           \\Entropy(\\op{\\rho} \\mathbin{\\Vert} \\op{\\tau})
                = \\trace\\bigl[\\op{\\rho} (\\log_\\Base\\op{\\rho} - \\log_\\Base\\op{\\tau})\\bigr].
 
         If :python:`state` is not specified (i.e., :python:`None`), calculate the ordinary von Neumann entropy of the internal state (:math:`\\op{\\rho}`) instead:

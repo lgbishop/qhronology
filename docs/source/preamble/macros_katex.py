@@ -44,7 +44,7 @@ katex_macros = {
   "\\MapBracket": "\\big[ #1 \\big]",
   "\\MapBrackets": "\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]",
   "\\RomanNumeralCaps": "\\MakeUppercase{\\romannumeral #1}",
-  "\\divides": "\\mid",
+  "\\divides": "\\mathbin{\\mid}",
   "\\BigO": "O",
   "\\LittleO": "o",
   "\\BigOmega": "\\Omega",

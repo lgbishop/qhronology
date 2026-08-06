@@ -60,7 +60,7 @@
 
 \newcommand{\RomanNumeralCaps}[1]{\MakeUppercase{\romannumeral #1}}
 
-\newcommand{\divides}{\mid}
+\newcommand{\divides}{\mathbin{\mid}}
 
 \newcommand{\BigO}{O}
 \newcommand{\LittleO}{o}

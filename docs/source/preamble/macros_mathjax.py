@@ -46,7 +46,7 @@ mathjax3_config = {
       "MapBracket": ["{\\big[ #1 \\big]}", 1],
       "MapBrackets": ["{\\big[ #1 \\vphantom{#2} , #2 \\vphantom{#1} \\big]}", 2],
       "RomanNumeralCaps": ["{\\MakeUppercase{\\romannumeral #1}}", 1],
-      "divides": "{\\mid}",
+      "divides": "{\\mathbin{\\mid}}",
       "BigO": "{O}",
       "LittleO": "{o}",
       "BigOmega": "{\\Omega}",

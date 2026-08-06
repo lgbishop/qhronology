@@ -385,13 +385,13 @@ The quantum *relative entropy* provides a measure of distinguishability between 
    :label: eq:entropy_relative
 
    \begin{aligned}
-       \Entropy(\op{\rho} \Vert \op{\tau}) &\equiv -\trace[\op{\rho} \log_\Base \op{\tau}] - \Entropy(\op{\rho}) \\
+       \Entropy(\op{\rho} \mathbin{\Vert} \op{\tau}) &\equiv -\trace[\op{\rho} \log_\Base \op{\tau}] - \Entropy(\op{\rho}) \\
        &= \trace\bigl[\op{\rho}(\log_\Base \op{\rho} - \log_\Base \op{\tau})\bigr],
    \end{aligned}
 
 where :math:`\op{\rho}` and :math:`\op{\tau}` are arbitrary quantum states of the same dimensionality. It is analogous to the notion of relative entropy from classical information theory, wherein it characterizes the "distance" between two probability distributions. *Klein's inequality* states that the quantum relative entropy is non-negative, i.e.,
 
-.. math:: \Entropy(\op{\rho} \Vert \op{\tau}) \geq 0,
+.. math:: \Entropy(\op{\rho} \mathbin{\Vert} \op{\tau}) \geq 0,
 
 for any two density matrices :math:`\op{\rho}` and :math:`\op{\tau}`, with equality if and only if :math:`\op{\rho} = \op{\tau}`.
 
@@ -413,7 +413,7 @@ be the reduced states on subsystems :math:`A` and :math:`B`, respectively. Using
 
 where :math:`\Entropy(\op{\rho})` is the von Neumann entropy of a state :math:`\op{\rho}` as defined in :eq:`eq:entropy`. An equivalent expression uses the relative entropy :eq:`eq:entropy_relative` to write
 
-.. math:: \MutualInformation(A : B) = \Entropy(\op{\rho}^{\indices{A,B}} \Vert \op{\rho}^{\indices{A}} \otimes \op{\rho}^{\indices{B}}).
+.. math:: \MutualInformation(A : B) = \Entropy(\op{\rho}^{\indices{A,B}} \mathbin{\Vert} \op{\rho}^{\indices{A}} \otimes \op{\rho}^{\indices{B}}).
 
 The quantum mutual information is analogous to the *Shannon mutual information* in classical information theory. It is a non-negative quantity, i.e.,
 
