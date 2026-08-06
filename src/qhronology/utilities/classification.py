@@ -98,8 +98,7 @@ def count_columns(matrix: mat | arr) -> int:
         columns = matrix.shape[1]
     except:
         columns = matrix.shape[0]
-    finally:
-        return columns
+    return columns
 
 
 def matrix_form(matrix: mat | arr) -> str:
