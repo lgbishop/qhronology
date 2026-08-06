@@ -216,7 +216,7 @@ Note that in this implementation of Shor's algorithm, the two registers of the q
 
 As evident by the simulation's results that appear below, the number of controlled-:math:`\Unitary` gates need not always be equal to the number of systems in the estimation register. This is because there can be instances (values of :math:`j` given :math:`N` and :math:`a`) where the modular exponentiation gate :math:`\Unitary_{N,a}^{2^j}` is equivalent to the identity gate :math:`\Identity`, and so application of the corresponding controlled-:math:`\Unitary` gate is redundant.
 
-It is also worth mentioning that while this implementation supports any valid (factorizable) positive integer :math:`N` as input (set with the variable :python:`N`), attempting to factorize those larger than 15 (corresponding to more than 12 qubits in total across both registers) can require a significant amount of both memory and time.
+It is also worth mentioning that while this implementation supports any valid (factorizable) positive integer :math:`N` as input (set with the variable :python:`N`), attempting to factorize those larger than 15 (corresponding to more than 12 qubits in total across both registers) can require significant amounts of both memory and time.
 
 .. raw:: latex
 
@@ -280,6 +280,8 @@ Diagram
 
 Results
 ^^^^^^^
+
+Cumulative output from the various print statements:
 
 .. raw:: latex
 

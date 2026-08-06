@@ -71,6 +71,7 @@ for k, probability in enumerate(probabilities):
     suffix = ""
     if probability == max(probabilities):
         suffix = " (most probable)"
+
     if probability >= threshold or probability == max(probabilities):
         probability = sp.N(probability).round(3)
         print(

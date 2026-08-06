@@ -211,6 +211,8 @@ Diagram
 Results
 ^^^^^^^
 
+Cumulative output from the various print statements:
+
 .. raw:: latex
 
    \begin{code}
