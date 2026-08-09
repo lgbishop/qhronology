@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 06, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 09, 2026"/>
   </head>
   
   
@@ -882,7 +882,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumCircuit.</span></span><span class="sig-name descname"><span class="pre">inputs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><span class="pre">QuantumState</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.circuits.QuantumCircuit.inputs" title="Link to this definition">#</a></dt>
 <dd><p>An ordered list of <a class="reference internal" href="states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a> instances.</p>
 <p>The total input state is the tensor product of these individual states in the order in which they appear in the list.</p>
-<p>Each state’s <code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">substitutions</span></code> properties are merged into their counterparts in the instance upon their addition to the <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code> property.</p>
+<p>Each state’s <code class="code highlight python docutils literal highlight-python"><span class="n">symbols</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">substitutions</span></code> properties are merged into their counterparts in the instance upon their addition to the <code class="code highlight python docutils literal highlight-python"><span class="n">inputs</span></code> property.</p>
 </dd></dl>
 
 <dl class="py property">
