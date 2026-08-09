@@ -54,7 +54,7 @@ The complete unitary transformation described by this circuit is the product
    
    \begin{aligned}
        \Unitary &= \Control^{\indices{\Number - 2}} \SUM^{\indices{\Number - 1}} \cdot \ldots \cdot \Control^{\indices{1}} \SUM^{\indices{2}} \cdot \Control^{\indices{0}} \SUM^{\indices{1}} \cdot \Hadamard^{\indices{0}} \\
-       &= \Biggl(\prod_{n = \Number - 1}^{1} \Control^{\indices{n - 1}} \SUM^{\indices{n}} \Biggr) \Hadamard^{\indices{0}}.
+       &= \Biggl(\prod_{n = \Number - 1}^{1} \Control^{\indices{n - 1}} \SUM^{\indices{n}} \Biggr) \cdot \Hadamard^{\indices{0}}.
    \end{aligned}
 
 Implementation

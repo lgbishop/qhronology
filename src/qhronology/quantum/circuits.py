@@ -160,7 +160,7 @@ class QuantumCircuit(SymbolicsProperties):
 
         The total input state is the tensor product of these individual states in the order in which they appear in the list.
 
-        Each state's :python:`symbols` and :python:`substitutions` properties are merged into their counterparts in the instance upon their addition to the :python:`gates` property.
+        Each state's :python:`symbols` and :python:`substitutions` properties are merged into their counterparts in the instance upon their addition to the :python:`inputs` property.
         """
         return self._inputs
 
