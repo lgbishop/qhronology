@@ -22,7 +22,7 @@ readme = "README.md"
 
 license = "AGPL-3.0-or-later OR LicenseRef-Custom-Commercial-License-Agreement"
 license-files = [
-    "LICENSE",
+    "LICENSE.rst",
 ]
 
 classifiers = [

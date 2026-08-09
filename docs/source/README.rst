@@ -717,7 +717,7 @@ Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repositor
 
    \enlargethispage{-\baselineskip}
 
-.. include:: ./../../LICENSE
+.. include:: ./../../LICENSE.rst
 
 .. raw:: latex
 
@@ -727,7 +727,7 @@ Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repositor
 
    \enlargethispage{-\baselineskip}
 
-.. include:: ./../../CONTRIBUTING
+.. include:: ./../../CONTRIBUTING.rst
 
 Citation
 ========

@@ -384,11 +384,11 @@ Both of these are built using [Sphinx](https://www.sphinx-doc.org) ([repository]
 
 ## License
 
-Please see [LICENSE](https://github.com/lgbishop/qhronology/blob/latest/LICENSE) for details about Qhronology's license.
+Please see [LICENSE.rst](https://github.com/lgbishop/qhronology/blob/latest/LICENSE.rst) for details about Qhronology's license.
 
 ## Contributing
 
-Contributions to Qhronology (both the package and its documentation), including any features, fixes, and suggestions, are welcome provided they are compatible with the project's concept and vision, while also conforming to its style. Please see [CONTRIBUTING](https://github.com/lgbishop/qhronology/blob/latest/CONTRIBUTING) for more details about contributing to the project. Feel free to contact lgbishop@protonmail.com to discuss any significant additions or changes you wish to propose.
+Contributions to Qhronology (both the package and its documentation), including any features, fixes, and suggestions, are welcome provided they are compatible with the project's concept and vision, while also conforming to its style. Please see [CONTRIBUTING.rst](https://github.com/lgbishop/qhronology/blob/latest/CONTRIBUTING.rst) for more details about contributing to the project. Feel free to contact lgbishop@protonmail.com to discuss any significant additions or changes you wish to propose.
 
 ## Citation
 
