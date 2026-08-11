@@ -728,7 +728,7 @@ class Unitary(QuantumGate):
         self.parameters = parameters
         args, kwargs = default_arguments(args, kwargs, QuantumGate, [("label", "U")])
         args, kwargs = fix_arguments(
-            args, kwargs, QuantumGate, [("dim", 2), ("spec", None)]
+            args, kwargs, QuantumGate, [("dim", Unitary.DIM), ("spec", None)]
         )
         super().__init__(*args, **kwargs)
 
@@ -849,7 +849,7 @@ class Pauli(QuantumGate):
             args, kwargs, QuantumGate, [("label", Pauli.LABELS[index])]
         )
         args, kwargs = fix_arguments(
-            args, kwargs, QuantumGate, [("dim", 2), ("spec", None)]
+            args, kwargs, QuantumGate, [("dim", Pauli.DIM), ("spec", None)]
         )
         super().__init__(*args, **kwargs)
 
@@ -993,7 +993,7 @@ class GellMann(QuantumGate):
             args, kwargs, QuantumGate, [("label", GellMann.LABELS[index])]
         )
         args, kwargs = fix_arguments(
-            args, kwargs, QuantumGate, [("dim", 3), ("spec", None)]
+            args, kwargs, QuantumGate, [("dim", GellMann.DIM), ("spec", None)]
         )
         super().__init__(*args, **kwargs)
 
@@ -1101,7 +1101,7 @@ class Rotation(QuantumGate):
         self.angle = angle
         args, kwargs = default_arguments(args, kwargs, QuantumGate, [("label", "R")])
         args, kwargs = fix_arguments(
-            args, kwargs, QuantumGate, [("dim", 2), ("spec", None)]
+            args, kwargs, QuantumGate, [("dim", Rotation.DIM), ("spec", None)]
         )
         super().__init__(*args, **kwargs)
 
@@ -1561,7 +1561,7 @@ class Not(Summation):
             args, kwargs, QuantumGate, [("label", "X"), ("family", "TARG")]
         )
         args, kwargs = fix_arguments(
-            args, kwargs, QuantumGate, [("dim", 2), ("spec", None)]
+            args, kwargs, QuantumGate, [("dim", Not.DIM), ("spec", None)]
         )
         super().__init__(*args, **kwargs)
 
