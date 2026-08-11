@@ -1554,6 +1554,7 @@ class Not(Summation):
     """
 
     DIM = 2
+    SHIFT = 1
 
     def __init__(self, *args, **kwargs):
         args, kwargs = default_arguments(
@@ -1562,7 +1563,7 @@ class Not(Summation):
         args, kwargs = fix_arguments(
             args, kwargs, QuantumGate, [("dim", 2), ("spec", None)]
         )
-        super().__init__(*args, shift=1, **kwargs)
+        super().__init__(*args, **kwargs)
 
     @property
     def dim(self) -> int:
@@ -1570,6 +1571,14 @@ class Not(Summation):
 
     @dim.setter
     def dim(self, dim: int):
+        pass
+
+    @property
+    def shift(self) -> int:
+        return Not.SHIFT
+
+    @shift.setter
+    def shift(self, shift: int):
         pass
 
 
