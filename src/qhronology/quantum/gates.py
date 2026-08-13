@@ -1412,6 +1412,7 @@ class Swap(QuantumGate):
     targets : list[int, int]
         A list of exactly two indices corresponding to the systems to be swapped.
         Is an argument of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`, so can be specified positionally in :python:`*args`.
+        Defaults to :python:`[0, 1]`
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
@@ -1420,7 +1421,7 @@ class Swap(QuantumGate):
 
     def __init__(self, *args, **kwargs):
         args, kwargs = default_arguments(
-            args, kwargs, QuantumGate, [("label", "S"), ("family", "SWAP")]
+            args, kwargs, QuantumGate, [("label", "S"), ("family", "SWAP"), ("targets", [0, 1])]
         )
         args, kwargs = fix_arguments(args, kwargs, QuantumGate, [("spec", None)])
         super().__init__(*args, **kwargs)
