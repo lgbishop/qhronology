@@ -672,7 +672,10 @@ def matrix_multiplication(*matrices: mat | arr):
     if len(types) != 1:
         if all(issubclass(value, mat) for value in types) is False:
             raise TypeError("""The input matrices have more than one type.""")
-    if isinstance(matrices[0], arr) is True:
-        return np.linalg.multi_dot(matrices)
+    if len(matrices) > 1:
+        if isinstance(matrices[0], arr) is True:
+            return np.linalg.multi_dot(matrices)
+        else:
+            return sp.MatMul(*matrices, evaluate=True).as_mutable()
     else:
-        return sp.MatMul(*matrices, evaluate=True).as_mutable()
+        return matrices[0]
