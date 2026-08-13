@@ -52,4 +52,4 @@ toffoli = QuantumCircuit(
 toffoli.diagram(force_separation=True, visible={"gates"})
 
 # Results
-print(repr(toffoli.gate()))
+print(repr(toffoli.gate(simplify=True)))

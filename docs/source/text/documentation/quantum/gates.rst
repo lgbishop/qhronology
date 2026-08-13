@@ -1674,7 +1674,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> T.output()
       Matrix([
       [1,           0],
-      [0, exp(I*pi/4)]])
+      [0, (-1)**(1/4)]])
       >>> T.diagram()
 
    .. raw:: latex

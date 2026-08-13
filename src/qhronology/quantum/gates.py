@@ -107,7 +107,6 @@ class QuantumGate(QuantumObject):
     exponent : num | expr | str
         A numerical or string representation of a scalar value to which gate's operator (residing on :python:`targets`) is exponentiated.
         Must be a non-negative integer.
-        Useful for computing powers of gates (such as PSWAP), but is only guaranteed to return a valid power of a gate if its corresponding matrix representation (e.g., :math:`\\op{A}`) is involutory (i.e., :math:`\\op{A}^2 = \\Identity`).
         Defaults to :python:`1`.
     coefficient : num | expr | str
         A numerical or string representation of a scalar value by which the gate's matrix (occupying :python:`targets`) is multiplied.
@@ -131,6 +130,8 @@ class QuantumGate(QuantumObject):
     ----
     The indices specified in :python:`targets`, :python:`controls`, and :python:`anticontrols` must be distinct.
     """
+
+    INVOLUTORY = False
 
     def __init__(
         self,
@@ -333,9 +334,8 @@ class QuantumGate(QuantumObject):
     @property
     def exponent(self) -> num | expr | str:
         """A numerical or string representation of a scalar value specifying the value to which the gate's matrix representation is exponentiated.
-        Is guaranteed to produce valid powers only for involutory matrices.
 
-        For an involutory matrix :math:`\\op{A}`, that is :math:`\\op{A}^2 = \\Identity` (where :math:`\\Identity` is the identity matrix), we have the identity,
+        For gates with a matrix representation :math:`\\op{A}` that is involutory, i.e., :math:`\\op{A}^2 = \\Identity` (where :math:`\\Identity` is the identity matrix), their exponentiation is performed as described below. First, we have the identity,
 
         .. math::
 
@@ -346,7 +346,7 @@ class QuantumGate(QuantumObject):
         .. math::
 
            \\exp\\Bigl[-\\eye\\frac{\\pi}{2}\\op{A}\\Bigr] = -\\eye\\op{A},
-        
+
         which can be rearranged to give
 
         .. math::
@@ -480,18 +480,27 @@ class QuantumGate(QuantumObject):
             exponent = self.exponent
         if exponent != 1 and exponent is not False:
             exponent = symbolize_expression(exponent, self.symbols_list)
-            plus = to_numerical(
-                (1 + sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical
-            )
-            minus = to_numerical(
-                (1 - sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical
-            )
-            identity = generate_identity(
-                self.dim**self.num_systems,
-                numerical=numerical,
-                array=array_intermediate,
-            )
-            gate = plus * identity + minus * gate
+            if self.INVOLUTORY is True:
+                plus = to_numerical(
+                    (1 + sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical
+                )
+                minus = to_numerical(
+                    (1 - sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical
+                )
+                identity = generate_identity(
+                    self.dim**self.num_systems,
+                    numerical=numerical,
+                    array=array_intermediate,
+                )
+                gate = plus * identity + minus * gate
+            else:
+                exponent = to_numerical(exponent, numerical=numerical)
+                try:
+                    gate = gate**exponent
+                except:
+                    gate = to_matrix(gate)
+                    gate = gate**exponent
+                    gate = cast(gate, numerical=numerical, array=array_intermediate)
 
         # Coefficient
         if coefficient is None or coefficient is True:
@@ -710,6 +719,7 @@ class Unitary(QuantumGate):
     This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.
     """
 
+    INVOLUTORY = False
     DIM = 2
 
     def __init__(
@@ -830,6 +840,7 @@ class Pauli(QuantumGate):
     This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.
     """
 
+    INVOLUTORY = True
     DIM = 2
     MATRICES = {
         0: sp.Matrix([[1, 0], [0, 1]]),
@@ -959,6 +970,7 @@ class GellMann(QuantumGate):
     This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.
     """
 
+    INVOLUTORY = False
     DIM = 3
     MATRICES = {
         0: sp.Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]]),
@@ -1087,6 +1099,7 @@ class Rotation(QuantumGate):
     This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.
     """
 
+    INVOLUTORY = False
     DIM = 2
 
     def __init__(
@@ -1210,6 +1223,8 @@ class Phase(QuantumGate):
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
 
+    INVOLUTORY = False
+
     def __init__(
         self,
         *args,
@@ -1305,6 +1320,8 @@ class Diagonal(QuantumGate):
     Levels that are unspecified in the :python:`entries` argument all have a corresponding matrix element of :python:`1`, regardless of the value of :python:`exponentiation`.
     """
 
+    INVOLUTORY = False
+
     def __init__(
         self,
         *args,
@@ -1399,6 +1416,8 @@ class Swap(QuantumGate):
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
 
+    INVOLUTORY = True
+
     def __init__(self, *args, **kwargs):
         args, kwargs = default_arguments(
             args, kwargs, QuantumGate, [("label", "S"), ("family", "SWAP")]
@@ -1469,6 +1488,8 @@ class Summation(QuantumGate):
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
+
+    INVOLUTORY = False
 
     def __init__(self, *args, shift: int | None = None, **kwargs):
         shift = 1 if shift is None else shift
@@ -1549,6 +1570,7 @@ class Not(Summation):
     This means that the constructor does not take :python:`dim` as an argument, nor can the associated property be set.
     """
 
+    INVOLUTORY = True
     DIM = 2
     SHIFT = 1
 
@@ -1623,6 +1645,8 @@ class Hadamard(QuantumGate):
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
+
+    INVOLUTORY = False
 
     def __init__(self, *args, **kwargs):
         args, kwargs = default_arguments(args, kwargs, QuantumGate, [("label", "H")])
@@ -1726,6 +1750,8 @@ class Fourier(QuantumGate):
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     """
+
+    INVOLUTORY = False
 
     def __init__(
         self,
