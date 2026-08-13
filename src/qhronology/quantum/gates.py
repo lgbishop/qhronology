@@ -71,8 +71,8 @@ class QuantumGate(QuantumObject):
 
         Defaults to the single-system :python:`dim`-dimensional identity operator.
     targets : list[int]
-        The numerical indices of the subsystems on which the gate elements reside.
-        Defaults to :python:`[0]` (if :python:`num_systems` is :python:`None`) or :python:`[i for i in range(num_systems)]` (if :python:`num_systems` is not :python:`None`).
+        The numerical indices of the subsystems on which the gate's core operator resides.
+        Defaults to :python:`list(range(0, count_systems(to_matrix(spec), dim)))`.
     controls : list[int]
         The numerical indices of the subsystems on which control nodes reside.
         Defaults to :python:`[]`.
@@ -82,7 +82,7 @@ class QuantumGate(QuantumObject):
     num_systems : int
         The (total) number of systems which the gate spans.
         Must be a non-negative integer.
-        Defaults to :python:`max(targets + controls + anticontrols + [count_systems(sp.Matrix(spec), dim)]) + 1`.
+        Defaults to :python:`max(targets + controls + anticontrols + [count_systems(to_matrix(spec), dim)]) + 1`.
     dim : int
         The dimensionality of the quantum gate's Hilbert space.
         Must be a non-negative integer.
@@ -151,29 +151,25 @@ class QuantumGate(QuantumObject):
         notation: str | None = None,
         family: str | None = None,
     ):
-        targets = [0] if targets is None else targets
+        dim = 2 if dim is None else dim
+        targets = [] if targets is None else targets
         controls = [] if controls is None else controls
         anticontrols = [] if anticontrols is None else anticontrols
-        dim = 2 if dim is None else dim
-        spec_num_systems = 0
+        num_systems_spec = 0
         if spec is None:
             spec = sp.eye(dim)
+        if isinstance(spec, list) is True:
+            num_systems_spec = count_systems(to_matrix(spec), dim)
         else:
-            if isinstance(spec, list) is True:
-                spec_num_systems = count_systems(to_matrix(spec), dim)
-            else:
-                spec_num_systems = count_systems(spec, dim)
-        num_systems = (
-            (max(spec_num_systems, max(targets + controls + anticontrols) + 1))
-            if num_systems is None
-            else num_systems
-        )
-        if (
-            any(len(indices) != 0 for indices in [targets, controls, anticontrols])
-            is False
-        ):
-            targets = [n for n in range(0, num_systems)]
+            num_systems_spec = count_systems(spec, dim)
 
+        if num_systems is None:
+            try:
+                num_systems = max(num_systems_spec, max(targets + controls + anticontrols) + 1)
+            except:
+                num_systems = max(num_systems_spec, 1)
+
+        targets = list(range(0, num_systems_spec)) if len(targets) == 0 else targets
         exponent = 1 if exponent is None else exponent
         coefficient = 1 if coefficient is None else coefficient
         label = "U" if label is None else label
@@ -236,7 +232,7 @@ class QuantumGate(QuantumObject):
 
     @property
     def targets(self) -> list[int]:
-        """The numerical indices of the subsystems on which the gate elements reside."""
+        """The numerical indices of the subsystems on which the gate's core operator resides."""
         return list(set(self._targets))
 
     @targets.setter
@@ -318,7 +314,7 @@ class QuantumGate(QuantumObject):
     def num_systems(self) -> int:
         """The number of systems that the gate spans.
         Must be a non-negative integer."""
-        return self._num_systems
+        return max(self._num_systems, max(self.targets + self.controls + self.anticontrols) + 1)
 
     @num_systems.setter
     def num_systems(self, num_systems: int):
