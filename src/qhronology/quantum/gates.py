@@ -44,6 +44,7 @@ from qhronology.utilities.helpers import (
     symbolize_substitutions,
     symbolize_expression,
     tensor_product,
+    to_array,
     to_matrix,
     to_numerical,
 )
@@ -674,6 +675,310 @@ class QuantumGate(QuantumObject):
             return expression
         else:
             print(expression)
+
+    def decompose(
+        self,
+        gates: list[QuantumGate],
+        additional_nodes: tuple[int, int, int] | None = None,
+        depth: int | list[int] | None = None,
+        num_find: int | None = None,
+        only_targets: bool | None = None,
+        include_empty: bool | None = None,
+        preserve_structure: bool | None = None,
+        numerical: bool | None = None,
+        array: bool | None = None,
+    ) -> list[list[QuantumGate]]:
+        """Decompose the gate into one or more sequences of gates of a specified set. By default (:python:`only_targets = True`), only the component of the gate that lies on the its target systems, i.e., the operator returned by the :py:meth:`~qhronology.quantum.gates.QuantumGate.matrix` method, is decomposed. If decomposing either :py:class:`~qhronology.quantum.gates.GateStack` or :py:class:`~qhronology.quantum.gates.GateInterleave`, the :python:`only_targets` argument is forced to :python:`False`.
+
+        Arguments
+        ---------
+        gates : list[QuantumGate]
+            A list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances with which the gate is to be decomposed.
+            Can include any subclass of :py:class:`~qhronology.quantum.gates.QuantumGate`, including user-defined gates.
+            The order in which the gates are given in the list can (in the case of multiple possible decompositions) change the order in which the sequences are found.
+            Note that not every gate given in this list will necessarily appear in any found sequence.
+        additional_nodes : tuple[int, int, int]
+            A 3-tuple of non-negative integers specifying the maximum number of additional target, control, and anticontrol nodes to endow to each gate in :python:`gates`.
+            Defaults to :python:`(0, 0, 0)`.
+        depth : int | list[int]
+            The circuit depth up to which the decomposition is performed.
+            Must be a positive integer or a list of positive integers.
+            Use the type :python:`list[int]` to search for decompositions at specific circuit depths.
+            If :python:`0`, begins the search at a depth of 1 and increases indefinitely.
+            Defaults to :python:`0`.
+        num_find : int
+            The (maximum) number of sequences to find. If :python:`0`, exhaustively searches all possible sequences within the search space.
+            Defaults to :python:`1`.
+        only_targets : bool
+            Whether to decompose only the component of the gate on the targets (:python:`True`), or alternatively the entire gate (:python:`False`), including all control and anticontrol nodes.
+            Forced to :python:`False` if decomposing :py:class:`~qhronology.quantum.gates.GateStack` or :py:class:`~qhronology.quantum.gates.GateInterleave`, otherwise defaults to :python:`True`.
+        include_empty : bool
+            Whether to include empty systems (empty wires) between the first and last target systems in the decomposition.
+            Defaults to :python:`False`.
+        preserve_structure : bool
+            Whether to preserve the node structure (i.e., the relative positions of the targets, controls, and anticontrols) of the gates given in :python:`gates`.
+            Defaults to :python:`False`.
+        numerical : bool
+            Whether to perform the decomposition numerically with floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
+            Defaults to the value of :python:`self.numerical`.
+        array : bool
+            Whether to perform the decomposition using NumPy arrays (:python:`True`) or SymPy matrices (:python:`False`).
+            Defaults to the value of :python:`self.array`.
+
+        Returns
+        -------
+        list[list[QuantumGate]]
+            A list of found decomposition seqeuences. Will be empty if no sequences are found.
+
+        Note
+        ----
+        Currently, this method decomposes any given gate using brute force, which is *extremely* inefficient. The speed at which decompositions are found depends entirely on the size of the search space, which increases exponentially with:
+
+        - The number of gates in :python:`gates`
+        - The number of additional target, control, and anticontrol nodes specified in :python:`additional_nodes`
+        - The search depth
+        - The number of systems
+        - The gate dimensionality
+
+        Future work on this method could involve the implementation of heuristics with which the decomposition can be performed more efficiently.
+        """
+        additional_nodes = (0, 0, 0) if additional_nodes is None else additional_nodes
+        depth = 0 if depth is None else depth
+        num_find = 1 if num_find is None else num_find
+        only_targets = True if only_targets is None else only_targets
+        only_targets = False if isinstance(self, GateStack | GateInterleave) is True else only_targets
+        include_empty = False if include_empty is None else include_empty
+        preserve_structure = False if preserve_structure is None else preserve_structure
+        numerical = self.numerical if numerical is None else numerical
+        array = self.array if array is None else array
+
+        if only_targets is True:
+            total_gate = copy.deepcopy(self)
+            total_gate_targets = total_gate.targets
+            total_gate_controls = total_gate.controls
+            total_gate_anticontrols = total_gate.anticontrols
+            total_gate.controls = []
+            total_gate.anticontrols = []
+            total_gate_targets_adjusted = [
+                target - min(total_gate_targets) for target in total_gate_targets
+            ]
+            total_gate_controls_adjusted = [
+                control - min(total_gate_targets) for control in total_gate_controls
+            ]
+            total_gate_anticontrols_adjusted = [
+                anticontrol - min(total_gate_targets) for anticontrol in total_gate_anticontrols
+            ]
+            total_gate.targets = total_gate_targets_adjusted
+            total_gate.num_systems = max(total_gate.targets) + 1
+            operator = total_gate.output(numerical=numerical, array=array)
+            systems = total_gate.targets
+            if include_empty is True:
+                systems = list(
+                    range(min(total_gate_targets_adjusted), max(total_gate_targets_adjusted) + 1)
+                )
+            num_systems = max(systems) - min(systems) + 1
+        else:
+            operator = self.output(numerical=numerical, array=array)
+            num_systems = self.num_systems
+            systems = list(range(0, num_systems))
+            total_gate_targets_adjusted = systems
+            total_gate_controls_adjusted = []
+            total_gate_anticontrols_adjusted = []
+
+        if any(gate.num_systems > num_systems for gate in gates) is True:
+            raise AssertionError(
+                """The gate cannot be decomposed using gates which possess more systems than it."""
+            )
+
+        subsets = list(itertools.chain.from_iterable(
+            itertools.combinations(systems, r) for r in range(1, num_systems + 1)
+        ))  # Compute powerset
+
+        targets = subsets
+        controls = [tuple()] + subsets
+        anticontrols = [tuple()] + subsets
+
+        # Reverse the order of inputs to the product so the order of combinations (and therefore instances) is better
+        combinations = list(itertools.product(anticontrols, controls, targets))
+        instances = [[] for _ in gates]
+
+        for g, gate in enumerate(gates):
+            current_gate = copy.deepcopy(gate)
+
+            min_allowed_targets = len(current_gate.targets)
+            min_allowed_controls = len(current_gate.controls)
+            min_allowed_anticontrols = len(current_gate.anticontrols)
+            max_allowed_targets = min_allowed_targets + additional_nodes[0]
+            max_allowed_controls = min_allowed_controls + additional_nodes[1]
+            max_allowed_anticontrols = min_allowed_anticontrols + additional_nodes[2]
+
+            kwargs = copy.deepcopy(current_gate.__dict__)
+            kwargs = {key[1:]:value for key, value in kwargs.items()}
+
+            # Remove all unnecessary, conflicting, or incorrect keyword arguments
+            kwargs.pop('targets')
+            kwargs.pop('controls')
+            kwargs.pop('anticontrols')
+            kwargs.pop('num_systems')
+            kwargs.pop('kind')
+            kwargs.pop('numerical')
+            kwargs.pop('array')
+            kwargs.pop('debug')
+
+            current_targets = current_gate.targets
+            current_controls = current_gate.controls
+            current_anticontrols = current_gate.anticontrols
+            current_num_nodes = (
+                len(current_gate.targets)
+                + len(current_gate.controls)
+                + len(current_gate.anticontrols)
+            )
+
+            shifted_targets = [
+                [(target + k) for target in current_targets]
+                for k in range(-num_systems, num_systems)
+            ]
+            shifted_controls = [
+                [(control + k) for control in current_controls]
+                for k in range(-num_systems, num_systems)
+            ]
+            shifted_anticontrols = [
+                [(anticontrol + k) for anticontrol in current_anticontrols]
+                for k in range(-num_systems, num_systems)
+            ]
+
+            for combination in combinations:
+                combination = list(combination)
+                combination.reverse()
+
+                proposed_targets = list(combination[0])
+                proposed_controls = list(combination[1])
+                proposed_anticontrols = list(combination[2])
+                proposed_combined = list(
+                    set(proposed_targets + proposed_controls + proposed_anticontrols)
+                )
+
+                intersections = [
+                    (
+                        set(shifted_targets[k]) & set(proposed_targets),
+                        set(shifted_controls[k]) & set(proposed_controls),
+                        set(shifted_anticontrols[k]) & set(proposed_anticontrols),
+                    )
+                    for k in range(0, 2 * num_systems)
+                ]
+
+                if (
+                    min_allowed_targets <= len(proposed_targets) <= max_allowed_targets
+                    and min_allowed_controls <= len(proposed_controls) <= max_allowed_controls
+                    and min_allowed_anticontrols <= len(proposed_anticontrols) <= max_allowed_anticontrols
+                    and len(
+                        set(proposed_combined)
+                        & set(total_gate_controls_adjusted + total_gate_anticontrols_adjusted)
+                    ) == 0 and (
+                        preserve_structure is False or (
+                            preserve_structure is True and
+                            any(sum([len(node_group) for node_group in intersections[k]]) == current_num_nodes
+                            for k in range(0, 2*num_systems)) is True
+                        )
+                    )
+                ):
+                    try:  # Automatically filter out undesired target, control, and anticontrol combinations
+                        gate_variant = type(current_gate)(
+                            targets=proposed_targets,
+                            controls=proposed_controls,
+                            anticontrols=proposed_anticontrols,
+                            num_systems=num_systems,
+                            numerical=numerical,
+                            array=array,
+                            **kwargs,
+                        )
+                        instances[g].append(gate_variant)
+                        # gate_variant.diagram()  # For debugging
+                    except:
+                        pass
+
+        instances = flatten_list(instances)
+        if len(instances) == 0:
+            raise Exception("""A list of gate instances has failed to be constructed.""")
+        found_sequences = []
+
+        def depths(depth):
+            if depth == 0:
+                d = 1
+                while True:
+                    yield d
+                    d += 1
+            else:
+                depth = list(range(1, depth + 1)) if isinstance(depth, int) is True else depth
+                for d in depth:
+                    yield d
+
+        counter = 0
+        num_found = 0
+        for length in depths(depth):
+            sequences = itertools.product(instances, repeat=length)
+            for sequence in sequences:
+                sequence_operators = [
+                    gate.output(numerical=numerical, array=array) for gate in sequence
+                ]
+                sequence_operators.reverse()
+                sequence_operator = matrix_multiplication(*sequence_operators)
+                if (
+                    numerical is False
+                    and np.array_equal(operator, sequence_operator) is True
+                ) or (
+                    numerical is True
+                    and np.allclose(
+                        to_array(operator, numerical=numerical),
+                        to_array(sequence_operator, numerical=numerical),
+                        rtol=10 ** (-12),
+                        atol=0,
+                    )
+                    is True
+                ):
+                    found_sequences.append(list(sequence))
+                    num_found += 1
+                # print(counter)
+                counter += 1
+                if num_find != 0 and num_found >= num_find:
+                    break
+            if num_find != 0 and num_found >= num_find:
+                break
+
+        if num_found > 0:
+            # Resize the gates in each sequence and add control and anticontrol nodes
+            for s, sequence in enumerate(found_sequences):
+                for g, gate in enumerate(sequence):
+                    found_sequences[s][g] = copy.deepcopy(found_sequences[s][g])
+                    if only_targets is True:
+                        found_sequences[s][g].num_systems = self.num_systems
+                        unshifted_targets = copy.deepcopy(found_sequences[s][g].targets)
+                        unshifted_controls = copy.deepcopy(found_sequences[s][g].controls)
+                        unshifted_anticontrols = copy.deepcopy(found_sequences[s][g].anticontrols)
+                        shifted_targets = [
+                            target + min(total_gate_targets)
+                            for target in unshifted_targets
+                        ]
+                        shifted_controls = [
+                            control + min(total_gate_targets)
+                            for control in unshifted_controls
+                        ]
+                        shifted_anticontrols = [
+                            anticontrol + min(total_gate_targets)
+                            for anticontrol in unshifted_anticontrols
+                        ]
+                        found_sequences[s][g].targets = []
+                        found_sequences[s][g].controls = []
+                        found_sequences[s][g].anticontrols = []
+                        found_sequences[s][g].targets = shifted_targets
+                        found_sequences[s][g].controls = shifted_controls
+                        found_sequences[s][g].anticontrols = shifted_anticontrols
+                        found_sequences[s][g].controls += self.controls
+                        found_sequences[s][g].anticontrols += self.anticontrols
+
+        # print(f"Total number of decompositions attempted: {counter}")
+        # print(f"Total number of decompositions found: {len(found_sequences)}")
+        return found_sequences
 
 
 class Unitary(QuantumGate):
