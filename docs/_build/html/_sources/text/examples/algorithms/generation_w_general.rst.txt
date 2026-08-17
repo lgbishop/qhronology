@@ -67,8 +67,16 @@ where the :math:`y`-rotation angles are given by :math:`\theta_n = 2 \arccos\lef
 
    \vspace*{-0.15\baselineskip}
 
+.. raw:: latex
+
+   \newpage
+
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 

@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 09, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 17, 2026"/>
   </head>
   
   
@@ -667,7 +667,7 @@
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>The implementation of Shor’s algorithm presented here diverges from typical implementations in two significant ways:</p>
 <ul class="simple">
-<li><p>The operators corresponding to the modular exponentiation are constructed artificially: instead of finding equivalent decompositions in terms of elementary gates (such as CNOTs, phase shifts, and Hadamards), the operator’s matrix representation is generated from first principles.</p></li>
+<li><p>The modular exponentiation gates are constructed artificially, by generating their corresponding operators’ matrix representations from first principles. Decompositions of these gates in terms of CNOTs can then be computed and subsequently employed, depending on the value of the <code class="code highlight python docutils literal highlight-python"><span class="n">decompose</span></code> (<code class="code highlight python docutils literal highlight-python"><span class="nb">bool</span></code>) variable.</p></li>
 <li><p>Instead of repeating the simulation numerous times to obtain a probability distribution of outcomes, we extract the exact probabilities themselves directly via measurement after a single simulation, and use them to determine the (likely) factors. This is far more computationally efficient, though the circuit can be easily adapted if a more faithful recreation of experiment is desired.</p></li>
 </ul>
 <p>Note that in this implementation of Shor’s algorithm, the two registers of the quantum phase estimation procedure employ <span class="math notranslate nohighlight">\(2n\)</span> and <span class="math notranslate nohighlight">\(n\)</span> qubits, respectively, where <span class="math notranslate nohighlight">\(n\)</span> is the minimum number of qubits required to encode the number <span class="math notranslate nohighlight">\(N\)</span>. Analysis shows that <span class="math notranslate nohighlight">\(2n\)</span> qubits in the estimation (upper) register is the minimum number that is able to provide the precision necessary in order to correctly distinguish between different periods in every case. However, particularly for small <span class="math notranslate nohighlight">\(N\)</span>, the algorithm can often be successfully executed using just <span class="math notranslate nohighlight">\(n\)</span> estimation qubits. It is also useful to be aware that versions of the algorithm in the literature often employ certain optimizations with which they can use fewer qubits to achieve the same result.</p>
@@ -675,7 +675,7 @@
 <p>It is also worth mentioning that while this implementation supports any valid (factorizable) positive integer <span class="math notranslate nohighlight">\(N\)</span> as input (set with the variable <code class="code highlight python docutils literal highlight-python"><span class="n">N</span></code>), attempting to factorize those larger than 15 (corresponding to more than 12 qubits in total across both registers) can require significant amounts of both memory and time.</p>
 <div class="literal-block-wrapper docutils container" id="code-shor">
 <div class="code-block-caption"><span class="caption-number">Code Block 29 </span><span class="caption-text">/text/examples/algorithms/shor.py</span><a class="headerlink" href="#code-shor" title="Link to this code">#</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">GateStack</span><span class="p">,</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">,</span> <span class="n">QuantumGate</span><span class="p">,</span> <span class="n">Fourier</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">GateStack</span><span class="p">,</span> <span class="n">Hadamard</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">,</span> <span class="n">QuantumGate</span><span class="p">,</span> <span class="n">Fourier</span><span class="p">,</span> <span class="n">Swap</span><span class="p">,</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.matrices</span><span class="w"> </span><span class="kn">import</span> <span class="n">encode</span><span class="p">,</span> <span class="n">decode</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">dagger</span>
@@ -687,6 +687,7 @@
 
 <span class="n">N</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># The number to be factorized</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Should be coprime to N</span>
+<span class="n">decompose</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Whether to decompose the modular exponentiation</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>  <span class="c1"># Encoding depth</span>
 
@@ -759,8 +760,34 @@
                 <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="n">systems_controls</span><span class="p">[</span><span class="n">j</span><span class="p">]],</span>
                 <span class="n">num_systems</span><span class="o">=</span><span class="n">num_total</span><span class="p">,</span>
                 <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;U[a^2^</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2"> % N]&quot;</span><span class="p">,</span>
+                <span class="n">numerical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">array</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="p">)</span>
+
+<span class="c1"># Decompose modular exponentiation gates</span>
+<span class="c1"># (Note: this is not possible for every combination of N and a)</span>
+<span class="k">if</span> <span class="n">decompose</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Decompose into SWAP gates</span>
+    <span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">gate</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mod_exp_gates</span><span class="p">):</span>
+        <span class="n">mod_exp_gates</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="n">gate</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+            <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">Swap</span><span class="p">()],</span>
+            <span class="n">depth</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+        <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">mod_exp_gates</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">gate</span> <span class="k">for</span> <span class="n">sequence</span> <span class="ow">in</span> <span class="n">mod_exp_gates</span>
+        <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">sequence</span>
+    <span class="p">]</span>
+    <span class="c1"># Decompose into CNOT gates</span>
+    <span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">gate</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mod_exp_gates</span><span class="p">):</span>
+        <span class="n">mod_exp_gates</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="n">gate</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+            <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">Not</span><span class="p">()],</span>
+            <span class="n">additional_nodes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">mod_exp_gates</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">gate</span> <span class="k">for</span> <span class="n">sequence</span> <span class="ow">in</span> <span class="n">mod_exp_gates</span>
+        <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">sequence</span>
+    <span class="p">]</span>
 
 <span class="n">IQFT</span> <span class="o">=</span> <span class="n">Fourier</span><span class="p">(</span>
     <span class="n">targets</span><span class="o">=</span><span class="n">systems_controls</span><span class="p">,</span>
@@ -796,7 +823,6 @@
         <span class="n">probability</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">probability</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
         <span class="n">phase</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span><span class="n">basis</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="o">**</span><span class="n">num_controls</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span><span class="o">.</span><span class="n">limit_denominator</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">denominator</span>
-
         <span class="n">bitstring</span> <span class="o">=</span> <span class="n">encode</span><span class="p">(</span>
             <span class="n">decode</span><span class="p">(</span><span class="n">basis</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
             <span class="n">num_controls</span><span class="p">,</span>
@@ -829,6 +855,7 @@
 <h2>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h2>
 <section id="diagram">
 <h3>Diagram<a class="headerlink" href="#diagram" title="Link to this heading">#</a></h3>
+<p>If <code class="code highlight python docutils literal highlight-python"><span class="n">decompose</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shor</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -836,6 +863,16 @@
 <div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_algorithms_shor-dark.png"><img alt="../../../_images/text_examples_algorithms_shor-dark.png" class="only-dark align-left" src="../../../_images/text_examples_algorithms_shor-dark.png" style="width: 574.56px; height: 343.8px;" />
 </a>
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_algorithms_shor-light.png"><img alt="../../../_images/text_examples_algorithms_shor-light.png" class="only-light align-left" src="../../../_images/text_examples_algorithms_shor-light.png" style="width: 574.56px; height: 343.8px;" />
+</a>
+</div></blockquote>
+<p>If <code class="code highlight python docutils literal highlight-python"><span class="n">decompose</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shor</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_algorithms_shor_decomposed-dark.png"><img alt="../../../_images/text_examples_algorithms_shor_decomposed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_algorithms_shor_decomposed-dark.png" style="width: 514.8px; height: 335.88px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_algorithms_shor_decomposed-light.png"><img alt="../../../_images/text_examples_algorithms_shor_decomposed-light.png" class="only-light align-left" src="../../../_images/text_examples_algorithms_shor_decomposed-light.png" style="width: 514.8px; height: 335.88px;" />
 </a>
 </div></blockquote>
 </section>

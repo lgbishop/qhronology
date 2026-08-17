@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 09, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 17, 2026"/>
   </head>
   
   
@@ -559,15 +559,15 @@ Can be one of:</p>
 </ul>
 <p>Defaults to the single-system <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional identity operator.</p>
 </p></li>
-<li><p><strong>targets</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[int]</span></code>) – The numerical indices of the subsystems on which the gate elements reside.
-Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code> (if <code class="code highlight python docutils literal highlight-python"><span class="n">num_systems</span></code> is <code class="code highlight python docutils literal highlight-python"><span class="kc">None</span></code>) or <code class="code highlight python docutils literal highlight-python"><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_systems</span><span class="p">)]</span></code> (if <code class="code highlight python docutils literal highlight-python"><span class="n">num_systems</span></code> is not <code class="code highlight python docutils literal highlight-python"><span class="kc">None</span></code>).</p></li>
+<li><p><strong>targets</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[int]</span></code>) – The numerical indices of the subsystems on which the gate’s core operator resides.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">count_systems</span><span class="p">(</span><span class="n">to_matrix</span><span class="p">(</span><span class="n">spec</span><span class="p">),</span> <span class="n">dim</span><span class="p">)))</span></code>.</p></li>
 <li><p><strong>controls</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[int]</span></code>) – The numerical indices of the subsystems on which control nodes reside.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[]</span></code>.</p></li>
 <li><p><strong>anticontrols</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[int]</span></code>) – The numerical indices of the subsystems on which anticontrol nodes reside.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[]</span></code>.</p></li>
 <li><p><strong>num_systems</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The (total) number of systems which the gate spans.
 Must be a non-negative integer.
-Defaults to <code class="code highlight python docutils literal highlight-python"><span class="nb">max</span><span class="p">(</span><span class="n">targets</span> <span class="o">+</span> <span class="n">controls</span> <span class="o">+</span> <span class="n">anticontrols</span> <span class="o">+</span> <span class="p">[</span><span class="n">count_systems</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">spec</span><span class="p">),</span> <span class="n">dim</span><span class="p">)])</span> <span class="o">+</span> <span class="mi">1</span></code>.</p></li>
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="nb">max</span><span class="p">(</span><span class="n">targets</span> <span class="o">+</span> <span class="n">controls</span> <span class="o">+</span> <span class="n">anticontrols</span> <span class="o">+</span> <span class="p">[</span><span class="n">count_systems</span><span class="p">(</span><span class="n">to_matrix</span><span class="p">(</span><span class="n">spec</span><span class="p">),</span> <span class="n">dim</span><span class="p">)])</span> <span class="o">+</span> <span class="mi">1</span></code>.</p></li>
 <li><p><strong>dim</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The dimensionality of the quantum gate’s Hilbert space.
 Must be a non-negative integer.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">2</span></code>.</p></li>
@@ -585,7 +585,6 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>exponent</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – A numerical or string representation of a scalar value to which gate’s operator (residing on <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code>) is exponentiated.
 Must be a non-negative integer.
-Useful for computing powers of gates (such as PSWAP), but is only guaranteed to return a valid power of a gate if its corresponding matrix representation (e.g., <span class="math notranslate nohighlight">\(\op{A}\)</span>) is involutory (i.e., <span class="math notranslate nohighlight">\(\op{A}^2 = \Identity\)</span>).
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">1</span></code>.</p></li>
 <li><p><strong>coefficient</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – A numerical or string representation of a scalar value by which the gate’s matrix (occupying <code class="code highlight python docutils literal highlight-python"><span class="n">targets</span></code>) is multiplied.
 Performed after exponentiation.
@@ -838,7 +837,7 @@ Provides a description of the object’s values in a standard <code class="code 
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.targets">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.targets" title="Link to this definition">#</a></dt>
-<dd><p>The numerical indices of the subsystems on which the gate elements reside.</p>
+<dd><p>The numerical indices of the subsystems on which the gate’s core operator resides.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -944,9 +943,8 @@ A full list of currently supported predicates, and their defaults, is as follows
 <dl class="py property">
 <dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.exponent">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">exponent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.exponent" title="Link to this definition">#</a></dt>
-<dd><p>A numerical or string representation of a scalar value specifying the value to which the gate’s matrix representation is exponentiated.
-Is guaranteed to produce valid powers only for involutory matrices.</p>
-<p>For an involutory matrix <span class="math notranslate nohighlight">\(\op{A}\)</span>, that is <span class="math notranslate nohighlight">\(\op{A}^2 = \Identity\)</span> (where <span class="math notranslate nohighlight">\(\Identity\)</span> is the identity matrix), we have the identity,</p>
+<dd><p>A numerical or string representation of a scalar value specifying the value to which the gate’s matrix representation is exponentiated.</p>
+<p>For any gate with a matrix representation <span class="math notranslate nohighlight">\(\op{A}\)</span> that is involutory, i.e., <span class="math notranslate nohighlight">\(\op{A}^2 = \Identity\)</span> (where <span class="math notranslate nohighlight">\(\Identity\)</span> is the identity matrix), its exponentiation is performed as described below. First, we have the identity,</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-2">
 <span class="eqno">(296)<a class="headerlink" href="#equation-text-documentation-quantum-gates-2" title="Link to this equation">#</a></span>\[\exp[\eye z \op{A}] = \cos(z)\Identity + \eye\sin(z)\op{A},\]</div>
 <p>for any <span class="math notranslate nohighlight">\(z \in \Complexes\)</span>. In the case of <span class="math notranslate nohighlight">\(z = -\frac{\pi}{2}\)</span>, this becomes</p>
@@ -1224,6 +1222,341 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <p>For usage examples, please see those of the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class and its subclasses (<code class="xref std std-numref docutils literal notranslate"><span class="pre">sec:docs_gates_subclasses</span></code> <a class="reference internal" href="#sec-docs-gates-subclasses"><span class="std std-ref">Subclasses</span></a>).</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="qhronology.quantum.gates.QuantumGate.decompose">
+<span class="sig-prename descclassname"><span class="pre">QuantumGate.</span></span><span class="sig-name descname"><span class="pre">decompose</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">gates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><span class="pre">QuantumGate</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">additional_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">num_find</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">only_targets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">include_empty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">preserve_structure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><span class="pre">QuantumGate</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/qhronology/quantum/gates.html#QuantumGate.decompose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.gates.QuantumGate.decompose" title="Link to this definition">#</a></dt>
+<dd><p>Decompose the gate into one or more sequences of gates of a specified set. By default (<code class="code highlight python docutils literal highlight-python"><span class="n">only_targets</span> <span class="o">=</span> <span class="kc">True</span></code>), only the component of the gate that lies on the its target systems, i.e., the operator returned by the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate.matrix" title="qhronology.quantum.gates.QuantumGate.matrix"><code class="xref py py-meth docutils literal notranslate"><span class="pre">matrix()</span></code></a> method, is decomposed. If decomposing either <a class="reference internal" href="#qhronology.quantum.gates.GateStack" title="qhronology.quantum.gates.GateStack"><code class="xref py py-class docutils literal notranslate"><span class="pre">GateStack</span></code></a> or <a class="reference internal" href="#qhronology.quantum.gates.GateInterleave" title="qhronology.quantum.gates.GateInterleave"><code class="xref py py-class docutils literal notranslate"><span class="pre">GateInterleave</span></code></a>, the <code class="code highlight python docutils literal highlight-python"><span class="n">only_targets</span></code> argument is forced to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gates</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[QuantumGate]</span></code>) – A list of <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> instances with which the gate is to be decomposed.
+Can include any subclass of <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>, including user-defined gates.
+The order in which the gates are given in the list can (in the case of multiple possible decompositions) change the order in which the sequences are found.
+Note that not every gate given in this list will necessarily appear in any found sequence.</p></li>
+<li><p><strong>additional_nodes</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A 3-tuple of non-negative integers specifying the maximum number of additional target, control, and anticontrol nodes to endow to each gate in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code>.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></code>.</p></li>
+<li><p><strong>depth</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">list[int]</span></code>) – The circuit depth up to which the decomposition is performed.
+Must be a positive integer or a list of positive integers.
+Use the type <code class="code highlight python docutils literal highlight-python"><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></code> to search for decompositions at specific circuit depths.
+If <code class="code highlight python docutils literal highlight-python"><span class="mi">0</span></code>, begins the search at a depth of 1 and increases indefinitely.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">0</span></code>.</p></li>
+<li><p><strong>num_find</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The (maximum) number of sequences to find. If <code class="code highlight python docutils literal highlight-python"><span class="mi">0</span></code>, exhaustively searches all possible sequences within the search space.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="mi">1</span></code>.</p></li>
+<li><p><strong>only_targets</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to decompose only the component of the gate on the targets (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>), or alternatively the entire gate (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>), including all control and anticontrol nodes.
+Forced to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code> if decomposing <a class="reference internal" href="#qhronology.quantum.gates.GateStack" title="qhronology.quantum.gates.GateStack"><code class="xref py py-class docutils literal notranslate"><span class="pre">GateStack</span></code></a> or <a class="reference internal" href="#qhronology.quantum.gates.GateInterleave" title="qhronology.quantum.gates.GateInterleave"><code class="xref py py-class docutils literal notranslate"><span class="pre">GateInterleave</span></code></a>, otherwise defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>.</p></li>
+<li><p><strong>include_empty</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to include empty systems (empty wires) between the first and last target systems in the decomposition.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>preserve_structure</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to preserve the node structure (i.e., the relative positions of the targets, controls, and anticontrols) of the gates given in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code>.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
+<li><p><strong>numerical</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform the decomposition numerically with floating-point values (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) (if possible) or exact values (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span></code>.</p></li>
+<li><p><strong>array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform the decomposition using NumPy arrays (<code class="code highlight python docutils literal highlight-python"><span class="kc">True</span></code>) or SymPy matrices (<code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>).
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">array</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list[list[QuantumGate]]</span></code> – A list of found decomposition seqeuences. Will be empty if no sequences are found.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, this method decomposes any given gate using brute force, which is <em>extremely</em> inefficient. The speed at which decompositions are found depends entirely on the size of the search space, which increases exponentially with:</p>
+<ul class="simple">
+<li><p>The number of gates in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code></p></li>
+<li><p>The number of additional target, control, and anticontrol nodes specified in <code class="code highlight python docutils literal highlight-python"><span class="n">additional_nodes</span></code></p></li>
+<li><p>The search depth</p></li>
+<li><p>The number of systems</p></li>
+<li><p>The gate dimensionality</p></li>
+</ul>
+<p>Future work on this method could involve the implementation of heuristics with which the decomposition can be performed more efficiently.</p>
+</div>
+<p class="rubric"><span class="classheader6">Examples</span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_swap-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_swap-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_swap-dark.png" style="width: 30.959999999999997px; height: 42.48px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_swap-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_swap-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_swap-light.png" style="width: 30.959999999999997px; height: 42.48px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">SWAP</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+<span class="gp">... </span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">decomposition</span><span class="p">)</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visible</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gates&quot;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_swap_decomposed-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_swap_decomposed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_swap_decomposed-dark.png" style="width: 110.88px; height: 41.76px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_swap_decomposed-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_swap_decomposed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_swap_decomposed-light.png" style="width: 110.88px; height: 41.76px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CSWAP</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CSWAP</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_cswap-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_cswap-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_cswap-dark.png" style="width: 51.12px; height: 70.92px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_cswap-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_cswap-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_cswap-light.png" style="width: 51.12px; height: 70.92px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">CSWAP</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">Not</span><span class="p">()],</span>
+<span class="gp">... </span>    <span class="n">additional_nodes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">decomposition</span><span class="p">)</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visible</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gates&quot;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed-dark.png" style="width: 110.88px; height: 70.2px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed-light.png" style="width: 110.88px; height: 70.2px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">CSWAP</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">Not</span><span class="p">()],</span>
+<span class="gp">... </span>    <span class="n">additional_nodes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">only_targets</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">decomposition</span><span class="p">)</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visible</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gates&quot;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed_targets-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed_targets-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed_targets-dark.png" style="width: 110.88px; height: 70.2px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed_targets-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed_targets-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_cswap_decomposed_targets-light.png" style="width: 110.88px; height: 70.2px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_cnot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_cnot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_cnot-dark.png" style="width: 51.12px; height: 67.32px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_cnot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_cnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_cnot-light.png" style="width: 51.12px; height: 67.32px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">CNOT</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])],</span>
+<span class="gp">... </span>    <span class="n">only_targets</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">preserve_structure</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">decomposition</span><span class="p">)</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visible</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gates&quot;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_cnot_decomposed-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_cnot_decomposed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_cnot_decomposed-dark.png" style="width: 140.76px; height: 67.32px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_cnot_decomposed-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_cnot_decomposed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_cnot_decomposed-light.png" style="width: 140.76px; height: 67.32px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CXXXX</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CXXXX</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_ccccnot-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_ccccnot-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_ccccnot-dark.png" style="width: 51.12px; height: 124.19999999999999px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_ccccnot-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_ccccnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_ccccnot-light.png" style="width: 51.12px; height: 124.19999999999999px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">CXXXX</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">Not</span><span class="p">()])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">decomposition</span><span class="p">)</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visible</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gates&quot;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_ccccnot_decomposed-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_ccccnot_decomposed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_ccccnot_decomposed-dark.png" style="width: 140.76px; height: 124.19999999999999px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_ccccnot_decomposed-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_ccccnot_decomposed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_ccccnot_decomposed-light.png" style="width: 140.76px; height: 124.19999999999999px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP</span> <span class="o">=</span> <span class="n">Swap</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_sis-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_sis-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_sis-dark.png" style="width: 51.12px; height: 99.36px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_sis-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_sis-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_sis-light.png" style="width: 51.12px; height: 99.36px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">SWAP</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">Swap</span><span class="p">()],</span>
+<span class="gp">... </span>    <span class="n">preserve_structure</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">include_empty</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">decomposition</span><span class="p">)</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visible</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gates&quot;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_sis_decomposed-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_sis_decomposed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_sis_decomposed-dark.png" style="width: 170.64px; height: 99.36px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_sis_decomposed-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_sis_decomposed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_sis_decomposed-light.png" style="width: 170.64px; height: 99.36px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">iSWAP</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">spec</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">1</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">0</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">0</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;iSWAP&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iSWAP</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_iswap-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_iswap-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_iswap-dark.png" style="width: 110.88px; height: 58.68px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_iswap-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_iswap-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_iswap-light.png" style="width: 110.88px; height: 58.68px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">iSWAP</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">gates</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+<span class="gp">... </span>        <span class="n">Phase</span><span class="p">(</span><span class="n">exponent</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">decomposition</span><span class="p">)</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">sep</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visible</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gates&quot;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_iswap_decomposed-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_iswap_decomposed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_iswap_decomposed-dark.png" style="width: 180.72px; height: 50.4px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_iswap_decomposed-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_iswap_decomposed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_iswap_decomposed-light.png" style="width: 180.72px; height: 50.4px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phased_identity</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">coefficient</span><span class="o">=-</span><span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;-iI&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phased_identity</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_identity-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_identity-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_identity-dark.png" style="width: 91.08px; height: 30.24px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_identity-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_identity-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_identity-light.png" style="width: 91.08px; height: 30.24px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">phased_identity</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">)]</span>
+<span class="gp">... </span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">decomposition</span><span class="p">)</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">uniform_spacing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visible</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gates&quot;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_identity_decomposed-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_identity_decomposed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_identity_decomposed-dark.png" style="width: 190.79999999999998px; height: 30.24px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_identity_decomposed-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_identity_decomposed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_identity_decomposed-light.png" style="width: 190.79999999999998px; height: 30.24px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phase_power</span> <span class="o">=</span> <span class="n">Phase</span><span class="p">(</span><span class="n">phase</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;P^</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phase_power</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_phase-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_phase-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_phase-dark.png" style="width: 91.08px; height: 30.24px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_phase-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_phase-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_phase-light.png" style="width: 91.08px; height: 30.24px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">phase_power</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">Phase</span><span class="p">(</span><span class="n">phase</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">only_targets</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">decomposition</span><span class="p">)</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">uniform_spacing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visible</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gates&quot;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_phase_decomposed-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_phase_decomposed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_phase_decomposed-dark.png" style="width: 310.32px; height: 30.24px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_phase_decomposed-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_phase_decomposed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_phase_decomposed-light.png" style="width: 310.32px; height: 30.24px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paulis</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pauli</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">XYZ</span> <span class="o">=</span> <span class="n">GateStack</span><span class="p">(</span><span class="o">*</span><span class="n">paulis</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">XYZ</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_paulis-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_paulis-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_paulis-dark.png" style="width: 70.92px; height: 87.11999999999999px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_paulis-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_paulis-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_paulis-light.png" style="width: 70.92px; height: 87.11999999999999px;" />
+</a>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decomposition</span> <span class="o">=</span> <span class="n">XYZ</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">paulis</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">gates</span><span class="o">=</span><span class="n">decomposition</span><span class="p">)</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">uniform_spacing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">visible</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gates&quot;</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><a class="only-dark reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_paulis_decomposed-dark.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_paulis_decomposed-dark.png" class="only-dark align-left" src="../../../_images/text_examples_docstrings_gate_decompose_paulis_decomposed-dark.png" style="width: 190.79999999999998px; height: 87.11999999999999px;" />
+</a>
+<a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_gate_decompose_paulis_decomposed-light.png"><img alt="../../../_images/text_examples_docstrings_gate_decompose_paulis_decomposed-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_gate_decompose_paulis_decomposed-light.png" style="width: 190.79999999999998px; height: 87.11999999999999px;" />
+</a>
+</div></blockquote>
+</dd></dl>
+
 </section>
 </section>
 <section id="subclasses">
@@ -1308,8 +1641,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </tbody>
 </table>
 </div>
-<p>For the classes of fixed dimensionality, their constructors do not take <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code> as an argument, nor can the associated property be set. For the classes describing unipartite gates, more than one system can still be targeted, in which case the gate’s elementary matrix will simply be duplicated onto each system.</p>
-<p>Please note that the documentation of these subclasses includes only properties and methods that are either new or modified from the base class <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p>
+<p>For the classes of fixed dimensionality, their constructors do not take <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code> as an argument, nor can the associated property be set. For the classes describing unipartite gates, more than one system can still be targeted, in which case the gate’s elementary matrix will simply be duplicated onto each system. Note that the <a class="reference internal" href="#qhronology.quantum.gates.Swap" title="qhronology.quantum.gates.Swap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Swap</span></code></a> class can only describe bipartite gates, and so is not multipartite for any general number of systems. Also note that gates of the <a class="reference internal" href="#qhronology.quantum.gates.Measurement" title="qhronology.quantum.gates.Measurement"><code class="xref py py-class docutils literal notranslate"><span class="pre">Measurement</span></code></a> class can act on systems of any dimension but do not themselves possess a dimensionality.</p>
+<p>Please be aware that the documentation of these subclasses included hereafter consists only properties and methods that are either new or modified from the base class <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In all of these subclasses, the <code class="code highlight python docutils literal highlight-python"><span class="n">spec</span></code> property should not be set.</p>
@@ -1861,7 +2194,7 @@ Defaults to the unit root given by <code class="code highlight python docutils l
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">.</span><span class="n">output</span><span class="p">()</span>
 <span class="go">Matrix([</span>
 <span class="go">[1,           0],</span>
-<span class="go">[0, exp(I*pi/4)]])</span>
+<span class="go">[0, (-1)**(1/4)]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2045,7 +2378,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 <li><p><strong>targets</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int]</span></code>) – A list of exactly two indices corresponding to the systems to be swapped.
-Is an argument of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>, so can be specified positionally in <code class="code highlight python docutils literal highlight-python"><span class="o">*</span><span class="n">args</span></code>.</p></li>
+Is an argument of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>, so can be specified positionally in <code class="code highlight python docutils literal highlight-python"><span class="o">*</span><span class="n">args</span></code>.
+Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span></code></p></li>
 <li><p><strong>**kwargs</strong> – Arbitrary keyword arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
 </ul>
 </dd>
@@ -3054,6 +3388,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.output"><code class="docutils literal notranslate"><span class="pre">QuantumGate.output()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.print"><code class="docutils literal notranslate"><span class="pre">QuantumGate.print()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.diagram"><code class="docutils literal notranslate"><span class="pre">QuantumGate.diagram()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.quantum.gates.QuantumGate.decompose"><code class="docutils literal notranslate"><span class="pre">QuantumGate.decompose()</span></code></a></li>
 </ul>
 </li>
 </ul>
