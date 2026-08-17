@@ -766,6 +766,686 @@ Methods
 
    \hrulefillthick
 
+.. automethod:: qhronology.quantum.gates.QuantumGate.decompose
+
+   .. raw:: latex
+
+      \begin{adjustwidth}{0.00cm}{0cm}
+
+   .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> SWAP = Swap()
+      >>> SWAP.diagram()
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_swap.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_swap-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_swap-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = SWAP.decompose(
+      ...     gates=[Not(targets=[0], controls=[1])]
+      ... )[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     pad=(1, 0),
+      ...     sep=(2, 1),
+      ...     force_separation=True,
+      ...     visible={"gates"},
+      ... )
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_swap_decomposed.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_swap_decomposed-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_swap_decomposed-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> CSWAP = Swap(targets=[0, 2], controls=[1])
+      >>> CSWAP.diagram(sep=(2, 1))
+
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_cswap.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_cswap-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_cswap-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = CSWAP.decompose(
+      ...     gates=[Not()],
+      ...     additional_nodes=(0, 2, 0),
+      ... )[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     sep=(2, 1),
+      ...     force_separation=True,
+      ...     visible={"gates"},
+      ... )
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_cswap_decomposed.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_cswap_decomposed-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_cswap_decomposed-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = CSWAP.decompose(
+      ...     gates=[Not()],
+      ...     additional_nodes=(0, 2, 0),
+      ...     only_targets=False,
+      ... )[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     sep=(2, 1),
+      ...     force_separation=True,
+      ...     visible={"gates"},
+      ... )
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_cswap_decomposed_targets.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_cswap_decomposed_targets-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_cswap_decomposed_targets-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> CNOT = Not(targets=[2], controls=[0])
+      >>> CNOT.diagram(sep=(2, 1))
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_cnot.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_cnot-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_cnot-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = CNOT.decompose(
+      ...     gates=[Not(targets=[1], controls=[0])],
+      ...     only_targets=False,
+      ...     preserve_structure=True,
+      ... )[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     sep=(2, 1),
+      ...     force_separation=True,
+      ...     visible={"gates"},
+      ... )
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_cnot_decomposed.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_cnot_decomposed-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_cnot_decomposed-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> n = 4
+      >>> CXXXX = Not(targets=list(range(1, n + 1)), controls=[0])
+      >>> CXXXX.diagram(sep=(2, 1))
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_ccccnot.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_ccccnot-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_ccccnot-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = CXXXX.decompose(gates=[Not()])[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     sep=(2, 1),
+      ...     force_separation=True,
+      ...     visible={"gates"},
+      ... )
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_ccccnot_decomposed.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_ccccnot_decomposed-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_ccccnot_decomposed-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> SWAP = Swap(targets=[0, 3])
+      >>> SWAP.diagram(sep=(2, 1))
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_sis.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = SWAP.decompose(
+      ...     gates=[Swap()],
+      ...     preserve_structure=True,
+      ...     include_empty=True,
+      ... )[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     sep=(2, 1),
+      ...     force_separation=True,
+      ...     visible={"gates"},
+      ... )
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_sis_decomposed.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis_decomposed-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis_decomposed-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> iSWAP = QuantumGate(
+      ...     spec=[
+      ...         [1,    0,    0, 0],
+      ...         [0,    0, sp.I, 0],
+      ...         [0, sp.I,    0, 0],
+      ...         [0,    0,    0, 1],
+      ...     ],
+      ...     label="iSWAP",
+      ... )
+      >>> iSWAP.diagram()
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_iswap.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_iswap-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_iswap-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = iSWAP.decompose(
+      ...     gates=[
+      ...         Not(targets=[0], controls=[1]),
+      ...         Phase(exponent=sp.Rational(1, 2), label="S"),
+      ...     ],
+      ... )[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     pad=(1, 0),
+      ...     sep=(2, 1),
+      ...     force_separation=True,
+      ...     visible={"gates"},
+      ... )
+
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_iswap_decomposed.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_iswap_decomposed-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_iswap_decomposed-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> phased_identity = Pauli(index=0, coefficient=-sp.I, label="-iI")
+      >>> phased_identity.diagram()
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_identity.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_identity-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_identity-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = phased_identity.decompose(
+      ...     gates=[Pauli(index=1), Pauli(index=2), Pauli(index=3)]
+      ... )[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     pad=(1, 0),
+      ...     uniform_spacing=True,
+      ...     visible={"gates"},
+      ... )
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_identity_decomposed.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_identity_decomposed-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_identity_decomposed-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{1.5\baselineskip}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> n = 5
+      >>> phase_power = Phase(phase="w", exponent=n, label=f"P^{n}")
+      >>> phase_power.diagram()
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_phase.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_phase-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_phase-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = phase_power.decompose(
+      ...     gates=[Phase(phase="w")],
+      ...     only_targets=False,
+      ... )[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     pad=(1, 0),
+      ...     uniform_spacing=True,
+      ...     visible={"gates"},
+      ... )
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_phase_decomposed.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_phase_decomposed-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_phase_decomposed-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> paulis = [Pauli(index=i) for i in range(1,4)]
+      >>> XYZ = GateStack(*paulis)
+      >>> XYZ.diagram()
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_paulis.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_paulis-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_paulis-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = XYZ.decompose(gates=paulis)[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     pad=(1, 0),
+      ...     uniform_spacing=True,
+      ...     visible={"gates"},
+      ... )
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_paulis_decomposed.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_paulis_decomposed-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_paulis_decomposed-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \end{adjustwidth}
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. _`sec:docs_gates_subclasses`:
 
 Subclasses
