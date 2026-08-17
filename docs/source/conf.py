@@ -889,6 +889,7 @@ html_css_files = [
     "fonts/Roboto/Roboto.css",
     "fonts/SourceCodePro/SourceCodePro.css",
     "fonts/Cousine/Cousine.css",
+    "fonts/MonaspaceNeon/MonaspaceNeon.css",
     "fonts/SourceSans3/SourceSans3.css",
 ]
 html_js_files = ["backgrounds/three.min.js"]
