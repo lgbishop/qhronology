@@ -255,6 +255,8 @@ Output
 Diagram
 ^^^^^^^
 
+Cumulative diagrams from the circuits loop:
+
 .. raw:: latex
 
    \begin{code}

@@ -87,7 +87,7 @@ Main class
       >>> qubit_vector.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_state_unipartite_qubit_vector.pdf}
       \vspace{-1\baselineskip}
 
@@ -142,7 +142,7 @@ Main class
       >>> qutrit_vector.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_state_unipartite_qutrit_vector.pdf}
       \vspace{-1\baselineskip}
 
@@ -190,7 +190,7 @@ Main class
       >>> qubit_pure.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_state_unipartite_qubit_pure.pdf}
       \vspace{-1\baselineskip}
 
@@ -237,7 +237,7 @@ Main class
       >>> qubit_mixed.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_state_unipartite_qubit_mixed.pdf}
       \vspace{-1\baselineskip}
 
@@ -285,7 +285,7 @@ Main class
       >>> custom_vector.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_state_unipartite_custom_vector.pdf}
       \vspace{-1\baselineskip}
 
@@ -329,7 +329,7 @@ Main class
       >>> custom_matrix.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_state_unipartite_custom_matrix.pdf}
       \vspace{-1\baselineskip}
 
@@ -385,7 +385,7 @@ Main class
       >>> bell_state.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_state_bipartite_bell.pdf}
       \vspace{-1\baselineskip}
 
@@ -449,7 +449,7 @@ Main class
       >>> ghz_state.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_state_tripartite_ghz.pdf}
       \vspace{-1\baselineskip}
 
@@ -513,7 +513,7 @@ Main class
       >>> w_state.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_state_tripartite_w.pdf}
       \vspace{-1\baselineskip}
 

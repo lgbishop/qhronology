@@ -7,6 +7,11 @@ for f in $(find "$PATH_INPUT" -type f -name "*.py"); do
     echo "$f" >> ./jobs-examples.txt
 done
 
+# For when you want to test only specific files:
+# rm -f ./jobs-examples.txt
+# touch ./jobs-examples.txt
+# echo "./algorithms/tomography_weak.py" >> ./jobs-examples.txt
+
 mapfile -t jobs < ./jobs-examples.txt
 
 for FILE in "${jobs[@]}"; do

@@ -1077,7 +1077,7 @@ class QuantumCircuit(SymbolicsProperties):
             when :python:`observable` is :python:`True`
             :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\Observable_i`)
 
-        - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated it according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
+        - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
           This yields the transformed states:
 
           - When :python:`observable` is :python:`False`:

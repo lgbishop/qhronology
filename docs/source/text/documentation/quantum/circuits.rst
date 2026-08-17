@@ -591,7 +591,7 @@ Methods
       >>> circuit.diagram(pad=(0, 0), sep=(1, 1), style="unicode")
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_diagram_circuit_unicode.pdf}
       \vspace{-1\baselineskip}
 
@@ -624,7 +624,7 @@ Methods
       >>> circuit.diagram(pad=(0, 0), sep=(1, 1), style="unicode_alt")
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_diagram_circuit_shaded.pdf}
       \vspace{-1\baselineskip}
 
@@ -661,7 +661,7 @@ Methods
       >>> circuit.diagram(pad=(0, 0), sep=(1, 1), style="ascii")
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_diagram_circuit_ascii.pdf}
       \vspace{-1\baselineskip}
 
@@ -694,7 +694,7 @@ Methods
       >>> circuit.diagram(pad=(0, 0), sep=(1, 1), force_separation=True)
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_diagram_circuit_forceseparation.pdf}
       \vspace{-1\baselineskip}
 
@@ -727,7 +727,7 @@ Methods
       >>> circuit.diagram(pad=(0, 0), sep=(1, 1), uniform_spacing=True)
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_diagram_circuit_uniformspacing.pdf}
       \vspace{-1\baselineskip}
 
@@ -760,7 +760,7 @@ Methods
       >>> circuit.diagram(pad=(0, 0), sep=(2, 1), force_separation=True)
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_diagram_circuit_separation_horizontal_increase.pdf}
       \vspace{-1\baselineskip}
 
@@ -793,7 +793,7 @@ Methods
       >>> circuit.diagram(pad=(0, 0), sep=(0, 1), force_separation=True)
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_diagram_circuit_separation_horizontal_decrease.pdf}
       \vspace{-1\baselineskip}
 
@@ -826,7 +826,7 @@ Methods
       >>> circuit.diagram(pad=(0, 0), sep=(1, 2), force_separation=True)
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_diagram_circuit_separation_vertical_increase.pdf}
       \vspace{-1\baselineskip}
 
@@ -859,7 +859,7 @@ Methods
       >>> circuit.diagram(pad=(1, 0), sep=(1, 1), force_separation=True)
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_diagram_circuit_padding_horizontal_increase.pdf}
       \vspace{-1\baselineskip}
 
@@ -896,7 +896,7 @@ Methods
       >>> circuit.diagram(pad=(0, 1), sep=(1, 1), force_separation=True)
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_diagram_circuit_padding_vertical_increase.pdf}
       \vspace{-1\baselineskip}
 

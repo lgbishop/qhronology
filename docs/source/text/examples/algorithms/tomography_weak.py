@@ -39,7 +39,7 @@ for gates in VI:
         gates=flatten_list([gates_pre, CN, gates_post]),
         traces=[0],
     )
-    tomography.diagram()
+    tomography.diagram(); print("")
     evolved_probe_state = tomography.state(label="ω")
     evolved_probe_states.append(evolved_probe_state)
 

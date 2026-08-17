@@ -336,7 +336,7 @@ class QuantumGate(QuantumObject):
     def exponent(self) -> num | expr | str:
         """A numerical or string representation of a scalar value specifying the value to which the gate's matrix representation is exponentiated.
 
-        For gates with a matrix representation :math:`\\op{A}` that is involutory, i.e., :math:`\\op{A}^2 = \\Identity` (where :math:`\\Identity` is the identity matrix), their exponentiation is performed as described below. First, we have the identity,
+        For any gate with a matrix representation :math:`\\op{A}` that is involutory, i.e., :math:`\\op{A}^2 = \\Identity` (where :math:`\\Identity` is the identity matrix), its exponentiation is performed as described below. First, we have the identity,
 
         .. math::
 
@@ -1212,6 +1212,10 @@ class GellMann(QuantumGate):
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
     The *Gell-Mann matrices* :math:`\\GellMann_i` are a set of eight :math:`3 \\times 3` matrices,
+
+    .. raw:: latex
+
+        \\vspace*{-2\\baselineskip}
 
     .. raw:: latex
 

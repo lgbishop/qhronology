@@ -83,7 +83,7 @@ Main class
       >>> U.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_u.pdf}
       \vspace{-1\baselineskip}
 
@@ -123,7 +123,7 @@ Main class
       >>> U3.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_u3.pdf}
       \vspace{-1\baselineskip}
 
@@ -169,7 +169,7 @@ Main class
       >>> UI.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_ui.pdf}
       \vspace{-1\baselineskip}
 
@@ -215,7 +215,7 @@ Main class
       >>> IU.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_iu.pdf}
       \vspace{-1\baselineskip}
 
@@ -261,7 +261,7 @@ Main class
       >>> UU.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_uu.pdf}
       \vspace{-1\baselineskip}
 
@@ -311,7 +311,7 @@ Main class
       >>> CU.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_cu.pdf}
       \vspace{-1\baselineskip}
 
@@ -357,7 +357,7 @@ Main class
       >>> UC.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_uc.pdf}
       \vspace{-1\baselineskip}
 
@@ -407,7 +407,7 @@ Main class
       >>> AU.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_au.pdf}
       \vspace{-1\baselineskip}
 
@@ -457,7 +457,7 @@ Main class
       >>> CCU.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_ccu.pdf}
       \vspace{-1\baselineskip}
 
@@ -508,7 +508,7 @@ Main class
       >>> AUC.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_auc.pdf}
       \vspace{-1\baselineskip}
 
@@ -1455,6 +1455,23 @@ Most of the canonical gates used in standard quantum computing theory are implem
 
 .. raw:: latex
 
+   \renewcommand{\arraystretch}{1}
+   \renewcommand\cellgape{\Gape[2pt]}
+   \renewcommand\cellset{\renewcommand\arraystretch{1}
+   \setlength\extrarowheight{2pt}}
+   \begin{center}
+   \vspace{0.25cm}
+   \begin{NiceTabular}{*{4}{c}}[corners,hvlines]
+   & & \Block[c, fill=lightblue]{1-2}{\textbf{\textsf{Compositionality}}} \\
+   & & \textit{\textsf{Unipartite}} & \textit{\textsf{Multipartite}} \\
+   \Block[c, fill=lightblue]{2-1}{\textbf{\textsf{Dimensionality}}} & \textit{\textsf{Fixed}} &  \Block[l, respect-arraystretch]{}{\py{Unitary} \\ \py{Pauli} \\ \py{GellMann} \\ \py{Rotation} \\ \py{Not}} & {\small \textsf{(none)}} \\
+   & \textit{\textsf{Variable}} & \Block[l, respect-arraystretch]{}{\py{Phase} \\ \py{Diagonal} \\ \py{Hadamard} \\ \py{Summation}} & \Block[l, respect-arraystretch]{}{\py{Swap} \\ \py{Fourier} \\ \py{Measurement}} \\
+   \end{NiceTabular}
+   \captionof{table}{Classification of Qhronology's \py{QuantumGate} subclasses.}\label{tbl:gate_classes}
+   \end{center}
+
+.. raw:: latex
+
    \renewcommand{\arraystretch}{1.25}
 
 .. list-table:: Classifications and aliases of Qhronology's :py:class:`~qhronology.quantum.gates.QuantumGate` subclasses.
@@ -1515,30 +1532,9 @@ Most of the canonical gates used in standard quantum computing theory are implem
      - variable (qudits)
      - multipartite
 
-.. raw:: latex
+For the classes of fixed dimensionality, their constructors do not take :python:`dim` as an argument, nor can the associated property be set. For the classes describing unipartite gates, more than one system can still be targeted, in which case the gate's elementary matrix will simply be duplicated onto each system. Note that the :py:class:`~qhronology.quantum.gates.Swap` class can only describe bipartite gates, and so is not multipartite for any general number of systems. Also note that gates of the :py:class:`~qhronology.quantum.gates.Measurement` class can act on systems of any dimension but do not themselves possess a dimensionality.
 
-   \newpage
-
-.. raw:: latex
-
-   \renewcommand{\arraystretch}{1}
-   \renewcommand\cellgape{\Gape[2pt]}
-   \renewcommand\cellset{\renewcommand\arraystretch{1}
-   \setlength\extrarowheight{2pt}}
-   \begin{center}
-   \vspace{0.5cm}
-   \begin{NiceTabular}{*{4}{c}}[corners,hvlines]
-   & & \Block[c, fill=lightblue]{1-2}{\textbf{\textsf{Compositionality}}} \\
-   & & \textit{\textsf{Unipartite}} & \textit{\textsf{Multipartite}} \\
-   \Block[c, fill=lightblue]{2-1}{\textbf{\textsf{Dimensionality}}} & \textit{\textsf{Fixed}} &  \Block[l, respect-arraystretch]{}{\py{Unitary} \\ \py{Pauli} \\ \py{GellMann} \\ \py{Rotation} \\ \py{Not}} & {\small \textsf{(none)}} \\
-   & \textit{\textsf{Variable}} & \Block[l, respect-arraystretch]{}{\py{Phase} \\ \py{Diagonal} \\ \py{Hadamard} \\ \py{Summation}} & \Block[l, respect-arraystretch]{}{\py{Swap} \\ \py{Fourier} \\ \py{Measurement}} \\
-   \end{NiceTabular}
-   \captionof{table}{Classification of Qhronology's \py{QuantumGate} subclasses. Note that the \py{Swap} class can only describe bipartite gates, and so is not multipartite for any general number of systems. Also note that gates of the \py{Measurement} class can act on systems of any dimension but do not themselves possess a dimensionality.}\label{tbl:gate_classes}
-   \end{center}
-
-For the classes of fixed dimensionality, their constructors do not take :python:`dim` as an argument, nor can the associated property be set. For the classes describing unipartite gates, more than one system can still be targeted, in which case the gate's elementary matrix will simply be duplicated onto each system.
-
-Please note that the documentation of these subclasses includes only properties and methods that are either new or modified from the base class :py:class:`~qhronology.quantum.gates.QuantumGate`.
+Please be aware that the documentation of these subclasses included hereafter consists only properties and methods that are either new or modified from the base class :py:class:`~qhronology.quantum.gates.QuantumGate`.
 
 .. note::
 
@@ -1567,7 +1563,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> U.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_unitary_u.pdf}
       \vspace{-1\baselineskip}
 
@@ -1605,7 +1601,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> I.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_unitary_i.pdf}
       \vspace{-1\baselineskip}
 
@@ -1643,7 +1639,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> H.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_unitary_h.pdf}
       \vspace{-1\baselineskip}
 
@@ -1709,7 +1705,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> X.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_pauli_x.pdf}
       \vspace{-1\baselineskip}
 
@@ -1747,7 +1743,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> Y.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_pauli_y.pdf}
       \vspace{-1\baselineskip}
 
@@ -1785,7 +1781,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> Z.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_pauli_z.pdf}
       \vspace{-1\baselineskip}
 
@@ -1823,7 +1819,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> I.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_pauli_i.pdf}
       \vspace{-1\baselineskip}
 
@@ -1867,7 +1863,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> ZZ.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_pauli_zz.pdf}
       \vspace{-1\baselineskip}
 
@@ -1907,7 +1903,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> CZ.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_pauli_cz.pdf}
       \vspace{-1\baselineskip}
 
@@ -1953,7 +1949,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> R_xx.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_pauli_rxx.pdf}
       \vspace{-1\baselineskip}
 
@@ -1994,7 +1990,7 @@ Please note that the documentation of these subclasses includes only properties 
 
 .. raw:: latex
 
-   \newpage
+   \enlargethispage{2\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.GellMann
    :show-inheritance:
@@ -2004,6 +2000,10 @@ Please note that the documentation of these subclasses includes only properties 
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \enlargethispage{2\baselineskip}
 
    .. raw:: latex
 
@@ -2020,7 +2020,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> L.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_gellmann_l.pdf}
       \vspace{-1\baselineskip}
 
@@ -2059,7 +2059,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> I.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_gellmann_i.pdf}
       \vspace{-1\baselineskip}
 
@@ -2125,7 +2125,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> R_x.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_rotation_x.pdf}
       \vspace{-1\baselineskip}
 
@@ -2167,7 +2167,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> R_y.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_rotation_y.pdf}
       \vspace{-1\baselineskip}
 
@@ -2213,7 +2213,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> R_z.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_rotation_z.pdf}
       \vspace{-1\baselineskip}
 
@@ -2282,7 +2282,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> P.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_phase_p.pdf}
       \vspace{-1\baselineskip}
 
@@ -2320,7 +2320,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> S.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_phase_s.pdf}
       \vspace{-1\baselineskip}
 
@@ -2358,7 +2358,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> T.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_phase_t.pdf}
       \vspace{-1\baselineskip}
 
@@ -2397,7 +2397,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> P3.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_phase_p3.pdf}
       \vspace{-1\baselineskip}
 
@@ -2436,7 +2436,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> W.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_phase_w.pdf}
       \vspace{-1\baselineskip}
 
@@ -2468,17 +2468,8 @@ Please note that the documentation of these subclasses includes only properties 
 
       \hrulefillthick
 
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
-
    .. autoproperty:: qhronology.quantum.gates.Phase.phase
       :no-index:
-
-.. raw:: latex
-
-   \newpage
-   \vspace*{-1.75em}
 
 .. raw:: latex
 
@@ -2486,7 +2477,7 @@ Please note that the documentation of these subclasses includes only properties 
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \enlargethispage{-2\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.Diagonal
    :show-inheritance:
@@ -2511,7 +2502,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> D.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_diagonal_d.pdf}
       \vspace{-1\baselineskip}
 
@@ -2553,7 +2544,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> D3.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_diagonal_d3.pdf}
       \vspace{-1\baselineskip}
 
@@ -2596,7 +2587,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> P.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_diagonal_p.pdf}
       \vspace{-1\baselineskip}
 
@@ -2675,7 +2666,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> S.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_swap_s.pdf}
       \vspace{-1\baselineskip}
 
@@ -2720,7 +2711,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> S3.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_swap_s3.pdf}
       \vspace{-1\baselineskip}
 
@@ -2768,7 +2759,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> SIS.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_swap_sis.pdf}
       \vspace{-1\baselineskip}
 
@@ -2820,7 +2811,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> CSWAP.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_swap_cswap.pdf}
       \vspace{-1\baselineskip}
 
@@ -2864,7 +2855,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> SCS.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_swap_scs.pdf}
       \vspace{-1\baselineskip}
 
@@ -2909,7 +2900,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> RSWAP.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_swap_rswap.pdf}
       \vspace{-1\baselineskip}
 
@@ -2955,7 +2946,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> PSWAP.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_swap_pswap.pdf}
       \vspace{-1\baselineskip}
 
@@ -2987,6 +2978,10 @@ Please note that the documentation of these subclasses includes only properties 
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \newpage
+
 .. autoclass:: qhronology.quantum.gates.Summation
    :show-inheritance:
 
@@ -3010,7 +3005,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> SUM.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 0.02cm]{text_examples_docstrings_gate_summation_sum.pdf}
       \vspace{-1\baselineskip}
 
@@ -3049,7 +3044,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> SUM3.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 0.02cm]{text_examples_docstrings_gate_summation_sum3.pdf}
       \vspace{-1\baselineskip}
 
@@ -3111,7 +3106,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> N.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_not_n.pdf}
       \vspace{-1\baselineskip}
 
@@ -3151,7 +3146,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> NN.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_not_nn.pdf}
       \vspace{-1\baselineskip}
 
@@ -3191,7 +3186,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> CNOT.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_not_cnot.pdf}
       \vspace{-1\baselineskip}
 
@@ -3217,10 +3212,6 @@ Please note that the documentation of these subclasses includes only properties 
 
    .. raw:: latex
 
-      \enlargethispage{-\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -3235,7 +3226,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> ANOT.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_not_anot.pdf}
       \vspace{-1\baselineskip}
 
@@ -3279,7 +3270,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> CCNOT.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_not_ccnot.pdf}
       \vspace{-1\baselineskip}
 
@@ -3321,7 +3312,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> RNOT.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_not_rnot.pdf}
       \vspace{-1\baselineskip}
 
@@ -3376,7 +3367,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> H.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_hadamard_h.pdf}
       \vspace{-1\baselineskip}
 
@@ -3416,7 +3407,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> HH.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_hadamard_hh.pdf}
       \vspace{-1\baselineskip}
 
@@ -3455,7 +3446,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> H3.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_hadamard_h3.pdf}
       \vspace{-1\baselineskip}
 
@@ -3487,6 +3478,10 @@ Please note that the documentation of these subclasses includes only properties 
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \newpage
+
 .. autoclass:: qhronology.quantum.gates.Fourier
    :show-inheritance:
 
@@ -3510,7 +3505,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> F.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_fourier_f.pdf}
       \vspace{-1\baselineskip}
 
@@ -3549,7 +3544,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> F3.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_fourier_f3.pdf}
       \vspace{-1\baselineskip}
 
@@ -3589,7 +3584,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> FF.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_fourier_ff.pdf}
       \vspace{-1\baselineskip}
 
@@ -3656,7 +3651,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> M_basis.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_measurement_basis.pdf}
       \vspace{-1\baselineskip}
 
@@ -3696,7 +3691,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> M_pauli.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_measurement_pauli.pdf}
       \vspace{-1\baselineskip}
 
@@ -3738,7 +3733,7 @@ Please note that the documentation of these subclasses includes only properties 
       >>> M_pm.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_measurement_pm.pdf}
       \vspace{-1\baselineskip}
 
@@ -3814,7 +3809,7 @@ Combinations
       >>> HH.diagram(sep=(1, 2))
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_composition_hh.pdf}
       \vspace{-1\baselineskip}
 
@@ -3865,7 +3860,7 @@ Combinations
       >>> XYZ.diagram(sep=(1, 2))
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_composition_xyz.pdf}
       \vspace{-1\baselineskip}
 
@@ -3901,7 +3896,7 @@ Combinations
       >>> CNNC.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_composition_cncn.pdf}
       \vspace{-1\baselineskip}
 
@@ -3979,7 +3974,7 @@ Combinations
       >>> XYZ.diagram(sep=(1, 2))
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_stack_xyz.pdf}
       \vspace{-1\baselineskip}
 
@@ -4020,7 +4015,7 @@ Combinations
       >>> CNOTS.diagram()
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_stack_cnots.pdf}
       \vspace{-1\baselineskip}
 
@@ -4063,7 +4058,7 @@ Combinations
       >>> Rotations.diagram(sep=(1, 1))
 
    .. raw:: latex
-      
+
       \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_stack_rotation.pdf}
       \vspace{-1\baselineskip}
 

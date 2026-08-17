@@ -77,8 +77,16 @@ A truth table for this circuit in the context of qubits appears in :numref:`tabl
      - :math:`0`
      - :math:`1`
 
+.. raw:: latex
+
+   \newpage
+
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
