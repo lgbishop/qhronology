@@ -10,7 +10,7 @@ import numpy as np
 
 N = 15  # The number to be factorized
 a = 2  # Should be coprime to N
-decompose = False  # Whether to decompose the modular exponentiation
+decompose = True  # Whether to decompose the modular exponentiation
 
 n = int(math.ceil(math.log(N + 1, 2)))  # Encoding depth
 

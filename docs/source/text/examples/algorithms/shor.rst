@@ -209,7 +209,7 @@ Implementation
 
 The implementation of Shor's algorithm presented here diverges from typical implementations in two significant ways:
 
-- The operators corresponding to the modular exponentiation are constructed artificially: instead of finding equivalent decompositions in terms of elementary gates (such as CNOTs, phase shifts, and Hadamards), the operator's matrix representation is generated from first principles.
+- The modular exponentiation gates are constructed artificially, by generating their corresponding operators' matrix representations from first principles. Decompositions of these gates in terms of CNOTs can then be computed and subsequently employed, depending on the value of the :python:`decompose` (:python:`bool`) variable.
 - Instead of repeating the simulation numerous times to obtain a probability distribution of outcomes, we extract the exact probabilities themselves directly via measurement after a single simulation, and use them to determine the (likely) factors. This is far more computationally efficient, though the circuit can be easily adapted if a more faithful recreation of experiment is desired.
 
 Note that in this implementation of Shor's algorithm, the two registers of the quantum phase estimation procedure employ :math:`2n` and :math:`n` qubits, respectively, where :math:`n` is the minimum number of qubits required to encode the number :math:`N`. Analysis shows that :math:`2n` qubits in the estimation (upper) register is the minimum number that is able to provide the precision necessary in order to correctly distinguish between different periods in every case. However, particularly for small :math:`N`, the algorithm can often be successfully executed using just :math:`n` estimation qubits. It is also useful to be aware that versions of the algorithm in the literature often employ certain optimizations with which they can use fewer qubits to achieve the same result.
@@ -220,7 +220,7 @@ It is also worth mentioning that while this implementation supports any valid (f
 
 .. raw:: latex
 
-   \enlargethispage{-7\baselineskip}
+   \enlargethispage{-6\baselineskip}
 
 .. raw:: latex
 
@@ -235,15 +235,13 @@ It is also worth mentioning that while this implementation supports any valid (f
 
    \end{codetitled}
 
-.. raw:: latex
-
-   \newpage
-
 Output
 ------
 
 Diagram
 ^^^^^^^
+
+If :python:`decompose` is :python:`False`:
 
 .. raw:: latex
 
@@ -270,6 +268,45 @@ Diagram
    .. only:: html
 
       .. image:: /figures/output/text_examples_algorithms_shor-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+.. raw:: latex
+   
+   \end{code}
+
+.. raw:: latex
+
+   \newpage
+
+If :python:`decompose` is :python:`True`:
+
+.. raw:: latex
+
+   \begin{code}
+
+.. code:: python
+
+   >>> shor.diagram(pad=(1, 0), force_separation=True)
+
+.. raw:: latex
+   
+   \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_shor_decomposed.pdf}
+   \vspace{-1\baselineskip}
+
+..
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_algorithms_shor_decomposed-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_algorithms_shor_decomposed-light.png
          :scale: 36 %
          :align: left
          :class: only-light
