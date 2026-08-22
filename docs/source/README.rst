@@ -499,7 +499,7 @@ Qhronology is compatible with the following versions (from `requirements.txt <ht
 
    \end{code}
 
-These are the earliest versions with which the current release has been tested, but older versions may also be compatible. It also requires
+These are the earliest versions with which the current release has been tested, but older versions may also be compatible. It also requires:
 
 .. raw:: latex
 

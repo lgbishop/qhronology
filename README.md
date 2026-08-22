@@ -151,7 +151,7 @@ sympy>=1.12
 numpy>=1.26
 ```
 
-These are the earliest versions with which the current release has been tested, but older versions may also be compatible. It also requires
+These are the earliest versions with which the current release has been tested, but older versions may also be compatible. It also requires:
 
 ```py
 python>=3.11

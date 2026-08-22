@@ -154,8 +154,8 @@ for k, probability in enumerate(probabilities):
 
         suffix = "(period not suitable)"
         if r % 2 == 0:
-            p = math.gcd(a ** int(r / 2) + 1, N)
-            q = math.gcd(a ** int(r / 2) - 1, N)
+            p = math.gcd(a ** int(r / 2) - 1, N)
+            q = math.gcd(a ** int(r / 2) + 1, N)
 
             if not p * q == N:
                 p, q = p * q, int(N / (p * q))
