@@ -42,7 +42,7 @@ Implementation
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{\baselineskip}
 
 The desired number of iterations can be changed by setting :python:`iterations` to an appropriate positive integer.
 

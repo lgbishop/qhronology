@@ -499,7 +499,7 @@ Qhronology is compatible with the following versions (from `requirements.txt <ht
 
    \end{code}
 
-These are the earliest versions with which the current release has been tested, but older versions may also be compatible. It also requires
+These are the earliest versions with which the current release has been tested, but older versions may also be compatible. It also requires:
 
 .. raw:: latex
 
@@ -725,7 +725,7 @@ Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repositor
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{-4\baselineskip}
 
 .. include:: ./../../CONTRIBUTING.rst
 

@@ -38,10 +38,14 @@ The Toffoli gate, also known as the CCNOT gate (see :numref:`eg:ccnot` :ref:`eg:
 
 .. raw:: latex
 
-   \vspace*{-\baselineskip}
+   \vspace*{-1.25\baselineskip}
 
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 

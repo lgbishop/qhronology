@@ -82,13 +82,21 @@ Functions
 
 .. raw:: latex
 
+   \vspace*{-0.25\baselineskip}
+
+.. raw:: latex
+
    \hrulefillthick
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{2\baselineskip}
 
 .. autofunction:: qhronology.mechanics.matrices.ket
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
@@ -426,11 +434,11 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
+
 .. autofunction:: qhronology.mechanics.matrices.encode
-
-   .. raw:: latex
-
-      \newpage
 
    .. raw:: latex
 
@@ -600,10 +608,6 @@ Functions
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
 
 .. autofunction:: qhronology.mechanics.matrices.decode_fast
 

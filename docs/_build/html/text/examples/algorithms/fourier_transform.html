@@ -34,13 +34,14 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c3b1ed24" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=e1805805" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/MonaspaceNeon/MonaspaceNeon.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 17, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
   </head>
   
   
@@ -529,10 +530,10 @@
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>A canonical decomposition of the multipartite (composite) quantum Fourier transform <span class="math notranslate nohighlight">\(\QFT_N\)</span> (over <span class="math notranslate nohighlight">\(N\)</span>-qudits) consists of a succession of sequences of Hadamard and phase gates. Depicted in <a class="reference internal" href="#fig-circuit-algorithm-fourier-transform"><span class="std std-numref">Figure 16</span></a>, this can be written mathematically as</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-fourier-transform-0">
-<span class="eqno">(346)<a class="headerlink" href="#equation-text-examples-algorithms-fourier-transform-0" title="Link to this equation">#</a></span>\[\QFT_N = \prod_{n = 0}^{N - 1} U_n\]</div>
+<span class="eqno">(346)<a class="headerlink" href="#equation-text-examples-algorithms-fourier-transform-0" title="Link to this equation">#</a></span>\[\QFT_N = \prod_{n = 0}^{N - 1} \Unitary_n\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-fourier-transform-1">
-<span class="eqno">(347)<a class="headerlink" href="#equation-text-examples-algorithms-fourier-transform-1" title="Link to this equation">#</a></span>\[U_n = \left(\prod_{j = 1}^{N - 1 - n} \Control^{\indices{n + j}} \bigl(\Phase^{d^{-j}}\bigr)^{\indices{n}} \right) \cdot \Hadamard^{\indices{n}}.\]</div>
+<span class="eqno">(347)<a class="headerlink" href="#equation-text-examples-algorithms-fourier-transform-1" title="Link to this equation">#</a></span>\[\Unitary_n = \left(\prod_{j = 1}^{N - 1 - n} \Control^{\indices{n + j}} \bigl(\Phase^{d^{-j}}\bigr)^{\indices{n}} \right) \cdot \Hadamard^{\indices{n}}.\]</div>
 <p>Here,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-fourier-transform-2">
 <span class="eqno">(348)<a class="headerlink" href="#equation-text-examples-algorithms-fourier-transform-2" title="Link to this equation">#</a></span>\[\Phase = \sum_{k=0}^{d-1} \omega^{k} \ket{k}\bra{k}\]</div>

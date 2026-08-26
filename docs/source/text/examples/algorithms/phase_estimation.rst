@@ -19,7 +19,7 @@ and so is characterized completely by its phase :math:`\theta \in \Reals`. Note 
 Algorithm
 ---------
 
-In the canonical quantum phase estimation algorithm, introduced by Kitaev :cite:p:`kitaev_quantum_1995` and depicted in :numref:`fig:circuit_algorithm_phase_estimation`, we require two registers. The first (upper), called the *estimation* (or *control*) register, consists of :math:`n` qubits (on the Hilbert space :math:`\SpaceHilbert_2^{\otimes n}`), with each initialized to :math:`\ket{0}`. The second (lower), called the *eigenvector* (or *target*) register, is in the state of a eigenvector :math:`\ket{\psi}` of the given :math:`\Unitary` over :math:`m` qubits (on Hilbert space :math:`\SpaceHilbert_2^{\otimes m}`). The total initial state may therefore be written as
+In the canonical quantum phase estimation algorithm, introduced by Kitaev :cite:p:`kitaev_quantum_1995` and depicted in :numref:`fig:circuit_algorithm_phase_estimation`, we require two registers. The first (upper), called the *estimation* (or *control*) register, consists of :math:`n` qubits (on the Hilbert space :math:`\SpaceHilbert_2^{\otimes n}`), with each initialized to :math:`\ket{0}`. The second (lower), called the *eigenvector* (or *target*) register, is in the state of an eigenvector :math:`\ket{\psi}` of the given :math:`\Unitary` over :math:`m` qubits (on the Hilbert space :math:`\SpaceHilbert_2^{\otimes m}`). The total initial state may therefore be written as
 
 .. math:: \ket{\Psi_0} = \ket{0}^{\otimes n} \otimes \ket{\psi}.
 

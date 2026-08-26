@@ -111,10 +111,6 @@ Due to performance limitations, this example sums just 2-bit integers. Increasin
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
-
-.. raw:: latex
-
    \begin{codetitled}{Ripple-carry adder}{}
 
 .. literalinclude:: /text/examples/algorithms/adder_ripple.py

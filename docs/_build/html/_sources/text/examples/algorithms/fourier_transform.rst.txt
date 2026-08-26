@@ -8,11 +8,11 @@ Description
 
 A canonical decomposition of the multipartite (composite) quantum Fourier transform :math:`\QFT_N` (over :math:`N`-qudits) consists of a succession of sequences of Hadamard and phase gates. Depicted in :numref:`fig:circuit_algorithm_fourier_transform`, this can be written mathematically as
 
-.. math:: \QFT_N = \prod_{n = 0}^{N - 1} U_n
+.. math:: \QFT_N = \prod_{n = 0}^{N - 1} \Unitary_n
 
 where
 
-.. math:: U_n = \left(\prod_{j = 1}^{N - 1 - n} \Control^{\indices{n + j}} \bigl(\Phase^{d^{-j}}\bigr)^{\indices{n}} \right) \cdot \Hadamard^{\indices{n}}.
+.. math:: \Unitary_n = \left(\prod_{j = 1}^{N - 1 - n} \Control^{\indices{n + j}} \bigl(\Phase^{d^{-j}}\bigr)^{\indices{n}} \right) \cdot \Hadamard^{\indices{n}}.
 
 Here,
 

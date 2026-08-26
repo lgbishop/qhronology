@@ -10,6 +10,9 @@ paperheight=20cm,
 margin=0cm
 }
 
+\setlength{\fboxsep}{0pt}
+\linespread{0.98}
+
 \definecolor{darkerblue}{HTML}{003989}
 \definecolor{darkblue}{HTML}{224499}
 % \definecolor{lightblue}{HTML}{E3F0FF}
@@ -33,12 +36,25 @@ margin=0cm
     draw=darkerblue,
 }
 
-\usepackage{ClearSans}
+% \usepackage{ClearSans}
 % \usepackage{mlmodern}
-\usepackage[scaled=0.75]{sourcecodepro}
-\renewcommand{\familydefault}{\sfdefault}
+% \usepackage[scaled=0.75]{sourcecodepro}
+% \renewcommand{\familydefault}{\sfdefault}
 
-\DeclareFontSeriesDefault[tt]{md}{sb}
+\usepackage{fontspec}
+\setmainfont{ClearSans}
+\setmonofont{MonaspaceNeon}[
+    Path=./../fonts/Monaspace/MonaspaceNeon/,
+    Scale = 0.70,
+    LetterSpace=3.5,
+    Extension = .otf,
+    UprightFont = *-Medium,
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+    BoldItalicFont = *-BoldItalic,
+]
+
+% \DeclareFontSeriesDefault[tt]{md}{sb}
 
 \begin{document}
 \begin{tikzpicture}
@@ -53,15 +69,15 @@ margin=0cm
 \end{umlsystem}
 
 \begin{umlsystem}{Mechanics}
-\umlusecase[x=-3, y=2.25, name=QuantitiesMixin, width=7em]{\textmd{\texttt{OperationsMixin}}}
-\umlusecase[x=-3, y=1.5, name=OperationsMixin, width=7em]{\textmd{\texttt{QuantitiesMixin}}}
+\umlusecase[x=-2.9125, y=2.25, name=QuantitiesMixin, width=7.5em]{\textmd{\texttt{OperationsMixin}}}
+\umlusecase[x=-2.9125, y=1.5, name=OperationsMixin, width=7.5em]{\textmd{\texttt{QuantitiesMixin}}}
 \end{umlsystem}
 
 \begin{umlsystem}{Algebra}
-\umlusecase[x=2.73, y=1.5, name=SymbolicsProperties]{\textmd{\texttt{SymbolicsProperties}}}
+\umlusecase[x=2.699, y=1.5125, name=SymbolicsProperties]{\textmd{\texttt{SymbolicsProperties}}}
 \end{umlsystem}
 
-\umlusecase[x=-1.5, y=0, name=QuantumObject, width=7em]{\textmd{\texttt{QuantumObject}}}
+\umlusecase[x=0, y=0, name=QuantumObject, width=7em]{\textmd{\texttt{QuantumObject}}}
 
 \begin{umlsystem}{User-Facing}
 \umlusecase[x=-3, y=-1.75, name=QuantumState, width=7em]{\textmd{\texttt{QuantumState}}}
@@ -69,10 +85,10 @@ margin=0cm
 \umlusecase[x=3, y=-2.75, name=QuantumCircuit, width=7em]{\textmd{\texttt{QuantumCircuit}}}
 \umlusecase[x=3, y=-3.5, anchor=north, name=QuantumCTC, width=7em]{\textmd{\texttt{QuantumCTC}}}
 
-\umlusecase[x=-3, y=-4.5, anchor=north, name=States, width=7em, thick]{\textbf{\small subclasses} \\ \textmd{\texttt{VectorState \\ MatrixState \\ PureState \\ MixedState}}}
+\umlusecase[x=-3, y=-4.5, anchor=north, name=States, width=7em, thick]{\kern-0.325em \raisebox{-0.5em}[0em][1.15em]{\colorbox{systembordercolor}{\makebox[7.65em][c]{\strut\textbf{\scriptsize\textcolor{white}{SUBCLASSES}}}}} \\ \textmd{\texttt{VectorState \\ MatrixState \\ PureState \\ MixedState}} \\ \vspace*{0.15\baselineskip}}
 
-\umlusecase[x=0, y=-4.5, anchor=north, name=Gates, width=7em]{\textbf{\small subclasses} \\ \textmd{\texttt{Unitary \\ Pauli \\ GellMann \\ Rotation \\ Phase \\ Diagonal \\ Swap \\ Summation \\ Not \\ Hadamard \\ Fourier \\ Measurement}}}
-\umlusecase[x=3, y=-4.5, anchor=north, name=Prescriptions, width=7em]{\textbf{\small subclasses} \\ \textmd{\texttt{DCTC \\ PCTC}}}
+\umlusecase[x=0, y=-4.5, anchor=north, name=Gates, width=7em]{\kern-0.325em \raisebox{-0.5em}[0em][1.15em]{\colorbox{systembordercolor}{\makebox[7.65em][c]{\strut\textbf{\scriptsize\textcolor{white}{SUBCLASSES}}}}} \\ \textmd{\texttt{Unitary \\ Pauli \\ GellMann \\ Rotation \\ Phase \\ Diagonal \\ Swap \\ Summation \\ Not \\ Hadamard \\ Fourier \\ Measurement}} \\ \vspace*{0.15\baselineskip}}
+\umlusecase[x=3, y=-4.5, anchor=north, name=Prescriptions, width=7em]{\kern-0.325em \raisebox{-0.5em}[0em][1.15em]{\colorbox{systembordercolor}{\makebox[7.65em][c]{\strut\textbf{\scriptsize\textcolor{white}{SUBCLASSES}}}}} \\ \textmd{\texttt{DCTC \\ PCTC}} \\ \vspace*{0.15\baselineskip}}
 \end{umlsystem}
 
 % Relationships
@@ -80,8 +96,8 @@ margin=0cm
 \umlinherit[draw=relationcolor, line width=\relationwidth]{DiagramColumn}{VisualizationProperties}
 \umlinherit[geometry=|-, draw=relationcolor, line width=\relationwidth]{DiagramCircuit}{VisualizationProperties}
 
-\umluniaggreg[geometry=-|, anchor2=-30, draw=relationcolor, line width=\relationwidth]{DiagramColumn}{DiagramCell}
-\umluniaggreg[geometry=-|, anchor2=-30, draw=relationcolor, line width=\relationwidth]{DiagramCircuit}{DiagramColumn}
+\umluniaggreg[geometry=-|, anchor2=-20, draw=relationcolor, line width=\relationwidth]{DiagramColumn}{DiagramCell}
+\umluniaggreg[geometry=-|, anchor2=-20, draw=relationcolor, line width=\relationwidth]{DiagramCircuit}{DiagramColumn}
 
 \umldep[geometry=-|, draw=relationcolor, line width=\relationwidth]{VisualizationMixin}{DiagramCell}
 \umldep[draw=relationcolor, line width=\relationwidth]{VisualizationMixin}{DiagramColumn}
@@ -90,13 +106,13 @@ margin=0cm
 \umlHVHdep[arm1=1.0, anchor1=-5, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{DiagramColumn}
 \umlHVHdep[arm1=0.75, anchor1=5, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{DiagramCircuit}
 
-\umlVHVdep[geometry=|-|, anchor1=20, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumObject}{VisualizationMixin}
+\umldep[anchor1=90, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumObject}{VisualizationMixin}
 \umlinherit[geometry=-|, anchor2=-160, draw=relationcolor, line width=\relationwidth]{QuantumObject}{SymbolicsProperties}
 
 \umlinherit[geometry=|-|, arm1=2.5, anchor1=90, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumCircuit}{SymbolicsProperties}
 
-\umlinherit[geometry=|-|, weight=0.35, anchor1=90, anchor2=-160, draw=relationcolor, line width=\relationwidth]{QuantumState}{QuantumObject}
-\umlinherit[geometry=|-|, weight=0.35, anchor1=168.75, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumGate}{QuantumObject}
+\umlinherit[geometry=|-, weight=0.35, anchor1=90, anchor2=-180, draw=relationcolor, line width=\relationwidth]{QuantumState}{QuantumObject}
+\umlinherit[geometry=|-|, weight=0.65, anchor1=169, anchor2=-90, draw=relationcolor, line width=\relationwidth]{QuantumGate}{QuantumObject}
 
 \umlHVHdep[anchor1=-175, arm2=-1.0, anchor2=180, draw=relationcolor, line width=\relationwidth]{QuantumState}{QuantitiesMixin}
 \umlHVHdep[anchor1=175, arm2=-0.75, anchor2=180, draw=relationcolor, line width=\relationwidth]{QuantumState}{OperationsMixin}

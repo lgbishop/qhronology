@@ -1,3 +1,4 @@
+\usepackage{iftex}
 % \usepackage[bibstyle=phys,citestyle=numeric-comp,biblabel=brackets,sorting=none,backend=biber,bibencoding=auto]{biblatex}
 % \addbibresource{references.bib}
 % \DeclareFieldFormat{titlecase}{#1}%turn off sentence case
@@ -14,8 +15,12 @@
 % \usepackage{placeins}
 % \usepackage{flafter}
 % \usepackage[utf8]{inputenc}
+
+\ifxetex
+    \usepackage{fontspec}
+\fi
+\usepackage[LGR,T1]{fontenc}
 \usepackage{mlmodern}
-\usepackage[T1]{fontenc}
 
 % \usepackage[english]{babel}
 \usepackage{amsmath,amsfonts,amssymb}

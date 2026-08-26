@@ -34,13 +34,14 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c3b1ed24" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=e1805805" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/MonaspaceNeon/MonaspaceNeon.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 17, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
   </head>
   
   
@@ -2277,7 +2278,7 @@ Defaults to the unit root given by <code class="code highlight python docutils l
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>*args</strong> – Positional arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
-<li><p><strong>entries</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[int</span> <span class="pre">|</span> <span class="pre">list[int]</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]</span></code>) – A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.</p></li>
+<li><p><strong>entries</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict[int</span> <span class="pre">|</span> <span class="pre">list[int]</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]</span></code>) – A dictionary in which the keys are number-basis specifications (integer or list of integers) and the values are scalars.</p></li>
 <li><p><strong>exponentiation</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to exponentiate (with imaginary unit) the values given in <code class="code highlight python docutils literal highlight-python"><span class="n">entries</span></code>.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>**kwargs</strong> – Arbitrary keyword arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a>.</p></li>
@@ -2286,7 +2287,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Levels that are unspecified in the <code class="code highlight python docutils literal highlight-python"><span class="n">entries</span></code> argument all have a corresponding matrix element of <code class="code highlight python docutils literal highlight-python"><span class="mi">1</span></code>, regardless of the value of <code class="code highlight python docutils literal highlight-python"><span class="n">exponentiation</span></code>.</p>
+<p>Basis elements that are unspecified in the <code class="code highlight python docutils literal highlight-python"><span class="n">entries</span></code> argument all have a corresponding matrix element of <code class="code highlight python docutils literal highlight-python"><span class="mi">1</span></code>, regardless of the value of <code class="code highlight python docutils literal highlight-python"><span class="n">exponentiation</span></code>.</p>
 </div>
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">Diagonal</span><span class="p">(</span><span class="n">entries</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;v&quot;</span><span class="p">})</span>
@@ -2343,7 +2344,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dl class="py property">
 <dt class="sig sig-object py">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">entries</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em></dt>
-<dd><p>A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.</p>
+<dd><p>A dictionary in which the keys are number-basis specifications (integer or list of integers) and the values are scalars.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -2607,9 +2608,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 
 <span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/qhronology/quantum/gates.html#Not"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.quantum.gates.Not" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qhronology.quantum.gates.Summation" title="qhronology.quantum.gates.Summation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Summation</span></code></a></p>
-<p>A subclass for creating NOT (logical <em>negation</em> or “bit-flip”) gates and storing their metadata.</p>
+<p>A subclass for creating NOT (logical negation or “bit-flip”) gates and storing their metadata.</p>
 <p>This is built upon the <a class="reference internal" href="#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class, and so inherits all of its attributes, properties, and methods.</p>
-<p>The <em>NOT gate</em> is essentially a specialization of the SUM gate to <span class="math notranslate nohighlight">\(2\)</span>-dimensional systems. In other words, this means that it is exactly equivalent to the Pauli-<span class="math notranslate nohighlight">\(X\)</span> gate, having the matrix representation</p>
+<p>The <em>NOT gate</em> is essentially a specialization of the SUM gate to <span class="math notranslate nohighlight">\(2\)</span>-dimensional systems. In the computation basis, it is exactly equivalent to the Pauli-<span class="math notranslate nohighlight">\(X\)</span> gate, having the matrix representation</p>
 <div class="math notranslate nohighlight" id="equation-text-documentation-quantum-gates-16">
 <span class="eqno">(310)<a class="headerlink" href="#equation-text-documentation-quantum-gates-16" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     \NOT &amp;= \ket{0}\bra{1} + \ket{1}\bra{0} \\

@@ -1,5 +1,9 @@
 .. include:: /styles.rst
 
+.. raw:: latex
+
+   \newpage
+
 .. _`sec:comparison`:
 
 Comparison of D-CTCs and P-CTCs

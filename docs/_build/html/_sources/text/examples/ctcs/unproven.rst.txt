@@ -43,7 +43,7 @@ Described by the unitary
 .. math:: \Unitary = \Swap^{\indices{1,2}} \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \cdot \Control^{\indices{2}} \NOT^{\indices{0}},
    :label: eq:unproven_unitary
 
-the unproven-theorem paradox encapsulates the scenario in which the proof of a theorem that a mathematician reads in the past is the very same proof which they write down in the future book (with the book having travelled back in time). We therefore denote the absence and presence of the proof in each subsystem intuitively by :math:`\ket{0}` and :math:`\ket{1}`, respectively. Under this interpretation, when the mathematician and/or the book are in the state :math:`\ket{1}`, they possess a "correct" proof, while being in the state :math:`\ket{0}` means that they do not. (Alternatively, one can think of these qubit levels as denoting different answers to some problem the mathematician is working on. They can then encode their proof of some theorem into an :math:`\Number`-bit binary string by using :math:`\Number` copies of the circuit :cite:p:`allen_treating_2014`.) Thus, we will use the CR input state
+the unproven-theorem paradox encapsulates the scenario in which the proof of a theorem that a mathematician reads in the past is the very same proof which they write down in the future book (with the book having travelled back in time). We therefore denote the absence and presence of the proof in each subsystem intuitively by :math:`\ket{0}` and :math:`\ket{1}`, respectively. Under this interpretation, when the mathematician and/or the book are in the state :math:`\ket{1}`, they possess a "correct" proof, while being in the state :math:`\ket{0}` means that they do not. (Alternatively, one can think of these qubit states as denoting different answers to some problem the mathematician is working on. They can then encode their proof of some theorem into an :math:`\Number`-bit binary string by using :math:`\Number` copies of the circuit :cite:p:`allen_treating_2014`.) Thus, we will use the CR input state
 
 .. math:: \StateCR = \ket{0}\bra{0}\otimes\ket{0}\bra{0},
    :label: eq:unproven_input
@@ -66,7 +66,7 @@ To find the D-CTC solutions, we first compute the standard evolution through the
        &= \Swap^{\indices{1,2}} \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
        & \qquad\qquad\qquad\;\; + \ket{0}\bra{1}\otimes\ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \\
        & \qquad\qquad\qquad\;\; + \ket{1}\bra{0}\otimes\ket{0}\bra{0} \otimes \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \\
-       & \qquad\qquad\qquad\;\; + \ket{1}\bra{1}\otimes\ket{0}\bra{0} \otimes \ket{1}\bra{1}\StateCV\ket{1}\bra{1}\bigr) \Control^0 \NOT^{\dagger 1} \cdot \Swap^{\dagger 1,2} \\
+       & \qquad\qquad\qquad\;\; + \ket{1}\bra{1}\otimes\ket{0}\bra{0} \otimes \ket{1}\bra{1}\StateCV\ket{1}\bra{1}\bigr) \Control^{\indices{0}} \NOT^{\dagger \indices{1}} \cdot \Swap^{\dagger \indices{1,2}} \\
        &= \Swap^{\indices{1,2}} \bigl(\ket{0}\bra{0}\otimes\ket{0}\bra{0} \otimes \ket{0}\bra{0}\StateCV\ket{0}\bra{0} \\
        & \qquad\quad\;\; + \ket{0}\bra{1}\otimes\ket{0}\bra{1} \otimes \ket{0}\bra{0}\StateCV\ket{1}\bra{1} \\
        & \qquad\quad\;\; + \ket{1}\bra{0}\otimes\ket{1}\bra{0} \otimes \ket{1}\bra{1}\StateCV\ket{0}\bra{0} \\

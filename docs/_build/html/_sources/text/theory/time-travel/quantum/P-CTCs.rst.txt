@@ -1,5 +1,9 @@
 .. include:: /styles.rst
 
+.. raw:: latex
+
+   \newpage
+
 .. _`sec:P-CTCs`:
 
 Postselected teleportation (P-CTCs)
@@ -119,12 +123,6 @@ General form of P-CTC system evolution
 --------------------------------------
 
 Here we show how a CR system state :math:`\StateCR\in\SpaceHilbert_\CR` in the Dirac bra-ket formalism evolves through the postselected teleportation chronology-violating network depicted in :numref:`fig:circuit_ctc_pctc`.
-
-.. raw:: latex
-
-   \newpage
-   \null
-   \vspace*{-1.25\baselineskip}
 
 .. only:: html
 

@@ -41,6 +41,11 @@ for FILE in "${jobs[@]}"; do
     magick "$PATH_OUTPUT/$FILENAME-light.png" -channel RGB -negate "$PATH_OUTPUT/$FILENAME-dark.png"
     #magick "$PATH_OUTPUT/$FILENAME-light.png" -channel RGB -negate -background black -alpha remove -alpha off "$PATH_OUTPUT/$FILENAME-alphaless.png"
 
+    magick "$PATH_OUTPUT/$FILENAME-light.png" -strip "$PATH_OUTPUT/$FILENAME-light.png"
+    magick "$PATH_OUTPUT/$FILENAME-dark.png" -strip "$PATH_OUTPUT/$FILENAME-dark.png"
+    magick "$PATH_OUTPUT/$FILENAME-light.png" -density 48 -units PixelsPerCentimeter "$PATH_OUTPUT/$FILENAME-light.png"
+    magick "$PATH_OUTPUT/$FILENAME-dark.png" -density 48 -units PixelsPerCentimeter "$PATH_OUTPUT/$FILENAME-dark.png"
+
     # Remove white fill and strokes from the light-theme SVG.
     sed -i -e 's/fill="rgb(100%, 100%, 100%)" fill-opacity="1"/fill="rgb(100%, 100%, 100%)" fill-opacity="0"/g' "$PATH_OUTPUT/$FILENAME-light.svg"
     sed -i -e 's/stroke="rgb(100%, 100%, 100%)" stroke-opacity="1"/stroke="rgb(100%, 100%, 100%)" stroke-opacity="0"/g' "$PATH_OUTPUT/$FILENAME-light.svg"

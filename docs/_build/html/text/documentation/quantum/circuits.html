@@ -34,13 +34,14 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c3b1ed24" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=e1805805" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/MonaspaceNeon/MonaspaceNeon.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 17, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
   </head>
   
   
@@ -504,7 +505,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
 </pre></div>
 </div>
-<p>In the circuit diagram picturalism, time increases from left to right. Accordingly, the preparation of <em>input</em> states (given as instances of the <a class="reference internal" href="states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a>) begins in the past (on the left), while post-processing (such as postselections and partial traces) occurs in the future (on the right). Intermediary operations on these states are represented by quantum gates, given as instances of the <a class="reference internal" href="gates.html#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class and its derivatives. All of these events are connected by quantum wires describing the flow of quantum information (i.e., quantum probabilities) through time.</p>
+<p>In the circuit diagram picturalism, time increases from left to right. Accordingly, the preparation of input states (given as instances of the <a class="reference internal" href="states.html#qhronology.quantum.states.QuantumState" title="qhronology.quantum.states.QuantumState"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumState</span></code></a>) begins in the past (on the left), while post-processing (such as postselections and partial traces) occurs in the future (on the right). Intermediary operations on these states are represented by quantum gates, given as instances of the <a class="reference internal" href="gates.html#qhronology.quantum.gates.QuantumGate" title="qhronology.quantum.gates.QuantumGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumGate</span></code></a> class and its derivatives. All of these events are connected by quantum wires, which represent the flow of quantum information (i.e., quantum probabilities) through time.</p>
 <section id="main-class">
 <h2>Main class<a class="headerlink" href="#main-class" title="Link to this heading">#</a></h2>
 <dl class="py class">
@@ -562,10 +563,6 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All states, gates, and postselections recorded in the instance must share the same dimensionality (i.e., the value of the <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code> property).</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The sum of the <code class="code highlight python docutils literal highlight-python"><span class="n">num_systems</span></code> properties of the quantum states in <code class="code highlight python docutils literal highlight-python"><span class="n">inputs</span></code> should match that of each of the gates in <code class="code highlight python docutils literal highlight-python"><span class="n">gates</span></code>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -690,6 +687,7 @@ Defaults to <code class="code highlight python docutils literal highlight-python
     <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span>
     <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U&quot;</span><span class="p">,</span>
+    <span class="n">conjugate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">Ud</span> <span class="o">=</span> <span class="n">QuantumGate</span><span class="p">(</span>
     <span class="n">spec</span><span class="o">=</span><span class="n">unitary</span><span class="p">,</span>
@@ -773,7 +771,6 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 
 <span class="c1"># Results</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">swapcnots</span><span class="o">.</span><span class="n">gate</span><span class="p">()))</span>
-
 <span class="n">input_upper</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="n">input_lower</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="n">swapcnots</span><span class="o">.</span><span class="n">input</span><span class="p">()</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
@@ -784,7 +781,6 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 
 <span class="nb">print</span><span class="p">(</span><span class="n">output_upper</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">input_lower</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">output_lower</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">input_upper</span><span class="p">))</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="n">output_upper</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">input_lower</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">output_lower</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">input_upper</span><span class="p">))</span>
 </pre></div>

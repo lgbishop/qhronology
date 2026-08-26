@@ -104,6 +104,10 @@ If :math:`d = 1`, then statement (ii) is true, and the factorization procedure h
 
 are non-trivial factors of :math:`N`, e.g., :math:`N = pq`, with neither value being equal to :math:`1` or :math:`N`.
 
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
+
 Algorithm
 ---------
 
@@ -328,9 +332,9 @@ Cumulative output from the various print statements:
 
    Input number: 15
    Bitstring=00000000, Probability=0.250, Period=1, (period not suitable)
-   Bitstring=00000010, Probability=0.250, Period=4, Factors: 5 and 3
+   Bitstring=00000010, Probability=0.250, Period=4, Factors: 3 and 5
    Bitstring=00000001, Probability=0.250, Period=2, Factors: 3 and 5
-   Bitstring=00000011, Probability=0.250, Period=4, Factors: 5 and 3
+   Bitstring=00000011, Probability=0.250, Period=4, Factors: 3 and 5
 
 .. raw:: latex
 

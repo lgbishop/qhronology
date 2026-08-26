@@ -34,13 +34,14 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c3b1ed24" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=e1805805" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/MonaspaceNeon/MonaspaceNeon.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 17, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
   </head>
   
   
@@ -547,7 +548,7 @@
 <p>Many physical applications of this theory in quantum mechanics involve Boolean (i.e., binary, or two-valued) logic, which is completely describable by exactly two orthonormal vectors that are often labelled <span class="math notranslate nohighlight">\(\ket{0}\)</span> and <span class="math notranslate nohighlight">\(\ket{1}\)</span>. The representations in <span class="math notranslate nohighlight">\(\Complexes^2\)</span> of these vectors is typically the pair</p>
 <div class="math notranslate nohighlight" id="equation-eq-basis-qubit">
 <span class="eqno">(130)<a class="headerlink" href="#equation-eq-basis-qubit" title="Link to this equation">#</a></span>\[\begin{split}\ket{0} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}.\end{split}\]</div>
-<p>Together, these form a complete basis that is canonically known as the <span class="math notranslate nohighlight">\(z\)</span>-basis (given that each vector is an eigenvector of the Pauli-<span class="math notranslate nohighlight">\(Z\)</span> operator <span class="math notranslate nohighlight">\(\Pauli_z\)</span> <a class="reference internal" href="#equation-eq-pauli">(136)</a>), though is alternatively often referred to by many simply as the <em>computational</em> basis. Any quantum state with such binary dimensionality is called a <em>qubit</em> (though this nomenclature is often used solely in the context of <em>pure</em> binary states), and describes a two-level system that forms the basic unit of quantum information (analogous to the bit in classical computing). In the computational basis <span class="math notranslate nohighlight">\(\{\ket{0},\ket{1}\}\)</span>, the simplest qubit which we can express is the quantum superposition</p>
+<p>Together, these form a complete basis that is canonically known as the <span class="math notranslate nohighlight">\(z\)</span>-<em>basis</em> (given that each vector is an eigenvector of the Pauli-<span class="math notranslate nohighlight">\(Z\)</span> operator <span class="math notranslate nohighlight">\(\Pauli_z\)</span> <a class="reference internal" href="#equation-eq-pauli">(136)</a>), though is alternatively often referred to by many simply as the <em>computational basis</em>. Any quantum state with such binary dimensionality is called a <em>qubit</em>, and describes a two-level system that forms the basic unit of quantum information (analogous to the bit in classical computing). In the computational basis <span class="math notranslate nohighlight">\(\{\ket{0},\ket{1}\}\)</span>, the simplest qubit which we can express is the quantum superposition</p>
 <div class="math notranslate nohighlight" id="equation-eq-vector-qubit">
 <span class="eqno">(131)<a class="headerlink" href="#equation-eq-vector-qubit" title="Link to this equation">#</a></span>\[\ket{\StateVector} = \alpha\ket{0} + \beta\ket{1}, \quad \abs{\alpha}^2 + \abs{\beta}^2 = 1, \quad \alpha,\beta \in \Complexes.\]</div>
 <p>In the <span class="math notranslate nohighlight">\(\Complexes^2\)</span>-representation <a class="reference internal" href="#equation-eq-basis-qubit">(130)</a>, this state can be expressed as</p>
@@ -570,11 +571,11 @@
     \Pauli_3 &amp;= \Pauli_z \equiv \ket{0}\bra{0} - \ket{1}\bra{1} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}.
 \end{aligned}\end{split}\]</div>
 <figure class="only-dark align-center" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/diagram_bloch_sphere-dark.png"><img alt="A diagram of the Bloch sphere." src="../../../_images/diagram_bloch_sphere-dark.png" style="width: 236.98000000000002px; height: 231.88000000000002px;" />
+<a class="reference internal image-reference" href="../../../_images/diagram_bloch_sphere-dark.png"><img alt="A diagram of the Bloch sphere." src="../../../_images/diagram_bloch_sphere-dark.png" style="width: 264.86px; height: 259.16px;" />
 </a>
 </figure>
 <figure class="only-light align-center" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/diagram_bloch_sphere-light.png"><img alt="A diagram of the Bloch sphere." src="../../../_images/diagram_bloch_sphere-light.png" style="width: 236.98000000000002px; height: 231.88000000000002px;" />
+<a class="reference internal image-reference" href="../../../_images/diagram_bloch_sphere-light.png"><img alt="A diagram of the Bloch sphere." src="../../../_images/diagram_bloch_sphere-light.png" style="width: 264.86px; height: 259.16px;" />
 </a>
 </figure>
 <figure class="light-dark hidden align-center" id="fig-diagram-bloch-sphere" style="width: 100%">
@@ -602,7 +603,7 @@
 <p>Qutrits described by <span class="math notranslate nohighlight">\(3\)</span>-dimensional density operators have corresponding representations as <span class="math notranslate nohighlight">\(3 \times 3\)</span> density matrices. One way of expressing such a state is via the linear combination</p>
 <div class="math notranslate nohighlight" id="equation-eq-matrix-qutrit">
 <span class="eqno">(141)<a class="headerlink" href="#equation-eq-matrix-qutrit" title="Link to this equation">#</a></span>\[\StateDensity = \frac{1}{3}\sum_{\mu=0}^{8} \trace[\GellMann_\mu \StateDensity]\GellMann_\mu,\]</div>
-<p>where <span class="math notranslate nohighlight">\(\{\GellMann_\mu\}_{\mu=0}^{3}\)</span> is a complete basis for the space of <span class="math notranslate nohighlight">\(3 \times 3\)</span> complex matrices. The most notable choice of matrices with which to construct a such a basis are the <em>Gell-Mann matrices</em> (with <span class="math notranslate nohighlight">\(\GellMann_0 \equiv \Identity_3\)</span>),</p>
+<p>where <span class="math notranslate nohighlight">\(\{\GellMann_\mu\}_{\mu=0}^{8}\)</span> is a complete basis for the space of <span class="math notranslate nohighlight">\(3 \times 3\)</span> complex matrices. The most notable choice of matrices with which to construct a such a basis are the <em>Gell-Mann matrices</em> (with <span class="math notranslate nohighlight">\(\GellMann_0 \equiv \Identity_3\)</span>),</p>
 <div class="math notranslate nohighlight" id="equation-eq-gell-mann">
 <span class="eqno">(142)<a class="headerlink" href="#equation-eq-gell-mann" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
     &amp;\GellMann_1 \equiv \ket{0}\bra{1} + \ket{1}\bra{0}

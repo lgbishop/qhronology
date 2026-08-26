@@ -401,10 +401,6 @@ This implementation is strictly for qubits. For simplicity, we set :math:`\frac{
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
-
-.. raw:: latex
-
    \begin{codetitled}{Billiard-ball paradox}{}
 
 .. literalinclude:: /text/examples/ctcs/billiards.py

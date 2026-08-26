@@ -45,7 +45,7 @@ In this example, each qubit in the uppermost set on the diagram corresponds to t
 
 .. raw:: latex
 
-   \enlargethispage{-2\baselineskip}
+   \enlargethispage{-3\baselineskip}
 
 .. raw:: latex
 

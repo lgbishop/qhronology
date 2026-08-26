@@ -398,6 +398,6 @@ Mixin
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. autoclass:: qhronology.mechanics.quantities.QuantitiesMixin

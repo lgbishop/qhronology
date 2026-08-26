@@ -2626,10 +2626,10 @@
   \fi%
   %
   \begin{pgfonlayer}{background}%
-  \node[inner ysep=0em, inner xsep=0ex, fit = \tikzumlSystemFit] (\tikzumlSystemName-tmp) {};%
+  \node[inner ysep=0.25ex, inner xsep=0ex, fit = \tikzumlSystemFit] (\tikzumlSystemName-tmp) {};%
   \node[text=\tikzumlSystemTextColor, font=\tikzumlDefaultFont] (\tikzumlSystemName-caption-tmp) at (\tikzumlSystemName-tmp.north) {\tikzumlSystemName};%
   \node[line width = 0.3mm, draw=\tikzumlSystemDrawColor, fill=\tikzumlSystemFillColor, text=\tikzumlSystemTextColor, font=\tikzumlDefaultFont, inner ysep=1em, inner xsep=2ex, fit = (\tikzumlSystemName-tmp) (\tikzumlSystemName-caption-tmp)] (\tikzumlSystemName) {};%
-  \node[text=\tikzumlSystemTextColor, font=\tikzumlDefaultFont] (\tikzumlSystemName-caption) at (\tikzumlSystemName-caption-tmp.north) {\tikzumlSystemName};%
+  \node[inner ysep=0em, yshift=0.15em, text=\tikzumlSystemTextColor, font=\tikzumlDefaultFont] (\tikzumlSystemName-caption) at (\tikzumlSystemName-caption-tmp.north) {\tikzumlSystemName};%
   \end{pgfonlayer}%
   \end{scope}%
   %

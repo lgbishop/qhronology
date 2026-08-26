@@ -94,7 +94,7 @@ Many physical applications of this theory in quantum mechanics involve Boolean (
 .. math:: \ket{0} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}.
    :label: eq:basis_qubit
 
-Together, these form a complete basis that is canonically known as the :math:`z`-basis (given that each vector is an eigenvector of the Pauli-:math:`Z` operator :math:`\Pauli_z` :eq:`eq:Pauli`), though is alternatively often referred to by many simply as the *computational* basis. Any quantum state with such binary dimensionality is called a *qubit* (though this nomenclature is often used solely in the context of *pure* binary states), and describes a two-level system that forms the basic unit of quantum information (analogous to the bit in classical computing). In the computational basis :math:`\{\ket{0},\ket{1}\}`, the simplest qubit which we can express is the quantum superposition
+Together, these form a complete basis that is canonically known as the :math:`z`-*basis* (given that each vector is an eigenvector of the Pauli-:math:`Z` operator :math:`\Pauli_z` :eq:`eq:Pauli`), though is alternatively often referred to by many simply as the *computational basis*. Any quantum state with such binary dimensionality is called a *qubit*, and describes a two-level system that forms the basic unit of quantum information (analogous to the bit in classical computing). In the computational basis :math:`\{\ket{0},\ket{1}\}`, the simplest qubit which we can express is the quantum superposition
 
 .. math:: \ket{\StateVector} = \alpha\ket{0} + \beta\ket{1}, \quad \abs{\alpha}^2 + \abs{\beta}^2 = 1, \quad \alpha,\beta \in \Complexes.
    :label: eq:vector_qubit
@@ -135,14 +135,14 @@ where :math:`\{\Pauli_k\}_{k=1}^{3}` are the *Pauli matrices*, which are defined
 .. only:: html
 
    .. figure:: /figures/output/diagram_bloch_sphere-dark.png
-      :scale: 34 %
+      :scale: 38 %
       :alt: A diagram of the Bloch sphere.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/diagram_bloch_sphere-light.png
-      :scale: 34 %
+      :scale: 38 %
       :alt: A diagram of the Bloch sphere.
       :align: center
       :figwidth: 100 %

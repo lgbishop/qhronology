@@ -220,7 +220,7 @@ mathjax_path = "./js/MathJax/es5/tex-chtml.js"
 sys.path.append(os.path.relpath("./preamble/"))
 from macros_mathjax import mathjax3_config
 
-latex_engine = "pdflatex"
+latex_engine = "xelatex"
 latex_additional_files = ["./preamble/header.tex.txt", "./preamble/macros.tex.txt"]
 latex_elements = {
     "papersize": "a4paper",
@@ -228,11 +228,8 @@ latex_elements = {
     # "pxunit": "0.5bp",
     "figure_align": "H",
     "releasename": "Version",
-    #     'fontpkg': r"""
-    # \setmainfont{DejaVu Serif}
-    # \setsansfont{DejaVu Sans}
-    # \setmonofont{DejaVu Sans Mono}
-    # """,
+    'fontpkg': r"",
+    'textgreek': r"\usepackage{textalpha,alphabeta}",
     "maketitle": r"""\newcommand\sphinxbackoftitlepage{
 
 \vspace*{\fill}
@@ -278,7 +275,7 @@ Read the full license here:
 \texttt{\url{https://github.com/lgbishop/qhronology/blob/latest/licenses/CC-BY-NC-ND-4.0.txt}}
 
 }\sphinxmaketitle""",
-    "fontenc": r"\usepackage[LGR,T1]{fontenc}",
+    "fontenc": r"",
     "preamble": r"""
 \input{header.tex.txt}
 
@@ -308,151 +305,188 @@ Read the full license here:
 % \renewcommand{\mathbb}[1]{\mathbb{#1}}
 % % \renewcommand{\mathbb}{\mathds}
 
-\pdfimageresolution=128 % Controls the scaling of images. https://github.com/sphinx-doc/sphinx/issues/8253
+\ifxetex
+    %
+\else
+    \pdfimageresolution=128 % Controls the scaling of images (see https://github.com/sphinx-doc/sphinx/issues/8253) (PDFLaTeX only)
+\fi
 
 %%% FONTS:
 
-% \usepackage[%
-%     protrusion=true,
-%     expansion=true,
-%     spacing=true,
-%     tracking=true,
-%     kerning=true
-% ]{microtype}
-% \usepackage{libertinus}
+\ifxetex
+    \usepackage{fontspec}
+\fi
+\usepackage[LGR,T1]{fontenc}
 
 % sffamily (headings)
-\usepackage{ClearSans}
 %\usepackage[medium]{inter}
 %\usepackage{roboto}
 %\usepackage{sourcesanspro}
 
 % rmfamily (main text)
-\usepackage{mlmodern}
+% \usepackage{libertinus}
+% \usepackage{baskervald}
+\usepackage{libertine}
+\usepackage{ClearSans}
+% \usepackage{mlmodern}
 
 % ttfamily (code, monospace, verbatim)
-\usepackage[scaled=0.9]{sourcecodepro}
+%\usepackage[scaled=0.9]{sourcecodepro}
 %\usepackage[scaled=0.85,lining]{FiraMono}
 %\usepackage[scaled=0.85]{beramono}
 %\usepackage{ascii}
 
-% Make normal (medium) series semi-bold instead for the loaded ttfamily.
-\DeclareFontSeriesDefault[tt]{md}{sb}
-% Make roman (serif) series bold-extended when bold is called.
-\DeclareFontSeriesDefault[rm]{bf}{bx}
+% XeLaTeX and LuaLaTeX font settings:
 
-%%% Fixes for pdflatex being unable to compile when the included code snippets (e.g., the usage examples) contain non-ascii characters (e.g., Greek letters).
+\ifxetex
+    \setmonofont{MonaspaceNeon}[
+        Path=./fonts/Monaspace/MonaspaceNeon/,
+        Scale = 0.8,
+        LetterSpace=3.5,
+        Extension = .otf,
+        UprightFont = *-Medium,
+        BoldFont = *-Bold,
+        ItalicFont = *-Italic,
+        BoldItalicFont = *-BoldItalic,
+    ]
 
-\DeclareUnicodeCharacter{0391}{$\Alpha$}
-\DeclareUnicodeCharacter{0392}{$\Beta$}
-\DeclareUnicodeCharacter{0393}{$\Gamma$}
-\DeclareUnicodeCharacter{0394}{$\Delta$}
-\DeclareUnicodeCharacter{0395}{$\Epsilon$}
-\DeclareUnicodeCharacter{0396}{$\Zeta$}
-\DeclareUnicodeCharacter{0397}{$\Eta$}
-\DeclareUnicodeCharacter{0398}{$\Theta$}
-\DeclareUnicodeCharacter{0399}{$\Iota$}
-\DeclareUnicodeCharacter{039A}{$\Kappa$}
-\DeclareUnicodeCharacter{039B}{$\Lambda$}
-\DeclareUnicodeCharacter{039C}{$\Mu$}
-\DeclareUnicodeCharacter{039D}{$\Nu$}
-\DeclareUnicodeCharacter{039E}{$\Xi$}
-\DeclareUnicodeCharacter{039F}{$\Omicron$}
-\DeclareUnicodeCharacter{03A0}{$\Pi$}
-\DeclareUnicodeCharacter{03A1}{$\Rho$}
-\DeclareUnicodeCharacter{03A3}{$\Sigma$}
-\DeclareUnicodeCharacter{03A4}{$\Tau$}
-\DeclareUnicodeCharacter{03A5}{$\Upsilon$}
-\DeclareUnicodeCharacter{03A6}{$\Phi$}
-\DeclareUnicodeCharacter{03A7}{$\Chi$}
-\DeclareUnicodeCharacter{03A8}{$\Psi$}
-\DeclareUnicodeCharacter{03A9}{$\Omega$}
+    \iffalse
+    \setmonofont{IoskeleyMono}[
+        Path=./fonts/IoskeleyMono/IoskeleyMonoHinted/,
+        Scale = 0.85,
+        LetterSpace=0.85,
+        Extension = .ttf,
+        UprightFont = *-SemiBold,
+        BoldFont = *-ExtraBold,
+        ItalicFont = *-SemiBoldItalic,
+        BoldItalicFont = *-ExtraBoldItalic,
+    ]
+    \fi
 
-\DeclareUnicodeCharacter{03B1}{$\alpha$}
-\DeclareUnicodeCharacter{03B2}{$\beta$}
-\DeclareUnicodeCharacter{03B3}{$\gamma$}
-\DeclareUnicodeCharacter{03B4}{$\delta$}
-\DeclareUnicodeCharacter{03B5}{$\epsilon$}
-\DeclareUnicodeCharacter{03B6}{$\zeta$}
-\DeclareUnicodeCharacter{03B7}{$\eta$}
-\DeclareUnicodeCharacter{03B8}{$\theta$}
-\DeclareUnicodeCharacter{03B9}{$\iota$}
-\DeclareUnicodeCharacter{03BA}{$\kappa$}
-\DeclareUnicodeCharacter{03BB}{$\lambda$}
-\DeclareUnicodeCharacter{03BC}{$\mu$}
-\DeclareUnicodeCharacter{03BD}{$\nu$}
-\DeclareUnicodeCharacter{03BE}{$\xi$}
-\DeclareUnicodeCharacter{03BF}{$\omicron$}
-\DeclareUnicodeCharacter{03C0}{$\pi$}
-\DeclareUnicodeCharacter{03C1}{$\rho$}
-\DeclareUnicodeCharacter{03C2}{$\varsigma$}
-\DeclareUnicodeCharacter{03C3}{$\sigma$}
-\DeclareUnicodeCharacter{03C4}{$\tau$}
-\DeclareUnicodeCharacter{03C5}{$\upsilon$}
-\DeclareUnicodeCharacter{03C6}{$\phi$}
-\DeclareUnicodeCharacter{03C7}{$\chi$}
-\DeclareUnicodeCharacter{03C8}{$\psi$}
-\DeclareUnicodeCharacter{03C9}{$\omega$}
+    \usepackage{mathspec} % XeLaTeX only
+    \setmathsfont{mlmodern}
 
-\DeclareUnicodeCharacter{03B8}{$\theta$}
-\DeclareUnicodeCharacter{03D1}{$\vartheta$}
-\DeclareUnicodeCharacter{03D5}{$\phi$}
-\DeclareUnicodeCharacter{03D6}{$\varpi$}
-\DeclareUnicodeCharacter{03F0}{$\varkappa$}
-\DeclareUnicodeCharacter{03F1}{$\varrho$}
-\DeclareUnicodeCharacter{03F4}{$\varphi$}
-\DeclareUnicodeCharacter{03F5}{$\varpi$}
-\DeclareUnicodeCharacter{03F6}{$\varsigma$}
-\DeclareUnicodeCharacter{03F7}{$\vartheta$}
-\DeclareUnicodeCharacter{03F9}{$\varsigma$}
-\DeclareUnicodeCharacter{03FA}{$\vartheta$}
-\DeclareUnicodeCharacter{03FB}{$\vartheta$}
-\DeclareUnicodeCharacter{03FC}{$\vartheta$}
-\DeclareUnicodeCharacter{03FD}{$\vartheta$}
-\DeclareUnicodeCharacter{03FE}{$\vartheta$}
-\DeclareUnicodeCharacter{03FF}{$\vartheta$}
+\else
 
-\DeclareUnicodeCharacter{1F10}{$\alpha$}
-\DeclareUnicodeCharacter{1F11}{$\beta$}
-\DeclareUnicodeCharacter{1F12}{$\gamma$}
-\DeclareUnicodeCharacter{1F13}{$\delta$}
-\DeclareUnicodeCharacter{1F14}{$\epsilon$}
-\DeclareUnicodeCharacter{1F15}{$\zeta$}
-\DeclareUnicodeCharacter{1F16}{$\eta$}
-\DeclareUnicodeCharacter{1F17}{$\theta$}
-\DeclareUnicodeCharacter{1F18}{$\iota$}
-\DeclareUnicodeCharacter{1F19}{$\kappa$}
-\DeclareUnicodeCharacter{1F1A}{$\lambda$}
-\DeclareUnicodeCharacter{1F1B}{$\mu$}
-\DeclareUnicodeCharacter{1F1C}{$\nu$}
-\DeclareUnicodeCharacter{1F1D}{$\xi$}
-\DeclareUnicodeCharacter{1F1E}{$\omicron$}
-\DeclareUnicodeCharacter{1F1F}{$\pi$}
-\DeclareUnicodeCharacter{1F20}{$\rho$}
-\DeclareUnicodeCharacter{1F21}{$\varsigma$}
-\DeclareUnicodeCharacter{1F22}{$\sigma$}
-\DeclareUnicodeCharacter{1F23}{$\tau$}
-\DeclareUnicodeCharacter{1F24}{$\upsilon$}
-\DeclareUnicodeCharacter{1F25}{$\phi$}
-\DeclareUnicodeCharacter{1F26}{$\chi$}
-\DeclareUnicodeCharacter{1F27}{$\psi$}
-\DeclareUnicodeCharacter{1F28}{$\omega$}
-\DeclareUnicodeCharacter{1F29}{$\vartheta$}
-\DeclareUnicodeCharacter{1F2A}{$\varkappa$}
-\DeclareUnicodeCharacter{1F2B}{$\varrho$}
-\DeclareUnicodeCharacter{1F2C}{$\varsigma$}
-\DeclareUnicodeCharacter{1F2D}{$\varphi$}
-\DeclareUnicodeCharacter{1F2E}{$\varpi$}
-\DeclareUnicodeCharacter{1F2F}{$\vartheta$}
+    % PDFLaTeX adjustments:
+    % Make normal (medium) series semi-bold instead for the loaded ttfamily.
+    \DeclareFontSeriesDefault[tt]{md}{sb}
+    % Make roman (serif) series bold-extended when bold is called.
+    \DeclareFontSeriesDefault[rm]{bf}{bx}
 
-\DeclareUnicodeCharacter{2295}{$\oplus$}
-\DeclareUnicodeCharacter{2296}{$\ominus$}
-\DeclareUnicodeCharacter{2297}{$\otimes$}
-\DeclareUnicodeCharacter{221A}{$\surd$}
-\DeclareUnicodeCharacter{27E8}{$\langle$}
-\DeclareUnicodeCharacter{27E9}{$\rangle$}
+    %%% Fixes for pdflatex being unable to compile when the included code snippets (e.g., the usage examples) contain non-ascii characters (e.g., Greek letters).
 
-\DeclareUnicodeCharacter{2032}{$^\prime$}
+    \DeclareUnicodeCharacter{0391}{$\Alpha$}
+    \DeclareUnicodeCharacter{0392}{$\Beta$}
+    \DeclareUnicodeCharacter{0393}{$\Gamma$}
+    \DeclareUnicodeCharacter{0394}{$\Delta$}
+    \DeclareUnicodeCharacter{0395}{$\Epsilon$}
+    \DeclareUnicodeCharacter{0396}{$\Zeta$}
+    \DeclareUnicodeCharacter{0397}{$\Eta$}
+    \DeclareUnicodeCharacter{0398}{$\Theta$}
+    \DeclareUnicodeCharacter{0399}{$\Iota$}
+    \DeclareUnicodeCharacter{039A}{$\Kappa$}
+    \DeclareUnicodeCharacter{039B}{$\Lambda$}
+    \DeclareUnicodeCharacter{039C}{$\Mu$}
+    \DeclareUnicodeCharacter{039D}{$\Nu$}
+    \DeclareUnicodeCharacter{039E}{$\Xi$}
+    \DeclareUnicodeCharacter{039F}{$\Omicron$}
+    \DeclareUnicodeCharacter{03A0}{$\Pi$}
+    \DeclareUnicodeCharacter{03A1}{$\Rho$}
+    \DeclareUnicodeCharacter{03A3}{$\Sigma$}
+    \DeclareUnicodeCharacter{03A4}{$\Tau$}
+    \DeclareUnicodeCharacter{03A5}{$\Upsilon$}
+    \DeclareUnicodeCharacter{03A6}{$\Phi$}
+    \DeclareUnicodeCharacter{03A7}{$\Chi$}
+    \DeclareUnicodeCharacter{03A8}{$\Psi$}
+    \DeclareUnicodeCharacter{03A9}{$\Omega$}
+
+    \DeclareUnicodeCharacter{03B1}{$\alpha$}
+    \DeclareUnicodeCharacter{03B2}{$\beta$}
+    \DeclareUnicodeCharacter{03B3}{$\gamma$}
+    \DeclareUnicodeCharacter{03B4}{$\delta$}
+    \DeclareUnicodeCharacter{03B5}{$\epsilon$}
+    \DeclareUnicodeCharacter{03B6}{$\zeta$}
+    \DeclareUnicodeCharacter{03B7}{$\eta$}
+    \DeclareUnicodeCharacter{03B8}{$\theta$}
+    \DeclareUnicodeCharacter{03B9}{$\iota$}
+    \DeclareUnicodeCharacter{03BA}{$\kappa$}
+    \DeclareUnicodeCharacter{03BB}{$\lambda$}
+    \DeclareUnicodeCharacter{03BC}{$\mu$}
+    \DeclareUnicodeCharacter{03BD}{$\nu$}
+    \DeclareUnicodeCharacter{03BE}{$\xi$}
+    \DeclareUnicodeCharacter{03BF}{$\omicron$}
+    \DeclareUnicodeCharacter{03C0}{$\pi$}
+    \DeclareUnicodeCharacter{03C1}{$\rho$}
+    \DeclareUnicodeCharacter{03C2}{$\varsigma$}
+    \DeclareUnicodeCharacter{03C3}{$\sigma$}
+    \DeclareUnicodeCharacter{03C4}{$\tau$}
+    \DeclareUnicodeCharacter{03C5}{$\upsilon$}
+    \DeclareUnicodeCharacter{03C6}{$\phi$}
+    \DeclareUnicodeCharacter{03C7}{$\chi$}
+    \DeclareUnicodeCharacter{03C8}{$\psi$}
+    \DeclareUnicodeCharacter{03C9}{$\omega$}
+
+    \DeclareUnicodeCharacter{03B8}{$\theta$}
+    \DeclareUnicodeCharacter{03D1}{$\vartheta$}
+    \DeclareUnicodeCharacter{03D5}{$\phi$}
+    \DeclareUnicodeCharacter{03D6}{$\varpi$}
+    \DeclareUnicodeCharacter{03F0}{$\varkappa$}
+    \DeclareUnicodeCharacter{03F1}{$\varrho$}
+    \DeclareUnicodeCharacter{03F4}{$\varphi$}
+    \DeclareUnicodeCharacter{03F5}{$\varpi$}
+    \DeclareUnicodeCharacter{03F6}{$\varsigma$}
+    \DeclareUnicodeCharacter{03F7}{$\vartheta$}
+    \DeclareUnicodeCharacter{03F9}{$\varsigma$}
+    \DeclareUnicodeCharacter{03FA}{$\vartheta$}
+    \DeclareUnicodeCharacter{03FB}{$\vartheta$}
+    \DeclareUnicodeCharacter{03FC}{$\vartheta$}
+    \DeclareUnicodeCharacter{03FD}{$\vartheta$}
+    \DeclareUnicodeCharacter{03FE}{$\vartheta$}
+    \DeclareUnicodeCharacter{03FF}{$\vartheta$}
+
+    \DeclareUnicodeCharacter{1F10}{$\alpha$}
+    \DeclareUnicodeCharacter{1F11}{$\beta$}
+    \DeclareUnicodeCharacter{1F12}{$\gamma$}
+    \DeclareUnicodeCharacter{1F13}{$\delta$}
+    \DeclareUnicodeCharacter{1F14}{$\epsilon$}
+    \DeclareUnicodeCharacter{1F15}{$\zeta$}
+    \DeclareUnicodeCharacter{1F16}{$\eta$}
+    \DeclareUnicodeCharacter{1F17}{$\theta$}
+    \DeclareUnicodeCharacter{1F18}{$\iota$}
+    \DeclareUnicodeCharacter{1F19}{$\kappa$}
+    \DeclareUnicodeCharacter{1F1A}{$\lambda$}
+    \DeclareUnicodeCharacter{1F1B}{$\mu$}
+    \DeclareUnicodeCharacter{1F1C}{$\nu$}
+    \DeclareUnicodeCharacter{1F1D}{$\xi$}
+    \DeclareUnicodeCharacter{1F1E}{$\omicron$}
+    \DeclareUnicodeCharacter{1F1F}{$\pi$}
+    \DeclareUnicodeCharacter{1F20}{$\rho$}
+    \DeclareUnicodeCharacter{1F21}{$\varsigma$}
+    \DeclareUnicodeCharacter{1F22}{$\sigma$}
+    \DeclareUnicodeCharacter{1F23}{$\tau$}
+    \DeclareUnicodeCharacter{1F24}{$\upsilon$}
+    \DeclareUnicodeCharacter{1F25}{$\phi$}
+    \DeclareUnicodeCharacter{1F26}{$\chi$}
+    \DeclareUnicodeCharacter{1F27}{$\psi$}
+    \DeclareUnicodeCharacter{1F28}{$\omega$}
+    \DeclareUnicodeCharacter{1F29}{$\vartheta$}
+    \DeclareUnicodeCharacter{1F2A}{$\varkappa$}
+    \DeclareUnicodeCharacter{1F2B}{$\varrho$}
+    \DeclareUnicodeCharacter{1F2C}{$\varsigma$}
+    \DeclareUnicodeCharacter{1F2D}{$\varphi$}
+    \DeclareUnicodeCharacter{1F2E}{$\varpi$}
+    \DeclareUnicodeCharacter{1F2F}{$\vartheta$}
+
+    \DeclareUnicodeCharacter{2295}{$\oplus$}
+    \DeclareUnicodeCharacter{2296}{$\ominus$}
+    \DeclareUnicodeCharacter{2297}{$\otimes$}
+    \DeclareUnicodeCharacter{221A}{$\surd$}
+    \DeclareUnicodeCharacter{27E8}{$\langle$}
+    \DeclareUnicodeCharacter{27E9}{$\rangle$}
+
+    \DeclareUnicodeCharacter{2032}{$^\prime$}
+\fi
 
 % \usepackage{titlesec}
 \titleclass{\part}{top}
@@ -761,7 +795,7 @@ colback=colorbackground,
 colframe=colorprimary,
 colbacktitle=colorprimary,
 coltitle=white,
-fonttitle=\ttfamily,
+fonttitle=\ttfamily\fontsize{9.75}{11.75}\selectfont,
 fontupper=\linespread{1.12}\fontsize{10.25}{12},
 fontlower=\linespread{1.12}\fontsize{10.25}{12},
 attach boxed title to top right={yshift=-\tcboxedtitleheight},
@@ -789,7 +823,7 @@ line width=0.4mm,
 % },
 % decorate,
 postaction={decoration={text effects along path, text align={left indent=0em}, text color=colorprimary, text format delimiters={[}{]}, text={OUTPUT},
-text effects/.cd, path from text, group letters, every word separator/.style={fill=none}, characters={fill=colorprimary, xshift=-0.125mm, yshift=-0.25cm, font=\ttfamily\bfseries\color{colorbackground}},
+text effects/.cd, path from text, group letters, every word separator/.style={fill=none}, characters={fill=colorprimary, xshift=-0.125mm, yshift=-0.22cm, font=\ttfamily\bfseries\color{colorbackground}\fontsize{10}{12}\selectfont},
 }, decorate},
 },
 % underlay first={
@@ -808,7 +842,7 @@ title={\thetcbcounter},
 
 \newenvironment{codetitled}[2]{
 \begin{code}[
-title={\textsf{\textbf{\textit{\small #1}}} \hfill \thetcbcounter},
+title={\textsf{\textbf{\textit{\fontsize{9.65}{11.75}\selectfont #1 \rule[-0.1\baselineskip]{0pt}{0.75\baselineskip}}}} \hfill \raisebox{0.00\baselineskip}{\fontsize{9.75}{11.75}\selectfont \thetcbcounter}},
 attach boxed title to top right=false,
 attach boxed title to top,
 boxed title style={
@@ -847,7 +881,7 @@ label={#2},
     TableRowColorHeader={HTML}{D8E9FF}, \
     TableRowColorOdd={HTML}{F7F7F7}, \
     TableRowColorEven={HTML}{EEEEEE}, \
-    pre_border-radius=0px, \
+    pre_border-radius=0pt, \
     pre_border-width=0.25mm, \
     pre_border-TeXcolor={HTML}{F5F5F5}, \
     pre_background-TeXcolor=red, \
@@ -857,7 +891,7 @@ label={#2},
     pre_padding-right=0.0cm, \
     pre_TeXextras=, \
     div.note_border-width=0.25mm, \
-    div.note_border-radius=0px, \
+    div.note_border-radius=0pt, \
     div.note_padding=0.3cm, \
     div.note_title-foreground-TeXcolor={HTML}{2266C0}, \
     div.note_title-background-TeXcolor={HTML}{D8E9FF}, \

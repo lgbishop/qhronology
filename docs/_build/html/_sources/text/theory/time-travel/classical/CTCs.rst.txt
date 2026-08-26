@@ -25,14 +25,14 @@ In essence, a wormhole is an exotic, theoretical object that connects two distan
 .. only:: html
 
    .. figure:: /figures/output/diagram_wormhole_mouths-dark.png
-      :scale: 34 %
+      :scale: 38 %
       :alt: A diagram of the surfaces of a simple topological wormholes.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/diagram_wormhole_mouths-light.png
-      :scale: 34 %
+      :scale: 38 %
       :alt: A diagram of the surfaces of a simple topological wormholes.
       :align: center
       :figwidth: 100 %
@@ -40,7 +40,7 @@ In essence, a wormhole is an exotic, theoretical object that connects two distan
 
 .. figure:: /figures/output/diagram_wormhole_mouths-light.png
    :name: fig:diagram_wormhole_mouths
-   :scale: 40 %
+   :scale: 38 %
    :alt: A diagram of the surfaces of a simple topological wormholes.
    :align: center
    :figwidth: 100 %

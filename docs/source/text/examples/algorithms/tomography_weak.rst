@@ -238,6 +238,10 @@ Implementation
 
 .. raw:: latex
 
+   \enlargethispage{\baselineskip}
+
+.. raw:: latex
+
    \begin{codetitled}{Quantum state tomography via weak measurements}{}
 
 .. literalinclude:: /text/examples/algorithms/tomography_weak.py

@@ -559,7 +559,7 @@ Constructor argument properties
    - a list of lists (describing a matrix)
    - a list of 2-tuples
 
-   The data type of the elements contained within the first three of these options can be any of the following: numerical (including all scalars from SymPy, NumPy, and the standard library), SymPy symbolic (including expressions), or string representations of such scalar types. However, the fourth option---the bespoke list-of-tuples format---is intended to be the primary way of characterizing quantum states. Its structure is reasonably straightforward: each 2-tuple contains an amplitude or probability (a scalar expression as a numerical, symbolic, or string value) followed by a list of non-negative integers corresponding to the levels of the number states of the desired basis vector. In the case of multiple such tuples in the given list, the resulting quantum state is the sum of all components formed from each individual tuple.
+   The data type of the elements contained within the first three of these options can be any of the following: numerical (including all scalars from SymPy, NumPy, and the standard library), SymPy symbolic (including expressions), or string representations of such scalar types. However, the fourth option---the bespoke list-of-tuples format---is intended to be the primary way of characterizing quantum states. Its structure is reasonably straightforward: each 2-tuple contains an amplitude or probability (a scalar expression as a numerical, symbolic, or string value) followed by a list of non-negative integers corresponding to the element(s) of the desired basis vector in the number basis. In the case of multiple such tuples in the given list, the resulting quantum state is the sum of all components formed from each individual tuple.
 
    For example, passing the list :python:`[("α", [0, 0]), ("β", [1, 1])]` to :python:`spec` in a :py:class:`~qhronology.quantum.states.QuantumState` construction yields a state which corresponds to one of the following forms (depending on the values passed to the other core arguments or properties):
 
@@ -695,10 +695,6 @@ Methods
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
-
 .. automethod:: qhronology.quantum.states.QuantumState.print
 
    .. raw:: latex
@@ -751,6 +747,10 @@ Methods
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \newpage
 
    .. raw:: latex
 
@@ -1001,7 +1001,10 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
    .. code:: python
 
       >>> psi = QuantumState(
-      ...     spec=[((1 + 2*sp.exp(sp.pi*sp.I/2))/2, [0]), ((1 - 2*sp.exp(sp.pi*sp.I/2))/2, [1])],
+      ...     spec=[
+      ...         ((1 + 2*sp.exp(sp.pi*sp.I/2))/2, [0]),
+      ...         ((1 - 2*sp.exp(sp.pi*sp.I/2))/2, [1]),
+      ...     ],
       ...     form="matrix",
       ...     kind="pure",
       ...     label="ψ",
@@ -1341,11 +1344,19 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \newpage
+
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
+
 .. automethod:: qhronology.quantum.states.QuantumState.measure
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
+      \enlargethispage{-2\baselineskip}
 
    .. raw:: latex
 
@@ -1436,15 +1447,7 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{-3\baselineskip}
-
 .. automethod:: qhronology.quantum.states.QuantumState.postselect
-
-   .. raw:: latex
-
-      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -1632,15 +1635,7 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \newpage
-
 .. automethod:: qhronology.quantum.states.QuantumState.distance
-
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -1999,10 +1994,6 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 Subclasses
 ==========
 
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
-
 .. autoclass:: qhronology.quantum.states.VectorState
 
    .. raw:: latex
@@ -2058,6 +2049,10 @@ Subclasses
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \newpage
 
    .. raw:: latex
 
@@ -2139,7 +2134,7 @@ Subclasses
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \newpage
 
 .. autoclass:: qhronology.quantum.states.MixedState
 

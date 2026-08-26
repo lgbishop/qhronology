@@ -34,13 +34,14 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c3b1ed24" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=e1805805" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/MonaspaceNeon/MonaspaceNeon.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -70,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 17, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
   </head>
   
   
@@ -504,17 +505,17 @@
 <li><p><code class="code highlight python docutils literal highlight-python"><span class="n">QuantumState</span></code>: for creating quantum states. Instances have <em>mutable</em> internal states.</p></li>
 <li><p><code class="code highlight python docutils literal highlight-python"><span class="n">QuantumGate</span></code>: for creating quantum gates. Instances have <em>immutable</em> internal states.</p></li>
 </ul>
-<p>These are implemented as <em>extending</em> subclasses, where each adds to and modifies the functionality of the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> base class primarily through class properties and methods.Instances of these derived classes provide exhaustive descriptions of their corresponding quantum constructs: in addition to containing a precise mathematical specification (including metadata regarding symbols and their associated constraints), they can be inspected, visualized, and, in the case of quantum states, transformed (mutated) via quantum operations. Here, <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> provides the core matrix, symbolic, and visualization machinery (in addition to all other internal implementation details) required by Qhronology’s programmatic description of fundamental quantum objects. Thus, as both states and gates are simply just specific types of such objects, then using the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> class as a shared foundation is a natural arrangement—one which greatly simplifies the project’s source code by directly reducing redundancy.</p>
+<p>These are implemented as <em>extending</em> subclasses, where each adds to and modifies the functionality of the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> base class primarily through class properties and methods. Instances of these derived classes provide exhaustive descriptions of their corresponding quantum constructs: in addition to containing a precise mathematical specification (including metadata regarding symbols and their associated constraints), they can be inspected, visualized, and, in the case of quantum states, transformed (mutated) via quantum operations. Here, <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> provides the core matrix, symbolic, and visualization machinery (in addition to all other internal implementation details) required by Qhronology’s programmatic description of fundamental quantum objects. Thus, as both states and gates are simply just specific types of such objects, then using the <code class="code highlight python docutils literal highlight-python"><span class="n">QuantumObject</span></code> class as a shared foundation is a natural arrangement—one which greatly simplifies the project’s source code by directly reducing redundancy.</p>
 <figure class="only-dark align-center" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/diagram_classes-dark.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../../_images/diagram_classes-dark.png" style="width: 575.2800000000001px; height: 995.5200000000001px;" />
+<a class="reference internal image-reference" href="../../../_images/diagram_classes-dark.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../../_images/diagram_classes-dark.png" style="width: 575.2800000000001px; height: 997.22px;" />
 </a>
 </figure>
 <figure class="only-light align-center" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/diagram_classes-light.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../../_images/diagram_classes-light.png" style="width: 575.2800000000001px; height: 995.5200000000001px;" />
+<a class="reference internal image-reference" href="../../../_images/diagram_classes-light.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../../_images/diagram_classes-light.png" style="width: 575.2800000000001px; height: 997.22px;" />
 </a>
 </figure>
 <figure class="light-dark hidden align-center" id="fig-diagram-classes" style="width: 100%">
-<a class="reference internal image-reference" href="../../../_images/diagram_classes-light.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../../_images/diagram_classes-light.png" style="width: 609.12px; height: 1054.08px;" />
+<a class="reference internal image-reference" href="../../../_images/diagram_classes-light.png"><img alt="A simple diagram depicting the (inheritance) relationships between the package's classes." src="../../../_images/diagram_classes-light.png" style="width: 575.2800000000001px; height: 997.22px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Figure 7 </span><span class="caption-text">A simplified UML (Unified Modeling Language) class diagram depicting the relationships between Qhronology’s core classes.</span><a class="headerlink" href="#fig-diagram-classes" title="Link to this image">#</a></p>

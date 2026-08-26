@@ -34,13 +34,14 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c3b1ed24" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=e1805805" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/MonaspaceNeon/MonaspaceNeon.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 17, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
   </head>
   
   
@@ -669,10 +670,10 @@
 <div class="math notranslate nohighlight" id="equation-eq-tomography-expectation">
 <span class="eqno">(456)<a class="headerlink" href="#equation-eq-tomography-expectation" title="Link to this equation">#</a></span>\[\Expectation_k \equiv \frac{1}{\Strength}\trace[\Pauli_z\StateProbe_k] = \trace[\Pauli_k \StateCV],\]</div>
 <p>which is often denoted in the literature as <span class="math notranslate nohighlight">\(\big&lt;\Pauli_k\big&gt;\)</span>.</p>
-<p>If we define <span class="math notranslate nohighlight">\(\Pauli_0 \equiv \Identity\)</span>, then the set of operators <span class="math notranslate nohighlight">\(\{\Pauli_k\}_{k=0}^3\)</span> forms a complete basis for the space of complex <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrices. Since this coincides with the space of linear operators <span class="math notranslate nohighlight">\(\SpaceLinear(\SpaceHilbert)\)</span> on our qubit (<span class="math notranslate nohighlight">\(2\)</span>-dimensional) Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, then any state <span class="math notranslate nohighlight">\(\StateCV \in \SpaceLinear(\SpaceHilbert)\)</span> can accordingly be reconstructed via the linear combination,</p>
+<p>If we define <span class="math notranslate nohighlight">\(\Pauli_0 \equiv \Identity\)</span>, then the set of operators <span class="math notranslate nohighlight">\(\{\Pauli_\mu\}_{\mu=0}^3\)</span> forms a complete basis for the space of complex <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrices. Since this coincides with the space of linear operators <span class="math notranslate nohighlight">\(\SpaceLinear(\SpaceHilbert)\)</span> on our qubit (<span class="math notranslate nohighlight">\(2\)</span>-dimensional) Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert\)</span>, then any state <span class="math notranslate nohighlight">\(\StateCV \in \SpaceLinear(\SpaceHilbert)\)</span> can accordingly be reconstructed via the linear combination,</p>
 <div class="math notranslate nohighlight" id="equation-eq-tomography-reconstruction">
-<span class="eqno">(457)<a class="headerlink" href="#equation-eq-tomography-reconstruction" title="Link to this equation">#</a></span>\[ \StateCV = \frac{1}{2}\sum_{k=0}^{3} \trace[\Pauli_k \StateCV] \Pauli_k.\]</div>
-<p>Since the coefficient for <span class="math notranslate nohighlight">\(k = 0\)</span> is fixed by normalization (i.e., <span class="math notranslate nohighlight">\(\trace[\Pauli_0 \StateCV] = 1\)</span>), then the state is completely (and uniquely) determined by the <em>Bloch vector</em>, which is defined for a <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional state as the <span class="math notranslate nohighlight">\((\Dimension^2-1)\)</span>-dimensional real vector of parameters <span class="math notranslate nohighlight">\(\bigl\{\trace[\Pauli_k \StateCV]\bigr\}_{k = 1}^{\Dimension^2 - 1}\)</span>. Accordingly, the linear combination <a class="reference internal" href="#equation-eq-tomography-reconstruction">(457)</a> is said to be the <em>Bloch sphere representation</em> of the state <span class="math notranslate nohighlight">\(\StateCV\)</span>. Thus, since we have shown that we can infer expectation values <a class="reference internal" href="#equation-eq-tomography-expectation">(456)</a> for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the <span class="math notranslate nohighlight">\(z\)</span>-basis, then we can completely characterize the state without directly measuring it.</p>
+<span class="eqno">(457)<a class="headerlink" href="#equation-eq-tomography-reconstruction" title="Link to this equation">#</a></span>\[ \StateCV = \frac{1}{2}\sum_{\mu=0}^{3} \trace[\Pauli_\mu \StateCV] \Pauli_\mu.\]</div>
+<p>Since the coefficient for <span class="math notranslate nohighlight">\(\mu = 0\)</span> is fixed by normalization (i.e., <span class="math notranslate nohighlight">\(\trace[\Pauli_0 \StateCV] = 1\)</span>), then the state is completely (and uniquely) determined by the <em>Bloch vector</em>, which is defined for a <span class="math notranslate nohighlight">\(\Dimension\)</span>-dimensional state as the <span class="math notranslate nohighlight">\((\Dimension^2-1)\)</span>-dimensional real vector of parameters <span class="math notranslate nohighlight">\(\bigl\{\trace[\Pauli_k \StateCV]\bigr\}_{k = 1}^{\Dimension^2 - 1}\)</span>. Accordingly, the linear combination <a class="reference internal" href="#equation-eq-tomography-reconstruction">(457)</a> is said to be the <em>Bloch sphere representation</em> of the state <span class="math notranslate nohighlight">\(\StateCV\)</span>. Thus, since we have shown that we can infer expectation values <a class="reference internal" href="#equation-eq-tomography-expectation">(456)</a> for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the <span class="math notranslate nohighlight">\(z\)</span>-basis, then we can completely characterize the state without directly measuring it.</p>
 </section>
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
@@ -703,7 +704,6 @@
 <span class="n">CN</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">HI</span> <span class="o">=</span> <span class="n">Hadamard</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">PI</span> <span class="o">=</span> <span class="n">Phase</span><span class="p">(</span><span class="n">exponent</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_systems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
 <span class="n">VI</span> <span class="o">=</span> <span class="p">[[</span><span class="n">HI</span><span class="p">],</span> <span class="p">[</span><span class="n">PI</span><span class="p">,</span> <span class="n">HI</span><span class="p">],</span> <span class="p">[]]</span>
 
 <span class="c1"># Circuits</span>

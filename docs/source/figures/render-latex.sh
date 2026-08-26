@@ -27,7 +27,12 @@ for FILE in "${jobs[@]}"; do
 
     PATH_RELATIVE="${dir#$PATH_INPUT/}" # Get the relative path from $PATH_INPUT
 
-    pdflatex -shell-escape -synctex=0 -interaction=batchmode -file-line-error -jobname="$FILENAME" -output-directory="$PATH_OUTPUT" "$PATH_INPUT/$PATH_RELATIVE/$FILENAME.tex"
+    if [[ $FILE == *"diagram_classes"* ]]; then
+        xelatex -shell-escape -synctex=0 -interaction=batchmode -file-line-error -jobname="$FILENAME" -output-directory="$PATH_OUTPUT" "$PATH_INPUT/$PATH_RELATIVE/$FILENAME.tex"
+    else
+        pdflatex -shell-escape -synctex=0 -interaction=batchmode -file-line-error -jobname="$FILENAME" -output-directory="$PATH_OUTPUT" "$PATH_INPUT/$PATH_RELATIVE/$FILENAME.tex"
+    fi
+
     mv -f "$PATH_OUTPUT/$FILENAME.pdf" "$PATH_OUTPUT/$FILENAME-uncropped.pdf"
     pdfcrop --hires "$PATH_OUTPUT/$FILENAME-uncropped.pdf" "$PATH_OUTPUT/$FILENAME.pdf"
     pdf2svg "$PATH_OUTPUT/$FILENAME.pdf" "$PATH_OUTPUT/$FILENAME-light.svg"
@@ -42,6 +47,11 @@ for FILE in "${jobs[@]}"; do
         magick "$PATH_OUTPUT/$FILENAME-light.png" -resize 10.0% -channel RGB -negate -threshold 10% -negate "$PATH_OUTPUT/$FILENAME-light.png" # -sharpen 0x1.0
         magick "$PATH_OUTPUT/$FILENAME-light.png" -channel RGB -negate "$PATH_OUTPUT/$FILENAME-dark.png"
     fi
+    magick "$PATH_OUTPUT/$FILENAME-light.png" -strip "$PATH_OUTPUT/$FILENAME-light.png"
+    magick "$PATH_OUTPUT/$FILENAME-dark.png" -strip "$PATH_OUTPUT/$FILENAME-dark.png"
+    magick "$PATH_OUTPUT/$FILENAME-light.png" -density 48 -units PixelsPerCentimeter "$PATH_OUTPUT/$FILENAME-light.png"
+    magick "$PATH_OUTPUT/$FILENAME-dark.png" -density 48 -units PixelsPerCentimeter "$PATH_OUTPUT/$FILENAME-dark.png"
+
     # magick "$PATH_OUTPUT/$FILENAME-light.png" -channel RGB -negate -background black -alpha remove -alpha off "$PATH_OUTPUT/$FILENAME-alphaless.png"
 
     # Remove white fill and strokes from the light-theme SVG

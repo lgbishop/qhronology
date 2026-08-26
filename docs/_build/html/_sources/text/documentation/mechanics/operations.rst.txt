@@ -137,6 +137,10 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. autofunction:: qhronology.mechanics.operations.round
 
    .. raw:: latex
@@ -184,6 +188,9 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. autofunction:: qhronology.mechanics.operations.simplify
 
@@ -240,6 +247,10 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. autofunction:: qhronology.mechanics.operations.rewrite
 
    .. raw:: latex
@@ -273,6 +284,10 @@ Functions
    \hrulefillthick
 
 .. autofunction:: qhronology.mechanics.operations.apply
+
+   .. raw:: latex
+
+      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -317,6 +332,7 @@ Functions
 
 .. autofunction:: qhronology.mechanics.operations.normalize
 
+
    .. raw:: latex
 
       \begin{adjustwidth}{0.00cm}{0cm}
@@ -338,6 +354,10 @@ Functions
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \newpage
 
    .. raw:: latex
 
@@ -363,7 +383,15 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
+
 .. autofunction:: qhronology.mechanics.operations.coefficient
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
@@ -389,6 +417,10 @@ Functions
 
    .. raw:: latex
 
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -411,13 +443,29 @@ Functions
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. autofunction:: qhronology.mechanics.operations.partial_trace
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -438,10 +486,6 @@ Functions
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \newpage
 
    .. raw:: latex
 
@@ -564,9 +608,15 @@ Functions
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \newpage
+   \null
+   \vspace*{-2\baselineskip}
 
 .. autofunction:: qhronology.mechanics.operations.postselect
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 

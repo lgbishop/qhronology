@@ -72,13 +72,11 @@ Methods
 
 .. raw:: latex
 
-   \newpage
-   \null
-   \vspace*{-2.35\baselineskip}
+   \hrulefillthick
 
 .. raw:: latex
 
-   \hrulefillthick
+   \enlargethispage{-\baselineskip}
 
 .. automethod:: qhronology.quantum.prescriptions.PCTC.output_violating
 
@@ -97,12 +95,6 @@ Methods
    \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.prescriptions.PCTC.state_violating
-
-.. raw:: latex
-
-   \newpage
-   \null
-   \vspace*{-1.50\baselineskip}
 
 .. raw:: latex
 

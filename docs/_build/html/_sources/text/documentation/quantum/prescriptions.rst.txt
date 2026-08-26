@@ -54,6 +54,10 @@ Please note that the documentation of this class includes only properties and me
 
 .. raw:: latex
 
+   \enlargethispage{-\baselineskip}
+
+.. raw:: latex
+
    \begin{codetitled}{SWAP interaction with a CTC}{}
 
 .. literalinclude:: /text/examples/docstrings/prescription_swap.py
@@ -107,6 +111,10 @@ Please note that the documentation of this class includes only properties and me
 .. raw:: latex
 
    \vspace*{0.35\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 

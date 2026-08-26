@@ -19,6 +19,7 @@ U = QuantumGate(
     symbols=symbols,
     substitutions=substitutions,
     label="U",
+    conjugate=False,
 )
 Ud = QuantumGate(
     spec=unitary,

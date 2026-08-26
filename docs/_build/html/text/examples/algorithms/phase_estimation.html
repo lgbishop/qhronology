@@ -34,13 +34,14 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c3b1ed24" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=e1805805" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/MonaspaceNeon/MonaspaceNeon.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 17, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
   </head>
   
   
@@ -537,7 +538,7 @@
 </section>
 <section id="algorithm">
 <h2>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h2>
-<p>In the canonical quantum phase estimation algorithm, introduced by Kitaev <span id="id1">[<a class="reference internal" href="#cite-1-kitaev-quantum-1995" title="A. Y. Kitaev, “Quantum measurements and the Abelian Stabilizer Problem”, arXiv, November 1995. DOI: 10.48550/arXiv.quant-ph/9511026">1</a>]</span> and depicted in <a class="reference internal" href="#fig-circuit-algorithm-phase-estimation"><span class="std std-numref">Figure 28</span></a>, we require two registers. The first (upper), called the <em>estimation</em> (or <em>control</em>) register, consists of <span class="math notranslate nohighlight">\(n\)</span> qubits (on the Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_2^{\otimes n}\)</span>), with each initialized to <span class="math notranslate nohighlight">\(\ket{0}\)</span>. The second (lower), called the <em>eigenvector</em> (or <em>target</em>) register, is in the state of a eigenvector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> of the given <span class="math notranslate nohighlight">\(\Unitary\)</span> over <span class="math notranslate nohighlight">\(m\)</span> qubits (on Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_2^{\otimes m}\)</span>). The total initial state may therefore be written as</p>
+<p>In the canonical quantum phase estimation algorithm, introduced by Kitaev <span id="id1">[<a class="reference internal" href="#cite-1-kitaev-quantum-1995" title="A. Y. Kitaev, “Quantum measurements and the Abelian Stabilizer Problem”, arXiv, November 1995. DOI: 10.48550/arXiv.quant-ph/9511026">1</a>]</span> and depicted in <a class="reference internal" href="#fig-circuit-algorithm-phase-estimation"><span class="std std-numref">Figure 28</span></a>, we require two registers. The first (upper), called the <em>estimation</em> (or <em>control</em>) register, consists of <span class="math notranslate nohighlight">\(n\)</span> qubits (on the Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_2^{\otimes n}\)</span>), with each initialized to <span class="math notranslate nohighlight">\(\ket{0}\)</span>. The second (lower), called the <em>eigenvector</em> (or <em>target</em>) register, is in the state of an eigenvector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> of the given <span class="math notranslate nohighlight">\(\Unitary\)</span> over <span class="math notranslate nohighlight">\(m\)</span> qubits (on the Hilbert space <span class="math notranslate nohighlight">\(\SpaceHilbert_2^{\otimes m}\)</span>). The total initial state may therefore be written as</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-phase-estimation-2">
 <span class="eqno">(389)<a class="headerlink" href="#equation-text-examples-algorithms-phase-estimation-2" title="Link to this equation">#</a></span>\[\ket{\Psi_0} = \ket{0}^{\otimes n} \otimes \ket{\psi}.\]</div>
 <p>The first step consists of transforming the estimation register to an equal superposition state. This is achieved via an <span class="math notranslate nohighlight">\(n\)</span>-qubit Hadamard gate operation <span class="math notranslate nohighlight">\(\Hadamard^{\otimes n}\)</span>, which gives</p>

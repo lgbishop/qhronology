@@ -17,6 +17,7 @@ find ./source_latex -type f -name "*.bak" -exec rm {} +
 sphinx-build -M latex ./source_latex ./_build --tag "latex" --write-all --fresh-env --define root_doc="index_latex" --define exclude_patterns="index.rst"
 cp -r ./source/figures/output/* ./_build/latex/
 cp -r ./source/art/output/* ./_build/latex/
+cp -r ./source/fonts/ ./_build/latex/
 
 perl -i -pe 's/\\subsubsection\*{Examples}/\\subparagraph\*{\\hspace{-0.58cm}Examples}/g' "./_build/latex/qhronology.tex"
 

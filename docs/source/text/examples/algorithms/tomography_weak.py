@@ -23,7 +23,6 @@ probe_state = VectorState(
 CN = Not(targets=[1], controls=[0], num_systems=2)
 HI = Hadamard(targets=[0], num_systems=2)
 PI = Phase(exponent=sp.Rational(1, 2), targets=[0], num_systems=2)
-
 VI = [[HI], [PI, HI], []]
 
 # Circuits

@@ -2,10 +2,6 @@
 List of symbols
 ***************
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. csv-table:: List of symbols.
    :header: "**Symbol**", "**Description**"
    :widths: 18, 82

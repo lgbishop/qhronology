@@ -36,7 +36,6 @@ output_lower.simplify()
 
 # Results
 print(repr(swapcnots.gate()))
-
 input_upper.print()
 input_lower.print()
 swapcnots.input().print()
@@ -47,6 +46,5 @@ output_total.print()
 
 print(output_upper.distance(input_lower))
 print(output_lower.distance(input_upper))
-
 print(output_upper.fidelity(input_lower))
 print(output_lower.fidelity(input_upper))

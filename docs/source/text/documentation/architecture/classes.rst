@@ -12,7 +12,7 @@ Qhronology presents an innovative approach to describing both simulations of qua
 - :python:`QuantumState`: for creating quantum states. Instances have *mutable* internal states.
 - :python:`QuantumGate`: for creating quantum gates. Instances have *immutable* internal states.
 
-These are implemented as *extending* subclasses, where each adds to and modifies the functionality of the :python:`QuantumObject` base class primarily through class properties and methods.Instances of these derived classes provide exhaustive descriptions of their corresponding quantum constructs: in addition to containing a precise mathematical specification (including metadata regarding symbols and their associated constraints), they can be inspected, visualized, and, in the case of quantum states, transformed (mutated) via quantum operations. Here, :python:`QuantumObject` provides the core matrix, symbolic, and visualization machinery (in addition to all other internal implementation details) required by Qhronology's programmatic description of fundamental quantum objects. Thus, as both states and gates are simply just specific types of such objects, then using the :python:`QuantumObject` class as a shared foundation is a natural arrangement---one which greatly simplifies the project's source code by directly reducing redundancy.
+These are implemented as *extending* subclasses, where each adds to and modifies the functionality of the :python:`QuantumObject` base class primarily through class properties and methods. Instances of these derived classes provide exhaustive descriptions of their corresponding quantum constructs: in addition to containing a precise mathematical specification (including metadata regarding symbols and their associated constraints), they can be inspected, visualized, and, in the case of quantum states, transformed (mutated) via quantum operations. Here, :python:`QuantumObject` provides the core matrix, symbolic, and visualization machinery (in addition to all other internal implementation details) required by Qhronology's programmatic description of fundamental quantum objects. Thus, as both states and gates are simply just specific types of such objects, then using the :python:`QuantumObject` class as a shared foundation is a natural arrangement---one which greatly simplifies the project's source code by directly reducing redundancy.
 
 .. raw:: latex
    
@@ -39,7 +39,7 @@ These are implemented as *extending* subclasses, where each adds to and modifies
 
 .. figure:: /figures/output/diagram_classes-light.png
    :name: fig:diagram_classes
-   :scale: 36 %
+   :scale: 34 %
    :alt: A simple diagram depicting the (inheritance) relationships between the package's classes.
    :align: center
    :figwidth: 100 %

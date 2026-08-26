@@ -10,7 +10,7 @@ html {
     --bs-body-font-size: 0.95rem !important;
     --pst-font-family-base: 'Source Sans 3', 'Roboto', var(--pst-font-family-base-system);
     --pst-font-family-heading: 'ClearSans', 'Source Code Pro', 'Roboto', var(--pst-font-family-base-system);
-    --pst-font-family-monospace: 'Cousine', 'Source Code Pro', 'Courier', var(--pst-font-family-monospace-system);
+    --pst-font-family-monospace: 'Monaspace Neon', 'Cousine', 'Source Code Pro', 'Courier', var(--pst-font-family-monospace-system);
     --pst-font-size-h0: 2.00rem;
     --pst-font-size-h1: 1.75rem;
     --pst-font-size-h2: 1.5rem;
@@ -267,6 +267,7 @@ dt {
     border-bottom: 1px solid var(--pst-color-border);
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
+    line-height: 1.75;
 }
 /* Docstrings */
 dd > p {
@@ -977,11 +978,16 @@ button.copybtn svg {
 
 pre {
     border-radius: 0.0rem;
+    line-height: 1.5 !important;
 }
 
 div.notranslate div pre {
     border-radius: 0.0rem;
-    font-size: 0.9em;
+}
+
+div.notranslate, div.highlight {
+    border-radius: 0.0rem;
+    font-size: 0.9rem;
 }
 
 div.literal-block-wrapper {
@@ -1028,7 +1034,7 @@ code.highlight > span.n {
 }
 
 div.semigraphical div pre {
-    font-family: 'Cousine', 'Source Code Pro', 'JuliaMono', monospace;
+    font-family: 'Monaspace Neon', 'Cousine', 'Source Code Pro', 'JuliaMono', monospace;
     font-size: 0.875rem;
     text-align: left;
     line-height: 100% !important;

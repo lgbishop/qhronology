@@ -725,7 +725,7 @@ Both of these are built using `Sphinx <https://www.sphinx-doc.org>`_ (`repositor
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{-4\baselineskip}
 
 .. include:: ./../../CONTRIBUTING.rst
 

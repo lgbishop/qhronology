@@ -110,11 +110,11 @@ class QuantumCircuit(SymbolicsProperties):
 
     Note
     ----
-    The sum of the :python:`num_systems` properties of the quantum states in :python:`inputs` should match that of each of the gates in :python:`gates`.
-
-    Note
-    ----
     For convenience, each gate in a circuit automatically expands (with empty wires) to match either the one with the most systems or the number of systems spanned by the input states, whichever is largest.
+
+    .. raw:: latex
+
+        \\enlargethispage{-\\baselineskip}
 
     Note
     ----

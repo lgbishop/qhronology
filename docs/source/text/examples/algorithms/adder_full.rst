@@ -115,6 +115,10 @@ Implementation
 
 .. raw:: latex
 
+   \enlargethispage{\baselineskip}
+
+.. raw:: latex
+
    \begin{codetitled}{Full adder}{}
 
 .. literalinclude:: /text/examples/algorithms/adder_full.py

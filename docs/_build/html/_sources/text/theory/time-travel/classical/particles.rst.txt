@@ -19,14 +19,14 @@ Unlike in the case of the grandfather paradox, the paradoxical issue here is not
 .. only:: html
 
    .. figure:: /figures/output/diagram_billiard-ball_paradox-dark.png
-      :scale: 34 %
+      :scale: 38 %
       :alt: A spatial diagram of the billiard-ball paradox.
       :align: center
       :figwidth: 100 %
       :figclass: only-dark
 
    .. figure:: /figures/output/diagram_billiard-ball_paradox-light.png
-      :scale: 34 %
+      :scale: 38 %
       :alt: A spatial diagram of the billiard-ball paradox.
       :align: center
       :figwidth: 100 %
@@ -34,7 +34,7 @@ Unlike in the case of the grandfather paradox, the paradoxical issue here is not
 
 .. figure:: /figures/output/diagram_billiard-ball_paradox-light.png
    :name: fig:diagram_billiard-ball_paradox
-   :scale: 38 %
+   :scale: 36 %
    :alt: A spatial diagram of the billiard-ball paradox.
    :align: center
    :figwidth: 100 %

@@ -1617,7 +1617,7 @@ class Diagonal(QuantumGate):
     *args
         Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     entries : dict[int | list[int], num | expr | str]
-        A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.
+        A dictionary in which the keys are number-basis specifications (integer or list of integers) and the values are scalars.
     exponentiation : bool
         Whether to exponentiate (with imaginary unit) the values given in :python:`entries`.
         Defaults to :python:`False`.
@@ -1626,7 +1626,7 @@ class Diagonal(QuantumGate):
 
     Note
     ----
-    Levels that are unspecified in the :python:`entries` argument all have a corresponding matrix element of :python:`1`, regardless of the value of :python:`exponentiation`.
+    Basis elements that are unspecified in the :python:`entries` argument all have a corresponding matrix element of :python:`1`, regardless of the value of :python:`exponentiation`.
     """
 
     INVOLUTORY = False
@@ -1647,7 +1647,7 @@ class Diagonal(QuantumGate):
 
     @property
     def entries(self) -> dict[int | list[int], num | expr | str]:
-        """A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars."""
+        """A dictionary in which the keys are number-basis specifications (integer or list of integers) and the values are scalars."""
         return self._entries
 
     @entries.setter
@@ -1850,11 +1850,11 @@ SUM = Summation
 
 
 class Not(Summation):
-    """A subclass for creating NOT (logical *negation* or "bit-flip") gates and storing their metadata.
+    """A subclass for creating NOT (logical negation or "bit-flip") gates and storing their metadata.
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems. In other words, this means that it is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation
+    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems. In the computation basis, it is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation
 
     .. math::
        

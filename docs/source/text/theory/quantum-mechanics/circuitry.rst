@@ -1893,6 +1893,10 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
 
       \vspace*{-0.15\baselineskip}
 
+.. raw:: latex
+
+   \newpage
+
 - :math:`\Rotation` (rotation):
 
    .. raw:: latex
@@ -2099,7 +2103,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \enlargethispage{2\baselineskip}
 
 - CNOT (controlled-NOT):
 

@@ -224,17 +224,21 @@ Rescaling by a factor :math:`\tfrac{1}{\Strength}` then allows us to make the co
 
 which is often denoted in the literature as :math:`\big<\Pauli_k\big>`.
 
-If we define :math:`\Pauli_0 \equiv \Identity`, then the set of operators :math:`\{\Pauli_k\}_{k=0}^3` forms a complete basis for the space of complex :math:`2 \times 2` matrices. Since this coincides with the space of linear operators :math:`\SpaceLinear(\SpaceHilbert)` on our qubit (:math:`2`-dimensional) Hilbert space :math:`\SpaceHilbert`, then any state :math:`\StateCV \in \SpaceLinear(\SpaceHilbert)` can accordingly be reconstructed via the linear combination,
+If we define :math:`\Pauli_0 \equiv \Identity`, then the set of operators :math:`\{\Pauli_\mu\}_{\mu=0}^3` forms a complete basis for the space of complex :math:`2 \times 2` matrices. Since this coincides with the space of linear operators :math:`\SpaceLinear(\SpaceHilbert)` on our qubit (:math:`2`-dimensional) Hilbert space :math:`\SpaceHilbert`, then any state :math:`\StateCV \in \SpaceLinear(\SpaceHilbert)` can accordingly be reconstructed via the linear combination,
 
 .. math::
    :label: eq:tomography_reconstruction
 
-    \StateCV = \frac{1}{2}\sum_{k=0}^{3} \trace[\Pauli_k \StateCV] \Pauli_k.
+    \StateCV = \frac{1}{2}\sum_{\mu=0}^{3} \trace[\Pauli_\mu \StateCV] \Pauli_\mu.
 
-Since the coefficient for :math:`k = 0` is fixed by normalization (i.e., :math:`\trace[\Pauli_0 \StateCV] = 1`), then the state is completely (and uniquely) determined by the *Bloch vector*, which is defined for a :math:`\Dimension`-dimensional state as the :math:`(\Dimension^2-1)`-dimensional real vector of parameters :math:`\bigl\{\trace[\Pauli_k \StateCV]\bigr\}_{k = 1}^{\Dimension^2 - 1}`. Accordingly, the linear combination :eq:`eq:tomography_reconstruction` is said to be the *Bloch sphere representation* of the state :math:`\StateCV`. Thus, since we have shown that we can infer expectation values :eq:`eq:tomography_expectation` for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the :math:`z`-basis, then we can completely characterize the state without directly measuring it.
+Since the coefficient for :math:`\mu = 0` is fixed by normalization (i.e., :math:`\trace[\Pauli_0 \StateCV] = 1`), then the state is completely (and uniquely) determined by the *Bloch vector*, which is defined for a :math:`\Dimension`-dimensional state as the :math:`(\Dimension^2-1)`-dimensional real vector of parameters :math:`\bigl\{\trace[\Pauli_k \StateCV]\bigr\}_{k = 1}^{\Dimension^2 - 1}`. Accordingly, the linear combination :eq:`eq:tomography_reconstruction` is said to be the *Bloch sphere representation* of the state :math:`\StateCV`. Thus, since we have shown that we can infer expectation values :eq:`eq:tomography_expectation` for an unknown state by coupling it with a probe via a CNOT and subsequently performing a measurement of the probe in the :math:`z`-basis, then we can completely characterize the state without directly measuring it.
 
 Implementation
 --------------
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 

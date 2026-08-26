@@ -33,13 +33,14 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=13e3411f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=4d2c89fe" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css?v=ae48d932" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c3b1ed24" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/ClearSans/ClearSans.css?v=e1805805" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/DejaVuSansMono/DejaVuSansMono.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/JuliaMono/JuliaMono.css?v=b40e2e5a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Roboto/Roboto.css?v=628a0b80" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceCodePro/SourceCodePro.css?v=3b579ac4" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/Cousine/Cousine.css?v=4fc0dafb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/fonts/MonaspaceNeon/MonaspaceNeon.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/fonts/SourceSans3/SourceSans3.css?v=b08c5bd9" />
   
   <!-- So that users can add custom icons -->
@@ -67,7 +68,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 17, 2026"/>
+    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
   </head>
   
   
@@ -2115,7 +2116,7 @@
 <span class="sd">    *args</span>
 <span class="sd">        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    entries : dict[int | list[int], num | expr | str]</span>
-<span class="sd">        A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.</span>
+<span class="sd">        A dictionary in which the keys are number-basis specifications (integer or list of integers) and the values are scalars.</span>
 <span class="sd">    exponentiation : bool</span>
 <span class="sd">        Whether to exponentiate (with imaginary unit) the values given in :python:`entries`.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
@@ -2124,7 +2125,7 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    Levels that are unspecified in the :python:`entries` argument all have a corresponding matrix element of :python:`1`, regardless of the value of :python:`exponentiation`.</span>
+<span class="sd">    Basis elements that are unspecified in the :python:`entries` argument all have a corresponding matrix element of :python:`1`, regardless of the value of :python:`exponentiation`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">INVOLUTORY</span> <span class="o">=</span> <span class="kc">False</span>
@@ -2145,7 +2146,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">entries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;A dictionary in which the keys are level specifications (integer or list of integers) and the values are scalars.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A dictionary in which the keys are number-basis specifications (integer or list of integers) and the values are scalars.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entries</span>
 
     <span class="nd">@entries</span><span class="o">.</span><span class="n">setter</span>
@@ -2357,11 +2358,11 @@
 <div class="viewcode-block" id="Not">
 <a class="viewcode-back" href="../../../text/documentation/quantum/gates.html#qhronology.quantum.gates.Not">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Not</span><span class="p">(</span><span class="n">Summation</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating NOT (logical *negation* or &quot;bit-flip&quot;) gates and storing their metadata.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A subclass for creating NOT (logical negation or &quot;bit-flip&quot;) gates and storing their metadata.</span>
 
 <span class="sd">    This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.</span>
 
-<span class="sd">    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems. In other words, this means that it is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation</span>
+<span class="sd">    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems. In the computation basis, it is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">       </span>

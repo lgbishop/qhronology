@@ -43,7 +43,7 @@ Note that in the process of teleporting the state, the original is destroyed, an
 Protocol
 --------
 
-The canonical protocol of quantum teleportation involves three qubits divided across two parties, which are often referred to as :math:`A` and :math:`B` and contain two and one qubits, respectively. These are initialized in the state
+The canonical protocol of quantum teleportation involves three qubits divided across two parties, which are often referred to as :math:`A` and :math:`B` and contain two qubits and one qubit, respectively. These are initialized in the state
 
 .. math:: \ket{\Psi_0} = \ket{\psi}^{\indices{A_0}} \otimes \ket{0}^{\indices{A_1}} \otimes \ket{0}^{\indices{B}}
 
@@ -51,7 +51,7 @@ where :math:`\ket{\psi}` is the state to be teleported. In our treatment here, w
 
 .. math:: \ket{\psi} \equiv a \ket{0} + b \ket{1}, \quad a,b \in \Complexes,
 
-which is assumed to be normalized, e.g., :math:`\braket{\psi}{\psi} = \abs{a}^2 + \abs{b}^2 = 1.`
+which is assumed to be normalized, e.g., :math:`\braket{\psi}{\psi} = \abs{a}^2 + \abs{b}^2 = 1`.
 
 We first apply to this a Hadamard gate followed by a controlled-NOT, which entangles the last two qubits (:math:`A_1` and :math:`B`), forming a Bell state (:math:`\bigl|\Phi^+\bigr\rangle`) on these systems,
 
