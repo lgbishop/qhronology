@@ -56,7 +56,7 @@ class QuantumGate(QuantumObject):
 
     This class forms the base upon which all quantum gates are built.
     Instances of this base class and its derivatives (subclasses) provide complete descriptions of quantum gates.
-    This means that they describe a complete vertical column (or "slice") in the quantum circuitry picturalism, including control nodes, anticontrol nodes, empty wires, and the (unitary) gate operator itself.
+    This means that they describe a complete vertical column (sometimes called a "slice", "layer", or "cycle") in the quantum circuitry picturalism, including control nodes, anticontrol nodes, empty wires, and the (unitary) gate operator itself.
     The details of any algebraic symbols, mathematical substitutions, and visualization labels are also recorded.
     Note that, unlike the internal matrix representations contained within instances of the :py:class:`~qhronology.quantum.states.QuantumState` class (and its derivatives), the matrix representations of subclass instances of :py:class:`~qhronology.quantum.gates.QuantumGate` are *not* mutable.
 
@@ -816,6 +816,7 @@ class QuantumGate(QuantumObject):
             kwargs = {key[1:]:value for key, value in kwargs.items()}
 
             # Remove all unnecessary, conflicting, or incorrect keyword arguments
+            # (There should be a cleverer way to do this...)
             kwargs.pop('targets')
             kwargs.pop('controls')
             kwargs.pop('anticontrols')
@@ -2340,17 +2341,6 @@ class GateInterleave(QuantumGate):
     array : bool
         Whether to cast the gate's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
-    conjugate : bool
-        Whether to perform Hermitian conjugation on the composite gate when it is called.
-        Defaults to :python:`False`.
-    exponent : num | expr | str
-        A numerical or string representation of a scalar value to which composite gate's total matrix representation is exponentiated.
-        Must be a non-negative integer.
-        Defaults to :python:`1`.
-    coefficient : num | expr | str
-        A numerical or string representation of a scalar value by which the composite gate's matrix representation is multiplied.
-        Performed after exponentiation.
-        Defaults to :python:`1`.
     label : str
         The unformatted string used to represent the gate in mathematical expressions.
         Defaults to :python:`"⊗".join([gate.label for gate in gates])`.
@@ -2376,9 +2366,6 @@ class GateInterleave(QuantumGate):
         num_systems: int | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
-        conjugate: bool | None = None,
-        exponent: num | expr | str | None = None,
-        coefficient: num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
     ):
@@ -2393,9 +2380,9 @@ class GateInterleave(QuantumGate):
             num_systems=num_systems,
             numerical=numerical,
             array=array,
-            conjugate=conjugate,
-            exponent=exponent,
-            coefficient=coefficient,
+            conjugate=False,
+            exponent=1,
+            coefficient=1,
             label=label,
             notation=notation,
         )
@@ -2645,16 +2632,6 @@ class GateStack(GateInterleave):
     array : bool
         Whether to cast the gate's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
-    conjugate : bool
-        Whether to perform Hermitian conjugation on the composite gate when it is called.
-        Defaults to :python:`False`.
-    exponent : num | expr | str
-        A numerical or string representation of a scalar value to which composite gate's total matrix representation is exponentiated.
-        Defaults to :python:`1`.
-    coefficient : num | expr | str
-        A numerical or string representation of a scalar value by which the composite gate's matrix representation is multiplied.
-        Performed after exponentiation.
-        Defaults to :python:`1`.
     label : str
         The unformatted string used to represent the gate in mathematical expressions.
         Defaults to :python:`"⊗".join([gate.label for gate in gates])`.
@@ -2672,9 +2649,6 @@ class GateStack(GateInterleave):
         num_systems: int | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
-        conjugate: bool | None = None,
-        exponent: num | expr | str | None = None,
-        coefficient: num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
     ):
@@ -2685,9 +2659,6 @@ class GateStack(GateInterleave):
             num_systems=num_systems,
             numerical=numerical,
             array=array,
-            conjugate=conjugate,
-            exponent=exponent,
-            coefficient=coefficient,
             label=label,
             notation=notation,
         )

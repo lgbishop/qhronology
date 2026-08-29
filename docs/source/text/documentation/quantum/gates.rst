@@ -34,7 +34,7 @@ and its derivatives (subclasses),
 
    \end{code}
 
-These objects describe a distinct vertical "slice" in the quantum circuit picturalism, and so include information about the locations of both control and anticontrol nodes, in addition to the presence of any empty wires. They also possess other metadata associated with the gate such as parameter values, symbolic assumptions, and algebraic substitutions.
+These objects describe a distinct vertical slice (sometimes called a "layer" or "cycle") in the quantum circuit picturalism, and so include information about the locations of both control and anticontrol nodes, in addition to the presence of any empty wires. They also possess other metadata associated with the gate such as parameter values, symbolic assumptions, and algebraic substitutions.
 
 Facilities to combine gates together are also provided by the package and take two forms: "interleaved" compositions via the :py:class:`~qhronology.quantum.gates.GateInterleave` class, and "stacked" compositions via the :py:class:`~qhronology.quantum.gates.GateStack` class:
 
@@ -3900,10 +3900,6 @@ Combinations
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
