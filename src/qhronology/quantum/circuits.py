@@ -18,7 +18,7 @@ import copy
 from typing import Any
 
 from qhronology.mechanics.operations import densify
-from qhronology.quantum.gates import QuantumGate, _Single
+from qhronology.quantum.gates import GateInterleave, GateStack, QuantumGate, _Single
 from qhronology.quantum.states import QuantumState
 from qhronology.utilities.classification import (
     Forms,
@@ -53,8 +53,8 @@ from qhronology.utilities.helpers import (
     generate_zeros,
     matrix_multiplication,
     recursively_simplify,
-    symbolize_substitutions,
     symbolize_expression,
+    symbolize_substitutions,
     tensor_product,
 )
 from qhronology.utilities.objects import QuantumObject
@@ -1399,3 +1399,119 @@ class QuantumCircuit(SymbolicsProperties):
                 force_separation=force_separation,
                 return_string=False,
             )
+
+    def compactify(self):
+        """Compactify the circuit's gate sequence.
+
+        This is achieved by sliding the gates as far left as possible and subsequently merging neighbouring groups together into :py:class:`~qhronology.quantum.gates.GateInterleave` instances, thereby reducing the circuit's apparent length.
+
+        Note that this transformation modifies the circuit's gate sequence (the :python:`gates` property) in-place.
+        """
+        circuit = copy.deepcopy(self)
+        gates = copy.deepcopy(circuit.gates)
+        # Convert all GateStack to GateInterleave
+        # (Makes for *much* easier manipulation later on)
+        for index, gate in enumerate(gates):
+            if type(gate) is GateStack:
+                sequence = [element for element in gate.gates]
+                boundaries = [-1] + gate.boundaries
+                for n, gate in enumerate(sequence):
+                    sequence[n]._targets = [
+                        target + boundaries[n] + 1
+                        for target in sequence[n].targets
+                    ]
+                    sequence[n]._controls = [
+                        control + boundaries[n] + 1
+                        for control in sequence[n].controls
+                    ]
+                    sequence[n]._anticontrols = [
+                        anticontrol + boundaries[n] + 1
+                        for anticontrol in sequence[n].anticontrols
+                    ]
+                gates[index] = GateInterleave(
+                    *sequence, merge=False, num_systems=self.num_systems
+                )
+
+        # Convert all to GateInterleave
+        for index, gate in enumerate(gates):
+            if isinstance(gate, GateInterleave) is False:
+                gates[index] = GateInterleave(
+                    gate, merge=False, num_systems=self.num_systems
+                )
+
+        # Create sequence as a list of lists of gates
+        gates = [gate.gates for gate in gates]
+
+        changing = True
+        while changing is True:
+            changing = False
+            for index, gate in enumerate(gates):
+                if index + 1 != len(gates):
+                    systems_sets_left = [
+                        list(gate.targets + gate.controls + gate.anticontrols)
+                        for gate in gates[index]
+                    ]
+                    systems_sets_right = [
+                        list(gate.targets + gate.controls + gate.anticontrols)
+                        for gate in gates[index + 1]
+                    ]
+
+                    for r, gate_right in enumerate(gates[index + 1]):
+                        if (
+                            check_systems_conflicts(
+                                flatten_list(systems_sets_left), systems_sets_right[r]
+                            )
+                            is False
+                            and any(
+                                min(systems_left) <= system_right <= max(systems_left)
+                                for systems_left in systems_sets_left
+                                for system_right in systems_sets_right[r]
+                            )
+                            is False
+                        ):
+                            gates[index].append(gate_right)
+                            gates[index + 1].pop(r)
+                            changing = True
+                            if len(gates[index + 1]) == 0:
+                                gates.pop(index + 1)
+                            break
+
+        for index, gate in enumerate(gates):
+            if len(gate) > 1:
+                gates[index] = GateInterleave(
+                    *gate, merge=False, num_systems=self.num_systems
+                )
+
+        # TODO: Convert all GateInterleave to GateStack for performance.
+
+        self.gates = flatten_list(gates)
+
+    def decompactify(self):
+        """Decompactify the circuit's gate sequence.
+
+        This is achieved by expanding any gate compositions (i.e., :py:class:`~qhronology.quantum.gates.GateInterleave` and :py:class:`~qhronology.quantum.gates.GateStack` instances) into their constituent gate subsequences.
+
+        Note that this transformation modifies the circuit's gate sequence (the :python:`gates` property) in-place.
+        """
+        gates = copy.deepcopy(self.gates)
+        for index, gate in enumerate(gates):
+            if type(gate) is GateStack:
+                sequence = [element for element in gate.gates]
+                boundaries = [-1] + gate.boundaries
+                for n, gate in enumerate(sequence):
+                    sequence[n]._targets = [
+                        target + boundaries[n] + 1
+                        for target in sequence[n].targets
+                    ]
+                    sequence[n]._controls = [
+                        control + boundaries[n] + 1
+                        for control in sequence[n].controls
+                    ]
+                    sequence[n]._anticontrols = [
+                        anticontrol + boundaries[n] + 1
+                        for anticontrol in sequence[n].anticontrols
+                    ]
+                gates[index] = sequence
+            if type(gate) is GateInterleave:
+                gates[index] = gate.gates
+        self.gates = flatten_list(gates)

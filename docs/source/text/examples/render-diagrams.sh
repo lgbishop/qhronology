@@ -31,11 +31,12 @@ for FILE in "${jobs[@]}"; do
     # Read the entire file into an array
     mapfile -t LINES < "$FILE"
 
-    # Find the last occurrence of BREAK
+    # Find the first occurrence of BREAK
     INDEX_LAST=-1
     for i in "${!LINES[@]}"; do
         if [[ "${LINES[i]}" == *"$BREAK"* ]]; then
             INDEX_LAST=$i
+			break
         fi
     done
 
