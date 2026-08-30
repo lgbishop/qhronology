@@ -17,11 +17,11 @@ Acceptance of the CLA is achieved by reading the document itself (`CLA.txt <http
    \vspace*{-0.35\baselineskip}
 
 .. raw:: latex
-   
+
    \begin{adjustwidth}{0em}{0em}
 
 .. raw:: latex
-   
+
    \vspace{1em}
    \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -30,12 +30,12 @@ Acceptance of the CLA is achieved by reading the document itself (`CLA.txt <http
    [ ] I declare that I have read Qhronology's Contributor License Agreement and agree to its terms and conditions.
 
 .. raw:: latex
-   
+
    \end{mdframed}
    \vspace{0em}
 
 .. raw:: latex
-   
+
    \end{adjustwidth}
 
 .. raw:: latex

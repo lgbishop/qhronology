@@ -87,7 +87,7 @@ Diagram
    >>> fourier.diagram(sep=(0, 1), visible={"gates"})
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_fourier_transform.pdf}
    \vspace{-1\baselineskip}
 
@@ -108,7 +108,7 @@ Diagram
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 .. only:: html
@@ -121,5 +121,5 @@ Diagram
          :filter: docname in docnames
 
 .. raw:: latex
-   
+
    \newpage

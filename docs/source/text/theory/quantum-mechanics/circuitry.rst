@@ -49,7 +49,7 @@ Fundamentals
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -79,7 +79,7 @@ Fundamentals
       \newpage
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1.0em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -99,7 +99,7 @@ Fundamentals
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -118,7 +118,7 @@ Fundamentals
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -148,7 +148,7 @@ Fundamentals
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -168,7 +168,7 @@ Fundamentals
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -202,7 +202,7 @@ States
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -221,7 +221,7 @@ States
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -270,7 +270,7 @@ States
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -289,7 +289,7 @@ States
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -304,7 +304,7 @@ States
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -323,7 +323,7 @@ States
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -337,7 +337,7 @@ Gates
 - Linear operators (usually unitary operators) acting on states are denoted by blocks called *gates*:
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -356,14 +356,14 @@ Gates
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
 - Sequences of single-system operators are represented by sequences of gates:
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -382,14 +382,14 @@ Gates
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
 - Operators which act on different subsystems within composite systems are represented distinctly by parallel gates:
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -408,14 +408,14 @@ Gates
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
 - An empty wire (i.e., the absence of a gate on a system) corresponds to the identity operator:
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -434,14 +434,14 @@ Gates
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
 - **Groups** of gates may be denoted with a bounding box, e.g.:
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -467,7 +467,7 @@ Gates
       <div>
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -487,7 +487,7 @@ Gates
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -504,7 +504,7 @@ Gates
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -534,7 +534,7 @@ Gates
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -554,7 +554,7 @@ Gates
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -603,7 +603,7 @@ Gates
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -634,7 +634,7 @@ Gates
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -665,7 +665,7 @@ Gates
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -685,7 +685,7 @@ Gates
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -721,7 +721,7 @@ Control
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-   
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -740,7 +740,7 @@ Control
          :class: only-light
 
    .. raw:: latex
-   
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -763,7 +763,7 @@ Control
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -782,7 +782,7 @@ Control
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -805,7 +805,7 @@ Control
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -824,7 +824,7 @@ Control
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -847,7 +847,7 @@ Control
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -866,7 +866,7 @@ Control
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -893,7 +893,7 @@ Control
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -912,7 +912,7 @@ Control
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -946,7 +946,7 @@ Trace
 - The **trace** over a system (i.e., termination of a wire) is denoted by either a grounding symbol or a down arrow on the end of its corresponding wire:
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -965,7 +965,7 @@ Trace
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -998,7 +998,7 @@ Trace
       <div>
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -1025,7 +1025,7 @@ Trace
       <div>
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -1045,7 +1045,7 @@ Trace
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1067,7 +1067,7 @@ Postselection
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1093,7 +1093,7 @@ Postselection
       <div>
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -1120,7 +1120,7 @@ Postselection
       <div>
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -1147,7 +1147,7 @@ Postselection
       <div>
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -1174,7 +1174,7 @@ Postselection
       <div>
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -1201,7 +1201,7 @@ Postselection
       <div>
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -1221,7 +1221,7 @@ Postselection
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1237,7 +1237,7 @@ Measurement
 - The **measurement** of a system with respect to a particular basis is represented by the termination of its wire with a meter:
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1263,7 +1263,7 @@ Measurement
       <div>
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -1294,7 +1294,7 @@ Measurement
       \newpage
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]      
@@ -1314,7 +1314,7 @@ Measurement
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1363,7 +1363,7 @@ Measurement
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -1383,7 +1383,7 @@ Measurement
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1400,7 +1400,7 @@ Measurement
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1419,7 +1419,7 @@ Measurement
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1438,7 +1438,7 @@ Measurement
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1457,7 +1457,7 @@ Measurement
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1468,7 +1468,7 @@ Measurement
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1487,7 +1487,7 @@ Measurement
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1506,7 +1506,7 @@ Measurement
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1525,7 +1525,7 @@ Measurement
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1548,7 +1548,7 @@ Measurement
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1567,7 +1567,7 @@ Measurement
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1595,7 +1595,7 @@ Closed timelike curves
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1614,7 +1614,7 @@ Closed timelike curves
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1641,7 +1641,7 @@ Closed timelike curves
       \begin{adjustwidth}{1.0cm}{0cm}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1660,7 +1660,7 @@ Closed timelike curves
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
@@ -1696,7 +1696,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1715,7 +1715,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -1730,7 +1730,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1749,7 +1749,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -1764,7 +1764,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1783,7 +1783,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -1798,7 +1798,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1817,7 +1817,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -1832,7 +1832,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1851,7 +1851,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -1866,7 +1866,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1885,7 +1885,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -1904,7 +1904,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=1em,innerrightmargin=1em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-1em,rightmargin=-1em]
 
@@ -1923,7 +1923,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -1938,7 +1938,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1957,7 +1957,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -1972,7 +1972,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -1991,7 +1991,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -2006,7 +2006,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2025,7 +2025,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -2040,7 +2040,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2059,7 +2059,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -2074,7 +2074,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2093,7 +2093,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -2112,7 +2112,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2131,7 +2131,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -2146,7 +2146,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2165,7 +2165,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -2180,7 +2180,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2199,7 +2199,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -2214,7 +2214,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2233,7 +2233,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{0.35em}
 
@@ -2251,11 +2251,11 @@ A better understanding of quantum circuitry notation can be gained by studying a
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2274,12 +2274,12 @@ A better understanding of quantum circuitry notation can be gained by studying a
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
    .. raw:: latex
-      
+
       \end{adjustwidth}
 
    .. raw:: latex
@@ -2295,11 +2295,11 @@ If we were to place a gate corresponding to an arbitrary unitary operator :math:
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2318,12 +2318,12 @@ If we were to place a gate corresponding to an arbitrary unitary operator :math:
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
    .. raw:: latex
-      
+
       \end{adjustwidth}
 
    .. raw:: latex
@@ -2341,11 +2341,11 @@ For a pure (vector) input state, the circuit is simply:
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2364,12 +2364,12 @@ For a pure (vector) input state, the circuit is simply:
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
    .. raw:: latex
-      
+
       \end{adjustwidth}
 
    .. raw:: latex
@@ -2385,11 +2385,11 @@ More interesting cases are those of multipartite systems. For instance, the evol
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2408,12 +2408,12 @@ More interesting cases are those of multipartite systems. For instance, the evol
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
    .. raw:: latex
-      
+
       \end{adjustwidth}
 
    .. raw:: latex
@@ -2427,11 +2427,11 @@ The evolution of the same state under parallel operations appears as:
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2450,12 +2450,12 @@ The evolution of the same state under parallel operations appears as:
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
    .. raw:: latex
-      
+
       \end{adjustwidth}
 
    .. raw:: latex
@@ -2469,11 +2469,11 @@ In the case where the input state is explicitly separable, we write:
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2492,12 +2492,12 @@ In the case where the input state is explicitly separable, we write:
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
    .. raw:: latex
-      
+
       \end{adjustwidth}
 
    .. raw:: latex
@@ -2511,11 +2511,11 @@ Due to the input state's separability, the mathematics corresponding to parallel
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2534,12 +2534,12 @@ Due to the input state's separability, the mathematics corresponding to parallel
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
    .. raw:: latex
-      
+
       \end{adjustwidth}
 
    .. raw:: latex
@@ -2563,11 +2563,11 @@ Note that our description of quantum circuits thus far has considered quantum pr
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2586,12 +2586,12 @@ Note that our description of quantum circuits thus far has considered quantum pr
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
    .. raw:: latex
-      
+
       \end{adjustwidth}
 
    .. raw:: latex
@@ -2605,11 +2605,11 @@ which is purely a vector description. In our combined matrix and vector formalis
       \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
-      
+
       \begin{adjustwidth}{1em}{0em}
 
    .. raw:: latex
-      
+
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
 
@@ -2628,12 +2628,12 @@ which is purely a vector description. In our combined matrix and vector formalis
          :class: only-light
 
    .. raw:: latex
-      
+
       \end{mdframed}
       % \vspace{1em}
 
    .. raw:: latex
-      
+
       \end{adjustwidth}
 
    .. raw:: latex

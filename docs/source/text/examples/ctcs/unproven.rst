@@ -226,7 +226,7 @@ Diagram
    >>> unproven.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.15cm]{text_examples_ctcs_unproven.pdf}
    \vspace{-1\baselineskip}
 
@@ -315,5 +315,5 @@ States
          :filter: docname in docnames
 
 .. raw:: latex
-   
+
    \newpage

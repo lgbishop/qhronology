@@ -57,7 +57,7 @@ Main class
    >>> bitflip.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_bitflip.pdf}
    \vspace{-1\baselineskip}
 
@@ -105,7 +105,7 @@ Main class
    >>> generator.diagram(force_separation=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_arbitrary.pdf}
    \vspace{-1\baselineskip}
 
@@ -219,7 +219,7 @@ Main class
    >>> swapcnots.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_swapcnots.pdf}
    \vspace{-1\baselineskip}
 
@@ -297,7 +297,7 @@ Main class
    >>> postselection.diagram(sep=(4, 1))
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_postselection.pdf}
    \vspace{-1\baselineskip}
 
@@ -951,7 +951,7 @@ Methods
    >>> circuit.diagram(sep=(2, 1), force_separation=True, visible={"gates"})
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_compactify_swaps.pdf}
    \vspace{-1\baselineskip}
 
@@ -977,7 +977,7 @@ Methods
    >>> circuit.diagram(sep=(2, 1), force_separation=True, visible={"gates"})
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_compactify_swaps_compactified.pdf}
    \vspace{-1\baselineskip}
 
@@ -1018,7 +1018,7 @@ Methods
    >>> circuit.diagram(sep=(1, 2), force_separation=True, visible={"gates"})
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_compactify_toffoli.pdf}
    \vspace{-1\baselineskip}
 
@@ -1044,7 +1044,7 @@ Methods
    >>> circuit.diagram(sep=(1, 2), force_separation=True, visible={"gates"})
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_compactify_toffoli_compactified.pdf}
    \vspace{-1\baselineskip}
 
@@ -1107,7 +1107,7 @@ Methods
    >>> circuit.diagram(sep=(0, 2), uniform_spacing=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_decompactify_walk.pdf}
    \vspace{-1\baselineskip}
 
@@ -1133,7 +1133,7 @@ Methods
    >>> circuit.diagram(sep=(0, 2), uniform_spacing=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_decompactify_walk_decompactified.pdf}
    \vspace{-1\baselineskip}
 
@@ -1174,7 +1174,7 @@ Methods
    >>> circuit.diagram(sep=(1, 2), force_separation=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_decompactify_chaotic.pdf}
    \vspace{-1\baselineskip}
 
@@ -1200,7 +1200,7 @@ Methods
    >>> circuit.diagram(sep=(0, 2), force_separation=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_decompactify_chaotic_decompactified.pdf}
    \vspace{-1\baselineskip}
 

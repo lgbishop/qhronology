@@ -75,7 +75,7 @@ Diagram
    >>> adder.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_ripple_iterative.pdf}
    \vspace{-1\baselineskip}
 
@@ -96,7 +96,7 @@ Diagram
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 States
@@ -175,5 +175,5 @@ This is evidently much faster (especially for larger numbers) than the linear, n
 .. This is evidently much faster (even for significantly larger numbers) than the linear, non-iterative implementation in :numref:`eg:adder_ripple` :ref:`eg:adder_ripple`.
 
 .. raw:: latex
-   
+
    \newpage

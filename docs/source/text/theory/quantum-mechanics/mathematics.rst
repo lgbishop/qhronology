@@ -263,7 +263,7 @@ The alternative notation for the basis :math:`\{\ket{i}\}_{i=1}^{\Dimension}` is
 
 .. math::
    :label: eq:basis_qudit
-   
+
    \ket{0} = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix},
    \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix},
    \qquad \ldots,
@@ -342,7 +342,7 @@ In addition to the inner product, we may also use the Dirac notation to easily e
 
 .. math::
    :label: eq:outer_product
-   
+
    \begin{aligned}
        \ket{\psi}\bra{\phi} &\equiv \ket{\psi} \otimes \bra{\phi} \\
        &= \sum_{i,j} \braket{i}{\psi} \braket{\phi}{j} \, \ket{i}\bra{j} \\
@@ -537,7 +537,7 @@ Composite systems
 Hilbert spaces are vector spaces over :math:`\Complexes`, so we can construct composite spaces and the corresponding tensor product in much the same way as we would for less equipped spaces. We will first discuss the *bipartite* case, which may be easily generalized to larger composite systems (termed *multipartite*). Let :math:`\SpaceHilbert_1` and :math:`\SpaceHilbert_2` be a pair of finite-dimensional Hilbert spaces, with bases :math:`\{\ket{\mu_m}\}_{m=1}^{M}` and :math:`\{\ket{\nu_n}\}_{n=1}^{N}`, respectively. The tensor product space :math:`\SpaceHilbert_1 \otimes \SpaceHilbert_2` is spanned by all pairs of elements :math:`\ket{\mu_m} \otimes \ket{\nu_n}` chosen from the two bases. Note in particular that :math:`\{\ket{\mu_m}\otimes\ket{\nu_n}\}_{m,n}` is an orthonormal basis of the composite space. Thus, if we have the linear combinations,
 
 .. math::
-   
+
    \begin{aligned}
        \ket{\psi} &= \sum_{m=1}^{M} \psi_m \ket{\mu_m},\\
        \ket{\phi} &= \sum_{n=1}^{N} \phi_m \ket{\nu_n},\\

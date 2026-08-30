@@ -73,7 +73,7 @@ Please note that the documentation of this class includes only properties and me
    >>> SWAP_CTC.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.00cm 0 -0.08cm]{text_examples_docstrings_prescription_swap.pdf}
    \vspace{-1\baselineskip}
 
@@ -133,7 +133,7 @@ Please note that the documentation of this class includes only properties and me
    >>> CNOT_CTC.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.025cm 0 -0.12cm]{text_examples_docstrings_prescription_cnot.pdf}
    \vspace{-1\baselineskip}
 
@@ -272,7 +272,7 @@ Methods
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
-         
+      
    Please see the examples of the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class itself. For advanced usage examples, see the corresponding :py:meth:`~qhronology.quantum.circuits.QuantumCircuit.diagram` method of the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class.
 
    .. raw:: latex

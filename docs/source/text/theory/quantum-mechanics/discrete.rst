@@ -251,7 +251,7 @@ This defines a total of :math:`\Dimension^2` matrices, each of which possesses o
 
 .. math::
    :label: eq:generators_off-diagonal
-   
+
    \begin{aligned}
        \alpha_{i}^{j} &= \Basis_{i}^{j} + \Basis_{j}^{i} \\
        \beta_{i}^{j} &= -\eye(\Basis_{i}^{j} - \Basis_{j}^{i}), \qquad 1 \leq j < i \leq d
@@ -267,7 +267,7 @@ In total, we obtain :math:`\Dimension^2 - 1` traceless matrices. Note that these
 With this in mind, we can use :eq:`eq:generators_off-diagonal` and :eq:`eq:generators_on-diagonal` to assemble a set of matrices,
 
 .. math::
-   
+
    \begin{aligned}
        \GellMann_{(i-1)^2 + 2(j - 1)} &\equiv \alpha_{i}^{j}, \\
        \GellMann_{(i-1)^2 + 2j - 1} &\equiv \beta_{i}^{j}, \\

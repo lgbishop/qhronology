@@ -410,7 +410,7 @@ Main class
       \end{code}
 
    .. raw:: latex
-      
+
       \enlargethispage{1\baselineskip}
 
    .. raw:: latex
@@ -474,7 +474,7 @@ Main class
       \end{code}
 
    .. raw:: latex
-      
+
       \enlargethispage{\baselineskip}
 
    .. raw:: latex
@@ -536,7 +536,7 @@ Main class
    .. raw:: latex
 
       \end{code}
-      
+   
    .. raw:: latex
 
       \end{adjustwidth}

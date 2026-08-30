@@ -103,7 +103,7 @@ When :python:`overflow_qubit = True`:
    >>> adder.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_lookahead.pdf}
    \vspace{-1\baselineskip}
 
@@ -124,7 +124,7 @@ When :python:`overflow_qubit = True`:
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 .. raw:: latex
@@ -142,7 +142,7 @@ When :python:`overflow_qubit = False`:
    >>> adder.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_lookahead_false.pdf}
    \vspace{-1\baselineskip}
 
@@ -163,7 +163,7 @@ When :python:`overflow_qubit = False`:
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 States
@@ -266,5 +266,5 @@ This version of a multi-qubit full adder is evidently much faster than the :numr
          :filter: docname in docnames
 
 .. raw:: latex
-   
+
    \newpage

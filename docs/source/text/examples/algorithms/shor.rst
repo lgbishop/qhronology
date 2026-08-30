@@ -256,7 +256,7 @@ If :python:`decompose` is :python:`False`:
    >>> shor.diagram(pad=(1, 0), force_separation=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_shor.pdf}
    \vspace{-1\baselineskip}
 
@@ -277,7 +277,7 @@ If :python:`decompose` is :python:`False`:
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 .. raw:: latex
@@ -295,7 +295,7 @@ If :python:`decompose` is :python:`True`:
    >>> shor.diagram(pad=(1, 0), force_separation=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_shor_decomposed.pdf}
    \vspace{-1\baselineskip}
 
@@ -316,7 +316,7 @@ If :python:`decompose` is :python:`True`:
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 Results
@@ -350,5 +350,5 @@ Cumulative output from the various print statements:
          :filter: docname in docnames
 
 .. raw:: latex
-   
+
    \newpage

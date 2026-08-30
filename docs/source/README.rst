@@ -65,7 +65,7 @@ In the absence of physical CTCs on which to perform experiments, one of the more
    \null
    \vspace*{-2.35\baselineskip}
 
-Born out of the desire for a way to programmatically compute the states of the CR and CV systems according to the foremost quantum prescriptions of antichronological time travel, :inlinelatex:`\hspace{-0.35em}\emph{` `Qhronology <https://qhronology.org>`_ :inlinelatex:`}\hspace{-0.5em}` :cite:p:`bishop_qhronology-software_2025` was created as a unified computational environment for defining, simulating, and analyzing quantum information processes that incorporate CTCs. Notably, the package can be used to calculate quantum resolutions to any given temporal paradox, thereby enabling users to explore foundational questions regarding the quantum mechanics of time travel. By providing a unique approach to describing general quantum objects (such as states and gates), Qhronology can also operate as a complete quantum circuit simulator, of which a prominent component is its engine for the visualization of quantum circuit diagrams. Its main features include:
+Born out of the desire for a way to programmatically compute the states of the CR and CV systems according to the foremost quantum prescriptions of antichronological time travel, :inlinelatex:`\linebreak` :inlinelatex:`\hspace{-0.35em}\emph{` `Qhronology <https://qhronology.org>`_ :inlinelatex:`}\hspace{-0.5em}` :cite:p:`bishop_qhronology-software_2025` was created as a unified computational environment for defining, simulating, and analyzing quantum information processes that incorporate CTCs. Notably, the package can be used to calculate quantum resolutions to any given temporal paradox, thereby enabling users to explore foundational questions regarding the quantum mechanics of time travel. By providing a unique approach to describing general quantum objects (such as states and gates), Qhronology can also operate as a complete quantum circuit simulator, of which a prominent component is its engine for the visualization of quantum circuit diagrams. Its main features include:
 
 - Calculation of the states of the CR and CV quantum systems according to quantum-mechanical prescriptions of closed timelike curves
 
@@ -537,7 +537,7 @@ Generation of the :math:`\ket{\Bell^+}` Bell state from primitive :math:`\ket{0}
    >>> generator.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.05cm -0.05cm 0 -0.08cm]{text_examples_algorithms_generation_bell.pdf}
    \vspace{-1\baselineskip}
 
@@ -592,7 +592,7 @@ Quantum teleportation of an arbitrary qubit :math:`\ket{\psi} = a\ket{0} + b\ket
    >>> teleporter.diagram(force_separation=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.02cm 0 -0.10cm]{text_examples_algorithms_teleportation.pdf}
    \vspace{-1\baselineskip}
 
@@ -651,7 +651,7 @@ Computing resolutions to the unproven-theorem paradox according to various presc
    >>> unproven.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.05cm 0 -0.12cm]{text_examples_ctcs_unproven.pdf}
    \vspace{-1\baselineskip}
 

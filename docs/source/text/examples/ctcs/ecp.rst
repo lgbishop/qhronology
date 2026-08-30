@@ -90,7 +90,7 @@ Diagram
    >>> iteration.diagram(pad=(1, 0), sep=(0, 1), style="unicode")
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_ctcs_ecp.pdf}
    \vspace{-1\baselineskip}
 
@@ -111,7 +111,7 @@ Diagram
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 .. raw:: latex
@@ -141,5 +141,5 @@ States
 Of course, this example uses general (symbolic) forms for the input state :math:`\StateCR` and interaction :math:`\Unitary`. Instead, you can set explicit forms for both of these, and thereby investigate the ECP in the context of specific time-travel scenarios.
 
 .. raw:: latex
-   
+
    \newpage

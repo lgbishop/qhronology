@@ -73,7 +73,7 @@ Diagram
    >>> postselected_teleportation.diagram(pad=(1, 0), sep=(2, 1), force_separation=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 -0.12cm]{text_examples_ctcs_postselected.pdf}
    \vspace{-1\baselineskip}
 
@@ -94,7 +94,7 @@ Diagram
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 States
@@ -156,5 +156,5 @@ Results
    \end{code}
 
 .. raw:: latex
-   
+
    \newpage
