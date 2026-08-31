@@ -37,6 +37,6 @@ output_state = iswap.state(label="(ψ,φ)′")
 output_state.simplify()
 
 # Results
-print(repr(iswap.gate(simplify=True)))
+print(repr(iswap.gate(simplification=True)))
 input_state.print()
 output_state.print()

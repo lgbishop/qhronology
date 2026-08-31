@@ -32,11 +32,14 @@ class SymbolicsProperties:
         self,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        simplification: bool | None = None,
     ):
         symbols = {} if symbols is None else symbols
         substitutions = [] if substitutions is None else substitutions
+        simplification = False if simplification is None else simplification
         self.symbols = symbols
         self.substitutions = substitutions
+        self.simplification = simplification
 
     @property
     def symbols(self) -> dict[sym | str, dict[str, Any]]:
@@ -91,3 +94,12 @@ class SymbolicsProperties:
     @substitutions.setter
     def substitutions(self, substitutions):
         self._substitutions = substitutions
+
+    @property
+    def simplification(self) -> bool:
+        """Whether to perform mathematical simplification on the object when it is called."""
+        return self._simplification
+
+    @simplification.setter
+    def simplification(self, simplification: bool):
+        self._simplification = simplification

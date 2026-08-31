@@ -30,14 +30,14 @@ CIN = Not(targets=[2], controls=[0], num_systems=3)
 CNI = Not(targets=[1], controls=[0], num_systems=3)
 ItI = Phase(
     exponent=sp.Rational(1, 4),
-    conjugate=True,
+    conjugation=True,
     targets=[1],
     num_systems=3,
     label="T^†",
 )
 tII = Phase(
     exponent=sp.Rational(1, 4),
-    conjugate=True,
+    conjugation=True,
     targets=[0],
     num_systems=3,
     label="T^†",
@@ -52,4 +52,4 @@ toffoli = QuantumCircuit(
 toffoli.diagram(force_separation=True, visible={"gates"})
 
 # Results
-print(repr(toffoli.gate(simplify=True)))
+print(repr(toffoli.gate(simplification=True)))

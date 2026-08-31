@@ -19,14 +19,14 @@ U = QuantumGate(
     symbols=symbols,
     substitutions=substitutions,
     label="U",
-    conjugate=False,
+    conjugation=False,
 )
 Ud = QuantumGate(
     spec=unitary,
     symbols=symbols,
     substitutions=substitutions,
     label="U^†",
-    conjugate=True,
+    conjugation=True,
 )
 
 # Circuit
@@ -36,4 +36,4 @@ unitarity.diagram(visible={"gates"})
 # Results
 print(repr(U))
 print(repr(Ud))
-print(repr(unitarity.gate(simplify=True)))
+print(repr(unitarity.gate(simplification=True)))

@@ -27,7 +27,7 @@ Main class
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \enlargethispage{-3\baselineskip}
 
 .. autoclass:: qhronology.quantum.circuits.QuantumCircuit
    :show-inheritance:
@@ -39,6 +39,10 @@ Main class
    \begin{adjustwidth}{2.5em}{0cm}
 
 .. rubric:: :styleheader6:`Examples`
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -136,7 +140,7 @@ Main class
 
 .. raw:: latex
 
-   \vspace*{0.35\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -185,7 +189,7 @@ Main class
    Matrix([
    [conjugate(U[0, 0]), conjugate(U[1, 0])],
    [conjugate(U[0, 1]), conjugate(U[1, 1])]])
-   >>> unitarity.gate(simplify=True)
+   >>> unitarity.gate(simplification=True)
    Matrix([
    [1, 0],
    [0, 1]])
@@ -401,6 +405,12 @@ Constructor argument properties
 
    \hrulefillthick
 
+.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.simplification
+
+.. raw:: latex
+
+   \hrulefillthick
+
 Read-only properties
 --------------------
 
@@ -498,6 +508,10 @@ Read-only properties
 
 Methods
 -------
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.input
 

@@ -78,11 +78,11 @@ Main class
       ...     norm=1,
       ...     label="ψ",
       ... )
-      >>> qubit_vector.output(simplify=True)
+      >>> qubit_vector.output(simplification=True)
       Matrix([
       [a],
       [b]])
-      >>> qubit_vector.print(simplify=True)
+      >>> qubit_vector.print(simplification=True)
       |ψ⟩ = a|0⟩ + b|1⟩
       >>> qubit_vector.diagram()
 
@@ -132,12 +132,12 @@ Main class
       ...     norm=1,
       ...     label="φ",
       ... )
-      >>> qutrit_vector.output(simplify=True)
+      >>> qutrit_vector.output(simplification=True)
       Matrix([
       [a],
       [b],
       [c]])
-      >>> qutrit_vector.print(simplify=True)
+      >>> qutrit_vector.print(simplification=True)
       |φ⟩ = a|0⟩ + b|1⟩ + c|2⟩
       >>> qutrit_vector.diagram()
 
@@ -181,11 +181,11 @@ Main class
       ...     norm=1,
       ...     label="ξ",
       ... )
-      >>> qubit_pure.output(simplify=True)
+      >>> qubit_pure.output(simplification=True)
       Matrix([
       [α*conjugate(α), α*conjugate(β)],
       [β*conjugate(α), β*conjugate(β)]])
-      >>> qubit_pure.print(simplify=True)
+      >>> qubit_pure.print(simplification=True)
       |ξ⟩⟨ξ| = α*conjugate(α)|0⟩⟨0| + α*conjugate(β)|0⟩⟨1| + β*conjugate(α)|1⟩⟨0| + β*conjugate(β)|1⟩⟨1|
       >>> qubit_pure.diagram()
 
@@ -613,15 +613,25 @@ Constructor argument properties
 
 .. raw:: latex
 
-   \hrulefillthick
-
-.. autoproperty:: qhronology.quantum.states.QuantumState.norm
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
    \hrulefillthick
 
-.. autoproperty:: qhronology.quantum.states.QuantumState.conjugate
+.. autoproperty:: qhronology.quantum.states.QuantumState.simplification
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. autoproperty:: qhronology.quantum.states.QuantumState.conjugation
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. autoproperty:: qhronology.quantum.states.QuantumState.norm
 
 .. raw:: latex
 

@@ -106,7 +106,7 @@ Gate
 
 .. code:: python
 
-   >>> iswap.gate(simplify=True)
+   >>> iswap.gate(simplification=True)
    Matrix([
    [1, 0, 0, 0],
    [0, 0, I, 0],

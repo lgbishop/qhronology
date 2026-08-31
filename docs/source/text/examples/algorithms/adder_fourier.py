@@ -31,7 +31,7 @@ for i in range(0, encoding_depth):
                 Hadamard(
                     targets=[i + encoding_depth],
                     num_systems=2 * encoding_depth,
-                    conjugate=False,
+                    conjugation=False,
                     label="H",
                 )
             )
@@ -39,7 +39,7 @@ for i in range(0, encoding_depth):
                 Hadamard(
                     targets=[i + encoding_depth],
                     num_systems=2 * encoding_depth,
-                    conjugate=True,
+                    conjugation=True,
                     label="H^†",
                 )
             )
@@ -50,7 +50,7 @@ for i in range(0, encoding_depth):
                     controls=[i + j + encoding_depth],
                     exponent=sp.Rational(1, (2**j)),
                     num_systems=2 * encoding_depth,
-                    conjugate=False,
+                    conjugation=False,
                     label=f"{2**j}",
                     family="GATE",
                 )
@@ -61,7 +61,7 @@ for i in range(0, encoding_depth):
                     controls=[i + j + encoding_depth],
                     exponent=sp.Rational(1, (2**j)),
                     num_systems=2 * encoding_depth,
-                    conjugate=True,
+                    conjugation=True,
                     label=f"{2**j}^†",
                     family="GATE",
                 )

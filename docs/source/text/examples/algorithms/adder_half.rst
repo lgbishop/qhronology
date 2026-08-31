@@ -192,7 +192,7 @@ States
 
 .. code:: python
 
-   >>> carry_output_state.print(simplify=True)
+   >>> carry_output_state.print(simplification=True)
    c′ = (a*conjugate(a) + b*u*conjugate(b)*conjugate(u))|0⟩⟨0| + b*v*conjugate(b)*conjugate(v)|1⟩⟨1|
 
 .. raw:: latex

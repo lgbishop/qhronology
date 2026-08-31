@@ -70,7 +70,8 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         num_systems: int | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         label: str | None = None,
         notation: str | None = None,
         family: str | None = None,
@@ -82,16 +83,26 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         dim = 2 if dim is None else dim
         numerical = False if numerical is None else numerical
         array = False if array is None else array
-        conjugate = False if conjugate is None else conjugate
+        conjugation = False if conjugation is None else conjugation
         matrix = quantum_object(
-            spec=spec, form=form, kind=kind, dim=dim, numerical=numerical, array=array
+            spec=spec,
+            form=form,
+            kind=kind,
+            dim=dim,
+            numerical=numerical,
+            array=array,
         )
         num_systems = count_systems(matrix, dim) if num_systems is None else num_systems
         label = "A" if label is None else label
         notation = None if notation is None else notation
         family = "PUSH" if family is None else family
         debug = False if debug is None else debug
-        SymbolicsProperties.__init__(self, symbols=symbols, substitutions=substitutions)
+        SymbolicsProperties.__init__(
+            self,
+            symbols=symbols,
+            substitutions=substitutions,
+            simplification=simplification,
+        )
 
         self.spec = spec
         self.form = form
@@ -99,7 +110,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         self.dim = dim
         self.array = array
         self.num_systems = num_systems
-        self.conjugate = conjugate
+        self.conjugation = conjugation
         self.numerical = numerical
         self.label = label
         self.notation = notation
@@ -184,8 +195,8 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         numerical: bool | None = None,
         array: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
     ) -> mat | arr:
         """Compute the processed matrix representation of the object.
 
@@ -200,14 +211,14 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
-        simplify : bool
+        simplification : bool
             Whether to perform mathematical simplification on the object.
             If :python:`False`, does not simplify.
-            Defaults to :python:`False`.
-        conjugate : bool
+            Defaults to the value of :python:`self.simplification`.
+        conjugation : bool
             Whether to perform Hermitian conjugation on the object.
             If :python:`False`, does not conjugate.
-            Defaults to the value of :python:`self.conjugate`.
+            Defaults to the value of :python:`self.conjugation`.
 
         Returns
         -------
@@ -221,19 +232,19 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         output = self.matrix(numerical=numerical, array=array_intermediate)
         output = symbolize_expression(output, self.symbols_list)
 
-        # Conditions
+        # Substitutions
         substitutions = self.substitutions if substitutions is None else substitutions
         substitutions = symbolize_substitutions(substitutions, self.symbols_list)
         output = apply_substitutions(output, substitutions)
 
         # Simplification
-        simplify = False if simplify is None else simplify
-        if simplify is True:
+        simplification = self.simplification if simplification is None else simplification
+        if simplification is True:
             output = recursively_simplify(output, substitutions)
 
         # Conjugation
-        conjugate = self.conjugate if conjugate is None else conjugate
-        if conjugate is True:
+        conjugation = self.conjugation if conjugation is None else conjugation
+        if conjugation is True:
             output = conjugate_transpose(output)
 
         return cast(output, numerical=numerical, array=array)
@@ -245,8 +256,8 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         return_string: bool | None = None,
         numerical: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
     ) -> None | str:
         """Print or return a mathematical expression of the quantum object as a string.
 
@@ -270,14 +281,14 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the object.
             Defaults to the value of :python:`self.substitutions`.
-        simplify : bool
+        simplification : bool
             Whether to perform mathematical simplification on the object.
             If :python:`False`, does not simplify.
-            Defaults to :python:`False`.
-        conjugate : bool
+            Defaults to the value of :python:`self.simplification`.
+        conjugation : bool
             Whether to perform Hermitian conjugation on the object.
             If :python:`False`, does not conjugate.
-            Defaults to the value of :python:`self.conjugate`.
+            Defaults to the value of :python:`self.conjugation`.
 
         Returns
         -------
@@ -293,8 +304,8 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
                 self.output(
                     numerical=numerical,
                     substitutions=substitutions,
-                    simplify=simplify,
-                    conjugate=conjugate,
+                    simplification=simplification,
+                    conjugation=conjugation,
                 ),
                 dim=self.dim,
                 delimiter=delimiter,
@@ -386,18 +397,18 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             if self.is_vector is True:
                 if (
                     matrix_shape(self.current) == Shapes.COLUMN.value
-                    and self.conjugate == False
+                    and self.conjugation == False
                 ) or (
                     matrix_shape(self.current) == Shapes.ROW.value
-                    and self.conjugate == True
+                    and self.conjugation == True
                 ):
                     notation = "|" + self.label + "⟩"
                 elif (
                     matrix_shape(self.current) == Shapes.ROW.value
-                    and self.conjugate == False
+                    and self.conjugation == False
                 ) or (
                     matrix_shape(self.current) == Shapes.COLUMN.value
-                    and self.conjugate == True
+                    and self.conjugation == True
                 ):
                     notation = "⟨" + self.label + "|"
                 else:
@@ -463,13 +474,13 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         return []
 
     @property
-    def conjugate(self) -> bool:
+    def conjugation(self) -> bool:
         """Whether to perform Hermitian conjugation on the object when it is called."""
-        return self._conjugate
+        return self._conjugation
 
-    @conjugate.setter
-    def conjugate(self, conjugate: bool):
-        self._conjugate = conjugate
+    @conjugation.setter
+    def conjugation(self, conjugation: bool):
+        self._conjugation = conjugation
 
     @property
     def numerical(self) -> bool:

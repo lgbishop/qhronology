@@ -8,5 +8,5 @@ R_xx = Pauli(
     label="R_xx(θ)",
 )
 R_xx.diagram()
-print(repr(R_xx.output(simplify=True)))
-R_xx.print(simplify=True)
+print(repr(R_xx.output(simplification=True)))
+R_xx.print(simplification=True)

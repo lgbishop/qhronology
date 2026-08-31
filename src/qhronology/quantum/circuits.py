@@ -103,6 +103,10 @@ class QuantumCircuit(SymbolicsProperties):
         This uses the same format as the SymPy :python:`subs()` method.
         The value of the :python:`substitutions` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`substitutions` property.
         Defaults to :python:`[]`.
+    simplification : bool
+        Whether to perform mathematical simplification on all objects (i.e., states and gates) computed from the circuit.
+        If :python:`False`, does not simplify.
+        Defaults to :python:`False`.
 
     Note
     ----
@@ -133,8 +137,14 @@ class QuantumCircuit(SymbolicsProperties):
         array: bool | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
+        simplification: bool | None = None,
     ):
-        SymbolicsProperties.__init__(self, symbols=symbols, substitutions=substitutions)
+        SymbolicsProperties.__init__(
+            self,
+            symbols=symbols,
+            substitutions=substitutions,
+            simplification=simplification,
+        )
         inputs = [] if inputs is None else inputs
         gates = [] if gates is None else gates
         postselections = [] if postselections is None else postselections
@@ -443,8 +453,8 @@ class QuantumCircuit(SymbolicsProperties):
         numerical: bool | None = None,
         array: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
@@ -471,11 +481,11 @@ class QuantumCircuit(SymbolicsProperties):
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
-        simplify : bool
+        simplification : bool
             Whether to perform mathematical simplification on the state.
             If :python:`False`, does not simplify.
-            Defaults to :python:`False`.
-        conjugate : bool
+            Defaults to the value of :python:`self.simplification`.
+        conjugation : bool
             Whether to perform Hermitian conjugation on the state.
             If :python:`False`, does not conjugate.
             Defaults to :python:`False`.
@@ -524,8 +534,9 @@ class QuantumCircuit(SymbolicsProperties):
             array=array_intermediate,
             symbols=dict(),
             substitutions=[],
-            norm=1,
-            conjugate=False,
+            simplification=False,
+            conjugation=False,
+            norm=False,
             label="0",
             notation=None,
             debug=False,
@@ -573,16 +584,17 @@ class QuantumCircuit(SymbolicsProperties):
             array=array_intermediate,
             symbols=self.symbols,
             substitutions=substitutions,
+            simplification=False,
+            conjugation=False,
             norm=False,
-            conjugate=False,
             label=None,
             notation=None,
             debug=False,
         )
 
         # Simplification
-        simplify = False if simplify is None else simplify
-        if simplify is True:
+        simplification = self.simplification if simplification is None else simplification
+        if simplification is True:
             input_state.simplify()
 
         input_state = QuantumState(
@@ -594,7 +606,8 @@ class QuantumCircuit(SymbolicsProperties):
             dim=self.dim,
             symbols=self.symbols,
             substitutions=substitutions,
-            conjugate=conjugate,
+            simplification=simplification,
+            conjugation=conjugation,
             norm=norm,
             label=label,
             notation=notation,
@@ -608,8 +621,8 @@ class QuantumCircuit(SymbolicsProperties):
         numerical: bool | None = None,
         array: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         exponent: num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
@@ -629,11 +642,13 @@ class QuantumCircuit(SymbolicsProperties):
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the gate.
             Defaults to the value of :python:`self.substitutions`.
-        simplify : bool
+        simplification : bool
             Whether to perform mathematical simplification on the gate.
-            Defaults to :python:`False`.
-        conjugate : bool
+            If :python:`False`, does not simplify.
+            Defaults to the value of :python:`self.simplification`.
+        conjugation : bool
             Whether to perform Hermitian conjugation on the gate when it is called.
+            If :python:`False`, does not conjugate.
             Defaults to :python:`False`.
         exponent : num | expr | str
             A numerical or string representation of a scalar value to which gate's operator (residing on :python:`targets`) is exponentiated.
@@ -675,14 +690,14 @@ class QuantumCircuit(SymbolicsProperties):
 
         spec = symbolize_expression(spec, self.symbols_list)
 
-        # Conditions
+        # Substitutions
         substitutions = self.substitutions if substitutions is None else substitutions
         substitutions = symbolize_substitutions(substitutions, self.symbols_list)
         spec = apply_substitutions(spec, substitutions)
 
         # Simplification
-        simplify = False if simplify is None else simplify
-        if simplify is True:
+        simplification = self.simplification if simplification is None else simplification
+        if simplification is True:
             spec = recursively_simplify(spec, substitutions)
 
         gate_total = QuantumGate(
@@ -696,7 +711,8 @@ class QuantumCircuit(SymbolicsProperties):
             array=array,
             symbols=self.symbols,
             substitutions=substitutions,
-            conjugate=conjugate,
+            simplification=simplification,
+            conjugation=conjugation,
             exponent=exponent,
             coefficient=1,
             label=label,
@@ -805,8 +821,8 @@ class QuantumCircuit(SymbolicsProperties):
         numerical: bool | None = None,
         array: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         norm: bool | num | expr | str | None = None,
         postprocess: bool | None = None,
     ) -> mat | arr:
@@ -823,11 +839,13 @@ class QuantumCircuit(SymbolicsProperties):
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
-        simplify : bool
+        simplification : bool
             Whether to perform mathematical simplification on the state.
-            Defaults to :python:`False`.
-        conjugate : bool
+            If :python:`False`, does not simplify.
+            Defaults to the value of :python:`self.simplification`.
+        conjugation : bool
             Whether to perform Hermitian conjugation on the state.
+            If :python:`False`, does not conjugate.
             Defaults to :python:`False`.
         norm : bool | num | expr | str
             The value to which the state is normalized.
@@ -867,8 +885,9 @@ class QuantumCircuit(SymbolicsProperties):
             array=array_intermediate,
             symbols=self.symbols,
             substitutions=substitutions,
+            simplification=False,
+            conjugation=False,
             norm=False,
-            conjugate=False,
             label=None,
             notation=None,
             debug=False,
@@ -907,13 +926,13 @@ class QuantumCircuit(SymbolicsProperties):
             output_state.normalize(norm)
 
         # Simplification
-        simplify = False if simplify is None else simplify
-        if simplify is True:
+        simplification = self.simplification if simplification is None else simplification
+        if simplification is True:
             output_state.simplify()
 
         # Conjugation
-        conjugate = False if conjugate is None else conjugate
-        if conjugate is True:
+        conjugation = False if conjugation is None else conjugation
+        if conjugation is True:
             output_state.dagger()
 
         output_state = QuantumState(
@@ -925,8 +944,9 @@ class QuantumCircuit(SymbolicsProperties):
             array=array_intermediate,
             symbols=self.symbols,
             substitutions=substitutions,
+            simplification=simplification,
+            conjugation=False,
             norm=False,
-            conjugate=False,
             label=None,
             notation=None,
             debug=False,
@@ -939,8 +959,8 @@ class QuantumCircuit(SymbolicsProperties):
         numerical: bool | None = None,
         array: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
@@ -961,11 +981,13 @@ class QuantumCircuit(SymbolicsProperties):
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
-        simplify : bool
-            Whether to perform mathematical simplification on the state before committing it to the :python:`matrix` property.
-            Defaults to :python:`False`.
-        conjugate : bool
+        simplification : bool
+            Whether to perform mathematical simplification on the state.
+            If :python:`False`, does not simplify.
+            Defaults to the value of :python:`self.simplification`.
+        conjugation : bool
             Whether to perform Hermitian conjugation on the state.
+            If :python:`False`, does not conjugate.
             Defaults to :python:`False`.
         norm : bool | num | expr | str
             The value to which the state is normalized.
@@ -1003,6 +1025,7 @@ class QuantumCircuit(SymbolicsProperties):
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
         substitutions = self.substitutions if substitutions is None else substitutions
+        simplification = self.simplification if simplification is None else simplification
         traces = [] if traces is None else traces
         postprocess = True if postprocess is None else postprocess
 
@@ -1028,8 +1051,8 @@ class QuantumCircuit(SymbolicsProperties):
             numerical=numerical,
             array=array,
             substitutions=substitutions,
-            simplify=simplify,
-            conjugate=False,
+            simplification=simplification,
+            conjugation=False,
             norm=norm,
             postprocess=postprocess,
         )
@@ -1043,7 +1066,8 @@ class QuantumCircuit(SymbolicsProperties):
             array=array,
             symbols=self.symbols,
             substitutions=substitutions,
-            conjugate=conjugate,
+            simplification=simplification,
+            conjugation=conjugation,
             norm=False,
             label=label,
             notation=notation,
@@ -1241,7 +1265,7 @@ class QuantumCircuit(SymbolicsProperties):
                             symbols=dict(),
                             substitutions=[],
                             norm=1,
-                            conjugate=False,
+                            conjugation=False,
                             label="0",
                             notation=None,
                             debug=False,
@@ -1276,7 +1300,7 @@ class QuantumCircuit(SymbolicsProperties):
                     symbols=dict(),
                     substitutions=[],
                     norm=1,
-                    conjugate=False,
+                    conjugation=False,
                     label="0",
                     notation=None,
                     debug=False,
@@ -1341,7 +1365,7 @@ class QuantumCircuit(SymbolicsProperties):
                                 symbols=dict(),
                                 substitutions=[],
                                 norm=1,
-                                conjugate=False,
+                                conjugation=False,
                                 label="?",
                                 notation=None,
                                 family=Families.RSTICK.value,

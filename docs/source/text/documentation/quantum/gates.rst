@@ -52,8 +52,16 @@ Facilities to combine gates together are also provided by the package and take t
 
 Both of these classes concern the creation of more complex spatial ("vertical") gate structures. Temporal ("horizontal") compositions (i.e., gates wired in serial) as single object instances on the other hand are not supported, as this can be achieved simply by combining the individual components sequentially in a circuit.
 
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
+
 Main class
 ==========
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.QuantumGate
    :show-inheritance:
@@ -605,7 +613,13 @@ Constructor argument properties
 
    \hrulefillthick
 
-.. autoproperty:: qhronology.quantum.gates.QuantumGate.conjugate
+.. autoproperty:: qhronology.quantum.gates.QuantumGate.simplification
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. autoproperty:: qhronology.quantum.gates.QuantumGate.conjugation
 
 .. raw:: latex
 
@@ -672,14 +686,6 @@ Methods
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \newpage
-
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
 
 .. automethod:: qhronology.quantum.gates.QuantumGate.print
 
@@ -844,10 +850,6 @@ Methods
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -1158,6 +1160,10 @@ Methods
 
    .. raw:: latex
 
+      \enlargethispage{-2\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1300,10 +1306,6 @@ Methods
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \enlargethispage{2\baselineskip}
 
    .. raw:: latex
 
@@ -1691,10 +1693,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
@@ -1853,10 +1851,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \enlargethispage{-\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -1948,7 +1942,7 @@ Please be aware that the documentation of these subclasses included hereafter co
       ...     coefficient="exp(-I*θ/2)",
       ...     label="R_xx(θ)",
       ... )
-      >>> R_xx.output(simplify=True)
+      >>> R_xx.output(simplification=True)
       Matrix([
       [   cos(θ/2),           0,           0, -I*sin(θ/2)],
       [          0,    cos(θ/2), -I*sin(θ/2),           0],
@@ -1996,22 +1990,18 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \newpage
-
 .. autoclass:: qhronology.quantum.gates.GellMann
    :show-inheritance:
+
+   .. raw:: latex
+
+      \enlargethispage{-2\baselineskip}
 
    .. raw:: latex
 
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
-
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -2488,10 +2478,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
       \hrulefillthick
 
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
-
    .. autoproperty:: qhronology.quantum.gates.Phase.phase
       :no-index:
 
@@ -2501,7 +2487,7 @@ Please be aware that the documentation of these subclasses included hereafter co
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \enlargethispage{-2\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.Diagonal
    :show-inheritance:
@@ -2648,12 +2634,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \newpage
-      \null
-      \vspace*{-2\baselineskip}
-
-   .. raw:: latex
-
       \hrulefillthick
 
    .. autoproperty:: qhronology.quantum.gates.Diagonal.exponentiation
@@ -2767,7 +2747,7 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \vspace*{-0.35\baselineskip}
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -2815,14 +2795,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \vspace*{-0.35\baselineskip}
-
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -2864,6 +2836,10 @@ Please be aware that the documentation of these subclasses included hereafter co
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -3057,6 +3033,10 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
+      \enlargethispage{-2\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -3108,10 +3088,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.Not
    :show-inheritance:
@@ -3206,10 +3182,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \vspace*{-0.35\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -3247,10 +3219,6 @@ Please be aware that the documentation of these subclasses included hereafter co
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -3294,11 +3262,7 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \vspace*{-0.35\baselineskip}
-
-   .. raw:: latex
-
-      \enlargethispage{2\baselineskip}
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -3526,13 +3490,11 @@ Please be aware that the documentation of these subclasses included hereafter co
 
 .. raw:: latex
 
-   \newpage
-   \null
-   \vspace*{-2\baselineskip}
+   \hrulefillthick
 
 .. raw:: latex
 
-   \hrulefillthick
+   \enlargethispage{-8\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.Fourier
    :show-inheritance:
@@ -3733,14 +3695,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \vspace*{-0.35\baselineskip}
-
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -3848,7 +3802,7 @@ Combinations
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{-3\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.GateInterleave
    :show-inheritance:

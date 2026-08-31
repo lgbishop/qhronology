@@ -138,7 +138,7 @@ States
 
    \end{code}
 
-Of course, this example uses general (symbolic) forms for the input state :math:`\StateCR` and interaction :math:`\Unitary`. Instead, you can set explicit forms for both of these, and thereby investigate the ECP in the context of specific time-travel scenarios.
+Of course, this example uses general (symbolic) forms for the input state :math:`\StateCR` and interaction :math:`\Unitary`. To investigate the ECP in the context of specific time-travel scenarios, explicit forms for both :math:`\StateCR` and :math:`\Unitary` can be set.
 
 .. raw:: latex
 

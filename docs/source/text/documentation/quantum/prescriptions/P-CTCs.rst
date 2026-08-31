@@ -58,15 +58,15 @@ Class
 Methods
 ^^^^^^^
 
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
-
 .. automethod:: qhronology.quantum.prescriptions.PCTC.matrix
 
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
 
 .. automethod:: qhronology.quantum.prescriptions.PCTC.output
 

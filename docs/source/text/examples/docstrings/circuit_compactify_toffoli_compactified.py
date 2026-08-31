@@ -11,8 +11,8 @@ NCI = Not(targets=[0], controls=[1])
 INC = Not(targets=[1], controls=[2])
 CIN = Not(targets=[2], controls=[0])
 CNI = Not(targets=[1], controls=[0])
-ItI = Phase(exponent=sp.Rational(1, 4), targets=[1], label="t", conjugate=True)
-tII = Phase(exponent=sp.Rational(1, 4), targets=[0], label="t", conjugate=True)
+ItI = Phase(exponent=sp.Rational(1, 4), targets=[1], label="t", conjugation=True)
+tII = Phase(exponent=sp.Rational(1, 4), targets=[0], label="t", conjugation=True)
 
 circuit = QuantumCircuit(
     gates=[IIH, TII, ITI, IIT, NCI, INC, CIN, ItI, CNI, tII, ItI, IIT, INC, CIN, NCI, IIH],

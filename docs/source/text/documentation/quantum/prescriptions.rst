@@ -95,13 +95,13 @@ Please note that the documentation of this class includes only properties and me
 
 .. code:: python
 
-   >>> SWAP_DCTC_CR.print(simplify=True)
+   >>> SWAP_DCTC_CR.print(simplification=True)
    ρ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> SWAP_DCTC_CV.print(simplify=True)
+   >>> SWAP_DCTC_CV.print(simplification=True)
    τ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> SWAP_PCTC_CR.print(simplify=True)
+   >>> SWAP_PCTC_CR.print(simplification=True)
    ρ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> SWAP_PCTC_CV.print(simplify=True)
+   >>> SWAP_PCTC_CV.print(simplification=True)
    τ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
 
 .. raw:: latex
@@ -155,13 +155,13 @@ Please note that the documentation of this class includes only properties and me
 
 .. code:: python
 
-   >>> CNOT_DCTC_CR.print(simplify=True)
+   >>> CNOT_DCTC_CR.print(simplification=True)
    ρ_D = ρ[0, 0]|0⟩⟨0| + 2*g*ρ[0, 1]|0⟩⟨1| + 2*g*ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> CNOT_DCTC_CV.print(simplify=True)
+   >>> CNOT_DCTC_CV.print(simplification=True)
    τ_D = 1/2|0⟩⟨0| + g|0⟩⟨1| + g|1⟩⟨0| + 1/2|1⟩⟨1|
-   >>> CNOT_PCTC_CR.print(simplify=True)
+   >>> CNOT_PCTC_CR.print(simplification=True)
    ρ_P = |0⟩⟨0|
-   >>> CNOT_PCTC_CV.print(simplify=True)
+   >>> CNOT_PCTC_CV.print(simplification=True)
    τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
 
 .. raw:: latex

@@ -116,7 +116,7 @@ IQFT = Fourier(
     targets=systems_controls,
     num_systems=num_total,
     composite=True,
-    conjugate=True,
+    conjugation=True,
     label="QFT^†",
 )
 

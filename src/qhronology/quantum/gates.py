@@ -102,8 +102,13 @@ class QuantumGate(QuantumObject):
         All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
         Defaults to :python:`[]`.
-    conjugate : bool
+    simplification : bool
+        Whether to perform mathematical simplification on the gate when it is called.
+        If :python:`False`, does not simplify.
+        Defaults to :python:`False`.
+    conjugation : bool
         Whether to perform Hermitian conjugation on the gate when it is called.
+        If :python:`False`, does not conjugate.
         Defaults to :python:`False`.
     exponent : num | expr | str
         A numerical or string representation of a scalar value to which gate's operator (residing on :python:`targets`) is exponentiated.
@@ -146,7 +151,8 @@ class QuantumGate(QuantumObject):
         array: bool | None = None,
         symbols: dict | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         exponent: num | expr | str | None = None,
         coefficient: num | expr | str | None = None,
         label: str | None = None,
@@ -197,7 +203,8 @@ class QuantumGate(QuantumObject):
             array=array,
             symbols=symbols,
             substitutions=substitutions,
-            conjugate=conjugate,
+            simplification=simplification,
+            conjugation=conjugation,
             label=label,
             notation=notation,
             family=family,
@@ -430,8 +437,8 @@ class QuantumGate(QuantumObject):
         numerical: bool | None = None,
         array: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         exponent: bool | num | expr | str | None = None,
         coefficient: bool | num | expr | str | None = None,
     ) -> mat | arr:
@@ -448,14 +455,14 @@ class QuantumGate(QuantumObject):
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the gate.
             Defaults to the value of :python:`self.substitutions`.
-        simplify : bool
+        simplification : bool
             Whether to perform mathematical simplification on the gate.
             If :python:`False`, does not simplify.
-            Defaults to :python:`False`.
-        conjugate : bool
+            Defaults to the value of :python:`self.simplification`.
+        conjugation : bool
             Whether to perform Hermitian conjugation on the gate.
             If :python:`False`, does not conjugate.
-            Defaults to the value of :python:`self.conjugate`.
+            Defaults to the value of :python:`self.conjugation`.
         exponent : bool | num | expr | str
             The scalar value by which the gate's matrix representation is exponentiated.
             If :python:`False`, does not exponentiate.
@@ -579,19 +586,19 @@ class QuantumGate(QuantumObject):
                 operator = matrix
             gate = matrix
 
-        # Conditions
+        # Substitutions
         substitutions = self.substitutions if substitutions is None else substitutions
         substitutions = symbolize_substitutions(substitutions, self.symbols_list)
         gate = apply_substitutions(gate, substitutions)
 
         # Simplification
-        simplify = False if simplify is None else simplify
-        if simplify is True:
+        simplification = self.simplification if simplification is None else simplification
+        if simplification is True:
             gate = recursively_simplify(gate, substitutions)
 
         # Conjugation
-        conjugate = self.conjugate if conjugate is None else conjugate
-        if conjugate is True:
+        conjugation = self.conjugation if conjugation is None else conjugation
+        if conjugation is True:
             gate = conjugate_transpose(gate)
 
         return cast(gate, numerical=numerical, array=array)
@@ -603,8 +610,8 @@ class QuantumGate(QuantumObject):
         return_string: bool | None = None,
         numerical: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         exponent: bool | num | expr | str | None = None,
         coefficient: bool | num | expr | str | None = None,
     ) -> None | str:
@@ -630,14 +637,14 @@ class QuantumGate(QuantumObject):
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the gate.
             Defaults to the value of :python:`self.substitutions`.
-        simplify : bool
+        simplification : bool
             Whether to perform mathematical simplification on the gate.
             If :python:`False`, does not simplify.
-            Defaults to :python:`False`.
-        conjugate : bool
+            Defaults to the value of :python:`self.simplification`.
+        conjugation : bool
             Whether to perform Hermitian conjugation on the gate.
             If :python:`False`, does not conjugate.
-            Defaults to the value of :python:`self.conjugate`.
+            Defaults to the value of :python:`self.conjugation`.
         exponent : bool | num | expr | str
             The scalar value by which the gate is exponentiated.
             If :python:`False`, does not exponentiate.
@@ -661,8 +668,8 @@ class QuantumGate(QuantumObject):
                 self.output(
                     numerical=numerical,
                     substitutions=substitutions,
-                    simplify=simplify,
-                    conjugate=conjugate,
+                    simplification=simplification,
+                    conjugation=conjugation,
                     exponent=exponent,
                     coefficient=coefficient,
                 ),
@@ -2380,7 +2387,8 @@ class GateInterleave(QuantumGate):
             num_systems=num_systems,
             numerical=numerical,
             array=array,
-            conjugate=False,
+            simplification=None,
+            conjugation=False,
             exponent=1,
             coefficient=1,
             label=label,
@@ -2539,8 +2547,8 @@ class GateInterleave(QuantumGate):
         numerical: bool | None = None,
         array: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         exponent: bool | num | expr | str | None = None,
         coefficient: bool | num | expr | str | None = None,
     ) -> mat | arr:
@@ -2581,19 +2589,19 @@ class GateInterleave(QuantumGate):
 
         gate = symbolize_expression(gate, self.symbols_list)
 
-        # Conditions
+        # Substitutions
         substitutions = self.substitutions if substitutions is None else substitutions
         substitutions = symbolize_substitutions(substitutions, self.symbols_list)
         gate = apply_substitutions(gate, substitutions)
 
         # Simplification
-        simplify = False if simplify is None else simplify
-        if simplify is True:
+        simplification = self.simplification if simplification is None else simplification
+        if simplification is True:
             gate = recursively_simplify(gate, substitutions)
 
         # Conjugation
-        conjugate = self.conjugate if conjugate is None else conjugate
-        if conjugate is True:
+        conjugation = self.conjugation if conjugation is None else conjugation
+        if conjugation is True:
             gate = conjugate_transpose(gate)
 
         return cast(gate, numerical=numerical, array=array)

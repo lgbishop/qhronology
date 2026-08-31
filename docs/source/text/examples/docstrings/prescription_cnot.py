@@ -38,7 +38,7 @@ CNOT_PCTC_CR = CNOT_PCTC.state_respecting(norm=1, label="ρ_P")
 CNOT_PCTC_CV = CNOT_PCTC.state_violating(label="τ_P")
 
 # Results
-CNOT_DCTC_CR.print(simplify=True)
-CNOT_DCTC_CV.print(simplify=True)
-CNOT_PCTC_CR.print(simplify=True)
-CNOT_PCTC_CV.print(simplify=True)
+CNOT_DCTC_CR.print(simplification=True)
+CNOT_DCTC_CV.print(simplification=True)
+CNOT_PCTC_CR.print(simplification=True)
+CNOT_PCTC_CV.print(simplification=True)

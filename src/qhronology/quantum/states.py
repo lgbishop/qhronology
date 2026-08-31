@@ -84,7 +84,11 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         All instances of the expression in each tuple's first element are replaced by the expression in the respective second element.
         This uses the same format as the SymPy :python:`subs()` method.
         Defaults to :python:`[]`.
-    conjugate : bool
+    simplification : bool
+        Whether to perform mathematical simplification on the state when it is called.
+        If :python:`False`, does not simplify.
+        Defaults to :python:`False`.
+    conjugation : bool
         Whether to perform Hermitian conjugation on the state when it is called.
         If :python:`False`, does not conjugate.
         Defaults to :python:`False`.
@@ -128,7 +132,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         array: bool | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         norm: bool | num | expr | str | None = None,
         label: str | None = None,
         notation: str | None = None,
@@ -148,7 +153,12 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
 
         self.norm = norm
         self.current = quantum_object(
-            spec=spec, form=form, kind=kind, dim=dim, numerical=numerical, array=array
+            spec=spec,
+            form=form,
+            kind=kind,
+            dim=dim,
+            numerical=numerical,
+            array=array,
         )
 
         QuantumObject.__init__(
@@ -161,7 +171,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             array=array,
             symbols=symbols,
             substitutions=substitutions,
-            conjugate=conjugate,
+            simplification=simplification,
+            conjugation=conjugation,
             label=label,
             notation=notation,
             family=family,
@@ -236,8 +247,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         numerical: bool | None = None,
         array: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         norm: bool | num | expr | str | None = None,
     ) -> mat | arr:
         """Compute the processed matrix representation of the state.
@@ -253,14 +264,14 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
-        simplify : bool
+        simplification : bool
             Whether to perform mathematical simplification on the state.
             If :python:`False`, does not simplify.
-            Defaults to :python:`False`.
-        conjugate : bool
+            Defaults to the value of :python:`self.simplification`.
+        conjugation : bool
             Whether to perform Hermitian conjugation on the state.
             If :python:`False`, does not conjugate.
-            Defaults to the value of :python:`self.conjugate`.
+            Defaults to the value of :python:`self.conjugation`.
         norm : bool | num | expr | str
             The value to which the state is normalized.
             If :python:`False`, does not normalize.
@@ -284,19 +295,19 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         if norm is not False:
             state = normalize(state, norm=norm)
 
-        # Conditions
+        # Substitutions
         substitutions = self.substitutions if substitutions is None else substitutions
         substitutions = symbolize_substitutions(substitutions, self.symbols_list)
         state = apply_substitutions(state, substitutions)
 
         # Simplification
-        simplify = False if simplify is None else simplify
-        if simplify is True:
+        simplification = self.simplification if simplification is None else simplification
+        if simplification is True:
             state = recursively_simplify(state, substitutions)
 
         # Conjugation
-        conjugate = self.conjugate if conjugate is None else conjugate
-        if conjugate is True:
+        conjugation = self.conjugation if conjugation is None else conjugation
+        if conjugation is True:
             state = conjugate_transpose(state)
 
         return cast(state, numerical=numerical, array=array)
@@ -308,8 +319,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         return_string: bool | None = None,
         numerical: bool | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
-        simplify: bool | None = None,
-        conjugate: bool | None = None,
+        simplification: bool | None = None,
+        conjugation: bool | None = None,
         norm: bool | num | expr | str | None = None,
     ) -> None | str:
         """Print or return a mathematical expression of the quantum state as a string.
@@ -334,14 +345,14 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
-        simplify : bool
+        simplification : bool
             Whether to perform mathematical simplification on the state.
             If :python:`False`, does not simplify.
-            Defaults to :python:`False`.
-        conjugate : bool
+            Defaults to the value of :python:`self.simplification`.
+        conjugation : bool
             Whether to perform Hermitian conjugation on the state.
             If :python:`False`, does not conjugate.
-            Defaults to the value of :python:`self.conjugate`.
+            Defaults to the value of :python:`self.conjugation`.
         norm : bool | num | expr | str
             The value to which the state is normalized.
             If :python:`False`, does not normalize.
@@ -361,8 +372,8 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
                 self.output(
                     numerical=numerical,
                     substitutions=substitutions,
-                    simplify=simplify,
-                    conjugate=conjugate,
+                    simplification=simplification,
+                    conjugation=conjugation,
                     norm=norm,
                 ),
                 dim=self.dim,

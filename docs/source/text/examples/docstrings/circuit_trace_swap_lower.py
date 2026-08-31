@@ -30,8 +30,8 @@ circuit_lower.diagram()
 
 # Output
 output_total = circuit.state(label="(ψ⊗φ)′")
-output_lower = circuit_upper.state(simplify=True, label="ψ")
-output_upper = circuit_lower.state(simplify=True, label="φ")
+output_lower = circuit_upper.state(simplification=True, label="ψ")
+output_upper = circuit_lower.state(simplification=True, label="φ")
 output_lower.kind = "pure"
 output_upper.kind = "pure"
 

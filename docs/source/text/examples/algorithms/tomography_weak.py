@@ -31,7 +31,7 @@ for gates in VI:
     gates_pre = gates
     gates_post = gates[::-1]
     for gate in gates_post:
-        gate.conjugate = True
+        gate.conjugation = True
 
     tomography = QuantumCircuit(
         inputs=[unknown_state, probe_state],

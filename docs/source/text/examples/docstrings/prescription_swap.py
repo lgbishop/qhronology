@@ -37,7 +37,7 @@ SWAP_PCTC_CR = SWAP_PCTC.state_respecting(label="ρ_P")
 SWAP_PCTC_CV = SWAP_PCTC.state_violating(label="τ_P")
 
 # Results
-SWAP_DCTC_CR.print(simplify=True)
-SWAP_DCTC_CV.print(simplify=True)
-SWAP_PCTC_CR.print(simplify=True)
-SWAP_PCTC_CV.print(simplify=True)
+SWAP_DCTC_CR.print(simplification=True)
+SWAP_DCTC_CV.print(simplification=True)
+SWAP_PCTC_CR.print(simplification=True)
+SWAP_PCTC_CV.print(simplification=True)

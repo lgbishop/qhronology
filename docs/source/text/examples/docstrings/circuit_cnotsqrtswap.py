@@ -37,6 +37,6 @@ output = CNOT.state(label="(ψ⊗φ)′")
 output.simplify()
 
 # Results
-print(repr(CNOT.gate(simplify=True)))
+print(repr(CNOT.gate(simplification=True)))
 CNOT.input().print()
 output.print()

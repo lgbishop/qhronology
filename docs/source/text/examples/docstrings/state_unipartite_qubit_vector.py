@@ -9,5 +9,5 @@ qubit_vector = QuantumState(
     label="ψ",
 )
 qubit_vector.diagram()
-print(repr(qubit_vector.output(simplify=True)))
-qubit_vector.print(simplify=True)
+print(repr(qubit_vector.output(simplification=True)))
+qubit_vector.print(simplification=True)
