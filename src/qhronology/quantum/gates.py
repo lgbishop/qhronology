@@ -211,6 +211,11 @@ class QuantumGate(QuantumObject):
             debug=False,
         )
 
+        # Repeat property assignments to check for incompatibilities
+        self.targets = targets
+        self.controls = controls
+        self.anticontrols = anticontrols
+
     @property
     def is_vector(self) -> bool:
         return False
@@ -246,6 +251,11 @@ class QuantumGate(QuantumObject):
 
     @targets.setter
     def targets(self, targets: list[int]):
+        if hasattr(self, "_spec") is True and type(self) == QuantumGate:
+            if hasattr(self, "_targets") is True and len(self.targets) != self.num_systems_spec:
+                raise ValueError(
+                    f"""The number of systems of the gate's specification ({self.num_systems_spec}) does not match the number of systems of its targets ({len(self.targets)})."""
+                )
         if (
             hasattr(self, "_controls") is True
             and hasattr(self, "_anticontrols") is True
