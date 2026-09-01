@@ -41,8 +41,9 @@ from qhronology.utilities.helpers import (
     count_systems,
     recursively_simplify,
     stringify,
-    symbolize_substitutions,
     symbolize_expression,
+    symbolize_substitutions,
+    to_matrix,
 )
 from qhronology.utilities.symbolics import SymbolicsProperties
 
@@ -472,6 +473,15 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     def anticontrols(self) -> list[int]:
         """An ordered list of the numerical indices of the object's anticontrol systems."""
         return []
+
+    @property
+    def num_systems_spec(self) -> int:
+        """The number of systems that the object's specification spans."""
+        if isinstance(self.spec, list) is True:
+            num_systems_spec = count_systems(to_matrix(self.spec), self.dim)
+        else:
+            num_systems_spec = count_systems(self.spec, self.dim)
+        return num_systems_spec
 
     @property
     def conjugation(self) -> bool:
