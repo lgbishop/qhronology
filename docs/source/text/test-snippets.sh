@@ -19,6 +19,10 @@ done
 
 mapfile -t jobs < ./jobs-rst.txt
 
+echo "+------------+"
+echo "| TEST START |"
+echo "+------------+"
+
 for FILE in "${jobs[@]}"; do
     NAME=$(basename $FILE) # Remove directories
     NAME="${NAME%.*}" # Remove extension

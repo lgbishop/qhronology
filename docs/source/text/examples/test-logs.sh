@@ -15,6 +15,10 @@ done
 
 mapfile -t jobs < ./jobs-examples.txt
 
+echo "+------------+"
+echo "| TEST START |"
+echo "+------------+"
+
 for FILE in "${jobs[@]}"; do
     (
     NAME=$(basename $FILE)  # Remove parent directories
