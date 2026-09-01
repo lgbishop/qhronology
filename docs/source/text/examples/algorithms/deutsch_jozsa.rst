@@ -140,7 +140,7 @@ This may alternatively be written equivalently as
 
 .. math:: \Oracle_f = \bigoplus_{x = 0}^{2^n - 1} \left[\bigl(1 - f(x)\bigr) \Identity + f(x) \PauliX \right],
 
-which is the definition we use in the implementation here.
+which is the definition used in the implementation here.
 
 .. raw:: latex
 
