@@ -64,7 +64,13 @@ def list_depth(nested_list: list) -> int:
 
 def count_systems(matrix: mat | arr, dim: int) -> int:
     """Count the number of :python:`dim`-dimensional subsystems that constitute the (composite) system on which :python:`matrix` resides."""
-    return int(np.emath.logn(dim, count_rows(to_density(matrix))))
+    num_systems = np.emath.logn(dim, count_rows(to_density(matrix)))
+    if np.isclose(num_systems, np.round(num_systems, decimals=0)):
+        return int(np.round(num_systems, decimals=0))
+    else:
+        raise ValueError(
+            f"""The provided matrix was found to have a non-integer number of systems under the given dimensionality."""
+        )
 
 
 def count_dims(matrix: mat | arr, num_systems: int) -> int:
