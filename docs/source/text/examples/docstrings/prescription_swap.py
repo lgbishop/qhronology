@@ -21,7 +21,7 @@ I = Pauli(index=0, targets=[0, 1], num_systems=2)
 SWAP_CTC = QuantumCTC(
     inputs=[input_state],
     gates=[S],
-    systems_respecting=[0],
+    systems_violating=[1],
 )
 SWAP_CTC.diagram()
 

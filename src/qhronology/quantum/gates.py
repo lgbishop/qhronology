@@ -39,6 +39,7 @@ from qhronology.utilities.helpers import (
     generate_identity,
     generate_zeros,
     matrix_multiplication,
+    permute_tensor_product,
     recursively_simplify,
     stringify,
     symbolize_substitutions,
@@ -433,13 +434,11 @@ class QuantumGate(QuantumObject):
         identity = generate_identity(
             self.dim, numerical=numerical, array=array_intermediate
         )
-        ordered = []
-        for i in self.systems:
-            if i not in self.targets:
-                ordered.append(identity)
-            if i == min(self.targets):
-                ordered.append(operator)
-        matrix = tensor_product(*ordered)
+        matrix = tensor_product(operator, *[identity] * (self.num_systems - len(self.targets)))
+        permutation = self.systems
+        for i, t in enumerate(self.targets):
+           permutation[i], permutation[t] = permutation[t], permutation[i]
+        matrix = permute_tensor_product(matrix, permutation, self.dim)
         return cast(matrix, numerical=numerical, array=array)
 
     def output(
@@ -2247,7 +2246,7 @@ class Measurement(QuantumGate):
 
     Note
     ----
-    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s) to be measured. These indices must be consecutive, and their number must match the number of systems spanned by all given operators.
+    The :python:`targets` argument must be specified as a list of numerical indices of the subsystem(s) to be measured. The number of indices must match the number of systems spanned by all given operators.
     """
 
     def __init__(
@@ -2302,17 +2301,18 @@ class Measurement(QuantumGate):
 
         matrices = []
         identity = generate_identity(
-            self.dim, numerical=self.numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate
         )
-        targets_compliment = list(set(self.systems) ^ set(self.targets))
         for operator in self.operators:
             operator = densify(extract_representation(operator))
             operator = cast(operator, numerical=numerical, array=array_intermediate)
-            ordered = arrange(
-                [targets_compliment, [min(self.targets)]], [identity] + [operator]
-            )
-            matrix = tensor_product(*ordered)
+            matrix = tensor_product(operator, *[identity] * (self.num_systems - len(self.targets)))
+            permutation = self.systems
+            for i, t in enumerate(self.targets):
+                permutation[i], permutation[t] = permutation[t], permutation[i]
+            matrix = permute_tensor_product(matrix, permutation, self.dim)
             matrices.append(cast(matrix, numerical=numerical, array=array))
+
         return matrices
 
     def matrix(

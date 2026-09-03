@@ -23,7 +23,7 @@ CNOT = QuantumCircuit(
     inputs=[input_state],
     gates=[CN],
 )
-CNOT_CTC = QuantumCTC(circuit=CNOT, systems_respecting=[1])
+CNOT_CTC = QuantumCTC(circuit=CNOT, systems_violating=[0])
 CNOT_CTC.diagram()
 
 # Output

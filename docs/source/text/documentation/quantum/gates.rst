@@ -72,7 +72,7 @@ Main class
 
    .. raw:: latex
 
-      \begin{adjustwidth}{0.00cm}{0cm}
+      \begin{adjustwidth}{-1.25em}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
 
@@ -295,7 +295,52 @@ Main class
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
+      \begin{code}
+
+   .. code:: python
+
+      >>> unitary = sp.MatrixSymbol("U", 2**2, 2**2).as_mutable()
+      >>> U = QuantumGate(
+      ...     spec=unitary,
+      ...     targets=[0, 2],
+      ...     label="U",
+      ... )
+      >>> U.output()
+      Matrix([
+      [U[0, 0], U[0, 1],       0,       0, U[0, 2], U[0, 3],       0,       0],
+      [U[1, 0], U[1, 1],       0,       0, U[1, 2], U[1, 3],       0,       0],
+      [      0,       0, U[0, 0], U[0, 1],       0,       0, U[0, 2], U[0, 3]],
+      [      0,       0, U[1, 0], U[1, 1],       0,       0, U[1, 2], U[1, 3]],
+      [U[2, 0], U[2, 1],       0,       0, U[2, 2], U[2, 3],       0,       0],
+      [U[3, 0], U[3, 1],       0,       0, U[3, 2], U[3, 3],       0,       0],
+      [      0,       0, U[2, 0], U[2, 1],       0,       0, U[2, 2], U[2, 3]],
+      [      0,       0, U[3, 0], U[3, 1],       0,       0, U[3, 2], U[3, 3]]])
+      >>> U.diagram()
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_custom_uiu.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_uiu-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_custom_uiu-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
 
    .. raw:: latex
 
@@ -342,6 +387,10 @@ Main class
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -548,6 +597,10 @@ Main class
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
+
 .. _`sec:docs_gates_properties`:
 
 Constructor argument properties
@@ -691,6 +744,10 @@ Methods
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
@@ -717,10 +774,6 @@ Methods
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \enlargethispage{-3\baselineskip}
 
    .. raw:: latex
 
@@ -758,6 +811,10 @@ Methods
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. automethod:: qhronology.quantum.gates.QuantumGate.diagram
 
    .. raw:: latex
@@ -775,6 +832,10 @@ Methods
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
 
 .. automethod:: qhronology.quantum.gates.QuantumGate.decompose
 
@@ -955,6 +1016,10 @@ Methods
 
    .. raw:: latex
 
+      \enlargethispage{2\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1023,10 +1088,6 @@ Methods
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -1089,78 +1150,6 @@ Methods
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \begin{code}
-
-   .. code:: python
-
-      >>> SWAP = Swap(targets=[0, 3])
-      >>> SWAP.diagram(sep=(2, 1))
-
-   .. raw:: latex
-
-      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_sis.pdf}
-      \vspace{-1.5\baselineskip}
-
-   ..
-
-      .. only:: html
-
-         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis-dark.png
-            :scale: 36 %
-            :align: left
-            :class: only-dark
-
-      .. only:: html
-
-         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis-light.png
-            :scale: 36 %
-            :align: left
-            :class: only-light
-
-   .. code:: python
-
-      >>> decomposition = SWAP.decompose(
-      ...     gates=[Swap()],
-      ...     preserve_structure=True,
-      ...     include_empty=True,
-      ... )[0]
-      >>> QuantumCircuit(gates=decomposition).diagram(
-      ...     sep=(2, 1),
-      ...     force_separation=True,
-      ...     visible={"gates"},
-      ... )
-
-   .. raw:: latex
-
-      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_sis_decomposed.pdf}
-      \vspace{-1\baselineskip}
-
-   ..
-
-      .. only:: html
-
-         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis_decomposed-dark.png
-            :scale: 36 %
-            :align: left
-            :class: only-dark
-
-      .. only:: html
-
-         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis_decomposed-light.png
-            :scale: 36 %
-            :align: left
-            :class: only-light
-
-   .. raw:: latex
-
-      \end{code}
-
-   .. raw:: latex
-
-      \enlargethispage{-2\baselineskip}
 
    .. raw:: latex
 
@@ -1240,6 +1229,78 @@ Methods
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
+      >>> SWAP = Swap(targets=[0, 3])
+      >>> SWAP.diagram(sep=(2, 1))
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_sis.pdf}
+      \vspace{-1.5\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. code:: python
+
+      >>> decomposition = SWAP.decompose(
+      ...     gates=[Swap()],
+      ...     preserve_structure=True,
+      ...     include_empty=True,
+      ... )[0]
+      >>> QuantumCircuit(gates=decomposition).diagram(
+      ...     sep=(2, 1),
+      ...     force_separation=True,
+      ...     visible={"gates"},
+      ... )
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_decompose_sis_decomposed.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis_decomposed-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_decompose_sis_decomposed-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -1377,6 +1438,10 @@ Methods
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1446,11 +1511,11 @@ Methods
 
 .. raw:: latex
 
-   \hrulefillthick
+   \newpage
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \hrulefillthick
 
 .. _`sec:docs_gates_subclasses`:
 
@@ -1545,10 +1610,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 .. note::
 
    In all of these subclasses, the :python:`spec` property should not be set.
-
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.Unitary
    :show-inheritance:
