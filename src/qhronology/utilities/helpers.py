@@ -25,12 +25,14 @@ import sympy as sp
 from sympy.physics.quantum import TensorProduct
 
 from qhronology.utilities.classification import (
+    Forms,
     Shapes,
     arr,
     count_columns,
     count_rows,
     expr,
     mat,
+    matrix_form,
     matrix_shape,
     num,
     sym,
@@ -664,16 +666,74 @@ def tensor_product(*matrices: mat | arr) -> mat | arr:
     return product
 
 
-def assemble_composition(*pairs: tuple[mat | arr, list[int]]) -> mat | arr:
-    """Assemble a composite state from constituent subsystems described by the items in :python:`pairs`.
+def permute_tensor_product(
+    product: mat | arr, permutation: list[int], dim: int | None = None
+) -> mat | arr:
+    """Permute the order of :python:`num_systems` :python:`dim`-dimensional tensors in the :python:`dim**num_systems`-dimensional tensor product :python:`tensor_product`.
+
+    Currently works only for tensor products of purely vectors or matrices (not combinations of the two). TODO: Upgrade this so that it works for combinations.
+
+    Examples
+    --------
+    >>> A = sp.MatrixSymbol("A", 2, 2).as_mutable()
+    >>> B = sp.MatrixSymbol("B", 2, 2).as_mutable()
+    >>> C = sp.MatrixSymbol("C", 2, 2).as_mutable()
+    >>> np.all(permute_tensor_product(tensor_product(A, B), [1, 0], 2) == tensor_product(B, A))
+    np.True_
+    >>> np.all(permute_tensor_product(tensor_product(A, B, C), [2, 1, 0], 2) == tensor_product(C, B, A))
+    np.True_
+    >>> np.all(permute_tensor_product(tensor_product(A, B, C), [1, 0, 2], 2) == tensor_product(B, A, C))
+    np.True_
+    """
+    dim = 2 if dim is None else dim
+    num_systems = len(permutation)
+    if [i for i in range(0, num_systems)] != sorted(permutation):
+        raise ValueError(
+            """The given permutation must contain all system indices (beginning at zero)."""
+        )
+    if permutation == sorted(permutation):
+        return product
+
+    num_rows = count_rows(product)
+    num_cols = count_columns(product)
+    num_systems_rows = int(np.emath.logn(dim, num_rows))
+    num_systems_cols = int(np.emath.logn(dim, num_cols))
+
+    shape = [dim] * (num_systems_rows + num_systems_cols)
+    axes = permutation + [i + num_systems for i in permutation]
+    if matrix_form(product) == Forms.VECTOR.value:
+        axes = permutation
+
+    product_reshaped = to_array(product).reshape(shape)
+    product_permuted = np.transpose(product_reshaped, axes=axes).reshape(
+        num_rows, num_cols
+    )
+    if isinstance(product, mat) is True:
+        product_permuted = to_matrix(product_permuted)
+    return product_permuted
+
+
+def assemble_composition(*pairs: tuple[mat | arr, list[int]], dim: int | None = None) -> mat | arr:
+    """Assemble a composite operator from constituent subsystems described by the items in :python:`pairs`.
     For each pair:
-    - The first element is the subsystem's state matrix.
-    - The second element is the list of indices of its systems."""
+    - The first element is the operator (as a matrix or array).
+    - The second element is the list of indices of its target systems."""
+    dim = 2 if dim is None else dim
     pairs_sorted = sorted(pairs, key=lambda pair: min(pair[1]))
-    return tensor_product(*[pair[0] for pair in pairs_sorted])
+    # Check for non-contiguity
+    if any(sorted(pair[1]) != list(range(min(pair[1]), max(pair[1]) + 1)) for pair in pairs):  # non-contiguous
+        product = tensor_product(*[pair[0] for pair in pairs])
+        permutation = list(set(flatten_list([pair[1] for pair in pairs])))
+        for operator, targets in pairs:
+            for i, t in enumerate(targets):
+                permutation[i], permutation[t] = permutation[t], permutation[i]
+        product = permute_tensor_product(product, permutation, dim)
+    else:  # contiguous
+        product = tensor_product(*[pair[0] for pair in pairs_sorted])
+    return product
 
 
-def matrix_multiplication(*matrices: mat | arr):
+def matrix_multiplication(*matrices: mat | arr) -> mat | arr:
     types = list(set([type(matrix) for matrix in matrices]))
     if len(types) != 1:
         if all(issubclass(value, mat) for value in types) is False:
