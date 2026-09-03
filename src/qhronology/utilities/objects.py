@@ -331,7 +331,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         if hasattr(self, "_kind"):
             if form == Forms.VECTOR.value and self.kind == Kinds.MIXED.value:
                 raise AttributeError(
-                    f"""The given :python:`form` ('{form}') is incompatible with the given :python:`kind` ('{self.kind}')."""
+                    f"""The given `form` ('{form}') is incompatible with the given `kind` ('{self.kind}')."""
                 )
         self._form = form
 
@@ -345,7 +345,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     def kind(self, kind: str):
         if kind not in COMPATIBILITIES[self.form]:
             raise AttributeError(
-                f"""The given :python:`kind` ('{kind}') is incompatible with the given :python:`form` ('{self.form}')."""
+                f"""The given `kind` ('{kind}') is incompatible with the given `form` ('{self.form}')."""
             )
         self._kind = kind
 
@@ -368,7 +368,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     def dim(self, dim: int):
         if hasattr(self, "_dim") is True:
             raise AttributeError(
-                """The :python:`dim` attribute cannot be set after instancing."""
+                """The `dim` attribute cannot be set after instantiation."""
             )
         self._dim = dim
 

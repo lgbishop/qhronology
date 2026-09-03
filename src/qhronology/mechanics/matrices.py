@@ -201,12 +201,12 @@ def quantum_object(
     array = False if array is None else array
 
     if form not in FORMS:
-        raise ValueError(f"""The given :python:`form` ('{form}') is invalid.""")
+        raise ValueError(f"""The given `form` ('{form}') is invalid.""")
     if kind not in KINDS:
-        raise ValueError(f"""The given :python:`kind` ('{kind}') is invalid.""")
+        raise ValueError(f"""The given `kind` ('{kind}') is invalid.""")
     if form not in COMPATIBILITIES[kind]:
         raise ValueError(
-            f"""The given :python:`kind` ('{kind}') is incompatible with the given :python:`form` ('{form}')."""
+            f"""The given `kind` ('{kind}') is incompatible with the given `form` ('{form}')."""
         )
 
     if isinstance(spec, mat | arr | sp.matrices.immutable.ImmutableDenseMatrix) is True:
@@ -214,7 +214,7 @@ def quantum_object(
     elif isinstance(spec, list) is True:
         if any(isinstance(item, list | tuple) is False for item in spec):
             raise ValueError(
-                """The object's :python:`spec` list must contain only lists or tuples."""
+                """The object's `spec` list must contain only lists or tuples."""
             )
         elif any(isinstance(item, list) is False for item in spec) is False:
             matrix = cast(matrix=spec, numerical=numerical, array=array)
@@ -222,7 +222,7 @@ def quantum_object(
             for twotuple in spec:
                 if len(twotuple) != 2:
                     raise ValueError(
-                        """One or more of the tuples in the given :python:`spec` does not have exactly two (2) elements."""
+                        """One or more of the tuples in the given `spec` does not have exactly two (2) elements."""
                     )
             coefficients = cast(
                 matrix=[twotuple[0] for twotuple in spec],
@@ -251,19 +251,19 @@ def quantum_object(
                         levels[n], dim, numerical, array
                     ) * bra(levels[n], dim, numerical, array)
         else:
-            raise ValueError("""The given :python:`spec` list is invalid.""")
+            raise ValueError("""The given `spec` list is invalid.""")
     else:
-        raise ValueError("""The given :python:`spec` is invalid.""")
+        raise ValueError("""The given `spec` is invalid.""")
 
     if matrix_shape(matrix) == "INVALID":
         raise ValueError(
-            """The given :python:`spec` does not correspond to either a square matrix or a vector."""
+            """The given `spec` does not correspond to either a square matrix or a vector."""
         )
 
     if form == Forms.VECTOR.value:
         if matrix_shape(matrix) == "SQUARE":
             raise ValueError(
-                """The given :python:`spec` describes a square matrix and so cannot be cast into a vector form."""
+                """The given `spec` describes a square matrix and so cannot be cast into a vector form."""
             )
         else:
             matrix = columnify(matrix)
@@ -335,7 +335,7 @@ def encode(
     integer = int(integer)
     if integer < 0:
         raise ValueError(
-            f"""The given :python:`integer` ({integer}) cannot be less than zero."""
+            f"""The given `integer` ({integer}) cannot be less than zero."""
         )
     if integer != 0:
         while integer != 0:
@@ -348,7 +348,7 @@ def encode(
     num_systems = len(digits) if num_systems is None else num_systems
     if len(digits) > num_systems:
         raise ValueError(
-            f"""The given :python:`num_systems` ({num_systems}) is too few to encode the :python:`integer` ({integer}) with dimensionality :python:`dim` ({dim})."""
+            f"""The given `num_systems` ({num_systems}) is too few to encode the `integer` ({integer}) with dimensionality `dim` ({dim})."""
         )
 
     padding = [0] * num_systems
@@ -484,7 +484,7 @@ def decode_fast(encoded: mat | arr | QuantumObject, dim: int | None = None) -> i
 
     if len(decoded) > 1:
         raise ValueError(
-            """The given :python:`matrix` encodes more than a single non-negative integer."""
+            """The given `matrix` encodes more than a single non-negative integer."""
         )
 
     decoded = decoded[0]

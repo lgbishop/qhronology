@@ -71,7 +71,7 @@ def count_systems(matrix: mat | arr, dim: int) -> int:
         return int(np.round(num_systems, decimals=0))
     else:
         raise ValueError(
-            f"""The provided matrix was found to have a non-integer number of systems under the given dimensionality."""
+            f"""The provided `matrix` was found to have a non-integer number of systems under the given dimensionality."""
         )
 
 
@@ -114,7 +114,7 @@ def arrange(positions: list[list[int]], items: list[Any]) -> list[Any]:
     """
     if len(positions) != len(items):
         raise ValueError(
-            """The number of items in :python:`positions` and :python:`items` do not match."""
+            """The number of items in `positions` and `items` do not match."""
         )
 
     arranged = []
@@ -145,7 +145,7 @@ def dtype(matrix: mat | arr) -> type:
         elif matrix.dtype == int:
             return int
         else:
-            raise TypeError("""Unable to determine the matrix's datatype.""")
+            raise TypeError("""Unable to determine the datatype of the given `matrix`.""")
     else:
         raise TypeError(
             """The given matrix is neither a SymPy matrix or NumPy array."""
@@ -308,7 +308,7 @@ def stringify(
                         )
                 else:
                     raise ValueError(
-                        """The given matrix must be either a square, a column, or a row."""
+                        """The given `matrix` must be either a square, a column, or a row."""
                     )
                 coefficient = matrix[n, m]
                 if isinstance(sp.sympify(coefficient), sp.core.add.Add) is True:
@@ -347,7 +347,7 @@ def symbolize_expression(
                     expression = sp.sympify(str(expression))
                 except:
                     raise TypeError(
-                        """The given :python:`expression` cannot be converted to a symbolic representation."""
+                        """The given `expression` cannot be converted to a symbolic representation."""
                     )
 
             for symbol in symbols:
@@ -495,7 +495,7 @@ def extract_matrix(operator: mat | arr | QuantumObject) -> mat:
             matrix = to_matrix(matrix)
         except:
             raise ValueError(
-                """A valid matrix cannot be extracted from :python:`operator`."""
+                """A valid matrix cannot be extracted from `operator`."""
             )
     return matrix
 
@@ -514,7 +514,7 @@ def extract_array(operator: mat | arr | QuantumObject) -> arr:
             matrix = to_array(matrix, numerical=False)
         except:
             raise ValueError(
-                """A valid array cannot be extracted from :python:`operator`."""
+                """A valid array cannot be extracted from `operator`."""
             )
     return matrix
 
@@ -689,7 +689,7 @@ def permute_tensor_product(
     num_systems = len(permutation)
     if [i for i in range(0, num_systems)] != sorted(permutation):
         raise ValueError(
-            """The given permutation must contain all system indices (beginning at zero)."""
+            """The given `permutation` must contain all system indices (beginning at zero) of `product`."""
         )
     if permutation == sorted(permutation):
         return product
@@ -737,7 +737,7 @@ def matrix_multiplication(*matrices: mat | arr) -> mat | arr:
     types = list(set([type(matrix) for matrix in matrices]))
     if len(types) != 1:
         if all(issubclass(value, mat) for value in types) is False:
-            raise TypeError("""The input matrices have more than one type.""")
+            raise TypeError("""The input `matrices` have more than one type.""")
     if len(matrices) > 1:
         if isinstance(matrices[0], arr) is True:
             return np.linalg.multi_dot(matrices)

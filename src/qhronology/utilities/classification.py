@@ -111,7 +111,7 @@ def matrix_form(matrix: mat | arr) -> str:
         return Forms.VECTOR.value
     else:
         raise ValueError(
-            """The given :python:`matrix` is invalid for describing either a vector or matrix state."""
+            """The given `matrix` is invalid for describing either a vector or matrix state."""
         )
 
 
@@ -127,5 +127,5 @@ def matrix_shape(matrix: mat | arr) -> str:
         return Shapes.SQUARE.value
     else:
         raise ValueError(
-            """The given :python:`matrix` is invalid for describing either a vector or matrix state."""
+            """The given `matrix` is invalid for describing either a vector or matrix state."""
         )

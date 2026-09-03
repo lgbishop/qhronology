@@ -193,7 +193,7 @@ def rewrite(matrix: mat | arr | QuantumObject, function: Callable) -> mat | arr:
                 matrix[index] = entry
         except:
             raise ValueError(
-                f"""The specified function (:python:`{function.__name__}()`) cannot be used to rewrite the matrix."""
+                f"""The specified function (`{function.__name__}()`) cannot be used to rewrite the matrix."""
             )
         matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
 
@@ -260,7 +260,7 @@ def apply(
                 )
         except:
             raise ValueError(
-                f"""Unable to apply the specified function (:python:`{function.__name__}()`) to the matrix."""
+                f"""Unable to apply the specified function (`{function.__name__}()`) to the matrix."""
             )
     matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
 
