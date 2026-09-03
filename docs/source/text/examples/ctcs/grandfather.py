@@ -20,7 +20,7 @@ S = Swap(targets=[0, 1], num_systems=2)
 grandfather = QuantumCTC(
     inputs=[input_state],
     gates=[NC, S],
-    systems_respecting=[0],
+    systems_violating=[1],
 )
 grandfather.diagram()
 

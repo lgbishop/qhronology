@@ -67,7 +67,7 @@ S_vacuum = QuantumGate(
 billiards = QuantumCTC(
     inputs=[clock_state_unevolved],
     gates=[S_vacuum, IR],
-    systems_respecting=[0],
+    systems_violating=[1],
 )
 billiards.diagram()
 

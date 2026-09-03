@@ -83,8 +83,8 @@ class QuantumCircuit(SymbolicsProperties):
     traces : list[int]
         The numerical indices of the subsystems to be traced over.
         Defaults to :python:`[]`.
-    postselections: list[tuple[mat | arr | QuantumObject, int | list[int]]]
-        A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.
+    postselections : list[tuple[mat | arr | QuantumObject, list[int]]]
+        A list of 2-tuples of vectors or matrix operators paired with indices of their postselection target systems.
         Must all have the same value of the :python:`dim` property.
         Defaults to :python:`[]`.
     numerical : bool
@@ -131,7 +131,7 @@ class QuantumCircuit(SymbolicsProperties):
         gates: list[QuantumGate] | None = None,
         traces: list[int] | None = None,
         postselections: (
-            list[tuple[mat | arr | QuantumObject, int | list[int]]] | None
+            list[tuple[mat | arr | QuantumObject, list[int]]] | None
         ) = None,
         numerical: bool | None = None,
         array: bool | None = None,
@@ -203,8 +203,8 @@ class QuantumCircuit(SymbolicsProperties):
         self._gates = gates
 
     @property
-    def postselections(self) -> list[tuple[mat | arr | QuantumObject, int | list[int]]]:
-        """A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.
+    def postselections(self) -> list[tuple[mat | arr | QuantumObject, list[int]]]:
+        """A list of 2-tuples of vectors or matrix operators paired with the indices of their postselection target systems.
 
         Any :python:`symbols` and :python:`substitutions` properties of each postselection are merged into their counterparts in the instance upon their addition to the :python:`postselections` property.
         """
@@ -212,22 +212,19 @@ class QuantumCircuit(SymbolicsProperties):
 
     @postselections.setter
     def postselections(
-        self, postselections: list[tuple[mat | arr | QuantumObject, int | list[int]]]
+        self, postselections: list[tuple[mat | arr | QuantumObject, list[int]]]
     ):
         if len(postselections) > 0:
             systems_postselections = []
             for postselection in postselections:
-                length = count_systems(
+                num_systems = count_systems(
                     extract_representation(postselection[0]), self.dim
                 )
-                listed = flatten_list([postselection[1]])
-                systems = [(min(listed) + n) for n in range(0, length)]
-                if len(listed) > 1:
-                    if set(systems) != set(listed):
-                        raise ValueError(
-                            """Mismatch between the postselection's specified targets and its calculated size."""
-                        )
-                systems_postselections += systems
+                if len(postselection[1]) != num_systems:
+                    raise ValueError(
+                        """Mismatch between the postselection operator's calculated size and the number of its specified targets."""
+                    )
+                systems_postselections += sorted(postselection[1])
             systems_postselections = list(set(systems_postselections))
             for k in systems_postselections:
                 if k not in self.systems:
@@ -290,10 +287,8 @@ class QuantumCircuit(SymbolicsProperties):
         """The indices of the systems to be postselected."""
         systems_postselections = []
         for postselection in self.postselections:
-            length = count_systems(extract_representation(postselection[0]), self.dim)
-            listed = flatten_list([postselection[1]])
-            systems = [(min(listed) + n) for n in range(0, length)]
-            systems_postselections += systems
+            systems_postselection = sorted(postselection[1])
+            systems_postselections += systems_postselection
         return list(set(systems_postselections))
 
     @property
@@ -317,23 +312,18 @@ class QuantumCircuit(SymbolicsProperties):
             num_systems_gates.append(gate.num_systems)
         if len(num_systems_gates) > 0:
             num_systems_gates = [max(num_systems_gates)]
-            # if len(set(num_systems_gates)) != 1:
-            #     raise ValueError(
-            #         """One or more of the gates in the circuit has mismatching :python:`num_systems`."""
-            #     )
         else:
             num_systems_gates = [0]
         return num_systems_gates[0]
 
     @property
     def num_systems_gross(self) -> int:
-        """The total number of systems spanned by the circuit's states and gates prior to any system reduction (post-processing, i.e., traces and postselections])."""
-        num_systems_gross = max([self.num_systems_inputs] + [self.num_systems_gates])
-        return num_systems_gross
+        """The total number of systems spanned by the circuit's states and gates prior to any system reduction (post-processing, i.e., traces and postselections)."""
+        return max(self.num_systems_inputs, self.num_systems_gates)
 
     @property
     def num_systems_net(self) -> int:
-        """The total number of systems spanned by the circuit's states and gates after any system reduction (post-processing, i.e., traces and postselections])."""
+        """The total number of systems spanned by the circuit's states and gates after any system reduction (post-processing, i.e., traces and postselections)."""
         num_systems_net = self.num_systems_gross - len(self.systems_removed)
         return num_systems_net
 
@@ -344,17 +334,18 @@ class QuantumCircuit(SymbolicsProperties):
 
     @property
     def num_systems_removed(self) -> int:
-        """The total number of systems removed via system reduction (post-processing, i.e., traces and postselections])."""
+        """The total number of systems removed via system reduction (post-processing, i.e., traces and postselections)."""
         return len(self.systems_removed)
 
     @property
     def num_systems_respecting(self) -> int:
-        """The total number of systems spanned by the circuit's chronology-respecting (CR) states and gates prior to any system reduction (post-processing, i.e., traces and postselections]).
+        """The total number of systems spanned by the circuit's chronology-respecting (CR) states and gates prior to any system reduction (post-processing, i.e., traces and postselections).
         Of course, in an ordinary quantum circuit (without CTCs), every system is technically chronology-respecting. This property is therefore used to simply provide compatibility with the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class (and its descendents).
         """
-        num_systems_respecting = self.num_systems_gross
-        if hasattr(self, "_systems_respecting") is True:
+        try:
             num_systems_respecting = len(self.systems_respecting)
+        except:
+            num_systems_respecting = self.num_systems_gross
         return num_systems_respecting
 
     @property
@@ -904,16 +895,12 @@ class QuantumCircuit(SymbolicsProperties):
 
             # Postselections
             for postselection in self.postselections:
-                length = count_systems(
-                    extract_representation(postselection[0]), self.dim
-                )
-                listed = flatten_list([postselection[1]])
-                systems = [(min(listed) + n) for n in range(0, length)]
-                targets_postselection = adjust_targets(systems, systems_removed)
+                systems_postselection = sorted(postselection[1])
+                targets_postselection = adjust_targets(systems_postselection, systems_removed)
                 output_state.postselect(
                     postselections=[(postselection[0], targets_postselection)]
                 )
-                systems_removed += systems
+                systems_removed += systems_postselection
 
             if self.post_is_vector is False:
                 form = Forms.MATRIX.value
@@ -1079,7 +1066,7 @@ class QuantumCircuit(SymbolicsProperties):
     def measure(
         self,
         operators: list[mat | arr | QuantumObject],
-        targets: int | list[int] | None = None,
+        targets: list[int] | None = None,
         observable: bool | None = None,
         statistics: bool | None = None,
         numerical: bool | None = None,
@@ -1133,9 +1120,9 @@ class QuantumCircuit(SymbolicsProperties):
             These would typically be a (complete) set of Kraus operators forming a POVM,
             a (complete) set of (orthogonal) projectors forming a PVM,
             or a set of observables constituting a complete basis for the relevant state space.
-        targets : int | list[int]
+        targets : list[int]
             The numerical indices of the system(s) to be measured.
-            They must be consecutive, and their number must match the number of systems spanned by all given operators.
+            They must be contiguous, and their number must match the number of systems spanned by all given operators.
             Indexing begins at :python:`0`.
             All other systems are discarded (traced over) in the course of performing the measurement.
         observable : bool
@@ -1243,10 +1230,34 @@ class QuantumCircuit(SymbolicsProperties):
 
         cells_input = []
 
-        if hasattr(self, "_systems_respecting") is True:
+        if hasattr(self, "_systems_violating") is True:
+            inputs_num_systems = [state.num_systems for state in self.inputs]
+            boundaries = [
+                sum(inputs_num_systems[0:i]) for i, num in enumerate(inputs_num_systems)
+            ]
+            for i, v in enumerate(self.systems_violating):
+                for j, b in enumerate(boundaries):
+                    if v <= boundaries[j]:
+                        boundaries[j] += 1
+            bonuses = list(
+                range(
+                    self.num_systems_inputs + self.num_systems_violating,
+                    self.num_systems,
+                )
+            )
+            states_inputs = copy.deepcopy(self.inputs)
             for system in self.systems:
-                if system == min(self.systems_respecting):
-                    for state in self.inputs:
+                if system in self.systems_violating:
+                    cells_input.append(
+                        [
+                            _Single(family=Families.WORMHOLE.value + "_PAST")
+                            ._diagram_column(pad=pad, sep=sep, style=style)
+                            .cells
+                        ]
+                    )
+                else:
+                    if system not in bonuses and system in boundaries:
+                        state = states_inputs[0]
                         cells_input.append(
                             [
                                 *state._diagram_column(
@@ -1254,9 +1265,8 @@ class QuantumCircuit(SymbolicsProperties):
                                 ).cells
                             ]
                         )
-                    for _ in range(
-                        0, len(self.systems_respecting) - self.num_systems_inputs
-                    ):
+                        states_inputs.pop(0)
+                    else:
                         zero_state = QuantumState(
                             form=Forms.VECTOR.value,
                             kind=Kinds.PURE.value,
@@ -1275,15 +1285,6 @@ class QuantumCircuit(SymbolicsProperties):
                                 zero_state._diagram_column(
                                     pad=pad, sep=sep, style=style
                                 ).cells
-                            ]
-                        )
-                else:
-                    if system in self.systems_violating:
-                        cells_input.append(
-                            [
-                                _Single(family=Families.WORMHOLE.value + "_PAST")
-                                ._diagram_column(pad=pad, sep=sep, style=style)
-                                .cells
                             ]
                         )
         else:
@@ -1318,13 +1319,13 @@ class QuantumCircuit(SymbolicsProperties):
         columns_gate = []
         for index_column, gate in enumerate(self.gates):
             gate = copy.deepcopy(gate)
-            gate.num_systems = self.num_systems_gross
+            gate.num_systems = self.num_systems
             columns_gate.append(gate._diagram_column(pad=pad, sep=sep, style=style))
 
         cells_output = []
         for system in self.systems:
             if (
-                hasattr(self, "_systems_respecting") is True
+                hasattr(self, "_systems_violating") is True
                 and system in self.systems_violating
             ):
                 cells_output.append(

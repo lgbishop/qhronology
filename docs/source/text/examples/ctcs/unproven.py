@@ -15,7 +15,7 @@ IS = Swap(targets=[1, 2], num_systems=3)
 unproven = QuantumCTC(
     inputs=[mathematician_state, book_state],
     gates=[NIC, CNI, IS],
-    systems_respecting=[0, 1],
+    systems_violating=[2],
 )
 unproven.diagram()
 

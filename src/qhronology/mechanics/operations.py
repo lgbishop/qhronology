@@ -365,7 +365,7 @@ def coefficient(
 
 def partial_trace(
     matrix: mat | arr | QuantumObject,
-    targets: int | list[int] | None = None,
+    targets: list[int] | None = None,
     discard: bool | None = None,
     dim: int | None = None,
     optimize: bool | None = None,
@@ -376,8 +376,8 @@ def partial_trace(
     ---------
     matrix : mat | arr
         The matrix on which to perform the partial trace operation.
-    targets : int | list[int]
-        The numerical index/indices of the subsystem(s) to be partially traced over.
+    targets : list[int]
+        The numerical indices of the subsystem(s) to be partially traced over.
         Defaults to :python:`[]`.
     discard : bool
         Whether the systems corresponding to the indices given in :python:`targets` are to be discarded (:python:`True`) or kept (:python:`False`).
@@ -443,7 +443,7 @@ def partial_trace(
 def measure(
     matrix: mat | arr | QuantumObject,
     operators: list[mat | arr | QuantumObject],
-    targets: int | list[int],
+    targets: list[int],
     observable: bool | None = None,
     statistics: bool | None = None,
     dim: int | None = None,
@@ -493,9 +493,9 @@ def measure(
         These would typically be a (complete) set of Kraus operators forming a POVM,
         a (complete) set of (orthogonal) projectors forming a PVM,
         or a set of observables constituting a complete basis for the relevant state space.
-    targets : int | list[int]
+    targets : list[int]
         The numerical indices of the subsystem(s) to be measured.
-        They must be consecutive, and their number must match the number of systems spanned by all given operators.
+        They must be contiguous, and their number must match the number of systems spanned by all given operators.
         Indexing begins at :python:`0`.
         All other systems are discarded (traced over) in the course of performing the measurement.
     observable: bool
@@ -614,7 +614,7 @@ def measure(
 
 def postselect(
     matrix: mat | arr | QuantumObject,
-    postselections: list[tuple[mat | arr | QuantumObject, int]],
+    postselections: list[tuple[mat | arr | QuantumObject, list[int]]],
     dim: int | None = None,
 ) -> mat | arr | list[num | expr]:
     """Perform postselection on :python:`matrix` against the operator(s) specified in :python:`postselections`.
@@ -636,8 +636,9 @@ def postselect(
     ---------
     matrix : mat | arr | QuantumObject
         The matrix to be postselected.
-    postselections: list[tuple[mat | arr | QuantumObject, int]]
-        A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.
+    postselections: list[tuple[mat | arr | QuantumObject, list[int]]]
+        A list of 2-tuples of vectors or matrix operators paired with the indices of their postselection target systems.
+        The indices of each postselection must be contiguous.
     dim : int
         The dimensionality of :python:`matrix` and the item(s) of :python:`postselections`.
         Must be a non-negative integer.
@@ -665,26 +666,28 @@ def postselect(
             is_vector = True
 
     are_vector = [False for n in postselections]
-    for n, twotuple in enumerate(postselections):
+    for n, postselection in enumerate(postselections):
         try:
-            are_vector[n] = twotuple[0].is_vector
+            are_vector[n] = postselection[0].is_vector
         except:
-            if matrix_form(twotuple[0]) == Forms.VECTOR.value:
+            if matrix_form(postselection[0]) == Forms.VECTOR.value:
                 are_vector[n] = True
     postselection_is_vector = all(boolean is True for boolean in are_vector)
 
     matrices = []
     targets = []
-    for twotuple in postselections:
-        operator = extract_representation(twotuple[0])
+    for postselection in postselections:
+        operator = extract_representation(postselection[0])
         if matrix_form(operator) == Forms.VECTOR.value:
             operator = columnify(operator)
         operator = cast(operator, numerical=matrix_num, array=matrix_arr)
         matrices.append(operator)
         num_systems = count_systems(operator, dim)
-        targets.append(
-            [i + min(flatten_list([twotuple[1]])) for i in range(0, num_systems)]
-        )
+        if len(postselection[1]) != num_systems:
+            raise ValueError(
+                """Mismatch between the postselection operator's calculated size and the number of its specified targets."""
+            )
+        targets.append(sorted(postselection[1]))
 
     operators = []
     identity = generate_identity(dim, numerical=matrix_num, array=matrix_arr)
@@ -826,7 +829,7 @@ class OperationsMixin:
 
     def partial_trace(
         self,
-        targets: int | list[int] | None = None,
+        targets: list[int] | None = None,
         discard: bool | None = None,
         optimize: bool | None = None,
     ):
@@ -834,8 +837,8 @@ class OperationsMixin:
 
         Arguments
         ---------
-        targets : int | list[int]
-            The numerical index/indices of the subsystem(s) to be partially traced over.
+        targets : list[int]
+            The numerical indices of the subsystem(s) to be partially traced over.
             Indexing begins at :python:`0`.
             Defaults to :python:`[]`.
         discard : bool
@@ -857,7 +860,7 @@ class OperationsMixin:
     def measure(
         self,
         operators: list[mat | arr | QuantumObject],
-        targets: int | list[int] | None = None,
+        targets: list[int] | None = None,
         observable: bool | None = None,
         statistics: bool | None = None,
     ) -> None | list[num | expr]:
@@ -904,9 +907,9 @@ class OperationsMixin:
             These would typically be a (complete) set of Kraus operators forming a POVM,
             a (complete) set of (orthogonal) projectors forming a PVM,
             or a set of observables constituting a complete basis for the relevant state space.
-        targets : int | list[int]
+        targets : list[int]
             The numerical indices of the subsystem(s) to be measured.
-            They must be consecutive, and their number must match the number of systems spanned by all given operators.
+            They must be contiguous, and their number must match the number of systems spanned by all given operators.
             Indexing begins at :python:`0`.
             All other systems are discarded (traced over) in the course of performing the measurement.
             Defaults to the value of :python:`self.systems`.
@@ -951,7 +954,7 @@ class OperationsMixin:
                 dim=self.dim,
             )
 
-    def postselect(self, postselections: list[tuple[mat | arr | QuantumObject, int]]):
+    def postselect(self, postselections: list[tuple[mat | arr | QuantumObject, list[int]]]):
         """Perform postselection on the state against the operators(s) specified in :python:`postselections`.
 
         The postselections can be given in either vector or matrix form.
@@ -969,17 +972,18 @@ class OperationsMixin:
 
         Arguments
         ---------
-        postselections: list[tuple[mat | arr | QuantumObject, int]]
-            A list of 2-tuples of vectors or matrix operators paired with the first (smallest) index of their postselection target systems.
+        postselections: list[tuple[mat | arr | QuantumObject, list[int]]]
+            A list of 2-tuples of vectors or matrix operators paired with the indices of their postselection target systems.
+            The indices of each postselection must be contiguous.
 
         Note
         ----
         Any classes given in :python:`postselections` that are derived from the :py:class:`~qhronology.utilities.objects.QuantumObject` base class (such as :py:class:`~qhronology.quantum.states.QuantumState` and :py:class:`~qhronology.quantum.gates.QuantumGate`) will have their :python:`symbols` and :python:`substitutions` properties merged into the current :py:class:`~qhronology.quantum.states.QuantumState` instance.
         """
         # Add the postselection(s) symbols and substitutions to the current instance.
-        for twotuple in postselections:
-            self.substitutions += extract_substitutions(twotuple[0])
-            symbols = extract_symbols(twotuple[0])
+        for postselection in postselections:
+            self.substitutions += extract_substitutions(postselection[0])
+            symbols = extract_symbols(postselection[0])
             for symbol in symbols.keys():
                 if symbol in self.symbols.keys():
                     self.symbols[symbol] |= symbols[symbol]

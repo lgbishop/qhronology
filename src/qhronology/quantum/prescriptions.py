@@ -41,11 +41,10 @@ from qhronology.utilities.helpers import (
     cast,
     conjugate_transpose,
     count_dims,
-    count_systems,
+    default_arguments,
     dtype,
     extract_substitutions,
     extract_matrix,
-    flatten_list,
     matrix_multiplication,
     recursively_simplify,
 )
@@ -66,10 +65,7 @@ class QuantumCTC(QuantumCircuit):
         An instance of the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class.
         The values of its attributes override any other values specified in :python:`*args` and :python:`**kwargs`.
         Defaults to :python:`None`.
-    systems_respecting : int | list[int]
-        The numerical indices of the chronology-respecting (CR) subsystems.
-        Defaults to :python:`[]`.
-    systems_violating : int | list[int]
+    systems_violating : list[int]
         The numerical indices of the chronology-violating (CV) subsystems.
         Defaults to :python:`[]`.
     **kwargs
@@ -83,17 +79,11 @@ class QuantumCTC(QuantumCircuit):
 
     - :python:`*args` and :python:`**kwargs` like a typical initialization of a :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance (without using :python:`circuit`)
 
-    Note that this is in addition to specifying either of :python:`systems_respecting` or :python:`systems_violating`.
+    Note that this is in addition to providing a value to the :python:`systems_violating` argument.
 
     Note
     ----
-    The lists of indices specified in either of :python:`systems_respecting` or :python:`systems_violating` must be contiguous.
-    Additionally, the circuit's inputs (:python:`inputs`) are treated as one contiguous total state, with the indices of its subsystems exactly matching those specified in :python:`systems_respecting`.
-
-    Note
-    ----
-    It is best practice to specify only one of either :python:`systems_violating` or :python:`systems_violating`, never both.
-    The properties associated with both of these constructor arguments automatically ensure that they are always complementary (with respect to the entire system space), and so only one needs to be specified.
+    All systems not corresponding to indices specified in :python:`systems_violating` are assumed to be chronology-respecting (CR) and appear in the :python:`systems_respecting` class property.
 
     Note
     ----
@@ -107,9 +97,8 @@ class QuantumCTC(QuantumCircuit):
     def __init__(
         self,
         *args,
+        systems_violating: list[int],
         circuit: QuantumCircuit | None = None,
-        systems_respecting: list[int] | None = None,
-        systems_violating: list[int] | None = None,
         **kwargs,
     ):
         super().__init__(*args, **kwargs)
@@ -118,24 +107,12 @@ class QuantumCTC(QuantumCircuit):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-        if hasattr(self, "_systems_respecting") is False:
-            systems_respecting = (
-                [] if systems_respecting is None else systems_respecting
-            )
-            systems_violating = [] if systems_violating is None else systems_violating
-            if len(systems_respecting) == 0 and len(systems_violating) == 0:
-                raise ValueError(
-                    """Either :python:`systems_respecting` or :python:`systems_violating` must be set."""
-                )
-            if len(systems_respecting) != 0 and len(systems_violating) != 0:
-                if set(self.systems) != set(systems_respecting) | set(
-                    systems_violating
-                ):
-                    raise ValueError(
-                        """The union of :python:`systems_respecting` and :python:`systems_violating` is inequivalent to the entire system's structure."""
-                    )
-
-            self.systems_respecting = systems_respecting
+        systems_violating = (
+            self.__dict__["_systems_violating"]
+            if systems_violating == list()
+            else systems_violating
+        )
+        self.systems_violating = systems_violating
 
     def __repr__(self) -> str:
         return repr(self.output_respecting())
@@ -173,24 +150,47 @@ class QuantumCTC(QuantumCircuit):
         ).matrix(numerical=numerical, array=array)
 
     @property
-    def systems_respecting(self) -> list[int]:
-        """The numerical indices of the chronology-respecting (CR) subsystems."""
-        return self._systems_respecting
+    def num_systems_violating(self) -> int:
+        """The total number of systems spanned by the circuit's chronology-violating (CV) states.
+        """
+        return len(self.systems_violating)
 
-    @systems_respecting.setter
-    def systems_respecting(self, systems_respecting: list[int]):
-        self._systems_respecting = systems_respecting
-        self._systems_respecting = list(set(self._systems_respecting))
+    @property
+    def num_systems_respecting(self) -> int:
+        """The total number of systems spanned by the circuit's chronology-respecting (CR) states.
+        """
+        return len(self.systems_respecting)
 
     @property
     def systems_violating(self) -> list[int]:
         """The numerical indices of the chronology-violating (CV) subsystems."""
-        return list(set(self.systems) ^ set(self.systems_respecting))
+        return self._systems_violating
 
     @systems_violating.setter
     def systems_violating(self, systems_violating: list[int]):
-        systems_respecting = list(set(self.systems) ^ set(systems_violating))
-        self.systems_respecting = systems_respecting
+        if len(systems_violating) == 0:
+            raise ValueError(
+                """The number of chronology-violating (CV) system indices cannot be fewer than 1."""
+            )
+        self._systems_violating = list(set(systems_violating))
+        if len(self._systems_violating) >= self.num_systems:
+            raise ValueError(
+                """The number of chronology-violating (CV) system indices cannot be equal to or or more than the total number of systems."""
+            )
+
+    @property
+    def systems_respecting(self) -> list[int]:
+        """The numerical indices of the chronology-respecting (CR) subsystems."""
+        return list(set(self.systems) ^ set(self.systems_violating))
+
+    @property
+    def num_systems_gross(self) -> int:
+        """The total number of systems spanned by the circuit's states and gates prior to any system reduction (post-processing, i.e., traces and postselections)."""
+        return max(
+            self.num_systems_inputs + self.num_systems_violating,
+            self.num_systems_gates,
+            max(self.systems_violating) + 1,
+        )
 
     @property
     def input_is_vector(self) -> bool:
@@ -438,7 +438,9 @@ def dctc_violating(
     )
 
     input_total = assemble_composition(
-        (input_respecting, systems_respecting), (input_violating, systems_violating)
+        (input_respecting, systems_respecting),
+        (input_violating, systems_violating),
+        dim=dim,
     )
 
     output_total = matrix_multiplication(gate, input_total, conjugate_transpose(gate))
@@ -572,9 +574,9 @@ def dctc_violating(
             ):  # Check for a local maximum.
                 maxima.append(point)
         if len(maxima) == 0:
-            print("No maximally entropic D-CTC CV state found.")
+            raise ValueError("""No maximally entropic D-CTC CV state found.""")
         if len(maxima) > 1:
-            print("More than one maximally entropic D-CTC CV state found.")
+            raise ValueError("""More than one maximally entropic D-CTC CV state found.""")
         if len(maxima) == 1:
             output_violating = output_violating.subs(
                 [
@@ -651,7 +653,9 @@ def dctc_respecting(
     input_respecting = densify(extract_matrix(input_respecting))
     input_violating = densify(extract_matrix(input_violating))
     input_total = assemble_composition(
-        (input_respecting, systems_respecting), (input_violating, systems_violating)
+        (input_respecting, systems_respecting),
+        (input_violating, systems_violating),
+        dim=dim,
     )
 
     gate = densify(extract_matrix(gate))
@@ -690,6 +694,12 @@ class DCTC(QuantumCTC):
         maximum_entropy: bool | None = None,
         **kwargs,
     ):
+        args, kwargs = default_arguments(
+            args,
+            kwargs,
+            QuantumCTC,
+            [("systems_violating", list())],
+        )
         super().__init__(*args, **kwargs)
         free_symbol = "g" if free_symbol is None else free_symbol
         maximum_entropy = False if maximum_entropy is None else maximum_entropy
@@ -995,14 +1005,12 @@ class DCTC(QuantumCTC):
 
             # Postselections
             for postselection in self.postselections:
-                length = count_systems(extract_matrix(postselection[0]), self.dim)
-                listed = flatten_list([postselection[1]])
-                systems = [(min(listed) + n) for n in range(0, length)]
-                targets_postselection = adjust_targets(systems, systems_removed)
+                systems_postselection = sorted(postselection[1])
+                targets_postselection = adjust_targets(systems_postselection, systems_removed)
                 output_respecting.postselect(
                     postselections=[(postselection[0], targets_postselection)]
                 )
-                systems_removed += systems
+                systems_removed += systems_postselection
 
         # Normalization
         norm = False if norm is None else norm
@@ -1413,7 +1421,9 @@ def pctc_violating(
     )
 
     input_total = assemble_composition(
-        (input_respecting, systems_respecting), (identity, systems_violating)
+        (input_respecting, systems_respecting),
+        (identity, systems_violating),
+        dim=dim,
     )
 
     gate = densify(extract_matrix(gate))
@@ -1504,12 +1514,12 @@ def pctc_respecting(
     gate_reduced = partial_trace(matrix=gate, targets=systems_violating, dim=dim)
     if matrix_form(input_respecting) == Forms.VECTOR.value:
         input_respecting = columnify(input_respecting)
-        output_respecting = gate_reduced * input_respecting
+        output_respecting = matrix_multiplication(gate_reduced, input_respecting)
         # renormalization = recursively_simplify(sp.sqrt(1/trace(output_respecting)))
         # output_respecting = renormalization * output_respecting
     else:
         output_respecting = (
-            gate_reduced * densify(input_respecting) * conjugate_transpose(gate_reduced)
+            matrix_multiplication(gate_reduced, densify(input_respecting), conjugate_transpose(gate_reduced))
         )
         # renormalization = recursively_simplify(1/trace(output_respecting))
         # output_respecting = renormalization * output_respecting
@@ -1530,6 +1540,12 @@ class PCTC(QuantumCTC):
     """
 
     def __init__(self, *args, **kwargs):
+        args, kwargs = default_arguments(
+            args,
+            kwargs,
+            QuantumCTC,
+            [("systems_violating", list())],
+        )
         super().__init__(*args, **kwargs)
 
     def matrix(
@@ -1773,14 +1789,12 @@ class PCTC(QuantumCTC):
 
             # Postselections
             for postselection in self.postselections:
-                length = count_systems(extract_matrix(postselection[0]), self.dim)
-                listed = flatten_list([postselection[1]])
-                systems = [(min(listed) + n) for n in range(0, length)]
-                targets_postselection = adjust_targets(systems, systems_removed)
+                systems_postselection = sorted(postselection[1])
+                targets_postselection = adjust_targets(systems_postselection, systems_removed)
                 output_respecting.postselect(
                     postselections=[(postselection[0], targets_postselection)]
                 )
-                systems_removed += systems
+                systems_removed += systems_postselection
 
         # Normalization
         norm = False if norm is None else norm

@@ -246,8 +246,8 @@ def entropy(
 
 def mutual(
     state: mat | arr | QuantumObject,
-    systems_A: int | list[int] | None = None,
-    systems_B: int | list[int] | None = None,
+    systems_A: list[int] | None = None,
+    systems_B: list[int] | None = None,
     dim: int | None = None,
     base: num | expr | str | None = None,
 ) -> num | expr:
@@ -264,10 +264,10 @@ def mutual(
     ---------
     state : mat | arr | QuantumObject
         The matrix representation of the composite input state.
-    systems_A : int | list[int]
+    systems_A : list[int]
         The indices of the first subsystem.
         Defaults to :python:`[0]`.
-    systems_B : int | list[int]
+    systems_B : list[int]
         The indices of the second subsystem.
         Defaults to the complement of :python:`systems_A` with respect to the entire composition of subsystems of :python:`state`.
     dim : int
@@ -425,8 +425,8 @@ class QuantitiesMixin:
 
     def mutual(
         self,
-        systems_A: int | list[int],
-        systems_B: int | list[int] | None = None,
+        systems_A: list[int],
+        systems_B: list[int] | None = None,
         base: num | expr | str | None = None,
     ) -> num | expr:
         """Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of the internal state (:math:`\\rho^{\\indices{A,B}}`):
@@ -441,10 +441,10 @@ class QuantitiesMixin:
 
         Arguments
         ---------
-        systems_A : int | list[int]
+        systems_A : list[int]
             The indices of the first subsystem.
             Defaults to :python:`[0]`.
-        systems_B : int | list[int]
+        systems_B : list[int]
             The indices of the second subsystem.
             Defaults to the complement of :python:`systems_A` with respect to the entire composition of the subsystems of :python:`state`.
         base : num | expr | str
