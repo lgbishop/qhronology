@@ -262,7 +262,7 @@ Bundled with the project is a collection of complete examples that showcase its 
 
 .. raw:: latex
 
-   \vspace*{-0.75em}
+   \vspace*{-1em}
 
 .. only:: html
 
@@ -327,7 +327,7 @@ All of the objects in each of the various submodules have been rigorously detail
 .. only:: latex
 
    .. image:: /figures/output/diagram_bloch_sphere.pdf
-      :scale: 100 %
+      :scale: 115 %
       :align: center
       :class: light-dark hidden
 
@@ -360,7 +360,7 @@ All of the underlying mathematics upon which Qhronology is built is presented as
 
 .. raw:: latex
 
-   \vspace*{-0.65em}
+   \vspace*{-0.75em}
 
 .. only:: html
 

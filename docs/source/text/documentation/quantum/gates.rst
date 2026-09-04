@@ -1698,6 +1698,10 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
+      \newpage
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1916,6 +1920,44 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. code:: python
 
+      >>> S = Pauli(index=3, exponent=sp.Rational(1, 2), label="S")
+      >>> S.output()
+      Matrix([
+      [1, 0],
+      [0, I]])
+      >>> S.diagram()
+
+   .. raw:: latex
+
+      \includegraphics[scale=1.25, trim=-0.02cm -0.12cm 0 0.00cm]{text_examples_docstrings_gate_pauli_s.pdf}
+      \vspace{-1\baselineskip}
+
+   ..
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_pauli_s-dark.png
+            :scale: 36 %
+            :align: left
+            :class: only-dark
+
+      .. only:: html
+
+         .. image:: /figures/output/text_examples_docstrings_gate_pauli_s-light.png
+            :scale: 36 %
+            :align: left
+            :class: only-light
+
+   .. raw:: latex
+
+      \end{code}
+
+   .. raw:: latex
+
+      \begin{code}
+
+   .. code:: python
+
       >>> ZZ = Pauli(index=3, targets=[0, 1], label="Z⊗Z")
       >>> ZZ.output()
       Matrix([
@@ -2051,12 +2093,12 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{-3\baselineskip}
+
 .. autoclass:: qhronology.quantum.gates.GellMann
    :show-inheritance:
-
-   .. raw:: latex
-
-      \enlargethispage{-2\baselineskip}
 
    .. raw:: latex
 
@@ -2548,7 +2590,7 @@ Please be aware that the documentation of these subclasses included hereafter co
 
 .. raw:: latex
 
-   \enlargethispage{-2\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.Diagonal
    :show-inheritance:
@@ -2808,10 +2850,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -2853,6 +2891,10 @@ Please be aware that the documentation of these subclasses included hereafter co
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{-2\baselineskip}
 
    .. raw:: latex
 
@@ -2900,10 +2942,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -2945,6 +2983,10 @@ Please be aware that the documentation of these subclasses included hereafter co
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -3243,6 +3285,10 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
+      \vspace*{-0.4\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -3280,6 +3326,10 @@ Please be aware that the documentation of these subclasses included hereafter co
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \vspace*{-0.4\baselineskip}
 
    .. raw:: latex
 
@@ -3323,7 +3373,11 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
+      \vspace*{-0.4\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{2\baselineskip}
 
    .. raw:: latex
 
@@ -3553,10 +3607,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{-8\baselineskip}
-
 .. autoclass:: qhronology.quantum.gates.Fourier
    :show-inheritance:
 
@@ -3606,6 +3656,10 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -3645,7 +3699,11 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \enlargethispage{-\baselineskip}
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -3709,14 +3767,26 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. autoclass:: qhronology.quantum.gates.Measurement
    :show-inheritance:
+
+   .. raw:: latex
+
+      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
 
@@ -3753,6 +3823,14 @@ Please be aware that the documentation of these subclasses included hereafter co
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \vspace*{-0.35\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -3860,10 +3938,6 @@ Please be aware that the documentation of these subclasses included hereafter co
 
 Combinations
 ============
-
-.. raw:: latex
-
-   \enlargethispage{-3\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.GateInterleave
    :show-inheritance:

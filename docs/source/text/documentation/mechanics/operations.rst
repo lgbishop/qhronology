@@ -63,6 +63,10 @@ Functions
 
    .. raw:: latex
 
+      \vspace*{-0.15\baselineskip}
+
+   .. raw:: latex
+
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
@@ -89,9 +93,17 @@ Functions
 
 .. raw:: latex
 
+   \vspace*{-0.15\baselineskip}
+
+.. raw:: latex
+
    \hrulefillthick
 
 .. autofunction:: qhronology.mechanics.operations.dagger
+
+   .. raw:: latex
+
+      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
 
@@ -132,6 +144,10 @@ Functions
    .. raw:: latex
 
       \end{adjustwidth}
+
+.. raw:: latex
+
+   \vspace*{-0.15\baselineskip}
 
 .. raw:: latex
 

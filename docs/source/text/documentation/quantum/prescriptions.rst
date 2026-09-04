@@ -54,7 +54,7 @@ Please note that the documentation of this class includes only properties and me
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{-2\baselineskip}
 
 .. raw:: latex
 

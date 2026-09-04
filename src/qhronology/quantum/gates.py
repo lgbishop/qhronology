@@ -1232,10 +1232,6 @@ class GellMann(QuantumGate):
 
     .. raw:: latex
 
-        \\vspace*{-2\\baselineskip}
-
-    .. raw:: latex
-
         \\begin{adjustwidth}{-2.5em}{0cm}
 
     .. math::

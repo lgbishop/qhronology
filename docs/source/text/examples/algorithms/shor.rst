@@ -133,9 +133,9 @@ Before executing Shor's algorithm for a given number :math:`N`, it can be advant
 
       #. If :math:`d^\prime > 1`, then factors have been found: output :math:`p = d^\prime` and :math:`q = N/d^\prime`. *Exit*.
 
-      #. If :math:`d^\prime = 1`, then the algorithm has failed to factorize :math:`N`. *Exit*.
+      #. If :math:`d^\prime = 1`, then the algorithm has failed to factorize :math:`N`. *Goto step 1*.
 
-   #. If :math:`r` is odd, then the algorithm has failed to factorize :math:`N`. *Exit*.
+   #. If :math:`r` is odd, then the algorithm has failed to factorize :math:`N`. *Goto step 1*.
 
 .. raw:: latex
 
@@ -148,7 +148,7 @@ Evidently, as a probabilistic algorithm, there is a chance that it can fail on a
 - The computed period :math:`r` is odd.
 - The computed period :math:`r` is even and :math:`\gcd(N, a^{r/2} - 1) = 1`.
 
-For a random choice of :math:`a`, the probability of either of the two failing events occuring is at most :math:`2^{-(s-1)}`, where :math:`s` is the number of distinct prime factors of :math:`N`. The probability of any given run being successful is therefore at least :math:`0.5`, and so executing the algorithm :math:`t` times (each with a randomly chosen :math:`a`) results in a probability of success being bounded from below by :math:`1 - 2^{-t}`. Much of the trial-and-error of the algorithm's probabilistic nature can therefore be eliminated by providing :math:`a` such that it is coprime to :math:`N` (i.e., :math:`a \in \Integers_N^*`), in cases where such knowledge is possible.
+For a random choice of :math:`a`, the probability of either of the two failing events occuring is at most :math:`2^{-(s-1)}`, where :math:`s` is the number of distinct prime factors of :math:`N`. The probability of any given run being successful is therefore at least :math:`0.5`, and so executing the algorithm :math:`t` times (each with a randomly chosen :math:`a`) results in a probability of success being bounded from below by :math:`1 - 2^{-t}`. Much of the trial-and-error associated with the algorithm's probabilistic nature can therefore be eliminated by providing :math:`a` such that it is coprime to :math:`N` (i.e., :math:`a \in \Integers_N^*`), in cases where such knowledge is possible.
 
 .. _`eg:shor_estimation`:
 
