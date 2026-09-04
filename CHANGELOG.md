@@ -21,7 +21,7 @@
 - Make `QuantmGate` count the number of systems of given `spec` properly. ([8101c2a](https://github.com/lgbishop/qhronology/commit/8101c2a68a824cd59c066da13a91a3964f674ce2))
 - Add function for permuting tensor products. ([75d4c11](https://github.com/lgbishop/qhronology/commit/75d4c1137677d10b3da7647eeb93d9a5f7c738df))
 - Allow gate operators to be non-contiguous. ([b7ca342](https://github.com/lgbishop/qhronology/commit/b7ca342b5f6075ab9931f625678ae1ea13703ab4))
-- Remove `systems_respecting` argument from `QuantumCTC', overhaul `systems_violating` property, and require all system indices to be given as lists. ([cffd1e5](https://github.com/lgbishop/qhronology/commit/cffd1e56bf6277b7b62f1209039f9b6277bff81a))
+- Remove `systems_respecting` argument from `QuantumCTC`, overhaul `systems_violating` property, and require all system indices to be given as lists. ([cffd1e5](https://github.com/lgbishop/qhronology/commit/cffd1e56bf6277b7b62f1209039f9b6277bff81a))
 
 ### Documentation:
 
