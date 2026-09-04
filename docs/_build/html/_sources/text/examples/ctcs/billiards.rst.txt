@@ -383,7 +383,7 @@ as input to our circuit. Here, the state existing in the first system may be int
 
    \begin{aligned}
       \bigl(\VacuumIdentity^{\indices{\text{rec}}} \otimes \OperatorPCTC^{\indices{\CR}}\bigr) \ket{\StatePure}^{\indices{\text{rec},\CR}} &\propto \sqrt{\ParameterVacuum}\,\trace[\VacuumRotation(\TimeDelta)]\,\ket{0}^{\indices{\text{rec}}} \otimes \ket{0}^{\indices{\CR}} \\
-      &\quad + \sqrt{1 - \ParameterVacuum}\,\ket{\qclock(0)}^{\indices{\text{rec}}} \otimes \bigl[\ket{\qclock(0)}^{\indices{\CR}} + \ket{\qclock(\TimeDelta)}^{\indices{\CR}}\bigr].
+      &\quad + \sqrt{1 - \ParameterVacuum}\,\ket{\qclock(0)}^{\indices{\text{rec}}} \otimes \bigl[\ket{\qclock(0)} + \ket{\qclock(\TimeDelta)}\bigr]^{\indices{\CR}}.
    \end{aligned}
 
 The persistence of the entanglement means that when the record indicates that we did not send in a clock, we will not observe a clock in the CR output. Conversely, when we definitely did send in a clock, we must observe a clock exiting the CTC region, which is exactly what one intuitively expects. However, under the conditions :eq:`eq:orthogonalization_time_multiple` and :eq:`eq:billiards_P-CTCs_energy_vanish` which yield the operator :eq:`eq:billiards_P-CTCs_operator_constrained`, the entanglement of our input state :eq:`eq:billiards_P-CTCs_entangled` breaks,
@@ -427,7 +427,7 @@ Diagram
    >>> billiards.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.05cm 0 -0.12cm]{text_examples_ctcs_billiards.pdf}
    \vspace{-1\baselineskip}
 
@@ -448,7 +448,7 @@ Diagram
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 States
@@ -516,5 +516,5 @@ States
          :filter: docname in docnames
 
 .. raw:: latex
-   
+
    \newpage

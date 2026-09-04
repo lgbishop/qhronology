@@ -136,7 +136,7 @@ Diagram
    >>> grover.diagram(pad=(1, 0), sep=(1, 2), force_separation=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_grover.pdf}
    \vspace{-1\baselineskip}
 
@@ -157,7 +157,7 @@ Diagram
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 Results
@@ -205,5 +205,5 @@ Cumulative output from the various print statements:
          :filter: docname in docnames
 
 .. raw:: latex
-   
+
    \newpage

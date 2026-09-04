@@ -152,7 +152,7 @@
    ####
 
    .. raw:: html
-   
+
       </div>
 
 .. only:: html
@@ -205,17 +205,17 @@
    ----
 
    .. rst-class:: centered
-      
+
       **A Python package for studying quantum models of closed timelike curves**
 
       **and simulating general quantum information processing & computation**
 
    ----
-   
+
    .. rst-class:: centered
-      
-      **Latest Version:** 1.1.1 | **Date:** 28th July 2026
-   
+
+      **Latest Version:** 1.2.0 | **Date:** 4th September 2026
+
       .. QHRONOLOGY_VERSION_NUMBER
 
    ----
@@ -399,7 +399,7 @@ Features
             :alt: full adder quantum circuit
             :align: center
             :class: only-dark
-         
+   
          +++
 
       .. grid-item-card::
@@ -484,7 +484,7 @@ Features
             :alt: full adder quantum circuit
             :align: center
             :class: only-dark
-         
+   
          +++
 
       .. grid-item-card::
@@ -519,7 +519,7 @@ Features
             :alt: full adder quantum circuit
             :align: center
             :class: only-dark
-         
+   
          +++
 
       .. grid-item-card::
@@ -555,7 +555,7 @@ Features
             :alt: full adder quantum circuit
             :align: center
             :class: only-dark
-         
+   
          +++
 
    |

@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
+    <script src="../../../_static/documentation_options.js?v=6efca38a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -72,8 +72,8 @@
     <link rel="prev" title="Operations" href="operations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
+  <meta name="docsearch:version" content="1.2.0" />
+    <meta name="docbuild:last-update" content="Sep 04, 2026"/>
   </head>
   
   
@@ -738,8 +738,8 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 
 <dl>
 <dd><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../utilities/objects.html#qhronology.utilities.objects.QuantumObject" title="qhronology.utilities.objects.QuantumObject"><span class="pre">QuantumObject</span></a></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">systems_A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">systems_B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">systems_A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">systems_B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
@@ -754,9 +754,9 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>state</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mat</span> <span class="pre">|</span> <span class="pre">arr</span> <span class="pre">|</span> <span class="pre">QuantumObject</span></code>) – The matrix representation of the composite input state.</p></li>
-<li><p><strong>systems_A</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">list[int]</span></code>) – The indices of the first subsystem.
+<li><p><strong>systems_A</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[int]</span></code>) – The indices of the first subsystem.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code>.</p></li>
-<li><p><strong>systems_B</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">list[int]</span></code>) – The indices of the second subsystem.
+<li><p><strong>systems_B</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[int]</span></code>) – The indices of the second subsystem.
 Defaults to the complement of <code class="code highlight python docutils literal highlight-python"><span class="n">systems_A</span></code> with respect to the entire composition of subsystems of <code class="code highlight python docutils literal highlight-python"><span class="n">state</span></code>.</p></li>
 <li><p><strong>dim</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The dimensionality of the composite quantum system (and its subsystems).
 Must be a non-negative integer.

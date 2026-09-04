@@ -54,7 +54,7 @@ from primitive :math:`\ket{0}` states.
 The complete unitary transformation described by this circuit is the product
 
 .. math::
-   
+
    \begin{aligned}
        \Unitary &= \NOT^{\indices{0}} \cdot \Control^{\indices{0}} \NOT^{\indices{1}} \cdot \Control^{\indices{1}} \NOT^{\indices{2}} \cdot \ldots \cdot \Control^{\indices{\Number - 2}} \NOT^{\indices{\Number - 1}} \\
        &\quad \cdot \; \Control^{\indices{\Number - 3}} \Rotation_{y}^{\indices{\Number - 2}}(\theta_{\Number - 2}) \cdot \ldots \cdot \Control^{\indices{1}} \Rotation_{y}^{\indices{2}}(\theta_{2}) \cdot \Control^{\indices{0}} \Rotation_{y}^{\indices{1}}(\theta_{1}) \cdot \Rotation_{y}^{\indices{0}}(\theta_{0}) \\
@@ -106,7 +106,7 @@ Diagram
    >>> generator.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_generation_w_general.pdf}
    \vspace{-1\baselineskip}
 
@@ -127,7 +127,7 @@ Diagram
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 State
@@ -147,5 +147,5 @@ State
    \end{code}
 
 .. raw:: latex
-   
+
    \newpage

@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=58fbf978"></script>
+    <script src="_static/documentation_options.js?v=6efca38a"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -72,8 +72,8 @@
     <link rel="prev" title="Home" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
+  <meta name="docsearch:version" content="1.2.0" />
+    <meta name="docbuild:last-update" content="Sep 04, 2026"/>
   </head>
   
   
@@ -479,7 +479,7 @@
 </div><p class="rubric"><span class="classheader0">Overview</span></p>
 <p>Perhaps the most fascinating aspect of the current research on closed timelike curves (CTCs) is that there is more than one way to treat them with quantum mechanics to a sufficient degree of plausibility. While none of the established quantum models (sometimes called <em>prescriptions</em>) has been accepted by scientific consensus as the authoritative description of how the Universe may potentially conduct antichronological time travel, all of them can be used to predict evolutions of the time-travelling quantum systems associated with CTCs. Though these predictions often disagree in stark ways, their differences can also be subtle, which may likewise be true for any number of the prescriptions’ other aspects, including their mathematical characteristics (such as [non-]linearity and [non-]unitarity in state evolution) and physical consequences (such as the abilities to distinguish non-orthogonal states, clone arbitrary states, signal superluminally, and increase the computational speed and efficiency of both classical and quantum computers). A major part of the research into the various prescriptions therefore is how, despite being formulated with radically distinct (and usually fundamentally incompatible) postulates, they all provide self-consistent, paradox-free evolutions of quantum systems near CTCs (including resolutions to temporal paradoxes), with the associated quantum states themselves always being physically valid, at least in the sense of standard quantum mechanics.</p>
 <p>In the absence of physical CTCs on which to perform experiments, one of the more effective ways to investigate the various quantum models of time travel is to compare their theoretical predictions for the states of the quantum systems both internal (<em>chronology-violating</em>, or CV) and external (<em>chronology-respecting</em>, or CR) to a CTC in the context of specific inter-system interactions. Doing so however can prove to be both tedious and error-prone, especially in cases where the interactions are complex. For example, <em>Deutsch’s model</em> (giving <em>Deutschian</em> CTCs, or D-CTCs) necessitates the solving of a fixed-point condition for which there is often a parametrized spectrum of (non-unique) CV solutions (and, accordingly, a corresponding spectrum of CR solutions). Similarly, the theory of <em>postselected teleportation</em> (giving <em>postselected</em> CTCs, or P-CTCs) requires one to non-unitarily evolve input states and subsequently renormalize the results. Needless to say, the procedures for computing the predictions of these prescriptions are highly involved, and so must be performed with great care.</p>
-<p>Born out of the desire for a way to programmatically compute the states of the CR and CV systems according to the foremost quantum prescriptions of antichronological time travel,  <a class="reference external" href="https://qhronology.org">Qhronology</a>  <span id="id1">[<a class="reference internal" href="#cite-1-bishop-qhronology-software-2025" title="L. G. Bishop, “Qhronology: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing &amp; computation”, 2025. URL: https://qhronology.org, Source code: https://github.com/lgbishop/qhronology">1</a>]</span> was created as a unified computational environment for defining, simulating, and analyzing quantum information processes that incorporate CTCs. Notably, the package can be used to calculate quantum resolutions to any given temporal paradox, thereby enabling users to explore foundational questions regarding the quantum mechanics of time travel. By providing a unique approach to describing general quantum objects (such as states and gates), Qhronology can also operate as a complete quantum circuit simulator, of which a prominent component is its engine for the visualization of quantum circuit diagrams. Its main features include:</p>
+<p>Born out of the desire for a way to programmatically compute the states of the CR and CV systems according to the foremost quantum prescriptions of antichronological time travel,   <a class="reference external" href="https://qhronology.org">Qhronology</a>  <span id="id1">[<a class="reference internal" href="#cite-1-bishop-qhronology-software-2025" title="L. G. Bishop, “Qhronology: A Python package for studying quantum models of closed timelike curves and simulating general quantum information processing &amp; computation”, 2025. URL: https://qhronology.org, Source code: https://github.com/lgbishop/qhronology">1</a>]</span> was created as a unified computational environment for defining, simulating, and analyzing quantum information processes that incorporate CTCs. Notably, the package can be used to calculate quantum resolutions to any given temporal paradox, thereby enabling users to explore foundational questions regarding the quantum mechanics of time travel. By providing a unique approach to describing general quantum objects (such as states and gates), Qhronology can also operate as a complete quantum circuit simulator, of which a prominent component is its engine for the visualization of quantum circuit diagrams. Its main features include:</p>
 <ul class="simple">
 <li><p>Calculation of the states of the CR and CV quantum systems according to quantum-mechanical prescriptions of closed timelike curves</p>
 <ul>
@@ -739,7 +739,7 @@
 <span class="n">unproven</span> <span class="o">=</span> <span class="n">QuantumCTC</span><span class="p">(</span>
     <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">mathematician_state</span><span class="p">,</span> <span class="n">book_state</span><span class="p">],</span>
     <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">NIC</span><span class="p">,</span> <span class="n">CNI</span><span class="p">,</span> <span class="n">IS</span><span class="p">],</span>
-    <span class="n">systems_respecting</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">systems_violating</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
 <span class="p">)</span>
 <span class="n">unproven</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 

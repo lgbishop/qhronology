@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
+    <script src="../../../_static/documentation_options.js?v=6efca38a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -67,8 +67,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
+  <meta name="docsearch:version" content="1.2.0" />
+    <meta name="docbuild:last-update" content="Sep 04, 2026"/>
   </head>
   
   
@@ -553,7 +553,11 @@
 <span class="sd">        All instances of the expression in each tuple&#39;s first element are replaced by the expression in the respective second element.</span>
 <span class="sd">        This uses the same format as the SymPy :python:`subs()` method.</span>
 <span class="sd">        Defaults to :python:`[]`.</span>
-<span class="sd">    conjugate : bool</span>
+<span class="sd">    simplification : bool</span>
+<span class="sd">        Whether to perform mathematical simplification on the state when it is called.</span>
+<span class="sd">        If :python:`False`, does not simplify.</span>
+<span class="sd">        Defaults to :python:`False`.</span>
+<span class="sd">    conjugation : bool</span>
 <span class="sd">        Whether to perform Hermitian conjugation on the state when it is called.</span>
 <span class="sd">        If :python:`False`, does not conjugate.</span>
 <span class="sd">        Defaults to :python:`False`.</span>
@@ -597,7 +601,8 @@
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">symbols</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">sym</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">notation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -617,7 +622,12 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">norm</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current</span> <span class="o">=</span> <span class="n">quantum_object</span><span class="p">(</span>
-            <span class="n">spec</span><span class="o">=</span><span class="n">spec</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span>
+            <span class="n">spec</span><span class="o">=</span><span class="n">spec</span><span class="p">,</span>
+            <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
+            <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
+            <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
+            <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="n">QuantumObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
@@ -630,7 +640,8 @@
             <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
-            <span class="n">conjugate</span><span class="o">=</span><span class="n">conjugate</span><span class="p">,</span>
+            <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
+            <span class="n">conjugation</span><span class="o">=</span><span class="n">conjugation</span><span class="p">,</span>
             <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
             <span class="n">notation</span><span class="o">=</span><span class="n">notation</span><span class="p">,</span>
             <span class="n">family</span><span class="o">=</span><span class="n">family</span><span class="p">,</span>
@@ -710,8 +721,8 @@
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the processed matrix representation of the state.</span>
@@ -727,14 +738,14 @@
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
-<span class="sd">        simplify : bool</span>
+<span class="sd">        simplification : bool</span>
 <span class="sd">            Whether to perform mathematical simplification on the state.</span>
 <span class="sd">            If :python:`False`, does not simplify.</span>
-<span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        conjugate : bool</span>
+<span class="sd">            Defaults to the value of :python:`self.simplification`.</span>
+<span class="sd">        conjugation : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            If :python:`False`, does not conjugate.</span>
-<span class="sd">            Defaults to the value of :python:`self.conjugate`.</span>
+<span class="sd">            Defaults to the value of :python:`self.conjugation`.</span>
 <span class="sd">        norm : bool | num | expr | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
 <span class="sd">            If :python:`False`, does not normalize.</span>
@@ -758,19 +769,19 @@
         <span class="k">if</span> <span class="n">norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">state</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
 
-        <span class="c1"># Conditions</span>
+        <span class="c1"># Substitutions</span>
         <span class="n">substitutions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span> <span class="k">if</span> <span class="n">substitutions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">substitutions</span>
         <span class="n">substitutions</span> <span class="o">=</span> <span class="n">symbolize_substitutions</span><span class="p">(</span><span class="n">substitutions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols_list</span><span class="p">)</span>
         <span class="n">state</span> <span class="o">=</span> <span class="n">apply_substitutions</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
 
         <span class="c1"># Simplification</span>
-        <span class="n">simplify</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">simplify</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">simplify</span>
-        <span class="k">if</span> <span class="n">simplify</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">simplification</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplification</span> <span class="k">if</span> <span class="n">simplification</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">simplification</span>
+        <span class="k">if</span> <span class="n">simplification</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">state</span> <span class="o">=</span> <span class="n">recursively_simplify</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
 
         <span class="c1"># Conjugation</span>
-        <span class="n">conjugate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conjugate</span> <span class="k">if</span> <span class="n">conjugate</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conjugate</span>
-        <span class="k">if</span> <span class="n">conjugate</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">conjugation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conjugation</span> <span class="k">if</span> <span class="n">conjugation</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conjugation</span>
+        <span class="k">if</span> <span class="n">conjugation</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">state</span> <span class="o">=</span> <span class="n">conjugate_transpose</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span></div>
@@ -785,8 +796,8 @@
         <span class="n">return_string</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">conjugate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Print or return a mathematical expression of the quantum state as a string.</span>
@@ -811,14 +822,14 @@
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
-<span class="sd">        simplify : bool</span>
+<span class="sd">        simplification : bool</span>
 <span class="sd">            Whether to perform mathematical simplification on the state.</span>
 <span class="sd">            If :python:`False`, does not simplify.</span>
-<span class="sd">            Defaults to :python:`False`.</span>
-<span class="sd">        conjugate : bool</span>
+<span class="sd">            Defaults to the value of :python:`self.simplification`.</span>
+<span class="sd">        conjugation : bool</span>
 <span class="sd">            Whether to perform Hermitian conjugation on the state.</span>
 <span class="sd">            If :python:`False`, does not conjugate.</span>
-<span class="sd">            Defaults to the value of :python:`self.conjugate`.</span>
+<span class="sd">            Defaults to the value of :python:`self.conjugation`.</span>
 <span class="sd">        norm : bool | num | expr | str</span>
 <span class="sd">            The value to which the state is normalized.</span>
 <span class="sd">            If :python:`False`, does not normalize.</span>
@@ -838,8 +849,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span>
                     <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
                     <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
-                    <span class="n">simplify</span><span class="o">=</span><span class="n">simplify</span><span class="p">,</span>
-                    <span class="n">conjugate</span><span class="o">=</span><span class="n">conjugate</span><span class="p">,</span>
+                    <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
+                    <span class="n">conjugation</span><span class="o">=</span><span class="n">conjugation</span><span class="p">,</span>
                     <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
                 <span class="p">),</span>
                 <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>

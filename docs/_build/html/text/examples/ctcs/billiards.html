@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
+    <script src="../../../_static/documentation_options.js?v=6efca38a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -72,8 +72,8 @@
     <link rel="prev" title="Unproven-theorem paradox" href="unproven.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
+  <meta name="docsearch:version" content="1.2.0" />
+    <meta name="docbuild:last-update" content="Sep 04, 2026"/>
   </head>
   
   
@@ -758,7 +758,7 @@ For simplicity, we choose the initial (unevolved) clock state,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-11">
 <span class="eqno">(524)<a class="headerlink" href="#equation-text-examples-ctcs-billiards-11" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
    \bigl(\VacuumIdentity^{\indices{\text{rec}}} \otimes \OperatorPCTC^{\indices{\CR}}\bigr) \ket{\StatePure}^{\indices{\text{rec},\CR}} &amp;\propto \sqrt{\ParameterVacuum}\,\trace[\VacuumRotation(\TimeDelta)]\,\ket{0}^{\indices{\text{rec}}} \otimes \ket{0}^{\indices{\CR}} \\
-   &amp;\quad + \sqrt{1 - \ParameterVacuum}\,\ket{\qclock(0)}^{\indices{\text{rec}}} \otimes \bigl[\ket{\qclock(0)}^{\indices{\CR}} + \ket{\qclock(\TimeDelta)}^{\indices{\CR}}\bigr].
+   &amp;\quad + \sqrt{1 - \ParameterVacuum}\,\ket{\qclock(0)}^{\indices{\text{rec}}} \otimes \bigl[\ket{\qclock(0)} + \ket{\qclock(\TimeDelta)}\bigr]^{\indices{\CR}}.
 \end{aligned}\end{split}\]</div>
 <p>The persistence of the entanglement means that when the record indicates that we did not send in a clock, we will not observe a clock in the CR output. Conversely, when we definitely did send in a clock, we must observe a clock exiting the CTC region, which is exactly what one intuitively expects. However, under the conditions <a class="reference internal" href="#equation-eq-orthogonalization-time-multiple">(519)</a> and <a class="reference internal" href="#equation-eq-billiards-p-ctcs-energy-vanish">(521)</a> which yield the operator <a class="reference internal" href="#equation-eq-billiards-p-ctcs-operator-constrained">(522)</a>, the entanglement of our input state <a class="reference internal" href="#equation-eq-billiards-p-ctcs-entangled">(523)</a> breaks,</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-ctcs-billiards-12">
@@ -771,7 +771,7 @@ For simplicity, we choose the initial (unevolved) clock state,</p>
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>This implementation is strictly for qubits. For simplicity, we set <span class="math notranslate nohighlight">\(\frac{\TimeDelta}{\TimeOrthogonalization} \equiv t\)</span>.</p>
 <div class="literal-block-wrapper docutils container" id="code-billiards">
-<div class="code-block-caption"><span class="caption-number">Code Block 34 </span><span class="caption-text">/text/examples/ctcs/billiards.py</span><a class="headerlink" href="#code-billiards" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 38 </span><span class="caption-text">/text/examples/ctcs/billiards.py</span><a class="headerlink" href="#code-billiards" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumGate</span><span class="p">,</span> <span class="n">Swap</span><span class="p">,</span> <span class="n">Diagonal</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.prescriptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCTC</span><span class="p">,</span> <span class="n">DCTC</span><span class="p">,</span> <span class="n">PCTC</span>
@@ -841,7 +841,7 @@ For simplicity, we choose the initial (unevolved) clock state,</p>
 <span class="n">billiards</span> <span class="o">=</span> <span class="n">QuantumCTC</span><span class="p">(</span>
     <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">clock_state_unevolved</span><span class="p">],</span>
     <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">S_vacuum</span><span class="p">,</span> <span class="n">IR</span><span class="p">],</span>
-    <span class="n">systems_respecting</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">systems_violating</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <span class="p">)</span>
 <span class="n">billiards</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 

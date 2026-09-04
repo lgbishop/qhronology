@@ -63,5 +63,5 @@ States
    \end{code}
 
 .. raw:: latex
-   
+
    \newpage

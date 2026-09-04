@@ -51,7 +51,7 @@ from primitive :math:`\ket{0}` states. This is a generalized version of the GHZ 
 The complete unitary transformation described by this circuit is the product
 
 .. math::
-   
+
    \begin{aligned}
        \Unitary &= \Control^{\indices{\Number - 2}} \SUM^{\indices{\Number - 1}} \cdot \ldots \cdot \Control^{\indices{1}} \SUM^{\indices{2}} \cdot \Control^{\indices{0}} \SUM^{\indices{1}} \cdot \Hadamard^{\indices{0}} \\
        &= \Biggl(\prod_{n = \Number - 1}^{1} \Control^{\indices{n - 1}} \SUM^{\indices{n}} \Biggr) \cdot \Hadamard^{\indices{0}}.
@@ -62,7 +62,7 @@ Implementation
 
 .. raw:: latex
 
-   \enlargethispage{-2\baselineskip}
+   \enlargethispage{-\baselineskip}
 
 .. raw:: latex
 
@@ -96,7 +96,7 @@ Diagram
    >>> generator.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_generation_ghz_general.pdf}
    \vspace{-1\baselineskip}
 
@@ -117,7 +117,7 @@ Diagram
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 State
@@ -137,5 +137,5 @@ State
    \end{code}
 
 .. raw:: latex
-   
+
    \newpage

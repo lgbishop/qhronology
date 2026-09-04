@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
+    <script src="../../../_static/documentation_options.js?v=6efca38a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -72,8 +72,8 @@
     <link rel="prev" title="CCNOT (controlled-controlled-NOT)" href="ccnot.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
+  <meta name="docsearch:version" content="1.2.0" />
+    <meta name="docbuild:last-update" content="Sep 04, 2026"/>
   </head>
   
   
@@ -595,7 +595,7 @@
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <div class="literal-block-wrapper docutils container" id="code-adder-half">
-<div class="code-block-caption"><span class="caption-number">Code Block 20 </span><span class="caption-text">/text/examples/algorithms/adder_half.py</span><a class="headerlink" href="#code-adder-half" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 24 </span><span class="caption-text">/text/examples/algorithms/adder_half.py</span><a class="headerlink" href="#code-adder-half" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
@@ -635,7 +635,7 @@
 <span class="n">augend_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="n">addend_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 <span class="n">sum_state</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-<span class="n">carry_output_state</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">carry_output_state</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -668,7 +668,7 @@
 <span class="go">s = (a*u*conjugate(a)*conjugate(u) + b*v*conjugate(b)*conjugate(v))|0⟩⟨0| + a*u*conjugate(a)*conjugate(v)|0⟩⟨1| + a*v*conjugate(a)*conjugate(u)|1⟩⟨0| + (a*v*conjugate(a)*conjugate(v) + b*u*conjugate(b)*conjugate(u))|1⟩⟨1|</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">carry_output_state</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">carry_output_state</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">c′ = (a*conjugate(a) + b*u*conjugate(b)*conjugate(u))|0⟩⟨0| + b*v*conjugate(b)*conjugate(v)|1⟩⟨1|</span>
 </pre></div>
 </div>

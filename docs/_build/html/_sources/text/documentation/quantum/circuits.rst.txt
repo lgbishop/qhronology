@@ -27,7 +27,7 @@ Main class
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \enlargethispage{-3\baselineskip}
 
 .. autoclass:: qhronology.quantum.circuits.QuantumCircuit
    :show-inheritance:
@@ -39,6 +39,10 @@ Main class
    \begin{adjustwidth}{2.5em}{0cm}
 
 .. rubric:: :styleheader6:`Examples`
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -57,7 +61,7 @@ Main class
    >>> bitflip.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_bitflip.pdf}
    \vspace{-1\baselineskip}
 
@@ -105,7 +109,7 @@ Main class
    >>> generator.diagram(force_separation=True)
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_arbitrary.pdf}
    \vspace{-1\baselineskip}
 
@@ -136,7 +140,7 @@ Main class
 
 .. raw:: latex
 
-   \vspace*{0.35\baselineskip}
+   \enlargethispage{\baselineskip}
 
 .. raw:: latex
 
@@ -185,7 +189,7 @@ Main class
    Matrix([
    [conjugate(U[0, 0]), conjugate(U[1, 0])],
    [conjugate(U[0, 1]), conjugate(U[1, 1])]])
-   >>> unitarity.gate(simplify=True)
+   >>> unitarity.gate(simplification=True)
    Matrix([
    [1, 0],
    [0, 1]])
@@ -219,7 +223,7 @@ Main class
    >>> swapcnots.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_swapcnots.pdf}
    \vspace{-1\baselineskip}
 
@@ -297,7 +301,7 @@ Main class
    >>> postselection.diagram(sep=(4, 1))
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_postselection.pdf}
    \vspace{-1\baselineskip}
 
@@ -401,6 +405,12 @@ Constructor argument properties
 
    \hrulefillthick
 
+.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.simplification
+
+.. raw:: latex
+
+   \hrulefillthick
+
 Read-only properties
 --------------------
 
@@ -498,6 +508,10 @@ Read-only properties
 
 Methods
 -------
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.input
 
@@ -919,3 +933,311 @@ Methods
    .. raw:: latex
 
       \end{adjustwidth}
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. automethod:: qhronology.quantum.circuits.QuantumCircuit.compactify
+
+.. The below examples are not indented (using adjustwidth instead) because otherwise the \tcblowerspaced gets extra spacing above it.
+
+.. raw:: latex
+
+   \begin{adjustwidth}{2.5em}{0cm}
+
+.. rubric:: :styleheader6:`Examples`
+
+.. raw:: latex
+
+   \begin{codetitled}{Compactification of SWAP gates}{}
+
+.. literalinclude:: /text/examples/docstrings/circuit_compactify_swaps.py
+   :language: python
+   :caption: Compactification of SWAP gates
+
+.. raw:: latex
+
+   \tcblowerspaced
+
+.. code:: python
+
+   >>> circuit.diagram(sep=(2, 1), force_separation=True, visible={"gates"})
+
+.. raw:: latex
+
+   \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_compactify_swaps.pdf}
+   \vspace{-1\baselineskip}
+
+..
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_compactify_swaps-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_compactify_swaps-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+.. code:: python
+
+   >>> circuit.compactify()
+   >>> circuit.diagram(sep=(2, 1), force_separation=True, visible={"gates"})
+
+.. raw:: latex
+
+   \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_compactify_swaps_compactified.pdf}
+   \vspace{-1\baselineskip}
+
+..
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_compactify_swaps_compactified-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_compactify_swaps_compactified-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+.. raw:: latex
+
+   \end{codetitled}
+
+.. raw:: latex
+
+   \begin{codetitled}{Compactification of Toffoli gate decomposition}{}
+
+.. literalinclude:: /text/examples/docstrings/circuit_compactify_toffoli.py
+   :language: python
+   :caption: Compactification of Toffoli gate decomposition
+
+.. raw:: latex
+
+   \tcblowerspaced
+
+.. code:: python
+
+   >>> circuit.diagram(sep=(1, 2), force_separation=True, visible={"gates"})
+
+.. raw:: latex
+
+   \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_compactify_toffoli.pdf}
+   \vspace{-1\baselineskip}
+
+..
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_compactify_toffoli-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_compactify_toffoli-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+.. code:: python
+
+   >>> circuit.compactify()
+   >>> circuit.diagram(sep=(1, 2), force_separation=True, visible={"gates"})
+
+.. raw:: latex
+
+   \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_compactify_toffoli_compactified.pdf}
+   \vspace{-1\baselineskip}
+
+..
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_compactify_toffoli_compactified-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_compactify_toffoli_compactified-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+.. raw:: latex
+
+   \end{codetitled}
+
+.. raw:: latex
+
+   \end{adjustwidth}
+
+.. raw:: latex
+
+   \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
+.. automethod:: qhronology.quantum.circuits.QuantumCircuit.decompactify
+
+.. The below examples are not indented (using adjustwidth instead) because otherwise the \tcblowerspaced gets extra spacing above it.
+
+.. raw:: latex
+
+   \begin{adjustwidth}{2.5em}{0cm}
+
+.. rubric:: :styleheader6:`Examples`
+
+.. raw:: latex
+
+   \begin{codetitled}{Decompactification of a quantum walk circuit}{}
+
+.. literalinclude:: /text/examples/docstrings/circuit_decompactify_walk.py
+   :language: python
+   :caption: Decompactification of a quantum walk circuit
+
+.. raw:: latex
+
+   \tcblowerspaced
+
+.. code:: python
+
+   >>> circuit.diagram(sep=(0, 2), uniform_spacing=True)
+
+.. raw:: latex
+
+   \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_decompactify_walk.pdf}
+   \vspace{-1\baselineskip}
+
+..
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_decompactify_walk-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_decompactify_walk-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+.. code:: python
+
+   >>> circuit.decompactify()
+   >>> circuit.diagram(sep=(0, 2), uniform_spacing=True)
+
+.. raw:: latex
+
+   \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_decompactify_walk_decompactified.pdf}
+   \vspace{-1\baselineskip}
+
+..
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_decompactify_walk_decompactified-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_decompactify_walk_decompactified-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+.. raw:: latex
+
+   \end{codetitled}
+
+.. raw:: latex
+
+   \begin{codetitled}{Decompactification of a random circuit (approximating chaotic output)}{}
+
+.. literalinclude:: /text/examples/docstrings/circuit_decompactify_chaotic.py
+   :language: python
+   :caption: Decompactification of a random circuit (approximating chaotic output)
+
+.. raw:: latex
+
+   \tcblowerspaced
+
+.. code:: python
+
+   >>> circuit.diagram(sep=(1, 2), force_separation=True)
+
+.. raw:: latex
+
+   \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_decompactify_chaotic.pdf}
+   \vspace{-1\baselineskip}
+
+..
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_decompactify_chaotic-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_decompactify_chaotic-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+.. code:: python
+
+   >>> circuit.decompactify()
+   >>> circuit.diagram(sep=(0, 2), force_separation=True)
+
+.. raw:: latex
+
+   \includegraphics[scale=1.25, trim=-0.02cm 0.00cm 0 -0.10cm]{text_examples_docstrings_circuit_decompactify_chaotic_decompactified.pdf}
+   \vspace{-1\baselineskip}
+
+..
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_decompactify_chaotic_decompactified-dark.png
+         :scale: 36 %
+         :align: left
+         :class: only-dark
+
+   .. only:: html
+
+      .. image:: /figures/output/text_examples_docstrings_circuit_decompactify_chaotic_decompactified-light.png
+         :scale: 36 %
+         :align: left
+         :class: only-light
+
+.. raw:: latex
+
+   \end{codetitled}
+
+.. raw:: latex
+
+   \end{adjustwidth}

@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
+    <script src="../../../_static/documentation_options.js?v=6efca38a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -72,8 +72,8 @@
     <link rel="prev" title="Full adder" href="adder_full.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
+  <meta name="docsearch:version" content="1.2.0" />
+    <meta name="docbuild:last-update" content="Sep 04, 2026"/>
   </head>
   
   
@@ -591,7 +591,7 @@
 <h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>Due to performance limitations, this example sums just 2-bit integers. Increasing the <code class="code highlight python docutils literal highlight-python"><span class="n">encoding_depth</span></code> <em>greatly</em> increases the calculation time as a result of having to perform operations on larger matrices. The <code class="code highlight python docutils literal highlight-python"><span class="n">augend_integer</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">addend_integer</span></code> variables can be freely changed, provided their summation is within the encodable range.</p>
 <div class="literal-block-wrapper docutils container" id="code-adder-ripple">
-<div class="code-block-caption"><span class="caption-number">Code Block 22 </span><span class="caption-text">/text/examples/algorithms/adder_ripple.py</span><a class="headerlink" href="#code-adder-ripple" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 26 </span><span class="caption-text">/text/examples/algorithms/adder_ripple.py</span><a class="headerlink" href="#code-adder-ripple" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>

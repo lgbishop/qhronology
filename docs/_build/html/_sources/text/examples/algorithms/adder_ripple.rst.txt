@@ -17,7 +17,7 @@ which collectively reconstruct the (decimal) value of the integer with the uniqu
 
 .. math::
    :label: eq:decoding
-   
+
    \begin{aligned}
        z &= \sum_{n = 0}^{\Number - 1} z_n \Dimension^n \\
        &= z_0\Dimension^0 + z_1\Dimension^1 + \ldots + z_{\Number - 2}\Dimension^{\Number - 2} + z_{\Number - 1}\Dimension^{\Number - 1}.
@@ -94,7 +94,7 @@ can be decoded, using :eq:`eq:decoding`, to be
 
 .. math::
    :label: eq:decoded
-   
+
    \begin{aligned}
        s &= \sum_{n = 0}^{\Number - 1} s_n \Dimension^n, \\
        c^\prime &= \sum_{n = 0}^{\Number - 1} c^\prime_n \Dimension^n.
@@ -137,7 +137,7 @@ Diagram
    >>> adder.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_ripple.pdf}
    \vspace{-1\baselineskip}
 
@@ -158,7 +158,7 @@ Diagram
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 States
@@ -239,5 +239,5 @@ Results
 .. This is of course *extremely* slow, mainly due to the computations involving relatively large matrices in the underlying calculation. Optimization of Qhronology's linear algebra algorithms, particularly the partial trace implementation, should improve both efficiency and speed.
 
 .. raw:: latex
-   
+
    \newpage

@@ -120,7 +120,7 @@ Diagram
    >>> adder.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.10cm 0 -0.12cm]{text_examples_algorithms_adder_half.pdf}
    \vspace{-1\baselineskip}
 
@@ -141,7 +141,7 @@ Diagram
          :class: only-light
 
 .. raw:: latex
-   
+
    \end{code}
 
 States
@@ -192,7 +192,7 @@ States
 
 .. code:: python
 
-   >>> carry_output_state.print(simplify=True)
+   >>> carry_output_state.print(simplification=True)
    c′ = (a*conjugate(a) + b*u*conjugate(b)*conjugate(u))|0⟩⟨0| + b*v*conjugate(b)*conjugate(v)|1⟩⟨1|
 
 .. raw:: latex
@@ -209,5 +209,5 @@ States
          :filter: docname in docnames
 
 .. raw:: latex
-   
+
    \newpage

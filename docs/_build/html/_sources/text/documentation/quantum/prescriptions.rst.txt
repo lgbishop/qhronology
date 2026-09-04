@@ -54,7 +54,7 @@ Please note that the documentation of this class includes only properties and me
 
 .. raw:: latex
 
-   \enlargethispage{-\baselineskip}
+   \enlargethispage{-2\baselineskip}
 
 .. raw:: latex
 
@@ -73,7 +73,7 @@ Please note that the documentation of this class includes only properties and me
    >>> SWAP_CTC.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.00cm 0 -0.08cm]{text_examples_docstrings_prescription_swap.pdf}
    \vspace{-1\baselineskip}
 
@@ -95,13 +95,13 @@ Please note that the documentation of this class includes only properties and me
 
 .. code:: python
 
-   >>> SWAP_DCTC_CR.print(simplify=True)
+   >>> SWAP_DCTC_CR.print(simplification=True)
    ρ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> SWAP_DCTC_CV.print(simplify=True)
+   >>> SWAP_DCTC_CV.print(simplification=True)
    τ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> SWAP_PCTC_CR.print(simplify=True)
+   >>> SWAP_PCTC_CR.print(simplification=True)
    ρ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> SWAP_PCTC_CV.print(simplify=True)
+   >>> SWAP_PCTC_CV.print(simplification=True)
    τ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
 
 .. raw:: latex
@@ -133,7 +133,7 @@ Please note that the documentation of this class includes only properties and me
    >>> CNOT_CTC.diagram()
 
 .. raw:: latex
-   
+
    \includegraphics[scale=1.25, trim=-0.02cm -0.025cm 0 -0.12cm]{text_examples_docstrings_prescription_cnot.pdf}
    \vspace{-1\baselineskip}
 
@@ -155,13 +155,13 @@ Please note that the documentation of this class includes only properties and me
 
 .. code:: python
 
-   >>> CNOT_DCTC_CR.print(simplify=True)
+   >>> CNOT_DCTC_CR.print(simplification=True)
    ρ_D = ρ[0, 0]|0⟩⟨0| + 2*g*ρ[0, 1]|0⟩⟨1| + 2*g*ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|
-   >>> CNOT_DCTC_CV.print(simplify=True)
+   >>> CNOT_DCTC_CV.print(simplification=True)
    τ_D = 1/2|0⟩⟨0| + g|0⟩⟨1| + g|1⟩⟨0| + 1/2|1⟩⟨1|
-   >>> CNOT_PCTC_CR.print(simplify=True)
+   >>> CNOT_PCTC_CR.print(simplification=True)
    ρ_P = |0⟩⟨0|
-   >>> CNOT_PCTC_CV.print(simplify=True)
+   >>> CNOT_PCTC_CV.print(simplification=True)
    τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|
 
 .. raw:: latex
@@ -272,7 +272,7 @@ Methods
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
-         
+      
    Please see the examples of the :py:class:`~qhronology.quantum.prescriptions.QuantumCTC` class itself. For advanced usage examples, see the corresponding :py:meth:`~qhronology.quantum.circuits.QuantumCircuit.diagram` method of the :py:class:`~qhronology.quantum.circuits.QuantumCircuit` class.
 
    .. raw:: latex

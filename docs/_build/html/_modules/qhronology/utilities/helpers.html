@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
+    <script src="../../../_static/documentation_options.js?v=6efca38a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -67,8 +67,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
+  <meta name="docsearch:version" content="1.2.0" />
+    <meta name="docbuild:last-update" content="Sep 04, 2026"/>
   </head>
   
   
@@ -492,12 +492,14 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">sympy.physics.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">TensorProduct</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Forms</span><span class="p">,</span>
     <span class="n">Shapes</span><span class="p">,</span>
     <span class="n">arr</span><span class="p">,</span>
     <span class="n">count_columns</span><span class="p">,</span>
     <span class="n">count_rows</span><span class="p">,</span>
     <span class="n">expr</span><span class="p">,</span>
     <span class="n">mat</span><span class="p">,</span>
+    <span class="n">matrix_form</span><span class="p">,</span>
     <span class="n">matrix_shape</span><span class="p">,</span>
     <span class="n">num</span><span class="p">,</span>
     <span class="n">sym</span><span class="p">,</span>
@@ -539,7 +541,13 @@
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.count_systems">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">count_systems</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Count the number of :python:`dim`-dimensional subsystems that constitute the (composite) system on which :python:`matrix` resides.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">logn</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">count_rows</span><span class="p">(</span><span class="n">to_density</span><span class="p">(</span><span class="n">matrix</span><span class="p">))))</span></div>
+    <span class="n">num_systems</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">logn</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">count_rows</span><span class="p">(</span><span class="n">to_density</span><span class="p">(</span><span class="n">matrix</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">num_systems</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">num_systems</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">0</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">num_systems</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;The provided `matrix` was found to have a non-integer number of systems under the given dimensionality.&quot;&quot;&quot;</span>
+        <span class="p">)</span></div>
 
 
 
@@ -593,7 +601,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;The number of items in :python:`positions` and :python:`items` do not match.&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;The number of items in `positions` and `items` do not match.&quot;&quot;&quot;</span>
         <span class="p">)</span>
 
     <span class="n">arranged</span> <span class="o">=</span> <span class="p">[]</span>
@@ -630,7 +638,7 @@
         <span class="k">elif</span> <span class="n">matrix</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">int</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Unable to determine the matrix&#39;s datatype.&quot;&quot;&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Unable to determine the datatype of the given `matrix`.&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;The given matrix is neither a SymPy matrix or NumPy array.&quot;&quot;&quot;</span>
@@ -820,7 +828,7 @@
                         <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                        </span><span class="sd">&quot;&quot;&quot;The given matrix must be either a square, a column, or a row.&quot;&quot;&quot;</span>
+<span class="w">                        </span><span class="sd">&quot;&quot;&quot;The given `matrix` must be either a square, a column, or a row.&quot;&quot;&quot;</span>
                     <span class="p">)</span>
                 <span class="n">coefficient</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="n">coefficient</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">Add</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -862,7 +870,7 @@
                     <span class="n">expression</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">expression</span><span class="p">))</span>
                 <span class="k">except</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<span class="w">                        </span><span class="sd">&quot;&quot;&quot;The given :python:`expression` cannot be converted to a symbolic representation.&quot;&quot;&quot;</span>
+<span class="w">                        </span><span class="sd">&quot;&quot;&quot;The given `expression` cannot be converted to a symbolic representation.&quot;&quot;&quot;</span>
                     <span class="p">)</span>
 
             <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
@@ -1022,7 +1030,7 @@
             <span class="n">matrix</span> <span class="o">=</span> <span class="n">to_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;A valid matrix cannot be extracted from :python:`operator`.&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;A valid matrix cannot be extracted from `operator`.&quot;&quot;&quot;</span>
             <span class="p">)</span>
     <span class="k">return</span> <span class="n">matrix</span></div>
 
@@ -1044,7 +1052,7 @@
             <span class="n">matrix</span> <span class="o">=</span> <span class="n">to_array</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;A valid array cannot be extracted from :python:`operator`.&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;A valid array cannot be extracted from `operator`.&quot;&quot;&quot;</span>
             <span class="p">)</span>
     <span class="k">return</span> <span class="n">matrix</span></div>
 
@@ -1218,23 +1226,84 @@
 
 
 
+<div class="viewcode-block" id="permute_tensor_product">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.permute_tensor_product">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">permute_tensor_product</span><span class="p">(</span>
+    <span class="n">product</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">,</span> <span class="n">permutation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Permute the order of :python:`num_systems` :python:`dim`-dimensional tensors in the :python:`dim**num_systems`-dimensional tensor product :python:`tensor_product`.</span>
+
+<span class="sd">    Currently works only for tensor products of purely vectors or matrices (not combinations of the two). TODO: Upgrade this so that it works for combinations.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; A = sp.MatrixSymbol(&quot;A&quot;, 2, 2).as_mutable()</span>
+<span class="sd">    &gt;&gt;&gt; B = sp.MatrixSymbol(&quot;B&quot;, 2, 2).as_mutable()</span>
+<span class="sd">    &gt;&gt;&gt; C = sp.MatrixSymbol(&quot;C&quot;, 2, 2).as_mutable()</span>
+<span class="sd">    &gt;&gt;&gt; np.all(permute_tensor_product(tensor_product(A, B), [1, 0], 2) == tensor_product(B, A))</span>
+<span class="sd">    np.True_</span>
+<span class="sd">    &gt;&gt;&gt; np.all(permute_tensor_product(tensor_product(A, B, C), [2, 1, 0], 2) == tensor_product(C, B, A))</span>
+<span class="sd">    np.True_</span>
+<span class="sd">    &gt;&gt;&gt; np.all(permute_tensor_product(tensor_product(A, B, C), [1, 0, 2], 2) == tensor_product(B, A, C))</span>
+<span class="sd">    np.True_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
+    <span class="n">num_systems</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">permutation</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_systems</span><span class="p">)]</span> <span class="o">!=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">permutation</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;The given `permutation` must contain all system indices (beginning at zero) of `product`.&quot;&quot;&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">permutation</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">permutation</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">product</span>
+
+    <span class="n">num_rows</span> <span class="o">=</span> <span class="n">count_rows</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+    <span class="n">num_cols</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+    <span class="n">num_systems_rows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">logn</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">))</span>
+    <span class="n">num_systems_cols</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">logn</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">))</span>
+
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_systems_rows</span> <span class="o">+</span> <span class="n">num_systems_cols</span><span class="p">)</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">permutation</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">num_systems</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">permutation</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">matrix_form</span><span class="p">(</span><span class="n">product</span><span class="p">)</span> <span class="o">==</span> <span class="n">Forms</span><span class="o">.</span><span class="n">VECTOR</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="n">permutation</span>
+
+    <span class="n">product_reshaped</span> <span class="o">=</span> <span class="n">to_array</span><span class="p">(</span><span class="n">product</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">product_permuted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">product_reshaped</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+        <span class="n">num_rows</span><span class="p">,</span> <span class="n">num_cols</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">product_permuted</span> <span class="o">=</span> <span class="n">to_matrix</span><span class="p">(</span><span class="n">product_permuted</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">product_permuted</span></div>
+
+
+
 <div class="viewcode-block" id="assemble_composition">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.assemble_composition">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">assemble_composition</span><span class="p">(</span><span class="o">*</span><span class="n">pairs</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assemble a composite state from constituent subsystems described by the items in :python:`pairs`.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">assemble_composition</span><span class="p">(</span><span class="o">*</span><span class="n">pairs</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assemble a composite operator from constituent subsystems described by the items in :python:`pairs`.</span>
 <span class="sd">    For each pair:</span>
-<span class="sd">    - The first element is the subsystem&#39;s state matrix.</span>
-<span class="sd">    - The second element is the list of indices of its systems.&quot;&quot;&quot;</span>
+<span class="sd">    - The first element is the operator (as a matrix or array).</span>
+<span class="sd">    - The second element is the list of indices of its target systems.&quot;&quot;&quot;</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dim</span>
     <span class="n">pairs_sorted</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-    <span class="k">return</span> <span class="n">tensor_product</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs_sorted</span><span class="p">])</span></div>
+    <span class="c1"># Check for non-contiguity</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">):</span>  <span class="c1"># non-contiguous</span>
+        <span class="n">product</span> <span class="o">=</span> <span class="n">tensor_product</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">])</span>
+        <span class="n">permutation</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">([</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">])))</span>
+        <span class="k">for</span> <span class="n">operator</span><span class="p">,</span> <span class="n">targets</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
+                <span class="n">permutation</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">permutation</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">permutation</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">permutation</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">product</span> <span class="o">=</span> <span class="n">permute_tensor_product</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">permutation</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># contiguous</span>
+        <span class="n">product</span> <span class="o">=</span> <span class="n">tensor_product</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs_sorted</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">product</span></div>
 
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">matrix_multiplication</span><span class="p">(</span><span class="o">*</span><span class="n">matrices</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">matrix_multiplication</span><span class="p">(</span><span class="o">*</span><span class="n">matrices</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
     <span class="n">types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="nb">type</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="k">for</span> <span class="n">matrix</span> <span class="ow">in</span> <span class="n">matrices</span><span class="p">]))</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">types</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;The input matrices have more than one type.&quot;&quot;&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;The input `matrices` have more than one type.&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrices</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrices</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">multi_dot</span><span class="p">(</span><span class="n">matrices</span><span class="p">)</span>

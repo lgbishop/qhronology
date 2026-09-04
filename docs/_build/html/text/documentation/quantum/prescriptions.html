@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
+    <script src="../../../_static/documentation_options.js?v=6efca38a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -72,8 +72,8 @@
     <link rel="prev" title="Circuits" href="circuits.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
+  <meta name="docsearch:version" content="1.2.0" />
+    <meta name="docbuild:last-update" content="Sep 04, 2026"/>
   </head>
   
   
@@ -524,9 +524,8 @@
 
 <dl>
 <dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">systems_violating</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="circuits.html#qhronology.quantum.circuits.QuantumCircuit" title="qhronology.quantum.circuits.QuantumCircuit"><span class="pre">QuantumCircuit</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">systems_respecting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">systems_violating</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
 </dl>
 
@@ -542,9 +541,7 @@
 <li><p><strong>circuit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code>) – An instance of the <a class="reference internal" href="circuits.html#qhronology.quantum.circuits.QuantumCircuit" title="qhronology.quantum.circuits.QuantumCircuit"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code></a> class.
 The values of its attributes override any other values specified in <code class="code highlight python docutils literal highlight-python"><span class="o">*</span><span class="n">args</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="o">**</span><span class="n">kwargs</span></code>.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">None</span></code>.</p></li>
-<li><p><strong>systems_respecting</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">list[int]</span></code>) – The numerical indices of the chronology-respecting (CR) subsystems.
-Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[]</span></code>.</p></li>
-<li><p><strong>systems_violating</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">list[int]</span></code>) – The numerical indices of the chronology-violating (CV) subsystems.
+<li><p><strong>systems_violating</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[int]</span></code>) – The numerical indices of the chronology-violating (CV) subsystems.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="p">[]</span></code>.</p></li>
 <li><p><strong>**kwargs</strong> – Arbitrary keyword arguments, passed directly to the constructor <code class="code highlight python docutils literal highlight-python"><span class="fm">__init__</span></code> of the superclass <a class="reference internal" href="circuits.html#qhronology.quantum.circuits.QuantumCircuit" title="qhronology.quantum.circuits.QuantumCircuit"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code></a>.</p></li>
 </ul>
@@ -557,17 +554,11 @@ Defaults to <code class="code highlight python docutils literal highlight-python
 <li><p>the <code class="code highlight python docutils literal highlight-python"><span class="n">circuit</span></code> argument</p></li>
 <li><p><code class="code highlight python docutils literal highlight-python"><span class="o">*</span><span class="n">args</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="o">**</span><span class="n">kwargs</span></code> like a typical initialization of a <a class="reference internal" href="circuits.html#qhronology.quantum.circuits.QuantumCircuit" title="qhronology.quantum.circuits.QuantumCircuit"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code></a> instance (without using <code class="code highlight python docutils literal highlight-python"><span class="n">circuit</span></code>)</p></li>
 </ul>
-<p>Note that this is in addition to specifying either of <code class="code highlight python docutils literal highlight-python"><span class="n">systems_respecting</span></code> or <code class="code highlight python docutils literal highlight-python"><span class="n">systems_violating</span></code>.</p>
+<p>Note that this is in addition to providing a value to the <code class="code highlight python docutils literal highlight-python"><span class="n">systems_violating</span></code> argument.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The lists of indices specified in either of <code class="code highlight python docutils literal highlight-python"><span class="n">systems_respecting</span></code> or <code class="code highlight python docutils literal highlight-python"><span class="n">systems_violating</span></code> must be contiguous.
-Additionally, the circuit’s inputs (<code class="code highlight python docutils literal highlight-python"><span class="n">inputs</span></code>) are treated as one contiguous total state, with the indices of its subsystems exactly matching those specified in <code class="code highlight python docutils literal highlight-python"><span class="n">systems_respecting</span></code>.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It is best practice to specify only one of either <code class="code highlight python docutils literal highlight-python"><span class="n">systems_violating</span></code> or <code class="code highlight python docutils literal highlight-python"><span class="n">systems_violating</span></code>, never both.
-The properties associated with both of these constructor arguments automatically ensure that they are always complementary (with respect to the entire system space), and so only one needs to be specified.</p>
+<p>All systems not corresponding to indices specified in <code class="code highlight python docutils literal highlight-python"><span class="n">systems_violating</span></code> are assumed to be chronology-respecting (CR) and appear in the <code class="code highlight python docutils literal highlight-python"><span class="n">systems_respecting</span></code> class property.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -581,7 +572,7 @@ The properties associated with both of these constructor arguments automatically
 
 <p class="rubric"><span class="classheader6">Examples</span></p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Code Block 7 </span><span class="caption-text">SWAP interaction with a CTC</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 11 </span><span class="caption-text">SWAP interaction with a CTC</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">MixedState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Swap</span><span class="p">,</span> <span class="n">Pauli</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.prescriptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCTC</span><span class="p">,</span> <span class="n">DCTC</span><span class="p">,</span> <span class="n">PCTC</span>
@@ -605,7 +596,7 @@ The properties associated with both of these constructor arguments automatically
 <span class="n">SWAP_CTC</span> <span class="o">=</span> <span class="n">QuantumCTC</span><span class="p">(</span>
     <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">input_state</span><span class="p">],</span>
     <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">S</span><span class="p">],</span>
-    <span class="n">systems_respecting</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">systems_violating</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <span class="p">)</span>
 <span class="n">SWAP_CTC</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 
@@ -621,10 +612,10 @@ The properties associated with both of these constructor arguments automatically
 <span class="n">SWAP_PCTC_CV</span> <span class="o">=</span> <span class="n">SWAP_PCTC</span><span class="o">.</span><span class="n">state_violating</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;τ_P&quot;</span><span class="p">)</span>
 
 <span class="c1"># Results</span>
-<span class="n">SWAP_DCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">SWAP_DCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">SWAP_PCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">SWAP_PCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">SWAP_DCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">SWAP_DCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">SWAP_PCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">SWAP_PCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -637,18 +628,18 @@ The properties associated with both of these constructor arguments automatically
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_prescription_swap-light.png"><img alt="../../../_images/text_examples_docstrings_prescription_swap-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_prescription_swap-light.png" style="width: 81.72px; height: 43.559999999999995px;" />
 </a>
 </div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP_DCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP_DCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">ρ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP_DCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP_DCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">τ_D = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP_PCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP_PCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">ρ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP_PCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SWAP_PCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">τ_P = ρ[0, 0]|0⟩⟨0| + ρ[0, 1]|0⟩⟨1| + ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|</span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Code Block 8 </span><span class="caption-text">CNOT interaction with a CTC</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Code Block 12 </span><span class="caption-text">CNOT interaction with a CTC</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">MixedState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">Not</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.circuits</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
@@ -674,7 +665,7 @@ The properties associated with both of these constructor arguments automatically
     <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">input_state</span><span class="p">],</span>
     <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">CN</span><span class="p">],</span>
 <span class="p">)</span>
-<span class="n">CNOT_CTC</span> <span class="o">=</span> <span class="n">QuantumCTC</span><span class="p">(</span><span class="n">circuit</span><span class="o">=</span><span class="n">CNOT</span><span class="p">,</span> <span class="n">systems_respecting</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">CNOT_CTC</span> <span class="o">=</span> <span class="n">QuantumCTC</span><span class="p">(</span><span class="n">circuit</span><span class="o">=</span><span class="n">CNOT</span><span class="p">,</span> <span class="n">systems_violating</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">CNOT_CTC</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 
 <span class="c1"># Output</span>
@@ -689,10 +680,10 @@ The properties associated with both of these constructor arguments automatically
 <span class="n">CNOT_PCTC_CV</span> <span class="o">=</span> <span class="n">CNOT_PCTC</span><span class="o">.</span><span class="n">state_violating</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;τ_P&quot;</span><span class="p">)</span>
 
 <span class="c1"># Results</span>
-<span class="n">CNOT_DCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">CNOT_DCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">CNOT_PCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">CNOT_PCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">CNOT_DCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">CNOT_DCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">CNOT_PCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">CNOT_PCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -705,13 +696,13 @@ The properties associated with both of these constructor arguments automatically
 <a class="only-light reference internal image-reference" href="../../../_images/text_examples_docstrings_prescription_cnot-light.png"><img alt="../../../_images/text_examples_docstrings_prescription_cnot-light.png" class="only-light align-left" src="../../../_images/text_examples_docstrings_prescription_cnot-light.png" style="width: 81.72px; height: 46.44px;" />
 </a>
 </div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT_DCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT_DCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">ρ_D = ρ[0, 0]|0⟩⟨0| + 2*g*ρ[0, 1]|0⟩⟨1| + 2*g*ρ[1, 0]|1⟩⟨0| + ρ[1, 1]|1⟩⟨1|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT_DCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT_DCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">τ_D = 1/2|0⟩⟨0| + g|0⟩⟨1| + g|1⟩⟨0| + 1/2|1⟩⟨1|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT_PCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT_PCTC_CR</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">ρ_P = |0⟩⟨0|</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT_PCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT_PCTC_CV</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">simplification</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">τ_P = 1/2|0⟩⟨0| + 1/2|1⟩⟨1|</span>
 </pre></div>
 </div>
@@ -741,8 +732,8 @@ The properties associated with both of these constructor arguments automatically
 <dd><em class="sig-param"><span class="n"><span class="pre">numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">substitutions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">simplify</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">conjugate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">simplification</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">conjugation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">num</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">expr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 <dd><em class="sig-param"><span class="n"><span class="pre">notation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
@@ -765,10 +756,10 @@ Defaults to the value of <code class="code highlight python docutils literal hig
 Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">array</span></code>.</p></li>
 <li><p><strong>substitutions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list[tuple[num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str]]</span></code>) – Algebraic substitutions to be applied to the state.
 Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span></code>.</p></li>
-<li><p><strong>simplify</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform mathematical simplification on the state.
+<li><p><strong>simplification</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform mathematical simplification on the state.
 If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not simplify.
-Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
-<li><p><strong>conjugate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the state.
+Defaults to the value of <code class="code highlight python docutils literal highlight-python"><span class="bp">self</span><span class="o">.</span><span class="n">simplification</span></code>.</p></li>
+<li><p><strong>conjugation</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to perform Hermitian conjugation on the state.
 If <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>, does not conjugate.
 Defaults to <code class="code highlight python docutils literal highlight-python"><span class="kc">False</span></code>.</p></li>
 <li><p><strong>norm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span> <span class="pre">|</span> <span class="pre">num</span> <span class="pre">|</span> <span class="pre">expr</span> <span class="pre">|</span> <span class="pre">str</span></code>) – The value to which the state is normalized.

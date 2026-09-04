@@ -17,7 +17,7 @@
    ########
 
    .. raw:: html
-   
+
       </div>
 
    .. rubric:: :styleheader0:`Examples`

@@ -79,6 +79,10 @@ Methods
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
+
 .. automethod:: qhronology.quantum.prescriptions.DCTC.output
 
 .. raw:: latex

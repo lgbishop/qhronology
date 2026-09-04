@@ -15,7 +15,7 @@ Qhronology presents an innovative approach to describing both simulations of qua
 These are implemented as *extending* subclasses, where each adds to and modifies the functionality of the :python:`QuantumObject` base class primarily through class properties and methods. Instances of these derived classes provide exhaustive descriptions of their corresponding quantum constructs: in addition to containing a precise mathematical specification (including metadata regarding symbols and their associated constraints), they can be inspected, visualized, and, in the case of quantum states, transformed (mutated) via quantum operations. Here, :python:`QuantumObject` provides the core matrix, symbolic, and visualization machinery (in addition to all other internal implementation details) required by Qhronology's programmatic description of fundamental quantum objects. Thus, as both states and gates are simply just specific types of such objects, then using the :python:`QuantumObject` class as a shared foundation is a natural arrangement---one which greatly simplifies the project's source code by directly reducing redundancy.
 
 .. raw:: latex
-   
+
    % \newpage
    \null
    \vspace*{-1.25\baselineskip}
@@ -48,7 +48,7 @@ These are implemented as *extending* subclasses, where each adds to and modifies
    A simplified UML (Unified Modeling Language) class diagram depicting the relationships between Qhronology's core classes.
 
 .. raw:: latex
-   
+
    \newpage
 
 .. _`sec:docs_architecture_composition`:
@@ -74,7 +74,7 @@ The standard pattern of Qhronology's circuit instantiation (see :numref:`sec:doc
 Although the typical procedure of creating circuits within the framework does not precisely resemble any single design pattern, it does possess some traits from what is canonically known as the *composite pattern*---a software-engineering design pattern :cite:p:`gamma_design_1994` characterized by the aggregation of elementary objects into a single, more complex object. Qhronology's particular structure however diverges from this pattern in one important way: while the :python:`QuantumCircuit` class facilitates the composition of fundamental objects (states and gates) into a more complex container (from which both all kinds of fundamental objects can be obtained), it itself cannot be further composed into other objects, nor does it share the same interface as its constituent objects. Nonetheless, the program's process of creating circuits (almost) completely from pre-defined primitives at instantiation is a distinctly novel approach, one that is in stark contrast with the *builder pattern*---quantum circuits constructed via a succession of methods called on an initially empty quantum circuit class instance---used in other Python-based quantum projects, including IBM's *Qiskit* :cite:p:`ibm_qiskit_2017, javadi-abhari_quantum_2024`, Google's *Cirq* :cite:p:`google_cirq_2018`, Xanadu's *PennyLane* :cite:p:`xanadu_pennylane_2018, bergholm_pennylane_2022`, and the community-run *QuTiP* :cite:p:`the_qutip_community_qutip_2012, lambert_qutip_2026`.
 
 .. raw:: latex
-   
+
    \newpage
    \null
    \vspace*{-2.15\baselineskip}

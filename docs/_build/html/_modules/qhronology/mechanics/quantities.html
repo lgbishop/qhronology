@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
+    <script src="../../../_static/documentation_options.js?v=6efca38a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -67,8 +67,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
+  <meta name="docsearch:version" content="1.2.0" />
+    <meta name="docbuild:last-update" content="Sep 04, 2026"/>
   </head>
   
   
@@ -730,8 +730,8 @@
 <a class="viewcode-back" href="../../../text/documentation/mechanics/quantities.html#qhronology.mechanics.quantities.mutual">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">mutual</span><span class="p">(</span>
     <span class="n">state</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">QuantumObject</span><span class="p">,</span>
-    <span class="n">systems_A</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">systems_B</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">systems_A</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">systems_B</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
@@ -748,10 +748,10 @@
 <span class="sd">    ---------</span>
 <span class="sd">    state : mat | arr | QuantumObject</span>
 <span class="sd">        The matrix representation of the composite input state.</span>
-<span class="sd">    systems_A : int | list[int]</span>
+<span class="sd">    systems_A : list[int]</span>
 <span class="sd">        The indices of the first subsystem.</span>
 <span class="sd">        Defaults to :python:`[0]`.</span>
-<span class="sd">    systems_B : int | list[int]</span>
+<span class="sd">    systems_B : list[int]</span>
 <span class="sd">        The indices of the second subsystem.</span>
 <span class="sd">        Defaults to the complement of :python:`systems_A` with respect to the entire composition of subsystems of :python:`state`.</span>
 <span class="sd">    dim : int</span>
@@ -912,8 +912,8 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">mutual</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">systems_A</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
-        <span class="n">systems_B</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">systems_A</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">systems_B</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">base</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the mutual information (:math:`\\MutualInformation`) between two subsystems :python:`systems_A` (:math:`A`) and :python:`systems_B` (:math:`B`) of the internal state (:math:`\\rho^{\\indices{A,B}}`):</span>
@@ -928,10 +928,10 @@
 
 <span class="sd">        Arguments</span>
 <span class="sd">        ---------</span>
-<span class="sd">        systems_A : int | list[int]</span>
+<span class="sd">        systems_A : list[int]</span>
 <span class="sd">            The indices of the first subsystem.</span>
 <span class="sd">            Defaults to :python:`[0]`.</span>
-<span class="sd">        systems_B : int | list[int]</span>
+<span class="sd">        systems_B : list[int]</span>
 <span class="sd">            The indices of the second subsystem.</span>
 <span class="sd">            Defaults to the complement of :python:`systems_A` with respect to the entire composition of the subsystems of :python:`state`.</span>
 <span class="sd">        base : num | expr | str</span>

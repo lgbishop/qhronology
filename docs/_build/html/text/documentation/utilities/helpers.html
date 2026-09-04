@@ -50,7 +50,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=58fbf978"></script>
+    <script src="../../../_static/documentation_options.js?v=6efca38a"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -68,8 +68,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.1.1" />
-    <meta name="docbuild:last-update" content="Aug 26, 2026"/>
+  <meta name="docsearch:version" content="1.2.0" />
+    <meta name="docbuild:last-update" content="Sep 04, 2026"/>
   </head>
   
   
@@ -899,18 +899,46 @@ The argument <code class="code highlight python docutils literal highlight-pytho
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="qhronology.utilities.helpers.permute_tensor_product">
+<span class="sig-name descname"><span class="pre">permute_tensor_product</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">permutation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/utilities/helpers.html#permute_tensor_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.utilities.helpers.permute_tensor_product" title="Link to this definition">#</a></dt>
+<dd><p>Permute the order of <code class="code highlight python docutils literal highlight-python"><span class="n">num_systems</span></code> <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span></code>-dimensional tensors in the <code class="code highlight python docutils literal highlight-python"><span class="n">dim</span><span class="o">**</span><span class="n">num_systems</span></code>-dimensional tensor product <code class="code highlight python docutils literal highlight-python"><span class="n">tensor_product</span></code>.</p>
+<p>Currently works only for tensor products of purely vectors or matrices (not combinations of the two). TODO: Upgrade this so that it works for combinations.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">C</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">MatrixSymbol</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">as_mutable</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">permute_tensor_product</span><span class="p">(</span><span class="n">tensor_product</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">tensor_product</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">))</span>
+<span class="go">np.True_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">permute_tensor_product</span><span class="p">(</span><span class="n">tensor_product</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">),</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">tensor_product</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">))</span>
+<span class="go">np.True_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">permute_tensor_product</span><span class="p">(</span><span class="n">tensor_product</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">tensor_product</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">))</span>
+<span class="go">np.True_</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="qhronology.utilities.helpers.assemble_composition">
 <span class="sig-name descname"><span class="pre">assemble_composition</span></span><span class="sig-paren">(</span>
 
 <dl>
 <dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">pairs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
 </dl>
 
 <span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">mat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">arr</span></span></span><a class="reference internal" href="../../../_modules/qhronology/utilities/helpers.html#assemble_composition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qhronology.utilities.helpers.assemble_composition" title="Link to this definition">#</a></dt>
-<dd><p>Assemble a composite state from constituent subsystems described by the items in <code class="code highlight python docutils literal highlight-python"><span class="n">pairs</span></code>.
+<dd><p>Assemble a composite operator from constituent subsystems described by the items in <code class="code highlight python docutils literal highlight-python"><span class="n">pairs</span></code>.
 For each pair:
-- The first element is the subsystem’s state matrix.
-- The second element is the list of indices of its systems.</p>
+- The first element is the operator (as a matrix or array).
+- The second element is the list of indices of its target systems.</p>
 </dd></dl>
 
 </section>
@@ -975,6 +1003,7 @@ For each pair:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.utilities.helpers.default_arguments"><code class="docutils literal notranslate"><span class="pre">default_arguments()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.utilities.helpers.fix_arguments"><code class="docutils literal notranslate"><span class="pre">fix_arguments()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.utilities.helpers.tensor_product"><code class="docutils literal notranslate"><span class="pre">tensor_product()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.utilities.helpers.permute_tensor_product"><code class="docutils literal notranslate"><span class="pre">permute_tensor_product()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qhronology.utilities.helpers.assemble_composition"><code class="docutils literal notranslate"><span class="pre">assemble_composition()</span></code></a></li>
 </ul>
   </nav></div>

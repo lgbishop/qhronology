@@ -38,7 +38,7 @@ In this documentation, we focus solely on the :python:`quantum` and :python:`mec
 ----------------------------
 
 .. raw:: latex
-   
+
    \enlargethispage{2\baselineskip}
 
 The :python:`quantum` subpackage contains most of Qhronology's underlying mathematical framework and its user-facing classes.
@@ -111,7 +111,7 @@ The :python:`quantum` subpackage contains most of Qhronology's underlying mathem
        | :inlinelatex:`\vspace*{-1.85\baselineskip}`
 
 .. raw:: latex
-   
+
    \newpage
    \null
    \vspace*{-2.15\baselineskip}
@@ -120,13 +120,13 @@ The :python:`quantum` subpackage contains most of Qhronology's underlying mathem
 ------------------------------
 
 .. raw:: latex
-   
+
    \enlargethispage{2\baselineskip}
 
 The :python:`mechanics` subpackage contains Qhronology's core logic for creating fundamental quantum objects, performing operations on them, and computing scalar quantities.
 
 .. raw:: latex
-   
+
    \vspace*{-0.65\baselineskip}
 
 .. list-table:: Overview of Qhronology's :python:`mechanics` subpackage.
