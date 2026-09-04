@@ -1,5 +1,42 @@
 # Changelog
 
+## [1.2.0](https://github.com/lgbishop/qhronology/tree/1.2.0) (2026-09-04)
+
+[Full Changelog](https://github.com/lgbishop/qhronology/compare/1.1.1...1.2.0)
+
+### Package:
+
+- Change how the `Not` class enforces its internal `shift` parameter. ([8bcfa4a](https://github.com/lgbishop/qhronology/commit/8bcfa4a2c581d05cf4507522f1a818d1ac036be2))
+- Endow fixed-dimensionality `QuantumGate` subclasses with `DIM` class constant. ([ecb6e0f](https://github.com/lgbishop/qhronology/commit/ecb6e0fe44fbad5652c5e178417cf4f5b73c65a1))
+- Allow the `matrix_multiplication` function to receive a single matrix. ([9078ccf](https://github.com/lgbishop/qhronology/commit/9078ccfe7a8a9161c441ef760e3853f43eefb43b))
+- Fix the `QuantumGate` class constructor and its handling of systems. ([561a596](https://github.com/lgbishop/qhronology/commit/561a59633e5481534b98182e9e930db701388ad8))
+- Fix gate exponentiation and update examples. ([bbcba0a](https://github.com/lgbishop/qhronology/commit/bbcba0af6c53eb1ae7a208b0d42150773484dbbd))
+- Add a default for the `targets` argument of the `Swap` class. ([c1eedec](https://github.com/lgbishop/qhronology/commit/c1eedec8187bc3471e5d6e506ac40887a5f7d9b6))
+- Add the ability to decompose quantum gates via the `decompose` method. ([02d86b1](https://github.com/lgbishop/qhronology/commit/02d86b1605ab708444f3970f33b97b67c8c78c99))
+- Remove unnecessary arguments from the constructors of the gate composition classes. ([ff5c2b9](https://github.com/lgbishop/qhronology/commit/ff5c2b94b5cf5746101b52e8f5a634ae59ebce52))
+- Add the ability to compactify and decompactify a circuit's gate sequence. ([6c56f91](https://github.com/lgbishop/qhronology/commit/6c56f91deeec94fe892f4f862e6e344a96966b38))
+- Add `simplification` argument and property to quantum classes and change `conjugate` to `conjugation`. ([b02c190](https://github.com/lgbishop/qhronology/commit/b02c19088342de478f98696bd8f51ea01eebcabb))
+- Fix `count_systems` helper function. ([909c608](https://github.com/lgbishop/qhronology/commit/909c6081a1687d3a685f27346ae4272f4f63d503))
+- Add `num_systems_spec` property to `QuantumObject`. ([78d9229](https://github.com/lgbishop/qhronology/commit/78d92292b4bde4fc1653eee5d275e3fb46eaeb61))
+- Make `QuantmGate` count the number of systems of given `spec` properly. ([8101c2a](https://github.com/lgbishop/qhronology/commit/8101c2a68a824cd59c066da13a91a3964f674ce2))
+- Add function for permuting tensor products. ([75d4c11](https://github.com/lgbishop/qhronology/commit/75d4c1137677d10b3da7647eeb93d9a5f7c738df))
+- Allow gate operators to be non-contiguous. ([b7ca342](https://github.com/lgbishop/qhronology/commit/b7ca342b5f6075ab9931f625678ae1ea13703ab4))
+- Remove `systems_respecting` argument from `QuantumCTC', overhaul `systems_violating` property, and require all system indices to be given as lists. ([cffd1e5](https://github.com/lgbishop/qhronology/commit/cffd1e56bf6277b7b62f1209039f9b6277bff81a))
+
+### Documentation:
+
+- Rename CONTRIBUTING -> CONTRIBUTING.rst and LICENSE -> LICENSE.rst. ([18b8df2](https://github.com/lgbishop/qhronology/commit/18b8df2d5f1fcf1133bc080b4dc16980d2d72376))
+- Add decomposition documentation and examples. ([3548286](https://github.com/lgbishop/qhronology/commit/3548286a0fe47f1a5c3999a2f0fddf7284aab725))
+- Implement decomposition in Shor's algorithm example. ([78b1940](https://github.com/lgbishop/qhronology/commit/78b1940f877fb9a43a92178019e99b910ab361a8))
+
+#### PDF:
+
+- Switch PDF builder to XeLaTeX and change fonts. ([fd77bd9](https://github.com/lgbishop/qhronology/commit/fd77bd92d57343e28a65aee6367831cbebf9f33a))
+
+#### Website:
+
+- Add Monaspace Neon as primary monospace font. ([006cb00](https://github.com/lgbishop/qhronology/commit/006cb003729842734d193fea089861be0c9a774f))
+
 ## [1.1.1](https://github.com/lgbishop/qhronology/tree/1.1.1) (2026-07-28)
 
 [Full Changelog](https://github.com/lgbishop/qhronology/compare/1.1.0...1.1.1)
