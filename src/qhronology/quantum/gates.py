@@ -999,7 +999,7 @@ class QuantumGate(QuantumObject):
 
 
 class Unitary(QuantumGate):
-    """A subclass for creating unitary gates and storing their metadata.
+    """A subclass for creating :math:`2`-dimensional unitary gates and storing their metadata.
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
@@ -1124,7 +1124,7 @@ class Pauli(QuantumGate):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The *Pauli matrices* :math:`\\Pauli_i` are a set of three :math:`2 \\times 2` matrices,
+    Pauli gates correspond to the *Pauli operators* :math:`\\Pauli_i`, which is a set of three unitary operators that have the following representations as :math:`2 \\times 2` matrices:
 
     .. math::
 
@@ -1228,7 +1228,11 @@ class GellMann(QuantumGate):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The *Gell-Mann matrices* :math:`\\GellMann_i` are a set of eight :math:`3 \\times 3` matrices,
+    Gell-Mann gates correspond to the *Gell-Mann operators* :math:`\\GellMann_i`, which is a set of eight non-unitary operators that have the following representations as :math:`3 \\times 3` matrices:
+
+    .. raw:: latex
+
+        \\vspace*{-1.5\\baselineskip}
 
     .. raw:: latex
 
@@ -1373,7 +1377,7 @@ class Rotation(QuantumGate):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The elementary *rotation matrices* :math:`\\Rotation_i` are a set of three :math:`2 \\times 2` matrices,
+    The elementary rotation gates correspond to the *rotation operators* :math:`\\Rotation_i`, which is a set of three unitary operators that have the following representations as :math:`2 \\times 2` matrices:
 
     .. math::
 
@@ -1514,7 +1518,7 @@ class Phase(QuantumGate):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    In :math:`\\Dimension` dimensions, a *phase operator* :math:`\\Phase` may be represented as a :math:`\\Dimension \\times \\Dimension` diagonal matrix
+    Phase gates correspond to *phase operators* :math:`\\Phase`, which, in :math:`\\Dimension` dimensions, can be represented by :math:`\\Dimension \\times \\Dimension` diagonal matrices of the form
 
     .. math::
 
@@ -1604,7 +1608,7 @@ class Diagonal(QuantumGate):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    In :math:`\\Dimension` dimensions, a *diagonal operator* :math:`\\Diagonal` may be represented as a :math:`\\Dimension \\times \\Dimension` diagonal matrix
+    Diagonal gates correspond to *diagonal operators* :math:`\\Diagonal`, which, in :math:`\\Dimension` dimensions, can be represented by :math:`\\Dimension \\times \\Dimension` diagonal matrices of the form
 
     .. math::
 
@@ -1717,15 +1721,13 @@ class Swap(QuantumGate):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    In :math:`\\Dimension` dimensions, a *SWAP operator* :math:`\\Swap` between two systems :math:`A` and :math:`B` may be represented as a :math:`\\Dimension^2 \\times \\Dimension^2` matrix
+    SWAP gates correspond to *SWAP operators* :math:`\\Swap`, which, between two systems :math:`A` and :math:`B` (each of :math:`\\Dimension` dimensions), can be represented by the :math:`\\Dimension^2 \\times \\Dimension^2` matrix
 
     .. math::
 
        \\Swap^{\\indices{A,B}} =
            \\sum\\limits_{j,k=0}^{\\Dimension - 1}
-           {\\ket{j}\\bra{k}}^{\\indices{A}} \\otimes {\\ket{k}\\bra{j}}^{\\indices{B}}
-
-    where the identity operator acts on all other systems.
+           {\\ket{j}\\bra{k}}^{\\indices{A}} \\otimes {\\ket{k}\\bra{j}}^{\\indices{B}}.
 
     Arguments
     ---------
@@ -1790,13 +1792,13 @@ class Summation(QuantumGate):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The *SUM gate* is essentially a generalization of the NOT gate. In :math:`\\Dimension` dimensions, it is defined as the operator
+    The SUM gate is essentially a generalization of the NOT gate to :math:`\\Dimension`-dimensional systems. It corresponds to the *SUM operator* :math:`\\SUM`, which can be represented by :math:`\\Dimension \\times \\Dimension` matrices of the form
 
-    .. math:: \\SUM(n) = \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k \\oplus n}\\bra{k}
+    .. math:: \\SUM(n) = \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k \\oplus n}\\bra{k},
 
     where :math:`n \\in \\Integers_{\\geq 0}` (:python:`shift`) is the *shift* parameter, and :math:`k \\oplus n \\equiv k + n \\mathrel{\\mathrm{mod}} \\Dimension`.
 
-    The case of :math:`n = 1` is known as the *shift* operator, and represents a (non-Hermitian) generalization of the Pauli-:math:`X` :math:`\\Pauli_x` operator to :math:`\\Dimension` dimensions.
+    The case of :math:`n = 1` is known as the *shift* operator, and represents a (non-Hermitian) generalization of the Pauli-:math:`X` operator :math:`\\Pauli_x` to :math:`\\Dimension` dimensions.
 
     This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
@@ -1867,7 +1869,7 @@ class Not(Summation):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The *NOT gate* is essentially a specialization of the SUM gate to :math:`2`-dimensional systems. In the computation basis, it is exactly equivalent to the Pauli-:math:`X` gate, having the matrix representation
+    The NOT gate is essentially a specialization of the SUM gate to :math:`2`-dimensional systems. In the computational basis, it corresponds to the *NOT operator* :math:`\\NOT`, which is exactly equivalent to the Pauli-:math:`X` operator :math:`\\Pauli_x`, and so has the matrix representation
 
     .. math::
        
@@ -1931,7 +1933,7 @@ class Hadamard(QuantumGate):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The elementary *Hadamard gate* :math:`\\Hadamard` (for qubits) corresponds to the :math:`2 \\times 2` *Hadamard matrix*
+    Hadamard gates correspond to *Hadamard operators* :math:`\\Hadamard`, which, for qubits (:math:`2` dimensions), may be represented by the :math:`2 \\times 2` matrix
 
     .. math::
        
@@ -1940,7 +1942,7 @@ class Hadamard(QuantumGate):
            &= \\frac{1}{\\sqrt{2}}\\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix}.
        \\end{aligned}
     
-    This can be generalized to the following :math:`\\Dimension`-dimensional form for qudits,
+    For qudits (:math:`\\Dimension` dimensions), this can be generalized to the following :math:`\\Dimension \\times \\Dimension` form,
 
     .. math::
        
@@ -2019,7 +2021,7 @@ class Fourier(QuantumGate):
 
     This is built upon the :py:class:`~qhronology.quantum.gates.QuantumGate` class, and so inherits all of its attributes, properties, and methods.
 
-    The elementary *Fourier operator* :math:`\\QFT` for a single :math:`\\Dimension`-dimensional qudit may be represented as the :math:`\\Dimension \\times \\Dimension` matrix
+    Fourier gates correspond to *Fourier operators* :math:`\\QFT`, which, for a single system in :math:`\\Dimension` dimensions, can be represented by the :math:`\\Dimension \\times \\Dimension` matrix
 
     .. math::
         
@@ -2039,7 +2041,7 @@ class Fourier(QuantumGate):
 
     where :math:`\\omega \\equiv \\omega_{\\Dimension} \\equiv \\e^{2\\pi\\eye/\\Dimension}`.
 
-    In the case of :math:`N` qudits, it is easier to characterize the *multipartite Fourier operator* :math:`\\QFT_N` not by its matrix form but by the transformation it imposes, to which its action on the basis state :math:`\\bigotimes\\limits_{\\ell=1}^{N} \\ket{j_\\ell} \\equiv \\ket{j_1, \\ldots, j_N}` (where :math:`j_\\ell \\in \\Integers_{0}^{\\Dimension - 1}`) is
+    In the case of :math:`N` systems, it is easier to characterize the *multipartite Fourier operator* :math:`\\QFT_N` not by its matrix form but by the transformation it imposes, to which its action on the basis state :math:`\\bigotimes\\limits_{\\ell=1}^{N} \\ket{j_\\ell} \\equiv \\ket{j_1, \\ldots, j_N}` (where :math:`j_\\ell \\in \\Integers_{0}^{\\Dimension - 1}`) is
 
     .. math::
         

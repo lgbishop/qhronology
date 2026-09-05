@@ -36,7 +36,7 @@ If we only include elements in this set which are coprime to :math:`N,` (which n
 
 .. math:: \Integers_N^* = \{ n \in \Integers \, : \, 0 \leq n \leq N - 1, \; \gcd(N, n) = 1 \}.
 
-Under the operation of (modular) multiplication, this set forms a *group*, and is sometimes written as :math:`(\Integers \setminus n\Integers)^\times`.
+Under the operation of (modular) multiplication, this set forms a *group*, and is sometimes written as :math:`(\Integers \setminus n\Integers)^\times` (and variations thereof).
 
 .. note::
 

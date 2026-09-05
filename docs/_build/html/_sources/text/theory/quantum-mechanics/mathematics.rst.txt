@@ -243,7 +243,7 @@ We establish here the notational convention that is used nearly universally in t
 
 .. math:: \phi(\psi) \equiv \braket{\phi}{\psi} \equiv \inner{\phi}{\psi}.
 
-This form is known as a *bra-ket*, and is simply a representation of the inner product in Dirac notation. Note that this implicitly uses the isomorphism :eq:`eq:Hilbert_isomorphism` provided by the inner product, meaning that we have the antilinear correspondence between bras and kets,
+This form, known as a *bra-ket*, and is simply a representation of the inner product in Dirac notation. Note that this implicitly uses the isomorphism :eq:`eq:Hilbert_isomorphism` provided by the inner product, meaning that we have the antilinear correspondence between bras and kets,
 
 .. math:: \conj{\lambda}{}\bra{\psi} \longleftrightarrow \lambda\ket{\psi}.
 

@@ -20,7 +20,7 @@ In Qhronology, quantum circuits are created as instances of the :py:class:`~qhro
 
    \end{code}
 
-In the circuit diagram picturalism, time increases from left to right. Accordingly, the preparation of input states (given as instances of the :py:class:`~qhronology.quantum.states.QuantumState`) begins in the past (on the left), while post-processing (such as postselections and partial traces) occurs in the future (on the right). Intermediary operations on these states are represented by quantum gates, given as instances of the :py:class:`~qhronology.quantum.gates.QuantumGate` class and its derivatives. All of these events are connected by quantum wires, which represent the flow of quantum information (i.e., quantum probabilities) through time.
+In the circuit diagram picturalism, time increases from left to right. Accordingly, the preparation of input states (given as instances of the :py:class:`~qhronology.quantum.states.QuantumState`) begins in the past (on the left), while post-processing (such as postselections and partial traces) occurs in the future (on the right). Intermediary operations on these states are represented by quantum gates, given as instances of the :py:class:`~qhronology.quantum.gates.QuantumGate` class and its derivatives. All of these events are connected by quantum wires, which represent the flow of quantum information (i.e., quantum probability amplitudes) through time.
 
 Main class
 ==========

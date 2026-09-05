@@ -3087,8 +3087,16 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
+
 .. autoclass:: qhronology.quantum.gates.Summation
    :show-inheritance:
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
@@ -3136,7 +3144,7 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
-      \enlargethispage{-2\baselineskip}
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
@@ -3179,6 +3187,10 @@ Please be aware that the documentation of these subclasses included hereafter co
 
    .. raw:: latex
 
+      \vspace*{-0.75\baselineskip}
+
+   .. raw:: latex
+
       \end{adjustwidth}
 
    .. raw:: latex
@@ -3191,6 +3203,10 @@ Please be aware that the documentation of these subclasses included hereafter co
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
 
 .. autoclass:: qhronology.quantum.gates.Not
    :show-inheritance:

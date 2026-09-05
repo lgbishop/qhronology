@@ -37,7 +37,7 @@ One of the main results of Deutsch's work on time travel is the proposal for the
    :figwidth: 100 %
    :figclass: light-dark hidden
 
-   Deutsch's model of quantum time travel. Note that the depiction of the interaction between chronology-respecting (CR, upper) and chronology-violating (CV, lower) systems as shown here is standard way of visualizing any circuit with CTCs.
+   Deutsch's model of quantum time travel. Note that the depiction of the interaction between chronology-respecting (CR, upper) and chronology-violating (CV, lower) systems as shown here is a standard way of visualizing any circuit with CTCs.
 
 .. raw:: latex
 
