@@ -122,7 +122,7 @@ Of course, being based on the path-integral formulation, these quantities are in
 General form of P-CTC system evolution
 --------------------------------------
 
-Here we show how a CR system state :math:`\StateCR\in\SpaceHilbert_\CR` in the Dirac bra-ket formalism evolves through the postselected teleportation chronology-violating network depicted in :numref:`fig:circuit_ctc_pctc`.
+Here, we show how a CR system state :math:`\StateCR\in\SpaceHilbert_\CR` in the Dirac bra-ket formalism evolves through the postselected teleportation chronology-violating network depicted in :numref:`fig:circuit_ctc_pctc`.
 
 .. only:: html
 
@@ -212,7 +212,7 @@ An important point to note is that the result :eq:`eq:P-CTCs_CV` is applicable o
 
 .. math:: \MapPCTCsCV_{\Unitary}[\StateCR] \equiv \trace_\CR\bigl[\Unitary(\StateCR \otimes \tfrac{1}{\Dimension}\Identity)\Unitary^\dagger\bigr].
 
-It is important to reiterate that while this expression may seem perfectly reasonable, its validity as the P-CTC CV state has not been proven. While likely highly non-trivial, it is expected however that such generalization is an entirely possible task. Therefore, an interesting next step would be to study the application of the weak-measurement tomography scheme to :math:`\Dimension`-level (qudit) systems, as such work should provide more insight into the generality of the methodology and its results.
+It is stressed that while this expression is intuitive and seems quite reasonable, its validity as the P-CTC CV state has not been proven. While likely highly non-trivial, it is expected however that such generalization is an entirely possible task. Therefore, an interesting next step would be to study the application of the weak-measurement tomography scheme to :math:`\Dimension`-level (qudit) systems, as such work should provide more insight into the generality of the methodology and its results.
 
 .. only:: html
 

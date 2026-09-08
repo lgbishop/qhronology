@@ -1070,7 +1070,7 @@ class Unitary(QuantumGate):
 
     @property
     def parameters(self) -> tuple[num | expr | str, num | expr | str, num | expr | str]:
-        """The 3-tuple of scalar values to be used as the parameter values."""
+        """The 3-tuple of parameter values."""
         return self._parameters
 
     @parameters.setter
@@ -1134,10 +1134,10 @@ class Pauli(QuantumGate):
             \\Pauli_2 &= \\Pauli_y \\equiv -\\eye \\ket{0}\\bra{1} + \\eye \\ket{1}\\bra{0}
                 = \\begin{bmatrix} 0 & -\\eye \\\\ \\eye & 0 \\end{bmatrix}, \\\\
             \\Pauli_3 &= \\Pauli_z \\equiv \\ket{0}\\bra{0} - \\ket{1}\\bra{1}
-                = \\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \\end{bmatrix},
+                = \\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \\end{bmatrix}.
         \\end{aligned}
 
-    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`2`-dimensional identity matrix for :math:`i=0`.
+    Indexed by :math:`i` (:python:`index`), this set is often extended to include the :math:`2`-dimensional identity matrix for :math:`i=0`.
 
     This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
@@ -1259,14 +1259,14 @@ class GellMann(QuantumGate):
             &\\GellMann_6 \\equiv \\ket{2}\\bra{3} + \\ket{3}\\bra{2}
                 = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 1 \\\\ 0 & 1 & 0 \\end{bmatrix}, \\\\
             &\\GellMann_8 \\equiv \\frac{1}{\\sqrt{3}}\\bigl(\\ket{0}\\bra{0} + \\ket{1}\\bra{1} - 2\\ket{2}\\bra{2}\\bigr)
-                = \\frac{1}{\\sqrt{3}}\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -2 \\end{bmatrix},
+                = \\frac{1}{\\sqrt{3}}\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -2 \\end{bmatrix}.
         \\end{aligned}
 
     .. raw:: latex
 
         \\end{adjustwidth}
 
-    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`3`-dimensional identity matrix for :math:`i=0`.
+    Indexed by :math:`i` (:python:`index`), this set is often extended to include the :math:`3`-dimensional identity matrix for :math:`i=0`.
 
     This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
@@ -1390,10 +1390,10 @@ class Rotation(QuantumGate):
                \\sin(\\theta/2) & \\cos(\\theta/2) \\end{bmatrix}, \\\\
            \\Rotation_3 &= \\Rotation_z = \\e^{-\\eye\\Pauli_{z}\\theta/2} =
                \\begin{bmatrix} \\e^{-\\eye\\theta/2} & 0 \\\\
-               0 & \\e^{\\eye\\theta/2} \\end{bmatrix},
+               0 & \\e^{\\eye\\theta/2} \\end{bmatrix}.
        \\end{aligned}
 
-    where :math:`\\theta \\in \\Reals` is the *rotation angle* (:python:`angle`).
+    Indexed by :math:`i` (:python:`index`), each matrix in this set is parameterized by the *rotation angle* (:python:`angle`) :math:`\\theta \\in \\Reals`.
 
     These are fundamentally single-system gates, and so a copy of the specified gate is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
@@ -1410,7 +1410,7 @@ class Rotation(QuantumGate):
         - :python:`3` (:math:`z`-rotation :math:`\\Rotation_z`)
 
     angle : num | expr | str
-        The scalar value to be used as the rotation angle.
+        The rotation angle.
         Defaults to :python:`0`.
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
@@ -1459,7 +1459,7 @@ class Rotation(QuantumGate):
 
     @property
     def angle(self) -> num | expr | str:
-        """The scalar value to be used as the rotation angle."""
+        """The rotation angle."""
         return self._angle
 
     @angle.setter
@@ -1534,7 +1534,7 @@ class Phase(QuantumGate):
            \\end{bmatrix}
        \\end{aligned}
 
-    where :math:`\\omega \\in \\Complexes` is the *phase factor* (:python:`phase`).
+    where :math:`\\omega \\in \\Complexes` is the *phase* parameter (:python:`phase`).
 
     This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
@@ -1543,7 +1543,7 @@ class Phase(QuantumGate):
     *args
         Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     phase : num | expr | str
-        The phase factor.
+        The phase parameter.
         Defaults to the unit root given by :python:`sp.exp(2 * sp.pi * sp.I / self.dim)`.
     **kwargs
         Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
@@ -1565,7 +1565,7 @@ class Phase(QuantumGate):
 
     @property
     def phase(self) -> num | expr | str:
-        """The phase value."""
+        """The phase parameter."""
         return self._phase
 
     @phase.setter
@@ -1796,9 +1796,9 @@ class Summation(QuantumGate):
 
     .. math:: \\SUM(n) = \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k \\oplus n}\\bra{k},
 
-    where :math:`n \\in \\Integers_{\\geq 0}` (:python:`shift`) is the *shift* parameter, and :math:`k \\oplus n \\equiv k + n \\mathrel{\\mathrm{mod}} \\Dimension`.
+    where :math:`n \\in \\Integers_{\\geq 0}` is the *shift* parameter (:python:`shift`), and :math:`k \\oplus n \\equiv k + n \\mathrel{\\mathrm{mod}} \\Dimension`.
 
-    The case of :math:`n = 1` is known as the *shift* operator, and represents a (non-Hermitian) generalization of the Pauli-:math:`X` operator :math:`\\Pauli_x` to :math:`\\Dimension` dimensions.
+    The case of :math:`n = 1` is known as the *shift operator*, and represents a (non-Hermitian) generalization of the Pauli-:math:`X` operator :math:`\\Pauli_x` to :math:`\\Dimension` dimensions.
 
     This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.
 
@@ -1807,7 +1807,7 @@ class Summation(QuantumGate):
     *args
         Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.
     shift : int
-        The summation shift parameter.
+        The shift parameter.
         Must be a non-negative integer.
         Defaults to :python:`1`.
     **kwargs
@@ -1825,7 +1825,7 @@ class Summation(QuantumGate):
 
     @property
     def shift(self) -> int:
-        """The summation shift parameter."""
+        """The shift parameter."""
         return self._shift
 
     @shift.setter

@@ -68,7 +68,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.2.0" />
-    <meta name="docbuild:last-update" content="Sep 05, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 09, 2026"/>
   </head>
   
   
@@ -1554,7 +1554,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The 3-tuple of scalar values to be used as the parameter values.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The 3-tuple of parameter values.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span>
 
     <span class="nd">@parameters</span><span class="o">.</span><span class="n">setter</span>
@@ -1621,10 +1621,10 @@
 <span class="sd">            \\Pauli_2 &amp;= \\Pauli_y \\equiv -\\eye \\ket{0}\\bra{1} + \\eye \\ket{1}\\bra{0}</span>
 <span class="sd">                = \\begin{bmatrix} 0 &amp; -\\eye \\\\ \\eye &amp; 0 \\end{bmatrix}, \\\\</span>
 <span class="sd">            \\Pauli_3 &amp;= \\Pauli_z \\equiv \\ket{0}\\bra{0} - \\ket{1}\\bra{1}</span>
-<span class="sd">                = \\begin{bmatrix} 1 &amp; 0 \\\\ 0 &amp; -1 \\end{bmatrix},</span>
+<span class="sd">                = \\begin{bmatrix} 1 &amp; 0 \\\\ 0 &amp; -1 \\end{bmatrix}.</span>
 <span class="sd">        \\end{aligned}</span>
 
-<span class="sd">    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`2`-dimensional identity matrix for :math:`i=0`.</span>
+<span class="sd">    Indexed by :math:`i` (:python:`index`), this set is often extended to include the :math:`2`-dimensional identity matrix for :math:`i=0`.</span>
 
 <span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
@@ -1749,14 +1749,14 @@
 <span class="sd">            &amp;\\GellMann_6 \\equiv \\ket{2}\\bra{3} + \\ket{3}\\bra{2}</span>
 <span class="sd">                = \\begin{bmatrix} 0 &amp; 0 &amp; 0 \\\\ 0 &amp; 0 &amp; 1 \\\\ 0 &amp; 1 &amp; 0 \\end{bmatrix}, \\\\</span>
 <span class="sd">            &amp;\\GellMann_8 \\equiv \\frac{1}{\\sqrt{3}}\\bigl(\\ket{0}\\bra{0} + \\ket{1}\\bra{1} - 2\\ket{2}\\bra{2}\\bigr)</span>
-<span class="sd">                = \\frac{1}{\\sqrt{3}}\\begin{bmatrix} 1 &amp; 0 &amp; 0 \\\\ 0 &amp; 1 &amp; 0 \\\\ 0 &amp; 0 &amp; -2 \\end{bmatrix},</span>
+<span class="sd">                = \\frac{1}{\\sqrt{3}}\\begin{bmatrix} 1 &amp; 0 &amp; 0 \\\\ 0 &amp; 1 &amp; 0 \\\\ 0 &amp; 0 &amp; -2 \\end{bmatrix}.</span>
 <span class="sd">        \\end{aligned}</span>
 
 <span class="sd">    .. raw:: latex</span>
 
 <span class="sd">        \\end{adjustwidth}</span>
 
-<span class="sd">    indexed here by :math:`i` (:python:`index`), which additionally includes the :math:`3`-dimensional identity matrix for :math:`i=0`.</span>
+<span class="sd">    Indexed by :math:`i` (:python:`index`), this set is often extended to include the :math:`3`-dimensional identity matrix for :math:`i=0`.</span>
 
 <span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
@@ -1883,10 +1883,10 @@
 <span class="sd">               \\sin(\\theta/2) &amp; \\cos(\\theta/2) \\end{bmatrix}, \\\\</span>
 <span class="sd">           \\Rotation_3 &amp;= \\Rotation_z = \\e^{-\\eye\\Pauli_{z}\\theta/2} =</span>
 <span class="sd">               \\begin{bmatrix} \\e^{-\\eye\\theta/2} &amp; 0 \\\\</span>
-<span class="sd">               0 &amp; \\e^{\\eye\\theta/2} \\end{bmatrix},</span>
+<span class="sd">               0 &amp; \\e^{\\eye\\theta/2} \\end{bmatrix}.</span>
 <span class="sd">       \\end{aligned}</span>
 
-<span class="sd">    where :math:`\\theta \\in \\Reals` is the *rotation angle* (:python:`angle`).</span>
+<span class="sd">    Indexed by :math:`i` (:python:`index`), each matrix in this set is parameterized by the *rotation angle* (:python:`angle`) :math:`\\theta \\in \\Reals`.</span>
 
 <span class="sd">    These are fundamentally single-system gates, and so a copy of the specified gate is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
@@ -1903,7 +1903,7 @@
 <span class="sd">        - :python:`3` (:math:`z`-rotation :math:`\\Rotation_z`)</span>
 
 <span class="sd">    angle : num | expr | str</span>
-<span class="sd">        The scalar value to be used as the rotation angle.</span>
+<span class="sd">        The rotation angle.</span>
 <span class="sd">        Defaults to :python:`0`.</span>
 <span class="sd">    **kwargs</span>
 <span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
@@ -1952,7 +1952,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">angle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The scalar value to be used as the rotation angle.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The rotation angle.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_angle</span>
 
     <span class="nd">@angle</span><span class="o">.</span><span class="n">setter</span>
@@ -2030,7 +2030,7 @@
 <span class="sd">           \\end{bmatrix}</span>
 <span class="sd">       \\end{aligned}</span>
 
-<span class="sd">    where :math:`\\omega \\in \\Complexes` is the *phase factor* (:python:`phase`).</span>
+<span class="sd">    where :math:`\\omega \\in \\Complexes` is the *phase* parameter (:python:`phase`).</span>
 
 <span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
@@ -2039,7 +2039,7 @@
 <span class="sd">    *args</span>
 <span class="sd">        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    phase : num | expr | str</span>
-<span class="sd">        The phase factor.</span>
+<span class="sd">        The phase parameter.</span>
 <span class="sd">        Defaults to the unit root given by :python:`sp.exp(2 * sp.pi * sp.I / self.dim)`.</span>
 <span class="sd">    **kwargs</span>
 <span class="sd">        Arbitrary keyword arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
@@ -2061,7 +2061,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">phase</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The phase value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The phase parameter.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phase</span>
 
     <span class="nd">@phase</span><span class="o">.</span><span class="n">setter</span>
@@ -2301,9 +2301,9 @@
 
 <span class="sd">    .. math:: \\SUM(n) = \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k \\oplus n}\\bra{k},</span>
 
-<span class="sd">    where :math:`n \\in \\Integers_{\\geq 0}` (:python:`shift`) is the *shift* parameter, and :math:`k \\oplus n \\equiv k + n \\mathrel{\\mathrm{mod}} \\Dimension`.</span>
+<span class="sd">    where :math:`n \\in \\Integers_{\\geq 0}` is the *shift* parameter (:python:`shift`), and :math:`k \\oplus n \\equiv k + n \\mathrel{\\mathrm{mod}} \\Dimension`.</span>
 
-<span class="sd">    The case of :math:`n = 1` is known as the *shift* operator, and represents a (non-Hermitian) generalization of the Pauli-:math:`X` operator :math:`\\Pauli_x` to :math:`\\Dimension` dimensions.</span>
+<span class="sd">    The case of :math:`n = 1` is known as the *shift operator*, and represents a (non-Hermitian) generalization of the Pauli-:math:`X` operator :math:`\\Pauli_x` to :math:`\\Dimension` dimensions.</span>
 
 <span class="sd">    This is fundamentally a single-system gate, and so a copy is placed on each of the subsystems corresponding to the indices in the :python:`targets` property.</span>
 
@@ -2312,7 +2312,7 @@
 <span class="sd">    *args</span>
 <span class="sd">        Positional arguments, passed directly to the constructor :python:`__init__` of the superclass :py:class:`~qhronology.quantum.gates.QuantumGate`.</span>
 <span class="sd">    shift : int</span>
-<span class="sd">        The summation shift parameter.</span>
+<span class="sd">        The shift parameter.</span>
 <span class="sd">        Must be a non-negative integer.</span>
 <span class="sd">        Defaults to :python:`1`.</span>
 <span class="sd">    **kwargs</span>
@@ -2330,7 +2330,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The summation shift parameter.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The shift parameter.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shift</span>
 
     <span class="nd">@shift</span><span class="o">.</span><span class="n">setter</span>
