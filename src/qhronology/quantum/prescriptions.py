@@ -26,6 +26,7 @@ from qhronology.quantum.circuits import QuantumCircuit
 from qhronology.quantum.gates import QuantumGate
 from qhronology.quantum.states import QuantumState
 from qhronology.utilities.classification import (
+    floating,
     Forms,
     Kinds,
     arr,
@@ -42,7 +43,7 @@ from qhronology.utilities.helpers import (
     conjugate_transpose,
     count_dims,
     default_arguments,
-    dtype,
+    datatype,
     extract_substitutions,
     extract_matrix,
     matrix_multiplication,
@@ -121,6 +122,7 @@ class QuantumCTC(QuantumCircuit):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         """Compute the unprocessed matrix representation of the circuit's total output state (combined CR and CV systems).
 
@@ -132,6 +134,10 @@ class QuantumCTC(QuantumCircuit):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
 
         Returns
         -------
@@ -145,9 +151,10 @@ class QuantumCTC(QuantumCircuit):
             postselections=self.postselections,
             numerical=self.numerical,
             array=self.array,
+            dtype=self.dtype,
             symbols=self.symbols,
             substitutions=self.substitutions,
-        ).matrix(numerical=numerical, array=array)
+        ).matrix(numerical=numerical, array=array, dtype=dtype)
 
     @property
     def num_systems_violating(self) -> int:
@@ -205,6 +212,7 @@ class QuantumCTC(QuantumCircuit):
         merge: bool | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -231,6 +239,10 @@ class QuantumCTC(QuantumCircuit):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the state's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -276,6 +288,7 @@ class QuantumCTC(QuantumCircuit):
             merge=merge,
             numerical=numerical,
             array=array,
+            dtype=dtype,
             substitutions=substitutions,
             simplification=simplification,
             conjugation=conjugation,
@@ -295,6 +308,7 @@ class QuantumCTC(QuantumCircuit):
                 postselections=self.postselections,
                 numerical=self.numerical,
                 array=self.array,
+                dtype=self.dtype,
                 symbols=self.symbols,
                 substitutions=self.substitutions,
                 simplification=self.simplification,
@@ -312,6 +326,7 @@ class QuantumCTC(QuantumCircuit):
                 postselections=self.postselections,
                 numerical=self.numerical,
                 array=self.array,
+                dtype=self.dtype,
                 symbols=self.symbols,
                 substitutions=self.substitutions,
                 simplification=self.simplification,
@@ -328,6 +343,7 @@ class QuantumCTC(QuantumCircuit):
             postselections=self.postselections,
             numerical=self.numerical,
             array=self.array,
+            dtype=self.dtype,
             symbols=self.symbols,
             substitutions=self.substitutions,
             simplification=self.simplification,
@@ -341,6 +357,7 @@ class QuantumCTC(QuantumCircuit):
             postselections=self.postselections,
             numerical=self.numerical,
             array=self.array,
+            dtype=self.dtype,
             symbols=self.symbols,
             substitutions=self.substitutions,
             simplification=self.simplification,
@@ -395,18 +412,20 @@ def dctc_violating(
     maximum_entropy = False if maximum_entropy is None else maximum_entropy
 
     if isinstance(input_respecting, mat | arr) is True:
-        matrix_num = True if issubclass(dtype(input_respecting), num) is True else False
+        matrix_num = True if issubclass(datatype(input_respecting), floating) is True else False
         matrix_arr = True if isinstance(input_respecting, arr) is True else False
+        matrix_dtype = datatype(input_respecting)
     else:
         try:
             matrix_num = (
                 True
-                if issubclass(dtype(input_respecting.output()), num) is True
+                if issubclass(datatype(input_respecting.output()), floating) is True
                 else False
             )
             matrix_arr = (
                 True if isinstance(input_respecting.output(), arr) is True else False
             )
+            matrix_dtype = datatype(input_respecting.output())
         except:
             raise TypeError(
                 """A matrix or array cannot be extracted from the given input state."""
@@ -585,7 +604,7 @@ def dctc_violating(
                 ]
             )
 
-    return cast(output_violating, numerical=matrix_num, array=matrix_arr)
+    return cast(output_violating, numerical=matrix_num, array=matrix_arr, dtype=matrix_dtype)
 
 
 def dctc_respecting(
@@ -623,18 +642,20 @@ def dctc_respecting(
         The solution(s) of the D-CTC CR map.
     """
     if isinstance(input_respecting, mat | arr) is True:
-        matrix_num = True if issubclass(dtype(input_respecting), num) is True else False
+        matrix_num = True if issubclass(datatype(input_respecting), floating) is True else False
         matrix_arr = True if isinstance(input_respecting, arr) is True else False
+        matrix_dtype = datatype(input_respecting)
     else:
         try:
             matrix_num = (
                 True
-                if issubclass(dtype(input_respecting.output()), num) is True
+                if issubclass(datatype(input_respecting.output()), floating) is True
                 else False
             )
             matrix_arr = (
                 True if isinstance(input_respecting.output(), arr) is True else False
             )
+            matrix_dtype = datatype(input_respecting.output())
         except:
             raise TypeError(
                 """A matrix or array cannot be extracted from the given input state."""
@@ -664,7 +685,7 @@ def dctc_respecting(
         matrix=output_total, targets=systems_violating, dim=dim
     )
 
-    return cast(output_respecting, numerical=matrix_num, array=matrix_arr)
+    return cast(output_respecting, numerical=matrix_num, array=matrix_arr, dtype=matrix_dtype)
 
 
 class DCTC(QuantumCTC):
@@ -738,6 +759,7 @@ class DCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         """Compute the unprocessed matrix representation of the D-CTC chronology-respecting (CR) output state.
 
@@ -749,6 +771,10 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
 
         Returns
         -------
@@ -757,6 +783,7 @@ class DCTC(QuantumCTC):
         """
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
+        dtype = self.dtype if dtype is None else dtype
 
         output_respecting = dctc_respecting(
             input_respecting=self.input(substitutions=[]),
@@ -768,12 +795,13 @@ class DCTC(QuantumCTC):
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
         )
-        return cast(output_respecting, numerical=numerical, array=array)
+        return cast(output_respecting, numerical=numerical, array=array, dtype=dtype)
 
     def output_violating(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -791,6 +819,10 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -823,6 +855,7 @@ class DCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         free_symbol = self.free_symbol if free_symbol is None else free_symbol
         maximum_entropy = (
@@ -848,6 +881,7 @@ class DCTC(QuantumCTC):
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=False,
@@ -875,12 +909,13 @@ class DCTC(QuantumCTC):
             output_violating.dagger()
 
         output_violating = QuantumState(
-            spec=output_violating.output(numerical=numerical, array=array_intermediate),
+            spec=output_violating.output(numerical=numerical, array=array_intermediate, dtype=dtype),
             form=form,
             kind=kind,
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -891,12 +926,13 @@ class DCTC(QuantumCTC):
             debug=False,
         )
 
-        return output_violating.output(numerical=numerical, array=array)
+        return output_violating.output(numerical=numerical, array=array, dtype=dtype)
 
     def output_respecting(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -915,6 +951,10 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -950,6 +990,7 @@ class DCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         substitutions = self.substitutions if substitutions is None else substitutions
         free_symbol = self.free_symbol if free_symbol is None else free_symbol
@@ -959,16 +1000,17 @@ class DCTC(QuantumCTC):
 
         output_respecting = dctc_respecting(
             input_respecting=self.input(
-                numerical=numerical, array=array_intermediate, substitutions=[]
+                numerical=numerical, array=array_intermediate, dtype=dtype, substitutions=[]
             ),
             input_violating=self.state_violating(
                 numerical=numerical,
                 array=array_intermediate,
+                dtype=dtype,
                 free_symbol=free_symbol,
                 maximum_entropy=maximum_entropy,
             ),
             gate=self.gate(
-                numerical=numerical, array=array_intermediate, substitutions=[]
+                numerical=numerical, array=array_intermediate, dtype=dtype, substitutions=[]
             ),
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
@@ -984,6 +1026,7 @@ class DCTC(QuantumCTC):
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=False,
@@ -1030,13 +1073,14 @@ class DCTC(QuantumCTC):
 
         output_respecting = QuantumState(
             spec=output_respecting.output(
-                numerical=numerical, array=array_intermediate
+                numerical=numerical, array=array_intermediate, dtype=dtype,
             ),
             form=form,
             kind=kind,
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -1052,6 +1096,7 @@ class DCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -1072,6 +1117,10 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -1107,6 +1156,7 @@ class DCTC(QuantumCTC):
         return self.output_respecting(
             numerical=numerical,
             array=array,
+            dtype=dtype,
             substitutions=substitutions,
             simplification=simplification,
             conjugation=conjugation,
@@ -1120,6 +1170,7 @@ class DCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -1141,6 +1192,10 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the state's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -1190,6 +1245,7 @@ class DCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
         substitutions = self.substitutions if substitutions is None else substitutions
         simplification = self.simplification if simplification is None else simplification
         traces = [] if traces is None else traces
@@ -1203,6 +1259,7 @@ class DCTC(QuantumCTC):
             spec=self.output_violating(
                 numerical=numerical,
                 array=array_intermediate,
+                dtype=dtype,
                 substitutions=substitutions,
                 simplification=simplification,
                 conjugation=False,
@@ -1213,6 +1270,7 @@ class DCTC(QuantumCTC):
             dim=self.dim,
             numerical=numerical,
             array=array,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -1230,6 +1288,7 @@ class DCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -1252,6 +1311,10 @@ class DCTC(QuantumCTC):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the state's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -1305,6 +1368,7 @@ class DCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
         substitutions = self.substitutions if substitutions is None else substitutions
         simplification = self.simplification if simplification is None else simplification
         traces = [] if traces is None else traces
@@ -1324,6 +1388,7 @@ class DCTC(QuantumCTC):
             spec=self.output_respecting(
                 numerical=numerical,
                 array=array_intermediate,
+                dtype=dtype,
                 substitutions=substitutions,
                 simplification=simplification,
                 conjugation=False,
@@ -1337,6 +1402,7 @@ class DCTC(QuantumCTC):
             dim=self.dim,
             numerical=numerical,
             array=array,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -1388,18 +1454,20 @@ def pctc_violating(
     The validity of the expression used in this function to compute the P-CTC CV state for *non-qubit* systems has not been proven.
     """
     if isinstance(input_respecting, mat | arr) is True:
-        matrix_num = True if issubclass(dtype(input_respecting), num) is True else False
+        matrix_num = True if issubclass(datatype(input_respecting), floating) is True else False
         matrix_arr = True if isinstance(input_respecting, arr) is True else False
+        matrix_dtype = datatype(input_respecting)
     else:
         try:
             matrix_num = (
                 True
-                if issubclass(dtype(input_respecting.output()), num) is True
+                if issubclass(datatype(input_respecting.output()), floating) is True
                 else False
             )
             matrix_arr = (
                 True if isinstance(input_respecting.output(), arr) is True else False
             )
+            matrix_dtype = datatype(input_respecting.output())
         except:
             raise TypeError(
                 """A matrix or array cannot be extracted from the given input state."""
@@ -1431,7 +1499,7 @@ def pctc_violating(
     output_violating = partial_trace(
         matrix=output_total, targets=systems_respecting, dim=dim
     )
-    return cast(output_violating, numerical=matrix_num, array=matrix_arr)
+    return cast(output_violating, numerical=matrix_num, array=matrix_arr, dtype=matrix_dtype)
 
 
 def pctc_respecting(
@@ -1481,18 +1549,20 @@ def pctc_respecting(
         The solution of the P-CTC CR map.
     """
     if isinstance(input_respecting, mat | arr) is True:
-        matrix_num = True if issubclass(dtype(input_respecting), num) is True else False
+        matrix_num = True if issubclass(datatype(input_respecting), floating) is True else False
         matrix_arr = True if isinstance(input_respecting, arr) is True else False
+        matrix_dtype = datatype(input_respecting)
     else:
         try:
             matrix_num = (
                 True
-                if issubclass(dtype(input_respecting.output()), num) is True
+                if issubclass(datatype(input_respecting.output()), floating) is True
                 else False
             )
             matrix_arr = (
                 True if isinstance(input_respecting.output(), arr) is True else False
             )
+            matrix_dtype = datatype(input_respecting.output())
         except:
             raise TypeError(
                 """A matrix or array cannot be extracted from the given input state."""
@@ -1523,7 +1593,7 @@ def pctc_respecting(
         )
         # renormalization = recursively_simplify(1/trace(output_respecting))
         # output_respecting = renormalization * output_respecting
-    return cast(output_respecting, numerical=matrix_num, array=matrix_arr)
+    return cast(output_respecting, numerical=matrix_num, array=matrix_arr, dtype=matrix_dtype)
 
 
 class PCTC(QuantumCTC):
@@ -1552,6 +1622,7 @@ class PCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         """Compute the unprocessed matrix representation of the P-CTC chronology-respecting (CR) output state.
 
@@ -1563,6 +1634,10 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
 
         Returns
         -------
@@ -1571,6 +1646,7 @@ class PCTC(QuantumCTC):
         """
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
+        dtype = self.dtype if dtype is None else dtype
 
         output_respecting = pctc_respecting(
             input_respecting=self.input(substitutions=[]),
@@ -1578,12 +1654,13 @@ class PCTC(QuantumCTC):
             systems_respecting=self.systems_respecting,
             systems_violating=self.systems_violating,
         )
-        return cast(output_respecting, numerical=numerical, array=array)
+        return cast(output_respecting, numerical=numerical, array=array, dtype=dtype)
 
     def output_violating(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -1599,6 +1676,10 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -1628,6 +1709,7 @@ class PCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         output_violating = pctc_violating(
             input_respecting=self.input(substitutions=[]),
@@ -1646,6 +1728,7 @@ class PCTC(QuantumCTC):
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=False,
@@ -1673,12 +1756,13 @@ class PCTC(QuantumCTC):
             output_violating.dagger()
 
         output_violating = QuantumState(
-            spec=output_violating.output(numerical=numerical, array=array_intermediate),
+            spec=output_violating.output(numerical=numerical, array=array_intermediate, dtype=dtype),
             form=form,
             kind=kind,
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -1688,12 +1772,13 @@ class PCTC(QuantumCTC):
             notation=None,
             debug=False,
         )
-        return output_violating.output(numerical=numerical, array=array)
+        return output_violating.output(numerical=numerical, array=array, dtype=dtype)
 
     def output_respecting(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -1710,6 +1795,10 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -1742,6 +1831,7 @@ class PCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
         substitutions = self.substitutions if substitutions is None else substitutions
 
         output_respecting = pctc_respecting(
@@ -1768,6 +1858,7 @@ class PCTC(QuantumCTC):
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=False,
@@ -1814,13 +1905,14 @@ class PCTC(QuantumCTC):
 
         output_respecting = QuantumState(
             spec=output_respecting.output(
-                numerical=numerical, array=array_intermediate
+                numerical=numerical, array=array_intermediate, dtype=dtype
             ),
             form=form,
             kind=kind,
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -1830,12 +1922,13 @@ class PCTC(QuantumCTC):
             notation=None,
             debug=False,
         )
-        return output_respecting.output(numerical=numerical, array=array)
+        return output_respecting.output(numerical=numerical, array=array, dtype=dtype)
 
     def output(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -1854,6 +1947,10 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -1886,6 +1983,7 @@ class PCTC(QuantumCTC):
         return self.output_respecting(
             numerical=numerical,
             array=array,
+            dtype=dtype,
             substitutions=substitutions,
             simplification=simplification,
             conjugation=conjugation,
@@ -1897,6 +1995,7 @@ class PCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -1916,6 +2015,10 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the state's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -1962,6 +2065,7 @@ class PCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
         substitutions = self.substitutions if substitutions is None else substitutions
         simplification = self.simplification if simplification is None else simplification
         traces = [] if traces is None else traces
@@ -1975,6 +2079,7 @@ class PCTC(QuantumCTC):
             spec=self.output_violating(
                 numerical=numerical,
                 array=array_intermediate,
+                dtype=dtype,
                 substitutions=substitutions,
                 simplification=simplification,
                 conjugation=False,
@@ -1983,6 +2088,7 @@ class PCTC(QuantumCTC):
             dim=self.dim,
             numerical=numerical,
             array=array,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -2000,6 +2106,7 @@ class PCTC(QuantumCTC):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -2020,6 +2127,10 @@ class PCTC(QuantumCTC):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the state's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -2070,6 +2181,7 @@ class PCTC(QuantumCTC):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
         substitutions = self.substitutions if substitutions is None else substitutions
         simplification = self.simplification if simplification is None else simplification
         traces = [] if traces is None else traces
@@ -2099,6 +2211,7 @@ class PCTC(QuantumCTC):
             spec=self.output_respecting(
                 numerical=numerical,
                 array=array_intermediate,
+                dtype=dtype,
                 substitutions=substitutions,
                 simplification=simplification,
                 conjugation=False,
@@ -2110,6 +2223,7 @@ class PCTC(QuantumCTC):
             dim=self.dim,
             numerical=numerical,
             array=array,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,

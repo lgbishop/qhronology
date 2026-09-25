@@ -61,6 +61,10 @@ class QuantumGate(QuantumObject):
     The details of any algebraic symbols, mathematical substitutions, and visualization labels are also recorded.
     Note that, unlike the internal matrix representations contained within instances of the :py:class:`~qhronology.quantum.states.QuantumState` class (and its derivatives), the matrix representations of subclass instances of :py:class:`~qhronology.quantum.gates.QuantumGate` are *not* mutable.
 
+    .. raw:: latex
+
+       \\enlargethispage{2\\baselineskip}
+
     Arguments
     ---------
     spec : mat | arr | list[list[num | expr | str]]
@@ -95,6 +99,10 @@ class QuantumGate(QuantumObject):
     array : bool
         Whether to cast the gate's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
+    dtype : type[num]
+        The data type to which the values in the gate's array representation are cast.
+        Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+        Defaults to :python:`numpy.complex128`.
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols (usually found within the gate specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         Defaults to :python:`{}`.
@@ -133,6 +141,11 @@ class QuantumGate(QuantumObject):
         Not intended to be set by the user.
         Defaults to :python:`"GATE"`.
 
+
+    .. raw:: latex
+
+       \\enlargethispage{\\baselineskip}
+
     Note
     ----
     The indices specified in :python:`targets`, :python:`controls`, and :python:`anticontrols` must be distinct.
@@ -150,6 +163,7 @@ class QuantumGate(QuantumObject):
         dim: int | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         symbols: dict | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
@@ -202,6 +216,7 @@ class QuantumGate(QuantumObject):
             numerical=numerical,
             num_systems=num_systems,
             array=array,
+            dtype=dtype,
             symbols=symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -239,6 +254,7 @@ class QuantumGate(QuantumObject):
             dim=self.dim,
             numerical=self.numerical,
             array=self.array,
+            dtype=self.dtype,
         )
 
     @current.setter
@@ -409,6 +425,7 @@ class QuantumGate(QuantumObject):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         """Compute the unprocessed matrix representation of the gate.
 
@@ -420,6 +437,10 @@ class QuantumGate(QuantumObject):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
 
         Returns
         -------
@@ -429,22 +450,24 @@ class QuantumGate(QuantumObject):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
-        operator = cast(self.current, numerical=numerical, array=array_intermediate)
+        operator = cast(self.current, numerical=numerical, array=array_intermediate, dtype=dtype)
         identity = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         matrix = tensor_product(operator, *[identity] * (self.num_systems - len(self.targets)))
         permutation = self.systems
         for i, t in enumerate(self.targets):
            permutation[i], permutation[t] = permutation[t], permutation[i]
         matrix = permute_tensor_product(matrix, permutation, self.dim)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
     def output(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -461,6 +484,10 @@ class QuantumGate(QuantumObject):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the gate.
             Defaults to the value of :python:`self.substitutions`.
@@ -489,8 +516,9 @@ class QuantumGate(QuantumObject):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
-        gate = self.matrix(numerical=numerical, array=array_intermediate)
+        gate = self.matrix(numerical=numerical, array=array_intermediate, dtype=dtype)
 
         # Exponentiate
         if exponent is None or exponent is True:
@@ -499,25 +527,26 @@ class QuantumGate(QuantumObject):
             exponent = symbolize_expression(exponent, self.symbols_list)
             if self.INVOLUTORY is True:
                 plus = to_numerical(
-                    (1 + sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical
+                    (1 + sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical, dtype=dtype
                 )
                 minus = to_numerical(
-                    (1 - sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical
+                    (1 - sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical, dtype=dtype
                 )
                 identity = generate_identity(
                     self.dim**self.num_systems,
                     numerical=numerical,
                     array=array_intermediate,
+                    dtype=dtype,
                 )
                 gate = plus * identity + minus * gate
             else:
-                exponent = to_numerical(exponent, numerical=numerical)
+                exponent = to_numerical(exponent, numerical=numerical, dtype=dtype)
                 try:
                     gate = gate**exponent
                 except:
                     gate = to_matrix(gate)
                     gate = gate**exponent
-                    gate = cast(gate, numerical=numerical, array=array_intermediate)
+                    gate = cast(gate, numerical=numerical, array=array_intermediate, dtype=dtype)
 
         # Coefficient
         if coefficient is None or coefficient is True:
@@ -527,7 +556,7 @@ class QuantumGate(QuantumObject):
         else:
             coefficient = 1
         if coefficient != 1 and coefficient is not False:
-            coefficient = to_numerical(coefficient, numerical=numerical)
+            coefficient = to_numerical(coefficient, numerical=numerical, dtype=dtype)
             gate = coefficient * gate
 
         gate = symbolize_expression(gate, self.symbols_list)
@@ -536,7 +565,7 @@ class QuantumGate(QuantumObject):
         if len(controllers) > 0:
             operator = gate
             identity = generate_identity(
-                self.dim, numerical=numerical, array=array_intermediate
+                self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
             )
             for n in controllers:
                 controller_compliment = list(set(self.systems) ^ set([n]))
@@ -544,6 +573,7 @@ class QuantumGate(QuantumObject):
                     self.dim**self.num_systems,
                     numerical=numerical,
                     array=array_intermediate,
+                    dtype=dtype,
                 )
                 for k in range(0, self.dim):
                     controller = identity
@@ -553,11 +583,13 @@ class QuantumGate(QuantumObject):
                             dim=self.dim,
                             numerical=numerical,
                             array=array_intermediate,
+                            dtype=dtype,
                         ) * bra(
                             k,
                             dim=self.dim,
                             numerical=numerical,
                             array=array_intermediate,
+                            dtype=dtype,
                         )
                     if n in self.anticontrols:
                         controller = ket(
@@ -565,11 +597,13 @@ class QuantumGate(QuantumObject):
                             dim=self.dim,
                             numerical=numerical,
                             array=array_intermediate,
+                            dtype=dtype,
                         ) * bra(
                             self.dim - 1 - k,
                             dim=self.dim,
                             numerical=numerical,
                             array=array_intermediate,
+                            dtype=dtype,
                         )
                     ordered = arrange(
                         [controller_compliment, [n]], [identity] + [controller]
@@ -580,15 +614,16 @@ class QuantumGate(QuantumObject):
                             to_matrix(operator) ** k,
                             numerical=numerical,
                             array=array_intermediate,
+                            dtype=dtype,
                         )
                     else:
                         operator_power = np.linalg.matrix_power(operator, k)
 
                     controlling = cast(
-                        controlling, numerical=numerical, array=array_intermediate
+                        controlling, numerical=numerical, array=array_intermediate, dtype=dtype
                     )
                     operator_power = cast(
-                        operator_power, numerical=numerical, array=array_intermediate
+                        operator_power, numerical=numerical, array=array_intermediate, dtype=dtype
                     )
 
                     matrix = matrix + matrix_multiplication(controlling, operator_power)
@@ -610,7 +645,7 @@ class QuantumGate(QuantumObject):
         if conjugation is True:
             gate = conjugate_transpose(gate)
 
-        return cast(gate, numerical=numerical, array=array)
+        return cast(gate, numerical=numerical, array=array, dtype=dtype)
 
     def print(
         self,
@@ -618,6 +653,7 @@ class QuantumGate(QuantumObject):
         product: bool | None = None,
         return_string: bool | None = None,
         numerical: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -643,6 +679,10 @@ class QuantumGate(QuantumObject):
         numerical : bool
             Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
+        dtype : type[num]
+            The data type to which the values in the mathematical expression are cast.
+            Only applies when :python:`numerical` is :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the gate.
             Defaults to the value of :python:`self.substitutions`.
@@ -676,6 +716,7 @@ class QuantumGate(QuantumObject):
             + stringify(
                 self.output(
                     numerical=numerical,
+                    dtype=dtype,
                     substitutions=substitutions,
                     simplification=simplification,
                     conjugation=conjugation,
@@ -703,6 +744,7 @@ class QuantumGate(QuantumObject):
         preserve_structure: bool | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> list[list[QuantumGate]]:
         """Decompose the gate into one or more sequences of gates of a specified set. By default (:python:`only_targets = True`), only the component of the gate that lies on the its target systems, i.e., the operator returned by the :py:meth:`~qhronology.quantum.gates.QuantumGate.matrix` method, is decomposed. If decomposing either :py:class:`~qhronology.quantum.gates.GateStack` or :py:class:`~qhronology.quantum.gates.GateInterleave`, the :python:`only_targets` argument is forced to :python:`False`.
 
@@ -740,6 +782,10 @@ class QuantumGate(QuantumObject):
         array : bool
             Whether to perform the decomposition using NumPy arrays (:python:`True`) or SymPy matrices (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values of the arrays in the decomposition are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
 
         Returns
         -------
@@ -767,6 +813,7 @@ class QuantumGate(QuantumObject):
         preserve_structure = False if preserve_structure is None else preserve_structure
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
+        dtype = self.dtype if dtype is None else dtype
 
         if only_targets is True:
             total_gate = copy.deepcopy(self)
@@ -786,7 +833,7 @@ class QuantumGate(QuantumObject):
             ]
             total_gate.targets = total_gate_targets_adjusted
             total_gate.num_systems = max(total_gate.targets) + 1
-            operator = total_gate.output(numerical=numerical, array=array)
+            operator = total_gate.output(numerical=numerical, array=array, dtype=dtype)
             systems = total_gate.targets
             if include_empty is True:
                 systems = list(
@@ -794,7 +841,7 @@ class QuantumGate(QuantumObject):
                 )
             num_systems = max(systems) - min(systems) + 1
         else:
-            operator = self.output(numerical=numerical, array=array)
+            operator = self.output(numerical=numerical, array=array, dtype=dtype)
             num_systems = self.num_systems
             systems = list(range(0, num_systems))
             total_gate_targets_adjusted = systems
@@ -840,6 +887,7 @@ class QuantumGate(QuantumObject):
             kwargs.pop('kind')
             kwargs.pop('numerical')
             kwargs.pop('array')
+            kwargs.pop('dtype')
             kwargs.pop('debug')
 
             current_targets = current_gate.targets
@@ -907,6 +955,7 @@ class QuantumGate(QuantumObject):
                             num_systems=num_systems,
                             numerical=numerical,
                             array=array,
+                            dtype=dtype,
                             **kwargs,
                         )
                         instances[g].append(gate_variant)
@@ -936,7 +985,7 @@ class QuantumGate(QuantumObject):
             sequences = itertools.product(instances, repeat=length)
             for sequence in sequences:
                 sequence_operators = [
-                    gate.output(numerical=numerical, array=array) for gate in sequence
+                    gate.output(numerical=numerical, array=array, dtype=dtype) for gate in sequence
                 ]
                 sequence_operators.reverse()
                 sequence_operator = matrix_multiplication(*sequence_operators)
@@ -946,9 +995,9 @@ class QuantumGate(QuantumObject):
                 ) or (
                     numerical is True
                     and np.allclose(
-                        to_array(operator, numerical=numerical),
-                        to_array(sequence_operator, numerical=numerical),
-                        rtol=10 ** (-12),
+                        to_array(operator, numerical=numerical, dtype=dtype),
+                        to_array(sequence_operator, numerical=numerical, dtype=dtype),
+                        rtol=np.finfo(dtype).resolution * 10,
                         atol=0,
                     )
                     is True
@@ -1083,13 +1132,15 @@ class Unitary(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         operator = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         param_theta = symbolize_expression(self.parameters[0], self.symbols_list)
         param_phi = symbolize_expression(self.parameters[1], self.symbols_list)
@@ -1106,14 +1157,14 @@ class Unitary(QuantumGate):
                 ],
             ]
         )
-        operator = cast(operator, numerical=numerical, array=array_intermediate)
+        operator = cast(operator, numerical=numerical, array=array_intermediate, dtype=dtype)
         identity = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         targets_compliment = list(set(self.systems) ^ set(self.targets))
         ordered = arrange([targets_compliment, self.targets], [identity] + [operator])
         matrix = tensor_product(*ordered)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 UNI = Unitary
@@ -1203,21 +1254,23 @@ class Pauli(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         operator = cast(
-            Pauli.MATRICES[self.index], numerical=numerical, array=array_intermediate
+            Pauli.MATRICES[self.index], numerical=numerical, array=array_intermediate, dtype=dtype
         )
         identity = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         targets_compliment = list(set(self.systems) ^ set(self.targets))
         ordered = arrange([targets_compliment, self.targets], [identity] + [operator])
         matrix = tensor_product(*ordered)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 PAULI = Pauli
@@ -1352,21 +1405,23 @@ class GellMann(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         operator = cast(
-            GellMann.MATRICES[self.index], numerical=numerical, array=array_intermediate
+            GellMann.MATRICES[self.index], numerical=numerical, array=array_intermediate, dtype=dtype
         )
         identity = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         targets_compliment = list(set(self.systems) ^ set(self.targets))
         ordered = arrange([targets_compliment, self.targets], [identity] + [operator])
         matrix = tensor_product(*ordered)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 GM = GellMann
@@ -1470,13 +1525,15 @@ class Rotation(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         operator = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         angle = symbolize_expression(self.angle, self.symbols_list)
         if self.axis == 1:
@@ -1500,14 +1557,14 @@ class Rotation(QuantumGate):
                     [0, sp.exp(sp.I * angle / 2)],
                 ]
             )
-        operator = cast(operator, numerical=numerical, array=array_intermediate)
+        operator = cast(operator, numerical=numerical, array=array_intermediate, dtype=dtype)
         identity = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         targets_compliment = list(set(self.systems) ^ set(self.targets))
         ordered = arrange([targets_compliment, self.targets], [identity] + [operator])
         matrix = tensor_product(*ordered)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 ROT = Rotation
@@ -1576,28 +1633,30 @@ class Phase(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         operator = generate_zeros(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         identity = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         phase = to_numerical(
-            symbolize_expression(self.phase, self.symbols_list), numerical=numerical
+            symbolize_expression(self.phase, self.symbols_list), numerical=numerical, dtype=dtype
         )
         for k in range(0, self.dim):
             operator = operator + phase**k * ket(
-                k, dim=self.dim, numerical=numerical, array=array_intermediate
-            ) * bra(k, dim=self.dim, numerical=numerical, array=array_intermediate)
+                k, dim=self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
+            ) * bra(k, dim=self.dim, numerical=numerical, array=array_intermediate, dtype=dtype)
         targets_compliment = list(set(self.systems) ^ set(self.targets))
         ordered = arrange([targets_compliment, self.targets], [identity] + [operator])
         matrix = tensor_product(*ordered)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 PHS = Phase
@@ -1684,16 +1743,18 @@ class Diagonal(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         operator = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         identity = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         for key, value in self.entries.items():
             if self.exponentiation is True:
@@ -1702,15 +1763,15 @@ class Diagonal(QuantumGate):
                 )
             else:
                 coefficient = symbolize_expression(str(value), self.symbols_list)
-            coefficient = to_numerical(coefficient, numerical=numerical)
+            coefficient = to_numerical(coefficient, numerical=numerical, dtype=dtype)
             projector = ket(
-                key, dim=self.dim, numerical=numerical, array=array_intermediate
-            ) * bra(key, dim=self.dim, numerical=numerical, array=array_intermediate)
+                key, dim=self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
+            ) * bra(key, dim=self.dim, numerical=numerical, array=array_intermediate, dtype=dtype)
             operator = operator + (coefficient - 1) * projector
         targets_compliment = list(set(self.systems) ^ set(self.targets))
         ordered = arrange([targets_compliment, self.targets], [identity] + [operator])
         matrix = tensor_product(*ordered)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 DIAG = Diagonal
@@ -1758,10 +1819,12 @@ class Swap(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         permutation = [k for k in range(0, self.num_systems)]
         permutation[self.targets[0]], permutation[self.targets[1]] = (
@@ -1773,15 +1836,15 @@ class Swap(QuantumGate):
         combinations = list(itertools.product(*possibilities))
 
         matrix = generate_zeros(
-            self.dim**self.num_systems, numerical=numerical, array=array_intermediate
+            self.dim**self.num_systems, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         for n in range(0, self.dim**self.num_systems):
             level = list(combinations[n])
             permuted = [level[permutation[k]] for k in range(0, self.num_systems)]
             matrix = matrix + ket(
-                permuted, dim=self.dim, numerical=numerical, array=array_intermediate
-            ) * bra(level, dim=self.dim, numerical=numerical, array=array_intermediate)
-        return cast(matrix, numerical=numerical, array=array)
+                permuted, dim=self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
+            ) * bra(level, dim=self.dim, numerical=numerical, array=array_intermediate, dtype=dtype)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 SWAP = Swap
@@ -1836,29 +1899,31 @@ class Summation(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         summation = generate_zeros(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         identity = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         for k in range(0, self.dim):
             oplus = (k + self.shift) % self.dim
             summation = summation + ket(
-                oplus, dim=self.dim, numerical=numerical, array=array_intermediate
-            ) * bra(k, dim=self.dim, numerical=numerical, array=array_intermediate)
+                oplus, dim=self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
+            ) * bra(k, dim=self.dim, numerical=numerical, array=array_intermediate, dtype=dtype)
         matrix = generate_identity(1, numerical=numerical, array=array_intermediate)
         for m in range(0, self.num_systems):
             if m in list(self.targets):
                 matrix = tensor_product(matrix, summation)
             else:
                 matrix = tensor_product(matrix, identity)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 SUM = Summation
@@ -1982,35 +2047,37 @@ class Hadamard(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
-        omega = to_numerical(sp.exp(2 * sp.pi * sp.I / self.dim), numerical=numerical)
+        omega = to_numerical(sp.exp(2 * sp.pi * sp.I / self.dim), numerical=numerical, dtype=dtype)
         operator = generate_zeros(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         for i in range(0, self.dim):
             for j in range(0, self.dim):
                 operator = operator + (
                     omega ** (j * (self.dim - i))
                     * ket(
-                        i, dim=self.dim, numerical=numerical, array=array_intermediate
+                        i, dim=self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
                     )
                     * bra(
-                        j, dim=self.dim, numerical=numerical, array=array_intermediate
+                        j, dim=self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
                     )
                 )
-        operator = operator * to_numerical(1 / sp.sqrt(self.dim), numerical=numerical)
+        operator = operator * to_numerical(1 / sp.sqrt(self.dim), numerical=numerical, dtype=dtype)
         identity = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
 
         targets_compliment = list(set(self.systems) ^ set(self.targets))
         ordered = arrange([targets_compliment, self.targets], [identity] + [operator])
         matrix = tensor_product(*ordered)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 HAD = Hadamard
@@ -2117,10 +2184,12 @@ class Fourier(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         if self.composite is True:
             # Easy way: use decomposition instead of QFT definition.
@@ -2138,6 +2207,7 @@ class Fourier(QuantumGate):
                                 dim=self.dim,
                                 numerical=numerical,
                                 array=array_intermediate,
+                                dtype=dtype,
                             )
                         )
                     else:
@@ -2149,6 +2219,7 @@ class Fourier(QuantumGate):
                                 dim=self.dim,
                                 numerical=numerical,
                                 array=array_intermediate,
+                                dtype=dtype,
                                 exponent=sp.Rational(1, (self.dim**j)),
                                 label=f"1 / {self.dim**j}",
                                 family="GATE",
@@ -2158,15 +2229,16 @@ class Fourier(QuantumGate):
                 self.dim**self.num_systems,
                 numerical=numerical,
                 array=array_intermediate,
+                dtype=dtype,
             )
             for gate in QFT:
                 matrix = matrix_multiplication(gate.output(), matrix)
         else:
             omega = to_numerical(
-                sp.exp(2 * sp.pi * sp.I / self.dim), numerical=numerical
+                sp.exp(2 * sp.pi * sp.I / self.dim), numerical=numerical, dtype=dtype
             )
             operator = generate_zeros(
-                self.dim, numerical=numerical, array=array_intermediate
+                self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
             )
             for i in range(0, self.dim):
                 for j in range(0, self.dim):
@@ -2177,26 +2249,28 @@ class Fourier(QuantumGate):
                             dim=self.dim,
                             numerical=numerical,
                             array=array_intermediate,
+                            dtype=dtype,
                         )
                         * bra(
                             j,
                             dim=self.dim,
                             numerical=numerical,
                             array=array_intermediate,
+                            dtype=dtype,
                         )
                     )
             operator = operator * to_numerical(
-                1 / sp.sqrt(self.dim), numerical=numerical
+                1 / sp.sqrt(self.dim), numerical=numerical, dtype=dtype
             )
             identity = generate_identity(
-                self.dim, numerical=numerical, array=array_intermediate
+                self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
             )
             targets_compliment = list(set(self.systems) ^ set(self.targets))
             ordered = arrange(
                 [targets_compliment, self.targets], [identity] + [operator]
             )
             matrix = tensor_product(*ordered)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 QFT = Fourier
@@ -2285,7 +2359,10 @@ class Measurement(QuantumGate):
         self._observable = observable
 
     def matrices(
-        self, numerical: bool | None = None, array: bool | None = None
+        self,
+        numerical: bool | None = None,
+        array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> list[mat | arr]:
         """A list of matrix representations of all operators in the :python:`operators` property.
 
@@ -2296,20 +2373,21 @@ class Measurement(QuantumGate):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         matrices = []
         identity = generate_identity(
-            self.dim, numerical=numerical, array=array_intermediate
+            self.dim, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         for operator in self.operators:
             operator = densify(extract_representation(operator))
-            operator = cast(operator, numerical=numerical, array=array_intermediate)
+            operator = cast(operator, numerical=numerical, array=array_intermediate, dtype=dtype)
             matrix = tensor_product(operator, *[identity] * (self.num_systems - len(self.targets)))
             permutation = self.systems
             for i, t in enumerate(self.targets):
                 permutation[i], permutation[t] = permutation[t], permutation[i]
             matrix = permute_tensor_product(matrix, permutation, self.dim)
-            matrices.append(cast(matrix, numerical=numerical, array=array))
+            matrices.append(cast(matrix, numerical=numerical, array=array, dtype=dtype))
 
         return matrices
 
@@ -2317,11 +2395,13 @@ class Measurement(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
+        dtype = self.dtype if dtype is None else dtype
         return generate_identity(
-            self.dim**self.num_systems, numerical=numerical, array=array
+            self.dim**self.num_systems, numerical=numerical, array=array, dtype=dtype
         )
 
 
@@ -2356,6 +2436,10 @@ class GateInterleave(QuantumGate):
     array : bool
         Whether to cast the gate's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
+    dtype : type[num]
+        The data type to which the values in the gate's array representation are cast.
+        Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+        Defaults to :python:`numpy.complex128`.
     label : str
         The unformatted string used to represent the gate in mathematical expressions.
         Defaults to :python:`"⊗".join([gate.label for gate in gates])`.
@@ -2364,6 +2448,11 @@ class GateInterleave(QuantumGate):
         When not :python:`None`, overrides the value passed to :python:`label`.
         Not intended to be set by the user in most cases.
         Defaults to :python:`None`.
+
+
+    .. raw:: latex
+
+       \\enlargethispage{2\\baselineskip}
 
     Note
     ----
@@ -2381,6 +2470,7 @@ class GateInterleave(QuantumGate):
         num_systems: int | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         label: str | None = None,
         notation: str | None = None,
     ):
@@ -2395,6 +2485,7 @@ class GateInterleave(QuantumGate):
             num_systems=num_systems,
             numerical=numerical,
             array=array,
+            dtype=dtype,
             simplification=None,
             conjugation=False,
             exponent=1,
@@ -2536,24 +2627,27 @@ class GateInterleave(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         matrix = generate_identity(
-            self.dim**self.num_systems, numerical=numerical, array=array_intermediate
+            self.dim**self.num_systems, numerical=numerical, array=array_intermediate, dtype=dtype
         )
         for gate in self.gates:
             matrix = matrix_multiplication(
-                gate.output(numerical=numerical, array=array_intermediate), matrix
+                gate.output(numerical=numerical, array=array_intermediate, dtype=dtype), matrix
             )
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
     def output(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -2563,8 +2657,9 @@ class GateInterleave(QuantumGate):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
-        gate = self.matrix(numerical=numerical, array=array_intermediate)
+        gate = self.matrix(numerical=numerical, array=array_intermediate, dtype=dtype)
 
         # Exponentiate
         if exponent is None or exponent is True:
@@ -2572,15 +2667,16 @@ class GateInterleave(QuantumGate):
         if exponent != 1 and exponent is not False:
             exponent = symbolize_expression(exponent, self.symbols_list)
             plus = to_numerical(
-                (1 + sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical
+                (1 + sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical, dtype=dtype
             )
             minus = to_numerical(
-                (1 - sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical
+                (1 - sp.exp(sp.I * sp.pi * exponent)) / 2, numerical=numerical, dtype=dtype
             )
             identity = generate_identity(
                 self.dim**self.num_systems,
                 numerical=numerical,
                 array=array_intermediate,
+                dtype=dtype,
             )
             gate = plus * identity + minus * gate
 
@@ -2592,7 +2688,7 @@ class GateInterleave(QuantumGate):
         else:
             coefficient = 1
         if coefficient != 1 and coefficient is not False:
-            coefficient = to_numerical(coefficient, numerical=numerical)
+            coefficient = to_numerical(coefficient, numerical=numerical, dtype=dtype)
             gate = coefficient * gate
 
         gate = symbolize_expression(gate, self.symbols_list)
@@ -2612,7 +2708,7 @@ class GateInterleave(QuantumGate):
         if conjugation is True:
             gate = conjugate_transpose(gate)
 
-        return cast(gate, numerical=numerical, array=array)
+        return cast(gate, numerical=numerical, array=array, dtype=dtype)
 
 
 INTERLEAVE = GateInterleave
@@ -2648,6 +2744,10 @@ class GateStack(GateInterleave):
     array : bool
         Whether to cast the gate's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
+    dtype : type[num]
+        The data type to which the values in the gate's array representation are cast.
+        Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+        Defaults to :python:`numpy.complex128`.
     label : str
         The unformatted string used to represent the gate in mathematical expressions.
         Defaults to :python:`"⊗".join([gate.label for gate in gates])`.
@@ -2665,6 +2765,7 @@ class GateStack(GateInterleave):
         num_systems: int | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         label: str | None = None,
         notation: str | None = None,
     ):
@@ -2675,6 +2776,7 @@ class GateStack(GateInterleave):
             num_systems=num_systems,
             numerical=numerical,
             array=array,
+            dtype=dtype,
             label=label,
             notation=notation,
         )
@@ -2761,17 +2863,19 @@ class GateStack(GateInterleave):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         matrices = [
-            gate.output(numerical=numerical, array=array_intermediate)
+            gate.output(numerical=numerical, array=array_intermediate, dtype=dtype)
             for gate in self.gates
         ]
         matrix = tensor_product(*matrices)
-        return cast(matrix, numerical=numerical, array=array)
+        return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 STACK = GateStack
@@ -2802,11 +2906,13 @@ class _Single(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
+        dtype = self.dtype if dtype is None else dtype
         return generate_identity(
-            self.dim**self.num_systems, numerical=numerical, array=array
+            self.dim**self.num_systems, numerical=numerical, array=array, dtype=dtype
         )
 
 
@@ -2826,11 +2932,13 @@ class _Empty(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
+        dtype = self.dtype if dtype is None else dtype
         return generate_identity(
-            self.dim**self.num_systems, numerical=numerical, array=array
+            self.dim**self.num_systems, numerical=numerical, array=array, dtype=dtype
         )
 
 
@@ -2850,9 +2958,11 @@ class _Wormhole(QuantumGate):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
+        dtype = self.dtype if dtype is None else dtype
         return generate_identity(
-            self.dim**self.num_systems, numerical=numerical, array=array
+            self.dim**self.num_systems, numerical=numerical, array=array, dtype=dtype
         )

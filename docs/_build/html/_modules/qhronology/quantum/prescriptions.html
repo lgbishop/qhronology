@@ -68,7 +68,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.2.0" />
-    <meta name="docbuild:last-update" content="Sep 09, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
   </head>
   
   
@@ -493,6 +493,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.gates</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumGate</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.quantum.states</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumState</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.classification</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">floating</span><span class="p">,</span>
     <span class="n">Forms</span><span class="p">,</span>
     <span class="n">Kinds</span><span class="p">,</span>
     <span class="n">arr</span><span class="p">,</span>
@@ -509,7 +510,7 @@
     <span class="n">conjugate_transpose</span><span class="p">,</span>
     <span class="n">count_dims</span><span class="p">,</span>
     <span class="n">default_arguments</span><span class="p">,</span>
-    <span class="n">dtype</span><span class="p">,</span>
+    <span class="n">datatype</span><span class="p">,</span>
     <span class="n">extract_substitutions</span><span class="p">,</span>
     <span class="n">extract_matrix</span><span class="p">,</span>
     <span class="n">matrix_multiplication</span><span class="p">,</span>
@@ -590,6 +591,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the unprocessed matrix representation of the circuit&#39;s total output state (combined CR and CV systems).</span>
 
@@ -601,6 +603,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the matrix&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -614,9 +620,10 @@
             <span class="n">postselections</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">postselections</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span><span class="p">,</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">num_systems_violating</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -676,6 +683,7 @@
         <span class="n">merge</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -702,6 +710,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the state&#39;s matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the state&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -747,6 +759,7 @@
             <span class="n">merge</span><span class="o">=</span><span class="n">merge</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
             <span class="n">conjugation</span><span class="o">=</span><span class="n">conjugation</span><span class="p">,</span>
@@ -767,6 +780,7 @@
                 <span class="n">postselections</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">postselections</span><span class="p">,</span>
                 <span class="n">numerical</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span><span class="p">,</span>
                 <span class="n">array</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
                 <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
                 <span class="n">substitutions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span><span class="p">,</span>
                 <span class="n">simplification</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">simplification</span><span class="p">,</span>
@@ -784,6 +798,7 @@
                 <span class="n">postselections</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">postselections</span><span class="p">,</span>
                 <span class="n">numerical</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span><span class="p">,</span>
                 <span class="n">array</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
                 <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
                 <span class="n">substitutions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span><span class="p">,</span>
                 <span class="n">simplification</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">simplification</span><span class="p">,</span>
@@ -800,6 +815,7 @@
             <span class="n">postselections</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">postselections</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">simplification</span><span class="p">,</span>
@@ -813,6 +829,7 @@
             <span class="n">postselections</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">postselections</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">simplification</span><span class="p">,</span>
@@ -870,18 +887,20 @@
     <span class="n">maximum_entropy</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">maximum_entropy</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">maximum_entropy</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">,</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">matrix_num</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">matrix_num</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">),</span> <span class="n">floating</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
         <span class="n">matrix_arr</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">matrix_dtype</span> <span class="o">=</span> <span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">matrix_num</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="kc">True</span>
-                <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">()),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">()),</span> <span class="n">floating</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
                 <span class="k">else</span> <span class="kc">False</span>
             <span class="p">)</span>
             <span class="n">matrix_arr</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="kc">True</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
             <span class="p">)</span>
+            <span class="n">matrix_dtype</span> <span class="o">=</span> <span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">())</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
 <span class="w">                </span><span class="sd">&quot;&quot;&quot;A matrix or array cannot be extracted from the given input state.&quot;&quot;&quot;</span>
@@ -1060,7 +1079,7 @@
                 <span class="p">]</span>
             <span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_violating</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">matrix_num</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">matrix_arr</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_violating</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">matrix_num</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">matrix_arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">matrix_dtype</span><span class="p">)</span></div>
 
 
 
@@ -1101,18 +1120,20 @@
 <span class="sd">        The solution(s) of the D-CTC CR map.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">,</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">matrix_num</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">matrix_num</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">),</span> <span class="n">floating</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
         <span class="n">matrix_arr</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">matrix_dtype</span> <span class="o">=</span> <span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">matrix_num</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="kc">True</span>
-                <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">()),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">()),</span> <span class="n">floating</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
                 <span class="k">else</span> <span class="kc">False</span>
             <span class="p">)</span>
             <span class="n">matrix_arr</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="kc">True</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
             <span class="p">)</span>
+            <span class="n">matrix_dtype</span> <span class="o">=</span> <span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">())</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
 <span class="w">                </span><span class="sd">&quot;&quot;&quot;A matrix or array cannot be extracted from the given input state.&quot;&quot;&quot;</span>
@@ -1142,7 +1163,7 @@
         <span class="n">matrix</span><span class="o">=</span><span class="n">output_total</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">systems_violating</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span>
     <span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_respecting</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">matrix_num</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">matrix_arr</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_respecting</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">matrix_num</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">matrix_arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">matrix_dtype</span><span class="p">)</span></div>
 
 
 
@@ -1221,6 +1242,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the unprocessed matrix representation of the D-CTC chronology-respecting (CR) output state.</span>
 
@@ -1232,6 +1254,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the matrix&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1240,6 +1266,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
 
         <span class="n">output_respecting</span> <span class="o">=</span> <span class="n">dctc_respecting</span><span class="p">(</span>
             <span class="n">input_respecting</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">substitutions</span><span class="o">=</span><span class="p">[]),</span>
@@ -1251,7 +1278,7 @@
             <span class="n">systems_respecting</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_respecting</span><span class="p">,</span>
             <span class="n">systems_violating</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_violating</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_respecting</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_respecting</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="DCTC.output_violating">
@@ -1260,6 +1287,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1277,6 +1305,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the matrix&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -1309,6 +1341,7 @@
         <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
         <span class="n">array_intermediate</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
 
         <span class="n">free_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_symbol</span> <span class="k">if</span> <span class="n">free_symbol</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">free_symbol</span>
         <span class="n">maximum_entropy</span> <span class="o">=</span> <span class="p">(</span>
@@ -1334,6 +1367,7 @@
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1361,12 +1395,13 @@
             <span class="n">output_violating</span><span class="o">.</span><span class="n">dagger</span><span class="p">()</span>
 
         <span class="n">output_violating</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
-            <span class="n">spec</span><span class="o">=</span><span class="n">output_violating</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">),</span>
+            <span class="n">spec</span><span class="o">=</span><span class="n">output_violating</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">),</span>
             <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span>
             <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
@@ -1377,7 +1412,7 @@
             <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">output_violating</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">output_violating</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="DCTC.output_respecting">
@@ -1386,6 +1421,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1404,6 +1440,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the matrix&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -1439,6 +1479,7 @@
         <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
         <span class="n">array_intermediate</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
 
         <span class="n">substitutions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span> <span class="k">if</span> <span class="n">substitutions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">substitutions</span>
         <span class="n">free_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_symbol</span> <span class="k">if</span> <span class="n">free_symbol</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">free_symbol</span>
@@ -1448,16 +1489,17 @@
 
         <span class="n">output_respecting</span> <span class="o">=</span> <span class="n">dctc_respecting</span><span class="p">(</span>
             <span class="n">input_respecting</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">(</span>
-                <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span> <span class="n">substitutions</span><span class="o">=</span><span class="p">[]</span>
+                <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">substitutions</span><span class="o">=</span><span class="p">[]</span>
             <span class="p">),</span>
             <span class="n">input_violating</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state_violating</span><span class="p">(</span>
                 <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
                 <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
                 <span class="n">free_symbol</span><span class="o">=</span><span class="n">free_symbol</span><span class="p">,</span>
                 <span class="n">maximum_entropy</span><span class="o">=</span><span class="n">maximum_entropy</span><span class="p">,</span>
             <span class="p">),</span>
             <span class="n">gate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">gate</span><span class="p">(</span>
-                <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span> <span class="n">substitutions</span><span class="o">=</span><span class="p">[]</span>
+                <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">substitutions</span><span class="o">=</span><span class="p">[]</span>
             <span class="p">),</span>
             <span class="n">systems_respecting</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_respecting</span><span class="p">,</span>
             <span class="n">systems_violating</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_violating</span><span class="p">,</span>
@@ -1473,6 +1515,7 @@
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1519,13 +1562,14 @@
 
         <span class="n">output_respecting</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
             <span class="n">spec</span><span class="o">=</span><span class="n">output_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">(</span>
-                <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span>
+                <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="p">),</span>
             <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span>
             <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
@@ -1544,6 +1588,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1564,6 +1609,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the matrix&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -1599,6 +1648,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_respecting</span><span class="p">(</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
             <span class="n">conjugation</span><span class="o">=</span><span class="n">conjugation</span><span class="p">,</span>
@@ -1615,6 +1665,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1636,6 +1687,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the state&#39;s matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the state&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -1685,6 +1740,7 @@
         <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
         <span class="n">array_intermediate</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
         <span class="n">substitutions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span> <span class="k">if</span> <span class="n">substitutions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">substitutions</span>
         <span class="n">simplification</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplification</span> <span class="k">if</span> <span class="n">simplification</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">simplification</span>
         <span class="n">traces</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">traces</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">traces</span>
@@ -1698,6 +1754,7 @@
             <span class="n">spec</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">output_violating</span><span class="p">(</span>
                 <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
                 <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
                 <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
                 <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
                 <span class="n">conjugation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1708,6 +1765,7 @@
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
@@ -1728,6 +1786,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1750,6 +1809,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the state&#39;s matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the state&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -1803,6 +1866,7 @@
         <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
         <span class="n">array_intermediate</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
         <span class="n">substitutions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span> <span class="k">if</span> <span class="n">substitutions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">substitutions</span>
         <span class="n">simplification</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplification</span> <span class="k">if</span> <span class="n">simplification</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">simplification</span>
         <span class="n">traces</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">traces</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">traces</span>
@@ -1822,6 +1886,7 @@
             <span class="n">spec</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">output_respecting</span><span class="p">(</span>
                 <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
                 <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
                 <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
                 <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
                 <span class="n">conjugation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1835,6 +1900,7 @@
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
@@ -1890,18 +1956,20 @@
 <span class="sd">    The validity of the expression used in this function to compute the P-CTC CV state for *non-qubit* systems has not been proven.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">,</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">matrix_num</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">matrix_num</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">),</span> <span class="n">floating</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
         <span class="n">matrix_arr</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">matrix_dtype</span> <span class="o">=</span> <span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">matrix_num</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="kc">True</span>
-                <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">()),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">()),</span> <span class="n">floating</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
                 <span class="k">else</span> <span class="kc">False</span>
             <span class="p">)</span>
             <span class="n">matrix_arr</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="kc">True</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
             <span class="p">)</span>
+            <span class="n">matrix_dtype</span> <span class="o">=</span> <span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">())</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
 <span class="w">                </span><span class="sd">&quot;&quot;&quot;A matrix or array cannot be extracted from the given input state.&quot;&quot;&quot;</span>
@@ -1933,7 +2001,7 @@
     <span class="n">output_violating</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span>
         <span class="n">matrix</span><span class="o">=</span><span class="n">output_total</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">systems_respecting</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span>
     <span class="p">)</span>
-    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_violating</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">matrix_num</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">matrix_arr</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_violating</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">matrix_num</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">matrix_arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">matrix_dtype</span><span class="p">)</span></div>
 
 
 
@@ -1986,18 +2054,20 @@
 <span class="sd">        The solution of the P-CTC CR map.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">,</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">matrix_num</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">matrix_num</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">),</span> <span class="n">floating</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
         <span class="n">matrix_arr</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">matrix_dtype</span> <span class="o">=</span> <span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">matrix_num</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="kc">True</span>
-                <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">()),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">()),</span> <span class="n">floating</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
                 <span class="k">else</span> <span class="kc">False</span>
             <span class="p">)</span>
             <span class="n">matrix_arr</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="kc">True</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">(),</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
             <span class="p">)</span>
+            <span class="n">matrix_dtype</span> <span class="o">=</span> <span class="n">datatype</span><span class="p">(</span><span class="n">input_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">())</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
 <span class="w">                </span><span class="sd">&quot;&quot;&quot;A matrix or array cannot be extracted from the given input state.&quot;&quot;&quot;</span>
@@ -2028,7 +2098,7 @@
         <span class="p">)</span>
         <span class="c1"># renormalization = recursively_simplify(1/trace(output_respecting))</span>
         <span class="c1"># output_respecting = renormalization * output_respecting</span>
-    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_respecting</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">matrix_num</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">matrix_arr</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_respecting</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">matrix_num</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">matrix_arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">matrix_dtype</span><span class="p">)</span></div>
 
 
 
@@ -2062,6 +2132,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the unprocessed matrix representation of the P-CTC chronology-respecting (CR) output state.</span>
 
@@ -2073,6 +2144,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the matrix&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -2081,6 +2156,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
 
         <span class="n">output_respecting</span> <span class="o">=</span> <span class="n">pctc_respecting</span><span class="p">(</span>
             <span class="n">input_respecting</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">substitutions</span><span class="o">=</span><span class="p">[]),</span>
@@ -2088,7 +2164,7 @@
             <span class="n">systems_respecting</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_respecting</span><span class="p">,</span>
             <span class="n">systems_violating</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">systems_violating</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_respecting</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">output_respecting</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="PCTC.output_violating">
@@ -2097,6 +2173,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2112,6 +2189,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the matrix&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -2141,6 +2222,7 @@
         <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
         <span class="n">array_intermediate</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
 
         <span class="n">output_violating</span> <span class="o">=</span> <span class="n">pctc_violating</span><span class="p">(</span>
             <span class="n">input_respecting</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">substitutions</span><span class="o">=</span><span class="p">[]),</span>
@@ -2159,6 +2241,7 @@
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -2186,12 +2269,13 @@
             <span class="n">output_violating</span><span class="o">.</span><span class="n">dagger</span><span class="p">()</span>
 
         <span class="n">output_violating</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
-            <span class="n">spec</span><span class="o">=</span><span class="n">output_violating</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">),</span>
+            <span class="n">spec</span><span class="o">=</span><span class="n">output_violating</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">),</span>
             <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span>
             <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
@@ -2201,7 +2285,7 @@
             <span class="n">notation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">output_violating</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">output_violating</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="PCTC.output_respecting">
@@ -2210,6 +2294,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2226,6 +2311,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the matrix&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -2258,6 +2347,7 @@
         <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
         <span class="n">array_intermediate</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
         <span class="n">substitutions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span> <span class="k">if</span> <span class="n">substitutions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">substitutions</span>
 
         <span class="n">output_respecting</span> <span class="o">=</span> <span class="n">pctc_respecting</span><span class="p">(</span>
@@ -2284,6 +2374,7 @@
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -2330,13 +2421,14 @@
 
         <span class="n">output_respecting</span> <span class="o">=</span> <span class="n">QuantumState</span><span class="p">(</span>
             <span class="n">spec</span><span class="o">=</span><span class="n">output_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">(</span>
-                <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span>
+                <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span>
             <span class="p">),</span>
             <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span>
             <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
@@ -2346,7 +2438,7 @@
             <span class="n">notation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">output_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">output_respecting</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="PCTC.output">
@@ -2355,6 +2447,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2373,6 +2466,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the matrix&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -2405,6 +2502,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_respecting</span><span class="p">(</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
             <span class="n">conjugation</span><span class="o">=</span><span class="n">conjugation</span><span class="p">,</span>
@@ -2419,6 +2517,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2438,6 +2537,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the state&#39;s matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the state&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -2484,6 +2587,7 @@
         <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
         <span class="n">array_intermediate</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
         <span class="n">substitutions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span> <span class="k">if</span> <span class="n">substitutions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">substitutions</span>
         <span class="n">simplification</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplification</span> <span class="k">if</span> <span class="n">simplification</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">simplification</span>
         <span class="n">traces</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">traces</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">traces</span>
@@ -2497,6 +2601,7 @@
             <span class="n">spec</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">output_violating</span><span class="p">(</span>
                 <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
                 <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
                 <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
                 <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
                 <span class="n">conjugation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -2505,6 +2610,7 @@
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
@@ -2525,6 +2631,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">substitutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">simplification</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">conjugation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2545,6 +2652,10 @@
 <span class="sd">        array : bool</span>
 <span class="sd">            Whether to cast the state&#39;s matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).</span>
 <span class="sd">            Defaults to the value of :python:`self.array`.</span>
+<span class="sd">        dtype : type[num]</span>
+<span class="sd">            The data type to which the values in the state&#39;s array representation are cast.</span>
+<span class="sd">            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.</span>
+<span class="sd">            Defaults to the value of :python:`self.dtype`.</span>
 <span class="sd">        substitutions : list[tuple[num | expr | str, num | expr | str]]</span>
 <span class="sd">            Algebraic substitutions to be applied to the state.</span>
 <span class="sd">            Defaults to the value of :python:`self.substitutions`.</span>
@@ -2595,6 +2706,7 @@
         <span class="n">numerical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerical</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
         <span class="n">array_intermediate</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
         <span class="n">substitutions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">substitutions</span> <span class="k">if</span> <span class="n">substitutions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">substitutions</span>
         <span class="n">simplification</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplification</span> <span class="k">if</span> <span class="n">simplification</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">simplification</span>
         <span class="n">traces</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">traces</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">traces</span>
@@ -2624,6 +2736,7 @@
             <span class="n">spec</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">output_respecting</span><span class="p">(</span>
                 <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
                 <span class="n">array</span><span class="o">=</span><span class="n">array_intermediate</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
                 <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
                 <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>
                 <span class="n">conjugation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -2635,6 +2748,7 @@
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span>
             <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span>
             <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
             <span class="n">symbols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span>
             <span class="n">substitutions</span><span class="o">=</span><span class="n">substitutions</span><span class="p">,</span>
             <span class="n">simplification</span><span class="o">=</span><span class="n">simplification</span><span class="p">,</span>

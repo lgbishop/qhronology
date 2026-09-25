@@ -16,6 +16,7 @@ in pkgs.mkShell {
       pybtex
       myst-parser
       sphinx-autoapi
+      # sphinx-autodoc-typehints
       # sphinxcontrib-katex # MathJax (v3) is better for now
 
       # For doctest

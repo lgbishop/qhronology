@@ -19,22 +19,30 @@ from typing import Any, Callable
 import numpy as np
 import sympy as sp
 
-from qhronology.utilities.classification import Forms, arr, expr, mat, matrix_form, num
+from qhronology.utilities.classification import (
+    Forms,
+    arr,
+    expr,
+    floating,
+    mat,
+    matrix_form,
+    num,
+)
 from qhronology.utilities.helpers import (
     cast,
     conjugate_transpose,
     count_systems,
-    dtype,
-    extract_substitutions,
+    datatype,
     extract_representation,
+    extract_substitutions,
     extract_symbols,
     flatten_list,
     generate_identity,
     generate_zeros,
     matrix_multiplication,
     recursively_simplify,
-    symbolize_substitutions,
     symbolize_expression,
+    symbolize_substitutions,
     tensor_product,
     to_column,
     to_density,
@@ -111,10 +119,10 @@ def round(matrix: mat | arr | QuantumObject) -> mat | arr:
     """
     matrix = extract_representation(matrix)
 
-    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_num = True if issubclass(datatype(matrix), floating) is True else False
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
-    matrix = np.rint(np.real(np.array(matrix, dtype=complex))).astype(int)
+    matrix = np.rint(np.real(np.array(matrix, dtype=np.complex128))).astype(int)
     if matrix_arr is False:
         matrix = to_matrix(matrix)
 
@@ -183,8 +191,8 @@ def rewrite(matrix: mat | arr | QuantumObject, function: Callable) -> mat | arr:
 
     matrix = symbolize_expression(matrix, symbols)
 
-    if dtype(matrix) is object:
-        matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    if issubclass(datatype(matrix), object):
+        matrix_num = True if issubclass(datatype(matrix), floating) is True else False
         matrix_arr = True if isinstance(matrix, arr) is True else False
         matrix = to_matrix(matrix)
         try:
@@ -195,7 +203,7 @@ def rewrite(matrix: mat | arr | QuantumObject, function: Callable) -> mat | arr:
             raise ValueError(
                 f"""The specified function (`{function.__name__}()`) cannot be used to rewrite the matrix."""
             )
-        matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
+        matrix = cast(matrix, numerical=matrix_num, array=matrix_arr, dtype=datatype(matrix))
 
     return matrix
 
@@ -243,7 +251,7 @@ def apply(
     symbols = extract_symbols(matrix)
     matrix = extract_representation(matrix)
 
-    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_num = True if issubclass(datatype(matrix), floating) is True else False
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
@@ -256,13 +264,13 @@ def apply(
         try:
             for index, entry in np.ndenumerate(matrix):
                 matrix[index] = function(
-                    to_numerical(entry, numerical=True), **arguments
+                    to_numerical(entry, numerical=True, dtype=datatype(matrix)), **arguments
                 )
         except:
             raise ValueError(
                 f"""Unable to apply the specified function (`{function.__name__}()`) to the matrix."""
             )
-    matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
+    matrix = cast(matrix, numerical=matrix_num, array=matrix_arr, dtype=datatype(matrix))
 
     return matrix
 
@@ -298,7 +306,7 @@ def normalize(
     symbols = extract_symbols(matrix)
     matrix = extract_representation(matrix)
 
-    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_num = True if issubclass(datatype(matrix), floating) is True else False
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
@@ -319,7 +327,7 @@ def normalize(
     factor = recursively_simplify(factor, substitutions)
     matrix = factor * matrix
 
-    matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
+    matrix = cast(matrix, numerical=matrix_num, array=matrix_arr, dtype=datatype(matrix))
 
     return matrix
 
@@ -348,7 +356,7 @@ def coefficient(
     symbols = extract_symbols(matrix)
     matrix = extract_representation(matrix)
 
-    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_num = True if issubclass(datatype(matrix), floating) is True else False
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
@@ -358,7 +366,7 @@ def coefficient(
 
     matrix = scalar * matrix
 
-    matrix = cast(matrix, numerical=matrix_num, array=matrix_arr)
+    matrix = cast(matrix, numerical=matrix_num, array=matrix_arr, dtype=datatype(matrix))
 
     return matrix
 
@@ -403,7 +411,7 @@ def partial_trace(
 
     matrix = extract_representation(matrix)
 
-    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_num = True if issubclass(datatype(matrix), floating) is True else False
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
     targets = flatten_list(list([targets]))
@@ -437,6 +445,7 @@ def partial_trace(
             operator_reduced.reshape(num_keep + 1, num_keep + 1),
             numerical=matrix_num,
             array=matrix_arr,
+            dtype=datatype(matrix),
         )
 
 
@@ -536,7 +545,7 @@ def measure(
     symbols = extract_symbols(matrix)
     matrix = extract_representation(matrix)
 
-    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_num = True if issubclass(datatype(matrix), floating) is True else False
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
     matrix = symbolize_expression(matrix, symbols)
@@ -551,7 +560,7 @@ def measure(
     for operator in operators:
         operator_matrices.append(
             cast(
-                extract_representation(operator), numerical=matrix_num, array=matrix_arr
+                extract_representation(operator), numerical=matrix_num, array=matrix_arr, dtype=datatype(matrix)
             )
         )
     if statistics is False:
@@ -587,7 +596,7 @@ def measure(
                 matrix_post_measurement = (
                     matrix_post_measurement + probability * densify(operator)
                 )
-        return cast(matrix_post_measurement, numerical=matrix_num, array=matrix_arr)
+        return cast(matrix_post_measurement, numerical=matrix_num, array=matrix_arr, dtype=datatype(matrix))
     else:
         if observable is False:
             probabilities = [
@@ -652,7 +661,7 @@ def postselect(
     dim = 2 if dim is None else dim
 
     matrix = extract_representation(matrix)
-    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_num = True if issubclass(datatype(matrix), floating) is True else False
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
     num_systems = count_systems(matrix, dim)
@@ -680,7 +689,7 @@ def postselect(
         operator = extract_representation(postselection[0])
         if matrix_form(operator) == Forms.VECTOR.value:
             operator = columnify(operator)
-        operator = cast(operator, numerical=matrix_num, array=matrix_arr)
+        operator = cast(operator, numerical=matrix_num, array=matrix_arr, dtype=datatype(matrix))
         matrices.append(operator)
         num_systems = count_systems(operator, dim)
         if len(postselection[1]) != num_systems:
@@ -708,7 +717,7 @@ def postselect(
         operators_combined = tensor_product(*operators)
         matrix = matrix_multiplication(densify(operators_combined), densify(matrix))
         matrix = partial_trace(matrix=matrix, targets=flatten_list(targets), dim=dim)
-    return cast(matrix, numerical=matrix_num, array=matrix_arr)
+    return cast(matrix, numerical=matrix_num, array=matrix_arr, dtype=datatype(matrix))
 
 
 class OperationsMixin:
@@ -733,6 +742,7 @@ class OperationsMixin:
     def round(self):
         """Round the state's elements to the nearest (real) integer."""
         self.current = round(self)
+        self.dtype = int
 
     def simplify(self, comprehensive: bool | None = None):
         """Apply a forced simplification to the state using the values of its :python:`symbols` and :python:`substitutions` properties.

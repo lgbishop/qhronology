@@ -46,6 +46,7 @@ extensions = [  # "sphinx_sitemap",
     "sphinx_togglebutton",
     "sphinx.ext.mathjax",
     "sphinxcontrib.bibtex",
+    # "sphinx_autodoc_typehints", # must be loaded after `sphinx.ext.napoleon`
 ]
 # "sphinxcontrib.katex",
 #'sphinx_toolbox.latex',]

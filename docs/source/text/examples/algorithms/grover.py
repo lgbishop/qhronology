@@ -4,8 +4,8 @@ from qhronology.mechanics.matrices import ket, bra, encode, decode
 from qhronology.mechanics.operations import densify
 
 import math
-import sympy as sp
 import numpy as np
+import sympy as sp
 
 N = 10  # The size of the input space (domain)
 marked = 4  # The value to find (should be smaller than N)
@@ -44,6 +44,7 @@ grover = QuantumCircuit(
     gates=[H] + grover_iterations,
     numerical=True,
     array=True,
+    dtype=np.float32,
 )
 grover.diagram(pad=(1, 0), sep=(1, 2), force_separation=True)
 
@@ -69,7 +70,6 @@ for k, probability in enumerate(probabilities):
     suffix = ""
     if probability == max(probabilities):
         suffix = " (most probable)"
-
     if probability >= threshold or probability == max(probabilities):
         probability = sp.N(probability).round(3)
         print(

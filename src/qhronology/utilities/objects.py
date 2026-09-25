@@ -17,6 +17,7 @@ Not intended to be used directly by the user.
 from __future__ import annotations
 from typing import Any
 
+import numpy as np
 import sympy as sp
 
 from qhronology.mechanics.matrices import quantum_object
@@ -68,6 +69,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         dim: int | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         num_systems: int | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
@@ -84,6 +86,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         dim = 2 if dim is None else dim
         numerical = False if numerical is None else numerical
         array = False if array is None else array
+        dtype = np.complex128 if dtype is None else dtype
         conjugation = False if conjugation is None else conjugation
         matrix = quantum_object(
             spec=spec,
@@ -92,6 +95,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             dim=dim,
             numerical=numerical,
             array=array,
+            dtype=dtype,
         )
         num_systems = count_systems(matrix, dim) if num_systems is None else num_systems
         label = "A" if label is None else label
@@ -110,6 +114,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         self.kind = kind
         self.dim = dim
         self.array = array
+        self.dtype = dtype
         self.num_systems = num_systems
         self.conjugation = conjugation
         self.numerical = numerical
@@ -163,6 +168,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         """Compute the unprocessed matrix representation of the object.
 
@@ -174,6 +180,10 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
 
         Returns
         -------
@@ -182,6 +192,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         """
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
+        dtype = self.dtype if dtype is None else dtype
         return quantum_object(
             spec=self.spec,
             form=self.form,
@@ -189,12 +200,14 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             dim=self.dim,
             numerical=numerical,
             array=array,
+            dtype=dtype,
         )
 
     def output(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -209,6 +222,10 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -229,8 +246,9 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
-        output = self.matrix(numerical=numerical, array=array_intermediate)
+        output = self.matrix(numerical=numerical, array=array_intermediate, dtype=dtype)
         output = symbolize_expression(output, self.symbols_list)
 
         # Substitutions
@@ -248,7 +266,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         if conjugation is True:
             output = conjugate_transpose(output)
 
-        return cast(output, numerical=numerical, array=array)
+        return cast(output, numerical=numerical, array=array, dtype=dtype)
 
     def print(
         self,
@@ -256,6 +274,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         product: bool | None = None,
         return_string: bool | None = None,
         numerical: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -279,6 +298,10 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
         numerical : bool
             Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
+        dtype : type[num]
+            The data type to which the values of the mathematical expression are cast.
+            Only applies when :python:`numerical` is :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the object.
             Defaults to the value of :python:`self.substitutions`.
@@ -304,6 +327,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
             + stringify(
                 self.output(
                     numerical=numerical,
+                    dtype=dtype,
                     substitutions=substitutions,
                     simplification=simplification,
                     conjugation=conjugation,
@@ -509,6 +533,17 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
     @array.setter
     def array(self, array: bool):
         self._array = array
+
+    @property
+    def dtype(self) -> type[num]:
+        """The data type to which the values in the object's array representation are cast.
+        Only applies when :python:`self.numerical` and :python:`self.array` are both :python:`True`.
+        """
+        return self._dtype
+
+    @dtype.setter
+    def dtype(self, dtype: type[num]):
+        self._dtype = dtype
 
     @property
     def debug(self) -> bool:

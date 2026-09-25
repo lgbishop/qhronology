@@ -19,14 +19,30 @@ This module provides core functions for constructing matrices in quantum mechani
 
    \end{code}
 
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
+
 Functions
 ---------
+
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
 
 .. .. automodule:: qhronology.mechanics.matrices
 ..    :members: vector_basis, ket, bra, quantum_object, encode, decode, decode, decode_fast, decode_multiple
 ..    :member-order: bysource
 
 .. autofunction:: qhronology.mechanics.matrices.vector_basis
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{2\baselineskip}
 
    .. raw:: latex
 
@@ -227,7 +243,11 @@ Functions
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{2\baselineskip}
 
    .. raw:: latex
 
@@ -257,6 +277,10 @@ Functions
 
    .. raw:: latex
 
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -274,6 +298,10 @@ Functions
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
@@ -297,6 +325,10 @@ Functions
 
    .. raw:: latex
 
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -315,6 +347,10 @@ Functions
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
@@ -340,6 +376,14 @@ Functions
 
    .. raw:: latex
 
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -357,6 +401,10 @@ Functions
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
@@ -381,6 +429,10 @@ Functions
 
    .. raw:: latex
 
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -399,6 +451,10 @@ Functions
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
@@ -434,15 +490,7 @@ Functions
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{-\baselineskip}
-
 .. autofunction:: qhronology.mechanics.matrices.encode
-
-   .. raw:: latex
-
-      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -538,7 +586,7 @@ Functions
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \enlargethispage{-2\baselineskip}
 
 .. autofunction:: qhronology.mechanics.matrices.decode
 

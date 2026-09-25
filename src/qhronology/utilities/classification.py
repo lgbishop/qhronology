@@ -18,7 +18,8 @@ import numbers
 import numpy as np
 import sympy as sp
 
-num = numbers.Number | np.generic | sp.Basic
+floating = float | complex | np.inexact
+num = numbers.Number | np.number | sp.Basic
 sym = (
     sp.matrices.expressions.matexpr.MatrixSymbol
     | sp.matrices.expressions.matexpr.MatrixElement

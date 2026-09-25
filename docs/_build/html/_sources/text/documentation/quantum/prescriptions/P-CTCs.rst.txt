@@ -8,11 +8,19 @@ Postselected teleportation (P-CTCs)
 Functions
 ---------
 
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
+
 .. autofunction:: qhronology.quantum.prescriptions.pctc_violating
 
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. autofunction:: qhronology.quantum.prescriptions.pctc_respecting
 
@@ -64,10 +72,6 @@ Methods
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{-2\baselineskip}
-
 .. automethod:: qhronology.quantum.prescriptions.PCTC.output
 
 .. raw:: latex
@@ -84,6 +88,10 @@ Methods
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{2\baselineskip}
+
 .. automethod:: qhronology.quantum.prescriptions.PCTC.output_respecting
 
 .. raw:: latex
@@ -99,5 +107,9 @@ Methods
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 .. automethod:: qhronology.quantum.prescriptions.PCTC.state_respecting

@@ -38,6 +38,9 @@ from qhronology.utilities.classification import (
     sym,
 )
 
+import warnings
+warnings.filterwarnings('ignore', category=np.exceptions.ComplexWarning, module="qhronology")
+
 
 def flatten_list(nested_list: list | tuple) -> list:
     """Flatten a list of any nesting depth and structure, e.g.:
@@ -131,21 +134,12 @@ def conjugate_transpose(matrix: mat | arr) -> mat | arr:
     return matrix.conjugate().transpose()
 
 
-def dtype(matrix: mat | arr) -> type:
+def datatype(matrix: mat | arr) -> type:
     """Determine the numerical data type (:python:`dtype`) of :python:`matrix`."""
     if isinstance(matrix, mat) is True:
         return object
     elif isinstance(matrix, arr) is True:
-        if matrix.dtype == object:
-            return object
-        elif matrix.dtype == float:
-            return float
-        elif matrix.dtype == complex:
-            return complex
-        elif matrix.dtype == int:
-            return int
-        else:
-            raise TypeError("""Unable to determine the datatype of the given `matrix`.""")
+        return matrix.dtype.type
     else:
         raise TypeError(
             """The given matrix is neither a SymPy matrix or NumPy array."""
@@ -180,22 +174,22 @@ def to_column(vector: mat | arr) -> mat | arr:
 
 
 def to_array(
-    matrix: mat | arr | list[list[num | expr | str]], numerical: bool | None = None
+    matrix: mat | arr | list[list[num | expr | str]],
+    numerical: bool | None = None,
+    dtype: type[num] | None = None,
 ) -> arr:
     """Converts :python:`matrix` to a NumPy array."""
     numerical = False if numerical is None else numerical
+    dtype = np.complex128 if dtype is None else dtype
     if numerical is True:
-        if not (
-            isinstance(matrix, arr) is True and issubclass(dtype(matrix), num) is True
-        ):
-            try:
-                matrix = np.array(matrix, dtype=complex)
-            except:
-                # print(
-                #     """Warning: The given matrix contains non-floating types.""",
-                #     """Falling back to `object` mode.""",
-                # )
-                matrix = np.array(matrix, dtype=object)
+        try:
+            matrix = np.array(matrix, dtype=dtype)
+        except:
+            # print(
+            #     """Warning: The given matrix contains non-floating types.""",
+            #     """Falling back to `object` mode.""",
+            # )
+            matrix = np.array(matrix, dtype=object)
     else:
         if isinstance(matrix, arr) is False:
             matrix = np.array(matrix, dtype=object)
@@ -211,24 +205,28 @@ def cast(
     matrix: mat | arr | list[list[num | expr | str]],
     numerical: bool | None = None,
     array: bool | None = None,
+    dtype: type[num] | None = None,
 ) -> mat | arr:
     """Converts :python:`matrix` to either a NumPy array or SymPy matrix."""
     numerical = False if numerical is None else numerical
     array = False if array is None else array
     if array is True:
-        return to_array(matrix, numerical=numerical)
+        return to_array(matrix, numerical=numerical, dtype=dtype)
     else:
         return to_matrix(matrix)
 
 
 def to_numerical(
-    expression: num | expr | str, numerical: bool | None = None
+    expression: num | expr | str,
+    numerical: bool | None = None,
+    dtype: type[num] | None = None,
 ) -> num | expr | str:
     """Converts :python:`expression` to a numerical value, if possible."""
     numerical = False if numerical is None else numerical
+    dtype = np.complex128 if dtype is None else dtype
     if numerical is True:
         try:
-            expression = np.array([expression], dtype=complex)
+            expression = np.array([expression], dtype=dtype)
         except:
             expression = np.array([expression], dtype=object)
         expression = expression[0]
@@ -236,23 +234,29 @@ def to_numerical(
 
 
 def generate_identity(
-    size: int, numerical: bool | None = None, array: bool | None = None
+    size: int,
+    numerical: bool | None = None,
+    array: bool | None = None,
+    dtype: type[num] | None = None,
 ) -> mat | arr:
     """Construct an identity matrix as either a SymPy matrix or NumPy matrix."""
     if numerical is True:
-        return cast(np.eye(size), numerical=numerical, array=array)
+        return cast(np.eye(size), numerical=numerical, array=array, dtype=dtype)
     else:
-        return cast(sp.eye(size), numerical=numerical, array=array)
+        return cast(sp.eye(size), numerical=numerical, array=array, dtype=dtype)
 
 
 def generate_zeros(
-    size: int, numerical: bool | None = None, array: bool | None = None
+    size: int,
+    numerical: bool | None = None,
+    array: bool | None = None,
+    dtype: type[num] | None = None,
 ) -> mat | arr:
     """Construct a matrix or zeros as either a SymPy matrix or NumPy matrix."""
     if numerical is True:
-        return cast(np.zeros((size, size)), numerical=numerical, array=array)
+        return cast(np.zeros((size, size)), numerical=numerical, array=array, dtype=dtype)
     else:
-        return cast(sp.zeros(size), numerical=numerical, array=array)
+        return cast(sp.zeros(size), numerical=numerical, array=array, dtype=dtype)
 
 
 def stringify(
@@ -337,7 +341,7 @@ def symbolize_expression(
         expressions = [expressions]
     if not (
         isinstance(expressions, arr) is True
-        and issubclass(dtype(expressions), num) is True
+        and issubclass(datatype(expressions), num) is True
     ):
         for i, expression in enumerate(expressions):
             try:
@@ -403,7 +407,7 @@ def recursively_simplify(
 
     if not (
         isinstance(expressions, arr) is True
-        and issubclass(dtype(expressions), num) is True
+        and issubclass(datatype(expressions), num) is True
     ):
         for index, item in np.ndenumerate(expressions):
             if isinstance(item, expr) is True:
@@ -472,7 +476,7 @@ def apply_substitutions(
     """Make the substitutions as specified in :python:`substitutions` to the given :python:`matrix`."""
     if isinstance(matrix, mat) is True:
         matrix.subs(substitutions)
-    elif issubclass(dtype(matrix), num) is False:
+    elif issubclass(datatype(matrix), num) is False:
         for index, value in np.ndenumerate(matrix):
             try:
                 matrix[index] = value.subs(substitutions)
@@ -560,10 +564,10 @@ def apply_function(
     """Applies a function to a matrix. This is accomplished using eigendecomposition, in which the specified matrix is assumed to be normal (i.e., :python:`matrix * conjugate_transpose(matrix) = conjugate_transpose(matrix) * matrix`, which holds true for density operators)."""
     arguments = [] if arguments is None else arguments
     transformed = matrix
-    if isinstance(matrix, arr) is True and dtype(matrix) is not object:
+    if isinstance(matrix, arr) is True and issubclass(datatype(matrix), object) is False:
         eigenvalues, eigenvectors = np.linalg.eig(matrix)
         transformed = np.zeros(
-            (len(eigenvalues), len(eigenvalues)), dtype=dtype(matrix)
+            (len(eigenvalues), len(eigenvalues)), dtype=datatype(matrix)
         )
         for k in range(0, len(eigenvalues)):
             eigenvalue = eigenvalues[k]
@@ -658,7 +662,7 @@ def fix_arguments(
 def tensor_product(*matrices: mat | arr) -> mat | arr:
     """Compute the tensor (or Kronecker) product of the items in :python:`matrices`."""
     if isinstance(matrices[0], arr) is True:
-        product = np.ones(1, dtype=dtype(matrices[0]))
+        product = np.ones(1, dtype=datatype(matrices[0]))
         for k in range(0, len(matrices)):
             product = np.kron(product, matrices[k])
     else:

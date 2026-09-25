@@ -54,6 +54,7 @@ deutsch_jozsa = QuantumCircuit(
     gates=[IX, HH, O, HI],
     numerical=True,
     array=True,
+    dtype=np.float32,
 )
 deutsch_jozsa.diagram(pad=(1, 0), sep=(1, 2), force_separation=True)
 

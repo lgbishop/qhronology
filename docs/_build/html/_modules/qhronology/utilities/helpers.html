@@ -68,7 +68,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.2.0" />
-    <meta name="docbuild:last-update" content="Sep 09, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
   </head>
   
   
@@ -505,6 +505,9 @@
     <span class="n">sym</span><span class="p">,</span>
 <span class="p">)</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ComplexWarning</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;qhronology&quot;</span><span class="p">)</span>
+
 
 <div class="viewcode-block" id="flatten_list">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.flatten_list">[docs]</a>
@@ -622,23 +625,14 @@
 
 
 
-<div class="viewcode-block" id="dtype">
-<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.dtype">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">dtype</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
+<div class="viewcode-block" id="datatype">
+<a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.datatype">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">datatype</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine the numerical data type (:python:`dtype`) of :python:`matrix`.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">object</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">object</span>
-        <span class="k">elif</span> <span class="n">matrix</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">float</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">float</span>
-        <span class="k">elif</span> <span class="n">matrix</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">complex</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">complex</span>
-        <span class="k">elif</span> <span class="n">matrix</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">int</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Unable to determine the datatype of the given `matrix`.&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">matrix</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;The given matrix is neither a SymPy matrix or NumPy array.&quot;&quot;&quot;</span>
@@ -682,22 +676,22 @@
 <div class="viewcode-block" id="to_array">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_array">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">to_array</span><span class="p">(</span>
-    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]],</span>
+    <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts :python:`matrix` to a NumPy array.&quot;&quot;&quot;</span>
     <span class="n">numerical</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">complex128</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
     <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
-            <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">matrix</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
-        <span class="p">):</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="c1"># print(</span>
-                <span class="c1">#     &quot;&quot;&quot;Warning: The given matrix contains non-floating types.&quot;&quot;&quot;,</span>
-                <span class="c1">#     &quot;&quot;&quot;Falling back to `object` mode.&quot;&quot;&quot;,</span>
-                <span class="c1"># )</span>
-                <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="c1"># print(</span>
+            <span class="c1">#     &quot;&quot;&quot;Warning: The given matrix contains non-floating types.&quot;&quot;&quot;,</span>
+            <span class="c1">#     &quot;&quot;&quot;Falling back to `object` mode.&quot;&quot;&quot;,</span>
+            <span class="c1"># )</span>
+            <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
@@ -719,12 +713,13 @@
     <span class="n">matrix</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]],</span>
     <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts :python:`matrix` to either a NumPy array or SymPy matrix.&quot;&quot;&quot;</span>
     <span class="n">numerical</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
     <span class="n">array</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">array</span>
     <span class="k">if</span> <span class="n">array</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">to_array</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">to_array</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">to_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span></div>
 
@@ -733,13 +728,16 @@
 <div class="viewcode-block" id="to_numerical">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.to_numerical">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">to_numerical</span><span class="p">(</span>
-    <span class="n">expression</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">expression</span><span class="p">:</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">num</span> <span class="o">|</span> <span class="n">expr</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts :python:`expression` to a numerical value, if possible.&quot;&quot;&quot;</span>
     <span class="n">numerical</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">numerical</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">complex128</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dtype</span>
     <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">expression</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">expression</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+            <span class="n">expression</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">expression</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="n">expression</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">expression</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
         <span class="n">expression</span> <span class="o">=</span> <span class="n">expression</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -750,26 +748,32 @@
 <div class="viewcode-block" id="generate_identity">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.generate_identity">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_identity</span><span class="p">(</span>
-    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct an identity matrix as either a SymPy matrix or NumPy matrix.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="generate_zeros">
 <a class="viewcode-back" href="../../../text/documentation/utilities/helpers.html#qhronology.utilities.helpers.generate_zeros">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_zeros</span><span class="p">(</span>
-    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">numerical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">array</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct a matrix or zeros as either a SymPy matrix or NumPy matrix.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">numerical</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">)),</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">)),</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">numerical</span><span class="o">=</span><span class="n">numerical</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
 
 
 
@@ -860,7 +864,7 @@
         <span class="n">expressions</span> <span class="o">=</span> <span class="p">[</span><span class="n">expressions</span><span class="p">]</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
         <span class="nb">isinstance</span><span class="p">(</span><span class="n">expressions</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
-        <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">expressions</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+        <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">expressions</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
     <span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">expression</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">expressions</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
@@ -932,7 +936,7 @@
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
         <span class="nb">isinstance</span><span class="p">(</span><span class="n">expressions</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
-        <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">expressions</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
+        <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">expressions</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span>
     <span class="p">):</span>
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">expressions</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">expr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -1004,7 +1008,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make the substitutions as specified in :python:`substitutions` to the given :python:`matrix`.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">matrix</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">substitutions</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="p">(</span><span class="n">matrix</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">matrix</span><span class="p">),</span> <span class="n">num</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">matrix</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">substitutions</span><span class="p">)</span>
@@ -1110,10 +1114,10 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies a function to a matrix. This is accomplished using eigendecomposition, in which the specified matrix is assumed to be normal (i.e., :python:`matrix * conjugate_transpose(matrix) = conjugate_transpose(matrix) * matrix`, which holds true for density operators).&quot;&quot;&quot;</span>
     <span class="n">arguments</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">arguments</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">arguments</span>
     <span class="n">transformed</span> <span class="o">=</span> <span class="n">matrix</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">dtype</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">object</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">datatype</span><span class="p">(</span><span class="n">matrix</span><span class="p">),</span> <span class="nb">object</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
         <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
         <span class="n">transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
-            <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+            <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">datatype</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)):</span>
             <span class="n">eigenvalue</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
@@ -1217,7 +1221,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">tensor_product</span><span class="p">(</span><span class="o">*</span><span class="n">matrices</span><span class="p">:</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mat</span> <span class="o">|</span> <span class="n">arr</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the tensor (or Kronecker) product of the items in :python:`matrices`.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrices</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">(</span><span class="n">matrices</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">datatype</span><span class="p">(</span><span class="n">matrices</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrices</span><span class="p">)):</span>
             <span class="n">product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">matrices</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>

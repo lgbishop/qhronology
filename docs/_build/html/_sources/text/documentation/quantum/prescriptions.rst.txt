@@ -257,15 +257,11 @@ Methods
 
 ..    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{-3\baselineskip}
+
 .. automethod:: qhronology.quantum.prescriptions.QuantumCTC.diagram
-
-   .. raw:: latex
-
-      \vspace*{-0.5\baselineskip}
-
-   .. raw:: latex
-
-      \enlargethispage{3\baselineskip}
 
    .. raw:: latex
 

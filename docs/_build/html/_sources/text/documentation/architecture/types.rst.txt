@@ -18,7 +18,7 @@ Qhronology's underlying functionality takes advantage of a few bespoke type alia
        | Numerical :inlinelatex:`\linebreak` scalars
        | :inlinelatex:`\vspace*{-1.85\baselineskip}`
      - | :inlinelatex:`\vspace*{-2.00\baselineskip}`
-       | :python:`numbers.Number | numpy.generic | sympy.Basic`
+       | :python:`numbers.Number | numpy.number | sympy.Basic`
    * - | :inlinelatex:`\vspace*{-1.75\baselineskip}`
        | :python:`sym`
      - | :inlinelatex:`\vspace*{-1.75\baselineskip}`

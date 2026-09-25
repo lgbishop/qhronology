@@ -654,6 +654,12 @@ Constructor argument properties
 
    \hrulefillthick
 
+.. autoproperty:: qhronology.quantum.gates.QuantumGate.dtype
+
+.. raw:: latex
+
+   \hrulefillthick
+
 .. autoproperty:: qhronology.quantum.gates.QuantumGate.symbols
 
 .. raw:: latex
@@ -738,13 +744,19 @@ Methods
 
 .. raw:: latex
 
+   \enlargethispage{2\baselineskip}
+
+.. raw:: latex
+
+   \newpage
+   \null
+   \vspace*{-2.25\baselineskip}
+
+.. raw:: latex
+
    \hrulefillthick
 
 .. automethod:: qhronology.quantum.gates.QuantumGate.print
-
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -1229,6 +1241,10 @@ Methods
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 

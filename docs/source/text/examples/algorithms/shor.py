@@ -5,8 +5,8 @@ from qhronology.mechanics.operations import dagger
 
 import math
 from fractions import Fraction
-import sympy as sp
 import numpy as np
+import sympy as sp
 
 N = 15  # The number to be factorized
 a = 2  # Should be coprime to N
@@ -125,6 +125,7 @@ shor = QuantumCircuit(
     gates=[HX] + mod_exp_gates + [IQFT],
     numerical=True,
     array=True,
+    dtype=np.complex64,
 )
 shor.diagram(pad=(1, 0), force_separation=True)
 

@@ -17,6 +17,8 @@ from __future__ import annotations
 import copy
 from typing import Any
 
+import numpy as np
+
 from qhronology.mechanics.operations import densify
 from qhronology.quantum.gates import GateInterleave, GateStack, QuantumGate, _Single
 from qhronology.quantum.states import QuantumState
@@ -73,19 +75,19 @@ class QuantumCircuit(SymbolicsProperties):
     inputs : list[QuantumState]
         An ordered list of :py:class:`~qhronology.quantum.states.QuantumState` instances.
         The total input state is the tensor product of these individual states in the order in which they appear in :python:`inputs`.
-        Must all have the same value of the :python:`dim` property.
+        Must all have the same dimensionality.
         Defaults to :python:`[]`.
     gates : list[QuantumGate]
         An ordered list of :py:class:`~qhronology.quantum.gates.QuantumGate` instances.
         The total gate is the product of these individual gates in the order in which they appear in :python:`gates`.
-        Must all have the same values of the :python:`dim` and :python:`num_systems` properties.
+        Must all have the same dimensionality and number of systems.
         Defaults to :python:`[]`.
     traces : list[int]
         The numerical indices of the subsystems to be traced over.
         Defaults to :python:`[]`.
     postselections : list[tuple[mat | arr | QuantumObject, list[int]]]
         A list of 2-tuples of vectors or matrix operators paired with indices of their postselection target systems.
-        Must all have the same value of the :python:`dim` property.
+        Must all have the same dimensionality.
         Defaults to :python:`[]`.
     numerical : bool
         Whether to cast the elements of the circuit's output matrices as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
@@ -93,6 +95,10 @@ class QuantumCircuit(SymbolicsProperties):
     array : bool
         Whether to cast the circuit's output matrices as NumPy arrays (:python:`True`) or SymPy matrices (:python:`False`).
         Defaults to :python:`False`.
+    dtype : type[num]
+        The data type to which the values in the array representations of the circuit's output matrices are cast.
+        Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+        Defaults to :python:`numpy.complex128`.
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         The value of the :python:`symbols` property of all states in :python:`inputs` and gates in :python:`gates` are automatically merged into the instance's corresponding :python:`symbols` property.
@@ -107,6 +113,11 @@ class QuantumCircuit(SymbolicsProperties):
         Whether to perform mathematical simplification on all objects (i.e., states and gates) computed from the circuit.
         If :python:`False`, does not simplify.
         Defaults to :python:`False`.
+
+
+    .. raw:: latex
+
+       \\enlargethispage{2\\baselineskip}
 
     Note
     ----
@@ -135,6 +146,7 @@ class QuantumCircuit(SymbolicsProperties):
         ) = None,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
@@ -151,6 +163,7 @@ class QuantumCircuit(SymbolicsProperties):
         traces = [] if traces is None else traces
         numerical = False if numerical is None else numerical
         array = False if array is None else array
+        dtype = np.complex128 if dtype is None else dtype
 
         self.inputs = inputs
         self.gates = gates
@@ -160,6 +173,7 @@ class QuantumCircuit(SymbolicsProperties):
         self.traces = traces
         self.numerical = numerical
         self.array = array
+        self.dtype = dtype
 
     def __repr__(self) -> str:
         return repr(self.output())
@@ -188,7 +202,7 @@ class QuantumCircuit(SymbolicsProperties):
 
         The total gate is the product of these individual gates in the order in which they appear in the list.
 
-        Must all have the same :python:`num_systems` property.
+        Must all have the same number of systems.
 
         Each gate's :python:`symbols` and :python:`substitutions` properties are merged into their counterparts in the instance upon their addition to the :python:`gates` property.
         """
@@ -258,6 +272,17 @@ class QuantumCircuit(SymbolicsProperties):
     @array.setter
     def array(self, array: bool):
         self._array = array
+
+    @property
+    def dtype(self) -> type[num]:
+        """The data type to which the values in the array representations of the circuit's output matrices are cast.
+        Only applies when :python:`self.numerical` and :python:`self.array` are both :python:`True`.
+        """
+        return self._dtype
+
+    @dtype.setter
+    def dtype(self, dtype: type[num]):
+        self._dtype = dtype
 
     @property
     def traces(self) -> list[int]:
@@ -443,6 +468,7 @@ class QuantumCircuit(SymbolicsProperties):
         merge: bool | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -469,6 +495,10 @@ class QuantumCircuit(SymbolicsProperties):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the state's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -514,6 +544,7 @@ class QuantumCircuit(SymbolicsProperties):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         # Autofill with zero states as necessary.
         zero_state = QuantumState(
@@ -523,6 +554,7 @@ class QuantumCircuit(SymbolicsProperties):
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=dict(),
             substitutions=[],
             simplification=False,
@@ -561,7 +593,7 @@ class QuantumCircuit(SymbolicsProperties):
         label = "⊗".join([state.label for state in inputs]) if label is None else label
 
         inputs = [
-            state.output(numerical=numerical, array=array_intermediate)
+            state.output(numerical=numerical, array=array_intermediate, dtype=dtype)
             for state in inputs
         ]
         input_state = tensor_product(*inputs)
@@ -573,6 +605,7 @@ class QuantumCircuit(SymbolicsProperties):
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=False,
@@ -591,9 +624,10 @@ class QuantumCircuit(SymbolicsProperties):
         input_state = QuantumState(
             form=form,
             kind=kind,
-            spec=input_state.output(numerical=numerical, array=array_intermediate),
+            spec=input_state.output(numerical=numerical, array=array_intermediate, dtype=dtype),
             numerical=numerical,
             array=array,
+            dtype=dtype,
             dim=self.dim,
             symbols=self.symbols,
             substitutions=substitutions,
@@ -611,6 +645,7 @@ class QuantumCircuit(SymbolicsProperties):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -630,6 +665,10 @@ class QuantumCircuit(SymbolicsProperties):
         array : bool
             Whether to cast the gate's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the gate's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the gate.
             Defaults to the value of :python:`self.substitutions`.
@@ -666,17 +705,19 @@ class QuantumCircuit(SymbolicsProperties):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         spec = generate_identity(
             self.dim**self.num_systems_gross,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
         )
         for gate in self.gates:
             gate = copy.deepcopy(gate)
             gate.num_systems = self.num_systems_gross
             spec = matrix_multiplication(
-                gate.output(numerical=numerical, array=array_intermediate), spec
+                gate.output(numerical=numerical, array=array_intermediate, dtype=dtype), spec
             )
 
         spec = symbolize_expression(spec, self.symbols_list)
@@ -700,6 +741,7 @@ class QuantumCircuit(SymbolicsProperties):
             dim=self.dim,
             numerical=numerical,
             array=array,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -716,6 +758,7 @@ class QuantumCircuit(SymbolicsProperties):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         """Compute the unprocessed matrix representation of the circuit's total output state.
 
@@ -727,6 +770,10 @@ class QuantumCircuit(SymbolicsProperties):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
 
         Returns
         -------
@@ -736,11 +783,12 @@ class QuantumCircuit(SymbolicsProperties):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
-        input_state = self.input(numerical=numerical, array=array_intermediate).output()
+        input_state = self.input(numerical=numerical, array=array_intermediate, dtype=dtype).output()
         if self.gate_is_linear is True:
             gate_total = self.gate(
-                numerical=numerical, array=array_intermediate
+                numerical=numerical, array=array_intermediate, dtype=dtype
             ).output()
             if self.input_is_vector is True:
                 output_state = matrix_multiplication(gate_total, input_state)
@@ -759,15 +807,17 @@ class QuantumCircuit(SymbolicsProperties):
                         self.dim**self.num_systems_gross,
                         numerical=numerical,
                         array=array_intermediate,
+                        dtype=dtype,
                     )
                     if gate.observable is False:
                         for matrix_measurement_operator in gate.matrices(
-                            numerical=numerical, array=array_intermediate
+                            numerical=numerical, array=array_intermediate, dtype=dtype
                         ):
                             matrix_measurement_operator = cast(
                                 matrix_measurement_operator,
                                 numerical=numerical,
                                 array=array_intermediate,
+                                dtype=dtype,
                             )
                             post_measurement_state = (
                                 post_measurement_state
@@ -781,12 +831,13 @@ class QuantumCircuit(SymbolicsProperties):
                             )
                     else:
                         for matrix_measurement_operator in gate.matrices(
-                            numerical=numerical, array=array_intermediate
+                            numerical=numerical, array=array_intermediate, dtype=dtype
                         ):
                             matrix_measurement_operator = cast(
                                 matrix_measurement_operator,
                                 numerical=numerical,
                                 array=array_intermediate,
+                                dtype=dtype,
                             )
                             post_measurement_state = (
                                 post_measurement_state
@@ -799,18 +850,19 @@ class QuantumCircuit(SymbolicsProperties):
                     output_state = post_measurement_state
                 else:
                     gate_matrix = gate.output(
-                        substitutions=[], numerical=numerical, array=array_intermediate
+                        substitutions=[], numerical=numerical, array=array_intermediate, dtype=dtype
                     )
                     output_state = matrix_multiplication(
                         gate_matrix, output_state, conjugate_transpose(gate_matrix)
                     )
 
-        return cast(output_state, numerical=numerical, array=array)
+        return cast(output_state, numerical=numerical, array=array, dtype=dtype)
 
     def output(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -827,6 +879,10 @@ class QuantumCircuit(SymbolicsProperties):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -855,9 +911,10 @@ class QuantumCircuit(SymbolicsProperties):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
         substitutions = self.substitutions if substitutions is None else substitutions
-        output_state = self.matrix(numerical=numerical, array=array_intermediate)
+        output_state = self.matrix(numerical=numerical, array=array_intermediate, dtype=dtype)
         form = Forms.MATRIX.value
         kind = Kinds.MIXED.value
         if self.input_is_vector is True:
@@ -874,6 +931,7 @@ class QuantumCircuit(SymbolicsProperties):
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=False,
@@ -923,12 +981,13 @@ class QuantumCircuit(SymbolicsProperties):
             output_state.dagger()
 
         output_state = QuantumState(
-            spec=output_state.output(numerical=numerical, array=array_intermediate),
+            spec=output_state.output(numerical=numerical, array=array_intermediate, dtype=dtype),
             form=form,
             kind=kind,
             dim=self.dim,
             numerical=numerical,
             array=array_intermediate,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -939,12 +998,13 @@ class QuantumCircuit(SymbolicsProperties):
             debug=False,
         )
 
-        return output_state.output(numerical=numerical, array=array)
+        return output_state.output(numerical=numerical, array=array, dtype=dtype)
 
     def state(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -965,6 +1025,10 @@ class QuantumCircuit(SymbolicsProperties):
         array : bool
             Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the state's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -1011,6 +1075,7 @@ class QuantumCircuit(SymbolicsProperties):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
         substitutions = self.substitutions if substitutions is None else substitutions
         simplification = self.simplification if simplification is None else simplification
         traces = [] if traces is None else traces
@@ -1037,6 +1102,7 @@ class QuantumCircuit(SymbolicsProperties):
         matrix = self.output(
             numerical=numerical,
             array=array,
+            dtype=dtype,
             substitutions=substitutions,
             simplification=simplification,
             conjugation=False,
@@ -1051,6 +1117,7 @@ class QuantumCircuit(SymbolicsProperties):
             dim=self.dim,
             numerical=numerical,
             array=array,
+            dtype=dtype,
             symbols=self.symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -1071,6 +1138,7 @@ class QuantumCircuit(SymbolicsProperties):
         statistics: bool | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> QuantumState | list[num | expr]:
         """Perform a quantum measurement on one or more systems (indicated in :python:`targets`) of the circuit's total output state.
 
@@ -1137,6 +1205,10 @@ class QuantumCircuit(SymbolicsProperties):
         array : bool
             Whether to cast the post-measurement state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the output object (post-measurement state or measurement probabilities) are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
 
         Returns
         -------
@@ -1150,8 +1222,9 @@ class QuantumCircuit(SymbolicsProperties):
         statistics = False if statistics is None else statistics
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
+        dtype = self.dtype if dtype is None else dtype
 
-        state = self.state(postprocess=False, numerical=numerical, array=array)
+        state = self.state(postprocess=False, numerical=numerical, array=array, dtype=dtype)
         if statistics is True:
             state = state.measure(
                 operators=operators,
@@ -1507,7 +1580,7 @@ class QuantumCircuit(SymbolicsProperties):
                     *gate, merge=False, num_systems=self.num_systems
                 )
 
-        # TODO: Convert all GateInterleave to GateStack for performance.
+        # TODO: Convert all GateInterleave to GateStack for performance?
 
         self.gates = flatten_list(gates)
 

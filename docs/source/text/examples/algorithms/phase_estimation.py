@@ -2,8 +2,8 @@ from qhronology.quantum.gates import GateStack, Hadamard, Pauli, Phase, Fourier
 from qhronology.quantum.circuits import QuantumCircuit
 from qhronology.mechanics.matrices import encode, decode
 
-import sympy as sp
 import numpy as np
+import sympy as sp
 
 phase = 0.64  # The phase to be estimated
 precision = 4  # The number of qubits used by the estimation
@@ -45,6 +45,7 @@ phase_estimator = QuantumCircuit(
     gates=[HX] + unitaries + [IQFT],
     numerical=True,
     array=True,
+    dtype=np.complex64,
 )
 phase_estimator.diagram(pad=(1, 0), force_separation=True)
 
@@ -71,7 +72,6 @@ for k, probability in enumerate(probabilities):
     suffix = ""
     if probability == max(probabilities):
         suffix = " (most probable)"
-
     if probability >= threshold or probability == max(probabilities):
         probability = sp.N(probability).round(3)
         print(

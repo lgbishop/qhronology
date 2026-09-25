@@ -76,6 +76,10 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
     array : bool
         Whether to cast the state's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
+    dtype : type[num]
+        The data type to which the values in the state's array representation are cast.
+        Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+        Defaults to :python:`numpy.complex128`.
     symbols : dict[sym | str, dict[str, Any]]
         A dictionary in which the keys are individual symbols (usually found within the state specification :python:`spec`) and the values are dictionaries of their respective SymPy keyword-argument :python:`assumptions`.
         Defaults to :python:`{}`.
@@ -130,6 +134,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         dim: int | None = None,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         symbols: dict[sym | str, dict[str, Any]] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
@@ -159,6 +164,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             dim=dim,
             numerical=numerical,
             array=array,
+            dtype=dtype,
         )
 
         QuantumObject.__init__(
@@ -169,6 +175,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             dim=dim,
             numerical=numerical,
             array=array,
+            dtype=dtype,
             symbols=symbols,
             substitutions=substitutions,
             simplification=simplification,
@@ -221,6 +228,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
     ) -> mat | arr:
         """Compute the unprocessed matrix representation of the state.
 
@@ -232,6 +240,10 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
 
         Returns
         -------
@@ -240,12 +252,14 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         """
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
-        return cast(self.current, numerical=numerical, array=array)
+        dtype = self.dtype if dtype is None else dtype
+        return cast(self.current, numerical=numerical, array=array, dtype=dtype)
 
     def output(
         self,
         numerical: bool | None = None,
         array: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -261,6 +275,10 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         array : bool
             Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
             Defaults to the value of :python:`self.array`.
+        dtype : type[num]
+            The data type to which the values in the matrix's array representation are cast.
+            Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -285,8 +303,9 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         numerical = self.numerical if numerical is None else numerical
         array = self.array if array is None else array
         array_intermediate = True if numerical is True else False
+        dtype = self.dtype if dtype is None else dtype
 
-        state = self.matrix(numerical=numerical, array=array_intermediate)
+        state = self.matrix(numerical=numerical, array=array_intermediate, dtype=dtype)
         state = symbolize_expression(state, self.symbols_list)
 
         # Normalization
@@ -310,7 +329,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         if conjugation is True:
             state = conjugate_transpose(state)
 
-        return cast(state, numerical=numerical, array=array)
+        return cast(state, numerical=numerical, array=array, dtype=dtype)
 
     def print(
         self,
@@ -318,6 +337,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         product: bool | None = None,
         return_string: bool | None = None,
         numerical: bool | None = None,
+        dtype: type[num] | None = None,
         substitutions: list[tuple[num | expr | str, num | expr | str]] | None = None,
         simplification: bool | None = None,
         conjugation: bool | None = None,
@@ -342,6 +362,10 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         numerical : bool
             Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
             Defaults to the value of :python:`self.numerical`.
+        dtype : type[num]
+            The data type to which the values in the mathematical expression are cast.
+            Only applies when :python:`numerical` is :python:`True`.
+            Defaults to the value of :python:`self.dtype`.
         substitutions : list[tuple[num | expr | str, num | expr | str]]
             Algebraic substitutions to be applied to the state.
             Defaults to the value of :python:`self.substitutions`.
@@ -371,6 +395,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             + stringify(
                 self.output(
                     numerical=numerical,
+                    dtype=dtype,
                     substitutions=substitutions,
                     simplification=simplification,
                     conjugation=conjugation,
@@ -387,7 +412,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             print(expression)
 
     def reset(self):
-        """Reset the quantum state's internal matrix state (specifically its :python:`current` property) to its original value at instantiation.
+        """Reset the quantum state's internal matrix state (specifically its :python:`current` property) to the value described by its :python:`spec` property.
 
         Note
         ----
@@ -401,6 +426,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
             dim=self.dim,
             numerical=self.numerical,
             array=self.array,
+            dtype=self.dtype,
         )
 
 

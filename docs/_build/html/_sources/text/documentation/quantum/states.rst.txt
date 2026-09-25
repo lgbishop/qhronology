@@ -113,6 +113,10 @@ Main class
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -263,10 +267,6 @@ Main class
 
    .. raw:: latex
 
-      \enlargethispage{-\baselineskip}
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -355,7 +355,7 @@ Main class
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
+      \enlargethispage{-\baselineskip}
 
    .. raw:: latex
 
@@ -411,7 +411,7 @@ Main class
 
    .. raw:: latex
 
-      \enlargethispage{1\baselineskip}
+      \enlargethispage{2\baselineskip}
 
    .. raw:: latex
 
@@ -603,6 +603,12 @@ Constructor argument properties
 
    \hrulefillthick
 
+.. autoproperty:: qhronology.quantum.states.QuantumState.dtype
+
+.. raw:: latex
+
+   \hrulefillthick
+
 .. autoproperty:: qhronology.quantum.states.QuantumState.symbols
 
 .. raw:: latex
@@ -715,6 +721,10 @@ Methods
 
    .. raw:: latex
 
+      \enlargethispage{-\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -760,10 +770,6 @@ Methods
 
    .. raw:: latex
 
-      \newpage
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -784,6 +790,10 @@ Methods
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{-3\baselineskip}
 
    .. raw:: latex
 
@@ -992,10 +1002,6 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. automethod:: qhronology.quantum.states.QuantumState.round
 
    .. raw:: latex
@@ -1037,11 +1043,11 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{\baselineskip}
-
 .. automethod:: qhronology.quantum.states.QuantumState.simplify
+
+   .. raw:: latex
+
+      \vspace*{-0.35\baselineskip}
 
    .. raw:: latex
 
@@ -1080,7 +1086,15 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
 .. raw:: latex
 
+   \vspace*{-0.35\baselineskip}
+
+.. raw:: latex
+
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. automethod:: qhronology.quantum.states.QuantumState.rewrite
 
@@ -1354,14 +1368,6 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \newpage
-
-.. raw:: latex
-
-   \enlargethispage{-2\baselineskip}
-
 .. automethod:: qhronology.quantum.states.QuantumState.measure
 
    .. raw:: latex
@@ -1415,6 +1421,10 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -1528,6 +1538,10 @@ All of these methods (except for :py:meth:`~qhronology.quantum.states.QuantumSta
 .. raw:: latex
 
    \hrulefillthick
+
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
 
 .. _`sec:docs_states_quantities`:
 
@@ -1649,6 +1663,10 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    .. raw:: latex
 
+      \enlargethispage{-3\baselineskip}
+
+   .. raw:: latex
+
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
@@ -1686,6 +1704,10 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    .. raw:: latex
 
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1708,6 +1730,10 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
    .. raw:: latex
 
       \end{code}
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
@@ -1735,6 +1761,10 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
    .. raw:: latex
 
       \end{adjustwidth}
+
+.. raw:: latex
+
+   \vspace*{-0.25\baselineskip}
 
 .. raw:: latex
 
@@ -1843,10 +1873,6 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    .. raw:: latex
 
-      \enlargethispage{\baselineskip}
-
-   .. raw:: latex
-
       \begin{adjustwidth}{0.00cm}{0cm}
 
    .. rubric:: :styleheader6:`Examples`
@@ -1919,6 +1945,10 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{\baselineskip}
+
 .. automethod:: qhronology.quantum.states.QuantumState.mutual
 
    .. raw:: latex
@@ -1969,6 +1999,10 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
    .. raw:: latex
 
+      \enlargethispage{\baselineskip}
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -1997,6 +2031,10 @@ All of these methods are inherited from :py:class:`~qhronology.mechanics.quantit
 
 .. raw:: latex
 
+   \vspace*{-0.25\baselineskip}
+
+.. raw:: latex
+
    \hrulefillthick
 
 .. _`sec:docs_states_subclasses`:
@@ -2005,6 +2043,10 @@ Subclasses
 ==========
 
 .. autoclass:: qhronology.quantum.states.VectorState
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
 
    .. raw:: latex
 
@@ -2032,9 +2074,21 @@ Subclasses
 
 .. raw:: latex
 
+   \vspace*{-0.25\baselineskip}
+
+.. raw:: latex
+
    \hrulefillthick
 
 .. autoclass:: qhronology.quantum.states.MatrixState
+
+   .. raw:: latex
+
+      \vspace*{-0.25\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -2059,10 +2113,6 @@ Subclasses
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \newpage
 
    .. raw:: latex
 

@@ -73,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.2.0" />
-    <meta name="docbuild:last-update" content="Sep 09, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
   </head>
   
   
@@ -683,8 +683,8 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">fractions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fraction</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 
 <span class="n">N</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># The number to be factorized</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Should be coprime to N</span>
@@ -803,6 +803,7 @@
     <span class="n">gates</span><span class="o">=</span><span class="p">[</span><span class="n">HX</span><span class="p">]</span> <span class="o">+</span> <span class="n">mod_exp_gates</span> <span class="o">+</span> <span class="p">[</span><span class="n">IQFT</span><span class="p">],</span>
     <span class="n">numerical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">array</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">shor</span><span class="o">.</span><span class="n">diagram</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">force_separation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 

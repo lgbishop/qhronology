@@ -73,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.2.0" />
-    <meta name="docbuild:last-update" content="Sep 09, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
   </head>
   
   
@@ -574,6 +574,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.utilities.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">flatten_list</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qhronology.mechanics.matrices</span><span class="w"> </span><span class="kn">import</span> <span class="n">encode</span><span class="p">,</span> <span class="n">decode</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
@@ -656,7 +657,6 @@
 <span class="n">carries</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">encoding_depth</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">overflow_qubit</span><span class="p">)):</span>
     <span class="n">system_shift</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">i</span>
-
     <span class="n">ICCN</span> <span class="o">=</span> <span class="n">Not</span><span class="p">(</span>
         <span class="n">targets</span><span class="o">=</span><span class="p">[</span><span class="n">system_shift</span> <span class="o">+</span> <span class="mi">3</span><span class="p">],</span>
         <span class="n">controls</span><span class="o">=</span><span class="p">[</span><span class="n">system_shift</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">system_shift</span> <span class="o">+</span> <span class="mi">2</span><span class="p">],</span>
@@ -729,6 +729,7 @@
     <span class="n">gates</span><span class="o">=</span><span class="n">gates</span><span class="p">,</span>
     <span class="n">numerical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">array</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">adder</span><span class="o">.</span><span class="n">diagram</span><span class="p">()</span>
 
@@ -809,12 +810,12 @@
 </div>
 <p>When <code class="code highlight python docutils literal highlight-python"><span class="n">overflow_qubit</span> <span class="o">=</span> <span class="kc">True</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
-<span class="go">Duration: 0.057 seconds</span>
+<span class="go">Duration: 0.039 seconds</span>
 </pre></div>
 </div>
 <p>When <code class="code highlight python docutils literal highlight-python"><span class="n">overflow_qubit</span> <span class="o">=</span> <span class="kc">False</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
-<span class="go">Duration: 0.028 seconds</span>
+<span class="go">Duration: 0.015 seconds</span>
 </pre></div>
 </div>
 <p>This version of a multi-qubit full adder is evidently much faster than the <code class="xref std std-numref docutils literal notranslate"><span class="pre">eg:adder_ripple</span></code> <a class="reference internal" href="adder_ripple.html#eg-adder-ripple"><span class="std std-ref">Ripple-carry adder</span></a> for the equivalent number of qubits, which highlights the efficiency advantage of using fewer qubits to achieve the same computation.</p>

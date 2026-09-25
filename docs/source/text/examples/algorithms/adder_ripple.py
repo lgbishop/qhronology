@@ -4,6 +4,7 @@ from qhronology.quantum.circuits import QuantumCircuit
 from qhronology.utilities.helpers import flatten_list
 from qhronology.mechanics.matrices import encode, decode, decode_fast
 
+import numpy as np
 import sympy as sp
 import time
 
@@ -116,6 +117,7 @@ adder = QuantumCircuit(
     gates=gates,
     numerical=True,
     array=True,
+    dtype=np.float32,
 )
 adder.diagram()
 

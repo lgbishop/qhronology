@@ -20,6 +20,7 @@ import sympy as sp
 from qhronology.mechanics.operations import columnify, densify, partial_trace
 from qhronology.utilities.classification import (
     COMPATIBILITIES,
+    floating,
     FORMS,
     Forms,
     KINDS,
@@ -35,7 +36,7 @@ from qhronology.utilities.helpers import (
     conjugate_transpose,
     count_rows,
     count_systems,
-    dtype,
+    datatype,
     extract_representation,
     flatten_list,
     generate_zeros,
@@ -46,7 +47,10 @@ from qhronology.utilities.helpers import (
 
 
 def vector_basis(
-    dim: int, numerical: bool | None = None, array: bool | None = None
+    dim: int,
+    numerical: bool | None = None,
+    array: bool | None = None,
+    dtype: type[num] | None = None,
 ) -> list[mat | arr]:
     """Creates an ordered list of column vectors that form an orthonormal basis for a :python:`dim`-dimensional Hilbert space.
 
@@ -61,6 +65,10 @@ def vector_basis(
     array : bool
         Whether to cast the vectors as NumPy arrays (:python:`True`) or SymPy matrices (:python:`False`).
         Defaults to :python:`False`.
+    dtype : type[num]
+        The data type to which the values in the vector's array representation are cast.
+        Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+        Defaults to :python:`numpy.complex128`.
 
     Returns
     -------
@@ -68,7 +76,7 @@ def vector_basis(
         An ordered list of basis vectors.
     """
     return [
-        cast(sp.eye(dim).col(d), numerical=numerical, array=array)
+        cast(sp.eye(dim).col(d), numerical=numerical, array=array, dtype=dtype)
         for d in range(0, dim)
     ]
 
@@ -78,6 +86,7 @@ def ket(
     dim: int | None = None,
     numerical: bool | None = None,
     array: bool | None = None,
+    dtype: type[num] | None = None,
 ) -> mat | arr:
     """Creates a normalized ket (column) basis vector corresponding to the (multipartite) computational-basis value(s) of :python:`spec` in a :python:`dim`-dimensional Hilbert space.
 
@@ -97,6 +106,10 @@ def ket(
     array : bool
         Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
+    dtype : type[num]
+        The data type to which the values in the vector's array representation are cast.
+        Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+        Defaults to :python:`numpy.complex128`.
 
     Returns
     -------
@@ -105,7 +118,7 @@ def ket(
     """
     spec = flatten_list([spec])
     dim = 2 if dim is None else dim
-    basis = vector_basis(dim=dim, numerical=numerical, array=array)
+    basis = vector_basis(dim=dim, numerical=numerical, array=array, dtype=dtype)
     return tensor_product(*[basis[spec[n]] for n in range(0, len(spec))])
 
 
@@ -114,6 +127,7 @@ def bra(
     dim: int | None = None,
     numerical: bool | None = None,
     array: bool | None = None,
+    dtype: type[num] | None = None,
 ) -> mat | arr:
     """Creates a normalized bra (row) basis vector corresponding to the (multipartite) computational-basis value(s) of :python:`spec` in a :python:`dim`-dimensional dual Hilbert space.
 
@@ -133,6 +147,10 @@ def bra(
     array : bool
         Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
+    dtype : type[num]
+        The data type to which the values in the vector's array representation are cast.
+        Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+        Defaults to :python:`numpy.complex128`.
 
     Returns
     -------
@@ -141,7 +159,7 @@ def bra(
     """
     spec = flatten_list([spec])
     dim = 2 if dim is None else dim
-    return conjugate_transpose(ket(spec, dim, numerical=numerical, array=array))
+    return conjugate_transpose(ket(spec, dim, numerical=numerical, array=array, dtype=dtype))
 
 
 def quantum_object(
@@ -156,6 +174,7 @@ def quantum_object(
     dim: int | None = None,
     numerical: bool | None = None,
     array: bool | None = None,
+    dtype: type[num] | None = None,
 ) -> mat | arr:
     """Constructs a :python:`dim`-dimensional matrix or vector representation of a quantum object from a given specification :python:`spec`.
 
@@ -182,11 +201,15 @@ def quantum_object(
         Must be a non-negative integer.
         Defaults to :python:`2`.
     numerical : bool
-        Whether to cast the matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
+        Whether to cast the quantum object's matrix elements as floating-point values (:python:`True`) (if possible) or exact values (:python:`False`).
         Defaults to :python:`False`.
     array : bool
-        Whether to cast the matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
+        Whether to cast the quantum object's matrix as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
+    dtype : type[num]
+        The data type to which the values in the quantum object's array representation are cast.
+        Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+        Defaults to :python:`numpy.complex128`.
 
     Returns
     -------
@@ -210,14 +233,14 @@ def quantum_object(
         )
 
     if isinstance(spec, mat | arr | sp.matrices.immutable.ImmutableDenseMatrix) is True:
-        matrix = cast(matrix=spec, numerical=numerical, array=array)
+        matrix = cast(matrix=spec, numerical=numerical, array=array, dtype=dtype)
     elif isinstance(spec, list) is True:
         if any(isinstance(item, list | tuple) is False for item in spec):
             raise ValueError(
                 """The object's `spec` list must contain only lists or tuples."""
             )
         elif any(isinstance(item, list) is False for item in spec) is False:
-            matrix = cast(matrix=spec, numerical=numerical, array=array)
+            matrix = cast(matrix=spec, numerical=numerical, array=array, dtype=dtype)
         elif any(isinstance(item, tuple) is False for item in spec) is False:
             for twotuple in spec:
                 if len(twotuple) != 2:
@@ -228,28 +251,29 @@ def quantum_object(
                 matrix=[twotuple[0] for twotuple in spec],
                 numerical=numerical,
                 array=array,
+                dtype=dtype,
             )
             levels = [twotuple[1] for twotuple in spec]
 
             if form == Forms.VECTOR.value or kind == Kinds.PURE.value:
-                matrix = 0 * ket(levels[0], dim, numerical, array)
+                matrix = 0 * ket(levels[0], dim, numerical, array, dtype)
             else:
                 matrix = (
                     0
-                    * ket(levels[0], dim, numerical, array)
-                    * bra(levels[0], dim, numerical, array)
+                    * ket(levels[0], dim, numerical, array, dtype)
+                    * bra(levels[0], dim, numerical, array, dtype)
                 )
             for n in range(0, len(spec)):
                 if isinstance(coefficients[n], str) is True:
                     coefficients[n] = sp.sympify(coefficients[n])
                 if form == Forms.VECTOR.value or kind == Kinds.PURE.value:
                     matrix = matrix + coefficients[n] * ket(
-                        levels[n], dim, numerical, array
+                        levels[n], dim, numerical, array, dtype
                     )
                 else:
                     matrix = matrix + coefficients[n] * ket(
-                        levels[n], dim, numerical, array
-                    ) * bra(levels[n], dim, numerical, array)
+                        levels[n], dim, numerical, array, dtype
+                    ) * bra(levels[n], dim, numerical, array, dtype)
         else:
             raise ValueError("""The given `spec` list is invalid.""")
     else:
@@ -274,7 +298,7 @@ def quantum_object(
 
     matrix = symbolize_expression(matrix)
 
-    return cast(matrix, numerical=numerical, array=array)
+    return cast(matrix, numerical=numerical, array=array, dtype=dtype)
 
 
 def encode(
@@ -283,6 +307,7 @@ def encode(
     dim: int | None = None,
     numerical: bool | None = None,
     array: bool | None = None,
+    dtype: type[num] | None = None,
     reverse: bool | None = None,
     return_type: list | tuple | str | None = None,
 ) -> mat | arr | list[int] | tuple[int] | str:
@@ -309,6 +334,10 @@ def encode(
     array : bool
         Whether to cast the vector as a NumPy array (:python:`True`) or SymPy matrix (:python:`False`).
         Defaults to :python:`False`.
+    dtype : type[num]
+        The data type to which the values in the vector's array representation are cast.
+        Only applies when :python:`numerical` and :python:`array` are both :python:`True`.
+        Defaults to :python:`numpy.complex128`.
     reverse : bool
         Whether to reverse the ordering of the resulting encoded state.
 
@@ -360,7 +389,7 @@ def encode(
 
     encoded = digits
     if return_type is None:
-        encoded = ket(digits, dim=dim, numerical=numerical, array=array)
+        encoded = ket(digits, dim=dim, numerical=numerical, array=array, dtype=dtype)
     else:
         if return_type == list:
             encoded = list(encoded)
@@ -525,16 +554,16 @@ def decode_multiple(
     reverse = False if reverse is None else reverse
     matrix = densify(extract_representation(encoded))
 
-    matrix_num = True if issubclass(dtype(matrix), num) is True else False
+    matrix_num = True if issubclass(datatype(matrix), floating) is True else False
     matrix_arr = True if isinstance(matrix, arr) is True else False
 
     decoded = []
     for n in range(0, count_rows(matrix)):
         if matrix[n, n] != 0:
             elementary = generate_zeros(
-                count_rows(matrix), numerical=matrix_num, array=matrix_arr
+                count_rows(matrix), numerical=matrix_num, array=matrix_arr, dtype=datatype(matrix),
             )
-            elementary[n, n] = to_numerical(1, numerical=matrix_num)
+            elementary[n, n] = to_numerical(1, numerical=matrix_num, dtype=datatype(matrix))
             decoded.append(
                 (decode(elementary, reverse=reverse), matrix[n, n])
             )

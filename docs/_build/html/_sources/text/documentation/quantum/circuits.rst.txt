@@ -27,7 +27,7 @@ Main class
 
 .. raw:: latex
 
-   \enlargethispage{-3\baselineskip}
+   \enlargethispage{-2\baselineskip}
 
 .. autoclass:: qhronology.quantum.circuits.QuantumCircuit
    :show-inheritance:
@@ -340,10 +340,6 @@ Main class
 
    \hrulefillthick
 
-.. raw:: latex
-
-   \enlargethispage{0.5\baselineskip}
-
 .. _`sec:docs_circuits_properties`:
 
 Constructor argument properties
@@ -379,11 +375,17 @@ Constructor argument properties
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{0.5\baselineskip}
+
 .. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.array
 
 .. raw:: latex
 
-   \newpage
+   \hrulefillthick
+
+.. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.dtype
 
 .. raw:: latex
 
@@ -466,6 +468,12 @@ Read-only properties
 
 .. raw:: latex
 
+   \newpage
+   \null
+   \vspace*{-2.35\baselineskip}
+
+.. raw:: latex
+
    \hrulefillthick
 
 .. autoproperty:: qhronology.quantum.circuits.QuantumCircuit.num_systems_net
@@ -518,6 +526,8 @@ Methods
 .. raw:: latex
 
    \newpage
+   \null
+   \vspace*{-2.25\baselineskip}
 
 .. raw:: latex
 
@@ -539,6 +549,10 @@ Methods
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \enlargethispage{-2\baselineskip}
+
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.output
 
 .. raw:: latex
@@ -547,7 +561,7 @@ Methods
 
 .. raw:: latex
 
-   \enlargethispage{\baselineskip}
+   \enlargethispage{-\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.state
 
@@ -555,15 +569,15 @@ Methods
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \newpage
+
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.measure
 
 .. raw:: latex
 
    \hrulefillthick
-
-.. raw:: latex
-
-   \enlargethispage{-2\baselineskip}
 
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.diagram
 
@@ -591,6 +605,10 @@ Methods
    .. raw:: latex
 
       \vspace*{0.15\baselineskip}
+
+   .. raw:: latex
+
+      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -657,10 +675,6 @@ Methods
    .. raw:: latex
 
       \end{code}
-
-   .. raw:: latex
-
-      \enlargethispage{\baselineskip}
 
    .. raw:: latex
 
@@ -796,6 +810,10 @@ Methods
 
    .. raw:: latex
 
+      \newpage
+
+   .. raw:: latex
+
       \begin{code}
 
    .. code:: python
@@ -895,10 +913,6 @@ Methods
 
    .. raw:: latex
 
-      \newpage
-
-   .. raw:: latex
-
       \begin{code}
 
    .. code:: python
@@ -938,6 +952,10 @@ Methods
 
    \hrulefillthick
 
+.. raw:: latex
+
+   \newpage
+
 .. automethod:: qhronology.quantum.circuits.QuantumCircuit.compactify
 
 .. The below examples are not indented (using adjustwidth instead) because otherwise the \tcblowerspaced gets extra spacing above it.
@@ -947,6 +965,10 @@ Methods
    \begin{adjustwidth}{2.5em}{0cm}
 
 .. rubric:: :styleheader6:`Examples`
+
+.. raw:: latex
+
+   \enlargethispage{-5\baselineskip}
 
 .. raw:: latex
 
@@ -1014,6 +1036,14 @@ Methods
 .. raw:: latex
 
    \end{codetitled}
+
+.. raw:: latex
+
+   \vspace*{0.5\baselineskip}
+
+.. raw:: latex
+
+   \enlargethispage{-\baselineskip}
 
 .. raw:: latex
 

@@ -4,6 +4,7 @@ from qhronology.quantum.circuits import QuantumCircuit
 from qhronology.utilities.helpers import flatten_list
 from qhronology.mechanics.matrices import encode, decode
 
+import numpy as np
 import sympy as sp
 import time
 
@@ -86,7 +87,6 @@ input_spec = flatten_list(
 carries = []
 for i in range(0, encoding_depth - 1 + int(overflow_qubit)):
     system_shift = 3 * i
-
     ICCN = Not(
         targets=[system_shift + 3],
         controls=[system_shift + 1, system_shift + 2],
@@ -159,6 +159,7 @@ adder = QuantumCircuit(
     gates=gates,
     numerical=True,
     array=True,
+    dtype=np.float32,
 )
 adder.diagram()
 

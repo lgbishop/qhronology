@@ -49,7 +49,10 @@ perl -i -pe 's/\\sphinxhref{https:\/\/github.com\/numpy\/numpy}{NumPy}/\\sphinxh
 perl -i -pe 's/\\sphinxhref{https:\/\/docs.sympy.org\/latest\/tutorials\/intro-tutorial\/simplification.html}{SymPy documentation: Simplification}/\\sphinxhrefnott{https:\/\/docs.sympy.org\/latest\/tutorials\/intro-tutorial\/simplification.html}{SymPy documentation: Simplification}/g' "./_build/latex/qhronology.tex"
 perl -i -pe 's/\\sphinxhref{https:\/\/docs.sympy.org\/latest\/modules\/simplify\/simplify.html}{SymPy documentation: Simplify}/\\sphinxhrefnott{https:\/\/docs.sympy.org\/latest\/modules\/simplify\/simplify.html}{SymPy documentation: Simplify}/g' "./_build/latex/qhronology.tex"
 
-perl -i -pe 's/TypeAliasForwardRef\\DUrole{p}{\(}\\DUrole{s}{\\textquotesingle{}mat\\textquotesingle{}}\\DUrole{p}{\)}/mat/g' "./_build/latex/qhronology.tex" # https://github.com/sphinx-doc/sphinx/issues/14003
+# https://github.com/sphinx-doc/sphinx/issues/14003
+# perl -i -pe 's/TypeAliasForwardRef\\DUrole{p}{\(}\\DUrole{s}{\\textquotesingle{}mat\\textquotesingle{}}\\DUrole{p}{\)}/mat/g' "./_build/latex/qhronology.tex"
+perl -i -pe "s/'num'/num/g" "./_build/latex/qhronology.tex"
+perl -i -pe 's/TypeAliasForwardRef\\DUrole{p}{\(}\\DUrole{s}{num}\\DUrole{p}{\)}/num/g' "./_build/latex/qhronology.tex"
 
 perl -i -pe 's/\\sphinxtableatstartofbodyhook\\sphinxstyletheadfamily/\\sphinxtableatstartofbodyhook\\sphinxstyletheadfamily\\rmfamily/g' "./_build/latex/qhronology.tex"
 perl -i -pe 's/\\sphinxhline\\sphinxstyletheadfamily/\\sphinxhline\\sphinxstyletheadfamily\\rmfamily/g' "./_build/latex/qhronology.tex"
