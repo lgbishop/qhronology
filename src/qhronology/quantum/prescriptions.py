@@ -78,7 +78,7 @@ class QuantumCTC(QuantumCircuit):
 
     - the :python:`circuit` argument
 
-    - :python:`*args` and :python:`**kwargs` like a typical initialization of a :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance (without using :python:`circuit`)
+    - :python:`*args` and :python:`**kwargs` like in a typical initialization of a :py:class:`~qhronology.quantum.circuits.QuantumCircuit` instance (without using :python:`circuit`)
 
     Note that this is in addition to providing a value to the :python:`systems_violating` argument.
 

@@ -6,19 +6,25 @@
 Quantum mechanics on discrete Hilbert spaces
 ********************************************
 
-The theory of *quantum mechanics* seeks to explain the dynamics of the particles of which our universe is composed. It differs from classical physics in that certain properties (such as energy and momentum) of bound systems are restricted to being within sets of discrete values---a characteristic known as *quantization*. Additionally, entities described by quantum mechanics have properties distinctive of both waves and particles (termed *wave-particle duality*), and there are fundamental limits to the accuracy with which values of specific physical quantities can be predicted prior to their measurement (described by the *uncertainty principle*). The theory presented here is based on the treatments in :cite:p:`nielsen_quantum_2010, zeidler_quantum_2006, wilde_quantum_2017, bengtsson_geometry_2017, williams_explorations_2010, dimock_quantum_2011, schlosshauer_decoherence_2007, moret-bonillo_adventures_2017, serrano_quantum_2022, dirac_principles_1982, yanofsky_quantum_2008`.
+Of the many great theories that comprise modern physics, none has revolutionized our perception of reality more than *quantum mechanics*. This theory, which seeks to explain the dynamics of the particles of which our universe is composed, is significantly more successful than classical mechanics, and differs from it in several important ways, including:
+
+- *Quantization*: Certain properties (such as energy and momentum) of bound systems are restricted to being within sets of discrete values.
+- *Wave-particle duality*: Physical systems have properties distinctive of both waves and particles.
+- *Uncertainty principle*: There are fundamental limits to the accuracy with which values of specific physical quantities can be predicted prior to their measurement.
+
+The theory presented here is based on the treatments in :cite:p:`nielsen_quantum_2010, zeidler_quantum_2006, wilde_quantum_2017, bengtsson_geometry_2017, williams_explorations_2010, dimock_quantum_2011, schlosshauer_decoherence_2007, moret-bonillo_adventures_2017, serrano_quantum_2022, dirac_principles_1982, yanofsky_quantum_2008`.
 
 Quantum states
 ==============
 
-In a formal setup, any system in the discrete theory of quantum mechanics is a collection of identifiable physical properties at a given time. This is represented by a Hilbert space, which may be either infinite- or finite-dimensional. A usual presentation of that Hilbert space is a special function space, such as :math:`\ell^2` or :math:`\Complexes^\Dimension`.
+In a formal setup, any system in the discrete theory of quantum mechanics is a collection of identifiable physical properties at a given time. This is represented by a Hilbert space, which may be either finite- or infinite-dimensional. A usual presentation of that Hilbert space is a special function space, such as :math:`\ell^2` or :math:`\Complexes^\Dimension`.
 
-A *quantum state* is then simply a particular value (or, more properly, a probabilistic assignment) of these properties. It is this object which provides the probability distribution for the outcomes of each possible measurement on a system. Formally, we say that a quantum state represents (or is characterized by) a statistical ensemble :math:`\SetProbability = \{p_i\}_i` of independent, identically prepared copies of a quantum system. This is represented in general by a positive semi-definite Hermitian operator :math:`\StateDensity` of trace one (that is, a density operator) on the (discrete) Hilbert space :math:`\SpaceHilbert`. As the space of all density operators on :math:`\SpaceHilbert` is convex, then subsequently any convex combination of such operators is also a density operator, which allows us to express any :math:`\StateDensity` as
+A *quantum state* is then simply a particular value (or, more properly, a probabilistic assignment) of these properties. It is this object which provides the probability distribution for the outcomes of each possible measurement on a system. Formally, we say that a quantum state represents (or is characterized by) a statistical ensemble :math:`\SetProbability = \{p_i\}_i` of independent, identically prepared copies of a quantum system. This is represented in general by a positive semi-definite trace-one Hermitian operator :math:`\StateDensity` (i.e., a density operator) on the (discrete) Hilbert space :math:`\SpaceHilbert`. As the space of all density operators on :math:`\SpaceHilbert` is convex, then any convex combination of such operators is also a density operator, a fact which allows us to express any such :math:`\StateDensity` as
 
 .. math:: \StateDensity = \sum_{i} p_i \StateDensity_i.
    :label: eq:state_general
 
-This describes a mixture of the density operators :math:`\{\StateDensity_i\}_i` corresponding to the statistical ensemble :math:`\SetProbability`. According to the spectral theorem :eq:`eq:spectral_theorem`, we are able to express any quantum state :math:`\StateDensity` in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert` equivalently as a convex combination of at most :math:`\Dimension` vectors :math:`\{\ket{\psi_i}\}_i`, i.e.,
+This describes a mixture of the density operators :math:`\{\StateDensity_i\}_i` corresponding to the statistical ensemble :math:`\SetProbability`. According to the spectral theorem :eq:`eq:spectral_theorem`, we can express any state :math:`\StateDensity` in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert` equivalently as a convex combination of at most :math:`\Dimension` vectors :math:`\{\ket{\psi_i}\}_i`, i.e.,
 
 .. math:: \StateDensity = \sum_{i} p_i \ket{\psi_i}\bra{\psi_i}
    :label: eq:state_combination_pure
@@ -42,7 +48,7 @@ This is necessarily a projection operator, i.e., :math:`\StateDensity^2 = \State
 .. math:: \ket{\psi} = \sum_{i=1}^{\Dimension} c_i \ket{\Basis_i}
    :label: eq:state_superposition
 
-where :math:`\{\ket{\Basis_i}\}_{i=1}^{\Dimension}` is an orthonormal basis for the associated Hilbert space, and :math:`c_i \in \Complexes` are the state-characterizing probability amplitudes.
+where :math:`\{\ket{\Basis_i}\}_{i=1}^{\Dimension}` is an orthonormal basis for the associated Hilbert space and the complex coefficients :math:`\{c_i\}_{i=1}^{\Dimension}` are state-characterizing probability amplitudes.
 
 The set of physical pure states :math:`\SpacePure(\SpaceHilbert)` on a Hilbert space :math:`\SpaceHilbert` is the set of all normalized (unit) vectors on :math:`\SpaceHilbert`, with vectors equal up to a global phase considered to be equivalent (as such global phase differences are not observable, i.e., constitute measurable quantities). Compactly, we write
 
@@ -54,7 +60,7 @@ The set of physical pure states :math:`\SpacePure(\SpaceHilbert)` on a Hilbert s
 
 .. note::
 
-   The concept of vectors which differ only up to a multiplicative constant of magnitude :math:`1` (e.g., a phase factor :math:`\e^{\eye \theta}`) being identified is a direct consequence of the fact that such states are physically indistinguishable---that is, there is no performable experiment which is able to differentiate them. This leads to the idea that the notion of a pure "state" in quantum mechanics is perhaps better described by a more complete (and unique) object called a *ray*, residing in a projective Hilbert space. Put simply, a ray :math:`\underline{\StatePure}` is the set of all state vectors :math:`\StatePure` which are scalar non-zero multiples of each other, i.e.,
+   The concept of vectors which differ only up to a multiplicative constant of magnitude :math:`1` (e.g., a phase factor :math:`\e^{\eye \theta}`) being identified is a direct consequence of the fact that such states are physically indistinguishable---that is, there is no performable experiment which is able to differentiate between them. This leads to the idea that the notion of a pure "state" in quantum mechanics is perhaps better described by a more complete (and unique) object called a *ray*, residing in a projective Hilbert space. Put simply, a ray :math:`\underline{\StatePure}` is the set of all state vectors :math:`\StatePure` which are scalar non-zero multiples of each other, i.e.,
 
    .. math:: \underline{\StatePure} = \bigl\{\e^{\eye \theta} \StatePure : \StatePure \in \SpaceHilbert, \, \norm{\psi}_2 = 1, \, \theta \in \Reals \bigr\}.
 
@@ -69,34 +75,34 @@ States which are not pure are termed *mixed*, and cannot be expressed in the for
 
 where :math:`\Identity_{\Dimension}` is the :math:`\Dimension`-dimensional identity operator. It is useful to think of linear combinations such as that in :eq:`eq:state_combination_pure` as "classical" superpositions in the sense that they involve the correspondingly classical mixing of otherwise fully quantum-mechanical states :math:`\StateDensity_i = \ket{\psi_i}\bra{\psi_i}`. In other words, a mixed quantum state is a *statistical ensemble* of pure states, and is also known simply as a *mixed ensemble*. Importantly, this contrasts with the physically distinct notion of *quantum superposition*, which is encapsulated by :eq:`eq:state_superposition`.
 
-Unlike pure states, mixed states cannot be represented as a state vector (e.g., :math:`\ket{\psi}`). Both objects however may be described as a density operator (e.g., :math:`\StateDensity`), which serves as a generalization of the concept of state vectors (wave functions). The set of physical density operators (including both pure and mixed states) on a Hilbert space :math:`\SpaceHilbert` is the set of all Hermitian trace-one (linear) operators on :math:`\SpaceHilbert`, and we denote this as
+Unlike pure states, mixed states cannot be represented as a state vector (e.g., :math:`\ket{\psi}`). Both objects however may be described as a density operator (e.g., :math:`\StateDensity`), which serves as a generalization of the concept of state vectors (wave functions). The set of physical density operators (including both pure and mixed states) on a Hilbert space :math:`\SpaceHilbert` is the set of all trace-one Hermitian (linear) operators on :math:`\SpaceHilbert`, and we denote this as
 
 .. math:: \SpaceMixed(\SpaceHilbert) \equiv \bigl\{ \StateDensity \in \SpaceLinear(\SpaceHilbert) : \StateDensity^\dagger = \StateDensity, \, \trace[\StateDensity] = 1 \bigr\}.
 
-Density operators representing mixed (impure) quantum states arise in quantum mechanics in two distinct situations. The first of these is when the preparation of a system is not fully known. In this case, the (incomplete/limited) knowledge of the quantum state can be captured only by a density operator that describes a statistical ensemble (i.e., mixture) of all possible preparations. The second situation is when one wants to describe a physical system that is entangled with another. Quantum entanglement theoretically prevents the existence of complete knowledge about subsystems in an entangled state, and so it is impossible to represent the state of any such subsystems as a pure state.
+Density operators representing mixed (impure) quantum states arise in quantum mechanics in two distinct situations. The first of these is when the preparation of a system is not fully known. In this case, the incomplete knowledge of the quantum state can be captured only by a density operator that describes a statistical ensemble (i.e., mixture) of all possible preparations. The second situation is when one wants to describe a physical system that is entangled with another. Quantum entanglement theoretically prevents the existence of complete knowledge about subsystems in an entangled state, and so it is impossible to represent the state of any such subsystems as a pure state.
 
 .. note::
 
-   A useful concept in the formalism of quantum information theory is that of *purification*. This process refers to the fact that any mixed state in a finite-dimensional Hilbert space can be viewed as the reduced state of some pure state. To see this, let :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert_A)` be a density matrix where :math:`\dim(\SpaceHilbert_A)` is finite. Given this, it is always possible to introduce an additional Hilbert space :math:`\SpaceHilbert_B`, corresponding to a fictitious system often called a *reference* system (and has no direct physical significance), alongside a pure state :math:`\ket{\psi} \in \SpacePure(\SpaceHilbert_A \otimes \SpaceHilbert_B)` such that
+   A useful concept in the formalism of quantum information theory is that of *purification*. This process refers to the fact that any mixed state in a finite-dimensional Hilbert space can be viewed as the reduced state of some pure state. To see this, let :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert_A)` be a density matrix where :math:`\dim(\SpaceHilbert_A)` is finite. Given this, it is always possible to introduce an additional Hilbert space :math:`\SpaceHilbert_B`, corresponding to a fictitious system often called a *reference* system (which has no direct physical significance), alongside a pure state :math:`\ket{\psi} \in \SpacePure(\SpaceHilbert_A \otimes \SpaceHilbert_B)` such that
 
    .. math:: \trace_B \bigl[\ket{\psi}\bra{\psi}\bigr] = \StateDensity.
       :label: eq:purification
 
-   We say that :math:`\ket{\psi}` *purifies* :math:`\StateDensity`, which is a consequence that is only made possible by the fact that we have access to a larger (composite) Hilbert space.
+   We say that :math:`\ket{\psi}` *purifies* :math:`\StateDensity`, which is a consequence that is made possible only by the fact that we have access to a larger (composite) Hilbert space.
 
 .. _`sec:qubits`:
 
 Qubits
 ------
 
-Many physical applications of this theory in quantum mechanics involve Boolean (i.e., binary, or two-valued) logic, which is completely describable by exactly two orthonormal vectors that are often labelled :math:`\ket{0}` and :math:`\ket{1}`. The representations in :math:`\Complexes^2` of these vectors is typically the pair
+Many physical applications of quantum mechanics involve Boolean (i.e., binary, or two-valued) logic, which is completely describable by exactly two orthonormal vectors that are often labelled :math:`\ket{0}` and :math:`\ket{1}`. The representations in :math:`\Complexes^2` of these vectors is typically the pair
 
 .. math:: \ket{0} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}.
    :label: eq:basis_qubit
 
-Together, these form a complete basis that is canonically known as the :math:`z`-*basis* (given that each vector is an eigenvector of the Pauli-:math:`Z` operator :math:`\Pauli_z` :eq:`eq:Pauli`), though is alternatively often referred to by many simply as the *computational basis*. Any quantum state with such binary dimensionality is called a *qubit*, and describes a two-level system that forms the basic unit of quantum information (analogous to the bit in classical computing). In the computational basis :math:`\{\ket{0},\ket{1}\}`, the simplest qubit which we can express is the quantum superposition
+Together, these form a complete basis for the :math:`2`-dimensional Hilbert space :math:`\SpaceHilbert \cong \Complexes^2` that is canonically known as the :math:`z`-*basis* (given that each vector is an eigenvector of the Pauli-:math:`Z` operator :math:`\Pauli_z` :eq:`eq:Pauli`), though is often alternatively referred to simply as the *computational basis*. Any quantum state with such binary dimensionality is called a *qubit*, and describes a two-level system that forms the basic unit of quantum information (analogous to the *bit* in classical computing). In the computational basis :math:`\{\ket{0},\ket{1}\}`, the simplest qubit which we can express is the quantum superposition
 
-.. math:: \ket{\StateVector} = \alpha\ket{0} + \beta\ket{1}, \quad \abs{\alpha}^2 + \abs{\beta}^2 = 1, \quad \alpha,\beta \in \Complexes.
+.. math:: \ket{\StateVector} = \alpha\ket{0} + \beta\ket{1}, \quad \alpha,\beta \in \Complexes, \quad \abs{\alpha}^2 + \abs{\beta}^2 = 1.
    :label: eq:vector_qubit
 
 In the :math:`\Complexes^2`-representation :eq:`eq:basis_qubit`, this state can be expressed as
@@ -130,7 +136,7 @@ where :math:`\{\Pauli_k\}_{k=1}^{3}` are the *Pauli matrices*, which are defined
 
 .. raw:: latex
 
-   \vspace*{-0.85\baselineskip}
+   \vspace*{-1.25\baselineskip}
 
 .. only:: html
 
@@ -174,10 +180,10 @@ Qutrits
 
 Quantum states realized by :math:`3`-dimensional systems are commonly known as *qutrits*. These objects are analogous to the *trit* unit of information in classical computing and so are useful for performing calculations with ternary logic. Such systems are typically described using a set of orthonormal (basis) vectors :math:`3`-dimensional :math:`\{\ket{0},\ket{1},\ket{2}\}`, with which a qutrit can in general be expressed as
 
-.. math:: \ket{\StateVector} = \alpha\ket{0} + \beta\ket{1} + \gamma\ket{2}, \quad \abs{\alpha}^2 + \abs{\beta}^2 + \abs{\gamma}^2 = 1, \quad \alpha,\beta,\gamma \in \Complexes.
+.. math:: \ket{\StateVector} = \alpha\ket{0} + \beta\ket{1} + \gamma\ket{2}, \quad \alpha,\beta,\gamma \in \Complexes, \quad \abs{\alpha}^2 + \abs{\beta}^2 + \abs{\gamma}^2 = 1.
    :label: eq:vector_qutrit
 
-In the :math:`\Complexes^3`-representation, the basis vectors often take the forms
+In a :math:`\Complexes^3`-representation, the basis vectors often take the forms
 
 .. math:: \ket{0} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \qquad \ket{1} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \qquad \ket{2} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix},
    :label: eq:basis_qutrit
@@ -192,7 +198,7 @@ Qutrits described by :math:`3`-dimensional density operators have corresponding 
 .. math:: \StateDensity = \frac{1}{3}\sum_{\mu=0}^{8} \trace[\GellMann_\mu \StateDensity]\GellMann_\mu,
    :label: eq:matrix_qutrit
 
-where :math:`\{\GellMann_\mu\}_{\mu=0}^{8}` is a complete basis for the space of :math:`3 \times 3` complex matrices. The most notable choice of matrices with which to construct a such a basis are the *Gell-Mann matrices* (with :math:`\GellMann_0 \equiv \Identity_3`),
+where :math:`\{\GellMann_\mu\}_{\mu=0}^{8}` is a complete basis for the space of :math:`3 \times 3` complex matrices. The most notable choice of matrices with which to construct such a basis are the *Gell-Mann matrices* (with :math:`\GellMann_0 \equiv \Identity_3`),
 
 .. math::
    :label: eq:Gell-Mann
@@ -224,9 +230,9 @@ where :math:`\{\GellMann_\mu\}_{\mu=0}^{8}` is a complete basis for the space of
 Qudits
 ------
 
-Quantum vector states in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert_\Dimension` can in general be expressed as the superposition
+Quantum vector states in :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert_\Dimension` can in general be expressed as the superposition
 
-.. math:: \ket{\StateVector} = \sum_{i=0}^{\Dimension - 1} c_i \ket{i}, \quad \sum_{i=0}^{\Dimension - 1} \abs{c_i}^2 = 1, \quad c_i \in \Complexes,
+.. math:: \ket{\StateVector} = \sum_{i=0}^{\Dimension - 1} c_i \ket{i}, \quad c_i \in \Complexes, \quad \sum_{i=0}^{\Dimension - 1} \abs{c_i}^2 = 1,
    :label: eq:vector_qudit
 
 which is often referred to as a *qudit*. Here, :math:`\{\ket{i}\}_{i=0}^{\Dimension - 1}` is a vector basis for :math:`\SpaceHilbert_\Dimension`, and may be expressed in a :math:`\Complexes^\Dimension`-representation using the vectors in :eq:`eq:basis_qudit`. With this, we can write :eq:`eq:vector_qudit` as
@@ -234,18 +240,22 @@ which is often referred to as a *qudit*. Here, :math:`\{\ket{i}\}_{i=0}^{\Dimens
 .. math:: \ket{\StateVector} = c_0 \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix} + c_1 \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix} + \ldots + c_{\Dimension - 1} \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix} = \begin{bmatrix} c_0 \\ c_1 \\ \vdots \\ c_{\Dimension - 1} \end{bmatrix}.
    :label: eq:vector_qudit_column
 
-Just like in the cases of qubits and qutrits, general :math:`\Dimension`-dimensional states described by density operators can be expressed via a linear combination of the form
+Just like in the cases of both qubits and qutrits, general :math:`\Dimension`-dimensional states described by density operators can be expressed via a linear combination of the form
 
 .. math:: \StateDensity = \frac{1}{\Dimension}\sum_{\mu=0}^{\Dimension^2 - 1} \trace[\GellMann_\mu \StateDensity]\GellMann_\mu.
    :label: eq:matrix_qudit
 
 In the context of density operators, since the coefficient for :math:`\mu = 0` in :eq:`eq:matrix_qudit` (and its specialized forms :eq:`eq:matrix_qubit` and :eq:`eq:matrix_qutrit`) is fixed by normalization (i.e., :math:`\trace[\GellMann_0 \StateDensity] = 1`, implying that :math:`\GellMann_0 \equiv \Identity_\Dimension`), then the state :math:`\StateDensity` is completely (and uniquely) determined by the *Bloch vector*, which is defined for a :math:`\Dimension`-dimensional state as the :math:`(\Dimension^2 - 1)`-dimensional real vector of parameters :math:`\bigl\{\trace[\GellMann_k \StateDensity]\bigr\}_{k = 1}^{\Dimension^2 - 1}`. Accordingly, a linear combination of the form :eq:`eq:matrix_qudit` is said to be the *Bloch sphere representation* of the state :math:`\StateDensity`. Note also of course that any appropriate basis allows for reconstruction of any qudit state in the manner of :eq:`eq:matrix_qudit`.
 
-The Bloch vector provides a complete description of a quantum system because it represents the expectation values of specific informationally complete observables. In general, a complex :math:`\Dimension \times \Dimension` density matrix, which represents the state of a :math:`\Dimension`-dimensional quantum system, is geometrically equivalent to a vector in a :math:`(\Dimension^2 - 1)`-dimensional real space. This is because the space of density matrices is a (bounded) convex subset of :math:`\Reals^{\Dimension^2}`, with its elements possessing certain properties (namely Hermiticity, positive semi-definiteness, and trace equal to :math:`1`). Since this real space coincides with that of the (generalized) *Bloch ball*, including both the surface (the *Bloch sphere*, on which points correspond to pure states) and interior (in which points correspond to mixed states), then this is why determination of the Bloch vector is equivalent to identification of the quantum state. Therefore, as an appropriate set of operators forms a set of informationally complete observables for the relevant systems (such as the Pauli operators for qubits or the Gell-Mann operators for qutrits), then the inclusion of the identity operator to this set yields a *tomographically complete* basis for the space of :math:`\Dimension \times \Dimension` Hermitian matrices, of which the space of :math:`\Dimension`-dimensional density matrices is a subset.
+The Bloch vector provides a complete description of a quantum system because it represents the expectation values of specific informationally complete observables. In general, a complex :math:`\Dimension \times \Dimension` density matrix, which represents the state of a :math:`\Dimension`-dimensional quantum system, is geometrically equivalent to a vector in a :math:`(\Dimension^2 - 1)`-dimensional real space. This is because the space of density matrices is a (bounded) convex subset of :math:`\Reals^{\Dimension^2}`, with its elements possessing certain properties (namely Hermiticity, positive semi-definiteness, and trace equal to :math:`1`). Since this real space coincides with that of the (generalized) *Bloch ball*, including both the surface (the *Bloch sphere*, on which points correspond to pure states) and interior (in which points correspond to mixed states), then this is why determination of the Bloch vector is equivalent to identification of the quantum state. Therefore, as an appropriate set of operators forms a set of informationally complete observables for the relevant systems (such as the Pauli operators for qubits, or the Gell-Mann operators for qutrits), then the inclusion of the identity operator to this set yields a *tomographically complete* basis for the space of :math:`\Dimension \times \Dimension` Hermitian matrices, of which the space of :math:`\Dimension`-dimensional density matrices is a subset.
 
-Thus, in order for :eq:`eq:matrix_qudit` to hold true, the matrices :math:`\{\GellMann_\mu\}_{\mu=0}^{\Dimension^2 - 1}` must form a basis for the space of :math:`\Dimension \times \Dimension` density matrices. Though there are multiple ways to find such a basis, doing so is a non-trivial task. Our construction here closely follows the work of :cite:p:`thew_qudit_2002`, in which a suitable generalization of the Gell-Mann (or Pauli) matrices :eq:`eq:Gell-Mann` is obtained. We begin by introducing the elementary matrices :math:`\{\Basis_{i}^{j}\}_{i,j = 1}^{\Dimension}` which satisfy
+Thus, in order for :eq:`eq:matrix_qudit` to hold true, the matrices :math:`\{\GellMann_\mu\}_{\mu=0}^{\Dimension^2 - 1}` must form a basis for the space of :math:`\Dimension \times \Dimension` density matrices. Though there are multiple ways to find such a basis, doing so is a non-trivial task. Our construction here closely follows the work of :cite:p:`thew_qudit_2002`, in which a suitable generalization of the Gell-Mann (or Pauli) matrices :eq:`eq:Gell-Mann` is obtained. We begin by introducing the elementary matrices :math:`\{\Basis_{i}^{j}\}_{i,j = 1}^{\Dimension}`, which satisfy
 
-.. math:: (\Basis_{i}^{j})_{nm} = \delta_{ni} \delta_{mj}, \qquad 1 \leq n \leq d, \quad 1 \leq m \leq d.
+.. math:: (\Basis_{i}^{j})_{nm} = \delta_{ni} \delta_{mj}, \qquad 1 \leq n \leq \Dimension, \quad 1 \leq m \leq \Dimension.
+
+.. raw:: latex
+
+   \newpage
 
 This defines a total of :math:`\Dimension^2` matrices, each of which possesses one entry equal to unity and all others equal to zero. Using these, we can construct :math:`\Dimension (\Dimension - 1)` traceless off-diagonal matrices,
 
@@ -253,16 +263,16 @@ This defines a total of :math:`\Dimension^2` matrices, each of which possesses o
    :label: eq:generators_off-diagonal
 
    \begin{aligned}
-       \alpha_{i}^{j} &= \Basis_{i}^{j} + \Basis_{j}^{i} \\
-       \beta_{i}^{j} &= -\eye(\Basis_{i}^{j} - \Basis_{j}^{i}), \qquad 1 \leq j < i \leq d
+       \alpha_{i}^{j} &= \Basis_{i}^{j} + \Basis_{j}^{i}, \qquad &1 \leq j < i \leq \Dimension, \\
+       \beta_{i}^{j} &= -\eye(\Basis_{i}^{j} - \Basis_{j}^{i}), \qquad &1 \leq j < i \leq \Dimension,
    \end{aligned}
 
 and :math:`\Dimension - 1` traceless diagonal matrices,
 
-.. math:: \gamma_{j}^{j} = \sqrt{\frac{2}{j(j+1)}} \left[\sum_{k=1}^{j} \Basis_{k}^{k} - j \Basis_{j+1}^{j+1}\right].
+.. math:: \gamma_{j}^{j} = \sqrt{\frac{2}{j(j+1)}} \left[\sum_{k=1}^{j} \Basis_{k}^{k} - j \Basis_{j+1}^{j+1}\right], \qquad 1 \leq j \leq \Dimension - 1.
    :label: eq:generators_on-diagonal
 
-In total, we obtain :math:`\Dimension^2 - 1` traceless matrices. Note that these matrices are in fact the generators of :math:`\GroupSpecialUnitary(\Dimension)` (the group of :math:`\Dimension \times \Dimension` unitary matrices with determinant :math:`1`), meaning that they form a basis for the corresponding Lie algebra :math:`\AlgebraSpecialUnitary(\Dimension)` (the space of :math:`\Dimension \times \Dimension` traceless Hermitian matrices). As the space of :math:`\Dimension \times \Dimension` Hermitian matrices has a real dimensionality of :math:`\Dimension^2`, then the difference between this space and :math:`\AlgebraSpecialUnitary(\Dimension)` is a single degree of freedom that accounts for the ability of the matrices in the former to be non-traceless. This missing property can be incorporated into the latter by including the :math:`\Dimension`-dimensional identity matrix :math:`\Identity_\Dimension` into any of its valid bases. In other words, the set of matrices that consists of both the generators of :math:`\GroupSpecialUnitary(\Dimension)` and the identity :math:`\Identity_\Dimension` necessarily forms a basis for the entire space of :math:`\Dimension \times \Dimension` Hermitian matrices (both traceless and non-traceless).
+In total, we obtain :math:`\Dimension^2 - 1` traceless matrices. Note that these matrices are in fact the generators of :math:`\GroupSpecialUnitary(\Dimension)` (the group of :math:`\Dimension \times \Dimension` unitary matrices with determinant :math:`1`), meaning that they form a basis for the corresponding Lie algebra :math:`\AlgebraSpecialUnitary(\Dimension)` (the space of :math:`\Dimension \times \Dimension` traceless Hermitian matrices). As the space of :math:`\Dimension \times \Dimension` Hermitian matrices has a real dimensionality of :math:`\Dimension^2`, then the difference between this space and :math:`\AlgebraSpecialUnitary(\Dimension)` is a single degree of freedom that accounts for the ability of the matrices in the former to be non-traceless. This missing property can be incorporated into the latter by including the :math:`\Dimension`-dimensional identity matrix :math:`\Identity_\Dimension` into any of its valid bases. In other words, the set of matrices that consists of both the identity :math:`\Identity_\Dimension` and the generators of :math:`\GroupSpecialUnitary(\Dimension)` necessarily forms a basis for the entire space of :math:`\Dimension \times \Dimension` Hermitian matrices (both traceless and non-traceless).
 
 With this in mind, we can use :eq:`eq:generators_off-diagonal` and :eq:`eq:generators_on-diagonal` to assemble a set of matrices,
 
@@ -282,7 +292,7 @@ Quantum quantities
 Purity
 ------
 
-The mixedness of a state may be quantified by the *purity* function,
+The mixedness of a state may be quantified by the *purity*,
 
 .. math:: \Purity(\StateDensity) \equiv \trace[\StateDensity^2],
 
@@ -290,7 +300,7 @@ which defines a measure on the degree by which a state deviates from being (comp
 
 .. math:: \frac{1}{\Dimension} \leq \Purity(\StateDensity) \leq 1,
 
-and so a state :math:`\StateDensity` is pure if and only if :math:`\Purity(\StateDensity) = 1` (else it has some degree of mixing).
+and so a state :math:`\StateDensity` is pure if and only if :math:`\Purity(\StateDensity) = 1` (else it is mixed to some degree).
 
 Trace distance
 --------------
@@ -356,7 +366,7 @@ Lastly, note that an alternative definition of the fidelity exists that specifie
 
 .. math:: \Fidelity(\op{\rho},\op{\tau}) \equiv \trace\sqrt{\sqrt{\op{\rho}} \, \op{\tau}\sqrt{\op{\rho}}}.
 
-This form, sometimes called the *root fidelity*, shares many of the same properties as :eq:`eq:fidelity`, but is ostensibly less common in the literature.
+This form, sometimes called the *root-fidelity*, shares many of the same properties as :eq:`eq:fidelity`, but is ostensibly less common in the literature.
 
 Entropy
 -------
@@ -433,7 +443,7 @@ A vector state :math:`\ket{\psi} \in \SpacePure(\SpaceHilbert_0 \otimes \SpaceHi
        &= \bigotimes_{n=0}^{N - 1} \ket{\psi_n},
    \end{aligned}
 
-where :math:`\ket{\psi_n} \in \SpacePure(\SpaceHilbert_n)` is a vector state on the :math:`n`-th subsystem. Similarly, a mixed state :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert_0 \otimes \SpaceHilbert_1 \otimes \ldots \otimes \SpaceHilbert_{N - 1})` over :math:`N` subsystems is separable if it can be expressed as
+where :math:`\ket{\psi_n} \in \SpacePure(\SpaceHilbert_n)` is a vector state on the :math:`n`\ th subsystem. Similarly, a mixed state :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert_0 \otimes \SpaceHilbert_1 \otimes \ldots \otimes \SpaceHilbert_{N - 1})` over :math:`N` subsystems is separable if it can be expressed as
 
 .. math::
 
@@ -442,9 +452,9 @@ where :math:`\ket{\psi_n} \in \SpacePure(\SpaceHilbert_n)` is a vector state on 
        &= \sum_{k} p_k \bigotimes_{n=0}^{N - 1} \StateDensity_k^{\indices{n}},
    \end{aligned}
 
-where :math:`\StateDensity_k^{\indices{n}} \in \SpaceMixed(\SpaceHilbert_n)` is a density operator on the :math:`n`-th subsystem, and the coefficients :math:`\{p_k\}_k` are non-negative real numbers that collectively satisfy :math:`\sum_{k} p_k = 1`. If there exists only a single non-zero :math:`p_k`, then the state is called *simply separable* or, similarly to the separable vector state case, a *product state*.
+where :math:`\StateDensity_k^{\indices{n}} \in \SpaceMixed(\SpaceHilbert_n)` is a density operator on the :math:`n`\ th subsystem, and the coefficients :math:`\{p_k\}_k` are non-negative real numbers that collectively satisfy :math:`\sum_{k} p_k = 1`. If there exists only a single non-zero :math:`p_k`, then the state is called *simply separable* or, similarly to the separable vector state case, a *product state*.
 
-A quantum state that is not separable (termed *non-separable*) is said to be *entangled*. The corresponding phenomenon, *quantum entanglement*, is one of the most fascinating features of quantum mechanics. It manifests physically as quantum correlations (of various quantum properties such as observable quantities) between the individual subsystems of a composite quantum system. For example, a group of particles is entangled when the quantum state of each individual particle cannot be described independently of the state of the other particles in a collective description. This behaviour is realized to varying degrees in many different kinds of physical situations, including most interestingly when the particles are spacelike separated.
+A quantum state that is not separable (termed *non-separable*) is said to be *entangled* (to some degree). The corresponding phenomenon, *quantum entanglement*, is one of the most fascinating features of quantum mechanics. It manifests physically as quantum correlations (of various quantum properties, such as observable quantities) between the individual subsystems of a composite quantum system. For example, a group of particles is entangled when the quantum state of each individual particle cannot be described independently of the state of the other particles in a collective description. This behaviour is realized to varying degrees in many different kinds of physical situations, including most interestingly when the particles are mutually non-local (e.g., spacelike separated).
 
 Quantum entanglement is also necessarily characterized by *unrealized* correlations, such that the outcomes of measurements on the quantum system(s) are completely undecided until the measurement occurs. This means that the very act of performing a measurement on one subsystem of an entangled composition affects the entire system as a whole (i.e., apparent and irreversible collapse of the wave function). Though any such influence occurs seemingly instantaneously, quantum entanglement however does not allow any information to propagate superluminally (i.e., faster than the speed of light), despite the possibility that the subsystems of an entangled system are spacelike separated.
 
@@ -460,7 +470,7 @@ A quantum system is said to be *maximally entangled* if it cannot be separated i
        \bigl|\Psi^-\bigr\rangle &\equiv \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{1} - \ket{1} \otimes \ket{0} \bigr).
    \end{aligned}
 
-For systems composed of three or more subsystems, any multipartite entanglement that manifests cannot be maximal (unlike the bipartite case) due to the monogamy of entanglement, but still exists in many quantitatively different types. An example of an entangled three-qubit system is the *Greenberger-Horne-Zeilinger* (*GHZ*) *state*,
+For systems composed of three or more subsystems, any multipartite entanglement that manifests cannot be maximal (unlike the bipartite case) due to the monogamy of entanglement, but still exists in many quantitatively different types. An example of an entangled three-qubit system is the *Greenberger--Horne--Zeilinger* (*GHZ*) *state*,
 
 .. math:: \ket{\mathrm{GHZ}} = \frac{1}{\sqrt{2}} \bigl(\ket{0} \otimes \ket{0} \otimes \ket{0} + \ket{1} \otimes \ket{1} \otimes \ket{1}\bigr).
    :label: eq:GHZ_state
@@ -475,13 +485,13 @@ discarding any single subsystem yields a bipartite state that is still entangled
 Quantum operations
 ==================
 
-A *quantum operation* is a linear, trace-non-increasing, completely positive map
+A *quantum operation* is a linear, trace-non-increasing, completely positive map,
 
 .. math:: \MapGeneral : \StateDensity \mapsto \MapGeneral[\StateDensity] \in \SpaceMixed(\SpaceHilbert).
 
 It is convenient to express such maps using the general form
 
-.. math:: \MapGeneral[\StateDensity] = \sum_{i} \Kraus^\dagger_i \StateDensity \Kraus_i
+.. math:: \MapGeneral[\StateDensity] = \sum_{i} \Kraus^\dagger_i \StateDensity \Kraus_i,
 
 where :math:`\SetKraus = \{\Kraus_i\}_i` is a set of linear operators, known as *Kraus operators*. The characteristic of *trace-non-increasing* is the requirement that :math:`\trace[\StateDensity] \geq \trace\bigl[\MapGeneral[\StateDensity]\bigr]`. Since it is (almost) always assumed that the input state :math:`\StateDensity` satisfies :math:`\trace[\StateDensity] = 1`, then the Kraus operators of a trace-non-increasing quantum operation in turn satisfy
 
@@ -496,7 +506,7 @@ Quantum operations are fundamental to an information-theoretic treatment of quan
 Quantum evolutions
 ==================
 
-In quantum mechanics, the term *evolution* refers to the transformation (either continuous or discrete) of quantum states over some parameter space (usually time). In general, there are two fundamentally distinct types of quantum evolution: those of which are *closed*, and those of which are *open*.
+In quantum mechanics, the term *evolution* refers to the transformation (either continuous or discrete) of quantum states over some parameter space (usually time). In general, there are two fundamentally distinct types of quantum evolution: those which are *closed*, and those which are *open*.
 
 Closed quantum systems
 ----------------------
@@ -513,7 +523,7 @@ This is naturally a trace-preserving map, that is, :math:`\trace\bigl[\MapGenera
 
 Perhaps the most prevailing example is the time evolution of the state :math:`\ket{\psi}`, which is describable by a unitary of the form
 
-.. math:: \Unitary(\Time) = \exp\left[-\frac{\eye}{\hbar}\OperatorHamiltonian\Time\right]
+.. math:: \Unitary(\Time) = \exp\left[-\frac{\eye}{\hbar}\OperatorHamiltonian\Time\right],
 
 where :math:`\Time` is the time duration, :math:`\OperatorHamiltonian` is a Hermitian operator corresponding to the Hamiltonian of the system, and :math:`\hbar` is the reduced Planck constant.
 
@@ -522,7 +532,7 @@ Open quantum systems
 
 In an open quantum system, the evolution :math:`\MapGeneral[\StateDensity]` of a quantum state :math:`\StateDensity` is described by the trace-preserving quantum operation
 
-.. math:: \MapGeneral[\StateDensity] = \sum_{i} \Kraus_i \StateDensity \Kraus^\dagger_i
+.. math:: \MapGeneral[\StateDensity] = \sum_{i} \Kraus_i \StateDensity \Kraus^\dagger_i,
    :label: eq:evolution_open
 
 where the Kraus operators are given by
@@ -531,7 +541,7 @@ where the Kraus operators are given by
 
 This form, which is sometimes called the *operator-sum representation*, describes the evolution of some system in the Hilbert space :math:`\SpaceHilbert_\mathrm{S}` that interacts with an environment system (a separate system with Hilbert space :math:`\SpaceHilbert_\mathrm{E}`) via some unitary :math:`\Unitary`. In this bipartite setup, the environment is initially in the state :math:`\ket{\psi}` (with :math:`\{\ket{\Basis_i}\}_i` denoting an orthonormal basis). Dropping the assumption that the environment is initially pure, we may in general write
 
-.. math:: \MapGeneral[\StateDensity] = \trace_\mathrm{E} \bigl[\Unitary(\StateDensity^{\indices{\mathrm{S}}} \otimes \op{\tau}^{\indices{\mathrm{E}}})\Unitary^\dagger\bigr]
+.. math:: \MapGeneral[\StateDensity] = \trace_\mathrm{E} \bigl[\Unitary(\StateDensity^{\indices{\mathrm{S}}} \otimes \op{\tau}^{\indices{\mathrm{E}}})\Unitary^\dagger\bigr],
 
 where :math:`\op{\tau}` is the environment state. The output of the environment under this evolution is complementarily given by
 
@@ -546,15 +556,16 @@ A *quantum measurement* of a quantum state is expressible in general as the map
 
 .. math:: \MapGeneral_i[\StateDensity] = \Kraus_i \StateDensity \Kraus^\dagger_i.
 
-Here, :math:`\{\Kraus_i\}_i` are Kraus operators which necessarily satisfy the completeness relation
+Here, :math:`\{\Kraus_i\}_i` are Kraus operators, which necessarily satisfy the completeness relation
 
-.. math:: \sum_{i} \Kraus^\dagger_i \Kraus_i = \Identity
+.. math:: \sum_{i} \Kraus^\dagger_i \Kraus_i = \Identity,
+   :label: eq:Kraus_complete
 
 since all possible measurement values together must necessarily form a complete quantum operation. Note that by writing the form
 
-.. math:: \Kraus_i = \Unitary_i \sqrt{\op{M}_i}
+.. math:: \Kraus_i = \Unitary_i \sqrt{\op{M}_i},
 
-where :math:`\SetUnitary = \{\Unitary_i\}_i` is a set of unitary operators and :math:`\SetObservable = \{\op{M}_i\}_i` is a set of positive operators, we can, due to the relation :math:`\Kraus^\dagger_i \Kraus_i = \op{M}_i` and the completeness of the Kraus operators, conclude that
+where :math:`\SetUnitary = \{\Unitary_i\}_i` is a set of unitary operators and :math:`\SetObservable = \{\op{M}_i\}_i` is a set of positive operators, we can, due to both the relation :math:`\Kraus^\dagger_i \Kraus_i = \op{M}_i` and the completeness of the Kraus operators :eq:`eq:Kraus_complete`, conclude that
 
 .. math:: \sum_i \op{M}_i = \Identity.
 
@@ -566,11 +577,11 @@ Given that preservation of the trace cannot be guaranteed under the measurement,
 
 .. math:: \StateDensity^\prime = \frac{\MapGeneral_i[\StateDensity]}{\trace\bigl[\MapGeneral_i[\StateDensity]\bigr]}.
 
-This is to ensure that a physical post-measurement state is always recovered, which is to say that :math:`\trace[\StateDensity^\prime] = 1`. Quantum measurement can therefore be thought as the extension of the concept of trace-non-preserving quantum operations to include normalization, the procedure of which makes it distinct from such ordinary quantum operations (being necessarily linear). In essence, a quantum measurement describes the probability of obtaining a particular outcome of a quantum operation on a system, in addition to the change in the state of that affected system. If however the result of the measurement is lost, then the post-measurement quantum state is (probabilistically) the sum of all possible outcomes (without renormalization) of the associated POVM,
+This is to ensure that a physical post-measurement state is always recovered, which is to say that :math:`\trace[\StateDensity^\prime] = 1`. Quantum measurement can therefore be thought as the extension of the concept of trace-non-preserving quantum operations to include normalization, the procedure of which makes it distinct from such ordinary quantum operations (being necessarily linear). In essence, a quantum measurement describes the probability of obtaining a particular outcome of a quantum operation on a system, in addition to the change in the state of that affected system. If however the result of the measurement is lost (e.g., discarded), then the post-measurement quantum state is (probabilistically) the sum of all possible outcomes (without renormalization) of the associated POVM,
 
-.. math:: \StateDensity^\prime = \sum_{i} \Kraus_i \StateDensity \Kraus^\dagger_i.
+.. math:: \StateDensity^\prime = \sum_{i} \Kraus_i \StateDensity \Kraus^\dagger_i,
 
-This defines a linear, trace-preserving, completely positive map.
+which constitutes a linear, trace-preserving, completely positive map.
 
 A quantum observable :math:`\SetObservable = \{\op{\Pi}_i\}_i` is said to be *sharp* if, in addition to having positive operators, each operator :math:`\op{\Pi}_i` is a projector, that is, :math:`\op{\Pi}_i = \op{\Pi}^2_i`. According to the spectral theorem :eq:`eq:spectral_theorem`, every Hermitian operator :math:`\op{H}` may be expressed as
 
@@ -590,19 +601,19 @@ which is known as the *Born rule*, and is one of the key principles of quantum m
 Integrals over quantum states
 =============================
 
-Let :math:`\SpaceHilbert` denote the Hilbert space for a :math:`\Dimension`-dimensional quantum system. The integral over quantum states :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert)` is defined :cite:p:`bengtsson_geometry_2017, allen_treating_2014` as
+Let :math:`\SpaceHilbert` denote the Hilbert space for a :math:`\Dimension`-dimensional quantum system. An integral over quantum states :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert)` is defined :cite:p:`bengtsson_geometry_2017, allen_treating_2014` as
 
 .. math:: \Integral = \int_{\SpaceMixed(\SpaceHilbert)} \diff[\StateDensity] \, \FunctionIntermediate(\StateDensity) 
    :label: eq:integral_mixed
 
-where :math:`\FunctionIntermediate : \SpaceMixed(\SpaceHilbert) \rightarrow \Complexes` is any scalar function, and :math:`\diff[\StateDensity]` is the integration measure over :math:`\SpaceMixed(\SpaceHilbert)`. To compute the integral, an explicit form of the measure must be defined, and we are typically free to choose any such form in accordance with what we wish to accomplish. In the case of mixed states :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert)`, there is in fact no unique natural measure on :math:`\SpaceMixed(\SpaceHilbert)`. One must therefore be chosen (along with a way to parametrize :math:`\StateDensity`), which means that there is correspondingly no unique way to write the integral :math:`\Integral`, as any definition will depend on the choice of measure used.
+where :math:`\FunctionIntermediate : \SpaceMixed(\SpaceHilbert) \rightarrow \Complexes` is any scalar functional, and :math:`\diff[\StateDensity]` is the integration measure over :math:`\SpaceMixed(\SpaceHilbert)`. To compute the integral, an explicit form of the measure must be defined, and we are typically free to choose any such form in accordance with what we wish to accomplish. In the case of mixed states :math:`\StateDensity \in \SpaceMixed(\SpaceHilbert)`, there is in fact no unique natural measure on :math:`\SpaceMixed(\SpaceHilbert)`. One must therefore be chosen (along with a way to parametrize :math:`\StateDensity`), which means that there is correspondingly no unique way to write the integral :math:`\Integral`, as any definition will depend on the choice of measure used.
 
-For the specific case of pure states :math:`\ket{\StateVector} \in \SpacePure(\SpaceHilbert)` however, we are able to define both a suitable measure and parametrization. Given some :math:`\FunctionIntermediate : \SpacePure(\SpaceHilbert) \rightarrow \Complexes`, the integral over pure states :cite:p:`bengtsson_geometry_2017, allen_treating_2014` is
+For the specific case of pure states :math:`\ket{\StateVector} \in \SpacePure(\SpaceHilbert)` however, we are able to define both a suitable measure and parametrization. Given some functional :math:`\FunctionIntermediate : \SpacePure(\SpaceHilbert) \rightarrow \Complexes`, the integral over pure states :cite:p:`bengtsson_geometry_2017, allen_treating_2014` is
 
 .. math:: \Integral = \int_{\SpacePure(\SpaceHilbert)} \diff[\StateVector] \, \FunctionIntermediate(\StateVector).
    :label: eq:integral_pure
 
-An important class of unitary transformations consists of random unitary matrices distributed according to the Haar measure on the group of :math:`\Dimension\times\Dimension` unitary matrices :math:`\GroupUnitary(\Dimension)`. This is significant for our purposes, as conveniently there exists a unique, natural measure over :math:`\SpacePure(\SpaceHilbert)` that is invariant under such transformations, and perhaps the best way to write this is in the Hurwitz parametrization :cite:p:`hurwitz_uber_1897, zyczkowski_induced_2001, bengtsson_geometry_2017`. Let us first introduce the Bloch sphere parametrization, often used for qubits, which involves the rotationally invariant area measure on a (unit) :math:`2`-sphere:
+An important class of unitary transformations consists of random unitary matrices distributed according to the Haar measure on the group of :math:`\Dimension\times\Dimension` unitary matrices :math:`\GroupUnitary(\Dimension)`. This is significant for our purposes, as conveniently there exists a unique, natural measure over :math:`\SpacePure(\SpaceHilbert)` that is invariant under such transformations, and perhaps the best way to write this is in the *Hurwitz parametrization* :cite:p:`hurwitz_uber_1897, zyczkowski_induced_2001, bengtsson_geometry_2017`. Let us first introduce the *Bloch sphere parametrization*, often used for qubits, which involves the rotationally invariant area measure on a (unit) :math:`2`-sphere:
 
 .. math::
 
@@ -613,10 +624,10 @@ An important class of unitary transformations consists of random unitary matrice
 
 The Hurwitz parametrization is then simply a generalization of this Bloch sphere parametrization to :math:`\Dimension`-dimensional (pure) states. Therefore, given some orthonormal basis :math:`\{\ket{\mu}\}_{\mu=0}^{\Dimension - 1}` of :math:`\SpaceHilbert`, any pure state :math:`\ket{\StateVector} \in \SpacePure(\SpaceHilbert)` may be expressed in this parametrization as
 
-.. math:: \ket{\StateVector} = \prod_{\nu=\Dimension - 1}^{1} \sin(\vartheta_\nu) \ket{0} + \sum_{\mu = 1}^{\Dimension - 2} \e^{\eye \varphi_\mu}\cos(\vartheta_\mu) \prod_{\nu = \Dimension - 1}^{\mu + 1} \sin(\vartheta_\nu) \ket{\mu} + \e^{\eye \varphi_{\Dimension - 1}} \cos(\vartheta_{\Dimension - 1}) \ket{\Dimension - 1} 
+.. math:: \ket{\StateVector} = \prod_{\nu=\Dimension - 1}^{1} \sin(\vartheta_\nu) \ket{0} + \sum_{\mu = 1}^{\Dimension - 2} \e^{\eye \varphi_\mu}\cos(\vartheta_\mu) \prod_{\nu = \Dimension - 1}^{\mu + 1} \sin(\vartheta_\nu) \ket{\mu} + \e^{\eye \varphi_{\Dimension - 1}} \cos(\vartheta_{\Dimension - 1}) \ket{\Dimension - 1},
    :label: eq:Hurwitz_state
 
-for parameters :math:`\vartheta_\mu \in [0,\tfrac{\pi}{2}]` and :math:`\varphi_\mu \in [0,2\pi)`. The corresponding integration measure (unique up to a multiplicative constant) in this parametrization takes the form
+for parameters :math:`\vartheta_\lambda \in [0,\tfrac{\pi}{2}]` and :math:`\varphi_\lambda \in [0,2\pi)`. The corresponding integration measure (unique up to a multiplicative constant) in this parametrization takes the form
 
 .. math:: \diff[\StateVector(\vartheta_\mu,\varphi_\mu)] = \prod_{\mu = 1}^{\Dimension - 1} \cos(\vartheta_\mu) \, \sin^{2\mu - 1}(\vartheta_\mu) \, \diff\vartheta_\mu \, \diff\varphi_\mu, 
    :label: eq:Hurwitz_measure

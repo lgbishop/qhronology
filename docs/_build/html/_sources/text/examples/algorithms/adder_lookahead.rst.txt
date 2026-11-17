@@ -6,7 +6,7 @@ Carry-lookahead adder
 Description
 -----------
 
-A quantum *carry-lookahead* adder, proposed by Vedral et al. :cite:p:`vedral_quantum_1996`, is another style of multi-qubit adder and appears in :numref:`fig:circuit_algorithm_adder_lookahead`. It consists of two phases: in the first, the carry qubits are computed, while in the second, the sums (taking into account the value of the carry qubits) are computed (in addition to the carry qubits being reverted back to their original values). Note that in this implementation, the order of the qubits in the encoding is reversed, such that the least-significant qubits are at the top while the most-significant qubits are at the bottom.
+A quantum *carry-lookahead adder*, proposed by Vedral et al. :cite:p:`vedral_quantum_1996`, is another style of multi-qubit adder and appears in :numref:`fig:circuit_algorithm_adder_lookahead`. It consists of two phases: in the first, the carry qubits are computed, while in the second, the sums (taking into account the value of the carry qubits) are computed (in addition to the carry qubits being reverted back to their original values). Note that in this implementation, the order of the qubits in the encoding is reversed, such that the least-significant qubits are at the top while the most-significant qubits are at the bottom.
 
 .. only:: html
 
@@ -62,7 +62,7 @@ The last qubit is simply an overflow qubit and has the value
 
 .. math:: c^\prime_\Dimension = c_\Dimension \oplus x_{\Dimension - 1} y_{\Dimension - 1} \oplus c^\prime_{\Dimension - 1} (x_{\Dimension - 1} \oplus y_{\Dimension - 1}).
 
-It is non-zero when the sum of the most-significant qubits (plus carry) "wraps around" (due to the modular arithmetic), and so represents the case where the total resulting sum is too big to be encoded with just :math:`\Dimension` qubits, a situation known as *integer overflow*. If the value of this qubit is not required, then the circuit can be simplified by removing the last CARRY, the lone CNOT, and the qubit itself.
+It is non-zero when the sum of the most-significant qubits (plus carry) "wraps around" (due to the modular arithmetic), and so represents the case where the total resulting sum is too big to be encoded with just :math:`\Dimension` qubits---a situation known as *integer overflow*. If the value of this qubit is not required, then the circuit can be simplified by removing the last CARRY, the lone CNOT, and the qubit itself.
 
 Implementation
 --------------

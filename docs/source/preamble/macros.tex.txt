@@ -22,7 +22,7 @@
 \newcommand{\map}[1]{\mathbf{#1}}
 \newcommand{\textgate}[1]{\text{\textsc{#1}}}
 \newcommand{\vac}[1]{\mathbf{#1}} % \mathcal{}, \mathfrak{} or \mathbf{} or \tilde{}
-\newcommand{\normalized}[1]{\overline{#1}}
+\newcommand{\normalized}[1]{\bar{#1}}
 % \newcommand{\e}{\operatorname{e}}
 \newcommand{\e}{{\mkern1mu\mathrm{e}\mkern1mu}}
 \newcommand{\aket}[1]{\big| #1 \big>} % for Dirac bras
@@ -82,6 +82,7 @@
 
 \newcommand{\Space}{x} % three-vectors
 \newcommand{\SpaceDelta}{w}
+\newcommand{\Position}{x} % for nonrelativistic uses, like the position operator
 \newcommand{\PositionInitial}{x'}
 \newcommand{\PositionFinal}{x''}
 \newcommand{\PositionFuture}{x^+}
@@ -89,13 +90,20 @@
 \newcommand{\PositionCollision}{x^*}
 \newcommand{\MouthFuture}{\mathcal{W}^+}
 \newcommand{\MouthPast}{\mathcal{W}^-}
-\newcommand{\Position}{x} % for nonrelativistic uses, like the position operator
 
 \newcommand{\Momentum}{p}
 \newcommand{\MomentumInitial}{p'}
 \newcommand{\MomentumFinal}{p''}
 
-\newcommand{\Coordinate}{x} % four-vectors and differential equations
+\newcommand{\Coordinate}{x} % four-vectors and differential equations, usually written as x and sometimes as q
+\newcommand{\CoordinateInitial}{x'}
+\newcommand{\CoordinateFinal}{x''}
+\newcommand{\CoordinateFuture}{x^+}
+\newcommand{\CoordinatePast}{x^-}
+\newcommand{\SpacePosition}{X}
+\newcommand{\SpaceMomentum}{P}
+\newcommand{\MeasurePosition}{\mu}
+\newcommand{\MeasureMomentum}{\nu}
 \newcommand{\Dimension}{d}
 \newcommand{\Base}{b}
 \newcommand{\Radial}{r}
@@ -157,6 +165,7 @@
 \newcommand{\Distribution}{T}
 \newcommand{\FT}[1]{\tilde{#1}}
 \newcommand{\Fourier}{\mathcal{F}}
+\newcommand{\Character}{\chi}
 \newcommand{\Number}{N}
 \newcommand{\Fields}{\mathbb{F}}
 \newcommand{\Reals}{\mathbb{R}}
@@ -239,13 +248,13 @@
 \newcommand{\NumberLevels}{N}
 \newcommand{\NumberModes}{M}
 \newcommand{\Normalization}{\mathcal{N}}
+\newcommand{\Observable}{O}
 \newcommand{\Unitary}{\op{U}}
 \newcommand{\UnitaryVacuum}{\op{U}}
 \newcommand{\UnitaryMultimode}{\op{U}}
 \newcommand{\UnitaryTraced}{\op{P}}
 \newcommand{\UnitaryTime}{\op{U}}
 \newcommand{\Kraus}{\op{K}}
-\newcommand{\Observable}{\op{O}}
 \newcommand{\Identity}{\op{I}}
 \newcommand{\Seed}{\op{\varrho}}
 \newcommand{\Rotation}{\op{R}}

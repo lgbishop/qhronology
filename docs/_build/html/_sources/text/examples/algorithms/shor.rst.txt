@@ -6,7 +6,7 @@ Shor's factorization algorithm
 Description
 -----------
 
-*Shor's factorization algorithm* :cite:p:`shor_algorithms_1994, shor_polynomial-time_1997`, often called just *Shor's algorithm*, is an innovative quantum algorithm for the factorization of integers. An instance of the *hidden subgroup problem*, the algorithm's significance lies in its ability to factor large integers in polynomial time, which is exponentially faster than any known classical algorithm.
+*Shor's factorization algorithm* :cite:p:`shor_algorithms_1994, shor_polynomial-time_1997`, often shortened to just *Shor's algorithm*, is an innovative quantum algorithm for the factorization of integers. An instance of the *hidden subgroup problem*, the algorithm's significance lies in its ability to factor large integers in polynomial time, which is exponentially faster than any known classical algorithm.
 
 Shor's algorithm is a notable example of a *hybrid algorithm*, in which both classical and quantum processing are employed in order to obtain the desired outcome. As part of the algorithm, the factorization problem is reduced down to the problem of *order-finding*, a process known as *classical reduction*. Solving the order-finding problem then forms the core of the algorithm, and is the only component which is performed quantum mechanically (via quantum phase estimation---see :numref:`eg:phase_estimation` :ref:`eg:phase_estimation`).
 
@@ -49,7 +49,7 @@ As :math:`\Integers_N^*` is the multiplicative group of integers modulo :math:`N
 
 Note that the value of :math:`r` is specific to that combination of both the element :math:`a` and the modulus :math:`N`.
 
-Of course, if :math:`r` satisfies :eq:`eq:multiplicative_order`, then so will any exponent of the form :math:`r + k`, where :math:`k` is a positive integer. The smallest possible non-zero value of :math:`r` for which this holds true is called the *order* of the element :math:`a`. This can be expressed more eloquently; by defining the *modular exponential function*,
+Of course, if :math:`r` satisfies :eq:`eq:multiplicative_order`, then so will any exponent of the form :math:`r + k`, where :math:`k` is a positive integer. The smallest possible non-zero value of :math:`r` for which this holds true is called the *order* of the element :math:`a`. This can be expressed more eloquently: by defining the *modular exponential function*,
 
 .. math:: f_{N, a}(k) \equiv a^k \; (\mathrm{mod} \; N),
    :label: eq:modular_exponential_function
@@ -68,7 +68,7 @@ for any positive integer :math:`k`. Determining the smallest possible value(s) o
 Factorization by order-finding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Solving the problem of order-finding is useful because it can be used to factorize an integer. This is achieved by first assigning the number to be factorized :math:`N` as the modulus of the associated multiplicative group of integers. The period :math:`r` is then calculated given an element :math:`a \in \Integers_N^* \setminus \{1\}` (so :math:`N` and :math:`a` are coprime). Since :eq:`eq:multiplicative_order` is satisfied for such values of :math:`a`, then :math:`N` divides :math:`a^{r} - 1`, which is often written as
+Solving the problem of order-finding is useful because it can be used to factorize an integer. This is achieved by first assigning the number to be factorized, :math:`N`, as the modulus of the associated multiplicative group of integers. The period :math:`r` is then calculated given an element :math:`a \in \Integers_N^* \setminus \{1\}` (so :math:`N` and :math:`a` are coprime). Since :eq:`eq:multiplicative_order` is satisfied for such values of :math:`a`, then :math:`N` divides :math:`a^{r} - 1`, which is often written as
 
 .. math:: N \divides a^{r} - 1.
 
@@ -79,10 +79,12 @@ This simply means that there exists an integer :math:`z` such that :math:`a^{r} 
 If :math:`r` is odd, then the period should be recomputed using a different value for :math:`a`. When :math:`r` is determined to be even, then :math:`r/2` is an integer, and so :math:`a^{r/2}` is the non-trivial square root of :math:`a^{r}`. Proceeding under this assumption, we have
 
 .. math:: N \divides (a^{r/2} - 1)(a^{r/2} + 1),
+   :label: eq:divides_product
 
 which may imply the following two statements:
 
 .. math::
+   :label: eq:divides_statements
 
    \begin{aligned}
        \text{(i)} \quad &N \divides a^{r/2} - 1,\\
@@ -93,7 +95,7 @@ Neither of these statements can be true if the factorization algorithm is to be 
 
 .. math:: d = \gcd(N, a^{r/2} - 1).
 
-If :math:`d = 1`, then statement (ii) is true, and the factorization procedure has trivial factor (either :math:`1` or :math:`N`) and should be repeated with a different value for :math:`a` (to attempt to find a non-trivial factor). Alternatively, if :math:`d > 1`, then
+If :math:`d = 1`, then statement (ii) is true, and the factorization procedure has trivial factor (either :math:`1` or :math:`N`) and should be repeated with a different value for :math:`a` (to attempt to find a non-trivial factor). Alternatively, if :math:`d > 1`, then :eq:`eq:divides_product` holds without either of (i) or (ii) being true, and so
 
 .. math::
 
@@ -116,26 +118,29 @@ Before executing Shor's algorithm for a given number :math:`N`, it can be advant
 .. raw:: latex
 
    \begin{codetitled}{Shor's algorithm (natural-language pseudocode)}{}
+   \linespread{1.35}\fontsize{10.5}{12}\selectfont
 
-#. Choose, at random, an integer :math:`a \in \Integers_N \setminus \{1\}`.
+..
 
-#. **Classical pre-processing**: Compute :math:`d = \gcd(N, a)`.
+   1. Choose, at random, an integer :math:`a \in \Integers_N \setminus \{1\}`.
 
-   #. If :math:`d > 1`, then factors have been found: output :math:`p = d` and :math:`q = N/d`. *Exit*.
+   2. **Classical pre-processing**: Compute :math:`d = \gcd(N, a)`.
 
-   #. If :math:`d = 1`, then :math:`a` and :math:`N` are coprime (therefore :math:`a \in \Integers_N^*`). *Continue*.
+   :math:`\hspace{2.5em}` 2.1. If :math:`d > 1`, then factors have been found: output :math:`p = d` and :math:`q = N/d`. *Exit*.
 
-#. **Quantum order-finding**: Find the period :math:`r` such that :math:`a^r \; \mathrm{mod} \; N = 1`.
+   :math:`\hspace{2.5em}` 2.2. If :math:`d = 1`, then :math:`a` and :math:`N` are coprime (therefore :math:`a \in \Integers_N^*`). *Continue*.
 
-#. **Classical post-processing**:
+   3. **Quantum order-finding**: Find the period :math:`r` such that :math:`a^r \; \mathrm{mod} \; N = 1`.
 
-   #. If :math:`r` is even, then compute :math:`a^\prime = a^{r/2} - 1 \; \mathrm{mod} \; N` and :math:`d^\prime = \gcd(N, a^\prime)`.
+   4. **Classical post-processing**:
 
-      #. If :math:`d^\prime > 1`, then factors have been found: output :math:`p = d^\prime` and :math:`q = N/d^\prime`. *Exit*.
+   :math:`\hspace{2.5em}` 4.1. If :math:`r` is even, then compute :math:`a^\prime = a^{r/2} - 1 \; \mathrm{mod} \; N` and :math:`d^\prime = \gcd(N, a^\prime)`.
 
-      #. If :math:`d^\prime = 1`, then the algorithm has failed to factorize :math:`N`. *Goto step 1*.
+   :math:`\hspace{4.5em}` 4.1.1. If :math:`d^\prime > 1`, then factors have been found: output :math:`p = d^\prime` and :math:`q = N/d^\prime`. *Exit*.
 
-   #. If :math:`r` is odd, then the algorithm has failed to factorize :math:`N`. *Goto step 1*.
+   :math:`\hspace{4.5em}` 4.1.2. If :math:`d^\prime = 1`, then the algorithm has failed to factorize :math:`N`. *Goto step 1*.
+
+   :math:`\hspace{2.5em}` 4.2. If :math:`r` is odd, then the algorithm has failed to factorize :math:`N`. *Goto step 1*.
 
 .. raw:: latex
 

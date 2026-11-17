@@ -11,7 +11,7 @@ Quantum mechanics, one of the cornerstones of our modern view of reality, is fou
 Vector spaces
 =============
 
-A (linear) *vector space* over a field :math:`\Fields` is a non-empty set :math:`\SpaceVector` which is closed under the operations of addition and scalar multiplication. This is to say that, for elements (termed *vectors*) :math:`\psi, \phi, \chi \in \SpaceVector`, closure under addition requires the following axioms to be satisfied:
+A (linear) *vector space* over a field :math:`\Fields` is a non-empty set :math:`\SpaceVector` which is closed under the operations of addition and scalar multiplication. This is to say that, for any elements :math:`\psi, \phi, \chi \in \SpaceVector`, termed *vectors*, closure under addition requires the following axioms to be satisfied:
 
 .. math::
    :label: eq:vector_identities
@@ -38,11 +38,11 @@ Given a subset :math:`\SpaceSubset = \{\Basis_i\}_{i}` of a :math:`\Fields`-vect
 
 .. math:: \sum_{i} c_i \Basis_i \in \SpaceVector,
 
-where :math:`c_i \in \Fields` are the combination's *coefficients*. Such a set is said to be *linearly independent* if the only linear combination that results in the zero vector, that is,
+where :math:`c_i \in \Fields` are the combination's *coefficients*. Such a set is said to be *linearly independent* if the only linear combination that results in the zero vector, i.e.,
 
 .. math:: \sum_{i} c_i \Basis_i = \vec{0},
 
-occurs when all of its coefficients are zero, i.e., :math:`c_i = 0` (for all :math:`i`). Otherwise, the set of vectors is said to be *linearly dependent*. The *dimension* of a vector space :math:`\SpaceVector`, denoted by :math:`\dim(\SpaceVector)`, can be informally defined as the least upper bound of the number of linearly independent vectors in :math:`\SpaceVector`. A vector space is called *infinite-dimensional* if there is no such bound, otherwise it is *finite-dimensional*.
+occurs when all of its coefficients are zero, i.e., :math:`c_i = 0` (for all :math:`i`). Otherwise, the set of vectors is said to be *linearly dependent*. The *dimension* of a vector space :math:`\SpaceVector`, denoted by :math:`\dim(\SpaceVector)`, can be informally defined as the least upper bound of the number of linearly independent vectors in :math:`\SpaceVector`. A vector space is called *infinite-dimensional* if there is no such bound, otherwise it is said to be *finite-dimensional*.
 
 The (linear) *span* of a vector space :math:`\SpaceVector` (over a field :math:`\Fields`) is defined as the set of all linear combinations of its elements :math:`\Element_i \in \SpaceVector`,
 
@@ -82,13 +82,13 @@ By definition, such a map possesses the following properties:
        \text{(iv) } &\text{(positive-definiteness):} &\inner{\psi}{\psi} &> 0 \quad \text{if} \quad \psi \neq \vec{0}. 
    \end{aligned}
 
-Here, :math:`\conj{z}{}` is the complex conjugate of :math:`z\in\Complexes`. Note that together :eq:`eq:inner_axioms`-(i) and :eq:`eq:inner_axioms`-(ii) imply that the definition is *antilinear* in its first argument, e.g., :math:`\inner{a\phi}{\psi} = \conj{a}{}\inner{\phi}{\psi}`, which aligns with the convention in the physics literature.
+Here, :math:`\conj{z}{}` is the *complex conjugate* of :math:`z\in\Complexes`. Note that together :eq:`eq:inner_axioms`-(i) and :eq:`eq:inner_axioms`-(ii) imply that our definition of the inner product here is *antilinear* in its first argument, e.g., :math:`\inner{a\phi}{\psi} = \conj{a}{}\inner{\phi}{\psi}`, which aligns with the convention in the physics literature.
 
-A pair of vectors :math:`\psi,\phi \in \SpaceVector` are *orthogonal* if
+A pair of vectors :math:`\psi,\phi \in \SpaceVector` are *orthogonal* if and only if
 
 .. math:: \inner{\phi}{\psi} = 0.
 
-Furthermore, a set of vectors :math:`\{\Element_i\}_{i}` is said to be *orthonormal* with respect to the inner product :eq:`eq:inner_map` if
+Furthermore, a set of vectors :math:`\{\Element_i\}_{i}` is said to be *orthonormal* with respect to the inner product :eq:`eq:inner_map` if and only if
 
 .. math:: \langle\Element_i, \Element_j\rangle = \delta_{ij}
 
@@ -186,7 +186,7 @@ which, given an orthonormal basis :math:`\{\Basis_i\}_{i=1}^{\Dimension}` and th
 .. math:: \norm{\psi}_2 = \sqrt{\sum_{i=1}^{\Dimension} \abs{\inner{\Basis_i}{\psi}}^2}.
    :label: eq:Parseval
 
-Additionally, in the case if :math:`p=2`, Hölder's inequality :eq:`eq:Holder` becomes the *Cauchy-Schwarz inequality*,
+Additionally, in the case if :math:`p=2`, Hölder's inequality :eq:`eq:Holder` becomes the *Cauchy--Schwarz inequality*,
 
 .. math:: \inner{\psi}{\phi} \leq \norm{\psi}_2 \norm{\phi}_2 = \sqrt{\inner{\psi}{\psi}} \sqrt{\inner{\phi}{\phi}}.
    :label: eq:Cauchy-Schwarz
@@ -213,7 +213,7 @@ Two Hilbert spaces, e.g., :math:`\SpaceHilbert_A` and :math:`\SpaceHilbert_B`, a
 
 for all :math:`\psi, \phi \in \SpaceHilbert_A`. Such a map is called *unitary*, and constitutes a special kind of linear operator on the Hilbert space (see :numref:`sec:operators` :ref:`sec:operators`).
 
-The *Riesz representation theorem* establishes that any linear map :math:`\varphi : \SpaceHilbert \rightarrow \Complexes` can be *uniquely* written as :eq:`eq:dual_map` for some fixed choice of :math:`\phi \in \SpaceHilbert`. Consequently, the inner product provides a vector space isomorphism
+The *Riesz representation theorem* establishes that any linear map :math:`\varphi : \SpaceHilbert \rightarrow \Complexes` can be uniquely written as :eq:`eq:dual_map` for some fixed choice of :math:`\phi \in \SpaceHilbert`. Consequently, the inner product provides a vector space isomorphism
 
 .. math:: \dual{\SpaceHilbert}{} \cong \SpaceHilbert,
    :label: eq:Hilbert_isomorphism
@@ -230,7 +230,7 @@ If this holds, then :math:`\psi \in \ell^2` where :math:`\ell^2` is the space of
 
 .. math:: \inner{\phi}{\psi} = \sum_{i=1}^{\infty} \conj{\phi_i}{} \psi_i,
 
-which, as per the Cauchy-Schwarz inequality :eq:`eq:Cauchy-Schwarz`, converges provided the individual vector norms do. Importantly, the notion of completeness of :math:`\ell^2` with respect to its norm enables us to perform calculus in this space, including computing limits and derivatives of vectors :math:`\psi \in \ell^2`. Generalizations to other sequence spaces, e.g., :math:`\ell^p` with :math:`p \geq 1` and the associated norm
+which, as per the Cauchy--Schwarz inequality :eq:`eq:Cauchy-Schwarz`, necessarily converges (provided the individual vector norms also do). Importantly, the notion of completeness of :math:`\ell^2` with respect to its norm enables us to perform calculus in this space, including computing limits and derivatives of vectors :math:`\psi \in \ell^2`. Generalizations to other sequence spaces, e.g., :math:`\ell^p` with :math:`p \geq 1` and the associated norm
 
 .. math:: \norm{\psi}_p = \left[\sum_{i=1}^{\infty} \abs{\psi_i}^p\right]^{\frac{1}{p}} < \infty,
 
@@ -259,7 +259,7 @@ with which the above expansion appears as
 
 .. math:: \ket{\psi} = \sum_{i=1}^{\Dimension} \braket{i}{\psi} \ket{i}.
 
-The alternative notation for the basis :math:`\{\ket{i}\}_{i=1}^{\Dimension}` is known as the *standard basis* (in the nomenclature of mathematics) or the *computational basis* (in the nomenclature of quantum computing). It is always assumed to be orthonormal, and necessarily spans :math:`\SpaceHilbert`. As these objects (kets) reside in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert \cong \Complexes^\Dimension`, they have corresponding representations in :math:`\Complexes^\Dimension` as column vectors, the standard choice being explicitly
+The alternative notation for the basis :math:`\{\ket{i}\}_{i=1}^{\Dimension}` is known as the *standard basis* (in the nomenclature of mathematics) or the *computational basis* (in the nomenclature of quantum computing). It is always assumed to be orthonormal, and necessarily spans :math:`\SpaceHilbert`. As these objects (kets) reside in a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert \cong \Complexes^\Dimension`, they have corresponding representations in :math:`\Complexes^\Dimension` as column vectors, the standard choice being explicitly:
 
 .. math::
    :label: eq:basis_qudit
@@ -269,7 +269,7 @@ The alternative notation for the basis :math:`\{\ket{i}\}_{i=1}^{\Dimension}` is
    \qquad \ldots,
    \qquad \ket{\Dimension - 1} = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}.
 
-Here, the :math:`i`-th element (indexing from zero, as customary in computer science) of the :math:`i`-th vector contains a :math:`1`, while all of the other entries contain :math:`0`. The corresponding covectors (bras) in the dual space :math:`\dual{\SpaceHilbert}{} \cong \Complexes^{*\Dimension}` have similar representations as row vectors,
+Here, the :math:`i`\ th element (indexing from zero, as customary in computer science) of the :math:`i`\ th vector contains a :math:`1`, while all of the other entries contain :math:`0`. The corresponding covectors (bras) in the dual space :math:`\dual{\SpaceHilbert}{} \cong \Complexes^{*\Dimension}` have similar representations as row vectors:
 
 .. math::
    \begin{aligned}
@@ -291,12 +291,12 @@ A *linear operator* :math:`\op{A}` on a Hilbert space :math:`\SpaceHilbert` is a
 .. math:: \op{A} : \Domain(\op{A}) \rightarrow \Range(\op{A})
    :label: eq:operator_linear_map
 
-which preserves linear combinations of vectors :math:`\ket{\psi},\ket{\phi} \in \SpaceHilbert`, that is,
+which preserves linear combinations of vectors in :math:`\SpaceHilbert`, that is,
 
 .. math:: \op{A}\bigl(\mu\ket{\psi} + \nu\ket{\phi}\bigr) = \mu\op{A}\ket{\psi} + \nu\op{A}\ket{\phi},
    :label: eq:operator_linear_preservation
 
-for all :math:`\mu,\nu \in \Complexes`. Here, the space :math:`\Domain(\op{A}) \subseteq \SpaceHilbert` denotes the domain of :math:`\op{A}` while :math:`\Range(\op{A}) \subseteq \SpaceHilbert` denotes its range. For an infinite-dimensional :math:`\SpaceHilbert`, operators are often not defined on the whole space, and so :math:`\Domain(\op{A})` may be a proper subset of :math:`\SpaceHilbert`. For finite-dimensional Hilbert spaces on the other hand, linear operators may always be defined on the entire space such that :math:`\Domain(\op{A}) = \Range(\op{A}) = \SpaceHilbert`. The space of all linear operators on :math:`\SpaceHilbert` is denoted by :math:`\SpaceLinear(\SpaceHilbert)`. All the operators we will discuss are linear, and so we will henceforth omit the "linear" descriptor.
+for all :math:`\ket{\psi},\ket{\phi} \in \SpaceHilbert` and :math:`\mu,\nu \in \Complexes`. Here, the space :math:`\Domain(\op{A}) \subseteq \SpaceHilbert` denotes the domain of :math:`\op{A}` while :math:`\Range(\op{A}) \subseteq \SpaceHilbert` denotes its range. For an infinite-dimensional :math:`\SpaceHilbert`, operators are often not defined on the whole space, and so :math:`\Domain(\op{A})` may be a proper subset of :math:`\SpaceHilbert`. For finite-dimensional Hilbert spaces on the other hand, linear operators may always be defined on the entire space such that :math:`\Domain(\op{A}) = \Range(\op{A}) = \SpaceHilbert`. The space of all linear operators on :math:`\SpaceHilbert` is denoted by :math:`\SpaceLinear(\SpaceHilbert)`. All the operators we will discuss are linear, and so we will henceforth omit the "linear" descriptor.
 
 Bounded operators
 -----------------
@@ -323,6 +323,7 @@ for all :math:`\ket{\psi} \in \SpaceHilbert`. It is easy to prove that both of t
 In general, operators do not commute, e.g., :math:`\op{A}\op{B} \neq \op{B}\op{A}`, and so the associated algebra is non-Abelian, or non-commutative. The difference between these orderings is captured by the *commutator*,
 
 .. math:: [\op{A},\op{B}] = \op{A}\op{B} - \op{B}\op{A},
+   :label: eq:commutator
 
 which possesses the following properties:
 
@@ -364,7 +365,7 @@ A vector :math:`\ket{\psi} \in \SpaceHilbert` is said to be an *eigenvector* of 
 
 where the number :math:`a_\psi \in \Complexes` is called the *eigenvalue*. Given this definition, we can single out two important operators:
 
--  The *identity* operator :math:`\Identity` is the (unique) operator that satisfies
+-  The *identity operator* :math:`\Identity` is the (unique) operator that satisfies
 
    .. math:: \Identity\ket{\psi} = \ket{\psi}, \quad \forall \, \ket{\psi} \in \SpaceHilbert.
 
@@ -372,7 +373,7 @@ where the number :math:`a_\psi \in \Complexes` is called the *eigenvalue*. Given
 
    .. math:: \Identity = \sum_{i=1}^{\Dimension} \ket{i}\bra{i}.
 
--  The *zero* operator :math:`\op{0}` is the (unique) operator that satisfies
+-  The *zero operator* :math:`\op{0}` is the (unique) operator that satisfies
 
    .. math:: \op{0}\ket{\psi} = \vec{0}, \quad \forall \, \ket{\psi} \in \SpaceHilbert,
 
@@ -382,7 +383,7 @@ An operator :math:`\op{A}` is called *invertible* if an operator :math:`\op{B}` 
 
 .. math:: \op{A}\op{B} = \op{B}\op{A} = \Identity.
 
-If such a :math:`\op{B}` exists, then it is the (unique) inverse of :math:`\op{A}`, and we denote it by :math:`\op{B} = \op{A}^{-1}`. The *spectrum* of :math:`\op{A}` is the set of all complex numbers :math:`\lambda` for which the operator :math:`\op{A} - \lambda\Identity` fails to be invertible. In a finite-dimensional Hilbert space, the spectrum of :math:`\op{A}` is simply the set of eigenvalues of :math:`\op{A}`. The same is not true in general for infinite dimensions. The number of linearly independent eigenvectors possessing the same eigenvalue is called the *degeneracy* of that eigenvalue. Additionally, the *support* of an operator :math:`\op{A}` is the vector space spanned by the eigenvectors of :math:`\op{A}` with non-zero eigenvalues.
+If such a :math:`\op{B}` exists, then it is the (unique) inverse of :math:`\op{A}`, and we denote it by :math:`\op{B} \equiv \op{A}^{-1}`. The *spectrum* of :math:`\op{A}` is the set of all complex numbers :math:`\lambda` for which the operator :math:`\op{A} - \lambda\Identity` fails to be invertible. In a finite-dimensional Hilbert space, the spectrum of :math:`\op{A}` is simply the set of eigenvalues of :math:`\op{A}`. The same is not true in general for infinite dimensions. The number of linearly independent eigenvectors possessing the same eigenvalue is called the *degeneracy* of that eigenvalue. Additionally, the *support* of an operator :math:`\op{A}` is the vector space spanned by the eigenvectors of :math:`\op{A}` with non-zero eigenvalues.
 
 Transposition and conjugation
 -----------------------------
@@ -399,13 +400,13 @@ are the elements of the corresponding matrix representation of the operator (in 
 
 .. math:: \op{A}\op{B} = \sum_{i,j,k=1}^{\Dimension} A_{ik}B_{kj}\ket{i}\bra{j}
 
-where :math:`B_{kj} \equiv \bra{k}\op{B}\ket{j}`. These expressions make it easy to characterize the action of operations on such operators. Our primary interest lies in the *transpose* and the *conjugate transpose* (or *adjoint*), which are defined for any orthonormally expandable :math:`\op{A}` by
+where :math:`B_{kj} \equiv \bra{k}\op{B}\ket{j}`. These expressions make it easy to characterize the action of operations on such operators. Our primary interest lies in the *transpose* and the *conjugate transpose* (or *adjoint*), denoted by :math:`\op{A}^\transpose` and :math:`\op{A}^\dagger` respectively, which are defined for any orthonormally expandable :math:`\op{A}` by
 
 .. math::
 
    \begin{aligned}
-       \text{transpose:}& \quad &\op{A}^\transpose &= \sum_{i,j=1}^{\Dimension} A_{ij}\ket{j}\bra{i}, \\
-       \text{conjugate transpose:}& &\op{A}^\dagger &= \sum_{i,j=1}^{\Dimension} \conj{A_{ij}}{}\ket{j}\bra{i} = \conj{(\op{A}^\transpose)}{} = (\conj{\op{A}}{})^\transpose.
+       \op{A}^\transpose &= \sum_{i,j=1}^{\Dimension} A_{ij}\ket{j}\bra{i}, \\
+       \op{A}^\dagger &= \sum_{i,j=1}^{\Dimension} \conj{A_{ij}}{}\ket{j}\bra{i} = \conj{(\op{A}^\transpose)}{} = (\conj{\op{A}}{})^\transpose.
    \end{aligned}
 
 From these, it is easy to deduce the following properties:
@@ -447,12 +448,12 @@ where :math:`\{\ket{i}\}_{i=1}^{\Dimension}` is any orthonormal basis. The trace
        \text{(iv):}& &\trace\bigl[\ket{\psi}\bra{\psi}\op{A}\bigr] &= \bra{\psi}\op{A}\ket{\psi}.
    \end{aligned}
 
-In a matrix representation of linear operators, the trace is simply the sum of the elements on the main diagonal of an operator's corresponding matrix form.
+In a standard matrix representation of linear operators, the trace is simply the sum of the elements on the main diagonal of an operator's corresponding matrix form.
 
 Normal operators
 ----------------
 
-An important class of operators are the *normal* operators, which are characterized by their commutation with their own conjugate transpose, i.e.,
+An important class of operators are the *normal operators*, which are characterized by their commutation with their own conjugate transpose, i.e.,
 
 .. math:: \op{N}^\dagger\op{N} = \op{N}\op{N}^\dagger.
 
@@ -467,67 +468,67 @@ The converse holds true, such that any orthogonally diagonalizable operator is n
 
 Normal operators arise in many special forms, including:
 
--  *Hermitian* (or *self-adjoint*) operators :math:`\op{H}`, defined by
+- *Hermitian* (or *self-adjoint*) *operators* :math:`\op{H}`, defined by
 
-   .. math:: \op{H}^\dagger = \op{H}.
+  .. math:: \op{H}^\dagger = \op{H}.
 
-   If :math:`\op{H}` is Hermitian, then
+  If :math:`\op{H}` is Hermitian, then
 
-   .. math:: \bra{\psi}\op{H}\ket{\psi} \in \Reals,\quad \forall \, \ket{\psi} \in \SpaceHilbert,
+  .. math:: \bra{\psi}\op{H}\ket{\psi} \in \Reals, \quad \forall \, \ket{\psi} \in \SpaceHilbert,
 
-   that is, :math:`\op{H}` has only real eigenvalues.
+  that is, :math:`\op{H}` has only real eigenvalues.
 
--  *skew-Hermitian* operators :math:`\op{S}`, defined by
+- *Skew-Hermitian operators* :math:`\op{S}`, defined by
 
-   .. math:: \op{S}^\dagger = -\op{S}.
+  .. math:: \op{S}^\dagger = -\op{S}.
 
--  *Unitary* operators :math:`\op{U}`, formally defined by :eq:`eq:unitary_map`, which (in most cases) is equivalent to the property
+- *Unitary operators* :math:`\op{U}`, formally defined by :eq:`eq:unitary_map`, which (in most cases) is equivalent to the property
 
-   .. math:: \op{U}^\dagger \op{U} = \op{U}\op{U}^\dagger = \Identity,
+  .. math:: \op{U}^\dagger \op{U} = \op{U}\op{U}^\dagger = \Identity,
 
-   or simply,
+  or, simply,
 
-   .. math:: \op{U}^\dagger = \op{U}^{-1}.
+  .. math:: \op{U}^\dagger = \op{U}^{-1}.
 
-   The characterizing nature of unitary operators is their preservation of the inner product, i.e.,
+  The characterizing nature of unitary operators is their preservation of the inner product, i.e.,
 
-   .. math:: \bra{\phi}\op{U}^\dagger \op{U}\ket{\psi} = \braket{\phi}{\psi}, \quad \forall \,\ket{\psi},\ket{\phi} \in \SpaceHilbert,
+  .. math:: \bra{\phi}\op{U}^\dagger \op{U}\ket{\psi} = \braket{\phi}{\psi}, \quad \forall \,\ket{\psi},\ket{\phi} \in \SpaceHilbert,
 
-   which motivates the given definition.
+  which motivates the given definition.
 
--  *Positive* operators :math:`\op{P}`, defined by
+- *Positive operators* :math:`\op{P}`, defined by
 
-   .. math:: \bra{\psi}\op{P}\ket{\psi} \geq 0, \quad \forall \, \ket{\psi} \in \SpaceHilbert.
+  .. math:: \bra{\psi}\op{P}\ket{\psi} \geq 0, \quad \forall \, \ket{\psi} \in \SpaceHilbert.
 
-   Operators that fulfill this condition are said to be *positive-semidefinite*, and they may be constructed from any :math:`\op{A} \in \SpaceLinear(\SpaceHilbert)` as
+  Operators that fulfill this condition are said to be *positive-semidefinite*, and they may be constructed from any :math:`\op{A} \in \SpaceLinear(\SpaceHilbert)` as
 
-   .. math:: \op{P} = \op{A}^\dagger \op{A},
+  .. math:: \op{P} = \op{A}^\dagger \op{A},
 
-   or using the spectral theorem,
+  or, using the spectral theorem,
 
-   .. math:: \op{P} = \sum_{i=1}^{\Dimension} P_i \ket{v_i}\bra{v_i},
+  .. math:: \op{P} = \sum_{i=1}^{\Dimension} P_i \ket{v_i}\bra{v_i},
 
-   given non-negative eigenvalues :math:`\{P_i\}_{i=1}^{\Dimension}` and eigenvectors :math:`\{\ket{v_i}\}_{i=1}^{\Dimension}`. Note that :math:`\op{P}` is called *positive-definite* if
+  given non-negative eigenvalues :math:`\{P_i\}_{i=1}^{\Dimension}` and eigenvectors :math:`\{\ket{v_i}\}_{i=1}^{\Dimension}`. Note that :math:`\op{P}` is called *positive-definite* if
 
-   .. math:: \bra{\psi}\op{P}\ket{\psi} > 0, \quad \forall \, \ket{\psi} \in \SpaceHilbert.
+  .. math:: \bra{\psi}\op{P}\ket{\psi} > 0, \quad \forall \, \ket{\psi} \in \SpaceHilbert.
 
-   In the special case where
+  In the special case where
 
-   .. math:: \trace[\op{P}] = \sum_{i=1}^{\Dimension} P_i = 1,
+  .. math:: \trace[\op{P}] = \sum_{i=1}^{\Dimension} P_i = 1,
 
-   then :math:`\op{P}` is called a *density* operator.
+  then :math:`\op{P}` is called a *density* operator.
 
--  *Projection* operators :math:`\op{\Pi}`, defined by
+- *Projection operators* :math:`\op{\Pi}`, defined by
 
-   .. math:: \op{\Pi}^2 = \op{\Pi} = \op{\Pi}^\dagger,
+  .. math:: \op{\Pi}^2 = \op{\Pi} = \op{\Pi}^\dagger,
 
-   which is to say that :math:`\op{\Pi}` is both idempotent and Hermitian.
+  which is to say that :math:`\op{\Pi}` is both idempotent and Hermitian.
 
--  *Involutory* operators :math:`\op{A}`, defined by
+- *Involutory operators* :math:`\op{A}`, defined by
 
-   .. math:: \op{A}^2 = \Identity.
+  .. math:: \op{A}^2 = \Identity.
 
-   Involutory operators include those which are both Hermitian and unitary.
+  Involutory operators include those which are both Hermitian and unitary.
 
 .. _`sec:composite`:
 
@@ -652,7 +653,13 @@ We now turn our attention to :math:`\Dimension`-dimensional Hilbert spaces, whic
 
    \ket{\psi} = \sum_{i=1}^{\Dimension} \psi_i \ket{\Basis_i}.
 
-If we instead have :math:`\Number` such systems :math:`\{\ket{\psi_n}\}_{n=1}^{\Number}`, each residing in the same Hilbert space :math:`\SpaceHilbert_{\Dimension}`, then their composition is
+If we instead have :math:`\Number` such systems :math:`\{\ket{\psi_n}\}_{n=1}^{\Number}`, each residing in a copy of the Hilbert space :math:`\SpaceHilbert_\Dimension` with basis :math:`\bigl\{\bigl|\Basis_{i_n}\bigr\rangle\bigr\}_{i = 1}^{\Dimension}`, then the state on each system can be expressed in the form
+
+.. math::
+
+   \ket{\psi_n} = \sum_{i = 1}^{\Dimension} \psi_{i_n} \bigl|\Basis_{i_n}\bigr\rangle,
+
+where :math:`\psi_{i_n}` is the :math:`i`\ th component of the :math:`n`\ th state. The total state on this :math:`\Number`-system composition is then the tensor product,
 
 .. math::
    :label: eq:composition_state
@@ -660,36 +667,31 @@ If we instead have :math:`\Number` such systems :math:`\{\ket{\psi_n}\}_{n=1}^{\
    \begin{aligned}
        \ket{\psi_1} \otimes \ket{\psi_2} \otimes \ldots \otimes \ket{\psi_\Number} &\equiv \bigotimes_{n=1}^{\Number} \ket{\psi_n} \\
        &= \bigotimes_{n=1}^{\Number} \sum_{i=1}^{\Dimension} \psi_{i_n} \bigl|\Basis_{i_n}\bigr\rangle \\
-       &= \sum_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension} \psi_{i_1} \psi_{i_2} \ldots \psi_{i_\Number} \bigl|\Basis_{i_1}\bigr\rangle \otimes \bigl|\Basis_{i_2}\bigr\rangle \otimes \ldots \otimes \bigl|\Basis_{i_\Number}\bigr\rangle \\
-       &= \sum_{i=1}^{\Dimension} \left( \prod_{n=1}^{\Number} \psi_{i_n} \right) \bigotimes_{n=1}^{\Number} \bigl|\Basis_{i_n}\bigr\rangle \\
-       &= \sum_{i=1}^{\Dimension} \psi_{i_1, i_2, \ldots, i_\Number} \bigl|\Basis_{i_1, i_2, \ldots, i_\Number}\bigr\rangle.
+       &= \sum_{\{i_n = 1, \ldots, \Dimension\}_{n=1}^{\Number}} \psi_{i_1} \psi_{i_2} \ldots \psi_{i_\Number} \bigl|\Basis_{i_1}\bigr\rangle \otimes \bigl|\Basis_{i_2}\bigr\rangle \otimes \ldots \otimes \bigl|\Basis_{i_\Number}\bigr\rangle \\
+       % &= \sum_{i=1}^{\Dimension} \left( \prod_{n=1}^{\Number} \psi_{i_n} \right) \bigotimes_{n=1}^{\Number} \bigl|\Basis_{i_n}\bigr\rangle \\
+       &= \sum_{\{i_n = 1, \ldots, \Dimension\}_{n=1}^{\Number}} \psi_{i_1, i_2, \ldots, i_\Number} \bigl|\Basis_{i_1, i_2, \ldots, i_\Number}\bigr\rangle \\
+       &= \sum_{\{i_n = 1, \ldots, \Dimension\}_{n=1}^{\Number}} \psi_{\{i_n\}_{n=1}^{\Number}} \bigl|\Basis_{\{i_n\}_{n=1}^{\Number}}\bigr\rangle.
    \end{aligned}
 
-Here, :math:`\psi_{i_n}` is the :math:`i_n`-th component of the :math:`n`-th state (with basis :math:`\bigl\{\bigl|\Basis_{i_n}\bigr\rangle\bigr\}_{i_n = 1}^{\Dimension} \equiv \{\ket{\Basis_i}\}_{i = 1}^{\Dimension}` for all :math:`n`), i.e.,
+Here, the amalgamated components are
 
 .. math::
 
-   \ket{\psi_n} = \sum_{i_n = 1}^{\Dimension} \psi_{i_n} \bigl|\Basis_{i_n}\bigr\rangle,
-
-the amalgamated components are
-
-.. math::
-
-   \psi_{i_1, i_2, \ldots, i_\Number} \equiv \prod_{n=1}^{\Number} \psi_{i_n} = \psi_{i_1} \psi_{i_2} \ldots \psi_{i_\Number},
+   \psi_{\{i_n\}_{n=1}^{\Number}} \equiv \psi_{i_1, i_2, \ldots, i_\Number} \equiv \prod_{n=1}^{\Number} \psi_{i_n} = \psi_{i_1} \psi_{i_2} \ldots \psi_{i_\Number},
 
 and we introduced the composite vector
 
 .. math::
 
-   \bigl|\Basis_{\{i_n\}}\bigr\rangle \equiv \bigl|\Basis_{i_1, i_2, \ldots, i_\Number}\bigr\rangle \equiv \bigotimes_{n=1}^{\Number} \bigl|\Basis_{i_n}\bigr\rangle.
+   \bigl|\Basis_{\{i_n\}_{n=1}^{\Number}}\bigr\rangle \equiv \bigl|\Basis_{i_1, i_2, \ldots, i_\Number}\bigr\rangle \equiv \bigotimes_{n=1}^{\Number} \bigl|\Basis_{i_n}\bigr\rangle = \bigl|\Basis_{i_1}\bigr\rangle \otimes \bigl|\Basis_{i_2}\bigr\rangle \otimes \ldots \otimes \bigl|\Basis_{i_\Number}\bigr\rangle.
 
-Since :math:`\bigl\{\bigl|\Basis_{i_n}\bigr\rangle\bigr\}_{i_n = 1}^{\Dimension}` is a basis for the Hilbert space :math:`\SpaceHilbert_{\Dimension}`, then accordingly the set of states
+Since :math:`\bigl\{\bigl|\Basis_{i_n}\bigr\rangle\bigr\}_{i=1}^{\Dimension}` is a basis for any copy of the Hilbert space :math:`\SpaceHilbert_{\Dimension}`, then accordingly the set of states
 
 .. math::
 
    \begin{aligned}
-      \Bigl\{\bigl|\Basis_{\{i_n\}}\bigr\rangle : 1 \leq i_n \leq \Dimension, \, 1 \leq n \leq \Number \Bigr\} &\equiv \left\{\bigotimes_{n=1}^{\Number} \bigl|\Basis_{i_n}\bigr\rangle\right\}_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension} \\
-      &= \bigl\{\bigl|\Basis_{i_1}\bigr\rangle \otimes \bigl|\Basis_{i_2}\bigr\rangle \otimes \ldots \otimes \bigl|\Basis_{i_\Number}\bigr\rangle\bigr\}_{\{i_n\}_{n=1}^{\Number} = 1}^{\Dimension},
+      \Bigl\{\bigl|\Basis_{\{i_n\}}\bigr\rangle : 1 \leq i_n \leq \Dimension, \, 1 \leq n \leq \Number \Bigr\} &\equiv \left\{\bigotimes_{n=1}^{\Number} \bigl|\Basis_{i_n}\bigr\rangle\right\}_{\{i_n=1,\ldots,\Dimension\}_{n=1}^{\Number}}, %\\
+      % &= \bigl\{\bigl|\Basis_{i_1}\bigr\rangle \otimes \bigl|\Basis_{i_2}\bigr\rangle \otimes \ldots \otimes \bigl|\Basis_{i_\Number}\bigr\rangle\bigr\}_{\{i_n=1,\ldots,\Dimension\}_{n=1}^{\Number}},
    \end{aligned}
 
 makes a basis for the composite space
@@ -702,12 +704,14 @@ As this is :math:`\Number` compositions of :math:`\Dimension`-dimensional system
 
 .. math:: \SpaceHilbert_{\Dimension^\Number} \cong \SpaceHilbert_{\Dimension}^{\otimes \Number}.
 
-In other words, a :math:`\Dimension^\Number`-dimensional Hilbert space :math:`\SpaceHilbert_{\Dimension^\Number}` is decomposable into exactly :math:`\Number` tensor products :math:`\SpaceHilbert_{\Dimension}^{\otimes \Number}` of a :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert_\Dimension`. Importantly, this means any linear operator :math:`\op{A} \in \SpaceHilbert_{\Dimension^\Number}` may be embedded in :math:`\SpaceHilbert_{\Dimension}^{\otimes N}` via a decomposition into tensor products of generalized Gell-Mann matrices (with the identity :math:`\GellMannGeneralized_{0} \equiv \Identity_{\Dimension}`) (see :numref:`sec:qudits` :ref:`sec:qudits`),
+In other words, :math:`\Dimension^\Number`-dimensional Hilbert space :math:`\SpaceHilbert_{\Dimension^\Number}` is decomposable into exactly :math:`\Number` tensor products :math:`\SpaceHilbert_{\Dimension}^{\otimes \Number}` of :math:`\Dimension`-dimensional Hilbert space :math:`\SpaceHilbert_\Dimension`.
+
+As far as linear operators are concerned, any such :math:`\op{A} \in \SpaceHilbert_{\Dimension^\Number}` may be embedded in :math:`\SpaceHilbert_{\Dimension}^{\otimes N}` via a decomposition into tensor products of generalized Gell-Mann matrices (with the identity :math:`\GellMannGeneralized_{0} \equiv \Identity_{\Dimension}`) (see :numref:`sec:qudits` :ref:`sec:qudits`),
 
 .. math::
    :label: eq:operator_decomposition
 
-   \op{A} = \frac{1}{\Dimension^\Number}\sum_{\{i_n\}_{n=1}^{\Number} = 0}^{\Dimension^2 - 1} A_{i_1, i_2, \ldots, i_\Number} \GellMannGeneralized_{i_1} \otimes \GellMannGeneralized_{i_2} \otimes \ldots \otimes \GellMannGeneralized_{i_\Number}
+   \op{A} = \frac{1}{\Dimension^\Number}\sum_{\{i_n=0,\ldots,\Dimension^2 - 1\}_{n=1}^{\Number}} A_{i_1, i_2, \ldots, i_\Number} \GellMannGeneralized_{i_1} \otimes \GellMannGeneralized_{i_2} \otimes \ldots \otimes \GellMannGeneralized_{i_\Number}
 
 where the coefficients
 
@@ -723,7 +727,7 @@ with :math:`A_{i_1, i_2} = \trace\bigl[(\GellMannGeneralized_{i_1} \otimes \Gell
 
 .. math::
 
-   \op{A} = \frac{1}{2^\Number}\sum_{\{i_n\}_{n=1}^{\Number} = 0}^{3} A_{i_1, i_2, \ldots, i_\Number} \Pauli_{i_1} \otimes \Pauli_{i_2} \otimes \ldots \otimes \Pauli_{i_\Number}
+   \op{A} = \frac{1}{2^\Number}\sum_{\{i_n=0,\ldots,3\}_{n=1}^{\Number}} A_{i_1, i_2, \ldots, i_\Number} \Pauli_{i_1} \otimes \Pauli_{i_2} \otimes \ldots \otimes \Pauli_{i_\Number}
 
 where
 
@@ -737,7 +741,7 @@ Any bipartite vector state :math:`\ket{\psi} \in \SpaceHilbert_A \otimes \SpaceH
 .. math:: \ket{\psi} = \sum_{i,j} \psi_{i, j} \ket{i_A} \otimes \ket{j_B},
    :label: eq:bipartite_vector
 
-where the coefficients :math:`\psi_{i, j} \in \Complexes` satisfy :math:`\sum_{i,j} |\psi_{i, j}|^2 = \braket{\psi}{\psi}`, and the sets of states :math:`\{\ket{i_A}\}_i` and :math:`\{\ket{j_B}\}_j` are orthonormal bases for the subsystems :math:`A` and :math:`B`, respectively. In general, if :math:`\Dimension_A = \dim(\SpaceHilbert_A)` and :math:`\Dimension_B = \dim(\SpaceHilbert_B)` are the dimensions of these subsystems, then the expression :eq:`eq:bipartite_vector` may have at most :math:`\Dimension_A \times \Dimension_B` terms (with the actual number depending on the chosen bases).
+where the coefficients :math:`\psi_{i,j} \in \Complexes` satisfy :math:`\sum_{i,j} |\psi_{i,j}|^2 = \braket{\psi}{\psi}`, and the sets of states :math:`\{\ket{i_A}\}_i` and :math:`\{\ket{j_B}\}_j` are orthonormal bases for the subsystems :math:`A` and :math:`B`, respectively. In general, if :math:`\Dimension_A = \dim(\SpaceHilbert_A)` and :math:`\Dimension_B = \dim(\SpaceHilbert_B)` are the dimensions of these subsystems, then the expression :eq:`eq:bipartite_vector` may have at most :math:`\Dimension_A \times \Dimension_B` terms (with the actual number depending on the chosen bases).
 
 An extremely useful theorem for such vectors on bipartite systems is the *Schmidt decomposition*, which states that there exist sets of orthonormal states :math:`\{\ket{k_A}\}_k` and :math:`\{\ket{k_B}\}_k` for the subsystems :math:`\SpaceHilbert_A` and :math:`\SpaceHilbert_B` such that we can equivalently express the state :eq:`eq:bipartite_vector` (i.e., any vector state) as
 
@@ -750,7 +754,7 @@ Here, :math:`k \leq \text{min}(\Dimension_A, \Dimension_B)`, and :math:`\{\lambd
 
 The number of (non-zero) Schmidt coefficients is called the *Schmidt number* of the vector :math:`\ket{\psi}`. Importantly, the sets of states :math:`\{\ket{k_A}\}_k` and :math:`\{\ket{k_B}\}_k` (sometimes called *Schmidt bases*) are merely orthonormal within their respective spaces and do not (and need not) in general constitute bases for them.
 
-The Schmidt decomposition :eq:`eq:schmidt_decomposition` is simply a way of expressing a vector in the tensor product of two inner product spaces (such as Hilbert spaces), and our ability to do so is a very powerful result. For example, given a normalized bipartite vector :math:`\ket{\psi}` with decomposition :eq:`eq:schmidt_decomposition`, the reduced operators on each system can be calculated to be
+Given that the vectors in the set :math:`\{\ket{k_A} \otimes \ket{k_B}\}_k` do not necessarily form a basis for the composite space :math:`\SpaceHilbert_A \otimes \SpaceHilbert_B`, then the ability to express *any* vector as the (weighted) sum of elements in this set---as per the Schmidt decomposition :eq:`eq:schmidt_decomposition`---is a very powerful result. For example, given a normalized bipartite vector :math:`\ket{\psi}` with decomposition :eq:`eq:schmidt_decomposition`, the reduced operators on each system can be calculated to be
 
 .. math::
 
@@ -761,12 +765,12 @@ The Schmidt decomposition :eq:`eq:schmidt_decomposition` is simply a way of expr
 
 The fact that the eigenvalues of both of these operators are identical (simply equal to :math:`\lambda_k^2`) is highly significant, as many of the important properties of operators are completely determined by their eigenvalues. Consequently, such properties of the reduced operators of a vector on a composite system will automatically be the same, regardless of the structure of the composite vector.
 
-It is useful to know that although bipartite states readily admit Schmidt decomposition, the same is *not* true for states composed of more than two systems. This is to say that any multipartite (:math:`\Number`-systems) vector state,
+It is useful to know that although bipartite states readily admit Schmidt decompositions, the same is *not* true for states composed of more than two systems. This is to say that any multipartite (:math:`\Number`-systems with :math:`\Number > 2`) vector state,
 
 .. math:: \ket{\psi} = \sum_{i_1, i_2, \ldots, i_\Number} \psi_{i_1, i_2, \ldots, i_\Number} \ket{i_1} \otimes \ket{i_2} \otimes \ldots \otimes \ket{i_\Number},
    :label: eq:multipartite_vector
 
-*cannot* always be written in a generalized form of the Schmidt decomposition, i.e.,
+*cannot* always be written in a generalized form of the Schmidt decomposition:
 
 .. math:: \ket{\psi} = \sum_k \lambda_k \ket{k_1} \otimes \ket{k_2} \otimes \ldots \otimes \ket{k_\Number}, \quad \sum_k \lambda_k^2 = \braket{\psi}{\psi}, \quad \lambda_k \in \Reals_{\geq 0}.
 

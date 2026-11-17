@@ -6,7 +6,7 @@ Quantum state tomography
 Description
 -----------
 
-Quantum state tomography is a technique that consists of the determination of an unknown quantum state by measuring it with respect to all elements of an appropriate *tomographically* or *informationally* complete operator basis. In practise, any such basis is usually a set of observables, with some of the most prominent examples being the Pauli matrices (including the identity matrix) for qubits and the Gell-Mann matrices (also including the identity matrix) for qutrits.
+*Quantum state tomography* is a technique that consists of the determination of an unknown quantum state by measuring it with respect to all elements of an appropriate *tomographically* or *informationally* complete operator basis. In practise, any such basis is usually a set of observables, with some of the most prominent examples being the Pauli matrices (including the identity matrix) for qubits and the Gell-Mann matrices (also including the identity matrix) for qutrits.
 
 Presented here is a simple tomographical reconstruction of an arbitrary qubit density matrix. Once the unknown state (or rather, an ensemble of identically prepared quantum states) has been measured exhaustively in a suitable basis, the resulting statistics (i.e., expectation values) enable the determination of the Bloch vector via :eq:`eq:matrix_qudit`, which is equivalent to precise identification of the associated (and previously unknown) state.
 

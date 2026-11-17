@@ -64,7 +64,7 @@ Quantum circuit diagrams provide a powerful picturalism through which a quantum 
 
 ### Numerous examples
 
-Bundled with the project is a collection of complete examples that showcase its capabilities and syntax. This includes both implementations of canonical quantum algorithms and exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.
+Bundled with the project is a collection of examples that showcase its capabilities and syntax. This includes implementations of both canonical quantum algorithms and more exotic circuits that contain closed timelike curves.
 
 <p align="center">
   <picture>
@@ -444,7 +444,6 @@ Contributions to Qhronology (both the package and its documentation), including 
   - Add the ability to label a circuit's output systems.
   - Implement the permutation (PERM) gate.
   - Add the ability for circuits to be optimized (to reduced gate depth).
-  - Add the ability for circuits and/or gates to be decomposed (using a specified gate set).
   - Add the ability to use custom styles in the circuit diagram visualization.
   - Make the labelling/notation functionality more robust and extensible.
   - Investigate the addition of an ability to compile simple Qhronology programs to OpenQASM.

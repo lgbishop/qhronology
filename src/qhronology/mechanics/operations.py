@@ -467,9 +467,9 @@ def measure(
       - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)
         when :python:`observable` is :python:`False`
         :inlinelatex:`\\newline` (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
-      - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)
+      - :math:`p_i = \\trace[\\op{\\Observable}_i \\op{\\rho}]` (expectation values)
         when :python:`observable` is :python:`True`
-        :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\Observable_i`)
+        :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\op{\\Observable}_i`)
 
     - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
       This yields the transformed states:
@@ -480,7 +480,7 @@ def measure(
 
       - When :python:`observable` is :python:`True`:
 
-      .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i
+      .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\op{\\Observable}_i \\op{\\rho}] \\op{\\Observable}_i
 
     In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule
 
@@ -631,7 +631,7 @@ def postselect(
     The postselections can be given in either vector or matrix form.
     For the former, the transformation of the vector :math:`\\ket{\\Psi}` (residing in some composite Hilbert space :math:`\\SpaceHilbert`) follows the standard rule
 
-    .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi}
+    .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi},
 
     where :math:`\\ket{\\phi} \\in \\tilde{\\SpaceHilbert}` is the postselection vector (which resides in a proper subsystem :math:`\\tilde{\\SpaceHilbert}` of :math:`\\SpaceHilbert`).
     In the case of a matrix form :math:`\\op{\\omega}` on :math:`\\tilde{\\SpaceHilbert}`, the notion of postselection of a density matrix :math:`\\op{\\rho}` on :math:`\\SpaceHilbert` naturally generalizes to
@@ -884,9 +884,9 @@ class OperationsMixin:
           - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)
             when :python:`observable` is :python:`False`
             :inlinelatex:`\\newline` (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
-          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)
+          - :math:`p_i = \\trace[\\op{\\Observable}_i \\op{\\rho}]` (expectation values)
             when :python:`observable` is :python:`True`
-            :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\Observable_i`)
+            :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\op{\\Observable}_i`)
 
         - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
           This yields the transformed states:
@@ -897,7 +897,7 @@ class OperationsMixin:
 
           - When :python:`observable` is :python:`True`:
 
-          .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}]\\Observable_i
+          .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\op{\\Observable}_i \\op{\\rho}]\\op{\\Observable}_i
 
         In the case where :python:`operators` contains only a single item (:math:`\\Kraus`) and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule
 
@@ -970,7 +970,7 @@ class OperationsMixin:
         The postselections can be given in either vector or matrix form.
         For the former, the transformation of the vector :math:`\\ket{\\Psi}` (residing in some composite Hilbert space :math:`\\SpaceHilbert`) follows the standard rule
 
-        .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi}
+        .. math:: \\ket{\\Psi^\\prime} = \\braket{\\phi}{\\Psi},
 
         where :math:`\\ket{\\phi} \\in \\tilde{\\SpaceHilbert}` is the postselection vector (which resides in a proper subsystem :math:`\\tilde{\\SpaceHilbert}` of :math:`\\SpaceHilbert`).
         In the case of a matrix form :math:`\\op{\\omega}` on :math:`\\tilde{\\SpaceHilbert}`, the notion of postselection of a density matrix :math:`\\op{\\rho}` on :math:`\\SpaceHilbert` naturally generalizes to

@@ -49,6 +49,10 @@ Here, we have two systems: the first (upper) is the *chronology-respecting* (CR)
 
 As this is a quantum temporal paradox, there are multiple prescriptions (see :numref:`sec:literature_quantum` :ref:`sec:literature_quantum`) by which resolutions can be computed.
 
+.. raw:: latex
+
+   \newpage
+
 Solutions
 ---------
 
@@ -109,7 +113,7 @@ With this, the solution for the CR system can be computed to be
    :label: eq:grandfather_D-CTCs_CR
 
    \begin{aligned}
-       \StateCR_\MapDCTCsCR &= \frac{1}{2}\Bigl[\ket{0}\bra{0} + \bigl(\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr)^2\bigl(\ket{0}\bra{1} + \ket{1}\bra{0}\bigr) + \ket{1}\bra{1}\Bigr]
+       \StateCR_\MapDCTCsCR &= \frac{1}{2}\Bigl[\ket{0}\bra{0} + \bigl(\bra{0}\StateCR\ket{1} + \bra{1}\StateCR\ket{0}\bigr)^2\bigl(\ket{0}\bra{1} + \ket{1}\bra{0}\bigr) + \ket{1}\bra{1}\Bigr],
    \end{aligned}
 
 which is similarly unique.
@@ -180,10 +184,6 @@ Prior to the renormalization, a value of :math:`\Omega = 0` leads to a vanishing
 
 Implementation
 --------------
-
-.. raw:: latex
-
-   \enlargethispage{-2\baselineskip}
 
 .. raw:: latex
 

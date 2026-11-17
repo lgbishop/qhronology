@@ -53,12 +53,12 @@ and then emerges in the past in the same state despite having interacted with a 
 .. math:: \StateCR \in \SpaceMixed(\SpaceHilbert_\CR)
    :label: eq:state_CR
 
-through a unitary :math:`\Unitary` on :math:`\SpaceHilbert_\CR\otimes\SpaceHilbert_\CV`. The joint density operator entering the gate is simply the tensor product :math:`\StateCR \otimes \StateCV` on :math:`\SpaceHilbert_\CR\otimes\SpaceHilbert_\CV` so that the standard evolution through the unitary is given by
+through a unitary :math:`\Unitary` on :math:`\SpaceHilbert_\CR\otimes\SpaceHilbert_\CV`. The joint density operator entering the gate :math:`\Unitary` is simply the tensor product :math:`\StateCR \otimes \StateCV` on :math:`\SpaceHilbert_\CR\otimes\SpaceHilbert_\CV`, so that the standard evolution through the unitary is given by
 
 .. math:: \StateCR \otimes \StateCV \rightarrow \MapGeneral_{\Unitary}[\StateCR \otimes \StateCV] = \Unitary(\StateCR \otimes \StateCV)\Unitary^\dagger.
    :label: eq:D-CTCs_evolution
 
-We can now trace the CV and CR subsystems out and denote the resulting maps as
+We can now trace the CV and CR subsystems out, and denote the resulting maps as
 
 .. math::
    :label: eq:D-CTCs_CV
@@ -79,7 +79,7 @@ Self-consistent solutions of the CTC state may then be identified as fixed point
 .. math:: \StateCV = \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV].
    :label: eq:D-CTCs_CTC
 
-This condition essentially codifies the requirement that the "younger" CTC state (the right-hand side) exiting the gate is the same as the "older" CTC state (the left-hand side) entering the gate. Once solutions to equation :eq:`eq:D-CTCs_CTC` are determined, the evolution of the system state :math:`\StateCR` through the interaction :math:`\Unitary` in Deutsch's model is then simply given by the CR map :eq:`eq:D-CTCs_CR`. Deutsch's original construction specifically interprets D-CTCs as being portals between parallel universes---a time traveller on a D-CTC would pass in and out of such universes---and so the quantum states in this context describes a superposition of states where the time traveller does and does not exist.
+This condition essentially codifies the requirement that the "younger" state (the right-hand side), exiting the gate and entering the CTC, is the same as the "older" state (the left-hand side), entering the gate and exiting the CTC. Once solutions to equation :eq:`eq:D-CTCs_CTC` are determined, the evolution of the system state :math:`\StateCR` through the interaction :math:`\Unitary` in Deutsch's model is then simply given by the CR map :eq:`eq:D-CTCs_CR`. Deutsch's original construction specifically interprets D-CTCs as being portals between parallel universes---a time traveller on a D-CTC would pass in and out of such universes---and so the quantum states in this context describe superpositions of states where the time traveller does and does not exist.
 
 The fact that the imposed self-consistency constraint in :eq:`eq:D-CTCs_CTC` is a fixed-point condition means that the non-linearity introduced to the laws of quantum mechanics is distinct from that of other models. Furthermore, as the rigid matching requirement is for the density matrix as opposed to the individual states in a pure state decomposition, Deutsch's model intrinsically treats density matrices ontologically as ontic ("real") objects rather than as epistemic representations of knowledge.
 
@@ -92,7 +92,7 @@ Of crucial significance is the fact that the Deutsch prescription resolves time-
    :label: eq:D-CTCs_entropy
 
    \begin{aligned}
-       \normalized{\MapDCTCsCV_{\Unitary}^{\infty}}\bigl[\StateCR,\StateCV^{(0)}\bigr] \equiv \lim_{N\rightarrow\infty}\frac{1}{N+1} \sum_{k=0}^{N}\MapDCTCsCV_{\Unitary}^{k}\bigl[\StateCR,\StateCV^{(0)}\bigr]
+       \normalized{\MapDCTCsCV}_{\Unitary}^{\infty}\bigl[\StateCR,\StateCV^{(0)}\bigr] \equiv \lim_{N\rightarrow\infty}\frac{1}{N+1} \sum_{k=0}^{N}\MapDCTCsCV_{\Unitary}^{k}\bigl[\StateCR,\StateCV^{(0)}\bigr]
    \end{aligned}
 
 exists for every unitary :math:`\Unitary` and input :math:`\StateCR`. Here, :math:`\StateCV^{(0)} \in \SpaceMixed(\SpaceHilbert_\CV)` represents some initial CV state, and :math:`\MapDCTCsCV^{k}` denotes :math:`k` compositions of the D-CTC CV map, i.e.,
@@ -107,14 +107,14 @@ exists for every unitary :math:`\Unitary` and input :math:`\StateCR`. Here, :mat
 
 Note however that some interactions have a multiplicity of fixed points, which leads to non-determinism in the time evolution. This characteristic, known as the *uniqueness ambiguity* in the context of D-CTCs, may be interpreted as an indication that the theory is incomplete.
 
-To overcome this problem, Deutsch argued that the "correct" solution is the one with the most von Neumann entropy :eq:`eq:entropy`. This proposition appeals to the principles of thermodynamics (the second law in particular), and asserts that the trapped CTC would naturally tend towards a maximally entropic equilibrium state. Given its lack of rigorous theoretical support however, Deutsch's rule of maximum entropy is often considered to be an unsatisfactory approach to overcoming the problem of plurality in the CTC state solution.
+To overcome this problem, Deutsch argued that the "correct" solution is the one with the most von Neumann entropy :eq:`eq:entropy`. This proposition appeals to the principles of thermodynamics (the second law in particular), and asserts that the trapped CTC would naturally tend towards a maximally entropic equilibrium state. However, given its lack of rigorous theoretical support, Deutsch's rule of maximum entropy is often considered to be an unsatisfactory approach to overcoming the problem of plurality in the CTC state solution.
 
 .. _`sec:ECP`:
 
 Iterative picture: The equivalent circuit
 -----------------------------------------
 
-In 2010, Ralph and Myers introduced their equivalent-circuit picture (ECP) :cite:p:`ralph_information_2010, ralph_reply_2011, pienaar_quantum_2011, ralph_relativistic_2012, dong_ralphs_2017` of the D-CTC model. This approach was formulated as a method of deriving the maximum entropy rule and thus resolving the uniqueness ambiguity. It consists of essentially "unwrapping" the D-CTC time-loop fixed-point circuit (:numref:`fig:circuit_ctc_dctc`) into an infinite sequence of interactions with perfect copies of the input state, and is illustrated in :numref:`fig:circuit_ctc_dctc_ecp`.
+In 2010, Ralph and Myers introduced their *equivalent-circuit picture* (ECP) :cite:p:`ralph_information_2010, ralph_reply_2011, pienaar_quantum_2011, ralph_relativistic_2012, dong_ralphs_2017` of the D-CTC model. This approach was formulated as a method of deriving the maximum entropy rule and thus resolving the uniqueness ambiguity. It consists of essentially "unwrapping" the D-CTC time-loop fixed-point circuit (:numref:`fig:circuit_ctc_dctc`) into an infinite sequence of interactions with perfect copies of the input state, and is illustrated in :numref:`fig:circuit_ctc_dctc_ecp`.
 
 .. raw:: latex
 
@@ -155,7 +155,7 @@ In this model, the CTC-trapped state :math:`\StateCV^{(n-1)}` enters the :math:`
 .. math:: \StateCV^{(n)} = \MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}].
    :label: eq:ECP_single
 
-The final output :math:`\StateCV^{(\infty)}` is then obtained by applying this map recursively *ad infinitum* to an initial state :math:`\StateCV^{(0)}`. Accordingly, one finds, in the limit,
+The final output :math:`\StateCV^{(\infty)}` is then obtained by applying this map recursively *ad infinitum* to an initial state :math:`\StateCV^{(0)}` (sometimes called the *seed state*). Accordingly, one finds, in the limit,
 
 .. math:: \StateCV^{(\infty)} = \lim_{N \rightarrow\infty}\MapDCTCsCV_{\Unitary}^{N}[\StateCR,\StateCV^{(0)}].
    :label: eq:ECP_CV
@@ -167,7 +167,7 @@ Given this framework, the ECP then introduces an arbitrarily small decoherence i
 
    \begin{aligned}
        \StateCV^{(n)} &= \Decoherence\bigl[\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}]\bigr] \\
-       &= (1-\delta)\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}] + \delta\normalized{\Identity}
+       &= (1-\delta)\MapDCTCsCV_{\Unitary}[\StateCR,\StateCV^{(n-1)}] + \delta\normalized{\Identity},
    \end{aligned}
 
 where
@@ -175,7 +175,7 @@ where
 .. math::
 
    \begin{aligned}
-       \Identity &\equiv \sum_{i}^{\dim(\SpaceHilbert)}\ket{i}\bra{i} \in \SpaceHilbert, \\
+       \Identity &\equiv \sum_{i=0}^{\dim(\SpaceHilbert) - 1}\ket{i}\bra{i} \in \SpaceHilbert, \\
        \normalized{\Identity} &\equiv \frac{1}{\dim(\SpaceHilbert)}\Identity,
    \end{aligned}
 
@@ -184,16 +184,18 @@ are the unnormalized and normalized maximally mixed (identity) states, respectiv
 .. math:: \StateCV^{(\infty)} = \lim_{N\rightarrow\infty}\left[(1-\delta)^{N}\MapDCTCsCV_{\Unitary}^{N}[\StateCR,\StateCV^{(0)}] + \sum_{k=0}^{N-1}\delta^{k}(1-\delta)^{k}\MapDCTCsCV_{\Unitary}^{k}[\StateCR,\normalized{\Identity}]\right].
    :label: eq:ECP_CV_decoherence
 
-From this result, it can be determined that the non-uniqueness in the solutions to the CV CTC map corresponds to sensitivity to the initial condition :math:`\StateCV^{(0)}`. Ralph and Myers then show that the result of :eq:`eq:ECP_CV_decoherence` converges to the unique solution of Deutsch's maximum entropy rule, and that this rule and result coincides with setting the initial state to be the maximally mixed CTC state :math:`\StateCV^{(0)}=\normalized{\Identity}` in :eq:`eq:ECP_CV`. The appealing feature of this picture is that Deutsch's maximum entropy rule is not merely a postulate of the theory; rather, it is a direct result.
+From this result, it can be determined that the non-uniqueness in the solutions to the CV CTC map corresponds to sensitivity to the initial condition :math:`\StateCV^{(0)}`.
 
-Later, Allen :cite:p:`allen_treating_2014` noticed that the equivalent circuit does not always converge when there is decoherence interaction, and that Ralph and Myers's proof of the derivation of the maximum entropy rule was incomplete. However, Dong :cite:p:`dong_ralphs_2017` then showed that the ECP leads instead to a *revised* maximum entropy rule, one which is distinct from (and perhaps more valid than) Deutsch's original rule. It asserts that, when multiple valid solutions of the CV map exist, Deutsch's model "chooses" the *stable* fixed-point state with the most entropy (as determined by the equivalent model with a decoherence interaction). Additionally, note that the final fixed point as given by this revised rule is in general dependent on the decoherence strength (:math:`\delta`).
+Ralph and Myers then demonstrate that the result of :eq:`eq:ECP_CV_decoherence` converges to the unique solution of Deutsch's maximum entropy rule, and furthermore that this rule coincides with setting the initial state to be the maximally mixed CTC state, i.e., :math:`\StateCV^{(0)}=\normalized{\Identity}` in :eq:`eq:ECP_CV`. The appealing feature of the ECP is that solution uniqueness via maximum entropy is not merely an adjunct, *a priori* proposition bestowed upon the theory (as with Deutsch's maximum entropy rule); rather, it is a direct result of a fundamental postulate, albeit that of some (small) degree of decoherence being present at each iteration in the unwrapped D-CTC circuit.
+
+Later, Allen :cite:p:`allen_treating_2014` noticed that the equivalent circuit does not always converge when there is decoherence interaction, and that Ralph and Myers's proof of the derivation of the maximum entropy rule is in fact incomplete. However, Dong :cite:p:`dong_ralphs_2017` then showed that the ECP leads instead to a revised maximum entropy rule, one which is distinct from (and perhaps more valid than) Deutsch's original rule. It asserts that, when multiple valid solutions of the CV map exist, Deutsch's model "chooses" the *stable* fixed-point state with the most entropy (as determined by the equivalent model with a decoherence interaction). Additionally, note that the final fixed point as given by this revised rule is in general dependent on the decoherence strength (:math:`\delta`).
 
 .. _`sec:Allen`:
 
 Allen's picture: Noise incorporation
 ------------------------------------
 
-In 2014, Allen :cite:p:`allen_treating_2014` proposed a different method of resolving the uniqueness ambiguity. It consists of the incorporation of noise into the CV channel via a noise channel :math:`\Depolarization` with depolarization parameter :math:`0<\nu<1`, which is accomplished by
+In 2014, Allen :cite:p:`allen_treating_2014` proposed a different method of resolving the uniqueness ambiguity of D-CTCs. It consists of the incorporation of noise into the CV channel via a noise channel :math:`\Depolarization` with depolarization parameter :math:`0<\nu<1`, which is accomplished by
 
 .. math::
    :label: eq:depolarization
@@ -209,10 +211,10 @@ Allen then proves that this addition resolves the uniqueness ambiguity without r
    :label: eq:Allen
 
    \begin{aligned}
-       \normalized{\Depolarization[\MapDCTCsCV_{\Unitary}^{\infty}]}(\StateCR) = \lim_{N\rightarrow\infty}\frac{1}{N+1} \sum_{k=0}^{N}\Depolarization\bigl[\MapDCTCsCV_{\Unitary}^{k}[\StateCR,\StateCV^{(0)}]\bigr].
+       \normalized{\Depolarization}[\MapDCTCsCV_{\Unitary}^{\infty}](\StateCR) = \lim_{N\rightarrow\infty}\frac{1}{N+1} \sum_{k=0}^{N}\Depolarization\bigl[\MapDCTCsCV_{\Unitary}^{k}[\StateCR,\StateCV^{(0)}]\bigr].
    \end{aligned}
 
-Given that :math:`\Depolarization` is a noise channel, then it should be *strictly contractive* (that is, its trace distance should always decrease under its action), leaving :eq:`eq:Allen` unique. Dong :cite:p:`dong_ralphs_2017` then show that Allen's picture is inequivalent to both Deutsch's and Ralph and Myers's pictures.
+Given that :math:`\Depolarization` is a noise channel, then it should be strictly contractive (i.e., its trace distance should always decrease under its action), leaving :eq:`eq:Allen` unique. Dong :cite:p:`dong_ralphs_2017` then show that Allen's picture is inequivalent to both Deutsch's and Ralph and Myers's pictures.
 
 .. only:: html
 

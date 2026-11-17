@@ -52,11 +52,11 @@ Transition probabilities (T-CTCs)
 
 The idea of quantum transition probabilities can be incorporated into P-CTCs, and the resultant *transition-probabilities* prescription (T-CTCs) :cite:p:`allen_treating_2014` of quantum time travel shares many features of P-CTCs, while also gaining a few improvements in regards to the pathological problems possessed by the latter. Where a P-CTC preselects and postselects against a maximally entangled state, a T-CTC alternatively uses just a pure state :math:`\ket{\StateVector} \in \SpacePure(\SpaceHilbert_\CV)` in the CV system. This system is prejudicially assumed to be pure, as a postulate of the theory is that the primitive states of quantum mechanics are similarly pure. Thus, given the CR input :math:`\ket{\StatePure} \in \SpacePure(\SpaceHilbert_\CR)`, the evolution of the bipartite input is
 
-.. math:: \ket{\StatePure}\bra{\StatePure} \otimes \ket{\StateVector}\bra{\StateVector} \rightarrow \Unitary \bigl(\ket{\StatePure}\bra{\StatePure} \otimes \ket{\StateVector}\bra{\StateVector}\bigr) \Unitary^\dagger
+.. math:: \ket{\StatePure}\bra{\StatePure} \otimes \ket{\StateVector}\bra{\StateVector} \rightarrow \Unitary \bigl(\ket{\StatePure}\bra{\StatePure} \otimes \ket{\StateVector}\bra{\StateVector}\bigr) \Unitary^\dagger,
 
 where :math:`\Unitary` describes the (unitary) interaction between the CR and CV modes. Self-consistency of the time-travelling CV state is achieved by postselection on the CV subsystem against the same input state. Doing so yields
 
-.. math:: \bigl(\Identity \otimes \bra{\StateVector}\bigr) \Unitary \bigl(\ket{\StatePure}\bra{\StatePure} \otimes \ket{\StateVector}\bra{\StateVector}\bigr) \Unitary^\dagger \bigl(\Identity \otimes \ket{\StateVector}\bigr) = \Unitary_\StateVector \ket{\StatePure}\bra{\StatePure} \Unitary_\StateVector^\dagger
+.. math:: \bigl(\Identity \otimes \bra{\StateVector}\bigr) \Unitary \bigl(\ket{\StatePure}\bra{\StatePure} \otimes \ket{\StateVector}\bra{\StateVector}\bigr) \Unitary^\dagger \bigl(\Identity \otimes \ket{\StateVector}\bigr) = \Unitary_\StateVector \ket{\StatePure}\bra{\StatePure} \Unitary_\StateVector^\dagger,
 
 where
 
@@ -74,11 +74,11 @@ is an operator which acts on :math:`\SpaceHilbert_\CR` and is not unitary in gen
 
 Although the expression :eq:`eq:T-CTCs_CR_integral` is concise, it is difficult to ascertain the behaviour of the CR output state given the integral form. However, following the original work in :cite:p:`allen_treating_2014`, the form of :eq:`eq:T-CTCs_CR_integral` may be simplified and written in terms of only states and operators. Given an orthonormal basis :math:`\{\ket{\mu}\}_{\mu=0}^{\Dimension - 1}` for :math:`\SpaceHilbert_\CV`, we first expand the unitary interaction :math:`\Unitary` in the form
 
-.. math:: \Unitary = \sum_{\alpha,\beta=0}^{\Dimension - 1} \OperatorPartial_{\alpha\beta} \otimes \ket{\alpha}\bra{\beta}
+.. math:: \Unitary = \sum_{\alpha,\beta=0}^{\Dimension - 1} \OperatorPartial_{\alpha\beta} \otimes \ket{\alpha}\bra{\beta},
 
 where :math:`\OperatorPartial_{\alpha\beta}` are operators on :math:`\SpaceHilbert_\CR`. Using this and the integrals
 
-.. math:: \Integral_{\alpha\beta,\gamma\delta} \equiv \int_{\SpacePure(\SpaceHilbert_\CV)} \diff[\StateVector] \, \braket{\StateVector}{\alpha}  \braket{\beta}{\StateVector}  \braket{\StateVector}{\delta}  \braket{\gamma}{\StateVector} 
+.. math:: \Integral_{\alpha\beta,\gamma\delta} \equiv \int_{\SpacePure(\SpaceHilbert_\CV)} \diff[\StateVector] \, \braket{\StateVector}{\alpha}  \braket{\beta}{\StateVector}  \braket{\StateVector}{\delta}  \braket{\gamma}{\StateVector},
    :label: eq:T-CTCs_integrals
 
 we may express :eq:`eq:T-CTCs_CR_integral` as
@@ -86,9 +86,9 @@ we may express :eq:`eq:T-CTCs_CR_integral` as
 .. math:: \MapTCTCsCR_{\Unitary}[\StatePure] = \frac{1}{\Normalization} \sum_{\alpha,\beta,\gamma,\delta = 0}^{\Dimension - 1} \Integral_{\alpha\beta,\gamma\delta} \OperatorPartial_{\alpha\beta}\ket{\StatePure}\bra{\StatePure} \OperatorPartial_{\gamma\delta}^\dagger. 
    :label: eq:T-CTCs_CR_expansion
 
-In the integral :eq:`eq:T-CTCs_integrals`, we expand both the state :math:`\ket{\StateVector}` and measure :math:`\diff[\StateVector]` using the Hurwitz parametrization [:eq:`eq:Hurwitz_state` and :eq:`eq:Hurwitz_measure`, respectively]. For each :math:`\ket{\mu}`, the :math:`\diff\varphi_\mu` component of the corresponding measure factors out, and so any integrand whose :math:`\varphi_\mu`-dependence is only an integer power of :math:`\e^{\eye \varphi_\mu}` necessarily integrates to zero due to the identity
+In the integral :eq:`eq:T-CTCs_integrals`, we expand both the state :math:`\ket{\StateVector}` and measure :math:`\diff[\StateVector]` using the Hurwitz parametrization (:eq:`eq:Hurwitz_state` and :eq:`eq:Hurwitz_measure`, respectively). For each :math:`\ket{\mu}`, the :math:`\diff\varphi_\mu` component of the corresponding measure factors out, and so any integrand whose :math:`\varphi_\mu`-dependence is only an integer power of :math:`\e^{\eye \varphi_\mu}` necessarily integrates to zero due to the identity
 
-.. math:: \int_{\varphi = 0}^{2\pi} \diff\varphi \, \e^{\eye (m - n) \varphi} = 2\pi\delta_{mn}, \quad m \neq n, \quad m,n\in\Integers.
+.. math:: \int_{\varphi = 0}^{2\pi} \diff\varphi \, \e^{\eye (m - n) \varphi} = 2\pi\delta_{mn}, \qquad m \neq n, \quad m,n\in\Integers.
 
 This means that any integral :eq:`eq:T-CTCs_integrals` vanishes unless it is of the form,
 

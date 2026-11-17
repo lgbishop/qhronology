@@ -11,14 +11,14 @@ Postselected teleportation (P-CTCs)
 
 The other main prescription of the quantum mechanics of time travel, *postselected teleportation* (P-CTCs) :cite:p:`lloyd_quantum_2011, lloyd_closed_2011` (based on unpublished work in :cite:p:`bennett_simulated_2005`, and also due independently to :cite:p:`svetlichny_effective_2009` as discussed in :cite:p:`svetlichny_time_2011`), also provides self-consistent resolutions to general time-travel paradoxes. P-CTCs are motivated as mechanisms for facilitating the quantum teleportation of quantum systems to the past :cite:p:`bennett_simulated_2005`. The contemporary mathematical description of the prescription is based upon postselection, and essentially consists of a quantum communication channel that is formed through teleportation.
 
-The CV (CTC) quantum channel is replaced with a maximally entangled state :math:`\ket{\Bell}` (i.e., a Bell state for qubits), allowing for states to be transported between a sender and receiver through shared entanglement. Quantum teleportation further combined with postselection results in a quantum channel to the past. Antichronological time travel then manifests due to the entanglement between the forward and backward parts of the curve, and one thus obtains a possible theoretical description of quantum mechanics near CTCs. Note that the replacement of the CTC channel with the postselection of a maximally entangled state is equivalent to a path-integral formulation (developed in :cite:p:`politzer_path_1994`) in which the CTC state's wave function evolves in accordance with self-consistent boundary conditions (specifically, the initial and final coordinates are the same). This is why we say that P-CTCs has the important feature of being equivalent to the path-integral formulation of quantum mechanics. Here, we demonstrate the model.
+In P-CTCs, the CTC's CV quantum channel is replaced by a maximally entangled state :math:`\ket{\Bell}` (e.g., a Bell state for qubits), allowing for states to be transported between a sender and receiver through shared entanglement. Quantum teleportation further combined with postselection results in a quantum channel to the past. Antichronological time travel then manifests due to the entanglement between the forward and backward parts of the curve, and one thus obtains a possible theoretical description of quantum mechanics near CTCs. Note that the replacement of the CV channel with the postselection of a maximally entangled state is equivalent to a path-integral formulation (developed in :cite:p:`politzer_path_1994`) in which the CTC state's wave function evolves in accordance with self-consistent boundary conditions (specifically, the initial and final coordinates are the same). Here, we demonstrate the model.
 
 The path-integral formulation in the presence of CTCs
 -----------------------------------------------------
 
-The path-integral formulation of quantum mechanics allows us to formulate the transition amplitude for a quantum system which evolves from an initial state :math:`\ket{\WaveFunctionInitial}` to a final state :math:`\ket{\WaveFunctionFinal}` as an integral over the paths of the action. In one spatial dimension :math:`\Position(\Time)`, we may simply write
+The path-integral formulation of quantum mechanics allows us to formulate the transition amplitude for a quantum system which evolves from an initial state :math:`\ket{\WaveFunctionInitial}` to a final state :math:`\ket{\WaveFunctionFinal}` as an integral over the paths of the action. In one spatial dimension, :math:`\Position`, we may write
 
-.. math:: \bra{\WaveFunctionFinal}\Unitary(\TimeFinal,\TimeInitial)\ket{\WaveFunctionInitial} = \iint\diff{\PositionInitial}\,\diff{\PositionFinal} \, \WaveFunctionInitial(\PositionInitial) \!\; \conj{\WaveFunctionFinal}\!\!\;{(\PositionFinal)}\int_{\PositionInitial}^{\PositionFinal} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar}.
+.. math:: \bra{\WaveFunctionFinal}\Unitary(\TimeFinal,\TimeInitial)\ket{\WaveFunctionInitial} = \iint\diff{\PositionInitial}\,\diff{\PositionFinal} \, \WaveFunctionInitial(\PositionInitial) \!\; \conj{\WaveFunctionFinal}\!\!\;{(\PositionFinal)}\int_{\PositionInitial}^{\PositionFinal} \bar{\DifferentialPath}[\Position(\Time)] \, \e^{\eye \Action[\Position(\Time)]/\hbar}.
    :label: eq:path_amplitude
 
 Here, :math:`\Unitary(\TimeFinal,\TimeInitial)` is the time-evolution operator that describes the state evolution from initial time :math:`\TimeInitial` to final time :math:`\TimeFinal`,
@@ -41,9 +41,9 @@ are the initial and final coordinates respectively,
 
 are the position representations of the initial and final states, and
 
-.. math:: \Action[\Position] \equiv \int_{\TimeInitial}^{\TimeFinal} \Lagrangian\bigl(\Time,\Position(\Time),\dot{\Position}(\Time)\bigr) \, \diff{\Time},
+.. math:: \Action[\Position(\Time)] \equiv \int_{\TimeInitial}^{\TimeFinal} \Lagrangian\bigl(\Position(\Time),\dot{\Position}(\Time),\Time\bigr) \, \diff{\Time},
 
-is the action of path :math:`\Position(\Time)` with Lagrangian :math:`\Lagrangian\bigl(\Time,\Position(\Time),\dot{\Position}(\Time)\bigr)`.
+is the action of path :math:`\Position(\Time)` with Lagrangian :math:`\Lagrangian\bigl(\Position(\Time),\dot{\Position}(\Time),\Time\bigr)`.
 
 To incorporate a CTC into the path-integral formulation, we first divide the spacetime into two parts, or more formally, two separate systems: a CR system :math:`\ket{\WaveFunction}\in\SpaceHilbert_\CR` and a CV system :math:`\ket{\WaveFunctionCTC}\in\SpaceHilbert_\CV`. Let their position-space representations be parametrized by the coordinates :math:`u` and :math:`v` respectively, so that the initial and final position representations are
 
@@ -61,17 +61,17 @@ This means that, with time-evolution unitary :math:`\Unitary(\TimeInitial,\TimeF
 
    \begin{aligned}
        \bigl(\bra{\WaveFunctionFinal}\otimes\bra{\WaveFunctionCTCFinal}\bigr)\Unitary(\TimeFinal,\TimeInitial)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{\WaveFunctionCTCInitial}\bigr) &= \iiiint\diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}} \, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})} \!\; \WaveFunctionCTCInitial(v^{\prime}) \!\; \conj{\WaveFunctionCTCFinal}\!\!\;{(v^{\prime\prime})} \\
-       &\qquad\qquad\qquad\qquad\qquad\qquad\qquad\times \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar}.
+       &\qquad\qquad\qquad\qquad\qquad\qquad\times \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \bar{\DifferentialPath}[\Position(\Time)] \, \e^{\eye \Action[\Position(\Time)]/\hbar}.
    \end{aligned}
 
-Now, to include a CTC in this scheme, we mandate that the initial and final coordinates for the chronology-violating system are the same, just like in a CTC. Mathematically, we impose the boundary condition :math:`v^{\prime}=v^{\prime\prime}` via a :math:`\delta`-function in :eq:`eq:path_amplitude_split`, and the resulting transition amplitude for the chronology-respecting system with an incorporated CTC may be written as
+Now, to include a CTC in this scheme, we mandate that the initial and final coordinates for the CV system are the same, just like in a CTC. Mathematically, we impose the boundary condition :math:`v^{\prime}=v^{\prime\prime}` via a :math:`\delta`-distribution in :eq:`eq:path_amplitude_split`, and the resulting transition amplitude for the CR system with an incorporated CTC may be written as
 
 .. math::
    :label: eq:P-CTCs_path
 
    \begin{aligned}
        \bigl(\bra{\WaveFunctionFinal}\otimes\Identity\bigr)\Unitary(\TimeFinal,\TimeInitial)\bigl(\ket{\WaveFunctionInitial}\otimes\Identity\bigr) &= \iiiint\diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}} \, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \\
-       &\qquad\qquad\qquad\qquad\qquad\qquad\qquad\times \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar}.
+       &\qquad\qquad\qquad\qquad\qquad\qquad\qquad\times \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \bar{\DifferentialPath}[\Position(\Time)] \, \e^{\eye \Action[\Position(\Time)]/\hbar}.
    \end{aligned}
 
 The coherent addition of all possible initial and final conditions for the CTC is captured through the :math:`v^{\prime}` and :math:`v^{\prime\prime}` integrals, hence the removal of the CTC states :math:`\ket{\WaveFunctionCTCInitial}` and :math:`\ket{\WaveFunctionCTCFinal}`. This indicates that it is not possible to assign a state to the CTC system (at least in this context), which in turn means that compatibility with the boundary conditions implies that the CR system is not in a forbidden state.
@@ -79,21 +79,21 @@ The coherent addition of all possible initial and final conditions for the CTC i
 Equivalence of CTC path integrals and postselected teleportation
 ----------------------------------------------------------------
 
-Given the form :eq:`eq:P-CTCs_path` of the transition amplitude obtained using path-integral methods, we now wish to show that it is equal to the form which one obtains from postselected teleportation methods. To do this, let us first define our maximally entangled bipartite state of choice :math:`\ket{\Bell}\in\SpaceHilbert_\CV\otimes\SpaceHilbert_\Teleportation` in a :math:`w`-space representation as
+Given the form :eq:`eq:P-CTCs_path` of the transition amplitude derived using path-integral methods, we now wish to show that it is equal to the form obtainable from postselected teleportation. To do this, let us first define our maximally entangled bipartite state of choice :math:`\ket{\Bell}\in\SpaceHilbert_\CV\otimes\SpaceHilbert_\Teleportation` in a :math:`w`-space representation as
 
-.. math:: \ket{\Bell} = \int \diff{w} \, \Bell(w) \, \ket{w}\otimes\ket{w}
+.. math:: \ket{\Bell} = \int \diff{w} \, \Bell(w) \, \ket{w}\otimes\ket{w},
    :label: eq:Bell_continuous
 
 where we assume that :math:`\Bell(w)` satisfies the normalization condition
 
 .. math:: 1 = \braket{\Bell}{\Bell} = \int \diff{w}\, \abs{\Bell(w)}^2.
 
-Furthermore, note how :eq:`eq:Bell_continuous` can be put in a more useful form by using a :math:`\delta`-function,
+Furthermore, we note how :eq:`eq:Bell_continuous` can be put in a more useful form by using a :math:`\delta`-distribution,
 
 .. math:: \ket{\Bell} = \iint \diff{v}\,\diff{w} \, \Bell(v,w) \!\; \delta(v-w) \!\; \ket{v}\otimes\ket{w}.
    :label: eq:Bell_continuous_delta
 
-From here, we replace the CV state :math:`\ket{\WaveFunctionCTC}` with the maximally entangled :math:`\ket{\Bell}`, thereby meaning that our input state :math:`\ket{\WaveFunctionInitial}\otimes\ket{\WaveFunctionCTCInitial}` evolves under a transformation described by the composition :math:`\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity`. To clarify, the time-evolution operator :math:`\Unitary` only acts on the :math:`\SpaceHilbert_\CR` (CR) and :math:`\SpaceHilbert_\CV` (CV) Hilbert spaces while the identity :math:`\Identity` acts on the third (teleportation) Hilbert space :math:`\SpaceHilbert_\Teleportation`. With this, we then postselect on the output being in the state :math:`\ket{\WaveFunctionFinal}\otimes\ket{\Bell}`, which physically represents the teleportation Hilbert space :math:`\SpaceHilbert_\Teleportation` being used to send this conditional selection back in time, thereby yielding the necessary postselected teleportation. This entire sequence can be formulated by replacing the CTC state in :eq:`eq:path_amplitude_split` with our maximally entangled state :eq:`eq:Bell_continuous_delta`, which yields
+From here, the CV state :math:`\ket{\WaveFunctionCTC}` in :eq:`eq:path_amplitude_split` is replaced by the maximally entangled :math:`\ket{\Bell}`, thereby meaning that our input state :math:`\ket{\WaveFunctionInitial}\otimes\ket{\WaveFunctionCTCInitial}` evolves under a transformation described by the composition :math:`\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity`. To clarify, the time-evolution operator :math:`\Unitary` only acts on the :math:`\SpaceHilbert_\CR` (CR) and :math:`\SpaceHilbert_\CV` (CV) Hilbert spaces while the identity :math:`\Identity` acts on the third (teleportation) Hilbert space :math:`\SpaceHilbert_\Teleportation`. With this, we then postselect on the output being in the state :math:`\ket{\WaveFunctionFinal}\otimes\ket{\Bell}`, which physically represents the teleportation Hilbert space :math:`\SpaceHilbert_\Teleportation` being used to send this conditional selection back in time, thereby yielding the requisite teleportation. Thus, this entire sequence can be formulated by replacing the CTC state in :eq:`eq:path_amplitude_split` with our maximally entangled state :eq:`eq:Bell_continuous_delta`,
 
 .. math::
    :label: eq:P-CTCs_postselection
@@ -106,14 +106,14 @@ From here, we replace the CV state :math:`\ket{\WaveFunctionCTC}` with the maxim
        &\qquad= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime\prime}) \\
        &\qquad\quad\times\bigl(\bra{\WaveFunctionFinal}\otimes\bra{v^{\prime\prime}}\otimes\bra{w^{\prime\prime}}\bigr)\bigl(\Unitary^{\prime}(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{v^{\prime}}\otimes\ket{w^{\prime}}\bigr) \\
        &\qquad= \iiiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\diff{w^{\prime\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime\prime}) \\
-       &\qquad\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \underbrace{\bra{w^{\prime\prime}}\Identity\ket{w^{\prime}}}_{=\delta(w^{\prime\prime}-w^{\prime})} \\
+       &\qquad\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \bar{\DifferentialPath}[\Position(\Time)] \, \e^{\eye \Action[\Position(\Time)]/\hbar} \underbrace{\bra{w^{\prime\prime}}\Identity\ket{w^{\prime}}}_{=\delta(w^{\prime\prime}-w^{\prime})} \\
        &\qquad= \iiint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\diff{w^{\prime}}\,\Bell(v^{\prime},w^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime},w^{\prime})} \!\; \delta(v^{\prime}-w^{\prime}) \!\; \delta(v^{\prime\prime}-w^{\prime}) \\
-       &\qquad\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \\
-       &\qquad= \iint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\Bell(v^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar} \\
-       &\qquad= \iiiint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \DifferentialPath^{\prime}\!\Position \, \e^{\eye \Action[\Position]/\hbar}.
+       &\qquad\quad\times\iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \bar{\DifferentialPath}[\Position(\Time)] \, \e^{\eye \Action[\Position(\Time)]/\hbar} \\
+       &\qquad= \iint \diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\Bell(v^{\prime}) \!\; \conj{\Bell}\!\!\:{(v^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \iint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\, \WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})}\int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \bar{\DifferentialPath}[\Position(\Time)] \, \e^{\eye \Action[\Position(\Time)]/\hbar} \\
+       &\qquad= \iiiint \diff{u^{\prime}}\,\diff{u^{\prime\prime}}\,\diff{v^{\prime}}\,\diff{v^{\prime\prime}}\,\WaveFunctionInitial(u^{\prime}) \!\; \conj{\WaveFunctionFinal}\!\!\;{(u^{\prime\prime})} \!\; \delta(v^{\prime}-v^{\prime\prime}) \int_{(u^{\prime},v^{\prime})}^{(u^{\prime\prime},v^{\prime\prime})} \bar{\DifferentialPath}[\Position(\Time)] \, \e^{\eye \Action[\Position(\Time)]/\hbar}.
    \end{aligned}
 
-Thus, we can see that the path-integral formulation :eq:`eq:P-CTCs_path` is equivalent to postselection :eq:`eq:P-CTCs_postselection`, that is,
+With this, it is easy to see that the path-integral formulation :eq:`eq:P-CTCs_path` is exactly equivalent to postselection :eq:`eq:P-CTCs_postselection`, that is,
 
 .. math:: \bigl(\bra{\WaveFunctionFinal}\otimes\Identity\bigr)\Unitary(\TimeFinal,\TimeInitial)\bigl(\ket{\WaveFunctionInitial}\otimes\Identity\bigr) = \bigl(\bra{\WaveFunctionFinal}\otimes\bra{\Bell}\bigr)\bigl(\Unitary(\TimeFinal,\TimeInitial)\otimes\Identity\bigr)\bigl(\ket{\WaveFunctionInitial}\otimes\ket{\Bell}\bigr).
 
@@ -154,7 +154,7 @@ Here, we show how a CR system state :math:`\StateCR\in\SpaceHilbert_\CR` in the 
 
    \vspace*{-0.5\baselineskip}
 
-In the P-CTCs formalism, self-consistent resolutions to quantum time-travel paradoxes are provided by way of quantum teleportation. This is achieved by first introducing a teleportation system to the pre-existing CR and CV pair. On the CV and teleportation modes, a maximally entangled state :math:`\ket{\Bell} \in \SpacePure(\SpaceHilbert_\CV \otimes \SpaceHilbert_\Teleportation)` is placed (preselected). Here, :math:`\SpaceHilbert_\Teleportation` is the Hilbert space of the teleportation system. With this, the evolution of the product input state :math:`\StateCR \otimes \ket{\Bell}\bra{\Bell}` under the unitary :math:`\Unitary \otimes \Identity` is simply
+In the P-CTCs formalism, self-consistent resolutions to quantum time-travel paradoxes are provided by way of quantum teleportation. This is achieved by first introducing a teleportation system to the pre-existing CR and CV pair. On the CV and teleportation systems, a maximally entangled state :math:`\ket{\Bell} \in \SpacePure(\SpaceHilbert_\CV \otimes \SpaceHilbert_\Teleportation)` is prepared (preselected), where :math:`\SpaceHilbert_\Teleportation` is the Hilbert space of the teleportation system. With this, the evolution of the product input state :math:`\StateCR \otimes \ket{\Bell}\bra{\Bell}` under the unitary :math:`\Unitary \otimes \Identity` is simply
 
 .. math:: \StateCR \otimes \ket{\Bell}\bra{\Bell} \rightarrow \MapGeneral_{\Unitary \otimes \Identity}[\StateCR \otimes \ket{\Bell}\bra{\Bell}] = \bigl(\Unitary \otimes \Identity\bigr)\bigl(\StateCR \otimes \ket{\Bell}\bra{\Bell}\bigr)\bigl(\Unitary^\dagger \otimes \Identity\bigr).
    :label: eq:P-CTCs_evolved
@@ -188,7 +188,7 @@ In the case of a pure CR input state :math:`\StateCR = \ket{\StatePure}\bra{\Sta
 .. math:: \MapPCTCsCR_{\Unitary}\bigl[\ket{\StatePure}\bigr] = \frac{\OperatorPCTC \ket{\StatePure}}{\sqrt{ \bigl| \bigl| \OperatorPCTC \ket{\StatePure} \bigr| \bigr|}}.
    :label: eq:P-CTCs_CR_pure
 
-As each :math:`\StateCR` is mapped onto a specific :math:`\MapPCTCsCR_{\Unitary}[\StateCR]` by :eq:`eq:P-CTCs_CR`, P-CTCs do not suffer from uniqueness ambiguities, unlike D-CTCs. An important point to note however is that because :eq:`eq:P-CTCs_operator` is not in general unitary, the theory must be renormalized, which preserves its probabilistic interpretation at the cost of linearity.
+As each :math:`\StateCR` is mapped onto a specific :math:`\MapPCTCsCR_{\Unitary}[\StateCR]` by :eq:`eq:P-CTCs_CR`, P-CTCs do not suffer from uniqueness ambiguities, unlike D-CTCs. An important point to note however is that because :eq:`eq:P-CTCs_operator` is not in general unitary, the theory must be renormalized, and so its probabilistic interpretation is preserved at the cost of evolution linearity.
 
 Determination of the P-CTC CV state
 -----------------------------------

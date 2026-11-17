@@ -9,7 +9,6 @@ List of abbreviations
    "PVM", "projection-valued measure"
    "POVM", "positive operator-valued measure"
    "PDF", "probability density function"
-   "TDSE", "time-dependent Schrödinger equation"
    "CTC", "closed timelike curve"
    "CTG", "closed timelike geodesic"
    "CR", "chronology-respecting"

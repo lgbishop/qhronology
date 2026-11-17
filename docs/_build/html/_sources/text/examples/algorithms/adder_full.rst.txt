@@ -6,7 +6,7 @@ Full adder
 Description
 -----------
 
-A *full* adder is simply an adder with *three* (non-zero) inputs, as opposed to the two of a half adder. With the first and second of these inputs being the ordinary pair of values to be summed (e.g., :math:`x` and :math:`y`), a full adder's third input is used to modify the addition operation. This enables the circuit to take into account the carry output value :math:`c` of a previous iteration, yielding the summation output
+A *full adder* is simply an adder with three (non-zero) inputs, as opposed to the two of a half adder. With the first and second of these inputs being the ordinary pair of values to be summed (e.g., :math:`x` and :math:`y`), a full adder's third input is used to modify the addition operation. This enables the circuit to take into account the carry output value :math:`c` of a previous iteration, yielding the summation output
 
 .. math:: s = x \oplus y \oplus c,
 

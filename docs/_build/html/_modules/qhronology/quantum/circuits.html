@@ -68,7 +68,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.2.0" />
-    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
+    <meta name="docbuild:last-update" content="Nov 18, 2026"/>
   </head>
   
   
@@ -1638,9 +1638,9 @@
 <span class="sd">          - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)</span>
 <span class="sd">            when :python:`observable` is :python:`False`</span>
 <span class="sd">            :inlinelatex:`\\newline` (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)</span>
-<span class="sd">          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)</span>
+<span class="sd">          - :math:`p_i = \\trace[\\op{\\Observable}_i \\op{\\rho}]` (expectation values)</span>
 <span class="sd">            when :python:`observable` is :python:`True`</span>
-<span class="sd">            :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\Observable_i`)</span>
+<span class="sd">            :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\op{\\Observable}_i`)</span>
 
 <span class="sd">        - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).</span>
 <span class="sd">          This yields the transformed states:</span>
@@ -1654,7 +1654,7 @@
 <span class="sd">          .. math::</span>
 
 <span class="sd">             \\op{\\rho}^\\prime</span>
-<span class="sd">                 = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i</span>
+<span class="sd">                 = \\sum_i \\trace[\\op{\\Observable}_i \\op{\\rho}] \\op{\\Observable}_i</span>
 
 <span class="sd">        In the case where :python:`operators` contains only a single item (:math:`\\Kraus`), and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule</span>
 

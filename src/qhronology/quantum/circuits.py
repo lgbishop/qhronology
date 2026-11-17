@@ -1152,9 +1152,9 @@ class QuantumCircuit(SymbolicsProperties):
           - :math:`p_i = \\trace[\\Kraus_i^\\dagger \\Kraus_i \\op{\\rho}]` (measurement probabilities)
             when :python:`observable` is :python:`False`
             :inlinelatex:`\\newline` (:python:`operators` is a list of Kraus operators or projectors :math:`\\Kraus_i`)
-          - :math:`p_i = \\trace[\\Observable_i \\op{\\rho}]` (expectation values)
+          - :math:`p_i = \\trace[\\op{\\Observable}_i \\op{\\rho}]` (expectation values)
             when :python:`observable` is :python:`True`
-            :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\Observable_i`)
+            :inlinelatex:`\\newline` (:python:`operators` is a list of observables :math:`\\op{\\Observable}_i`)
 
         - When :python:`statistics` is :python:`False`, the (reduced) state (:math:`\\op{\\rho}`) (residing on the systems indicated in :python:`targets`) is measured and mutated according to its predicted post-measurement form (i.e., the sum of all possible measurement outcomes).
           This yields the transformed states:
@@ -1168,7 +1168,7 @@ class QuantumCircuit(SymbolicsProperties):
           .. math::
 
              \\op{\\rho}^\\prime
-                 = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i
+                 = \\sum_i \\trace[\\op{\\Observable}_i \\op{\\rho}] \\op{\\Observable}_i
 
         In the case where :python:`operators` contains only a single item (:math:`\\Kraus`), and the current state (:math:`\\ket{\\psi}`) is a vector form, the transformation of the state is in accordance with the rule
 

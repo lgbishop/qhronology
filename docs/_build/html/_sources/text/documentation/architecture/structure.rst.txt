@@ -22,9 +22,9 @@ The directory structure of the package appears below.
 
 It consists of three subpackages:
 
-- :python:`quantum`: most of the package's underlying mathematical framework and its user-facing classes.
-- :python:`mechanics`: core logic for creating fundamental quantum objects, performing operations on them, and computing various quantum-mechanical scalar quantities.
-- :python:`utilities`: a collection of modules containing various functionality intended for internal-use only, including the visualization engine, the core :python:`QuantumObject` class, and assorted helper functions.
+- :python:`quantum`: Most of the package's underlying mathematical framework and its user-facing classes.
+- :python:`mechanics`: Core logic for creating fundamental quantum objects, performing operations on them, and computing various quantum-mechanical scalar quantities.
+- :python:`utilities`: A collection of modules containing various functionality intended for internal-use only, including the visualization engine, the core :python:`QuantumObject` class, and assorted helper functions.
 
 In this documentation, we focus solely on the :python:`quantum` and :python:`mechanics` subpackages, with the former containing all of the classes intended to be user-facing. These are summarized in the following subsections.
 

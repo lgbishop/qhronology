@@ -510,7 +510,7 @@ Read the full license here:
 }
 {0pt}
 {\huge\sffamily\bfseries %\vrule width 1pt height 72pt depth 0pt \enspace%
- \parbox[b][][b]{\textwidth-\widthof{\LARGE\sffamily\MakeUppercase{\chaptername}\enspace} * \real{0.85}}{\filleft \hspace{12pt} $\qquad$ #1}%
+ \parbox[b][][b]{\textwidth-\widthof{\LARGE\sffamily\MakeUppercase{\chaptername}\enspace} * \real{0.85}}{\filleft \hspace{2em} #1}%
 }[{\color{fontcolor}\titlerule[3pt]}]
 \titlespacing*{\chapter}{0pt}{20pt}{12pt}
 
@@ -1074,7 +1074,7 @@ katex_prerender = False  # Set "True" to prerender all mathematics on server (re
 # katex_options = r'''{
 #     displayMode: true,
 #     macros: {
-#         "\\RR": "\\mathbb{R}"
+#         "\\Reals": "\\mathbb{R}"
 #     }
 # }'''
 # from macros import katex_options

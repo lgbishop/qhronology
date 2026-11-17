@@ -6,41 +6,25 @@
 Quantum circuitry
 *****************
 
-.. raw:: latex
-
-   \vspace*{-0.15\baselineskip}
-
 Anatomy of a quantum circuit
 ============================
 
-.. raw:: latex
-
-   \vspace*{-0.15\baselineskip}
-
 Analogous to how the processing of information inside a classical computer may be represented diagrammatically by wires and logic gates, the *quantum circuitry* picturalism provides a way by which quantum operations can likewise be expressed visually. The formalism is based on the *Penrose graphical notation* (also often called *tensor network diagrams*)---a graphical notation for the visualization of tensors. This diagramming scheme is similar to logic circuit diagrams, in which wires depict the flow of information between logic gates (themselves representing logical operations on their input states).
 
-A quantum circuit diagram is constructed using wires spanning input and output sections, upon which quantum gates are placed, describing manipulations and transformations (e.g., unitary operations) on the quantum states which follow these wires. A circuit's *inputs* (on the left) is a collection of one or more quantum states which, when encoded in an appropriate basis (for qubits this is typically the computational basis), is often called a (quantum) *register*. Oppositely, a circuit's *outputs* (on the right) is the set of quantum state(s) resulting from the transformations performed on the input(s) by the intermediary quantum gate(s). *Quantum computation* is then defined as any (unitary) evolution which takes an initial input state into some final output state. In this regard, it is important to note that, despite the "circuit" nomenclature, quantum circuits are typically not used to depict *closed* loops of state evolution.
+A quantum circuit diagram is constructed using wires spanning input and output sections, upon which quantum gates are placed, describing manipulations and transformations (e.g., unitary operations) on the quantum states on these wires. A circuit's *inputs*, appearing on the left-hand side, is a collection of one or more quantum states which, when encoded in an appropriate basis (for qubits this is typically the computational basis), is often called a (quantum) *register*. Oppositely, a circuit's *outputs*, appearing on the right-hand side, is the set of quantum states resulting from the transformations performed on the inputs by the intermediary quantum gates. *Quantum computation* is then defined as any evolution which takes an initial input state into some final output state. In this regard, it is important to note that, despite the "circuit" nomenclature, quantum circuits are typically not used to depict *closed* loops of state evolution.
 
-One of the first uses of quantum circuit diagrams as we know them today was by Feynman :cite:p:`feynman_quantum_1986`. The construction of these diagrams is described in more detail in :cite:p:`nielsen_quantum_2010, serrano_quantum_2022, moret-bonillo_adventures_2017, williams_explorations_2010, wilde_quantum_2017`. All of the diagrams presented here were produced using the excellent LaTeX (TikZ) *Quantikz* package :cite:p:`kay_tutorial_2018`.
-
-.. raw:: latex
-
-   \vspace*{-0.15\baselineskip}
+One of the first uses of quantum circuit diagrams as we know them today was by Feynman :cite:p:`feynman_quantum_1986`. The construction of these diagrams is described in more detail in :cite:p:`nielsen_quantum_2010, serrano_quantum_2022, moret-bonillo_adventures_2017, williams_explorations_2010, wilde_quantum_2017`. All diagrams presented here were produced using the excellent LaTeX (TikZ) *Quantikz* package :cite:p:`kay_tutorial_2018`.
 
 Fundamentals
 ------------
 
-.. raw:: latex
+- **Time**: Time advances horizontally from left to right. Each vertical slice of the circuit corresponds to a distinct instant of time in the temporal progression, and so events which are vertically aligned occur simultaneously.
 
-   \vspace*{-0.15\baselineskip}
+- **Omission**: Ellipses denote the omission of parts of the circuit. This notation is usually employed only in the context of the subsequent tutorial circuits as a way to give focus to the important parts of each example.
 
-.. raw:: latex
+- **Ordering and labels**: For circuits with multiple systems, the order of tensor products (left-to-right) in its corresponding mathematical expression matches the order of the systems (top-to-bottom) in the circuit. In the case of any ambiguity, the Hilbert spaces in which the states and operators reside are labelled using either superscripts or subscripts (depending on the context). If the systems are not explicitly named, the common convention is to denote them in order (top-to-bottom) using the integers, starting from :math:`0` (as customary in computer science) and counting up.
 
-   \enlargethispage{2\baselineskip}
-
-- **Time**: Time advances horizontally from the left to the right. Each vertical slice of the circuit corresponds to a distinct instant of time in the temporal progression. In other words, vertically aligned events occur simultaneously.
-
-- **Wires**: Each (physical) quantum or classical system (Hilbert space) is represented by a solid horizontal line called a *wire*. Multiple wires (*bundles*) therefore represent composite (multipartite) systems, and sequences of events at various points in time on these wires (such as state preparation, logical operations, measurement, etc.) form structures that are conventionally called *circuits*.
+- **Wires**: Each quantum or classical system (i.e., Hilbert space) is represented by a horizontal line called a *wire*, with the line style indicating the type of information carried. Multiple wires (*bundles*) therefore represent composite systems, and sequences of events at various points in time on these wires (such as state preparation, logical operations, measurement, etc.) form structures that are conventionally called *circuits*.
 
   - Quantum wires:
 
@@ -76,10 +60,6 @@ Fundamentals
 
    .. raw:: latex
 
-      \newpage
-
-   .. raw:: latex
-
       \end{mdframed}
       \vspace{1.0em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -108,10 +88,6 @@ Fundamentals
       \end{adjustwidth}
 
   - Classical wires:
-
-   .. raw:: latex
-
-      \vspace*{-0.15\baselineskip}
 
    .. raw:: latex
 
@@ -145,10 +121,6 @@ Fundamentals
 
    .. raw:: latex
 
-      \vspace*{-0.15\baselineskip}
-
-   .. raw:: latex
-
       \end{mdframed}
       \vspace{1em}
       \begin{mdframed}[hidealllines=true,backgroundcolor=boxcolor,innerleftmargin=2em,innerrightmargin=2em,innertopmargin=1em,innerbottommargin=1em,leftmargin=-2em,rightmargin=-2em]
@@ -176,18 +148,6 @@ Fundamentals
 
       \end{adjustwidth}
 
-   .. raw:: latex
-
-      \vspace*{-0.15\baselineskip}
-
-- **Omission**: Ellipses denote the omission of parts of the circuit. This notation is usually employed only in the context of the subsequent tutorial circuits as a way to give focus to the important parts of each example.
-
-- **Ordering and labels**: For circuits with multiple systems, the order of tensor products (from left-to-right) in its corresponding mathematical expression matches the order of the systems (from top-to-bottom) in the circuit. In the case of any ambiguity, the Hilbert spaces in which the states and operators reside are labelled using either superscripts or subscripts (depending on the context). If the systems are not explicitly named, the common convention is to denote them in order (from top-to-bottom) using the integers, starting from :math:`0` (zero, as is customary in computer science) and counting up.
-
-.. raw:: latex
-
-   \vspace*{-0.15\baselineskip}
-
 States
 ------
 
@@ -195,11 +155,7 @@ States
 
    \enlargethispage{2\baselineskip}
 
-- State preparation or preselection is represented by:
-
-   .. raw:: latex
-
-      \vspace*{-0.15\baselineskip}
+- State preparation (or preselection):
 
    .. raw:: latex
 
@@ -225,15 +181,7 @@ States
       \end{mdframed}
       % \vspace{1em}
 
-   .. raw:: latex
-
-      \vspace*{-0.15\baselineskip}
-
-- The preparation of pure states is similarly:
-
-   .. raw:: latex
-
-      \vspace*{-0.15\baselineskip}
+- The preparation of vector states:
 
    .. raw:: latex
 
@@ -259,15 +207,7 @@ States
       \end{mdframed}
       % \vspace{1em}
 
-   .. raw:: latex
-
-      \vspace*{-0.15\baselineskip}
-
-- States prepared over several systems are denoted using a brace extending across all of the relevant subsystems:
-
-   .. raw:: latex
-
-      \vspace*{-0.15\baselineskip}
+- States prepared over several systems are denoted using a brace extending across all of the relevant wires:
 
    .. raw:: latex
 
@@ -293,15 +233,7 @@ States
       \end{mdframed}
       % \vspace{1em}
 
-   .. raw:: latex
-
-      \vspace*{-0.15\baselineskip}
-
-- The preparation of separable states is:
-
-   .. raw:: latex
-
-      \vspace*{-0.15\baselineskip}
+- The preparation of separable states:
 
    .. raw:: latex
 
@@ -326,10 +258,6 @@ States
 
       \end{mdframed}
       % \vspace{1em}
-
-   .. raw:: latex
-
-      \vspace*{-0.15\baselineskip}
 
 Gates
 -----
@@ -386,7 +314,7 @@ Gates
       \end{mdframed}
       % \vspace{1em}
 
-- Operators which act on different subsystems within composite systems are represented distinctly by parallel gates:
+- Operators which act on different subsystems within composite systems are represented by parallel gates:
 
    .. raw:: latex
 
@@ -412,7 +340,7 @@ Gates
       \end{mdframed}
       % \vspace{1em}
 
-- An empty wire (i.e., the absence of a gate on a system) corresponds to the identity operator:
+- An empty wire (i.e., the absence of a gate) corresponds to the identity operator:
 
    .. raw:: latex
 
@@ -438,7 +366,7 @@ Gates
       \end{mdframed}
       % \vspace{1em}
 
-- **Groups** of gates may be denoted with a bounding box, e.g.:
+- **Groups** of gates can be denoted collectively with a bounding box, e.g.:
 
    .. raw:: latex
 
@@ -497,7 +425,7 @@ Gates
    \null
    \vspace*{-2.15\baselineskip}
 
-- Gates acting on different systems at distinct times (i.e., non-simultaneous operators) are separated horizontally. If all other wires in their instant are empty, then they may be combined:
+- Gates acting on different systems at distinct times (i.e., non-simultaneous operators) are separated horizontally. If all other wires in their instant are empty, then they can be combined:
 
    .. raw:: latex
 
@@ -695,7 +623,7 @@ Gates
       \null
       \vspace*{-2\baselineskip}
 
-  - If the system structure of the operators is unambiguous in the context of the circuit, then the (superscript) system labels are usually omitted for the sake of notational brevity.
+  - If the system structure of the operators is unambiguous in the context of the circuit, then the system labels are commonly omitted for the sake of notational brevity.
 
 .. raw:: latex
 
@@ -708,9 +636,9 @@ Control
 
    \vspace*{-0.15\baselineskip}
 
-- The operation of a gate can be affected by the use of a **control** node located on a different wire. This results in the value of the *controlling* system directly influencing the *controlled* system, which is depicted visually by connecting these systems with a vertical wire. Using a general :math:`\Unitary` gate, we can construct the following examples for qubit (:math:`2`-dimensional) systems:
+- The operation of a gate can be affected by the use of one or more **control** or **anticontrol** nodes located on a different wire. This results in the value of the *controlling* system directly influencing the *controlled* system, which is depicted visually by connecting these systems with a vertical wire. Using a general gate :math:`\Unitary`, we can construct the following examples for qubit (:math:`2`-dimensional) systems:
 
-  - controlled-:math:`\Unitary`:
+  - Controlled-:math:`\Unitary`:
 
    .. raw:: latex
 
@@ -752,7 +680,7 @@ Control
 
       \vspace*{-0.15\baselineskip}
 
-  - controlled-:math:`\Unitary` (inverted):
+  - Controlled-:math:`\Unitary` (inverted):
 
    .. raw:: latex
 
@@ -794,7 +722,7 @@ Control
 
       \vspace*{-0.15\baselineskip}
 
-  - anticontrolled-:math:`\Unitary`:
+  - Anticontrolled-:math:`\Unitary`:
 
    .. raw:: latex
 
@@ -836,7 +764,7 @@ Control
 
       \vspace*{-0.15\baselineskip}
 
-  - multiply-controlled-:math:`\Unitary`:
+  - Multiply-controlled-:math:`\Unitary`:
 
    .. raw:: latex
 
@@ -882,7 +810,7 @@ Control
 
       \enlargethispage{\baselineskip}
 
-  - controlled-anticontrolled-:math:`\Unitary`:
+  - Controlled-anticontrolled-:math:`\Unitary`:
 
    .. raw:: latex
 
@@ -943,7 +871,7 @@ Control
 Trace
 -----
 
-- The **trace** over a system (i.e., termination of a wire) is denoted by either a grounding symbol or a down arrow on the end of its corresponding wire:
+- The **trace** over a system (i.e., termination of a wire) is denoted by either a grounding symbol or a down arrow on the end of the corresponding wire:
 
    .. raw:: latex
 
@@ -1391,9 +1319,9 @@ Measurement
 
       \vspace*{-0.15\baselineskip}
 
-  - Note however that the output of the circuit still remains as the composite product of all unmeasured systems.
+  - Note however that the output of the circuit still remains as the composition of all unmeasured systems.
 
-- Multiple measurements simply indicate that multiple sets of probabilities will be obtained, each corresponding to the independent measurement of their respective system, e.g.,
+- Multiple measurements indicate that multiple sets of probabilities will be obtained, each corresponding to the independent measurement of their respective system(s), e.g.:
 
    .. raw:: latex
 
@@ -1674,7 +1602,7 @@ Closed timelike curves
       \null
       \vspace*{-2.0\baselineskip}
 
-  - These constructs can be thought of as the "mouths" of a wormhole, and so represent a instantaneous physical connection ("portals") between the past and the future such that any quantum state which propagates into the future mouth immediately emerges from the corresponding past mouth. Note however that of course not every chronology-violating system is associated with a *wormhole-based* time machine, and so these connections should be taken as representing closed timelike curves in the most general, abstract sense.
+  - These constructs can be thought of as the "mouths" of a wormhole, and so represent an instantaneous physical connection ("portal") between the past and the future such that any quantum state which propagates into the future mouth immediately emerges from the corresponding past mouth. Note however that of course not every chronology-violating system is associated with a *wormhole-based* time machine, and so these connections should be taken as representing closed timelike curves in the most general, abstract sense.
 
 .. raw:: latex
 
@@ -1791,7 +1719,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
 
       \vspace*{-0.15\baselineskip}
 
-- NOT (logical negation or bit-flip), equivalent to the Pauli-:math:`X` gate for qubits:
+- NOT (logical negation or bit-flip), equivalent (in the computational basis) to the Pauli-:math:`X` gate for qubits:
 
    .. raw:: latex
 
@@ -2244,7 +2172,7 @@ Note that in these examples, the symbol :math:`\Dimension` denotes the dimension
 Examples
 ========
 
-A better understanding of quantum circuitry notation can be gained by studying a few basic examples. Perhaps the simplest complete quantum circuit that we can construct consists of just a unipartite quantum state :math:`\StateDensity` which evolves into the future along a single quantum wire, subsequently becoming the output state :math:`\StateDensity^\prime`:
+A better understanding of the quantum circuitry notation can be gained by studying a few basic examples. Perhaps the simplest complete quantum circuit that we can construct consists of just a unipartite quantum state :math:`\StateDensity` which evolves into the future along a single quantum wire, subsequently becoming the output state :math:`\StateDensity^\prime`:
 
    .. raw:: latex
 
@@ -2286,9 +2214,9 @@ A better understanding of quantum circuitry notation can be gained by studying a
 
       \vspace*{-0.15\baselineskip}
 
-As there are no operations (such as gates or measurements) on the wire, the explicitly labelled output state :math:`\StateDensity^\prime` is identically equal to the input state :math:`\StateDensity` (since the quantum wire directly connects the two).
+As there are no operations (such as gates or measurements) on the wire, the explicitly labelled output state :math:`\StateDensity^\prime` is identically equal to the input state :math:`\StateDensity` (since the quantum wire directly connects them).
 
-If we were to place a gate corresponding to an arbitrary unitary operator :math:`\Unitary` upon the intermediary wire, the resulting action is the standard transformation of a matrix by a linear operator:
+If we were to place a gate corresponding to an arbitrary unitary operator :math:`\Unitary` upon the intermediary wire, the resulting action is the standard transformation of a density operator by a linear operator:
 
    .. raw:: latex
 

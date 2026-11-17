@@ -11,26 +11,36 @@
 % }
 
 \begin{document}
-\begin{blochsphere}[radius=\radiusSphere,opacity=0,rotation=\rotationSphere,style={line width=0.025cm}]
+\begin{blochsphere}[radius=\radiusSphere,ball=none,opacity=0,rotation=\rotationSphere,style={line width=0.025cm, opacity=0}]
     % \drawBallGrid[style={opacity=.3}]{30}{45}
+    % \drawGreatCircle[style={line width=0.025cm}]{60}{0}
     % Draw the sphere...
-    \drawLongitudeCircle[]{\rotationSphere} % draw the longitude that face us to delimit the sphere
+    % \drawLongitudeCircle[]{\rotationSphere} % draw the longitude that face us to delimit the sphere
+    \draw[style={line width=0.03cm, fill=none}] (\radiusSphere,0) arc (0:360:2cm and 2cm);
+    \draw[style={dashed,line width=0.03cm, black!35}] (\radiusSphere,0) arc (0:180:2cm and 0.5cm);
+    \draw[style={line width=0.03cm, fill=none}] (\radiusSphere,0) arc (0:360:2cm and 2cm);
     % ... and the equatorial plane
-    \drawLatitudeCircle[style={dashed,line width=0.03cm}]{0}
+    % \drawLatitudeCircle[style={dashed,line width=0.03cm}]{0}
+    % \drawRotationLeft[scale=1,style={dashed,line width=0.03cm}]{0}{0}{0}{180}  % Doesn't work - can't remove arrow.
     % Define the different points on the bloch sphere
-    \labelLatLon{ket0}{90}{0};
-    \labelLatLon{ket1}{-90}{0};
-    \labelLatLon{ketminus}{0}{180};
-    \labelLatLon{ketplus}{00}{25};
-    \labelLatLon{ketpluspi2}{0}{-90};  % Longitude seems to be defined in the "wrong" direction, hence the minus
-    \labelLatLon{ketplus3pi2}{0}{-270};
+    \labelLatLon[scale=1.6]{e1}{00}{25};
+    \labelLatLon[scale=1.35]{e2}{0}{-90};
+    \labelLatLon[scale=1.35]{e3}{90}{0};
+    \labelLatLon[scale=1.03]{ket0}{90}{0};
+    \labelLatLon[scale=1.03]{ket1}{-90}{0};
+    \labelLatLon[scale=1.0]{ketminus}{0}{180};
+    \labelLatLon[scale=1.35]{ketplus}{00}{25};
+    \labelLatLon[scale=1.35]{ketpluspi2}{0}{-90};  % Longitude seems to be defined in the "wrong" direction, hence the minus
+    \labelLatLon[scale=1.0]{ketplus3pi2}{0}{-270};
     \labelLatLon{psi}{\psiLat}{-\psiLon};
     % Draw and label the axis
-    \draw[-latex,style={line width=0.025cm}] (0,0) -- (ket0) node[above,inner sep=.5mm] at (ket0) {\footnotesize $\uv{e}_3$};
-    \draw[-latex,style={line width=0.025cm}] (0,0) -- (ketplus) node[below,inner sep=.5mm] at (ketplus) {\footnotesize$\uv{e}_1$};
-    \draw[-latex,style={line width=0.025cm}] (0,0) -- (ketpluspi2) node[right,inner sep=.5mm] at (ketpluspi2) {\footnotesize $\uv{e}_2$};
+    \draw[-latex,style={line width=0.025cm}] (0,0) -- (e3) node[above,inner sep=0mm] at (e3) {\footnotesize $\uv{e}_3$};
+    \draw[-latex,style={line width=0.025cm}] (0,0) -- (e1) node[below left,inner sep=-1.15mm] at (e1) {\footnotesize$\uv{e}_1$};
+    \draw[-latex,style={line width=0.025cm}] (0,0) -- (e2) node[right,inner sep=0mm] at (e2) {\footnotesize $\uv{e}_2$};
     % Draw |psi>
-    \draw[-latex,style={line width=0.025cm}] (0,0) -- (psi) node[above]{\footnotesize $\vec{r}_{\StateVector}$};
+    \draw[-latex,style={line width=0.025cm}] (0,0) -- (psi) node[above right, inner sep=-.85mm]{\footnotesize $\vec{r}_{\!\StateVector}$};
+
+    \draw[style={dashed,line width=0.03cm}] (-\radiusSphere,0) arc (180:360:2cm and 0.5cm);
 
     % Draw the angles
     \coordinate (origin) at (0,0);
@@ -40,11 +50,17 @@
         % Draw the projection: cos is used to compute the length of the projection
         \draw[current plane,dashed,style={line width=0.02cm}] (0,0) -- (-90+\psiLon:{cos(\psiLat)*\radiusSphere}) coordinate (psiProjectedEquat) -- (psi);
         % Draw the angle
-        \pic[current plane, draw,fill=black!50,fill opacity=.5, text opacity=1,"\footnotesize $\varphi$", angle eccentricity=2.25]{angle=ketplus--origin--psiProjectedEquat};
+        \pic[current plane, draw, fill=black!50, fill opacity=.5, text opacity=1, "\hspace{-1.0em} \footnotesize $\varphi$", angle eccentricity=2.25]{angle=ketplus--origin--psiProjectedEquat};
     }
     { \setLongitudinalDrawingPlane{\psiLon}
         % Draw the angle
-        \pic[current plane, draw,fill=black!50,fill opacity=.5, text opacity=1,"\footnotesize $\vartheta$", angle eccentricity=1.75]{angle=psi--origin--ket0};
+        \pic[current plane, draw, fill=black!50, fill opacity=.5, text opacity=1, "\footnotesize $\vartheta$", angle eccentricity=1.75]{angle=psi--origin--ket0};
     }
+
+    \node[circle, black!35, fill, inner sep=1.15pt, yshift=0.35pt] at (ket0) {};
+    \node[circle, black!35, fill, inner sep=1.15pt, yshift=-0.35pt] at (ket1) {};
+    \node[inner sep=0.5pt, above left] at (ket0) {\footnotesize $\ket{0}$};
+    \node[inner sep=2pt, below] at (ket1) {\footnotesize $\ket{1}$};
+
 \end{blochsphere}
 \end{document}

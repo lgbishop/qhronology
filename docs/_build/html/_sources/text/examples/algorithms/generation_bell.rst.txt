@@ -6,7 +6,7 @@ Generation of a Bell state
 Description
 -----------
 
-The circuit in :numref:`fig:circuit_algorithm_generation_bell` illustrates an algorithm for the generation of a Bell state :eq:`eq:Bell_state` from primitive :math:`\ket{0}` states.
+The circuit in :numref:`fig:circuit_algorithm_generation_bell` illustrates an algorithm for the generation of the :math:`\ket{\Bell^+}` Bell state :eq:`eq:Bell_state` from primitive :math:`\ket{0}` states.
 
 .. only:: html
 

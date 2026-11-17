@@ -6,7 +6,7 @@
 Classical theories of time travel
 *********************************
 
-Albert Einstein's general theory of relativity is a geometric theory of gravitation which seeks to describe the effective mutual attraction between entities that possess mass. Within this theory, there exists an interesting class of objects called *closed timelike curves* (CTCs). Such objects are fascinating because a particle moving along one may travel back in time and interact with its past self, and so the geometries that permit the formation of CTCs are often known colloquially as *time machines*. It is because of this self-interaction that fictional depictions of time travel have captivated the interest of the public for more than a century, while both the validity and implications of the phenomenon have continually been discussed in the scientific literature.
+Albert Einstein's general theory of relativity is a geometric theory of gravitation that seeks to describe the effective mutual attraction between entities possessing mass. Of its many predictions, few are as fascinating as the objects known as *closed timelike curves* (CTCs), and the possibility of such phenomena manifesting in our own universe readily evokes the physicist's curiosity. This is because a particle moving along one may travel back in time and interact with its past self, and so the geometries which permit the formation of CTCs are often known colloquially as *time machines*. Due to this antichronological self-interaction, fictional depictions of time travel have captivated the interest of the public for more than a century, while both the validity and implications of the phenomenon have been discussed continually in the scientific literature.
 
 .. toctree::
    :maxdepth: 2

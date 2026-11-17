@@ -298,7 +298,7 @@ class QuantumGate(QuantumObject):
                \\Control^{\\indices{0}} \\Unitary^{\\indices{1}} &= \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k}\\bra{k}\\otimes\\Unitary^{k} \\\\
                &= \\ket{0}\\bra{0}\\otimes\\Identity + \\ket{1}\\bra{1}\\otimes\\Unitary
                    + \\ket{2}\\bra{2}\\otimes\\Unitary^{2} + \\ldots
-                   + \\ket{\\Dimension - 1}\\bra{\\Dimension - 1}\\otimes\\Unitary^{\\Dimension - 1}
+                   + \\ket{\\Dimension - 1}\\bra{\\Dimension - 1}\\otimes\\Unitary^{\\Dimension - 1}.
            \\end{aligned}
         """
         return list(set(self._controls))
@@ -328,7 +328,7 @@ class QuantumGate(QuantumObject):
                \\Anticontrol^{\\indices{0}} \\Unitary^{\\indices{1}} &= \\sum\\limits_{k=0}^{\\Dimension - 1} \\ket{k}\\bra{k}\\otimes\\Unitary^{\\Dimension - 1 - k} \\\\
                &= \\ket{0}\\bra{0}\\otimes\\Unitary^{\\Dimension - 1} + \\ket{1}\\bra{1}\\otimes\\Unitary^{\\Dimension - 2}
                    + \\ket{2}\\bra{2}\\otimes\\Unitary^{\\Dimension - 3} + \\ldots
-                   + \\ket{\\Dimension - 1}\\bra{\\Dimension - 1}\\otimes\\Identity
+                   + \\ket{\\Dimension - 1}\\bra{\\Dimension - 1}\\otimes\\Identity.
            \\end{aligned}
         """
         return list(set(self._anticontrols))
@@ -392,7 +392,7 @@ class QuantumGate(QuantumObject):
                    \\exp\\Bigl[-\\eye\\frac{\\pi}{2}\\op{A}\\Bigr].
            \\end{aligned}
 
-        Simply taking this expression to an arbitrary power :math:`p \\in \\mathbb{C}` thus yields the identity
+        Simply taking this expression to an arbitrary power :math:`p \\in \\Complexes` thus yields the identity
 
         .. math::
 
@@ -794,13 +794,13 @@ class QuantumGate(QuantumObject):
 
         Note
         ----
-        Currently, this method decomposes any given gate using brute force, which is *extremely* inefficient. The speed at which decompositions are found depends entirely on the size of the search space, which increases exponentially with:
+        Currently, this method decomposes any given gate using brute force, which is *extremely* inefficient. The speed at which decompositions are found depends entirely on the size of the search space, which increases exponentially with each of the following:
 
-        - The number of gates in :python:`gates`
-        - The number of additional target, control, and anticontrol nodes specified in :python:`additional_nodes`
-        - The search depth
-        - The number of systems
-        - The gate dimensionality
+        - number of gates in :python:`gates`
+        - number of additional target, control, and anticontrol nodes specified in :python:`additional_nodes`
+        - search depth
+        - number of systems
+        - gate dimensionality
 
         Future work on this method could involve the implementation of heuristics with which the decomposition can be performed more efficiently.
         """
@@ -2289,9 +2289,9 @@ class Measurement(QuantumGate):
     .. math:: \\op{\\rho}^\\prime = \\sum_i \\Kraus_i \\op{\\rho} \\Kraus_i^\\dagger
 
     - When :python:`observable` is :python:`True`
-      (:python:`operators` is a list of observables :math:`\\Observable_i`):
+      (:python:`operators` is a list of observables :math:`\\op{\\Observable}_i`):
 
-    .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\Observable_i \\op{\\rho}] \\Observable_i
+    .. math:: \\op{\\rho}^\\prime = \\sum_i \\trace[\\op{\\Observable}_i \\op{\\rho}] \\op{\\Observable}_i
 
     The items in the list :python:`operators` can also be vectors (e.g., :math:`\\ket{\\xi_i}`), in which case each is converted into its corresponding matrix representation (e.g., :math:`\\Kraus_i = \\ket{\\xi_i}\\bra{\\xi_i}`) prior to any measurement(s).
 

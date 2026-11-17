@@ -254,7 +254,7 @@ Numerous examples
 
 ..    \begin{tabular}{M{0.65\textwidth}  C{0.35\textwidth}}
 
-Bundled with the project is a collection of complete examples that showcase its capabilities and syntax. This includes both implementations of canonical quantum algorithms and exotic circuits that use quantum mechanics to resolve paradoxical scenarios of antichronological time travel.
+Bundled with the project is a collection of examples that showcase its capabilities and syntax. This includes implementations of both canonical quantum algorithms and more exotic circuits that contain closed timelike curves.
 
 .. .. raw:: latex
 
@@ -262,7 +262,7 @@ Bundled with the project is a collection of complete examples that showcase its 
 
 .. raw:: latex
 
-   \vspace*{-1em}
+   \vspace*{-1.15em}
 
 .. only:: html
 
@@ -289,7 +289,7 @@ Bundled with the project is a collection of complete examples that showcase its 
 
 .. raw:: latex
 
-   \vspace*{-1.00em}
+   \vspace*{-1.15em}
 
 Extensive documentation
 -----------------------
@@ -310,7 +310,7 @@ All of the objects in each of the various submodules have been rigorously detail
 
 .. raw:: latex
 
-   \vspace*{-0.15em}
+   \vspace*{-0.25em}
 
 .. only:: html
 
@@ -327,7 +327,7 @@ All of the objects in each of the various submodules have been rigorously detail
 .. only:: latex
 
    .. image:: /figures/output/diagram_bloch_sphere.pdf
-      :scale: 115 %
+      :scale: 112 %
       :align: center
       :class: light-dark hidden
 
@@ -337,7 +337,7 @@ All of the objects in each of the various submodules have been rigorously detail
 
 .. raw:: latex
 
-   \vspace*{-1.15em}
+   \vspace*{-1.35em}
 
 Foundational theory
 -------------------
@@ -360,7 +360,7 @@ All of the underlying mathematics upon which Qhronology is built is presented as
 
 .. raw:: latex
 
-   \vspace*{-0.75em}
+   \vspace*{-1.25em}
 
 .. only:: html
 
@@ -377,7 +377,7 @@ All of the underlying mathematics upon which Qhronology is built is presented as
 .. only:: latex
 
    .. image:: /figures/output/diagram_spacetime_minkowski.pdf
-      :scale: 100 %
+      :scale: 95 %
       :align: center
       :class: light-dark hidden
 
@@ -818,7 +818,6 @@ Possible future work
   - Add the ability to label a circuit's output systems.
   - Implement the permutation (PERM) gate.
   - Add the ability for circuits to be optimized (to reduced gate depth).
-  - Add the ability for circuits and/or gates to be decomposed (using a specified gate set).
   - Add the ability to use custom styles in the circuit diagram visualization.
   - Make the labelling/notation functionality more robust and extensible.
   - Investigate the addition of an ability to compile simple Qhronology programs to OpenQASM.
