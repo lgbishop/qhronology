@@ -2,7 +2,7 @@
 
 rm -rf ./pyodide
 
-curl -OL https://github.com/pyodide/pyodide/releases/download/0.29.4/pyodide-0.29.4.tar.bz2
+curl -OL https://github.com/pyodide/pyodide/releases/download/314.0.8/pyodide-314.0.8.tar.bz2
 bzip2 -dk pyodide-*.tar.bz2
 tar -xvf pyodide-*.tar
 
@@ -13,6 +13,11 @@ mv -f ./pyodide-temp/pyodide.js ./pyodide
 mv -f ./pyodide-temp/pyodide.mjs ./pyodide
 mv -f ./pyodide-temp/pyodide.js.map ./pyodide
 mv -f ./pyodide-temp/pyodide.mjs.map ./pyodide
+mv -f ./pyodide-temp/pyodide.asm.mjs ./pyodide
+mv -f ./pyodide-temp/pyodide.asm.js ./pyodide
+mv -f ./pyodide-temp/pyodide.asm.wasm ./pyodide
+mv -f ./pyodide-temp/pyodide-lock.json ./pyodide
+mv -f ./pyodide-temp/python_stdlib.zip ./pyodide
 mv -f ./pyodide-temp/sympy-*.whl ./pyodide
 mv -f ./pyodide-temp/sympy-*.metadata ./pyodide
 mv -f ./pyodide-temp/mpmath-*.whl ./pyodide
@@ -26,10 +31,6 @@ mv -f ./pyodide-temp/micropip-*.whl ./pyodide
 mv -f ./pyodide-temp/micropip-*.metadata ./pyodide
 mv -f ./pyodide-temp/packaging-*.whl ./pyodide
 mv -f ./pyodide-temp/packaging-*.metadata ./pyodide
-mv -f ./pyodide-temp/pyodide.asm.wasm ./pyodide
-mv -f ./pyodide-temp/python_stdlib.zip ./pyodide
-mv -f ./pyodide-temp/pyodide.asm.js ./pyodide
-mv -f ./pyodide-temp/pyodide-lock.json ./pyodide
 
 rm -rf ./pyodide-temp
 
@@ -37,7 +38,7 @@ rm -rf ./pyodide-temp
 # curl -OL https://github.com/lgbishop/qhronology/releases/download/1.2.1/qhronology-1.2.1-py3-none-any.whl
 mv -f qhronology-*.whl ./pyodide
 
-rm -rf pyodide-*.tar.bz2
-rm -rf pyodide-*.tar
+# rm -rf pyodide-*.tar.bz2
+# rm -rf pyodide-*.tar
 
 # https://pyodide.org/en/stable/usage/downloading-and-deploying.html#github-releases
