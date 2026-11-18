@@ -15,6 +15,7 @@ Not intended to be used directly by the user.
 # https://peps.python.org/pep-0649/
 # https://peps.python.org/pep-0749/
 from __future__ import annotations
+from collections import defaultdict
 import copy
 from enum import StrEnum
 import math
@@ -137,1015 +138,1016 @@ CELL_TEMPLATE = np.array(
 )
 
 # The dictionary for assigning the actual text characters to each component of the template.
+# This is defined with the key order: family, component, style.
+# Such a structure makes it easy to define the base styles, but more difficult to create new ones.
+# So the key order structure is later changed to: style, family, component.
 STYLES = {
     "GATE_SINGLE": {
         "block_connector_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "block_connector_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "block_connector_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "block_connector_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_left_quantum": {
             "ascii": "|",
             "unicode": "┨",
-            "unicode_alt": "░",
         },
         "edge_connector_lower_quantum": {
             "ascii": "-",
             "unicode": "┯",
-            "unicode_alt": "░",
         },
         "edge_connector_right_quantum": {
             "ascii": "|",
             "unicode": "┠",
-            "unicode_alt": "░",
         },
         "edge_connector_upper_quantum": {
             "ascii": "-",
             "unicode": "┷",
-            "unicode_alt": "░",
         },
         "edge_connector_left_classical": {
             "ascii": "|",
             "unicode": "╡",
-            "unicode_alt": "░",
         },
         "edge_connector_lower_classical": {
             "ascii": "-",
             "unicode": "╥",
-            "unicode_alt": "░",
         },
         "edge_connector_right_classical": {
             "ascii": "|",
             "unicode": "╞",
-            "unicode_alt": "░",
         },
         "edge_connector_upper_classical": {
             "ascii": "-",
             "unicode": "╨",
-            "unicode_alt": "░",
         },
-        "edge_connector_left_none": {"ascii": "|", "unicode": "┃", "unicode_alt": "░"},
-        "edge_connector_lower_none": {"ascii": "-", "unicode": "━", "unicode_alt": "░"},
-        "edge_connector_right_none": {"ascii": "|", "unicode": "┃", "unicode_alt": "░"},
-        "edge_connector_upper_none": {"ascii": "-", "unicode": "━", "unicode_alt": "░"},
-        "edge_corner_left_lower": {"ascii": "+", "unicode": "┗", "unicode_alt": "░"},
-        "edge_corner_left_upper": {"ascii": "+", "unicode": "┏", "unicode_alt": "░"},
-        "edge_corner_right_lower": {"ascii": "+", "unicode": "┛", "unicode_alt": "░"},
-        "edge_corner_right_upper": {"ascii": "+", "unicode": "┓", "unicode_alt": "░"},
+        "edge_connector_left_none": {
+            "ascii": "|",
+            "unicode": "┃",
+        },
+        "edge_connector_lower_none": {
+            "ascii": "-",
+            "unicode": "━",
+        },
+        "edge_connector_right_none": {
+            "ascii": "|",
+            "unicode": "┃",
+        },
+        "edge_connector_upper_none": {
+            "ascii": "-",
+            "unicode": "━",
+        },
+        "edge_corner_left_lower": {
+            "ascii": "+",
+            "unicode": "┗",
+        },
+        "edge_corner_left_upper": {
+            "ascii": "+",
+            "unicode": "┏",
+        },
+        "edge_corner_right_lower": {
+            "ascii": "+",
+            "unicode": "┛",
+        },
+        "edge_corner_right_upper": {
+            "ascii": "+",
+            "unicode": "┓",
+        },
         "edge_horizontal_left_lower": {
             "ascii": "-",
             "unicode": "━",
-            "unicode_alt": "░",
         },
         "edge_horizontal_left_upper": {
             "ascii": "-",
             "unicode": "━",
-            "unicode_alt": "░",
         },
         "edge_horizontal_right_lower": {
             "ascii": "-",
             "unicode": "━",
-            "unicode_alt": "░",
         },
         "edge_horizontal_right_upper": {
             "ascii": "-",
             "unicode": "━",
-            "unicode_alt": "░",
         },
-        "edge_vertical_left_lower": {"ascii": "|", "unicode": "┃", "unicode_alt": "░"},
-        "edge_vertical_left_upper": {"ascii": "|", "unicode": "┃", "unicode_alt": "░"},
-        "edge_vertical_right_lower": {"ascii": "|", "unicode": "┃", "unicode_alt": "░"},
-        "edge_vertical_right_upper": {"ascii": "|", "unicode": "┃", "unicode_alt": "░"},
-        "empty": {"ascii": " ", "unicode": " ", "unicode_alt": " "},
+        "edge_vertical_left_lower": {
+            "ascii": "|",
+            "unicode": "┃",
+        },
+        "edge_vertical_left_upper": {
+            "ascii": "|",
+            "unicode": "┃",
+        },
+        "edge_vertical_right_lower": {
+            "ascii": "|",
+            "unicode": "┃",
+        },
+        "edge_vertical_right_upper": {
+            "ascii": "|",
+            "unicode": "┃",
+        },
+        "empty": {
+            "ascii": " ",
+            "unicode": " ",
+        },
         "exterior_horizontal_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "label": {"ascii": "label", "unicode": "label", "unicode_alt": "label"},
-        "replacement": {"ascii": "empty", "unicode": "empty", "unicode_alt": "░"},
-        "pad_corner": {"ascii": "empty", "unicode": "empty", "unicode_alt": "░"},
-        "pad_left": {"ascii": "empty", "unicode": "empty", "unicode_alt": "░"},
-        "pad_lower": {"ascii": "empty", "unicode": "empty", "unicode_alt": "░"},
-        "pad_right": {"ascii": "empty", "unicode": "empty", "unicode_alt": "░"},
-        "pad_upper": {"ascii": "empty", "unicode": "empty", "unicode_alt": "░"},
-        "wire_left_quantum": {"ascii": "-", "unicode": "─", "unicode_alt": "─"},
-        "wire_lower_quantum": {"ascii": "|", "unicode": "│", "unicode_alt": "│"},
-        "wire_right_quantum": {"ascii": "-", "unicode": "─", "unicode_alt": "─"},
-        "wire_upper_quantum": {"ascii": "|", "unicode": "│", "unicode_alt": "│"},
-        "wire_left_classical": {"ascii": "=", "unicode": "═", "unicode_alt": "═"},
-        "wire_lower_classical": {"ascii": "#", "unicode": "║", "unicode_alt": "║"},
-        "wire_right_classical": {"ascii": "=", "unicode": "═", "unicode_alt": "═"},
-        "wire_upper_classical": {"ascii": "#", "unicode": "║", "unicode_alt": "║"},
+        "label": {
+            "ascii": "label",
+            "unicode": "label",
+        },
+        "replacement": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_corner": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_left": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_lower": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_right": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_upper": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "wire_left_quantum": {
+            "ascii": "-",
+            "unicode": "─",
+        },
+        "wire_lower_quantum": {
+            "ascii": "|",
+            "unicode": "│",
+        },
+        "wire_right_quantum": {
+            "ascii": "-",
+            "unicode": "─",
+        },
+        "wire_upper_quantum": {
+            "ascii": "|",
+            "unicode": "│",
+        },
+        "wire_left_classical": {
+            "ascii": "=",
+            "unicode": "═",
+        },
+        "wire_lower_classical": {
+            "ascii": "#",
+            "unicode": "║",
+        },
+        "wire_right_classical": {
+            "ascii": "=",
+            "unicode": "═",
+        },
+        "wire_upper_classical": {
+            "ascii": "#",
+            "unicode": "║",
+        },
         "wire_left_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_lower_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_right_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_upper_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "edge_blend_left": {"ascii": "+", "unicode": "┣", "unicode_alt": "░"},
-        "edge_blend_right": {"ascii": "+", "unicode": "┫", "unicode_alt": "░"},
+        "edge_blend_left": {
+            "ascii": "+",
+            "unicode": "┣",
+        },
+        "edge_blend_right": {
+            "ascii": "+",
+            "unicode": "┫",
+        },
     },
     "PUSH": {
         "block_connector_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "block_connector_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "block_connector_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "block_connector_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_left_quantum": {
             "ascii": "-",
             "unicode": "─",
-            "unicode_alt": "─",
         },
         "edge_connector_lower_quantum": {
             "ascii": "|",
             "unicode": "│",
-            "unicode_alt": "│",
         },
         "edge_connector_right_quantum": {
             "ascii": "-",
             "unicode": "─",
-            "unicode_alt": "─",
         },
         "edge_connector_upper_quantum": {
             "ascii": "|",
             "unicode": "│",
-            "unicode_alt": "│",
         },
         "edge_connector_left_classical": {
             "ascii": "=",
             "unicode": "═",
-            "unicode_alt": "═",
         },
         "edge_connector_lower_classical": {
             "ascii": "#",
             "unicode": "║",
-            "unicode_alt": "║",
         },
         "edge_connector_right_classical": {
             "ascii": "=",
             "unicode": "═",
-            "unicode_alt": "═",
         },
         "edge_connector_upper_classical": {
             "ascii": "#",
             "unicode": "║",
-            "unicode_alt": "║",
         },
         "edge_connector_left_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_lower_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_right_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_upper_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_corner_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_corner_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_corner_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_corner_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_vertical_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_vertical_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_vertical_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_vertical_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "empty": {"ascii": " ", "unicode": " ", "unicode_alt": " "},
+        "empty": {
+            "ascii": " ",
+            "unicode": " ",
+        },
         "exterior_horizontal_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "label": {"ascii": "label", "unicode": "label", "unicode_alt": "label"},
-        "replacement": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
-        "pad_corner": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
+        "label": {
+            "ascii": "label",
+            "unicode": "label",
+        },
+        "replacement": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_corner": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
         "pad_left": {
             "ascii": "edge_connector_left_unset",
             "unicode": "edge_connector_left_unset",
-            "unicode_alt": "edge_connector_left_unset",
         },
         "pad_lower": {
             "ascii": "edge_connector_lower_unset",
             "unicode": "edge_connector_lower_unset",
-            "unicode_alt": "edge_connector_lower_unset",
         },
         "pad_right": {
             "ascii": "edge_connector_right_unset",
             "unicode": "edge_connector_right_unset",
-            "unicode_alt": "edge_connector_right_unset",
         },
         "pad_upper": {
             "ascii": "edge_connector_upper_unset",
             "unicode": "edge_connector_upper_unset",
-            "unicode_alt": "edge_connector_upper_unset",
         },
-        "wire_left_quantum": {"ascii": "-", "unicode": "─", "unicode_alt": "─"},
-        "wire_lower_quantum": {"ascii": "|", "unicode": "│", "unicode_alt": "│"},
-        "wire_right_quantum": {"ascii": "-", "unicode": "─", "unicode_alt": "─"},
-        "wire_upper_quantum": {"ascii": "|", "unicode": "│", "unicode_alt": "│"},
-        "wire_left_classical": {"ascii": "=", "unicode": "═", "unicode_alt": "═"},
-        "wire_lower_classical": {"ascii": "#", "unicode": "║", "unicode_alt": "║"},
-        "wire_right_classical": {"ascii": "=", "unicode": "═", "unicode_alt": "═"},
-        "wire_upper_classical": {"ascii": "#", "unicode": "║", "unicode_alt": "║"},
+        "wire_left_quantum": {
+            "ascii": "-",
+            "unicode": "─",
+        },
+        "wire_lower_quantum": {
+            "ascii": "|",
+            "unicode": "│",
+        },
+        "wire_right_quantum": {
+            "ascii": "-",
+            "unicode": "─",
+        },
+        "wire_upper_quantum": {
+            "ascii": "|",
+            "unicode": "│",
+        },
+        "wire_left_classical": {
+            "ascii": "=",
+            "unicode": "═",
+        },
+        "wire_lower_classical": {
+            "ascii": "#",
+            "unicode": "║",
+        },
+        "wire_right_classical": {
+            "ascii": "=",
+            "unicode": "═",
+        },
+        "wire_upper_classical": {
+            "ascii": "#",
+            "unicode": "║",
+        },
         "wire_left_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_lower_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_right_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_upper_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
     },
     "LSTICK_SINGLE": {
         "block_connector_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "block_connector_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "block_connector_right_lower": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "block_connector_right_upper": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "edge_connector_left_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_lower_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_right_quantum": {
             "ascii": "--",
             "unicode": "──",
-            "unicode_alt": "──",
         },
         "edge_connector_upper_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_left_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_lower_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_right_classical": {
             "ascii": "==",
             "unicode": "══",
-            "unicode_alt": "══",
         },
         "edge_connector_upper_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_left_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_lower_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_right_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_upper_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_corner_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_corner_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_corner_right_lower": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "edge_corner_right_upper": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "edge_horizontal_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_vertical_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_vertical_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_vertical_right_lower": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "edge_vertical_right_upper": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
-        "empty": {"ascii": " ", "unicode": " ", "unicode_alt": " "},
+        "empty": {
+            "ascii": " ",
+            "unicode": " ",
+        },
         "exterior_horizontal_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "label": {"ascii": "label", "unicode": "label", "unicode_alt": "label"},
-        "replacement": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
-        "pad_corner": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
-        "pad_left": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
-        "pad_lower": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
+        "label": {
+            "ascii": "label",
+            "unicode": "label",
+        },
+        "replacement": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_corner": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_left": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_lower": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
         "pad_right": {
             "ascii": "wire_right_unset",
             "unicode": "wire_right_unset",
-            "unicode_alt": "wire_right_unset",
         },
-        "pad_upper": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
+        "pad_upper": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
         "wire_left_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_lower_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "wire_right_quantum": {"ascii": "-", "unicode": "─", "unicode_alt": "─"},
+        "wire_right_quantum": {
+            "ascii": "-",
+            "unicode": "─",
+        },
         "wire_upper_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_left_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_lower_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "wire_right_classical": {"ascii": "=", "unicode": "═", "unicode_alt": "═"},
+        "wire_right_classical": {
+            "ascii": "=",
+            "unicode": "═",
+        },
         "wire_upper_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_left_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_lower_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_right_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_upper_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "label_connector": {"ascii": "empty", "unicode": "╶", "unicode_alt": "╶"},
+        "label_connector": {
+            "ascii": "empty",
+            "unicode": "╶",
+        },
         "bracket_connector_right_quantum": {
             "ascii": "empty",
             "unicode": "╶",
-            "unicode_alt": "╶",
         },
         "bracket_connector_right_classical": {
             "ascii": "wire_right_unset",
             "unicode": "wire_right_unset",
-            "unicode_alt": "wire_right_unset",
         },
         "bracket_connector_right_none": {
             "ascii": "wire_right_unset",
             "unicode": "wire_right_unset",
-            "unicode_alt": "wire_right_unset",
         },
     },
     "RSTICK_SINGLE": {
         "block_connector_left_lower": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "block_connector_left_upper": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "block_connector_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "block_connector_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_left_quantum": {
             "ascii": "--",
             "unicode": "──",
-            "unicode_alt": "──",
         },
         "edge_connector_lower_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_right_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_upper_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_left_classical": {
             "ascii": "==",
             "unicode": "══",
-            "unicode_alt": "══",
         },
         "edge_connector_lower_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_right_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_upper_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_left_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_lower_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_right_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_connector_upper_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_corner_left_lower": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "edge_corner_left_upper": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "edge_corner_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_corner_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_horizontal_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_vertical_left_lower": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "edge_vertical_left_upper": {
             "ascii": "emptyempty",
             "unicode": "emptyempty",
-            "unicode_alt": "emptyempty",
         },
         "edge_vertical_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "edge_vertical_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "empty": {"ascii": " ", "unicode": " ", "unicode_alt": " "},
+        "empty": {
+            "ascii": " ",
+            "unicode": " ",
+        },
         "exterior_horizontal_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_horizontal_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_vertical_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_left_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_left_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_right_lower": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "exterior_corner_right_upper": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "label": {"ascii": "label", "unicode": "label", "unicode_alt": "label"},
-        "replacement": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
-        "pad_corner": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
+        "label": {
+            "ascii": "label",
+            "unicode": "label",
+        },
+        "replacement": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_corner": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
         "pad_left": {
             "ascii": "wire_left_unset",
             "unicode": "wire_left_unset",
-            "unicode_alt": "wire_left_unset",
         },
-        "pad_lower": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
-        "pad_right": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
-        "pad_upper": {"ascii": "empty", "unicode": "empty", "unicode_alt": "empty"},
-        "wire_left_quantum": {"ascii": "-", "unicode": "─", "unicode_alt": "─"},
+        "pad_lower": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_right": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "pad_upper": {
+            "ascii": "empty",
+            "unicode": "empty",
+        },
+        "wire_left_quantum": {
+            "ascii": "-",
+            "unicode": "─",
+        },
         "wire_lower_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_right_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_upper_quantum": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "wire_left_classical": {"ascii": "=", "unicode": "═", "unicode_alt": "═"},
+        "wire_left_classical": {
+            "ascii": "=",
+            "unicode": "═",
+        },
         "wire_lower_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_right_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_upper_classical": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_left_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_lower_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_right_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
         "wire_upper_none": {
             "ascii": "empty",
             "unicode": "empty",
-            "unicode_alt": "empty",
         },
-        "label_connector": {"ascii": "empty", "unicode": "╴", "unicode_alt": "╴"},
+        "label_connector": {
+            "ascii": "empty",
+            "unicode": "╴",
+        },
         "bracket_connector_left_quantum": {
             "ascii": "empty",
             "unicode": "╴",
-            "unicode_alt": "╴",
         },
         "bracket_connector_left_classical": {
             "ascii": "wire_left_unset",
             "unicode": "wire_left_unset",
-            "unicode_alt": "wire_left_unset",
         },
         "bracket_connector_left_none": {
             "ascii": "wire_left_unset",
             "unicode": "wire_left_unset",
-            "unicode_alt": "wire_left_unset",
         },
     },
 }
@@ -1156,72 +1158,58 @@ style_GATE_UPPER = dict(STYLES["GATE_SINGLE"])
 style_GATE_UPPER["block_connector_left_lower"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["block_connector_right_lower"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["edge_connector_lower_quantum"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["edge_connector_lower_classical"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["edge_connector_lower_none"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["edge_corner_left_lower"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["edge_corner_right_lower"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["edge_horizontal_left_lower"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["edge_horizontal_right_lower"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["exterior_horizontal_left_lower"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["exterior_horizontal_right_lower"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["wire_lower_quantum"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["wire_lower_classical"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_UPPER["wire_lower_none"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 STYLES.update({"GATE_UPPER": style_GATE_UPPER})
 
@@ -1229,172 +1217,138 @@ style_GATE_MIDDLE = dict(STYLES["GATE_SINGLE"])
 style_GATE_MIDDLE["block_connector_left_lower"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["block_connector_right_lower"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_lower_quantum"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_lower_classical"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_lower_none"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_corner_left_lower"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_corner_right_lower"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_horizontal_left_lower"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_horizontal_right_lower"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["wire_lower_quantum"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["wire_lower_classical"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["wire_lower_none"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["block_connector_left_upper"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["block_connector_right_upper"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_upper_quantum"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_upper_classical"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_upper_none"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_corner_left_upper"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_corner_right_upper"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_horizontal_left_upper"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_horizontal_right_upper"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["wire_upper_quantum"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["wire_upper_classical"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["wire_upper_none"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_left_quantum"] = {
     "ascii": "|",
     "unicode": "┨",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_right_quantum"] = {
     "ascii": "|",
     "unicode": "┠",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_left_classical"] = {
     "ascii": "|",
     "unicode": "╡",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_right_classical"] = {
     "ascii": "|",
     "unicode": "╞",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_left_none"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["edge_connector_right_none"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["exterior_horizontal_left_lower"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["exterior_horizontal_right_lower"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["exterior_horizontal_left_upper"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_MIDDLE["exterior_horizontal_right_upper"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 STYLES.update({"GATE_MIDDLE": style_GATE_MIDDLE})
 
@@ -1402,72 +1356,58 @@ style_GATE_LOWER = dict(STYLES["GATE_SINGLE"])
 style_GATE_LOWER["block_connector_left_upper"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["block_connector_right_upper"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["edge_connector_upper_quantum"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["edge_connector_upper_classical"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["edge_connector_upper_none"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["edge_corner_left_upper"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["edge_corner_right_upper"] = {
     "ascii": "|",
     "unicode": "┃",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["edge_horizontal_left_upper"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["edge_horizontal_right_upper"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["exterior_horizontal_left_upper"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["exterior_horizontal_right_upper"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["wire_upper_quantum"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["wire_upper_classical"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 style_GATE_LOWER["wire_upper_none"] = {
     "ascii": "empty",
     "unicode": "empty",
-    "unicode_alt": "░",
 }
 STYLES.update({"GATE_LOWER": style_GATE_LOWER})
 
@@ -1484,32 +1424,26 @@ style_LSTICK_UPPER = dict(STYLES["LSTICK_SINGLE"])
 style_LSTICK_UPPER["edge_connector_right_quantum"] = {
     "ascii": "(bracket_connector_right_unset",
     "unicode": "⎧bracket_connector_right_unset",
-    "unicode_alt": "⎧bracket_connector_right_unset",
 }
 style_LSTICK_UPPER["edge_connector_right_classical"] = {
     "ascii": "(bracket_connector_right_unset",
     "unicode": "⎧bracket_connector_right_unset",
-    "unicode_alt": "⎧bracket_connector_right_unset",
 }
 style_LSTICK_UPPER["edge_corner_right_lower"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 style_LSTICK_UPPER["block_connector_right_lower"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 style_LSTICK_UPPER["edge_vertical_right_lower"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 style_LSTICK_UPPER["edge_vertical_right_upper"] = {
     "ascii": "|",
     "unicode": " ",
-    "unicode_alt": " ",
 }
 STYLES.update({"LSTICK_UPPER": style_LSTICK_UPPER})
 
@@ -1517,47 +1451,38 @@ style_LSTICK_MIDDLE = dict(STYLES["LSTICK_SINGLE"])
 style_LSTICK_MIDDLE["edge_connector_right_quantum"] = {
     "ascii": "(bracket_connector_right_unset",
     "unicode": "⎨bracket_connector_right_unset",
-    "unicode_alt": "⎨bracket_connector_right_unset",
 }
 style_LSTICK_MIDDLE["edge_connector_right_classical"] = {
     "ascii": "(bracket_connector_right_unset",
     "unicode": "⎨bracket_connector_right_unset",
-    "unicode_alt": "⎨bracket_connector_right_unset",
 }
 style_LSTICK_MIDDLE["edge_connector_right_none"] = {
     "ascii": "|bracket_connector_right_unset",
     "unicode": "⎪bracket_connector_right_unset",
-    "unicode_alt": "⎪bracket_connector_right_unset",
 }
 style_LSTICK_MIDDLE["edge_corner_right_lower"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 style_LSTICK_MIDDLE["block_connector_right_lower"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 style_LSTICK_MIDDLE["edge_vertical_right_lower"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 style_LSTICK_MIDDLE["edge_corner_right_upper"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 style_LSTICK_MIDDLE["block_connector_right_upper"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 style_LSTICK_MIDDLE["edge_vertical_right_upper"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 STYLES.update({"LSTICK_MIDDLE": style_LSTICK_MIDDLE})
 
@@ -1565,32 +1490,26 @@ style_LSTICK_LOWER = dict(STYLES["LSTICK_SINGLE"])
 style_LSTICK_LOWER["edge_connector_right_quantum"] = {
     "ascii": "(bracket_connector_right_unset",
     "unicode": "⎩bracket_connector_right_unset",
-    "unicode_alt": "⎩bracket_connector_right_unset",
 }
 style_LSTICK_LOWER["edge_connector_right_classical"] = {
     "ascii": "(bracket_connector_right_unset",
     "unicode": "⎩bracket_connector_right_unset",
-    "unicode_alt": "⎩bracket_connector_right_unset",
 }
 style_LSTICK_LOWER["edge_corner_right_upper"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 style_LSTICK_LOWER["block_connector_right_upper"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 style_LSTICK_LOWER["edge_vertical_right_lower"] = {
     "ascii": "  ",
     "unicode": "  ",
-    "unicode_alt": "  ",
 }
 style_LSTICK_LOWER["edge_vertical_right_upper"] = {
     "ascii": "| ",
     "unicode": "⎪ ",
-    "unicode_alt": "⎪ ",
 }
 STYLES.update({"LSTICK_LOWER": style_LSTICK_LOWER})
 
@@ -1598,32 +1517,26 @@ style_RSTICK_UPPER = dict(STYLES["RSTICK_SINGLE"])
 style_RSTICK_UPPER["edge_connector_left_quantum"] = {
     "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎫",
-    "unicode_alt": "bracket_connector_left_unset⎫",
 }
 style_RSTICK_UPPER["edge_connector_left_classical"] = {
     "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎫",
-    "unicode_alt": "bracket_connector_left_unset⎫",
 }
 style_RSTICK_UPPER["edge_corner_left_lower"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 style_RSTICK_UPPER["block_connector_left_lower"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 style_RSTICK_UPPER["edge_vertical_left_lower"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 style_LSTICK_UPPER["edge_vertical_left_upper"] = {
     "ascii": "  ",
     "unicode": "  ",
-    "unicode_alt": "  ",
 }
 STYLES.update({"RSTICK_UPPER": style_RSTICK_UPPER})
 
@@ -1631,47 +1544,38 @@ style_RSTICK_MIDDLE = dict(STYLES["RSTICK_SINGLE"])
 style_RSTICK_MIDDLE["edge_connector_left_quantum"] = {
     "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎬",
-    "unicode_alt": "bracket_connector_left_unset⎬",
 }
 style_RSTICK_MIDDLE["edge_connector_left_classical"] = {
     "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎬",
-    "unicode_alt": "bracket_connector_left_unset⎬",
 }
 style_RSTICK_MIDDLE["edge_connector_left_none"] = {
     "ascii": "bracket_connector_left_unset|",
     "unicode": "bracket_connector_left_unset⎪",
-    "unicode_alt": "bracket_connector_left_unset⎪",
 }
 style_RSTICK_MIDDLE["edge_corner_left_lower"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 style_RSTICK_MIDDLE["block_connector_left_lower"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 style_RSTICK_MIDDLE["edge_vertical_left_lower"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 style_RSTICK_MIDDLE["edge_corner_left_upper"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 style_RSTICK_MIDDLE["block_connector_left_upper"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 style_RSTICK_MIDDLE["edge_vertical_left_upper"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 STYLES.update({"RSTICK_MIDDLE": style_RSTICK_MIDDLE})
 
@@ -1679,60 +1583,68 @@ style_RSTICK_LOWER = dict(STYLES["RSTICK_SINGLE"])
 style_RSTICK_LOWER["edge_connector_left_quantum"] = {
     "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎭",
-    "unicode_alt": "bracket_connector_left_unset⎭",
 }
 style_RSTICK_LOWER["edge_connector_left_classical"] = {
     "ascii": "bracket_connector_left_unset)",
     "unicode": "bracket_connector_left_unset⎭",
-    "unicode_alt": "bracket_connector_left_unset⎭",
 }
 style_RSTICK_LOWER["edge_corner_left_upper"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 style_RSTICK_LOWER["block_connector_left_upper"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 style_RSTICK_LOWER["edge_vertical_left_lower"] = {
     "ascii": "  ",
     "unicode": "  ",
-    "unicode_alt": "  ",
 }
 style_RSTICK_LOWER["edge_vertical_left_upper"] = {
     "ascii": " |",
     "unicode": " ⎪",
-    "unicode_alt": " ⎪",
 }
 STYLES.update({"RSTICK_LOWER": style_RSTICK_LOWER})
 
 style_TARG = dict(STYLES["PUSH"])
-style_TARG["label"] = {"ascii": "@", "unicode": "⨁", "unicode_alt": "⨁"}  # ⊕, ⨁
+style_TARG["label"] = {
+    "ascii": "@",
+    "unicode": "⨁",
+}
 STYLES.update({"TARG": style_TARG})
 
 style_CTRL = dict(STYLES["PUSH"])
-style_CTRL["label"] = {"ascii": "*", "unicode": "●", "unicode_alt": "●"}
+style_CTRL["label"] = {
+    "ascii": "*",
+    "unicode": "●",
+}
 STYLES.update({"CTRL": style_CTRL})
 
 style_OCTRL = dict(STYLES["PUSH"])
-style_OCTRL["label"] = {"ascii": "o", "unicode": "○", "unicode_alt": "○"}
+style_OCTRL["label"] = {
+    "ascii": "o",
+    "unicode": "○",
+}
 STYLES.update({"OCTRL": style_OCTRL})
 
 style_SWAP = dict(STYLES["PUSH"])
-style_SWAP["label"] = {"ascii": "X", "unicode": "╳", "unicode_alt": "╳"}
+style_SWAP["label"] = {
+    "ascii": "X",
+    "unicode": "╳",
+}
 STYLES.update({"SWAP": style_SWAP})
 
 style_TRACE = dict(STYLES["RSTICK_SINGLE"])
-style_TRACE["label_connector_left"] = {"ascii": "!", "unicode": "⏚", "unicode_alt": "⏚"}
+style_TRACE["label_connector_left"] = {
+    "ascii": "!",
+    "unicode": "⏚",
+}
 STYLES.update({"TRACE": style_TRACE})
 
 style_TERM = dict(STYLES["RSTICK_SINGLE"])
 style_TERM["label_connector_left"] = {
     "ascii": "wire_left_unset",
     "unicode": "wire_left_unset",
-    "unicode_alt": "wire_left_unset",
 }
 STYLES.update({"TERM": style_TERM})
 
@@ -1740,7 +1652,6 @@ style_WORMHOLE_PAST = dict(STYLES["LSTICK_SINGLE"])
 style_WORMHOLE_PAST["label_connector_right"] = {
     "ascii": "<",
     "unicode": "◀",
-    "unicode_alt": "◀",
 }
 STYLES.update({"WORMHOLE_PAST": style_WORMHOLE_PAST})
 
@@ -1748,41 +1659,197 @@ style_WORMHOLE_FUTURE = dict(STYLES["RSTICK_SINGLE"])
 style_WORMHOLE_FUTURE["label_connector_left"] = {
     "ascii": ">",
     "unicode": "▶",
-    "unicode_alt": "▶",
 }
 STYLES.update({"WORMHOLE_FUTURE": style_WORMHOLE_FUTURE})
 
 style_WIRE_QN = dict(STYLES["PUSH"])
-style_WIRE_QN["label"] = {"ascii": "-", "unicode": "─", "unicode_alt": "─"}
+style_WIRE_QN["label"] = {
+    "ascii": "-",
+    "unicode": "─",
+}
 STYLES.update({"WIRE_QN": style_WIRE_QN})
 
 style_WIRE_CN = dict(STYLES["PUSH"])
-style_WIRE_CN["label"] = {"ascii": "=", "unicode": "═", "unicode_alt": "═"}
+style_WIRE_CN["label"] = {
+    "ascii": "=",
+    "unicode": "═",
+}
 STYLES.update({"WIRE_CN": style_WIRE_CN})
 
 style_WIRE_NQ = dict(STYLES["PUSH"])
-style_WIRE_NQ["label"] = {"ascii": "|", "unicode": "│", "unicode_alt": "│"}
+style_WIRE_NQ["label"] = {
+    "ascii": "|",
+    "unicode": "│",
+}
 STYLES.update({"WIRE_NQ": style_WIRE_NQ})
 
 style_WIRE_NC = dict(STYLES["PUSH"])
-style_WIRE_NC["label"] = {"ascii": "#", "unicode": "║", "unicode_alt": "║"}
+style_WIRE_NC["label"] = {
+    "ascii": "#",
+    "unicode": "║",
+}
 STYLES.update({"WIRE_NC": style_WIRE_NC})
 
 style_WIRE_QQ = dict(STYLES["PUSH"])
-style_WIRE_QQ["label"] = {"ascii": "-", "unicode": "┼", "unicode_alt": "┼"}
+style_WIRE_QQ["label"] = {
+    "ascii": "-",
+    "unicode": "┼",
+}
 STYLES.update({"WIRE_QQ": style_WIRE_QQ})
 
 style_WIRE_QC = dict(STYLES["PUSH"])
-style_WIRE_QC["label"] = {"ascii": "-", "unicode": "╫", "unicode_alt": "╫"}
+style_WIRE_QC["label"] = {
+    "ascii": "-",
+    "unicode": "╫",
+}
 STYLES.update({"WIRE_QC": style_WIRE_QC})
 
 style_WIRE_CQ = dict(STYLES["PUSH"])
-style_WIRE_CQ["label"] = {"ascii": "=", "unicode": "╪", "unicode_alt": "╪"}
+style_WIRE_CQ["label"] = {
+    "ascii": "=",
+    "unicode": "╪",
+}
 STYLES.update({"WIRE_CQ": style_WIRE_CQ})
 
 style_WIRE_CC = dict(STYLES["PUSH"])
-style_WIRE_CC["label"] = {"ascii": "=", "unicode": "╬", "unicode_alt": "╬"}
+style_WIRE_CC["label"] = {
+    "ascii": "=",
+    "unicode": "╬",
+}
 STYLES.update({"WIRE_CC": style_WIRE_CC})
+
+
+def swap_operations(order: tuple[int]) -> list[int]:
+    operations = []
+    initial = list(range(0, len(order)))
+    current = copy.deepcopy(initial)
+    for position in initial:
+        while order.index(position) != current.index(position):
+            index_left, index_right = 0, 0
+            if order.index(position) > current.index(position):
+                index_left, index_right = (
+                    current.index(position),
+                    current.index(position) + 1,
+                )
+            elif order.index(position) < current.index(position):
+                index_left, index_right = current.index(position) - 1, current.index(
+                    position
+                )
+            current[index_left], current[index_right] = (
+                current[index_right],
+                current[index_left],
+            )
+            operations.append(index_left)
+    return operations
+
+
+# (family, component, style) -> (style, family, component)
+operations = swap_operations((2, 0, 1))
+
+
+def adjacent_dict_swap(nested_dict: dict) -> dict:
+    swapped_nested_dict = defaultdict(dict)
+    for key1, value1 in nested_dict.items():
+        for key2, value2 in value1.items():
+            swapped_nested_dict[key2].update({key1: value2})
+    return dict(swapped_nested_dict)
+
+
+def deep_dict_swap(nested_dict: dict, depth: int) -> dict:
+    swapped_nested_dict = copy.deepcopy(nested_dict)
+    if depth == 0:
+        swapped_nested_dict = adjacent_dict_swap(swapped_nested_dict)
+    else:
+        for key in swapped_nested_dict:
+            swapped_nested_dict[key] = deep_dict_swap(
+                swapped_nested_dict[key], depth - 1
+            )
+    return swapped_nested_dict
+
+
+def recursive_dict_swap(nested_dict: dict, operations: list[int]) -> dict:
+    swapped_nested_dict = copy.deepcopy(nested_dict)
+    for operation in operations:
+        swapped_nested_dict = deep_dict_swap(swapped_nested_dict, operation)
+    return swapped_nested_dict
+
+
+STYLES = recursive_dict_swap(STYLES, operations)
+
+# A new style can be created simply by copying a pre-existing one, making the necessary changes to the copy, then updating the main dictionary to include it. For example:
+style_unicode_alt = copy.deepcopy(STYLES["unicode"])
+style_unicode_alt["GATE_SINGLE"]["edge_connector_left_quantum"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_lower_quantum"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_right_quantum"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_upper_quantum"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_left_classical"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_lower_classical"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_right_classical"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_upper_classical"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_left_none"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_lower_none"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_right_none"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_connector_upper_none"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_corner_left_lower"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_corner_left_upper"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_corner_right_lower"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_corner_right_upper"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_horizontal_left_lower"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_horizontal_left_upper"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_horizontal_right_lower"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_horizontal_right_upper"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_vertical_left_lower"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_vertical_left_upper"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_vertical_right_lower"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_vertical_right_upper"] = "░"
+style_unicode_alt["GATE_SINGLE"]["replacement"] = "░"
+style_unicode_alt["GATE_SINGLE"]["pad_corner"] = "░"
+style_unicode_alt["GATE_SINGLE"]["pad_left"] = "░"
+style_unicode_alt["GATE_SINGLE"]["pad_lower"] = "░"
+style_unicode_alt["GATE_SINGLE"]["pad_right"] = "░"
+style_unicode_alt["GATE_SINGLE"]["pad_upper"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_blend_left"] = "░"
+style_unicode_alt["GATE_SINGLE"]["edge_blend_right"] = "░"
+style_unicode_alt["GATE_UPPER"].update(style_unicode_alt["GATE_SINGLE"])
+style_unicode_alt["GATE_UPPER"]["block_connector_left_lower"] = "░"
+style_unicode_alt["GATE_UPPER"]["block_connector_right_lower"] = "░"
+style_unicode_alt["GATE_UPPER"]["exterior_horizontal_left_lower"] = "░"
+style_unicode_alt["GATE_UPPER"]["exterior_horizontal_right_lower"] = "░"
+style_unicode_alt["GATE_UPPER"]["wire_lower_quantum"] = "░"
+style_unicode_alt["GATE_UPPER"]["wire_lower_classical"] = "░"
+style_unicode_alt["GATE_UPPER"]["wire_lower_none"] = "░"
+style_unicode_alt["GATE_MIDDLE"].update(style_unicode_alt["GATE_SINGLE"])
+style_unicode_alt["GATE_MIDDLE"]["block_connector_left_lower"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["block_connector_right_lower"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["wire_lower_quantum"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["wire_lower_classical"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["wire_lower_none"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["block_connector_left_upper"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["block_connector_right_upper"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["wire_upper_quantum"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["wire_upper_classical"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["wire_upper_none"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["exterior_horizontal_left_lower"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["exterior_horizontal_right_lower"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["exterior_horizontal_left_upper"] = "░"
+style_unicode_alt["GATE_MIDDLE"]["exterior_horizontal_right_upper"] = "░"
+style_unicode_alt["GATE_LOWER"].update(style_unicode_alt["GATE_SINGLE"])
+style_unicode_alt["GATE_LOWER"]["block_connector_left_upper"] = "░"
+style_unicode_alt["GATE_LOWER"]["block_connector_right_upper"] = "░"
+style_unicode_alt["GATE_LOWER"]["edge_corner_left_upper"] = "░"
+style_unicode_alt["GATE_LOWER"]["edge_corner_right_upper"] = "░"
+style_unicode_alt["GATE_LOWER"]["edge_horizontal_left_upper"] = "░"
+style_unicode_alt["GATE_LOWER"]["edge_horizontal_right_upper"] = "░"
+style_unicode_alt["GATE_LOWER"]["exterior_horizontal_left_upper"] = "░"
+style_unicode_alt["GATE_LOWER"]["exterior_horizontal_right_upper"] = "░"
+style_unicode_alt["GATE_LOWER"]["wire_upper_quantum"] = "░"
+style_unicode_alt["GATE_LOWER"]["wire_upper_classical"] = "░"
+style_unicode_alt["GATE_LOWER"]["wire_upper_none"] = "░"
+style_unicode_alt["METER_SINGLE"].update(style_unicode_alt["GATE_SINGLE"])
+style_unicode_alt["METER_UPPER"].update(style_unicode_alt["GATE_UPPER"])
+style_unicode_alt["METER_MIDDLE"].update(style_unicode_alt["GATE_MIDDLE"])
+style_unicode_alt["METER_LOWER"].update(style_unicode_alt["GATE_LOWER"])
+STYLES.update({"unicode_alt": style_unicode_alt})
 
 # Useful sets for control statements
 family_wide_gates = {
@@ -2032,62 +2099,46 @@ class DiagramCell(VisualizationProperties):
             if label.isspace() is True:
 
                 if "LSTICK" in self.family:
-                    styles[self.family]["pad_right"] = {
-                        "ascii": "empty",
-                        "unicode": "empty",
-                        "unicode_alt": "empty",
-                    }
+                    for key in styles.keys():
+                        styles[key][self.family]["pad_right"] = "empty"
 
                 if "RSTICK" in self.family:
-                    styles[self.family]["pad_left"] = {
-                        "ascii": "empty",
-                        "unicode": "empty",
-                        "unicode_alt": "empty",
-                    }
+                    for key in styles.keys():
+                        styles[key][self.family]["pad_left"] = "empty"
 
-                styles[self.family]["label_connector"] = {
-                    "ascii": "empty",
-                    "unicode": "empty",
-                    "unicode_alt": "empty",
-                }
-                styles[self.family]["label_connector"] = {
-                    "ascii": "empty",
-                    "unicode": "empty",
-                    "unicode_alt": "empty",
-                }
+                for key in styles.keys():
+                    styles[key][self.family]["label_connector"] = "empty"
+
         if any(family in self.family for family in {"LSTICK"}):
-            label = label + styles[self.family]["label_connector"][style]
+            label = label + styles[style][self.family]["label_connector"]
         if any(family in self.family for family in {"RSTICK"}):
-            label = styles[self.family]["label_connector"][style] + label
+            label = styles[style][self.family]["label_connector"] + label
 
         if any(family in self.family for family in {"WORMHOLE_PAST"}):
-            label = label + styles[self.family]["label_connector_right"][style]
+            label = label + styles[style][self.family]["label_connector_right"]
         if any(
             family in self.family for family in {"WORMHOLE_FUTURE", "TRACE", "TERM"}
         ):
-            label = styles[self.family]["label_connector_left"][style] + label
+            label = styles[style][self.family]["label_connector_left"] + label
 
         # Replace label if cell should not have a label.
         if (
             any(family in self.family for family in ["GATE", "METER"])
             and self.label.isspace() is True
         ):
-            styles[self.family]["label"] = {
-                "ascii": "replacement",
-                "unicode": "replacement",
-                "unicode_alt": "replacement",
-            }
+            for key in styles.keys():
+                styles[key][self.family]["label"] = "replacement"
 
-        codes = list(set(flatten_list(list(styles[self.family].keys()) + [unsets])))
+        codes = list(set(flatten_list(CELL_TEMPLATE.tolist() + [unsets])))
 
         # Replacement of self-referencing components.
         for n in range(0, cell.shape[0]):
             for m in range(0, cell.shape[1]):
                 while True:
                     cell_before = cell[n][m]
-                    for code, substitution in styles[self.family].items():
-                        cell[n][m] = cell[n][m].replace(code, substitution[style])
-                        label = label.replace(code, substitution[style])
+                    for code, substitution in styles[style][self.family].items():
+                        cell[n][m] = cell[n][m].replace(code, substitution)
+                        label = label.replace(code, substitution)
 
                     for position, kind in self.connections.items():
                         cell[n][m] = cell[n][m].replace(
@@ -2119,11 +2170,11 @@ class DiagramCell(VisualizationProperties):
         for n in range(0, cell.shape[0]):
             for m in range(0, cell.shape[1]):
                 for code in codes:
-                    if code in styles[self.family].keys():
+                    if code in styles[style][self.family].keys():
                         cell[n][m] = cell[n][m].replace(
-                            code, styles[self.family][code][style]
+                            code, styles[style][self.family][code]
                         )
-                        label = label.replace(code, styles[self.family][code][style])
+                        label = label.replace(code, styles[style][self.family][code])
 
         # Horizontal padding
         width_label = max(self.width_label, math.ceil((len(label) - 1) / 2))
@@ -2813,66 +2864,56 @@ class DiagramCircuit(VisualizationProperties):
         # (Ideally should be fixed properly elsewhere in future).
         if style != "ascii":  # Blending not needed for ASCII.
             blend_targets_left = {
-                styles["GATE_SINGLE"]["edge_connector_left_classical"][style],
-                styles["GATE_SINGLE"]["edge_connector_left_quantum"][style],
-                styles["GATE_SINGLE"]["edge_connector_left_none"][style],
-                styles["GATE_SINGLE"]["edge_vertical_left_upper"][style],
+                styles[style]["GATE_SINGLE"]["edge_connector_left_classical"],
+                styles[style]["GATE_SINGLE"]["edge_connector_left_quantum"],
+                styles[style]["GATE_SINGLE"]["edge_connector_left_none"],
+                styles[style]["GATE_SINGLE"]["edge_vertical_left_upper"],
             }
             blend_targets_right = {
-                styles["GATE_SINGLE"]["edge_connector_right_classical"][style],
-                styles["GATE_SINGLE"]["edge_connector_right_quantum"][style],
-                styles["GATE_SINGLE"]["edge_connector_right_none"][style],
-                styles["GATE_SINGLE"]["edge_vertical_right_upper"][style],
+                styles[style]["GATE_SINGLE"]["edge_connector_right_classical"],
+                styles[style]["GATE_SINGLE"]["edge_connector_right_quantum"],
+                styles[style]["GATE_SINGLE"]["edge_connector_right_none"],
+                styles[style]["GATE_SINGLE"]["edge_vertical_right_upper"],
             }
             for n in range(0, grid.shape[0]):
                 for m in range(0, grid.shape[1]):
                     # Vertically separated block gates together if they are overlapping.
                     if (
                         grid[n, m]
-                        == styles["GATE_SINGLE"]["edge_corner_left_lower"][style]
+                        == styles[style]["GATE_SINGLE"]["edge_corner_left_lower"]
                         and n + 1 != grid.shape[0]
                     ):
                         if grid[n + 1, m] in blend_targets_left:
-                            grid[n, m] = styles["GATE_SINGLE"]["edge_blend_left"][style]
+                            grid[n, m] = styles[style]["GATE_SINGLE"]["edge_blend_left"]
                     if (
                         grid[n, m]
-                        == styles["GATE_SINGLE"]["edge_corner_right_lower"][style]
+                        == styles[style]["GATE_SINGLE"]["edge_corner_right_lower"]
                         and n + 1 != grid.shape[0]
                     ):
                         if grid[n + 1, m] in blend_targets_right:
-                            grid[n, m] = styles["GATE_SINGLE"]["edge_blend_right"][
-                                style
-                            ]
+                            grid[n, m] = styles[style]["GATE_SINGLE"]["edge_blend_right"]
 
                     # LSTICK and RSTICK smoothing when no label.
                     if (
                         grid[n, m]
-                        == styles["LSTICK_MIDDLE"]["edge_connector_right_quantum"][
-                            style
-                        ][0]
+                        == styles[style]["LSTICK_MIDDLE"]["edge_connector_right_quantum"][0]
                         or grid[n, m]
-                        == styles["LSTICK_MIDDLE"]["edge_connector_right_classical"][
-                            style
-                        ][0]
+                        == styles[style]["LSTICK_MIDDLE"]["edge_connector_right_classical"][0]
                     ):
                         if m - 1 >= 0 and grid[n, m - 1] == " ":
-                            grid[n, m] = styles["LSTICK_MIDDLE"][
+                            grid[n, m] = styles[style]["LSTICK_MIDDLE"][
                                 "edge_connector_right_none"
-                            ][style][0]
+                            ][0]
                     if (
                         grid[n, m]
-                        == styles["RSTICK_MIDDLE"]["edge_connector_left_quantum"][
-                            style
-                        ][-1]
+                        == styles[style]["RSTICK_MIDDLE"]["edge_connector_left_quantum"][-1]
                         or grid[n, m]
-                        == styles["RSTICK_MIDDLE"]["edge_connector_left_classical"][
-                            style
-                        ][-1]
+                        == styles[style]["RSTICK_MIDDLE"]["edge_connector_left_classical"][-1]
                     ):
                         if m + 1 <= grid.shape[1] and grid[n, m + 1] == " ":
-                            grid[n, m] = styles["RSTICK_MIDDLE"][
+                            grid[n, m] = styles[style]["RSTICK_MIDDLE"][
                                 "edge_connector_left_none"
-                            ][style][-1]
+                            ][-1]
 
         return grid
 
