@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.1](https://github.com/lgbishop/qhronology/tree/1.2.1) (2026-11-18)
+
+[Full Changelog](https://github.com/lgbishop/qhronology/compare/1.2.0...1.2.1)
+
+### Package:
+
+- Add the ability to specify the data type of numerical simulations. ([a7604fb](https://github.com/lgbishop/qhronology/commit/a7604fb92e6a0da7c2e701e121d2ca45df505434))
+
+### Documentation:
+
+- Major proofread of all theory and examples, and a large expansion of the section on continuous-variable quantum theory. ([72c07bf](https://github.com/lgbishop/qhronology/commit/72c07bfa10f0793a10fa1ed239a639a09498b426))
+
 ## [1.2.0](https://github.com/lgbishop/qhronology/tree/1.2.0) (2026-09-04)
 
 [Full Changelog](https://github.com/lgbishop/qhronology/compare/1.1.1...1.2.0)
