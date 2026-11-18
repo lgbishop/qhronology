@@ -1,4 +1,4 @@
-Metadata-Version: 2.4
+Metadata-Version: 2.5
 Name: packaging
 Version: 26.1
 Summary: Core utilities for Python packages
@@ -27,6 +27,7 @@ License-File: LICENSE.APACHE
 License-File: LICENSE.BSD
 Project-URL: Documentation, https://packaging.pypa.io/
 Project-URL: Source, https://github.com/pypa/packaging
+Import-Name: packaging
 
 packaging
 =========

@@ -31,7 +31,7 @@
 
 Insert your Python code into the text box below, then click the **Run** button.
 The Qhonology, SymPy, NumPy, and SciPy packages are available within the environment.
-Don't forget to import them, as required.
+Don't forget to import them, as needed.
 Try copying one of the examples from the :ref:`Examples <part:examples>` section.
 
 Python in the web browser is made possible using `Pyodide <https://pyodide.org>`_ (`repository <https://github.com/pyodide/pyodide>`_).

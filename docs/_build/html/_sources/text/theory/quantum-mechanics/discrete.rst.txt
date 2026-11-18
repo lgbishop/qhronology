@@ -117,11 +117,11 @@ An alternative parametrization of the qubit vector state :eq:`eq:vector_qubit` t
 
 Given that the factor :math:`\e^{\eye\varsigma}` represents a global phase, then all states with fixed :math:`\vartheta,\varphi` but different :math:`\varsigma` are physically equivalent, and so this factor can be disregarded. We are therefore left with a parametrization of a qubit wherein the numbers :math:`\vartheta` and :math:`\varphi` define a point on the surface of a unit sphere, known as the *Bloch sphere* (illustrated in :numref:`fig:diagram_bloch_sphere`). This is essentially a unique mapping of the :math:`2`-dimensional Hilbert space to the :math:`3`-dimensional real space :math:`\Reals^3` (with basis vectors :math:`\{\uv{e}_1,\uv{e}_2,\uv{e}_3\}`), which is accomplished by choosing the antipodal points on unit sphere in :math:`\Reals^3` to correspond to the pair of mutually orthogonal basis vectors :math:`\ket{0}` and :math:`\ket{1}`. In this sense, the qubit state :math:`\vec{r}_\StateVector \in \Reals^3`, which corresponds to its Hilbert space counterpart :eq:`eq:vector_qubit`, may be written exactly as
 
-.. math:: \vec{r}_\StateVector = \sin(\vartheta)\cos(\varphi)\uv{e}_1 + \sin(\vartheta)\sin(\varphi)\uv{e}_2 + \cos(\vartheta)\uv{e}_3.
+.. math:: \vec{r}_\StateVector = \sin(\vartheta)\cos(\varphi) \, \uv{e}_1 + \sin(\vartheta)\sin(\varphi) \, \uv{e}_2 + \cos(\vartheta) \, \uv{e}_3.
 
 Similarly, a :math:`2`-dimensional density operator :math:`\StateDensity` in the same representation corresponds to the vector
 
-.. math:: \vec{r}_{\StateDensity} = \trace[\StateDensity \Pauli_1]\uv{e}_1 + \trace[\StateDensity \Pauli_2]\uv{e}_2 + \trace[\StateDensity \Pauli_3]\uv{e}_3,
+.. math:: \vec{r}_{\StateDensity} = \trace[\StateDensity \Pauli_1] \, \uv{e}_1 + \trace[\StateDensity \Pauli_2] \, \uv{e}_2 + \trace[\StateDensity \Pauli_3] \, \uv{e}_3,
 
 where :math:`\{\Pauli_k\}_{k=1}^{3}` are the *Pauli matrices*, which are defined as
 
