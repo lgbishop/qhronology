@@ -59,11 +59,11 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
         - a list of 2-tuples of numerical, symbolic, or string coefficients and their respective number-basis specifications (:python:`list[tuple[num | expr | str, int | list[int]]]`)
 
     form : str
-        A string specifying the *form* for the quantum state to take.
+        A string specifying the form for the quantum state to take.
         Can be either of :python:`"vector"` or :python:`"matrix"`.
         Defaults to :python:`"matrix"`.
     kind : str
-        A string specifying the *kind* for the quantum state to take.
+        A string specifying the kind for the quantum state to take.
         Can be either of :python:`"mixed"` or :python:`"pure"`.
         Defaults to :python:`"mixed"`.
     dim : int
@@ -431,7 +431,7 @@ class QuantumState(QuantitiesMixin, OperationsMixin, QuantumObject):
 
 
 class VectorState(QuantumState):
-    """A specialized subclass for creating *vector* states and storing their metadata.
+    """A specialized subclass for creating vector states and storing their metadata.
 
     This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.
     The distinction is that this :python:`VectorState` class fixes both the :python:`form` and :python:`kind` arguments to the values of :python:`"vector"` and :python:`"pure"`, respectively, at instantiation.
@@ -449,7 +449,7 @@ class VectorState(QuantumState):
 
 
 class MatrixState(QuantumState):
-    """A specialized subclass for creating *matrix* states and storing their metadata.
+    """A specialized subclass for creating matrix states and storing their metadata.
 
     This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.
     The distinction is that this :python:`MatrixState` class fixes the :python:`form` argument to a value of :python:`"matrix"` at instantiation.
@@ -464,7 +464,7 @@ class MatrixState(QuantumState):
 
 
 class PureState(QuantumState):
-    """A specialized subclass for creating *pure* states and storing their metadata.
+    """A specialized subclass for creating pure states and storing their metadata.
 
     This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.
     The distinction is that this :python:`PureState` class fixes the :python:`kind` argument to a value of :python:`"pure"` at instantiation.
@@ -479,7 +479,7 @@ class PureState(QuantumState):
 
 
 class MixedState(QuantumState):
-    """A specialized subclass for creating *mixed* states and storing their metadata.
+    """A specialized subclass for creating mixed states and storing their metadata.
 
     This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.
     The distinction is that this :python:`MixedState` class fixes both the :python:`form` and :python:`kind` arguments to the values of :python:`"matrix"` and :python:`"mixed"`, respectively, at instantiation.

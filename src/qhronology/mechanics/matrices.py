@@ -189,11 +189,11 @@ def quantum_object(
         - a list of 2-tuples of numerical, symbolic, or string coefficients paired their respective number-basis specification (:python:`list[tuple[num | expr | str, int | list[int]]]`)
 
     form : str
-        A string specifying the *form* for the quantum object to take.
+        A string specifying the form for the quantum object to take.
         Can be either of :python:`"vector"` or :python:`"matrix"`.
         Defaults to :python:`"matrix"`.
     kind : str
-        A string specifying the *kind* for the quantum object to take.
+        A string specifying the kind for the quantum object to take.
         Can be either of :python:`"mixed"` or :python:`"pure"`.
         Defaults to :python:`"mixed"`.
     dim : int

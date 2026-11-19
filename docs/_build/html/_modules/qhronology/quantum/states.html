@@ -68,7 +68,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.2.1" />
-    <meta name="docbuild:last-update" content="Nov 18, 2026"/>
+    <meta name="docbuild:last-update" content="Nov 19, 2026"/>
   </head>
   
   
@@ -528,11 +528,11 @@
 <span class="sd">        - a list of 2-tuples of numerical, symbolic, or string coefficients and their respective number-basis specifications (:python:`list[tuple[num | expr | str, int | list[int]]]`)</span>
 
 <span class="sd">    form : str</span>
-<span class="sd">        A string specifying the *form* for the quantum state to take.</span>
+<span class="sd">        A string specifying the form for the quantum state to take.</span>
 <span class="sd">        Can be either of :python:`&quot;vector&quot;` or :python:`&quot;matrix&quot;`.</span>
 <span class="sd">        Defaults to :python:`&quot;matrix&quot;`.</span>
 <span class="sd">    kind : str</span>
-<span class="sd">        A string specifying the *kind* for the quantum state to take.</span>
+<span class="sd">        A string specifying the kind for the quantum state to take.</span>
 <span class="sd">        Can be either of :python:`&quot;mixed&quot;` or :python:`&quot;pure&quot;`.</span>
 <span class="sd">        Defaults to :python:`&quot;mixed&quot;`.</span>
 <span class="sd">    dim : int</span>
@@ -915,7 +915,7 @@
 <div class="viewcode-block" id="VectorState">
 <a class="viewcode-back" href="../../../text/documentation/quantum/states.html#qhronology.quantum.states.VectorState">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">VectorState</span><span class="p">(</span><span class="n">QuantumState</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A specialized subclass for creating *vector* states and storing their metadata.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A specialized subclass for creating vector states and storing their metadata.</span>
 
 <span class="sd">    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.</span>
 <span class="sd">    The distinction is that this :python:`VectorState` class fixes both the :python:`form` and :python:`kind` arguments to the values of :python:`&quot;vector&quot;` and :python:`&quot;pure&quot;`, respectively, at instantiation.</span>
@@ -936,7 +936,7 @@
 <div class="viewcode-block" id="MatrixState">
 <a class="viewcode-back" href="../../../text/documentation/quantum/states.html#qhronology.quantum.states.MatrixState">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">MatrixState</span><span class="p">(</span><span class="n">QuantumState</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A specialized subclass for creating *matrix* states and storing their metadata.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A specialized subclass for creating matrix states and storing their metadata.</span>
 
 <span class="sd">    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.</span>
 <span class="sd">    The distinction is that this :python:`MatrixState` class fixes the :python:`form` argument to a value of :python:`&quot;matrix&quot;` at instantiation.</span>
@@ -954,7 +954,7 @@
 <div class="viewcode-block" id="PureState">
 <a class="viewcode-back" href="../../../text/documentation/quantum/states.html#qhronology.quantum.states.PureState">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">PureState</span><span class="p">(</span><span class="n">QuantumState</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A specialized subclass for creating *pure* states and storing their metadata.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A specialized subclass for creating pure states and storing their metadata.</span>
 
 <span class="sd">    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.</span>
 <span class="sd">    The distinction is that this :python:`PureState` class fixes the :python:`kind` argument to a value of :python:`&quot;pure&quot;` at instantiation.</span>
@@ -972,7 +972,7 @@
 <div class="viewcode-block" id="MixedState">
 <a class="viewcode-back" href="../../../text/documentation/quantum/states.html#qhronology.quantum.states.MixedState">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">MixedState</span><span class="p">(</span><span class="n">QuantumState</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A specialized subclass for creating *mixed* states and storing their metadata.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A specialized subclass for creating mixed states and storing their metadata.</span>
 
 <span class="sd">    This is a wrapper on the :py:class:`~qhronology.quantum.states.QuantumState` class, and so inherits all of its attributes, properties, and methods.</span>
 <span class="sd">    The distinction is that this :python:`MixedState` class fixes both the :python:`form` and :python:`kind` arguments to the values of :python:`&quot;matrix&quot;` and :python:`&quot;mixed&quot;`, respectively, at instantiation.</span>

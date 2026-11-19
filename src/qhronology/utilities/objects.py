@@ -344,7 +344,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     @property
     def form(self) -> str:
-        """The *form* of the object.
+        """The form of the object.
         Can be either of :python:`"vector"` or :python:`"matrix"`.
         Only :py:class:`~qhronology.quantum.states.QuantumState` objects can be :python:`"vector"`.
         """
@@ -361,7 +361,7 @@ class QuantumObject(VisualizationMixin, SymbolicsProperties):
 
     @property
     def kind(self) -> str:
-        """The *kind* of quantum object.
+        """The kind of quantum object.
         Can be either of :python:`"mixed"` or :python:`"pure"`."""
         return self._kind
 

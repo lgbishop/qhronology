@@ -162,11 +162,11 @@ Order-finding via quantum phase estimation
 
 Quantum phase estimation (see :numref:`eg:phase_estimation` :ref:`eg:phase_estimation`) presents an efficient method of order-finding that is unattainable through classical means. This is achieved through using operators that have the action
 
-.. math:: \Unitary_{N,a} \ket{z} = \left|ay \; (\mathrm{mod} \; N)\right\rangle
+.. math:: \Unitary_{N,a} \ket{z} = \left|az \; (\mathrm{mod} \; N)\right\rangle
 
 as the base of the controlled-:math:`\Unitary` gates in the phase estimation algorithm. Note that, given this definition, it is easy to verify that
 
-.. math:: \Unitary_{N,a}^k \ket{z} = |a^ky \; (\mathrm{mod} \; N)\rangle,
+.. math:: \Unitary_{N,a}^k \ket{z} = |a^kz \; (\mathrm{mod} \; N)\rangle,
 
 and so, in the case of :math:`z = 1`, we have
 

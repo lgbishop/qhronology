@@ -73,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.2.1" />
-    <meta name="docbuild:last-update" content="Nov 18, 2026"/>
+    <meta name="docbuild:last-update" content="Nov 19, 2026"/>
   </head>
   
   
@@ -628,10 +628,10 @@
 <span id="eg-shor-estimation"></span><h3>Order-finding via quantum phase estimation<a class="headerlink" href="#order-finding-via-quantum-phase-estimation" title="Link to this heading">#</a></h3>
 <p>Quantum phase estimation (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">eg:phase_estimation</span></code> <a class="reference internal" href="phase_estimation.html#eg-phase-estimation"><span class="std std-ref">Quantum phase estimation</span></a>) presents an efficient method of order-finding that is unattainable through classical means. This is achieved through using operators that have the action</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-9">
-<span class="eqno">(488)<a class="headerlink" href="#equation-text-examples-algorithms-shor-9" title="Link to this equation">#</a></span>\[\Unitary_{N,a} \ket{z} = \left|ay \; (\mathrm{mod} \; N)\right\rangle\]</div>
+<span class="eqno">(488)<a class="headerlink" href="#equation-text-examples-algorithms-shor-9" title="Link to this equation">#</a></span>\[\Unitary_{N,a} \ket{z} = \left|az \; (\mathrm{mod} \; N)\right\rangle\]</div>
 <p>as the base of the controlled-<span class="math notranslate nohighlight">\(\Unitary\)</span> gates in the phase estimation algorithm. Note that, given this definition, it is easy to verify that</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-10">
-<span class="eqno">(489)<a class="headerlink" href="#equation-text-examples-algorithms-shor-10" title="Link to this equation">#</a></span>\[\Unitary_{N,a}^k \ket{z} = |a^ky \; (\mathrm{mod} \; N)\rangle,\]</div>
+<span class="eqno">(489)<a class="headerlink" href="#equation-text-examples-algorithms-shor-10" title="Link to this equation">#</a></span>\[\Unitary_{N,a}^k \ket{z} = |a^kz \; (\mathrm{mod} \; N)\rangle,\]</div>
 <p>and so, in the case of <span class="math notranslate nohighlight">\(z = 1\)</span>, we have</p>
 <div class="math notranslate nohighlight" id="equation-text-examples-algorithms-shor-11">
 <span class="eqno">(490)<a class="headerlink" href="#equation-text-examples-algorithms-shor-11" title="Link to this equation">#</a></span>\[\begin{split}\begin{aligned}
